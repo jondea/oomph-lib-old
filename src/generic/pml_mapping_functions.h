@@ -40,25 +40,31 @@
 
 namespace oomph
 {
-//
+
 //=======================================================================
 /// Class to hold the mapping function (gamma) for the Pml which defines
 /// how the coordinates are transformed in the Pml. This class holds
 /// the one dimensional or uniaxial case which is the most common 
 //=======================================================================
-class PMLMapping
+class UniaxialPMLMapping
 {
 
 public:
 
   /// Default constructor (empty)
-  PMLMapping(){};
+  UniaxialPMLMapping(){};
 
   /// \short Pure virtual to return Pml mapping gamma, where gamma is the
   /// \f$d\tilde x / d x\f$ as  function of \f$\nu\f$ where \f$\nu = x - h\f$ where h is
   /// the vector from the origin to the start of the Pml
-  virtual std::complex<double> gamma(const double& nu_i,
-    const double& pml_width_i,
+  virtual std::complex<double> dtransformed_nu_dnu(const double& nu,
+    const double& delta,
+    const double& wavenumber_squared,
+    const double& alpha_shift=0.0) = 0;
+  
+  //
+  virtual std::complex<double> transformed_nu(const double& nu,
+    const double& delta,
     const double& wavenumber_squared,
     const double& alpha_shift=0.0) = 0;
  
@@ -69,24 +75,33 @@ public:
 /// for the Helmholtz equations and so this will be the default mapping 
 /// (see definition of PmlHelmholtzEquations)
 //=======================================================================
-class BermudezPMLMapping : public PMLMapping
+class BermudezPMLMapping : public UniaxialPMLMapping
 {
 
-  public:
+public:
 
   /// Default constructor (empty)
   BermudezPMLMapping(){};
 
   /// \short Overwrite the pure Pml mapping coefficient function to return the
   /// coeffcients proposed by Bermudez et al
-  std::complex<double> gamma(const double& nu_i,
-                             const double& pml_width_i,
-                             const double& wavenumber_squared,
-                             const double& alpha_shift=0.0)
+  std::complex<double> dtransformed_nu_dnu(const double& nu,
+                                           const double& delta,
+                                           const double& wavenumber_squared,
+                                           const double& alpha_shift=0.0)
   {
-    /// return \f$\gamma=1 + (1/k)(i/|outer_boundary - x|)\f$ 
-    return 1.0 + MathematicalConstants::I / sqrt(wavenumber_squared)
-                  *(1.0/std::fabs(pml_width_i - nu_i));
+    const double k = sqrt(wavenumber_squared);
+    return 1.0 + MathematicalConstants::I / k * (1.0/std::fabs(delta - nu));
+  }
+  
+  //
+  std::complex<double> transformed_nu(const double& nu,
+                                      const double& delta,
+                                      const double& wavenumber_squared,
+                                      const double& alpha_shift=0.0)
+  {
+    const double k = sqrt(wavenumber_squared);
+    return nu - MathematicalConstants::I/k * log(1.0 - std::fabs(nu/delta));
   }
 
 };
@@ -97,26 +112,151 @@ class BermudezPMLMapping : public PMLMapping
 /// appears to be the best for TimeHarmonicLinearElasticity
 /// and so this will be the default mapping 
 //=======================================================================
-class ContinuousBermudezPMLMapping : public PMLMapping
+class C1BermudezPMLMapping : public UniaxialPMLMapping
 {
 
-  public:
+public:
 
   /// Default constructor (empty)
-  ContinuousBermudezPMLMapping(){};
+  C1BermudezPMLMapping(){};
 
   /// \short Overwrite the pure Pml mapping coefficient function to return the
   /// coeffcients proposed by Bermudez et al
-  std::complex<double> gamma(const double& nu_i,
-                             const double& pml_width_i,
-                             const double& wavenumber_squared,
-			                       const double& alpha_shift=0.0)
+  std::complex<double> dtransformed_nu_dnu(const double& nu,
+                                           const double& delta,
+                                           const double& wavenumber_squared,
+                                           const double& alpha_shift=0.0)
   {
     /// return \f$\gamma=1 + (i/k)(1/|outer_boundary - x|-1/|pml width|)\f$ 
-    return 1.0 + MathematicalConstants::I / sqrt(wavenumber_squared)
-     *( 1.0/std::fabs(pml_width_i - nu_i) - 1.0/std::fabs(pml_width_i));
+    const double k = sqrt(wavenumber_squared);
+    return 1.0 + MathematicalConstants::I / k
+                  *( 1.0/std::fabs(delta-nu) - 1.0/std::fabs(delta));
   }
 
+  //
+  std::complex<double> transformed_nu(const double& nu,
+                                      const double& delta,
+                                      const double& wavenumber_squared,
+                                      const double& alpha_shift=0.0)
+  {
+    const double k = sqrt(wavenumber_squared);
+    return nu - MathematicalConstants::I/k
+                  *( log(1.0-std::fabs(nu/delta)) - nu/std::fabs(delta) );
+  }
+
+};
+
+//=======================================================================
+/// A slight modification to the mapping function propsed by Bermudez et al.
+/// The transformation is independent of the scale (thickness) of the PML.
+/// See Jonathan Deakin's PhD thesis (University of Manchester) for more
+/// information.
+//=======================================================================
+class ScaleFreeBermudezPMLMapping : public UniaxialPMLMapping
+{
+
+public:
+
+  /// Default constructor (empty)
+  ScaleFreeBermudezPMLMapping(){};
+
+  /// \short Overwrite the pure Pml mapping coefficient function to return the
+  /// coeffcients proposed by Bermudez et al
+  std::complex<double> dtransformed_nu_dnu(const double& nu,
+                                           const double& delta,
+                                           const double& wavenumber_squared,
+                                           const double& alpha_shift=0.0)
+  {
+    const double k = sqrt(wavenumber_squared);
+    return MathematicalConstants::I / k * (1.0/std::fabs(delta - nu));
+  }
+  
+  //
+  std::complex<double> transformed_nu(const double& nu,
+                                      const double& delta,
+                                      const double& wavenumber_squared,
+                                      const double& alpha_shift=0.0)
+  {
+    const double k = sqrt(wavenumber_squared);
+    return MathematicalConstants::I/k * log(1.0 - std::fabs(nu/delta));
+  }
+
+};
+
+//=======================================================================
+/// Class to hold the mapping function (gamma) for the PML which defines
+/// how the coordinates are transformed in the PML. This PML mapping
+/// aims to transform the solution into a straight line, and requires a 
+/// lot of information from the element. Returns a mapping Jacobian which
+/// I haven't quite worked out yet
+//=======================================================================
+class TangentiallyVaryingConformalPMLMapping
+{
+
+public:
+
+  /// Default constructor (empty)
+  TangentiallyVaryingConformalPMLMapping(){};
+
+  /// \short Pure virtual to return PML mapping Jacobian
+  virtual void get_mapping_jacobian(
+    const Vector<double>& x,
+    const Vector<double>& x_inner,
+    const Vector<double>& x_outer,
+    const Vector<double>& dx_inner_dacross,
+    const Vector<double>& dp_dacross,
+    const double& k_squared,
+    std::complex<double>& tnu,
+    std::complex<double>& dtnu_dnu,
+    std::complex<double>& dtnu_dacross,
+    const double& alpha=0.0
+  ) = 0;
+};
+
+//=======================================================================
+/// Class to hold the mapping function (gamma) for the PML which defines
+/// how the coordinates are transformed in the PML. This PML mapping
+/// aims to transform the solution into a straight line, and requires a 
+/// lot of information from the element. Returns a mapping Jacobian which
+/// I haven't quite worked out yet
+//=======================================================================
+class TangentiallyDiscontinuousConformalPMLMapping :
+public TangentiallyVaryingConformalPMLMapping
+{
+
+public:
+
+  /// Default constructor (empty)
+  TangentiallyDiscontinuousConformalPMLMapping(){};
+
+  /// \short Search along the line 0 to nun for pole (or closest point to)
+  virtual void pole_line_search(
+    const Vector<double>& x_inner,
+    const Vector<double>& p,
+    const double& k_squared,
+    double& nun,
+    std::complex<double>& tnu,
+    const double& alpha=0.0) = 0;
+
+  /// Make a Newton step towards a pole (pole is when du/dtnu=0s)
+  virtual bool newton_step_to_pole(
+    const Vector<double>& x_inner,
+    const Vector<double>& p,
+    const Vector<double>& dx_inner_dacross,
+    const Vector<double>& dp_dacross,
+    double& nu,
+    double& zeta,
+    std::complex<double>& tnu,
+    std::complex<double>& alpha,
+    std::complex<double>& beta) = 0;
+
+  /// Can this be taken out?
+  /// Make a Newton step towards a pole (pole is when du/dtnu=0s)
+  virtual void set_initial_guess(
+    const Vector<double>& x_inner,
+    const Vector<double>& p,
+    const double& nun,
+    const std::complex<double>& tnu) = 0;
 };
 
 }

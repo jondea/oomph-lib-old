@@ -73,17 +73,69 @@ OOMPH_CURRENT_FUNCTION,
 /// Complete LU solve (Nothing gets overwritten!). This generic
 /// version should never need to be overwritten
 //============================================================================
- void ComplexMatrixBase::solve(const Vector<std::complex<double> >&rhs, 
+void ComplexMatrixBase::solve(const Vector<std::complex<double> >&rhs, 
                                Vector<std::complex<double> > &soln)
- {
+{
   //Set the solution vector equal to the rhs
   //N.B. This won't work if we change to another vector format
   soln = rhs;
   
   //Overwrite the solution vector (rhs is unchanged)
   solve(soln);
- }
+}
 
+std::complex<double> DiagonalComplexMatrix::operator()(const unsigned long &i, 
+                                const unsigned long &j) const
+{
+  if (i==j)
+  {
+    return Matrixdata[i];
+  }
+  else
+  {
+    return std::complex<double>(0.0, 0.0);
+  }
+}
+
+void DiagonalComplexMatrix::resize(const unsigned& N, const unsigned& M)
+{
+#ifdef PARANOID
+  if (M != N)
+  {
+    throw OomphLibError();
+  }
+#endif
+  Matrixdata.resize(N);
+}
+
+void DiagonalComplexMatrix::resize(const unsigned& N, const unsigned& M, std::complex<double> z)
+{
+#ifdef PARANOID
+  if (M != N)
+  {
+    throw OomphLibError();
+  }
+#endif
+  Matrixdata.resize(N, z);
+}
+
+
+void DiagonalComplexMatrix::multiply(const Vector<std::complex<double> > &x,
+        Vector<std::complex<double> > &result)
+{
+  const unsigned N = ncols();
+#ifdef PARANOID
+  if (x.size() != N)
+  {
+    throw OomphLibError();
+  }
+#endif
+
+  for (unsigned i=0; i<N; i++)
+  {
+    result[i] = Matrixdata[i]*x[i];
+  }
+}
 
 //=======================================================================
 /// Delete the storage that has been allocated for the LU factors, if
@@ -584,6 +636,81 @@ void DenseComplexMatrix::multiply_transpose(
    for (unsigned long j=0;j<M;j++)
     {
      soln[j] += Matrixdata[N*i+j]*x[i];
+    }
+  }
+}
+
+
+//=============================================================================
+/// Function to multiply this matrix by the DenseComplexMatrix matrix_in.
+//=============================================================================
+void DenseComplexMatrix::multiply(const DenseComplexMatrix &matrix_in,
+                                  DenseComplexMatrix& result)
+{
+#ifdef PARANOID
+  // check matrix dimensions are compatable
+  if ( this->ncol() != matrix_in.nrow() )
+  {
+    std::ostringstream error_message;
+    error_message
+      << "Matrix dimensions incompatable for matrix-matrix multiplication"
+      << "ncol() for first matrix:" << this->ncol()
+      << "nrow() for second matrix: " << matrix_in.nrow();
+
+    throw OomphLibError(error_message.str(), OOMPH_CURRENT_FUNCTION,
+                       OOMPH_EXCEPTION_LOCATION);
+  }
+#endif
+
+  // NB N is number of rows!
+  unsigned long n_row = this->nrow();
+  unsigned long m_col = matrix_in.ncol();
+
+  // resize and intialize result
+  result.resize(n_row, m_col, 0.0);
+
+  // clock_t clock1 = clock();
+
+  // do calculation
+  unsigned long n_col=this->ncol();
+  for (unsigned long k=0; k<n_col; k++)
+  {
+    for (unsigned long i=0; i<n_row; i++)
+    {
+      for (unsigned long j=0; j<m_col; j++)
+      {
+        result(i,j) += Matrixdata[m_col*i+k] * matrix_in(k,j);
+      }
+    }
+  }
+}
+
+//============================================================================
+///   Scale the matrix by the real c
+//============================================================================
+void DenseComplexMatrix::scale(const double &c)
+{
+  // Multiply the matrix A, by the real double c
+  for (unsigned long i=0;i<N;i++)
+  {
+    for (unsigned long j=0;j<M;j++)
+    {
+      Matrixdata[M*i+j] = Matrixdata[M*i+j]*c;
+    }
+  }
+}
+
+//============================================================================
+///   Scale the matrix by the complex number c
+//============================================================================
+void DenseComplexMatrix::scale(const std::complex<double> &c)
+{
+  // Multiply the matrix A, by the real double c
+  for (unsigned long i=0;i<N;i++)
+  {
+    for (unsigned long j=0;j<M;j++)
+    {
+      Matrixdata[M*i+j] = Matrixdata[M*i+j]*c;
     }
   }
 }

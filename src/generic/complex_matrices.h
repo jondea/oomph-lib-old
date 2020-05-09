@@ -158,6 +158,41 @@ class ComplexMatrixBase
   
 };
 
+class DiagonalComplexMatrix : public ComplexMatrixBase
+{
+public:
+
+  DiagonalComplexMatrix(const unsigned long n): Matrixdata(n) {}
+  
+  DiagonalComplexMatrix(const unsigned long n, std::complex<double>& z) :
+    Matrixdata(n,z)
+  {}
+
+  //
+  std::complex<double> operator()(const unsigned long &i, 
+                                  const unsigned long &j) const;
+
+  void multiply(const Vector<std::complex<double> > &x,
+           Vector<std::complex<double> > &result);
+
+  void multiply_transpose(const Vector<std::complex<double> > &x,
+                          Vector<std::complex<double> > &result)
+  {
+    return multiply(x, result);
+  }
+  
+  void resize(const unsigned& N, const unsigned& M);
+
+  void resize(const unsigned& N, const unsigned& M, std::complex<double> z);
+
+  unsigned long nrows() const { return Matrixdata.size(); }
+
+  unsigned long ncols() const { return Matrixdata.size(); }
+
+private:
+
+  Vector<std::complex<double> > Matrixdata;
+};
 
 
 //=================================================================
@@ -208,6 +243,18 @@ class ComplexMatrixBase
     DenseMatrix<std::complex<double> >(n,m,initial_val), 
     Index(0), LU_factors(0),
     Overwrite_matrix_storage(false) {}
+
+    /// \short Constructor to build a dense matrix from a diagonal matrix
+    DenseComplexMatrix(const DiagonalComplexMatrix& diagonal_matrix) :
+      DenseMatrix<std::complex<double> >(diagonal_matrix.nrows(),
+        diagonal_matrix.nrows(),std::complex<double>(0.0,0.0)), 
+      Index(0), LU_factors(0), Overwrite_matrix_storage(false)
+    {
+      for (unsigned i=0; i<diagonal_matrix.nrows(); i++)
+      {
+        this->entry(i,i) = diagonal_matrix(i,i);
+      }
+    }
    
    
    /// Broken copy constructor
@@ -268,7 +315,15 @@ class ComplexMatrixBase
  /// \short Multiply the  transposed matrix by the vector x: soln=A^T x
  void multiply_transpose(const Vector<std::complex<double> > &x,
                          Vector<std::complex<double> > &soln);
- 
+
+ /// Multiply this matrix by the DenseComplexMatrix matrix_in
+ void multiply(const DenseComplexMatrix &matrix_in, DenseComplexMatrix& result);
+
+ /// Scale this matrix by a double c
+ void scale(const double& c);
+
+ /// Scale this matrix by a complex number c
+ void scale(const std::complex<double>& c);
 };
 
 

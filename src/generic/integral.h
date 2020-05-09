@@ -97,6 +97,129 @@ class Integral
 
 };
 
+
+//=========================================================
+/// Wrapper for an integral that reflects one integral at
+/// point inside the domain, such that the integral is used
+/// on both sides of the line of reflection
+/// |   .  . .| .  .    .      |
+//=========================================================
+class ReflectedIntegral : public Integral
+{
+public:
+
+  /// Construct reflected integral, note s refers to local coordinate
+  ReflectedIntegral(const Integral* integral_to_reflect_pt, 
+                const unsigned index_s,
+                const double s_reflect,
+                const double s_min,
+                const double s_max):
+    Integral_pt(integral_to_reflect_pt),
+    Index_s(index_s),
+    S_reflect(s_reflect), S_min(s_min), S_max(s_max),
+    S_reflect_fraction(local_to_fraction(s_reflect)){};
+
+  /// Number of integration points of the scheme, two times the base scheme
+  unsigned nweight() const { return 2u*Integral_pt->nweight(); }
+
+  /// Return local coordinate s[j] of i-th integration point.
+  double knot(const unsigned &i, const unsigned &j) const;
+
+  /// Return weight of i-th integration point.
+  double weight(const unsigned &i) const;
+
+private:
+
+  /// \brief Helper function to convert from local coordinate (s in [-1,1] for
+  /// quads) to fraction [0,1]
+  double local_to_fraction(const double& local_coord) const;
+
+  /// \brief Helper function to convert from fraction [0,1] to local coordinate
+  /// (s in [-1,1] for quads)
+  double fraction_to_local(const double& fraction) const;
+
+  /// Pointer to integral which we will reflect
+  const Integral* Integral_pt;
+
+  /// Index of local coord (s) which scheme will be reflected along
+  const unsigned Index_s;
+
+  /// Value of local coord (s) where scheme will be reflected
+  const double S_reflect;
+
+  /// Minimum value of local coord (s) over whole domain
+  const double S_min;
+
+  /// Maximum value of local coord (s) over whole domain
+  const double S_max;
+
+  /// Position where scheme will be reflected as of fraction of domain [0,1] 
+  const double S_reflect_fraction;
+};
+
+//===================================================================
+/// Integration scheme formed by the tensor product of two
+/// integration schemes
+//===================================================================
+template <unsigned DIM>
+class TensorProductIntegral: public Integral
+{
+};
+
+//===================================================================
+/// Integration scheme formed by the tensor product of two
+/// integration schemes
+//===================================================================
+template<>
+class TensorProductIntegral<2>: public Integral
+{
+
+public:
+
+  /// Construct tensor product from two integrals
+  TensorProductIntegral(const Integral* integral0_pt,
+                        const Integral* integral1_pt) :
+    Integral0_pt(integral0_pt), Integral1_pt(integral1_pt) {}
+
+  /// Number of integration points of the scheme
+  unsigned nweight() const
+  {
+    return Integral0_pt->nweight() * Integral1_pt->nweight();
+  }
+
+  /// Return coordinate s[j] (j=0) of integration point i
+  double knot(const unsigned  &i, const unsigned &j) const
+  {
+    const unsigned Npts1 = Integral1_pt->nweight();
+    if(j == 0) return Integral0_pt->knot(i/Npts1,0);
+    if(j == 1) return Integral1_pt->knot(i%Npts1,0);
+    else
+    {
+      throw OomphLibError("Integral is two dimensional, you requested j>1",
+                          OOMPH_CURRENT_FUNCTION,
+                          OOMPH_EXCEPTION_LOCATION);
+    }
+  }
+
+  /// Return weight of integration point i
+  double weight(const unsigned &i) const
+  {
+    const unsigned Npts1 = Integral1_pt->nweight();
+    return Integral0_pt->weight(i/Npts1)*Integral1_pt->weight(i%Npts1);
+  }
+
+private:
+
+  /// Pointer to integral in direction indexed by 0
+  const Integral* Integral0_pt;
+
+  /// Pointer to integral in direction indexed by 1
+  const Integral* Integral1_pt;
+
+};
+
+
+
 //=============================================================================
 /// Broken pseudo-integration scheme for points elements: Iit's not clear
 /// in general what this integration scheme is supposed to. It probably
@@ -1700,6 +1823,49 @@ GaussLegendre<3,NPTS_1D>::GaussLegendre()
    }
 }
 
+
+//===================================================================
+/// Gauss Legendre integration class where the knots and weights are
+/// calculated at runtime rather than at compile time like the
+/// templated version of the class. This class should only be used if
+/// it is not possible to use the templated version
+//===================================================================
+class RuntimeCalculatedGaussLegendre : public Integral
+{
+
+public:
+
+  /// Deafault constructor. Calculates and stores GL nodes
+  RuntimeCalculatedGaussLegendre(const unsigned& npts): Npts(npts)
+  {
+    Knot.resize(Npts);
+    Weight.resize(Npts);
+
+    // Call the function to populate the arrays
+    Orthpoly::gl_nodes(npts,Knot,Weight);
+  }
+
+  /// Number of integration points of the scheme   
+  unsigned nweight() const {return Npts;}
+
+  /// Return coordinate s[j] of integration point i
+  double knot(const unsigned  &i, const unsigned &j) const { return Knot[i]; }
+
+  /// Return weight of integration point i
+  double weight(const unsigned &i) const { return Weight[i]; }
+
+private:
+
+  /// Number of integration points in scheme
+  unsigned long int Npts;
+
+  /// Array to hold weights
+  Vector<double> Knot;
+
+  /// Array to hold position of knot points in local coordinates
+  Vector<double> Weight;
+
+};
 
 
 

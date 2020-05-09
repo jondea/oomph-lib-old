@@ -47,7 +47,8 @@ general_purpose_preconditioners.cc block_preconditioner.cc \
 matrix_vector_product.cc \
 sum_of_matrices.cc \
 implicit_midpoint_rule.cc \
-preconditioner_array.cc general_purpose_block_preconditioners.cc pml_meshes.cc \
+preconditioner_array.cc general_purpose_block_preconditioners.cc \
+pml_elements.cc pml_meshes.cc \
 unstructured_two_d_mesh_geometry_base.cc sample_point_container.cc \
 sample_point_parameters.cc geometric_multigrid.cc
 
@@ -109,7 +110,7 @@ matrix_vector_product.h projection.h line_visualiser.h \
 Subparametric_Telements.h \
 sum_of_matrices.h implicit_midpoint_rule.h \
 trapezoid_rule.h \
-preconditioner_array.h pml_meshes.h pml_mapping_functions.h \
+preconditioner_array.h pml_elements.h pml_meshes.h pml_mapping_functions.h \
 generalised_timesteppers.h vector_matrix.h face_mesh_project.h \
 generalised_newtonian_constitutive_models.h \
 unstructured_two_d_mesh_geometry_base.h \

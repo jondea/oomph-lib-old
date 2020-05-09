@@ -35,6 +35,60 @@
 namespace oomph
 {
 
+double ReflectedIntegral::knot(const unsigned &i, const unsigned &j) const
+{
+  const unsigned Npts_half = Integral_pt->nweight();
+  if (i < Npts_half)
+  {
+    if (j != Index_s)
+    {
+      return Integral_pt->knot(i,j);
+    }
+    else
+    {
+      return fraction_to_local( local_to_fraction(Integral_pt->knot(i,j))
+                                * S_reflect_fraction);
+    }
+  }
+  else
+  {
+    if (j != Index_s)
+    {
+      return Integral_pt->knot(i-Npts_half,j);
+    }
+    else
+    {
+      return fraction_to_local(
+           S_reflect_fraction
+         + local_to_fraction(Integral_pt->knot(i-Npts_half,j))
+             * (1.0-S_reflect_fraction));
+    }
+  }
+}
+
+double ReflectedIntegral::local_to_fraction(const double& s) const
+{
+  return (s - S_min)/(S_max - S_min);
+}
+
+double ReflectedIntegral::fraction_to_local(const double& fraction) const
+{
+  return fraction*(S_max - S_min) + S_min;
+}
+
+double ReflectedIntegral::weight(const unsigned &i) const
+{
+  if (i < Integral_pt->nweight())
+  {
+    return Integral_pt->weight(i)*S_reflect_fraction;
+  }
+  else
+  {
+    return Integral_pt->weight(i - Integral_pt->nweight())
+                             *(1.0-S_reflect_fraction);
+  }
+}
+
 //Need to define the static data here
 
 //============================================================

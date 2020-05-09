@@ -38,111 +38,11 @@
 #include "mesh.h"
 #include "../meshes/rectangular_quadmesh.template.h"
 #include "../meshes/rectangular_quadmesh.template.cc"
+#include "pml_elements.h"
 
 
 namespace oomph
 {
-
-//=======================================================================
-/// General definition of policy class defining the elements to 
-/// be used in the actual PML layers. Has to be instantiated for
-/// each specific "bulk" PML element type.
-//=======================================================================
- template<class ELEMENT>
- class PMLLayerElement
- {
-
- };
-
-////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////
-
-//==============================================================
-/// Base class for elements with pml capabilities
-//==============================================================
- template<unsigned DIM>
- class PMLElementBase
- {
-
- public:
- 
-  /// Constructor
-  PMLElementBase() : Pml_is_enabled(false), 
-		     Pml_direction_active(DIM,false),
-		     Pml_inner_boundary(DIM,0.0),
-		     Pml_outer_boundary(DIM,0.0)
-   {}
-
-  /// Virtual destructor
-  virtual ~PMLElementBase(){}
-
-  /// \short Disable pml. Ensures the PML-ification in all directions
-  /// has been deactivated
-  void disable_pml()
-   {
-    // Disable the PML-ification
-    Pml_is_enabled=false;
-
-    // Loop over the entries in Pml_direction_active and deactivate the
-    // PML in this direction
-    for (unsigned direction=0;direction<DIM;direction++)
-    {
-     // Disable the PML in this direction
-     Pml_direction_active[direction]=false;
-    }
-   } // End of disable_pml
- 
-  /// \short Enable pml. Specify the coordinate direction along which 
-  /// pml boundary is constant, as well as the coordinate
-  /// along the dimension for the interface between the physical and artificial
-  /// domains and the coordinate for the outer boundary.
-  /// All of these are used to adjust the perfectly matched layer
-  /// mechanism. Needs to be called separately for each pml-ified direction
-  /// (if needed -- e.g. in corner elements)
-  void enable_pml(const int& direction, const double& interface_border_value, 
-		  const double& outer_domain_border_value)
-   {
-    Pml_is_enabled=true;
-    Pml_direction_active[direction] = true;
-    Pml_inner_boundary[direction] = interface_border_value;
-    Pml_outer_boundary[direction] = outer_domain_border_value;
-   }
-
-  /// \short Pure virtual function in which we have to specify the
-  /// values to be pinned (and set to zero) on the outer edge of
-  /// the pml layer. This is usually all of the nodal values
-  /// (values 0 and 1 (real and imag part) for Helmholtz; 
-  /// values 0,1,2 and 3 (real and imag part of x- and y-displacement
-  /// for 2D time-harmonic linear elasticity; etc.). Vector
-  /// must be resized internally!
-  virtual void values_to_be_pinned_on_outer_pml_boundary(
-   Vector<unsigned>& values_to_pin)=0;
-
- protected:
-
-  /// Boolean indicating if element is used in pml mode
-  bool Pml_is_enabled;
-
-  /// \short Coordinate direction along which pml boundary is constant; 
-  /// alternatively: coordinate direction in which coordinate stretching
-  /// is performed.
-  std::vector<bool> Pml_direction_active;
-
-  /// \short Coordinate of inner pml boundary 
-  /// (Storage is provided for any coordinate
-  /// direction; only the entries for "active" directions is used.)
-  Vector<double> Pml_inner_boundary;
-
-  /// \short Coordinate of outer pml boundary 
-  /// (Storage is provided for any coordinate
-  /// direction; only the entries for "active" directions is used.)
-  Vector<double> Pml_outer_boundary;
- };
-
-//////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////
 
 //===================================================================
 /// \short All helper routines for 2D bulk boundary mesh usage in order to 
@@ -1507,14 +1407,14 @@ namespace oomph
    for(unsigned e=0;e<n_element_pml_right;e++)
    {
     // Upcast
-    PMLElementBase<2>* el_pt = dynamic_cast<PMLElementBase<2>*>
+    AxisAlignedPMLElement<2>* el_pt = dynamic_cast<AxisAlignedPMLElement<2>*>
      (pml_right_mesh_pt->element_pt(e));
     el_pt -> enable_pml(0, l_pml_right_x_start, l_pml_right_x_end);
    }
   
    // Get the values to be pinned from the first element (which we
    // assume exists!)
-   PMLElementBase<2>* el_pt = dynamic_cast<PMLElementBase<2>*>
+   AxisAlignedPMLElement<2>* el_pt = dynamic_cast<AxisAlignedPMLElement<2>*>
     (pml_right_mesh_pt->element_pt(0));
    Vector<unsigned> values_to_pin;
    el_pt->values_to_be_pinned_on_outer_pml_boundary(values_to_pin);
@@ -1610,14 +1510,14 @@ namespace oomph
    for(unsigned e=0;e<n_element_pml_top;e++)
    {
     // Upcast
-    PMLElementBase<2>* el_pt = dynamic_cast<PMLElementBase<2>*>
+    AxisAlignedPMLElement<2>* el_pt = dynamic_cast<AxisAlignedPMLElement<2>*>
      (pml_top_mesh_pt->element_pt(e));
     el_pt -> enable_pml(1, l_pml_top_y_start, l_pml_top_y_end);
    }
   
    // Get the values to be pinned from the first element (which we
    // assume exists!)
-   PMLElementBase<2>* el_pt = dynamic_cast<PMLElementBase<2>*>
+   AxisAlignedPMLElement<2>* el_pt = dynamic_cast<AxisAlignedPMLElement<2>*>
     (pml_top_mesh_pt->element_pt(0));
    Vector<unsigned> values_to_pin;
    el_pt->values_to_be_pinned_on_outer_pml_boundary(values_to_pin);
@@ -1714,14 +1614,14 @@ namespace oomph
    for(unsigned e=0;e<n_element_pml_left;e++)
    {
     // Upcast
-    PMLElementBase<2>* el_pt = dynamic_cast<PMLElementBase<2>*>
+    AxisAlignedPMLElement<2>* el_pt = dynamic_cast<AxisAlignedPMLElement<2>*>
      (pml_left_mesh_pt->element_pt(e));
     el_pt -> enable_pml(0, l_pml_left_x_end, l_pml_left_x_start);
    }
 
    // Get the values to be pinned from the first element (which we
    // assume exists!)
-   PMLElementBase<2>* el_pt = dynamic_cast<PMLElementBase<2>*>
+   AxisAlignedPMLElement<2>* el_pt = dynamic_cast<AxisAlignedPMLElement<2>*>
     (pml_left_mesh_pt->element_pt(0));
    Vector<unsigned> values_to_pin;
    el_pt->values_to_be_pinned_on_outer_pml_boundary(values_to_pin);
@@ -1820,14 +1720,14 @@ namespace oomph
    for(unsigned e=0;e<n_element_pml_bottom;e++)
    {
     // Upcast
-    PMLElementBase<2>* el_pt = dynamic_cast<PMLElementBase<2>*>
+    AxisAlignedPMLElement<2>* el_pt = dynamic_cast<AxisAlignedPMLElement<2>*>
      (pml_bottom_mesh_pt->element_pt(e));
     el_pt -> enable_pml(1, l_pml_bottom_y_end, l_pml_bottom_y_start);
    }
 
    // Get the values to be pinned from the first element (which we
    // assume exists!)
-   PMLElementBase<2>* el_pt = dynamic_cast<PMLElementBase<2>*>
+   AxisAlignedPMLElement<2>* el_pt = dynamic_cast<AxisAlignedPMLElement<2>*>
     (pml_bottom_mesh_pt->element_pt(0));
    Vector<unsigned> values_to_pin;
    el_pt->values_to_be_pinned_on_outer_pml_boundary(values_to_pin);
@@ -1945,7 +1845,7 @@ namespace oomph
    for(unsigned e=0;e<n_element_pml_top_right;e++)
    {
     // Upcast
-    PMLElementBase<2>* el_pt = dynamic_cast<PMLElementBase<2>*>   
+    AxisAlignedPMLElement<2>* el_pt = dynamic_cast<AxisAlignedPMLElement<2>*>   
      (pml_top_right_mesh_pt->element_pt(e));
     el_pt -> enable_pml(0, l_pml_right_x_start, l_pml_right_x_end);
     el_pt -> enable_pml(1, l_pml_top_y_start, l_pml_top_y_end);
@@ -1953,7 +1853,7 @@ namespace oomph
 
    // Get the values to be pinned from the first element (which we
    // assume exists!)
-   PMLElementBase<2>* el_pt = dynamic_cast<PMLElementBase<2>*>
+   AxisAlignedPMLElement<2>* el_pt = dynamic_cast<AxisAlignedPMLElement<2>*>
     (pml_top_right_mesh_pt->element_pt(0));
    Vector<unsigned> values_to_pin;
    el_pt->values_to_be_pinned_on_outer_pml_boundary(values_to_pin);
@@ -2071,7 +1971,7 @@ namespace oomph
    for(unsigned e=0;e<n_element_pml_bottom_right;e++)
    {
     // Upcast
-    PMLElementBase<2>* el_pt = dynamic_cast<PMLElementBase<2>*>   
+    AxisAlignedPMLElement<2>* el_pt = dynamic_cast<AxisAlignedPMLElement<2>*>   
      (pml_bottom_right_mesh_pt->element_pt(e));
     el_pt -> enable_pml(0, l_pml_right_x_start, l_pml_right_x_end);
     el_pt -> enable_pml(1, l_pml_bottom_y_end, l_pml_bottom_y_start);
@@ -2079,7 +1979,7 @@ namespace oomph
 
    // Get the values to be pinned from the first element (which we
    // assume exists!)
-   PMLElementBase<2>* el_pt = dynamic_cast<PMLElementBase<2>*>
+   AxisAlignedPMLElement<2>* el_pt = dynamic_cast<AxisAlignedPMLElement<2>*>
     (pml_bottom_right_mesh_pt->element_pt(0));
    Vector<unsigned> values_to_pin;
    el_pt->values_to_be_pinned_on_outer_pml_boundary(values_to_pin);
@@ -2198,7 +2098,7 @@ namespace oomph
    for(unsigned e=0;e<n_element_pml_top_left;e++)
    {
     // Upcast
-    PMLElementBase<2>* el_pt = dynamic_cast<PMLElementBase<2>*>   
+    AxisAlignedPMLElement<2>* el_pt = dynamic_cast<AxisAlignedPMLElement<2>*>   
      (pml_top_left_mesh_pt->element_pt(e));
     el_pt -> enable_pml(0, l_pml_left_x_end, l_pml_left_x_start);
     el_pt -> enable_pml(1, l_pml_top_y_start, l_pml_top_y_end);
@@ -2206,7 +2106,7 @@ namespace oomph
 
    // Get the values to be pinned from the first element (which we
    // assume exists!)
-   PMLElementBase<2>* el_pt = dynamic_cast<PMLElementBase<2>*>
+   AxisAlignedPMLElement<2>* el_pt = dynamic_cast<AxisAlignedPMLElement<2>*>
     (pml_top_left_mesh_pt->element_pt(0));
    Vector<unsigned> values_to_pin;
    el_pt->values_to_be_pinned_on_outer_pml_boundary(values_to_pin);
@@ -2321,7 +2221,7 @@ namespace oomph
    for(unsigned e=0;e<n_element_pml_bottom_left;e++)
    {
     // Upcast
-    PMLElementBase<2>* el_pt = dynamic_cast<PMLElementBase<2>*>   
+    AxisAlignedPMLElement<2>* el_pt = dynamic_cast<AxisAlignedPMLElement<2>*>   
      (pml_bottom_left_mesh_pt->element_pt(e));
     el_pt -> enable_pml(0, l_pml_left_x_end, l_pml_left_x_start);
     el_pt -> enable_pml(1, l_pml_bottom_y_end, l_pml_bottom_y_start);
@@ -2329,7 +2229,7 @@ namespace oomph
 
    // Get the values to be pinned from the first element (which we
    // assume exists!)
-   PMLElementBase<2>* el_pt = dynamic_cast<PMLElementBase<2>*>
+   AxisAlignedPMLElement<2>* el_pt = dynamic_cast<AxisAlignedPMLElement<2>*>
     (pml_bottom_left_mesh_pt->element_pt(0));
    Vector<unsigned> values_to_pin;
    el_pt->values_to_be_pinned_on_outer_pml_boundary(values_to_pin);
