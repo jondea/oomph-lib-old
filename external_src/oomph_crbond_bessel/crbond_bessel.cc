@@ -1122,7 +1122,7 @@ int bessjyv(double v,double x,double &vm,double *jv,double *yv,
                 bjv0 = a0*(px*ck-qx*sk);
                 byv0 = a0*(px*sk+qx*ck);
             }
-            else {
+            else if (j == 1) {
                 bjv1 = a0*(px*ck-qx*sk);
                 byv1 = a0*(px*sk+qx*ck);
             }
@@ -1149,7 +1149,7 @@ int bessjyv(double v,double x,double &vm,double *jv,double *yv,
         f2 = 0.0;
         f1 = 1.0e-100;
         for (k=m;k>=0;k--) {
-            f = 2.0*(v0+k+1.0)/x*f1-f2;
+            f = 2.0*(v0+k+1.0)*f1/x-f2;
             if (k <= n) jv[k] = f;
             f2 = f1;
             f1 = f;
@@ -1366,9 +1366,9 @@ int cbessik01(complex<double>z,complex<double>&ci0,complex<double>&ci1,
         ci1 = -ci1;
     }
     ci0p = ci1;
-    ci1p = ci0-1.0*ci1/z;
+    ci1p = ci0-1.0/(ci1*z);
     ck0p = -ck1;
-    ck1p = -ck0-1.0*ck1/z;
+    ck1p = -ck0-1.0/(ck1*z);
     return 0;
 }
 int cbessikna(int n,complex<double> z,int &nm,complex<double> *ci,
@@ -1386,7 +1386,7 @@ int cbessikna(int n,complex<double> z,int &nm,complex<double> *ci,
             cip[k] = czero;
             ckp[k] = complex<double>(1e308,0);
         }
-        ci[0] = complex<double>(1e308,0);
+        ci[0] = cone;
         cip[1] = complex<double>(0.5,0.0);
         return 0;
     }
@@ -2095,7 +2095,7 @@ int cbessjynb(int n,complex<double> z,int &nm,complex<double> *cj,
             cq1 += b1[k]*pow(z,-2.0*k-3.0);
         }
         cbj1 = cu*(cp1*cos(ct2)-cq1*sin(ct2));
-        cby1 = cu*(cp1*sin(ct2)+cq1*sin(ct2));
+        cby1 = cu*(cp1*sin(ct2)+cq1*cos(ct2));
         cj[1] = cbj1;
         cy[1] = cby1;
         for (k=2;k<=n;k++) {
@@ -2161,7 +2161,7 @@ int cbessjyva(double v,complex<double> z,double &vm,complex<double>*cjv,
             cjvp[1] = complex<double> (0.5,0.0);
         }
         else {
-            cjv[0] = complex<double> (1e308,0);
+            cjvp[0] = complex<double> (1e308,0);
         }
         vm = v;
         return 0;
