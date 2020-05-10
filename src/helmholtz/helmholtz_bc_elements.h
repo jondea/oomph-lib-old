@@ -68,28 +68,30 @@ namespace Hankel_functions_for_helmholtz_problem
                    Vector<std::complex<double> >& h, 
                    Vector<std::complex<double> >& hp)
  {
-  int  n_actual = 0;
-  Vector<double> jn(n+1),yn(n+1),jnp(n+1), ynp(n+1);
-  CRBond_Bessel::bessjyna(int(n),x,n_actual,&jn[0],&yn[0],
-                          &jnp[0],&ynp[0]);
+  int n_actual = 0;
+  Vector<double> jn(n+2),yn(n+2),jnp(n+2), ynp(n+2);
+  CRBond_Bessel::bessjyna(int(n),x,n_actual,&jn[0],&yn[0],&jnp[0],&ynp[0]);
+
+
 #ifdef PARANOID
   if (n_actual!=int(n))
   {
    std::ostringstream error_stream; 
    error_stream << "CRBond_Bessel::bessjyna() only computed "
-		<< n_actual << " rather than " << n
-		<< " Bessel functions.\n";    
-   throw OomphLibError(error_stream.str(),
-		       OOMPH_CURRENT_FUNCTION,
-		       OOMPH_EXCEPTION_LOCATION);
+                << n_actual << " rather than " << n
+                << " Bessel functions.\n";    
+                throw OomphLibError(error_stream.str(),
+                       OOMPH_CURRENT_FUNCTION,
+                       OOMPH_EXCEPTION_LOCATION);
   }
 #endif
-  for (unsigned i=0;i<n;i++)
+  for (unsigned i=0;i<=n;i++)
   {
-   h[i] =std::complex<double>(jn[i], yn[i]);
-   hp[i]=std::complex<double>(jnp[i],ynp[i]);
+   h[i]  = jn[i] + yn[i]*MathematicalConstants::I;
+   hp[i] = jnp[i] + ynp[i]*MathematicalConstants::I;
   }
  } // End of Hankel_first
+
  
 //====================================================================
 /// Compute Hankel function of the first kind of orders 0...n and 
@@ -99,29 +101,28 @@ namespace Hankel_functions_for_helmholtz_problem
 /// shifted Laplacian preconditioner.
 //====================================================================
  void CHankel_first(const unsigned& n,
-		    const std::complex<double>& x,
-		    Vector<std::complex<double> >& h, 
-		    Vector<std::complex<double> >& hp)
+                    const std::complex<double>& x,
+                    Vector<std::complex<double> >& h, 
+                    Vector<std::complex<double> >& hp)
  {
   // Set the highest order actually calculated
   int n_actual=0;
 
   // Create a vector for the Bessel function of the 1st kind
-  Vector<std::complex<double> > jn(n+1);
+  Vector<std::complex<double> > jn(n+2);
 
   // Create a vector for the Bessel function of the 2nd kind
-  Vector<std::complex<double> > yn(n+1);
+  Vector<std::complex<double> > yn(n+2);
   
   // Create a vector for the Bessel function (1st kind) derivative
-  Vector<std::complex<double> > jnp(n+1);
+  Vector<std::complex<double> > jnp(n+2);
   
   // Create a vector for the Bessel function (2nd kind) derivative
-  Vector<std::complex<double> > ynp(n+1);
+  Vector<std::complex<double> > ynp(n+2);
 
   // Call the (complex) Bessel function to calculate the solution
-  CRBond_Bessel::cbessjyna(int(n),x,n_actual,&jn[0],
-			   &yn[0],&jnp[0],&ynp[0]);
-  
+  CRBond_Bessel::cbessjyna(int(n),x,n_actual,&jn[0],&yn[0],&jnp[0],&ynp[0]);
+
 #ifdef PARANOID
   // Tell the user if they tried to calculate higher order terms
   if (n_actual!=int(n))
@@ -131,8 +132,8 @@ namespace Hankel_functions_for_helmholtz_problem
 
    // Create the error message
    error_message_stream << "CRBond_Bessel::cbessjyna() only computed "
-			<< n_actual << " rather than " << n
-			<< " Bessel functions.\n";
+                        << n_actual << " rather than " << n
+                        << " Bessel functions.\n";
    
    // Throw the error message
    throw OomphLibError(error_message_stream.str(),
@@ -143,15 +144,14 @@ namespace Hankel_functions_for_helmholtz_problem
 
   // Loop over the number of terms requested (only the first entry
   // has *actually* been calculated)
-  for (unsigned i=0;i<n;i++)
+  for (unsigned i=0;i<=n;i++)
   {
    // Set the entries in the Hankel function vector
-   h[i]=std::complex<double>(jn[i].real()-yn[i].imag(),
-			     jn[i].imag()+yn[i].real());
+   h[i]  = jn[i] +  yn[i]*MathematicalConstants::I;
 
    // Set the entries in the Hankel function derivative vector
-   hp[i]=std::complex<double>(jnp[i].real()-ynp[i].imag(),
-			      jnp[i].imag()+ynp[i].real());
+   hp[i] = jnp[i] + ynp[i]*MathematicalConstants::I;
+
   }
  } // End of Hankel_first 
 } // End of namespace
@@ -1750,7 +1750,7 @@ void HelmholtzDtNMesh<ELEMENT>::setup_gamma()
  Vector<std::complex<double> > h_a(Nfourier_terms), hp_a(Nfourier_terms),
   q(Nfourier_terms);
  Hankel_functions_for_helmholtz_problem::
-  Hankel_first(Nfourier_terms,Outer_radius*k,h_a,hp_a);
+  Hankel_first(Nfourier_terms-1,Outer_radius*k,h_a,hp_a);
  for (unsigned i=0;i<Nfourier_terms;i++)
   {
    q[i]=(k/(2.0*MathematicalConstants::Pi))*(hp_a[i]/h_a[i]);  

@@ -845,6 +845,8 @@ int msta2(double x,int n,int mp)
 //                      orders from 0 to nm
 //  double y'n[]-- derivative of Bessel function of 2nd kind,
 //                      orders from 0 to nm
+//  Note: jn and yn must be of size n+2, under some code paths, jn[n+1], yn[n+1] 
+//  jnp[n+1] and ynp[n+1] are modified.
 //
 //  Computes Bessel functions of all order up to 'n' using recurrence
 //  relations. If 'nm' < 'n' only 'nm' orders are returned.
