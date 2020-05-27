@@ -49,12 +49,12 @@ compute_laplace_matrix_and_det(const DenseComplexMatrix& J,
                          OOMPH_EXCEPTION_LOCATION);
   }
 #endif
+  detJ = J(0,0);
 
   // resize and intialize result
   laplace_matrix.resize(DIM, DIM, 0.0);
   
   laplace_matrix(0,0) = 1.0/J(0,0);
-  detJ = J(0,0);
 }
 
 template<> 
@@ -64,11 +64,13 @@ compute_laplace_matrix_and_det(const DiagonalComplexMatrix& J,
                                std::complex<double>& detJ)
 {
   const unsigned DIM = 1;
+  
+  detJ = J(0,0);  
+  
   // resize and intialize result
   laplace_matrix.resize(DIM, DIM, std::complex<double>(0.0,0.0));
 
   laplace_matrix(0,0) = 1.0 / J(0,0);
-  detJ = J(0,0);  
 }
 
 template<> 
@@ -78,11 +80,29 @@ compute_laplace_matrix_and_det(const DiagonalComplexMatrix& J,
                                std::complex<double>& detJ)
 {
   const unsigned DIM = 1;
+
+  detJ = J(0,0);  
+  
   // resize and intialize result
   laplace_matrix.resize(DIM, DIM, std::complex<double>(0.0,0.0));
 
   laplace_matrix(0,0) = 1.0 / J(0,0);
-  detJ = J(0,0);  
+}
+
+template<> 
+void PMLElementBase<1>::
+compute_jacobian_inverse_and_det(const DiagonalComplexMatrix& J, 
+                               DiagonalComplexMatrix& J_inv, 
+                               std::complex<double>& J_det)
+{
+  const unsigned DIM = 1;
+  
+  J_det = J(0,0);  
+  
+  // resize and intialize result
+  J_inv.resize(DIM, DIM, std::complex<double>(0.0,0.0));
+
+  J_inv(0,0) = 1.0 / J(0,0);
 }
 
 template<> 
@@ -101,10 +121,11 @@ compute_laplace_matrix_and_det(const DenseComplexMatrix& J,
   }
 #endif
 
+  detJ = J(0,0)*J(1,1) - J(1,0)*J(0,1);
+
   // resize and intialize result
   laplace_matrix.resize(DIM, DIM, 0.0);
 
-  detJ = J(0,0)*J(1,1) - J(1,0)*J(0,1);
   std::complex<double> invDetJ = 1.0/detJ;
   laplace_matrix(0,0) = (std::pow(J(0,1),2) + std::pow(J(1,1),2))*invDetJ; 
   laplace_matrix(1,1) = (std::pow(J(1,0),2) + std::pow(J(0,0),2))*invDetJ;
@@ -120,12 +141,13 @@ compute_laplace_matrix_and_det(const DiagonalComplexMatrix& J,
 {
   const unsigned DIM = 2;
 
+  detJ = J(0,0) * J(1,0);
+
   // resize and intialize result
   laplace_matrix.resize(DIM, DIM, 0.0);
 
   laplace_matrix(0,0) = J(1,1) / J(0,0);
   laplace_matrix(1,1) = J(0,0) / J(1,1);
-  detJ = J(0,0) * J(1,0);  
 }
 
 template<> 
@@ -136,13 +158,32 @@ compute_laplace_matrix_and_det(const DiagonalComplexMatrix& J,
 {
   const unsigned DIM = 2;
 
+  detJ = J(0,0) * J(1,0);
+
   // resize and intialize result
   laplace_matrix.resize(DIM, DIM, 0.0);
 
   laplace_matrix(0,0) = J(1,1) / J(0,0);
   laplace_matrix(1,1) = J(0,0) / J(1,1);
-  detJ = J(0,0) * J(1,0);  
 }
+
+template<> 
+void PMLElementBase<2>::
+compute_jacobian_inverse_and_det(const DiagonalComplexMatrix& J, 
+                               DiagonalComplexMatrix& J_inv, 
+                               std::complex<double>& J_det)
+{
+  const unsigned DIM = 2;
+
+  J_det = J(0,0) * J(1,0);
+
+  // resize and intialize result
+  J_inv.resize(DIM, DIM, 0.0);
+
+  J_inv(0,0) = 1.0 / J(0,0);
+  J_inv(1,1) = 1.0 / J(1,1);
+}
+
 
 template<> 
 void PMLElementBase<3>::
@@ -152,13 +193,14 @@ compute_laplace_matrix_and_det(const DiagonalComplexMatrix& J,
 {
   const unsigned DIM = 3;
 
+  detJ = J(0,0) * J(1,1) * J(2,2);
+
   // resize and intialize result
   laplace_matrix.resize(DIM, DIM, 0.0);
 
   laplace_matrix(0,0) = J(1,1) * J(2,2) / J(0,0);
   laplace_matrix(1,1) = J(0,0) * J(2,2) / J(1,1);
   laplace_matrix(2,2) = J(0,0) * J(1,1) / J(2,2);
-  detJ = J(0,0) * J(1,1) * J(2,2);
 }
 
 template<> 
@@ -169,13 +211,32 @@ compute_laplace_matrix_and_det(const DiagonalComplexMatrix& J,
 {
   const unsigned DIM = 3;
 
+  detJ = J(0,0) * J(1,1) * J(2,2);
+
   // resize and intialize result
   laplace_matrix.resize(DIM, DIM, 0.0);
 
   laplace_matrix(0,0) = J(1,1) * J(2,2) / J(0,0);
   laplace_matrix(1,1) = J(0,0) * J(2,2) / J(1,1);
   laplace_matrix(2,2) = J(0,0) * J(1,1) / J(2,2);
-  detJ = J(0,0) * J(1,1) * J(2,2);
+}
+
+template<> 
+void PMLElementBase<3>::
+compute_jacobian_inverse_and_det(const DiagonalComplexMatrix& J, 
+                               DiagonalComplexMatrix& J_inv, 
+                               std::complex<double>& J_det)
+{
+  const unsigned DIM = 3;
+
+  J_det = J(0,0) * J(1,1) * J(2,2);
+
+  // resize and intialize result
+  J_inv.resize(DIM, DIM, 0.0);
+
+  J_inv(0,0) = 1.0 / J(0,0);
+  J_inv(1,1) = 1.0 / J(1,1);
+  J_inv(2,2) = 1.0 / J(2,2);
 }
 
 //=======================================================================
@@ -213,17 +274,49 @@ void TangentiallyDiscontinuousConformal2DPMLElement::compute_transformed_normal_
 }
 
 template <unsigned DIM>
-void AxisAlignedPMLElement<DIM>::compute_pml_transformation_factors(
+void AxisAlignedPMLElement<DIM>::pml_transformation_jacobian(
   const unsigned& ipt,
   const Vector<double>& s,
   const Vector<double>& x,
-  DenseComplexMatrix& laplace_transformation_matrix,
-  std::complex<double>& transformation_det,
+  DiagonalComplexMatrix& pml_jacobian
+)
+{
+  if (this->Pml_is_enabled)
+  {  
+    for (unsigned i=0; i<DIM; i++)
+    {
+      if(this->Pml_direction_active[i])
+      {
+        const double k_sq = this->k_squared();
+        const double nu_i = nu(x,i);
+        const double delta_i = delta(i);
+        pml_jacobian(i,i) = Pml_mapping_pt->dtransformed_nu_dnu(nu_i, delta_i,
+                                                                k_sq);
+      }
+      else
+      {
+        pml_jacobian(i,i) = 1.0;
+      }
+    }
+  }
+  else
+  {
+    for (unsigned i=0; i<DIM; i++)
+    {
+      pml_jacobian(i,i) = 1.0;
+    }
+  }
+}
+
+template <unsigned DIM>
+void AxisAlignedPMLElement<DIM>::pml_transformation_jacobian(
+  const unsigned& ipt,
+  const Vector<double>& s,
+  const Vector<double>& x,
+  DiagonalComplexMatrix& pml_jacobian,
   Vector<std::complex<double> >& transformed_x
 )
 {
-  transformed_x = x;
-  DiagonalComplexMatrix pml_jacobian(DIM, 1.0);
   if (this->Pml_is_enabled)
   {  
     for (unsigned i=0; i<DIM; i++)
@@ -238,12 +331,22 @@ void AxisAlignedPMLElement<DIM>::compute_pml_transformation_factors(
         transformed_x[i] = Pml_inner_boundary[i]
                           + Pml_mapping_pt->transformed_nu(nu_i, delta_i, k_sq);
       }
+      else
+      {
+        pml_jacobian(i,i) = 1.0;
+        transformed_x[i] = x[i];
+      }
     }
   }
-  PMLElementBase<DIM>::compute_laplace_matrix_and_det(pml_jacobian,
-                         laplace_transformation_matrix, transformation_det); 
+  else
+  {
+    for (unsigned i=0; i<DIM; i++)
+    {
+      pml_jacobian(i,i) = 1.0;
+      transformed_x[i] = x[i];
+    }
+  }
 }
-
 
 void AnnularPMLElementBase::radial_to_cartesian_jacobian(
   const double& r,
@@ -296,12 +399,11 @@ void AnnularPMLElementBase::radial_to_cartesian_jacobian(
 
 /// \short Implements an interface between the polar mapping and the Cartesian
 /// output which the get residuals expects
-void AnnularPMLElementBase::compute_pml_transformation_factors(
+void AnnularPMLElementBase::pml_transformation_jacobian(
   const unsigned& ipt,
   const Vector<double>& s,
   const Vector<double>& x,
-  DenseComplexMatrix& laplace_transformation_matrix,
-  std::complex<double>& transformation_det)
+  DenseComplexMatrix& cartesian_jacobian)
 {
   // Get position from 
   const double theta = this->theta(s, x);
@@ -314,40 +416,17 @@ void AnnularPMLElementBase::compute_pml_transformation_factors(
   std::complex<double> tr;
   radial_transformation_jacobian(nu, delta, tr, dtr_dr);
 
-  //
-  DenseComplexMatrix cartesian_jacobian(2,2, std::complex<double>(0.0,0.0));
+  // Convert the radial Jacobian to a cartesian Jacobian
   radial_to_cartesian_jacobian(r, theta, tr, dtr_dr, cartesian_jacobian);
-
-  PMLElementBase<2>::compute_laplace_matrix_and_det(cartesian_jacobian,
-    laplace_transformation_matrix, transformation_det);
-
-#ifdef PARANOID
-    // There are several places in the PML formulation where divides are required
-    // so NaNs could happen
-    if(isnan(mapping_jacobian(0,0).real())||isnan(mapping_jacobian(0,0).imag())||
-       isnan(mapping_jacobian(0,1).real())||isnan(mapping_jacobian(0,1).imag())||
-       isnan(mapping_jacobian(1,0).real())||isnan(mapping_jacobian(1,0).imag())||
-       isnan(mapping_jacobian(1,1).real())||isnan(mapping_jacobian(1,1).imag())||
-       isnan(rt.real())||isnan(rt.imag()))
-    {
-      oomph_info << "At r = " << r << ", theta = " << theta << std::endl;
-      throw OomphLibError(
-              "NaN detected in PML mapping, you may want to reconsider your"
-              "choice of PML mapping.",
-              OOMPH_CURRENT_FUNCTION,
-              OOMPH_EXCEPTION_LOCATION);
-    }
-#endif
 }
 
 /// \short Implements an interface between the polar mapping and the Cartesian
 /// output which the get residuals expects
-void AnnularPMLElementBase::compute_pml_transformation_factors(
+void AnnularPMLElementBase::pml_transformation_jacobian(
   const unsigned& ipt,
   const Vector<double>& s,
   const Vector<double>& x,
-  DenseComplexMatrix& laplace_transformation_matrix,
-  std::complex<double>& transformation_det,
+  DenseComplexMatrix& cartesian_jacobian,
   Vector<std::complex<double> >& transformed_x)
 {
   // Get position from 
@@ -361,33 +440,11 @@ void AnnularPMLElementBase::compute_pml_transformation_factors(
   std::complex<double> tr;
   radial_transformation_jacobian(nu, delta, tr, dtr_dr);
 
-  //
-  DenseComplexMatrix cartesian_jacobian(2,2, std::complex<double>(0.0,0.0));
+  // Convert the radial Jacobian to a cartesian Jacobian
   radial_to_cartesian_jacobian(r, theta, tr, dtr_dr, cartesian_jacobian);
-
-  compute_laplace_matrix_and_det(cartesian_jacobian,
-    laplace_transformation_matrix, transformation_det);
 
   transformed_x[0] = tr * cos(theta);
   transformed_x[1] = tr * sin(theta);
-
-#ifdef PARANOID
-    // There are several places in the PML formulation where divides are required
-    // so NaNs could happen
-    if(isnan(mapping_jacobian(0,0).real())||isnan(mapping_jacobian(0,0).imag())||
-       isnan(mapping_jacobian(0,1).real())||isnan(mapping_jacobian(0,1).imag())||
-       isnan(mapping_jacobian(1,0).real())||isnan(mapping_jacobian(1,0).imag())||
-       isnan(mapping_jacobian(1,1).real())||isnan(mapping_jacobian(1,1).imag())||
-       isnan(rt.real())||isnan(rt.imag()))
-    {
-      oomph_info << "At r = " << r << ", theta = " << theta << std::endl;
-      throw OomphLibError(
-              "NaN detected in PML mapping, you may want to reconsider your"
-              "choice of PML mapping.",
-              OOMPH_CURRENT_FUNCTION,
-              OOMPH_EXCEPTION_LOCATION);
-    }
-#endif
 }
 
 void Conformal2DPMLElement::
@@ -494,12 +551,11 @@ get_pml_properties(const Vector<double>& s,
 }
 
 
-void Conformal2DPMLElement::compute_pml_transformation_factors(
+void Conformal2DPMLElement::pml_transformation_jacobian(
   const unsigned& ipt,
   const Vector<double>& s,
   const Vector<double>& x,
-  DenseComplexMatrix& laplace_transformation_matrix,
-  std::complex<double>& transformation_det
+  DenseComplexMatrix& jacobian
 )
 {
   const unsigned DIM = 2;
@@ -520,20 +576,15 @@ void Conformal2DPMLElement::compute_pml_transformation_factors(
   std::complex<double> dtnu_dnu = Pml_mapping_pt->dtransformed_nu_dnu(NU, delta,
                                                                       k_sq);
 
-  DenseComplexMatrix jacobian(DIM);
   assemble_conformal_jacobian(p, dx_inner_dacross, dp_dacross, NU, tnu,
                               dtnu_dnu, jacobian);
-  
-  compute_laplace_matrix_and_det(jacobian, laplace_transformation_matrix,
-                                 transformation_det);
 }
 
-void Conformal2DPMLElement::compute_pml_transformation_factors(
+void Conformal2DPMLElement::pml_transformation_jacobian(
   const unsigned& ipt,
   const Vector<double>& s,
   const Vector<double>& x,
-  DenseComplexMatrix& laplace_transformation_matrix,
-  std::complex<double>& transformation_det,
+  DenseComplexMatrix& jacobian,
   Vector<std::complex<double> >& transformed_x
 )
 {
@@ -555,12 +606,8 @@ void Conformal2DPMLElement::compute_pml_transformation_factors(
   std::complex<double> dtnu_dnu = Pml_mapping_pt->dtransformed_nu_dnu(NU, delta,
                                                                       k_sq);
 
-  DenseComplexMatrix jacobian(DIM);
   assemble_conformal_jacobian(p, dx_inner_dacross, dp_dacross, NU, tnu,
                               dtnu_dnu, jacobian);
-  
-  compute_laplace_matrix_and_det(jacobian, laplace_transformation_matrix,
-                                 transformation_det);
   
   transformed_x[0] = x_inner[0] + tnu*p[0]; 
   transformed_x[1] = x_inner[1] + tnu*p[1]; 

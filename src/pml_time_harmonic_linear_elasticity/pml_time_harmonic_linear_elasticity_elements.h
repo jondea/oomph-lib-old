@@ -79,9 +79,9 @@ namespace oomph
 /// (Note: The latter
 /// don't exist yet but will be written as soon as somebody needs them...)
 //=======================================================================
-template <unsigned DIM>
+template <unsigned DIM,class PML_ELEMENT>
 class PMLTimeHarmonicLinearElasticityEquationsBase : 
-public virtual PMLElementBase<DIM>, public virtual FiniteElement
+public virtual FiniteElement, public virtual PML_ELEMENT
 {
 public:
  
@@ -92,9 +92,15 @@ public:
    Elasticity_tensor_pt(0), Omega_sq_pt(&Default_omega_sq_value), 
    Body_force_fct_pt(0) 
  {
-   Pml_mapping_pt = 
-     &PMLTimeHarmonicLinearElasticityEquationsBase::Default_pml_mapping;
+   // this->Pml_mapping_pt = 
+   //   &PMLTimeHarmonicLinearElasticityEquationsBase::Default_pml_mapping;
  }
+ 
+  /// Broken assignment operator
+  void operator=(const PMLTimeHarmonicLinearElasticityEquationsBase<DIM,PML_ELEMENT>&) 
+  {
+    BrokenCopy::broken_assign("PMLTimeHarmonicLinearElasticityEquationsBase");
+  }
  
  /// \short Return the index at which the i-th real or imag unknown 
  /// displacement component is stored. The default value is appropriate for
@@ -310,91 +316,10 @@ public:
      }
    }
  }
-
- /// \short Compute pml coefficients at position x and integration point ipt.
- /// pml_inverse_jacobian_diagonal contains the diagonal terms from the inverse
- /// of the Jacobian of the PML transformation. These are used to transform
- /// derivatives in real x to derivatives in transformed space \f$\tilde x \f$.
- /// This can be interpreted as an anisotropic stiffness.
- /// pml_jacobian_det is the determinant of the Jacobian of the PML 
- /// transformation, this allows us to transform volume integrals in 
- /// transformed space to real space.
- /// This can be interpreted as a mass factor
- /// If the PML is not enabled via enable_pml, both default to 1.0.
- void compute_pml_coefficients(
-  const unsigned& ipt,
-  const Vector<double>& x,
-  Vector< std::complex<double> >& pml_inverse_jacobian_diagonal,
-  std::complex<double>& pml_jacobian_det)
- {
-   /// \short The factors all default to 1.0 if the propagation
-   /// medium is the physical domain (no PML transformation)
-   for(unsigned k=0; k<DIM; k++)
-   {
-     pml_inverse_jacobian_diagonal[k] = std::complex<double> (1.0,0.0);
-   }
-   pml_jacobian_det = std::complex<double> (1.0,0.0);
-
-   // Only calculate PML factors if PML is enabled
-   if (this->Pml_is_enabled)
-   {
-     /// Vector which points from the inner boundary to x
-     Vector<double> nu(DIM);
-     for(unsigned k=0; k<DIM; k++)
-     {
-       nu[k] = x[k] - this->Pml_inner_boundary[k];
-     }
-
-     /// Vector which points from the inner boundary to the edge of the boundary
-     Vector<double> pml_width(DIM);
-     for(unsigned k=0; k<DIM; k++)
-     {
-       pml_width[k] = this->Pml_outer_boundary[k] - this->Pml_inner_boundary[k];
-     }
-
-#ifdef PARANOID
-     // Check if the Pml_mapping_pt is set
-     if (this->Pml_mapping_pt == 0)
-      {
-       std::ostringstream error_message_stream;
-       error_message_stream << "Pml_mapping_pt needs to be set " << std::endl;
-
-       throw OomphLibError(error_message_stream.str(),OOMPH_CURRENT_FUNCTION,
-                           OOMPH_EXCEPTION_LOCATION);
-      }
-#endif
-     // Declare gamma_i vectors of complex numbers for PML weights
-     Vector<std::complex<double> > pml_gamma(DIM);
-
-     /// Calculate the square of the non-dimensional wavenumber
-     double wavenumber_squared = 2.0*(1.0+this->nu()) * this->omega_sq();
-
-     for(unsigned k=0; k<DIM; k++) {
-       // If PML is enabled in the respective direction
-       if (this->Pml_direction_active[k])
-       {
-         std::complex<double> pml_gamma =
-          Pml_mapping_pt->gamma(nu[k], pml_width[k], wavenumber_squared);
-         
-         // The diagonals of the INVERSE of the PML transformation jacobian are 
-         // 1/gamma
-         pml_inverse_jacobian_diagonal[k] = 1.0/pml_gamma;
-         // To get the determinant, multiply all the diagonals together
-         pml_jacobian_det *= pml_gamma;
-       }
-     }
-   }
- }
- 
- /// Return a pointer to the PML Mapping object
- PMLMapping* &pml_mapping_pt() {return Pml_mapping_pt;}
-
- /// Return a pointer to the PML Mapping object (const version)
- PMLMapping* const &pml_mapping_pt() const {return Pml_mapping_pt;}
  
  /// Static so that the class doesn't need to instantiate a new default
  /// everytime it uses it
- static ContinuousBermudezPMLMapping Default_pml_mapping;
+ static C1BermudezPMLMapping Default_pml_mapping;
  
 protected:
  
@@ -410,9 +335,6 @@ protected:
  /// Static default value for square of frequency 
  static double Default_omega_sq_value;
  
- /// Pointer to class which holds the pml mapping function, also known as gamma
- PMLMapping* Pml_mapping_pt;
- 
 };
  
  
@@ -425,9 +347,9 @@ protected:
 /// A class for elements that solve the equations of linear elasticity
 /// in cartesian coordinates.
 //=======================================================================
- template <unsigned DIM>
+ template <unsigned DIM, class PML_ELEMENT>
   class PMLTimeHarmonicLinearElasticityEquations : 
- public PMLTimeHarmonicLinearElasticityEquationsBase<DIM>
+ public PMLTimeHarmonicLinearElasticityEquationsBase<DIM, PML_ELEMENT>
   {
     public:
    
@@ -561,35 +483,35 @@ private:
 /// An Element that solves the equations of linear elasticity 
 /// in Cartesian coordinates, using QElements for the geometry
 //============================================================================
- template<unsigned DIM, unsigned NNODE_1D>
+ template<unsigned DIM, unsigned NNODE_1D, class PML_ELEMENT>
   class QPMLTimeHarmonicLinearElasticityElement : 
   public virtual QElement<DIM,NNODE_1D>,
-  public virtual PMLTimeHarmonicLinearElasticityEquations<DIM>
+  public virtual PMLTimeHarmonicLinearElasticityEquations<DIM, PML_ELEMENT>
   {
     public:
    
    /// Constructor
     QPMLTimeHarmonicLinearElasticityElement() : 
      QElement<DIM,NNODE_1D>(), 
-     PMLTimeHarmonicLinearElasticityEquations<DIM>() { }
+     PMLTimeHarmonicLinearElasticityEquations<DIM, PML_ELEMENT>() { }
    
    /// Output function
    void output(std::ostream &outfile) 
-   {PMLTimeHarmonicLinearElasticityEquations<DIM>::output(outfile);}
+   {PMLTimeHarmonicLinearElasticityEquations<DIM,PML_ELEMENT>::output(outfile);}
    
    /// Output function
    void output(std::ostream &outfile, const unsigned &n_plot)
-   {PMLTimeHarmonicLinearElasticityEquations<DIM>::output(outfile,
+   {PMLTimeHarmonicLinearElasticityEquations<DIM,PML_ELEMENT>::output(outfile,
                                                                   n_plot);}
    
    
    /// C-style output function
    void output(FILE* file_pt) 
-   {PMLTimeHarmonicLinearElasticityEquations<DIM>::output(file_pt);}
+   {PMLTimeHarmonicLinearElasticityEquations<DIM,PML_ELEMENT>::output(file_pt);}
    
    /// C-style output function
    void output(FILE* file_pt, const unsigned &n_plot)
-   {PMLTimeHarmonicLinearElasticityEquations<DIM>::output(file_pt,
+   {PMLTimeHarmonicLinearElasticityEquations<DIM,PML_ELEMENT>::output(file_pt,
                                                                   n_plot);}
    
   };
@@ -599,8 +521,8 @@ private:
 /// FaceGeometry of a linear 2D 
 /// QPMLTimeHarmonicLinearElasticityElement element
 //============================================================================
- template<>
-  class FaceGeometry<QPMLTimeHarmonicLinearElasticityElement<2,2> > :
+ template<class PML_ELEMENT>
+  class FaceGeometry<QPMLTimeHarmonicLinearElasticityElement<2,2,PML_ELEMENT> > :
  public virtual QElement<1,2>
   {
     public:
@@ -614,8 +536,8 @@ private:
 /// FaceGeometry of a quadratic 2D 
 /// QPMLTimeHarmonicLinearElasticityElement element
 //============================================================================
- template<>
-  class FaceGeometry<QPMLTimeHarmonicLinearElasticityElement<2,3> > :
+ template<class PML_ELEMENT>
+  class FaceGeometry<QPMLTimeHarmonicLinearElasticityElement<2,3,PML_ELEMENT> > :
  public virtual QElement<1,3>
   {
     public:
@@ -629,8 +551,8 @@ private:
 /// FaceGeometry of a cubic 2D 
 /// QPMLTimeHarmonicLinearElasticityElement element
 //============================================================================
- template<>
-  class FaceGeometry<QPMLTimeHarmonicLinearElasticityElement<2,4> > :
+ template<class PML_ELEMENT>
+  class FaceGeometry<QPMLTimeHarmonicLinearElasticityElement<2,4,PML_ELEMENT> > :
   public virtual QElement<1,4>
   {
     public:
@@ -643,8 +565,8 @@ private:
 /// FaceGeometry of a linear 3D 
 /// QPMLTimeHarmonicLinearElasticityElement element
 //============================================================================
-  template<>
-   class FaceGeometry<QPMLTimeHarmonicLinearElasticityElement<3,2> > :
+  template<class PML_ELEMENT>
+   class FaceGeometry<QPMLTimeHarmonicLinearElasticityElement<3,2,PML_ELEMENT> > :
   public virtual QElement<2,2>
    {
      public:
@@ -656,8 +578,8 @@ private:
 /// FaceGeometry of a quadratic 3D 
 /// QPMLTimeHarmonicLinearElasticityElement element
 //============================================================================
-  template<>
-   class FaceGeometry<QPMLTimeHarmonicLinearElasticityElement<3,3> > :
+  template<class PML_ELEMENT>
+   class FaceGeometry<QPMLTimeHarmonicLinearElasticityElement<3,3,PML_ELEMENT> > :
   public virtual QElement<2,3>
    {
      public:
@@ -670,8 +592,8 @@ private:
 /// FaceGeometry of a cubic 3D 
 /// QPMLTimeHarmonicLinearElasticityElement element
 //============================================================================
-  template<>
-   class FaceGeometry<QPMLTimeHarmonicLinearElasticityElement<3,4> > :
+  template<class PML_ELEMENT>
+   class FaceGeometry<QPMLTimeHarmonicLinearElasticityElement<3,4,PML_ELEMENT> > :
   public virtual QElement<2,4>
    {
      public:
@@ -891,18 +813,18 @@ private:
 /// Policy class defining the elements to be used in the actual
 /// PML layers. Same!
 //=======================================================================
-template<unsigned NNODE_1D>
-class PMLLayerElement<
- QPMLTimeHarmonicLinearElasticityElement<2,NNODE_1D> > : 
- public virtual QPMLTimeHarmonicLinearElasticityElement<2,NNODE_1D>
+template<unsigned NNODE_1D, class PML_ELEMENT>
+class EquivalentQElement<
+ QPMLTimeHarmonicLinearElasticityElement<2,NNODE_1D,PML_ELEMENT> > : 
+ public virtual QPMLTimeHarmonicLinearElasticityElement<2,NNODE_1D,PML_ELEMENT>
 {
 
   public:
- 
+
  /// \short Constructor: Call the constructor for the
  /// appropriate QElement
- PMLLayerElement() : 
-  QPMLTimeHarmonicLinearElasticityElement<2,NNODE_1D>() 
+ EquivalentQElement() : 
+  QPMLTimeHarmonicLinearElasticityElement<2,NNODE_1D,PML_ELEMENT>() 
   {}
 
 };

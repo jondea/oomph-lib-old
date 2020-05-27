@@ -181,13 +181,19 @@ public:
     return multiply(x, result);
   }
   
+  /// \short Find the residual, i.e. r=b-Ax the residual
+  virtual void residual(const Vector<std::complex<double> > &x, 
+                        const Vector<std::complex<double> > &b, 
+                        Vector<std::complex<double> > &residual)
+  {}
+  
   void resize(const unsigned& N, const unsigned& M);
 
   void resize(const unsigned& N, const unsigned& M, std::complex<double> z);
 
-  unsigned long nrows() const { return Matrixdata.size(); }
+  unsigned long nrow() const { return Matrixdata.size(); }
 
-  unsigned long ncols() const { return Matrixdata.size(); }
+  unsigned long ncol() const { return Matrixdata.size(); }
 
 private:
 
@@ -246,11 +252,11 @@ private:
 
     /// \short Constructor to build a dense matrix from a diagonal matrix
     DenseComplexMatrix(const DiagonalComplexMatrix& diagonal_matrix) :
-      DenseMatrix<std::complex<double> >(diagonal_matrix.nrows(),
-        diagonal_matrix.nrows(),std::complex<double>(0.0,0.0)), 
+      DenseMatrix<std::complex<double> >(diagonal_matrix.nrow(),
+        diagonal_matrix.nrow(),std::complex<double>(0.0,0.0)), 
       Index(0), LU_factors(0), Overwrite_matrix_storage(false)
     {
-      for (unsigned i=0; i<diagonal_matrix.nrows(); i++)
+      for (unsigned i=0; i<diagonal_matrix.nrow(); i++)
       {
         this->entry(i,i) = diagonal_matrix(i,i);
       }

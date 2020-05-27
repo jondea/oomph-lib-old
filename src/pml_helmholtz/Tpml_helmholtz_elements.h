@@ -327,7 +327,7 @@ class FaceGeometry<TPMLHelmholtzElement<1,NNODE_1D> >:
 /// PML layers. It's the corresponding quads.
 //=======================================================================
   template<unsigned NNODE_1D> 
-class PMLLayerElement<TPMLHelmholtzElement<2,NNODE_1D> > : 
+class EquivalentQElement<TPMLHelmholtzElement<2,NNODE_1D> > : 
  public virtual QPMLHelmholtzElement<2,NNODE_1D>
 {
 
@@ -335,7 +335,7 @@ class PMLLayerElement<TPMLHelmholtzElement<2,NNODE_1D> > :
  
  /// \short Constructor: Call the constructor for the
  /// appropriate QElement
- PMLLayerElement(): QPMLHelmholtzElement<2,NNODE_1D>() 
+ EquivalentQElement(): QPMLHelmholtzElement<2,NNODE_1D>() 
   {}
 
 };
@@ -347,7 +347,7 @@ class PMLLayerElement<TPMLHelmholtzElement<2,NNODE_1D> > :
 /// along their 1D edges.
 //=======================================================================
 template<unsigned DIM, unsigned NNODE_1D>
-class FaceGeometry<PMLLayerElement<TPMLHelmholtzElement<DIM,NNODE_1D> > >: 
+class FaceGeometry<EquivalentQElement<TPMLHelmholtzElement<DIM,NNODE_1D> > >: 
  public virtual QElement<DIM-1,NNODE_1D>
 {
 
@@ -368,7 +368,7 @@ class FaceGeometry<PMLLayerElement<TPMLHelmholtzElement<DIM,NNODE_1D> > >:
 /// PML layers. It's the corresponding quads.
 //=======================================================================
   template<unsigned NNODE_1D>
-class PMLLayerElement<ProjectablePMLHelmholtzElement
+class EquivalentQElement<ProjectablePMLHelmholtzElement
    <TPMLHelmholtzElement<2,NNODE_1D> > > : 
  public virtual QPMLHelmholtzElement<2,NNODE_1D>
 {
@@ -377,7 +377,7 @@ class PMLLayerElement<ProjectablePMLHelmholtzElement
  
  /// \short Constructor: Call the constructor for the
  /// appropriate QElement
- PMLLayerElement(): QPMLHelmholtzElement<2,NNODE_1D>() 
+ EquivalentQElement(): QPMLHelmholtzElement<2,NNODE_1D>() 
   {}
 
 };

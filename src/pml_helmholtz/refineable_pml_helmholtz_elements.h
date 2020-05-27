@@ -58,21 +58,21 @@ namespace oomph
 ///
 ///
 //======================================================================
-template <unsigned DIM>
+template <unsigned DIM, class PML_ELEMENT>
 class RefineablePMLHelmholtzEquations : 
- public virtual PMLHelmholtzEquations<DIM>,
+ public virtual PMLHelmholtzEquations<DIM,PML_ELEMENT>,
  public virtual RefineableElement,
  public virtual ElementWithZ2ErrorEstimator
  {
   public:
 
  /// \short Constructor, simply call other constructors
- RefineablePMLHelmholtzEquations() : PMLHelmholtzEquations<DIM>(),
+ RefineablePMLHelmholtzEquations() : PMLHelmholtzEquations<DIM,PML_ELEMENT>(),
   RefineableElement(), ElementWithZ2ErrorEstimator() 
   { } 
 
  /// Broken copy constructor
- RefineablePMLHelmholtzEquations(const RefineablePMLHelmholtzEquations<DIM>& dummy) 
+ RefineablePMLHelmholtzEquations(const RefineablePMLHelmholtzEquations<DIM,PML_ELEMENT>& dummy) 
   { 
    BrokenCopy::broken_copy("RefineablePMLHelmholtzEquations");
   } 
@@ -162,7 +162,7 @@ void get_interpolated_values(const Vector<double>&s,  Vector<double>& values)
     {
      //Make sure that we call this particular object's steady 
      //get_interpolated_values (it could get overloaded lower down)
-     RefineablePMLHelmholtzEquations<DIM>::get_interpolated_values(s,values);
+     RefineablePMLHelmholtzEquations<DIM,PML_ELEMENT>::get_interpolated_values(s,values);
     }
   }
 
@@ -170,7 +170,7 @@ void get_interpolated_values(const Vector<double>&s,  Vector<double>& values)
  ///  Further build: Copy source function pointer from father element
  void further_build()
   {
-   this->Source_fct_pt=dynamic_cast<RefineablePMLHelmholtzEquations<DIM>*>(
+   this->Source_fct_pt=dynamic_cast<RefineablePMLHelmholtzEquations<DIM,PML_ELEMENT>*>(
     this->father_element_pt())->source_fct_pt();
   }
 
@@ -194,10 +194,10 @@ void get_interpolated_values(const Vector<double>&s,  Vector<double>& values)
 ///
 ///
 //======================================================================
-template <unsigned DIM, unsigned NNODE_1D>
+template <unsigned DIM, unsigned NNODE_1D, class PML_ELEMENT>
  class RefineableQPMLHelmholtzElement : 
- public QPMLHelmholtzElement<DIM,NNODE_1D>,
- public virtual RefineablePMLHelmholtzEquations<DIM>,
+ public QPMLHelmholtzElement<DIM,NNODE_1D,PML_ELEMENT>,
+ public virtual RefineablePMLHelmholtzEquations<DIM,PML_ELEMENT>,
  public virtual RefineableQElement<DIM>
 {
   public:
@@ -205,14 +205,14 @@ template <unsigned DIM, unsigned NNODE_1D>
  /// \short Constructor, simply call the other constructors 
  RefineableQPMLHelmholtzElement() : 
   RefineableElement(),
-  RefineablePMLHelmholtzEquations<DIM>(),
+  RefineablePMLHelmholtzEquations<DIM,PML_ELEMENT>(),
   RefineableQElement<DIM>(),
-  QPMLHelmholtzElement<DIM,NNODE_1D>()
+  QPMLHelmholtzElement<DIM,NNODE_1D,PML_ELEMENT>()
    {} 
 
 
  /// Broken copy constructor
- RefineableQPMLHelmholtzElement(const RefineableQPMLHelmholtzElement<DIM,NNODE_1D>& 
+ RefineableQPMLHelmholtzElement(const RefineableQPMLHelmholtzElement<DIM,NNODE_1D,PML_ELEMENT>& 
                            dummy) 
   { 
    BrokenCopy::broken_copy("RefineableQuadPMLHelmholtzElement");
@@ -229,11 +229,11 @@ template <unsigned DIM, unsigned NNODE_1D>
 
  /// \short Number of vertex nodes in the element
  unsigned nvertex_node() const
-  {return QPMLHelmholtzElement<DIM,NNODE_1D>::nvertex_node();}
+  {return QPMLHelmholtzElement<DIM,NNODE_1D,PML_ELEMENT>::nvertex_node();}
 
  /// \short Pointer to the j-th vertex node in the element
  Node* vertex_node_pt(const unsigned& j) const
-  {return QPMLHelmholtzElement<DIM,NNODE_1D>::vertex_node_pt(j);}
+  {return QPMLHelmholtzElement<DIM,NNODE_1D,PML_ELEMENT>::vertex_node_pt(j);}
 
  /// Rebuild from sons: empty
  void rebuild_from_sons(Mesh* &mesh_pt) {}
@@ -263,8 +263,8 @@ template <unsigned DIM, unsigned NNODE_1D>
 /// bulk element but they have the same number of points
 /// along their 1D edges.
 //=======================================================================
-template<unsigned DIM, unsigned NNODE_1D>
-class FaceGeometry<RefineableQPMLHelmholtzElement<DIM,NNODE_1D> >: 
+template<unsigned DIM, unsigned NNODE_1D, class PML_ELEMENT>
+class FaceGeometry<RefineableQPMLHelmholtzElement<DIM,NNODE_1D,PML_ELEMENT> >: 
  public virtual QElement<DIM-1,NNODE_1D>
 {
 
@@ -280,17 +280,17 @@ class FaceGeometry<RefineableQPMLHelmholtzElement<DIM,NNODE_1D> >:
 /// Policy class defining the elements to be used in the actual
 /// PML layers. Same!
 //=======================================================================
-template<unsigned NNODE_1D>
- class PMLLayerElement<RefineableQPMLHelmholtzElement<2,NNODE_1D> > :
- public virtual RefineableQPMLHelmholtzElement<2,NNODE_1D>
+template<unsigned NNODE_1D, class PML_ELEMENT>
+ class EquivalentQElement<RefineableQPMLHelmholtzElement<2,NNODE_1D,PML_ELEMENT> > :
+ public virtual RefineableQPMLHelmholtzElement<2,NNODE_1D,PML_ELEMENT>
  {
   
    public:
   
   /// \short Constructor: Call the constructor for the
   /// appropriate QElement
-   PMLLayerElement() :
-  RefineableQPMLHelmholtzElement<2,NNODE_1D>()
+   EquivalentQElement() :
+  RefineableQPMLHelmholtzElement<2,NNODE_1D,PML_ELEMENT>()
    {}
   
  };

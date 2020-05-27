@@ -65,9 +65,9 @@ namespace oomph
 /// element edge. Inherits from TElement and 
 /// PMLTimeHarmonicLinearElasticityEquations
 //======================================================================
-template <unsigned DIM, unsigned NNODE_1D>
+template <unsigned DIM, unsigned NNODE_1D, class PML_ELEMENT>
  class TPMLTimeHarmonicLinearElasticityElement : public TElement<DIM,NNODE_1D>, 
- public PMLTimeHarmonicLinearElasticityEquations<DIM>,
+ public PMLTimeHarmonicLinearElasticityEquations<DIM,PML_ELEMENT>,
  public virtual ElementWithZ2ErrorEstimator
  {
   
@@ -76,17 +76,17 @@ template <unsigned DIM, unsigned NNODE_1D>
   ///\short  Constructor: Call constructors for TElement and 
   /// PMLTimeHarmonicLinearElasticity equations
    TPMLTimeHarmonicLinearElasticityElement() : TElement<DIM,NNODE_1D>(), 
-   PMLTimeHarmonicLinearElasticityEquations<DIM>() { }
+   PMLTimeHarmonicLinearElasticityEquations<DIM, PML_ELEMENT>() { }
   
   
   /// Broken copy constructor
- TPMLTimeHarmonicLinearElasticityElement(const TPMLTimeHarmonicLinearElasticityElement<DIM,NNODE_1D>& dummy) 
+ TPMLTimeHarmonicLinearElasticityElement(const TPMLTimeHarmonicLinearElasticityElement<DIM,NNODE_1D,PML_ELEMENT>& dummy) 
   { 
    BrokenCopy::broken_copy("TPMLTimeHarmonicLinearElasticityElement");
   } 
  
  /// Broken assignment operator
- void operator=(const TPMLTimeHarmonicLinearElasticityElement<DIM,NNODE_1D>&) 
+ void operator=(const TPMLTimeHarmonicLinearElasticityElement<DIM,NNODE_1D,PML_ELEMENT>&) 
   {
    BrokenCopy::broken_assign("TPMLTimeHarmonicLinearElasticityElement");
   }
@@ -94,26 +94,26 @@ template <unsigned DIM, unsigned NNODE_1D>
  /// \short Output function:  
  void output(std::ostream &outfile)
  {
-  PMLTimeHarmonicLinearElasticityEquations<DIM>::output(outfile);
+  PMLTimeHarmonicLinearElasticityEquations<DIM,PML_ELEMENT>::output(outfile);
   }
 
  ///  \short Output function:  
  void output(std::ostream &outfile, const unsigned &nplot)
   {
-   PMLTimeHarmonicLinearElasticityEquations<DIM>::output(outfile,nplot);
+   PMLTimeHarmonicLinearElasticityEquations<DIM,PML_ELEMENT>::output(outfile,nplot);
   }
 
 
  /// \short C-style output function:  
  void output(FILE* file_pt)
   {
-   PMLTimeHarmonicLinearElasticityEquations<DIM>::output(file_pt);
+   PMLTimeHarmonicLinearElasticityEquations<DIM,PML_ELEMENT>::output(file_pt);
   }
 
  ///  \short C-style output function:  
  void output(FILE* file_pt, const unsigned &n_plot)
   {
-   PMLTimeHarmonicLinearElasticityEquations<DIM>::output(file_pt,n_plot);
+   PMLTimeHarmonicLinearElasticityEquations<DIM,PML_ELEMENT>::output(file_pt,n_plot);
   }
 
 
@@ -197,8 +197,8 @@ template <unsigned DIM, unsigned NNODE_1D>
 /// bulk element but they have the same number of points
 /// along their 1D edges.
 //=======================================================================
-template<unsigned DIM, unsigned NNODE_1D>
-class FaceGeometry<TPMLTimeHarmonicLinearElasticityElement<DIM,NNODE_1D> >: 
+template<unsigned DIM, unsigned NNODE_1D, class PML_ELEMENT>
+class FaceGeometry<TPMLTimeHarmonicLinearElasticityElement<DIM,NNODE_1D,PML_ELEMENT> >: 
  public virtual TElement<DIM-1,NNODE_1D>
 {
 
@@ -214,8 +214,8 @@ class FaceGeometry<TPMLTimeHarmonicLinearElasticityElement<DIM,NNODE_1D> >:
 /// Face geometry for the 1D TPMLTimeHarmonicLinearElasticityElement 
 /// elements:  Point elements
 //=======================================================================
-template<unsigned NNODE_1D>
-class FaceGeometry<TPMLTimeHarmonicLinearElasticityElement<1,NNODE_1D> >: 
+template<unsigned NNODE_1D, class PML_ELEMENT>
+class FaceGeometry<TPMLTimeHarmonicLinearElasticityElement<1,NNODE_1D,PML_ELEMENT> >: 
  public virtual PointElement
 {
 
@@ -239,18 +239,18 @@ class FaceGeometry<TPMLTimeHarmonicLinearElasticityElement<1,NNODE_1D> >:
 /// PML layers. Same spatial dimension and nnode_1d but quads
 /// rather than triangles.
 //=======================================================================
-template<unsigned NNODE_1D>
-class PMLLayerElement<
- TPMLTimeHarmonicLinearElasticityElement<2,NNODE_1D> >: 
- public virtual QPMLTimeHarmonicLinearElasticityElement<2,NNODE_1D>
+template<unsigned NNODE_1D, class PML_ELEMENT>
+class EquivalentQElement<
+ TPMLTimeHarmonicLinearElasticityElement<2,NNODE_1D,PML_ELEMENT> >: 
+ public virtual QPMLTimeHarmonicLinearElasticityElement<2,NNODE_1D,PML_ELEMENT>
 {
 
   public:
  
  /// \short Constructor: Call the constructor for the
  /// appropriate QElement
- PMLLayerElement() : 
-  QPMLTimeHarmonicLinearElasticityElement<2,NNODE_1D>() 
+ EquivalentQElement() : 
+  QPMLTimeHarmonicLinearElasticityElement<2,NNODE_1D,PML_ELEMENT>() 
   {}
 
 };
@@ -262,9 +262,9 @@ class PMLLayerElement<
 /// bulk element but they have the same number of points
 /// along their 1D edges.
 //=======================================================================
-template<unsigned DIM, unsigned NNODE_1D>
-class FaceGeometry<PMLLayerElement<
- TPMLTimeHarmonicLinearElasticityElement<DIM,NNODE_1D> > >: 
+template<unsigned DIM, unsigned NNODE_1D, class PML_ELEMENT>
+class FaceGeometry<EquivalentQElement<
+ TPMLTimeHarmonicLinearElasticityElement<DIM,NNODE_1D,PML_ELEMENT> > >: 
  public virtual QElement<DIM-1,NNODE_1D>
 {
 
@@ -287,19 +287,19 @@ class FaceGeometry<PMLLayerElement<
 /// PML layers. Same spatial dimension and nnode_1d but quads
 /// rather than triangles.
 //=======================================================================
-template<unsigned NNODE_1D>
-class PMLLayerElement<
+template<unsigned NNODE_1D, class PML_ELEMENT>
+class EquivalentQElement<
   ProjectablePMLTimeHarmonicLinearElasticityElement<
-   TPMLTimeHarmonicLinearElasticityElement<2,NNODE_1D> > >: 
- public virtual QPMLTimeHarmonicLinearElasticityElement<2,NNODE_1D>
+   TPMLTimeHarmonicLinearElasticityElement<2,NNODE_1D,PML_ELEMENT> > >: 
+ public virtual QPMLTimeHarmonicLinearElasticityElement<2,NNODE_1D,PML_ELEMENT>
 {
 
   public:
  
  /// \short Constructor: Call the constructor for the
  /// appropriate QElement
- PMLLayerElement() : 
-  QPMLTimeHarmonicLinearElasticityElement<2,NNODE_1D>() 
+ EquivalentQElement() : 
+  QPMLTimeHarmonicLinearElasticityElement<2,NNODE_1D,PML_ELEMENT>() 
   {}
 
 };

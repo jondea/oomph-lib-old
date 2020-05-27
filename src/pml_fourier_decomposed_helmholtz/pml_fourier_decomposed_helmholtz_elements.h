@@ -1190,7 +1190,7 @@ protected:
 /// PML layers. Same!
 //=======================================================================
   template<unsigned NNODE_1D>
-class PMLLayerElement<
+class EquivalentQElement<
  QPMLFourierDecomposedHelmholtzElement<NNODE_1D> > :
  public virtual QPMLFourierDecomposedHelmholtzElement<NNODE_1D>
 {
@@ -1199,7 +1199,7 @@ class PMLLayerElement<
 
  /// \short Constructor: Call the constructor for the
  /// appropriate QElement
- PMLLayerElement() :
+ EquivalentQElement() :
   QPMLFourierDecomposedHelmholtzElement<NNODE_1D>()
   {}
 

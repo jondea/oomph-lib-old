@@ -569,22 +569,22 @@ void PMLProblem<ELEMENT>::create_pml_meshes()
  // Build the PML meshes based on the new adapted triangular mesh
  PML_right_mesh_pt =
   TwoDimensionalPMLHelper::create_right_pml_mesh
-  <PMLLayerElement<ELEMENT> >
+  <EquivalentQElement<ELEMENT> >
   (Bulk_mesh_pt,right_boundary_id,
    n_x_right_pml, width_x_right_pml);
  PML_top_mesh_pt   =
   TwoDimensionalPMLHelper::create_top_pml_mesh
-  <PMLLayerElement<ELEMENT> >
+  <EquivalentQElement<ELEMENT> >
   (Bulk_mesh_pt, top_boundary_id,
    n_y_top_pml, width_y_top_pml);
  PML_left_mesh_pt  =
   TwoDimensionalPMLHelper::create_left_pml_mesh
-  <PMLLayerElement<ELEMENT> >
+  <EquivalentQElement<ELEMENT> >
   (Bulk_mesh_pt, left_boundary_id,
    n_x_left_pml, width_x_left_pml);
  PML_bottom_mesh_pt=
   TwoDimensionalPMLHelper::create_bottom_pml_mesh
-  <PMLLayerElement<ELEMENT> >
+  <EquivalentQElement<ELEMENT> >
   (Bulk_mesh_pt, bottom_boundary_id,
    n_y_bottom_pml, width_y_bottom_pml);
 
@@ -597,25 +597,25 @@ void PMLProblem<ELEMENT>::create_pml_meshes()
  // Rebuild corner PML meshes
  PML_top_right_mesh_pt    =
   TwoDimensionalPMLHelper::create_top_right_pml_mesh
-  <PMLLayerElement<ELEMENT> >
+  <EquivalentQElement<ELEMENT> >
   (PML_right_mesh_pt, PML_top_mesh_pt,
    Bulk_mesh_pt, right_boundary_id);
 
  PML_bottom_right_mesh_pt =
   TwoDimensionalPMLHelper::create_bottom_right_pml_mesh
-  <PMLLayerElement<ELEMENT> >
+  <EquivalentQElement<ELEMENT> >
   (PML_right_mesh_pt, PML_bottom_mesh_pt,
    Bulk_mesh_pt, right_boundary_id);
 
  PML_top_left_mesh_pt     =
   TwoDimensionalPMLHelper::create_top_left_pml_mesh
-  <PMLLayerElement<ELEMENT> >
+  <EquivalentQElement<ELEMENT> >
   (PML_left_mesh_pt, PML_top_mesh_pt,
    Bulk_mesh_pt, left_boundary_id);
 
  PML_bottom_left_mesh_pt  =
   TwoDimensionalPMLHelper::create_bottom_left_pml_mesh
-  <PMLLayerElement<ELEMENT> >
+  <EquivalentQElement<ELEMENT> >
   (PML_left_mesh_pt, PML_bottom_mesh_pt,
    Bulk_mesh_pt, left_boundary_id);
 

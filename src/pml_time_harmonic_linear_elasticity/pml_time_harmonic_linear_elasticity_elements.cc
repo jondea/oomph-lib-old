@@ -31,14 +31,14 @@
 // elasticity in cartesian coordinates
 
 #include "pml_time_harmonic_linear_elasticity_elements.h"
-
+#include "../generic/complex_matrices.h"
 
 namespace oomph
 {
 
 /// Static default value for square of frequency
- template <unsigned DIM>
- double PMLTimeHarmonicLinearElasticityEquationsBase<DIM>::
+ template <unsigned DIM,class PML_ELEMENT>
+ double PMLTimeHarmonicLinearElasticityEquationsBase<DIM,PML_ELEMENT>::
  Default_omega_sq_value=1.0;
  
 
@@ -49,8 +49,8 @@ namespace oomph
 //======================================================================
 /// Compute the strain tensor at local coordinate s
 //======================================================================
- template<unsigned DIM>
- void PMLTimeHarmonicLinearElasticityEquationsBase<DIM>::get_strain(
+ template<unsigned DIM, class PML_ELEMENT>
+ void PMLTimeHarmonicLinearElasticityEquationsBase<DIM,PML_ELEMENT>::get_strain(
   const Vector<double> &s,
   DenseMatrix<std::complex<double> >& strain) const
  {
@@ -158,8 +158,8 @@ namespace oomph
 /// Compute the Cauchy stress tensor at local coordinate s for 
 /// displacement formulation.
 //======================================================================
-template<unsigned DIM>
-void PMLTimeHarmonicLinearElasticityEquations<DIM>::
+template<unsigned DIM, class PML_ELEMENT>
+void PMLTimeHarmonicLinearElasticityEquations<DIM,PML_ELEMENT>::
 get_stress(const Vector<double> &s,
            DenseMatrix<std::complex<double> >&stress) const
 {
@@ -204,8 +204,8 @@ get_stress(const Vector<double> &s,
 /// Compute the residuals for the linear elasticity equations in 
 /// cartesian coordinates. Flag indicates if we want Jacobian too.
 //=======================================================================
-template <unsigned DIM>
-void PMLTimeHarmonicLinearElasticityEquations<DIM>::
+template <unsigned DIM, class PML_ELEMENT>
+void PMLTimeHarmonicLinearElasticityEquations<DIM,PML_ELEMENT>::
 fill_in_generic_contribution_to_residuals_time_harmonic_linear_elasticity(
   Vector<double> &residuals, DenseMatrix<double> &jacobian,unsigned flag)
 {
@@ -330,11 +330,15 @@ fill_in_generic_contribution_to_residuals_time_harmonic_linear_elasticity(
     /// pml_jacobian_det allows us to transform volume integrals in 
     /// transformed space to real space.
     /// If the PML is not enabled via enable_pml, both default to 1.0.
-    Vector< std::complex<double> > pml_inverse_jacobian_diagonal(DIM);
+    DiagonalComplexMatrix pml_jacobian(DIM);
+    this->pml_transformation_jacobian(ipt, s, interpolated_x, 
+                                      pml_jacobian);
+
     std::complex<double> pml_jacobian_det;
-    this->compute_pml_coefficients(ipt, interpolated_x, 
-                                   pml_inverse_jacobian_diagonal,
-                                   pml_jacobian_det);
+    DiagonalComplexMatrix pml_jacobian_inverse(DIM);
+    this->compute_jacobian_inverse_and_det(pml_jacobian, pml_jacobian_inverse,
+                                           pml_jacobian_det);
+
 
     //Loop over the test functions, nodes of the element
     for(unsigned l=0;l<n_node;l++)
@@ -368,8 +372,8 @@ fill_in_generic_contribution_to_residuals_time_harmonic_linear_elasticity(
              {
               stress_jacobian_contributions[b][c][d] = 
                this->E(a,b,c,d)*pml_jacobian_det
-                *pml_inverse_jacobian_diagonal[b]
-                *pml_inverse_jacobian_diagonal[d];
+                *pml_jacobian_inverse(b,b)
+                *pml_jacobian_inverse(d,d);
 
               stress_residual_contributions[b] += 
                stress_jacobian_contributions[b][c][d]*interpolated_dudx(c,d);
@@ -547,8 +551,8 @@ fill_in_generic_contribution_to_residuals_time_harmonic_linear_elasticity(
 //=======================================================================
 /// Output exact solution x,y,[z],u_r,v_r,[w_r],u_i,v_i,[w_i]
 //=======================================================================
- template <unsigned DIM>
- void PMLTimeHarmonicLinearElasticityEquations<DIM>::output_fct(
+ template <unsigned DIM, class PML_ELEMENT>
+ void PMLTimeHarmonicLinearElasticityEquations<DIM,PML_ELEMENT>::output_fct(
   std::ostream &outfile, 
   const unsigned &nplot, 
   FiniteElement::SteadyExactSolutionFctPt exact_soln_pt)
@@ -601,8 +605,8 @@ fill_in_generic_contribution_to_residuals_time_harmonic_linear_elasticity(
 //=======================================================================
 /// Output: x,y,[z],u,v,[w]
 //=======================================================================
- template <unsigned DIM>
- void PMLTimeHarmonicLinearElasticityEquations<DIM>::output(
+ template <unsigned DIM, class PML_ELEMENT>
+ void PMLTimeHarmonicLinearElasticityEquations<DIM,PML_ELEMENT>::output(
   std::ostream &outfile, const unsigned &nplot)
  {
    // Initialise local coord, global coord and solution vectors
@@ -658,8 +662,8 @@ fill_in_generic_contribution_to_residuals_time_harmonic_linear_elasticity(
 ///
 /// Output at nplot points in each coordinate direction
 //======================================================================
-template <unsigned DIM>
-void  PMLTimeHarmonicLinearElasticityEquations<DIM>::output_total_real(
+template <unsigned DIM, class PML_ELEMENT>
+void  PMLTimeHarmonicLinearElasticityEquations<DIM, PML_ELEMENT>::output_total_real(
  std::ostream &outfile,
  FiniteElement::SteadyExactSolutionFctPt incoming_wave_fct_pt,
  const double& phi,
@@ -722,8 +726,8 @@ void  PMLTimeHarmonicLinearElasticityEquations<DIM>::output_total_real(
 ///
 /// Output at nplot points in each coordinate direction
 //======================================================================
-template <unsigned DIM>
-void  PMLTimeHarmonicLinearElasticityEquations<DIM>
+template <unsigned DIM, class PML_ELEMENT>
+void  PMLTimeHarmonicLinearElasticityEquations<DIM, PML_ELEMENT>
   ::output_real(std::ostream &outfile,
                 const double& phi,
                 const unsigned &nplot)
@@ -779,8 +783,8 @@ void  PMLTimeHarmonicLinearElasticityEquations<DIM>
 ///
 /// Output at nplot points in each coordinate direction
 //======================================================================
-template <unsigned DIM>
-void  PMLTimeHarmonicLinearElasticityEquations<DIM>
+template <unsigned DIM, class PML_ELEMENT>
+void  PMLTimeHarmonicLinearElasticityEquations<DIM, PML_ELEMENT>
   ::output_imag(std::ostream &outfile,
                 const double& phi,
                 const unsigned &nplot)
@@ -829,8 +833,8 @@ void  PMLTimeHarmonicLinearElasticityEquations<DIM>
 //=======================================================================
 /// C-style output: x,y,[z],u,v,[w]
 //=======================================================================
-template <unsigned DIM>
-void PMLTimeHarmonicLinearElasticityEquations<DIM>::output(
+template <unsigned DIM, class PML_ELEMENT>
+void PMLTimeHarmonicLinearElasticityEquations<DIM, PML_ELEMENT>::output(
  FILE* file_pt, const unsigned &nplot)
 {
  //Vector of local coordinates
@@ -875,8 +879,8 @@ void PMLTimeHarmonicLinearElasticityEquations<DIM>::output(
 //=======================================================================
 /// Compute norm of the solution
 //=======================================================================
-template <unsigned DIM>
-void PMLTimeHarmonicLinearElasticityEquations<DIM>::compute_norm(
+template <unsigned DIM, class PML_ELEMENT>
+void PMLTimeHarmonicLinearElasticityEquations<DIM, PML_ELEMENT>::compute_norm(
  double& norm)
 {
  
@@ -936,8 +940,8 @@ void PMLTimeHarmonicLinearElasticityEquations<DIM>::compute_norm(
  /// Solution is provided via function pointer.
  ///
 //======================================================================
-template <unsigned DIM>
-void PMLTimeHarmonicLinearElasticityEquations<DIM>::compute_error(
+template <unsigned DIM, class PML_ELEMENT>
+void PMLTimeHarmonicLinearElasticityEquations<DIM, PML_ELEMENT>::compute_error(
  std::ostream &outfile, 
  FiniteElement::SteadyExactSolutionFctPt exact_soln_pt,
  double& error, double& norm)
@@ -1010,15 +1014,17 @@ void PMLTimeHarmonicLinearElasticityEquations<DIM>::compute_error(
  
  
 //Instantiate the required elements
-template class PMLTimeHarmonicLinearElasticityEquationsBase<2>;
-template class PMLTimeHarmonicLinearElasticityEquations<2>;
+template class PMLTimeHarmonicLinearElasticityEquationsBase<2, AxisAlignedPMLElement<2>>;
+template class PMLTimeHarmonicLinearElasticityEquations<2, AxisAlignedPMLElement<2>>;
 
-template class QPMLTimeHarmonicLinearElasticityElement<3,3>;
-template class PMLTimeHarmonicLinearElasticityEquationsBase<3>;
-template class PMLTimeHarmonicLinearElasticityEquations<3>;
+template class QPMLTimeHarmonicLinearElasticityElement<3,3, AxisAlignedPMLElement<3>>;
+template class PMLTimeHarmonicLinearElasticityEquationsBase<3, AxisAlignedPMLElement<3>>;
+template class PMLTimeHarmonicLinearElasticityEquations<3, AxisAlignedPMLElement<3>>;
 
-template<unsigned DIM> ContinuousBermudezPMLMapping 
-  PMLTimeHarmonicLinearElasticityEquationsBase<DIM>::Default_pml_mapping;
+template<> C1BermudezPMLMapping
+PMLTimeHarmonicLinearElasticityEquationsBase<2, AxisAlignedPMLElement<2> >::Default_pml_mapping;
 
+template<> C1BermudezPMLMapping
+PMLTimeHarmonicLinearElasticityEquationsBase<3, AxisAlignedPMLElement<3> >::Default_pml_mapping;
 
 }

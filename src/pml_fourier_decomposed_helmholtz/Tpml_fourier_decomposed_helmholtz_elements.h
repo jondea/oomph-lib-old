@@ -313,7 +313,7 @@ class FaceGeometry<TPMLFourierDecomposedHelmholtzElement<NNODE_1D> >:
 /// PML layers. It's the corresponding quads.
 //=======================================================================
   template<unsigned NNODE_1D>
-class PMLLayerElement<ProjectablePMLFourierDecomposedHelmholtzElement
+class EquivalentQElement<ProjectablePMLFourierDecomposedHelmholtzElement
    <TPMLFourierDecomposedHelmholtzElement<NNODE_1D> > > : 
  public virtual QPMLFourierDecomposedHelmholtzElement<NNODE_1D>
 {
@@ -322,7 +322,7 @@ class PMLLayerElement<ProjectablePMLFourierDecomposedHelmholtzElement
  
  /// \short Constructor: Call the constructor for the
  /// appropriate QElement
- PMLLayerElement(): QPMLFourierDecomposedHelmholtzElement<NNODE_1D>() 
+ EquivalentQElement(): QPMLFourierDecomposedHelmholtzElement<NNODE_1D>() 
   {}
 
 };
@@ -336,7 +336,7 @@ class PMLLayerElement<ProjectablePMLFourierDecomposedHelmholtzElement
 /// PML layers. It's the corresponding quad.
 //=======================================================================
   template<unsigned NNODE_1D> 
-class PMLLayerElement<
+class EquivalentQElement<
  TPMLFourierDecomposedHelmholtzElement<NNODE_1D> > : 
  public virtual QPMLFourierDecomposedHelmholtzElement<NNODE_1D>
 {
@@ -345,7 +345,7 @@ class PMLLayerElement<
  
  /// \short Constructor: Call the constructor for the
  /// appropriate QElement
- PMLLayerElement() : 
+ EquivalentQElement() : 
   QPMLFourierDecomposedHelmholtzElement<NNODE_1D>() 
   {}
 

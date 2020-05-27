@@ -61,9 +61,9 @@ namespace oomph
 /// This contains the generic maths. Shape functions, geometric
 /// mapping etc. must get implemented in derived class.
 //=============================================================
- template <unsigned DIM>
+ template <unsigned DIM, class PML_ELEMENT>
  class PMLHelmholtzEquations :
-  public virtual PMLElementBase<DIM>,
+  public virtual PML_ELEMENT,
   public virtual FiniteElement
  {
  public:
@@ -78,7 +78,7 @@ namespace oomph
 			    K_squared_pt(0)
    {
     // Provide pointer to static method (Save memory)
-    Pml_mapping_pt = &PMLHelmholtzEquations::Default_pml_mapping;
+    this->Pml_mapping_pt = &PMLHelmholtzEquations::Default_pml_mapping;
     Alpha_pt = &Default_Physical_Constant_Value;
    }
 
@@ -536,96 +536,9 @@ namespace oomph
   /// \short Self-test: Return 0 for OK
   unsigned self_test();
 
-
-/// \short Compute pml coefficients at position x and integration point ipt.
-/// pml_laplace_factor is used in the residual contribution from the laplace
-/// operator, similarly pml_k_squared_factor is used in the contribution from
-/// the k^2 of the Helmholtz operator.
-  void compute_pml_coefficients(
-   const unsigned& ipt,
-   const Vector<double>& x,
-   Vector< std::complex<double> >& pml_laplace_factor,
-   std::complex<double>& pml_k_squared_factor)
-   {
-
-    /// Vector which points from the inner boundary to x
-    Vector<double> nu(DIM);
-    for(unsigned k=0; k<DIM; k++)
-    {
-     nu[k] = x[k] - this->Pml_inner_boundary[k];
-    }
-
-    /// Vector which points from the inner boundary to the edge of the boundary
-    Vector<double> pml_width(DIM);
-    for(unsigned k=0; k<DIM; k++)
-    {
-     pml_width[k] = this->Pml_outer_boundary[k] - this->Pml_inner_boundary[k];
-    }
-
-    // Declare gamma_i vectors of complex numbers for PML weights
-    Vector<std::complex<double> > pml_gamma(DIM);
-
-    if (this->Pml_is_enabled)
-    {
-     // Cache k_squared to pass into mapping function
-     double k_squared_local = k_squared();
-
-     for(unsigned k=0; k<DIM; k++) {
-      // If PML is enabled in the respective direction
-      if (this->Pml_direction_active[k])
-      {
-       pml_gamma[k] = Pml_mapping_pt->gamma(nu[k],pml_width[k],
-					    k_squared_local,alpha());
-      }
-      else
-      {
-       pml_gamma[k] = 1.0;
-      }
-     }
-
-     /// \short  for 2D, in order:
-     /// g_y/g_x, g_x/g_y for Laplace bit and g_x*g_y for Helmholtz bit
-     /// for 3D, in order: g_y*g_x/g_x, g*x*g_z/g_y, g_x*g_y/g_z for Laplace bit
-     /// and g_x*g_y*g_z for Helmholtz bit
-     if (DIM == 2)
-     {
-      pml_laplace_factor[0] = pml_gamma[1] / pml_gamma[0];
-      pml_laplace_factor[1] = pml_gamma[0] / pml_gamma[1];
-      pml_k_squared_factor = pml_gamma[0] * pml_gamma[1];
-     }
-     else // if (DIM == 3)
-     {
-      pml_laplace_factor[0] = pml_gamma[1] * pml_gamma[2] / pml_gamma[0];
-      pml_laplace_factor[1] = pml_gamma[0] * pml_gamma[2] / pml_gamma[1];
-      pml_laplace_factor[2] = pml_gamma[0] * pml_gamma[1] / pml_gamma[2];
-      pml_k_squared_factor = pml_gamma[0] * pml_gamma[1] * pml_gamma[2];
-     }
-
-    }
-    else
-    {
-     /// \short The weights all default to 1.0 as if the propagation
-     /// medium is the physical domain
-     for(unsigned k=0; k<DIM; k++)
-     {
-      pml_laplace_factor[k] = std::complex<double> (1.0,0.0);
-     }
-
-     pml_k_squared_factor = std::complex<double> (1.0,0.0);
-    }
-
-   }
-
-  /// Return a pointer to the PML Mapping object
-  PMLMapping* &pml_mapping_pt() {return Pml_mapping_pt;}
-
-  /// Return a pointer to the PML Mapping object (const version)
-  PMLMapping* const &pml_mapping_pt() const {return Pml_mapping_pt;}
-
   /// Static so that the class doesn't need to instantiate a new default
   /// everytime it uses it
   static BermudezPMLMapping Default_pml_mapping;
-
   /// \short The number of "DOF types" that degrees of freedom in this element
   /// are sub-divided into: real and imaginary part
   unsigned ndof_types() const
@@ -720,9 +633,6 @@ namespace oomph
   /// Pointer to wave number (must be set!)
   double* K_squared_pt;
 
-  /// Pointer to class which holds the pml mapping function, also known as gamma
-  PMLMapping* Pml_mapping_pt;
-
   /// Static default value for the physical constants (initialised to zero)
   static double Default_Physical_Constant_Value;
 
@@ -740,9 +650,9 @@ namespace oomph
 /// brick-shaped PMLHelmholtz elements with isoparametric
 /// interpolation for the function.
 //======================================================================
- template <unsigned DIM, unsigned NNODE_1D>
+ template <unsigned DIM, unsigned NNODE_1D, class PML_ELEMENT>
  class QPMLHelmholtzElement : public virtual QElement<DIM,NNODE_1D>,
-			      public virtual PMLHelmholtzEquations<DIM>
+			      public virtual PMLHelmholtzEquations<DIM, PML_ELEMENT>
  {
 
  private:
@@ -757,18 +667,18 @@ namespace oomph
   ///\short  Constructor: Call constructors for QElement and
   /// PMLHelmholtz equations
   QPMLHelmholtzElement() :
-   QElement<DIM,NNODE_1D>(), PMLHelmholtzEquations<DIM>()
+   QElement<DIM,NNODE_1D>(), PMLHelmholtzEquations<DIM, PML_ELEMENT>()
    {}
 
   /// Broken copy constructor
   QPMLHelmholtzElement
-  (const QPMLHelmholtzElement<DIM,NNODE_1D>& dummy)
+  (const QPMLHelmholtzElement<DIM,NNODE_1D,PML_ELEMENT>& dummy)
    {
     BrokenCopy::broken_copy("QPMLHelmholtzElement");
    }
 
   /// Broken assignment operator
-  /*void operator=(const QPMLHelmholtzElement<DIM,NNODE_1D>&)
+  /*void operator=(const QPMLHelmholtzElement<DIM,NNODE_1D, PML_ELEMENT>&)
     {
     BrokenCopy::broken_assign("QPMLHelmholtzElement");
     }*/
@@ -782,13 +692,13 @@ namespace oomph
   /// \short Output function:
   ///  x,y,u   or    x,y,z,u
   void output(std::ostream &outfile)
-   {PMLHelmholtzEquations<DIM>::output(outfile);}
+   {PMLHelmholtzEquations<DIM,PML_ELEMENT>::output(outfile);}
 
 
   ///  \short Output function:
   ///   x,y,u   or    x,y,z,u at n_plot^DIM plot points
   void output(std::ostream &outfile, const unsigned &n_plot)
-   {PMLHelmholtzEquations<DIM>::output(outfile,n_plot);}
+   {PMLHelmholtzEquations<DIM,PML_ELEMENT>::output(outfile,n_plot);}
 
   /// \short Output function for real part of full time-dependent solution
   /// u = Re( (u_r +i u_i) exp(-i omega t)
@@ -797,7 +707,7 @@ namespace oomph
   /// direction
   void output_real(std::ostream &outfile, const double& phi,
 		   const unsigned &n_plot)
-   {PMLHelmholtzEquations<DIM>::output_real(outfile,phi,n_plot);}
+   {PMLHelmholtzEquations<DIM,PML_ELEMENT>::output_real(outfile,phi,n_plot);}
 
   /// \short Output function for imaginary part of full time-dependent solution
   /// u = Im( (u_r +i u_i) exp(-i omega t))
@@ -806,26 +716,26 @@ namespace oomph
   /// direction
   void output_imag(std::ostream &outfile, const double& phi,
 		   const unsigned &n_plot)
-   {PMLHelmholtzEquations<DIM>::output_imag(outfile,phi,n_plot);}
+   {PMLHelmholtzEquations<DIM,PML_ELEMENT>::output_imag(outfile,phi,n_plot);}
 
 
   /// \short C-style output function:
   ///  x,y,u   or    x,y,z,u
   void output(FILE* file_pt)
-   {PMLHelmholtzEquations<DIM>::output(file_pt);}
+   {PMLHelmholtzEquations<DIM,PML_ELEMENT>::output(file_pt);}
 
 
   ///  \short C-style output function:
   ///   x,y,u   or    x,y,z,u at n_plot^DIM plot points
   void output(FILE* file_pt, const unsigned &n_plot)
-   {PMLHelmholtzEquations<DIM>::output(file_pt,n_plot);}
+   {PMLHelmholtzEquations<DIM,PML_ELEMENT>::output(file_pt,n_plot);}
 
 
   /// \short Output function for an exact solution:
   ///  x,y,u_exact   or    x,y,z,u_exact at n_plot^DIM plot points
   void output_fct(std::ostream &outfile, const unsigned &n_plot,
 		  FiniteElement::SteadyExactSolutionFctPt exact_soln_pt)
-   {PMLHelmholtzEquations<DIM>::output_fct(outfile,
+   {PMLHelmholtzEquations<DIM,PML_ELEMENT>::output_fct(outfile,
 					   n_plot,
 					   exact_soln_pt);}
 
@@ -840,7 +750,7 @@ namespace oomph
 		       const unsigned &n_plot,
 		       FiniteElement::SteadyExactSolutionFctPt exact_soln_pt)
    {
-    PMLHelmholtzEquations<DIM>::output_real_fct(outfile,
+    PMLHelmholtzEquations<DIM,PML_ELEMENT>::output_real_fct(outfile,
 						phi,
 						n_plot,
 						exact_soln_pt);
@@ -856,7 +766,7 @@ namespace oomph
 		       const unsigned &n_plot,
 		       FiniteElement::SteadyExactSolutionFctPt exact_soln_pt)
    {
-    PMLHelmholtzEquations<DIM>::output_imag_fct(outfile,
+    PMLHelmholtzEquations<DIM,PML_ELEMENT>::output_imag_fct(outfile,
 						phi,
 						n_plot,
 						exact_soln_pt);
@@ -869,7 +779,7 @@ namespace oomph
   void output_fct(std::ostream &outfile, const unsigned &n_plot,
 		  const double& time,
 		  FiniteElement::UnsteadyExactSolutionFctPt exact_soln_pt)
-   {PMLHelmholtzEquations<DIM>::output_fct(outfile,
+   {PMLHelmholtzEquations<DIM,PML_ELEMENT>::output_fct(outfile,
 					   n_plot,
 					   time,
 					   exact_soln_pt);}
@@ -905,8 +815,8 @@ namespace oomph
 ///
 /// Galerkin: Test functions = shape functions
 //======================================================================
- template<unsigned DIM, unsigned NNODE_1D>
- double QPMLHelmholtzElement<DIM,NNODE_1D>::dshape_and_dtest_eulerian_helmholtz(
+ template<unsigned DIM, unsigned NNODE_1D, class PML_ELEMENT>
+ double QPMLHelmholtzElement<DIM,NNODE_1D, PML_ELEMENT>::dshape_and_dtest_eulerian_helmholtz(
   const Vector<double> &s,
   Shape &psi,
   DShape &dpsidx,
@@ -933,8 +843,8 @@ namespace oomph
 ///
 /// Galerkin: Test functions = shape functions
 //======================================================================
- template<unsigned DIM, unsigned NNODE_1D>
- double QPMLHelmholtzElement<DIM,NNODE_1D>::
+ template<unsigned DIM, unsigned NNODE_1D, class PML_ELEMENT>
+ double QPMLHelmholtzElement<DIM,NNODE_1D, PML_ELEMENT>::
  dshape_and_dtest_eulerian_at_knot_helmholtz(
   const unsigned &ipt,
   Shape &psi,
@@ -965,8 +875,8 @@ namespace oomph
 /// bulk element but they have the same number of points
 /// along their 1D edges.
 //=======================================================================
- template<unsigned DIM, unsigned NNODE_1D>
- class FaceGeometry<QPMLHelmholtzElement<DIM,NNODE_1D> >:
+ template<unsigned DIM, unsigned NNODE_1D, class PML_ELEMENT>
+ class FaceGeometry<QPMLHelmholtzElement<DIM,NNODE_1D, PML_ELEMENT> >:
   public virtual QElement<DIM-1,NNODE_1D>
  {
 
@@ -987,8 +897,8 @@ namespace oomph
 /// Face geometry for the 1D QPMLHelmholtzElement elements:
 /// Point elements
 //=======================================================================
- template<unsigned NNODE_1D>
- class FaceGeometry<QPMLHelmholtzElement<1,NNODE_1D> >:
+ template<unsigned NNODE_1D, class PML_ELEMENT>
+ class FaceGeometry<QPMLHelmholtzElement<1,NNODE_1D,PML_ELEMENT> >:
   public virtual PointElement
  {
 
@@ -1253,18 +1163,18 @@ namespace oomph
 /// Policy class defining the elements to be used in the actual
 /// PML layers. Same!
 //=======================================================================
- template<unsigned NNODE_1D>
- class PMLLayerElement<
-  QPMLHelmholtzElement<2,NNODE_1D> > :
-  public virtual QPMLHelmholtzElement<2,NNODE_1D>
+ template<unsigned NNODE_1D, class PML_ELEMENT>
+ class EquivalentQElement<
+  QPMLHelmholtzElement<2,NNODE_1D,PML_ELEMENT> > :
+  public virtual QPMLHelmholtzElement<2,NNODE_1D,PML_ELEMENT>
  {
 
  public:
 
   /// \short Constructor: Call the constructor for the
   /// appropriate QElement
-  PMLLayerElement() :
-   QPMLHelmholtzElement<2,NNODE_1D>()
+  EquivalentQElement() :
+   QPMLHelmholtzElement<2,NNODE_1D,PML_ELEMENT>()
    {}
 
  };

@@ -43,8 +43,8 @@ namespace oomph
 ///
 /// Pure version without hanging nodes
 //======================================================================
-template <unsigned DIM>
-void  RefineablePMLHelmholtzEquations<DIM>::
+template <unsigned DIM, class PML_ELEMENT>
+void  RefineablePMLHelmholtzEquations<DIM,PML_ELEMENT>::
 fill_in_generic_residual_contribution_helmholtz(Vector<double> &residuals,
                                                     DenseMatrix<double> &jacobian,
                                                     const unsigned& flag)
@@ -127,9 +127,17 @@ fill_in_generic_residual_contribution_helmholtz(Vector<double> &residuals,
    // for the Laplace bit, while pml_k_squared_factor contains the contributions
    // to the Helmholtz bit. Both default to 1.0, should the PML not be
    // enabled via enable_pml.
-   this->compute_pml_coefficients(ipt, interpolated_x,
-                                  pml_laplace_factor,
-                                  pml_k_squared_factor);
+   Vector<double> s(DIM);
+   DenseComplexMatrix jacobian(DIM,DIM);
+   this->pml_transformation_jacobian(ipt, s, interpolated_x, jacobian);
+     
+   DenseComplexMatrix laplace_matrix(DIM,DIM);
+   this->compute_laplace_matrix_and_det(jacobian, laplace_matrix, pml_k_squared_factor);
+
+   for (unsigned i=0; i<DIM; i++)
+   {
+      pml_laplace_factor[i] = laplace_matrix(i,i);
+   }
    
    //Alpha adjusts the pml factors, the imaginary part produces cross terms
    std::complex<double> alpha_pml_k_squared_factor = std::complex<double>(
@@ -462,16 +470,16 @@ fill_in_generic_residual_contribution_helmholtz(Vector<double> &residuals,
 //====================================================================
 // Force build of templates
 //====================================================================
-template class RefineableQPMLHelmholtzElement<1,2>;
-template class RefineableQPMLHelmholtzElement<1,3>;
-template class RefineableQPMLHelmholtzElement<1,4>;
+template class RefineableQPMLHelmholtzElement<1,2,AxisAlignedPMLElement<1>>;
+template class RefineableQPMLHelmholtzElement<1,3,AxisAlignedPMLElement<1>>;
+template class RefineableQPMLHelmholtzElement<1,4,AxisAlignedPMLElement<1>>;
 
-template class RefineableQPMLHelmholtzElement<2,2>;
-template class RefineableQPMLHelmholtzElement<2,3>;
-template class RefineableQPMLHelmholtzElement<2,4>;
+template class RefineableQPMLHelmholtzElement<2,2,AxisAlignedPMLElement<2>>;
+template class RefineableQPMLHelmholtzElement<2,3,AxisAlignedPMLElement<2>>;
+template class RefineableQPMLHelmholtzElement<2,4,AxisAlignedPMLElement<2>>;
 
-template class RefineableQPMLHelmholtzElement<3,2>;
-template class RefineableQPMLHelmholtzElement<3,3>;
-template class RefineableQPMLHelmholtzElement<3,4>;
+template class RefineableQPMLHelmholtzElement<3,2,AxisAlignedPMLElement<3>>;
+template class RefineableQPMLHelmholtzElement<3,3,AxisAlignedPMLElement<3>>;
+template class RefineableQPMLHelmholtzElement<3,4,AxisAlignedPMLElement<3>>;
 
 }

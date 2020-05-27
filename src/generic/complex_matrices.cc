@@ -123,7 +123,7 @@ void DiagonalComplexMatrix::resize(const unsigned& N, const unsigned& M, std::co
 void DiagonalComplexMatrix::multiply(const Vector<std::complex<double> > &x,
         Vector<std::complex<double> > &result)
 {
-  const unsigned N = ncols();
+  const unsigned N = ncol();
 #ifdef PARANOID
   if (x.size() != N)
   {

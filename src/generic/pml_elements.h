@@ -49,13 +49,12 @@ typedef FiniteElement* FiniteElementPt;
 typedef GeneralisedElement GeneralisedElementTypedef;
 
 //=======================================================================
-/// General definition of policy class defining the elements to 
-/// be used in the actual PML layers. Has to be instantiated for
-/// each specific "bulk" PML element type.
+/// Policy class for defining the equivalent quad element for any given
+/// element. Used for constructing a structured PML around an unstructured
+/// mesh. Needs to be instantiated for each bulk element class
 //=======================================================================
-// Layer in this class name is redundant, could rename to PMLElement
 template<class ELEMENT>
-class PMLLayerElement
+class EquivalentQElement
 {
 };
 
@@ -63,7 +62,7 @@ class PMLLayerElement
 /// Base class for elements with pml capabilities
 //==============================================================
 template<unsigned DIM>
-class PMLElementBase : public FiniteElement
+class PMLElementBase : public virtual FiniteElement
 {
 
 public:
@@ -87,20 +86,18 @@ public:
   }
 
   ///
-  virtual void compute_pml_transformation_factors(
+  virtual void pml_transformation_jacobian(
     const unsigned& ipt,
     const Vector<double>& s,
     const Vector<double>& x,
-    DenseComplexMatrix& laplace_transformation_matrix,
-    std::complex<double>& transformation_det) = 0;
+    DenseComplexMatrix& jacobian) = 0;
 
   ///
-  virtual void compute_pml_transformation_factors(
+  virtual void pml_transformation_jacobian(
     const unsigned& ipt,
     const Vector<double>& s,
     const Vector<double>& x,
-    DenseComplexMatrix& laplace_transformation_matrix,
-    std::complex<double>& transformation_det,
+    DenseComplexMatrix& jacobian_matrix,
     Vector<std::complex<double> >& transformed_x) = 0;
 
   /// \short Pure virtual function in which we have to specify the
@@ -120,22 +117,37 @@ public:
                         OOMPH_EXCEPTION_LOCATION);
   }
 
+  /// \short Computes laplace matrix (JJ^T)^-1|J| and determinant
+  /// |J| for jacobian J. Laplace matrix is so named because it
+  /// appears as the factor when the Laplace operator is transformed 
+  static void compute_laplace_matrix_and_det(
+    const DenseComplexMatrix& jacobian,
+    DenseComplexMatrix& laplace_matrix,
+    std::complex<double>& jacobian_det);
+
+  /// \short Computes laplace matrix (JJ^T)^-1|J| and determinant
+  /// |J| for diagonal matrix jacobian J. Laplace matrix is so named because it
+  /// appears as the factor when the Laplace operator is transformed 
+  static void compute_laplace_matrix_and_det(
+    const DiagonalComplexMatrix& jacobian,
+    DiagonalComplexMatrix& laplace_matrix,
+    std::complex<double>& jacobian_det);
+
+  /// \short Computes laplace matrix (JJ^T)^-1|J| and determinant
+  /// |J| for diagonal matrix jacobian J. Laplace matrix is so named because it
+  /// appears as the factor when the Laplace operator is transformed 
+  static void compute_laplace_matrix_and_det(
+    const DiagonalComplexMatrix& jacobian,
+    DenseComplexMatrix& laplace_matrix,
+    std::complex<double>& jacobian_det);
+
+  /// \short Computes the inverse J^-1 and determinant |J| of a Jacobian J
+  static void compute_jacobian_inverse_and_det(
+    const DiagonalComplexMatrix& jacobian,
+    DiagonalComplexMatrix& jacobian_inverse,
+    std::complex<double>& jacobian_det);
+
 protected:
-
-  /// \short Function which computes (JJ^T)^-1|J| and |J|
-  static void compute_laplace_matrix_and_det(const DenseComplexMatrix& J,
-                                             DenseComplexMatrix& result,
-                                             std::complex<double>& detJ);
-
-  /// \short Function which computes (JJ^T)^-1|J| and |J| for diagonal matrix J
-  static void compute_laplace_matrix_and_det(const DiagonalComplexMatrix& J,
-                                             DiagonalComplexMatrix& result,
-                                             std::complex<double>& detJ);
-
-  /// \short Function which computes (JJ^T)^-1|J| and |J| for diagonal matrix J
-  static void compute_laplace_matrix_and_det(const DiagonalComplexMatrix& J,
-                                             DenseComplexMatrix& result,
-                                             std::complex<double>& detJ);
 
   /// Boolean indicating if element is used in pml mode
   bool Pml_is_enabled;
@@ -157,28 +169,52 @@ public:
   {}
 
   ///
-  virtual void compute_pml_transformation_factors(
+  virtual void pml_transformation_jacobian(
     const unsigned& ipt,
     const Vector<double>& s,
     const Vector<double>& x,
-    DenseComplexMatrix& laplace_transformation_matrix,
-    std::complex<double>& transformation_det) = 0;
+    DiagonalComplexMatrix& jacobian);
+    
+  virtual void pml_transformation_jacobian(
+    const unsigned& ipt,
+    const Vector<double>& s,
+    const Vector<double>& x,
+    DenseComplexMatrix& jacobian)
+  {
+    throw OomphLibError("AxisAlignedPMLElements produce diagonal matrices,"
+                        "use the diagonal version of this function instead",
+                        OOMPH_CURRENT_FUNCTION,
+                        OOMPH_EXCEPTION_LOCATION);
+  }
 
   ///
-  virtual void compute_pml_transformation_factors(
+  virtual void pml_transformation_jacobian(
     const unsigned& ipt,
     const Vector<double>& s,
     const Vector<double>& x,
-    DenseComplexMatrix& laplace_transformation_matrix,
-    std::complex<double>& transformation_det,
-    Vector<std::complex<double> >& transformed_x) = 0;
+    DiagonalComplexMatrix& jacobian_matrix,
+    Vector<std::complex<double> >& transformed_x);
+
+  ///
+  virtual void pml_transformation_jacobian(
+    const unsigned& ipt,
+    const Vector<double>& s,
+    const Vector<double>& x,
+    DenseComplexMatrix& jacobian_matrix,
+    Vector<std::complex<double> >& transformed_x)
+  {
+    throw OomphLibError("AxisAlignedPMLElements produce diagonal matrices,"
+                        "use the diagonal version of this function instead",
+                        OOMPH_CURRENT_FUNCTION,
+                        OOMPH_EXCEPTION_LOCATION);
+  }
 
   /// \short Disable pml. Ensures the PML-ification in all directions
   /// has been deactivated
   virtual void disable_pml()
   {
     // Disable base class attributes
-    PMLElementBase<DIM>::disable();
+    PMLElementBase<DIM>::disable_pml();
 
     // Loop over the entries in Pml_direction_active and deactivate the
     // PML in this direction
@@ -214,11 +250,12 @@ public:
     enable_pml(direction, pml_inner_boundary, pml_outer_boundary);
     Pml_mapping_pt = pml_mapping_pt;
   }
+  
+  /// Return a pointer to the PML Mapping object
+  UniaxialPMLMapping* &pml_mapping_pt() {return Pml_mapping_pt;}
 
-  void pml_mapping_pt(UniaxialPMLMapping* pml_mapping_pt)
-  {
-    return Pml_mapping_pt = pml_mapping_pt;
-  }
+  /// Return a pointer to the PML Mapping object (const version)
+  UniaxialPMLMapping* const &pml_mapping_pt() const {return Pml_mapping_pt;}
 
   /// Vector which points from the inner boundary to x
   inline double nu(const Vector<double>& x, const unsigned& i) const
@@ -275,20 +312,20 @@ class AnnularPMLElementBase : public PMLElementBase<2>
 
 public:
 
-  void compute_pml_transformation_factors(
+  ///
+  virtual void pml_transformation_jacobian(
     const unsigned& ipt,
     const Vector<double>& s,
     const Vector<double>& x,
-    DenseComplexMatrix& laplace_transformation_matrix,
-    std::complex<double>& transformation_det);
+    DenseComplexMatrix& jacobian) = 0;
 
-  void compute_pml_transformation_factors(
+  ///
+  virtual void pml_transformation_jacobian(
     const unsigned& ipt,
     const Vector<double>& s,
     const Vector<double>& x,
-    DenseComplexMatrix& laplace_transformation_matrix,
-    std::complex<double>& transformation_det,
-    Vector<std::complex<double> >& transformed_x);
+    DenseComplexMatrix& jacobian_matrix,
+    Vector<std::complex<double> >& transformed_x) = 0;
 
   //
   void radial_to_cartesian_jacobian(
@@ -553,20 +590,18 @@ public:
   {}
 
   ///
-  virtual void compute_pml_transformation_factors(
+  virtual void pml_transformation_jacobian(
     const unsigned& ipt,
     const Vector<double>& s,
     const Vector<double>& x,
-    DenseComplexMatrix& laplace_transformation_matrix,
-    std::complex<double>& transformation_det);
+    DenseComplexMatrix& jacobian);
 
   ///
-  virtual void compute_pml_transformation_factors(
+  virtual void pml_transformation_jacobian(
     const unsigned& ipt,
     const Vector<double>& s,
     const Vector<double>& x,
-    DenseComplexMatrix& laplace_transformation_matrix,
-    std::complex<double>& transformation_det,
+    DenseComplexMatrix& jacobian_matrix,
     Vector<std::complex<double> >& transformed_x);
 
   /// Enable pml. Set the pointer to a PML mapping function
@@ -651,20 +686,18 @@ public:
   }
 
   ///
-  virtual void compute_pml_transformation_factors(
+  virtual void pml_transformation_jacobian(
     const unsigned& ipt,
     const Vector<double>& s,
     const Vector<double>& x,
-    DenseComplexMatrix& laplace_transformation_matrix,
-    std::complex<double>& transformation_det);
+    DenseComplexMatrix& jacobian);
 
   ///
-  virtual void compute_pml_transformation_factors(
+  virtual void pml_transformation_jacobian(
     const unsigned& ipt,
     const Vector<double>& s,
     const Vector<double>& x,
-    DenseComplexMatrix& laplace_transformation_matrix,
-    std::complex<double>& transformation_det,
+    DenseComplexMatrix& jacobian_matrix,
     Vector<std::complex<double> >& transformed_x);
 
   //
@@ -722,20 +755,18 @@ public:
   }
 
   ///
-  virtual void compute_pml_transformation_factors(
+  virtual void pml_transformation_jacobian(
     const unsigned& ipt,
     const Vector<double>& s,
     const Vector<double>& x,
-    DenseComplexMatrix& laplace_transformation_matrix,
-    std::complex<double>& transformation_det);
+    DenseComplexMatrix& jacobian);
 
   ///
-  virtual void compute_pml_transformation_factors(
+  virtual void pml_transformation_jacobian(
     const unsigned& ipt,
     const Vector<double>& s,
     const Vector<double>& x,
-    DenseComplexMatrix& laplace_transformation_matrix,
-    std::complex<double>& transformation_det,
+    DenseComplexMatrix& jacobian_matrix,
     Vector<std::complex<double> >& transformed_x);
 
   // Use this mode to hijack the assembly process to find rips

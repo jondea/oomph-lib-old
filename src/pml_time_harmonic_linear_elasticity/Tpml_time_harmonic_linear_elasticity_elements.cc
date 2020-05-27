@@ -44,12 +44,12 @@ namespace oomph
 //====================================================================
 // Force build of templates
 //====================================================================
-template class TPMLTimeHarmonicLinearElasticityElement<2,2>;
-template class TPMLTimeHarmonicLinearElasticityElement<2,3>;
-template class TPMLTimeHarmonicLinearElasticityElement<2,4>;
+template class TPMLTimeHarmonicLinearElasticityElement<2,2,AxisAlignedPMLElement<2>>;
+template class TPMLTimeHarmonicLinearElasticityElement<2,3,AxisAlignedPMLElement<2>>;
+template class TPMLTimeHarmonicLinearElasticityElement<2,4,AxisAlignedPMLElement<2>>;
 
-template class TPMLTimeHarmonicLinearElasticityElement<3,2>;
-template class TPMLTimeHarmonicLinearElasticityElement<3,3>;
+template class TPMLTimeHarmonicLinearElasticityElement<3,2,AxisAlignedPMLElement<3>>;
+template class TPMLTimeHarmonicLinearElasticityElement<3,3,AxisAlignedPMLElement<3>>;
 // no integration scheme for this one yet...
 // template class TPMLTimeHarmonicLinearElasticityElement<3,4>;
 
