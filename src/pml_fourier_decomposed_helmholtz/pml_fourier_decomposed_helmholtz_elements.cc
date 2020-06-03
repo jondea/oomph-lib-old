@@ -181,12 +181,13 @@ namespace oomph
 /// Set the data for the number of Variables at each node, always two
 /// (real and imag part) in every case
 //======================================================================
- template<unsigned NNODE_1D>
- const unsigned QPMLFourierDecomposedHelmholtzElement<NNODE_1D>::
+ template<unsigned NNODE_1D, class PML_ELEMENT>
+ const unsigned QPMLFourierDecomposedHelmholtzElement<NNODE_1D,PML_ELEMENT>::
  Initial_Nvalue=2;
 
  /// PML Helmholtz equations static data, so that by default we can point to a 0
- double PMLFourierDecomposedHelmholtzEquations::
+ template<class PML_ELEMENT>
+ double PMLFourierDecomposedHelmholtzEquations<PML_ELEMENT>::
   Default_Physical_Constant_Value = 0.0;
 
 //======================================================================
@@ -197,7 +198,8 @@ namespace oomph
 ///
 /// Pure version without hanging nodes
 //======================================================================
- void  PMLFourierDecomposedHelmholtzEquations::
+ template<class PML_ELEMENT>
+ void  PMLFourierDecomposedHelmholtzEquations<PML_ELEMENT>::
  fill_in_generic_residual_contribution_pml_fourier_decomposed_helmholtz
  (Vector<double> &residuals,
   DenseMatrix<double> &jacobian,
@@ -275,28 +277,34 @@ namespace oomph
     double n_squared = n*n;
 
 
+
+
+
+
    // Declare a vector of complex numbers for pml weights on the Laplace bit
    Vector< std::complex<double> > pml_laplace_factor(2);
    // Declare a complex number for pml weights on the mass matrix bit
    std::complex<double> pml_k_squared_factor = std::complex<double>(1.0,0.0);
 
-   //  All the PML weights that participate in the assemby process
+   // All the PML weights that participate in the assemby process
    // are computed here. pml_laplace_factor will contain the entries
    // for the Laplace bit, while pml_k_squared_factor contains the contributions
    // to the Helmholtz bit. Both default to 1.0, should the PML not be
    // enabled via enable_pml.
-   compute_pml_coefficients(ipt, interpolated_x,
-                            pml_laplace_factor,
-                            pml_k_squared_factor);
-
+   Vector<double> s(2);
+   DenseComplexMatrix jacobian(2,2);
+   Vector<std::complex<double> > transformed_x(2);
+   this->pml_transformation_jacobian(ipt, s, interpolated_x, jacobian, transformed_x);
+     
+   DenseComplexMatrix laplace_matrix(2,2);
+   this->compute_laplace_matrix_and_det(jacobian, laplace_matrix, pml_k_squared_factor);
 
    // Determine the complex r variable.  The variable is
    // only complex once it enters the right pml domain or either
    // of the two corner pml domains, otherwise it acts like the
    // variable r.
-   std::complex<double> complex_r = std::complex<double>(1.0,0.0);
-   compute_complex_r(ipt, interpolated_x, complex_r);
-   
+   std::complex<double> complex_r = transformed_x[0];
+
    // Calculate Jacobian
    // ------------------
    std::complex<double> pml_k_squared_jacobian = 
@@ -470,7 +478,8 @@ namespace oomph
 //======================================================================
 /// Self-test:  Return 0 for OK
 //======================================================================
- unsigned  PMLFourierDecomposedHelmholtzEquations::self_test()
+ template<class PML_ELEMENT>
+ unsigned PMLFourierDecomposedHelmholtzEquations<PML_ELEMENT>::self_test()
  {
 
   bool passed=true;
@@ -501,7 +510,8 @@ namespace oomph
 ///
 /// nplot points in each coordinate direction
 //======================================================================
- void  PMLFourierDecomposedHelmholtzEquations::output
+ template<class PML_ELEMENT>
+ void PMLFourierDecomposedHelmholtzEquations<PML_ELEMENT>::output
  (std::ostream &outfile,
   const unsigned &nplot)
  {
@@ -548,7 +558,8 @@ namespace oomph
 ///
 /// Output at nplot points in each coordinate direction
 //======================================================================
- void  PMLFourierDecomposedHelmholtzEquations::output_real
+ template<class PML_ELEMENT>
+ void PMLFourierDecomposedHelmholtzEquations<PML_ELEMENT>::output_real
  (std::ostream &outfile,
   const double& phi,
   const unsigned &nplot)
@@ -589,7 +600,8 @@ namespace oomph
 ///
 /// nplot points in each coordinate direction
 //======================================================================
- void  PMLFourierDecomposedHelmholtzEquations::output(FILE* file_pt,
+ template<class PML_ELEMENT>
+ void PMLFourierDecomposedHelmholtzEquations<PML_ELEMENT>::output(FILE* file_pt,
                                                    const unsigned &nplot)
  {
   //Vector of local coordinates
@@ -635,7 +647,8 @@ namespace oomph
  ///
  ///   r,z,u_exact
 //======================================================================
- void PMLFourierDecomposedHelmholtzEquations::output_fct(
+ template<class PML_ELEMENT>
+ void PMLFourierDecomposedHelmholtzEquations<PML_ELEMENT>::output_fct(
   std::ostream &outfile,
   const unsigned &nplot,
   FiniteElement::SteadyExactSolutionFctPt exact_soln_pt)
@@ -690,7 +703,8 @@ namespace oomph
 ///
 /// Output at nplot points in each coordinate direction
 //======================================================================
- void PMLFourierDecomposedHelmholtzEquations::output_real_fct(
+template<class PML_ELEMENT>
+ void PMLFourierDecomposedHelmholtzEquations<PML_ELEMENT>::output_real_fct(
   std::ostream &outfile,
   const double& phi,
   const unsigned &nplot,
@@ -743,7 +757,8 @@ namespace oomph
  /// Plot error at a given number of plot points.
  ///
 //======================================================================
- void PMLFourierDecomposedHelmholtzEquations::compute_error(
+template<class PML_ELEMENT>
+ void PMLFourierDecomposedHelmholtzEquations<PML_ELEMENT>::compute_error(
   std::ostream &outfile,
   FiniteElement::SteadyExactSolutionFctPt exact_soln_pt,
   double& error, double& norm)
@@ -824,7 +839,8 @@ namespace oomph
 //======================================================================
  /// Compute norm of fe solution
 //======================================================================
- void PMLFourierDecomposedHelmholtzEquations::compute_norm
+ template<class PML_ELEMENT>
+ void PMLFourierDecomposedHelmholtzEquations<PML_ELEMENT>::compute_norm
  (double& norm)
  {
 
@@ -881,12 +897,13 @@ namespace oomph
 //====================================================================
 // Force build of templates
 //====================================================================
-template class QPMLFourierDecomposedHelmholtzElement<2>;
-template class QPMLFourierDecomposedHelmholtzElement<3>;
-template class QPMLFourierDecomposedHelmholtzElement<4>;
 
-BermudezPMLMappingAndTransformedCoordinate 
-  PMLFourierDecomposedHelmholtzEquations::
-  Default_pml_mapping_and_transformed_coordinate;
+template<class PML_ELEMENT>
+BermudezPMLMapping PMLFourierDecomposedHelmholtzEquations<PML_ELEMENT>::Default_pml_mapping;
+
+
+template class QPMLFourierDecomposedHelmholtzElement<2, AxisAlignedPMLElement<2>>;
+template class QPMLFourierDecomposedHelmholtzElement<3, AxisAlignedPMLElement<2>>;
+template class QPMLFourierDecomposedHelmholtzElement<4, AxisAlignedPMLElement<2>>;
 
 }

@@ -63,10 +63,10 @@ namespace oomph
 /// points along each element edge. Inherits from TElement and 
 /// PMLFourierDecomposedHelmholtzEquations
 //======================================================================
-template <unsigned NNODE_1D>
+template <unsigned NNODE_1D, class PML_ELEMENT>
 class TPMLFourierDecomposedHelmholtzElement : 
  public TElement<2,NNODE_1D>, 
-  public PMLFourierDecomposedHelmholtzEquations,
+  public PMLFourierDecomposedHelmholtzEquations<PML_ELEMENT>,
   public virtual ElementWithZ2ErrorEstimator
   {
    
@@ -75,13 +75,13 @@ class TPMLFourierDecomposedHelmholtzElement :
  ///\short  Constructor: Call constructors for TElement and 
  /// PMLFourierDecomposedHelmholtz equations
  TPMLFourierDecomposedHelmholtzElement() : TElement<2,NNODE_1D>(), 
-  PMLFourierDecomposedHelmholtzEquations()
+  PMLFourierDecomposedHelmholtzEquations<PML_ELEMENT>()
    { }
  
  
  /// Broken copy constructor
  TPMLFourierDecomposedHelmholtzElement(
-  const TPMLFourierDecomposedHelmholtzElement<NNODE_1D>& dummy) 
+  const TPMLFourierDecomposedHelmholtzElement<NNODE_1D, PML_ELEMENT>& dummy) 
   { 
    BrokenCopy::broken_copy("TPMLFourierDecomposedHelmholtzElement");
   } 
@@ -105,14 +105,14 @@ class TPMLFourierDecomposedHelmholtzElement :
  ///  r,z,u 
  void output(std::ostream &outfile)
  {
-  PMLFourierDecomposedHelmholtzEquations::output(outfile);
+  PMLFourierDecomposedHelmholtzEquations<PML_ELEMENT>::output(outfile);
  }
 
  ///  \short Output function:  
  ///   r,z,u  n_plot^2 plot points
  void output(std::ostream &outfile, const unsigned &n_plot)
   {
-   PMLFourierDecomposedHelmholtzEquations::output(outfile,n_plot);
+   PMLFourierDecomposedHelmholtzEquations<PML_ELEMENT>::output(outfile,n_plot);
   }
 
  
@@ -120,7 +120,7 @@ class TPMLFourierDecomposedHelmholtzElement :
  ///  r,z,u   or    x,y,z,u
  void output(FILE* file_pt)
   {
-   PMLFourierDecomposedHelmholtzEquations::output(file_pt);
+   PMLFourierDecomposedHelmholtzEquations<PML_ELEMENT>::output(file_pt);
   }
 
 
@@ -128,7 +128,7 @@ class TPMLFourierDecomposedHelmholtzElement :
  ///   r,z,u  at n_plot^2 plot points
  void output(FILE* file_pt, const unsigned &n_plot)
   {
-   PMLFourierDecomposedHelmholtzEquations::output(file_pt,n_plot);
+   PMLFourierDecomposedHelmholtzEquations<PML_ELEMENT>::output(file_pt,n_plot);
   }
  
  
@@ -137,7 +137,7 @@ class TPMLFourierDecomposedHelmholtzElement :
  void output_fct(std::ostream &outfile, const unsigned &n_plot,
                  FiniteElement::SteadyExactSolutionFctPt exact_soln_pt)
  {
-  PMLFourierDecomposedHelmholtzEquations::output_fct(outfile,n_plot,
+  PMLFourierDecomposedHelmholtzEquations<PML_ELEMENT>::output_fct(outfile,n_plot,
                                                              exact_soln_pt);
  }
 
@@ -148,7 +148,7 @@ class TPMLFourierDecomposedHelmholtzElement :
                  const double& time,
                  FiniteElement::UnsteadyExactSolutionFctPt exact_soln_pt)
  {
-   PMLFourierDecomposedHelmholtzEquations::output_fct(
+   PMLFourierDecomposedHelmholtzEquations<PML_ELEMENT>::output_fct(
     outfile,n_plot,time,exact_soln_pt);
  }
  
@@ -224,8 +224,8 @@ class TPMLFourierDecomposedHelmholtzElement :
 ///
 /// Galerkin: Test functions = shape functions
 //======================================================================
-template<unsigned NNODE_1D>
-double TPMLFourierDecomposedHelmholtzElement<NNODE_1D>::
+template<unsigned NNODE_1D, class PML_ELEMENT>
+double TPMLFourierDecomposedHelmholtzElement<NNODE_1D,PML_ELEMENT>::
  dshape_and_dtest_eulerian_pml_fourier_decomposed_helmholtz(
  const Vector<double> &s, 
  Shape &psi, 
@@ -259,8 +259,8 @@ double TPMLFourierDecomposedHelmholtzElement<NNODE_1D>::
 ///
 /// Galerkin: Test functions = shape functions
 //======================================================================
-template<unsigned NNODE_1D>
- double TPMLFourierDecomposedHelmholtzElement<NNODE_1D>::
+template<unsigned NNODE_1D, class PML_ELEMENT>
+ double TPMLFourierDecomposedHelmholtzElement<NNODE_1D,PML_ELEMENT>::
  dshape_and_dtest_eulerian_at_knot_pml_fourier_decomposed_helmholtz(
   const unsigned &ipt,
   Shape &psi, 
@@ -290,8 +290,8 @@ template<unsigned NNODE_1D>
 /// bulk element but they have the same number of points
 /// along their 1D edges.
 //=======================================================================
-template<unsigned NNODE_1D>
-class FaceGeometry<TPMLFourierDecomposedHelmholtzElement<NNODE_1D> >: 
+template<unsigned NNODE_1D, class PML_ELEMENT>
+class FaceGeometry<TPMLFourierDecomposedHelmholtzElement<NNODE_1D,PML_ELEMENT> >: 
  public virtual TElement<1,NNODE_1D>
  {
   
@@ -312,17 +312,17 @@ class FaceGeometry<TPMLFourierDecomposedHelmholtzElement<NNODE_1D> >:
 /// Policy class defining the elements to be used in the actual
 /// PML layers. It's the corresponding quads.
 //=======================================================================
-  template<unsigned NNODE_1D>
+  template<unsigned NNODE_1D, class PML_ELEMENT>
 class EquivalentQElement<ProjectablePMLFourierDecomposedHelmholtzElement
-   <TPMLFourierDecomposedHelmholtzElement<NNODE_1D> > > : 
- public virtual QPMLFourierDecomposedHelmholtzElement<NNODE_1D>
+   <TPMLFourierDecomposedHelmholtzElement<NNODE_1D,PML_ELEMENT> > > : 
+ public virtual QPMLFourierDecomposedHelmholtzElement<NNODE_1D,PML_ELEMENT>
 {
 
   public:
  
  /// \short Constructor: Call the constructor for the
  /// appropriate QElement
- EquivalentQElement(): QPMLFourierDecomposedHelmholtzElement<NNODE_1D>() 
+ EquivalentQElement(): QPMLFourierDecomposedHelmholtzElement<NNODE_1D,PML_ELEMENT>() 
   {}
 
 };
@@ -335,10 +335,10 @@ class EquivalentQElement<ProjectablePMLFourierDecomposedHelmholtzElement
 /// Policy class defining the elements to be used in the actual
 /// PML layers. It's the corresponding quad.
 //=======================================================================
-  template<unsigned NNODE_1D> 
+  template<unsigned NNODE_1D,class PML_ELEMENT> 
 class EquivalentQElement<
- TPMLFourierDecomposedHelmholtzElement<NNODE_1D> > : 
- public virtual QPMLFourierDecomposedHelmholtzElement<NNODE_1D>
+ TPMLFourierDecomposedHelmholtzElement<NNODE_1D,PML_ELEMENT> > : 
+ public virtual QPMLFourierDecomposedHelmholtzElement<NNODE_1D,PML_ELEMENT>
 {
 
   public:
@@ -346,7 +346,7 @@ class EquivalentQElement<
  /// \short Constructor: Call the constructor for the
  /// appropriate QElement
  EquivalentQElement() : 
-  QPMLFourierDecomposedHelmholtzElement<NNODE_1D>() 
+  QPMLFourierDecomposedHelmholtzElement<NNODE_1D,PML_ELEMENT>() 
   {}
 
 };

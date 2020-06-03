@@ -73,82 +73,6 @@ namespace oomph
  } // end namespace
 
 
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
-
-//=======================================================================
-/// Class to hold the mapping function for the PML
-///
-//=======================================================================
-class PMLMappingAndTransformedCoordinate
-{
-
-public:
-
-  /// Default constructor (empty)
-  PMLMappingAndTransformedCoordinate(){};
-
-  /// \short Pure virtual to return PML mapping gamma, where gamma is the
-  /// \f$d\tilde x / d x\f$ as  function of \f$\nu\f$ where \f$\nu = x - h\f$ where h is
-  /// the vector from the origin to the start of the PML
-  virtual std::complex<double> gamma(const double& nu_i,
-   const double& pml_width_i,
-   const double& k_squared) = 0;
-   
-  /// \short Pure virtual to return PML transformed coordinate, also known as 
-  /// \f$d\tilde x \f$ as  function of \f$\nu\f$ where \f$\nu = x - h\f$ where h 
-  /// is the vector from the origin to the start of the PML
-  virtual std::complex<double> transformed_coordinate(const double& nu_i,
-   const double& pml_width_i,
-   const double& pml_inner_boundary,
-   const double& k_squared) = 0;
-
-};
-
-
-//=======================================================================
-/// The mapping function propsed by Bermudez et al, appears to be the best
-/// and so this will be the default mapping (see definition of
-/// PMLHelmholtzEquations)
-//=======================================================================
-class BermudezPMLMappingAndTransformedCoordinate : 
-  public PMLMappingAndTransformedCoordinate
-{
-
-  public:
-
-  /// Default constructor (empty)
-  BermudezPMLMappingAndTransformedCoordinate(){};
-
-  /// \short Overwrite the pure PML mapping coefficient function to return the
-  /// mapping function proposed by Bermudez et al
-  std::complex<double> gamma(const double& nu_i,
-                             const double& pml_width_i,
-                             const double& k_squared)
-  {
-     /// \short return \f$\gamma=1 + (1/k)(i/|outer_boundary - x|)\f$ or more
-     /// abstractly \f$\gamma = 1 + \frac i {k\delta_{pml}}(1/|1-\bar\nu|)\f$
-     return 1.0 + std::complex<double> (1.0 / sqrt(k_squared), 0)
-      * std::complex<double> (0.0, 1.0/(std::fabs(pml_width_i - nu_i)));
-  }
-  
-  /// \short Overwrite the pure PML mapping coefficient function to return the
-  /// transformed coordinate proposed by Bermudez et al
-  std::complex<double> transformed_coordinate(const double& nu_i,
-                             const double& pml_width_i,
-                             const double& pml_inner_boundary,
-                             const double& k_squared)
-  {
-    /// \short return \f$\tilde x = h + \nu + \log(1-|\nu / \delta|)\f$
-    double log_arg = 1.0 - std::fabs(nu_i / pml_width_i);
-    return std::complex<double> (pml_inner_boundary + nu_i,
-                                 -log(log_arg)/sqrt(k_squared) );
-  }
-
-};
-
-
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
@@ -167,8 +91,9 @@ class BermudezPMLMappingAndTransformedCoordinate :
 /// This contains the generic maths. Shape functions, geometric
 /// mapping etc. must get implemented in derived class.
 //=============================================================
+ template <class PML_ELEMENT>
  class PMLFourierDecomposedHelmholtzEquations :
- public virtual PMLElementBase<2>,
+  public virtual PML_ELEMENT,
   public virtual FiniteElement
  {
 
@@ -185,9 +110,8 @@ class BermudezPMLMappingAndTransformedCoordinate :
    K_squared_pt(0), N_pml_fourier_pt(0)
    {
      // Provide pointer to static method (Save memory)
-     Pml_mapping_and_transformed_coordinate_pt = 
-     &PMLFourierDecomposedHelmholtzEquations::
-     Default_pml_mapping_and_transformed_coordinate;
+     this->Pml_mapping_pt = 
+     &PMLFourierDecomposedHelmholtzEquations::Default_pml_mapping;
      
      Alpha_pt = &Default_Physical_Constant_Value;
    }
@@ -509,130 +433,9 @@ protected:
 
 
 
- /// \short Compute pml coefficients at position x and integration point ipt.
- /// pml_laplace_factor is used in the residual contribution from the laplace
- /// operator, similarly pml_k_squared_factor is used in the contribution from
- /// the k^2 of the Helmholtz operator.
-  void compute_pml_coefficients(
-   const unsigned& ipt,
-   const Vector<double>& x,
-   Vector< std::complex<double> >& pml_laplace_factor,
-   std::complex<double>& pml_k_squared_factor)
- {
-
-   /// Vector which points from the inner boundary to x
-   Vector<double> nu(2);
-   for(unsigned k=0; k<2; k++)
-   {
-     nu[k] = x[k] - this->Pml_inner_boundary[k];
-   }
-
-   /// Vector which points from the inner boundary to the edge of the boundary
-   Vector<double> pml_width(2);
-   for(unsigned k=0; k<2; k++)
-   {
-     pml_width[k] = this->Pml_outer_boundary[k] - this->Pml_inner_boundary[k];
-   }
-
-   // Declare gamma_i vectors of complex numbers for PML weights
-   Vector<std::complex<double> > pml_gamma(2);
-
-   if (this->Pml_is_enabled)
-   {
-     // Cache k_squared to pass into mapping function
-     double k_squared_local = k_squared();
-
-     for(unsigned k=0; k<2; k++)
-     {
-       // If PML is enabled in the respective direction
-       if (this->Pml_direction_active[k])
-       {
-         pml_gamma[k] = Pml_mapping_and_transformed_coordinate_pt->
-         gamma(nu[k], pml_width[k], k_squared_local);
-       }
-       else
-       {
-         pml_gamma[k] = 1.0;
-       }
-     }
-
-    /// \short  for 2D, in order:
-    /// g_y/g_x, g_x/g_y for Laplace bit and g_x*g_y for Helmholtz bit
-    /// for 3D, in order: g_y*g_x/g_x, g*x*g_z/g_y, g_x*g_y/g_z for Laplace bit
-    /// and g_x*g_y*g_z for Helmholtz factor
-    pml_laplace_factor[0] = pml_gamma[1] / pml_gamma[0];
-    pml_laplace_factor[1] = pml_gamma[0] / pml_gamma[1];
-    pml_k_squared_factor = pml_gamma[0] * pml_gamma[1];
-
-
-   }
-   else
-    {
-     /// \short The weights all default to 1.0 as if the propagation
-     /// medium is the physical domain
-     for(unsigned k=0; k<2; k++)
-     {
-       pml_laplace_factor[k] = std::complex<double> (1.0,0.0);
-     }
-
-     pml_k_squared_factor = std::complex<double> (1.0,0.0);
-    }
-
- }
-
-
-/// \short Compute complex variable r at position x[0] and
-/// integration point ipt
- void compute_complex_r(const unsigned& ipt,
-                        const Vector<double>& x,
-                        std::complex<double>& complex_r)
- {
-  // Cache current position r
-  double r = x[0];
-
-  /// The complex r variable is only imaginary on two
-  /// conditions: First, the decaying nature of the
-  /// pml layers is active.  Secondly, the
-  /// integration point is contained in the right pml
-  /// layer or the two corner pml layers.
-
-  // If the complex r variable is imaginary
-  if (this->Pml_is_enabled && (this->Pml_direction_active[0]))
-   {
-    double nu = x[0] - Pml_inner_boundary[0];
-    double pml_width = Pml_outer_boundary[0] - Pml_inner_boundary[0];
-    double k_squared_local = k_squared();
-    
-    // Determine the complex r variable
-    complex_r = Pml_mapping_and_transformed_coordinate_pt->
-     transformed_coordinate(nu,pml_width,Pml_inner_boundary[0],k_squared_local);
-   }
-  else
-   {
-    // The complex r variable is infact purely real, and
-    // is equal to x[0]
-    complex_r = std::complex<double> (r,0.0);
-   }
-
- } // end of compute_complex_r
- 
- /// Return a pointer to the PML Mapping object
- PMLMappingAndTransformedCoordinate* &pml_mapping_and_transformed_coordinate_pt() 
- {
-   return Pml_mapping_and_transformed_coordinate_pt;
- }
-
- /// Return a pointer to the PML Mapping object (const version)
- PMLMappingAndTransformedCoordinate* const 
-  &pml_mapping_and_transformed_coordinate_pt() const 
- {
-   return Pml_mapping_and_transformed_coordinate_pt;
- }
-
  /// Static so that the class doesn't need to instantiate a new default
  /// everytime it uses it
- static BermudezPMLMappingAndTransformedCoordinate 
-  Default_pml_mapping_and_transformed_coordinate;
+ static BermudezPMLMapping Default_pml_mapping;
 
 
  /// \short Shape/test functions and derivs w.r.t. to global coords at
@@ -667,10 +470,6 @@ protected:
 
  /// Pointer to k^2 (wavenumber squared)
  double* K_squared_pt;
-
- /// \short Pointer to class which holds the pml mapping function (also known 
- /// as gamma) and the associated transformed coordinate
- PMLMappingAndTransformedCoordinate* Pml_mapping_and_transformed_coordinate_pt;
  
  /// Pointer to wavenumber complex shift
  double *Alpha_pt;
@@ -697,10 +496,10 @@ protected:
 /// linear/quadrilateral/brick-shaped PMLFourierDecomposedHelmholtz
 /// elements with isoparametric interpolation for the function.
 //======================================================================
- template <unsigned NNODE_1D>
+ template <unsigned NNODE_1D, class PML_ELEMENT>
   class QPMLFourierDecomposedHelmholtzElement :
   public virtual QElement<2,NNODE_1D>,
-  public virtual PMLFourierDecomposedHelmholtzEquations
+  public virtual PMLFourierDecomposedHelmholtzEquations<PML_ELEMENT>
   {
 
     private:
@@ -715,12 +514,12 @@ protected:
    ///\short  Constructor: Call constructors for QElement and
    /// PMLFourierDecomposedHelmholtz equations
     QPMLFourierDecomposedHelmholtzElement() :
-   QElement<2,NNODE_1D>(), PMLFourierDecomposedHelmholtzEquations()
+   QElement<2,NNODE_1D>(), PMLFourierDecomposedHelmholtzEquations<PML_ELEMENT>()
     {}
 
    /// Broken copy constructor
    QPMLFourierDecomposedHelmholtzElement(
-    const QPMLFourierDecomposedHelmholtzElement<NNODE_1D>& dummy)
+    const QPMLFourierDecomposedHelmholtzElement<NNODE_1D,PML_ELEMENT>& dummy)
     {
      BrokenCopy::broken_copy("QPMLFourierDecomposedHelmholtzElement");
     }
@@ -741,12 +540,12 @@ protected:
 
    /// \short Output function: r,z,u
    void output(std::ostream &outfile)
-   {PMLFourierDecomposedHelmholtzEquations::output(outfile);}
+   {PMLFourierDecomposedHelmholtzEquations<PML_ELEMENT>::output(outfile);}
 
    ///  \short Output function:
    ///   r,z,u at n_plot^2 plot points
    void output(std::ostream &outfile, const unsigned &n_plot)
-   {PMLFourierDecomposedHelmholtzEquations::output(outfile,n_plot);}
+   {PMLFourierDecomposedHelmholtzEquations<PML_ELEMENT>::output(outfile,n_plot);}
 
    /// \short Output function for real part of full time-dependent solution
    /// u = Re( (u_r +i u_i) exp(-i omega t)
@@ -755,25 +554,25 @@ protected:
    /// direction
    void output_real(std::ostream &outfile, const double& phi,
                     const unsigned &n_plot)
-   {PMLFourierDecomposedHelmholtzEquations::output_real
+   {PMLFourierDecomposedHelmholtzEquations<PML_ELEMENT>::output_real
      (outfile,phi,n_plot);}
 
    /// \short C-style output function:  r,z,u
    void output(FILE* file_pt)
-   {PMLFourierDecomposedHelmholtzEquations::output(file_pt);}
+   {PMLFourierDecomposedHelmholtzEquations<PML_ELEMENT>::output(file_pt);}
 
    ///  \short C-style output function:
    ///   r,z,u  at n_plot^2 plot points
    void output(FILE* file_pt, const unsigned &n_plot)
-   {PMLFourierDecomposedHelmholtzEquations::output(file_pt,n_plot);}
+   {PMLFourierDecomposedHelmholtzEquations<PML_ELEMENT>::output(file_pt,n_plot);}
 
    /// \short Output function for an exact solution:
    /// r,z,u_exact at n_plot^2 plot points
    void output_fct(std::ostream &outfile, const unsigned &n_plot,
                    FiniteElement::SteadyExactSolutionFctPt exact_soln_pt)
    {
-    PMLFourierDecomposedHelmholtzEquations::output_fct(outfile,n_plot,
-                                                    exact_soln_pt);
+    PMLFourierDecomposedHelmholtzEquations<PML_ELEMENT>::
+      output_fct(outfile, n_plot, exact_soln_pt);
    }
 
    /// \short Output function for real part of full time-dependent fct
@@ -786,9 +585,8 @@ protected:
                         const unsigned &n_plot,
                         FiniteElement::SteadyExactSolutionFctPt exact_soln_pt)
    {
-    PMLFourierDecomposedHelmholtzEquations::output_real_fct
-     (outfile,phi,
-      n_plot,exact_soln_pt);
+    PMLFourierDecomposedHelmholtzEquations<PML_ELEMENT>::
+      output_real_fct(outfile, phi, n_plot, exact_soln_pt);
    }
 
 
@@ -799,7 +597,7 @@ protected:
                    const double& time,
                    FiniteElement::UnsteadyExactSolutionFctPt exact_soln_pt)
    {
-    PMLFourierDecomposedHelmholtzEquations::output_fct
+    PMLFourierDecomposedHelmholtzEquations<PML_ELEMENT>::output_fct
      (outfile,n_plot,time,exact_soln_pt);
    }
 
@@ -837,8 +635,8 @@ protected:
 ///
 /// Galerkin: Test functions = shape functions
 //======================================================================
- template<unsigned NNODE_1D>
- double QPMLFourierDecomposedHelmholtzElement<NNODE_1D>::
+ template<unsigned NNODE_1D, class PML_ELEMENT>
+ double QPMLFourierDecomposedHelmholtzElement<NNODE_1D,PML_ELEMENT>::
   dshape_and_dtest_eulerian_pml_fourier_decomposed_helmholtz(
    const Vector<double> &s,
    Shape &psi,
@@ -866,8 +664,8 @@ protected:
 ///
 /// Galerkin: Test functions = shape functions
 //======================================================================
- template<unsigned NNODE_1D>
-  double QPMLFourierDecomposedHelmholtzElement<NNODE_1D>::
+ template<unsigned NNODE_1D, class PML_ELEMENT>
+  double QPMLFourierDecomposedHelmholtzElement<NNODE_1D,PML_ELEMENT>::
   dshape_and_dtest_eulerian_at_knot_pml_fourier_decomposed_helmholtz(
    const unsigned &ipt,
    Shape &psi,
@@ -899,8 +697,8 @@ protected:
 /// bulk element but they have the same number of points
 /// along their 1D edges.
 //=======================================================================
- template<unsigned NNODE_1D>
-  class FaceGeometry<QPMLFourierDecomposedHelmholtzElement<NNODE_1D> >:
+ template<unsigned NNODE_1D, class PML_ELEMENT>
+  class FaceGeometry<QPMLFourierDecomposedHelmholtzElement<NNODE_1D,PML_ELEMENT> >:
   public virtual QElement<1,NNODE_1D>
   {
 
@@ -1189,10 +987,10 @@ protected:
 /// Policy class defining the elements to be used in the actual
 /// PML layers. Same!
 //=======================================================================
-  template<unsigned NNODE_1D>
+  template<unsigned NNODE_1D, class PML_ELEMENT>
 class EquivalentQElement<
- QPMLFourierDecomposedHelmholtzElement<NNODE_1D> > :
- public virtual QPMLFourierDecomposedHelmholtzElement<NNODE_1D>
+ QPMLFourierDecomposedHelmholtzElement<NNODE_1D,PML_ELEMENT> > :
+ public virtual QPMLFourierDecomposedHelmholtzElement<NNODE_1D, PML_ELEMENT>
 {
 
   public:
@@ -1200,7 +998,7 @@ class EquivalentQElement<
  /// \short Constructor: Call the constructor for the
  /// appropriate QElement
  EquivalentQElement() :
-  QPMLFourierDecomposedHelmholtzElement<NNODE_1D>()
+  QPMLFourierDecomposedHelmholtzElement<NNODE_1D,PML_ELEMENT>()
   {}
 
 };

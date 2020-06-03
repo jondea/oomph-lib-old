@@ -46,15 +46,15 @@ namespace oomph
 // Set the data for the number of Variables at each node, always two
 /// (real and imag part) in every case
 //======================================================================
-template<unsigned NNODE_1D>
-const unsigned TPMLFourierDecomposedHelmholtzElement<NNODE_1D>::
+template<unsigned NNODE_1D, class PML_ELEMENT>
+const unsigned TPMLFourierDecomposedHelmholtzElement<NNODE_1D,PML_ELEMENT>::
 Initial_Nvalue = 2;
 
 //====================================================================
 // Force build of templates
 //====================================================================
-template class TPMLFourierDecomposedHelmholtzElement<2>;
-template class TPMLFourierDecomposedHelmholtzElement<3>;
-template class TPMLFourierDecomposedHelmholtzElement<4>;
+template class TPMLFourierDecomposedHelmholtzElement<2, AxisAlignedPMLElement<2>>;
+template class TPMLFourierDecomposedHelmholtzElement<4, AxisAlignedPMLElement<2>>;
+template class TPMLFourierDecomposedHelmholtzElement<3, AxisAlignedPMLElement<2>>;
 
 }
