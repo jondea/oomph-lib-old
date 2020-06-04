@@ -1494,8 +1494,8 @@ namespace oomph
   Wavenumber=0.0;
 
   // Upcast the first element in the bulk mesh
-  PMLHelmholtzEquations<DIM>* pml_helmholtz_el_pt=
-   dynamic_cast<PMLHelmholtzEquations<DIM>*>
+  PMLHelmholtzEquations<DIM, AxisAlignedPMLElement<DIM>>* pml_helmholtz_el_pt=
+   dynamic_cast<PMLHelmholtzEquations<DIM, AxisAlignedPMLElement<DIM>>*>
    (Mg_problem_pt->mg_bulk_mesh_pt()->element_pt(0));
 
   // Grab the k_squared value from the element pointer and square root.
@@ -1671,8 +1671,8 @@ namespace oomph
      // To grab the static variable used to set the value of alpha we first
      // need to get an element of type PMLHelmholtzEquations (we arbitrarily
      // chose the first element in the mesh)
-     PMLHelmholtzEquations<DIM>* el_pt=
-      dynamic_cast<PMLHelmholtzEquations<DIM>*>
+     PMLHelmholtzEquations<DIM, AxisAlignedPMLElement<DIM>>* el_pt=
+      dynamic_cast<PMLHelmholtzEquations<DIM, AxisAlignedPMLElement<DIM>>*>
       (Mg_hierarchy_pt[0]->mesh_pt()->element_pt(0));
 
      // Now grab the pointer from the element
@@ -1682,8 +1682,8 @@ namespace oomph
      for (unsigned i_el=0;i_el<n_element;i_el++)
      {
       // Upcast from a GeneralisedElement to a PmlHelmholtzElement
-      PMLHelmholtzEquations<DIM>* el_pt=
-       dynamic_cast<PMLHelmholtzEquations<DIM>*>
+      PMLHelmholtzEquations<DIM, AxisAlignedPMLElement<DIM>>* el_pt=
+       dynamic_cast<PMLHelmholtzEquations<DIM, AxisAlignedPMLElement<DIM>>*>
        (Mg_hierarchy_pt[0]->mesh_pt()->element_pt(i_el));
 
       // Make the internal element alpha pointer point to Alpha_shift (the
@@ -1768,8 +1768,8 @@ namespace oomph
      for (unsigned i_el=0;i_el<n_element;i_el++)
      {
       // Upcast from a GeneralisedElement to a PmlHelmholtzElement
-      PMLHelmholtzEquations<DIM>* el_pt=
-       dynamic_cast<PMLHelmholtzEquations<DIM>*>
+      PMLHelmholtzEquations<DIM, AxisAlignedPMLElement<DIM>>* el_pt=
+       dynamic_cast<PMLHelmholtzEquations<DIM, AxisAlignedPMLElement<DIM>>*>
        (Mg_hierarchy_pt[0]->mesh_pt()->element_pt(i_el));
 
       // Set the value of alpha

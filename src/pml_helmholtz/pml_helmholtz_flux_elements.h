@@ -465,8 +465,8 @@ PMLHelmholtzPowerElement(FiniteElement* const &bulk_el_pt,
      //One dimensional problem
     case 1:
     {
-     PMLHelmholtzEquations<1>* eqn_pt =
-      dynamic_cast<PMLHelmholtzEquations<1>*>(bulk_el_pt);
+     PMLHelmholtzEquations<1,PMLElementBase<1>>* eqn_pt =
+      dynamic_cast<PMLHelmholtzEquations<1,PMLElementBase<1>>*>(bulk_el_pt);
      //If the cast has failed die
      if(eqn_pt==0)
       {
@@ -494,8 +494,8 @@ PMLHelmholtzPowerElement(FiniteElement* const &bulk_el_pt,
     //Two dimensional problem
     case 2:
     {
-     PMLHelmholtzEquations<2>* eqn_pt =
-      dynamic_cast<PMLHelmholtzEquations<2>*>(bulk_el_pt);
+     PMLHelmholtzEquations<2,PMLElementBase<2>>* eqn_pt =
+      dynamic_cast<PMLHelmholtzEquations<2,PMLElementBase<2>>*>(bulk_el_pt);
      //If the cast has failed die
      if(eqn_pt==0)
       {
@@ -523,8 +523,8 @@ PMLHelmholtzPowerElement(FiniteElement* const &bulk_el_pt,
     //Three dimensional problem
     case 3:
     {
-     PMLHelmholtzEquations<3>* eqn_pt =
-      dynamic_cast<PMLHelmholtzEquations<3>*>(bulk_el_pt);
+     PMLHelmholtzEquations<3,PMLElementBase<3>>* eqn_pt =
+      dynamic_cast<PMLHelmholtzEquations<3,PMLElementBase<3>>*>(bulk_el_pt);
      //If the cast has failed die
      if(eqn_pt==0)
       {
@@ -885,8 +885,8 @@ PMLHelmholtzFluxElement(FiniteElement* const &bulk_el_pt,
      //One dimensional problem
     case 1:
     {
-     PMLHelmholtzEquations<1>* eqn_pt =
-      dynamic_cast<PMLHelmholtzEquations<1>*>(bulk_el_pt);
+     PMLHelmholtzEquations<1,PMLElementBase<1>>* eqn_pt =
+      dynamic_cast<PMLHelmholtzEquations<1,PMLElementBase<1>>*>(bulk_el_pt);
      //If the cast has failed die
      if(eqn_pt==0)
       {
@@ -914,8 +914,8 @@ PMLHelmholtzFluxElement(FiniteElement* const &bulk_el_pt,
     //Two dimensional problem
     case 2:
     {
-     PMLHelmholtzEquations<2>* eqn_pt =
-      dynamic_cast<PMLHelmholtzEquations<2>*>(bulk_el_pt);
+     PMLHelmholtzEquations<2,PMLElementBase<2>>* eqn_pt =
+      dynamic_cast<PMLHelmholtzEquations<2,PMLElementBase<2>>*>(bulk_el_pt);
      //If the cast has failed die
      if(eqn_pt==0)
       {
@@ -943,8 +943,8 @@ PMLHelmholtzFluxElement(FiniteElement* const &bulk_el_pt,
     //Three dimensional problem
     case 3:
     {
-     PMLHelmholtzEquations<3>* eqn_pt =
-      dynamic_cast<PMLHelmholtzEquations<3>*>(bulk_el_pt);
+     PMLHelmholtzEquations<3,PMLElementBase<3>>* eqn_pt =
+      dynamic_cast<PMLHelmholtzEquations<3,PMLElementBase<3>>*>(bulk_el_pt);
      //If the cast has failed die
      if(eqn_pt==0)
       {

@@ -62,9 +62,9 @@ namespace oomph
 /// with  NNODE_1D nodal points along each element edge. Inherits from 
 /// TElement and PMLHelmholtzEquations
 //======================================================================
-template <unsigned DIM, unsigned NNODE_1D>
+template <unsigned DIM, unsigned NNODE_1D, class PML_ELEMENT>
 class TPMLHelmholtzElement : public TElement<DIM,NNODE_1D>, 
- public PMLHelmholtzEquations<DIM>,
+ public PMLHelmholtzEquations<DIM,PML_ELEMENT>,
  public virtual ElementWithZ2ErrorEstimator
 {
  
@@ -73,13 +73,13 @@ class TPMLHelmholtzElement : public TElement<DIM,NNODE_1D>,
  ///\short  Constructor: Call constructors for TElement and 
  /// PMLHelmholtz equations
  TPMLHelmholtzElement() : 
-  TElement<DIM,NNODE_1D>(), PMLHelmholtzEquations<DIM>()
+  TElement<DIM,NNODE_1D>(), PMLHelmholtzEquations<DIM,PML_ELEMENT>()
   { }
 
 
  /// Broken copy constructor
  TPMLHelmholtzElement
-  (const TPMLHelmholtzElement<DIM,NNODE_1D>& dummy) 
+  (const TPMLHelmholtzElement<DIM,NNODE_1D,PML_ELEMENT>& dummy) 
   { 
    BrokenCopy::broken_copy("TPMLHelmholtzElement");
   } 
@@ -103,14 +103,14 @@ class TPMLHelmholtzElement : public TElement<DIM,NNODE_1D>,
  ///  x,y,u   or    x,y,z,u
  void output(std::ostream &outfile)
   {
-   PMLHelmholtzEquations<DIM>::output(outfile);
+   PMLHelmholtzEquations<DIM,PML_ELEMENT>::output(outfile);
   }
 
  ///  \short Output function:  
  ///   x,y,u   or    x,y,z,u at n_plot^DIM plot points
  void output(std::ostream &outfile, const unsigned &n_plot)
   {
-   PMLHelmholtzEquations<DIM>::output(outfile,n_plot);
+   PMLHelmholtzEquations<DIM,PML_ELEMENT>::output(outfile,n_plot);
   }
 
 
@@ -118,7 +118,7 @@ class TPMLHelmholtzElement : public TElement<DIM,NNODE_1D>,
  ///  x,y,u   or    x,y,z,u
  void output(FILE* file_pt)
   {
-   PMLHelmholtzEquations<DIM>::output(file_pt);
+   PMLHelmholtzEquations<DIM,PML_ELEMENT>::output(file_pt);
   }
 
 
@@ -126,7 +126,7 @@ class TPMLHelmholtzElement : public TElement<DIM,NNODE_1D>,
  ///   x,y,u   or    x,y,z,u at n_plot^DIM plot points
  void output(FILE* file_pt, const unsigned &n_plot)
   {
-   PMLHelmholtzEquations<DIM>::output(file_pt,n_plot);
+   PMLHelmholtzEquations<DIM,PML_ELEMENT>::output(file_pt,n_plot);
   }
 
 
@@ -135,7 +135,7 @@ class TPMLHelmholtzElement : public TElement<DIM,NNODE_1D>,
  void output_fct(std::ostream &outfile, const unsigned &n_plot,
                  FiniteElement::SteadyExactSolutionFctPt exact_soln_pt)
  {
-  PMLHelmholtzEquations<DIM>::output_fct(outfile,n_plot,exact_soln_pt);
+  PMLHelmholtzEquations<DIM,PML_ELEMENT>::output_fct(outfile,n_plot,exact_soln_pt);
  }
 
  
@@ -145,7 +145,7 @@ class TPMLHelmholtzElement : public TElement<DIM,NNODE_1D>,
                  const double& time,
                  FiniteElement::UnsteadyExactSolutionFctPt exact_soln_pt)
   {
-   PMLHelmholtzEquations<DIM>::output_fct(outfile,
+   PMLHelmholtzEquations<DIM,PML_ELEMENT>::output_fct(outfile,
                                                   n_plot,
                                                   time,
                                                   exact_soln_pt);
@@ -209,8 +209,8 @@ protected:
 
 
 //!! Cleanup - this was not here before!
-template<unsigned DIM, unsigned NNODE_1D>
-const unsigned TPMLHelmholtzElement<DIM,NNODE_1D>::Initial_Nvalue = 2;
+template<unsigned DIM, unsigned NNODE_1D, class PML_ELEMENT>
+const unsigned TPMLHelmholtzElement<DIM,NNODE_1D,PML_ELEMENT>::Initial_Nvalue = 2;
 
 //Inline functions:
 
@@ -221,9 +221,9 @@ const unsigned TPMLHelmholtzElement<DIM,NNODE_1D>::Initial_Nvalue = 2;
 ///
 /// Galerkin: Test functions = shape functions
 //======================================================================
-template<unsigned DIM, unsigned NNODE_1D>
+template<unsigned DIM, unsigned NNODE_1D, class PML_ELEMENT>
 double 
-TPMLHelmholtzElement<DIM,NNODE_1D>::dshape_and_dtest_eulerian_helmholtz
+TPMLHelmholtzElement<DIM,NNODE_1D,PML_ELEMENT>::dshape_and_dtest_eulerian_helmholtz
  (
   const Vector<double> &s, 
   Shape &psi, 
@@ -257,8 +257,8 @@ TPMLHelmholtzElement<DIM,NNODE_1D>::dshape_and_dtest_eulerian_helmholtz
 ///
 /// Galerkin: Test functions = shape functions
 //======================================================================
-template<unsigned DIM, unsigned NNODE_1D>
-double TPMLHelmholtzElement<DIM,NNODE_1D>::
+template<unsigned DIM, unsigned NNODE_1D, class PML_ELEMENT>
+double TPMLHelmholtzElement<DIM,NNODE_1D,PML_ELEMENT>::
 dshape_and_dtest_eulerian_at_knot_helmholtz(
  const unsigned &ipt,
  Shape &psi, 
@@ -287,8 +287,8 @@ dshape_and_dtest_eulerian_at_knot_helmholtz(
 /// bulk element but they have the same number of points
 /// along their 1D edges.
 //=======================================================================
-template<unsigned DIM, unsigned NNODE_1D>
-class FaceGeometry<TPMLHelmholtzElement<DIM,NNODE_1D> >: 
+template<unsigned DIM, unsigned NNODE_1D, class PML_ELEMENT>
+class FaceGeometry<TPMLHelmholtzElement<DIM,NNODE_1D,PML_ELEMENT> >: 
  public virtual TElement<DIM-1,NNODE_1D>
 {
 
@@ -304,8 +304,8 @@ class FaceGeometry<TPMLHelmholtzElement<DIM,NNODE_1D> >:
 /// Face geometry for the 1D TPMLHelmholtzElement elements: 
 /// Point elements
 //=======================================================================
-template<unsigned NNODE_1D>
-class FaceGeometry<TPMLHelmholtzElement<1,NNODE_1D> >: 
+template<unsigned NNODE_1D,class PML_ELEMENT>
+class FaceGeometry<TPMLHelmholtzElement<1,NNODE_1D,PML_ELEMENT> >: 
  public virtual PointElement
 {
 
@@ -326,16 +326,16 @@ class FaceGeometry<TPMLHelmholtzElement<1,NNODE_1D> >:
 /// Policy class defining the elements to be used in the actual
 /// PML layers. It's the corresponding quads.
 //=======================================================================
-  template<unsigned NNODE_1D> 
-class EquivalentQElement<TPMLHelmholtzElement<2,NNODE_1D> > : 
- public virtual QPMLHelmholtzElement<2,NNODE_1D>
+  template<unsigned NNODE_1D,class PML_ELEMENT> 
+class EquivalentQElement<TPMLHelmholtzElement<2,NNODE_1D,PML_ELEMENT> > : 
+ public virtual QPMLHelmholtzElement<2,NNODE_1D,PML_ELEMENT>
 {
 
   public:
  
  /// \short Constructor: Call the constructor for the
  /// appropriate QElement
- EquivalentQElement(): QPMLHelmholtzElement<2,NNODE_1D>() 
+ EquivalentQElement(): QPMLHelmholtzElement<2,NNODE_1D,PML_ELEMENT>() 
   {}
 
 };
@@ -346,8 +346,8 @@ class EquivalentQElement<TPMLHelmholtzElement<2,NNODE_1D> > :
 /// bulk element but they have the same number of points
 /// along their 1D edges.
 //=======================================================================
-template<unsigned DIM, unsigned NNODE_1D>
-class FaceGeometry<EquivalentQElement<TPMLHelmholtzElement<DIM,NNODE_1D> > >: 
+template<unsigned DIM, unsigned NNODE_1D, class PML_ELEMENT>
+class FaceGeometry<EquivalentQElement<TPMLHelmholtzElement<DIM,NNODE_1D,PML_ELEMENT> > >: 
  public virtual QElement<DIM-1,NNODE_1D>
 {
 
@@ -367,17 +367,17 @@ class FaceGeometry<EquivalentQElement<TPMLHelmholtzElement<DIM,NNODE_1D> > >:
 /// Policy class defining the elements to be used in the actual
 /// PML layers. It's the corresponding quads.
 //=======================================================================
-  template<unsigned NNODE_1D>
+  template<unsigned NNODE_1D, class PML_ELEMENT>
 class EquivalentQElement<ProjectablePMLHelmholtzElement
-   <TPMLHelmholtzElement<2,NNODE_1D> > > : 
- public virtual QPMLHelmholtzElement<2,NNODE_1D>
+   <TPMLHelmholtzElement<2,NNODE_1D,PML_ELEMENT> > > : 
+ public virtual QPMLHelmholtzElement<2,NNODE_1D,PML_ELEMENT>
 {
 
   public:
  
  /// \short Constructor: Call the constructor for the
  /// appropriate QElement
- EquivalentQElement(): QPMLHelmholtzElement<2,NNODE_1D>() 
+ EquivalentQElement(): QPMLHelmholtzElement<2,NNODE_1D,PML_ELEMENT>() 
   {}
 
 };

@@ -203,7 +203,7 @@ namespace GlobalParameters
 
  }// end of prescribed_incoming_flux
 
- class TestPMLMapping : public PMLMapping
+ class TestPMLMapping : public UniaxialPMLMapping
  {
 
    public:
@@ -211,20 +211,25 @@ namespace GlobalParameters
    /// Default constructor (empty)
    TestPMLMapping(){};
 
-   /// \short Overwrite the pure PML mapping coefficient function to return the
+   /// \short Overwrite the pure Pml mapping coefficient function to return the
    /// coeffcients proposed by Bermudez et al
-   std::complex<double> gamma(const double& nu_i,
-                              const double& pml_width_i,
-                              const double& k_squared_local,
-                              const double& alpha_shift=0.0)
+   std::complex<double> dtransformed_nu_dnu(const double& nu,
+                                            const double& delta,
+                                            const double& wavenumber_squared,
+                                            const double& alpha_shift=0.0)
    {
-      // (return) gamma = 1 + (1/k) * (i/|outer_boundary - x|)
-      /*return 1.0 + (1.0 / std::complex<double> (sqrt(k_squared_local), 0))
-       * std::complex<double>
-        (0.0, 1.0/(std::fabs(pml_width_i - nu_i)));*/
-     return 1.0 + (1.0 / std::complex<double> (sqrt(k_squared_local), 0))
-          * std::complex<double>
-           (0.0, 2.0/(std::fabs(pml_width_i - nu_i)));
+     const double k = sqrt(wavenumber_squared);
+     return 1.0 + MathematicalConstants::I / k * (2.0/std::fabs(delta - nu));
+   }
+
+   //
+   std::complex<double> transformed_nu(const double& nu,
+                                       const double& delta,
+                                       const double& wavenumber_squared,
+                                       const double& alpha_shift=0.0)
+   {
+     const double k = sqrt(wavenumber_squared);
+     return nu - MathematicalConstants::I/k * log(2.0 - std::fabs(nu/delta));
    }
 
  };
@@ -525,8 +530,8 @@ PMLProblem<ELEMENT>::PMLProblem()
  for(unsigned e=0;e<n_element;e++)
   {
    // Upcast from GeneralisedElement to Pml Helmholtz bulk element
-   PMLHelmholtzEquations<2> *el_pt =
-    dynamic_cast<PMLHelmholtzEquations<2>*>(mesh_pt()->element_pt(e));
+   PMLHelmholtzEquations<2,AxisAlignedPMLElement<2> > *el_pt =
+    dynamic_cast<PMLHelmholtzEquations<2,AxisAlignedPMLElement<2> >*>(mesh_pt()->element_pt(e));
 
    if (el_pt!=0)
     {
@@ -606,8 +611,8 @@ void PMLProblem<ELEMENT>::actions_after_adapt()
  for(unsigned e=0;e<n_element;e++)
   {
    // Upcast from GeneralisedElement to PMLHelmholtz bulk element
-   PMLHelmholtzEquations<2> *el_pt =
-    dynamic_cast<PMLHelmholtzEquations<2>*>(mesh_pt()->element_pt(e));
+   PMLHelmholtzEquations<2,AxisAlignedPMLElement<2> > *el_pt =
+    dynamic_cast<PMLHelmholtzEquations<2,AxisAlignedPMLElement<2> >*>(mesh_pt()->element_pt(e));
 
    if (el_pt!=0)
     {
@@ -926,13 +931,13 @@ int main(int argc, char **argv)
  // Set up the problem with projectable 2D six-node elements from the
  // TPMLHelmholtzElement family.
  PMLProblem<ProjectablePMLHelmholtzElement
-  <TPMLHelmholtzElement<2,3> > > problem;
+  <TPMLHelmholtzElement<2,3,AxisAlignedPMLElement<2> > > > problem;
 
 #else
 
  // Set up the problem with 2D six-node elements from the
  // TPMLHelmholtzElement family.
- PMLProblem<TPMLHelmholtzElement<2,3> >  problem;
+ PMLProblem<TPMLHelmholtzElement<2,3,AxisAlignedPMLElement<2> > >  problem;
 #endif
 
  // Create label for output

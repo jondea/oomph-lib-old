@@ -642,22 +642,22 @@ int main(int argc, char **argv)
  // Set up the problem with projectable 2D six-node elements from the
  // TPMLHelmholtzElement family.
  PMLProblem<ProjectablePMLHelmholtzElement
-  <TPMLHelmholtzElement<2,3> > > problem;
+  <TPMLHelmholtzElement<2,3, AxisAlignedPMLElement<2>> > > problem;
 
  // Set up the problem with 2D ten-node elements from the
  // TPMLHelmholtzElement family.
  // PMLProblem<ProjectablePMLHelmholtzElement
- //  <TPMLHelmholtzElement<2,4> > > problem;
+ //  <TPMLHelmholtzElement<2,4,AxisAlignedPMLElement<2>> > > problem;
 
 #else
 
  // Set up the problem with 2D six-node elements from the
  // TPMLHelmholtzElement family.
- PMLProblem<TPMLHelmholtzElement<2,3> >  problem;
+ PMLProblem<TPMLHelmholtzElement<2,3,AxisAlignedPMLElement<2>> >  problem;
 
  // Set up the problem with 2D ten-node elements from the
  // TPMLHelmholtzElement family.
- //   PMLProblem<TPMLHelmholtzElement<2,4> >  problem;
+ //   PMLProblem<TPMLHelmholtzElement<2,4,AxisAlignedPMLElement<2>> >  problem;
 
 #endif
 
