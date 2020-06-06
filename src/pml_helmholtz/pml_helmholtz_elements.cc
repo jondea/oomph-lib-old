@@ -125,42 +125,30 @@ fill_in_generic_residual_contribution_helmholtz(Vector<double> &residuals,
    get_source_helmholtz(ipt,interpolated_x,source);
 
 
-   // Declare a vector of complex numbers for pml weights on the Laplace bit
-   Vector< std::complex<double> > pml_laplace_factor(DIM);
-   // Declare a complex number for pml weights on the mass matrix bit
-   std::complex<double> pml_k_squared_factor = std::complex<double>(1.0,0.0);
 
    // All the PML weights that participate in the assemby process
-   // are computed here. pml_laplace_factor will contain the entries
-   // for the Laplace bit, while pml_k_squared_factor contains the contributions
-   // to the Helmholtz bit. Both default to 1.0, should the PML not be
-   // enabled via enable_pml.
+   // are computed here. 
+   // The Jacobian and Laplace matrix (and therefore the det) default to the
+   // identity if the PML is disabled
    Vector<double> s(DIM);
-   DenseComplexMatrix jacobian(DIM,DIM);
-   this->pml_transformation_jacobian(ipt, s, interpolated_x, jacobian);
-     
-   DenseComplexMatrix laplace_matrix(DIM,DIM);
-   this->compute_laplace_matrix_and_det(jacobian, laplace_matrix, pml_k_squared_factor);
+   DiagonalComplexMatrix pml_jacobian(DIM);
+   this->pml_transformation_jacobian(ipt, s, interpolated_x, pml_jacobian);
+  
+   // Declare a complex number for pml weights on the mass matrix bit
+   // We will set this equal to the determinant of the pml Jacobian
+   std::complex<double> pml_k_squared_factor = std::complex<double>(1.0,0.0);
 
-   for (unsigned i=0; i<DIM; i++)
-   {
-      pml_laplace_factor[i] = laplace_matrix(i,i);
-   }
+   // Declare a diagonal matrix for pml weights on the Laplace bit
+   DiagonalComplexMatrix laplace_matrix(DIM);
 
-   //Alpha adjusts the pml factors, the imaginary part produces cross terms
+   this->compute_laplace_matrix_and_det(pml_jacobian, laplace_matrix,
+                                        pml_k_squared_factor);
+
+   // Alpha adjusts the pml factors, the imaginary part produces cross terms
    std::complex<double> alpha_pml_k_squared_factor = std::complex<double>(
      pml_k_squared_factor.real() - alpha() * pml_k_squared_factor.imag(),
      alpha() * pml_k_squared_factor.real() + pml_k_squared_factor.imag());
-   
-   
-  //  std::complex<double> alpha_pml_k_squared_factor
-  //  if(alpha_pt() == 0)
-  //  {
-  //  std::complex<double> alpha_pml_k_squared_factor = std::complex<double>(
-  //    pml_k_squared_factor.real() -  alpha() * pml_k_squared_factor.imag(),
-  //    alpha() * pml_k_squared_factor.real() +  pml_k_squared_factor.imag()
-  //  );
-  //  }
+
    // Assemble residuals and Jacobian
    //--------------------------------
    // Loop over the test functions
@@ -191,8 +179,8 @@ fill_in_generic_residual_contribution_helmholtz(Vector<double> &residuals,
         {
          residuals[local_eqn_real] +=
          (
-          pml_laplace_factor[k].real() * interpolated_dudx[k].real()
-         -pml_laplace_factor[k].imag() * interpolated_dudx[k].imag()
+          laplace_matrix(k,k).real() * interpolated_dudx[k].real()
+         -laplace_matrix(k,k).imag() * interpolated_dudx[k].imag()
          )*dtestdx(l,k)*W;
         }
  
@@ -213,7 +201,7 @@ fill_in_generic_residual_contribution_helmholtz(Vector<double> &residuals,
              for(unsigned i=0;i<DIM;i++)
               {
                jacobian(local_eqn_real,local_unknown_real)
-                += pml_laplace_factor[i].real() * dpsidx(l2,i)*dtestdx(l,i)*W;
+                += laplace_matrix(i,i).real() * dpsidx(l2,i)*dtestdx(l,i)*W;
               }
              // Add the helmholtz contribution
              jacobian(local_eqn_real,local_unknown_real)
@@ -226,7 +214,7 @@ fill_in_generic_residual_contribution_helmholtz(Vector<double> &residuals,
              for(unsigned i=0;i<DIM;i++)
               {
                jacobian(local_eqn_real,local_unknown_imag)
-                -= pml_laplace_factor[i].imag() * dpsidx(l2,i)*dtestdx(l,i)*W;
+                -= laplace_matrix(i,i).imag() * dpsidx(l2,i)*dtestdx(l,i)*W;
 
               }
              // Add the helmholtz contribution
@@ -260,8 +248,8 @@ fill_in_generic_residual_contribution_helmholtz(Vector<double> &residuals,
        for(unsigned k=0;k<DIM;k++)
         {
          residuals[local_eqn_imag] += (
-               pml_laplace_factor[k].imag() * interpolated_dudx[k].real()
-              +pml_laplace_factor[k].real() * interpolated_dudx[k].imag()
+               laplace_matrix(k,k).imag() * interpolated_dudx[k].real()
+              +laplace_matrix(k,k).real() * interpolated_dudx[k].imag()
          )*dtestdx(l,k)*W;
         }
 
@@ -282,7 +270,7 @@ fill_in_generic_residual_contribution_helmholtz(Vector<double> &residuals,
              for(unsigned i=0;i<DIM;i++)
               {
                jacobian(local_eqn_imag,local_unknown_imag)
-                += pml_laplace_factor[i].real() * dpsidx(l2,i)*dtestdx(l,i)*W;
+                += laplace_matrix(i,i).real() * dpsidx(l2,i)*dtestdx(l,i)*W;
               }
              // Add the helmholtz contribution
              jacobian(local_eqn_imag,local_unknown_imag)
@@ -294,7 +282,7 @@ fill_in_generic_residual_contribution_helmholtz(Vector<double> &residuals,
              for(unsigned i=0;i<DIM;i++)
               {
                jacobian(local_eqn_imag,local_unknown_real)
-                +=pml_laplace_factor[i].imag() * dpsidx(l2,i)*dtestdx(l,i)*W;
+                +=laplace_matrix(i,i).imag() * dpsidx(l2,i)*dtestdx(l,i)*W;
               }
              // Add the helmholtz contribution
              jacobian(local_eqn_imag,local_unknown_real)

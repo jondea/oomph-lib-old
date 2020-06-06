@@ -325,8 +325,9 @@ PMLProblem<ELEMENT>::PMLProblem()
  for(unsigned e=0;e<n_element;e++)
   {
    // Upcast from GeneralisedElement to Helmholtz bulk element
-   PMLHelmholtzEquations<2> *el_pt =
-    dynamic_cast<PMLHelmholtzEquations<2>*>(mesh_pt()->element_pt(e));
+   PMLHelmholtzEquations<2,AxisAlignedPMLElement<2>> *el_pt =
+    dynamic_cast<PMLHelmholtzEquations<2,AxisAlignedPMLElement<2>>*>(
+      mesh_pt()->element_pt(e));
 
    //Set the k_squared double pointer
    el_pt->k_squared_pt() = &GlobalParameters::K_squared;
@@ -405,8 +406,9 @@ void PMLProblem<ELEMENT>::actions_after_adapt()
  for(unsigned e=0;e<n_element;e++)
   {
    // Upcast from GeneralisedElement to PMLHelmholtz bulk element
-   PMLHelmholtzEquations<2> *el_pt =
-    dynamic_cast<PMLHelmholtzEquations<2>*>(mesh_pt()->element_pt(e));
+   PMLHelmholtzEquations<2,AxisAlignedPMLElement<2>> *el_pt =
+    dynamic_cast<PMLHelmholtzEquations<2,AxisAlignedPMLElement<2>>*>(
+      mesh_pt()->element_pt(e));
 
    //Set the frequency function pointer
    el_pt->k_squared_pt() = &GlobalParameters::K_squared;
@@ -636,6 +638,8 @@ int main(int argc, char **argv)
 {
  //Set up the problem
  //------------------
+
+ CommandLineArgs::setup(argc,argv);
 
 #ifdef ADAPTIVE
 

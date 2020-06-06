@@ -223,6 +223,25 @@ compute_laplace_matrix_and_det(const DiagonalComplexMatrix& J,
 
 template<> 
 void PMLElementBase<3>::
+compute_laplace_matrix_and_det(const DenseComplexMatrix& J, 
+                               DenseComplexMatrix& laplace_matrix, 
+                               std::complex<double>& detJ)
+{
+  const unsigned DIM = 3;
+
+  detJ = J(0,0) * J(1,1) * J(2,2);
+
+  // resize and intialize result
+  laplace_matrix.resize(DIM, DIM, 0.0);
+
+  throw OomphLibError(
+    "Calculating Laplace matrix and det for 3x3 dense matrix not implemented",
+    OOMPH_CURRENT_FUNCTION,
+    OOMPH_EXCEPTION_LOCATION);
+}
+
+template<> 
+void PMLElementBase<3>::
 compute_jacobian_inverse_and_det(const DiagonalComplexMatrix& J, 
                                DiagonalComplexMatrix& J_inv, 
                                std::complex<double>& J_det)
@@ -475,7 +494,7 @@ get_pml_properties(const Vector<double>& s,
 
   // Set LOCAL coordinate of point projected to the inner element boundary
   s_inner[ACROSS_S_INDEX] = s[ACROSS_S_INDEX];
-  s_inner[NU_S_INDEX] = s_min();
+  s_inner[NU_S_INDEX] = this->s_min();
 
   //Set up memory for the shape functions at the inside of the element
   Shape inner_psi(N_NODE);
@@ -484,7 +503,7 @@ get_pml_properties(const Vector<double>& s,
 
   // Set LOCAL coordinate of point projected to the outer element boundary
   s_outer[ACROSS_S_INDEX] = s[ACROSS_S_INDEX];
-  s_outer[NU_S_INDEX] = s_max();
+  s_outer[NU_S_INDEX] = this->s_max();
 
   //Set up memory for the shape functions at the inside of the element
   Shape outer_psi(N_NODE);
@@ -666,5 +685,9 @@ void TangentiallyVaryingConformal2DPMLElement::assemble_conformal_jacobian(
 
   dtx_ds.multiply(ds_dx,mapping_jacobian);
 }
+
+template class AxisAlignedPMLElement<1>;
+template class AxisAlignedPMLElement<2>;
+template class AxisAlignedPMLElement<3>;
 
 }

@@ -611,10 +611,6 @@ public:
     pml_mapping_pt = Pml_mapping_pt;
   }
 
-  virtual double s_min();
-
-  virtual double s_max();
-
   /// Coordinate which goes through the PML in terms of local coordinate
   double nu(const Vector<double>& s)
   {
