@@ -110,9 +110,9 @@ public:
   virtual void values_to_be_pinned_on_outer_pml_boundary(
     Vector<unsigned>& values_to_pin)=0;
 
-  virtual double k_squared()
+  virtual double wavenumber() const
   {
-    throw OomphLibError("PML elements must implement k_squared()",
+    throw OomphLibError("PML elements must implement wavenumber()",
                         OOMPH_CURRENT_FUNCTION,
                         OOMPH_EXCEPTION_LOCATION);
   }
@@ -426,10 +426,10 @@ public:
     std::complex<double>& transformed_r,
     std::complex<double>& dtransformed_r_dr)
   {
-    const double k_sq = this->k_squared();
+    const double k = this->wavenumber();
     transformed_r = Pml_inner_radius
-                    + Pml_mapping_pt->transformed_nu(nu, delta, k_sq);
-    dtransformed_r_dr = Pml_mapping_pt->dtransformed_nu_dnu(nu, delta, k_sq);
+                    + Pml_mapping_pt->transformed_nu(nu, delta, k);
+    dtransformed_r_dr = Pml_mapping_pt->dtransformed_nu_dnu(nu, delta, k);
   }
 
 protected:
@@ -528,10 +528,10 @@ public:
     std::complex<double>& transformed_r,
     std::complex<double>& dtransformed_r_dr)
   {
-    const double k_sq = this->k_squared();
+    const double k = this->wavenumber();
     transformed_r = Pml_inner_radius
-                    + Pml_mapping_pt->transformed_nu(nu, delta, k_sq);
-    dtransformed_r_dr = Pml_mapping_pt->dtransformed_nu_dnu(nu, delta, k_sq);
+                    + Pml_mapping_pt->transformed_nu(nu, delta, k);
+    dtransformed_r_dr = Pml_mapping_pt->dtransformed_nu_dnu(nu, delta, k);
   }
 
 protected:

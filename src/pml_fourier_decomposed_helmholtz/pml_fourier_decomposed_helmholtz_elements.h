@@ -152,7 +152,7 @@ namespace oomph
 
 
    /// Get k squared
-   double k_squared()
+   double k_squared() const
    {
  #ifdef PARANOID
     if (K_squared_pt==0)
@@ -165,6 +165,9 @@ namespace oomph
  #endif
     return *K_squared_pt;
    }
+   
+   /// Wavenumber used in PML
+   double wavenumber() const { return std::sqrt(k_squared()); }
    
    /// Get pointer to complex shift
    double*& alpha_pt()

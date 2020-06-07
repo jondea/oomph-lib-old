@@ -926,13 +926,13 @@ int main(int argc, char **argv)
  //Set up the problem
  ElasticAnnulusProblem<
  ProjectablePMLTimeHarmonicLinearElasticityElement
-  <TPMLTimeHarmonicLinearElasticityElement<2,3> > 
+  <TPMLTimeHarmonicLinearElasticityElement<2,3,AxisAlignedPMLElement<2> > > 
  > problem;
 
 #else
 
  //Set up the problem
- ElasticAnnulusProblem<TPMLTimeHarmonicLinearElasticityElement<2,3> > 
+ ElasticAnnulusProblem<TPMLTimeHarmonicLinearElasticityElement<2,3,AxisAlignedPMLElement<2> > > 
   problem;
 
 #endif

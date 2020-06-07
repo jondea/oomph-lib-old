@@ -328,8 +328,8 @@ void ElasticAnnulusProblem<ELASTICITY_ELEMENT>::complete_problem_setup()
   {     
    /// \short Upcast from GeneralisedElement to time harmonic 
    /// linear elasticity bulk element
-   PMLTimeHarmonicLinearElasticityEquations<2> *el_pt = 
-    dynamic_cast<PMLTimeHarmonicLinearElasticityEquations<2>*>
+   PMLTimeHarmonicLinearElasticityEquations<2,AxisAlignedPMLElement<2> > *el_pt = 
+    dynamic_cast<PMLTimeHarmonicLinearElasticityEquations<2,AxisAlignedPMLElement<2> >*>
     (mesh_pt()->element_pt(e));
    
    // Set the constitutive law
@@ -671,13 +671,13 @@ int main(int argc, char **argv)
  //Set up the problem
  ElasticAnnulusProblem<
  ProjectablePMLTimeHarmonicLinearElasticityElement
-  <QPMLTimeHarmonicLinearElasticityElement<2,3> > 
+  <QPMLTimeHarmonicLinearElasticityElement<2,3,AxisAlignedPMLElement<2> > > 
  > problem;
 
 #else
 
  //Set up the problem
- ElasticAnnulusProblem<QPMLTimeHarmonicLinearElasticityElement<2,3> > 
+ ElasticAnnulusProblem<QPMLTimeHarmonicLinearElasticityElement<2,3,AxisAlignedPMLElement<2> > > 
   problem;
 
 #endif

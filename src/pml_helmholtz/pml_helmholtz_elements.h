@@ -109,7 +109,7 @@ namespace oomph
 
 
   /// Get the square of wavenumber
-  double k_squared()
+  double k_squared() const
    {
 #ifdef PARANOID
     if (K_squared_pt==0)
@@ -122,6 +122,9 @@ namespace oomph
 #endif
     return *K_squared_pt;
    }
+
+  /// Get wavenumber (used in PML)
+  double wavenumber() const { return std::sqrt(k_squared()); }
 
   /// Alpha, wavenumber complex shift
   const double& alpha() const {return *Alpha_pt;}

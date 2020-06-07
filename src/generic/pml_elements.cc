@@ -306,11 +306,11 @@ void AxisAlignedPMLElement<DIM>::pml_transformation_jacobian(
     {
       if(this->Pml_direction_active[i])
       {
-        const double k_sq = this->k_squared();
+        const double k = this->wavenumber();
         const double nu_i = nu(x,i);
         const double delta_i = delta(i);
         pml_jacobian(i,i) = Pml_mapping_pt->dtransformed_nu_dnu(nu_i, delta_i,
-                                                                k_sq);
+                                                                k);
       }
       else
       {
@@ -342,13 +342,13 @@ void AxisAlignedPMLElement<DIM>::pml_transformation_jacobian(
     {
       if(this->Pml_direction_active[i])
       {
-        const double k_sq = this->k_squared();
+        const double k = this->wavenumber();
         const double nu_i = nu(x,i);
         const double delta_i = delta(i);
         pml_jacobian(i,i) = Pml_mapping_pt->dtransformed_nu_dnu(nu_i, delta_i,
-                                                                k_sq);
+                                                                k);
         transformed_x[i] = Pml_inner_boundary[i]
-                          + Pml_mapping_pt->transformed_nu(nu_i, delta_i, k_sq);
+                          + Pml_mapping_pt->transformed_nu(nu_i, delta_i, k);
       }
       else
       {
@@ -590,10 +590,10 @@ void Conformal2DPMLElement::pml_transformation_jacobian(
   
   const double NU = nu(s);
   
-  const double k_sq = k_squared();
-  std::complex<double> tnu = Pml_mapping_pt->transformed_nu(NU, delta, k_sq);
+  const double k = wavenumber();
+  std::complex<double> tnu = Pml_mapping_pt->transformed_nu(NU, delta, k);
   std::complex<double> dtnu_dnu = Pml_mapping_pt->dtransformed_nu_dnu(NU, delta,
-                                                                      k_sq);
+                                                                      k);
 
   assemble_conformal_jacobian(p, dx_inner_dacross, dp_dacross, NU, tnu,
                               dtnu_dnu, jacobian);
@@ -620,10 +620,10 @@ void Conformal2DPMLElement::pml_transformation_jacobian(
   
   const double NU = nu(s);
   
-  const double k_sq = k_squared();
-  std::complex<double> tnu = Pml_mapping_pt->transformed_nu(NU, delta, k_sq);
+  const double k = wavenumber();
+  std::complex<double> tnu = Pml_mapping_pt->transformed_nu(NU, delta, k);
   std::complex<double> dtnu_dnu = Pml_mapping_pt->dtransformed_nu_dnu(NU, delta,
-                                                                      k_sq);
+                                                                      k);
 
   assemble_conformal_jacobian(p, dx_inner_dacross, dp_dacross, NU, tnu,
                               dtnu_dnu, jacobian);

@@ -210,7 +210,13 @@ public:
  
  /// Access function for square of non-dim frequency
  double* &omega_sq_pt() {return Omega_sq_pt;}
- 
+
+ /// Wavenumber for the PML 
+ double wavenumber() const
+ {
+   return std::sqrt(2.0*(1.0+this->nu()) * this->omega_sq());
+ }
+
  /// Access function: Pointer to body force function
  BodyForceFctPt& body_force_fct_pt() {return Body_force_fct_pt;}
  

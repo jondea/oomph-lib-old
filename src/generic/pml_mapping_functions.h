@@ -87,20 +87,18 @@ public:
   /// coeffcients proposed by Bermudez et al
   std::complex<double> dtransformed_nu_dnu(const double& nu,
                                            const double& delta,
-                                           const double& wavenumber_squared,
+                                           const double& k,
                                            const double& alpha_shift=0.0)
   {
-    const double k = sqrt(wavenumber_squared);
     return 1.0 + MathematicalConstants::I / k * (1.0/std::fabs(delta - nu));
   }
   
   //
   std::complex<double> transformed_nu(const double& nu,
                                       const double& delta,
-                                      const double& wavenumber_squared,
+                                      const double& k,
                                       const double& alpha_shift=0.0)
   {
-    const double k = sqrt(wavenumber_squared);
     return nu - MathematicalConstants::I/k * log(1.0 - std::fabs(nu/delta));
   }
 
@@ -124,11 +122,10 @@ public:
   /// coeffcients proposed by Bermudez et al
   std::complex<double> dtransformed_nu_dnu(const double& nu,
                                            const double& delta,
-                                           const double& wavenumber_squared,
+                                           const double& k,
                                            const double& alpha_shift=0.0)
   {
     /// return \f$\gamma=1 + (i/k)(1/|outer_boundary - x|-1/|pml width|)\f$ 
-    const double k = sqrt(wavenumber_squared);
     return 1.0 + MathematicalConstants::I / k
                   *( 1.0/std::fabs(delta-nu) - 1.0/std::fabs(delta));
   }
@@ -136,10 +133,9 @@ public:
   //
   std::complex<double> transformed_nu(const double& nu,
                                       const double& delta,
-                                      const double& wavenumber_squared,
+                                      const double& k,
                                       const double& alpha_shift=0.0)
   {
-    const double k = sqrt(wavenumber_squared);
     return nu - MathematicalConstants::I/k
                   *( log(1.0-std::fabs(nu/delta)) - nu/std::fabs(delta) );
   }
@@ -164,20 +160,18 @@ public:
   /// coeffcients proposed by Bermudez et al
   std::complex<double> dtransformed_nu_dnu(const double& nu,
                                            const double& delta,
-                                           const double& wavenumber_squared,
+                                           const double& k,
                                            const double& alpha_shift=0.0)
   {
-    const double k = sqrt(wavenumber_squared);
     return MathematicalConstants::I / k * (1.0/std::fabs(delta - nu));
   }
   
   //
   std::complex<double> transformed_nu(const double& nu,
                                       const double& delta,
-                                      const double& wavenumber_squared,
+                                      const double& k,
                                       const double& alpha_shift=0.0)
   {
-    const double k = sqrt(wavenumber_squared);
     return MathematicalConstants::I/k * log(1.0 - std::fabs(nu/delta));
   }
 
@@ -205,7 +199,7 @@ public:
     const Vector<double>& x_outer,
     const Vector<double>& dx_inner_dacross,
     const Vector<double>& dp_dacross,
-    const double& k_squared,
+    const double& k,
     std::complex<double>& tnu,
     std::complex<double>& dtnu_dnu,
     std::complex<double>& dtnu_dacross,
@@ -233,7 +227,7 @@ public:
   virtual void pole_line_search(
     const Vector<double>& x_inner,
     const Vector<double>& p,
-    const double& k_squared,
+    const double& k,
     double& nun,
     std::complex<double>& tnu,
     const double& alpha=0.0) = 0;
