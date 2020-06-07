@@ -102,18 +102,23 @@ void DiagonalComplexMatrix::resize(const unsigned& N, const unsigned& M)
 #ifdef PARANOID
   if (M != N)
   {
-    throw OomphLibError();
+    throw OomphLibError("Diagonal matrices must be square",
+                        OOMPH_CURRENT_FUNCTION,
+                        OOMPH_EXCEPTION_LOCATION);
   }
 #endif
   Matrixdata.resize(N);
 }
 
-void DiagonalComplexMatrix::resize(const unsigned& N, const unsigned& M, std::complex<double> z)
+void DiagonalComplexMatrix::resize(const unsigned& N, const unsigned& M,
+                                   std::complex<double> z)
 {
 #ifdef PARANOID
   if (M != N)
   {
-    throw OomphLibError();
+    throw OomphLibError("Diagonal matrices must be square",
+                        OOMPH_CURRENT_FUNCTION,
+                        OOMPH_EXCEPTION_LOCATION);
   }
 #endif
   Matrixdata.resize(N, z);
@@ -127,7 +132,14 @@ void DiagonalComplexMatrix::multiply(const Vector<std::complex<double> > &x,
 #ifdef PARANOID
   if (x.size() != N)
   {
-    throw OomphLibError();
+    std::ostringstream error_message_stream;
+    error_message_stream 
+     << "The x vector is not the right size. It is " << x.size() 
+     << ", it should be " << N << std::endl;
+    
+    throw OomphLibError(error_message_stream.str(),
+                        OOMPH_CURRENT_FUNCTION,
+                        OOMPH_EXCEPTION_LOCATION);
   }
 #endif
 

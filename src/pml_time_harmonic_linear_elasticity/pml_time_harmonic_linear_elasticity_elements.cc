@@ -1011,7 +1011,9 @@ void PMLTimeHarmonicLinearElasticityEquations<DIM, PML_ELEMENT>::compute_error(
     }
   }
 }
- 
+
+template<unsigned DIM, class PML_ELEMENT>
+C1BermudezPMLMapping PMLTimeHarmonicLinearElasticityEquationsBase<DIM,PML_ELEMENT>::Default_pml_mapping;
  
 //Instantiate the required elements
 template class PMLTimeHarmonicLinearElasticityEquationsBase<2, AxisAlignedPMLElement<2>>;
@@ -1020,11 +1022,5 @@ template class PMLTimeHarmonicLinearElasticityEquations<2, AxisAlignedPMLElement
 template class QPMLTimeHarmonicLinearElasticityElement<3,3, AxisAlignedPMLElement<3>>;
 template class PMLTimeHarmonicLinearElasticityEquationsBase<3, AxisAlignedPMLElement<3>>;
 template class PMLTimeHarmonicLinearElasticityEquations<3, AxisAlignedPMLElement<3>>;
-
-template<> C1BermudezPMLMapping
-PMLTimeHarmonicLinearElasticityEquationsBase<2, AxisAlignedPMLElement<2> >::Default_pml_mapping;
-
-template<> C1BermudezPMLMapping
-PMLTimeHarmonicLinearElasticityEquationsBase<3, AxisAlignedPMLElement<3> >::Default_pml_mapping;
 
 }

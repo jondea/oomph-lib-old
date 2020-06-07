@@ -92,8 +92,8 @@ public:
    Elasticity_tensor_pt(0), Omega_sq_pt(&Default_omega_sq_value), 
    Body_force_fct_pt(0) 
  {
-   // this->Pml_mapping_pt = 
-   //   &PMLTimeHarmonicLinearElasticityEquationsBase::Default_pml_mapping;
+   this->Pml_mapping_pt = 
+     &PMLTimeHarmonicLinearElasticityEquationsBase::Default_pml_mapping;
  }
  
   /// Broken assignment operator
