@@ -91,9 +91,7 @@ namespace oomph
 /// This contains the generic maths. Shape functions, geometric
 /// mapping etc. must get implemented in derived class.
 //=============================================================
- template <class PML_ELEMENT>
- class PMLFourierDecomposedHelmholtzEquations :
-  public virtual PML_ELEMENT,
+ class PMLFourierDecomposedHelmholtzEquationsBase :
   public virtual FiniteElement
  {
 
@@ -106,22 +104,19 @@ namespace oomph
    std::complex<double>& f);
 
   /// Constructor
-   PMLFourierDecomposedHelmholtzEquations() : Source_fct_pt(0),
+   PMLFourierDecomposedHelmholtzEquationsBase() : Source_fct_pt(0),
    K_squared_pt(0), N_pml_fourier_pt(0)
    {
-     // Provide pointer to static method (Save memory)
-     this->Pml_mapping_pt = 
-     &PMLFourierDecomposedHelmholtzEquations::Default_pml_mapping;
-     
+     // Provide pointer to static data (Save memory)
      Alpha_pt = &Default_Physical_Constant_Value;
    }
 
 
   /// Broken copy constructor
-  PMLFourierDecomposedHelmholtzEquations(
-   const PMLFourierDecomposedHelmholtzEquations& dummy)
+  PMLFourierDecomposedHelmholtzEquationsBase(
+   const PMLFourierDecomposedHelmholtzEquationsBase& dummy)
    {
-    BrokenCopy::broken_copy("PMLFourierDecomposedHelmholtzEquations");
+    BrokenCopy::broken_copy("PMLFourierDecomposedHelmholtzEquationsBase");
    }
 
   /// Broken assignment operator
@@ -165,9 +160,6 @@ namespace oomph
  #endif
     return *K_squared_pt;
    }
-   
-   /// Wavenumber used in PML
-   double wavenumber() const { return std::sqrt(k_squared()); }
    
    /// Get pointer to complex shift
    double*& alpha_pt()
@@ -367,29 +359,6 @@ namespace oomph
     }
   }
 
-
- /// Add the element's contribution to its residual vector (wrapper)
- void fill_in_contribution_to_residuals(Vector<double> &residuals)
- {
-  //Call the generic residuals function with flag set to 0
-  //using a dummy matrix argument
-  fill_in_generic_residual_contribution_pml_fourier_decomposed_helmholtz(
-   residuals,GeneralisedElement::Dummy_matrix,0);
- }
-
-
-
- /// \short Add the element's contribution to its residual vector and
- /// element Jacobian matrix (wrapper)
- void fill_in_contribution_to_jacobian(Vector<double> &residuals,
-                                       DenseMatrix<double> &jacobian)
- {
-  //Call the generic routine with the flag set to 1
-  fill_in_generic_residual_contribution_pml_fourier_decomposed_helmholtz(
-   residuals,jacobian,1);
- }
-
-
  /// \short Return FE representation of function value u(s)
  /// at local coordinate s
  inline std::complex<double>
@@ -435,12 +404,6 @@ namespace oomph
 protected:
 
 
-
- /// Static so that the class doesn't need to instantiate a new default
- /// everytime it uses it
- static BermudezPMLMapping Default_pml_mapping;
-
-
  /// \short Shape/test functions and derivs w.r.t. to global coords at
  /// local coord. s; return  Jacobian of mapping
  virtual double
@@ -461,13 +424,6 @@ protected:
    Shape &test,
    DShape &dtestdx) const=0;
 
- /// \short Compute element residual Vector only (if flag=and/or element
- /// Jacobian matrix
- virtual void
-  fill_in_generic_residual_contribution_pml_fourier_decomposed_helmholtz(
-   Vector<double> &residuals, DenseMatrix<double> &jacobian,
-   const unsigned& flag);
-
  /// Pointer to source function:
  PMLFourierDecomposedHelmholtzSourceFctPt Source_fct_pt;
 
@@ -487,6 +443,67 @@ protected:
 
 
 
+// Create base class without PML elements, then create PMLFourier.... with element
+template <class PML_ELEMENT>
+class PMLFourierDecomposedHelmholtzEquations :
+ public virtual FiniteElement,
+ public virtual PML_ELEMENT,
+ public virtual PMLFourierDecomposedHelmholtzEquationsBase
+{
+
+  public:
+ /// Constructor
+  PMLFourierDecomposedHelmholtzEquations()
+  {
+    // Provide pointer to static method (Save memory)
+    this->Pml_mapping_pt = 
+    &PMLFourierDecomposedHelmholtzEquations::Default_pml_mapping;
+  }
+
+  /// Wavenumber used in PML
+  double wavenumber() const { return std::sqrt(this->k_squared()); }
+
+  ///
+  void values_to_be_pinned_on_outer_pml_boundary(Vector<unsigned>&
+                                                 values_to_pin)
+  {
+    PMLFourierDecomposedHelmholtzEquationsBase::
+     values_to_be_pinned_on_outer_pml_boundary(values_to_pin);
+  }
+
+   /// Add the element's contribution to its residual vector (wrapper)
+   void fill_in_contribution_to_residuals(Vector<double> &residuals)
+   {
+    //Call the generic residuals function with flag set to 0
+    //using a dummy matrix argument
+    fill_in_generic_residual_contribution_pml_fourier_decomposed_helmholtz(
+     residuals,GeneralisedElement::Dummy_matrix,0);
+   }
+
+   /// \short Add the element's contribution to its residual vector and
+   /// element Jacobian matrix (wrapper)
+   void fill_in_contribution_to_jacobian(Vector<double> &residuals,
+                                         DenseMatrix<double> &jacobian)
+   {
+    //Call the generic routine with the flag set to 1
+    fill_in_generic_residual_contribution_pml_fourier_decomposed_helmholtz(
+     residuals,jacobian,1);
+   }
+  
+  protected:
+  
+   /// \short Compute element residual Vector only (if flag=and/or element
+   /// Jacobian matrix
+   virtual void
+    fill_in_generic_residual_contribution_pml_fourier_decomposed_helmholtz(
+     Vector<double> &residuals, DenseMatrix<double> &jacobian,
+     const unsigned& flag);
+
+
+   /// Static so that the class doesn't need to instantiate a new default
+   /// everytime it uses it
+   static BermudezPMLMapping Default_pml_mapping;
+};
 
 ///////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////

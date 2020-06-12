@@ -43,8 +43,8 @@ namespace oomph
  const unsigned QPMLHelmholtzElement<DIM,NNODE_1D,PML_ELEMENT>::Initial_Nvalue = 2;
 
  /// PML Helmholtz equations static data, so that by default we can point to a 0
- template <unsigned DIM,class PML_ELEMENT>
- double PMLHelmholtzEquations<DIM,PML_ELEMENT>::Default_Physical_Constant_Value = 0.0; // faire: why is this not const (wasn't in navier_stokes.cc), but it is above
+ template <unsigned DIM>
+ double PMLHelmholtzEquationsBase<DIM>::Default_Physical_Constant_Value = 0.0; // faire: why is this not const (wasn't in navier_stokes.cc), but it is above
 
 //======================================================================
 /// Compute element residual Vector and/or element Jacobian matrix
@@ -61,7 +61,7 @@ fill_in_generic_residual_contribution_helmholtz(Vector<double> &residuals,
                                                 const unsigned& flag)
 {
  //Find out how many nodes there are
- const unsigned n_node = nnode();
+ const unsigned n_node = this->nnode();
 
  //Set up memory for the shape and test functions
  Shape psi(n_node), test(n_node);
@@ -81,8 +81,8 @@ fill_in_generic_residual_contribution_helmholtz(Vector<double> &residuals,
    double w = integral_pt()->weight(ipt);
 
    //Call the derivatives of the shape and test functions
-   double J = dshape_and_dtest_eulerian_at_knot_helmholtz(ipt,psi,dpsidx,
-                                                          test,dtestdx);
+   double J = this->dshape_and_dtest_eulerian_at_knot_helmholtz(
+     ipt, psi, dpsidx, test, dtestdx);
 
    //Premultiply the weights and the Jacobian
    double W = w*J;
@@ -101,13 +101,13 @@ fill_in_generic_residual_contribution_helmholtz(Vector<double> &residuals,
      // Loop over directions
      for(unsigned j=0;j<DIM;j++)
       {
-       interpolated_x[j] += raw_nodal_position(l,j)*psi(l);
+       interpolated_x[j] += this->raw_nodal_position(l,j)*psi(l);
       }
 
      //Get the nodal value of the helmholtz unknown
      const std::complex<double>
-      u_value(raw_nodal_value(l,u_index_helmholtz().real()),
-              raw_nodal_value(l,u_index_helmholtz().imag()));
+      u_value(this->raw_nodal_value(l, this->u_index_helmholtz().real()),
+              this->raw_nodal_value(l, this->u_index_helmholtz().imag()));
 
      //Add to the interpolated value
      interpolated_u += u_value*psi(l);
@@ -122,7 +122,7 @@ fill_in_generic_residual_contribution_helmholtz(Vector<double> &residuals,
    //Get source function
    //-------------------
    std::complex<double> source(0.0,0.0);
-   get_source_helmholtz(ipt,interpolated_x,source);
+   this->get_source_helmholtz(ipt,interpolated_x,source);
 
 
 
@@ -146,8 +146,8 @@ fill_in_generic_residual_contribution_helmholtz(Vector<double> &residuals,
 
    // Alpha adjusts the pml factors, the imaginary part produces cross terms
    std::complex<double> alpha_pml_k_squared_factor = std::complex<double>(
-     pml_k_squared_factor.real() - alpha() * pml_k_squared_factor.imag(),
-     alpha() * pml_k_squared_factor.real() + pml_k_squared_factor.imag());
+     pml_k_squared_factor.real() - this->alpha() * pml_k_squared_factor.imag(),
+     this->alpha() * pml_k_squared_factor.real() + pml_k_squared_factor.imag());
 
    // Assemble residuals and Jacobian
    //--------------------------------
@@ -159,8 +159,8 @@ fill_in_generic_residual_contribution_helmholtz(Vector<double> &residuals,
      //-------------------------------------------
 
      //Get the local equation
-     local_eqn_real = nodal_local_eqn(l,u_index_helmholtz().real());
-     local_eqn_imag = nodal_local_eqn(l,u_index_helmholtz().imag());
+     local_eqn_real = this->nodal_local_eqn(l,this->u_index_helmholtz().real());
+     local_eqn_imag = this->nodal_local_eqn(l,this->u_index_helmholtz().imag());
 
      /*IF it's not a boundary condition*/
      if(local_eqn_real >= 0)
@@ -169,8 +169,8 @@ fill_in_generic_residual_contribution_helmholtz(Vector<double> &residuals,
        residuals[local_eqn_real] +=
         ( source.real() -
           (
-           alpha_pml_k_squared_factor.real() * k_squared() * interpolated_u.real()
-          -alpha_pml_k_squared_factor.imag() * k_squared() * interpolated_u.imag()
+           alpha_pml_k_squared_factor.real() * this->k_squared() * interpolated_u.real()
+          -alpha_pml_k_squared_factor.imag() * this->k_squared() * interpolated_u.imag()
           )
         )*test(l)*W;
 
@@ -191,8 +191,8 @@ fill_in_generic_residual_contribution_helmholtz(Vector<double> &residuals,
          //Loop over the velocity shape functions again
          for(unsigned l2=0;l2<n_node;l2++)
           {
-           local_unknown_real = nodal_local_eqn(l2,u_index_helmholtz().real());
-           local_unknown_imag = nodal_local_eqn(l2,u_index_helmholtz().imag());
+           local_unknown_real = this->nodal_local_eqn(l2,this->u_index_helmholtz().real());
+           local_unknown_imag = this->nodal_local_eqn(l2,this->u_index_helmholtz().imag());
 
            //If at a non-zero degree of freedom add in the entry
            if(local_unknown_real >= 0)
@@ -205,7 +205,7 @@ fill_in_generic_residual_contribution_helmholtz(Vector<double> &residuals,
               }
              // Add the helmholtz contribution
              jacobian(local_eqn_real,local_unknown_real)
-              += -alpha_pml_k_squared_factor.real() * k_squared()*psi(l2)*test(l)*W;
+              += -alpha_pml_k_squared_factor.real() * this->k_squared()*psi(l2)*test(l)*W;
             }
            //If at a non-zero degree of freedom add in the entry
            if(local_unknown_imag >= 0)
@@ -219,7 +219,7 @@ fill_in_generic_residual_contribution_helmholtz(Vector<double> &residuals,
               }
              // Add the helmholtz contribution
              jacobian(local_eqn_real,local_unknown_imag)
-              += alpha_pml_k_squared_factor.imag() * k_squared()*psi(l2)*test(l)*W;
+              += alpha_pml_k_squared_factor.imag() * this->k_squared()*psi(l2)*test(l)*W;
             }
           }
         }
@@ -229,8 +229,8 @@ fill_in_generic_residual_contribution_helmholtz(Vector<double> &residuals,
      //------------------------------------------------
 
      //Get the local equation
-     local_eqn_imag = nodal_local_eqn(l,u_index_helmholtz().imag());
-     local_eqn_real = nodal_local_eqn(l,u_index_helmholtz().real());
+     local_eqn_imag = this->nodal_local_eqn(l,this->u_index_helmholtz().imag());
+     local_eqn_real = this->nodal_local_eqn(l,this->u_index_helmholtz().real());
 
      /*IF it's not a boundary condition*/
      if(local_eqn_imag >= 0)
@@ -239,8 +239,8 @@ fill_in_generic_residual_contribution_helmholtz(Vector<double> &residuals,
        residuals[local_eqn_imag] +=
         ( source.imag() -
          (
-           alpha_pml_k_squared_factor.imag() * k_squared()*interpolated_u.real()
-         + alpha_pml_k_squared_factor.real() * k_squared()*interpolated_u.imag()
+           alpha_pml_k_squared_factor.imag() * this->k_squared()*interpolated_u.real()
+         + alpha_pml_k_squared_factor.real() * this->k_squared()*interpolated_u.imag()
          )
         )*test(l)*W;
 
@@ -260,8 +260,8 @@ fill_in_generic_residual_contribution_helmholtz(Vector<double> &residuals,
          //Loop over the velocity shape functions again
          for(unsigned l2=0;l2<n_node;l2++)
           {
-           local_unknown_imag = nodal_local_eqn(l2,u_index_helmholtz().imag());
-           local_unknown_real = nodal_local_eqn(l2,u_index_helmholtz().real());
+           local_unknown_imag = this->nodal_local_eqn(l2,this->u_index_helmholtz().imag());
+           local_unknown_real = this->nodal_local_eqn(l2,this->u_index_helmholtz().real());
 
            //If at a non-zero degree of freedom add in the entry
            if(local_unknown_imag >= 0)
@@ -274,7 +274,7 @@ fill_in_generic_residual_contribution_helmholtz(Vector<double> &residuals,
               }
              // Add the helmholtz contribution
              jacobian(local_eqn_imag,local_unknown_imag)
-              += -alpha_pml_k_squared_factor.real()*k_squared() * psi(l2)*test(l)*W;
+              += -alpha_pml_k_squared_factor.real()*this->k_squared() * psi(l2)*test(l)*W;
             }
            if(local_unknown_real >= 0)
             {
@@ -286,7 +286,7 @@ fill_in_generic_residual_contribution_helmholtz(Vector<double> &residuals,
               }
              // Add the helmholtz contribution
              jacobian(local_eqn_imag,local_unknown_real)
-              += -alpha_pml_k_squared_factor.imag()*k_squared() * psi(l2)*test(l)*W;
+              += -alpha_pml_k_squared_factor.imag()*this->k_squared() * psi(l2)*test(l)*W;
             }
           }
         }
@@ -299,8 +299,8 @@ fill_in_generic_residual_contribution_helmholtz(Vector<double> &residuals,
 //======================================================================
 /// Self-test:  Return 0 for OK
 //======================================================================
-template <unsigned DIM, class PML_ELEMENT>
-unsigned  PMLHelmholtzEquations<DIM, PML_ELEMENT>::self_test()
+template <unsigned DIM>
+unsigned  PMLHelmholtzEquationsBase<DIM>::self_test()
 {
 
  bool passed=true;
@@ -331,9 +331,9 @@ unsigned  PMLHelmholtzEquations<DIM, PML_ELEMENT>::self_test()
 ///
 /// nplot points in each coordinate direction
 //======================================================================
-template <unsigned DIM, class PML_ELEMENT>
-void PMLHelmholtzEquations<DIM, PML_ELEMENT>::output(std::ostream &outfile,
-                                    const unsigned &nplot)
+template <unsigned DIM>
+void PMLHelmholtzEquationsBase<DIM>::output(std::ostream &outfile,
+                                            const unsigned &nplot)
 {
 
  //Vector of local coordinates
@@ -377,10 +377,10 @@ void PMLHelmholtzEquations<DIM, PML_ELEMENT>::output(std::ostream &outfile,
 ///
 /// Output at nplot points in each coordinate direction
 //======================================================================
-template <unsigned DIM, class PML_ELEMENT>
-void PMLHelmholtzEquations<DIM, PML_ELEMENT>::output_real(std::ostream &outfile,
-					     const double& phi,
-					     const unsigned &nplot)
+template <unsigned DIM>
+void PMLHelmholtzEquationsBase<DIM>::output_real(std::ostream &outfile,
+                                                 const double& phi,
+                                                 const unsigned &nplot)
 {
  // Vector of local coordinates
  Vector<double> s(DIM);
@@ -420,8 +420,8 @@ void PMLHelmholtzEquations<DIM, PML_ELEMENT>::output_real(std::ostream &outfile,
 ///
 /// Output at nplot points in each coordinate direction
 //======================================================================
-template <unsigned DIM, class PML_ELEMENT>
-void PMLHelmholtzEquations<DIM, PML_ELEMENT>::output_total_real(
+template <unsigned DIM>
+void PMLHelmholtzEquationsBase<DIM>::output_total_real(
  std::ostream &outfile,
  FiniteElement::SteadyExactSolutionFctPt incoming_wave_fct_pt,
  const double& phi,
@@ -478,8 +478,8 @@ void PMLHelmholtzEquations<DIM, PML_ELEMENT>::output_total_real(
 ///
 /// Output at nplot points in each coordinate direction
 //======================================================================
-template <unsigned DIM, class PML_ELEMENT>
-void  PMLHelmholtzEquations<DIM, PML_ELEMENT>::output_imag(std::ostream &outfile,
+template <unsigned DIM>
+void  PMLHelmholtzEquationsBase<DIM>::output_imag(std::ostream &outfile,
                                            const double& phi,
                                            const unsigned &nplot)
 {
@@ -516,9 +516,9 @@ void  PMLHelmholtzEquations<DIM, PML_ELEMENT>::output_imag(std::ostream &outfile
 ///
 /// nplot points in each coordinate direction
 //======================================================================
-template <unsigned DIM, class PML_ELEMENT>
-void PMLHelmholtzEquations<DIM, PML_ELEMENT>::output(FILE* file_pt,
-					const unsigned &nplot)
+template <unsigned DIM>
+void PMLHelmholtzEquationsBase<DIM>::output(FILE* file_pt,
+                                            const unsigned &nplot)
 {
  // Vector of local coordinates
  Vector<double> s(DIM);
@@ -562,10 +562,10 @@ void PMLHelmholtzEquations<DIM, PML_ELEMENT>::output(FILE* file_pt,
  ///
  ///   x,y,u_exact    or    x,y,z,u_exact
 //======================================================================
-template <unsigned DIM, class PML_ELEMENT>
-void PMLHelmholtzEquations<DIM, PML_ELEMENT>::
+template <unsigned DIM>
+void PMLHelmholtzEquationsBase<DIM>::
 output_fct(std::ostream &outfile,const unsigned &nplot,
-	   FiniteElement::SteadyExactSolutionFctPt exact_soln_pt)
+           FiniteElement::SteadyExactSolutionFctPt exact_soln_pt)
 {
  // Vector of local coordinates
  Vector<double> s(DIM);
@@ -617,8 +617,8 @@ output_fct(std::ostream &outfile,const unsigned &nplot,
 ///
 /// Output at nplot points in each coordinate direction
 //======================================================================
-template <unsigned DIM, class PML_ELEMENT>
-void PMLHelmholtzEquations<DIM,PML_ELEMENT>::output_real_fct(
+template <unsigned DIM>
+void PMLHelmholtzEquationsBase<DIM>::output_real_fct(
  std::ostream &outfile,
  const double& phi,
  const unsigned &nplot,
@@ -672,8 +672,8 @@ void PMLHelmholtzEquations<DIM,PML_ELEMENT>::output_real_fct(
 ///
 /// Output at nplot points in each coordinate direction
 //======================================================================
-template <unsigned DIM, class PML_ELEMENT>
-void PMLHelmholtzEquations<DIM,PML_ELEMENT>::output_imag_fct(
+template <unsigned DIM>
+void PMLHelmholtzEquationsBase<DIM>::output_imag_fct(
  std::ostream &outfile,
  const double& phi,
  const unsigned &nplot,
@@ -727,10 +727,12 @@ void PMLHelmholtzEquations<DIM,PML_ELEMENT>::output_imag_fct(
  /// Plot error at a given number of plot points.
  ///
 //======================================================================
-template <unsigned DIM, class PML_ELEMENT>
-void PMLHelmholtzEquations<DIM,PML_ELEMENT>::compute_error(std::ostream &outfile,
-                       FiniteElement::SteadyExactSolutionFctPt exact_soln_pt,
-                       double& error, double& norm)
+template <unsigned DIM>
+void PMLHelmholtzEquationsBase<DIM>::compute_error(
+  std::ostream &outfile,
+  FiniteElement::SteadyExactSolutionFctPt exact_soln_pt,
+  double& error,
+  double& norm)
 {
 
  // Initialise
@@ -808,8 +810,8 @@ void PMLHelmholtzEquations<DIM,PML_ELEMENT>::compute_error(std::ostream &outfile
 //======================================================================
  /// Compute norm of fe solution
 //======================================================================
-template <unsigned DIM, class PML_ELEMENT>
-void PMLHelmholtzEquations<DIM, PML_ELEMENT>::compute_norm(double& norm)
+template <unsigned DIM>
+void PMLHelmholtzEquationsBase<DIM>::compute_norm(double& norm)
 {
 
  // Initialise
@@ -862,6 +864,10 @@ void PMLHelmholtzEquations<DIM, PML_ELEMENT>::compute_norm(double& norm)
 //====================================================================
 template<unsigned DIM, class PML_ELEMENT>
 BermudezPMLMapping PMLHelmholtzEquations<DIM,PML_ELEMENT>::Default_pml_mapping;
+
+template class PMLHelmholtzEquationsBase<1>;
+template class PMLHelmholtzEquationsBase<2>;
+template class PMLHelmholtzEquationsBase<3>;
 
 template class PMLHelmholtzEquations<1,AxisAlignedPMLElement<1>>;
 template class PMLHelmholtzEquations<2,AxisAlignedPMLElement<2>>;

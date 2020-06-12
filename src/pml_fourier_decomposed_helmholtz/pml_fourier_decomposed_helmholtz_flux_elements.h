@@ -273,13 +273,13 @@ namespace oomph
     std::complex<unsigned>(0,1);
 
    // Now read out indices from bulk element
-   PMLFourierDecomposedHelmholtzEquations* eqn_pt =
-    dynamic_cast<PMLFourierDecomposedHelmholtzEquations*>(bulk_el_pt);
+   PMLFourierDecomposedHelmholtzEquationsBase* eqn_pt =
+    dynamic_cast<PMLFourierDecomposedHelmholtzEquationsBase*>(bulk_el_pt);
    //If the cast has failed die
    if(eqn_pt==0)
     {
      std::string error_string =
-      "Bulk element must inherit from PMLFourierDecomposedHelmholtzEquations.";
+      "Bulk element must inherit from PMLFourierDecomposedHelmholtzEquationsBase.";
      throw OomphLibError(
       error_string,
       OOMPH_CURRENT_FUNCTION,
@@ -722,12 +722,12 @@ PMLFourierDecomposedHelmholtzPowerMonitorElement
    // We assume that the dimension of the full problem is the same
    // as the dimension of the node, if this is not the case you will have
    // to write custom elements, sorry
-   PMLFourierDecomposedHelmholtzEquations* eqn_pt =
-   dynamic_cast<PMLFourierDecomposedHelmholtzEquations*>(bulk_el_pt);
+   PMLFourierDecomposedHelmholtzEquationsBase* eqn_pt =
+   dynamic_cast<PMLFourierDecomposedHelmholtzEquationsBase*>(bulk_el_pt);
   if(eqn_pt==0)
    {
     std::string error_string =
-     "Bulk element must inherit from PMLFourierDecomposedHelmholtzEquations.";
+     "Bulk element must inherit from PMLFourierDecomposedHelmholtzEquationsBase.";
     throw OomphLibError(
      error_string,
      OOMPH_CURRENT_FUNCTION,

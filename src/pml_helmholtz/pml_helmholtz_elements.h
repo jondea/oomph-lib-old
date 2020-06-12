@@ -57,13 +57,11 @@ namespace oomph
 
 //=============================================================
 /// A class for all isoparametric elements that solve the
-/// Helmholtz equations with pml capabilities.
-/// This contains the generic maths. Shape functions, geometric
-/// mapping etc. must get implemented in derived class.
+/// Helmholtz equations with PMLs, but without any of the PML
+/// capability or depedence on a PML element template parameter
 //=============================================================
- template <unsigned DIM, class PML_ELEMENT>
- class PMLHelmholtzEquations :
-  public virtual PML_ELEMENT,
+ template <unsigned DIM>
+ class PMLHelmholtzEquationsBase :
   public virtual FiniteElement
  {
  public:
@@ -71,33 +69,33 @@ namespace oomph
   /// \short Function pointer to source function fct(x,f(x)) --
   /// x is a Vector!
   typedef void (*PMLHelmholtzSourceFctPt)(const Vector<double>& x,
-					  std::complex<double>& f);
+                std::complex<double>& f);
 
   /// Constructor
-  PMLHelmholtzEquations() : Source_fct_pt(0),
-			    K_squared_pt(0)
+  PMLHelmholtzEquationsBase() :
+    Source_fct_pt(0),
+    K_squared_pt(0)
    {
-    // Provide pointer to static method (Save memory)
-    this->Pml_mapping_pt = &PMLHelmholtzEquations::Default_pml_mapping;
+    // Provide pointer to static data
     Alpha_pt = &Default_Physical_Constant_Value;
    }
 
 
   /// Broken copy constructor
-  PMLHelmholtzEquations(const PMLHelmholtzEquations& dummy)
+  PMLHelmholtzEquationsBase(const PMLHelmholtzEquationsBase& dummy)
    {
-    BrokenCopy::broken_copy("PMLHelmholtzEquations");
+    BrokenCopy::broken_copy("PMLHelmholtzEquationsBase");
    }
 
   /// Broken assignment operator
-//Commented out broken assignment operator because this can lead to a conflict warning
-//when used in the virtual inheritence hierarchy. Essentially the compiler doesn't
-//realise that two separate implementations of the broken function are the same and so,
-//quite rightly, it shouts.
-  /*void operator=(const PMLHelmholtzEquations&)
-    {
-    BrokenCopy::broken_assign("PMLHelmholtzEquations");
-    }*/
+  // Commented out broken assignment operator because this can lead to a conflict warning
+  // when used in the virtual inheritence hierarchy. Essentially the compiler doesn't
+  // realise that two separate implementations of the broken function are the same and so,
+  // quite rightly, it shouts.
+  // void operator=(const PMLHelmholtzEquations&)
+  //  {
+  //   BrokenCopy::broken_assign("PMLHelmholtzEquations");
+  //  }
 
   /// \short Return the index at which the unknown value
   /// is stored.
@@ -107,29 +105,25 @@ namespace oomph
   /// Get pointer to k_squared
   double*& k_squared_pt(){ return K_squared_pt; }
 
-
   /// Get the square of wavenumber
   double k_squared() const
    {
 #ifdef PARANOID
     if (K_squared_pt==0)
-    {
-     throw OomphLibError(
-      "Please set pointer to k_squared using access fct to pointer!",
-      OOMPH_CURRENT_FUNCTION,
-      OOMPH_EXCEPTION_LOCATION);
-    }
+     {
+      throw OomphLibError(
+       "Please set pointer to k_squared using access fct to pointer!",
+       OOMPH_CURRENT_FUNCTION,
+       OOMPH_EXCEPTION_LOCATION);
+     }
 #endif
     return *K_squared_pt;
    }
 
-  /// Get wavenumber (used in PML)
-  double wavenumber() const { return std::sqrt(k_squared()); }
-
   /// Alpha, wavenumber complex shift
   const double& alpha() const {return *Alpha_pt;}
 
-/// Pointer to Alpha, wavenumber complex shift
+  /// Pointer to Alpha, wavenumber complex shift
   double* &alpha_pt() {return Alpha_pt;}
 
 
@@ -143,8 +137,8 @@ namespace oomph
   /// \short Write values of the i-th scalar field at the plot points. Needs
   /// to be implemented for each new specific element type.
   void scalar_value_paraview(std::ofstream& file_out,
-			     const unsigned& i,
-			     const unsigned& nplot) const
+                             const unsigned& i,
+                             const unsigned& nplot) const
    {
 
     //Vector of local coordinates
@@ -153,71 +147,71 @@ namespace oomph
     // Loop over plot points
     unsigned num_plot_points=nplot_points_paraview(nplot);
     for (unsigned iplot=0;iplot<num_plot_points;iplot++)
-    {
-     // Get local coordinates of plot point
-     get_s_plot(iplot,nplot,s);
-     std::complex<double> u(interpolated_u_pml_helmholtz(s));
-
-     // Paraview need to ouput the fields separately so it loops through all
-     // the elements twice
-     switch(i)
      {
-      // Real part first
-     case 0:
-      file_out << u.real() << std::endl;
-      break;
+     // Get local coordinates of plot point
+      get_s_plot(iplot,nplot,s);
+      std::complex<double> u(interpolated_u_pml_helmholtz(s));
 
-      // Imaginary part second
-     case 1:
-      file_out << u.imag() << std::endl;
-      break;
+      // Paraview need to ouput the fields separately so it loops through all
+      // the elements twice
+      switch(i)
+       {
+        // Real part first
+       case 0:
+        file_out << u.real() << std::endl;
+        break;
 
-      // Never get here
-     default:
+        // Imaginary part second
+       case 1:
+        file_out << u.imag() << std::endl;
+        break;
+
+        // Never get here
+       default:
 #ifdef PARANOID
-      std::stringstream error_stream;
-      error_stream
-       << "PML Helmholtz elements only store 2 fields (real and imaginary) "
-       << "so i must be 0 or 1 rather "
-       << "than " << i << std::endl;
-      throw OomphLibError(
-       error_stream.str(),
-       OOMPH_CURRENT_FUNCTION,
-       OOMPH_EXCEPTION_LOCATION);
+        std::stringstream error_stream;
+        error_stream
+         << "PML Helmholtz elements only store 2 fields (real and imaginary) "
+         << "so i must be 0 or 1 rather "
+         << "than " << i << std::endl;
+        throw OomphLibError(
+         error_stream.str(),
+         OOMPH_CURRENT_FUNCTION,
+         OOMPH_EXCEPTION_LOCATION);
 #endif
-      break;
+        break;
 
+       }
      }
-    }
    }
 
   /// \short Write values of the i-th scalar field at the plot points. Needs
   /// to be implemented for each new specific element type.
   void scalar_value_fct_paraview(std::ofstream& file_out,
-				 const unsigned& i,
-				 const unsigned& nplot,
-				 FiniteElement::SteadyExactSolutionFctPt
-				 exact_soln_pt) const
+                                 const unsigned& i,
+                                 const unsigned& nplot,
+                                 FiniteElement::SteadyExactSolutionFctPt
+                                 exact_soln_pt) const
    {
     //Vector of local coordinates
     Vector<double> s(DIM);
 
     // Vector for coordinates
     Vector<double> x(DIM);
- 
+
     // Exact solution Vector
     Vector<double> exact_soln(2);
- 
+
     // Loop over plot points
     unsigned num_plot_points=nplot_points_paraview(nplot);
     for (unsigned iplot=0;iplot<num_plot_points;iplot++)
     {
      // Get local coordinates of plot point
      get_s_plot(iplot,nplot,s);
-     
+
      // Get x position as Vector
      interpolated_x(s,x);
-   
+
      // Get exact solution at this point
      (*exact_soln_pt)(x,exact_soln);
 
@@ -253,42 +247,42 @@ namespace oomph
      }
     }
    }
-  
+
   /// \short Name of the i-th scalar field. Default implementation
   /// returns V1 for the first one, V2 for the second etc. Can (should!)
   /// be overloaded with more meaningful names in specific elements.
   std::string scalar_name_paraview(const unsigned& i) const
    {
     switch(i)
-    {
-    case 0:
-     return "Real part";
-     break;
-
-    case 1:
-     return "Imaginary part";
-     break;
-
-     // Never get here
-    default:
+     {
+     case 0:
+      return "Real part";
+      break;
+      
+     case 1:
+      return "Imaginary part";
+      break;
+      
+      // Never get here
+     default:
 #ifdef PARANOID
-     std::stringstream error_stream;
-     error_stream
-      << "PML Helmholtz elements only store 2 fields (real and imaginary) "
-      << "so i must be 0 or 1 rather "
-      << "than " << i << std::endl;
-     throw OomphLibError(
-      error_stream.str(),
-      OOMPH_CURRENT_FUNCTION,
-      OOMPH_EXCEPTION_LOCATION);
+      std::stringstream error_stream;
+      error_stream
+       << "PML Helmholtz elements only store 2 fields (real and imaginary) "
+       << "so i must be 0 or 1 rather "
+       << "than " << i << std::endl;
+      throw OomphLibError(
+       error_stream.str(),
+       OOMPH_CURRENT_FUNCTION,
+       OOMPH_EXCEPTION_LOCATION);
 #endif
-
-     // Dummy return for the default statement
-     return " ";
-     break;
-    }
+      
+      // Dummy return for the default statement
+      return " ";
+      break;
+     }
    }
-
+  
   /// Output with default number of plot points
   void output(std::ostream &outfile)
    {
@@ -300,18 +294,16 @@ namespace oomph
   /// x,y,z,u_re,u_im at  n_plot^DIM plot points
   void output(std::ostream &outfile, const unsigned &n_plot);
 
-
-/// Output function for real part of full time-dependent solution
-/// constructed by adding the scattered field
-///  u = Re( (u_r +i u_i) exp(-i omega t)
-/// at phase angle omega t = phi computed here, to the corresponding
-/// incoming wave specified via the function pointer.
+  /// Output function for real part of full time-dependent solution
+  /// constructed by adding the scattered field
+  ///  u = Re( (u_r +i u_i) exp(-i omega t)
+  /// at phase angle omega t = phi computed here, to the corresponding
+  /// incoming wave specified via the function pointer.
   void  output_total_real(
    std::ostream &outfile,
    FiniteElement::SteadyExactSolutionFctPt incoming_wave_fct_pt,
    const double& phi,
    const unsigned &nplot);
-
 
   /// \short Output function for real part of full time-dependent solution
   /// u = Re( (u_r +i u_i) exp(-i omega t))
@@ -319,7 +311,7 @@ namespace oomph
   /// x,y,u   or    x,y,z,u at n_plot plot points in each coordinate
   /// direction
   void output_real(std::ostream &outfile, const double& phi,
-		   const unsigned &n_plot);
+                   const unsigned &n_plot);
 
   /// \short Output function for imaginary part of full time-dependent solution
   /// u = Im( (u_r +i u_i) exp(-i omega t) )
@@ -327,8 +319,8 @@ namespace oomph
   /// x,y,u   or    x,y,z,u at n_plot plot points in each coordinate
   /// direction
   void output_imag(std::ostream &outfile, const double& phi,
-		   const unsigned &n_plot);
-
+                   const unsigned &n_plot);
+  
   /// C_style output with default number of plot points
   void output(FILE* file_pt)
    {
@@ -343,32 +335,32 @@ namespace oomph
   /// Output exact soln: x,y,u_re_exact,u_im_exact
   /// or x,y,z,u_re_exact,u_im_exact at n_plot^DIM plot points
   void output_fct(std::ostream &outfile, const unsigned &n_plot,
-		  FiniteElement::SteadyExactSolutionFctPt exact_soln_pt);
+                  FiniteElement::SteadyExactSolutionFctPt exact_soln_pt);
 
   /// \short Output exact soln: (dummy time-dependent version to
   /// keep intel compiler happy)
   virtual void output_fct(std::ostream &outfile, const unsigned &n_plot,
-			  const double& time,
-			  FiniteElement::UnsteadyExactSolutionFctPt
-			  exact_soln_pt)
+                          const double& time,
+                          FiniteElement::UnsteadyExactSolutionFctPt
+                          exact_soln_pt)
    {
     throw OomphLibError(
      "There is no time-dependent output_fct() for PMLHelmholtz elements.",
      OOMPH_CURRENT_FUNCTION,
      OOMPH_EXCEPTION_LOCATION);
    }
-
-
-
+  
+  
+  
   /// \short Output function for real part of full time-dependent fct
   /// u = Re( (u_r +i u_i) exp(-i omega t)
   /// at phase angle omega t = phi.
   /// x,y,u   or    x,y,z,u at n_plot plot points in each coordinate
   /// direction
   void output_real_fct(std::ostream &outfile,
-		       const double& phi,
-		       const unsigned &n_plot,
-		       FiniteElement::SteadyExactSolutionFctPt exact_soln_pt);
+                       const double& phi,
+                       const unsigned &n_plot,
+                       FiniteElement::SteadyExactSolutionFctPt exact_soln_pt);
 
   /// \short Output function for imaginary part of full time-dependent fct
   /// u = Im( (u_r +i u_i) exp(-i omega t))
@@ -376,21 +368,21 @@ namespace oomph
   /// x,y,u   or    x,y,z,u at n_plot plot points in each coordinate
   /// direction
   void output_imag_fct(std::ostream &outfile,
-		       const double& phi,
-		       const unsigned &n_plot,
-		       FiniteElement::SteadyExactSolutionFctPt exact_soln_pt);
+                       const double& phi,
+                       const unsigned &n_plot,
+                       FiniteElement::SteadyExactSolutionFctPt exact_soln_pt);
 
 
   /// Get error against and norm of exact solution
   void compute_error(std::ostream &outfile,
-		     FiniteElement::SteadyExactSolutionFctPt exact_soln_pt,
-		     double& error, double& norm);
+                     FiniteElement::SteadyExactSolutionFctPt exact_soln_pt,
+                     double& error, double& norm);
 
 
   /// Dummy, time dependent error checker
   void compute_error(std::ostream &outfile,
-		     FiniteElement::UnsteadyExactSolutionFctPt exact_soln_pt,
-		     const double& time, double& error, double& norm)
+                     FiniteElement::UnsteadyExactSolutionFctPt exact_soln_pt,
+                     const double& time, double& error, double& norm)
    {
     throw OomphLibError(
      "There is no time-dependent compute_error() for PMLHelmholtz elements.",
@@ -432,8 +424,8 @@ namespace oomph
   /// \short Pure virtual function in which we specify the
   /// values to be pinned (and set to zero) on the outer edge of
   /// the pml layer. All of them! Vector is resized internally.
-  void values_to_be_pinned_on_outer_pml_boundary(Vector<unsigned>&
-						 values_to_pin)
+  void values_to_be_pinned_on_outer_pml_boundary(
+    Vector<unsigned>& values_to_pin)
    {
     values_to_pin.resize(2);
 
@@ -444,7 +436,7 @@ namespace oomph
 
   /// Get flux: flux[i] = du/dx_i for real and imag part
   void get_flux(const Vector<double>& s,
-		Vector<std::complex <double> >& flux) const
+                Vector<std::complex <double> >& flux) const
    {
     //Find out how many nodes there are in the element
     const unsigned n_node = nnode();
@@ -478,28 +470,6 @@ namespace oomph
      }
     }
    }
-
-
-  /// Add the element's contribution to its residual vector (wrapper)
-  void fill_in_contribution_to_residuals(Vector<double> &residuals)
-   {
-    //Call the generic residuals function with flag set to 0
-    //using a dummy matrix argument
-    fill_in_generic_residual_contribution_helmholtz(
-     residuals,GeneralisedElement::Dummy_matrix,0);
-   }
-
-
-  /// \short Add the element's contribution to its residual vector and
-  /// element Jacobian matrix (wrapper)
-  void fill_in_contribution_to_jacobian(Vector<double> &residuals,
-					DenseMatrix<double> &jacobian)
-   {
-    //Call the generic routine with the flag set to 1
-    fill_in_generic_residual_contribution_helmholtz(residuals,jacobian,1);
-   }
-
-
 
   /// \short Return FE representation of function value u_helmholtz(s)
   /// at local coordinate s
@@ -539,9 +509,6 @@ namespace oomph
   /// \short Self-test: Return 0 for OK
   unsigned self_test();
 
-  /// Static so that the class doesn't need to instantiate a new default
-  /// everytime it uses it
-  static BermudezPMLMapping Default_pml_mapping;
   /// \short The number of "DOF types" that degrees of freedom in this element
   /// are sub-divided into: real and imaginary part
   unsigned ndof_types() const
@@ -606,10 +573,12 @@ namespace oomph
 
   /// \short Shape/test functions and derivs w.r.t. to global coords at
   /// local coord. s; return  Jacobian of mapping
-  virtual double dshape_and_dtest_eulerian_helmholtz(const Vector<double> &s,
-						     Shape &psi,
-						     DShape &dpsidx, Shape &test,
-						     DShape &dtestdx) const=0;
+  virtual double dshape_and_dtest_eulerian_helmholtz(
+    const Vector<double> &s,
+    Shape &psi,
+    DShape &dpsidx, 
+    Shape &test,
+    DShape &dtestdx) const=0;
 
 
   /// \short Shape/test functions and derivs w.r.t. to global coords at
@@ -621,18 +590,12 @@ namespace oomph
    Shape &test,
    DShape &dtestdx) const=0;
 
-  /// \short Compute element residual Vector only (if flag=and/or element
-  /// Jacobian matrix
-  virtual void fill_in_generic_residual_contribution_helmholtz(
-   Vector<double> &residuals, DenseMatrix<double> &jacobian,
-   const unsigned& flag);
-
   /// Pointer to wavenumber complex shift
   double *Alpha_pt;
 
   /// Pointer to source function:
   PMLHelmholtzSourceFctPt Source_fct_pt;
-
+  
   /// Pointer to wave number (must be set!)
   double* K_squared_pt;
 
@@ -642,6 +605,69 @@ namespace oomph
  };
 
 
+ //=============================================================
+ /// A class for all isoparametric elements that solve the
+ /// Helmholtz equations with pml capabilities.
+ /// This contains the generic maths. Shape functions, geometric
+ /// mapping etc. must get implemented in derived class.
+ //=============================================================
+ template <unsigned DIM, class PML_ELEMENT>
+ class PMLHelmholtzEquations :
+  public virtual FiniteElement,
+  public virtual PML_ELEMENT,
+  public virtual PMLHelmholtzEquationsBase<DIM>
+ {
+ public:
+  
+  /// Constructor
+  PMLHelmholtzEquations() : PMLHelmholtzEquationsBase<DIM>()
+   {
+    // Provide pointer to static method (Save memory)
+    this->Pml_mapping_pt = &PMLHelmholtzEquations::Default_pml_mapping;
+   }
+  
+  /// Add the element's contribution to its residual vector (wrapper)
+  void fill_in_contribution_to_residuals(Vector<double> &residuals)
+   {
+    //Call the generic residuals function with flag set to 0
+    //using a dummy matrix argument
+    fill_in_generic_residual_contribution_helmholtz(
+     residuals,GeneralisedElement::Dummy_matrix,0);
+   }
+  
+  
+  /// \short Add the element's contribution to its residual vector and
+  /// element Jacobian matrix (wrapper)
+  void fill_in_contribution_to_jacobian(Vector<double> &residuals,
+                                        DenseMatrix<double> &jacobian)
+   {
+    //Call the generic routine with the flag set to 1
+    fill_in_generic_residual_contribution_helmholtz(residuals,jacobian,1);
+   }
+
+  /// Get wavenumber (used in PML)
+  double wavenumber() const { return std::sqrt(this->k_squared()); }
+
+  /// Resolve amibiguity of which function to call between two base classes
+  void values_to_be_pinned_on_outer_pml_boundary(
+    Vector<unsigned>& values_to_pin)
+   {
+    PMLHelmholtzEquationsBase<DIM>::values_to_be_pinned_on_outer_pml_boundary(values_to_pin);
+   }
+  
+ protected:
+  /// \short Compute element residual Vector only (if flag=and/or element
+  /// Jacobian matrix
+  virtual void fill_in_generic_residual_contribution_helmholtz(
+   Vector<double> &residuals, DenseMatrix<double> &jacobian,
+   const unsigned& flag);
+  
+  /// Static so that the class doesn't need to instantiate a new default
+  /// everytime it uses it
+  static BermudezPMLMapping Default_pml_mapping;
+ };
+ 
+ 
 ///////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////

@@ -657,9 +657,9 @@ complete_problem_setup()
  for(unsigned i=0;i<n_element;i++)
   {
    // Upcast from GeneralsedElement to the present element
-   PMLFourierDecomposedHelmholtzEquations *el_pt = dynamic_cast<
-    PMLFourierDecomposedHelmholtzEquations*>(
-     mesh_pt()->element_pt(i));
+   PMLFourierDecomposedHelmholtzEquationsBase *el_pt
+    = dynamic_cast<PMLFourierDecomposedHelmholtzEquationsBase*>(
+        mesh_pt()->element_pt(i));
 
    if (!(el_pt==0))
     {
@@ -1246,14 +1246,14 @@ int main(int argc, char **argv)
  PMLFourierDecomposedHelmholtzProblem<
  ProjectablePMLFourierDecomposedHelmholtzElement<
  PMLHelmholtzPointSourceElement<
- TPMLFourierDecomposedHelmholtzElement<3> > > > problem;
+ TPMLFourierDecomposedHelmholtzElement<3,AxisAlignedPMLElement<2> > > > > problem;
 
 #else
 
  // Create the problem with 2D six-node elements from the
  // TPMLFourierDecomposedHelmholtzElement family.
  PMLFourierDecomposedHelmholtzProblem
-  <TPMLFourierDecomposedHelmholtzElement<3> >
+  <TPMLFourierDecomposedHelmholtzElement<3,AxisAlignedPMLElement<2> > >
   problem;
 
 #endif

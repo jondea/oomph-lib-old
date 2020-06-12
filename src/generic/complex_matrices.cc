@@ -97,6 +97,22 @@ std::complex<double> DiagonalComplexMatrix::operator()(const unsigned long &i,
   }
 }
 
+std::complex<double>& DiagonalComplexMatrix::operator()(const unsigned long &i, 
+                                const unsigned long &j)
+{
+  if (i==j)
+  {
+    return Matrixdata[i];
+  }
+  else
+  {
+    throw OomphLibError(
+      "You can only write the diagonal components of a diagonal matrix",
+      OOMPH_CURRENT_FUNCTION,
+      OOMPH_EXCEPTION_LOCATION);
+  }
+}
+
 void DiagonalComplexMatrix::resize(const unsigned& N, const unsigned& M)
 {
 #ifdef PARANOID

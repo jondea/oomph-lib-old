@@ -169,8 +169,12 @@ public:
   {}
 
   //
-  std::complex<double> operator()(const unsigned long &i, 
+  virtual std::complex<double> operator()(const unsigned long &i, 
                                   const unsigned long &j) const;
+
+  //
+  virtual std::complex<double>& operator()(const unsigned long &i, 
+                                  const unsigned long &j);
 
   void multiply(const Vector<std::complex<double> > &x,
            Vector<std::complex<double> > &result);
