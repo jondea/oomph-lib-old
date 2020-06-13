@@ -156,16 +156,15 @@ namespace GlobalParameters
    // Scale r by the wavenumber
    double rr=Wavenumber*r;
 
-   // Number of first-order Hankel function terms (starts from n=0
-   // in H^(1)_n(...))
-   unsigned n_terms=1;
+   // Order of Hankel function H^(1)_n(...))
+   unsigned n_hankel=0;
 
    // Hankel function and the its derivative
-   Vector<std::complex<double> > h(1);
-   Vector<std::complex<double> > hp(1);
+   Vector<std::complex<double> > h(n_hankel+1);
+   Vector<std::complex<double> > hp(n_hankel+1);
    
    // Calculate the solution (i/4)*H^(1)_0(kr) at kr
-   Hankel_functions_for_helmholtz_problem::Hankel_first(n_terms,rr,h,hp);
+   Hankel_functions_for_helmholtz_problem::Hankel_first(n_hankel,rr,h,hp);
    
    // Calculate the real and imaginary parts of the solution
    u[0]=0.25*imag(h[0]);
@@ -240,46 +239,9 @@ namespace GlobalParameters
  
  // Pointer to the output stream -- defaults to std::cout
  std::ostream* Stream_pt;
- 
- /// \short New mapping function that makes the mapping independent of the
- /// PML thickness
- class TestPMLMapping : public virtual PMLMapping
- {
-
- public:
-
-  /// Default constructor (empty)
-  TestPMLMapping(){};
-
-  /// \short Overwrite the pure PML mapping coefficient function to return the
-  /// coeffcients proposed by Bermudez et al
-  std::complex<double> gamma(const double& nu_i,
-			     const double& pml_width_i,
-			     const double& k_squared_local,
-			     const double& alpha_shift)
-   {
-    // If we're disabling PMLs
-    if (!Disable_pml_flag)
-    {   
-     // The "effective k^2" is shifted, so we shift the k used in the
-     // transformation too
-     std::complex<double> k_shifted=
-      sqrt(k_squared_local*std::complex<double>(1.0,alpha_shift));
-         
-     // Return the gamma in J++, with the shifted k
-     return (1.0/k_shifted)*std::complex<double>
-      (0.0,1.0/(std::fabs(pml_width_i-nu_i)));
-    }
-    else
-    {
-     // Otherwise just return the value 1.0
-     return 1.0;
-    }
-   } // End of gamma
- }; // End of TestPMLMapping
 
  /// Set the new PML mapping
- TestPMLMapping* Test_pml_mapping_pt=new TestPMLMapping;
+ ScaleFreeBermudezPMLMapping* Sfb_pml_mapping_pt=new ScaleFreeBermudezPMLMapping;
 } // End of namespace
 
 
@@ -569,9 +531,9 @@ PMLHelmholtzMGProblem<ELEMENT>::PMLHelmholtzMGProblem()
  // Loop over the elements in the mesh
  for(unsigned e=0;e<n_element;e++)
  {
-  // Upcast from GeneralisedElement to Helmholtz bulk element
-  PMLHelmholtzEquations<2>* el_pt =
-   dynamic_cast<PMLHelmholtzEquations<2>*>(mesh_pt()->element_pt(e));
+  // Upcast from GeneralisedElement to PML Helmholtz element
+  PMLHelmholtzEquations<2,AxisAlignedPMLElement<2> >* el_pt =
+   dynamic_cast<PMLHelmholtzEquations<2,AxisAlignedPMLElement<2> >*>(mesh_pt()->element_pt(e));
 
   // Set the k_squared double pointer
   el_pt->k_squared_pt()=&GlobalParameters::K_squared;
@@ -580,15 +542,14 @@ PMLHelmholtzMGProblem<ELEMENT>::PMLHelmholtzMGProblem()
   if (GlobalParameters::Enable_test_pml_mapping_flag)
   {
    // Set the PML mapping function
-   el_pt->pml_mapping_pt()=GlobalParameters::Test_pml_mapping_pt;
+   el_pt->pml_mapping_pt()=GlobalParameters::Sfb_pml_mapping_pt;
   }
   
   // If we're using GMRES & MG as the linear solver
   if (GlobalParameters::Disable_pml_flag)
   {
    // Disable the PML-ification in these layers
-   dynamic_cast<PMLHelmholtzEquations<2>*>
-    (mesh_pt()->element_pt(e))->disable_pml();
+	 el_pt->disable_pml();
   }
  } // for(unsigned e=0;e<n_element;e++)
 
@@ -799,8 +760,8 @@ void PMLHelmholtzMGProblem<ELEMENT>::actions_after_adapt()
  for(unsigned e=0;e<n_element;e++)
  {
   // Upcast from GeneralisedElement to PMLHelmholtz bulk element
-  PMLHelmholtzEquations<2> *el_pt =
-   dynamic_cast<PMLHelmholtzEquations<2>*>(mesh_pt()->element_pt(e));
+  PMLHelmholtzEquations<2,AxisAlignedPMLElement<2> > *el_pt =
+   dynamic_cast<PMLHelmholtzEquations<2,AxisAlignedPMLElement<2> >*>(mesh_pt()->element_pt(e));
 
   // Set the frequency function pointer
   el_pt->k_squared_pt()=&GlobalParameters::K_squared;
@@ -809,14 +770,14 @@ void PMLHelmholtzMGProblem<ELEMENT>::actions_after_adapt()
   if (GlobalParameters::Enable_test_pml_mapping_flag)
   {
    // Set the PML mapping function
-   el_pt->pml_mapping_pt()=GlobalParameters::Test_pml_mapping_pt;
+   el_pt->pml_mapping_pt()=GlobalParameters::Sfb_pml_mapping_pt;
   }
   
   // If we're using GMRES & MG as the linear solver
   if (GlobalParameters::Disable_pml_flag)
   {
    // Disable the PML-ification in these layers
-   dynamic_cast<PMLHelmholtzEquations<2>*>
+   dynamic_cast<PMLHelmholtzEquations<2,AxisAlignedPMLElement<2> >*>
     (mesh_pt()->element_pt(e))->disable_pml();
   }
  } // for(unsigned e=0;e<n_element;e++)
@@ -1226,7 +1187,7 @@ int main(int argc, char **argv)
  {  
   // Set up the problem with refineable 2D four-node elements from the
   // QPMLHelmholtzElement family
-  typedef RefineableQPMLHelmholtzElement<2,2> ELEMENT;
+  typedef RefineableQPMLHelmholtzElement<2,2,AxisAlignedPMLElement<2> > ELEMENT;
     
   // Set the problem pointer
   problem_pt=new PMLHelmholtzMGProblem<ELEMENT>;
@@ -1235,7 +1196,7 @@ int main(int argc, char **argv)
  {
   // Set up the problem with refineable 2D nine-node elements from the
   // QPMLHelmholtzElement family
-  typedef RefineableQPMLHelmholtzElement<2,3> ELEMENT;
+  typedef RefineableQPMLHelmholtzElement<2,3,AxisAlignedPMLElement<2> > ELEMENT;
   
   // Set the problem pointer
   problem_pt=new PMLHelmholtzMGProblem<ELEMENT>;
@@ -1244,7 +1205,7 @@ int main(int argc, char **argv)
  {
   // Set up the problem with refineable 2D sixteen-node elements from the
   // QPMLHelmholtzElement family
-  typedef RefineableQPMLHelmholtzElement<2,4> ELEMENT;
+  typedef RefineableQPMLHelmholtzElement<2,4,AxisAlignedPMLElement<2> > ELEMENT;
   
   // Set the problem pointer
   problem_pt=new PMLHelmholtzMGProblem<ELEMENT>;

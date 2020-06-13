@@ -181,36 +181,8 @@ namespace GlobalParameters
  // Set the exact solution pointer to the get_simple_exact_u function above
  FiniteElement::SteadyExactSolutionFctPt simple_exact_u_pt=&get_simple_exact_u;
 
- /// \short New mapping function that makes the mapping independent of the
- /// PML thickness
- class TestPMLMapping : public virtual PMLMapping
- {
-
- public:
-
-  /// Default constructor (empty)
-  TestPMLMapping(){};
-
-  /// \short Overwrite the pure PML mapping coefficient function to return the
-  /// coeffcients proposed by Bermudez et al
-  std::complex<double> gamma(const double& nu_i,
-			     const double& pml_width_i,
-			     const double& k_squared_local,
-			     const double& alpha_shift)
-   {
-    // The "effective k^2" is shifted, so we shift the k used in the
-    // transformation too
-    std::complex<double> k_shifted=
-     sqrt(k_squared_local*std::complex<double>(1.0,alpha_shift));
-
-    // Return the gamma in J++, with the shifted k
-    return (1.0/k_shifted)*std::complex<double>
-     (0.0,1.0/(std::fabs(pml_width_i-nu_i)));    
-   } // End of gamma
- }; // End of TestPMLMapping
-
  /// Set the new PML mapping
- TestPMLMapping* Test_pml_mapping_pt=new TestPMLMapping;
+ ScaleFreeBermudezPMLMapping* Sfb_pml_mapping_pt=new ScaleFreeBermudezPMLMapping;
  
  /// \short The choice of whether or not to enable the new test mapping
  ///    1 = Enable test mapping
@@ -400,7 +372,7 @@ PMLStructuredCubicHelmholtz<ELEMENT>::PMLStructuredCubicHelmholtz()
    if (GlobalParameters::Enable_test_pml_mapping_flag)
    {
     // Set the PML mapping function
-    el_pt->pml_mapping_pt()=GlobalParameters::Test_pml_mapping_pt;
+    el_pt->pml_mapping_pt()=GlobalParameters::Sfb_pml_mapping_pt;
    }
   } // if (el_pt!=0)
  } // for (unsigned e=0;e<n_element;e++)
@@ -676,7 +648,7 @@ void PMLStructuredCubicHelmholtz<ELEMENT>::enable_pmls()
    if (GlobalParameters::Enable_test_pml_mapping_flag)
    {
     // Set the PML mapping function
-    el_pt->pml_mapping_pt()=GlobalParameters::Test_pml_mapping_pt;
+    el_pt->pml_mapping_pt()=GlobalParameters::Sfb_pml_mapping_pt;
    }
   
    // Get the (Eulerian) coordinates of the centre of the element
@@ -997,7 +969,7 @@ int main(int argc,char **argv)
  {  
   // Set up the problem with refineable 3D eight-noded elements from the
   // QPMLHelmholtzElement family
-  typedef RefineableQPMLHelmholtzElement<3,2> ELEMENT;
+  typedef RefineableQPMLHelmholtzElement<3,2,AxisAlignedPMLElement<3> > ELEMENT;
     
   // Set the problem pointer
   problem_pt=new PMLStructuredCubicHelmholtz<ELEMENT>;
@@ -1006,7 +978,7 @@ int main(int argc,char **argv)
  {
   // Set up the problem with refineable 3D twenty-seven-noded elements from
   // the QPMLHelmholtzElement family
-  typedef RefineableQPMLHelmholtzElement<3,3> ELEMENT;
+  typedef RefineableQPMLHelmholtzElement<3,3,AxisAlignedPMLElement<3> > ELEMENT;
   
   // Set the problem pointer
   problem_pt=new PMLStructuredCubicHelmholtz<ELEMENT>;
@@ -1015,7 +987,7 @@ int main(int argc,char **argv)
  {
   // Set up the problem with refineable 3D sixty-four-noded elements from
   // the QPMLHelmholtzElement family
-  typedef RefineableQPMLHelmholtzElement<3,4> ELEMENT;
+  typedef RefineableQPMLHelmholtzElement<3,4,AxisAlignedPMLElement<3> > ELEMENT;
   
   // Set the problem pointer
   problem_pt=new PMLStructuredCubicHelmholtz<ELEMENT>;

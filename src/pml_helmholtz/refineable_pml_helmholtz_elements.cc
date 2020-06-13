@@ -128,11 +128,11 @@ fill_in_generic_residual_contribution_helmholtz(Vector<double> &residuals,
    // to the Helmholtz bit. Both default to 1.0, should the PML not be
    // enabled via enable_pml.
    Vector<double> s(DIM);
-   DenseComplexMatrix jacobian(DIM,DIM);
-   this->pml_transformation_jacobian(ipt, s, interpolated_x, jacobian);
+   DiagonalComplexMatrix pml_jacobian(DIM);
+   this->pml_transformation_jacobian(ipt, s, interpolated_x, pml_jacobian);
      
-   DenseComplexMatrix laplace_matrix(DIM,DIM);
-   this->compute_laplace_matrix_and_det(jacobian, laplace_matrix, pml_k_squared_factor);
+   DiagonalComplexMatrix laplace_matrix(DIM);
+   this->compute_laplace_matrix_and_det(pml_jacobian, laplace_matrix, pml_k_squared_factor);
 
    for (unsigned i=0; i<DIM; i++)
    {
