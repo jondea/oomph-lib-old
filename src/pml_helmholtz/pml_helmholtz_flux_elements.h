@@ -474,7 +474,7 @@ PMLHelmholtzPowerElement(FiniteElement* const &bulk_el_pt,
         "Bulk element must inherit from PMLHelmholtzEquations.";
        error_string +=
         "Nodes are one dimensional, but cannot cast the bulk element to\n";
-       error_string += "PMLHelmholtzEquations<1>\n.";
+       error_string += "PMLHelmholtzEquationsBase<1>\n.";
        error_string +=
         "If you desire this functionality, you must implement it yourself\n";
 
@@ -503,7 +503,7 @@ PMLHelmholtzPowerElement(FiniteElement* const &bulk_el_pt,
         "Bulk element must inherit from PMLHelmholtzEquations.";
        error_string +=
         "Nodes are two dimensional, but cannot cast the bulk element to\n";
-       error_string += "PMLHelmholtzEquations<2>\n.";
+       error_string += "PMLHelmholtzEquationsBase<2>\n.";
        error_string +=
         "If you desire this functionality, you must implement it yourself\n";
 
@@ -532,7 +532,7 @@ PMLHelmholtzPowerElement(FiniteElement* const &bulk_el_pt,
         "Bulk element must inherit from PMLHelmholtzEquations.";
        error_string +=
         "Nodes are three dimensional, but cannot cast the bulk element to\n";
-       error_string += "PMLHelmholtzEquations<3>\n.";
+       error_string += "PMLHelmholtzEquationsBase<3>\n.";
        error_string +=
         "If you desire this functionality, you must implement it yourself\n";
 
@@ -894,7 +894,7 @@ PMLHelmholtzFluxElement(FiniteElement* const &bulk_el_pt,
         "Bulk element must inherit from PMLHelmholtzEquations.";
        error_string +=
         "Nodes are one dimensional, but cannot cast the bulk element to\n";
-       error_string += "PMLHelmholtzEquations<1>\n.";
+       error_string += "PMLHelmholtzEquationsBase<1>\n.";
        error_string +=
         "If you desire this functionality, you must implement it yourself\n";
 
@@ -923,7 +923,7 @@ PMLHelmholtzFluxElement(FiniteElement* const &bulk_el_pt,
         "Bulk element must inherit from PMLHelmholtzEquations.";
        error_string +=
         "Nodes are two dimensional, but cannot cast the bulk element to\n";
-       error_string += "PMLHelmholtzEquations<2>\n.";
+       error_string += "PMLHelmholtzEquationsBase<2>\n.";
        error_string +=
         "If you desire this functionality, you must implement it yourself\n";
 
@@ -952,7 +952,7 @@ PMLHelmholtzFluxElement(FiniteElement* const &bulk_el_pt,
         "Bulk element must inherit from PMLHelmholtzEquations.";
        error_string +=
         "Nodes are three dimensional, but cannot cast the bulk element to\n";
-       error_string += "PMLHelmholtzEquations<3>\n.";
+       error_string += "PMLHelmholtzEquationsBase<3>\n.";
        error_string +=
         "If you desire this functionality, you must implement it yourself\n";
 

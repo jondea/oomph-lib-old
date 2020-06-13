@@ -112,7 +112,7 @@ namespace Global_Parameters
  {
   Vector<std::complex<double> > h(2);
   Vector<std::complex<double> > hp(2);
-  Hankel_functions_for_helmholtz_problem::Hankel_first(2,x,h,hp);
+  Hankel_functions_for_helmholtz_problem::Hankel_first(1,x,h,hp);
   
   if (k==0.0)
    {

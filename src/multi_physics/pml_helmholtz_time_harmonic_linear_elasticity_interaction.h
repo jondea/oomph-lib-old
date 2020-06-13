@@ -973,16 +973,16 @@ double TimeHarmonicLinElastLoadedByPMLHelmholtzPressureBCElement<
     //One dimensional problem
    case 1:
    {
-    PMLHelmholtzEquations<1>* eqn_pt =
-     dynamic_cast<PMLHelmholtzEquations<1>*>(bulk_el_pt);
+    PMLHelmholtzEquationsBase<1>* eqn_pt =
+     dynamic_cast<PMLHelmholtzEquationsBase<1>*>(bulk_el_pt);
     //If the cast has failed die
     if(eqn_pt==0)
      {
       std::string error_string =
-       "Bulk element must inherit from PMLHelmholtzEquations.";
+       "Bulk element must inherit from PMLHelmholtzEquationsBase.";
       error_string +=
        "Nodes are one dimensional, but cannot cast the bulk element to\n";
-      error_string += "PMLHelmholtzEquations<1>\n.";
+      error_string += "PMLHelmholtzEquationsBase<1>\n.";
       error_string +=
        "If you desire this functionality, you must implement it yourself\n";
 
@@ -1003,8 +1003,8 @@ double TimeHarmonicLinElastLoadedByPMLHelmholtzPressureBCElement<
    //Two dimensional problem
    case 2:
    {
-    PMLHelmholtzEquations<2>* eqn_pt =
-     dynamic_cast<PMLHelmholtzEquations<2>*>(bulk_el_pt);
+    PMLHelmholtzEquationsBase<2>* eqn_pt =
+     dynamic_cast<PMLHelmholtzEquationsBase<2>*>(bulk_el_pt);
     //If the cast has failed die
     if(eqn_pt==0)
      {
@@ -1012,7 +1012,7 @@ double TimeHarmonicLinElastLoadedByPMLHelmholtzPressureBCElement<
        "Bulk element must inherit from PMLHelmholtzEquations.";
       error_string +=
        "Nodes are two dimensional, but cannot cast the bulk element to\n";
-      error_string += "PMLHelmholtzEquations<2>\n.";
+      error_string += "PMLHelmholtzEquationsBase<2>\n.";
       error_string +=
        "If you desire this functionality, you must implement it yourself\n";
 
@@ -1032,8 +1032,8 @@ double TimeHarmonicLinElastLoadedByPMLHelmholtzPressureBCElement<
    //Three dimensional problem
    case 3:
    {
-    PMLHelmholtzEquations<3>* eqn_pt =
-     dynamic_cast<PMLHelmholtzEquations<3>*>(bulk_el_pt);
+    PMLHelmholtzEquationsBase<3>* eqn_pt =
+     dynamic_cast<PMLHelmholtzEquationsBase<3>*>(bulk_el_pt);
     //If the cast has failed die
     if(eqn_pt==0)
      {
@@ -1041,7 +1041,7 @@ double TimeHarmonicLinElastLoadedByPMLHelmholtzPressureBCElement<
        "Bulk element must inherit from PMLHelmholtzEquations.";
       error_string +=
        "Nodes are three dimensional, but cannot cast the bulk element to\n";
-      error_string += "PMLHelmholtzEquations<3>\n.";
+      error_string += "PMLHelmholtzEquationsBase<3>\n.";
       error_string +=
        "If you desire this functionality, you must implement it yourself\n";
 
