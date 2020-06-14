@@ -1,0 +1,109 @@
+\hypertarget{classoomph_1_1RefineableFishMesh}{}\section{oomph\+:\+:Refineable\+Fish\+Mesh$<$ E\+L\+E\+M\+E\+NT $>$ Class Template Reference}
+\label{classoomph_1_1RefineableFishMesh}\index{oomph\+::\+Refineable\+Fish\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$@{oomph\+::\+Refineable\+Fish\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$}}
+
+
+{\ttfamily \#include $<$fish\+\_\+mesh.\+template.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Refineable\+Fish\+Mesh$<$ E\+L\+E\+M\+E\+NT $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.186992cm]{classoomph_1_1RefineableFishMesh}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1RefineableFishMesh_a7f31e65306286e83a5d17459bae9163d}{Refineable\+Fish\+Mesh} (\hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper} $\ast$time\+\_\+stepper\+\_\+pt=\&\hyperlink{classoomph_1_1Mesh_a12243d0fee2b1fcee729ee5a4777ea10}{Mesh\+::\+Default\+\_\+\+Time\+Stepper})
+\begin{DoxyCompactList}\small\item\em Constructor\+: Pass pointer to timestepper -- defaults to (\hyperlink{classoomph_1_1Steady}{Steady}) default timestepper defined in the \hyperlink{classoomph_1_1Mesh}{Mesh} base class. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1RefineableFishMesh_a82bc04aea6deaf2faa7306aa047e12ef}{Refineable\+Fish\+Mesh} (\hyperlink{classoomph_1_1GeomObject}{Geom\+Object} $\ast$back\+\_\+pt, \hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper} $\ast$time\+\_\+stepper\+\_\+pt=\&\hyperlink{classoomph_1_1Mesh_a12243d0fee2b1fcee729ee5a4777ea10}{Mesh\+::\+Default\+\_\+\+Time\+Stepper})
+\begin{DoxyCompactList}\small\item\em Constructor\+: Pass pointer \hyperlink{classoomph_1_1GeomObject}{Geom\+Object} that defines the fish\textquotesingle{}s back and pointer to timestepper (defaults to (\hyperlink{classoomph_1_1Steady}{Steady}) default timestepper defined in \hyperlink{classoomph_1_1Mesh}{Mesh}) \end{DoxyCompactList}\item 
+virtual \hyperlink{classoomph_1_1RefineableFishMesh_a8304d093e015001a6d56faebdd2d4636}{$\sim$\+Refineable\+Fish\+Mesh} ()
+\begin{DoxyCompactList}\small\item\em Destructor\+: Empty -- all cleanup gets handled in the base classes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classoomph_1_1RefineableFishMesh_a1fb10f94f78c7a4e37113fbf4c72f00c}{setup\+\_\+adaptivity} ()
+\begin{DoxyCompactList}\small\item\em Setup all the information that\textquotesingle{}s required for spatial adaptivity\+: Set pointers to macro elements and build quadtree forest. (contained in separate function as this functionality is common to both constructors),. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class E\+L\+E\+M\+E\+NT$>$\newline
+class oomph\+::\+Refineable\+Fish\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$}
+
+Refineable fish shaped mesh. The geometry is defined by the \hyperlink{classoomph_1_1Domain}{Domain} object \hyperlink{classoomph_1_1FishDomain}{Fish\+Domain}. 
+
+Definition at line 134 of file fish\+\_\+mesh.\+template.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1RefineableFishMesh_a7f31e65306286e83a5d17459bae9163d}\label{classoomph_1_1RefineableFishMesh_a7f31e65306286e83a5d17459bae9163d}} 
+\index{oomph\+::\+Refineable\+Fish\+Mesh@{oomph\+::\+Refineable\+Fish\+Mesh}!Refineable\+Fish\+Mesh@{Refineable\+Fish\+Mesh}}
+\index{Refineable\+Fish\+Mesh@{Refineable\+Fish\+Mesh}!oomph\+::\+Refineable\+Fish\+Mesh@{oomph\+::\+Refineable\+Fish\+Mesh}}
+\subsubsection{\texorpdfstring{Refineable\+Fish\+Mesh()}{RefineableFishMesh()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classoomph_1_1RefineableFishMesh}{oomph\+::\+Refineable\+Fish\+Mesh}$<$ E\+L\+E\+M\+E\+NT $>$\+::\hyperlink{classoomph_1_1RefineableFishMesh}{Refineable\+Fish\+Mesh} (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper} $\ast$}]{time\+\_\+stepper\+\_\+pt = {\ttfamily \&\hyperlink{classoomph_1_1Mesh_a12243d0fee2b1fcee729ee5a4777ea10}{Mesh\+::\+Default\+\_\+\+Time\+Stepper}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor\+: Pass pointer to timestepper -- defaults to (\hyperlink{classoomph_1_1Steady}{Steady}) default timestepper defined in the \hyperlink{classoomph_1_1Mesh}{Mesh} base class. 
+
+
+
+Definition at line 144 of file fish\+\_\+mesh.\+template.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableFishMesh_a82bc04aea6deaf2faa7306aa047e12ef}\label{classoomph_1_1RefineableFishMesh_a82bc04aea6deaf2faa7306aa047e12ef}} 
+\index{oomph\+::\+Refineable\+Fish\+Mesh@{oomph\+::\+Refineable\+Fish\+Mesh}!Refineable\+Fish\+Mesh@{Refineable\+Fish\+Mesh}}
+\index{Refineable\+Fish\+Mesh@{Refineable\+Fish\+Mesh}!oomph\+::\+Refineable\+Fish\+Mesh@{oomph\+::\+Refineable\+Fish\+Mesh}}
+\subsubsection{\texorpdfstring{Refineable\+Fish\+Mesh()}{RefineableFishMesh()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classoomph_1_1RefineableFishMesh}{oomph\+::\+Refineable\+Fish\+Mesh}$<$ E\+L\+E\+M\+E\+NT $>$\+::\hyperlink{classoomph_1_1RefineableFishMesh}{Refineable\+Fish\+Mesh} (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1GeomObject}{Geom\+Object} $\ast$}]{back\+\_\+pt,  }\item[{\hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper} $\ast$}]{time\+\_\+stepper\+\_\+pt = {\ttfamily \&\hyperlink{classoomph_1_1Mesh_a12243d0fee2b1fcee729ee5a4777ea10}{Mesh\+::\+Default\+\_\+\+Time\+Stepper}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor\+: Pass pointer \hyperlink{classoomph_1_1GeomObject}{Geom\+Object} that defines the fish\textquotesingle{}s back and pointer to timestepper (defaults to (\hyperlink{classoomph_1_1Steady}{Steady}) default timestepper defined in \hyperlink{classoomph_1_1Mesh}{Mesh}) 
+
+
+
+Definition at line 159 of file fish\+\_\+mesh.\+template.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableFishMesh_a8304d093e015001a6d56faebdd2d4636}\label{classoomph_1_1RefineableFishMesh_a8304d093e015001a6d56faebdd2d4636}} 
+\index{oomph\+::\+Refineable\+Fish\+Mesh@{oomph\+::\+Refineable\+Fish\+Mesh}!````~Refineable\+Fish\+Mesh@{$\sim$\+Refineable\+Fish\+Mesh}}
+\index{````~Refineable\+Fish\+Mesh@{$\sim$\+Refineable\+Fish\+Mesh}!oomph\+::\+Refineable\+Fish\+Mesh@{oomph\+::\+Refineable\+Fish\+Mesh}}
+\subsubsection{\texorpdfstring{$\sim$\+Refineable\+Fish\+Mesh()}{~RefineableFishMesh()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+virtual \hyperlink{classoomph_1_1RefineableFishMesh}{oomph\+::\+Refineable\+Fish\+Mesh}$<$ E\+L\+E\+M\+E\+NT $>$\+::$\sim$\hyperlink{classoomph_1_1RefineableFishMesh}{Refineable\+Fish\+Mesh} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Destructor\+: Empty -- all cleanup gets handled in the base classes. 
+
+
+
+Definition at line 172 of file fish\+\_\+mesh.\+template.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1RefineableFishMesh_a1fb10f94f78c7a4e37113fbf4c72f00c}\label{classoomph_1_1RefineableFishMesh_a1fb10f94f78c7a4e37113fbf4c72f00c}} 
+\index{oomph\+::\+Refineable\+Fish\+Mesh@{oomph\+::\+Refineable\+Fish\+Mesh}!setup\+\_\+adaptivity@{setup\+\_\+adaptivity}}
+\index{setup\+\_\+adaptivity@{setup\+\_\+adaptivity}!oomph\+::\+Refineable\+Fish\+Mesh@{oomph\+::\+Refineable\+Fish\+Mesh}}
+\subsubsection{\texorpdfstring{setup\+\_\+adaptivity()}{setup\_adaptivity()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classoomph_1_1RefineableFishMesh}{oomph\+::\+Refineable\+Fish\+Mesh}$<$ E\+L\+E\+M\+E\+NT $>$\+::setup\+\_\+adaptivity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Setup all the information that\textquotesingle{}s required for spatial adaptivity\+: Set pointers to macro elements and build quadtree forest. (contained in separate function as this functionality is common to both constructors),. 
+
+Setup all the information that\textquotesingle{}s required for spatial adaptivity\+: Build quadtree forest. 
+
+Definition at line 702 of file fish\+\_\+mesh.\+template.\+cc.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{fish__mesh_8template_8h}{fish\+\_\+mesh.\+template.\+h}\item 
+\hyperlink{fish__mesh_8template_8cc}{fish\+\_\+mesh.\+template.\+cc}\end{DoxyCompactItemize}

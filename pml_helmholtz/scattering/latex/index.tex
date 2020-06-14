@@ -1,0 +1,570 @@
+In this document we discuss the finite-\/element-\/based solution of the Helmholtz equation with the Summerfeld boundary condition, an elliptic P\+DE that describes time-\/harmonic wave propagation problems. Compared to the \char`\"{}standard form\char`\"{} of the Helmholtz equation, discussed in \href{../../../helmholtz/scattering/html/index.html}{\tt another tutorial,} the formulation used here allows the imposition of the Sommerfeld radiation condition by means of so-\/called \char`\"{}perfectly matched layers\char`\"{} (P\+M\+Ls) as an alternative to classical absorbing/approximate boundary conditions or DtN maps.
+
+We start by reviewing the relevant theory and then present the solution of a simple model problem -- the outward propagation of waves from the surface of a cylinder. \begin{center} \tabulinesep=1mm
+\begin{longtabu} spread 0pt [c]{*{1}{|X[-1]}|}
+\hline
+\begin{center}  {\bfseries Acknowledgement} This tutorial and the associated driver codes were developed jointly with \href{http://imperial.academia.edu/RaduCimpeanu}{\tt Radu Cimpeanu} (Imperial College London)  \end{center}    \\\cline{1-1}
+\end{longtabu}
+\end{center} \hypertarget{index_theory}{}\section{Theory\+: The Helmholtz equation for time-\/harmonic scattering problems}\label{index_theory}
+The Helmholtz equation governs time-\/harmonic solutions of problems governed by the linear wave equation \[ \nabla( c^2 \nabla U(x,y,t)) = \frac{\partial^2 U(x,y,t)}{\partial t^2}, \ \ \ \ \ \ \ \ \ \ \ \ (1) \] where $ c $ is the wavespeed. Assuming that $ U(x,y,t) $ is time-\/harmonic, with frequency $ \omega $, we write the real function $ U(x,y,t) $ as \[ U(x,y,t) =Re (u(x,y) \ e^{-i \omega t}) \] where $ u(x,y) $ is complex-\/valued. If the wavespeed is constant this transforms (1) into the \href{../../../helmholtz/scattering/html/index.html}{\tt standard form of the Helmholtz equation} \[ \nabla^2 u(x,y) + k^2 u(x,y) = 0 \ \ \ \ \ \ \ \ \ \ \ \ (2) \] where \[ k = \frac{\omega}{c} \ \ \ \ \ \ \ \ \ \ \ \ (3) \] is the wave number. Like other elliptic P\+D\+Es the Helmholtz equation admits Dirichlet, Neumann (flux) and Robin boundary conditions.
+
+If the equation is solved in an infinite domain (e.\+g. in scattering problems) the solution must satisfy the so-\/called \href{http://en.wikipedia.org/wiki/Sommerfeld_radiation_condition}{\tt Sommerfeld radiation condition} which in 2D has the form \[ \lim_{r\to \infty} \sqrt{r} \left(\frac{\partial u}{\partial r} - iku \right) =0. \] Mathematically, this condition is required to ensure the uniqueness of the solution (and hence the well-\/posedness of the problem). In a physical context, such as a scattering problem, the condition ensures that scattering of an incoming wave only produces outgoing not incoming waves from infinity.\hypertarget{index_discr}{}\section{Discretisation by finite elements}\label{index_discr}
+We provide separate storage for the real and imaginary parts of the solution -- each {\ttfamily Node} therefore stores two unknowns values. By default, the real and imaginary parts are stored as values 0 and 1, respectively; see the section \hyperlink{index_numbering}{The enumeration of the unknowns} for details.
+
+The application of Dirichlet and Neumann boundary conditions is straightforward\+:
+\begin{DoxyItemize}
+\item Dirichlet conditions are imposed by pinning the relevant nodal values and setting them to the appropriate prescribed values.
+\item Neumann (flux) boundary conditions are imposed via {\ttfamily Face\+Elements} (here the {\ttfamily P\+M\+L\+Helmholtz\+Flux\+Elements}). \href{../../../poisson/two_d_poisson_flux_bc/html/index.html}{\tt As usual} we attach these to the faces of the \char`\"{}bulk\char`\"{} elements that are subject to the Neumann boundary conditions.
+\end{DoxyItemize}The imposition of the Sommerfeld radiation condition for problems in infinite domains is slightly more complicated. \href{../../../helmholtz/scattering/html/index.html}{\tt Another tutorial} shows how to impose this condition by means of absorbing/approximate boundary conditions or DtN maps. In the next section we will discuss an alternative approach to this problem by means of perfectly matched layers.\hypertarget{index_pml}{}\subsection{Perfectly matched layers}\label{index_pml}
+The idea behind perfectly matched layers is illustrated in the figure below. The actual physical/mathematical problem has to be solved in the infinite domain $ D $ (shown on the left), with the Sommerfeld radiation condition ensuring the suitable decay of the solution at large distances from the region of interest (the vicinity of the scatterer, say).
+
+If computations are performed in a finite computational domain, $ D_c $ , (shown in the middle), spurious wave reflections are likely to be generated at the artificial boundary $ \partial D_c $ of the computational domain.
+
+The idea behind P\+ML methods is to surround the actual computational domain $ D_c $ with a layer of \char`\"{}absorbing\char`\"{} material whose properties are chosen such that the outgoing waves are absorbed within it, without creating any artificial reflected waves at the interface between the P\+ML layer and the computational domain.
+
+ 
+\begin{DoxyImage}
+\includegraphics[width=0.75\textwidth]{pml}
+\doxyfigcaption{Sketch illustrating the idea behind perfectly matched layers. }
+\end{DoxyImage}
+
+
+Our implementation of the perfectly matched layers follows the development in \href{http://www.sciencedirect.com/science/article/pii/S0021999106004487}{\tt A. Bermudez, L. Hervella-\/\+Nieto, A. Prieto, and R. Rodriguez \char`\"{}\+An optimal perfectly matched layer with unbounded 
+absorbing function for time-\/harmonic acoustic scattering problems\char`\"{} Journal of Computational Physics {\bfseries 223} 469-\/488 (2007)} and we assume the boundaries of the computational domain to be aligned with the coordinate axes, as shown in the sketch above.
+
+The method requires a slight further generalisation of the equations, achieved by introducing the complex coordinate mapping \[ \frac{\partial}{\partial x_j} \to \frac{1}{\gamma_j} \frac{\partial}{\partial x_j} \ \ \ \ \ \ \ \ \ \ \ \ (4) \] within the perfectly matched layers. This makes the problem anisotropic and in 2D we have \[ \nabla ^ 2 u = \frac{1}{\gamma_x}\frac{\partial}{\partial x} \left( \frac{1}{\gamma_x}\frac{\partial u}{\partial x} \right) + \frac{1}{\gamma_y}\frac{\partial}{\partial y}\left( \frac{1}{\gamma_y}\frac{\partial u}{\partial y}\right) \ \ \ \ \ \ \ \ \ \ \ \ (5) \]
+
+The choice of $ \gamma_x $ and $ \gamma_y $ depends on the orientation of the P\+ML layer. Since we are restricting ourselves to axis-\/aligned mesh boundaries we need to distinguish three different cases, as shown in the sketch below\+:
+
+ 
+\begin{DoxyImage}
+\includegraphics[width=0.75\textwidth]{pml_meshes}
+\doxyfigcaption{Sketch illustrating the geometry of the perfectly matched layers. }
+\end{DoxyImage}
+
+
+
+\begin{DoxyItemize}
+\item For layers that are aligned with the y axis (such as the left and right P\+ML layers in the sketch) we set \[ \gamma_{x}(x) = 1 +\frac{i}{k}\ \sigma_{x}(x) \ \ \ \ \ \ \ \mbox{ \ \ \ with \ \ \ } \sigma_{x}(x) = \frac{1}{|X_{PML}-x|}, \ \ \ \ \ (6) \] where $ X_{PML} $ is the x-\/coordinate of the outer boundary of the P\+ML layer, and \[ \gamma_y = 1. \]
+\item For layers that are aligned with the x axis (such as the top and bottom P\+ML layers in the sketch) we set \[ \gamma_x = 1, \] and \[ \gamma_{y}(y) = 1+\frac{i}{k} \ \sigma_{y}(y) \ \ \ \ \ \ \ \mbox{ \ \ \ with \ \ \ } \sigma_{y}(y) = \frac{1}{|Y_{PML}-y|}, \ \ \ \ \ (7) \] where $ Y_{PML} $ is the y-\/coordinate of the outer boundary of the P\+ML layer.
+\item In corner regions that are bounded by two axis-\/aligned P\+ML layers (with outer coordinates $ X_{PML} $ and $ Y_{PML} $) we set \[ \gamma_{x}(x) = 1 +\frac{i}{k}\ \sigma_{x}(x) \ \ \ \ \ \ \ \mbox{ \ \ \ with \ \ \ } \sigma_{x}(x) = \frac{1}{|X_{PML}-x|} \ \ \ \ \ (8) \] and \[ \gamma_{y}(y) = 1+\frac{i}{k} \ \sigma_{y}(y) \ \ \ \ \ \ \ \mbox{ \ \ \ with \ \ \ } \sigma_{y}(y) = \frac{1}{|Y_{PML}-y|}. \ \ \ \ \ (9) \]
+\item Finally, in the actual computational domain (outside the P\+ML layers) we set \[ \gamma_{x}(x) = \gamma_{y}(y) = 1. \]
+\end{DoxyItemize}\hypertarget{index_impl}{}\subsection{Implementation of the perfectly matched layers within oomph-\/lib}\label{index_impl}
+The finite-\/element-\/discretised equations (2) (modified by the P\+ML terms discussed above) are implemented in the {\ttfamily P\+M\+L\+Helmholtz\+Equations$<$\+D\+I\+M$>$} class which is templated by the spatial dimension, {\ttfamily D\+IM}. As usual, we provide fully functional elements by combining these with geometric finite elements (from the Q and T families -- corresponding (in 2D) to triangles and quad elements). By default, the P\+ML modifications are disabled, i.\+e. $ \gamma_{x}(x) $ and $ \gamma_{y}(y) $ are both set to 1.
+
+The generation of suitable 2D P\+ML meshes along the axis-\/aligned boundaries of a given bulk mesh is facilitated by helper functions which automatically erect layers of (quadrilateral) P\+ML elements. The layers are built from {\ttfamily Q\+P\+M\+L\+Helmholtz\+Element$<$2,\+N\+N\+O\+D\+E\+\_\+1\+D$>$} elements and the parameter {\ttfamily N\+N\+O\+D\+E\+\_\+1D} is automatically chosen to match that of the elements in the bulk mesh. The bulk mesh can contain quads or triangles (as shown in the specific example presented below).
+
+For instance, to erect a P\+ML layer (of width {\ttfamily width}, with {\ttfamily n\+\_\+pml} elements across the width of the layer) on the \char`\"{}right\char`\"{} boundary (with boundary ID {\ttfamily b\+\_\+bulk}) of the bulk mesh pointed to by {\ttfamily bulk\+\_\+mesh\+\_\+pt}, a call to 
+\begin{DoxyCode}
+PMLHelper::create\_right\_pml\_mesh(bulk\_mesh\_pt, b\_bulk, n\_pml, width);
+\end{DoxyCode}
+ returns a pointer to a newly-\/created mesh that contains the P\+ML elements which are automatically attached to the boundary of the bulk mesh (i.\+e. the {\ttfamily Nodes} on the outer boundary of the bulk mesh are shared (pointed to), rather than duplicated, by the elements in the P\+ML mesh). The P\+M\+L-\/ness of the elements is automatically enabled, i.\+e. the functions $ \gamma_x(x) $ and $ \gamma_y(y) $ are set as described above. Finally, zero Dirichlet boundary conditions are applied to the real and imaginary parts of the solution on the outer boundary of the P\+ML layer.
+
+Similar helper functions exist for P\+ML layers on other axis-\/aligned boundaries, and for corner P\+ML meshes; see the code listings provided below. Currently, we only provide this functionality for convex 2D computational domains, but the generalisation to non-\/convex boundaries and 3D is straightforward (if tedious) to implement (Any volunteers?).\hypertarget{index_scattering}{}\section{A specific example\+: Outward propagation of acoustic waves from the surface of a cylindrical object}\label{index_scattering}
+We will now demonstrate the methodology for a specific example\+: the propagation of axisymmetric waves from the surface of a circular disk. This is a good test case because any deviations from the axisymmetry of the (exact) solution by spurious reflections from the boundaries of the computational domain are easy to detect visually.
+
+The specific domain used in this case can be seen in the figure below. We create an unstructured mesh of six-\/noded {\ttfamily T\+P\+M\+L\+Helmholtz\+Elements} to create the finite computational domain surrounding a circular disk. This is surrounded by four axis-\/aligned P\+ML layers and four corner meshes (each made of nine-\/noded {\ttfamily Q\+P\+M\+L\+Helmholtz\+Elements}).
+
+ 
+\begin{DoxyImage}
+\includegraphics[width=0.75\textwidth]{Mesh}
+\doxyfigcaption{The computational domain used in the example problem. }
+\end{DoxyImage}
+\hypertarget{index_results}{}\section{Results}\label{index_results}
+The figures below show the real part of the solution $ Re(u(x,y,t)) $ radiating from a circular disk with a radius of $ r=0.1 $ for the case when the non-\/zero Dirichlet boundary conditions are imposed only on the real part of $ u $ by setting \[ Re(u(x,y))\bigg|_{\partial D} = 0.1 \ \ \ \ \ and \ \ \ \ Im(u(x,y))\bigg|_{\partial D} = 0. \]
+
+ 
+\begin{DoxyImage}
+\includegraphics[width=0.6\textwidth]{Soln2D}
+\doxyfigcaption{Sample solution with activated perfectly matched layers. }
+\end{DoxyImage}
+
+
+ 
+\begin{DoxyImage}
+\includegraphics[width=0.6\textwidth]{SolnHeight}
+\doxyfigcaption{Sample solution with activated perfectly matched layers -\/-\/ height view. }
+\end{DoxyImage}
+
+
+From the two images, one can notice the clean circular solution across the domain. Had the perfectly matched layers not been effective, numerical artifacts would have been observed throughout the domain.
+
+This is demonstrated by the following two figures which show the solution obtained without the P\+ML layers (and \char`\"{}do-\/nothing\char`\"{} (zero-\/flux) boundary conditions on the outer boundaries of the computational domain). The spurious reflections from the boundaries completely dominate the solution which bears no resemblance to the exact solution.
+
+ 
+\begin{DoxyImage}
+\includegraphics[width=0.6\textwidth]{ZeroFlux2D}
+\doxyfigcaption{The solution with zero flux boundary conditions. }
+\end{DoxyImage}
+
+
+ 
+\begin{DoxyImage}
+\includegraphics[width=0.6\textwidth]{ZeroFluxHeight}
+\doxyfigcaption{The solution with zero flux boundary conditions -\/-\/ height view. }
+\end{DoxyImage}
+\hypertarget{index_num_soln}{}\section{The numerical solution}\label{index_num_soln}
+\hypertarget{index_namespace}{}\subsection{The global namespace}\label{index_namespace}
+As usual, we define the problem parameters in a global namespace. After non-\/dimensionalisation, the only parameter is wavenumber, $ k $.
+
+ 
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//===== start\_of\_namespace=============================================}
+\textcolor{comment}{/// Namespace for the Helmholtz problem parameters}
+\textcolor{comment}{}\textcolor{comment}{//=====================================================================}
+\textcolor{keyword}{namespace }\hyperlink{namespaceGlobalParameters}{GlobalParameters}
+\{
+\textcolor{comment}{}
+\textcolor{comment}{ /// Wavenumber (also known as k), k=omega/c}
+\textcolor{comment}{} \textcolor{keywordtype}{double} \hyperlink{namespaceGlobalParameters_a571b847702904d4cf646ac7ff17a7d2c}{Wavenumber} = sqrt(50.0);
+\textcolor{comment}{}
+\textcolor{comment}{ /// Square of the wavenumber (also known as k^2)}
+\textcolor{comment}{} \textcolor{keywordtype}{double} \hyperlink{namespaceGlobalParameters_aae73cb63b27d51a87845c3392cd944eb}{K\_squared} = Wavenumber * \hyperlink{namespaceGlobalParameters_a571b847702904d4cf646ac7ff17a7d2c}{Wavenumber};
+
+\} \textcolor{comment}{// end of namespace}
+
+\end{DoxyCodeInclude}
+\hypertarget{index_main}{}\subsection{The driver code}\label{index_main}
+The driver code is very straightforward. We start by building the {\ttfamily Problem} object, using six-\/noded triangular generalised Helmholtz elements\+:
+
+ 
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//==========start\_of\_main=================================================}
+\textcolor{comment}{/// Solve 2D Helmholtz problem}
+\textcolor{comment}{}\textcolor{comment}{//========================================================================}
+\textcolor{keywordtype}{int} \hyperlink{unstructured__two__d__helmholtz_8cc_a3c04138a5bfe5d72780bb7e82a18e627}{main}(\textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} **argv)
+\{
+ \textcolor{comment}{// Set up the problem with 2D six-node elements from the}
+ \textcolor{comment}{// TPMLHelmholtzElement family.}
+ \hyperlink{classPMLProblem}{PMLProblem<TPMLHelmholtzElement<2,3,AxisAlignedPMLElement<2>}
+      > >  problem;
+
+\end{DoxyCodeInclude}
+
+
+Next we define the output directory.
+
+
+\begin{DoxyCodeInclude}
+ \textcolor{comment}{// Create label for output}
+ \textcolor{comment}{//------------------------}
+ DocInfo doc\_info;
+
+ \textcolor{comment}{// Set output directory}
+ doc\_info.set\_directory(\textcolor{stringliteral}{"RESLT"});
+
+\end{DoxyCodeInclude}
+
+
+Finally, we solve the problem and document the results.
+
+
+\begin{DoxyCodeInclude}
+ \textcolor{comment}{// Solve the problem with Newton's method}
+ problem.newton\_solve();
+ \textcolor{comment}{//Output solution}
+ problem.\hyperlink{classPMLProblem_ae04985b020a9e0526ab829ca316adb26}{doc\_solution}(doc\_info);
+
+\} \textcolor{comment}{//end of main}
+
+\end{DoxyCodeInclude}
+\hypertarget{index_class}{}\subsection{The problem class}\label{index_class}
+The problem class is very similar to that employed for the \href{../../../helmholtz/scattering/html/index.html}{\tt solution of the 2D Helmholtz equation with flux boundary conditions.} We provide helper functions to create the P\+ML meshes and to apply the boundary conditions (mainly because these tasks have to be performed repeatedly in the spatially adaptive version this code which is not discussed explicitly here; but see \hyperlink{index_comm_ex}{Comments and Exercises} ).
+
+ 
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//========= start\_of\_problem\_class=====================================}
+\textcolor{comment}{/// Problem class to demonstrate use of perfectly matched layers}
+\textcolor{comment}{}\textcolor{comment}{/// for Helmholtz problems.}
+\textcolor{comment}{}\textcolor{comment}{//=====================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>
+\textcolor{keyword}{class }\hyperlink{classPMLProblem}{PMLProblem} : \textcolor{keyword}{public} Problem
+\{
+
+\textcolor{keyword}{public}:
+\textcolor{comment}{}
+\textcolor{comment}{ /// Constructor}
+\textcolor{comment}{} \hyperlink{classPMLProblem_ae6cc833e2485ad6d37d6dd14105bf407}{PMLProblem}();
+\textcolor{comment}{}
+\textcolor{comment}{ /// Destructor (empty)}
+\textcolor{comment}{} \hyperlink{classPMLProblem_a4922fc5b0ef4cf43c41ee9149712adb1}{~PMLProblem}()\{\}
+\textcolor{comment}{}
+\textcolor{comment}{ /// Update the problem specs before solve (empty)}
+\textcolor{comment}{} \textcolor{keywordtype}{void} \hyperlink{classPMLProblem_a13feb001d09f64dcfe44bbe3c6fe3d97}{actions\_before\_newton\_solve}()\{\}
+\textcolor{comment}{}
+\textcolor{comment}{ /// Update the problem specs after solve (empty)}
+\textcolor{comment}{} \textcolor{keywordtype}{void} \hyperlink{classPMLProblem_ac171a6a2ff881984b3e057036cbbc414}{actions\_after\_newton\_solve}()\{\}
+\textcolor{comment}{}
+\textcolor{comment}{ /// \(\backslash\)short Doc the solution. DocInfo object stores flags/labels for where the}
+\textcolor{comment}{ /// output gets written to}
+\textcolor{comment}{} \textcolor{keywordtype}{void} \hyperlink{classPMLProblem_ae04985b020a9e0526ab829ca316adb26}{doc\_solution}(DocInfo& doc\_info);
+\textcolor{comment}{}
+\textcolor{comment}{ /// Create PML meshes}
+\textcolor{comment}{} \textcolor{keywordtype}{void} \hyperlink{classPMLProblem_aa111bfe53d52cf6b2e1bb3b079c16d43}{create\_pml\_meshes}();
+
+ \textcolor{comment}{// Apply boundary conditions}
+ \textcolor{keywordtype}{void} \hyperlink{classPMLProblem_a2d2cdf5c1e99a7600d91353fd0584d5c}{apply\_boundary\_conditions}();
+
+\end{DoxyCodeInclude}
+
+
+The private member data includes pointers the bulk mesh
+
+
+\begin{DoxyCodeInclude}
+ \textcolor{comment}{/// Pointer to the "bulk" mesh}
+ TriangleMesh<ELEMENT>* Bulk\_mesh\_pt;
+
+\end{DoxyCodeInclude}
+
+
+and to the various P\+ML sub-\/meshes
+
+
+\begin{DoxyCodeInclude}
+ \textcolor{comment}{/// Pointer to the right PML mesh}
+ Mesh* PML\_right\_mesh\_pt;
+\textcolor{comment}{}
+\textcolor{comment}{ /// Pointer to the top PML mesh}
+\textcolor{comment}{} Mesh* PML\_top\_mesh\_pt;
+\textcolor{comment}{}
+\textcolor{comment}{ /// Pointer to the left PML mesh}
+\textcolor{comment}{} Mesh* PML\_left\_mesh\_pt;
+\textcolor{comment}{}
+\textcolor{comment}{ /// Pointer to the bottom PML mesh}
+\textcolor{comment}{} Mesh* PML\_bottom\_mesh\_pt;
+\textcolor{comment}{}
+\textcolor{comment}{ /// Pointer to the top right corner PML mesh}
+\textcolor{comment}{} Mesh* PML\_top\_right\_mesh\_pt;
+\textcolor{comment}{}
+\textcolor{comment}{ /// Pointer to the top left corner PML mesh}
+\textcolor{comment}{} Mesh* PML\_top\_left\_mesh\_pt;
+\textcolor{comment}{}
+\textcolor{comment}{ /// Pointer to the bottom right corner PML mesh}
+\textcolor{comment}{} Mesh* PML\_bottom\_right\_mesh\_pt;
+\textcolor{comment}{}
+\textcolor{comment}{ /// Pointer to the bottom left corner PML mesh}
+\textcolor{comment}{} Mesh* PML\_bottom\_left\_mesh\_pt;
+\textcolor{comment}{}
+\textcolor{comment}{ /// Trace file}
+\textcolor{comment}{} ofstream Trace\_file;
+
+\}; \textcolor{comment}{// end of problem class}
+
+\end{DoxyCodeInclude}
+\hypertarget{index_constr}{}\subsection{The problem constructor}\label{index_constr}
+We start by creating the {\ttfamily Circle} object that defines the inner boundary of the domain.
+
+ 
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//=======start\_of\_constructor=============================================}
+\textcolor{comment}{/// Constructor for Helmholtz problem}
+\textcolor{comment}{}\textcolor{comment}{//========================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>
+\hyperlink{classPMLProblem_ae6cc833e2485ad6d37d6dd14105bf407}{PMLProblem<ELEMENT>::PMLProblem}()
+\{
+
+ \textcolor{comment}{// Open trace file}
+ Trace\_file.open(\textcolor{stringliteral}{"RESLT/trace.dat"});
+
+ \textcolor{comment}{// Create circle representing inner boundary}
+ \textcolor{keywordtype}{double} a=0.2;
+ \textcolor{keywordtype}{double} x\_c=0.0;
+ \textcolor{keywordtype}{double} y\_c=0.0;
+ Circle* inner\_circle\_pt=\textcolor{keyword}{new} Circle(x\_c,y\_c,a);
+
+\end{DoxyCodeInclude}
+
+
+and define the polygonal outer boundary of the computational domain.
+
+
+\begin{DoxyCodeInclude}
+
+ \textcolor{comment}{// Outer boundary}
+ \textcolor{comment}{//---------------}
+ TriangleMeshClosedCurve* outer\_boundary\_pt=0;
+
+ \textcolor{keywordtype}{unsigned} n\_segments = 20;
+ Vector<TriangleMeshCurveSection*> outer\_boundary\_line\_pt(4);
+
+ \textcolor{comment}{// Each polyline only has three vertices, provide storage for their}
+ \textcolor{comment}{// coordinates}
+ Vector<Vector<double> > vertex\_coord(2);
+ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} i=0;i<2;i++)
+  \{
+   vertex\_coord[i].resize(2);
+  \}
+
+ \textcolor{comment}{// First polyline}
+ vertex\_coord[0][0]=-2.0;
+ vertex\_coord[0][1]=-2.0;
+ vertex\_coord[1][0]=-2.0;
+ vertex\_coord[1][1]=2.0;
+
+ \textcolor{comment}{// Build the 1st boundary polyline}
+ \textcolor{keywordtype}{unsigned} boundary\_id=2;
+ outer\_boundary\_line\_pt[0] = \textcolor{keyword}{new} TriangleMeshPolyLine(vertex\_coord,
+                                                      boundary\_id);
+
+ \textcolor{comment}{// Second boundary polyline}
+ vertex\_coord[0][0]=-2.0;
+ vertex\_coord[0][1]=2.0;
+ vertex\_coord[1][0]=2.0;
+ vertex\_coord[1][1]=2.0;
+
+ \textcolor{comment}{// Build the 2nd boundary polyline}
+ boundary\_id=3;
+ outer\_boundary\_line\_pt[1] = \textcolor{keyword}{new} TriangleMeshPolyLine(vertex\_coord,
+                                                      boundary\_id);
+
+ \textcolor{comment}{// Third boundary polyline}
+ vertex\_coord[0][0]=2.0;
+ vertex\_coord[0][1]=2.0;
+ vertex\_coord[1][0]=2.0;
+ vertex\_coord[1][1]=-2.0;
+
+ \textcolor{comment}{// Build the 3rd boundary polyline}
+ boundary\_id=4;
+ outer\_boundary\_line\_pt[2] = \textcolor{keyword}{new} TriangleMeshPolyLine(vertex\_coord,
+                                                      boundary\_id);
+
+ \textcolor{comment}{// Fourth boundary polyline}
+ vertex\_coord[0][0]=2.0;
+ vertex\_coord[0][1]=-2.0;
+ vertex\_coord[1][0]=-2.0;
+ vertex\_coord[1][1]=-2.0;
+
+ \textcolor{comment}{// Build the 4th boundary polyline}
+ boundary\_id=5;
+ outer\_boundary\_line\_pt[3] = \textcolor{keyword}{new} TriangleMeshPolyLine(vertex\_coord,
+                                                      boundary\_id);
+
+ \textcolor{comment}{// Create the triangle mesh polygon for outer boundary}
+ outer\_boundary\_pt = \textcolor{keyword}{new} TriangleMeshPolygon(outer\_boundary\_line\_pt);
+
+\end{DoxyCodeInclude}
+
+
+Next we define the curvilinear inner boundary in terms of two {\ttfamily Triangle\+Mesh\+Curvi\+Lines} which define the hole in the domain\+:
+
+
+\begin{DoxyCodeInclude}
+
+ \textcolor{comment}{// Inner circular boundary}
+ \textcolor{comment}{//------------------------}
+ Vector<TriangleMeshCurveSection*> inner\_boundary\_line\_pt(2);
+
+ \textcolor{comment}{// The intrinsic coordinates for the beginning and end of the curve}
+ \textcolor{keywordtype}{double} s\_start = 0.0;
+ \textcolor{keywordtype}{double} s\_end   = MathematicalConstants::Pi;
+ boundary\_id = 0;
+ inner\_boundary\_line\_pt[0]=
+  \textcolor{keyword}{new} TriangleMeshCurviLine(inner\_circle\_pt,
+                            s\_start,
+                            s\_end,
+                            n\_segments,
+                            boundary\_id);
+
+ \textcolor{comment}{// The intrinsic coordinates for the beginning and end of the curve}
+ s\_start = MathematicalConstants::Pi;
+ s\_end   = 2.0*MathematicalConstants::Pi;
+ boundary\_id = 1;
+ inner\_boundary\_line\_pt[1]=
+  \textcolor{keyword}{new} TriangleMeshCurviLine(inner\_circle\_pt,
+                            s\_start,
+                            s\_end,
+                            n\_segments,
+                            boundary\_id);
+
+
+ \textcolor{comment}{// Combine to hole}
+ \textcolor{comment}{//----------------}
+ Vector<TriangleMeshClosedCurve*> hole\_pt(1);
+ Vector<double> hole\_coords(2);
+ hole\_coords[0]=0.0;
+ hole\_coords[1]=0.0;
+ hole\_pt[0]=\textcolor{keyword}{new} TriangleMeshClosedCurve(inner\_boundary\_line\_pt,
+                                        hole\_coords);
+
+\end{DoxyCodeInclude}
+
+
+We specify the mesh parameters (including a target element size)
+
+
+\begin{DoxyCodeInclude}
+
+
+ \textcolor{comment}{// Use the TriangleMeshParameters object for helping on the manage}
+ \textcolor{comment}{// of the TriangleMesh parameters. The only parameter that needs to take}
+ \textcolor{comment}{// is the outer boundary.}
+ TriangleMeshParameters triangle\_mesh\_parameters(outer\_boundary\_pt);
+
+ \textcolor{comment}{// Specify the closed curve using the TriangleMeshParameters object}
+ triangle\_mesh\_parameters.internal\_closed\_curve\_pt() = hole\_pt;
+
+ \textcolor{comment}{// Target element size in bulk mesh}
+ triangle\_mesh\_parameters.element\_area() = 0.1;
+
+\end{DoxyCodeInclude}
+
+
+and build the bulk mesh
+
+
+\begin{DoxyCodeInclude}
+ \textcolor{comment}{// Build "bulk" mesh}
+ Bulk\_mesh\_pt=\textcolor{keyword}{new} TriangleMesh<ELEMENT>(triangle\_mesh\_parameters);
+
+\end{DoxyCodeInclude}
+
+
+We create the P\+ML meshes and add them (and the bulk mesh) to the Problem\textquotesingle{}s collection of sub-\/meshes and build the global mesh.
+
+
+\begin{DoxyCodeInclude}
+ \textcolor{comment}{// Create the main triangular mesh}
+ add\_sub\_mesh(Bulk\_mesh\_pt);
+
+ \textcolor{comment}{// Create PML meshes and add them to the global mesh}
+ create\_pml\_meshes();
+
+ \textcolor{comment}{// Build the entire mesh from its submeshes}
+ build\_global\_mesh();
+
+\end{DoxyCodeInclude}
+
+
+Next we pass the problem parameters to all elements (remember that even the elements in the P\+ML layers need to be told about these since they adjust the $ \gamma_x $ and $ \gamma_y $ functions in terms of these parameters), apply the boundary conditions and assign the equation numbers\+:
+
+
+\begin{DoxyCodeInclude}
+
+ \textcolor{comment}{// Let's have a look where the boundaries are}
+ this->mesh\_pt()->output(\textcolor{stringliteral}{"global\_mesh.dat"});
+ this->mesh\_pt()->output\_boundaries(\textcolor{stringliteral}{"global\_mesh\_boundary.dat"});
+
+ \textcolor{comment}{// Complete the build of all elements so they are fully functional}
+ \textcolor{keywordtype}{unsigned} n\_element = this->mesh\_pt()->nelement();
+ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} e=0;e<n\_element;e++)
+  \{
+   \textcolor{comment}{// Upcast from GeneralisedElement to Helmholtz bulk element}
+   PMLHelmholtzEquations<2,AxisAlignedPMLElement<2>> *el\_pt =
+    \textcolor{keyword}{dynamic\_cast<}PMLHelmholtzEquations<2,AxisAlignedPMLElement<2>\textcolor{keyword}{>}*>(
+      mesh\_pt()->element\_pt(e));
+
+   \textcolor{comment}{//Set the k\_squared double pointer}
+   el\_pt->k\_squared\_pt() = &\hyperlink{namespaceGlobalParameters_aae73cb63b27d51a87845c3392cd944eb}{GlobalParameters::K\_squared};
+  \}
+
+ \textcolor{comment}{// Apply boundary conditions}
+ apply\_boundary\_conditions();
+
+ \textcolor{comment}{// Setup equation numbering scheme}
+ cout <<\textcolor{stringliteral}{"Number of equations: "} << assign\_eqn\_numbers() << std::endl;
+
+\} \textcolor{comment}{// end of constructor}
+
+\end{DoxyCodeInclude}
+
+
+The problem is now ready to be solved.\hypertarget{index_apply_bc}{}\subsection{Applying the boundary conditions}\label{index_apply_bc}
+We pin both nodal values (representing the real and imaginary part of the solutions) on the inner boundaries (boundaries 0 and 1; see enumeration of the boundaries in the constructor) and assign the desired boundary values.
+
+ 
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//==================start\_of\_apply\_boundary\_conditions====================}
+\textcolor{comment}{/// Apply boundary conditions}
+\textcolor{comment}{}\textcolor{comment}{//========================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>
+\textcolor{keywordtype}{void} \hyperlink{classPMLProblem_a2d2cdf5c1e99a7600d91353fd0584d5c}{PMLProblem<ELEMENT>::apply\_boundary\_conditions}()
+\{
+
+ \textcolor{comment}{// Boundary conditions are set on the surface of the circle}
+ \textcolor{comment}{// as a constant nonzero Dirichlet boundary condition}
+ \textcolor{keywordtype}{unsigned} n\_bound = Bulk\_mesh\_pt->nboundary();
+
+ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} b=0;b<n\_bound;b++)
+  \{
+   \textcolor{keywordtype}{unsigned} n\_node = Bulk\_mesh\_pt->nboundary\_node(b);
+   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} n=0;n<n\_node;n++)
+    \{
+     \textcolor{keywordflow}{if} ((b==0) || (b==1))
+      \{
+       Node* nod\_pt=Bulk\_mesh\_pt->boundary\_node\_pt(b,n);
+       nod\_pt->pin(0);
+       nod\_pt->pin(1);
+
+       nod\_pt->set\_value(0,0.1);
+       nod\_pt->set\_value(1,0.0);
+      \}
+    \}
+  \}
+
+\}\textcolor{comment}{// end of apply\_boundary\_conditions}
+
+\end{DoxyCodeInclude}
+\hypertarget{index_doc}{}\subsection{Post-\/processing}\label{index_doc}
+The post-\/processing function {\ttfamily doc\+\_\+solution}(...) simply outputs the computed solution.
+
+ 
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//=====================start\_of\_doc=======================================}
+\textcolor{comment}{/// Doc the solution: doc\_info contains labels/output directory etc.}
+\textcolor{comment}{}\textcolor{comment}{//========================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>
+\textcolor{keywordtype}{void} \hyperlink{classPMLProblem_ae04985b020a9e0526ab829ca316adb26}{PMLProblem<ELEMENT>::doc\_solution}(DocInfo& doc\_info)
+\{
+
+ ofstream some\_file,some\_file2;
+ \textcolor{keywordtype}{char} filename[100];
+
+ \textcolor{comment}{// Number of plot points}
+ \textcolor{keywordtype}{unsigned} npts;
+ npts=5;
+
+ \textcolor{comment}{// Output solution}
+ \textcolor{comment}{//-----------------}
+ sprintf(filename,\textcolor{stringliteral}{"%s/soln%i.dat"},doc\_info.directory().c\_str(),
+         doc\_info.number());
+ some\_file.open(filename);
+ Bulk\_mesh\_pt->output(some\_file,npts);
+ some\_file.close();
+
+\end{DoxyCodeInclude}
+\hypertarget{index_comm_ex}{}\section{Comments and Exercises}\label{index_comm_ex}
+\hypertarget{index_numbering}{}\subsection{The enumeration of the unknowns}\label{index_numbering}
+As discussed in the introduction, most practically relevant solutions of the Helmholtz equation are complex valued. Since {\ttfamily oomph-\/lib\textquotesingle{}s} solvers only deal with real (double precision) unknowns, the equations are separated into their real and imaginary parts. In the implementation of the Helmholtz elements, we store the real and imaginary parts of the solution as two separate values at each node. By default, the real and imaginary parts are accessible via {\ttfamily Node\+::value(0)} and {\ttfamily Node\+::value(1)}. However, to facilitate the use of the elements in multi-\/physics problems we avoid accessing the unknowns directly in this manner but provide the virtual function 
+\begin{DoxyCode}
+std::complex<unsigned> HelmholtzEquations<DIM>::u\_index\_helmholtz()
+\end{DoxyCode}
+ which returns a complex number made of the two unsigneds that indicate which nodal value represents the real and imaginary parts of the solution. This function may be overloaded in combined multi-\/physics elements in which a Helmholtz element is combined (by multiple inheritance) with another element, using the strategy described in \href{../../../multi_physics/b_convection/html/index.html}{\tt the Boussinesq convection tutorial}.\hypertarget{index_dampingfct}{}\subsection{P\+M\+L damping functions}\label{index_dampingfct}
+The choice for the absorbing functions in our implementation of the P\+M\+Ls is not unique. There are alternatives varying in both order and continuity properties. The current form is the result of several feasibility studies and comparisons found in both \href{http://www.sciencedirect.com/science/article/pii/S0021999106004487}{\tt Bermudez et al.} and in the relevant papers on \href{http://imperial.academia.edu/RaduCimpeanu/Papers}{\tt Radu Cimpeanu\textquotesingle{}s webpage}. These damping functions produce an acceptable result in most practical situations without further modifications. For very specific applications, alternatives may need to be used and can easily be implemented within the existing framework.\hypertarget{index_ex}{}\subsection{Exercises}\label{index_ex}
+\hypertarget{index_pmlsize}{}\subsubsection{Changing perfectly matched layer parameters}\label{index_pmlsize}
+Confirm that only a very small number of P\+ML elements (across the thickness of the P\+ML layer) is required to effectively damp the outgoing waves. Furthermore, show that (and try to explain why) P\+M\+Ls with too many elements may not perform as expected.
+
+A second parameter that can be adjusted is the geometrical thickness of the perfectly matched layers. Relative thin layers layer tend to perform better than thick layers with few elements across their width. Confirm this and try to find an explanation for the phenomenon, given the form of the absorbing functions used in the complex coordinate transformation.\hypertarget{index_large_k}{}\subsubsection{Large wavenumbers}\label{index_large_k}
+For Helmholtz problems in general, ill-\/conditioning appears as the wavenumber becomes very large. By altering wavespeed and/or frequency, explore the limitations of both the mesh and the solver in terms of this parameter. Try adjusting the target element size in order to alleviate resolution-\/related effects. Assess the effectiveness of the perfectly matched layers in high wavenumber problems.\hypertarget{index_adaptivity}{}\subsubsection{Spatial adaptivity}\label{index_adaptivity}
+The driver code discussed above already contains the straightforward modifications required to enable spatial adaptivity. Explore this (by recompiling the code with -\/\+D\+A\+D\+A\+P\+T\+I\+VE) and explain why spatial adaptivity is not particularly helpful for the test problem discussed above.\hypertarget{index_diff_order}{}\subsubsection{Linear and cubic finite elements}\label{index_diff_order}
+The driver code also contains (commented out) modifications that allow the simulation to be performed with three-\/node (linear) and ten-\/node (cubic) triangles. Explore the performance of these elements and confirm that the helper functions correctly create matching (four-\/node and sixteen-\/node) quad elements in the P\+ML layers.\hypertarget{index_default}{}\subsubsection{Default values for problem parameters}\label{index_default}
+Following our usual convention, we provide default values for problem parameters where this is sensible. For instance, the P\+ML mapping function defaults to the one proposed by Bermudez et al. as this appears to be optimal. Some parameters, such as the wavenumber squared $ k^2 $ do need to be set since there are no obvious defaults. If {\ttfamily oomph-\/lib} is compiled in {\ttfamily P\+A\+R\+A\+N\+O\+ID} mode, an error is thrown if the relevant pointers haven\textquotesingle{}t been set. Without paranoia, you get a segmentation fault...
+
+Confirm that this is the case by commenting out the relevant assignments.\hypertarget{index_non_convex}{}\subsubsection{Non-\/convex P\+M\+L boundaries}\label{index_non_convex}
+As discussed above, we currently provide helper functions to attach P\+ML layers to axis-\/aligned boundaries of 2D meshes with convex outer boundaries. Essentially, this restricts us to rectangular computational domains. Extend this capability by developing methodologies to
+\begin{DoxyItemize}
+\item deal with non-\/convex domain boundaries. We suggest you create P\+ML meshes for the non-\/convex corners first, then create the axis-\/aligned meshes (note that these have to share nodes with the already-\/created elements that occupy the non-\/convex corners), and then create the corner meshes for the convex corners (as before). When you\textquotesingle{}re done, let us know -- this would be a really useful addition to oomph-\/lib\textquotesingle{}s machinery. We\textquotesingle{}re happy to help!
+\item Repeat the same exercise in 3D -- somewhat less trivial (so we\textquotesingle{}re even keener for somebody to have a go!)
+\end{DoxyItemize}\hypertarget{index_sources}{}\section{Source files for this tutorial}\label{index_sources}
+
+\begin{DoxyItemize}
+\item The source files for this tutorial are located in the directory\+: \begin{center} \href{../../../../demo_drivers/pml_helmholtz/scattering}{\tt demo\+\_\+drivers/pml\+\_\+helmholtz/scattering/ } \end{center} 
+\item The driver code is\+: \begin{center} \href{../../../../demo_drivers/pml_helmholtz/scattering/unstructured_two_d_helmholtz.cc}{\tt demo\+\_\+drivers/pml\+\_\+helmholtz/scattering/unstructured\+\_\+two\+\_\+d\+\_\+helmholtz.\+cc } \end{center} 
+\end{DoxyItemize}
+
+
+
+ 
+
+ \hypertarget{index_pdf}{}\section{P\+D\+F file}\label{index_pdf}
+A \href{../latex/refman.pdf}{\tt pdf version} of this document is available. \end{document}

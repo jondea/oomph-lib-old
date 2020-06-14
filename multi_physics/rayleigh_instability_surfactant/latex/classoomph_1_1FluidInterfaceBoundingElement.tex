@@ -1,0 +1,572 @@
+\hypertarget{classoomph_1_1FluidInterfaceBoundingElement}{}\section{oomph\+:\+:Fluid\+Interface\+Bounding\+Element Class Reference}
+\label{classoomph_1_1FluidInterfaceBoundingElement}\index{oomph\+::\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Fluid\+Interface\+Bounding\+Element}}
+
+
+{\ttfamily \#include $<$interface\+\_\+elements.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Fluid\+Interface\+Bounding\+Element\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=0.749415cm]{classoomph_1_1FluidInterfaceBoundingElement}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1FluidInterfaceBoundingElement_ab47dc01b830d4c405002e61a7205ca7c}{Fluid\+Interface\+Bounding\+Element} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1FluidInterfaceBoundingElement_a09c0b1df7d653eaf55e94e3951d409dd}{Wall\+Unit\+Normal\+Fct\+Pt} \& \hyperlink{classoomph_1_1FluidInterfaceBoundingElement_a3d8ea7b8e1f22eaaa1235231454b753c}{wall\+\_\+unit\+\_\+normal\+\_\+fct\+\_\+pt} ()
+\begin{DoxyCompactList}\small\item\em Access function\+: Pointer to wall unit normal function. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1FluidInterfaceBoundingElement_a09c0b1df7d653eaf55e94e3951d409dd}{Wall\+Unit\+Normal\+Fct\+Pt} \hyperlink{classoomph_1_1FluidInterfaceBoundingElement_a393601b322d0b8d6d2f86d07bd17550f}{wall\+\_\+unit\+\_\+normal\+\_\+fct\+\_\+pt} () const
+\begin{DoxyCompactList}\small\item\em Access function\+: Pointer to wall unit normal function. Const version. \end{DoxyCompactList}\item 
+Vector$<$ unsigned $>$ \& \hyperlink{classoomph_1_1FluidInterfaceBoundingElement_ad74aadb79a88536e188fbff44f35cc02}{u\+\_\+index\+\_\+interface\+\_\+boundary} ()
+\begin{DoxyCompactList}\small\item\em Access for nodal index at which the velocity components are stored. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1FluidInterfaceBoundingElement_a8566c5bed5c87717fcb155d398ed8c8f}{set\+\_\+contact\+\_\+angle} (double $\ast$const \&angle\+\_\+pt, const bool \&strong=true)
+\begin{DoxyCompactList}\small\item\em Set a pointer to the desired contact angle. Optional boolean (defaults to true) chooses strong imposition via hijacking (true) or weak imposition via addition to momentum equation (false). The default strong imposition is appropriate for static contact angle problems. \end{DoxyCompactList}\item 
+double $\ast$\& \hyperlink{classoomph_1_1FluidInterfaceBoundingElement_a00fc3fdc8c3b7d149ba2c6de44f4a150}{contact\+\_\+angle\+\_\+pt} ()
+\begin{DoxyCompactList}\small\item\em Access function to the pointer specifying the prescribed contact angle. \end{DoxyCompactList}\item 
+double $\ast$\& \hyperlink{classoomph_1_1FluidInterfaceBoundingElement_acf132633ea7ed6b063c1f2a0a62d0b8c}{ca\+\_\+pt} ()
+\begin{DoxyCompactList}\small\item\em Access function to the pointer specifying the capillary number. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1FluidInterfaceBoundingElement_ae5d097813762a2544d0b49c6e2fbaaac}{ca} ()
+\begin{DoxyCompactList}\small\item\em Return the value of the capillary number. \end{DoxyCompactList}\item 
+double \& \hyperlink{classoomph_1_1FluidInterfaceBoundingElement_a6803f4ea8de0b3fe17b703d7489c8147}{contact\+\_\+angle} ()
+\begin{DoxyCompactList}\small\item\em Return value of the contact angle. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1FluidInterfaceBoundingElement_acaa709e7a402418fb03f2bf0f57f53ea}{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals} (Vector$<$ double $>$ \&residuals)
+\begin{DoxyCompactList}\small\item\em Calculate the residuals. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1FluidInterfaceBoundingElement_a69fa099e0cbfe8ae028a4edc77fedc60}{fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+interface\+\_\+boundary} (Vector$<$ double $>$ \&residuals, Dense\+Matrix$<$ double $>$ \&jacobian, unsigned flag)=0
+\begin{DoxyCompactList}\small\item\em Calculate the generic residuals contribution. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1FluidInterfaceBoundingElement_a4510bd81b572d758694715f673080041}{add\+\_\+additional\+\_\+residual\+\_\+contributions\+\_\+interface\+\_\+boundary} (Vector$<$ double $>$ \&residuals, Dense\+Matrix$<$ double $>$ \&jacobian, const unsigned \&flag, const Shape \&psif, const D\+Shape \&dpsifds, const Vector$<$ double $>$ \&interpolated\+\_\+n, const double \&W)
+\begin{DoxyCompactList}\small\item\em Empty helper function to calculate the additional contributions arising from the node update strategy to the Jacobian within the integration loop. This will be overloaded by elements that require contributions to their underlying equations from boundary integrals. The shape functions, their derivatives w.\+r.\+t. to the local coordinates, the unit normal and integral weight are passed in so that they do not have to be recalculated. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1FluidInterfaceBoundingElement_a81adc5ae89ddfa120f587c61b972622f}{output} (std\+::ostream \&outfile)
+\begin{DoxyCompactList}\small\item\em Overload the output function. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1FluidInterfaceBoundingElement_af2c821d51d506221976a0c17e1615ac3}{output} (std\+::ostream \&outfile, const unsigned \&n\+\_\+plot)
+\begin{DoxyCompactList}\small\item\em Output function. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1FluidInterfaceBoundingElement_a85cc62405429744e3e3585894315cb9e}{output} (F\+I\+LE $\ast$file\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Overload the C-\/style output function. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1FluidInterfaceBoundingElement_ae85ea987a06275a03ad6d0e3710871da}{output} (F\+I\+LE $\ast$file\+\_\+pt, const unsigned \&n\+\_\+plot)
+\begin{DoxyCompactList}\small\item\em C-\/style Output function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual int \hyperlink{classoomph_1_1FluidInterfaceBoundingElement_a12a0a6d7c3c1c1a5a0f42a57e60eab34}{kinematic\+\_\+local\+\_\+eqn} (const unsigned \&n)=0
+\begin{DoxyCompactList}\small\item\em Function that is used to determine the local equation number of the kinematic equation associated with the nodes of the element This must be overloaded depending on the node update scheme. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1FluidInterfaceBoundingElement_a1a715427e2037278891c06afd5d096fb}{wall\+\_\+unit\+\_\+normal} (const Vector$<$ double $>$ \&x, Vector$<$ double $>$ \&normal)
+\begin{DoxyCompactList}\small\item\em Function that returns the unit normal of the bounding wall directed out of the fluid. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1FluidInterfaceBoundingElement_ab2639a1585fe815bed2d2a3d69fa5164}{update\+\_\+in\+\_\+external\+\_\+fd} (const unsigned \&i)
+\begin{DoxyCompactList}\small\item\em The geometric data of the parent element is included as external data and so a (bulk) node update must take place after the variation of any of this external data. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1FluidInterfaceBoundingElement_a7347eb5984a18ffb1cfea1f9240badee}{reset\+\_\+in\+\_\+external\+\_\+fd} (const unsigned \&i)
+\begin{DoxyCompactList}\small\item\em The only external data are these geometric data so We can omit the reset function (relying on the next update. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1FluidInterfaceBoundingElement_a6b0de0d11dfcfc912e2f56fbd6359ebe}{reset\+\_\+after\+\_\+external\+\_\+fd} ()
+\begin{DoxyCompactList}\small\item\em We require a final node update in the bulk element after all finite differencing. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+unsigned \hyperlink{classoomph_1_1FluidInterfaceBoundingElement_affa8d787e58ca23c2e73b4c8a2c30766}{Contact\+\_\+angle\+\_\+flag}
+\begin{DoxyCompactList}\small\item\em Flag used to determine whether the contact angle is to be used (0 if not), and whether it will be applied weakly as a force term in the momentum equations (1) or by hijacking the kinematic condition (2). \end{DoxyCompactList}\item 
+Vector$<$ unsigned $>$ \hyperlink{classoomph_1_1FluidInterfaceBoundingElement_a08223fefc36922f4661e30e9de16830f}{U\+\_\+index\+\_\+interface\+\_\+boundary}
+\begin{DoxyCompactList}\small\item\em Index at which the i-\/th velocity component is stored in the element\textquotesingle{}s nodes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef void($\ast$ \hyperlink{classoomph_1_1FluidInterfaceBoundingElement_a09c0b1df7d653eaf55e94e3951d409dd}{Wall\+Unit\+Normal\+Fct\+Pt}) (const Vector$<$ double $>$ \&x, Vector$<$ double $>$ \&unit\+\_\+normal)
+\begin{DoxyCompactList}\small\item\em Function pointer to a wall unit normal function. Returns the unit normal on the wall, at the specified Eulerian coordinate. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1FluidInterfaceBoundingElement_a09c0b1df7d653eaf55e94e3951d409dd}{Wall\+Unit\+Normal\+Fct\+Pt} \hyperlink{classoomph_1_1FluidInterfaceBoundingElement_abc765a3b2c4eac762a1a5ba85ac4a7a4}{Wall\+\_\+unit\+\_\+normal\+\_\+fct\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to a wall normal function that returns the wall unit normal as a function of position in global Eulerian coordinates. \end{DoxyCompactList}\item 
+double $\ast$ \hyperlink{classoomph_1_1FluidInterfaceBoundingElement_a351532c356c9e839cba87150bea354c5}{Contact\+\_\+angle\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to the desired value of the contact angle (if any) \end{DoxyCompactList}\item 
+double $\ast$ \hyperlink{classoomph_1_1FluidInterfaceBoundingElement_abf47719443253c1117705b0a20e9ef70}{Ca\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to the desired value of the capillary number. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Base class for elements at the boundary of free surfaces or interfaces, used typically to impose contact angle boundary conditions. The elemental dimensions are one less than those of the surface elements, or two less than those of the original bulk elements. Thus in two-\/dimensional and axi-\/symmetric problems, are points, but in three-\/dimensional problems, they are lines. These boundaries may be in contact with a solid surface, in which case the normal to that surface must be provided. 
+
+Definition at line 58 of file interface\+\_\+elements.\+h.
+
+
+
+\subsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classoomph_1_1FluidInterfaceBoundingElement_a09c0b1df7d653eaf55e94e3951d409dd}\label{classoomph_1_1FluidInterfaceBoundingElement_a09c0b1df7d653eaf55e94e3951d409dd}} 
+\index{oomph\+::\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Fluid\+Interface\+Bounding\+Element}!Wall\+Unit\+Normal\+Fct\+Pt@{Wall\+Unit\+Normal\+Fct\+Pt}}
+\index{Wall\+Unit\+Normal\+Fct\+Pt@{Wall\+Unit\+Normal\+Fct\+Pt}!oomph\+::\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Fluid\+Interface\+Bounding\+Element}}
+\subsubsection{\texorpdfstring{Wall\+Unit\+Normal\+Fct\+Pt}{WallUnitNormalFctPt}}
+{\footnotesize\ttfamily typedef void($\ast$ oomph\+::\+Fluid\+Interface\+Bounding\+Element\+::\+Wall\+Unit\+Normal\+Fct\+Pt) (const Vector$<$ double $>$ \&x, Vector$<$ double $>$ \&unit\+\_\+normal)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Function pointer to a wall unit normal function. Returns the unit normal on the wall, at the specified Eulerian coordinate. 
+
+
+
+Definition at line 64 of file interface\+\_\+elements.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1FluidInterfaceBoundingElement_ab47dc01b830d4c405002e61a7205ca7c}\label{classoomph_1_1FluidInterfaceBoundingElement_ab47dc01b830d4c405002e61a7205ca7c}} 
+\index{oomph\+::\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Fluid\+Interface\+Bounding\+Element}!Fluid\+Interface\+Bounding\+Element@{Fluid\+Interface\+Bounding\+Element}}
+\index{Fluid\+Interface\+Bounding\+Element@{Fluid\+Interface\+Bounding\+Element}!oomph\+::\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Fluid\+Interface\+Bounding\+Element}}
+\subsubsection{\texorpdfstring{Fluid\+Interface\+Bounding\+Element()}{FluidInterfaceBoundingElement()}}
+{\footnotesize\ttfamily oomph\+::\+Fluid\+Interface\+Bounding\+Element\+::\+Fluid\+Interface\+Bounding\+Element (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor. 
+
+
+
+Definition at line 141 of file interface\+\_\+elements.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1FluidInterfaceBoundingElement_a4510bd81b572d758694715f673080041}\label{classoomph_1_1FluidInterfaceBoundingElement_a4510bd81b572d758694715f673080041}} 
+\index{oomph\+::\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Fluid\+Interface\+Bounding\+Element}!add\+\_\+additional\+\_\+residual\+\_\+contributions\+\_\+interface\+\_\+boundary@{add\+\_\+additional\+\_\+residual\+\_\+contributions\+\_\+interface\+\_\+boundary}}
+\index{add\+\_\+additional\+\_\+residual\+\_\+contributions\+\_\+interface\+\_\+boundary@{add\+\_\+additional\+\_\+residual\+\_\+contributions\+\_\+interface\+\_\+boundary}!oomph\+::\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Fluid\+Interface\+Bounding\+Element}}
+\subsubsection{\texorpdfstring{add\+\_\+additional\+\_\+residual\+\_\+contributions\+\_\+interface\+\_\+boundary()}{add\_additional\_residual\_contributions\_interface\_boundary()}}
+{\footnotesize\ttfamily virtual void oomph\+::\+Fluid\+Interface\+Bounding\+Element\+::add\+\_\+additional\+\_\+residual\+\_\+contributions\+\_\+interface\+\_\+boundary (\begin{DoxyParamCaption}\item[{Vector$<$ double $>$ \&}]{residuals,  }\item[{Dense\+Matrix$<$ double $>$ \&}]{jacobian,  }\item[{const unsigned \&}]{flag,  }\item[{const Shape \&}]{psif,  }\item[{const D\+Shape \&}]{dpsifds,  }\item[{const Vector$<$ double $>$ \&}]{interpolated\+\_\+n,  }\item[{const double \&}]{W }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Empty helper function to calculate the additional contributions arising from the node update strategy to the Jacobian within the integration loop. This will be overloaded by elements that require contributions to their underlying equations from boundary integrals. The shape functions, their derivatives w.\+r.\+t. to the local coordinates, the unit normal and integral weight are passed in so that they do not have to be recalculated. 
+
+
+
+Definition at line 232 of file interface\+\_\+elements.\+h.
+
+
+
+Referenced by oomph\+::\+Point\+Fluid\+Interface\+Bounding\+Element\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+interface\+\_\+boundary(), and oomph\+::\+Line\+Fluid\+Interface\+Bounding\+Element\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+interface\+\_\+boundary().
+
+\mbox{\Hypertarget{classoomph_1_1FluidInterfaceBoundingElement_ae5d097813762a2544d0b49c6e2fbaaac}\label{classoomph_1_1FluidInterfaceBoundingElement_ae5d097813762a2544d0b49c6e2fbaaac}} 
+\index{oomph\+::\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Fluid\+Interface\+Bounding\+Element}!ca@{ca}}
+\index{ca@{ca}!oomph\+::\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Fluid\+Interface\+Bounding\+Element}}
+\subsubsection{\texorpdfstring{ca()}{ca()}}
+{\footnotesize\ttfamily double oomph\+::\+Fluid\+Interface\+Bounding\+Element\+::ca (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the value of the capillary number. 
+
+
+
+Definition at line 174 of file interface\+\_\+elements.\+h.
+
+
+
+References Ca\+\_\+pt.
+
+
+
+Referenced by oomph\+::\+Fluid\+Interface\+Element\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+interface(), oomph\+::\+Point\+Fluid\+Interface\+Bounding\+Element\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+interface\+\_\+boundary(), and oomph\+::\+Line\+Fluid\+Interface\+Bounding\+Element\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+interface\+\_\+boundary().
+
+\mbox{\Hypertarget{classoomph_1_1FluidInterfaceBoundingElement_acf132633ea7ed6b063c1f2a0a62d0b8c}\label{classoomph_1_1FluidInterfaceBoundingElement_acf132633ea7ed6b063c1f2a0a62d0b8c}} 
+\index{oomph\+::\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Fluid\+Interface\+Bounding\+Element}!ca\+\_\+pt@{ca\+\_\+pt}}
+\index{ca\+\_\+pt@{ca\+\_\+pt}!oomph\+::\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Fluid\+Interface\+Bounding\+Element}}
+\subsubsection{\texorpdfstring{ca\+\_\+pt()}{ca\_pt()}}
+{\footnotesize\ttfamily double$\ast$ \& oomph\+::\+Fluid\+Interface\+Bounding\+Element\+::ca\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Access function to the pointer specifying the capillary number. 
+
+
+
+Definition at line 171 of file interface\+\_\+elements.\+h.
+
+
+
+References Ca\+\_\+pt.
+
+\mbox{\Hypertarget{classoomph_1_1FluidInterfaceBoundingElement_a6803f4ea8de0b3fe17b703d7489c8147}\label{classoomph_1_1FluidInterfaceBoundingElement_a6803f4ea8de0b3fe17b703d7489c8147}} 
+\index{oomph\+::\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Fluid\+Interface\+Bounding\+Element}!contact\+\_\+angle@{contact\+\_\+angle}}
+\index{contact\+\_\+angle@{contact\+\_\+angle}!oomph\+::\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Fluid\+Interface\+Bounding\+Element}}
+\subsubsection{\texorpdfstring{contact\+\_\+angle()}{contact\_angle()}}
+{\footnotesize\ttfamily double\& oomph\+::\+Fluid\+Interface\+Bounding\+Element\+::contact\+\_\+angle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return value of the contact angle. 
+
+
+
+Definition at line 195 of file interface\+\_\+elements.\+h.
+
+
+
+References Contact\+\_\+angle\+\_\+pt.
+
+
+
+Referenced by oomph\+::\+Point\+Fluid\+Interface\+Bounding\+Element\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+interface\+\_\+boundary(), and oomph\+::\+Line\+Fluid\+Interface\+Bounding\+Element\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+interface\+\_\+boundary().
+
+\mbox{\Hypertarget{classoomph_1_1FluidInterfaceBoundingElement_a00fc3fdc8c3b7d149ba2c6de44f4a150}\label{classoomph_1_1FluidInterfaceBoundingElement_a00fc3fdc8c3b7d149ba2c6de44f4a150}} 
+\index{oomph\+::\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Fluid\+Interface\+Bounding\+Element}!contact\+\_\+angle\+\_\+pt@{contact\+\_\+angle\+\_\+pt}}
+\index{contact\+\_\+angle\+\_\+pt@{contact\+\_\+angle\+\_\+pt}!oomph\+::\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Fluid\+Interface\+Bounding\+Element}}
+\subsubsection{\texorpdfstring{contact\+\_\+angle\+\_\+pt()}{contact\_angle\_pt()}}
+{\footnotesize\ttfamily double$\ast$\& oomph\+::\+Fluid\+Interface\+Bounding\+Element\+::contact\+\_\+angle\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Access function to the pointer specifying the prescribed contact angle. 
+
+
+
+Definition at line 168 of file interface\+\_\+elements.\+h.
+
+
+
+References Contact\+\_\+angle\+\_\+pt.
+
+\mbox{\Hypertarget{classoomph_1_1FluidInterfaceBoundingElement_acaa709e7a402418fb03f2bf0f57f53ea}\label{classoomph_1_1FluidInterfaceBoundingElement_acaa709e7a402418fb03f2bf0f57f53ea}} 
+\index{oomph\+::\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Fluid\+Interface\+Bounding\+Element}!fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals}}
+\index{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals}!oomph\+::\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Fluid\+Interface\+Bounding\+Element}}
+\subsubsection{\texorpdfstring{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals()}{fill\_in\_contribution\_to\_residuals()}}
+{\footnotesize\ttfamily void oomph\+::\+Fluid\+Interface\+Bounding\+Element\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals (\begin{DoxyParamCaption}\item[{Vector$<$ double $>$ \&}]{residuals }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Calculate the residuals. 
+
+
+
+Definition at line 212 of file interface\+\_\+elements.\+h.
+
+
+
+References fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+interface\+\_\+boundary().
+
+\mbox{\Hypertarget{classoomph_1_1FluidInterfaceBoundingElement_a69fa099e0cbfe8ae028a4edc77fedc60}\label{classoomph_1_1FluidInterfaceBoundingElement_a69fa099e0cbfe8ae028a4edc77fedc60}} 
+\index{oomph\+::\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Fluid\+Interface\+Bounding\+Element}!fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+interface\+\_\+boundary@{fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+interface\+\_\+boundary}}
+\index{fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+interface\+\_\+boundary@{fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+interface\+\_\+boundary}!oomph\+::\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Fluid\+Interface\+Bounding\+Element}}
+\subsubsection{\texorpdfstring{fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+interface\+\_\+boundary()}{fill\_in\_generic\_residual\_contribution\_interface\_boundary()}}
+{\footnotesize\ttfamily virtual void oomph\+::\+Fluid\+Interface\+Bounding\+Element\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+interface\+\_\+boundary (\begin{DoxyParamCaption}\item[{Vector$<$ double $>$ \&}]{residuals,  }\item[{Dense\+Matrix$<$ double $>$ \&}]{jacobian,  }\item[{unsigned}]{flag }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Calculate the generic residuals contribution. 
+
+
+
+Implemented in \hyperlink{classoomph_1_1LineFluidInterfaceBoundingElement_aa162a09ba8dfcba4d81e6abaa7a29986}{oomph\+::\+Line\+Fluid\+Interface\+Bounding\+Element}, and \hyperlink{classoomph_1_1PointFluidInterfaceBoundingElement_aad95a7d6f4e4349ee1136e623aa69c88}{oomph\+::\+Point\+Fluid\+Interface\+Bounding\+Element}.
+
+
+
+Referenced by fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals().
+
+\mbox{\Hypertarget{classoomph_1_1FluidInterfaceBoundingElement_a12a0a6d7c3c1c1a5a0f42a57e60eab34}\label{classoomph_1_1FluidInterfaceBoundingElement_a12a0a6d7c3c1c1a5a0f42a57e60eab34}} 
+\index{oomph\+::\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Fluid\+Interface\+Bounding\+Element}!kinematic\+\_\+local\+\_\+eqn@{kinematic\+\_\+local\+\_\+eqn}}
+\index{kinematic\+\_\+local\+\_\+eqn@{kinematic\+\_\+local\+\_\+eqn}!oomph\+::\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Fluid\+Interface\+Bounding\+Element}}
+\subsubsection{\texorpdfstring{kinematic\+\_\+local\+\_\+eqn()}{kinematic\_local\_eqn()}}
+{\footnotesize\ttfamily virtual int oomph\+::\+Fluid\+Interface\+Bounding\+Element\+::kinematic\+\_\+local\+\_\+eqn (\begin{DoxyParamCaption}\item[{const unsigned \&}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Function that is used to determine the local equation number of the kinematic equation associated with the nodes of the element This must be overloaded depending on the node update scheme. 
+
+
+
+Implemented in \hyperlink{classoomph_1_1ElasticLineFluidInterfaceBoundingElement_a0f3d4bdd756165d6a2225f5b13eac005}{oomph\+::\+Elastic\+Line\+Fluid\+Interface\+Bounding\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$}, \hyperlink{classoomph_1_1ElasticPointFluidInterfaceBoundingElement_ac3d7ce3db705bee219bf56cbb0d9ba92}{oomph\+::\+Elastic\+Point\+Fluid\+Interface\+Bounding\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$}, \hyperlink{classoomph_1_1SpineLineFluidInterfaceBoundingElement_a0c31dba3e151540261753679b431b04a}{oomph\+::\+Spine\+Line\+Fluid\+Interface\+Bounding\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$}, and \hyperlink{classoomph_1_1SpinePointFluidInterfaceBoundingElement_a7c1c2f31b1d9f9c925889ad199a78947}{oomph\+::\+Spine\+Point\+Fluid\+Interface\+Bounding\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$}.
+
+
+
+Referenced by oomph\+::\+Fluid\+Interface\+Element\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+interface(), oomph\+::\+Point\+Fluid\+Interface\+Bounding\+Element\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+interface\+\_\+boundary(), and oomph\+::\+Line\+Fluid\+Interface\+Bounding\+Element\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+interface\+\_\+boundary().
+
+\mbox{\Hypertarget{classoomph_1_1FluidInterfaceBoundingElement_a81adc5ae89ddfa120f587c61b972622f}\label{classoomph_1_1FluidInterfaceBoundingElement_a81adc5ae89ddfa120f587c61b972622f}} 
+\index{oomph\+::\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Fluid\+Interface\+Bounding\+Element}!output@{output}}
+\index{output@{output}!oomph\+::\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Fluid\+Interface\+Bounding\+Element}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily void oomph\+::\+Fluid\+Interface\+Bounding\+Element\+::output (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Overload the output function. 
+
+
+
+Definition at line 242 of file interface\+\_\+elements.\+h.
+
+
+
+Referenced by oomph\+::\+Spine\+Point\+Fluid\+Interface\+Bounding\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::output(), oomph\+::\+Spine\+Line\+Fluid\+Interface\+Bounding\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::output(), oomph\+::\+Fluid\+Interface\+Element\+::output(), oomph\+::\+Elastic\+Point\+Fluid\+Interface\+Bounding\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::output(), and oomph\+::\+Elastic\+Line\+Fluid\+Interface\+Bounding\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::output().
+
+\mbox{\Hypertarget{classoomph_1_1FluidInterfaceBoundingElement_af2c821d51d506221976a0c17e1615ac3}\label{classoomph_1_1FluidInterfaceBoundingElement_af2c821d51d506221976a0c17e1615ac3}} 
+\index{oomph\+::\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Fluid\+Interface\+Bounding\+Element}!output@{output}}
+\index{output@{output}!oomph\+::\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Fluid\+Interface\+Bounding\+Element}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily void oomph\+::\+Fluid\+Interface\+Bounding\+Element\+::output (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile,  }\item[{const unsigned \&}]{n\+\_\+plot }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Output function. 
+
+
+
+Definition at line 245 of file interface\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1FluidInterfaceBoundingElement_a85cc62405429744e3e3585894315cb9e}\label{classoomph_1_1FluidInterfaceBoundingElement_a85cc62405429744e3e3585894315cb9e}} 
+\index{oomph\+::\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Fluid\+Interface\+Bounding\+Element}!output@{output}}
+\index{output@{output}!oomph\+::\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Fluid\+Interface\+Bounding\+Element}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily void oomph\+::\+Fluid\+Interface\+Bounding\+Element\+::output (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{file\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Overload the C-\/style output function. 
+
+
+
+Definition at line 249 of file interface\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1FluidInterfaceBoundingElement_ae85ea987a06275a03ad6d0e3710871da}\label{classoomph_1_1FluidInterfaceBoundingElement_ae85ea987a06275a03ad6d0e3710871da}} 
+\index{oomph\+::\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Fluid\+Interface\+Bounding\+Element}!output@{output}}
+\index{output@{output}!oomph\+::\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Fluid\+Interface\+Bounding\+Element}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily void oomph\+::\+Fluid\+Interface\+Bounding\+Element\+::output (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{file\+\_\+pt,  }\item[{const unsigned \&}]{n\+\_\+plot }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+C-\/style Output function. 
+
+
+
+Definition at line 252 of file interface\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1FluidInterfaceBoundingElement_a6b0de0d11dfcfc912e2f56fbd6359ebe}\label{classoomph_1_1FluidInterfaceBoundingElement_a6b0de0d11dfcfc912e2f56fbd6359ebe}} 
+\index{oomph\+::\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Fluid\+Interface\+Bounding\+Element}!reset\+\_\+after\+\_\+external\+\_\+fd@{reset\+\_\+after\+\_\+external\+\_\+fd}}
+\index{reset\+\_\+after\+\_\+external\+\_\+fd@{reset\+\_\+after\+\_\+external\+\_\+fd}!oomph\+::\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Fluid\+Interface\+Bounding\+Element}}
+\subsubsection{\texorpdfstring{reset\+\_\+after\+\_\+external\+\_\+fd()}{reset\_after\_external\_fd()}}
+{\footnotesize\ttfamily void oomph\+::\+Fluid\+Interface\+Bounding\+Element\+::reset\+\_\+after\+\_\+external\+\_\+fd (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+We require a final node update in the bulk element after all finite differencing. 
+
+
+
+Definition at line 132 of file interface\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1FluidInterfaceBoundingElement_a7347eb5984a18ffb1cfea1f9240badee}\label{classoomph_1_1FluidInterfaceBoundingElement_a7347eb5984a18ffb1cfea1f9240badee}} 
+\index{oomph\+::\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Fluid\+Interface\+Bounding\+Element}!reset\+\_\+in\+\_\+external\+\_\+fd@{reset\+\_\+in\+\_\+external\+\_\+fd}}
+\index{reset\+\_\+in\+\_\+external\+\_\+fd@{reset\+\_\+in\+\_\+external\+\_\+fd}!oomph\+::\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Fluid\+Interface\+Bounding\+Element}}
+\subsubsection{\texorpdfstring{reset\+\_\+in\+\_\+external\+\_\+fd()}{reset\_in\_external\_fd()}}
+{\footnotesize\ttfamily void oomph\+::\+Fluid\+Interface\+Bounding\+Element\+::reset\+\_\+in\+\_\+external\+\_\+fd (\begin{DoxyParamCaption}\item[{const unsigned \&}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+The only external data are these geometric data so We can omit the reset function (relying on the next update. 
+
+
+
+Definition at line 128 of file interface\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1FluidInterfaceBoundingElement_a8566c5bed5c87717fcb155d398ed8c8f}\label{classoomph_1_1FluidInterfaceBoundingElement_a8566c5bed5c87717fcb155d398ed8c8f}} 
+\index{oomph\+::\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Fluid\+Interface\+Bounding\+Element}!set\+\_\+contact\+\_\+angle@{set\+\_\+contact\+\_\+angle}}
+\index{set\+\_\+contact\+\_\+angle@{set\+\_\+contact\+\_\+angle}!oomph\+::\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Fluid\+Interface\+Bounding\+Element}}
+\subsubsection{\texorpdfstring{set\+\_\+contact\+\_\+angle()}{set\_contact\_angle()}}
+{\footnotesize\ttfamily void oomph\+::\+Fluid\+Interface\+Bounding\+Element\+::set\+\_\+contact\+\_\+angle (\begin{DoxyParamCaption}\item[{double $\ast$const \&}]{angle\+\_\+pt,  }\item[{const bool \&}]{strong = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+
+Set a pointer to the desired contact angle. Optional boolean (defaults to true) chooses strong imposition via hijacking (true) or weak imposition via addition to momentum equation (false). The default strong imposition is appropriate for static contact angle problems. 
+
+Set a pointer to the desired contact angle. Optional boolean (defaults to true) chooses strong imposition via hijacking (true) or weak imposition via addition to momentum equation (false). The default strong imposition is appropriate for static contact problems. 
+
+Definition at line 52 of file interface\+\_\+elements.\+cc.
+
+
+
+References Contact\+\_\+angle\+\_\+flag, Contact\+\_\+angle\+\_\+pt, and oomph\+::\+Point\+Fluid\+Interface\+Bounding\+Element\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+interface\+\_\+boundary().
+
+
+
+Referenced by u\+\_\+index\+\_\+interface\+\_\+boundary().
+
+\mbox{\Hypertarget{classoomph_1_1FluidInterfaceBoundingElement_ad74aadb79a88536e188fbff44f35cc02}\label{classoomph_1_1FluidInterfaceBoundingElement_ad74aadb79a88536e188fbff44f35cc02}} 
+\index{oomph\+::\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Fluid\+Interface\+Bounding\+Element}!u\+\_\+index\+\_\+interface\+\_\+boundary@{u\+\_\+index\+\_\+interface\+\_\+boundary}}
+\index{u\+\_\+index\+\_\+interface\+\_\+boundary@{u\+\_\+index\+\_\+interface\+\_\+boundary}!oomph\+::\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Fluid\+Interface\+Bounding\+Element}}
+\subsubsection{\texorpdfstring{u\+\_\+index\+\_\+interface\+\_\+boundary()}{u\_index\_interface\_boundary()}}
+{\footnotesize\ttfamily Vector$<$unsigned$>$\& oomph\+::\+Fluid\+Interface\+Bounding\+Element\+::u\+\_\+index\+\_\+interface\+\_\+boundary (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Access for nodal index at which the velocity components are stored. 
+
+
+
+Definition at line 154 of file interface\+\_\+elements.\+h.
+
+
+
+References set\+\_\+contact\+\_\+angle(), and U\+\_\+index\+\_\+interface\+\_\+boundary.
+
+\mbox{\Hypertarget{classoomph_1_1FluidInterfaceBoundingElement_ab2639a1585fe815bed2d2a3d69fa5164}\label{classoomph_1_1FluidInterfaceBoundingElement_ab2639a1585fe815bed2d2a3d69fa5164}} 
+\index{oomph\+::\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Fluid\+Interface\+Bounding\+Element}!update\+\_\+in\+\_\+external\+\_\+fd@{update\+\_\+in\+\_\+external\+\_\+fd}}
+\index{update\+\_\+in\+\_\+external\+\_\+fd@{update\+\_\+in\+\_\+external\+\_\+fd}!oomph\+::\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Fluid\+Interface\+Bounding\+Element}}
+\subsubsection{\texorpdfstring{update\+\_\+in\+\_\+external\+\_\+fd()}{update\_in\_external\_fd()}}
+{\footnotesize\ttfamily void oomph\+::\+Fluid\+Interface\+Bounding\+Element\+::update\+\_\+in\+\_\+external\+\_\+fd (\begin{DoxyParamCaption}\item[{const unsigned \&}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+The geometric data of the parent element is included as external data and so a (bulk) node update must take place after the variation of any of this external data. 
+
+
+
+Definition at line 119 of file interface\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1FluidInterfaceBoundingElement_a1a715427e2037278891c06afd5d096fb}\label{classoomph_1_1FluidInterfaceBoundingElement_a1a715427e2037278891c06afd5d096fb}} 
+\index{oomph\+::\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Fluid\+Interface\+Bounding\+Element}!wall\+\_\+unit\+\_\+normal@{wall\+\_\+unit\+\_\+normal}}
+\index{wall\+\_\+unit\+\_\+normal@{wall\+\_\+unit\+\_\+normal}!oomph\+::\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Fluid\+Interface\+Bounding\+Element}}
+\subsubsection{\texorpdfstring{wall\+\_\+unit\+\_\+normal()}{wall\_unit\_normal()}}
+{\footnotesize\ttfamily void oomph\+::\+Fluid\+Interface\+Bounding\+Element\+::wall\+\_\+unit\+\_\+normal (\begin{DoxyParamCaption}\item[{const Vector$<$ double $>$ \&}]{x,  }\item[{Vector$<$ double $>$ \&}]{normal }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Function that returns the unit normal of the bounding wall directed out of the fluid. 
+
+
+
+Definition at line 97 of file interface\+\_\+elements.\+h.
+
+
+
+Referenced by oomph\+::\+Point\+Fluid\+Interface\+Bounding\+Element\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+interface\+\_\+boundary(), and oomph\+::\+Line\+Fluid\+Interface\+Bounding\+Element\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+interface\+\_\+boundary().
+
+\mbox{\Hypertarget{classoomph_1_1FluidInterfaceBoundingElement_a3d8ea7b8e1f22eaaa1235231454b753c}\label{classoomph_1_1FluidInterfaceBoundingElement_a3d8ea7b8e1f22eaaa1235231454b753c}} 
+\index{oomph\+::\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Fluid\+Interface\+Bounding\+Element}!wall\+\_\+unit\+\_\+normal\+\_\+fct\+\_\+pt@{wall\+\_\+unit\+\_\+normal\+\_\+fct\+\_\+pt}}
+\index{wall\+\_\+unit\+\_\+normal\+\_\+fct\+\_\+pt@{wall\+\_\+unit\+\_\+normal\+\_\+fct\+\_\+pt}!oomph\+::\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Fluid\+Interface\+Bounding\+Element}}
+\subsubsection{\texorpdfstring{wall\+\_\+unit\+\_\+normal\+\_\+fct\+\_\+pt()}{wall\_unit\_normal\_fct\_pt()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1FluidInterfaceBoundingElement_a09c0b1df7d653eaf55e94e3951d409dd}{Wall\+Unit\+Normal\+Fct\+Pt}\& oomph\+::\+Fluid\+Interface\+Bounding\+Element\+::wall\+\_\+unit\+\_\+normal\+\_\+fct\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Access function\+: Pointer to wall unit normal function. 
+
+
+
+Definition at line 146 of file interface\+\_\+elements.\+h.
+
+
+
+References Wall\+\_\+unit\+\_\+normal\+\_\+fct\+\_\+pt.
+
+\mbox{\Hypertarget{classoomph_1_1FluidInterfaceBoundingElement_a393601b322d0b8d6d2f86d07bd17550f}\label{classoomph_1_1FluidInterfaceBoundingElement_a393601b322d0b8d6d2f86d07bd17550f}} 
+\index{oomph\+::\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Fluid\+Interface\+Bounding\+Element}!wall\+\_\+unit\+\_\+normal\+\_\+fct\+\_\+pt@{wall\+\_\+unit\+\_\+normal\+\_\+fct\+\_\+pt}}
+\index{wall\+\_\+unit\+\_\+normal\+\_\+fct\+\_\+pt@{wall\+\_\+unit\+\_\+normal\+\_\+fct\+\_\+pt}!oomph\+::\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Fluid\+Interface\+Bounding\+Element}}
+\subsubsection{\texorpdfstring{wall\+\_\+unit\+\_\+normal\+\_\+fct\+\_\+pt()}{wall\_unit\_normal\_fct\_pt()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1FluidInterfaceBoundingElement_a09c0b1df7d653eaf55e94e3951d409dd}{Wall\+Unit\+Normal\+Fct\+Pt} oomph\+::\+Fluid\+Interface\+Bounding\+Element\+::wall\+\_\+unit\+\_\+normal\+\_\+fct\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Access function\+: Pointer to wall unit normal function. Const version. 
+
+
+
+Definition at line 150 of file interface\+\_\+elements.\+h.
+
+
+
+References Wall\+\_\+unit\+\_\+normal\+\_\+fct\+\_\+pt.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1FluidInterfaceBoundingElement_abf47719443253c1117705b0a20e9ef70}\label{classoomph_1_1FluidInterfaceBoundingElement_abf47719443253c1117705b0a20e9ef70}} 
+\index{oomph\+::\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Fluid\+Interface\+Bounding\+Element}!Ca\+\_\+pt@{Ca\+\_\+pt}}
+\index{Ca\+\_\+pt@{Ca\+\_\+pt}!oomph\+::\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Fluid\+Interface\+Bounding\+Element}}
+\subsubsection{\texorpdfstring{Ca\+\_\+pt}{Ca\_pt}}
+{\footnotesize\ttfamily double$\ast$ oomph\+::\+Fluid\+Interface\+Bounding\+Element\+::\+Ca\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pointer to the desired value of the capillary number. 
+
+
+
+Definition at line 76 of file interface\+\_\+elements.\+h.
+
+
+
+Referenced by ca(), oomph\+::\+Fluid\+Interface\+Element\+::ca(), ca\+\_\+pt(), and oomph\+::\+Fluid\+Interface\+Element\+::ca\+\_\+pt().
+
+\mbox{\Hypertarget{classoomph_1_1FluidInterfaceBoundingElement_affa8d787e58ca23c2e73b4c8a2c30766}\label{classoomph_1_1FluidInterfaceBoundingElement_affa8d787e58ca23c2e73b4c8a2c30766}} 
+\index{oomph\+::\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Fluid\+Interface\+Bounding\+Element}!Contact\+\_\+angle\+\_\+flag@{Contact\+\_\+angle\+\_\+flag}}
+\index{Contact\+\_\+angle\+\_\+flag@{Contact\+\_\+angle\+\_\+flag}!oomph\+::\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Fluid\+Interface\+Bounding\+Element}}
+\subsubsection{\texorpdfstring{Contact\+\_\+angle\+\_\+flag}{Contact\_angle\_flag}}
+{\footnotesize\ttfamily unsigned oomph\+::\+Fluid\+Interface\+Bounding\+Element\+::\+Contact\+\_\+angle\+\_\+flag\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Flag used to determine whether the contact angle is to be used (0 if not), and whether it will be applied weakly as a force term in the momentum equations (1) or by hijacking the kinematic condition (2). 
+
+
+
+Definition at line 84 of file interface\+\_\+elements.\+h.
+
+
+
+Referenced by oomph\+::\+Point\+Fluid\+Interface\+Bounding\+Element\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+interface\+\_\+boundary(), oomph\+::\+Line\+Fluid\+Interface\+Bounding\+Element\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+interface\+\_\+boundary(), and set\+\_\+contact\+\_\+angle().
+
+\mbox{\Hypertarget{classoomph_1_1FluidInterfaceBoundingElement_a351532c356c9e839cba87150bea354c5}\label{classoomph_1_1FluidInterfaceBoundingElement_a351532c356c9e839cba87150bea354c5}} 
+\index{oomph\+::\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Fluid\+Interface\+Bounding\+Element}!Contact\+\_\+angle\+\_\+pt@{Contact\+\_\+angle\+\_\+pt}}
+\index{Contact\+\_\+angle\+\_\+pt@{Contact\+\_\+angle\+\_\+pt}!oomph\+::\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Fluid\+Interface\+Bounding\+Element}}
+\subsubsection{\texorpdfstring{Contact\+\_\+angle\+\_\+pt}{Contact\_angle\_pt}}
+{\footnotesize\ttfamily double$\ast$ oomph\+::\+Fluid\+Interface\+Bounding\+Element\+::\+Contact\+\_\+angle\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pointer to the desired value of the contact angle (if any) 
+
+
+
+Definition at line 73 of file interface\+\_\+elements.\+h.
+
+
+
+Referenced by contact\+\_\+angle(), contact\+\_\+angle\+\_\+pt(), and set\+\_\+contact\+\_\+angle().
+
+\mbox{\Hypertarget{classoomph_1_1FluidInterfaceBoundingElement_a08223fefc36922f4661e30e9de16830f}\label{classoomph_1_1FluidInterfaceBoundingElement_a08223fefc36922f4661e30e9de16830f}} 
+\index{oomph\+::\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Fluid\+Interface\+Bounding\+Element}!U\+\_\+index\+\_\+interface\+\_\+boundary@{U\+\_\+index\+\_\+interface\+\_\+boundary}}
+\index{U\+\_\+index\+\_\+interface\+\_\+boundary@{U\+\_\+index\+\_\+interface\+\_\+boundary}!oomph\+::\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Fluid\+Interface\+Bounding\+Element}}
+\subsubsection{\texorpdfstring{U\+\_\+index\+\_\+interface\+\_\+boundary}{U\_index\_interface\_boundary}}
+{\footnotesize\ttfamily Vector$<$unsigned$>$ oomph\+::\+Fluid\+Interface\+Bounding\+Element\+::\+U\+\_\+index\+\_\+interface\+\_\+boundary\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Index at which the i-\/th velocity component is stored in the element\textquotesingle{}s nodes. 
+
+
+
+Definition at line 88 of file interface\+\_\+elements.\+h.
+
+
+
+Referenced by oomph\+::\+Point\+Fluid\+Interface\+Bounding\+Element\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+interface\+\_\+boundary(), oomph\+::\+Line\+Fluid\+Interface\+Bounding\+Element\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+interface\+\_\+boundary(), and u\+\_\+index\+\_\+interface\+\_\+boundary().
+
+\mbox{\Hypertarget{classoomph_1_1FluidInterfaceBoundingElement_abc765a3b2c4eac762a1a5ba85ac4a7a4}\label{classoomph_1_1FluidInterfaceBoundingElement_abc765a3b2c4eac762a1a5ba85ac4a7a4}} 
+\index{oomph\+::\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Fluid\+Interface\+Bounding\+Element}!Wall\+\_\+unit\+\_\+normal\+\_\+fct\+\_\+pt@{Wall\+\_\+unit\+\_\+normal\+\_\+fct\+\_\+pt}}
+\index{Wall\+\_\+unit\+\_\+normal\+\_\+fct\+\_\+pt@{Wall\+\_\+unit\+\_\+normal\+\_\+fct\+\_\+pt}!oomph\+::\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Fluid\+Interface\+Bounding\+Element}}
+\subsubsection{\texorpdfstring{Wall\+\_\+unit\+\_\+normal\+\_\+fct\+\_\+pt}{Wall\_unit\_normal\_fct\_pt}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1FluidInterfaceBoundingElement_a09c0b1df7d653eaf55e94e3951d409dd}{Wall\+Unit\+Normal\+Fct\+Pt} oomph\+::\+Fluid\+Interface\+Bounding\+Element\+::\+Wall\+\_\+unit\+\_\+normal\+\_\+fct\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pointer to a wall normal function that returns the wall unit normal as a function of position in global Eulerian coordinates. 
+
+
+
+Definition at line 70 of file interface\+\_\+elements.\+h.
+
+
+
+Referenced by wall\+\_\+unit\+\_\+normal\+\_\+fct\+\_\+pt().
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{interface__elements_8h}{interface\+\_\+elements.\+h}\item 
+\hyperlink{interface__elements_8cc}{interface\+\_\+elements.\+cc}\end{DoxyCompactItemize}

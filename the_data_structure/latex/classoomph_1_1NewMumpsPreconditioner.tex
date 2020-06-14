@@ -1,0 +1,229 @@
+\hypertarget{classoomph_1_1NewMumpsPreconditioner}{}\section{oomph\+:\+:New\+Mumps\+Preconditioner Class Reference}
+\label{classoomph_1_1NewMumpsPreconditioner}\index{oomph\+::\+New\+Mumps\+Preconditioner@{oomph\+::\+New\+Mumps\+Preconditioner}}
+
+
+An interface to allow Mumps to be used as an (exact) \hyperlink{classoomph_1_1Preconditioner}{Preconditioner}.  
+
+
+
+
+{\ttfamily \#include $<$mumps\+\_\+solver.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:New\+Mumps\+Preconditioner\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classoomph_1_1NewMumpsPreconditioner}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1NewMumpsPreconditioner_ab41fbf7f9b0996b26e2f49802156bca0}{New\+Mumps\+Preconditioner} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1NewMumpsPreconditioner_adf548286fc44a98ddecf0108c8b938e3}{$\sim$\+New\+Mumps\+Preconditioner} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1NewMumpsPreconditioner_a32bb5cf92d1f3976d81e63bdccfa9a86}{New\+Mumps\+Preconditioner} (const \hyperlink{classoomph_1_1NewMumpsPreconditioner}{New\+Mumps\+Preconditioner} \&)
+\begin{DoxyCompactList}\small\item\em Broken copy constructor. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1NewMumpsPreconditioner_acc2b3a72965b6e18e584d0f9722bbd70}{operator=} (const \hyperlink{classoomph_1_1NewMumpsPreconditioner}{New\+Mumps\+Preconditioner} \&)
+\begin{DoxyCompactList}\small\item\em Broken assignment operator. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1NewMumpsPreconditioner_a47e894b47284711131cb0a13a65c24e5}{setup} ()
+\begin{DoxyCompactList}\small\item\em Function to set up a preconditioner for the linear system defined by matrix\+\_\+pt. This function must be called before using preconditioner\+\_\+solve. Note\+: matrix\+\_\+pt must point to an object of class \hyperlink{classoomph_1_1CRDoubleMatrix}{C\+R\+Double\+Matrix} or \hyperlink{classoomph_1_1CCDoubleMatrix}{C\+C\+Double\+Matrix}. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1NewMumpsPreconditioner_a763a8297c031fab7f16b37eaf257aeb1}{preconditioner\+\_\+solve} (const \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} \&r, \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} \&z)
+\begin{DoxyCompactList}\small\item\em Function applies Mumps to vector r for (exact) preconditioning, this requires a call to setup(...) first. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1NewMumpsPreconditioner_a4a6cb6cc1207a765cc02ef47c6efa6e0}{clean\+\_\+up\+\_\+memory} ()
+\begin{DoxyCompactList}\small\item\em Clean up memory -- forward the call to the version in Mumps in its \hyperlink{classoomph_1_1LinearSolver}{Linear\+Solver} incarnation. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1NewMumpsPreconditioner_a2946bc9182e015a12471a5e225473e9a}{enable\+\_\+doc\+\_\+time} ()
+\begin{DoxyCompactList}\small\item\em Enable documentation of timings. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1NewMumpsPreconditioner_a8c01fbbb656c21c756c44be322a600b2}{disable\+\_\+doc\+\_\+time} ()
+\begin{DoxyCompactList}\small\item\em Disable the documentation of timings. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1MumpsSolver}{Mumps\+Solver} \hyperlink{classoomph_1_1NewMumpsPreconditioner_aa51fd330deb0d4b82a43c172caa9979b}{Solver}
+\begin{DoxyCompactList}\small\item\em the Mumps solver emplyed by this preconditioner \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+An interface to allow Mumps to be used as an (exact) \hyperlink{classoomph_1_1Preconditioner}{Preconditioner}. 
+
+Definition at line 258 of file mumps\+\_\+solver.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1NewMumpsPreconditioner_ab41fbf7f9b0996b26e2f49802156bca0}\label{classoomph_1_1NewMumpsPreconditioner_ab41fbf7f9b0996b26e2f49802156bca0}} 
+\index{oomph\+::\+New\+Mumps\+Preconditioner@{oomph\+::\+New\+Mumps\+Preconditioner}!New\+Mumps\+Preconditioner@{New\+Mumps\+Preconditioner}}
+\index{New\+Mumps\+Preconditioner@{New\+Mumps\+Preconditioner}!oomph\+::\+New\+Mumps\+Preconditioner@{oomph\+::\+New\+Mumps\+Preconditioner}}
+\subsubsection{\texorpdfstring{New\+Mumps\+Preconditioner()}{NewMumpsPreconditioner()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily oomph\+::\+New\+Mumps\+Preconditioner\+::\+New\+Mumps\+Preconditioner (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor. 
+
+
+
+Definition at line 263 of file mumps\+\_\+solver.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1NewMumpsPreconditioner_adf548286fc44a98ddecf0108c8b938e3}\label{classoomph_1_1NewMumpsPreconditioner_adf548286fc44a98ddecf0108c8b938e3}} 
+\index{oomph\+::\+New\+Mumps\+Preconditioner@{oomph\+::\+New\+Mumps\+Preconditioner}!````~New\+Mumps\+Preconditioner@{$\sim$\+New\+Mumps\+Preconditioner}}
+\index{````~New\+Mumps\+Preconditioner@{$\sim$\+New\+Mumps\+Preconditioner}!oomph\+::\+New\+Mumps\+Preconditioner@{oomph\+::\+New\+Mumps\+Preconditioner}}
+\subsubsection{\texorpdfstring{$\sim$\+New\+Mumps\+Preconditioner()}{~NewMumpsPreconditioner()}}
+{\footnotesize\ttfamily oomph\+::\+New\+Mumps\+Preconditioner\+::$\sim$\+New\+Mumps\+Preconditioner (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Destructor. 
+
+
+
+Definition at line 267 of file mumps\+\_\+solver.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1NewMumpsPreconditioner_a32bb5cf92d1f3976d81e63bdccfa9a86}\label{classoomph_1_1NewMumpsPreconditioner_a32bb5cf92d1f3976d81e63bdccfa9a86}} 
+\index{oomph\+::\+New\+Mumps\+Preconditioner@{oomph\+::\+New\+Mumps\+Preconditioner}!New\+Mumps\+Preconditioner@{New\+Mumps\+Preconditioner}}
+\index{New\+Mumps\+Preconditioner@{New\+Mumps\+Preconditioner}!oomph\+::\+New\+Mumps\+Preconditioner@{oomph\+::\+New\+Mumps\+Preconditioner}}
+\subsubsection{\texorpdfstring{New\+Mumps\+Preconditioner()}{NewMumpsPreconditioner()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily oomph\+::\+New\+Mumps\+Preconditioner\+::\+New\+Mumps\+Preconditioner (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1NewMumpsPreconditioner}{New\+Mumps\+Preconditioner} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Broken copy constructor. 
+
+
+
+Definition at line 271 of file mumps\+\_\+solver.\+h.
+
+
+
+References oomph\+::\+Broken\+Copy\+::broken\+\_\+copy().
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1NewMumpsPreconditioner_a4a6cb6cc1207a765cc02ef47c6efa6e0}\label{classoomph_1_1NewMumpsPreconditioner_a4a6cb6cc1207a765cc02ef47c6efa6e0}} 
+\index{oomph\+::\+New\+Mumps\+Preconditioner@{oomph\+::\+New\+Mumps\+Preconditioner}!clean\+\_\+up\+\_\+memory@{clean\+\_\+up\+\_\+memory}}
+\index{clean\+\_\+up\+\_\+memory@{clean\+\_\+up\+\_\+memory}!oomph\+::\+New\+Mumps\+Preconditioner@{oomph\+::\+New\+Mumps\+Preconditioner}}
+\subsubsection{\texorpdfstring{clean\+\_\+up\+\_\+memory()}{clean\_up\_memory()}}
+{\footnotesize\ttfamily void oomph\+::\+New\+Mumps\+Preconditioner\+::clean\+\_\+up\+\_\+memory (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Clean up memory -- forward the call to the version in Mumps in its \hyperlink{classoomph_1_1LinearSolver}{Linear\+Solver} incarnation. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1Preconditioner_a46c31c416829bedcd9db238431262027}{oomph\+::\+Preconditioner}.
+
+
+
+Definition at line 323 of file mumps\+\_\+solver.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1NewMumpsPreconditioner_a8c01fbbb656c21c756c44be322a600b2}\label{classoomph_1_1NewMumpsPreconditioner_a8c01fbbb656c21c756c44be322a600b2}} 
+\index{oomph\+::\+New\+Mumps\+Preconditioner@{oomph\+::\+New\+Mumps\+Preconditioner}!disable\+\_\+doc\+\_\+time@{disable\+\_\+doc\+\_\+time}}
+\index{disable\+\_\+doc\+\_\+time@{disable\+\_\+doc\+\_\+time}!oomph\+::\+New\+Mumps\+Preconditioner@{oomph\+::\+New\+Mumps\+Preconditioner}}
+\subsubsection{\texorpdfstring{disable\+\_\+doc\+\_\+time()}{disable\_doc\_time()}}
+{\footnotesize\ttfamily void oomph\+::\+New\+Mumps\+Preconditioner\+::disable\+\_\+doc\+\_\+time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Disable the documentation of timings. 
+
+
+
+Definition at line 333 of file mumps\+\_\+solver.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1NewMumpsPreconditioner_a2946bc9182e015a12471a5e225473e9a}\label{classoomph_1_1NewMumpsPreconditioner_a2946bc9182e015a12471a5e225473e9a}} 
+\index{oomph\+::\+New\+Mumps\+Preconditioner@{oomph\+::\+New\+Mumps\+Preconditioner}!enable\+\_\+doc\+\_\+time@{enable\+\_\+doc\+\_\+time}}
+\index{enable\+\_\+doc\+\_\+time@{enable\+\_\+doc\+\_\+time}!oomph\+::\+New\+Mumps\+Preconditioner@{oomph\+::\+New\+Mumps\+Preconditioner}}
+\subsubsection{\texorpdfstring{enable\+\_\+doc\+\_\+time()}{enable\_doc\_time()}}
+{\footnotesize\ttfamily void oomph\+::\+New\+Mumps\+Preconditioner\+::enable\+\_\+doc\+\_\+time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Enable documentation of timings. 
+
+
+
+Definition at line 330 of file mumps\+\_\+solver.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1NewMumpsPreconditioner_acc2b3a72965b6e18e584d0f9722bbd70}\label{classoomph_1_1NewMumpsPreconditioner_acc2b3a72965b6e18e584d0f9722bbd70}} 
+\index{oomph\+::\+New\+Mumps\+Preconditioner@{oomph\+::\+New\+Mumps\+Preconditioner}!operator=@{operator=}}
+\index{operator=@{operator=}!oomph\+::\+New\+Mumps\+Preconditioner@{oomph\+::\+New\+Mumps\+Preconditioner}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily void oomph\+::\+New\+Mumps\+Preconditioner\+::operator= (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1NewMumpsPreconditioner}{New\+Mumps\+Preconditioner} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Broken assignment operator. 
+
+
+
+Definition at line 278 of file mumps\+\_\+solver.\+h.
+
+
+
+References oomph\+::\+Broken\+Copy\+::broken\+\_\+assign().
+
+\mbox{\Hypertarget{classoomph_1_1NewMumpsPreconditioner_a763a8297c031fab7f16b37eaf257aeb1}\label{classoomph_1_1NewMumpsPreconditioner_a763a8297c031fab7f16b37eaf257aeb1}} 
+\index{oomph\+::\+New\+Mumps\+Preconditioner@{oomph\+::\+New\+Mumps\+Preconditioner}!preconditioner\+\_\+solve@{preconditioner\+\_\+solve}}
+\index{preconditioner\+\_\+solve@{preconditioner\+\_\+solve}!oomph\+::\+New\+Mumps\+Preconditioner@{oomph\+::\+New\+Mumps\+Preconditioner}}
+\subsubsection{\texorpdfstring{preconditioner\+\_\+solve()}{preconditioner\_solve()}}
+{\footnotesize\ttfamily void oomph\+::\+New\+Mumps\+Preconditioner\+::preconditioner\+\_\+solve (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} \&}]{r,  }\item[{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} \&}]{z }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Function applies Mumps to vector r for (exact) preconditioning, this requires a call to setup(...) first. 
+
+
+
+Implements \hyperlink{classoomph_1_1Preconditioner_ace1199369e4465cd2b9a34884bb64ec8}{oomph\+::\+Preconditioner}.
+
+
+
+Definition at line 315 of file mumps\+\_\+solver.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1NewMumpsPreconditioner_a47e894b47284711131cb0a13a65c24e5}\label{classoomph_1_1NewMumpsPreconditioner_a47e894b47284711131cb0a13a65c24e5}} 
+\index{oomph\+::\+New\+Mumps\+Preconditioner@{oomph\+::\+New\+Mumps\+Preconditioner}!setup@{setup}}
+\index{setup@{setup}!oomph\+::\+New\+Mumps\+Preconditioner@{oomph\+::\+New\+Mumps\+Preconditioner}}
+\subsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily void oomph\+::\+New\+Mumps\+Preconditioner\+::setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Function to set up a preconditioner for the linear system defined by matrix\+\_\+pt. This function must be called before using preconditioner\+\_\+solve. Note\+: matrix\+\_\+pt must point to an object of class \hyperlink{classoomph_1_1CRDoubleMatrix}{C\+R\+Double\+Matrix} or \hyperlink{classoomph_1_1CCDoubleMatrix}{C\+C\+Double\+Matrix}. 
+
+
+
+Implements \hyperlink{classoomph_1_1Preconditioner_af4886f4efe510e5c9b0eb19422943588}{oomph\+::\+Preconditioner}.
+
+
+
+Definition at line 288 of file mumps\+\_\+solver.\+h.
+
+
+
+References oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::build\+\_\+distribution(), oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::distribution\+\_\+pt(), and oomph\+::oomph\+\_\+info.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1NewMumpsPreconditioner_aa51fd330deb0d4b82a43c172caa9979b}\label{classoomph_1_1NewMumpsPreconditioner_aa51fd330deb0d4b82a43c172caa9979b}} 
+\index{oomph\+::\+New\+Mumps\+Preconditioner@{oomph\+::\+New\+Mumps\+Preconditioner}!Solver@{Solver}}
+\index{Solver@{Solver}!oomph\+::\+New\+Mumps\+Preconditioner@{oomph\+::\+New\+Mumps\+Preconditioner}}
+\subsubsection{\texorpdfstring{Solver}{Solver}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1MumpsSolver}{Mumps\+Solver} oomph\+::\+New\+Mumps\+Preconditioner\+::\+Solver\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+the Mumps solver emplyed by this preconditioner 
+
+
+
+Definition at line 338 of file mumps\+\_\+solver.\+h.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{mumps__solver_8h}{mumps\+\_\+solver.\+h}\end{DoxyCompactItemize}

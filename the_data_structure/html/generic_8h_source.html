@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<title>oomph-lib: generic.h Source File</title>
+<link rel="apple-touch-icon" sizes="57x57" href="../../figures/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="../../figures/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../../figures/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="../../figures/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../../figures/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="../../figures/apple-touch-icon-120x120.png">
+<link rel="icon" type="image/png" href="../../figures/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../figures/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../figures/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="../../figures/manifest.json">
+<link rel="mask-icon" href="../../figures/safari-pinned-tab.svg" color="#008000">
+<link rel="shortcut icon" href="../../figures/favicon.ico">
+<meta name="msapplication-TileColor" content="#00a300">
+<meta name="msapplication-config" content="../../figures/browserconfig.xml">
+<meta name="theme-color" content="#008000">
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600" rel="stylesheet" type="text/css">
+<!-- Doxygen css-->
+<!-- <link rel="stylesheet" type="text/css" href="doxygen.css"> -->
+<!-- Bootstrap -->
+<link href="../../css/bootstrap.css" rel="stylesheet">
+<!-- oomph-lib specific overrides -->
+<link rel="stylesheet" type="text/css" href="../../css/oomph_header.css">
+</head>
+<body>
+<nav class="navbar navbar-default">
+<div class="container">
+<div class="container-fluid">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="../../html/index.html"><img alt="oomph-lib" src="../../figures/oomph_logo.png"></a>
+  </div>
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">          
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Documentation <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li class="dropdown-header">Big picture</li>
+          <li><a href="../../../doc/intro/html/index.html">The finite element method</a></li>
+          <li><a href="../../../doc/the_data_structure/html/index.html">The data structure</a></li>
+          <li><a href="../../../doc/quick_guide/html/index.html">Not-so-quick guide</a></li>
+          <li><a href="../../../doc/optimisation/html/index.html">Optimisation</a></li>
+          <li><a href="../../../doc/order_of_action_functions/html/index.html">Order of action functions</a></li>
+          <li role="separator" class="divider"></li>
+          <li class="dropdown-header">Example codes and tutorials</li>
+          <li><a href="../../../doc/example_code_list/html/index.html">List of example codes and tutorials</a></li>
+          <li><a href="../../../doc/example_code_list/html/index.html#meshes">Meshing</a></li>
+          <li><a href="../../../doc/example_code_list/html/index.html#solvers">Solvers</a></li>
+          <li><a href="../../../doc/example_code_list/html/index.html#parallel">MPI parallel processing</a></li>
+          <li><a href="../../../doc/example_code_list/html/index.html#visualisation">Post-processing/visualisation</a></li>
+          <li role="separator" class="divider"></li>
+          <li class="dropdown-header">Other</li>
+          <li><a href="../../../doc/change_log/html/index.html">Change log</a></li>
+          <li><a href="../../../doc/creating_doc/html/index.html">Creating documentation</a></li>
+          <li><a href="../../../doc/coding_conventions/html/index.html">Coding conventions</a></li>
+          <li><a href="../../../doc/index/html/index.html">Index</a></li>
+          <li><a href="../../../doc/FAQ/html/index.html">FAQ</a></li>
+        </ul>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Get it <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../../../doc/the_distribution/html/index.html">Installation guide</a></li>
+            <li><a href="../../../doc/subversion/html/index.html">Get code from subversion repository</a></li>
+            <li><a href="../../../doc/download/html/index.html">Get code as tar file</a></li>
+            <li><a href="../../../doc/copyright/html/index.html">Copyright</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../../../doc/people/html/index.html">People</a></li>            
+            <li><a href="../../../doc/contact/html/index.html">Contact/Get involved</a></li>
+            <li><a href="../../../doc/publications/html/index.html">Publications</a></li>
+            <li><a href="../../../doc/acknowledgements/html/index.html">Acknowledgements</a></li>
+            <li><a href="../../../doc/picture_show/index.html">Picture show</a></li>
+          </ul>
+        </li>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right navbar-search">
+      <form class="navbar-form" role="search" action="../../../doc/search_results/html/index.html">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search" name="q">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="submit">Go</button>
+          </span>
+        </div><!-- /input-group -->
+       <!--<div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>-->
+      </form>
+    </ul>
+  </div><!-- /.navbar-collapse -->
+</div><!-- /.container-fluid -->
+</div>
+</nav>
+<!-- Generated by Doxygen 1.8.13 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','Search');
+});
+</script>
+<div id="main-nav"></div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_4075b182e53a3873a42d885f4e1e98c4.html">generic</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">generic.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="generic_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// This file was generated automatically during the make process</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// and it will be remade automatically</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="oomph__definitions_8h.html">generic/oomph_definitions.h</a>&gt;</span> </div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="Qelements_8h.html">generic/Qelements.h</a>&gt;</span> </div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="Qspectral__elements_8h.html">generic/Qspectral_elements.h</a>&gt;</span> </div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="elements_8h.html">generic/elements.h</a>&gt;</span> </div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="Qelement__face__coordinate__translation__schemes_8h.html">generic/Qelement_face_coordinate_translation_schemes.h</a>&gt;</span> </div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="integral_8h.html">generic/integral.h</a>&gt;</span> </div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="assembly__handler_8h.html">generic/assembly_handler.h</a>&gt;</span> </div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="periodic__orbit__handler_8h.html">generic/periodic_orbit_handler.h</a>&gt;</span> </div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="problem_8h.html">generic/problem.h</a>&gt;</span> </div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="linear__solver_8h.html">generic/linear_solver.h</a>&gt;</span> </div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="shape_8h.html">generic/shape.h</a>&gt;</span> </div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="Vector_8h.html">generic/Vector.h</a>&gt;</span> </div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="frontal__solver_8h.html">generic/frontal_solver.h</a>&gt;</span> </div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="matrices_8h.html">generic/matrices.h</a>&gt;</span> </div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="spines_8h.html">generic/spines.h</a>&gt;</span> </div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="element__with__moving__nodes_8h.html">generic/element_with_moving_nodes.h</a>&gt;</span> </div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="complex__matrices_8h.html">generic/complex_matrices.h</a>&gt;</span> </div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="displacement__control__element_8h.html">generic/displacement_control_element.h</a>&gt;</span> </div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="mesh_8h.html">generic/mesh.h</a>&gt;</span> </div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="timesteppers_8h.html">generic/timesteppers.h</a>&gt;</span> </div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="explicit__timesteppers_8h.html">generic/explicit_timesteppers.h</a>&gt;</span> </div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="hermite__elements_8h.html">generic/hermite_elements.h</a>&gt;</span> </div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="nodes_8h.html">generic/nodes.h</a>&gt;</span> </div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="oomph__utilities_8h.html">generic/oomph_utilities.h</a>&gt;</span> </div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="elastic__problems_8h.html">generic/elastic_problems.h</a>&gt;</span> </div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="hijacked__elements_8h.html">generic/hijacked_elements.h</a>&gt;</span> </div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="geom__objects_8h.html">generic/geom_objects.h</a>&gt;</span> </div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="algebraic__elements_8h.html">generic/algebraic_elements.h</a>&gt;</span> </div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="macro__element_8h.html">generic/macro_element.h</a>&gt;</span> </div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="stored__shape__function__elements_8h.html">generic/stored_shape_function_elements.h</a>&gt;</span> </div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="map__matrix_8h.html">generic/map_matrix.h</a>&gt;</span> </div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="domain_8h.html">generic/domain.h</a>&gt;</span> </div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="quad__mesh_8h.html">generic/quad_mesh.h</a>&gt;</span> </div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="quadtree_8h.html">generic/quadtree.h</a>&gt;</span> </div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="dg__elements_8h.html">generic/dg_elements.h</a>&gt;</span> </div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="error__estimator_8h.html">generic/error_estimator.h</a>&gt;</span> </div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="refineable__mesh_8h.html">generic/refineable_mesh.h</a>&gt;</span> </div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="fsi_8h.html">generic/fsi.h</a>&gt;</span> </div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="octree_8h.html">generic/octree.h</a>&gt;</span> </div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="tree_8h.html">generic/tree.h</a>&gt;</span> </div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="refineable__elements_8h.html">generic/refineable_elements.h</a>&gt;</span> </div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="refineable__quad__element_8h.html">generic/refineable_quad_element.h</a>&gt;</span> </div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="hp__refineable__elements_8h.html">generic/hp_refineable_elements.h</a>&gt;</span> </div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="refineable__line__spectral__element_8h.html">generic/refineable_line_spectral_element.h</a>&gt;</span> </div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="refineable__quad__spectral__element_8h.html">generic/refineable_quad_spectral_element.h</a>&gt;</span> </div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="refineable__brick__spectral__element_8h.html">generic/refineable_brick_spectral_element.h</a>&gt;</span> </div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="orthpoly_8h.html">generic/orthpoly.h</a>&gt;</span> </div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="refineable__quad__mesh_8h.html">generic/refineable_quad_mesh.h</a>&gt;</span> </div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="pseudosolid__node__update__elements_8h.html">generic/pseudosolid_node_update_elements.h</a>&gt;</span> </div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="refineable__brick__element_8h.html">generic/refineable_brick_element.h</a>&gt;</span> </div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="brick__mesh_8h.html">generic/brick_mesh.h</a>&gt;</span> </div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="refineable__brick__mesh_8h.html">generic/refineable_brick_mesh.h</a>&gt;</span> </div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="macro__element__node__update__element_8h.html">generic/macro_element_node_update_element.h</a>&gt;</span> </div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="mesh__as__geometric__object_8h.html">generic/mesh_as_geometric_object.h</a>&gt;</span> </div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="face__element__as__geometric__object_8h.html">generic/face_element_as_geometric_object.h</a>&gt;</span> </div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="eigen__solver_8h.html">generic/eigen_solver.h</a>&gt;</span> </div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="Telements_8h.html">generic/Telements.h</a>&gt;</span> </div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="triangle__scaffold__mesh_8h.html">generic/triangle_scaffold_mesh.h</a>&gt;</span> </div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="geompack__scaffold__mesh_8h.html">generic/geompack_scaffold_mesh.h</a>&gt;</span> </div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="tetgen__scaffold__mesh_8h.html">generic/tetgen_scaffold_mesh.h</a>&gt;</span> </div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="pseudo__buckling__ring_8h.html">generic/pseudo_buckling_ring.h</a>&gt;</span> </div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="simple__cubic__scaffold__tet__mesh_8h.html">generic/simple_cubic_scaffold_tet_mesh.h</a>&gt;</span> </div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="line__mesh_8h.html">generic/line_mesh.h</a>&gt;</span> </div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="binary__tree_8h.html">generic/binary_tree.h</a>&gt;</span> </div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="refineable__line__element_8h.html">generic/refineable_line_element.h</a>&gt;</span> </div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="refineable__line__mesh_8h.html">generic/refineable_line_mesh.h</a>&gt;</span> </div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="generic_2triangle__mesh_8h.html">generic/triangle_mesh.h</a>&gt;</span> </div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="tet__mesh_8h.html">generic/tet_mesh.h</a>&gt;</span> </div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="partitioning_8h.html">generic/partitioning.h</a>&gt;</span> </div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="communicator_8h.html">generic/communicator.h</a>&gt;</span> </div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="linear__algebra__distribution_8h.html">generic/linear_algebra_distribution.h</a>&gt;</span> </div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="double__vector_8h.html">generic/double_vector.h</a>&gt;</span> </div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="double__multi__vector_8h.html">generic/double_multi_vector.h</a>&gt;</span> </div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="double__vector__with__halo_8h.html">generic/double_vector_with_halo.h</a>&gt;</span> </div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="multi__domain_8h.html">generic/multi_domain.h</a>&gt;</span> </div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="element__with__external__element_8h.html">generic/element_with_external_element.h</a>&gt;</span> </div><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="iterative__linear__solver_8h.html">generic/iterative_linear_solver.h</a>&gt;</span> </div><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="missing__masters_8h.html">generic/missing_masters.h</a>&gt;</span> </div><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="preconditioner_8h.html">generic/preconditioner.h</a>&gt;</span> </div><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="general__purpose__preconditioners_8h.html">generic/general_purpose_preconditioners.h</a>&gt;</span> </div><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="block__preconditioner_8h.html">generic/block_preconditioner.h</a>&gt;</span> </div><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="general__purpose__block__preconditioners_8h.html">generic/general_purpose_block_preconditioners.h</a>&gt;</span> </div><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="SuperLU__preconditioner_8h.html">generic/SuperLU_preconditioner.h</a>&gt;</span> </div><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="matrix__vector__product_8h.html">generic/matrix_vector_product.h</a>&gt;</span> </div><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="projection_8h.html">generic/projection.h</a>&gt;</span> </div><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="line__visualiser_8h.html">generic/line_visualiser.h</a>&gt;</span> </div><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="Subparametric__Telements_8h.html">generic/Subparametric_Telements.h</a>&gt;</span> </div><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="sum__of__matrices_8h.html">generic/sum_of_matrices.h</a>&gt;</span> </div><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="implicit__midpoint__rule_8h.html">generic/implicit_midpoint_rule.h</a>&gt;</span> </div><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="trapezoid__rule_8h.html">generic/trapezoid_rule.h</a>&gt;</span> </div><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="preconditioner__array_8h.html">generic/preconditioner_array.h</a>&gt;</span> </div><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="pml__elements_8h.html">generic/pml_elements.h</a>&gt;</span> </div><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="pml__meshes_8h.html">generic/pml_meshes.h</a>&gt;</span> </div><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="pml__mapping__functions_8h.html">generic/pml_mapping_functions.h</a>&gt;</span> </div><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="generalised__timesteppers_8h.html">generic/generalised_timesteppers.h</a>&gt;</span> </div><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="vector__matrix_8h.html">generic/vector_matrix.h</a>&gt;</span> </div><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="face__mesh__project_8h.html">generic/face_mesh_project.h</a>&gt;</span> </div><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="generalised__newtonian__constitutive__models_8h.html">generic/generalised_newtonian_constitutive_models.h</a>&gt;</span> </div><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="unstructured__two__d__mesh__geometry__base_8h.html">generic/unstructured_two_d_mesh_geometry_base.h</a>&gt;</span> </div><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="geometric__multigrid_8h.html">generic/geometric_multigrid.h</a>&gt;</span> </div><div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="sample__point__container_8h.html">generic/sample_point_container.h</a>&gt;</span> </div><div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="sample__point__parameters_8h.html">generic/sample_point_parameters.h</a>&gt;</span> </div><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="sparse__vector_8h.html">generic/sparse_vector.h</a>&gt;</span> </div><div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="geom__obj__with__boundary_8h.html">generic/geom_obj_with_boundary.h</a>&gt;</span> </div><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="preprocessor">#include&lt;<a class="code" href="stacktrace_8h.html">generic/stacktrace.h</a>&gt;</span> </div><div class="ttc" id="matrices_8h_html"><div class="ttname"><a href="matrices_8h.html">matrices.h</a></div></div>
+<div class="ttc" id="refineable__brick__spectral__element_8h_html"><div class="ttname"><a href="refineable__brick__spectral__element_8h.html">refineable_brick_spectral_element.h</a></div></div>
+<div class="ttc" id="complex__matrices_8h_html"><div class="ttname"><a href="complex__matrices_8h.html">complex_matrices.h</a></div></div>
+<div class="ttc" id="tet__mesh_8h_html"><div class="ttname"><a href="tet__mesh_8h.html">tet_mesh.h</a></div></div>
+<div class="ttc" id="double__vector_8h_html"><div class="ttname"><a href="double__vector_8h.html">double_vector.h</a></div></div>
+<div class="ttc" id="sum__of__matrices_8h_html"><div class="ttname"><a href="sum__of__matrices_8h.html">sum_of_matrices.h</a></div></div>
+<div class="ttc" id="pml__meshes_8h_html"><div class="ttname"><a href="pml__meshes_8h.html">pml_meshes.h</a></div></div>
+<div class="ttc" id="fsi_8h_html"><div class="ttname"><a href="fsi_8h.html">fsi.h</a></div></div>
+<div class="ttc" id="pseudo__buckling__ring_8h_html"><div class="ttname"><a href="pseudo__buckling__ring_8h.html">pseudo_buckling_ring.h</a></div></div>
+<div class="ttc" id="SuperLU__preconditioner_8h_html"><div class="ttname"><a href="SuperLU__preconditioner_8h.html">SuperLU_preconditioner.h</a></div></div>
+<div class="ttc" id="tetgen__scaffold__mesh_8h_html"><div class="ttname"><a href="tetgen__scaffold__mesh_8h.html">tetgen_scaffold_mesh.h</a></div></div>
+<div class="ttc" id="geom__obj__with__boundary_8h_html"><div class="ttname"><a href="geom__obj__with__boundary_8h.html">geom_obj_with_boundary.h</a></div></div>
+<div class="ttc" id="geometric__multigrid_8h_html"><div class="ttname"><a href="geometric__multigrid_8h.html">geometric_multigrid.h</a></div></div>
+<div class="ttc" id="sample__point__parameters_8h_html"><div class="ttname"><a href="sample__point__parameters_8h.html">sample_point_parameters.h</a></div></div>
+<div class="ttc" id="generalised__newtonian__constitutive__models_8h_html"><div class="ttname"><a href="generalised__newtonian__constitutive__models_8h.html">generalised_newtonian_constitutive_models.h</a></div></div>
+<div class="ttc" id="pml__elements_8h_html"><div class="ttname"><a href="pml__elements_8h.html">pml_elements.h</a></div></div>
+<div class="ttc" id="unstructured__two__d__mesh__geometry__base_8h_html"><div class="ttname"><a href="unstructured__two__d__mesh__geometry__base_8h.html">unstructured_two_d_mesh_geometry_base.h</a></div></div>
+<div class="ttc" id="block__preconditioner_8h_html"><div class="ttname"><a href="block__preconditioner_8h.html">block_preconditioner.h</a></div></div>
+<div class="ttc" id="iterative__linear__solver_8h_html"><div class="ttname"><a href="iterative__linear__solver_8h.html">iterative_linear_solver.h</a></div></div>
+<div class="ttc" id="linear__solver_8h_html"><div class="ttname"><a href="linear__solver_8h.html">linear_solver.h</a></div></div>
+<div class="ttc" id="line__visualiser_8h_html"><div class="ttname"><a href="line__visualiser_8h.html">line_visualiser.h</a></div></div>
+<div class="ttc" id="generic_2triangle__mesh_8h_html"><div class="ttname"><a href="generic_2triangle__mesh_8h.html">triangle_mesh.h</a></div></div>
+<div class="ttc" id="quad__mesh_8h_html"><div class="ttname"><a href="quad__mesh_8h.html">quad_mesh.h</a></div></div>
+<div class="ttc" id="binary__tree_8h_html"><div class="ttname"><a href="binary__tree_8h.html">binary_tree.h</a></div></div>
+<div class="ttc" id="mesh_8h_html"><div class="ttname"><a href="mesh_8h.html">mesh.h</a></div></div>
+<div class="ttc" id="face__element__as__geometric__object_8h_html"><div class="ttname"><a href="face__element__as__geometric__object_8h.html">face_element_as_geometric_object.h</a></div></div>
+<div class="ttc" id="line__mesh_8h_html"><div class="ttname"><a href="line__mesh_8h.html">line_mesh.h</a></div></div>
+<div class="ttc" id="tree_8h_html"><div class="ttname"><a href="tree_8h.html">tree.h</a></div></div>
+<div class="ttc" id="error__estimator_8h_html"><div class="ttname"><a href="error__estimator_8h.html">error_estimator.h</a></div></div>
+<div class="ttc" id="matrix__vector__product_8h_html"><div class="ttname"><a href="matrix__vector__product_8h.html">matrix_vector_product.h</a></div></div>
+<div class="ttc" id="stored__shape__function__elements_8h_html"><div class="ttname"><a href="stored__shape__function__elements_8h.html">stored_shape_function_elements.h</a></div></div>
+<div class="ttc" id="map__matrix_8h_html"><div class="ttname"><a href="map__matrix_8h.html">map_matrix.h</a></div></div>
+<div class="ttc" id="linear__algebra__distribution_8h_html"><div class="ttname"><a href="linear__algebra__distribution_8h.html">linear_algebra_distribution.h</a></div></div>
+<div class="ttc" id="refineable__elements_8h_html"><div class="ttname"><a href="refineable__elements_8h.html">refineable_elements.h</a></div></div>
+<div class="ttc" id="explicit__timesteppers_8h_html"><div class="ttname"><a href="explicit__timesteppers_8h.html">explicit_timesteppers.h</a></div></div>
+<div class="ttc" id="Telements_8h_html"><div class="ttname"><a href="Telements_8h.html">Telements.h</a></div></div>
+<div class="ttc" id="elements_8h_html"><div class="ttname"><a href="elements_8h.html">elements.h</a></div></div>
+<div class="ttc" id="pseudosolid__node__update__elements_8h_html"><div class="ttname"><a href="pseudosolid__node__update__elements_8h.html">pseudosolid_node_update_elements.h</a></div></div>
+<div class="ttc" id="oomph__utilities_8h_html"><div class="ttname"><a href="oomph__utilities_8h.html">oomph_utilities.h</a></div></div>
+<div class="ttc" id="elastic__problems_8h_html"><div class="ttname"><a href="elastic__problems_8h.html">elastic_problems.h</a></div></div>
+<div class="ttc" id="element__with__external__element_8h_html"><div class="ttname"><a href="element__with__external__element_8h.html">element_with_external_element.h</a></div></div>
+<div class="ttc" id="eigen__solver_8h_html"><div class="ttname"><a href="eigen__solver_8h.html">eigen_solver.h</a></div></div>
+<div class="ttc" id="double__multi__vector_8h_html"><div class="ttname"><a href="double__multi__vector_8h.html">double_multi_vector.h</a></div></div>
+<div class="ttc" id="projection_8h_html"><div class="ttname"><a href="projection_8h.html">projection.h</a></div></div>
+<div class="ttc" id="periodic__orbit__handler_8h_html"><div class="ttname"><a href="periodic__orbit__handler_8h.html">periodic_orbit_handler.h</a></div></div>
+<div class="ttc" id="double__vector__with__halo_8h_html"><div class="ttname"><a href="double__vector__with__halo_8h.html">double_vector_with_halo.h</a></div></div>
+<div class="ttc" id="multi__domain_8h_html"><div class="ttname"><a href="multi__domain_8h.html">multi_domain.h</a></div></div>
+<div class="ttc" id="frontal__solver_8h_html"><div class="ttname"><a href="frontal__solver_8h.html">frontal_solver.h</a></div></div>
+<div class="ttc" id="preconditioner_8h_html"><div class="ttname"><a href="preconditioner_8h.html">preconditioner.h</a></div></div>
+<div class="ttc" id="partitioning_8h_html"><div class="ttname"><a href="partitioning_8h.html">partitioning.h</a></div></div>
+<div class="ttc" id="missing__masters_8h_html"><div class="ttname"><a href="missing__masters_8h.html">missing_masters.h</a></div></div>
+<div class="ttc" id="brick__mesh_8h_html"><div class="ttname"><a href="brick__mesh_8h.html">brick_mesh.h</a></div></div>
+<div class="ttc" id="element__with__moving__nodes_8h_html"><div class="ttname"><a href="element__with__moving__nodes_8h.html">element_with_moving_nodes.h</a></div></div>
+<div class="ttc" id="spines_8h_html"><div class="ttname"><a href="spines_8h.html">spines.h</a></div></div>
+<div class="ttc" id="dg__elements_8h_html"><div class="ttname"><a href="dg__elements_8h.html">dg_elements.h</a></div></div>
+<div class="ttc" id="octree_8h_html"><div class="ttname"><a href="octree_8h.html">octree.h</a></div></div>
+<div class="ttc" id="refineable__brick__element_8h_html"><div class="ttname"><a href="refineable__brick__element_8h.html">refineable_brick_element.h</a></div></div>
+<div class="ttc" id="refineable__line__spectral__element_8h_html"><div class="ttname"><a href="refineable__line__spectral__element_8h.html">refineable_line_spectral_element.h</a></div></div>
+<div class="ttc" id="orthpoly_8h_html"><div class="ttname"><a href="orthpoly_8h.html">orthpoly.h</a></div></div>
+<div class="ttc" id="integral_8h_html"><div class="ttname"><a href="integral_8h.html">integral.h</a></div></div>
+<div class="ttc" id="Vector_8h_html"><div class="ttname"><a href="Vector_8h.html">Vector.h</a></div></div>
+<div class="ttc" id="nodes_8h_html"><div class="ttname"><a href="nodes_8h.html">nodes.h</a></div></div>
+<div class="ttc" id="refineable__quad__spectral__element_8h_html"><div class="ttname"><a href="refineable__quad__spectral__element_8h.html">refineable_quad_spectral_element.h</a></div></div>
+<div class="ttc" id="Qelements_8h_html"><div class="ttname"><a href="Qelements_8h.html">Qelements.h</a></div></div>
+<div class="ttc" id="implicit__midpoint__rule_8h_html"><div class="ttname"><a href="implicit__midpoint__rule_8h.html">implicit_midpoint_rule.h</a></div></div>
+<div class="ttc" id="sample__point__container_8h_html"><div class="ttname"><a href="sample__point__container_8h.html">sample_point_container.h</a></div></div>
+<div class="ttc" id="refineable__line__element_8h_html"><div class="ttname"><a href="refineable__line__element_8h.html">refineable_line_element.h</a></div></div>
+<div class="ttc" id="refineable__quad__mesh_8h_html"><div class="ttname"><a href="refineable__quad__mesh_8h.html">refineable_quad_mesh.h</a></div></div>
+<div class="ttc" id="face__mesh__project_8h_html"><div class="ttname"><a href="face__mesh__project_8h.html">face_mesh_project.h</a></div></div>
+<div class="ttc" id="pml__mapping__functions_8h_html"><div class="ttname"><a href="pml__mapping__functions_8h.html">pml_mapping_functions.h</a></div></div>
+<div class="ttc" id="refineable__brick__mesh_8h_html"><div class="ttname"><a href="refineable__brick__mesh_8h.html">refineable_brick_mesh.h</a></div></div>
+<div class="ttc" id="general__purpose__preconditioners_8h_html"><div class="ttname"><a href="general__purpose__preconditioners_8h.html">general_purpose_preconditioners.h</a></div></div>
+<div class="ttc" id="Subparametric__Telements_8h_html"><div class="ttname"><a href="Subparametric__Telements_8h.html">Subparametric_Telements.h</a></div></div>
+<div class="ttc" id="hp__refineable__elements_8h_html"><div class="ttname"><a href="hp__refineable__elements_8h.html">hp_refineable_elements.h</a></div></div>
+<div class="ttc" id="assembly__handler_8h_html"><div class="ttname"><a href="assembly__handler_8h.html">assembly_handler.h</a></div></div>
+<div class="ttc" id="refineable__line__mesh_8h_html"><div class="ttname"><a href="refineable__line__mesh_8h.html">refineable_line_mesh.h</a></div></div>
+<div class="ttc" id="stacktrace_8h_html"><div class="ttname"><a href="stacktrace_8h.html">stacktrace.h</a></div></div>
+<div class="ttc" id="displacement__control__element_8h_html"><div class="ttname"><a href="displacement__control__element_8h.html">displacement_control_element.h</a></div></div>
+<div class="ttc" id="domain_8h_html"><div class="ttname"><a href="domain_8h.html">domain.h</a></div></div>
+<div class="ttc" id="trapezoid__rule_8h_html"><div class="ttname"><a href="trapezoid__rule_8h.html">trapezoid_rule.h</a></div></div>
+<div class="ttc" id="algebraic__elements_8h_html"><div class="ttname"><a href="algebraic__elements_8h.html">algebraic_elements.h</a></div></div>
+<div class="ttc" id="macro__element__node__update__element_8h_html"><div class="ttname"><a href="macro__element__node__update__element_8h.html">macro_element_node_update_element.h</a></div></div>
+<div class="ttc" id="Qelement__face__coordinate__translation__schemes_8h_html"><div class="ttname"><a href="Qelement__face__coordinate__translation__schemes_8h.html">Qelement_face_coordinate_translation_schemes.h</a></div></div>
+<div class="ttc" id="macro__element_8h_html"><div class="ttname"><a href="macro__element_8h.html">macro_element.h</a></div></div>
+<div class="ttc" id="shape_8h_html"><div class="ttname"><a href="shape_8h.html">shape.h</a></div></div>
+<div class="ttc" id="vector__matrix_8h_html"><div class="ttname"><a href="vector__matrix_8h.html">vector_matrix.h</a></div></div>
+<div class="ttc" id="quadtree_8h_html"><div class="ttname"><a href="quadtree_8h.html">quadtree.h</a></div></div>
+<div class="ttc" id="Qspectral__elements_8h_html"><div class="ttname"><a href="Qspectral__elements_8h.html">Qspectral_elements.h</a></div></div>
+<div class="ttc" id="sparse__vector_8h_html"><div class="ttname"><a href="sparse__vector_8h.html">sparse_vector.h</a></div></div>
+<div class="ttc" id="mesh__as__geometric__object_8h_html"><div class="ttname"><a href="mesh__as__geometric__object_8h.html">mesh_as_geometric_object.h</a></div></div>
+<div class="ttc" id="preconditioner__array_8h_html"><div class="ttname"><a href="preconditioner__array_8h.html">preconditioner_array.h</a></div></div>
+<div class="ttc" id="simple__cubic__scaffold__tet__mesh_8h_html"><div class="ttname"><a href="simple__cubic__scaffold__tet__mesh_8h.html">simple_cubic_scaffold_tet_mesh.h</a></div></div>
+<div class="ttc" id="geom__objects_8h_html"><div class="ttname"><a href="geom__objects_8h.html">geom_objects.h</a></div></div>
+<div class="ttc" id="hijacked__elements_8h_html"><div class="ttname"><a href="hijacked__elements_8h.html">hijacked_elements.h</a></div></div>
+<div class="ttc" id="generalised__timesteppers_8h_html"><div class="ttname"><a href="generalised__timesteppers_8h.html">generalised_timesteppers.h</a></div></div>
+<div class="ttc" id="refineable__mesh_8h_html"><div class="ttname"><a href="refineable__mesh_8h.html">refineable_mesh.h</a></div></div>
+<div class="ttc" id="problem_8h_html"><div class="ttname"><a href="problem_8h.html">problem.h</a></div></div>
+<div class="ttc" id="triangle__scaffold__mesh_8h_html"><div class="ttname"><a href="triangle__scaffold__mesh_8h.html">triangle_scaffold_mesh.h</a></div></div>
+<div class="ttc" id="refineable__quad__element_8h_html"><div class="ttname"><a href="refineable__quad__element_8h.html">refineable_quad_element.h</a></div></div>
+<div class="ttc" id="oomph__definitions_8h_html"><div class="ttname"><a href="oomph__definitions_8h.html">oomph_definitions.h</a></div></div>
+<div class="ttc" id="general__purpose__block__preconditioners_8h_html"><div class="ttname"><a href="general__purpose__block__preconditioners_8h.html">general_purpose_block_preconditioners.h</a></div></div>
+<div class="ttc" id="geompack__scaffold__mesh_8h_html"><div class="ttname"><a href="geompack__scaffold__mesh_8h.html">geompack_scaffold_mesh.h</a></div></div>
+<div class="ttc" id="hermite__elements_8h_html"><div class="ttname"><a href="hermite__elements_8h.html">hermite_elements.h</a></div></div>
+<div class="ttc" id="timesteppers_8h_html"><div class="ttname"><a href="timesteppers_8h.html">timesteppers.h</a></div></div>
+<div class="ttc" id="communicator_8h_html"><div class="ttname"><a href="communicator_8h.html">communicator.h</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+
+    <!-- jQuery for Bootstrap and Doxygen -->
+    <script src="../../js/jquery-1.12.0.min.js"></script>
+    <!-- Minified boostrap plugins-->
+    <script src="../../js/bootstrap.js"></script>
+    <!-- Doxygen dependency to add powertips to source code-->
+    <script src="../../js/jquery.powertip.min.js"></script>
+    <!-- The  following script is generated by doxygen and hides/shows levels in 
+         the data structure lists and adds powertips to source code-->
+    <script src="../../js/dynsections.js" ></script>
+    <!-- add to Doxygen's class names so bootstrap css and js recognises them-->
+    <script type="text/javascript">
+    $(".contents").addClass("container");
+    $(".header").addClass("container");
+    $(".navpath").addClass("container");
+    $("#navrow3").addClass("container");
+    $("#navrow4").addClass("container");
+    $(".mlabel").addClass("label");
+    $(".mlabel").addClass("label-default");
+    $(".memitem").addClass("panel");
+    $(".memitem").addClass("panel-info");
+    $(".memproto").addClass("panel-heading");
+    $(".memdoc").addClass("panel-body");
+    </script>
+    <footer>
+      <div class="container">
+        <div class="text-muted" style="float:right;">Generated by <a href="http://www.doxygen.org/index.html">
+          <img style="height:18px;" class="footer-img" src="doxygen.png" alt="doxygen"></a> on Sun Jun 14 2020 00:33:21
+        </div>
+      </div>
+    </footer>
+</body>
+</html>

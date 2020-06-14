@@ -1,0 +1,314 @@
+\hypertarget{classoomph_1_1FSIAxisymmetricLinearElasticityTractionElement}{}\section{oomph\+:\+:F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT, N\+A\+V\+I\+E\+R\+\_\+\+S\+T\+O\+K\+E\+S\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$ Class Template Reference}
+\label{classoomph_1_1FSIAxisymmetricLinearElasticityTractionElement}\index{oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, N\+A\+V\+I\+E\+R\+\_\+\+S\+T\+O\+K\+E\+S\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$@{oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, N\+A\+V\+I\+E\+R\+\_\+\+S\+T\+O\+K\+E\+S\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$}}
+
+
+{\ttfamily \#include $<$axisym\+\_\+linear\+\_\+elasticity\+\_\+traction\+\_\+elements.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT, N\+A\+V\+I\+E\+R\+\_\+\+S\+T\+O\+K\+E\+S\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=0.602961cm]{classoomph_1_1FSIAxisymmetricLinearElasticityTractionElement}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1FSIAxisymmetricLinearElasticityTractionElement_a1c6b3d25b6867c98666130df0a150433}{F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element} (\hyperlink{classoomph_1_1FiniteElement}{Finite\+Element} $\ast$const \&element\+\_\+pt, const int \&\hyperlink{classoomph_1_1FaceElement_a478d577ac6db67ecc80f1f02ae3ab170}{face\+\_\+index})
+\begin{DoxyCompactList}\small\item\em Constructor, which takes a \char`\"{}bulk\char`\"{} element and the value of the index and its limit. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1FSIAxisymmetricLinearElasticityTractionElement_a1b263d681ce9db54b6439eec04a60080}{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&residuals)
+\begin{DoxyCompactList}\small\item\em Return the residuals. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1FSIAxisymmetricLinearElasticityTractionElement_ac2ec9591abe96af1cc68da123c554feb}{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&residuals, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&jacobian)
+\begin{DoxyCompactList}\small\item\em Fill in contribution from Jacobian. \end{DoxyCompactList}\item 
+const double \& \hyperlink{classoomph_1_1FSIAxisymmetricLinearElasticityTractionElement_a7f934810722cf9109bfec4c063671ce5}{q} () const
+\begin{DoxyCompactList}\small\item\em Return the ratio of the stress scales used to non-\/dimensionalise the fluid and elasticity equations. E.\+g. $ Q = (\omega a)^2 \rho/E $, i.\+e. the ratio between the inertial fluid stress and the solid\textquotesingle{}s elastic modulus E. \end{DoxyCompactList}\item 
+double $\ast$\& \hyperlink{classoomph_1_1FSIAxisymmetricLinearElasticityTractionElement_a21c9405d5cf8a30c974016e289aaa805}{q\+\_\+pt} ()
+\begin{DoxyCompactList}\small\item\em Return a pointer the ratio of stress scales used to non-\/dimensionalise the fluid and solid equations. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1FSIAxisymmetricLinearElasticityTractionElement_ae4a9f997d6975dea6ced9fa21603fc6b}{output} (std\+::ostream \&outfile)
+\begin{DoxyCompactList}\small\item\em Output function. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1FSIAxisymmetricLinearElasticityTractionElement_aa8de95635c065d9ba98a1faa67802d60}{output} (std\+::ostream \&outfile, const unsigned \&n\+\_\+plot)
+\begin{DoxyCompactList}\small\item\em Output function\+: Plot traction etc at \hyperlink{classoomph_1_1Gauss}{Gauss} points nplot is ignored. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1FSIAxisymmetricLinearElasticityTractionElement_abe362d8d30993c78c59c8ed199b40659}{output} (F\+I\+LE $\ast$file\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em C\+\_\+style output function. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1FSIAxisymmetricLinearElasticityTractionElement_a980c9a362b13a8dc33002466c13d09c9}{output} (F\+I\+LE $\ast$file\+\_\+pt, const unsigned \&n\+\_\+plot)
+\begin{DoxyCompactList}\small\item\em C-\/style output function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classoomph_1_1FSIAxisymmetricLinearElasticityTractionElement_a73cd868800f66ddb79fcc8f2dcf05a70}{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+axisym\+\_\+fsi\+\_\+traction} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&residuals)
+\begin{DoxyCompactList}\small\item\em Helper function that actually calculates the residuals. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double $\ast$ \hyperlink{classoomph_1_1FSIAxisymmetricLinearElasticityTractionElement_affa78080f9785efcd0f29e16882b39a5}{Q\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to the ratio, $ Q $ , of the stress used to non-\/dimensionalise the fluid stresses to the stress used to non-\/dimensionalise the solid stresses. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Vector}{Vector}$<$ unsigned $>$ \hyperlink{classoomph_1_1FSIAxisymmetricLinearElasticityTractionElement_a498d38f6c82f550778ff0e8c1e9e77bc}{U\+\_\+index\+\_\+axisym\+\_\+fsi\+\_\+traction}
+\begin{DoxyCompactList}\small\item\em Index at which the i-\/th displacement component is stored. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static double \hyperlink{classoomph_1_1FSIAxisymmetricLinearElasticityTractionElement_aeff21738ba20eccede00f1db688e5a2a}{Default\+\_\+\+Q\+\_\+\+Value} =1.\+0
+\begin{DoxyCompactList}\small\item\em Static default value for the ratio of stress scales used in the fluid and solid equations (default is 1.\+0) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT, class N\+A\+V\+I\+E\+R\+\_\+\+S\+T\+O\+K\+E\+S\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT$>$\newline
+class oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, N\+A\+V\+I\+E\+R\+\_\+\+S\+T\+O\+K\+E\+S\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$}
+
+A class for elements that allow the imposition of an applied traction in the equations of axisymmetric linear elasticity from an adjacent axisymmetric Navier Stokes element in a linearised F\+SI problem. The geometrical information can be read from the Face\+Geometry$<$\+E\+L\+E\+M\+E\+N\+T$>$ class and and thus, we can be generic enough without the need to have a separate equations class. 
+
+Definition at line 504 of file axisym\+\_\+linear\+\_\+elasticity\+\_\+traction\+\_\+elements.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1FSIAxisymmetricLinearElasticityTractionElement_a1c6b3d25b6867c98666130df0a150433}\label{classoomph_1_1FSIAxisymmetricLinearElasticityTractionElement_a1c6b3d25b6867c98666130df0a150433}} 
+\index{oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element@{oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element}!F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element@{F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element}}
+\index{F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element@{F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element}!oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element@{oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element}}
+\subsubsection{\texorpdfstring{F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element()}{FSIAxisymmetricLinearElasticityTractionElement()}}
+{\footnotesize\ttfamily template$<$class E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT , class N\+A\+V\+I\+E\+R\+\_\+\+S\+T\+O\+K\+E\+S\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classoomph_1_1FSIAxisymmetricLinearElasticityTractionElement}{oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element}$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT, N\+A\+V\+I\+E\+R\+\_\+\+S\+T\+O\+K\+E\+S\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::\hyperlink{classoomph_1_1FSIAxisymmetricLinearElasticityTractionElement}{F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element} (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1FiniteElement}{Finite\+Element} $\ast$const \&}]{element\+\_\+pt,  }\item[{const int \&}]{face\+\_\+index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor, which takes a \char`\"{}bulk\char`\"{} element and the value of the index and its limit. 
+
+
+
+Definition at line 535 of file axisym\+\_\+linear\+\_\+elasticity\+\_\+traction\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Finite\+Element\+::build\+\_\+face\+\_\+element(), i, and oomph\+::\+Finite\+Element\+::nodal\+\_\+dimension().
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1FSIAxisymmetricLinearElasticityTractionElement_ac2ec9591abe96af1cc68da123c554feb}\label{classoomph_1_1FSIAxisymmetricLinearElasticityTractionElement_ac2ec9591abe96af1cc68da123c554feb}} 
+\index{oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element@{oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element}!fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian}}
+\index{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian}!oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element@{oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element}}
+\subsubsection{\texorpdfstring{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian()}{fill\_in\_contribution\_to\_jacobian()}}
+{\footnotesize\ttfamily template$<$class E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT , class N\+A\+V\+I\+E\+R\+\_\+\+S\+T\+O\+K\+E\+S\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classoomph_1_1FSIAxisymmetricLinearElasticityTractionElement}{oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element}$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT, N\+A\+V\+I\+E\+R\+\_\+\+S\+T\+O\+K\+E\+S\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{residuals,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{jacobian }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Fill in contribution from Jacobian. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1GeneralisedElement_a6ae09fc0d68e4309ac1b03583d252845}{oomph\+::\+Generalised\+Element}.
+
+
+
+Definition at line 573 of file axisym\+\_\+linear\+\_\+elasticity\+\_\+traction\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1FSIAxisymmetricLinearElasticityTractionElement_a1b263d681ce9db54b6439eec04a60080}\label{classoomph_1_1FSIAxisymmetricLinearElasticityTractionElement_a1b263d681ce9db54b6439eec04a60080}} 
+\index{oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element@{oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element}!fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals}}
+\index{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals}!oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element@{oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element}}
+\subsubsection{\texorpdfstring{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals()}{fill\_in\_contribution\_to\_residuals()}}
+{\footnotesize\ttfamily template$<$class E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT , class N\+A\+V\+I\+E\+R\+\_\+\+S\+T\+O\+K\+E\+S\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classoomph_1_1FSIAxisymmetricLinearElasticityTractionElement}{oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element}$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT, N\+A\+V\+I\+E\+R\+\_\+\+S\+T\+O\+K\+E\+S\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{residuals }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Return the residuals. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1GeneralisedElement_a310c97f515e8504a48179c0e72c550d7}{oomph\+::\+Generalised\+Element}.
+
+
+
+Definition at line 565 of file axisym\+\_\+linear\+\_\+elasticity\+\_\+traction\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1FSIAxisymmetricLinearElasticityTractionElement_a73cd868800f66ddb79fcc8f2dcf05a70}\label{classoomph_1_1FSIAxisymmetricLinearElasticityTractionElement_a73cd868800f66ddb79fcc8f2dcf05a70}} 
+\index{oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element@{oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element}!fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+axisym\+\_\+fsi\+\_\+traction@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+axisym\+\_\+fsi\+\_\+traction}}
+\index{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+axisym\+\_\+fsi\+\_\+traction@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+axisym\+\_\+fsi\+\_\+traction}!oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element@{oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element}}
+\subsubsection{\texorpdfstring{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+axisym\+\_\+fsi\+\_\+traction()}{fill\_in\_contribution\_to\_residuals\_axisym\_fsi\_traction()}}
+{\footnotesize\ttfamily template$<$class E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT , class N\+A\+V\+I\+E\+R\+\_\+\+S\+T\+O\+K\+E\+S\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classoomph_1_1FSIAxisymmetricLinearElasticityTractionElement}{oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element}$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT, N\+A\+V\+I\+E\+R\+\_\+\+S\+T\+O\+K\+E\+S\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+axisym\+\_\+fsi\+\_\+traction (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{residuals }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Helper function that actually calculates the residuals. 
+
+Return the residuals. 
+
+Definition at line 688 of file axisym\+\_\+linear\+\_\+elasticity\+\_\+traction\+\_\+elements.\+h.
+
+
+
+References i, and oomph\+::\+Quad\+Tree\+Names\+::W.
+
+\mbox{\Hypertarget{classoomph_1_1FSIAxisymmetricLinearElasticityTractionElement_ae4a9f997d6975dea6ced9fa21603fc6b}\label{classoomph_1_1FSIAxisymmetricLinearElasticityTractionElement_ae4a9f997d6975dea6ced9fa21603fc6b}} 
+\index{oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element@{oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element}!output@{output}}
+\index{output@{output}!oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element@{oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily template$<$class E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT , class N\+A\+V\+I\+E\+R\+\_\+\+S\+T\+O\+K\+E\+S\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classoomph_1_1FSIAxisymmetricLinearElasticityTractionElement}{oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element}$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT, N\+A\+V\+I\+E\+R\+\_\+\+S\+T\+O\+K\+E\+S\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::output (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Output function. 
+
+Dummy 
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a2ad98a3d2ef4999f1bef62c0ff13f2a7}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 596 of file axisym\+\_\+linear\+\_\+elasticity\+\_\+traction\+\_\+elements.\+h.
+
+
+
+References oomph\+::output().
+
+\mbox{\Hypertarget{classoomph_1_1FSIAxisymmetricLinearElasticityTractionElement_aa8de95635c065d9ba98a1faa67802d60}\label{classoomph_1_1FSIAxisymmetricLinearElasticityTractionElement_aa8de95635c065d9ba98a1faa67802d60}} 
+\index{oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element@{oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element}!output@{output}}
+\index{output@{output}!oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element@{oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily template$<$class E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT , class N\+A\+V\+I\+E\+R\+\_\+\+S\+T\+O\+K\+E\+S\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classoomph_1_1FSIAxisymmetricLinearElasticityTractionElement}{oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element}$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT, N\+A\+V\+I\+E\+R\+\_\+\+S\+T\+O\+K\+E\+S\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::output (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile,  }\item[{const unsigned \&}]{n\+\_\+plot }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Output function\+: Plot traction etc at \hyperlink{classoomph_1_1Gauss}{Gauss} points nplot is ignored. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_afa9d9b2670f999b43e6679c9dd28c457}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 605 of file axisym\+\_\+linear\+\_\+elasticity\+\_\+traction\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1FSIAxisymmetricLinearElasticityTractionElement_abe362d8d30993c78c59c8ed199b40659}\label{classoomph_1_1FSIAxisymmetricLinearElasticityTractionElement_abe362d8d30993c78c59c8ed199b40659}} 
+\index{oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element@{oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element}!output@{output}}
+\index{output@{output}!oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element@{oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily template$<$class E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT , class N\+A\+V\+I\+E\+R\+\_\+\+S\+T\+O\+K\+E\+S\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classoomph_1_1FSIAxisymmetricLinearElasticityTractionElement}{oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element}$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT, N\+A\+V\+I\+E\+R\+\_\+\+S\+T\+O\+K\+E\+S\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::output (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{file\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+C\+\_\+style output function. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a72cddd09f8ddbee1a20a1ff404c6943e}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 658 of file axisym\+\_\+linear\+\_\+elasticity\+\_\+traction\+\_\+elements.\+h.
+
+
+
+References oomph\+::output().
+
+\mbox{\Hypertarget{classoomph_1_1FSIAxisymmetricLinearElasticityTractionElement_a980c9a362b13a8dc33002466c13d09c9}\label{classoomph_1_1FSIAxisymmetricLinearElasticityTractionElement_a980c9a362b13a8dc33002466c13d09c9}} 
+\index{oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element@{oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element}!output@{output}}
+\index{output@{output}!oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element@{oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily template$<$class E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT , class N\+A\+V\+I\+E\+R\+\_\+\+S\+T\+O\+K\+E\+S\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classoomph_1_1FSIAxisymmetricLinearElasticityTractionElement}{oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element}$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT, N\+A\+V\+I\+E\+R\+\_\+\+S\+T\+O\+K\+E\+S\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::output (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{file\+\_\+pt,  }\item[{const unsigned \&}]{n\+\_\+plot }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+C-\/style output function. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_adfaee690bb0608f03320eeb9d110d48c}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 662 of file axisym\+\_\+linear\+\_\+elasticity\+\_\+traction\+\_\+elements.\+h.
+
+
+
+References oomph\+::output().
+
+\mbox{\Hypertarget{classoomph_1_1FSIAxisymmetricLinearElasticityTractionElement_a7f934810722cf9109bfec4c063671ce5}\label{classoomph_1_1FSIAxisymmetricLinearElasticityTractionElement_a7f934810722cf9109bfec4c063671ce5}} 
+\index{oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element@{oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element}!q@{q}}
+\index{q@{q}!oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element@{oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element}}
+\subsubsection{\texorpdfstring{q()}{q()}}
+{\footnotesize\ttfamily template$<$class E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT , class N\+A\+V\+I\+E\+R\+\_\+\+S\+T\+O\+K\+E\+S\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+const double\& \hyperlink{classoomph_1_1FSIAxisymmetricLinearElasticityTractionElement}{oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element}$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT, N\+A\+V\+I\+E\+R\+\_\+\+S\+T\+O\+K\+E\+S\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::q (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the ratio of the stress scales used to non-\/dimensionalise the fluid and elasticity equations. E.\+g. $ Q = (\omega a)^2 \rho/E $, i.\+e. the ratio between the inertial fluid stress and the solid\textquotesingle{}s elastic modulus E. 
+
+
+
+Definition at line 588 of file axisym\+\_\+linear\+\_\+elasticity\+\_\+traction\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1FSIAxisymmetricLinearElasticityTractionElement_a21c9405d5cf8a30c974016e289aaa805}\label{classoomph_1_1FSIAxisymmetricLinearElasticityTractionElement_a21c9405d5cf8a30c974016e289aaa805}} 
+\index{oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element@{oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element}!q\+\_\+pt@{q\+\_\+pt}}
+\index{q\+\_\+pt@{q\+\_\+pt}!oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element@{oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element}}
+\subsubsection{\texorpdfstring{q\+\_\+pt()}{q\_pt()}}
+{\footnotesize\ttfamily template$<$class E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT , class N\+A\+V\+I\+E\+R\+\_\+\+S\+T\+O\+K\+E\+S\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+double$\ast$ \& \hyperlink{classoomph_1_1FSIAxisymmetricLinearElasticityTractionElement}{oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element}$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT, N\+A\+V\+I\+E\+R\+\_\+\+S\+T\+O\+K\+E\+S\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::q\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return a pointer the ratio of stress scales used to non-\/dimensionalise the fluid and solid equations. 
+
+
+
+Definition at line 592 of file axisym\+\_\+linear\+\_\+elasticity\+\_\+traction\+\_\+elements.\+h.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1FSIAxisymmetricLinearElasticityTractionElement_aeff21738ba20eccede00f1db688e5a2a}\label{classoomph_1_1FSIAxisymmetricLinearElasticityTractionElement_aeff21738ba20eccede00f1db688e5a2a}} 
+\index{oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element@{oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element}!Default\+\_\+\+Q\+\_\+\+Value@{Default\+\_\+\+Q\+\_\+\+Value}}
+\index{Default\+\_\+\+Q\+\_\+\+Value@{Default\+\_\+\+Q\+\_\+\+Value}!oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element@{oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element}}
+\subsubsection{\texorpdfstring{Default\+\_\+\+Q\+\_\+\+Value}{Default\_Q\_Value}}
+{\footnotesize\ttfamily template$<$class E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT , class N\+A\+V\+I\+E\+R\+\_\+\+S\+T\+O\+K\+E\+S\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+double \hyperlink{classoomph_1_1FSIAxisymmetricLinearElasticityTractionElement}{oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element}$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT, N\+A\+V\+I\+E\+R\+\_\+\+S\+T\+O\+K\+E\+S\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::Default\+\_\+\+Q\+\_\+\+Value =1.\+0\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Static default value for the ratio of stress scales used in the fluid and solid equations (default is 1.\+0) 
+
+Static default value for the ratio of stress scales used in the fluid and solid equations (default is 1.\+0) 
+
+Definition at line 519 of file axisym\+\_\+linear\+\_\+elasticity\+\_\+traction\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1FSIAxisymmetricLinearElasticityTractionElement_affa78080f9785efcd0f29e16882b39a5}\label{classoomph_1_1FSIAxisymmetricLinearElasticityTractionElement_affa78080f9785efcd0f29e16882b39a5}} 
+\index{oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element@{oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element}!Q\+\_\+pt@{Q\+\_\+pt}}
+\index{Q\+\_\+pt@{Q\+\_\+pt}!oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element@{oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element}}
+\subsubsection{\texorpdfstring{Q\+\_\+pt}{Q\_pt}}
+{\footnotesize\ttfamily template$<$class E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT , class N\+A\+V\+I\+E\+R\+\_\+\+S\+T\+O\+K\+E\+S\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+double$\ast$ \hyperlink{classoomph_1_1FSIAxisymmetricLinearElasticityTractionElement}{oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element}$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT, N\+A\+V\+I\+E\+R\+\_\+\+S\+T\+O\+K\+E\+S\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::Q\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Pointer to the ratio, $ Q $ , of the stress used to non-\/dimensionalise the fluid stresses to the stress used to non-\/dimensionalise the solid stresses. 
+
+
+
+Definition at line 515 of file axisym\+\_\+linear\+\_\+elasticity\+\_\+traction\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1FSIAxisymmetricLinearElasticityTractionElement_a498d38f6c82f550778ff0e8c1e9e77bc}\label{classoomph_1_1FSIAxisymmetricLinearElasticityTractionElement_a498d38f6c82f550778ff0e8c1e9e77bc}} 
+\index{oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element@{oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element}!U\+\_\+index\+\_\+axisym\+\_\+fsi\+\_\+traction@{U\+\_\+index\+\_\+axisym\+\_\+fsi\+\_\+traction}}
+\index{U\+\_\+index\+\_\+axisym\+\_\+fsi\+\_\+traction@{U\+\_\+index\+\_\+axisym\+\_\+fsi\+\_\+traction}!oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element@{oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element}}
+\subsubsection{\texorpdfstring{U\+\_\+index\+\_\+axisym\+\_\+fsi\+\_\+traction}{U\_index\_axisym\_fsi\_traction}}
+{\footnotesize\ttfamily template$<$class E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT , class N\+A\+V\+I\+E\+R\+\_\+\+S\+T\+O\+K\+E\+S\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classoomph_1_1Vector}{Vector}$<$unsigned$>$ \hyperlink{classoomph_1_1FSIAxisymmetricLinearElasticityTractionElement}{oomph\+::\+F\+S\+I\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element}$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT, N\+A\+V\+I\+E\+R\+\_\+\+S\+T\+O\+K\+E\+S\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::U\+\_\+index\+\_\+axisym\+\_\+fsi\+\_\+traction\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Index at which the i-\/th displacement component is stored. 
+
+
+
+Definition at line 522 of file axisym\+\_\+linear\+\_\+elasticity\+\_\+traction\+\_\+elements.\+h.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{axisym__linear__elasticity__traction__elements_8h}{axisym\+\_\+linear\+\_\+elasticity\+\_\+traction\+\_\+elements.\+h}\end{DoxyCompactItemize}

@@ -1,0 +1,310 @@
+\hypertarget{namespaceoomph_1_1TwoDimensionalPMLHelper}{}\section{oomph\+:\+:Two\+Dimensional\+P\+M\+L\+Helper Namespace Reference}
+\label{namespaceoomph_1_1TwoDimensionalPMLHelper}\index{oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper@{oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper}}
+
+
+Namespace with functions that allow the construction of P\+ML layers on axis aligned boundaries.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{namespaceoomph_1_1TwoDimensionalPMLHelper_ae66c595a953e030ae366699eec3ca3ab}{sorter\+\_\+right\+\_\+boundary} (\hyperlink{classoomph_1_1Node}{Node} $\ast$nod\+\_\+i\+\_\+pt, \hyperlink{classoomph_1_1Node}{Node} $\ast$nod\+\_\+j\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em helper function for sorting the right boundary nodes \end{DoxyCompactList}\item 
+bool \hyperlink{namespaceoomph_1_1TwoDimensionalPMLHelper_a98d2786e22298095bd190435d11c4f0e}{sorter\+\_\+top\+\_\+boundary} (\hyperlink{classoomph_1_1Node}{Node} $\ast$nod\+\_\+i\+\_\+pt, \hyperlink{classoomph_1_1Node}{Node} $\ast$nod\+\_\+j\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em helper function for sorting the top boundary nodes \end{DoxyCompactList}\item 
+bool \hyperlink{namespaceoomph_1_1TwoDimensionalPMLHelper_aecb74c39efe7c572a9d87b2d11be3d69}{sorter\+\_\+left\+\_\+boundary} (\hyperlink{classoomph_1_1Node}{Node} $\ast$nod\+\_\+i\+\_\+pt, \hyperlink{classoomph_1_1Node}{Node} $\ast$nod\+\_\+j\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em helper function for sorting the left boundary nodes \end{DoxyCompactList}\item 
+bool \hyperlink{namespaceoomph_1_1TwoDimensionalPMLHelper_a0bd68e9d424ff3f05266786cc6c78baa}{sorter\+\_\+bottom\+\_\+boundary} (\hyperlink{classoomph_1_1Node}{Node} $\ast$nod\+\_\+i\+\_\+pt, \hyperlink{classoomph_1_1Node}{Node} $\ast$nod\+\_\+j\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em helper function for sorting the bottom boundary nodes \end{DoxyCompactList}\item 
+{\footnotesize template$<$class A\+S\+S\+O\+C\+I\+A\+T\+E\+D\+\_\+\+P\+M\+L\+\_\+\+Q\+U\+A\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ }\\\hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$ \hyperlink{namespaceoomph_1_1TwoDimensionalPMLHelper_aefa58c9106ac3bee876a0bff81ab1a64}{create\+\_\+right\+\_\+pml\+\_\+mesh} (\hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$bulk\+\_\+mesh\+\_\+pt, const unsigned \&right\+\_\+boundary\+\_\+id, const unsigned \&n\+\_\+x\+\_\+right\+\_\+pml, const double \&width\+\_\+x\+\_\+right\+\_\+pml, \hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper} $\ast$time\+\_\+stepper\+\_\+pt=\&\hyperlink{classoomph_1_1Mesh_a12243d0fee2b1fcee729ee5a4777ea10}{Mesh\+::\+Default\+\_\+\+Time\+Stepper})
+\begin{DoxyCompactList}\small\item\em \char`\"{}\+Constructor\char`\"{} for P\+ML mesh,aligned with the right physical domain boundary \end{DoxyCompactList}\item 
+{\footnotesize template$<$class A\+S\+S\+O\+C\+I\+A\+T\+E\+D\+\_\+\+P\+M\+L\+\_\+\+Q\+U\+A\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ }\\\hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$ \hyperlink{namespaceoomph_1_1TwoDimensionalPMLHelper_a5f19139e8145fb29caf9be94b1909ed1}{create\+\_\+top\+\_\+pml\+\_\+mesh} (\hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$bulk\+\_\+mesh\+\_\+pt, const unsigned \&top\+\_\+boundary\+\_\+id, const unsigned \&n\+\_\+y\+\_\+top\+\_\+pml, const double \&width\+\_\+y\+\_\+top\+\_\+pml, \hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper} $\ast$time\+\_\+stepper\+\_\+pt=\&\hyperlink{classoomph_1_1Mesh_a12243d0fee2b1fcee729ee5a4777ea10}{Mesh\+::\+Default\+\_\+\+Time\+Stepper})
+\begin{DoxyCompactList}\small\item\em \char`\"{}\+Constructor\char`\"{} for P\+ML mesh, aligned with the top physical domain boundary \end{DoxyCompactList}\item 
+{\footnotesize template$<$class A\+S\+S\+O\+C\+I\+A\+T\+E\+D\+\_\+\+P\+M\+L\+\_\+\+Q\+U\+A\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ }\\\hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$ \hyperlink{namespaceoomph_1_1TwoDimensionalPMLHelper_acc70ea22db897a5e20676d8136759308}{create\+\_\+left\+\_\+pml\+\_\+mesh} (\hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$bulk\+\_\+mesh\+\_\+pt, const unsigned \&left\+\_\+boundary\+\_\+id, const unsigned \&n\+\_\+x\+\_\+left\+\_\+pml, const double \&width\+\_\+x\+\_\+left\+\_\+pml, \hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper} $\ast$time\+\_\+stepper\+\_\+pt=\&\hyperlink{classoomph_1_1Mesh_a12243d0fee2b1fcee729ee5a4777ea10}{Mesh\+::\+Default\+\_\+\+Time\+Stepper})
+\begin{DoxyCompactList}\small\item\em \char`\"{}\+Constructor\char`\"{} for P\+ML mesh, aligned with the left physical domain boundary \end{DoxyCompactList}\item 
+{\footnotesize template$<$class A\+S\+S\+O\+C\+I\+A\+T\+E\+D\+\_\+\+P\+M\+L\+\_\+\+Q\+U\+A\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ }\\\hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$ \hyperlink{namespaceoomph_1_1TwoDimensionalPMLHelper_acaeafd3af9d2d34e4e7e0f8a2bd78216}{create\+\_\+bottom\+\_\+pml\+\_\+mesh} (\hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$bulk\+\_\+mesh\+\_\+pt, const unsigned \&bottom\+\_\+boundary\+\_\+id, const unsigned \&n\+\_\+y\+\_\+bottom\+\_\+pml, const double \&width\+\_\+y\+\_\+bottom\+\_\+pml, \hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper} $\ast$time\+\_\+stepper\+\_\+pt=\&\hyperlink{classoomph_1_1Mesh_a12243d0fee2b1fcee729ee5a4777ea10}{Mesh\+::\+Default\+\_\+\+Time\+Stepper})
+\begin{DoxyCompactList}\small\item\em \char`\"{}\+Constructor\char`\"{} for P\+ML mesh,aligned with the bottom physical domain boundary \end{DoxyCompactList}\item 
+{\footnotesize template$<$class A\+S\+S\+O\+C\+I\+A\+T\+E\+D\+\_\+\+P\+M\+L\+\_\+\+Q\+U\+A\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ }\\\hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$ \hyperlink{namespaceoomph_1_1TwoDimensionalPMLHelper_a3e37eb00dd89dad4cc51531472c9b1ad}{create\+\_\+top\+\_\+right\+\_\+pml\+\_\+mesh} (\hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$pml\+\_\+right\+\_\+mesh\+\_\+pt, \hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$pml\+\_\+top\+\_\+mesh\+\_\+pt, \hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$bulk\+\_\+mesh\+\_\+pt, const unsigned \&right\+\_\+boundary\+\_\+id, \hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper} $\ast$time\+\_\+stepper\+\_\+pt=\&\hyperlink{classoomph_1_1Mesh_a12243d0fee2b1fcee729ee5a4777ea10}{Mesh\+::\+Default\+\_\+\+Time\+Stepper})
+\begin{DoxyCompactList}\small\item\em \char`\"{}\+Constructor\char`\"{} for P\+ML top right corner mesh, aligned with the existing P\+ML meshes \end{DoxyCompactList}\item 
+{\footnotesize template$<$class A\+S\+S\+O\+C\+I\+A\+T\+E\+D\+\_\+\+P\+M\+L\+\_\+\+Q\+U\+A\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ }\\\hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$ \hyperlink{namespaceoomph_1_1TwoDimensionalPMLHelper_a24327201a96ccb79e34caad6a577672a}{create\+\_\+bottom\+\_\+right\+\_\+pml\+\_\+mesh} (\hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$pml\+\_\+right\+\_\+mesh\+\_\+pt, \hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$pml\+\_\+bottom\+\_\+mesh\+\_\+pt, \hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$bulk\+\_\+mesh\+\_\+pt, const unsigned \&right\+\_\+boundary\+\_\+id, \hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper} $\ast$time\+\_\+stepper\+\_\+pt=\&\hyperlink{classoomph_1_1Mesh_a12243d0fee2b1fcee729ee5a4777ea10}{Mesh\+::\+Default\+\_\+\+Time\+Stepper})
+\begin{DoxyCompactList}\small\item\em \char`\"{}\+Constructor\char`\"{} for P\+ML bottom right corner mesh, aligned with the existing P\+ML meshes \end{DoxyCompactList}\item 
+{\footnotesize template$<$class A\+S\+S\+O\+C\+I\+A\+T\+E\+D\+\_\+\+P\+M\+L\+\_\+\+Q\+U\+A\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ }\\\hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$ \hyperlink{namespaceoomph_1_1TwoDimensionalPMLHelper_a60f24bcfa2ad065577e47d97015995ac}{create\+\_\+top\+\_\+left\+\_\+pml\+\_\+mesh} (\hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$pml\+\_\+left\+\_\+mesh\+\_\+pt, \hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$pml\+\_\+top\+\_\+mesh\+\_\+pt, \hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$bulk\+\_\+mesh\+\_\+pt, const unsigned \&left\+\_\+boundary\+\_\+id, \hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper} $\ast$time\+\_\+stepper\+\_\+pt=\&\hyperlink{classoomph_1_1Mesh_a12243d0fee2b1fcee729ee5a4777ea10}{Mesh\+::\+Default\+\_\+\+Time\+Stepper})
+\begin{DoxyCompactList}\small\item\em \char`\"{}\+Constructor\char`\"{} for P\+ML top left corner mesh, aligned with the existing P\+ML meshes \end{DoxyCompactList}\item 
+{\footnotesize template$<$class A\+S\+S\+O\+C\+I\+A\+T\+E\+D\+\_\+\+P\+M\+L\+\_\+\+Q\+U\+A\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ }\\\hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$ \hyperlink{namespaceoomph_1_1TwoDimensionalPMLHelper_aba3dace3fd7f0d481d986e6cc98c770f}{create\+\_\+bottom\+\_\+left\+\_\+pml\+\_\+mesh} (\hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$pml\+\_\+left\+\_\+mesh\+\_\+pt, \hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$pml\+\_\+bottom\+\_\+mesh\+\_\+pt, \hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$bulk\+\_\+mesh\+\_\+pt, const unsigned \&left\+\_\+boundary\+\_\+id, \hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper} $\ast$time\+\_\+stepper\+\_\+pt=\&\hyperlink{classoomph_1_1Mesh_a12243d0fee2b1fcee729ee5a4777ea10}{Mesh\+::\+Default\+\_\+\+Time\+Stepper})
+\begin{DoxyCompactList}\small\item\em \char`\"{}\+Constructor\char`\"{} for P\+ML bottom left corner mesh, aligned with the existing P\+ML meshes \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Namespace with functions that allow the construction of P\+ML layers on axis aligned boundaries. 
+
+All helper routines for 2D bulk boundary mesh usage in order to generate P\+ML meshes aligned to the main mesh. 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceoomph_1_1TwoDimensionalPMLHelper_aba3dace3fd7f0d481d986e6cc98c770f}\label{namespaceoomph_1_1TwoDimensionalPMLHelper_aba3dace3fd7f0d481d986e6cc98c770f}} 
+\index{oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper@{oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper}!create\+\_\+bottom\+\_\+left\+\_\+pml\+\_\+mesh@{create\+\_\+bottom\+\_\+left\+\_\+pml\+\_\+mesh}}
+\index{create\+\_\+bottom\+\_\+left\+\_\+pml\+\_\+mesh@{create\+\_\+bottom\+\_\+left\+\_\+pml\+\_\+mesh}!oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper@{oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper}}
+\subsubsection{\texorpdfstring{create\+\_\+bottom\+\_\+left\+\_\+pml\+\_\+mesh()}{create\_bottom\_left\_pml\_mesh()}}
+{\footnotesize\ttfamily template$<$class A\+S\+S\+O\+C\+I\+A\+T\+E\+D\+\_\+\+P\+M\+L\+\_\+\+Q\+U\+A\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classoomph_1_1Mesh}{Mesh}$\ast$ oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper\+::create\+\_\+bottom\+\_\+left\+\_\+pml\+\_\+mesh (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$}]{pml\+\_\+left\+\_\+mesh\+\_\+pt,  }\item[{\hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$}]{pml\+\_\+bottom\+\_\+mesh\+\_\+pt,  }\item[{\hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$}]{bulk\+\_\+mesh\+\_\+pt,  }\item[{const unsigned \&}]{left\+\_\+boundary\+\_\+id,  }\item[{\hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper} $\ast$}]{time\+\_\+stepper\+\_\+pt = {\ttfamily \&\hyperlink{classoomph_1_1Mesh_a12243d0fee2b1fcee729ee5a4777ea10}{Mesh\+::\+Default\+\_\+\+Time\+Stepper}} }\end{DoxyParamCaption})}
+
+
+
+\char`\"{}\+Constructor\char`\"{} for P\+ML bottom left corner mesh, aligned with the existing P\+ML meshes 
+
+Relevant boundary id\textquotesingle{}s to be used in construction Parent id refers to already existing P\+ML meshes
+
+Sort them from lowest to highest (in y coordinate) sorter\+\_\+right\+\_\+boundary is still functional, as the sorting is performed by the same criterion
+
+Number of elements and boundary nodes to be acted upon during construction are extracted from the \textquotesingle{}parent\textquotesingle{} P\+ML meshes
+
+Specific P\+ML sizes needed, taken directly from physical domain and existing P\+ML meshes
+
+The enabling must be perfromed in both x-\/ and y-\/directions as this is a corner P\+ML mesh
+
+Return the finalized mesh, with P\+ML enabled and boundary conditions added 
+
+Definition at line 2147 of file pml\+\_\+meshes.\+h.
+
+
+
+References oomph\+::\+Mesh\+::boundary\+\_\+node\+\_\+pt(), e, oomph\+::\+Mesh\+::element\+\_\+pt(), oomph\+::\+Mesh\+::nboundary(), oomph\+::\+Mesh\+::nelement(), oomph\+::\+Data\+::pin(), oomph\+::\+Data\+::set\+\_\+value(), oomph\+::\+Finite\+Element\+::size(), sorter\+\_\+right\+\_\+boundary(), and oomph\+::\+P\+M\+L\+Element\+Base$<$ D\+I\+M $>$\+::values\+\_\+to\+\_\+be\+\_\+pinned\+\_\+on\+\_\+outer\+\_\+pml\+\_\+boundary().
+
+\mbox{\Hypertarget{namespaceoomph_1_1TwoDimensionalPMLHelper_acaeafd3af9d2d34e4e7e0f8a2bd78216}\label{namespaceoomph_1_1TwoDimensionalPMLHelper_acaeafd3af9d2d34e4e7e0f8a2bd78216}} 
+\index{oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper@{oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper}!create\+\_\+bottom\+\_\+pml\+\_\+mesh@{create\+\_\+bottom\+\_\+pml\+\_\+mesh}}
+\index{create\+\_\+bottom\+\_\+pml\+\_\+mesh@{create\+\_\+bottom\+\_\+pml\+\_\+mesh}!oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper@{oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper}}
+\subsubsection{\texorpdfstring{create\+\_\+bottom\+\_\+pml\+\_\+mesh()}{create\_bottom\_pml\_mesh()}}
+{\footnotesize\ttfamily template$<$class A\+S\+S\+O\+C\+I\+A\+T\+E\+D\+\_\+\+P\+M\+L\+\_\+\+Q\+U\+A\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classoomph_1_1Mesh}{Mesh}$\ast$ oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper\+::create\+\_\+bottom\+\_\+pml\+\_\+mesh (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$}]{bulk\+\_\+mesh\+\_\+pt,  }\item[{const unsigned \&}]{bottom\+\_\+boundary\+\_\+id,  }\item[{const unsigned \&}]{n\+\_\+y\+\_\+bottom\+\_\+pml,  }\item[{const double \&}]{width\+\_\+y\+\_\+bottom\+\_\+pml,  }\item[{\hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper} $\ast$}]{time\+\_\+stepper\+\_\+pt = {\ttfamily \&\hyperlink{classoomph_1_1Mesh_a12243d0fee2b1fcee729ee5a4777ea10}{Mesh\+::\+Default\+\_\+\+Time\+Stepper}} }\end{DoxyParamCaption})}
+
+
+
+\char`\"{}\+Constructor\char`\"{} for P\+ML mesh,aligned with the bottom physical domain boundary 
+
+P\+ML layer width subtracted from the bulk mesh lower boundary coordinate
+
+Return the finalized mesh, with P\+ML enabled and boundary conditions added 
+
+Definition at line 1661 of file pml\+\_\+meshes.\+h.
+
+
+
+References oomph\+::\+Mesh\+::boundary\+\_\+node\+\_\+pt(), e, oomph\+::\+Mesh\+::element\+\_\+pt(), oomph\+::\+Mesh\+::nboundary(), oomph\+::\+Mesh\+::nelement(), oomph\+::\+Data\+::pin(), oomph\+::\+Data\+::set\+\_\+value(), oomph\+::\+Finite\+Element\+::size(), sorter\+\_\+bottom\+\_\+boundary(), and oomph\+::\+P\+M\+L\+Element\+Base$<$ D\+I\+M $>$\+::values\+\_\+to\+\_\+be\+\_\+pinned\+\_\+on\+\_\+outer\+\_\+pml\+\_\+boundary().
+
+\mbox{\Hypertarget{namespaceoomph_1_1TwoDimensionalPMLHelper_a24327201a96ccb79e34caad6a577672a}\label{namespaceoomph_1_1TwoDimensionalPMLHelper_a24327201a96ccb79e34caad6a577672a}} 
+\index{oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper@{oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper}!create\+\_\+bottom\+\_\+right\+\_\+pml\+\_\+mesh@{create\+\_\+bottom\+\_\+right\+\_\+pml\+\_\+mesh}}
+\index{create\+\_\+bottom\+\_\+right\+\_\+pml\+\_\+mesh@{create\+\_\+bottom\+\_\+right\+\_\+pml\+\_\+mesh}!oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper@{oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper}}
+\subsubsection{\texorpdfstring{create\+\_\+bottom\+\_\+right\+\_\+pml\+\_\+mesh()}{create\_bottom\_right\_pml\_mesh()}}
+{\footnotesize\ttfamily template$<$class A\+S\+S\+O\+C\+I\+A\+T\+E\+D\+\_\+\+P\+M\+L\+\_\+\+Q\+U\+A\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classoomph_1_1Mesh}{Mesh}$\ast$ oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper\+::create\+\_\+bottom\+\_\+right\+\_\+pml\+\_\+mesh (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$}]{pml\+\_\+right\+\_\+mesh\+\_\+pt,  }\item[{\hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$}]{pml\+\_\+bottom\+\_\+mesh\+\_\+pt,  }\item[{\hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$}]{bulk\+\_\+mesh\+\_\+pt,  }\item[{const unsigned \&}]{right\+\_\+boundary\+\_\+id,  }\item[{\hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper} $\ast$}]{time\+\_\+stepper\+\_\+pt = {\ttfamily \&\hyperlink{classoomph_1_1Mesh_a12243d0fee2b1fcee729ee5a4777ea10}{Mesh\+::\+Default\+\_\+\+Time\+Stepper}} }\end{DoxyParamCaption})}
+
+
+
+\char`\"{}\+Constructor\char`\"{} for P\+ML bottom right corner mesh, aligned with the existing P\+ML meshes 
+
+Relevant boundary id\textquotesingle{}s to be used in construction Parent id refers to already existing P\+ML meshes
+
+Number of elements and boundary nodes to be acted upon during construction are extracted from the \textquotesingle{}parent\textquotesingle{} P\+ML meshes
+
+Specific P\+ML sizes needed, taken directly from physical domain and existing P\+ML meshes
+
+The enabling must be perfromed in both x-\/ and y-\/directions as this is a corner P\+ML mesh
+
+Return the finalized mesh, with P\+ML enabled and boundary conditions added 
+
+Definition at line 1894 of file pml\+\_\+meshes.\+h.
+
+
+
+References oomph\+::\+Mesh\+::boundary\+\_\+node\+\_\+pt(), e, oomph\+::\+Mesh\+::element\+\_\+pt(), oomph\+::\+Mesh\+::nboundary(), oomph\+::\+Mesh\+::nelement(), oomph\+::\+Data\+::pin(), oomph\+::\+Data\+::set\+\_\+value(), oomph\+::\+Finite\+Element\+::size(), sorter\+\_\+right\+\_\+boundary(), and oomph\+::\+P\+M\+L\+Element\+Base$<$ D\+I\+M $>$\+::values\+\_\+to\+\_\+be\+\_\+pinned\+\_\+on\+\_\+outer\+\_\+pml\+\_\+boundary().
+
+\mbox{\Hypertarget{namespaceoomph_1_1TwoDimensionalPMLHelper_acc70ea22db897a5e20676d8136759308}\label{namespaceoomph_1_1TwoDimensionalPMLHelper_acc70ea22db897a5e20676d8136759308}} 
+\index{oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper@{oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper}!create\+\_\+left\+\_\+pml\+\_\+mesh@{create\+\_\+left\+\_\+pml\+\_\+mesh}}
+\index{create\+\_\+left\+\_\+pml\+\_\+mesh@{create\+\_\+left\+\_\+pml\+\_\+mesh}!oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper@{oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper}}
+\subsubsection{\texorpdfstring{create\+\_\+left\+\_\+pml\+\_\+mesh()}{create\_left\_pml\_mesh()}}
+{\footnotesize\ttfamily template$<$class A\+S\+S\+O\+C\+I\+A\+T\+E\+D\+\_\+\+P\+M\+L\+\_\+\+Q\+U\+A\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classoomph_1_1Mesh}{Mesh}$\ast$ oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper\+::create\+\_\+left\+\_\+pml\+\_\+mesh (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$}]{bulk\+\_\+mesh\+\_\+pt,  }\item[{const unsigned \&}]{left\+\_\+boundary\+\_\+id,  }\item[{const unsigned \&}]{n\+\_\+x\+\_\+left\+\_\+pml,  }\item[{const double \&}]{width\+\_\+x\+\_\+left\+\_\+pml,  }\item[{\hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper} $\ast$}]{time\+\_\+stepper\+\_\+pt = {\ttfamily \&\hyperlink{classoomph_1_1Mesh_a12243d0fee2b1fcee729ee5a4777ea10}{Mesh\+::\+Default\+\_\+\+Time\+Stepper}} }\end{DoxyParamCaption})}
+
+
+
+\char`\"{}\+Constructor\char`\"{} for P\+ML mesh, aligned with the left physical domain boundary 
+
+P\+ML layer width subtracted from left bulk mesh coordinate
+
+Return the finalized mesh, with P\+ML enabled and boundary conditions added 
+
+Definition at line 1557 of file pml\+\_\+meshes.\+h.
+
+
+
+References oomph\+::\+Mesh\+::boundary\+\_\+node\+\_\+pt(), e, oomph\+::\+Mesh\+::element\+\_\+pt(), oomph\+::\+Mesh\+::nboundary(), oomph\+::\+Mesh\+::nelement(), oomph\+::\+Data\+::pin(), oomph\+::\+Data\+::set\+\_\+value(), oomph\+::\+Finite\+Element\+::size(), sorter\+\_\+left\+\_\+boundary(), and oomph\+::\+P\+M\+L\+Element\+Base$<$ D\+I\+M $>$\+::values\+\_\+to\+\_\+be\+\_\+pinned\+\_\+on\+\_\+outer\+\_\+pml\+\_\+boundary().
+
+\mbox{\Hypertarget{namespaceoomph_1_1TwoDimensionalPMLHelper_aefa58c9106ac3bee876a0bff81ab1a64}\label{namespaceoomph_1_1TwoDimensionalPMLHelper_aefa58c9106ac3bee876a0bff81ab1a64}} 
+\index{oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper@{oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper}!create\+\_\+right\+\_\+pml\+\_\+mesh@{create\+\_\+right\+\_\+pml\+\_\+mesh}}
+\index{create\+\_\+right\+\_\+pml\+\_\+mesh@{create\+\_\+right\+\_\+pml\+\_\+mesh}!oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper@{oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper}}
+\subsubsection{\texorpdfstring{create\+\_\+right\+\_\+pml\+\_\+mesh()}{create\_right\_pml\_mesh()}}
+{\footnotesize\ttfamily template$<$class A\+S\+S\+O\+C\+I\+A\+T\+E\+D\+\_\+\+P\+M\+L\+\_\+\+Q\+U\+A\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classoomph_1_1Mesh}{Mesh}$\ast$ oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper\+::create\+\_\+right\+\_\+pml\+\_\+mesh (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$}]{bulk\+\_\+mesh\+\_\+pt,  }\item[{const unsigned \&}]{right\+\_\+boundary\+\_\+id,  }\item[{const unsigned \&}]{n\+\_\+x\+\_\+right\+\_\+pml,  }\item[{const double \&}]{width\+\_\+x\+\_\+right\+\_\+pml,  }\item[{\hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper} $\ast$}]{time\+\_\+stepper\+\_\+pt = {\ttfamily \&\hyperlink{classoomph_1_1Mesh_a12243d0fee2b1fcee729ee5a4777ea10}{Mesh\+::\+Default\+\_\+\+Time\+Stepper}} }\end{DoxyParamCaption})}
+
+
+
+\char`\"{}\+Constructor\char`\"{} for P\+ML mesh,aligned with the right physical domain boundary 
+
+P\+ML layer with added to the bulk mesh coordinate
+
+Return the finalized mesh, with P\+ML enabled and boundary conditions added 
+
+Definition at line 1348 of file pml\+\_\+meshes.\+h.
+
+
+
+References oomph\+::\+Mesh\+::boundary\+\_\+node\+\_\+pt(), e, oomph\+::\+Mesh\+::element\+\_\+pt(), oomph\+::\+Mesh\+::nboundary(), oomph\+::\+Mesh\+::nelement(), oomph\+::\+Data\+::pin(), oomph\+::\+Data\+::set\+\_\+value(), oomph\+::\+Finite\+Element\+::size(), sorter\+\_\+right\+\_\+boundary(), and oomph\+::\+P\+M\+L\+Element\+Base$<$ D\+I\+M $>$\+::values\+\_\+to\+\_\+be\+\_\+pinned\+\_\+on\+\_\+outer\+\_\+pml\+\_\+boundary().
+
+\mbox{\Hypertarget{namespaceoomph_1_1TwoDimensionalPMLHelper_a60f24bcfa2ad065577e47d97015995ac}\label{namespaceoomph_1_1TwoDimensionalPMLHelper_a60f24bcfa2ad065577e47d97015995ac}} 
+\index{oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper@{oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper}!create\+\_\+top\+\_\+left\+\_\+pml\+\_\+mesh@{create\+\_\+top\+\_\+left\+\_\+pml\+\_\+mesh}}
+\index{create\+\_\+top\+\_\+left\+\_\+pml\+\_\+mesh@{create\+\_\+top\+\_\+left\+\_\+pml\+\_\+mesh}!oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper@{oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper}}
+\subsubsection{\texorpdfstring{create\+\_\+top\+\_\+left\+\_\+pml\+\_\+mesh()}{create\_top\_left\_pml\_mesh()}}
+{\footnotesize\ttfamily template$<$class A\+S\+S\+O\+C\+I\+A\+T\+E\+D\+\_\+\+P\+M\+L\+\_\+\+Q\+U\+A\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classoomph_1_1Mesh}{Mesh}$\ast$ oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper\+::create\+\_\+top\+\_\+left\+\_\+pml\+\_\+mesh (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$}]{pml\+\_\+left\+\_\+mesh\+\_\+pt,  }\item[{\hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$}]{pml\+\_\+top\+\_\+mesh\+\_\+pt,  }\item[{\hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$}]{bulk\+\_\+mesh\+\_\+pt,  }\item[{const unsigned \&}]{left\+\_\+boundary\+\_\+id,  }\item[{\hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper} $\ast$}]{time\+\_\+stepper\+\_\+pt = {\ttfamily \&\hyperlink{classoomph_1_1Mesh_a12243d0fee2b1fcee729ee5a4777ea10}{Mesh\+::\+Default\+\_\+\+Time\+Stepper}} }\end{DoxyParamCaption})}
+
+
+
+\char`\"{}\+Constructor\char`\"{} for P\+ML top left corner mesh, aligned with the existing P\+ML meshes 
+
+Relevant boundary id\textquotesingle{}s to be used in construction Parent id refers to already existing P\+ML meshes
+
+Sort them from lowest to highest (in y coordinate) sorter\+\_\+right\+\_\+boundary is still functional, as the sorting is performed by the same criterion
+
+Number of elements and boundary nodes to be acted upon during construction are extracted from the \textquotesingle{}parent\textquotesingle{} P\+ML meshes
+
+Specific P\+ML sizes needed, taken directly from physical domain and existing P\+ML meshes
+
+The enabling must be perfromed in both x-\/ and y-\/directions as this is a corner P\+ML mesh
+
+Return the finalized mesh, with P\+ML enabled and boundary conditions added 
+
+Definition at line 2020 of file pml\+\_\+meshes.\+h.
+
+
+
+References oomph\+::\+Mesh\+::boundary\+\_\+node\+\_\+pt(), e, oomph\+::\+Mesh\+::element\+\_\+pt(), oomph\+::\+Mesh\+::nboundary(), oomph\+::\+Mesh\+::nelement(), oomph\+::\+Data\+::pin(), oomph\+::\+Data\+::set\+\_\+value(), oomph\+::\+Finite\+Element\+::size(), sorter\+\_\+right\+\_\+boundary(), and oomph\+::\+P\+M\+L\+Element\+Base$<$ D\+I\+M $>$\+::values\+\_\+to\+\_\+be\+\_\+pinned\+\_\+on\+\_\+outer\+\_\+pml\+\_\+boundary().
+
+\mbox{\Hypertarget{namespaceoomph_1_1TwoDimensionalPMLHelper_a5f19139e8145fb29caf9be94b1909ed1}\label{namespaceoomph_1_1TwoDimensionalPMLHelper_a5f19139e8145fb29caf9be94b1909ed1}} 
+\index{oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper@{oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper}!create\+\_\+top\+\_\+pml\+\_\+mesh@{create\+\_\+top\+\_\+pml\+\_\+mesh}}
+\index{create\+\_\+top\+\_\+pml\+\_\+mesh@{create\+\_\+top\+\_\+pml\+\_\+mesh}!oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper@{oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper}}
+\subsubsection{\texorpdfstring{create\+\_\+top\+\_\+pml\+\_\+mesh()}{create\_top\_pml\_mesh()}}
+{\footnotesize\ttfamily template$<$class A\+S\+S\+O\+C\+I\+A\+T\+E\+D\+\_\+\+P\+M\+L\+\_\+\+Q\+U\+A\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classoomph_1_1Mesh}{Mesh}$\ast$ oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper\+::create\+\_\+top\+\_\+pml\+\_\+mesh (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$}]{bulk\+\_\+mesh\+\_\+pt,  }\item[{const unsigned \&}]{top\+\_\+boundary\+\_\+id,  }\item[{const unsigned \&}]{n\+\_\+y\+\_\+top\+\_\+pml,  }\item[{const double \&}]{width\+\_\+y\+\_\+top\+\_\+pml,  }\item[{\hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper} $\ast$}]{time\+\_\+stepper\+\_\+pt = {\ttfamily \&\hyperlink{classoomph_1_1Mesh_a12243d0fee2b1fcee729ee5a4777ea10}{Mesh\+::\+Default\+\_\+\+Time\+Stepper}} }\end{DoxyParamCaption})}
+
+
+
+\char`\"{}\+Constructor\char`\"{} for P\+ML mesh, aligned with the top physical domain boundary 
+
+P\+ML layer width added to the bulk mesh coordinate
+
+Return the finalized mesh, with P\+ML enabled and boundary conditions added 
+
+Definition at line 1453 of file pml\+\_\+meshes.\+h.
+
+
+
+References oomph\+::\+Mesh\+::boundary\+\_\+node\+\_\+pt(), e, oomph\+::\+Mesh\+::element\+\_\+pt(), oomph\+::\+Mesh\+::nboundary(), oomph\+::\+Mesh\+::nelement(), oomph\+::\+Data\+::pin(), oomph\+::\+Data\+::set\+\_\+value(), oomph\+::\+Finite\+Element\+::size(), sorter\+\_\+top\+\_\+boundary(), and oomph\+::\+P\+M\+L\+Element\+Base$<$ D\+I\+M $>$\+::values\+\_\+to\+\_\+be\+\_\+pinned\+\_\+on\+\_\+outer\+\_\+pml\+\_\+boundary().
+
+\mbox{\Hypertarget{namespaceoomph_1_1TwoDimensionalPMLHelper_a3e37eb00dd89dad4cc51531472c9b1ad}\label{namespaceoomph_1_1TwoDimensionalPMLHelper_a3e37eb00dd89dad4cc51531472c9b1ad}} 
+\index{oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper@{oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper}!create\+\_\+top\+\_\+right\+\_\+pml\+\_\+mesh@{create\+\_\+top\+\_\+right\+\_\+pml\+\_\+mesh}}
+\index{create\+\_\+top\+\_\+right\+\_\+pml\+\_\+mesh@{create\+\_\+top\+\_\+right\+\_\+pml\+\_\+mesh}!oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper@{oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper}}
+\subsubsection{\texorpdfstring{create\+\_\+top\+\_\+right\+\_\+pml\+\_\+mesh()}{create\_top\_right\_pml\_mesh()}}
+{\footnotesize\ttfamily template$<$class A\+S\+S\+O\+C\+I\+A\+T\+E\+D\+\_\+\+P\+M\+L\+\_\+\+Q\+U\+A\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classoomph_1_1Mesh}{Mesh}$\ast$ oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper\+::create\+\_\+top\+\_\+right\+\_\+pml\+\_\+mesh (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$}]{pml\+\_\+right\+\_\+mesh\+\_\+pt,  }\item[{\hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$}]{pml\+\_\+top\+\_\+mesh\+\_\+pt,  }\item[{\hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$}]{bulk\+\_\+mesh\+\_\+pt,  }\item[{const unsigned \&}]{right\+\_\+boundary\+\_\+id,  }\item[{\hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper} $\ast$}]{time\+\_\+stepper\+\_\+pt = {\ttfamily \&\hyperlink{classoomph_1_1Mesh_a12243d0fee2b1fcee729ee5a4777ea10}{Mesh\+::\+Default\+\_\+\+Time\+Stepper}} }\end{DoxyParamCaption})}
+
+
+
+\char`\"{}\+Constructor\char`\"{} for P\+ML top right corner mesh, aligned with the existing P\+ML meshes 
+
+Relevant boundary id\textquotesingle{}s to be used in construction Parent id refers to already existing P\+ML meshes
+
+Number of elements and boundary nodes to be acted upon during construction are extracted from the \textquotesingle{}parent\textquotesingle{} P\+ML meshes
+
+Specific P\+ML sizes needed, taken directly from physical domain and existing P\+ML meshes
+
+The enabling must be perfromed in both x-\/ and y-\/directions as this is a corner P\+ML mesh
+
+Return the finalized mesh, with P\+ML enabled and boundary conditions added 
+
+Definition at line 1768 of file pml\+\_\+meshes.\+h.
+
+
+
+References oomph\+::\+Mesh\+::boundary\+\_\+node\+\_\+pt(), e, oomph\+::\+Mesh\+::element\+\_\+pt(), oomph\+::\+Mesh\+::nboundary(), oomph\+::\+Mesh\+::nelement(), oomph\+::\+Data\+::pin(), oomph\+::\+Data\+::set\+\_\+value(), oomph\+::\+Finite\+Element\+::size(), sorter\+\_\+right\+\_\+boundary(), and oomph\+::\+P\+M\+L\+Element\+Base$<$ D\+I\+M $>$\+::values\+\_\+to\+\_\+be\+\_\+pinned\+\_\+on\+\_\+outer\+\_\+pml\+\_\+boundary().
+
+\mbox{\Hypertarget{namespaceoomph_1_1TwoDimensionalPMLHelper_a0bd68e9d424ff3f05266786cc6c78baa}\label{namespaceoomph_1_1TwoDimensionalPMLHelper_a0bd68e9d424ff3f05266786cc6c78baa}} 
+\index{oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper@{oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper}!sorter\+\_\+bottom\+\_\+boundary@{sorter\+\_\+bottom\+\_\+boundary}}
+\index{sorter\+\_\+bottom\+\_\+boundary@{sorter\+\_\+bottom\+\_\+boundary}!oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper@{oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper}}
+\subsubsection{\texorpdfstring{sorter\+\_\+bottom\+\_\+boundary()}{sorter\_bottom\_boundary()}}
+{\footnotesize\ttfamily bool oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper\+::sorter\+\_\+bottom\+\_\+boundary (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Node}{Node} $\ast$}]{nod\+\_\+i\+\_\+pt,  }\item[{\hyperlink{classoomph_1_1Node}{Node} $\ast$}]{nod\+\_\+j\+\_\+pt }\end{DoxyParamCaption})}
+
+
+
+helper function for sorting the bottom boundary nodes 
+
+
+
+Definition at line 62 of file pml\+\_\+meshes.\+cc.
+
+
+
+Referenced by create\+\_\+bottom\+\_\+pml\+\_\+mesh(), and oomph\+::\+P\+M\+L\+Quad\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+P\+M\+L\+Quad\+Mesh().
+
+\mbox{\Hypertarget{namespaceoomph_1_1TwoDimensionalPMLHelper_aecb74c39efe7c572a9d87b2d11be3d69}\label{namespaceoomph_1_1TwoDimensionalPMLHelper_aecb74c39efe7c572a9d87b2d11be3d69}} 
+\index{oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper@{oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper}!sorter\+\_\+left\+\_\+boundary@{sorter\+\_\+left\+\_\+boundary}}
+\index{sorter\+\_\+left\+\_\+boundary@{sorter\+\_\+left\+\_\+boundary}!oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper@{oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper}}
+\subsubsection{\texorpdfstring{sorter\+\_\+left\+\_\+boundary()}{sorter\_left\_boundary()}}
+{\footnotesize\ttfamily bool oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper\+::sorter\+\_\+left\+\_\+boundary (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Node}{Node} $\ast$}]{nod\+\_\+i\+\_\+pt,  }\item[{\hyperlink{classoomph_1_1Node}{Node} $\ast$}]{nod\+\_\+j\+\_\+pt }\end{DoxyParamCaption})}
+
+
+
+helper function for sorting the left boundary nodes 
+
+
+
+Definition at line 56 of file pml\+\_\+meshes.\+cc.
+
+
+
+Referenced by create\+\_\+left\+\_\+pml\+\_\+mesh(), and oomph\+::\+P\+M\+L\+Quad\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+P\+M\+L\+Quad\+Mesh().
+
+\mbox{\Hypertarget{namespaceoomph_1_1TwoDimensionalPMLHelper_ae66c595a953e030ae366699eec3ca3ab}\label{namespaceoomph_1_1TwoDimensionalPMLHelper_ae66c595a953e030ae366699eec3ca3ab}} 
+\index{oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper@{oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper}!sorter\+\_\+right\+\_\+boundary@{sorter\+\_\+right\+\_\+boundary}}
+\index{sorter\+\_\+right\+\_\+boundary@{sorter\+\_\+right\+\_\+boundary}!oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper@{oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper}}
+\subsubsection{\texorpdfstring{sorter\+\_\+right\+\_\+boundary()}{sorter\_right\_boundary()}}
+{\footnotesize\ttfamily bool oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper\+::sorter\+\_\+right\+\_\+boundary (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Node}{Node} $\ast$}]{nod\+\_\+i\+\_\+pt,  }\item[{\hyperlink{classoomph_1_1Node}{Node} $\ast$}]{nod\+\_\+j\+\_\+pt }\end{DoxyParamCaption})}
+
+
+
+helper function for sorting the right boundary nodes 
+
+
+
+Definition at line 44 of file pml\+\_\+meshes.\+cc.
+
+
+
+Referenced by create\+\_\+bottom\+\_\+left\+\_\+pml\+\_\+mesh(), create\+\_\+bottom\+\_\+right\+\_\+pml\+\_\+mesh(), create\+\_\+right\+\_\+pml\+\_\+mesh(), create\+\_\+top\+\_\+left\+\_\+pml\+\_\+mesh(), create\+\_\+top\+\_\+right\+\_\+pml\+\_\+mesh(), oomph\+::\+P\+M\+L\+Corner\+Quad\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+P\+M\+L\+Corner\+Quad\+Mesh(), and oomph\+::\+P\+M\+L\+Quad\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+P\+M\+L\+Quad\+Mesh().
+
+\mbox{\Hypertarget{namespaceoomph_1_1TwoDimensionalPMLHelper_a98d2786e22298095bd190435d11c4f0e}\label{namespaceoomph_1_1TwoDimensionalPMLHelper_a98d2786e22298095bd190435d11c4f0e}} 
+\index{oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper@{oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper}!sorter\+\_\+top\+\_\+boundary@{sorter\+\_\+top\+\_\+boundary}}
+\index{sorter\+\_\+top\+\_\+boundary@{sorter\+\_\+top\+\_\+boundary}!oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper@{oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper}}
+\subsubsection{\texorpdfstring{sorter\+\_\+top\+\_\+boundary()}{sorter\_top\_boundary()}}
+{\footnotesize\ttfamily bool oomph\+::\+Two\+Dimensional\+P\+M\+L\+Helper\+::sorter\+\_\+top\+\_\+boundary (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Node}{Node} $\ast$}]{nod\+\_\+i\+\_\+pt,  }\item[{\hyperlink{classoomph_1_1Node}{Node} $\ast$}]{nod\+\_\+j\+\_\+pt }\end{DoxyParamCaption})}
+
+
+
+helper function for sorting the top boundary nodes 
+
+
+
+Definition at line 50 of file pml\+\_\+meshes.\+cc.
+
+
+
+Referenced by create\+\_\+top\+\_\+pml\+\_\+mesh(), oomph\+::\+P\+M\+L\+Corner\+Quad\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+P\+M\+L\+Corner\+Quad\+Mesh(), and oomph\+::\+P\+M\+L\+Quad\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+P\+M\+L\+Quad\+Mesh().
+

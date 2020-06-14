@@ -1,0 +1,324 @@
+\hypertarget{classoomph_1_1AnnularFromLocalCoordinatePMLElement}{}\section{oomph\+:\+:Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element Class Reference}
+\label{classoomph_1_1AnnularFromLocalCoordinatePMLElement}\index{oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element@{oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element}}
+
+
+{\ttfamily \#include $<$pml\+\_\+elements.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.666667cm]{classoomph_1_1AnnularFromLocalCoordinatePMLElement}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1AnnularFromLocalCoordinatePMLElement_a3e7cb53dd208524cb5378d1ec2ee1e89}{Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1AnnularFromLocalCoordinatePMLElement_a32ef4115b2cce33d4ec93a5620807685}{Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element} (unsigned nu\+\_\+s\+\_\+index, double nu\+\_\+at\+\_\+s\+\_\+min, double nu\+\_\+at\+\_\+s\+\_\+max, unsigned theta\+\_\+s\+\_\+index, double theta\+\_\+at\+\_\+s\+\_\+min, double theta\+\_\+at\+\_\+s\+\_\+max, double pml\+\_\+inner\+\_\+radius, double pml\+\_\+outer\+\_\+radius)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1AnnularFromLocalCoordinatePMLElement_a232008f72c0ee625d59b1e588c850dfe}{enable\+\_\+pml} (const double \&inner\+\_\+pml\+\_\+radius, const double \&outer\+\_\+pml\+\_\+radius, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&origin)
+\begin{DoxyCompactList}\small\item\em Enable pml. Specify the inner and outer radius of P\+ML and the origin. \end{DoxyCompactList}\item 
+virtual double \hyperlink{classoomph_1_1AnnularFromLocalCoordinatePMLElement_a7d0f2e25ee965d08b067c5a0a8d3bef2}{s\+\_\+min} ()
+\item 
+virtual double \hyperlink{classoomph_1_1AnnularFromLocalCoordinatePMLElement_ab4e7e9103ffc587755a6149db1559688}{s\+\_\+max} ()
+\item 
+double \hyperlink{classoomph_1_1AnnularFromLocalCoordinatePMLElement_a161e427b6f1fc6349b9667caf346cf8a}{nu} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&x)
+\begin{DoxyCompactList}\small\item\em Coordinate which goes through the P\+ML in terms of local coordinate. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1AnnularFromLocalCoordinatePMLElement_affe7de11a2275aac57b0ea2c0594ce7d}{delta} ()
+\begin{DoxyCompactList}\small\item\em Thickness of P\+ML. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1AnnularFromLocalCoordinatePMLElement_ae9f56654db4d7979163db0529d9a1408}{theta} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&x)
+\begin{DoxyCompactList}\small\item\em Angle relative to origin. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1AnnularFromLocalCoordinatePMLElement_ab44027b0ebf468154752cc09d46d3a5d}{radial\+\_\+transformation\+\_\+jacobian} (const double \&\hyperlink{classoomph_1_1AnnularFromLocalCoordinatePMLElement_a161e427b6f1fc6349b9667caf346cf8a}{nu}, const double \&\hyperlink{classoomph_1_1AnnularFromLocalCoordinatePMLElement_affe7de11a2275aac57b0ea2c0594ce7d}{delta}, std\+::complex$<$ double $>$ \&transformed\+\_\+r, std\+::complex$<$ double $>$ \&dtransformed\+\_\+r\+\_\+dr)
+\begin{DoxyCompactList}\small\item\em get the Jacobian of the mapping from transformed r to the radial through-\/the-\/pml coordinate. Also returns the transformed\+\_\+r at this point too as it is required for the transformation to cartesian coordinates \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+unsigned \hyperlink{classoomph_1_1AnnularFromLocalCoordinatePMLElement_a83bac6e18a318693e37b69f658d522e9}{Nu\+\_\+s\+\_\+index}
+\begin{DoxyCompactList}\small\item\em Index of local coordinate which nu (through the P\+ML coordinate) is parametrised by. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1AnnularFromLocalCoordinatePMLElement_ae858cd7ca5348175f26b2d662a607e43}{Nu\+\_\+at\+\_\+s\+\_\+min}
+\begin{DoxyCompactList}\small\item\em Value of nu at the minimum value of local coordinate. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1AnnularFromLocalCoordinatePMLElement_abeba5fad805f67b4806361f9c2c43d70}{Nu\+\_\+at\+\_\+s\+\_\+max}
+\begin{DoxyCompactList}\small\item\em Value of nu at the maximum value of local coordinate. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1AnnularFromLocalCoordinatePMLElement_ac4bc071b8e8c384504a4a61113ec2ecd}{Theta\+\_\+s\+\_\+index}
+\begin{DoxyCompactList}\small\item\em Index of local coordinate which theta is parametrised by. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1AnnularFromLocalCoordinatePMLElement_a6f88cc81d5f43c10da316bd6b56b3fb1}{Theta\+\_\+at\+\_\+s\+\_\+min}
+\begin{DoxyCompactList}\small\item\em Value of theta at the minimum value of local coordinate. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1AnnularFromLocalCoordinatePMLElement_ae191ccf4540974d4923b80353955dbf1}{Theta\+\_\+at\+\_\+s\+\_\+max}
+\begin{DoxyCompactList}\small\item\em Value of theta at the maximum value of local coordinate. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1AnnularFromLocalCoordinatePMLElement_a90aa4d2d40c250c35e0bfbac50c9a9d1}{Pml\+\_\+inner\+\_\+radius}
+\begin{DoxyCompactList}\small\item\em Value of radius at inner P\+ML boundary. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1AnnularFromLocalCoordinatePMLElement_a360bd3ab9afbcfd1007a626b780d51d8}{Pml\+\_\+outer\+\_\+radius}
+\begin{DoxyCompactList}\small\item\em Value of radius at outer P\+ML boundary. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1UniaxialPMLMapping}{Uniaxial\+P\+M\+L\+Mapping} $\ast$ \hyperlink{classoomph_1_1AnnularFromLocalCoordinatePMLElement_a51049d96dbdb41fc740bdabd5657b99b}{Pml\+\_\+mapping\+\_\+pt}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 457 of file pml\+\_\+elements.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1AnnularFromLocalCoordinatePMLElement_a3e7cb53dd208524cb5378d1ec2ee1e89}\label{classoomph_1_1AnnularFromLocalCoordinatePMLElement_a3e7cb53dd208524cb5378d1ec2ee1e89}} 
+\index{oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element@{oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element}!Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element@{Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element}}
+\index{Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element@{Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element}!oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element@{oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element}}
+\subsubsection{\texorpdfstring{Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element()}{AnnularFromLocalCoordinatePMLElement()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor. 
+
+
+
+Definition at line 462 of file pml\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1AnnularFromLocalCoordinatePMLElement_a32ef4115b2cce33d4ec93a5620807685}\label{classoomph_1_1AnnularFromLocalCoordinatePMLElement_a32ef4115b2cce33d4ec93a5620807685}} 
+\index{oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element@{oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element}!Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element@{Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element}}
+\index{Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element@{Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element}!oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element@{oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element}}
+\subsubsection{\texorpdfstring{Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element()}{AnnularFromLocalCoordinatePMLElement()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element (\begin{DoxyParamCaption}\item[{unsigned}]{nu\+\_\+s\+\_\+index,  }\item[{double}]{nu\+\_\+at\+\_\+s\+\_\+min,  }\item[{double}]{nu\+\_\+at\+\_\+s\+\_\+max,  }\item[{unsigned}]{theta\+\_\+s\+\_\+index,  }\item[{double}]{theta\+\_\+at\+\_\+s\+\_\+min,  }\item[{double}]{theta\+\_\+at\+\_\+s\+\_\+max,  }\item[{double}]{pml\+\_\+inner\+\_\+radius,  }\item[{double}]{pml\+\_\+outer\+\_\+radius }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor. 
+
+
+
+Definition at line 474 of file pml\+\_\+elements.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1AnnularFromLocalCoordinatePMLElement_affe7de11a2275aac57b0ea2c0594ce7d}\label{classoomph_1_1AnnularFromLocalCoordinatePMLElement_affe7de11a2275aac57b0ea2c0594ce7d}} 
+\index{oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element@{oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element}!delta@{delta}}
+\index{delta@{delta}!oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element@{oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element}}
+\subsubsection{\texorpdfstring{delta()}{delta()}}
+{\footnotesize\ttfamily double oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element\+::delta (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Thickness of P\+ML. 
+
+
+
+Implements \hyperlink{classoomph_1_1AnnularPMLElementBase_ad76f02aa6eb19a5757e7d4cc26ec45fa}{oomph\+::\+Annular\+P\+M\+L\+Element\+Base}.
+
+
+
+Definition at line 512 of file pml\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1AnnularFromLocalCoordinatePMLElement_a232008f72c0ee625d59b1e588c850dfe}\label{classoomph_1_1AnnularFromLocalCoordinatePMLElement_a232008f72c0ee625d59b1e588c850dfe}} 
+\index{oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element@{oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element}!enable\+\_\+pml@{enable\+\_\+pml}}
+\index{enable\+\_\+pml@{enable\+\_\+pml}!oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element@{oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element}}
+\subsubsection{\texorpdfstring{enable\+\_\+pml()}{enable\_pml()}}
+{\footnotesize\ttfamily virtual void oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element\+::enable\+\_\+pml (\begin{DoxyParamCaption}\item[{const double \&}]{inner\+\_\+pml\+\_\+radius,  }\item[{const double \&}]{outer\+\_\+pml\+\_\+radius,  }\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{origin }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Enable pml. Specify the inner and outer radius of P\+ML and the origin. 
+
+
+
+Definition at line 494 of file pml\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+P\+M\+L\+Element\+Base$<$ D\+I\+M $>$\+::enable\+\_\+pml().
+
+\mbox{\Hypertarget{classoomph_1_1AnnularFromLocalCoordinatePMLElement_a161e427b6f1fc6349b9667caf346cf8a}\label{classoomph_1_1AnnularFromLocalCoordinatePMLElement_a161e427b6f1fc6349b9667caf346cf8a}} 
+\index{oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element@{oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element}!nu@{nu}}
+\index{nu@{nu}!oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element@{oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element}}
+\subsubsection{\texorpdfstring{nu()}{nu()}}
+{\footnotesize\ttfamily double oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element\+::nu (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Coordinate which goes through the P\+ML in terms of local coordinate. 
+
+
+
+Implements \hyperlink{classoomph_1_1AnnularPMLElementBase_ac6671111f31c3a5012d0df53a1c24b76}{oomph\+::\+Annular\+P\+M\+L\+Element\+Base}.
+
+
+
+Definition at line 505 of file pml\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1AnnularFromLocalCoordinatePMLElement_ab44027b0ebf468154752cc09d46d3a5d}\label{classoomph_1_1AnnularFromLocalCoordinatePMLElement_ab44027b0ebf468154752cc09d46d3a5d}} 
+\index{oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element@{oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element}!radial\+\_\+transformation\+\_\+jacobian@{radial\+\_\+transformation\+\_\+jacobian}}
+\index{radial\+\_\+transformation\+\_\+jacobian@{radial\+\_\+transformation\+\_\+jacobian}!oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element@{oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element}}
+\subsubsection{\texorpdfstring{radial\+\_\+transformation\+\_\+jacobian()}{radial\_transformation\_jacobian()}}
+{\footnotesize\ttfamily virtual void oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element\+::radial\+\_\+transformation\+\_\+jacobian (\begin{DoxyParamCaption}\item[{const double \&}]{nu,  }\item[{const double \&}]{delta,  }\item[{std\+::complex$<$ double $>$ \&}]{transformed\+\_\+r,  }\item[{std\+::complex$<$ double $>$ \&}]{dtransformed\+\_\+r\+\_\+dr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+get the Jacobian of the mapping from transformed r to the radial through-\/the-\/pml coordinate. Also returns the transformed\+\_\+r at this point too as it is required for the transformation to cartesian coordinates 
+
+
+
+Definition at line 525 of file pml\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1AnnularFromLocalCoordinatePMLElement_ab4e7e9103ffc587755a6149db1559688}\label{classoomph_1_1AnnularFromLocalCoordinatePMLElement_ab4e7e9103ffc587755a6149db1559688}} 
+\index{oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element@{oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element}!s\+\_\+max@{s\+\_\+max}}
+\index{s\+\_\+max@{s\+\_\+max}!oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element@{oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element}}
+\subsubsection{\texorpdfstring{s\+\_\+max()}{s\_max()}}
+{\footnotesize\ttfamily virtual double oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element\+::s\+\_\+max (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+\mbox{\Hypertarget{classoomph_1_1AnnularFromLocalCoordinatePMLElement_a7d0f2e25ee965d08b067c5a0a8d3bef2}\label{classoomph_1_1AnnularFromLocalCoordinatePMLElement_a7d0f2e25ee965d08b067c5a0a8d3bef2}} 
+\index{oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element@{oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element}!s\+\_\+min@{s\+\_\+min}}
+\index{s\+\_\+min@{s\+\_\+min}!oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element@{oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element}}
+\subsubsection{\texorpdfstring{s\+\_\+min()}{s\_min()}}
+{\footnotesize\ttfamily virtual double oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element\+::s\+\_\+min (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+\mbox{\Hypertarget{classoomph_1_1AnnularFromLocalCoordinatePMLElement_ae9f56654db4d7979163db0529d9a1408}\label{classoomph_1_1AnnularFromLocalCoordinatePMLElement_ae9f56654db4d7979163db0529d9a1408}} 
+\index{oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element@{oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element}!theta@{theta}}
+\index{theta@{theta}!oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element@{oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element}}
+\subsubsection{\texorpdfstring{theta()}{theta()}}
+{\footnotesize\ttfamily double oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element\+::theta (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Angle relative to origin. 
+
+
+
+Implements \hyperlink{classoomph_1_1AnnularPMLElementBase_a74036190f87f79129cdcda562664dd18}{oomph\+::\+Annular\+P\+M\+L\+Element\+Base}.
+
+
+
+Definition at line 515 of file pml\+\_\+elements.\+h.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1AnnularFromLocalCoordinatePMLElement_abeba5fad805f67b4806361f9c2c43d70}\label{classoomph_1_1AnnularFromLocalCoordinatePMLElement_abeba5fad805f67b4806361f9c2c43d70}} 
+\index{oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element@{oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element}!Nu\+\_\+at\+\_\+s\+\_\+max@{Nu\+\_\+at\+\_\+s\+\_\+max}}
+\index{Nu\+\_\+at\+\_\+s\+\_\+max@{Nu\+\_\+at\+\_\+s\+\_\+max}!oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element@{oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element}}
+\subsubsection{\texorpdfstring{Nu\+\_\+at\+\_\+s\+\_\+max}{Nu\_at\_s\_max}}
+{\footnotesize\ttfamily double oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element\+::\+Nu\+\_\+at\+\_\+s\+\_\+max\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Value of nu at the maximum value of local coordinate. 
+
+
+
+Definition at line 547 of file pml\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1AnnularFromLocalCoordinatePMLElement_ae858cd7ca5348175f26b2d662a607e43}\label{classoomph_1_1AnnularFromLocalCoordinatePMLElement_ae858cd7ca5348175f26b2d662a607e43}} 
+\index{oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element@{oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element}!Nu\+\_\+at\+\_\+s\+\_\+min@{Nu\+\_\+at\+\_\+s\+\_\+min}}
+\index{Nu\+\_\+at\+\_\+s\+\_\+min@{Nu\+\_\+at\+\_\+s\+\_\+min}!oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element@{oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element}}
+\subsubsection{\texorpdfstring{Nu\+\_\+at\+\_\+s\+\_\+min}{Nu\_at\_s\_min}}
+{\footnotesize\ttfamily double oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element\+::\+Nu\+\_\+at\+\_\+s\+\_\+min\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Value of nu at the minimum value of local coordinate. 
+
+
+
+Definition at line 544 of file pml\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1AnnularFromLocalCoordinatePMLElement_a83bac6e18a318693e37b69f658d522e9}\label{classoomph_1_1AnnularFromLocalCoordinatePMLElement_a83bac6e18a318693e37b69f658d522e9}} 
+\index{oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element@{oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element}!Nu\+\_\+s\+\_\+index@{Nu\+\_\+s\+\_\+index}}
+\index{Nu\+\_\+s\+\_\+index@{Nu\+\_\+s\+\_\+index}!oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element@{oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element}}
+\subsubsection{\texorpdfstring{Nu\+\_\+s\+\_\+index}{Nu\_s\_index}}
+{\footnotesize\ttfamily unsigned oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element\+::\+Nu\+\_\+s\+\_\+index\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Index of local coordinate which nu (through the P\+ML coordinate) is parametrised by. 
+
+
+
+Definition at line 541 of file pml\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1AnnularFromLocalCoordinatePMLElement_a90aa4d2d40c250c35e0bfbac50c9a9d1}\label{classoomph_1_1AnnularFromLocalCoordinatePMLElement_a90aa4d2d40c250c35e0bfbac50c9a9d1}} 
+\index{oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element@{oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element}!Pml\+\_\+inner\+\_\+radius@{Pml\+\_\+inner\+\_\+radius}}
+\index{Pml\+\_\+inner\+\_\+radius@{Pml\+\_\+inner\+\_\+radius}!oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element@{oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element}}
+\subsubsection{\texorpdfstring{Pml\+\_\+inner\+\_\+radius}{Pml\_inner\_radius}}
+{\footnotesize\ttfamily double oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element\+::\+Pml\+\_\+inner\+\_\+radius\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Value of radius at inner P\+ML boundary. 
+
+
+
+Definition at line 559 of file pml\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1AnnularFromLocalCoordinatePMLElement_a51049d96dbdb41fc740bdabd5657b99b}\label{classoomph_1_1AnnularFromLocalCoordinatePMLElement_a51049d96dbdb41fc740bdabd5657b99b}} 
+\index{oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element@{oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element}!Pml\+\_\+mapping\+\_\+pt@{Pml\+\_\+mapping\+\_\+pt}}
+\index{Pml\+\_\+mapping\+\_\+pt@{Pml\+\_\+mapping\+\_\+pt}!oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element@{oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element}}
+\subsubsection{\texorpdfstring{Pml\+\_\+mapping\+\_\+pt}{Pml\_mapping\_pt}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1UniaxialPMLMapping}{Uniaxial\+P\+M\+L\+Mapping}$\ast$ oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element\+::\+Pml\+\_\+mapping\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 565 of file pml\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1AnnularFromLocalCoordinatePMLElement_a360bd3ab9afbcfd1007a626b780d51d8}\label{classoomph_1_1AnnularFromLocalCoordinatePMLElement_a360bd3ab9afbcfd1007a626b780d51d8}} 
+\index{oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element@{oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element}!Pml\+\_\+outer\+\_\+radius@{Pml\+\_\+outer\+\_\+radius}}
+\index{Pml\+\_\+outer\+\_\+radius@{Pml\+\_\+outer\+\_\+radius}!oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element@{oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element}}
+\subsubsection{\texorpdfstring{Pml\+\_\+outer\+\_\+radius}{Pml\_outer\_radius}}
+{\footnotesize\ttfamily double oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element\+::\+Pml\+\_\+outer\+\_\+radius\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Value of radius at outer P\+ML boundary. 
+
+
+
+Definition at line 562 of file pml\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1AnnularFromLocalCoordinatePMLElement_ae191ccf4540974d4923b80353955dbf1}\label{classoomph_1_1AnnularFromLocalCoordinatePMLElement_ae191ccf4540974d4923b80353955dbf1}} 
+\index{oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element@{oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element}!Theta\+\_\+at\+\_\+s\+\_\+max@{Theta\+\_\+at\+\_\+s\+\_\+max}}
+\index{Theta\+\_\+at\+\_\+s\+\_\+max@{Theta\+\_\+at\+\_\+s\+\_\+max}!oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element@{oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element}}
+\subsubsection{\texorpdfstring{Theta\+\_\+at\+\_\+s\+\_\+max}{Theta\_at\_s\_max}}
+{\footnotesize\ttfamily double oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element\+::\+Theta\+\_\+at\+\_\+s\+\_\+max\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Value of theta at the maximum value of local coordinate. 
+
+
+
+Definition at line 556 of file pml\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1AnnularFromLocalCoordinatePMLElement_a6f88cc81d5f43c10da316bd6b56b3fb1}\label{classoomph_1_1AnnularFromLocalCoordinatePMLElement_a6f88cc81d5f43c10da316bd6b56b3fb1}} 
+\index{oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element@{oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element}!Theta\+\_\+at\+\_\+s\+\_\+min@{Theta\+\_\+at\+\_\+s\+\_\+min}}
+\index{Theta\+\_\+at\+\_\+s\+\_\+min@{Theta\+\_\+at\+\_\+s\+\_\+min}!oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element@{oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element}}
+\subsubsection{\texorpdfstring{Theta\+\_\+at\+\_\+s\+\_\+min}{Theta\_at\_s\_min}}
+{\footnotesize\ttfamily double oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element\+::\+Theta\+\_\+at\+\_\+s\+\_\+min\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Value of theta at the minimum value of local coordinate. 
+
+
+
+Definition at line 553 of file pml\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1AnnularFromLocalCoordinatePMLElement_ac4bc071b8e8c384504a4a61113ec2ecd}\label{classoomph_1_1AnnularFromLocalCoordinatePMLElement_ac4bc071b8e8c384504a4a61113ec2ecd}} 
+\index{oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element@{oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element}!Theta\+\_\+s\+\_\+index@{Theta\+\_\+s\+\_\+index}}
+\index{Theta\+\_\+s\+\_\+index@{Theta\+\_\+s\+\_\+index}!oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element@{oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element}}
+\subsubsection{\texorpdfstring{Theta\+\_\+s\+\_\+index}{Theta\_s\_index}}
+{\footnotesize\ttfamily unsigned oomph\+::\+Annular\+From\+Local\+Coordinate\+P\+M\+L\+Element\+::\+Theta\+\_\+s\+\_\+index\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Index of local coordinate which theta is parametrised by. 
+
+
+
+Definition at line 550 of file pml\+\_\+elements.\+h.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{pml__elements_8h}{pml\+\_\+elements.\+h}\end{DoxyCompactItemize}

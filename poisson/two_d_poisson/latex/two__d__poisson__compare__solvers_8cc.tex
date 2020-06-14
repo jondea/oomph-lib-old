@@ -1,0 +1,86 @@
+\hypertarget{two__d__poisson__compare__solvers_8cc}{}\section{two\+\_\+d\+\_\+poisson\+\_\+compare\+\_\+solvers.\+cc File Reference}
+\label{two__d__poisson__compare__solvers_8cc}\index{two\+\_\+d\+\_\+poisson\+\_\+compare\+\_\+solvers.\+cc@{two\+\_\+d\+\_\+poisson\+\_\+compare\+\_\+solvers.\+cc}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classPoissonProblem}{Poisson\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$}
+\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \hyperlink{namespaceTanhSolnForPoisson}{Tanh\+Soln\+For\+Poisson}
+\begin{DoxyCompactList}\small\item\em Namespace for exact solution for Poisson equation with \char`\"{}sharp step\char`\"{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{namespaceTanhSolnForPoisson_af7896e9c18ce6438c73ae2a875e8b7de}{Tanh\+Soln\+For\+Poisson\+::get\+\_\+exact\+\_\+u} (const Vector$<$ double $>$ \&x, Vector$<$ double $>$ \&u)
+\begin{DoxyCompactList}\small\item\em Exact solution as a Vector. \end{DoxyCompactList}\item 
+void \hyperlink{namespaceTanhSolnForPoisson_ae1b9d6789ff301e3d63a4e292213036c}{Tanh\+Soln\+For\+Poisson\+::get\+\_\+source} (const Vector$<$ double $>$ \&x, double \&source)
+\begin{DoxyCompactList}\small\item\em Source function required to make the solution above an exact solution. \end{DoxyCompactList}\item 
+void \hyperlink{two__d__poisson__compare__solvers_8cc_a23bdfecb707db57cd809897a41b71297}{run} (const string \&dir\+\_\+name, Linear\+Solver $\ast$linear\+\_\+solver\+\_\+pt, const unsigned nel\+\_\+1d, bool mess\+\_\+up\+\_\+order)
+\item 
+int \hyperlink{two__d__poisson__compare__solvers_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} ()
+\begin{DoxyCompactList}\small\item\em Driver code for 2D Poisson problem -- compare different solvers. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{two__d__poisson__compare__solvers_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{two__d__poisson__compare__solvers_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+\index{two\+\_\+d\+\_\+poisson\+\_\+compare\+\_\+solvers.\+cc@{two\+\_\+d\+\_\+poisson\+\_\+compare\+\_\+solvers.\+cc}!main@{main}}
+\index{main@{main}!two\+\_\+d\+\_\+poisson\+\_\+compare\+\_\+solvers.\+cc@{two\+\_\+d\+\_\+poisson\+\_\+compare\+\_\+solvers.\+cc}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Driver code for 2D Poisson problem -- compare different solvers. 
+
+Use Super\+LU with compressed row storage
+
+Use compressed row storage
+
+Switch on full doc
+
+Use Super\+LU with compressed column storage
+
+Use compressed row storage
+
+Switch on full doc
+
+Use H\+SL frontal solver M\+A42 without element re-\/ordering
+
+Switch on full doc
+
+Use H\+SL frontal solver M\+A42 with element reordering by Sloan\textquotesingle{}s algorithm
+
+Switch on full doc
+
+Switch on re-\/ordering
+
+Use dense matrix LU decomposition
+
+Use dense matrix LU decomposition 
+
+Definition at line 389 of file two\+\_\+d\+\_\+poisson\+\_\+compare\+\_\+solvers.\+cc.
+
+
+
+References run().
+
+\mbox{\Hypertarget{two__d__poisson__compare__solvers_8cc_a23bdfecb707db57cd809897a41b71297}\label{two__d__poisson__compare__solvers_8cc_a23bdfecb707db57cd809897a41b71297}} 
+\index{two\+\_\+d\+\_\+poisson\+\_\+compare\+\_\+solvers.\+cc@{two\+\_\+d\+\_\+poisson\+\_\+compare\+\_\+solvers.\+cc}!run@{run}}
+\index{run@{run}!two\+\_\+d\+\_\+poisson\+\_\+compare\+\_\+solvers.\+cc@{two\+\_\+d\+\_\+poisson\+\_\+compare\+\_\+solvers.\+cc}}
+\subsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void run (\begin{DoxyParamCaption}\item[{const string \&}]{dir\+\_\+name,  }\item[{Linear\+Solver $\ast$}]{linear\+\_\+solver\+\_\+pt,  }\item[{const unsigned}]{nel\+\_\+1d,  }\item[{bool}]{mess\+\_\+up\+\_\+order }\end{DoxyParamCaption})}
+
+Build and run problem with specified linear solver. Also pass flag to specify if order of elements should be messed up. nel\+\_\+1d is the number of elements along the 1D mesh edge. Total number of elements is nel\+\_\+1d x nel\+\_\+1d. Set linear solver\+: 
+
+Definition at line 321 of file two\+\_\+d\+\_\+poisson\+\_\+compare\+\_\+solvers.\+cc.
+
+
+
+References Tanh\+Soln\+For\+Poisson\+::\+Alpha, Poisson\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::doc\+\_\+solution(), Tanh\+Soln\+For\+Poisson\+::get\+\_\+source(), and Tanh\+Soln\+For\+Poisson\+::\+Tan\+Phi.
+
+
+
+Referenced by main().
+

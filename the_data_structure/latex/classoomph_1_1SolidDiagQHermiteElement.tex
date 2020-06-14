@@ -1,0 +1,109 @@
+\hypertarget{classoomph_1_1SolidDiagQHermiteElement}{}\section{oomph\+:\+:Solid\+Diag\+Q\+Hermite\+Element$<$ D\+IM $>$ Class Template Reference}
+\label{classoomph_1_1SolidDiagQHermiteElement}\index{oomph\+::\+Solid\+Diag\+Q\+Hermite\+Element$<$ D\+I\+M $>$@{oomph\+::\+Solid\+Diag\+Q\+Hermite\+Element$<$ D\+I\+M $>$}}
+
+
+{\ttfamily \#include $<$hermite\+\_\+elements.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Solid\+Diag\+Q\+Hermite\+Element$<$ D\+IM $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.503193cm]{classoomph_1_1SolidDiagQHermiteElement}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1SolidDiagQHermiteElement_a93bda1d179d2855ec13a0c42b27a51b7}{Solid\+Diag\+Q\+Hermite\+Element} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1SolidDiagQHermiteElement_a4971be4d83c155ab34d6e808dacb01ea}{Solid\+Diag\+Q\+Hermite\+Element} (const \hyperlink{classoomph_1_1SolidDiagQHermiteElement}{Solid\+Diag\+Q\+Hermite\+Element} \&dummy)
+\begin{DoxyCompactList}\small\item\em Broken copy constructor. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1SolidDiagQHermiteElement_a330dcbff2c869083f7009325d85d15d6}{operator=} (const \hyperlink{classoomph_1_1SolidDiagQHermiteElement}{Solid\+Diag\+Q\+Hermite\+Element} \&)
+\begin{DoxyCompactList}\small\item\em Broken assignment operator. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1SolidDiagQHermiteElement_a781e03c735c8c17533315781982882e1}{local\+\_\+to\+\_\+lagrangian\+\_\+mapping} (const \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dpsids, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&jacobian, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&inverse\+\_\+jacobian) const
+\begin{DoxyCompactList}\small\item\em Overload the local to lagrangian mapping so that it uses diagonal terms only. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$unsigned D\+IM$>$\newline
+class oomph\+::\+Solid\+Diag\+Q\+Hermite\+Element$<$ D\+I\+M $>$}
+
+Solid\+Q\+Hermite\+Elements in which we assume the local and global coordinates to be aligned so that the Jacobian of the mapping betwteen local and global coordinates is diagonal. This makes the evaluation of the derivatives of the shape functions much cheaper. 
+
+Definition at line 595 of file hermite\+\_\+elements.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1SolidDiagQHermiteElement_a93bda1d179d2855ec13a0c42b27a51b7}\label{classoomph_1_1SolidDiagQHermiteElement_a93bda1d179d2855ec13a0c42b27a51b7}} 
+\index{oomph\+::\+Solid\+Diag\+Q\+Hermite\+Element@{oomph\+::\+Solid\+Diag\+Q\+Hermite\+Element}!Solid\+Diag\+Q\+Hermite\+Element@{Solid\+Diag\+Q\+Hermite\+Element}}
+\index{Solid\+Diag\+Q\+Hermite\+Element@{Solid\+Diag\+Q\+Hermite\+Element}!oomph\+::\+Solid\+Diag\+Q\+Hermite\+Element@{oomph\+::\+Solid\+Diag\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{Solid\+Diag\+Q\+Hermite\+Element()}{SolidDiagQHermiteElement()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+\hyperlink{classoomph_1_1SolidDiagQHermiteElement}{oomph\+::\+Solid\+Diag\+Q\+Hermite\+Element}$<$ D\+IM $>$\+::\hyperlink{classoomph_1_1SolidDiagQHermiteElement}{Solid\+Diag\+Q\+Hermite\+Element} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor. 
+
+
+
+Definition at line 602 of file hermite\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1SolidDiagQHermiteElement_a4971be4d83c155ab34d6e808dacb01ea}\label{classoomph_1_1SolidDiagQHermiteElement_a4971be4d83c155ab34d6e808dacb01ea}} 
+\index{oomph\+::\+Solid\+Diag\+Q\+Hermite\+Element@{oomph\+::\+Solid\+Diag\+Q\+Hermite\+Element}!Solid\+Diag\+Q\+Hermite\+Element@{Solid\+Diag\+Q\+Hermite\+Element}}
+\index{Solid\+Diag\+Q\+Hermite\+Element@{Solid\+Diag\+Q\+Hermite\+Element}!oomph\+::\+Solid\+Diag\+Q\+Hermite\+Element@{oomph\+::\+Solid\+Diag\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{Solid\+Diag\+Q\+Hermite\+Element()}{SolidDiagQHermiteElement()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+\hyperlink{classoomph_1_1SolidDiagQHermiteElement}{oomph\+::\+Solid\+Diag\+Q\+Hermite\+Element}$<$ D\+IM $>$\+::\hyperlink{classoomph_1_1SolidDiagQHermiteElement}{Solid\+Diag\+Q\+Hermite\+Element} (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1SolidDiagQHermiteElement}{Solid\+Diag\+Q\+Hermite\+Element}$<$ D\+IM $>$ \&}]{dummy }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Broken copy constructor. 
+
+
+
+Definition at line 606 of file hermite\+\_\+elements.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1SolidDiagQHermiteElement_a781e03c735c8c17533315781982882e1}\label{classoomph_1_1SolidDiagQHermiteElement_a781e03c735c8c17533315781982882e1}} 
+\index{oomph\+::\+Solid\+Diag\+Q\+Hermite\+Element@{oomph\+::\+Solid\+Diag\+Q\+Hermite\+Element}!local\+\_\+to\+\_\+lagrangian\+\_\+mapping@{local\+\_\+to\+\_\+lagrangian\+\_\+mapping}}
+\index{local\+\_\+to\+\_\+lagrangian\+\_\+mapping@{local\+\_\+to\+\_\+lagrangian\+\_\+mapping}!oomph\+::\+Solid\+Diag\+Q\+Hermite\+Element@{oomph\+::\+Solid\+Diag\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{local\+\_\+to\+\_\+lagrangian\+\_\+mapping()}{local\_to\_lagrangian\_mapping()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+double \hyperlink{classoomph_1_1SolidDiagQHermiteElement}{oomph\+::\+Solid\+Diag\+Q\+Hermite\+Element}$<$ D\+IM $>$\+::local\+\_\+to\+\_\+lagrangian\+\_\+mapping (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dpsids,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{jacobian,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{inverse\+\_\+jacobian }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Overload the local to lagrangian mapping so that it uses diagonal terms only. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1SolidFiniteElement_a8974f3df67362e2b1be171b71294b16c}{oomph\+::\+Solid\+Finite\+Element}.
+
+
+
+Definition at line 619 of file hermite\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1SolidDiagQHermiteElement_a330dcbff2c869083f7009325d85d15d6}\label{classoomph_1_1SolidDiagQHermiteElement_a330dcbff2c869083f7009325d85d15d6}} 
+\index{oomph\+::\+Solid\+Diag\+Q\+Hermite\+Element@{oomph\+::\+Solid\+Diag\+Q\+Hermite\+Element}!operator=@{operator=}}
+\index{operator=@{operator=}!oomph\+::\+Solid\+Diag\+Q\+Hermite\+Element@{oomph\+::\+Solid\+Diag\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1SolidDiagQHermiteElement}{oomph\+::\+Solid\+Diag\+Q\+Hermite\+Element}$<$ D\+IM $>$\+::operator= (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1SolidDiagQHermiteElement}{Solid\+Diag\+Q\+Hermite\+Element}$<$ D\+IM $>$ \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Broken assignment operator. 
+
+
+
+Definition at line 612 of file hermite\+\_\+elements.\+h.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{hermite__elements_8h}{hermite\+\_\+elements.\+h}\end{DoxyCompactItemize}

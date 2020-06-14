@@ -1,0 +1,602 @@
+In this document we discuss the implementation of segregated solution strategies for multi-\/physics problems, in particular fluid-\/structure interaction, within {\ttfamily oomph-\/lib}. The method illustrated by revisiting the fluid-\/structure interaction problem of \href{../../fsi_collapsible_channel/html/index.html}{\tt finite-\/\+Reynolds-\/number flow in a 2D collapsible channel;} an example discussed in detail in \begin{center} \href{http://www.springerlink.com/content/m3r6318701g338g4/}{\tt Heil, M., Hazel, A.\+L. \& Boyle, J. (2008)\+: Solvers for large-\/displacement fluid-\/structure interaction problems\+: Segregated vs. monolithic approaches. Computational Mechanics.} \end{center} 
+
+where we compare the relative performance of segregated and monolithic solvers. Since the paper comes to the conclusion that, despite various claims in the literature, segregated solvers are not necessarily more efficient than fully-\/coupled monolithic schemes (of the type employed in {\ttfamily oomph-\/lib}) you should also consult the \href{../../../preconditioners/fsi/html/index.html}{\tt related tutorial on the monolithic solution of the problem with {\ttfamily oomph-\/lib\textquotesingle{}s} F\+SI preconditioner.}
+
+
+
+ 
+
+\hypertarget{index_problem}{}\section{The problem}\label{index_problem}
+\begin{center} \tabulinesep=1mm
+\begin{longtabu} spread 0pt [c]{*{1}{|X[-1]}|}
+\hline
+\begin{center} {\bfseries Flow in a 2D collapsible channel } \end{center} 
+
+The figure below shows a sketch of the problem\+: Flow is driven by a prescribed Poiseuille flow $U^{*}_{p}$ through a 2D channel of width $ H^* $ and total length $ L^*_{total} = L^*_{up} + L^*_{collapsible} + L^*_{down}. $ The upstream and downstream lengths of the channel are rigid, whereas the upper wall in the central section is an elastic membrane whose shape is parametrised by a Lagrangian coordinate, $ \xi^* $ , so that the position vector to the moving wall is given by $ {\bf R}_w^*(\xi^*,t^*) $ . The wall is loaded by the external pressure $ p_{ext}^* $ and by the traction that the viscous fluid exerts on it.
+
+ 
+\begin{DoxyImage}
+\includegraphics[width=0.75\textwidth]{collapsible_channel_sketch}
+\doxyfigcaption{Sketch of the problem. }
+\end{DoxyImage}
+
+
+The non-\/dimensionalisation and governing equations have already been discussed in the \href{../../fsi_collapsible_channel/html/index.html}{\tt previous (monolithic) example. } The problem is not quite the same, however, because the upstream boundary condition is now one of prescribed flow, rather than prescribed pressure\+:
+\begin{DoxyItemize}
+\item Prescribed inflow, \[ {\bf u}(x_1,x_2) = {\bf u}_{p}(x_1,x_2) = 6 \ x_2 \ (1-x_2) \ {\bf e}_1. \ \ \ \ \ \ \ \ \ \ (1) \] at $ x_{1}=0$.
+\end{DoxyItemize}All other boundary conditions remain the same.
+
+\\\cline{1-1}
+\end{longtabu}
+\end{center} 
+
+
+
+ 
+
+\hypertarget{index_reslt}{}\section{Results}\label{index_reslt}
+The behaviour of the system under the prescribed-\/inflow boundary conditions is somewhat different to its behaviour when the pressure drop is prescribed. In the first instance, we consider steady states, in which all time-\/derivatives are neglected. The figure below shows steady flows at a Reynolds number of $ Re=500 $ and two values of the fluid-\/structure-\/interaction parameter, $ Q = 10^{-4} $ (upper) and $ Q = 10^{-2}$ (lower). For low values of $Q$, corresponding to weak fluid-\/structure interaction, the deformation of the wall is approximately symmetric, being dominated by the external pressure. As $Q$ increases, the influence of fluid traction can been seen in the asymmetric deformation of the elastic wall. The viscous pressure drop along the tube leads to higher pressure upstream (causing an outward deformation) and lower pressures downstream (causing an inward deflection).
+
+ 
+\begin{DoxyImage}
+\includegraphics[width=0.8\textwidth]{steady_flows}
+\doxyfigcaption{Steady flows at Re=500 and Q=10e-\/4 (upper), Q=10e-\/2 (lower). }
+\end{DoxyImage}
+
+
+The overall behaviour of the system can be characterised by steady load-\/displacement curves in which the vertical position of a control point on the elastic section of the channel wall is plotted as a function of the external pressure.
+
+ 
+\begin{DoxyImage}
+\includegraphics[width=0.5\textwidth]{steady_trace}
+\doxyfigcaption{Load-\/displacement curve\+: the vertical position of a control point on the elastic wall (located at 50, 50, 60 and 70 percent of its length for Q = 0, 10e-\/4, 10e-\/3 and 10e-\/2, respectively) as a function of the external pressure. }
+\end{DoxyImage}
+
+
+At low $Q$, the displacement is directly proportional to the external pressure. As $Q$ increases the curves shift to the right because a large external pressure is required to keep the wall in its undeformed position; a consequence of the increased viscous pressure drop {\itshape and} the boundary condition that $p=0$ at the outlet. A second consequence of increasing $Q$ is that (at finite Reynolds number) a smaller increase in external pressure is required to achieve a given degree of collapse. This is because the Bernoulli effect reduces the fluid pressure in the region that is most strongly collapsed and therefore increases the compressive load on the wall. For $Q = 10^{-2}$ two limit points develop on the load-\/displacement curve, indicating that the wall \char`\"{}snaps through\char`\"{} into a collapsed buckled configuration when $p_{ext}$ becomes sufficiently large. The appearance of the limit points means that it is no longer possible to perform the steady parameter study by slowly increasing $p_{ext}: $ At sufficiently large values of $Q$ the displacement of the control point is not a single-\/valued function of the external pressure $ p_{ext}$. However, the application of \char`\"{}displacement control\char`\"{}, described in the tutorial discussing the \href{../../../beam/steady_ring/html/index.html}{\tt large-\/displacement post-\/buckling of an elastic ring} is sufficient to circumvent this difficulty\+: We treat the external pressure as an unknown and control the channel\textquotesingle{}s collapse by prescribing the vertical position of the control point, $ x_2^{[ctrl]}.$ This resolves the problem because the curve $ p_{ext}(x_2^{[ctrl]})$ is single-\/valued, allowing us to perform the parameter study by slowly increasing the wall collapse by reducing $ x_2^{[ctrl]}$, computing the pressure required to achieve this deformation as part of the solution.
+
+
+
+ 
+
+\hypertarget{index_overview}{}\section{Overview\+: Segregated solution strategies with oomph-\/lib}\label{index_overview}
+The general methodology for setting up fluid-\/structure-\/interaction problems is discussed in \href{../../fsi_collapsible_channel/html/index.html#overview}{\tt another tutorial; } and we shall assume that the standard monolithic problem has already been written. In the present example, the monolithic problem class {\ttfamily \hyperlink{classFSICollapsibleChannelProblem}{F\+S\+I\+Collapsible\+Channel\+Problem}} is specified in the header file \href{../../../../demo_drivers/interaction/fsi_channel_seg_and_precond/fsi_chan_problem.h}{\tt fsi\+\_\+chan\+\_\+problem.\+h}
+
+Having specified the monolithic (fully-\/coupled) discretisation, our segregated solution strategy proceeds by alternating between fluid and solid solves\+: Initially, the degrees of freedom associated with the (pure) solid mechanics problem are \char`\"{}pinned\char`\"{} and the global assembly procedure is modified to omit the corresponding solid elements. The Newton solver will, therefore, solve the fluid equations with a \char`\"{}frozen\char`\"{} wall shape. Next, the degrees of freedom associated with the (pure) fluid mechanics problem are pinned and the original boundary conditions for the solid mechanics problem are re-\/assigned. The assembly procedure is now modified so that only solid elements contribute to the global system. The Newton solver will then solve for a new wall shape corresponding to the tractions exerted by the given flow field. At this point we allow for under-\/relaxation, i.\+e. we provide the option to increment the solid mechanics degrees of freedom by a fraction of the change computed by the Newton solver. These two steps are repeated in a fixed-\/point iteration which continues until a given convergence criterion is satisfied, or a maximum number of iterations is exceeded. We note that different linear solvers/preconditioners may be specified for solution of the linear systems arising during the Newton iteration for the isolated \char`\"{}fluid\char`\"{} and \char`\"{}solid\char`\"{} problems, allowing the re-\/use of optimal solution methods for individual sub-\/problems. This is generally perceived to be one of the key advantages of segregated solvers.
+
+
+
+ 
+
+\hypertarget{index_how_its_done}{}\section{Brief discussion of the implementation}\label{index_how_its_done}
+\hypertarget{index_seg_problem}{}\subsection{The Segregatable\+F\+S\+I\+Problem}\label{index_seg_problem}
+{\bfseries a. Overall structure}
+
+The \href{../../../the_data_structure/html/classoomph_1_1SegregatableFSIProblem.html}{\tt {\ttfamily Segregatable\+F\+S\+I\+Problem} } class is used to implement our segregated solution strategy within {\ttfamily oomph-\/lib}. The most important problem-\/specific task is to divide all the problem data into distinct fluid and solid degrees of freedom and to partition the monolithic mesh into a mesh of fluid elements and a mesh of solid elements. The problem-\/specific partitioning should be implemented in the (pure) virtual member function 
+\begin{DoxyCode}
+\textcolor{comment}{/// Identify fluid and solid data}
+\textcolor{comment}{}\textcolor{keyword}{virtual} \textcolor{keywordtype}{void} identify\_fluid\_and\_solid\_dofs(Vector<Data*>& fluid\_data\_pt,
+                                           Vector<Data*>& solid\_data\_pt,
+                                           Mesh*& fluid\_mesh\_pt,
+                                           Mesh*& solid\_mesh\_pt)=0;
+\end{DoxyCode}
+ which returns vectors of fluid and solid data and the meshes of fluid and solid elements. This virtual function is called within the member function 
+\begin{DoxyCode}
+\textcolor{comment}{/// \(\backslash\)short Set up segregated solver. The optional boolean argument}
+\textcolor{comment}{}\textcolor{comment}{/// defaults to true and causes the identify\_fluid\_and\_solid\_dofs(...)}
+\textcolor{comment}{}\textcolor{comment}{/// to be called again. This is required, e.g. if any of the}
+\textcolor{comment}{}\textcolor{comment}{/// meshes were adapted since the previous call to the segregated solver.}
+\textcolor{comment}{}\textcolor{keywordtype}{void} setup\_segregated\_solver(\textcolor{keyword}{const} \textcolor{keywordtype}{bool} &full\_setup\_of\_fluid\_and\_solid\_dofs=\textcolor{keyword}{true})
+\end{DoxyCode}
+ which {\itshape must} be called immediately before every segregated solve. The optional boolean flag may be set to {\ttfamily false} if the solid and fluid meshes have not changed between solves (i.\+e. if no spatial adaptation was performed since the last call to the segregated solver). The {\ttfamily setup\+\_\+segregated\+\_\+solver}(...) function must still be called, however, in order that data associated with convergence acceleration techniques is reset to its default values.
+
+{\bfseries b. The segregated solvers}
+
+The class inherits from the standard {\ttfamily Problem} class, which provides the standard (monolithic) {\ttfamily newton\+\_\+solve()} and related functions. Thus any {\ttfamily Segregated\+F\+S\+I\+Problem} can be solved \char`\"{}monolithically\char`\"{} as normal and, moreover, it is straightforward to ensure that exactly the same system is being solved when comparing monolithic and segregated solutions. The segregated solution strategy is implemented in the analogous member functions\+:
+\begin{DoxyItemize}
+\item The equivalent of the monolithic {\ttfamily Problem\+::newton\+\_\+solve()} is 
+\begin{DoxyCode}
+SegregatedFSIProblem::segregated\_solve();
+\end{DoxyCode}
+
+\item The equivalent of the monolithic {\ttfamily Problem\+::steady\+\_\+newton\+\_\+solve()} is 
+\begin{DoxyCode}
+SegregatedFSIProblem::steady\_segregated\_solve();
+\end{DoxyCode}
+
+\item Finally, the equivalent of {\ttfamily Problem\+::unsteady\+\_\+newton\+\_\+solve(dt)} is 
+\begin{DoxyCode}
+PicardConvergenceData unsteady\_segregated\_solve(\textcolor{keyword}{const} \textcolor{keywordtype}{double} &dt);
+\end{DoxyCode}
+
+\end{DoxyItemize}All three functions return an instance of a {\ttfamily Picard\+Convergence\+Data} object which stores the convergence statistics of the segregated solve.
+
+In addition, the virtual member functions 
+\begin{DoxyCode}
+SegregatedFSIProblem::actions\_before\_segregated\_solve() 
+\end{DoxyCode}
+ 
+\begin{DoxyCode}
+SegregatedFSIProblem::actions\_after\_segregated\_solve() 
+\end{DoxyCode}
+ 
+\begin{DoxyCode}
+SegregatedFSIProblem::actions\_before\_segregated\_convergence\_check() 
+\end{DoxyCode}
+ are provided to allow the user to specify any actions, such as initialisation of counters, mesh updates, output, etc, that should be performed before or after each complete segregated solve. Note that the {\ttfamily Problem} member functions 
+\begin{DoxyCode}
+Problem::actions\_before\_newton\_solve() 
+\end{DoxyCode}
+ 
+\begin{DoxyCode}
+Problem::actions\_after\_newton\_solve() 
+\end{DoxyCode}
+ 
+\begin{DoxyCode}
+Problem::actions\_before\_newton\_convergence\_check() 
+\end{DoxyCode}
+ are called as usual during the Newton solve of each sub-\/problem and may be used for fine-\/grained operations that should be performed before or after each fluid or solid solve. For this purpose, the {\ttfamily Segregated\+F\+S\+I\+Problem} provides a flag, {\ttfamily int} {\ttfamily Segregated\+F\+S\+I\+Problem\+::\+Solve\+\_\+type} that indicates which (sub-\/)solve is currently being performed. The flag can take the (enumerated) values {\ttfamily Segregated\+F\+S\+I\+Problem\+::\+Full\+\_\+solve}, {\ttfamily Segregated\+F\+S\+I\+Problem\+::\+Fluid\+\_\+solve} and {\ttfamily Segregated\+F\+S\+I\+Problem\+::\+Solid\+\_\+solve}, allowing the user to perform specific actions during the distinct sub-\/solves.
+
+{\bfseries c. Choosing the convergence criterion}
+
+Other public member functions provided by the {\ttfamily Segregated\+F\+S\+I\+Problem} class are used to specify the convergence criterion for the global fixed-\/point iteration\+: 
+\begin{DoxyCode}
+\textcolor{comment}{/// Base convergence based on max. global residual}
+\textcolor{comment}{}\textcolor{keywordtype}{void} assess\_convergence\_based\_on\_max\_global\_residual(\textcolor{keyword}{const} \textcolor{keywordtype}{double} &tol)
+\end{DoxyCode}
+ 
+\begin{DoxyCode}
+\textcolor{comment}{/// Base convergence on maximum absolute change of solid degrees of freedom}
+\textcolor{comment}{}\textcolor{keywordtype}{void} assess\_convergence\_based\_on\_absolute\_solid\_change(\textcolor{keyword}{const} \textcolor{keywordtype}{double} &tol)
+\end{DoxyCode}
+ 
+\begin{DoxyCode}
+\textcolor{comment}{/// Base convergence on maximum relative change of solid degrees of freedom}
+\textcolor{comment}{}\textcolor{keywordtype}{void} assess\_convergence\_based\_on\_relative\_solid\_change(\textcolor{keyword}{const} \textcolor{keywordtype}{double} &tol)
+\end{DoxyCode}
+ If a tolerance is not specified the default {\ttfamily Problem\+::\+Newton\+\_\+solver\+\_\+tolerance} is used.
+
+{\bfseries d. Under-\/relaxation}
+
+Finally, there are several member functions that are used to specify the convergence-\/acceleration techniques\+:
+\begin{DoxyEnumerate}
+\item {\bfseries Static under-\/relaxation\+:} ~\newline
+~\newline
+
+\begin{DoxyCode}
+\textcolor{comment}{//Use under-relaxation for solid degrees of freedom and specify }
+\textcolor{comment}{//the optional under-relaxation parameter. The default of 1.0 }
+\textcolor{comment}{//corresponds to no under-relaxation.}
+\textcolor{keywordtype}{void} use\_under\_relaxation (\textcolor{keyword}{const} \textcolor{keywordtype}{double} &omega=1.0)
+\end{DoxyCode}
+ If this function is called, under-\/relaxation is performed after the solid sub-\/solve, i.\+e. each solid degree of freedom, $ s $, say is updated via \[ s = s_{new} + (1-\omega) (s_{old} - s_{new}) \] where $ s_{new} $ is the new value computed by the Newton solver and $ s_{old} $ is its previous value.
+\item {\bfseries Adaptive under-\/relaxation\+:} ~\newline
+~\newline
+
+\begin{DoxyCode}
+\textcolor{comment}{//Boolean flag that controls whether Irons & Tuck extrapolation}
+\textcolor{comment}{//is used to dynamically modify the under-relaxation parameter for}
+\textcolor{comment}{//the under-relaxation of the solid degrees of freedom.}
+\textcolor{keywordtype}{void} enable\_irons\_and\_tuck\_extrapolation ()
+\end{DoxyCode}
+ If this function is called (and if under-\/relaxation is enabled) the under-\/relaxation parameter $ \omega $ is adjusted throughout the fixed-\/point iteration, using Irons \& Tucks convergence acceleration procedure; see Irons, B.\+M. \& Tuck, R.\+C. \char`\"{}\+A version of the Aitken accelerator for computer iteration\char`\"{}. International Journal of Numerical Methods in Engineering {\bfseries 1}, 275-\/277 (1969).
+\item {\bfseries Pointwise Aitken-\/acceleration\+:} ~\newline
+~\newline
+
+\begin{DoxyCode}
+\textcolor{comment}{//Set a boolean flag that controls whether pointwise Aitken}
+\textcolor{comment}{//extrapolation is used. The optional argument specifies the Picard}
+\textcolor{comment}{//Iteration after which the extrapolation is to be used for the first}
+\textcolor{comment}{//time. The default value is zero.}
+\textcolor{keywordtype}{void} enable\_pointwise\_aitken (\textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} &pointwise\_aitken\_start)
+\end{DoxyCode}
+ If this function is called, the classical Aitken extrapolation is used to accelerate the convergence of (individual) solid degrees of freedom after every three iterations.
+\end{DoxyEnumerate}
+
+ 
+
+\hypertarget{index_channel_seg_problem}{}\section{The Segregated\+F\+S\+I\+Collapsible\+Channel\+Problem}\label{index_channel_seg_problem}
+We shall now briefly discuss the application of the segregated solver for the collapsible channel problem. The {\ttfamily \hyperlink{classSegregatedFSICollapsibleChannelProblem}{Segregated\+F\+S\+I\+Collapsible\+Channel\+Problem}} is defined in the driver code {\ttfamily \href{../../../../demo_drivers/interaction/fsi_channel_seg_and_precond/simple_segregated_driver.cc}{\tt simple\+\_\+segregated\+\_\+driver.\+cc} } and inherits from the \char`\"{}monolithic\char`\"{} {\ttfamily \hyperlink{classFSICollapsibleChannelProblem}{F\+S\+I\+Collapsible\+Channel\+Problem}} and also from the \href{../../../the_data_structure/html/classoomph_1_1SegregatableFSIProblem.html}{\tt {\ttfamily Segregatable\+F\+S\+I\+Problem} } class. The code {\ttfamily  \href{../../../../demo_drivers/interaction/fsi_channel_seg_and_precond/simple_segregated_driver.cc}{\tt simple\+\_\+segregated\+\_\+driver.\+cc} } is specifically designed for ease of exposition and does not contain any timing statements or documentation of convergence histories. The alternative driver code {\ttfamily  \href{../../../../demo_drivers/interaction/fsi_channel_seg_and_precond/fsi_chan_seg_driver.cc}{\tt fsi\+\_\+chan\+\_\+seg\+\_\+driver.\+cc}} contains complete timing and documentation statements and is the code that was used by \href{http://www.springerlink.com/content/m3r6318701g338g4/}{\tt Heil, Hazel \& Boyle (2008). }
+
+The simplified {\ttfamily \hyperlink{classSegregatedFSICollapsibleChannelProblem}{Segregated\+F\+S\+I\+Collapsible\+Channel\+Problem}} class contains six member functions
+\begin{DoxyItemize}
+\item The constructor
+\item The destructor
+\item {\ttfamily void} {\ttfamily identify\+\_\+fluid\+\_\+and\+\_\+solid\+\_\+dofs}(...)
+\item {\ttfamily void} {\ttfamily actions\+\_\+before\+\_\+newton\+\_\+convergence\+\_\+check()} 
+\item {\ttfamily void} {\ttfamily actions\+\_\+before\+\_\+segregated\+\_\+convergence\+\_\+check()} 
+\item {\ttfamily void} {\ttfamily steady\+\_\+run()} 
+\item {\ttfamily void} {\ttfamily doc\+\_\+solution(\+Doc\+Info\& doc\+\_\+info)} 
+\end{DoxyItemize}The {\ttfamily doc\+\_\+solution}(...) function simply writes the bulk (fluid) elements and wall (solid) elements to two separate files and the destructor is empty. We discuss the other four member functions below.
+
+
+
+\hypertarget{index_constructor}{}\subsection{The constructor}\label{index_constructor}
+The constructor calls the constructor of the underlying \char`\"{}monolithic\char`\"{} problem and then selects the convergence criterion and convergence-\/acceleration technique based on the values of control flags defined in the namespace {\ttfamily \hyperlink{namespaceFlags}{Flags}}.
+
+ 
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//=====start\_of\_constructor======================================}
+\textcolor{comment}{/// Constructor for the collapsible channel problem}
+\textcolor{comment}{}\textcolor{comment}{//===============================================================}
+\textcolor{keyword}{template} <\textcolor{keyword}{class} ELEMENT>
+\hyperlink{classSegregatedFSICollapsibleChannelProblem_ac762b472c2baafa23dae6b9ce38f31da}{SegregatedFSICollapsibleChannelProblem< ELEMENT>::}
+\hyperlink{classSegregatedFSICollapsibleChannelProblem_ac762b472c2baafa23dae6b9ce38f31da}{SegregatedFSICollapsibleChannelProblem}(\textcolor{keyword}{const} \textcolor{keywordtype}{unsigned}& nup, 
+                                       \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned}& ncollapsible,
+                                       \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned}& ndown,
+                                       \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned}& ny,
+                                       \textcolor{keyword}{const} \textcolor{keywordtype}{double}& lup,
+                                       \textcolor{keyword}{const} \textcolor{keywordtype}{double}& lcollapsible, 
+                                       \textcolor{keyword}{const} \textcolor{keywordtype}{double}& ldown,
+                                       \textcolor{keyword}{const} \textcolor{keywordtype}{double}& ly,
+                                       \textcolor{keyword}{const} \textcolor{keywordtype}{bool}& displ\_control,
+                                       \textcolor{keyword}{const} \textcolor{keywordtype}{bool}& steady\_flag) :
+ \hyperlink{classFSICollapsibleChannelProblem}{FSICollapsibleChannelProblem}<ELEMENT>(nup, 
+                                       ncollapsible,
+                                       ndown,
+                                       ny,
+                                       lup,
+                                       lcollapsible, 
+                                       ldown,
+                                       ly,
+                                       displ\_control,
+                                       steady\_flag) 
+\{
+ \textcolor{comment}{// Choose convergence criterion based on Flag::Convergence criterion}
+ \textcolor{comment}{// with tolerance given by Flag::Convergence\_tolerance}
+ \textcolor{keywordflow}{if} (\hyperlink{namespaceFlags_aba930ff1e462e642a27904df95baab7c}{Flags::Convergence\_criterion}==0)
+  \{
+   assess\_convergence\_based\_on\_max\_global\_residual(
+    \hyperlink{namespaceFlags_a5550ee43b27fd03898a6718246b44e4a}{Flags::Convergence\_tolerance});
+  \}
+ \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\hyperlink{namespaceFlags_aba930ff1e462e642a27904df95baab7c}{Flags::Convergence\_criterion}==1)
+  \{
+   assess\_convergence\_based\_on\_absolute\_solid\_change(
+    \hyperlink{namespaceFlags_a5550ee43b27fd03898a6718246b44e4a}{Flags::Convergence\_tolerance});
+  \}
+ \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\hyperlink{namespaceFlags_aba930ff1e462e642a27904df95baab7c}{Flags::Convergence\_criterion}==2)
+  \{
+   assess\_convergence\_based\_on\_relative\_solid\_change(
+    \hyperlink{namespaceFlags_a5550ee43b27fd03898a6718246b44e4a}{Flags::Convergence\_tolerance});
+  \}
+ 
+ \textcolor{comment}{//Select a convergence-acceleration technique based on control flags}
+
+ \textcolor{comment}{// Pointwise Aitken extrapolation}
+ \textcolor{keywordflow}{if}(\hyperlink{namespaceFlags_aabfbfdb3e91e4df3fc2ec6e2a2e3567d}{Flags::Use\_pointwise\_aitken})
+  \{
+   this->enable\_pointwise\_aitken();
+  \}
+ \textcolor{keywordflow}{else}
+  \{
+   this->disable\_pointwise\_aitken();
+  \}
+
+ \textcolor{comment}{// Under-relaxation}
+ this->enable\_under\_relaxation(\hyperlink{namespaceFlags_a6c3895aecba834ceda5fe1c3ecb13bba}{Flags::Omega\_under\_relax});
+
+ \textcolor{comment}{// Irons and Tuck's extrapolation}
+ \textcolor{keywordflow}{if}(\hyperlink{namespaceFlags_a9d92a2ec6ebd4e2ea66605c063e53915}{Flags::Use\_irons\_and\_tuck\_extrapolation})
+  \{
+   this->enable\_irons\_and\_tuck\_extrapolation();
+  \}
+ \textcolor{keywordflow}{else}
+  \{
+   this->disable\_irons\_and\_tuck\_extrapolation();
+  \}
+
+\} \textcolor{comment}{//end\_of\_constructor}
+
+\end{DoxyCodeInclude}
+
+
+
+
+\hypertarget{index_identify}{}\subsection{Identifying the fluid and solid degrees of freedom}\label{index_identify}
+The underlying monolithic problem provides pointers to the fluid and solid (sub-\/)meshes via the member data 
+\begin{DoxyCode}
+AlgebraicCollapsibleChannelMesh<ELEMENT>* Bulk\_mesh\_pt;
+\end{DoxyCode}
+ 
+\begin{DoxyCode}
+OneDLagrangianMesh<FSIHermiteBeamElement>* Wall\_mesh\_pt; 
+\end{DoxyCode}
+ which are accessible via the member functions {\ttfamily \hyperlink{classFSICollapsibleChannelProblem_a9b461f3afef3185ea0b461714675ef8f}{Segregated\+F\+S\+I\+Collapsible\+Channel\+Problem\+::bulk\+\_\+mesh\+\_\+pt()}} and {\ttfamily \hyperlink{classFSICollapsibleChannelProblem_ae8b71da8da82f3c52387052ce400b930}{Segregated\+F\+S\+I\+Collapsible\+Channel\+Problem\+::wall\+\_\+mesh\+\_\+pt()}}, and so the identification of fluid and solid degrees of freedom is reasonably straightforward. The only complication arises because we may, or may not, be using displacement control which introduces a further element into the global mesh. Displacement control affects the solid problem suggesting that the (variable) external pressure should be regarded as a solid degrees of freedom and the {\ttfamily Displacement\+Control\+Element} should be included in the solid mesh.
+
+ 
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//=====start\_of\_identify\_fluid\_and\_solid======================================}
+\textcolor{comment}{/// Identify the fluid and solid Data and the meshes that}
+\textcolor{comment}{}\textcolor{comment}{/// contain only elements that are involved in the respective sub-problems. }
+\textcolor{comment}{}\textcolor{comment}{/// This implements a pure virtual function in the }
+\textcolor{comment}{}\textcolor{comment}{/// SegregatableFSIProblem base class.}
+\textcolor{comment}{}\textcolor{comment}{//============================================================================}
+\textcolor{keyword}{template} <\textcolor{keyword}{class} ELEMENT>
+\textcolor{keywordtype}{void} \hyperlink{classSegregatedFSICollapsibleChannelProblem_aa473522c98c5b70b8d35c0a7cdb1e42c}{SegregatedFSICollapsibleChannelProblem<ELEMENT>::}
+\hyperlink{classSegregatedFSICollapsibleChannelProblem_aa473522c98c5b70b8d35c0a7cdb1e42c}{identify\_fluid\_and\_solid\_dofs}(Vector<Data*>& fluid\_data\_pt,
+                              Vector<Data*>& solid\_data\_pt,
+                              Mesh*& fluid\_mesh\_pt,
+                              Mesh*& solid\_mesh\_pt)
+\{
+
+ \textcolor{comment}{//FLUID DATA: }
+ \textcolor{comment}{//All fluid elements are stored in the Mesh addressed by bulk\_mesh\_pt() }
+
+ \textcolor{comment}{//Reset the storage}
+ fluid\_data\_pt.clear();
+
+ \textcolor{comment}{//Find number of fluid elements}
+ \textcolor{keywordtype}{unsigned} n\_fluid\_elem=this->bulk\_mesh\_pt()->nelement();
+ \textcolor{comment}{//Loop over fluid elements and add internal data to fluid\_data\_ptt}
+ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} e=0;e<n\_fluid\_elem;e++)
+  \{
+   GeneralisedElement* el\_pt=this->bulk\_mesh\_pt()->element\_pt(e);
+   \textcolor{keywordtype}{unsigned} n\_internal=el\_pt->ninternal\_data();
+   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} i=0;i<n\_internal;i++)
+    \{
+     fluid\_data\_pt.push\_back(el\_pt->internal\_data\_pt(i));
+    \}
+  \}
+ 
+ \textcolor{comment}{//Find number of nodes in fluid mesh}
+ \textcolor{keywordtype}{unsigned} n\_fluid\_node=this->bulk\_mesh\_pt()->nnode();
+ \textcolor{comment}{//Loop over nodes and add the nodal data to fluid\_data\_pt}
+ \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} n=0;n<n\_fluid\_node;n++)
+  \{
+   fluid\_data\_pt.push\_back(this->bulk\_mesh\_pt()->node\_pt(n));
+  \}
+  
+ \textcolor{comment}{// The bulk\_mesh\_pt() is a mesh that contains only fluid elements}
+ fluid\_mesh\_pt = this->bulk\_mesh\_pt(); 
+ 
+
+ \textcolor{comment}{//SOLID DATA}
+ \textcolor{comment}{//All solid elements are stored in the Mesh addressed by wall\_mesh\_pt()}
+
+ \textcolor{comment}{//Reset the storage}
+ solid\_data\_pt.clear();
+
+ \textcolor{comment}{//Find number of nodes in the solid mesh}
+ \textcolor{keywordtype}{unsigned} n\_solid\_node=this->wall\_mesh\_pt()->nnode();
+ \textcolor{comment}{//Loop over nodes and add nodal position data to solid\_data\_pt}
+ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} n=0;n<n\_solid\_node;n++)
+  \{
+   solid\_data\_pt.push\_back(
+    this->wall\_mesh\_pt()->node\_pt(n)->variable\_position\_pt());
+  \}
+   
+ \textcolor{comment}{//If we are using displacement control then the displacement control element}
+ \textcolor{comment}{//and external pressure degree of freedom should be treated as part}
+ \textcolor{comment}{//of the solid problem}
+
+ \textcolor{comment}{//We will assemble a single solid mesh from a vector of pointers to meshes}
+ Vector<Mesh*> s\_mesh\_pt(1);
+ \textcolor{comment}{//The wall\_mesh\_pt() contains all solid elements and is the first}
+ \textcolor{comment}{//entry in our vector}
+ s\_mesh\_pt[0]=this->wall\_mesh\_pt();
+  
+ \textcolor{comment}{//If we are using displacement control}
+ \textcolor{keywordflow}{if} (this->Displ\_control)
+  \{
+   \textcolor{comment}{//Add the external pressure data to solid\_data\_pt}
+   solid\_data\_pt.push\_back(\hyperlink{namespaceGlobal__Physical__Variables_ad31ed4ea9a7fce4c20c2230d26047f6f}{Global\_Physical\_Variables::P\_ext\_data\_pt}
+      );
+   \textcolor{comment}{//Add a pointer to a Mesh containing the displacement control element}
+   \textcolor{comment}{//to the vector of pointers to meshes}
+   s\_mesh\_pt.push\_back(this->Displ\_control\_mesh\_pt);
+  \} 
+
+ \textcolor{comment}{// Build "combined" mesh from our vector of solid meshes}
+ solid\_mesh\_pt = \textcolor{keyword}{new} Mesh(s\_mesh\_pt);
+
+\} \textcolor{comment}{//end\_of\_identify\_fluid\_and\_solid}
+
+\end{DoxyCodeInclude}
+
+
+
+
+\hypertarget{index_actions}{}\subsection{Actions before convergence checks}\label{index_actions}
+During a monolithic solve the function {\ttfamily actions\+\_\+before\+\_\+newton\+\_\+convergence\+\_\+check()} must update the nodal positions in the bulk (fluid) mesh. In principle, it should remain empty during a segregated solve, but we found it beneficial to update the bulk mesh, and hence the fluid load on the wall, during the solution of the solid problem.
+
+The function {\ttfamily actions\+\_\+before\+\_\+segregated\+\_\+convergence\+\_\+check()} contains an update of the nodal positions in the bulk mesh in order that the segregated solution is self-\/consistent.
+
+ 
+\begin{DoxyCodeInclude}
+ \textcolor{comment}{/// \(\backslash\)short Update nodal positions in the fluid mesh in}
+\textcolor{comment}{ /// response to changes in the wall displacement field after every}
+\textcolor{comment}{}\textcolor{comment}{ /// Newton step in a monolithic or segregated solid solve. Note}
+\textcolor{comment}{}\textcolor{comment}{ /// the use of the (protected) flag Solve\_type, which can take the}
+\textcolor{comment}{}\textcolor{comment}{ /// values Full\_solve, Fluid\_solve or Solid\_solve. This flag is used}
+\textcolor{comment}{}\textcolor{comment}{ /// to allow specification of different actions depending on the}
+\textcolor{comment}{}\textcolor{comment}{ /// precise solve taking place.}
+\textcolor{comment}{} \textcolor{keywordtype}{void} actions\_before\_newton\_convergence\_check()
+  \{
+   \textcolor{comment}{//For a "true" segregated solver, we would not do this in fluid or solid}
+   \textcolor{comment}{//solves, but adding the bulk node update to the solid solve phase aids}
+   \textcolor{comment}{//convergence and makes it possible for larger values of Q. Of course,}
+   \textcolor{comment}{//there is a small cost associated with doing this.}
+   \textcolor{keywordflow}{if}(Solve\_type!=Fluid\_solve) \{this->Bulk\_mesh\_pt->node\_update();\}
+  \}
+
+\textcolor{comment}{}
+\textcolor{comment}{ /// Update nodal positions in the fluid mesh}
+\textcolor{comment}{ /// in response to any changes in the wall displacement field after every }
+\textcolor{comment}{ /// segregated solve. This is not strictly necessary because we}
+\textcolor{comment}{ /// do the solid solve last, which performs its own node update before the }
+\textcolor{comment}{ /// convergence check of the sub problem. It remains here because if we}
+\textcolor{comment}{ /// were solving in a completely segregated fashion a node update would be }
+\textcolor{comment}{ /// required for the fluid mesh in the final converged solution to be}
+\textcolor{comment}{ /// consistent with the solid positions.}
+\textcolor{comment}{} \textcolor{keywordtype}{void} actions\_before\_segregated\_convergence\_check()
+  \{ 
+   this->Bulk\_mesh\_pt->node\_update();
+  \} 
+
+ \textcolor{comment}{// end\_of\_convergence\_checks}
+
+\end{DoxyCodeInclude}
+
+
+
+
+\hypertarget{index_steady}{}\subsection{Solving a steady problem}\label{index_steady}
+The function {\ttfamily steady\+\_\+run()} conducts a simple parameter study in which the external pressure (or prescribed displacement) is varied. After specification of the initial conditions, parameter increments and output directories, the parameter study is straightforward  
+\begin{DoxyCodeInclude}
+ \textcolor{comment}{// Parameter study (loop over the number of steps)}
+ \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} istep=0;istep<\hyperlink{namespaceFlags_a8a6ffdb261330ef89965624209ab7b00}{Flags::Nsteps};istep++)
+  \{
+   \textcolor{comment}{// Setup segregated solver }
+   \textcolor{comment}{//(Default behaviour will identify the fluid and solid dofs and}
+   \textcolor{comment}{// allocate memory, etc every time. This is a bit inefficient in }
+   \textcolor{comment}{// this case, but it is safe and will always work)}
+   setup\_segregated\_solver();
+
+   \textcolor{comment}{// SEGREGATED SOLVER}
+   \textcolor{keywordflow}{if}(\hyperlink{namespaceFlags_a2cdfa6b776b959a060a1f2e8d4918789}{Flags::Use\_segregated\_solver})
+    \{
+     \textcolor{comment}{//Set the maximum number of Picard steps}
+     Max\_picard =50;
+     
+     \textcolor{comment}{// Solve ignoring return type (convergence data)}
+     (void)steady\_segregated\_solve();
+    \}
+   \textcolor{comment}{// NEWTON SOLVER}
+   \textcolor{keywordflow}{else}
+    \{
+     \textcolor{comment}{//Explit call to the steady Newton solve.}
+     steady\_newton\_solve();
+    \}
+   
+   \textcolor{comment}{// Output the solution}
+   doc\_solution(doc\_info);
+   
+   \textcolor{comment}{//Increase the Step number}
+   doc\_info.number()++;
+   
+   \textcolor{comment}{// Adjust control parameters}
+   \textcolor{comment}{//If displacment control increment position}
+   \textcolor{keywordflow}{if} (this->Displ\_control)
+    \{
+     \hyperlink{namespaceGlobal__Physical__Variables_afd29cc714595594020831c7c54387883}{Global\_Physical\_Variables::Yprescr}+=delta\_y;
+    \}
+   \textcolor{comment}{//Otherwise increment external pressure}
+   \textcolor{keywordflow}{else}
+    \{
+     \textcolor{keywordtype}{double} old\_p=\hyperlink{namespaceGlobal__Physical__Variables_ad31ed4ea9a7fce4c20c2230d26047f6f}{Global\_Physical\_Variables::P\_ext\_data\_pt}->value(0
+      );
+     \hyperlink{namespaceGlobal__Physical__Variables_ad31ed4ea9a7fce4c20c2230d26047f6f}{Global\_Physical\_Variables::P\_ext\_data\_pt}->set\_value(0,old\_p+
+      delta\_p);
+    \}
+
+  \} \textcolor{comment}{// End of parameter study}
+
+\end{DoxyCodeInclude}
+
+
+
+
+ 
+
+\hypertarget{index_main}{}\section{The driver code}\label{index_main}
+Having written our {\ttfamily \hyperlink{classSegregatedFSICollapsibleChannelProblem}{Segregated\+F\+S\+I\+Collapsible\+Channel\+Problem}}, the driver code is extremely simple. We specify number of elements and dimensions of our computational domain, construct the problem and perform a steady parameter study.
+
+ 
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//============start\_of\_main====================================================}
+\textcolor{comment}{/// Driver code for a segregated collapsible channel problem with FSI.}
+\textcolor{comment}{}\textcolor{comment}{//=============================================================================}
+\textcolor{keywordtype}{int} \hyperlink{simple__segregated__driver_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}()
+\{
+ \textcolor{comment}{// Number of elements in the domain}
+ \textcolor{keywordtype}{unsigned} nup=4*\hyperlink{namespaceFlags_a7c2437aa0b6a4f27df951f1cbcef7337}{Flags::Resolution\_factor};
+ \textcolor{keywordtype}{unsigned} ncollapsible=20*\hyperlink{namespaceFlags_a7c2437aa0b6a4f27df951f1cbcef7337}{Flags::Resolution\_factor};
+ \textcolor{keywordtype}{unsigned} ndown=40*\hyperlink{namespaceFlags_a7c2437aa0b6a4f27df951f1cbcef7337}{Flags::Resolution\_factor};
+ \textcolor{keywordtype}{unsigned} ny=4*\hyperlink{namespaceFlags_a7c2437aa0b6a4f27df951f1cbcef7337}{Flags::Resolution\_factor};
+  
+ 
+ \textcolor{comment}{// Geometry of the domain}
+ \textcolor{keywordtype}{double} lup=1.0;
+ \textcolor{keywordtype}{double} lcollapsible=5.0;
+ \textcolor{keywordtype}{double} ldown=10.0;
+ \textcolor{keywordtype}{double} ly=1.0;
+ 
+ \textcolor{comment}{// Steady run by default}
+ \textcolor{keywordtype}{bool} steady\_flag=\textcolor{keyword}{true};
+ \textcolor{comment}{// with displacement control}
+ \textcolor{keywordtype}{bool} displ\_control=\textcolor{keyword}{true};
+
+ \textcolor{comment}{// Build the problem with QTaylorHoodElements}
+ \hyperlink{classSegregatedFSICollapsibleChannelProblem}{SegregatedFSICollapsibleChannelProblem}
+  <AlgebraicElement<QTaylorHoodElement<2> > > 
+  problem(nup, ncollapsible, ndown, ny, 
+          lup, lcollapsible, ldown, ly, displ\_control,
+          steady\_flag);
+ 
+ \textcolor{comment}{//Perform a steady run}
+ problem.steady\_run();
+ 
+\}\textcolor{comment}{//end of main}
+
+\end{DoxyCodeInclude}
+
+
+
+
+ 
+
+\hypertarget{index_comments_and_ex}{}\section{Comments and Exercises}\label{index_comments_and_ex}
+\hypertarget{index_comments}{}\subsection{Comments}\label{index_comments}
+
+\begin{DoxyItemize}
+\item {\bfseries (In-\/)efficiency of {\ttfamily setup\+\_\+segregated\+\_\+solver()}} ~\newline
+~\newline
+ In our simple example code, we did not employ spatial adaptivity. It is not necessary, therefore, to (re-\/)identify the fluid and solid degrees of freedom before each solve, the default (safe) behaviour of {\ttfamily setup\+\_\+segregated\+\_\+solver()}. Nonetheless, data associated with the techniques used to accelerate the convergence of the Picard iterations must be reset before each segregated solve. In the more complex driver code, a boolean flag {\ttfamily bool} {\ttfamily full\+\_\+setup} is used as an argument to {\ttfamily setup\+\_\+segregated\+\_\+solver()} which modifies the behaviour, as indicated below. 
+\begin{DoxyCode}
+\textcolor{comment}{// Boolean flag used to specify whether a full setup of solid and fluid dofs}
+\textcolor{comment}{// is required}
+\textcolor{keywordtype}{bool} full\_setup = \textcolor{keyword}{true};
+
+\textcolor{comment}{// Parameter study}
+\textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} istep=0;istep<\hyperlink{namespaceFlags_a8a6ffdb261330ef89965624209ab7b00}{Flags::Nsteps};istep++)
+ \{
+  \textcolor{comment}{// Setup segregated solver}
+  setup\_segregated\_solver(full\_setup);
+
+   [...]
+ 
+  steady\_segregated\_solve()
+
+   [...] 
+
+  \textcolor{comment}{//We no longer need a full setup of the dofs}
+  full\_setup = \textcolor{keyword}{false};
+ \}
+\end{DoxyCode}
+
+\end{DoxyItemize}
+
+ 
+
+\hypertarget{index_ex}{}\subsection{Exercises}\label{index_ex}
+
+\begin{DoxyEnumerate}
+\item Modify the control flags in {\ttfamily \href{../../../../demo_drivers/interaction/fsi_channel_seg_and_precond/simple_segregated_driver.cc}{\tt simple\+\_\+segregated\+\_\+driver.\+cc}} to verify that the monolithic solution is the same (to within finite precision) as the segregated solution.
+\item Modify the control flags in {\ttfamily \href{../../../../demo_drivers/interaction/fsi_channel_seg_and_precond/simple_segregated_driver.cc}{\tt simple\+\_\+segregated\+\_\+driver.\+cc}} to investigate the influence of the convergence acceleration techniques and convergence criterion on the segregated solution. Which combination of parameters gives convergence in the fewest Picard iterations?
+\item Investigate the behaviour of the system if the fluid (bulk) mesh is {\itshape not} updated after each Newton step in the solution of the solid problem. Can you obtain converged solutions?
+\item Write your own {\ttfamily Segregated\+F\+S\+I\+Collapsible\+Channel\+Flow\+::unsteady\+\_\+run()} member function that computes the time evolution of the system after a perturbation to the external pressure. Compare your answer with the equivalent member function in the much more comprehensive driver code {\ttfamily \href{../../../../demo_drivers/interaction/fsi_channel_seg_and_precond/fsi_chan_seg_driver.cc}{\tt fsi\+\_\+chan\+\_\+seg\+\_\+driver.\+cc}} that was used in \href{http://www.springerlink.com/content/m3r6318701g338g4/}{\tt Heil, Hazel \& Boyle (2008). }
+\end{DoxyEnumerate}
+
+ 
+
+\hypertarget{index_sources}{}\section{Source files for this tutorial}\label{index_sources}
+
+\begin{DoxyItemize}
+\item The source files for this tutorial are located in the directory\+: \begin{center} \href{../../../../demo_drivers/interaction/fsi_channel_seg_and_precond/}{\tt demo\+\_\+drivers/interaction/fsi\+\_\+channel\+\_\+seg\+\_\+and\+\_\+precond/ } \end{center} 
+\item The driver code is\+: \begin{center} \href{../../../../demo_drivers/interaction/fsi_channel_seg_and_precond/simple_segregated_driver.cc}{\tt demo\+\_\+drivers/interaction/fsi\+\_\+channel\+\_\+seg\+\_\+and\+\_\+precond/simple\+\_\+segregated\+\_\+driver.\+cc } \end{center} 
+\end{DoxyItemize}
+
+ 
+
+ \hypertarget{index_pdf}{}\section{P\+D\+F file}\label{index_pdf}
+A \href{../latex/refman.pdf}{\tt pdf version} of this document is available. \end{document}

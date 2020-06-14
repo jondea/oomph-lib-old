@@ -1,0 +1,204 @@
+In this document we will demonstrate how to use the general-\/purpose block preconditioners implemented in {\ttfamily oomph-\/lib}. This tutorial follows from the \href{../../../mpi/block_preconditioners/html/index.html}{\tt Block Preconditioners} tutorial, which provides an overview of {\ttfamily oomph-\/lib\textquotesingle{}s} generic block preconditioning framework.
+
+We use the {\ttfamily Problem} described in the \href{../../../solid/airy_cantilever/html/index.html}{\tt Bending of a Cantilever Beam} tutorial to illustrate the key concepts.\hypertarget{index_introduction}{}\section{Introduction}\label{index_introduction}
+In this section we define the four (distributed) general purpose block preconditioning methodologies. To recap, all {\ttfamily oomph-\/lib} problems are solved in a Newton iteration which requires the repeated solution of linear systems of the form \[ J\delta {\bf x}=-{\bf r} \] where $J$ is the Jacobian matrix, $\bf r$ is the vector of residuals and $\bf \delta x$ is the Newton correction. We divide the D\+O\+Fs in the two-\/dimensional cantilever problem into two subsets corresponding to the $x$ and $y$ nodal positions.
+
+\[ \left[ \begin{array}{cc} J_{xx}&J_{xy}\\ J_{yx}&J_{yy} \end{array} \right]. \left[ \begin{array}{c} \bf \delta x \\ \bf \delta y \\ \end{array} \right] = -\left[ \begin{array}{c} \bf r_x \\ \bf r_y \\ \end{array} \right] \]
+
+Utilising this partitioning we will describe four (distributed) general purpose block preconditioning methodologies. (Left) preconditioning represents a transformation of the original linear system to
+
+\[ P^{-1}J\;{\bf \delta x}=-P^{-1}{\bf r} \]
+
+with the aim of accelerating the convergence of Krylov subspace iterative methods such as G\+M\+R\+ES or CG. The application of the preconditioner requires the solution of
+
+\[ P{\bf z}={\bf w} \]
+
+for $\bf z$ at each Krylov iteration.\hypertarget{index_block_diagonal}{}\subsection{Block Diagonal Preconditioning}\label{index_block_diagonal}
+We drop the off-\/diagonal blocks to form the block diagonal preconditioner
+
+\[ P_{BD}=\left[ \begin{array}{cc} J_{xx}&\\ &J_{yy} \end{array} \right]. \]
+
+the application of this preconditioner requires the solution of the subsidiary systems $J_{xx}$ and $J_{yy}$.\hypertarget{index_two_level_block_diagonal}{}\subsection{Block Diagonal Preconditioning with Two-\/\+Level Parallelisation}\label{index_two_level_block_diagonal}
+The two-\/subsidiary systems in the block diagonal preconditioner (involving $J_{xx}$ and $J_{yy}$) can be solved in any order. In a parallel computation we can either solve the two systems one after the other using the full set of processes for the solution of each linear system. An alternative is to solve all the subsidiary systems simultaneously, using only a subset of processes for each system. We refer to this technique as two-\/level parallelisation and note that this approach is particularly useful if the linear solvers do not have good parallel scaling properties.\hypertarget{index_upper_block_triangular}{}\subsection{Upper Block Triangular Preconditioning}\label{index_upper_block_triangular}
+An alternative to block diagonal preconditioning is block triangular preconditioning in which only off diagonal blocks on one side of the diagonal are dropped. For example, in the block-\/upper triangular preconditioner
+
+\[ P_{BUT}=\left[ \begin{array}{cc} J_{xx}&J_{xy}\\ &J_{yy} \end{array} \right] \]
+
+the block below the diagonal ( $J_{yx}$) has been dropped. In addition to the two subsidiary solves for $J_{xx}$ and $J_{yy}$ this preconditioner requires a matrix-\/vector product involving $J_{xy}$.\hypertarget{index_lower_block_triangular}{}\subsection{Lower Block Triangular Preconditioning}\label{index_lower_block_triangular}
+Similarly we can define a lower triangular block preconditioner
+
+\[ P_{BLT}=\left[ \begin{array}{cc} J_{xx}&\\ J_{yx}&J_{yy} \end{array} \right]. \]\hypertarget{index_application}{}\section{Application}\label{index_application}
+In this section we demonstrate the use of {\ttfamily oomph-\/lib\textquotesingle{}s} general-\/purpose block preconditioners. All general-\/purpose block preconditioners are derived from the base class {\ttfamily General\+Purpose\+Block\+Preconditioner} (which is itself derived from the {\ttfamily Block\+Preconditioner} class).
+
+By default all general purpose block preconditioners use {\ttfamily Super\+L\+U\+Preconditioner} as the preconditioner for the subsidiary systems ( $J_{xx}$ and $J_{yy}$ in the \hyperlink{index_introduction}{Introduction}). {\ttfamily Super\+L\+U\+Preconditioner} is a wrapper to both the \href{http://crd.lbl.gov/~xiaoye/SuperLU/#superlu}{\tt {\ttfamily Super\+LU}} direct solver and the \href{http://crd.lbl.gov/~xiaoye/SuperLU/#superlu_dist}{\tt {\ttfamily Super\+LU Dist}} distributed direct solver. Often we seek to replace this direct solver preconditioning with an inexact solver to make the preconditioner more efficient. To use an alternative subsidiary preconditioner we must define a function to return new instances of the chosen type of preconditioner (inexact solver). For example  
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//=hypre\_helper=================================================================}
+\textcolor{comment}{/// The function get\_hypre\_preconditioner() returns an instance of }
+\textcolor{comment}{}\textcolor{comment}{/// HyprePreconditioner to be used as a subsidiary preconditioner in a}
+\textcolor{comment}{}\textcolor{comment}{/// GeneralPurposeBlockPreconditioner}
+\textcolor{comment}{}\textcolor{comment}{//==============================================================================}
+\textcolor{keyword}{namespace }Hypre\_Subsidiary\_Preconditioner\_Helper
+\{
+ Preconditioner* get\_hypre\_preconditioner()
+ \{
+  \textcolor{keywordflow}{return} \textcolor{keyword}{new} HyprePreconditioner; 
+ \}
+\} \textcolor{comment}{// end\_of\_hypre\_helper}
+
+\end{DoxyCodeInclude}
+
+
+would return instances of {\ttfamily Hypre\+Preconditioner}, a wrapper to the distributed \href{https://computation.llnl.gov/casc/linear_solvers/sls_hypre.html}{\tt {\ttfamily Hypre Boomer\+A\+MG}} implementation of classical A\+MG. Later we will pass a pointer to this function to the block preconditioner to enable the use of {\ttfamily Hypre\+Preconditioner} as a subsidiary preconditioner. Note that the function only creates the subsidiary preconditioner -- it will be deleted automatically by the master preconditioner when it is no longer required.
+
+The rest of the section is concerned with the main function, and in particular setting up the preconditioner for use.
+
+ 
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//=======start\_of\_main==================================================}
+\textcolor{comment}{/// Driver for cantilever beam loaded by surface traction and/or}
+\textcolor{comment}{}\textcolor{comment}{/// gravity}
+\textcolor{comment}{}\textcolor{comment}{//======================================================================}
+\textcolor{keywordtype}{int} main(\textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char}* argv[])
+\{
+
+\end{DoxyCodeInclude}
+
+
+Given an instance of the problem,
+
+ 
+\begin{DoxyCodeInclude}
+ \textcolor{comment}{//Set up the problem}
+ CantileverProblem<MySolidElement<RefineableQPVDElement<2,3> > > problem;
+
+\end{DoxyCodeInclude}
+
+
+we specify G\+M\+R\+ES as the linear solver. If available, we use the {\ttfamily Trilinos\+Aztec\+O\+O\+Solver} wrapper to the \href{http://trilinos.sandia.gov/packages/aztecoo/}{\tt {\ttfamily Trilinos Aztec\+OO}} implementation of G\+M\+R\+ES. (This is the only distributed implementation of G\+M\+R\+ES in {\ttfamily oomph-\/lib}.)
+
+ 
+\begin{DoxyCodeInclude}
+ \textcolor{comment}{// use trilinos gmres if available}
+\textcolor{preprocessor}{#ifdef OOMPH\_HAS\_TRILINOS}
+ TrilinosAztecOOSolver* solver\_pt = \textcolor{keyword}{new} TrilinosAztecOOSolver;
+ solver\_pt->solver\_type() = TrilinosAztecOOSolver::GMRES;
+\textcolor{preprocessor}{#else}
+ GMRES<CRDoubleMatrix>* solver\_pt = \textcolor{keyword}{new} GMRES<CRDoubleMatrix>;
+\textcolor{preprocessor}{#endif}
+
+\end{DoxyCodeInclude}
+
+
+{\ttfamily General\+Purpose\+Block\+Preconditioner} is the base class for all general purpose block preconditioners.
+
+ 
+\begin{DoxyCodeInclude}
+ \textcolor{comment}{// Pointer to general purpose block preconditioner base class}
+ GeneralPurposeBlockPreconditioner<CRDoubleMatrix>* prec\_pt = 0;
+
+\end{DoxyCodeInclude}
+
+
+We introduced four general purpose block preconditioning methodologies in the \hyperlink{index_introduction}{Introduction}. The next step is to construct one of these preconditioners.
+\begin{DoxyItemize}
+\item {\bfseries Block} {\bfseries Diagonal} {\bfseries Preconditioning}. This is implemented in the class {\ttfamily Block\+Diagonal\+Preconditioner}.  
+\begin{DoxyCodeInclude}
+   \textcolor{comment}{// Standard Block Diagonal}
+   prec\_pt = \textcolor{keyword}{new} BlockDiagonalPreconditioner<CRDoubleMatrix>;
+
+\end{DoxyCodeInclude}
+
+\item {\bfseries Enabling} {\bfseries Two-\/{\bfseries Level} {\bfseries Block} {\bfseries Diagonal} {\bfseries Preconditioning}.} By default two-\/level preconditioning is disabled and hence {\ttfamily enable\+\_\+two\+\_\+level\+\_\+parallelisation()} must have been called. Once this is done, each subsidiary system will be solved on an (as near to) equal size subset of processes.  
+\begin{DoxyCodeInclude}
+   \textcolor{comment}{// Two Level Block Diagonal}
+   prec\_pt = \textcolor{keyword}{new} BlockDiagonalPreconditioner<CRDoubleMatrix>;
+   \textcolor{keyword}{dynamic\_cast<}BlockDiagonalPreconditioner<CRDoubleMatrix>* \textcolor{keyword}{>}
+    (prec\_pt)->enable\_two\_level\_parallelisation();
+
+\end{DoxyCodeInclude}
+
+\item {\bfseries Block} {\bfseries Upper} {\bfseries Triangular} {\bfseries Preconditioning}. Both block triangular preconditioners are implemented in the class {\ttfamily Block\+Triangular\+Preconditioner}. By default this employs the upper-\/triangular version of the preconditioner.  
+\begin{DoxyCodeInclude}
+   \textcolor{comment}{// Block Upper Triangular}
+   prec\_pt = \textcolor{keyword}{new} BlockTriangularPreconditioner<CRDoubleMatrix>;
+
+\end{DoxyCodeInclude}
+
+\item {\bfseries Block} {\bfseries Lower} {\bfseries Triangular} {\bfseries Preconditioning}. The lower triangular version of the preconditioner can be selected with a call to the method {\ttfamily lower\+\_\+triangular()}.  
+\begin{DoxyCodeInclude}
+   \textcolor{comment}{// Block Lower Triangular}
+   prec\_pt = \textcolor{keyword}{new} BlockTriangularPreconditioner<CRDoubleMatrix>;
+   \textcolor{keyword}{dynamic\_cast<}BlockTriangularPreconditioner<CRDoubleMatrix>* \textcolor{keyword}{>}
+    (prec\_pt)->lower\_triangular();
+
+\end{DoxyCodeInclude}
+
+\end{DoxyItemize}
+
+Having chosen a preconditioner structure, the next stage is to choose the preconditioner for the subsidiary systems ( $J_{xx}$ and $J_{yy}$ in the \hyperlink{index_introduction}{Introduction} ). By default this is {\ttfamily Super\+L\+U\+Preconditioner}, but we wish to use {\ttfamily Hypre\+Preconditioner} so we pass the previously specified function {\ttfamily Hypre\+\_\+\+Subsidiary\+\_\+\+Preconditioner\+\_\+\+Helper\+::get\+\_\+hypre\+\_\+preconditioner()} to the preconditioner.
+
+ 
+\begin{DoxyCodeInclude}
+ \textcolor{comment}{// Specify Hypre as the subsidiary block preconditioner}
+ prec\_pt->set\_subsidiary\_preconditioner\_function
+   (Hypre\_Subsidiary\_Preconditioner\_Helper::get\_hypre\_preconditioner);
+
+\end{DoxyCodeInclude}
+
+
+The same subsidiary preconditioner is used for all subsidiary systems in a general purpose block preconditioner.
+
+As discussed in the \href{../../../mpi/block_preconditioners/html/index.html}{\tt Block Preconditioners} tutorial, the classification of the D\+O\+Fs is implemented at an elemental level so we pass a pointer to the mesh containing the elements to the preconditioner. (Note that this problem contains two meshes, one containing the bulk elements and one containing the Face\+Elements that apply the traction boundary condition. Since the latter do not introduce any new D\+O\+Fs, all the D\+O\+Fs are classified by the bulk elements. Therefore, we do not need to pass the traction element mesh to the block preconditioner.)
+
+ 
+\begin{DoxyCodeInclude}
+ \textcolor{comment}{// The preconditioner only requires the bulk mesh since its}
+ \textcolor{comment}{// elements are capable of classifying all degrees of freedom}
+ 
+ \textcolor{comment}{// prec\_pt is a GeneralPurposeBlockPreconditioner, so we call the function}
+ \textcolor{comment}{// add\_mesh(...). }
+ prec\_pt->add\_mesh(problem.solid\_mesh\_pt());
+
+\end{DoxyCodeInclude}
+
+
+Finally, we pass the preconditioner to the solver
+
+ 
+\begin{DoxyCodeInclude}
+ \textcolor{comment}{// pass the preconditioner to the solver}
+ solver\_pt->preconditioner\_pt() = prec\_pt;
+
+\end{DoxyCodeInclude}
+
+
+and solve the problem\+:
+
+ 
+\begin{DoxyCodeInclude}
+ \textcolor{comment}{// solve the problem}
+ problem.newton\_solve();
+
+\end{DoxyCodeInclude}
+\hypertarget{index_Parallelisation}{}\section{Parallelisation}\label{index_Parallelisation}
+Given that {\ttfamily Block\+Preconditioner}, {\ttfamily Trilinos\+Aztec\+O\+O\+Solver}, {\ttfamily Super\+L\+U\+Preconditioner}, {\ttfamily Hypre\+Preconditioner} and {\ttfamily Matrix\+Vector\+Product} are all automatically distributed, all that is required for a distributed solution is to run the executable under M\+PI with multiple processes.
+
+
+
+ 
+
+\hypertarget{index_sources}{}\section{Source files for this tutorial}\label{index_sources}
+
+\begin{DoxyItemize}
+\item The source files for the driver code are in \begin{center} \href{../../../../demo_drivers/mpi/solvers/}{\tt demo\+\_\+drivers/mpi/solvers/ } \end{center}  ~\newline
+
+\item The driver code is \begin{center} \href{../../../../demo_drivers/mpi/solvers/airy_cantilever.cc}{\tt demo\+\_\+drivers/mpi/solvers/airy\+\_\+cantilever.\+cc } \end{center}  ~\newline
+
+\end{DoxyItemize}
+
+
+
+ 
+
+ \hypertarget{index_pdf}{}\section{P\+D\+F file}\label{index_pdf}
+A \href{../latex/refman.pdf}{\tt pdf version} of this document is available. \end{document}

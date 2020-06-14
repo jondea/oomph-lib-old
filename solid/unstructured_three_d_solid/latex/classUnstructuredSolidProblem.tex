@@ -1,0 +1,194 @@
+\hypertarget{classUnstructuredSolidProblem}{}\section{Unstructured\+Solid\+Problem$<$ E\+L\+E\+M\+E\+NT $>$ Class Template Reference}
+\label{classUnstructuredSolidProblem}\index{Unstructured\+Solid\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$@{Unstructured\+Solid\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$}}
+
+
+Unstructured solid problem.  
+
+
+Inheritance diagram for Unstructured\+Solid\+Problem$<$ E\+L\+E\+M\+E\+NT $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classUnstructuredSolidProblem}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classUnstructuredSolidProblem_a18ce02b6e4bbc86403c9e1b32c095772}{Unstructured\+Solid\+Problem} ()
+\begin{DoxyCompactList}\small\item\em Constructor\+: \end{DoxyCompactList}\item 
+\hyperlink{classUnstructuredSolidProblem_a25fe105d949498bf8f7c15aff96a7d00}{$\sim$\+Unstructured\+Solid\+Problem} ()
+\begin{DoxyCompactList}\small\item\em Destructor (empty) \end{DoxyCompactList}\item 
+void \hyperlink{classUnstructuredSolidProblem_ab3d66fd61b69d12b4f159d763fc44f15}{doc\+\_\+solution} (Doc\+Info \&doc\+\_\+info)
+\begin{DoxyCompactList}\small\item\em Doc the solution. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classUnstructuredSolidProblem_a9137960284200ed998989f785965f902}{create\+\_\+traction\+\_\+elements} ()
+\begin{DoxyCompactList}\small\item\em Create traction elements. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classMySolidTetgenMesh}{My\+Solid\+Tetgen\+Mesh}$<$ E\+L\+E\+M\+E\+NT $>$ $\ast$ \hyperlink{classUnstructuredSolidProblem_ad6a8cbe2c2f3596385e1a2484bfb68f7}{Solid\+\_\+mesh\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Bulk solid mesh. \end{DoxyCompactList}\item 
+Vector$<$ Solid\+Mesh $\ast$ $>$ \hyperlink{classUnstructuredSolidProblem_a32e691a698667053003e21333fc65057}{Solid\+\_\+traction\+\_\+mesh\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Meshes of traction elements. \end{DoxyCompactList}\item 
+Vector$<$ unsigned $>$ \hyperlink{classUnstructuredSolidProblem_a62ea7d593eaac6a3a0f0455c4a3fd805}{Pinned\+\_\+solid\+\_\+boundary\+\_\+id}
+\begin{DoxyCompactList}\small\item\em I\+Ds of solid mesh boundaries where displacements are pinned. \end{DoxyCompactList}\item 
+Vector$<$ unsigned $>$ \hyperlink{classUnstructuredSolidProblem_a4cf906bac719c9a942c04bda2798080f}{Solid\+\_\+traction\+\_\+boundary\+\_\+id}
+\begin{DoxyCompactList}\small\item\em I\+Ds of solid mesh boundaries which make up the traction interface. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class E\+L\+E\+M\+E\+NT$>$\newline
+class Unstructured\+Solid\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$}
+
+Unstructured solid problem. 
+
+Definition at line 140 of file unstructured\+\_\+three\+\_\+d\+\_\+solid.\+cc.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classUnstructuredSolidProblem_a18ce02b6e4bbc86403c9e1b32c095772}\label{classUnstructuredSolidProblem_a18ce02b6e4bbc86403c9e1b32c095772}} 
+\index{Unstructured\+Solid\+Problem@{Unstructured\+Solid\+Problem}!Unstructured\+Solid\+Problem@{Unstructured\+Solid\+Problem}}
+\index{Unstructured\+Solid\+Problem@{Unstructured\+Solid\+Problem}!Unstructured\+Solid\+Problem@{Unstructured\+Solid\+Problem}}
+\subsubsection{\texorpdfstring{Unstructured\+Solid\+Problem()}{UnstructuredSolidProblem()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classUnstructuredSolidProblem}{Unstructured\+Solid\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::\hyperlink{classUnstructuredSolidProblem}{Unstructured\+Solid\+Problem} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor\+: 
+
+Constructor for unstructured solid problem. I\+Ds of solid mesh boundaries where displacements are pinned 
+
+Definition at line 179 of file unstructured\+\_\+three\+\_\+d\+\_\+solid.\+cc.
+
+
+
+References Global\+\_\+\+Parameters\+::\+Constitutive\+\_\+law\+\_\+pt, and Global\+\_\+\+Parameters\+::gravity().
+
+\mbox{\Hypertarget{classUnstructuredSolidProblem_a25fe105d949498bf8f7c15aff96a7d00}\label{classUnstructuredSolidProblem_a25fe105d949498bf8f7c15aff96a7d00}} 
+\index{Unstructured\+Solid\+Problem@{Unstructured\+Solid\+Problem}!````~Unstructured\+Solid\+Problem@{$\sim$\+Unstructured\+Solid\+Problem}}
+\index{````~Unstructured\+Solid\+Problem@{$\sim$\+Unstructured\+Solid\+Problem}!Unstructured\+Solid\+Problem@{Unstructured\+Solid\+Problem}}
+\subsubsection{\texorpdfstring{$\sim$\+Unstructured\+Solid\+Problem()}{~UnstructuredSolidProblem()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+\hyperlink{classUnstructuredSolidProblem}{Unstructured\+Solid\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::$\sim$\hyperlink{classUnstructuredSolidProblem}{Unstructured\+Solid\+Problem} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Destructor (empty) 
+
+
+
+Definition at line 149 of file unstructured\+\_\+three\+\_\+d\+\_\+solid.\+cc.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classUnstructuredSolidProblem_a9137960284200ed998989f785965f902}\label{classUnstructuredSolidProblem_a9137960284200ed998989f785965f902}} 
+\index{Unstructured\+Solid\+Problem@{Unstructured\+Solid\+Problem}!create\+\_\+traction\+\_\+elements@{create\+\_\+traction\+\_\+elements}}
+\index{create\+\_\+traction\+\_\+elements@{create\+\_\+traction\+\_\+elements}!Unstructured\+Solid\+Problem@{Unstructured\+Solid\+Problem}}
+\subsubsection{\texorpdfstring{create\+\_\+traction\+\_\+elements()}{create\_traction\_elements()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classUnstructuredSolidProblem}{Unstructured\+Solid\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::create\+\_\+traction\+\_\+elements (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Create traction elements. 
+
+
+
+Definition at line 301 of file unstructured\+\_\+three\+\_\+d\+\_\+solid.\+cc.
+
+
+
+References Global\+\_\+\+Parameters\+::constant\+\_\+pressure().
+
+\mbox{\Hypertarget{classUnstructuredSolidProblem_ab3d66fd61b69d12b4f159d763fc44f15}\label{classUnstructuredSolidProblem_ab3d66fd61b69d12b4f159d763fc44f15}} 
+\index{Unstructured\+Solid\+Problem@{Unstructured\+Solid\+Problem}!doc\+\_\+solution@{doc\+\_\+solution}}
+\index{doc\+\_\+solution@{doc\+\_\+solution}!Unstructured\+Solid\+Problem@{Unstructured\+Solid\+Problem}}
+\subsubsection{\texorpdfstring{doc\+\_\+solution()}{doc\_solution()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classUnstructuredSolidProblem}{Unstructured\+Solid\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::doc\+\_\+solution (\begin{DoxyParamCaption}\item[{Doc\+Info \&}]{doc\+\_\+info }\end{DoxyParamCaption})}
+
+
+
+Doc the solution. 
+
+
+
+Definition at line 344 of file unstructured\+\_\+three\+\_\+d\+\_\+solid.\+cc.
+
+
+
+Referenced by main().
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classUnstructuredSolidProblem_a62ea7d593eaac6a3a0f0455c4a3fd805}\label{classUnstructuredSolidProblem_a62ea7d593eaac6a3a0f0455c4a3fd805}} 
+\index{Unstructured\+Solid\+Problem@{Unstructured\+Solid\+Problem}!Pinned\+\_\+solid\+\_\+boundary\+\_\+id@{Pinned\+\_\+solid\+\_\+boundary\+\_\+id}}
+\index{Pinned\+\_\+solid\+\_\+boundary\+\_\+id@{Pinned\+\_\+solid\+\_\+boundary\+\_\+id}!Unstructured\+Solid\+Problem@{Unstructured\+Solid\+Problem}}
+\subsubsection{\texorpdfstring{Pinned\+\_\+solid\+\_\+boundary\+\_\+id}{Pinned\_solid\_boundary\_id}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+Vector$<$unsigned$>$ \hyperlink{classUnstructuredSolidProblem}{Unstructured\+Solid\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::Pinned\+\_\+solid\+\_\+boundary\+\_\+id\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+I\+Ds of solid mesh boundaries where displacements are pinned. 
+
+
+
+Definition at line 166 of file unstructured\+\_\+three\+\_\+d\+\_\+solid.\+cc.
+
+\mbox{\Hypertarget{classUnstructuredSolidProblem_ad6a8cbe2c2f3596385e1a2484bfb68f7}\label{classUnstructuredSolidProblem_ad6a8cbe2c2f3596385e1a2484bfb68f7}} 
+\index{Unstructured\+Solid\+Problem@{Unstructured\+Solid\+Problem}!Solid\+\_\+mesh\+\_\+pt@{Solid\+\_\+mesh\+\_\+pt}}
+\index{Solid\+\_\+mesh\+\_\+pt@{Solid\+\_\+mesh\+\_\+pt}!Unstructured\+Solid\+Problem@{Unstructured\+Solid\+Problem}}
+\subsubsection{\texorpdfstring{Solid\+\_\+mesh\+\_\+pt}{Solid\_mesh\_pt}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+\hyperlink{classMySolidTetgenMesh}{My\+Solid\+Tetgen\+Mesh}$<$E\+L\+E\+M\+E\+NT$>$$\ast$ \hyperlink{classUnstructuredSolidProblem}{Unstructured\+Solid\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::Solid\+\_\+mesh\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Bulk solid mesh. 
+
+
+
+Definition at line 160 of file unstructured\+\_\+three\+\_\+d\+\_\+solid.\+cc.
+
+\mbox{\Hypertarget{classUnstructuredSolidProblem_a4cf906bac719c9a942c04bda2798080f}\label{classUnstructuredSolidProblem_a4cf906bac719c9a942c04bda2798080f}} 
+\index{Unstructured\+Solid\+Problem@{Unstructured\+Solid\+Problem}!Solid\+\_\+traction\+\_\+boundary\+\_\+id@{Solid\+\_\+traction\+\_\+boundary\+\_\+id}}
+\index{Solid\+\_\+traction\+\_\+boundary\+\_\+id@{Solid\+\_\+traction\+\_\+boundary\+\_\+id}!Unstructured\+Solid\+Problem@{Unstructured\+Solid\+Problem}}
+\subsubsection{\texorpdfstring{Solid\+\_\+traction\+\_\+boundary\+\_\+id}{Solid\_traction\_boundary\_id}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+Vector$<$unsigned$>$ \hyperlink{classUnstructuredSolidProblem}{Unstructured\+Solid\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::Solid\+\_\+traction\+\_\+boundary\+\_\+id\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+I\+Ds of solid mesh boundaries which make up the traction interface. 
+
+
+
+Definition at line 169 of file unstructured\+\_\+three\+\_\+d\+\_\+solid.\+cc.
+
+\mbox{\Hypertarget{classUnstructuredSolidProblem_a32e691a698667053003e21333fc65057}\label{classUnstructuredSolidProblem_a32e691a698667053003e21333fc65057}} 
+\index{Unstructured\+Solid\+Problem@{Unstructured\+Solid\+Problem}!Solid\+\_\+traction\+\_\+mesh\+\_\+pt@{Solid\+\_\+traction\+\_\+mesh\+\_\+pt}}
+\index{Solid\+\_\+traction\+\_\+mesh\+\_\+pt@{Solid\+\_\+traction\+\_\+mesh\+\_\+pt}!Unstructured\+Solid\+Problem@{Unstructured\+Solid\+Problem}}
+\subsubsection{\texorpdfstring{Solid\+\_\+traction\+\_\+mesh\+\_\+pt}{Solid\_traction\_mesh\_pt}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+Vector$<$Solid\+Mesh$\ast$$>$ \hyperlink{classUnstructuredSolidProblem}{Unstructured\+Solid\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::Solid\+\_\+traction\+\_\+mesh\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Meshes of traction elements. 
+
+
+
+Definition at line 163 of file unstructured\+\_\+three\+\_\+d\+\_\+solid.\+cc.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{unstructured__three__d__solid_8cc}{unstructured\+\_\+three\+\_\+d\+\_\+solid.\+cc}\end{DoxyCompactItemize}

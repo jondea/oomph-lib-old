@@ -1,0 +1,153 @@
+\hypertarget{classQHarmonicElement}{}\section{Q\+Harmonic\+Element$<$ N\+N\+O\+D\+E\+\_\+1D $>$ Class Template Reference}
+\label{classQHarmonicElement}\index{Q\+Harmonic\+Element$<$ N\+N\+O\+D\+E\+\_\+1\+D $>$@{Q\+Harmonic\+Element$<$ N\+N\+O\+D\+E\+\_\+1\+D $>$}}
+Inheritance diagram for Q\+Harmonic\+Element$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classQHarmonicElement}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classQHarmonicElement_a0e7480a0064b51e87ba197551bb10373}{Q\+Harmonic\+Element} ()
+\begin{DoxyCompactList}\small\item\em Constructor\+: Call constructors for Q\+Element and Poisson equations. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classQHarmonicElement_a8574a452983b15fb2b4d40ec4ef3e890}{required\+\_\+nvalue} (const unsigned \&n) const
+\begin{DoxyCompactList}\small\item\em Required \# of `values\textquotesingle{} (pinned or dofs) at node n. \end{DoxyCompactList}\item 
+void \hyperlink{classQHarmonicElement_a8b38012f3d62ef419c359f5e545e5f85}{output} (ostream \&outfile)
+\begin{DoxyCompactList}\small\item\em Output function overloaded from \hyperlink{classHarmonicEquations}{Harmonic\+Equations}. \end{DoxyCompactList}\item 
+void \hyperlink{classQHarmonicElement_a25cda8268943ebba984da16b07544e89}{output} (ostream \&outfile, const unsigned \&Nplot)
+\begin{DoxyCompactList}\small\item\em Output function overloaded from \hyperlink{classHarmonicEquations}{Harmonic\+Equations}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \hyperlink{classQHarmonicElement_a206b7334e82cb563d7d575deb9f755b1}{dshape\+\_\+eulerian} (const Vector$<$ double $>$ \&s, Shape \&psi, D\+Shape \&dpsidx) const
+\begin{DoxyCompactList}\small\item\em Shape, test functions \& derivs. w.\+r.\+t. to global coords. Return Jacobian. \end{DoxyCompactList}\item 
+double \hyperlink{classQHarmonicElement_a6b11b5a42bd20c4e1d1e9840ba22a80a}{dshape\+\_\+eulerian\+\_\+at\+\_\+knot} (const unsigned \&ipt, Shape \&psi, D\+Shape \&dpsidx) const
+\begin{DoxyCompactList}\small\item\em Shape, test functions \& derivs. w.\+r.\+t. to global coords. at integration point ipt. Return Jacobian. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$\newline
+class Q\+Harmonic\+Element$<$ N\+N\+O\+D\+E\+\_\+1\+D $>$}
+
+Q\+Harmonic\+Element$<$\+N\+N\+O\+D\+E\+\_\+1\+D$>$ elements are 1D Elements with N\+N\+O\+D\+E\+\_\+1D nodal points that are used to solve the Harmonic eigenvalue Problem described by \hyperlink{classHarmonicEquations}{Harmonic\+Equations}. 
+
+Definition at line 226 of file harmonic.\+cc.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classQHarmonicElement_a0e7480a0064b51e87ba197551bb10373}\label{classQHarmonicElement_a0e7480a0064b51e87ba197551bb10373}} 
+\index{Q\+Harmonic\+Element@{Q\+Harmonic\+Element}!Q\+Harmonic\+Element@{Q\+Harmonic\+Element}}
+\index{Q\+Harmonic\+Element@{Q\+Harmonic\+Element}!Q\+Harmonic\+Element@{Q\+Harmonic\+Element}}
+\subsubsection{\texorpdfstring{Q\+Harmonic\+Element()}{QHarmonicElement()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+\hyperlink{classQHarmonicElement}{Q\+Harmonic\+Element}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::\hyperlink{classQHarmonicElement}{Q\+Harmonic\+Element} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor\+: Call constructors for Q\+Element and Poisson equations. 
+
+
+
+Definition at line 234 of file harmonic.\+cc.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classQHarmonicElement_a206b7334e82cb563d7d575deb9f755b1}\label{classQHarmonicElement_a206b7334e82cb563d7d575deb9f755b1}} 
+\index{Q\+Harmonic\+Element@{Q\+Harmonic\+Element}!dshape\+\_\+eulerian@{dshape\+\_\+eulerian}}
+\index{dshape\+\_\+eulerian@{dshape\+\_\+eulerian}!Q\+Harmonic\+Element@{Q\+Harmonic\+Element}}
+\subsubsection{\texorpdfstring{dshape\+\_\+eulerian()}{dshape\_eulerian()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+double \hyperlink{classQHarmonicElement}{Q\+Harmonic\+Element}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::dshape\+\_\+eulerian (\begin{DoxyParamCaption}\item[{const Vector$<$ double $>$ \&}]{s,  }\item[{Shape \&}]{psi,  }\item[{D\+Shape \&}]{dpsidx }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Shape, test functions \& derivs. w.\+r.\+t. to global coords. Return Jacobian. 
+
+
+
+Implements \hyperlink{classHarmonicEquations_ae013637e60841f46cf4c452ee3469163}{Harmonic\+Equations}.
+
+
+
+Definition at line 252 of file harmonic.\+cc.
+
+\mbox{\Hypertarget{classQHarmonicElement_a6b11b5a42bd20c4e1d1e9840ba22a80a}\label{classQHarmonicElement_a6b11b5a42bd20c4e1d1e9840ba22a80a}} 
+\index{Q\+Harmonic\+Element@{Q\+Harmonic\+Element}!dshape\+\_\+eulerian\+\_\+at\+\_\+knot@{dshape\+\_\+eulerian\+\_\+at\+\_\+knot}}
+\index{dshape\+\_\+eulerian\+\_\+at\+\_\+knot@{dshape\+\_\+eulerian\+\_\+at\+\_\+knot}!Q\+Harmonic\+Element@{Q\+Harmonic\+Element}}
+\subsubsection{\texorpdfstring{dshape\+\_\+eulerian\+\_\+at\+\_\+knot()}{dshape\_eulerian\_at\_knot()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+double \hyperlink{classQHarmonicElement}{Q\+Harmonic\+Element}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::dshape\+\_\+eulerian\+\_\+at\+\_\+knot (\begin{DoxyParamCaption}\item[{const unsigned \&}]{ipt,  }\item[{Shape \&}]{psi,  }\item[{D\+Shape \&}]{dpsidx }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Shape, test functions \& derivs. w.\+r.\+t. to global coords. at integration point ipt. Return Jacobian. 
+
+
+
+Implements \hyperlink{classHarmonicEquations_aaf04ba09dd948dcb0efb8e7e43da9736}{Harmonic\+Equations}.
+
+
+
+Definition at line 260 of file harmonic.\+cc.
+
+\mbox{\Hypertarget{classQHarmonicElement_a8b38012f3d62ef419c359f5e545e5f85}\label{classQHarmonicElement_a8b38012f3d62ef419c359f5e545e5f85}} 
+\index{Q\+Harmonic\+Element@{Q\+Harmonic\+Element}!output@{output}}
+\index{output@{output}!Q\+Harmonic\+Element@{Q\+Harmonic\+Element}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+void \hyperlink{classQHarmonicElement}{Q\+Harmonic\+Element}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::output (\begin{DoxyParamCaption}\item[{ostream \&}]{outfile }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Output function overloaded from \hyperlink{classHarmonicEquations}{Harmonic\+Equations}. 
+
+
+
+Definition at line 241 of file harmonic.\+cc.
+
+
+
+References Harmonic\+Equations\+::output().
+
+\mbox{\Hypertarget{classQHarmonicElement_a25cda8268943ebba984da16b07544e89}\label{classQHarmonicElement_a25cda8268943ebba984da16b07544e89}} 
+\index{Q\+Harmonic\+Element@{Q\+Harmonic\+Element}!output@{output}}
+\index{output@{output}!Q\+Harmonic\+Element@{Q\+Harmonic\+Element}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+void \hyperlink{classQHarmonicElement}{Q\+Harmonic\+Element}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::output (\begin{DoxyParamCaption}\item[{ostream \&}]{outfile,  }\item[{const unsigned \&}]{Nplot }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Output function overloaded from \hyperlink{classHarmonicEquations}{Harmonic\+Equations}. 
+
+
+
+Definition at line 245 of file harmonic.\+cc.
+
+
+
+References Harmonic\+Equations\+::output().
+
+\mbox{\Hypertarget{classQHarmonicElement_a8574a452983b15fb2b4d40ec4ef3e890}\label{classQHarmonicElement_a8574a452983b15fb2b4d40ec4ef3e890}} 
+\index{Q\+Harmonic\+Element@{Q\+Harmonic\+Element}!required\+\_\+nvalue@{required\+\_\+nvalue}}
+\index{required\+\_\+nvalue@{required\+\_\+nvalue}!Q\+Harmonic\+Element@{Q\+Harmonic\+Element}}
+\subsubsection{\texorpdfstring{required\+\_\+nvalue()}{required\_nvalue()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+unsigned \hyperlink{classQHarmonicElement}{Q\+Harmonic\+Element}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::required\+\_\+nvalue (\begin{DoxyParamCaption}\item[{const unsigned \&}]{n }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Required \# of `values\textquotesingle{} (pinned or dofs) at node n. 
+
+
+
+Definition at line 238 of file harmonic.\+cc.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{harmonic_8cc}{harmonic.\+cc}\end{DoxyCompactItemize}

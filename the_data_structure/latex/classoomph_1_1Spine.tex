@@ -1,0 +1,631 @@
+\hypertarget{classoomph_1_1Spine}{}\section{oomph\+:\+:Spine Class Reference}
+\label{classoomph_1_1Spine}\index{oomph\+::\+Spine@{oomph\+::\+Spine}}
+
+
+{\ttfamily \#include $<$spines.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1Spine_a93fe5032eec46631288d4c098f49e89a}{Spine} ()
+\begin{DoxyCompactList}\small\item\em Default constructor\+: Create the \hyperlink{classoomph_1_1Spine}{Spine} and initialise its height to zero. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Spine_a7a8e8d3030dabfc977e978ceb1363c3b}{Spine} (const double \&\hyperlink{classoomph_1_1Spine_a7502bf089f4001796d5ef801cf104a28}{height})
+\begin{DoxyCompactList}\small\item\em Constructor\+: Create the \hyperlink{classoomph_1_1Spine}{Spine} and initialise its height to the specified value. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Spine_a2da64547ad53a6c00ab06f0217bcb397}{Spine} (const double \&\hyperlink{classoomph_1_1Spine_a7502bf089f4001796d5ef801cf104a28}{height}, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ \hyperlink{classoomph_1_1Data}{Data} $\ast$$>$ \&\hyperlink{classoomph_1_1Spine_aaf0954f69bd9bed913e714fafaad4644}{geom\+\_\+data\+\_\+pt})
+\begin{DoxyCompactList}\small\item\em Constructor\+: Create the \hyperlink{classoomph_1_1Spine}{Spine} and initialise its height to the specified value. Store the vector of (pointers to) the additional geometric \hyperlink{classoomph_1_1Data}{Data} that is required during the node update operation for this \hyperlink{classoomph_1_1Spine}{Spine}. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Spine_a482bd3c74deddb27c1c7ce2e4eb6ae42}{Spine} (const double \&\hyperlink{classoomph_1_1Spine_a7502bf089f4001796d5ef801cf104a28}{height}, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ \hyperlink{classoomph_1_1Data}{Data} $\ast$$>$ \&\hyperlink{classoomph_1_1Spine_aaf0954f69bd9bed913e714fafaad4644}{geom\+\_\+data\+\_\+pt}, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ \hyperlink{classoomph_1_1GeomObject}{Geom\+Object} $\ast$$>$ \&\hyperlink{classoomph_1_1Spine_a68253ccfbfdf33e773dd300dcc4ec42c}{geom\+\_\+object\+\_\+pt})
+\begin{DoxyCompactList}\small\item\em Constructor\+: Create the \hyperlink{classoomph_1_1Spine}{Spine} and initialise its height to the specified value. Store the vector of (pointers to) the additional geometric \hyperlink{classoomph_1_1Data}{Data} that is required during the node update operation; also store vector of (pointers to) Geom\+Objects that is required during the node update operation for this \hyperlink{classoomph_1_1Spine}{Spine}. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Spine_a0612b3e02900f28a6c922a76aacfe4cd}{$\sim$\+Spine} ()
+\begin{DoxyCompactList}\small\item\em Destructor\+: Wipe \hyperlink{classoomph_1_1Data}{Data} object that stores the \hyperlink{classoomph_1_1Spine}{Spine} height. All other objects (geometric \hyperlink{classoomph_1_1Data}{Data} and geometric objects) were created outside the \hyperlink{classoomph_1_1Spine}{Spine} and must be deleted there. \end{DoxyCompactList}\item 
+double \& \hyperlink{classoomph_1_1Spine_a7502bf089f4001796d5ef801cf104a28}{height} ()
+\begin{DoxyCompactList}\small\item\em Access function to spine height. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Data}{Data} $\ast$\& \hyperlink{classoomph_1_1Spine_ac34e4b12d9c1843611e42968ba5d90c7}{spine\+\_\+height\+\_\+pt} ()
+\begin{DoxyCompactList}\small\item\em Access function to \hyperlink{classoomph_1_1Data}{Data} object that stores the spine height. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Data}{Data} $\ast$ \hyperlink{classoomph_1_1Spine_a1253190f2780837bae5c68a3bd0a43a6}{spine\+\_\+height\+\_\+pt} () const
+\begin{DoxyCompactList}\small\item\em Access function to \hyperlink{classoomph_1_1Data}{Data} object that stores the spine height (const version) \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1Spine_a6c609c4f717e486ee70d57eb937b306e}{ngeom\+\_\+data} ()
+\begin{DoxyCompactList}\small\item\em Number of geometric \hyperlink{classoomph_1_1Data}{Data} that is involved in the node update operations for this \hyperlink{classoomph_1_1Spine}{Spine}. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1Spine_a32774ebc4f5f7b14c09e3abe045987e9}{set\+\_\+geom\+\_\+data\+\_\+pt} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ \hyperlink{classoomph_1_1Data}{Data} $\ast$$>$ \&\hyperlink{classoomph_1_1Spine_aaf0954f69bd9bed913e714fafaad4644}{geom\+\_\+data\+\_\+pt})
+\begin{DoxyCompactList}\small\item\em Set vector of (pointers to) geometric \hyperlink{classoomph_1_1Data}{Data} that is involved in the node update operations for this \hyperlink{classoomph_1_1Spine}{Spine}. Wipes any previously existing geometric \hyperlink{classoomph_1_1Data}{Data}. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1Spine_a2d376df8ef9da2c04f2e27cb68496840}{add\+\_\+geom\+\_\+data\+\_\+pt} (\hyperlink{classoomph_1_1Data}{Data} $\ast$\hyperlink{classoomph_1_1Spine_aaf0954f69bd9bed913e714fafaad4644}{geom\+\_\+data\+\_\+pt})
+\begin{DoxyCompactList}\small\item\em Add (pointer to) geometric \hyperlink{classoomph_1_1Data}{Data} that is involved in the node update operations for this \hyperlink{classoomph_1_1Spine}{Spine}. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Data}{Data} $\ast$\& \hyperlink{classoomph_1_1Spine_aaf0954f69bd9bed913e714fafaad4644}{geom\+\_\+data\+\_\+pt} (const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i})
+\begin{DoxyCompactList}\small\item\em Return i-\/th geometric \hyperlink{classoomph_1_1Data}{Data} that is involved in the node update operations for this \hyperlink{classoomph_1_1Spine}{Spine}. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Data}{Data} $\ast$ \hyperlink{classoomph_1_1Spine_a8d25c84698e695a1306b800539e25e90}{geom\+\_\+data\+\_\+pt} (const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}) const
+\begin{DoxyCompactList}\small\item\em Return i-\/th geometric \hyperlink{classoomph_1_1Data}{Data} that is involved in the node update operations for this \hyperlink{classoomph_1_1Spine}{Spine}. Const version. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Vector}{Vector}$<$ \hyperlink{classoomph_1_1Data}{Data} $\ast$ $>$ \& \hyperlink{classoomph_1_1Spine_a930bb511049f50d2a248277c5ffb7d68}{vector\+\_\+geom\+\_\+data\+\_\+pt} ()
+\begin{DoxyCompactList}\small\item\em Return the vector of geometric data. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1Spine_a4ed777b5f3b4b1e464835ba945003877}{ngeom\+\_\+object} ()
+\begin{DoxyCompactList}\small\item\em Number of geometric objects that is involved in the node update operations for this \hyperlink{classoomph_1_1Spine}{Spine}. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1Spine_a7069dfe59a9f4c1ad487adf606f5931a}{set\+\_\+geom\+\_\+object\+\_\+pt} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ \hyperlink{classoomph_1_1GeomObject}{Geom\+Object} $\ast$$>$ \&\hyperlink{classoomph_1_1Spine_a68253ccfbfdf33e773dd300dcc4ec42c}{geom\+\_\+object\+\_\+pt})
+\begin{DoxyCompactList}\small\item\em Set vector of (pointers to) geometric objects that is involved in the node update operations for this \hyperlink{classoomph_1_1Spine}{Spine}. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1Spine_adf9717dda0fb1b5fd99e50e4737d9706}{add\+\_\+geom\+\_\+object\+\_\+pt} (\hyperlink{classoomph_1_1GeomObject}{Geom\+Object} $\ast$\hyperlink{classoomph_1_1Spine_a68253ccfbfdf33e773dd300dcc4ec42c}{geom\+\_\+object\+\_\+pt})
+\begin{DoxyCompactList}\small\item\em Add (pointer to) geometric object that is involved in the node update operations for this \hyperlink{classoomph_1_1Spine}{Spine}. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1GeomObject}{Geom\+Object} $\ast$\& \hyperlink{classoomph_1_1Spine_a68253ccfbfdf33e773dd300dcc4ec42c}{geom\+\_\+object\+\_\+pt} (const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i})
+\begin{DoxyCompactList}\small\item\em Return i-\/th geometric object that is involved in the node update operations for this \hyperlink{classoomph_1_1Spine}{Spine}. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1GeomObject}{Geom\+Object} $\ast$ \hyperlink{classoomph_1_1Spine_a1b0c82fb9f9f2fc7df286e516c818b4c}{geom\+\_\+object\+\_\+pt} (const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}) const
+\begin{DoxyCompactList}\small\item\em Return i-\/th geometric object that is involved in the node update operations for this \hyperlink{classoomph_1_1Spine}{Spine}. Const version. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Vector}{Vector}$<$ \hyperlink{classoomph_1_1GeomObject}{Geom\+Object} $\ast$ $>$ \& \hyperlink{classoomph_1_1Spine_ace2513da519c1eb7a40fdac7bb803f0a}{vector\+\_\+geom\+\_\+object\+\_\+pt} ()
+\begin{DoxyCompactList}\small\item\em Return the vector of all geometric objects that affect this spine. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1Spine_a809b08740a5aa1be9d89f0b87b5863ba}{ngeom\+\_\+parameter} ()
+\begin{DoxyCompactList}\small\item\em Number of geometric parameters that are involved in the node update operations for this \hyperlink{classoomph_1_1Spine}{Spine}. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1Spine_a6d99d5a44a79588d38a83fae4ca87c57}{set\+\_\+geom\+\_\+parameter} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{classoomph_1_1Spine_a8d8bd170521e615dda38a0d3fdef09cb}{geom\+\_\+parameter})
+\begin{DoxyCompactList}\small\item\em Set vector of geometric parameters that are involved in the node update operations for this \hyperlink{classoomph_1_1Spine}{Spine}. Wipes any previously existing geometric parameters. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1Spine_a67e2aa787f36792224dc48d2101d6091}{add\+\_\+geom\+\_\+parameter} (const double \&\hyperlink{classoomph_1_1Spine_a8d8bd170521e615dda38a0d3fdef09cb}{geom\+\_\+parameter})
+\begin{DoxyCompactList}\small\item\em Add geometric parameter involved in the node update operations for this \hyperlink{classoomph_1_1Spine}{Spine}. \end{DoxyCompactList}\item 
+double \& \hyperlink{classoomph_1_1Spine_a8d8bd170521e615dda38a0d3fdef09cb}{geom\+\_\+parameter} (const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i})
+\begin{DoxyCompactList}\small\item\em Return i-\/th geometric parameter that is involved in the node update operations for this \hyperlink{classoomph_1_1Spine}{Spine}. \end{DoxyCompactList}\item 
+const double \& \hyperlink{classoomph_1_1Spine_ad550875853ebdf54a2e81e8bbe6efa9d}{geom\+\_\+parameter} (const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}) const
+\begin{DoxyCompactList}\small\item\em Return i-\/th geometric parameter that is involved in the node update operations for this \hyperlink{classoomph_1_1Spine}{Spine}. Const version. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1Vector}{Vector}$<$ \hyperlink{classoomph_1_1Data}{Data} $\ast$ $>$ \hyperlink{classoomph_1_1Spine_a50aea4fad1b1e0a3509a2405f3b31ecb}{Geom\+\_\+data\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classoomph_1_1Data}{Data} that stores the spine height. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Vector}{Vector}$<$ \hyperlink{classoomph_1_1GeomObject}{Geom\+Object} $\ast$ $>$ \hyperlink{classoomph_1_1Spine_aa5bf17dd0cd4f4acda73273a3227ef09}{Geom\+\_\+object\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classoomph_1_1Vector}{Vector} that stores the pointers to geometric objects that is involved in the node update operation. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \hyperlink{classoomph_1_1Spine_aa368ebf715af6b0c6da70ad68ed0ec91}{Geom\+\_\+parameter}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classoomph_1_1Vector}{Vector} that stores doubles that are used in the geometric updates. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Spines are used for algebraic node update operations in free-\/surface fluid problems\+: They form the back-\/bones along which nodes in a a free-\/surface mesh are located. Typically, the free surface is located at the \char`\"{}end\char`\"{} of the spine; the nodes in the interior of the mesh are located at fixed fractions along the spine. The key \hyperlink{classoomph_1_1Data}{Data} member of the \hyperlink{classoomph_1_1Spine}{Spine} object is its \char`\"{}height\char`\"{} -- usually an unknown in the problem -- which is used by the \hyperlink{classoomph_1_1SpineNode}{Spine\+Node}\textquotesingle{}s node update function to update the \hyperlink{classoomph_1_1SpineNode}{Spine\+Node}\textquotesingle{}s position.
+
+In more complex problems (such as the case where a fluid layer is deposited on an elastic body), the node update function can depend on additional information, such as the \hyperlink{classoomph_1_1GeomObject}{Geom\+Object} representation of the elastic body, and additional \hyperlink{classoomph_1_1Data}{Data} objects wich specify the position on the \hyperlink{classoomph_1_1GeomObject}{Geom\+Object} from which the \hyperlink{classoomph_1_1Spine}{Spine} emanates. The \hyperlink{classoomph_1_1Spine}{Spine} class therefore provides storage for pointers to Geom\+Objects and storage for any additional geometric \hyperlink{classoomph_1_1Data}{Data} that may be required during node update operations. 
+
+Definition at line 69 of file spines.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1Spine_a93fe5032eec46631288d4c098f49e89a}\label{classoomph_1_1Spine_a93fe5032eec46631288d4c098f49e89a}} 
+\index{oomph\+::\+Spine@{oomph\+::\+Spine}!Spine@{Spine}}
+\index{Spine@{Spine}!oomph\+::\+Spine@{oomph\+::\+Spine}}
+\subsubsection{\texorpdfstring{Spine()}{Spine()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily oomph\+::\+Spine\+::\+Spine (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Default constructor\+: Create the \hyperlink{classoomph_1_1Spine}{Spine} and initialise its height to zero. 
+
+
+
+Definition at line 76 of file spines.\+h.
+
+
+
+References Geom\+\_\+data\+\_\+pt.
+
+\mbox{\Hypertarget{classoomph_1_1Spine_a7a8e8d3030dabfc977e978ceb1363c3b}\label{classoomph_1_1Spine_a7a8e8d3030dabfc977e978ceb1363c3b}} 
+\index{oomph\+::\+Spine@{oomph\+::\+Spine}!Spine@{Spine}}
+\index{Spine@{Spine}!oomph\+::\+Spine@{oomph\+::\+Spine}}
+\subsubsection{\texorpdfstring{Spine()}{Spine()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily oomph\+::\+Spine\+::\+Spine (\begin{DoxyParamCaption}\item[{const double \&}]{height }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor\+: Create the \hyperlink{classoomph_1_1Spine}{Spine} and initialise its height to the specified value. 
+
+
+
+Definition at line 85 of file spines.\+h.
+
+
+
+References Geom\+\_\+data\+\_\+pt.
+
+\mbox{\Hypertarget{classoomph_1_1Spine_a2da64547ad53a6c00ab06f0217bcb397}\label{classoomph_1_1Spine_a2da64547ad53a6c00ab06f0217bcb397}} 
+\index{oomph\+::\+Spine@{oomph\+::\+Spine}!Spine@{Spine}}
+\index{Spine@{Spine}!oomph\+::\+Spine@{oomph\+::\+Spine}}
+\subsubsection{\texorpdfstring{Spine()}{Spine()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily oomph\+::\+Spine\+::\+Spine (\begin{DoxyParamCaption}\item[{const double \&}]{height,  }\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ \hyperlink{classoomph_1_1Data}{Data} $\ast$$>$ \&}]{geom\+\_\+data\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor\+: Create the \hyperlink{classoomph_1_1Spine}{Spine} and initialise its height to the specified value. Store the vector of (pointers to) the additional geometric \hyperlink{classoomph_1_1Data}{Data} that is required during the node update operation for this \hyperlink{classoomph_1_1Spine}{Spine}. 
+
+
+
+Definition at line 98 of file spines.\+h.
+
+
+
+References Geom\+\_\+data\+\_\+pt, and i.
+
+\mbox{\Hypertarget{classoomph_1_1Spine_a482bd3c74deddb27c1c7ce2e4eb6ae42}\label{classoomph_1_1Spine_a482bd3c74deddb27c1c7ce2e4eb6ae42}} 
+\index{oomph\+::\+Spine@{oomph\+::\+Spine}!Spine@{Spine}}
+\index{Spine@{Spine}!oomph\+::\+Spine@{oomph\+::\+Spine}}
+\subsubsection{\texorpdfstring{Spine()}{Spine()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily oomph\+::\+Spine\+::\+Spine (\begin{DoxyParamCaption}\item[{const double \&}]{height,  }\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ \hyperlink{classoomph_1_1Data}{Data} $\ast$$>$ \&}]{geom\+\_\+data\+\_\+pt,  }\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ \hyperlink{classoomph_1_1GeomObject}{Geom\+Object} $\ast$$>$ \&}]{geom\+\_\+object\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor\+: Create the \hyperlink{classoomph_1_1Spine}{Spine} and initialise its height to the specified value. Store the vector of (pointers to) the additional geometric \hyperlink{classoomph_1_1Data}{Data} that is required during the node update operation; also store vector of (pointers to) Geom\+Objects that is required during the node update operation for this \hyperlink{classoomph_1_1Spine}{Spine}. 
+
+
+
+Definition at line 123 of file spines.\+h.
+
+
+
+References Geom\+\_\+data\+\_\+pt, and i.
+
+\mbox{\Hypertarget{classoomph_1_1Spine_a0612b3e02900f28a6c922a76aacfe4cd}\label{classoomph_1_1Spine_a0612b3e02900f28a6c922a76aacfe4cd}} 
+\index{oomph\+::\+Spine@{oomph\+::\+Spine}!````~Spine@{$\sim$\+Spine}}
+\index{````~Spine@{$\sim$\+Spine}!oomph\+::\+Spine@{oomph\+::\+Spine}}
+\subsubsection{\texorpdfstring{$\sim$\+Spine()}{~Spine()}}
+{\footnotesize\ttfamily oomph\+::\+Spine\+::$\sim$\+Spine (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Destructor\+: Wipe \hyperlink{classoomph_1_1Data}{Data} object that stores the \hyperlink{classoomph_1_1Spine}{Spine} height. All other objects (geometric \hyperlink{classoomph_1_1Data}{Data} and geometric objects) were created outside the \hyperlink{classoomph_1_1Spine}{Spine} and must be deleted there. 
+
+
+
+Definition at line 150 of file spines.\+h.
+
+
+
+References Geom\+\_\+data\+\_\+pt.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1Spine_a2d376df8ef9da2c04f2e27cb68496840}\label{classoomph_1_1Spine_a2d376df8ef9da2c04f2e27cb68496840}} 
+\index{oomph\+::\+Spine@{oomph\+::\+Spine}!add\+\_\+geom\+\_\+data\+\_\+pt@{add\+\_\+geom\+\_\+data\+\_\+pt}}
+\index{add\+\_\+geom\+\_\+data\+\_\+pt@{add\+\_\+geom\+\_\+data\+\_\+pt}!oomph\+::\+Spine@{oomph\+::\+Spine}}
+\subsubsection{\texorpdfstring{add\+\_\+geom\+\_\+data\+\_\+pt()}{add\_geom\_data\_pt()}}
+{\footnotesize\ttfamily void oomph\+::\+Spine\+::add\+\_\+geom\+\_\+data\+\_\+pt (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Data}{Data} $\ast$}]{geom\+\_\+data\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Add (pointer to) geometric \hyperlink{classoomph_1_1Data}{Data} that is involved in the node update operations for this \hyperlink{classoomph_1_1Spine}{Spine}. 
+
+
+
+Definition at line 196 of file spines.\+h.
+
+
+
+References Geom\+\_\+data\+\_\+pt.
+
+\mbox{\Hypertarget{classoomph_1_1Spine_adf9717dda0fb1b5fd99e50e4737d9706}\label{classoomph_1_1Spine_adf9717dda0fb1b5fd99e50e4737d9706}} 
+\index{oomph\+::\+Spine@{oomph\+::\+Spine}!add\+\_\+geom\+\_\+object\+\_\+pt@{add\+\_\+geom\+\_\+object\+\_\+pt}}
+\index{add\+\_\+geom\+\_\+object\+\_\+pt@{add\+\_\+geom\+\_\+object\+\_\+pt}!oomph\+::\+Spine@{oomph\+::\+Spine}}
+\subsubsection{\texorpdfstring{add\+\_\+geom\+\_\+object\+\_\+pt()}{add\_geom\_object\_pt()}}
+{\footnotesize\ttfamily void oomph\+::\+Spine\+::add\+\_\+geom\+\_\+object\+\_\+pt (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1GeomObject}{Geom\+Object} $\ast$}]{geom\+\_\+object\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Add (pointer to) geometric object that is involved in the node update operations for this \hyperlink{classoomph_1_1Spine}{Spine}. 
+
+
+
+Definition at line 230 of file spines.\+h.
+
+
+
+References Geom\+\_\+object\+\_\+pt.
+
+\mbox{\Hypertarget{classoomph_1_1Spine_a67e2aa787f36792224dc48d2101d6091}\label{classoomph_1_1Spine_a67e2aa787f36792224dc48d2101d6091}} 
+\index{oomph\+::\+Spine@{oomph\+::\+Spine}!add\+\_\+geom\+\_\+parameter@{add\+\_\+geom\+\_\+parameter}}
+\index{add\+\_\+geom\+\_\+parameter@{add\+\_\+geom\+\_\+parameter}!oomph\+::\+Spine@{oomph\+::\+Spine}}
+\subsubsection{\texorpdfstring{add\+\_\+geom\+\_\+parameter()}{add\_geom\_parameter()}}
+{\footnotesize\ttfamily void oomph\+::\+Spine\+::add\+\_\+geom\+\_\+parameter (\begin{DoxyParamCaption}\item[{const double \&}]{geom\+\_\+parameter }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Add geometric parameter involved in the node update operations for this \hyperlink{classoomph_1_1Spine}{Spine}. 
+
+
+
+Definition at line 262 of file spines.\+h.
+
+
+
+References Geom\+\_\+parameter.
+
+\mbox{\Hypertarget{classoomph_1_1Spine_aaf0954f69bd9bed913e714fafaad4644}\label{classoomph_1_1Spine_aaf0954f69bd9bed913e714fafaad4644}} 
+\index{oomph\+::\+Spine@{oomph\+::\+Spine}!geom\+\_\+data\+\_\+pt@{geom\+\_\+data\+\_\+pt}}
+\index{geom\+\_\+data\+\_\+pt@{geom\+\_\+data\+\_\+pt}!oomph\+::\+Spine@{oomph\+::\+Spine}}
+\subsubsection{\texorpdfstring{geom\+\_\+data\+\_\+pt()}{geom\_data\_pt()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1Data}{Data}$\ast$\& oomph\+::\+Spine\+::geom\+\_\+data\+\_\+pt (\begin{DoxyParamCaption}\item[{const unsigned \&}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return i-\/th geometric \hyperlink{classoomph_1_1Data}{Data} that is involved in the node update operations for this \hyperlink{classoomph_1_1Spine}{Spine}. 
+
+
+
+Definition at line 203 of file spines.\+h.
+
+
+
+References Geom\+\_\+data\+\_\+pt, and i.
+
+
+
+Referenced by oomph\+::\+Spine\+Node\+::all\+\_\+geom\+\_\+data\+\_\+pt().
+
+\mbox{\Hypertarget{classoomph_1_1Spine_a8d25c84698e695a1306b800539e25e90}\label{classoomph_1_1Spine_a8d25c84698e695a1306b800539e25e90}} 
+\index{oomph\+::\+Spine@{oomph\+::\+Spine}!geom\+\_\+data\+\_\+pt@{geom\+\_\+data\+\_\+pt}}
+\index{geom\+\_\+data\+\_\+pt@{geom\+\_\+data\+\_\+pt}!oomph\+::\+Spine@{oomph\+::\+Spine}}
+\subsubsection{\texorpdfstring{geom\+\_\+data\+\_\+pt()}{geom\_data\_pt()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1Data}{Data}$\ast$ oomph\+::\+Spine\+::geom\+\_\+data\+\_\+pt (\begin{DoxyParamCaption}\item[{const unsigned \&}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return i-\/th geometric \hyperlink{classoomph_1_1Data}{Data} that is involved in the node update operations for this \hyperlink{classoomph_1_1Spine}{Spine}. Const version. 
+
+
+
+Definition at line 207 of file spines.\+h.
+
+
+
+References Geom\+\_\+data\+\_\+pt, and i.
+
+\mbox{\Hypertarget{classoomph_1_1Spine_a68253ccfbfdf33e773dd300dcc4ec42c}\label{classoomph_1_1Spine_a68253ccfbfdf33e773dd300dcc4ec42c}} 
+\index{oomph\+::\+Spine@{oomph\+::\+Spine}!geom\+\_\+object\+\_\+pt@{geom\+\_\+object\+\_\+pt}}
+\index{geom\+\_\+object\+\_\+pt@{geom\+\_\+object\+\_\+pt}!oomph\+::\+Spine@{oomph\+::\+Spine}}
+\subsubsection{\texorpdfstring{geom\+\_\+object\+\_\+pt()}{geom\_object\_pt()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1GeomObject}{Geom\+Object}$\ast$\& oomph\+::\+Spine\+::geom\+\_\+object\+\_\+pt (\begin{DoxyParamCaption}\item[{const unsigned \&}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return i-\/th geometric object that is involved in the node update operations for this \hyperlink{classoomph_1_1Spine}{Spine}. 
+
+
+
+Definition at line 237 of file spines.\+h.
+
+
+
+References Geom\+\_\+object\+\_\+pt, and i.
+
+
+
+Referenced by oomph\+::\+Spine\+Node\+::all\+\_\+geom\+\_\+object\+\_\+pt(), oomph\+::\+Channel\+Spine\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::spine\+\_\+node\+\_\+update(), oomph\+::\+Bretherton\+Spine\+Mesh$<$ E\+L\+E\+M\+E\+N\+T, I\+N\+T\+E\+R\+F\+A\+C\+E\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::spine\+\_\+node\+\_\+update\+\_\+channel(), oomph\+::\+Bretherton\+Spine\+Mesh$<$ E\+L\+E\+M\+E\+N\+T, I\+N\+T\+E\+R\+F\+A\+C\+E\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::spine\+\_\+node\+\_\+update\+\_\+film\+\_\+lower(), oomph\+::\+Bretherton\+Spine\+Mesh$<$ E\+L\+E\+M\+E\+N\+T, I\+N\+T\+E\+R\+F\+A\+C\+E\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::spine\+\_\+node\+\_\+update\+\_\+film\+\_\+upper(), oomph\+::\+Bretherton\+Spine\+Mesh$<$ E\+L\+E\+M\+E\+N\+T, I\+N\+T\+E\+R\+F\+A\+C\+E\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::spine\+\_\+node\+\_\+update\+\_\+horizontal\+\_\+transition\+\_\+lower(), oomph\+::\+Bretherton\+Spine\+Mesh$<$ E\+L\+E\+M\+E\+N\+T, I\+N\+T\+E\+R\+F\+A\+C\+E\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::spine\+\_\+node\+\_\+update\+\_\+horizontal\+\_\+transition\+\_\+upper(), oomph\+::\+Bretherton\+Spine\+Mesh$<$ E\+L\+E\+M\+E\+N\+T, I\+N\+T\+E\+R\+F\+A\+C\+E\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::spine\+\_\+node\+\_\+update\+\_\+vertical\+\_\+transition\+\_\+lower(), and oomph\+::\+Bretherton\+Spine\+Mesh$<$ E\+L\+E\+M\+E\+N\+T, I\+N\+T\+E\+R\+F\+A\+C\+E\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::spine\+\_\+node\+\_\+update\+\_\+vertical\+\_\+transition\+\_\+upper().
+
+\mbox{\Hypertarget{classoomph_1_1Spine_a1b0c82fb9f9f2fc7df286e516c818b4c}\label{classoomph_1_1Spine_a1b0c82fb9f9f2fc7df286e516c818b4c}} 
+\index{oomph\+::\+Spine@{oomph\+::\+Spine}!geom\+\_\+object\+\_\+pt@{geom\+\_\+object\+\_\+pt}}
+\index{geom\+\_\+object\+\_\+pt@{geom\+\_\+object\+\_\+pt}!oomph\+::\+Spine@{oomph\+::\+Spine}}
+\subsubsection{\texorpdfstring{geom\+\_\+object\+\_\+pt()}{geom\_object\_pt()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1GeomObject}{Geom\+Object}$\ast$ oomph\+::\+Spine\+::geom\+\_\+object\+\_\+pt (\begin{DoxyParamCaption}\item[{const unsigned \&}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return i-\/th geometric object that is involved in the node update operations for this \hyperlink{classoomph_1_1Spine}{Spine}. Const version. 
+
+
+
+Definition at line 241 of file spines.\+h.
+
+
+
+References Geom\+\_\+object\+\_\+pt, and i.
+
+\mbox{\Hypertarget{classoomph_1_1Spine_a8d8bd170521e615dda38a0d3fdef09cb}\label{classoomph_1_1Spine_a8d8bd170521e615dda38a0d3fdef09cb}} 
+\index{oomph\+::\+Spine@{oomph\+::\+Spine}!geom\+\_\+parameter@{geom\+\_\+parameter}}
+\index{geom\+\_\+parameter@{geom\+\_\+parameter}!oomph\+::\+Spine@{oomph\+::\+Spine}}
+\subsubsection{\texorpdfstring{geom\+\_\+parameter()}{geom\_parameter()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily double\& oomph\+::\+Spine\+::geom\+\_\+parameter (\begin{DoxyParamCaption}\item[{const unsigned \&}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return i-\/th geometric parameter that is involved in the node update operations for this \hyperlink{classoomph_1_1Spine}{Spine}. 
+
+
+
+Definition at line 267 of file spines.\+h.
+
+
+
+References Geom\+\_\+parameter, and i.
+
+
+
+Referenced by set\+\_\+geom\+\_\+parameter(), oomph\+::\+Channel\+Spine\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::spine\+\_\+node\+\_\+update(), oomph\+::\+Bretherton\+Spine\+Mesh$<$ E\+L\+E\+M\+E\+N\+T, I\+N\+T\+E\+R\+F\+A\+C\+E\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::spine\+\_\+node\+\_\+update\+\_\+channel(), oomph\+::\+Bretherton\+Spine\+Mesh$<$ E\+L\+E\+M\+E\+N\+T, I\+N\+T\+E\+R\+F\+A\+C\+E\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::spine\+\_\+node\+\_\+update\+\_\+film\+\_\+lower(), oomph\+::\+Bretherton\+Spine\+Mesh$<$ E\+L\+E\+M\+E\+N\+T, I\+N\+T\+E\+R\+F\+A\+C\+E\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::spine\+\_\+node\+\_\+update\+\_\+film\+\_\+upper(), oomph\+::\+Bretherton\+Spine\+Mesh$<$ E\+L\+E\+M\+E\+N\+T, I\+N\+T\+E\+R\+F\+A\+C\+E\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::spine\+\_\+node\+\_\+update\+\_\+horizontal\+\_\+transition\+\_\+lower(), oomph\+::\+Bretherton\+Spine\+Mesh$<$ E\+L\+E\+M\+E\+N\+T, I\+N\+T\+E\+R\+F\+A\+C\+E\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::spine\+\_\+node\+\_\+update\+\_\+horizontal\+\_\+transition\+\_\+upper(), oomph\+::\+Bretherton\+Spine\+Mesh$<$ E\+L\+E\+M\+E\+N\+T, I\+N\+T\+E\+R\+F\+A\+C\+E\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::spine\+\_\+node\+\_\+update\+\_\+vertical\+\_\+transition\+\_\+lower(), and oomph\+::\+Bretherton\+Spine\+Mesh$<$ E\+L\+E\+M\+E\+N\+T, I\+N\+T\+E\+R\+F\+A\+C\+E\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::spine\+\_\+node\+\_\+update\+\_\+vertical\+\_\+transition\+\_\+upper().
+
+\mbox{\Hypertarget{classoomph_1_1Spine_ad550875853ebdf54a2e81e8bbe6efa9d}\label{classoomph_1_1Spine_ad550875853ebdf54a2e81e8bbe6efa9d}} 
+\index{oomph\+::\+Spine@{oomph\+::\+Spine}!geom\+\_\+parameter@{geom\+\_\+parameter}}
+\index{geom\+\_\+parameter@{geom\+\_\+parameter}!oomph\+::\+Spine@{oomph\+::\+Spine}}
+\subsubsection{\texorpdfstring{geom\+\_\+parameter()}{geom\_parameter()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily const double\& oomph\+::\+Spine\+::geom\+\_\+parameter (\begin{DoxyParamCaption}\item[{const unsigned \&}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return i-\/th geometric parameter that is involved in the node update operations for this \hyperlink{classoomph_1_1Spine}{Spine}. Const version. 
+
+
+
+Definition at line 272 of file spines.\+h.
+
+
+
+References Geom\+\_\+parameter, and i.
+
+\mbox{\Hypertarget{classoomph_1_1Spine_a7502bf089f4001796d5ef801cf104a28}\label{classoomph_1_1Spine_a7502bf089f4001796d5ef801cf104a28}} 
+\index{oomph\+::\+Spine@{oomph\+::\+Spine}!height@{height}}
+\index{height@{height}!oomph\+::\+Spine@{oomph\+::\+Spine}}
+\subsubsection{\texorpdfstring{height()}{height()}}
+{\footnotesize\ttfamily double\& oomph\+::\+Spine\+::height (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Access function to spine height. 
+
+
+
+Definition at line 158 of file spines.\+h.
+
+
+
+References Geom\+\_\+data\+\_\+pt.
+
+
+
+Referenced by oomph\+::\+Bretherton\+Spine\+Mesh$<$ E\+L\+E\+M\+E\+N\+T, I\+N\+T\+E\+R\+F\+A\+C\+E\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::\+Bretherton\+Spine\+Mesh(), oomph\+::\+Channel\+Spine\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::build\+\_\+channel\+\_\+spine\+\_\+mesh(), oomph\+::\+Spine\+Node\+::h(), and oomph\+::\+Bretherton\+Spine\+Mesh$<$ E\+L\+E\+M\+E\+N\+T, I\+N\+T\+E\+R\+F\+A\+C\+E\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::reposition\+\_\+spines().
+
+\mbox{\Hypertarget{classoomph_1_1Spine_a6c609c4f717e486ee70d57eb937b306e}\label{classoomph_1_1Spine_a6c609c4f717e486ee70d57eb937b306e}} 
+\index{oomph\+::\+Spine@{oomph\+::\+Spine}!ngeom\+\_\+data@{ngeom\+\_\+data}}
+\index{ngeom\+\_\+data@{ngeom\+\_\+data}!oomph\+::\+Spine@{oomph\+::\+Spine}}
+\subsubsection{\texorpdfstring{ngeom\+\_\+data()}{ngeom\_data()}}
+{\footnotesize\ttfamily unsigned oomph\+::\+Spine\+::ngeom\+\_\+data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Number of geometric \hyperlink{classoomph_1_1Data}{Data} that is involved in the node update operations for this \hyperlink{classoomph_1_1Spine}{Spine}. 
+
+
+
+Definition at line 179 of file spines.\+h.
+
+
+
+References Geom\+\_\+data\+\_\+pt.
+
+
+
+Referenced by oomph\+::\+Spine\+Element$<$ Face\+Geometry$<$ E\+L\+E\+M\+E\+N\+T $>$ $>$\+::complete\+\_\+setup\+\_\+of\+\_\+dependencies(), oomph\+::\+Spine\+Node\+::ngeom\+\_\+data(), and oomph\+::\+Spine\+Element$<$ Face\+Geometry$<$ E\+L\+E\+M\+E\+N\+T $>$ $>$\+::spine\+\_\+local\+\_\+eqn().
+
+\mbox{\Hypertarget{classoomph_1_1Spine_a4ed777b5f3b4b1e464835ba945003877}\label{classoomph_1_1Spine_a4ed777b5f3b4b1e464835ba945003877}} 
+\index{oomph\+::\+Spine@{oomph\+::\+Spine}!ngeom\+\_\+object@{ngeom\+\_\+object}}
+\index{ngeom\+\_\+object@{ngeom\+\_\+object}!oomph\+::\+Spine@{oomph\+::\+Spine}}
+\subsubsection{\texorpdfstring{ngeom\+\_\+object()}{ngeom\_object()}}
+{\footnotesize\ttfamily unsigned oomph\+::\+Spine\+::ngeom\+\_\+object (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Number of geometric objects that is involved in the node update operations for this \hyperlink{classoomph_1_1Spine}{Spine}. 
+
+
+
+Definition at line 214 of file spines.\+h.
+
+
+
+References Geom\+\_\+object\+\_\+pt.
+
+
+
+Referenced by oomph\+::\+Spine\+Node\+::ngeom\+\_\+object().
+
+\mbox{\Hypertarget{classoomph_1_1Spine_a809b08740a5aa1be9d89f0b87b5863ba}\label{classoomph_1_1Spine_a809b08740a5aa1be9d89f0b87b5863ba}} 
+\index{oomph\+::\+Spine@{oomph\+::\+Spine}!ngeom\+\_\+parameter@{ngeom\+\_\+parameter}}
+\index{ngeom\+\_\+parameter@{ngeom\+\_\+parameter}!oomph\+::\+Spine@{oomph\+::\+Spine}}
+\subsubsection{\texorpdfstring{ngeom\+\_\+parameter()}{ngeom\_parameter()}}
+{\footnotesize\ttfamily unsigned oomph\+::\+Spine\+::ngeom\+\_\+parameter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Number of geometric parameters that are involved in the node update operations for this \hyperlink{classoomph_1_1Spine}{Spine}. 
+
+
+
+Definition at line 252 of file spines.\+h.
+
+
+
+References Geom\+\_\+parameter.
+
+\mbox{\Hypertarget{classoomph_1_1Spine_a32774ebc4f5f7b14c09e3abe045987e9}\label{classoomph_1_1Spine_a32774ebc4f5f7b14c09e3abe045987e9}} 
+\index{oomph\+::\+Spine@{oomph\+::\+Spine}!set\+\_\+geom\+\_\+data\+\_\+pt@{set\+\_\+geom\+\_\+data\+\_\+pt}}
+\index{set\+\_\+geom\+\_\+data\+\_\+pt@{set\+\_\+geom\+\_\+data\+\_\+pt}!oomph\+::\+Spine@{oomph\+::\+Spine}}
+\subsubsection{\texorpdfstring{set\+\_\+geom\+\_\+data\+\_\+pt()}{set\_geom\_data\_pt()}}
+{\footnotesize\ttfamily void oomph\+::\+Spine\+::set\+\_\+geom\+\_\+data\+\_\+pt (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ \hyperlink{classoomph_1_1Data}{Data} $\ast$$>$ \&}]{geom\+\_\+data\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set vector of (pointers to) geometric \hyperlink{classoomph_1_1Data}{Data} that is involved in the node update operations for this \hyperlink{classoomph_1_1Spine}{Spine}. Wipes any previously existing geometric \hyperlink{classoomph_1_1Data}{Data}. 
+
+
+
+Definition at line 184 of file spines.\+h.
+
+
+
+References Geom\+\_\+data\+\_\+pt, and i.
+
+\mbox{\Hypertarget{classoomph_1_1Spine_a7069dfe59a9f4c1ad487adf606f5931a}\label{classoomph_1_1Spine_a7069dfe59a9f4c1ad487adf606f5931a}} 
+\index{oomph\+::\+Spine@{oomph\+::\+Spine}!set\+\_\+geom\+\_\+object\+\_\+pt@{set\+\_\+geom\+\_\+object\+\_\+pt}}
+\index{set\+\_\+geom\+\_\+object\+\_\+pt@{set\+\_\+geom\+\_\+object\+\_\+pt}!oomph\+::\+Spine@{oomph\+::\+Spine}}
+\subsubsection{\texorpdfstring{set\+\_\+geom\+\_\+object\+\_\+pt()}{set\_geom\_object\_pt()}}
+{\footnotesize\ttfamily void oomph\+::\+Spine\+::set\+\_\+geom\+\_\+object\+\_\+pt (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ \hyperlink{classoomph_1_1GeomObject}{Geom\+Object} $\ast$$>$ \&}]{geom\+\_\+object\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set vector of (pointers to) geometric objects that is involved in the node update operations for this \hyperlink{classoomph_1_1Spine}{Spine}. 
+
+
+
+Definition at line 218 of file spines.\+h.
+
+
+
+References Geom\+\_\+object\+\_\+pt, and i.
+
+
+
+Referenced by oomph\+::\+Bretherton\+Spine\+Mesh$<$ E\+L\+E\+M\+E\+N\+T, I\+N\+T\+E\+R\+F\+A\+C\+E\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::\+Bretherton\+Spine\+Mesh(), oomph\+::\+Channel\+Spine\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::build\+\_\+channel\+\_\+spine\+\_\+mesh(), and oomph\+::\+Bretherton\+Spine\+Mesh$<$ E\+L\+E\+M\+E\+N\+T, I\+N\+T\+E\+R\+F\+A\+C\+E\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::reposition\+\_\+spines().
+
+\mbox{\Hypertarget{classoomph_1_1Spine_a6d99d5a44a79588d38a83fae4ca87c57}\label{classoomph_1_1Spine_a6d99d5a44a79588d38a83fae4ca87c57}} 
+\index{oomph\+::\+Spine@{oomph\+::\+Spine}!set\+\_\+geom\+\_\+parameter@{set\+\_\+geom\+\_\+parameter}}
+\index{set\+\_\+geom\+\_\+parameter@{set\+\_\+geom\+\_\+parameter}!oomph\+::\+Spine@{oomph\+::\+Spine}}
+\subsubsection{\texorpdfstring{set\+\_\+geom\+\_\+parameter()}{set\_geom\_parameter()}}
+{\footnotesize\ttfamily void oomph\+::\+Spine\+::set\+\_\+geom\+\_\+parameter (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{geom\+\_\+parameter }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set vector of geometric parameters that are involved in the node update operations for this \hyperlink{classoomph_1_1Spine}{Spine}. Wipes any previously existing geometric parameters. 
+
+
+
+Definition at line 257 of file spines.\+h.
+
+
+
+References geom\+\_\+parameter(), and Geom\+\_\+parameter.
+
+
+
+Referenced by oomph\+::\+Bretherton\+Spine\+Mesh$<$ E\+L\+E\+M\+E\+N\+T, I\+N\+T\+E\+R\+F\+A\+C\+E\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::\+Bretherton\+Spine\+Mesh(), oomph\+::\+Channel\+Spine\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::build\+\_\+channel\+\_\+spine\+\_\+mesh(), and oomph\+::\+Bretherton\+Spine\+Mesh$<$ E\+L\+E\+M\+E\+N\+T, I\+N\+T\+E\+R\+F\+A\+C\+E\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::reposition\+\_\+spines().
+
+\mbox{\Hypertarget{classoomph_1_1Spine_ac34e4b12d9c1843611e42968ba5d90c7}\label{classoomph_1_1Spine_ac34e4b12d9c1843611e42968ba5d90c7}} 
+\index{oomph\+::\+Spine@{oomph\+::\+Spine}!spine\+\_\+height\+\_\+pt@{spine\+\_\+height\+\_\+pt}}
+\index{spine\+\_\+height\+\_\+pt@{spine\+\_\+height\+\_\+pt}!oomph\+::\+Spine@{oomph\+::\+Spine}}
+\subsubsection{\texorpdfstring{spine\+\_\+height\+\_\+pt()}{spine\_height\_pt()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1Data}{Data}$\ast$\& oomph\+::\+Spine\+::spine\+\_\+height\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Access function to \hyperlink{classoomph_1_1Data}{Data} object that stores the spine height. 
+
+
+
+Definition at line 164 of file spines.\+h.
+
+
+
+References Geom\+\_\+data\+\_\+pt.
+
+
+
+Referenced by oomph\+::\+Spine\+Mesh\+::assign\+\_\+global\+\_\+spine\+\_\+eqn\+\_\+numbers(), oomph\+::\+Bretherton\+Spine\+Mesh$<$ E\+L\+E\+M\+E\+N\+T, I\+N\+T\+E\+R\+F\+A\+C\+E\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::\+Bretherton\+Spine\+Mesh(), oomph\+::\+Channel\+Spine\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::build\+\_\+channel\+\_\+spine\+\_\+mesh(), oomph\+::\+Spine\+Element$<$ Face\+Geometry$<$ E\+L\+E\+M\+E\+N\+T $>$ $>$\+::complete\+\_\+setup\+\_\+of\+\_\+dependencies(), oomph\+::\+Spine\+Mesh\+::describe\+\_\+spine\+\_\+dofs(), oomph\+::\+Spine\+Mesh\+::dump(), oomph\+::\+Bretherton\+Spine\+Mesh$<$ E\+L\+E\+M\+E\+N\+T, I\+N\+T\+E\+R\+F\+A\+C\+E\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::pin\+\_\+all\+\_\+spines(), oomph\+::\+Spine\+Mesh\+::read(), and oomph\+::\+Spine\+Mesh\+::set\+\_\+spine\+\_\+time\+\_\+stepper().
+
+\mbox{\Hypertarget{classoomph_1_1Spine_a1253190f2780837bae5c68a3bd0a43a6}\label{classoomph_1_1Spine_a1253190f2780837bae5c68a3bd0a43a6}} 
+\index{oomph\+::\+Spine@{oomph\+::\+Spine}!spine\+\_\+height\+\_\+pt@{spine\+\_\+height\+\_\+pt}}
+\index{spine\+\_\+height\+\_\+pt@{spine\+\_\+height\+\_\+pt}!oomph\+::\+Spine@{oomph\+::\+Spine}}
+\subsubsection{\texorpdfstring{spine\+\_\+height\+\_\+pt()}{spine\_height\_pt()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1Data}{Data}$\ast$ oomph\+::\+Spine\+::spine\+\_\+height\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Access function to \hyperlink{classoomph_1_1Data}{Data} object that stores the spine height (const version) 
+
+
+
+Definition at line 171 of file spines.\+h.
+
+
+
+References Geom\+\_\+data\+\_\+pt.
+
+\mbox{\Hypertarget{classoomph_1_1Spine_a930bb511049f50d2a248277c5ffb7d68}\label{classoomph_1_1Spine_a930bb511049f50d2a248277c5ffb7d68}} 
+\index{oomph\+::\+Spine@{oomph\+::\+Spine}!vector\+\_\+geom\+\_\+data\+\_\+pt@{vector\+\_\+geom\+\_\+data\+\_\+pt}}
+\index{vector\+\_\+geom\+\_\+data\+\_\+pt@{vector\+\_\+geom\+\_\+data\+\_\+pt}!oomph\+::\+Spine@{oomph\+::\+Spine}}
+\subsubsection{\texorpdfstring{vector\+\_\+geom\+\_\+data\+\_\+pt()}{vector\_geom\_data\_pt()}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1Vector}{Vector}$<$\hyperlink{classoomph_1_1Data}{Data}$\ast$$>$\& oomph\+::\+Spine\+::vector\+\_\+geom\+\_\+data\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the vector of geometric data. 
+
+
+
+Definition at line 210 of file spines.\+h.
+
+
+
+References Geom\+\_\+data\+\_\+pt.
+
+\mbox{\Hypertarget{classoomph_1_1Spine_ace2513da519c1eb7a40fdac7bb803f0a}\label{classoomph_1_1Spine_ace2513da519c1eb7a40fdac7bb803f0a}} 
+\index{oomph\+::\+Spine@{oomph\+::\+Spine}!vector\+\_\+geom\+\_\+object\+\_\+pt@{vector\+\_\+geom\+\_\+object\+\_\+pt}}
+\index{vector\+\_\+geom\+\_\+object\+\_\+pt@{vector\+\_\+geom\+\_\+object\+\_\+pt}!oomph\+::\+Spine@{oomph\+::\+Spine}}
+\subsubsection{\texorpdfstring{vector\+\_\+geom\+\_\+object\+\_\+pt()}{vector\_geom\_object\_pt()}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1Vector}{Vector}$<$\hyperlink{classoomph_1_1GeomObject}{Geom\+Object}$\ast$$>$\& oomph\+::\+Spine\+::vector\+\_\+geom\+\_\+object\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the vector of all geometric objects that affect this spine. 
+
+
+
+Definition at line 248 of file spines.\+h.
+
+
+
+References Geom\+\_\+object\+\_\+pt.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1Spine_a50aea4fad1b1e0a3509a2405f3b31ecb}\label{classoomph_1_1Spine_a50aea4fad1b1e0a3509a2405f3b31ecb}} 
+\index{oomph\+::\+Spine@{oomph\+::\+Spine}!Geom\+\_\+data\+\_\+pt@{Geom\+\_\+data\+\_\+pt}}
+\index{Geom\+\_\+data\+\_\+pt@{Geom\+\_\+data\+\_\+pt}!oomph\+::\+Spine@{oomph\+::\+Spine}}
+\subsubsection{\texorpdfstring{Geom\+\_\+data\+\_\+pt}{Geom\_data\_pt}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1Vector}{Vector}$<$\hyperlink{classoomph_1_1Data}{Data}$\ast$$>$ oomph\+::\+Spine\+::\+Geom\+\_\+data\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\hyperlink{classoomph_1_1Data}{Data} that stores the spine height. 
+
+\hyperlink{classoomph_1_1Vector}{Vector} that stores the pointers to additional geometric \hyperlink{classoomph_1_1Data}{Data} 
+
+Definition at line 282 of file spines.\+h.
+
+
+
+Referenced by add\+\_\+geom\+\_\+data\+\_\+pt(), oomph\+::\+Spine\+Element$<$ Face\+Geometry$<$ E\+L\+E\+M\+E\+N\+T $>$ $>$\+::complete\+\_\+setup\+\_\+of\+\_\+dependencies(), geom\+\_\+data\+\_\+pt(), height(), ngeom\+\_\+data(), set\+\_\+geom\+\_\+data\+\_\+pt(), Spine(), spine\+\_\+height\+\_\+pt(), vector\+\_\+geom\+\_\+data\+\_\+pt(), and $\sim$\+Spine().
+
+\mbox{\Hypertarget{classoomph_1_1Spine_aa5bf17dd0cd4f4acda73273a3227ef09}\label{classoomph_1_1Spine_aa5bf17dd0cd4f4acda73273a3227ef09}} 
+\index{oomph\+::\+Spine@{oomph\+::\+Spine}!Geom\+\_\+object\+\_\+pt@{Geom\+\_\+object\+\_\+pt}}
+\index{Geom\+\_\+object\+\_\+pt@{Geom\+\_\+object\+\_\+pt}!oomph\+::\+Spine@{oomph\+::\+Spine}}
+\subsubsection{\texorpdfstring{Geom\+\_\+object\+\_\+pt}{Geom\_object\_pt}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1Vector}{Vector}$<$\hyperlink{classoomph_1_1GeomObject}{Geom\+Object}$\ast$$>$ oomph\+::\+Spine\+::\+Geom\+\_\+object\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\hyperlink{classoomph_1_1Vector}{Vector} that stores the pointers to geometric objects that is involved in the node update operation. 
+
+
+
+Definition at line 286 of file spines.\+h.
+
+
+
+Referenced by add\+\_\+geom\+\_\+object\+\_\+pt(), geom\+\_\+object\+\_\+pt(), ngeom\+\_\+object(), set\+\_\+geom\+\_\+object\+\_\+pt(), and vector\+\_\+geom\+\_\+object\+\_\+pt().
+
+\mbox{\Hypertarget{classoomph_1_1Spine_aa368ebf715af6b0c6da70ad68ed0ec91}\label{classoomph_1_1Spine_aa368ebf715af6b0c6da70ad68ed0ec91}} 
+\index{oomph\+::\+Spine@{oomph\+::\+Spine}!Geom\+\_\+parameter@{Geom\+\_\+parameter}}
+\index{Geom\+\_\+parameter@{Geom\+\_\+parameter}!oomph\+::\+Spine@{oomph\+::\+Spine}}
+\subsubsection{\texorpdfstring{Geom\+\_\+parameter}{Geom\_parameter}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1Vector}{Vector}$<$double$>$ oomph\+::\+Spine\+::\+Geom\+\_\+parameter\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\hyperlink{classoomph_1_1Vector}{Vector} that stores doubles that are used in the geometric updates. 
+
+
+
+Definition at line 289 of file spines.\+h.
+
+
+
+Referenced by add\+\_\+geom\+\_\+parameter(), geom\+\_\+parameter(), ngeom\+\_\+parameter(), and set\+\_\+geom\+\_\+parameter().
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{spines_8h}{spines.\+h}\end{DoxyCompactItemize}

@@ -1,0 +1,152 @@
+\hypertarget{classoomph_1_1ExplicitTimeStepper}{}\section{oomph\+:\+:Explicit\+Time\+Stepper Class Reference}
+\label{classoomph_1_1ExplicitTimeStepper}\index{oomph\+::\+Explicit\+Time\+Stepper@{oomph\+::\+Explicit\+Time\+Stepper}}
+
+
+A Base class for explicit timesteppers.  
+
+
+
+
+{\ttfamily \#include $<$explicit\+\_\+timesteppers.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Explicit\+Time\+Stepper\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.072797cm]{classoomph_1_1ExplicitTimeStepper}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1ExplicitTimeStepper_a4b54826f4098eae55da1ee7fd51b634d}{Explicit\+Time\+Stepper} ()
+\begin{DoxyCompactList}\small\item\em Empty Constructor. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1ExplicitTimeStepper_ab2c6e0a9f8e620f7b3847ad46d297ad2}{Explicit\+Time\+Stepper} (const \hyperlink{classoomph_1_1ExplicitTimeStepper}{Explicit\+Time\+Stepper} \&)
+\begin{DoxyCompactList}\small\item\em Broken copy constructor. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1ExplicitTimeStepper_abed621c80844df126c29b8862092cb97}{operator=} (const \hyperlink{classoomph_1_1ExplicitTimeStepper}{Explicit\+Time\+Stepper} \&)
+\begin{DoxyCompactList}\small\item\em Broken assignment operator. \end{DoxyCompactList}\item 
+virtual \hyperlink{classoomph_1_1ExplicitTimeStepper_a51f659328a57063563b7344c8b9d7737}{$\sim$\+Explicit\+Time\+Stepper} ()
+\begin{DoxyCompactList}\small\item\em Empty virtual destructor --- no memory is allocated in this class. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1ExplicitTimeStepper_ab43bbab17960d0f50b8842e996f5c765}{timestep} (\hyperlink{classoomph_1_1ExplicitTimeSteppableObject}{Explicit\+Time\+Steppable\+Object} $\ast$const \&object\+\_\+pt, const double \&dt)=0
+\begin{DoxyCompactList}\small\item\em Pure virtual function that is used to advance time in the object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \hyperlink{classoomph_1_1ExplicitTimeStepper_aa923e120e84dc7cec56d2a50f5b33421}{Type}
+\begin{DoxyCompactList}\small\item\em String that indicates the type of the timestepper (e.\+g. \char`\"{}\+Runge\+Kutta\char`\"{}, etc.) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A Base class for explicit timesteppers. 
+
+Definition at line 142 of file explicit\+\_\+timesteppers.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1ExplicitTimeStepper_a4b54826f4098eae55da1ee7fd51b634d}\label{classoomph_1_1ExplicitTimeStepper_a4b54826f4098eae55da1ee7fd51b634d}} 
+\index{oomph\+::\+Explicit\+Time\+Stepper@{oomph\+::\+Explicit\+Time\+Stepper}!Explicit\+Time\+Stepper@{Explicit\+Time\+Stepper}}
+\index{Explicit\+Time\+Stepper@{Explicit\+Time\+Stepper}!oomph\+::\+Explicit\+Time\+Stepper@{oomph\+::\+Explicit\+Time\+Stepper}}
+\subsubsection{\texorpdfstring{Explicit\+Time\+Stepper()}{ExplicitTimeStepper()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily oomph\+::\+Explicit\+Time\+Stepper\+::\+Explicit\+Time\+Stepper (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Empty Constructor. 
+
+
+
+Definition at line 153 of file explicit\+\_\+timesteppers.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1ExplicitTimeStepper_ab2c6e0a9f8e620f7b3847ad46d297ad2}\label{classoomph_1_1ExplicitTimeStepper_ab2c6e0a9f8e620f7b3847ad46d297ad2}} 
+\index{oomph\+::\+Explicit\+Time\+Stepper@{oomph\+::\+Explicit\+Time\+Stepper}!Explicit\+Time\+Stepper@{Explicit\+Time\+Stepper}}
+\index{Explicit\+Time\+Stepper@{Explicit\+Time\+Stepper}!oomph\+::\+Explicit\+Time\+Stepper@{oomph\+::\+Explicit\+Time\+Stepper}}
+\subsubsection{\texorpdfstring{Explicit\+Time\+Stepper()}{ExplicitTimeStepper()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily oomph\+::\+Explicit\+Time\+Stepper\+::\+Explicit\+Time\+Stepper (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1ExplicitTimeStepper}{Explicit\+Time\+Stepper} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Broken copy constructor. 
+
+
+
+Definition at line 156 of file explicit\+\_\+timesteppers.\+h.
+
+
+
+References oomph\+::\+Broken\+Copy\+::broken\+\_\+copy().
+
+\mbox{\Hypertarget{classoomph_1_1ExplicitTimeStepper_a51f659328a57063563b7344c8b9d7737}\label{classoomph_1_1ExplicitTimeStepper_a51f659328a57063563b7344c8b9d7737}} 
+\index{oomph\+::\+Explicit\+Time\+Stepper@{oomph\+::\+Explicit\+Time\+Stepper}!````~Explicit\+Time\+Stepper@{$\sim$\+Explicit\+Time\+Stepper}}
+\index{````~Explicit\+Time\+Stepper@{$\sim$\+Explicit\+Time\+Stepper}!oomph\+::\+Explicit\+Time\+Stepper@{oomph\+::\+Explicit\+Time\+Stepper}}
+\subsubsection{\texorpdfstring{$\sim$\+Explicit\+Time\+Stepper()}{~ExplicitTimeStepper()}}
+{\footnotesize\ttfamily virtual oomph\+::\+Explicit\+Time\+Stepper\+::$\sim$\+Explicit\+Time\+Stepper (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Empty virtual destructor --- no memory is allocated in this class. 
+
+
+
+Definition at line 168 of file explicit\+\_\+timesteppers.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1ExplicitTimeStepper_abed621c80844df126c29b8862092cb97}\label{classoomph_1_1ExplicitTimeStepper_abed621c80844df126c29b8862092cb97}} 
+\index{oomph\+::\+Explicit\+Time\+Stepper@{oomph\+::\+Explicit\+Time\+Stepper}!operator=@{operator=}}
+\index{operator=@{operator=}!oomph\+::\+Explicit\+Time\+Stepper@{oomph\+::\+Explicit\+Time\+Stepper}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily void oomph\+::\+Explicit\+Time\+Stepper\+::operator= (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1ExplicitTimeStepper}{Explicit\+Time\+Stepper} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Broken assignment operator. 
+
+
+
+Definition at line 162 of file explicit\+\_\+timesteppers.\+h.
+
+
+
+References oomph\+::\+Broken\+Copy\+::broken\+\_\+assign().
+
+\mbox{\Hypertarget{classoomph_1_1ExplicitTimeStepper_ab43bbab17960d0f50b8842e996f5c765}\label{classoomph_1_1ExplicitTimeStepper_ab43bbab17960d0f50b8842e996f5c765}} 
+\index{oomph\+::\+Explicit\+Time\+Stepper@{oomph\+::\+Explicit\+Time\+Stepper}!timestep@{timestep}}
+\index{timestep@{timestep}!oomph\+::\+Explicit\+Time\+Stepper@{oomph\+::\+Explicit\+Time\+Stepper}}
+\subsubsection{\texorpdfstring{timestep()}{timestep()}}
+{\footnotesize\ttfamily virtual void oomph\+::\+Explicit\+Time\+Stepper\+::timestep (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1ExplicitTimeSteppableObject}{Explicit\+Time\+Steppable\+Object} $\ast$const \&}]{object\+\_\+pt,  }\item[{const double \&}]{dt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Pure virtual function that is used to advance time in the object. 
+
+
+
+Implemented in \hyperlink{classoomph_1_1LowStorageRungeKutta_ab2bcb2ad33cec657fd113debc8c4705b}{oomph\+::\+Low\+Storage\+Runge\+Kutta$<$ O\+R\+D\+E\+R $>$}, \hyperlink{classoomph_1_1EBDF3_a273b7eaa19d2e95d6392e6d8dc2970d9}{oomph\+::\+E\+B\+D\+F3}, \hyperlink{classoomph_1_1RungeKutta_a41922b5bf83c9a719106cbb7b862ee51}{oomph\+::\+Runge\+Kutta$<$ O\+R\+D\+E\+R $>$}, \hyperlink{classoomph_1_1LowStorageRungeKutta_afc3d30c130b3a6ab111a89f0b0f884d6}{oomph\+::\+Low\+Storage\+Runge\+Kutta$<$ O\+R\+D\+E\+R $>$}, \hyperlink{classoomph_1_1RungeKutta_a53a492b4190ccd3dfc0b4af35b2c240f}{oomph\+::\+Runge\+Kutta$<$ O\+R\+D\+E\+R $>$}, \hyperlink{classoomph_1_1RungeKutta_a506750a0c4fe555f434dadf139ad4f07}{oomph\+::\+Runge\+Kutta$<$ O\+R\+D\+E\+R $>$}, and \hyperlink{classoomph_1_1Euler_adeea8e3567a50fb3873fab05a7ca928a}{oomph\+::\+Euler}.
+
+
+
+Referenced by oomph\+::\+Problem\+::explicit\+\_\+timestep().
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1ExplicitTimeStepper_aa923e120e84dc7cec56d2a50f5b33421}\label{classoomph_1_1ExplicitTimeStepper_aa923e120e84dc7cec56d2a50f5b33421}} 
+\index{oomph\+::\+Explicit\+Time\+Stepper@{oomph\+::\+Explicit\+Time\+Stepper}!Type@{Type}}
+\index{Type@{Type}!oomph\+::\+Explicit\+Time\+Stepper@{oomph\+::\+Explicit\+Time\+Stepper}}
+\subsubsection{\texorpdfstring{Type}{Type}}
+{\footnotesize\ttfamily std\+::string oomph\+::\+Explicit\+Time\+Stepper\+::\+Type\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+String that indicates the type of the timestepper (e.\+g. \char`\"{}\+Runge\+Kutta\char`\"{}, etc.) 
+
+
+
+Definition at line 148 of file explicit\+\_\+timesteppers.\+h.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{explicit__timesteppers_8h}{explicit\+\_\+timesteppers.\+h}\end{DoxyCompactItemize}

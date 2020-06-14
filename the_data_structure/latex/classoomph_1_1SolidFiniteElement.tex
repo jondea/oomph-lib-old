@@ -1,0 +1,1559 @@
+\hypertarget{classoomph_1_1SolidFiniteElement}{}\section{oomph\+:\+:Solid\+Finite\+Element Class Reference}
+\label{classoomph_1_1SolidFiniteElement}\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+
+
+\hyperlink{classoomph_1_1SolidFiniteElement}{Solid\+Finite\+Element} class.  
+
+
+
+
+{\ttfamily \#include $<$elements.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Solid\+Finite\+Element\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=9.696970cm]{classoomph_1_1SolidFiniteElement}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef double($\ast$ \hyperlink{classoomph_1_1SolidFiniteElement_a1ec1cdf98041a51f77aab2b892856fc4}{Multiplier\+Fct\+Pt}) (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&xi)
+\begin{DoxyCompactList}\small\item\em Pointer to function that computes the \char`\"{}multiplier\char`\"{} for the inertia terms in the consistent determination of the initial conditions for \hyperlink{classoomph_1_1Newmark}{Newmark} timestepping. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classoomph_1_1SolidFiniteElement_afae461c6679212165a47829662d0274d}{set\+\_\+lagrangian\+\_\+dimension} (const unsigned \&\hyperlink{classoomph_1_1SolidFiniteElement_a0200f8dd7b61eea84d7921e78bfbb5f9}{lagrangian\+\_\+dimension})
+\begin{DoxyCompactList}\small\item\em Set the lagrangian dimension of the element --- the number of lagrangian coordinates stored at the nodes in the element. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{classoomph_1_1SolidFiniteElement_aa68837a8f6d1cb021d5cae9c2968a6f3}{has\+\_\+internal\+\_\+solid\+\_\+data} ()
+\begin{DoxyCompactList}\small\item\em Return whether there is internal solid data (e.\+g. discontinuous solid pressure). At present, this is used to report an error in setting initial conditions for Elastic\+Problems which can\textquotesingle{}t handle such cases. The default is false. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1SolidFiniteElement_aa66c3834f1bf99bb821453a2bfbb55c9}{Solid\+Finite\+Element} ()
+\begin{DoxyCompactList}\small\item\em Constructor\+: Set defaults. \end{DoxyCompactList}\item 
+virtual \hyperlink{classoomph_1_1SolidFiniteElement_adc8527ae26aba090bed52da41f41b57f}{$\sim$\+Solid\+Finite\+Element} ()
+\begin{DoxyCompactList}\small\item\em Destructor to clean up any allocated memory. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1SolidFiniteElement_a3a6e7767ca41273a053b0f4a229eb97c}{Solid\+Finite\+Element} (const \hyperlink{classoomph_1_1SolidFiniteElement}{Solid\+Finite\+Element} \&)
+\begin{DoxyCompactList}\small\item\em Broken copy constructor. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1SolidFiniteElement_a73f387da7f31f233b79c2526e8cbc896}{ngeom\+\_\+data} () const
+\begin{DoxyCompactList}\small\item\em Broken assignment operator. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Data}{Data} $\ast$ \hyperlink{classoomph_1_1SolidFiniteElement_a2457ad75b45257b536090d9b1a6f1331}{geom\+\_\+data\+\_\+pt} (const unsigned \&j)
+\begin{DoxyCompactList}\small\item\em Return pointer to the j-\/th \hyperlink{classoomph_1_1Data}{Data} item that the object\textquotesingle{}s shape depends on. (Redirects to the nodes\textquotesingle{} positional \hyperlink{classoomph_1_1Data}{Data}). \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1SolidFiniteElement_a389e4773864d19ac82337ffc24e4dfa6}{identify\+\_\+geometric\+\_\+data} (std\+::set$<$ \hyperlink{classoomph_1_1Data}{Data} $\ast$$>$ \&geometric\+\_\+data\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Specify \hyperlink{classoomph_1_1Data}{Data} that affects the geometry of the element by adding the position \hyperlink{classoomph_1_1Data}{Data} to the set that\textquotesingle{}s passed in. (This functionality is required in F\+SI problems; set is used to avoid double counting). \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1SolidFiniteElement_a4a377d7acaa7fbe444a65ed3d4a79bed}{zeta\+\_\+nodal} (const unsigned \&n, const unsigned \&k, const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}) const
+\begin{DoxyCompactList}\small\item\em In a \hyperlink{classoomph_1_1SolidFiniteElement}{Solid\+Finite\+Element}, the \char`\"{}global\char`\"{} intrinsic coordinate of the element when viewed as part of a compound geometric object (a \hyperlink{classoomph_1_1Mesh}{Mesh}) is, by default, the Lagrangian coordinate Note the assumption here is that we are always using isoparameteric elements in which the lagrangian coordinate is interpolated by the same shape functions as the eulerian coordinate. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1SolidFiniteElement_a2e557cb3647e40fe3225bab4d8f834a0}{get\+\_\+x\+\_\+and\+\_\+xi} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&x\+\_\+fe, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&x, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&xi\+\_\+fe, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&xi) const
+\begin{DoxyCompactList}\small\item\em Eulerian and Lagrangian coordinates as function of the local coordinates\+: The Eulerian position is returned in F\+E-\/interpolated form ({\ttfamily x\+\_\+fe}) and then in the form obtained from the \char`\"{}current\char`\"{} \hyperlink{classoomph_1_1MacroElement}{Macro\+Element} representation (if it exists -- if not, {\ttfamily x} is the same as {\ttfamily x\+\_\+fe}). This allows the Domain/\+Macro\+Element-\/ based representation to be used to apply displacement boundary conditions exactly. Ditto for the Lagrangian coordinates returned in xi\+\_\+fe and xi. (Broken virtual -- overload in specific geometric element class if you want to use this functionality.) \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1SolidFiniteElement_a07ac4c27457c64d9479c64ae8289daaf}{set\+\_\+macro\+\_\+elem\+\_\+pt} (\hyperlink{classoomph_1_1MacroElement}{Macro\+Element} $\ast$\hyperlink{classoomph_1_1FiniteElement_aa8bce95f69e3199a508672eea7ecc226}{macro\+\_\+elem\+\_\+pt})
+\begin{DoxyCompactList}\small\item\em Set pointer to \hyperlink{classoomph_1_1MacroElement}{Macro\+Element} -- overloads generic version and uses the \hyperlink{classoomph_1_1MacroElement}{Macro\+Element} also as the default for the \char`\"{}undeformed\char`\"{} configuration. This assignment must be overwritten with set\+\_\+undeformed\+\_\+macro\+\_\+elem\+\_\+pt(...) if the deformation of the solid body is driven by a deformation of the \char`\"{}current\char`\"{} Domain/\+Macro\+Element representation of it\textquotesingle{}s boundary. Can be overloaded in derived classes to perform additional tasks. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1SolidFiniteElement_a05bdd718a54628b6cf81fc94ad4cb6ab}{set\+\_\+macro\+\_\+elem\+\_\+pt} (\hyperlink{classoomph_1_1MacroElement}{Macro\+Element} $\ast$\hyperlink{classoomph_1_1FiniteElement_aa8bce95f69e3199a508672eea7ecc226}{macro\+\_\+elem\+\_\+pt}, \hyperlink{classoomph_1_1MacroElement}{Macro\+Element} $\ast$\hyperlink{classoomph_1_1SolidFiniteElement_a20517d8d6ba84c8e90d880f38310915f}{undeformed\+\_\+macro\+\_\+elem\+\_\+pt})
+\begin{DoxyCompactList}\small\item\em Set pointers to \char`\"{}current\char`\"{} and \char`\"{}undeformed\char`\"{} Macro\+Elements. Can be overloaded in derived classes to perform additional tasks. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1SolidFiniteElement_a10eef57caff6c5e65784525f4dcfc165}{set\+\_\+undeformed\+\_\+macro\+\_\+elem\+\_\+pt} (\hyperlink{classoomph_1_1MacroElement}{Macro\+Element} $\ast$\hyperlink{classoomph_1_1SolidFiniteElement_a20517d8d6ba84c8e90d880f38310915f}{undeformed\+\_\+macro\+\_\+elem\+\_\+pt})
+\begin{DoxyCompactList}\small\item\em Set pointer to \char`\"{}undeformed\char`\"{} macro element. Can be overloaded in derived classes to perform additional tasks. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1MacroElement}{Macro\+Element} $\ast$ \hyperlink{classoomph_1_1SolidFiniteElement_a20517d8d6ba84c8e90d880f38310915f}{undeformed\+\_\+macro\+\_\+elem\+\_\+pt} ()
+\begin{DoxyCompactList}\small\item\em Access function to pointer to \char`\"{}undeformed\char`\"{} macro element. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1SolidFiniteElement_a4154c1d362b12905f2b5e6cbcfafa9f6}{dshape\+\_\+lagrangian} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Shape}{Shape} \&psi, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dpsidxi) const
+\begin{DoxyCompactList}\small\item\em Calculate shape functions and derivatives w.\+r.\+t. Lagrangian coordinates at local coordinate s. Returns the Jacobian of the mapping from Lagrangian to local coordinates. \end{DoxyCompactList}\item 
+virtual double \hyperlink{classoomph_1_1SolidFiniteElement_aa48b4880f69bb28d267ff27e7b1967e7}{dshape\+\_\+lagrangian\+\_\+at\+\_\+knot} (const unsigned \&ipt, \hyperlink{classoomph_1_1Shape}{Shape} \&psi, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dpsidxi) const
+\begin{DoxyCompactList}\small\item\em Return the geometric shape functions and also first derivatives w.\+r.\+t. Lagrangian coordinates at ipt-\/th integration point. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1SolidFiniteElement_ac87b12010837978f9a419c8097721af4}{d2shape\+\_\+lagrangian} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Shape}{Shape} \&psi, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dpsidxi, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&d2psidxi) const
+\begin{DoxyCompactList}\small\item\em Compute the geometric shape functions and also first and second derivatives w.\+r.\+t. Lagrangian coordinates at local coordinate s; Returns Jacobian of mapping from Lagrangian to local coordinates. Numbering\+: {\bfseries 1D}\+: d2pidxi(i,0) = $ d^2 \psi_j / d \xi^2 $ {\bfseries 2D}\+: d2psidxi(i,0) = $ \partial^2 \psi_j / \partial \xi_0^2 $ d2psidxi(i,1) = $ \partial^2 \psi_j / \partial \xi_1^2 $ d2psidxi(i,2) = $ \partial^2 \psi_j / \partial \xi_0 \partial \xi_1 $ {\bfseries 3D}\+: d2psidxi(i,0) = $ \partial^2 \psi_j / \partial \xi_0^2 $ d2psidxi(i,1) = $ \partial^2 \psi_j / \partial \xi_1^2 $ d2psidxi(i,2) = $ \partial^2 \psi_j / \partial \xi_2^2 $ d2psidxi(i,3) = $ \partial^2 \psi_j/\partial \xi_0 \partial \xi_1 $ d2psidxi(i,4) = $ \partial^2 \psi_j/\partial \xi_0 \partial \xi_2 $ d2psidxi(i,5) = $ \partial^2 \psi_j/\partial \xi_1 \partial \xi_2 $. \end{DoxyCompactList}\item 
+virtual double \hyperlink{classoomph_1_1SolidFiniteElement_a69d17ec5fa308adae42e2f3171649bfe}{d2shape\+\_\+lagrangian\+\_\+at\+\_\+knot} (const unsigned \&ipt, \hyperlink{classoomph_1_1Shape}{Shape} \&psi, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dpsidxi, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&d2psidxi) const
+\begin{DoxyCompactList}\small\item\em Return the geometric shape functions and also first and second derivatives w.\+r.\+t. Lagrangian coordinates at the ipt-\/th integration point. Returns Jacobian of mapping from Lagrangian to local coordinates. Numbering\+: {\bfseries 1D}\+: d2pidxi(i,0) = $ d^2 \psi_j / d^2 \xi^2 $ {\bfseries 2D}\+: d2psidxi(i,0) = $ \partial^2 \psi_j/\partial^2 \xi_0^2 $ d2psidxi(i,1) = $ \partial^2 \psi_j/\partial^2 \xi_1^2 $ d2psidxi(i,2) = $ \partial^2 \psi_j/\partial \xi_0 \partial \xi_1 $ {\bfseries 3D}\+: d2psidxi(i,0) = $ \partial^2 \psi_j / \partial^2 \xi_0^2 $ d2psidxi(i,1) = $ \partial^2 \psi_j / \partial^2 \xi_1^2 $ d2psidxi(i,2) = $ \partial^2 \psi_j / \partial^2 \xi_2^2 $ d2psidxi(i,3) = $ \partial^2 \psi_j / \partial \xi_0 \partial \xi_1 $ d2psidxi(i,4) = $ \partial^2 \psi_j/\partial \xi_0 \partial \xi_2 $ d2psidxi(i,5) = $ \partial^2 \psi_j/\partial \xi_1 \partial \xi_2 $. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1SolidFiniteElement_a0200f8dd7b61eea84d7921e78bfbb5f9}{lagrangian\+\_\+dimension} () const
+\begin{DoxyCompactList}\small\item\em Return the number of Lagrangian coordinates that the element requires at all nodes. This is by default the elemental dimension. If we ever need any other case, it can be implemented. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1SolidFiniteElement_a4836c2e0228a5affcc0d0f84e16edfe4}{nnodal\+\_\+lagrangian\+\_\+type} () const
+\begin{DoxyCompactList}\small\item\em Return the number of types of (generalised) nodal Lagrangian coordinates required to interpolate the Lagrangian coordinates in the element. (E.\+g. 1 for Lagrange-\/type elements; 2 for Hermite beam elements; 4 for Hermite shell elements). Default value is 1. Needs to be overloaded for any other element. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Node}{Node} $\ast$ \hyperlink{classoomph_1_1SolidFiniteElement_a16d149d42fe7ccccbc0f62fd043ec7b4}{construct\+\_\+node} (const unsigned \&n)
+\begin{DoxyCompactList}\small\item\em Construct the local node n and return a pointer to it. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Node}{Node} $\ast$ \hyperlink{classoomph_1_1SolidFiniteElement_ad7aaabe98172d2b4f0c0bab986f8f745}{construct\+\_\+node} (const unsigned \&n, \hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper} $\ast$const \&\hyperlink{classoomph_1_1GeomObject_a3c92023891dd4a0e818022f467eeb7f1}{time\+\_\+stepper\+\_\+pt})
+\begin{DoxyCompactList}\small\item\em Construct the local node n and return a pointer to it. Additionally, create storage for `history\textquotesingle{} values as required by timestepper. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Node}{Node} $\ast$ \hyperlink{classoomph_1_1SolidFiniteElement_acb1c7eeb1eb0db65ae7578508fa1e272}{construct\+\_\+boundary\+\_\+node} (const unsigned \&n)
+\begin{DoxyCompactList}\small\item\em Construct the local node n and return a pointer to it. in the case when it is a boundary node; that is it M\+AY be located on a \hyperlink{classoomph_1_1Mesh}{Mesh} boundary. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Node}{Node} $\ast$ \hyperlink{classoomph_1_1SolidFiniteElement_a94e0209092e12bb72e6d21c1e560bc7c}{construct\+\_\+boundary\+\_\+node} (const unsigned \&n, \hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper} $\ast$const \&\hyperlink{classoomph_1_1GeomObject_a3c92023891dd4a0e818022f467eeb7f1}{time\+\_\+stepper\+\_\+pt})
+\begin{DoxyCompactList}\small\item\em Construct the local node n and return a pointer to it, in the case when the node M\+AY be located on a boundary. Additionally, create storage for `history\textquotesingle{} values as required by timestepper. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1SolidFiniteElement_ab48f9adb99fd89669434984733579a26}{assign\+\_\+all\+\_\+generic\+\_\+local\+\_\+eqn\+\_\+numbers} (const bool \&store\+\_\+local\+\_\+dof\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Overload assign\+\_\+all\+\_\+generic\+\_\+local\+\_\+equation numbers to include the data associated with solid dofs. It remains virtual so that it can be overloaded by Refineable\+Solid\+Elements. If the boolean argument is true then the degrees of freedom are stored in Dof\+\_\+pt. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1SolidFiniteElement_ad0eb4d88aa6e0d32560f22706255569c}{describe\+\_\+local\+\_\+dofs} (std\+::ostream \&out, const std\+::string \&current\+\_\+string) const
+\begin{DoxyCompactList}\small\item\em Function to describe the local dofs of the element. The ostream specifies the output stream to which the description is written; the string stores the currently assembled output that is ultimately written to the output stream by \hyperlink{classoomph_1_1Data_a2dae16e2dcff9a40029f834c83364df5}{Data\+::describe\+\_\+dofs}(...); it is typically built up incrementally as we descend through the call hierarchy of this function when called from \hyperlink{classoomph_1_1Problem_abc103804eb319ae0b3d43870cc3e1eaf}{Problem\+::describe\+\_\+dofs}(...) \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1SolidFiniteElement_a41a77b7103970bbc6ca0aecaf81747b1}{raw\+\_\+lagrangian\+\_\+position} (const unsigned \&n, const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}) const
+\begin{DoxyCompactList}\small\item\em Return i-\/th Lagrangian coordinate at local node n without using the hanging representation. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1SolidFiniteElement_a1fe7adc8a71165fb86404d6028d19ae1}{raw\+\_\+lagrangian\+\_\+position\+\_\+gen} (const unsigned \&n, const unsigned \&k, const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}) const
+\begin{DoxyCompactList}\small\item\em Return Generalised Lagrangian coordinate at local node n. `\+Direction\textquotesingle{} i, `\+Type\textquotesingle{} k. Does not use the hanging node representation. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1SolidFiniteElement_a0e74669899fe8b0ce322c0daf4ad1691}{lagrangian\+\_\+position} (const unsigned \&n, const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}) const
+\begin{DoxyCompactList}\small\item\em Return i-\/th Lagrangian coordinate at local node n. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1SolidFiniteElement_a1c49e9ed87230b5e3024442b3a59dfdb}{lagrangian\+\_\+position\+\_\+gen} (const unsigned \&n, const unsigned \&k, const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}) const
+\begin{DoxyCompactList}\small\item\em Return Generalised Lagrangian coordinate at local node n. `\+Direction\textquotesingle{} i, `\+Type\textquotesingle{} k. \end{DoxyCompactList}\item 
+virtual double \hyperlink{classoomph_1_1SolidFiniteElement_a94ab4919b462d52cfdf6235bb9367d15}{interpolated\+\_\+xi} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}) const
+\begin{DoxyCompactList}\small\item\em Return i-\/th F\+E-\/interpolated Lagrangian coordinate xi\mbox{[}i\mbox{]} at local coordinate s. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1SolidFiniteElement_ae7a83078da76450db70b82b97f70bc2d}{interpolated\+\_\+xi} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&xi) const
+\begin{DoxyCompactList}\small\item\em Compute FE interpolated Lagrangian coordinate vector xi\mbox{[}\mbox{]} at local coordinate s as \hyperlink{classoomph_1_1Vector}{Vector}. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1SolidFiniteElement_a9af4491d7ce7475d25e3fa27c2c29654}{interpolated\+\_\+dxids} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&dxids) const
+\begin{DoxyCompactList}\small\item\em Compute derivatives of F\+E-\/interpolated Lagrangian coordinates xi with respect to local coordinates\+: dxids\mbox{[}i\mbox{]}\mbox{[}j\mbox{]}=dxi\+\_\+i/ds\+\_\+j. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1SolidFiniteElement_a730703a0cb309a97743b6b49da15ef62}{J\+\_\+lagrangian} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}) const
+\begin{DoxyCompactList}\small\item\em Return the Jacobian of mapping from local to Lagrangian coordinates at local position s. N\+OT Y\+ET I\+M\+P\+L\+E\+M\+E\+N\+T\+ED. \end{DoxyCompactList}\item 
+virtual double \hyperlink{classoomph_1_1SolidFiniteElement_ace8b4aef572b9272648a7d1fc89d4664}{J\+\_\+lagrangian\+\_\+at\+\_\+knot} (const unsigned \&ipt) const
+\begin{DoxyCompactList}\small\item\em Return the Jacobian of the mapping from local to Lagrangian coordinates at the ipt-\/th integration point. N\+OT Y\+ET I\+M\+P\+L\+E\+M\+E\+N\+T\+ED. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1SolidInitialCondition}{Solid\+Initial\+Condition} $\ast$\& \hyperlink{classoomph_1_1SolidFiniteElement_abb6ff13ecd9068e25dba4b8a63ffe5b0}{solid\+\_\+ic\+\_\+pt} ()
+\begin{DoxyCompactList}\small\item\em Pointer to object that describes the initial condition. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1SolidFiniteElement_a48f5caa032de704bf2ce6efc777c7fe2}{enable\+\_\+solve\+\_\+for\+\_\+consistent\+\_\+newmark\+\_\+accel} ()
+\begin{DoxyCompactList}\small\item\em Set to alter the problem being solved when assigning the initial conditions for time-\/dependent problems\+: solve for the history value that corresponds to the acceleration in the \hyperlink{classoomph_1_1Newmark}{Newmark} scheme by demanding that the P\+DE is satisifed at the initial time. In this case the Jacobian is replaced by the mass matrix. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1SolidFiniteElement_a17063c77624a707896631a69c0fe4316}{disable\+\_\+solve\+\_\+for\+\_\+consistent\+\_\+newmark\+\_\+accel} ()
+\begin{DoxyCompactList}\small\item\em Set to reset the problem being solved to be the standard problem. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1SolidFiniteElement_a1ec1cdf98041a51f77aab2b892856fc4}{Multiplier\+Fct\+Pt} \& \hyperlink{classoomph_1_1SolidFiniteElement_a5d35600dc2300c2fafff585d9cb4020d}{multiplier\+\_\+fct\+\_\+pt} ()
+\begin{DoxyCompactList}\small\item\em Access function\+: Pointer to multiplicator function for assignment of consistent assignement of initial conditions for \hyperlink{classoomph_1_1Newmark}{Newmark} scheme. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1SolidFiniteElement_a1ec1cdf98041a51f77aab2b892856fc4}{Multiplier\+Fct\+Pt} \hyperlink{classoomph_1_1SolidFiniteElement_aff02a52591a62ab8c1f68088cf50f4f1}{multiplier\+\_\+fct\+\_\+pt} () const
+\begin{DoxyCompactList}\small\item\em Access function\+: Pointer to multiplicator function for assignment of consistent assignement of initial conditions for \hyperlink{classoomph_1_1Newmark}{Newmark} scheme (const version) \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1SolidFiniteElement_a8d27c8dff0043ed5b40791c41f6b88bd}{get\+\_\+residuals\+\_\+for\+\_\+solid\+\_\+ic} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&residuals)
+\begin{DoxyCompactList}\small\item\em Compute the residuals for the setup of an initial condition. The global equations are\+: \[ 0 = \int \left( \sum_{j=1}^N \sum_{k=1}^K X_{ijk} \psi_{jk}(\xi_n) - \frac{\partial^D R^{(IC)}_i(\xi_n)}{\partial t^D} \right) \psi_{lm}(\xi_n) \ dv \mbox{ \ \ \ \ for \ \ \ $l=1,...,N, \ \ m=1,...,K$} \] where $ N $ is the number of nodes in the mesh and $ K $ the number of generalised nodal coordinates. The initial shape of the solid body, $ {\bf R}^{(IC)},$ and its time-\/derivatives are specified via the {\ttfamily \hyperlink{classoomph_1_1GeomObject}{Geom\+Object}} that is stored in the {\ttfamily Solid\+Finite\+Element\+::\+Solid\+Initial\+Condition} object. The latter also stores the order of the time-\/derivative $ D $ to be assigned. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1SolidFiniteElement_a669d18beef5d517d01e97685a43c4a96}{fill\+\_\+in\+\_\+residuals\+\_\+for\+\_\+solid\+\_\+ic} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&residuals)
+\begin{DoxyCompactList}\small\item\em Fill in the residuals for the setup of an initial condition. The global equations are\+: \[ 0 = \int \left( \sum_{j=1}^N \sum_{k=1}^K X_{ijk} \psi_{jk}(\xi_n) - \frac{\partial^D R^{(IC)}_i(\xi_n)}{\partial t^D} \right) \psi_{lm}(\xi_n) \ dv \mbox{ \ \ \ \ for \ \ \ $l=1,...,N, \ \ m=1,...,K$} \] where $ N $ is the number of nodes in the mesh and $ K $ the number of generalised nodal coordinates. The initial shape of the solid body, $ {\bf R}^{(IC)},$ and its time-\/derivatives are specified via the {\ttfamily \hyperlink{classoomph_1_1GeomObject}{Geom\+Object}} that is stored in the {\ttfamily Solid\+Finite\+Element\+::\+Solid\+Initial\+Condition} object. The latter also stores the order of the time-\/derivative $ D $ to be assigned. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1SolidFiniteElement_ab05ee82d79d87f92c5aec3156231ac2d}{fill\+\_\+in\+\_\+jacobian\+\_\+for\+\_\+solid\+\_\+ic} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&residuals, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&jacobian)
+\begin{DoxyCompactList}\small\item\em Fill in the residuals and Jacobian for the setup of an initial condition. The global equations are\+: \[ 0 = \int \left( \sum_{j=1}^N \sum_{k=1}^K X_{ijk} \psi_{jk}(\xi_n) - \frac{\partial^D R^{(IC)}_i(\xi_n)}{\partial t^D} \right) \psi_{lm}(\xi_n) \ dv \mbox{ \ \ \ \ for \ \ \ $l=1,...,N, \ \ m=1,...,K$} \] where $ N $ is the number of nodes in the mesh and $ K $ the number of generalised nodal coordinates. The initial shape of the solid body, $ {\bf R}^{(IC)},$ and its time-\/derivatives are specified via the {\ttfamily \hyperlink{classoomph_1_1GeomObject}{Geom\+Object}} that is stored in the {\ttfamily Solid\+Finite\+Element\+::\+Solid\+Initial\+Condition} object. The latter also stores the order of the time-\/derivative $ D $ to be assigned. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1SolidFiniteElement_ae9b760377a56194d802510527b33c76f}{fill\+\_\+in\+\_\+jacobian\+\_\+for\+\_\+newmark\+\_\+accel} (\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&jacobian)
+\begin{DoxyCompactList}\small\item\em Fill in the contributions of the Jacobian matrix for the consistent assignment of the initial \char`\"{}accelerations\char`\"{} in \hyperlink{classoomph_1_1Newmark}{Newmark} scheme. In this case the Jacobian is the mass matrix. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1SolidFiniteElement_ace4b1be200ce47b16ec15d429c08a80e}{compute\+\_\+norm} (double \&el\+\_\+norm)
+\begin{DoxyCompactList}\small\item\em Calculate the L2 norm of the displacement u=R-\/r to overload the compute\+\_\+norm function in the \hyperlink{classoomph_1_1GeneralisedElement}{Generalised\+Element} base class. \end{DoxyCompactList}\item 
+int \hyperlink{classoomph_1_1SolidFiniteElement_a8632178393e76ffcd88888ab96616b1a}{position\+\_\+local\+\_\+eqn} (const unsigned \&n, const unsigned \&k, const unsigned \&j) const
+\begin{DoxyCompactList}\small\item\em Access function that returns the local equation number that corresponds to the j-\/th coordinate of the k-\/th position-\/type at the n-\/th local node. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classoomph_1_1SolidFiniteElement_a6baa515639dc04784c9bcd3b691f4f8c}{fill\+\_\+in\+\_\+generic\+\_\+jacobian\+\_\+for\+\_\+solid\+\_\+ic} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&residuals, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&jacobian, const unsigned \&flag)
+\begin{DoxyCompactList}\small\item\em Helper function to fill in the residuals and (if flag==1) the Jacobian for the setup of an initial condition. The global equations are\+: \[ 0 = \int \left( \sum_{j=1}^N \sum_{k=1}^K X_{ijk} \psi_{jk}(\xi_n) - \frac{\partial^D R^{(IC)}_i(\xi_n)}{\partial t^D} \right) \psi_{lm}(\xi_n) \ dv \mbox{ \ \ \ \ for \ \ \ $l=1,...,N, \ \ m=1,...,K$} \] where $ N $ is the number of nodes in the mesh and $ K $ the number of generalised nodal coordinates. The initial shape of the solid body, $ {\bf R}^{(IC)},$ and its time-\/derivatives are specified via the {\ttfamily \hyperlink{classoomph_1_1GeomObject}{Geom\+Object}} that is stored in the {\ttfamily Solid\+Finite\+Element\+::\+Solid\+Initial\+Condition} object. The latter also stores the order of the time-\/derivative $ D $ to be assigned. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1SolidFiniteElement_a74b681075150c90417939b0b0c836dda}{set\+\_\+nnodal\+\_\+lagrangian\+\_\+type} (const unsigned \&nlagrangian\+\_\+type)
+\begin{DoxyCompactList}\small\item\em Set the number of types required to interpolate the Lagrangian coordinates. \end{DoxyCompactList}\item 
+virtual double \hyperlink{classoomph_1_1SolidFiniteElement_a8974f3df67362e2b1be171b71294b16c}{local\+\_\+to\+\_\+lagrangian\+\_\+mapping} (const \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dpsids, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&jacobian, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&inverse\+\_\+jacobian) const
+\begin{DoxyCompactList}\small\item\em Calculate the mapping from local to lagrangian coordinates, given the derivatives of the shape functions w.\+r.\+t. local coorindates. Return the determinant of the jacobian, the jacobian and inverse jacobian. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1SolidFiniteElement_afa4031c891a8a86fa27e2339ff923ebc}{local\+\_\+to\+\_\+lagrangian\+\_\+mapping} (const \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dpsids, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&inverse\+\_\+jacobian) const
+\begin{DoxyCompactList}\small\item\em Calculate the mapping from local to lagrangian coordinates, given the derivatives of the shape functions w.\+r.\+t. local coordinates, Return only the determinant of the jacobian and the inverse of the mapping (ds/dx) \end{DoxyCompactList}\item 
+virtual double \hyperlink{classoomph_1_1SolidFiniteElement_a811c926ab4ec81ecb374030302ef28ca}{local\+\_\+to\+\_\+lagrangian\+\_\+mapping\+\_\+diagonal} (const \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dpsids, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&jacobian, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&inverse\+\_\+jacobian) const
+\begin{DoxyCompactList}\small\item\em Calculate the mapping from local to Lagrangian coordinates given the derivatives of the shape functions w.\+r.\+t the local coorindates. assuming that the coordinates are aligned in the direction of the local coordinates, i.\+e. there are no cross terms and the jacobian is diagonal. This function returns the determinant of the jacobian, the jacobian and the inverse jacobian. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1SolidFiniteElement_a3c7ad30f234e87649ed34cea94f65ea3}{assign\+\_\+solid\+\_\+local\+\_\+eqn\+\_\+numbers} (const bool \&store\+\_\+local\+\_\+dof)
+\begin{DoxyCompactList}\small\item\em Assigns local equation numbers for the generic solid local equation numbering schemes. If the boolean flag is true the the degrees of freedom are stored in Dof\+\_\+pt. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1SolidFiniteElement_a1892091d7e876725a70b34cd5d91b861}{describe\+\_\+solid\+\_\+local\+\_\+dofs} (std\+::ostream \&out, const std\+::string \&current\+\_\+string) const
+\begin{DoxyCompactList}\small\item\em Classifies dofs locally for solid specific aspects. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1SolidFiniteElement_a3167a2005e33815948bef357214e15ee}{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&residuals, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&jacobian)
+\begin{DoxyCompactList}\small\item\em Overload the \hyperlink{classoomph_1_1SolidFiniteElement_a3167a2005e33815948bef357214e15ee}{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian()} function to use finite differences to calculate the solid residuals by default. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1SolidFiniteElement_aa4d7dab326ceb0167da34ad4c535fa0d}{fill\+\_\+in\+\_\+jacobian\+\_\+from\+\_\+solid\+\_\+position\+\_\+by\+\_\+fd} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&residuals, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&jacobian)
+\begin{DoxyCompactList}\small\item\em Use finite differences to calculate the Jacobian entries corresponding to the solid positions. This version assumes that the residuals vector has already been computed. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1SolidFiniteElement_a3708a6f6b9b616ff44fa8b55cdbd0d34}{fill\+\_\+in\+\_\+jacobian\+\_\+from\+\_\+solid\+\_\+position\+\_\+by\+\_\+fd} (\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&jacobian)
+\begin{DoxyCompactList}\small\item\em Use finite differences to calculate the Jacobian entries corresponding to the solid positions. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1SolidFiniteElement_a51bdd2b180335e3ad41c6b818a2528e2}{update\+\_\+before\+\_\+solid\+\_\+position\+\_\+fd} ()
+\begin{DoxyCompactList}\small\item\em Function that is called before the finite differencing of any solid position data. This may be overloaded to update any slaved data before finite differencing takes place. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1SolidFiniteElement_afab2124e079912fe9bf39bf9df8a42c2}{reset\+\_\+after\+\_\+solid\+\_\+position\+\_\+fd} ()
+\begin{DoxyCompactList}\small\item\em Function that is call after the finite differencing of the solid position data. This may be overloaded to reset any slaved variables that may have changed during the finite differencing. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1SolidFiniteElement_a84d5c177b27570c35dd7693b913c00a5}{update\+\_\+in\+\_\+solid\+\_\+position\+\_\+fd} (const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i})
+\begin{DoxyCompactList}\small\item\em Function called within the finite difference loop for the solid position dat after a change in any values in the n-\/th node. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1SolidFiniteElement_a99e4613b1ac5f202c837c0e556f7b917}{reset\+\_\+in\+\_\+solid\+\_\+position\+\_\+fd} (const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i})
+\begin{DoxyCompactList}\small\item\em Function called within the finite difference loop for solid position data after the values in the i-\/th node are reset. The default behaviour is to call the update function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1MacroElement}{Macro\+Element} $\ast$ \hyperlink{classoomph_1_1SolidFiniteElement_a582281cb3abb1b0d120a2f3310e051f3}{Undeformed\+\_\+macro\+\_\+elem\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to the element\textquotesingle{}s \char`\"{}undeformed\char`\"{} macro element (N\+U\+LL by default) \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1SolidInitialCondition}{Solid\+Initial\+Condition} $\ast$ \hyperlink{classoomph_1_1SolidFiniteElement_a65f789b537979bc3e1948ce529f1dabe}{Solid\+\_\+ic\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to object that specifies the initial condition. \end{DoxyCompactList}\item 
+bool \hyperlink{classoomph_1_1SolidFiniteElement_a52ba6cbb89b5edfe7592a49171aeb436}{Solve\+\_\+for\+\_\+consistent\+\_\+newmark\+\_\+accel\+\_\+flag}
+\begin{DoxyCompactList}\small\item\em Flag to indicate which system of equations to solve when assigning initial conditions for time-\/dependent problems. If true, solve for the history value that corresponds to the acceleration in the \hyperlink{classoomph_1_1Newmark}{Newmark} scheme by demanding that the P\+DE is satisifed at the initial time. In this case the Jacobian is replaced by the mass matrix. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{classoomph_1_1SolidFiniteElement_a91f14d25d145e7ef47d55cabfd332f5c}{assemble\+\_\+local\+\_\+to\+\_\+lagrangian\+\_\+jacobian} (const \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dpsids, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&jacobian) const
+\begin{DoxyCompactList}\small\item\em Assemble the jacobian matrix for the mapping from local to lagrangian coordinates, given the derivatives of the shape function. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1SolidFiniteElement_a33ab1427cebdc36ff77d897f5db9f3a6}{assemble\+\_\+local\+\_\+to\+\_\+lagrangian\+\_\+jacobian2} (const \hyperlink{classoomph_1_1DShape}{D\+Shape} \&d2psids, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&jacobian2) const
+\begin{DoxyCompactList}\small\item\em Assemble the the \char`\"{}jacobian\char`\"{} matrix of second derivatives, given the second derivatives of the shape functions w.\+r.\+t. local coordinates. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1SolidFiniteElement_ab07798fe92a5bf61903b41209f67fbbf}{multiplier} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&xi)
+\begin{DoxyCompactList}\small\item\em Access to the \char`\"{}multiplier\char`\"{} for the inertia terms in the consistent determination of the initial conditions for \hyperlink{classoomph_1_1Newmark}{Newmark} timestepping. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1SolidFiniteElement_a1ec1cdf98041a51f77aab2b892856fc4}{Multiplier\+Fct\+Pt} \hyperlink{classoomph_1_1SolidFiniteElement_ad93b1496c6d963fd7f7b28d0e78bcbff}{Multiplier\+\_\+fct\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to function that computes the \char`\"{}multiplier\char`\"{} for the inertia terms in the consistent determination of the initial conditions for \hyperlink{classoomph_1_1Newmark}{Newmark} timestepping. \end{DoxyCompactList}\item 
+int $\ast$ \hyperlink{classoomph_1_1SolidFiniteElement_a32e61585f928d3cec6d61033a971776e}{Position\+\_\+local\+\_\+eqn}
+\begin{DoxyCompactList}\small\item\em Array to hold the local equation number information for the solid equations, whatever they may be. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1SolidFiniteElement_a4c2267355f097b864f9994f965ad8305}{Lagrangian\+\_\+dimension}
+\begin{DoxyCompactList}\small\item\em The Lagrangian dimension of the nodes stored in the element, / i.\+e. the number of Lagrangian coordinates. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1SolidFiniteElement_a82f45b63fe051fc87deae77c6e6106e6}{Nnodal\+\_\+lagrangian\+\_\+type}
+\begin{DoxyCompactList}\small\item\em The number of coordinate types requried to intepolate the Lagrangian coordinates in the element. For Lagrange elements it is 1 (the default). It must be over-\/ridden by using the set\+\_\+nlagrangian\+\_\+type() function in the constructors of elements that use generalised coordinate, e.\+g. for 1D Hermite elements Nnodal\+\_\+position\+\_\+types =2. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\hyperlink{classoomph_1_1SolidFiniteElement}{Solid\+Finite\+Element} class. 
+
+Solid elements are elements whose nodal positions are unknowns in the problem -- their nodes are Solid\+Nodes. In such elements, the nodes not only have a variable (Eulerian) but also a fixed (Lagrangian) position. The positional variables have their own local equation numbering scheme which is set up with 
+\begin{DoxyCode}
+\hyperlink{classoomph_1_1SolidFiniteElement_a3c7ad30f234e87649ed34cea94f65ea3}{assign\_solid\_local\_eqn\_numbers} () 
+\end{DoxyCode}
+ The derivatives of the `solid equations\textquotesingle{} (i.\+e. the equations that determine the nodal positions) with respect to the nodal positions, required in the Jacobian matrix, are determined by finite differencing.
+
+In the present form, the \hyperlink{classoomph_1_1SolidFiniteElement}{Solid\+Finite\+Element} represents a fully functional base class for `proper\textquotesingle{} solid mechanics elements, but it can also be combined (via inheritance) with elements that solve additional equations. This is particularly useful in cases where the solid equations are merely used to update the nodal positions in a moving mesh problem, although this can prove costly in practice. 
+
+Definition at line 3361 of file elements.\+h.
+
+
+
+\subsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_a1ec1cdf98041a51f77aab2b892856fc4}\label{classoomph_1_1SolidFiniteElement_a1ec1cdf98041a51f77aab2b892856fc4}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!Multiplier\+Fct\+Pt@{Multiplier\+Fct\+Pt}}
+\index{Multiplier\+Fct\+Pt@{Multiplier\+Fct\+Pt}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{Multiplier\+Fct\+Pt}{MultiplierFctPt}}
+{\footnotesize\ttfamily typedef double($\ast$ oomph\+::\+Solid\+Finite\+Element\+::\+Multiplier\+Fct\+Pt) (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&xi)}
+
+
+
+Pointer to function that computes the \char`\"{}multiplier\char`\"{} for the inertia terms in the consistent determination of the initial conditions for \hyperlink{classoomph_1_1Newmark}{Newmark} timestepping. 
+
+
+
+Definition at line 3380 of file elements.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_aa66c3834f1bf99bb821453a2bfbb55c9}\label{classoomph_1_1SolidFiniteElement_aa66c3834f1bf99bb821453a2bfbb55c9}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!Solid\+Finite\+Element@{Solid\+Finite\+Element}}
+\index{Solid\+Finite\+Element@{Solid\+Finite\+Element}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{Solid\+Finite\+Element()}{SolidFiniteElement()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily oomph\+::\+Solid\+Finite\+Element\+::\+Solid\+Finite\+Element (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor\+: Set defaults. 
+
+
+
+Definition at line 3383 of file elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_adc8527ae26aba090bed52da41f41b57f}\label{classoomph_1_1SolidFiniteElement_adc8527ae26aba090bed52da41f41b57f}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!````~Solid\+Finite\+Element@{$\sim$\+Solid\+Finite\+Element}}
+\index{````~Solid\+Finite\+Element@{$\sim$\+Solid\+Finite\+Element}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{$\sim$\+Solid\+Finite\+Element()}{~SolidFiniteElement()}}
+{\footnotesize\ttfamily oomph\+::\+Solid\+Finite\+Element\+::$\sim$\+Solid\+Finite\+Element (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Destructor to clean up any allocated memory. 
+
+Destructor for \hyperlink{classoomph_1_1SolidFiniteElement}{Solid\+Finite\+Element}\+: 
+
+Definition at line 6490 of file elements.\+cc.
+
+
+
+References local\+\_\+to\+\_\+lagrangian\+\_\+mapping\+\_\+diagonal().
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_a3a6e7767ca41273a053b0f4a229eb97c}\label{classoomph_1_1SolidFiniteElement_a3a6e7767ca41273a053b0f4a229eb97c}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!Solid\+Finite\+Element@{Solid\+Finite\+Element}}
+\index{Solid\+Finite\+Element@{Solid\+Finite\+Element}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{Solid\+Finite\+Element()}{SolidFiniteElement()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily oomph\+::\+Solid\+Finite\+Element\+::\+Solid\+Finite\+Element (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1SolidFiniteElement}{Solid\+Finite\+Element} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Broken copy constructor. 
+
+
+
+Definition at line 3394 of file elements.\+h.
+
+
+
+References oomph\+::\+Broken\+Copy\+::broken\+\_\+copy().
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_a91f14d25d145e7ef47d55cabfd332f5c}\label{classoomph_1_1SolidFiniteElement_a91f14d25d145e7ef47d55cabfd332f5c}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!assemble\+\_\+local\+\_\+to\+\_\+lagrangian\+\_\+jacobian@{assemble\+\_\+local\+\_\+to\+\_\+lagrangian\+\_\+jacobian}}
+\index{assemble\+\_\+local\+\_\+to\+\_\+lagrangian\+\_\+jacobian@{assemble\+\_\+local\+\_\+to\+\_\+lagrangian\+\_\+jacobian}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{assemble\+\_\+local\+\_\+to\+\_\+lagrangian\+\_\+jacobian()}{assemble\_local\_to\_lagrangian\_jacobian()}}
+{\footnotesize\ttfamily void oomph\+::\+Solid\+Finite\+Element\+::assemble\+\_\+local\+\_\+to\+\_\+lagrangian\+\_\+jacobian (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dpsids,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{jacobian }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Assemble the jacobian matrix for the mapping from local to lagrangian coordinates, given the derivatives of the shape function. 
+
+Internal function that is used to assemble the jacobian of the mapping from local coordinates (s) to the lagrangian coordinates (xi), given the derivatives of the shape functions. 
+
+Reimplemented in \hyperlink{classoomph_1_1RefineableSolidElement_ae0d5a2fc617a11036a80d0d016292d7a}{oomph\+::\+Refineable\+Solid\+Element}.
+
+
+
+Definition at line 6389 of file elements.\+cc.
+
+
+
+References assemble\+\_\+local\+\_\+to\+\_\+lagrangian\+\_\+jacobian2(), and i.
+
+
+
+Referenced by describe\+\_\+local\+\_\+dofs().
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_a33ab1427cebdc36ff77d897f5db9f3a6}\label{classoomph_1_1SolidFiniteElement_a33ab1427cebdc36ff77d897f5db9f3a6}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!assemble\+\_\+local\+\_\+to\+\_\+lagrangian\+\_\+jacobian2@{assemble\+\_\+local\+\_\+to\+\_\+lagrangian\+\_\+jacobian2}}
+\index{assemble\+\_\+local\+\_\+to\+\_\+lagrangian\+\_\+jacobian2@{assemble\+\_\+local\+\_\+to\+\_\+lagrangian\+\_\+jacobian2}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{assemble\+\_\+local\+\_\+to\+\_\+lagrangian\+\_\+jacobian2()}{assemble\_local\_to\_lagrangian\_jacobian2()}}
+{\footnotesize\ttfamily void oomph\+::\+Solid\+Finite\+Element\+::assemble\+\_\+local\+\_\+to\+\_\+lagrangian\+\_\+jacobian2 (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{d2psids,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{jacobian2 }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Assemble the the \char`\"{}jacobian\char`\"{} matrix of second derivatives, given the second derivatives of the shape functions w.\+r.\+t. local coordinates. 
+
+Internal function that is used to assemble the jacobian of second derivatives of the the mapping from local coordinates (s) to the lagrangian coordinates (xi), given the second derivatives of the shape functions. 
+
+Reimplemented in \hyperlink{classoomph_1_1RefineableSolidElement_a5843ecc4836508342150862e11af99f4}{oomph\+::\+Refineable\+Solid\+Element}.
+
+
+
+Definition at line 6448 of file elements.\+cc.
+
+
+
+References i.
+
+
+
+Referenced by assemble\+\_\+local\+\_\+to\+\_\+lagrangian\+\_\+jacobian().
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_ab48f9adb99fd89669434984733579a26}\label{classoomph_1_1SolidFiniteElement_ab48f9adb99fd89669434984733579a26}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!assign\+\_\+all\+\_\+generic\+\_\+local\+\_\+eqn\+\_\+numbers@{assign\+\_\+all\+\_\+generic\+\_\+local\+\_\+eqn\+\_\+numbers}}
+\index{assign\+\_\+all\+\_\+generic\+\_\+local\+\_\+eqn\+\_\+numbers@{assign\+\_\+all\+\_\+generic\+\_\+local\+\_\+eqn\+\_\+numbers}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{assign\+\_\+all\+\_\+generic\+\_\+local\+\_\+eqn\+\_\+numbers()}{assign\_all\_generic\_local\_eqn\_numbers()}}
+{\footnotesize\ttfamily virtual void oomph\+::\+Solid\+Finite\+Element\+::assign\+\_\+all\+\_\+generic\+\_\+local\+\_\+eqn\+\_\+numbers (\begin{DoxyParamCaption}\item[{const bool \&}]{store\+\_\+local\+\_\+dof\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Overload assign\+\_\+all\+\_\+generic\+\_\+local\+\_\+equation numbers to include the data associated with solid dofs. It remains virtual so that it can be overloaded by Refineable\+Solid\+Elements. If the boolean argument is true then the degrees of freedom are stored in Dof\+\_\+pt. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a564ba080f68132762510b1ec9465b05d}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 3649 of file elements.\+h.
+
+
+
+References oomph\+::\+Finite\+Element\+::assign\+\_\+all\+\_\+generic\+\_\+local\+\_\+eqn\+\_\+numbers(), oomph\+::\+Generalised\+Element\+::describe\+\_\+local\+\_\+dofs(), and oomph\+::\+Global\+\_\+string\+\_\+for\+\_\+annotation\+::string().
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_a3c7ad30f234e87649ed34cea94f65ea3}\label{classoomph_1_1SolidFiniteElement_a3c7ad30f234e87649ed34cea94f65ea3}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!assign\+\_\+solid\+\_\+local\+\_\+eqn\+\_\+numbers@{assign\+\_\+solid\+\_\+local\+\_\+eqn\+\_\+numbers}}
+\index{assign\+\_\+solid\+\_\+local\+\_\+eqn\+\_\+numbers@{assign\+\_\+solid\+\_\+local\+\_\+eqn\+\_\+numbers}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{assign\+\_\+solid\+\_\+local\+\_\+eqn\+\_\+numbers()}{assign\_solid\_local\_eqn\_numbers()}}
+{\footnotesize\ttfamily void oomph\+::\+Solid\+Finite\+Element\+::assign\+\_\+solid\+\_\+local\+\_\+eqn\+\_\+numbers (\begin{DoxyParamCaption}\item[{const bool \&}]{store\+\_\+local\+\_\+dof\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Assigns local equation numbers for the generic solid local equation numbering schemes. If the boolean flag is true the the degrees of freedom are stored in Dof\+\_\+pt. 
+
+Assign local equation numbers for the solid equations in the element.
+
+If the boolean argument is true then pointers to the dofs will be stored in Dof\+\_\+pt. 
+
+Reimplemented in \hyperlink{classoomph_1_1RefineableSolidElement_a7718105cbc38cff969a246b093b6ecee}{oomph\+::\+Refineable\+Solid\+Element}.
+
+
+
+Definition at line 6750 of file elements.\+cc.
+
+
+
+References oomph\+::\+Generalised\+Element\+::add\+\_\+global\+\_\+eqn\+\_\+numbers(), oomph\+::\+Generalised\+Element\+::eqn\+\_\+number(), fill\+\_\+in\+\_\+jacobian\+\_\+from\+\_\+solid\+\_\+position\+\_\+by\+\_\+fd(), oomph\+::\+Data\+::\+Is\+\_\+pinned, oomph\+::\+Generalised\+Element\+::local\+\_\+eqn\+\_\+number(), oomph\+::\+Generalised\+Element\+::ndof(), oomph\+::\+Solid\+Node\+::position\+\_\+eqn\+\_\+number(), and oomph\+::\+Node\+::x\+\_\+gen().
+
+
+
+Referenced by oomph\+::\+Refineable\+Solid\+Element\+::assign\+\_\+solid\+\_\+local\+\_\+eqn\+\_\+numbers().
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_ace4b1be200ce47b16ec15d429c08a80e}\label{classoomph_1_1SolidFiniteElement_ace4b1be200ce47b16ec15d429c08a80e}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!compute\+\_\+norm@{compute\+\_\+norm}}
+\index{compute\+\_\+norm@{compute\+\_\+norm}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{compute\+\_\+norm()}{compute\_norm()}}
+{\footnotesize\ttfamily void oomph\+::\+Solid\+Finite\+Element\+::compute\+\_\+norm (\begin{DoxyParamCaption}\item[{double \&}]{el\+\_\+norm }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Calculate the L2 norm of the displacement u=R-\/r to overload the compute\+\_\+norm function in the \hyperlink{classoomph_1_1GeneralisedElement}{Generalised\+Element} base class. 
+
+Calculate the L2 norm of the displacement u=R-\/r to overload the compute\+\_\+norm function in the \hyperlink{classoomph_1_1GeneralisedElement}{Generalised\+Element} base class 
+
+Reimplemented from \hyperlink{classoomph_1_1GeneralisedElement_af2025a472df6752a946739da58e7fb37}{oomph\+::\+Generalised\+Element}.
+
+
+
+Definition at line 6301 of file elements.\+cc.
+
+
+
+References describe\+\_\+local\+\_\+dofs(), i, s, and oomph\+::\+Quad\+Tree\+Names\+::W.
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_acb1c7eeb1eb0db65ae7578508fa1e272}\label{classoomph_1_1SolidFiniteElement_acb1c7eeb1eb0db65ae7578508fa1e272}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!construct\+\_\+boundary\+\_\+node@{construct\+\_\+boundary\+\_\+node}}
+\index{construct\+\_\+boundary\+\_\+node@{construct\+\_\+boundary\+\_\+node}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{construct\+\_\+boundary\+\_\+node()}{construct\_boundary\_node()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1Node}{Node}$\ast$ oomph\+::\+Solid\+Finite\+Element\+::construct\+\_\+boundary\+\_\+node (\begin{DoxyParamCaption}\item[{const unsigned \&}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Construct the local node n and return a pointer to it. in the case when it is a boundary node; that is it M\+AY be located on a \hyperlink{classoomph_1_1Mesh}{Mesh} boundary. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_ac6f9b6635daf3bfca24adb2c22c8dc81}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 3607 of file elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_a94e0209092e12bb72e6d21c1e560bc7c}\label{classoomph_1_1SolidFiniteElement_a94e0209092e12bb72e6d21c1e560bc7c}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!construct\+\_\+boundary\+\_\+node@{construct\+\_\+boundary\+\_\+node}}
+\index{construct\+\_\+boundary\+\_\+node@{construct\+\_\+boundary\+\_\+node}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{construct\+\_\+boundary\+\_\+node()}{construct\_boundary\_node()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1Node}{Node}$\ast$ oomph\+::\+Solid\+Finite\+Element\+::construct\+\_\+boundary\+\_\+node (\begin{DoxyParamCaption}\item[{const unsigned \&}]{n,  }\item[{\hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper} $\ast$const \&}]{time\+\_\+stepper\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Construct the local node n and return a pointer to it, in the case when the node M\+AY be located on a boundary. Additionally, create storage for `history\textquotesingle{} values as required by timestepper. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_ae49607dfdff1f24e9857d5b93d2ebf67}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 3627 of file elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_a16d149d42fe7ccccbc0f62fd043ec7b4}\label{classoomph_1_1SolidFiniteElement_a16d149d42fe7ccccbc0f62fd043ec7b4}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!construct\+\_\+node@{construct\+\_\+node}}
+\index{construct\+\_\+node@{construct\+\_\+node}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{construct\+\_\+node()}{construct\_node()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1Node}{Node}$\ast$ oomph\+::\+Solid\+Finite\+Element\+::construct\+\_\+node (\begin{DoxyParamCaption}\item[{const unsigned \&}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Construct the local node n and return a pointer to it. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a22ff82b3c3a2c0f204090fcb31bea1f5}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 3570 of file elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_ad7aaabe98172d2b4f0c0bab986f8f745}\label{classoomph_1_1SolidFiniteElement_ad7aaabe98172d2b4f0c0bab986f8f745}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!construct\+\_\+node@{construct\+\_\+node}}
+\index{construct\+\_\+node@{construct\+\_\+node}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{construct\+\_\+node()}{construct\_node()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1Node}{Node}$\ast$ oomph\+::\+Solid\+Finite\+Element\+::construct\+\_\+node (\begin{DoxyParamCaption}\item[{const unsigned \&}]{n,  }\item[{\hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper} $\ast$const \&}]{time\+\_\+stepper\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Construct the local node n and return a pointer to it. Additionally, create storage for `history\textquotesingle{} values as required by timestepper. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_ab340a73573761cfceb22b2fca985026a}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 3588 of file elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_ac87b12010837978f9a419c8097721af4}\label{classoomph_1_1SolidFiniteElement_ac87b12010837978f9a419c8097721af4}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!d2shape\+\_\+lagrangian@{d2shape\+\_\+lagrangian}}
+\index{d2shape\+\_\+lagrangian@{d2shape\+\_\+lagrangian}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{d2shape\+\_\+lagrangian()}{d2shape\_lagrangian()}}
+{\footnotesize\ttfamily double oomph\+::\+Solid\+Finite\+Element\+::d2shape\+\_\+lagrangian (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dpsidxi,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{d2psidxi }\end{DoxyParamCaption}) const}
+
+
+
+Compute the geometric shape functions and also first and second derivatives w.\+r.\+t. Lagrangian coordinates at local coordinate s; Returns Jacobian of mapping from Lagrangian to local coordinates. Numbering\+: {\bfseries 1D}\+: d2pidxi(i,0) = $ d^2 \psi_j / d \xi^2 $ {\bfseries 2D}\+: d2psidxi(i,0) = $ \partial^2 \psi_j / \partial \xi_0^2 $ d2psidxi(i,1) = $ \partial^2 \psi_j / \partial \xi_1^2 $ d2psidxi(i,2) = $ \partial^2 \psi_j / \partial \xi_0 \partial \xi_1 $ {\bfseries 3D}\+: d2psidxi(i,0) = $ \partial^2 \psi_j / \partial \xi_0^2 $ d2psidxi(i,1) = $ \partial^2 \psi_j / \partial \xi_1^2 $ d2psidxi(i,2) = $ \partial^2 \psi_j / \partial \xi_2^2 $ d2psidxi(i,3) = $ \partial^2 \psi_j/\partial \xi_0 \partial \xi_1 $ d2psidxi(i,4) = $ \partial^2 \psi_j/\partial \xi_0 \partial \xi_2 $ d2psidxi(i,5) = $ \partial^2 \psi_j/\partial \xi_1 \partial \xi_2 $. 
+
+
+
+Definition at line 6634 of file elements.\+cc.
+
+
+
+Referenced by dshape\+\_\+lagrangian\+\_\+at\+\_\+knot(), and oomph\+::\+Kirchhoff\+Love\+Shell\+Equations\+::get\+\_\+strain\+\_\+and\+\_\+bend().
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_a69d17ec5fa308adae42e2f3171649bfe}\label{classoomph_1_1SolidFiniteElement_a69d17ec5fa308adae42e2f3171649bfe}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!d2shape\+\_\+lagrangian\+\_\+at\+\_\+knot@{d2shape\+\_\+lagrangian\+\_\+at\+\_\+knot}}
+\index{d2shape\+\_\+lagrangian\+\_\+at\+\_\+knot@{d2shape\+\_\+lagrangian\+\_\+at\+\_\+knot}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{d2shape\+\_\+lagrangian\+\_\+at\+\_\+knot()}{d2shape\_lagrangian\_at\_knot()}}
+{\footnotesize\ttfamily double oomph\+::\+Solid\+Finite\+Element\+::d2shape\+\_\+lagrangian\+\_\+at\+\_\+knot (\begin{DoxyParamCaption}\item[{const unsigned \&}]{ipt,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dpsidxi,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{d2psidxi }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Return the geometric shape functions and also first and second derivatives w.\+r.\+t. Lagrangian coordinates at the ipt-\/th integration point. Returns Jacobian of mapping from Lagrangian to local coordinates. Numbering\+: {\bfseries 1D}\+: d2pidxi(i,0) = $ d^2 \psi_j / d^2 \xi^2 $ {\bfseries 2D}\+: d2psidxi(i,0) = $ \partial^2 \psi_j/\partial^2 \xi_0^2 $ d2psidxi(i,1) = $ \partial^2 \psi_j/\partial^2 \xi_1^2 $ d2psidxi(i,2) = $ \partial^2 \psi_j/\partial \xi_0 \partial \xi_1 $ {\bfseries 3D}\+: d2psidxi(i,0) = $ \partial^2 \psi_j / \partial^2 \xi_0^2 $ d2psidxi(i,1) = $ \partial^2 \psi_j / \partial^2 \xi_1^2 $ d2psidxi(i,2) = $ \partial^2 \psi_j / \partial^2 \xi_2^2 $ d2psidxi(i,3) = $ \partial^2 \psi_j / \partial \xi_0 \partial \xi_1 $ d2psidxi(i,4) = $ \partial^2 \psi_j/\partial \xi_0 \partial \xi_2 $ d2psidxi(i,5) = $ \partial^2 \psi_j/\partial \xi_1 \partial \xi_2 $. 
+
+Compute the geometric shape functions and also first and second derivatives w.\+r.\+t. Lagrangian coordinates at the ipt-\/th integration point Returns Jacobian of mapping from Lagrangian to local coordinates. Numbering\+: {\bfseries 1D}\+: d2pidxi(i,0) = $ d^2 \psi_j / d \xi^2 $ {\bfseries 2D}\+: d2psidxi(i,0) = $ \partial^2 \psi_j / \partial \xi_0^2 $ d2psidxi(i,1) = $ \partial^2 \psi_j / \partial \xi_1^2 $ d2psidxi(i,2) = $ \partial^2 \psi_j/\partial \xi_0 \partial \xi_1 $ {\bfseries 3D}\+: d2psidxi(i,0) = $ \partial^2 \psi_j / \partial \xi_0^2 $ d2psidxi(i,1) = $ \partial^2 \psi_j / \partial \xi_1^2 $ d2psidxi(i,2) = $ \partial^2 \psi_j / \partial \xi_2^2 $ d2psidxi(i,3) = $ \partial^2 \psi_j/\partial \xi_0 \partial \xi_1 $ d2psidxi(i,4) = $ \partial^2 \psi_j/\partial \xi_0 \partial \xi_2 $ d2psidxi(i,5) = $ \partial^2 \psi_j/\partial \xi_1 \partial \xi_2 $. 
+
+Reimplemented in \hyperlink{classoomph_1_1StorableShapeSolidElementBase_a55f3ab1f51572cf77e374e4917f47f2b}{oomph\+::\+Storable\+Shape\+Solid\+Element\+Base}.
+
+
+
+Definition at line 6683 of file elements.\+cc.
+
+
+
+References describe\+\_\+solid\+\_\+local\+\_\+dofs().
+
+
+
+Referenced by oomph\+::\+Storable\+Shape\+Solid\+Element\+Base\+::d2shape\+\_\+lagrangian\+\_\+at\+\_\+knot(), oomph\+::\+Kirchhoff\+Love\+Beam\+Equations\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+beam(), oomph\+::\+Kirchhoff\+Love\+Shell\+Equations\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+shell(), oomph\+::\+Kirchhoff\+Love\+Shell\+Equations\+::get\+\_\+energy(), oomph\+::\+Kirchhoff\+Love\+Beam\+Equations\+::get\+\_\+energy(), and oomph\+::\+Storable\+Shape\+Solid\+Element\+Base\+::pre\+\_\+compute\+\_\+d2shape\+\_\+lagrangian\+\_\+at\+\_\+knots().
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_ad0eb4d88aa6e0d32560f22706255569c}\label{classoomph_1_1SolidFiniteElement_ad0eb4d88aa6e0d32560f22706255569c}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!describe\+\_\+local\+\_\+dofs@{describe\+\_\+local\+\_\+dofs}}
+\index{describe\+\_\+local\+\_\+dofs@{describe\+\_\+local\+\_\+dofs}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{describe\+\_\+local\+\_\+dofs()}{describe\_local\_dofs()}}
+{\footnotesize\ttfamily void oomph\+::\+Solid\+Finite\+Element\+::describe\+\_\+local\+\_\+dofs (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{out,  }\item[{const std\+::string \&}]{current\+\_\+string }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Function to describe the local dofs of the element. The ostream specifies the output stream to which the description is written; the string stores the currently assembled output that is ultimately written to the output stream by \hyperlink{classoomph_1_1Data_a2dae16e2dcff9a40029f834c83364df5}{Data\+::describe\+\_\+dofs}(...); it is typically built up incrementally as we descend through the call hierarchy of this function when called from \hyperlink{classoomph_1_1Problem_abc103804eb319ae0b3d43870cc3e1eaf}{Problem\+::describe\+\_\+dofs}(...) 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_aad9f9ebb2996fd9c44caf34da8bc7941}{oomph\+::\+Finite\+Element}.
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1FSIImposeDisplacementByLagrangeMultiplierElement_ad53849f509cfd0d3eb469bfacf7cfabf}{oomph\+::\+F\+S\+I\+Impose\+Displacement\+By\+Lagrange\+Multiplier\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$}, and \hyperlink{classoomph_1_1FSIWallElement_afe120348dddfc3acfd95e7d08c2d0a1d}{oomph\+::\+F\+S\+I\+Wall\+Element}.
+
+
+
+Definition at line 6375 of file elements.\+cc.
+
+
+
+References assemble\+\_\+local\+\_\+to\+\_\+lagrangian\+\_\+jacobian(), and oomph\+::\+Finite\+Element\+::describe\+\_\+local\+\_\+dofs().
+
+
+
+Referenced by compute\+\_\+norm(), and oomph\+::\+T\+P\+V\+D\+Element$<$ D\+I\+M, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::vertex\+\_\+node\+\_\+pt().
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_a1892091d7e876725a70b34cd5d91b861}\label{classoomph_1_1SolidFiniteElement_a1892091d7e876725a70b34cd5d91b861}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!describe\+\_\+solid\+\_\+local\+\_\+dofs@{describe\+\_\+solid\+\_\+local\+\_\+dofs}}
+\index{describe\+\_\+solid\+\_\+local\+\_\+dofs@{describe\+\_\+solid\+\_\+local\+\_\+dofs}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{describe\+\_\+solid\+\_\+local\+\_\+dofs()}{describe\_solid\_local\_dofs()}}
+{\footnotesize\ttfamily void oomph\+::\+Solid\+Finite\+Element\+::describe\+\_\+solid\+\_\+local\+\_\+dofs (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{out,  }\item[{const std\+::string \&}]{current\+\_\+string }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Classifies dofs locally for solid specific aspects. 
+
+Function to describe the local dofs of the element. The ostream specifies the output stream to which the description is written; the string stores the currently assembled output that is ultimately written to the output stream by \hyperlink{classoomph_1_1Data_a2dae16e2dcff9a40029f834c83364df5}{Data\+::describe\+\_\+dofs}(...); it is typically built up incrementally as we descend through the call hierarchy of this function when called from \hyperlink{classoomph_1_1Problem_abc103804eb319ae0b3d43870cc3e1eaf}{Problem\+::describe\+\_\+dofs}(...) 
+
+Definition at line 6726 of file elements.\+cc.
+
+
+
+References oomph\+::\+Solid\+Node\+::describe\+\_\+dofs(), and oomph\+::\+Global\+\_\+string\+\_\+for\+\_\+annotation\+::string().
+
+
+
+Referenced by d2shape\+\_\+lagrangian\+\_\+at\+\_\+knot().
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_a17063c77624a707896631a69c0fe4316}\label{classoomph_1_1SolidFiniteElement_a17063c77624a707896631a69c0fe4316}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!disable\+\_\+solve\+\_\+for\+\_\+consistent\+\_\+newmark\+\_\+accel@{disable\+\_\+solve\+\_\+for\+\_\+consistent\+\_\+newmark\+\_\+accel}}
+\index{disable\+\_\+solve\+\_\+for\+\_\+consistent\+\_\+newmark\+\_\+accel@{disable\+\_\+solve\+\_\+for\+\_\+consistent\+\_\+newmark\+\_\+accel}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{disable\+\_\+solve\+\_\+for\+\_\+consistent\+\_\+newmark\+\_\+accel()}{disable\_solve\_for\_consistent\_newmark\_accel()}}
+{\footnotesize\ttfamily void oomph\+::\+Solid\+Finite\+Element\+::disable\+\_\+solve\+\_\+for\+\_\+consistent\+\_\+newmark\+\_\+accel (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set to reset the problem being solved to be the standard problem. 
+
+
+
+Definition at line 3742 of file elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_a4154c1d362b12905f2b5e6cbcfafa9f6}\label{classoomph_1_1SolidFiniteElement_a4154c1d362b12905f2b5e6cbcfafa9f6}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!dshape\+\_\+lagrangian@{dshape\+\_\+lagrangian}}
+\index{dshape\+\_\+lagrangian@{dshape\+\_\+lagrangian}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{dshape\+\_\+lagrangian()}{dshape\_lagrangian()}}
+{\footnotesize\ttfamily double oomph\+::\+Solid\+Finite\+Element\+::dshape\+\_\+lagrangian (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dpsi }\end{DoxyParamCaption}) const}
+
+
+
+Calculate shape functions and derivatives w.\+r.\+t. Lagrangian coordinates at local coordinate s. Returns the Jacobian of the mapping from Lagrangian to local coordinates. 
+
+Calculate shape functions and derivatives w.\+r.\+t. Lagrangian coordinates at local coordinate s. Returns the Jacobian of the mapping from Lagrangian to local coordinates. General case, may be overloaded 
+
+Definition at line 6564 of file elements.\+cc.
+
+
+
+Referenced by oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element\+::dposition\+\_\+dlagrangian\+\_\+at\+\_\+local\+\_\+coordinate(), oomph\+::\+F\+S\+I\+Diag\+Hermite\+Shell\+Element\+::dposition\+\_\+dlagrangian\+\_\+at\+\_\+local\+\_\+coordinate(), oomph\+::\+Kirchhoff\+Love\+Shell\+Equations\+::get\+\_\+normal(), oomph\+::\+Kirchhoff\+Love\+Beam\+Equations\+::get\+\_\+normal(), oomph\+::\+Kirchhoff\+Love\+Shell\+Equations\+::load\+\_\+rate\+\_\+of\+\_\+work(), and local\+\_\+to\+\_\+lagrangian\+\_\+mapping\+\_\+diagonal().
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_aa48b4880f69bb28d267ff27e7b1967e7}\label{classoomph_1_1SolidFiniteElement_aa48b4880f69bb28d267ff27e7b1967e7}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!dshape\+\_\+lagrangian\+\_\+at\+\_\+knot@{dshape\+\_\+lagrangian\+\_\+at\+\_\+knot}}
+\index{dshape\+\_\+lagrangian\+\_\+at\+\_\+knot@{dshape\+\_\+lagrangian\+\_\+at\+\_\+knot}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{dshape\+\_\+lagrangian\+\_\+at\+\_\+knot()}{dshape\_lagrangian\_at\_knot()}}
+{\footnotesize\ttfamily double oomph\+::\+Solid\+Finite\+Element\+::dshape\+\_\+lagrangian\+\_\+at\+\_\+knot (\begin{DoxyParamCaption}\item[{const unsigned \&}]{ipt,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dpsi }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Return the geometric shape functions and also first derivatives w.\+r.\+t. Lagrangian coordinates at ipt-\/th integration point. 
+
+Compute the geometric shape functions and also first derivatives w.\+r.\+t. Lagrangian coordinates at integration point ipt. Most general form of function, but may be over-\/loaded if desired 
+
+Reimplemented in \hyperlink{classoomph_1_1StorableShapeSolidElementBase_a69eefa335919d8d4b5143bb11b40c2df}{oomph\+::\+Storable\+Shape\+Solid\+Element\+Base}.
+
+
+
+Definition at line 6589 of file elements.\+cc.
+
+
+
+References d2shape\+\_\+lagrangian().
+
+
+
+Referenced by oomph\+::\+Axisymmetric\+P\+V\+D\+Equations\+::compute\+\_\+physical\+\_\+size(), oomph\+::\+Axisymmetric\+P\+V\+D\+Equations\+With\+Pressure\+::compute\+\_\+physical\+\_\+size(), oomph\+::\+Storable\+Shape\+Solid\+Element\+Base\+::dshape\+\_\+lagrangian\+\_\+at\+\_\+knot(), oomph\+::\+Axisymmetric\+P\+V\+D\+Equations\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+axisym\+\_\+pvd(), oomph\+::\+Axisymmetric\+P\+V\+D\+Equations\+With\+Pressure\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+axisym\+\_\+pvd\+\_\+with\+\_\+pressure(), and oomph\+::\+Storable\+Shape\+Solid\+Element\+Base\+::pre\+\_\+compute\+\_\+dshape\+\_\+lagrangian\+\_\+at\+\_\+knots().
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_a48f5caa032de704bf2ce6efc777c7fe2}\label{classoomph_1_1SolidFiniteElement_a48f5caa032de704bf2ce6efc777c7fe2}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!enable\+\_\+solve\+\_\+for\+\_\+consistent\+\_\+newmark\+\_\+accel@{enable\+\_\+solve\+\_\+for\+\_\+consistent\+\_\+newmark\+\_\+accel}}
+\index{enable\+\_\+solve\+\_\+for\+\_\+consistent\+\_\+newmark\+\_\+accel@{enable\+\_\+solve\+\_\+for\+\_\+consistent\+\_\+newmark\+\_\+accel}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{enable\+\_\+solve\+\_\+for\+\_\+consistent\+\_\+newmark\+\_\+accel()}{enable\_solve\_for\_consistent\_newmark\_accel()}}
+{\footnotesize\ttfamily void oomph\+::\+Solid\+Finite\+Element\+::enable\+\_\+solve\+\_\+for\+\_\+consistent\+\_\+newmark\+\_\+accel (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set to alter the problem being solved when assigning the initial conditions for time-\/dependent problems\+: solve for the history value that corresponds to the acceleration in the \hyperlink{classoomph_1_1Newmark}{Newmark} scheme by demanding that the P\+DE is satisifed at the initial time. In this case the Jacobian is replaced by the mass matrix. 
+
+
+
+Definition at line 3738 of file elements.\+h.
+
+
+
+Referenced by oomph\+::\+Solid\+I\+C\+Problem\+::set\+\_\+newmark\+\_\+initial\+\_\+condition\+\_\+consistently().
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_a3167a2005e33815948bef357214e15ee}\label{classoomph_1_1SolidFiniteElement_a3167a2005e33815948bef357214e15ee}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian}}
+\index{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian()}{fill\_in\_contribution\_to\_jacobian()}}
+{\footnotesize\ttfamily void oomph\+::\+Solid\+Finite\+Element\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{residuals,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{jacobian }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Overload the \hyperlink{classoomph_1_1SolidFiniteElement_a3167a2005e33815948bef357214e15ee}{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian()} function to use finite differences to calculate the solid residuals by default. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a0ae7af222af38a0d53bf283dc85bdfea}{oomph\+::\+Finite\+Element}.
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1RefineableFSIImposeDisplacementByLagrangeMultiplierElement_a3c86bf6884cd7cfdfa8e7381fbd16fcf}{oomph\+::\+Refineable\+F\+S\+I\+Impose\+Displacement\+By\+Lagrange\+Multiplier\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$}, \hyperlink{classoomph_1_1FSIImposeDisplacementByLagrangeMultiplierElement_a48006d22e0ad79703914c687390150b8}{oomph\+::\+F\+S\+I\+Impose\+Displacement\+By\+Lagrange\+Multiplier\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$}, \hyperlink{classoomph_1_1RefineableImposeDisplacementByLagrangeMultiplierElement_af0d1b2633de720222d85e2083296a209}{oomph\+::\+Refineable\+Impose\+Displacement\+By\+Lagrange\+Multiplier\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$}, \hyperlink{classoomph_1_1ImposeDisplacementByLagrangeMultiplierElement_a8f196eaf084264031cf36fb541978123}{oomph\+::\+Impose\+Displacement\+By\+Lagrange\+Multiplier\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$}, \hyperlink{classoomph_1_1RefineableFSISolidTractionElement_a886a6bcb5722c9535f6f78ccefdc0646}{oomph\+::\+Refineable\+F\+S\+I\+Solid\+Traction\+Element$<$ E\+L\+E\+M\+E\+N\+T, D\+I\+M $>$}, \hyperlink{classoomph_1_1PVDEquationsWithPressure_ac1d61d6c3be895e5d033cfbcbfc8bd71}{oomph\+::\+P\+V\+D\+Equations\+With\+Pressure$<$ D\+I\+M $>$}, \hyperlink{classoomph_1_1FSISolidTractionElement_a789bdb99ca30e3c7b56adab5be79a59d}{oomph\+::\+F\+S\+I\+Solid\+Traction\+Element$<$ E\+L\+E\+M\+E\+N\+T, D\+I\+M $>$}, \hyperlink{classoomph_1_1FSIDiagHermiteShellElement_a5e48d1c0291cf16cacaa8b42112efe90}{oomph\+::\+F\+S\+I\+Diag\+Hermite\+Shell\+Element}, \hyperlink{classoomph_1_1RefineableSolidTractionElement_ad1921c9d88c2d71c0f3735259faaef35}{oomph\+::\+Refineable\+Solid\+Traction\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$}, \hyperlink{classoomph_1_1PVDEquations_a7a84eddfcf9bd10eec76fd4baa739806}{oomph\+::\+P\+V\+D\+Equations$<$ D\+I\+M $>$}, \hyperlink{classoomph_1_1FSIWallElement_a7817d2662c24540d3757cb1a1194a635}{oomph\+::\+F\+S\+I\+Wall\+Element}, \hyperlink{classoomph_1_1KirchhoffLoveShellEquations_a2c8049fa371d484a43e157ebef54b474}{oomph\+::\+Kirchhoff\+Love\+Shell\+Equations}, and \hyperlink{classoomph_1_1SolidTractionElement_a7f6315287b8d863631a06b75e0cc7daf}{oomph\+::\+Solid\+Traction\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$}.
+
+
+
+Definition at line 3972 of file elements.\+h.
+
+
+
+References oomph\+::\+Generalised\+Element\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals(), oomph\+::\+Generalised\+Element\+::fill\+\_\+in\+\_\+jacobian\+\_\+from\+\_\+external\+\_\+by\+\_\+fd(), oomph\+::\+Generalised\+Element\+::fill\+\_\+in\+\_\+jacobian\+\_\+from\+\_\+internal\+\_\+by\+\_\+fd(), oomph\+::\+Generalised\+Element\+::get\+\_\+residuals(), and oomph\+::\+Generalised\+Element\+::ndof().
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_a6baa515639dc04784c9bcd3b691f4f8c}\label{classoomph_1_1SolidFiniteElement_a6baa515639dc04784c9bcd3b691f4f8c}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!fill\+\_\+in\+\_\+generic\+\_\+jacobian\+\_\+for\+\_\+solid\+\_\+ic@{fill\+\_\+in\+\_\+generic\+\_\+jacobian\+\_\+for\+\_\+solid\+\_\+ic}}
+\index{fill\+\_\+in\+\_\+generic\+\_\+jacobian\+\_\+for\+\_\+solid\+\_\+ic@{fill\+\_\+in\+\_\+generic\+\_\+jacobian\+\_\+for\+\_\+solid\+\_\+ic}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{fill\+\_\+in\+\_\+generic\+\_\+jacobian\+\_\+for\+\_\+solid\+\_\+ic()}{fill\_in\_generic\_jacobian\_for\_solid\_ic()}}
+{\footnotesize\ttfamily void oomph\+::\+Solid\+Finite\+Element\+::fill\+\_\+in\+\_\+generic\+\_\+jacobian\+\_\+for\+\_\+solid\+\_\+ic (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{residuals,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{jacobian,  }\item[{const unsigned \&}]{flag }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Helper function to fill in the residuals and (if flag==1) the Jacobian for the setup of an initial condition. The global equations are\+: \[ 0 = \int \left( \sum_{j=1}^N \sum_{k=1}^K X_{ijk} \psi_{jk}(\xi_n) - \frac{\partial^D R^{(IC)}_i(\xi_n)}{\partial t^D} \right) \psi_{lm}(\xi_n) \ dv \mbox{ \ \ \ \ for \ \ \ $l=1,...,N, \ \ m=1,...,K$} \] where $ N $ is the number of nodes in the mesh and $ K $ the number of generalised nodal coordinates. The initial shape of the solid body, $ {\bf R}^{(IC)},$ and its time-\/derivatives are specified via the {\ttfamily \hyperlink{classoomph_1_1GeomObject}{Geom\+Object}} that is stored in the {\ttfamily Solid\+Finite\+Element\+::\+Solid\+Initial\+Condition} object. The latter also stores the order of the time-\/derivative $ D $ to be assigned. 
+
+Helper function to fill in the residuals and (if flag==1) the Jacobian for the setup of an initial condition. The global equations are\+: \[ 0 = \int \left( \sum_{j=1}^N \sum_{k=1}^K X_{ijk} \psi_{jk}(\xi_n) - \frac{\partial^D R^{(IC)}_i(\xi_n)}{\partial t^D} \right) \psi_{lm}(\xi_n) \ dv \mbox{ \ \ \ \ for \ \ \ $l=1,...,N, \ \ m=1,...,K$} \] where $ N $ is the number of nodes in the mesh and $ K $ the number of generalised nodal coordinates. The initial shape of the solid body, $ {\bf R}^{(IC)},$ and its time-\/derivatives are specified via the {\ttfamily \hyperlink{classoomph_1_1GeomObject}{Geom\+Object}} that is stored in the {\ttfamily Solid\+Finite\+Element\+::\+Solid\+Initial\+Condition} object. The latter also stores the order of the time-\/derivative $ D $ to be assigned. 
+
+Definition at line 7236 of file elements.\+cc.
+
+
+
+References i, oomph\+::oomph\+\_\+info, s, and oomph\+::\+One\+Dim\+Lagrange\+::shape().
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_ae9b760377a56194d802510527b33c76f}\label{classoomph_1_1SolidFiniteElement_ae9b760377a56194d802510527b33c76f}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!fill\+\_\+in\+\_\+jacobian\+\_\+for\+\_\+newmark\+\_\+accel@{fill\+\_\+in\+\_\+jacobian\+\_\+for\+\_\+newmark\+\_\+accel}}
+\index{fill\+\_\+in\+\_\+jacobian\+\_\+for\+\_\+newmark\+\_\+accel@{fill\+\_\+in\+\_\+jacobian\+\_\+for\+\_\+newmark\+\_\+accel}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{fill\+\_\+in\+\_\+jacobian\+\_\+for\+\_\+newmark\+\_\+accel()}{fill\_in\_jacobian\_for\_newmark\_accel()}}
+{\footnotesize\ttfamily void oomph\+::\+Solid\+Finite\+Element\+::fill\+\_\+in\+\_\+jacobian\+\_\+for\+\_\+newmark\+\_\+accel (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{jacobian }\end{DoxyParamCaption})}
+
+
+
+Fill in the contributions of the Jacobian matrix for the consistent assignment of the initial \char`\"{}accelerations\char`\"{} in \hyperlink{classoomph_1_1Newmark}{Newmark} scheme. In this case the Jacobian is the mass matrix. 
+
+Add jacobian and residuals for consistent assignment of initial \char`\"{}accelerations\char`\"{} in \hyperlink{classoomph_1_1Newmark}{Newmark} scheme. Jacobian is the mass matrix. 
+
+Definition at line 7078 of file elements.\+cc.
+
+
+
+References i, oomph\+::\+Time\+Stepper\+::ntstorage(), s, oomph\+::\+Time\+Stepper\+::type(), oomph\+::\+Quad\+Tree\+Names\+::W, and oomph\+::\+Time\+Stepper\+::weight().
+
+
+
+Referenced by oomph\+::\+Kirchhoff\+Love\+Shell\+Equations\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian(), oomph\+::\+Kirchhoff\+Love\+Beam\+Equations\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian(), oomph\+::\+Axisymmetric\+P\+V\+D\+Equations\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian(), oomph\+::\+P\+V\+D\+Equations$<$ D\+I\+M $>$\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian(), and interpolated\+\_\+dxids().
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_ab05ee82d79d87f92c5aec3156231ac2d}\label{classoomph_1_1SolidFiniteElement_ab05ee82d79d87f92c5aec3156231ac2d}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!fill\+\_\+in\+\_\+jacobian\+\_\+for\+\_\+solid\+\_\+ic@{fill\+\_\+in\+\_\+jacobian\+\_\+for\+\_\+solid\+\_\+ic}}
+\index{fill\+\_\+in\+\_\+jacobian\+\_\+for\+\_\+solid\+\_\+ic@{fill\+\_\+in\+\_\+jacobian\+\_\+for\+\_\+solid\+\_\+ic}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{fill\+\_\+in\+\_\+jacobian\+\_\+for\+\_\+solid\+\_\+ic()}{fill\_in\_jacobian\_for\_solid\_ic()}}
+{\footnotesize\ttfamily void oomph\+::\+Solid\+Finite\+Element\+::fill\+\_\+in\+\_\+jacobian\+\_\+for\+\_\+solid\+\_\+ic (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{residuals,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{jacobian }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Fill in the residuals and Jacobian for the setup of an initial condition. The global equations are\+: \[ 0 = \int \left( \sum_{j=1}^N \sum_{k=1}^K X_{ijk} \psi_{jk}(\xi_n) - \frac{\partial^D R^{(IC)}_i(\xi_n)}{\partial t^D} \right) \psi_{lm}(\xi_n) \ dv \mbox{ \ \ \ \ for \ \ \ $l=1,...,N, \ \ m=1,...,K$} \] where $ N $ is the number of nodes in the mesh and $ K $ the number of generalised nodal coordinates. The initial shape of the solid body, $ {\bf R}^{(IC)},$ and its time-\/derivatives are specified via the {\ttfamily \hyperlink{classoomph_1_1GeomObject}{Geom\+Object}} that is stored in the {\ttfamily Solid\+Finite\+Element\+::\+Solid\+Initial\+Condition} object. The latter also stores the order of the time-\/derivative $ D $ to be assigned. 
+
+
+
+Definition at line 3818 of file elements.\+h.
+
+
+
+References oomph\+::\+Generalised\+Element\+::compute\+\_\+norm().
+
+
+
+Referenced by oomph\+::\+P\+V\+D\+Equations$<$ D\+I\+M $>$\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian().
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_aa4d7dab326ceb0167da34ad4c535fa0d}\label{classoomph_1_1SolidFiniteElement_aa4d7dab326ceb0167da34ad4c535fa0d}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!fill\+\_\+in\+\_\+jacobian\+\_\+from\+\_\+solid\+\_\+position\+\_\+by\+\_\+fd@{fill\+\_\+in\+\_\+jacobian\+\_\+from\+\_\+solid\+\_\+position\+\_\+by\+\_\+fd}}
+\index{fill\+\_\+in\+\_\+jacobian\+\_\+from\+\_\+solid\+\_\+position\+\_\+by\+\_\+fd@{fill\+\_\+in\+\_\+jacobian\+\_\+from\+\_\+solid\+\_\+position\+\_\+by\+\_\+fd}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{fill\+\_\+in\+\_\+jacobian\+\_\+from\+\_\+solid\+\_\+position\+\_\+by\+\_\+fd()}{fill\_in\_jacobian\_from\_solid\_position\_by\_fd()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void oomph\+::\+Solid\+Finite\+Element\+::fill\+\_\+in\+\_\+jacobian\+\_\+from\+\_\+solid\+\_\+position\+\_\+by\+\_\+fd (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{residuals,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{jacobian }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Use finite differences to calculate the Jacobian entries corresponding to the solid positions. This version assumes that the residuals vector has already been computed. 
+
+This function calculates the entries of Jacobian matrix, used in the Newton method, associated with the elastic problem in which the nodal position is a variable. It does this using finite differences, rather than an analytical formulation, so can be done in total generality. 
+
+Reimplemented in \hyperlink{classoomph_1_1RefineableSolidElement_a97f911c422af3e4fbd078b58cfe3e207}{oomph\+::\+Refineable\+Solid\+Element}.
+
+
+
+Definition at line 6836 of file elements.\+cc.
+
+
+
+References oomph\+::\+Generalised\+Element\+::\+Default\+\_\+fd\+\_\+jacobian\+\_\+step, oomph\+::\+Generalised\+Element\+::get\+\_\+residuals(), i, and oomph\+::\+Generalised\+Element\+::ndof().
+
+
+
+Referenced by assign\+\_\+solid\+\_\+local\+\_\+eqn\+\_\+numbers(), oomph\+::\+Kirchhoff\+Love\+Shell\+Equations\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian(), oomph\+::\+Kirchhoff\+Love\+Beam\+Equations\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian(), oomph\+::\+Axisymmetric\+P\+V\+D\+Equations\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian(), oomph\+::\+P\+V\+D\+Equations$<$ D\+I\+M $>$\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian(), oomph\+::\+Axisymmetric\+P\+V\+D\+Equations\+With\+Pressure\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian(), oomph\+::\+P\+V\+D\+Equations\+With\+Pressure$<$ D\+I\+M $>$\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian(), and oomph\+::\+P\+V\+D\+Equations\+With\+Pressure$<$ D\+I\+M $>$\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian\+\_\+and\+\_\+mass\+\_\+matrix().
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_a3708a6f6b9b616ff44fa8b55cdbd0d34}\label{classoomph_1_1SolidFiniteElement_a3708a6f6b9b616ff44fa8b55cdbd0d34}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!fill\+\_\+in\+\_\+jacobian\+\_\+from\+\_\+solid\+\_\+position\+\_\+by\+\_\+fd@{fill\+\_\+in\+\_\+jacobian\+\_\+from\+\_\+solid\+\_\+position\+\_\+by\+\_\+fd}}
+\index{fill\+\_\+in\+\_\+jacobian\+\_\+from\+\_\+solid\+\_\+position\+\_\+by\+\_\+fd@{fill\+\_\+in\+\_\+jacobian\+\_\+from\+\_\+solid\+\_\+position\+\_\+by\+\_\+fd}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{fill\+\_\+in\+\_\+jacobian\+\_\+from\+\_\+solid\+\_\+position\+\_\+by\+\_\+fd()}{fill\_in\_jacobian\_from\_solid\_position\_by\_fd()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void oomph\+::\+Solid\+Finite\+Element\+::fill\+\_\+in\+\_\+jacobian\+\_\+from\+\_\+solid\+\_\+position\+\_\+by\+\_\+fd (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{jacobian }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Use finite differences to calculate the Jacobian entries corresponding to the solid positions. 
+
+
+
+Definition at line 4014 of file elements.\+h.
+
+
+
+References oomph\+::\+Generalised\+Element\+::get\+\_\+residuals(), and oomph\+::\+Generalised\+Element\+::ndof().
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_a669d18beef5d517d01e97685a43c4a96}\label{classoomph_1_1SolidFiniteElement_a669d18beef5d517d01e97685a43c4a96}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!fill\+\_\+in\+\_\+residuals\+\_\+for\+\_\+solid\+\_\+ic@{fill\+\_\+in\+\_\+residuals\+\_\+for\+\_\+solid\+\_\+ic}}
+\index{fill\+\_\+in\+\_\+residuals\+\_\+for\+\_\+solid\+\_\+ic@{fill\+\_\+in\+\_\+residuals\+\_\+for\+\_\+solid\+\_\+ic}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{fill\+\_\+in\+\_\+residuals\+\_\+for\+\_\+solid\+\_\+ic()}{fill\_in\_residuals\_for\_solid\_ic()}}
+{\footnotesize\ttfamily void oomph\+::\+Solid\+Finite\+Element\+::fill\+\_\+in\+\_\+residuals\+\_\+for\+\_\+solid\+\_\+ic (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{residuals }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Fill in the residuals for the setup of an initial condition. The global equations are\+: \[ 0 = \int \left( \sum_{j=1}^N \sum_{k=1}^K X_{ijk} \psi_{jk}(\xi_n) - \frac{\partial^D R^{(IC)}_i(\xi_n)}{\partial t^D} \right) \psi_{lm}(\xi_n) \ dv \mbox{ \ \ \ \ for \ \ \ $l=1,...,N, \ \ m=1,...,K$} \] where $ N $ is the number of nodes in the mesh and $ K $ the number of generalised nodal coordinates. The initial shape of the solid body, $ {\bf R}^{(IC)},$ and its time-\/derivatives are specified via the {\ttfamily \hyperlink{classoomph_1_1GeomObject}{Geom\+Object}} that is stored in the {\ttfamily Solid\+Finite\+Element\+::\+Solid\+Initial\+Condition} object. The latter also stores the order of the time-\/derivative $ D $ to be assigned. 
+
+
+
+Definition at line 3796 of file elements.\+h.
+
+
+
+References oomph\+::\+Generalised\+Element\+::\+Dummy\+\_\+matrix.
+
+
+
+Referenced by oomph\+::\+Kirchhoff\+Love\+Beam\+Equations\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+beam().
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_a2457ad75b45257b536090d9b1a6f1331}\label{classoomph_1_1SolidFiniteElement_a2457ad75b45257b536090d9b1a6f1331}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!geom\+\_\+data\+\_\+pt@{geom\+\_\+data\+\_\+pt}}
+\index{geom\+\_\+data\+\_\+pt@{geom\+\_\+data\+\_\+pt}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{geom\+\_\+data\+\_\+pt()}{geom\_data\_pt()}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1Data}{Data}$\ast$ oomph\+::\+Solid\+Finite\+Element\+::geom\+\_\+data\+\_\+pt (\begin{DoxyParamCaption}\item[{const unsigned \&}]{j }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Return pointer to the j-\/th \hyperlink{classoomph_1_1Data}{Data} item that the object\textquotesingle{}s shape depends on. (Redirects to the nodes\textquotesingle{} positional \hyperlink{classoomph_1_1Data}{Data}). 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_aa119a9aaad3d2ebb54ff085726c3708d}{oomph\+::\+Finite\+Element}.
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1RefineableSolidElement_a3f20de56e3a920644b01dac184f67ef1}{oomph\+::\+Refineable\+Solid\+Element}.
+
+
+
+Definition at line 3412 of file elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_a8d27c8dff0043ed5b40791c41f6b88bd}\label{classoomph_1_1SolidFiniteElement_a8d27c8dff0043ed5b40791c41f6b88bd}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!get\+\_\+residuals\+\_\+for\+\_\+solid\+\_\+ic@{get\+\_\+residuals\+\_\+for\+\_\+solid\+\_\+ic}}
+\index{get\+\_\+residuals\+\_\+for\+\_\+solid\+\_\+ic@{get\+\_\+residuals\+\_\+for\+\_\+solid\+\_\+ic}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{get\+\_\+residuals\+\_\+for\+\_\+solid\+\_\+ic()}{get\_residuals\_for\_solid\_ic()}}
+{\footnotesize\ttfamily virtual void oomph\+::\+Solid\+Finite\+Element\+::get\+\_\+residuals\+\_\+for\+\_\+solid\+\_\+ic (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{residuals }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Compute the residuals for the setup of an initial condition. The global equations are\+: \[ 0 = \int \left( \sum_{j=1}^N \sum_{k=1}^K X_{ijk} \psi_{jk}(\xi_n) - \frac{\partial^D R^{(IC)}_i(\xi_n)}{\partial t^D} \right) \psi_{lm}(\xi_n) \ dv \mbox{ \ \ \ \ for \ \ \ $l=1,...,N, \ \ m=1,...,K$} \] where $ N $ is the number of nodes in the mesh and $ K $ the number of generalised nodal coordinates. The initial shape of the solid body, $ {\bf R}^{(IC)},$ and its time-\/derivatives are specified via the {\ttfamily \hyperlink{classoomph_1_1GeomObject}{Geom\+Object}} that is stored in the {\ttfamily Solid\+Finite\+Element\+::\+Solid\+Initial\+Condition} object. The latter also stores the order of the time-\/derivative $ D $ to be assigned. 
+
+
+
+Definition at line 3776 of file elements.\+h.
+
+
+
+References oomph\+::\+Vector$<$ \+\_\+\+Tp $>$\+::initialise().
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_a2e557cb3647e40fe3225bab4d8f834a0}\label{classoomph_1_1SolidFiniteElement_a2e557cb3647e40fe3225bab4d8f834a0}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!get\+\_\+x\+\_\+and\+\_\+xi@{get\+\_\+x\+\_\+and\+\_\+xi}}
+\index{get\+\_\+x\+\_\+and\+\_\+xi@{get\+\_\+x\+\_\+and\+\_\+xi}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{get\+\_\+x\+\_\+and\+\_\+xi()}{get\_x\_and\_xi()}}
+{\footnotesize\ttfamily virtual void oomph\+::\+Solid\+Finite\+Element\+::get\+\_\+x\+\_\+and\+\_\+xi (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{x\+\_\+fe,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{x,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{xi\+\_\+fe,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{xi }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Eulerian and Lagrangian coordinates as function of the local coordinates\+: The Eulerian position is returned in F\+E-\/interpolated form ({\ttfamily x\+\_\+fe}) and then in the form obtained from the \char`\"{}current\char`\"{} \hyperlink{classoomph_1_1MacroElement}{Macro\+Element} representation (if it exists -- if not, {\ttfamily x} is the same as {\ttfamily x\+\_\+fe}). This allows the Domain/\+Macro\+Element-\/ based representation to be used to apply displacement boundary conditions exactly. Ditto for the Lagrangian coordinates returned in xi\+\_\+fe and xi. (Broken virtual -- overload in specific geometric element class if you want to use this functionality.) 
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1QSolidElementBase_a2afc3bfd3aa6ed253f42d55ac4e20839}{oomph\+::\+Q\+Solid\+Element\+Base}.
+
+
+
+Definition at line 3451 of file elements.\+h.
+
+
+
+Referenced by oomph\+::\+Tree\+Based\+Refineable\+Mesh\+Base\+::adapt\+\_\+mesh(), and oomph\+::\+Tree\+Based\+Refineable\+Mesh\+Base\+::p\+\_\+adapt\+\_\+mesh().
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_aa68837a8f6d1cb021d5cae9c2968a6f3}\label{classoomph_1_1SolidFiniteElement_aa68837a8f6d1cb021d5cae9c2968a6f3}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!has\+\_\+internal\+\_\+solid\+\_\+data@{has\+\_\+internal\+\_\+solid\+\_\+data}}
+\index{has\+\_\+internal\+\_\+solid\+\_\+data@{has\+\_\+internal\+\_\+solid\+\_\+data}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{has\+\_\+internal\+\_\+solid\+\_\+data()}{has\_internal\_solid\_data()}}
+{\footnotesize\ttfamily virtual bool oomph\+::\+Solid\+Finite\+Element\+::has\+\_\+internal\+\_\+solid\+\_\+data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Return whether there is internal solid data (e.\+g. discontinuous solid pressure). At present, this is used to report an error in setting initial conditions for Elastic\+Problems which can\textquotesingle{}t handle such cases. The default is false. 
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1QPVDElementWithPressure_ad94b8af9930b59635389d803b94046ad}{oomph\+::\+Q\+P\+V\+D\+Element\+With\+Pressure$<$ D\+I\+M $>$}, and \hyperlink{classoomph_1_1AxisymQPVDElementWithPressure_af5a06f24c310d233555f165189ff353a}{oomph\+::\+Axisym\+Q\+P\+V\+D\+Element\+With\+Pressure}.
+
+
+
+Definition at line 3375 of file elements.\+h.
+
+
+
+Referenced by oomph\+::\+Solid\+I\+C\+Problem\+::backup\+\_\+original\+\_\+state(), oomph\+::\+Solid\+I\+C\+Problem\+::reset\+\_\+original\+\_\+state(), and oomph\+::\+Solid\+I\+C\+Problem\+::setup\+\_\+problem().
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_a389e4773864d19ac82337ffc24e4dfa6}\label{classoomph_1_1SolidFiniteElement_a389e4773864d19ac82337ffc24e4dfa6}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!identify\+\_\+geometric\+\_\+data@{identify\+\_\+geometric\+\_\+data}}
+\index{identify\+\_\+geometric\+\_\+data@{identify\+\_\+geometric\+\_\+data}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{identify\+\_\+geometric\+\_\+data()}{identify\_geometric\_data()}}
+{\footnotesize\ttfamily void oomph\+::\+Solid\+Finite\+Element\+::identify\+\_\+geometric\+\_\+data (\begin{DoxyParamCaption}\item[{std\+::set$<$ \hyperlink{classoomph_1_1Data}{Data} $\ast$$>$ \&}]{geometric\+\_\+data\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Specify \hyperlink{classoomph_1_1Data}{Data} that affects the geometry of the element by adding the position \hyperlink{classoomph_1_1Data}{Data} to the set that\textquotesingle{}s passed in. (This functionality is required in F\+SI problems; set is used to avoid double counting). 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_af60133cebd1961567b1160782467ad58}{oomph\+::\+Finite\+Element}.
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1RefineableSolidElement_a48623914f87556be55fb97cf68f0ee93}{oomph\+::\+Refineable\+Solid\+Element}.
+
+
+
+Definition at line 3419 of file elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_a9af4491d7ce7475d25e3fa27c2c29654}\label{classoomph_1_1SolidFiniteElement_a9af4491d7ce7475d25e3fa27c2c29654}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!interpolated\+\_\+dxids@{interpolated\+\_\+dxids}}
+\index{interpolated\+\_\+dxids@{interpolated\+\_\+dxids}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{interpolated\+\_\+dxids()}{interpolated\_dxids()}}
+{\footnotesize\ttfamily void oomph\+::\+Solid\+Finite\+Element\+::interpolated\+\_\+dxids (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{dxids }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Compute derivatives of F\+E-\/interpolated Lagrangian coordinates xi with respect to local coordinates\+: dxids\mbox{[}i\mbox{]}\mbox{[}j\mbox{]}=dxi\+\_\+i/ds\+\_\+j. 
+
+Compute derivatives of F\+E-\/interpolated Lagrangian coordinates xi with respect to local coordinates\+: dxids\mbox{[}i\mbox{]}\mbox{[}j\mbox{]}=dxi\+\_\+i/ds\+\_\+j 
+
+Definition at line 7030 of file elements.\+cc.
+
+
+
+References fill\+\_\+in\+\_\+jacobian\+\_\+for\+\_\+newmark\+\_\+accel(), and i.
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_a94ab4919b462d52cfdf6235bb9367d15}\label{classoomph_1_1SolidFiniteElement_a94ab4919b462d52cfdf6235bb9367d15}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!interpolated\+\_\+xi@{interpolated\+\_\+xi}}
+\index{interpolated\+\_\+xi@{interpolated\+\_\+xi}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{interpolated\+\_\+xi()}{interpolated\_xi()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily double oomph\+::\+Solid\+Finite\+Element\+::interpolated\+\_\+xi (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{const unsigned \&}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Return i-\/th F\+E-\/interpolated Lagrangian coordinate xi\mbox{[}i\mbox{]} at local coordinate s. 
+
+Return i-\/th F\+E-\/interpolated Lagrangian coordinate at local coordinate s. 
+
+Reimplemented in \hyperlink{classoomph_1_1SolidFaceElement_ace3eb64ce511c869bd140922b6597667}{oomph\+::\+Solid\+Face\+Element}.
+
+
+
+Definition at line 6951 of file elements.\+cc.
+
+
+
+References oomph\+::\+One\+Dim\+Lagrange\+::shape().
+
+
+
+Referenced by oomph\+::\+Axisymmetric\+P\+V\+D\+Equations\+::compute\+\_\+physical\+\_\+size(), oomph\+::\+Axisymmetric\+P\+V\+D\+Equations\+With\+Pressure\+::compute\+\_\+physical\+\_\+size(), oomph\+::\+Axisymmetric\+P\+V\+D\+Equations\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+axisym\+\_\+pvd(), oomph\+::\+Kirchhoff\+Love\+Beam\+Equations\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+beam(), oomph\+::\+Kirchhoff\+Love\+Shell\+Equations\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+shell(), oomph\+::\+Axisymmetric\+P\+V\+D\+Equations\+With\+Pressure\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+axisym\+\_\+pvd\+\_\+with\+\_\+pressure(), oomph\+::\+Kirchhoff\+Love\+Shell\+Equations\+::get\+\_\+energy(), oomph\+::\+Kirchhoff\+Love\+Beam\+Equations\+::get\+\_\+energy(), oomph\+::\+Kirchhoff\+Love\+Shell\+Equations\+::get\+\_\+strain\+\_\+and\+\_\+bend(), oomph\+::\+Hermite\+Beam\+Element\+::output(), oomph\+::\+Hermite\+Shell\+Element\+::output(), oomph\+::\+Axisymmetric\+P\+V\+D\+Equations\+::output(), oomph\+::\+Axisym\+Diag\+Hermite\+P\+V\+D\+Element\+::output(), oomph\+::\+Clamped\+Hermite\+Shell\+Boundary\+Condition\+Element\+::output(), and oomph\+::\+Axisymmetric\+P\+V\+D\+Equations\+With\+Pressure\+::output().
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_ae7a83078da76450db70b82b97f70bc2d}\label{classoomph_1_1SolidFiniteElement_ae7a83078da76450db70b82b97f70bc2d}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!interpolated\+\_\+xi@{interpolated\+\_\+xi}}
+\index{interpolated\+\_\+xi@{interpolated\+\_\+xi}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{interpolated\+\_\+xi()}{interpolated\_xi()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void oomph\+::\+Solid\+Finite\+Element\+::interpolated\+\_\+xi (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{xi }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Compute FE interpolated Lagrangian coordinate vector xi\mbox{[}\mbox{]} at local coordinate s as \hyperlink{classoomph_1_1Vector}{Vector}. 
+
+Compute F\+E-\/interpolated Lagrangian coordinate vector xi\mbox{[}\mbox{]} at local coordinate s. 
+
+Reimplemented in \hyperlink{classoomph_1_1SolidFaceElement_ae1c414e42a48c736a9b634e922dbb314}{oomph\+::\+Solid\+Face\+Element}.
+
+
+
+Definition at line 6986 of file elements.\+cc.
+
+
+
+References i, and oomph\+::\+One\+Dim\+Lagrange\+::shape().
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_a730703a0cb309a97743b6b49da15ef62}\label{classoomph_1_1SolidFiniteElement_a730703a0cb309a97743b6b49da15ef62}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!J\+\_\+lagrangian@{J\+\_\+lagrangian}}
+\index{J\+\_\+lagrangian@{J\+\_\+lagrangian}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{J\+\_\+lagrangian()}{J\_lagrangian()}}
+{\footnotesize\ttfamily virtual void oomph\+::\+Solid\+Finite\+Element\+::\+J\+\_\+lagrangian (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Return the Jacobian of mapping from local to Lagrangian coordinates at local position s. N\+OT Y\+ET I\+M\+P\+L\+E\+M\+E\+N\+T\+ED. 
+
+
+
+Definition at line 3708 of file elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_ace8b4aef572b9272648a7d1fc89d4664}\label{classoomph_1_1SolidFiniteElement_ace8b4aef572b9272648a7d1fc89d4664}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!J\+\_\+lagrangian\+\_\+at\+\_\+knot@{J\+\_\+lagrangian\+\_\+at\+\_\+knot}}
+\index{J\+\_\+lagrangian\+\_\+at\+\_\+knot@{J\+\_\+lagrangian\+\_\+at\+\_\+knot}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{J\+\_\+lagrangian\+\_\+at\+\_\+knot()}{J\_lagrangian\_at\_knot()}}
+{\footnotesize\ttfamily virtual double oomph\+::\+Solid\+Finite\+Element\+::\+J\+\_\+lagrangian\+\_\+at\+\_\+knot (\begin{DoxyParamCaption}\item[{const unsigned \&}]{ipt }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Return the Jacobian of the mapping from local to Lagrangian coordinates at the ipt-\/th integration point. N\+OT Y\+ET I\+M\+P\+L\+E\+M\+E\+N\+T\+ED. 
+
+
+
+Definition at line 3718 of file elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_a0200f8dd7b61eea84d7921e78bfbb5f9}\label{classoomph_1_1SolidFiniteElement_a0200f8dd7b61eea84d7921e78bfbb5f9}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!lagrangian\+\_\+dimension@{lagrangian\+\_\+dimension}}
+\index{lagrangian\+\_\+dimension@{lagrangian\+\_\+dimension}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{lagrangian\+\_\+dimension()}{lagrangian\_dimension()}}
+{\footnotesize\ttfamily unsigned oomph\+::\+Solid\+Finite\+Element\+::lagrangian\+\_\+dimension (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the number of Lagrangian coordinates that the element requires at all nodes. This is by default the elemental dimension. If we ever need any other case, it can be implemented. 
+
+
+
+Definition at line 3559 of file elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_a0e74669899fe8b0ce322c0daf4ad1691}\label{classoomph_1_1SolidFiniteElement_a0e74669899fe8b0ce322c0daf4ad1691}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!lagrangian\+\_\+position@{lagrangian\+\_\+position}}
+\index{lagrangian\+\_\+position@{lagrangian\+\_\+position}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{lagrangian\+\_\+position()}{lagrangian\_position()}}
+{\footnotesize\ttfamily double oomph\+::\+Solid\+Finite\+Element\+::lagrangian\+\_\+position (\begin{DoxyParamCaption}\item[{const unsigned \&}]{n,  }\item[{const unsigned \&}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return i-\/th Lagrangian coordinate at local node n. 
+
+
+
+Definition at line 3682 of file elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_a1c49e9ed87230b5e3024442b3a59dfdb}\label{classoomph_1_1SolidFiniteElement_a1c49e9ed87230b5e3024442b3a59dfdb}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!lagrangian\+\_\+position\+\_\+gen@{lagrangian\+\_\+position\+\_\+gen}}
+\index{lagrangian\+\_\+position\+\_\+gen@{lagrangian\+\_\+position\+\_\+gen}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{lagrangian\+\_\+position\+\_\+gen()}{lagrangian\_position\_gen()}}
+{\footnotesize\ttfamily double oomph\+::\+Solid\+Finite\+Element\+::lagrangian\+\_\+position\+\_\+gen (\begin{DoxyParamCaption}\item[{const unsigned \&}]{n,  }\item[{const unsigned \&}]{k,  }\item[{const unsigned \&}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return Generalised Lagrangian coordinate at local node n. `\+Direction\textquotesingle{} i, `\+Type\textquotesingle{} k. 
+
+
+
+Definition at line 3687 of file elements.\+h.
+
+
+
+Referenced by oomph\+::\+Axisymmetric\+P\+V\+D\+Equations\+::compute\+\_\+physical\+\_\+size(), oomph\+::\+Axisymmetric\+P\+V\+D\+Equations\+With\+Pressure\+::compute\+\_\+physical\+\_\+size(), oomph\+::\+Axisymmetric\+P\+V\+D\+Equations\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+axisym\+\_\+pvd(), oomph\+::\+Axisymmetric\+P\+V\+D\+Equations\+With\+Pressure\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+axisym\+\_\+pvd\+\_\+with\+\_\+pressure(), oomph\+::\+Kirchhoff\+Love\+Shell\+Equations\+::get\+\_\+energy(), and oomph\+::\+Kirchhoff\+Love\+Shell\+Equations\+::load\+\_\+rate\+\_\+of\+\_\+work().
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_a8974f3df67362e2b1be171b71294b16c}\label{classoomph_1_1SolidFiniteElement_a8974f3df67362e2b1be171b71294b16c}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!local\+\_\+to\+\_\+lagrangian\+\_\+mapping@{local\+\_\+to\+\_\+lagrangian\+\_\+mapping}}
+\index{local\+\_\+to\+\_\+lagrangian\+\_\+mapping@{local\+\_\+to\+\_\+lagrangian\+\_\+mapping}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{local\+\_\+to\+\_\+lagrangian\+\_\+mapping()}{local\_to\_lagrangian\_mapping()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily virtual double oomph\+::\+Solid\+Finite\+Element\+::local\+\_\+to\+\_\+lagrangian\+\_\+mapping (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dpsids,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{jacobian,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{inverse\+\_\+jacobian }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Calculate the mapping from local to lagrangian coordinates, given the derivatives of the shape functions w.\+r.\+t. local coorindates. Return the determinant of the jacobian, the jacobian and inverse jacobian. 
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1SolidDiagQHermiteElement_a781e03c735c8c17533315781982882e1}{oomph\+::\+Solid\+Diag\+Q\+Hermite\+Element$<$ D\+I\+M $>$}, \hyperlink{classoomph_1_1SolidDiagQHermiteElement_a781e03c735c8c17533315781982882e1}{oomph\+::\+Solid\+Diag\+Q\+Hermite\+Element$<$ 1 $>$}, and \hyperlink{classoomph_1_1SolidDiagQHermiteElement_a781e03c735c8c17533315781982882e1}{oomph\+::\+Solid\+Diag\+Q\+Hermite\+Element$<$ 2 $>$}.
+
+
+
+Definition at line 3868 of file elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_afa4031c891a8a86fa27e2339ff923ebc}\label{classoomph_1_1SolidFiniteElement_afa4031c891a8a86fa27e2339ff923ebc}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!local\+\_\+to\+\_\+lagrangian\+\_\+mapping@{local\+\_\+to\+\_\+lagrangian\+\_\+mapping}}
+\index{local\+\_\+to\+\_\+lagrangian\+\_\+mapping@{local\+\_\+to\+\_\+lagrangian\+\_\+mapping}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{local\+\_\+to\+\_\+lagrangian\+\_\+mapping()}{local\_to\_lagrangian\_mapping()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily double oomph\+::\+Solid\+Finite\+Element\+::local\+\_\+to\+\_\+lagrangian\+\_\+mapping (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dpsids,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{inverse\+\_\+jacobian }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Calculate the mapping from local to lagrangian coordinates, given the derivatives of the shape functions w.\+r.\+t. local coordinates, Return only the determinant of the jacobian and the inverse of the mapping (ds/dx) 
+
+
+
+Definition at line 3882 of file elements.\+h.
+
+
+
+References oomph\+::\+Global\+\_\+string\+\_\+for\+\_\+annotation\+::string().
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_a811c926ab4ec81ecb374030302ef28ca}\label{classoomph_1_1SolidFiniteElement_a811c926ab4ec81ecb374030302ef28ca}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!local\+\_\+to\+\_\+lagrangian\+\_\+mapping\+\_\+diagonal@{local\+\_\+to\+\_\+lagrangian\+\_\+mapping\+\_\+diagonal}}
+\index{local\+\_\+to\+\_\+lagrangian\+\_\+mapping\+\_\+diagonal@{local\+\_\+to\+\_\+lagrangian\+\_\+mapping\+\_\+diagonal}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{local\+\_\+to\+\_\+lagrangian\+\_\+mapping\+\_\+diagonal()}{local\_to\_lagrangian\_mapping\_diagonal()}}
+{\footnotesize\ttfamily double oomph\+::\+Solid\+Finite\+Element\+::local\+\_\+to\+\_\+lagrangian\+\_\+mapping\+\_\+diagonal (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dpsids,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{jacobian,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{inverse\+\_\+jacobian }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Calculate the mapping from local to Lagrangian coordinates given the derivatives of the shape functions w.\+r.\+t the local coorindates. assuming that the coordinates are aligned in the direction of the local coordinates, i.\+e. there are no cross terms and the jacobian is diagonal. This function returns the determinant of the jacobian, the jacobian and the inverse jacobian. 
+
+Calculate the mapping from local to lagrangian coordinates assuming that the coordinates are aligned in the direction of the local coordinates, i.\+e. there are no cross terms and the jacobian is diagonal. The local derivatives are passed as dpsids and the jacobian and inverse jacobian are returned. 
+
+Reimplemented in \hyperlink{classoomph_1_1RefineableSolidElement_a492846d9f2c5d5235f9f3ff1001d4ec8}{oomph\+::\+Refineable\+Solid\+Element}.
+
+
+
+Definition at line 6505 of file elements.\+cc.
+
+
+
+References dshape\+\_\+lagrangian(), and i.
+
+
+
+Referenced by $\sim$\+Solid\+Finite\+Element().
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_ab07798fe92a5bf61903b41209f67fbbf}\label{classoomph_1_1SolidFiniteElement_ab07798fe92a5bf61903b41209f67fbbf}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!multiplier@{multiplier}}
+\index{multiplier@{multiplier}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{multiplier()}{multiplier()}}
+{\footnotesize\ttfamily double oomph\+::\+Solid\+Finite\+Element\+::multiplier (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{xi }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Access to the \char`\"{}multiplier\char`\"{} for the inertia terms in the consistent determination of the initial conditions for \hyperlink{classoomph_1_1Newmark}{Newmark} timestepping. 
+
+
+
+Definition at line 4097 of file elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_a5d35600dc2300c2fafff585d9cb4020d}\label{classoomph_1_1SolidFiniteElement_a5d35600dc2300c2fafff585d9cb4020d}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!multiplier\+\_\+fct\+\_\+pt@{multiplier\+\_\+fct\+\_\+pt}}
+\index{multiplier\+\_\+fct\+\_\+pt@{multiplier\+\_\+fct\+\_\+pt}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{multiplier\+\_\+fct\+\_\+pt()}{multiplier\_fct\_pt()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1SolidFiniteElement_a1ec1cdf98041a51f77aab2b892856fc4}{Multiplier\+Fct\+Pt}\& oomph\+::\+Solid\+Finite\+Element\+::multiplier\+\_\+fct\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Access function\+: Pointer to multiplicator function for assignment of consistent assignement of initial conditions for \hyperlink{classoomph_1_1Newmark}{Newmark} scheme. 
+
+
+
+Definition at line 3747 of file elements.\+h.
+
+
+
+Referenced by oomph\+::\+Solid\+I\+C\+Problem\+::set\+\_\+newmark\+\_\+initial\+\_\+condition\+\_\+consistently().
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_aff02a52591a62ab8c1f68088cf50f4f1}\label{classoomph_1_1SolidFiniteElement_aff02a52591a62ab8c1f68088cf50f4f1}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!multiplier\+\_\+fct\+\_\+pt@{multiplier\+\_\+fct\+\_\+pt}}
+\index{multiplier\+\_\+fct\+\_\+pt@{multiplier\+\_\+fct\+\_\+pt}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{multiplier\+\_\+fct\+\_\+pt()}{multiplier\_fct\_pt()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1SolidFiniteElement_a1ec1cdf98041a51f77aab2b892856fc4}{Multiplier\+Fct\+Pt} oomph\+::\+Solid\+Finite\+Element\+::multiplier\+\_\+fct\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Access function\+: Pointer to multiplicator function for assignment of consistent assignement of initial conditions for \hyperlink{classoomph_1_1Newmark}{Newmark} scheme (const version) 
+
+
+
+Definition at line 3756 of file elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_a73f387da7f31f233b79c2526e8cbc896}\label{classoomph_1_1SolidFiniteElement_a73f387da7f31f233b79c2526e8cbc896}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!ngeom\+\_\+data@{ngeom\+\_\+data}}
+\index{ngeom\+\_\+data@{ngeom\+\_\+data}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{ngeom\+\_\+data()}{ngeom\_data()}}
+{\footnotesize\ttfamily unsigned oomph\+::\+Solid\+Finite\+Element\+::ngeom\+\_\+data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Broken assignment operator. 
+
+The number of geometric data affecting a Solid\+Finite\+Elemnet is the same as the number of nodes (one variable position data per node) 
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_ae09e3e0c01b6143d511f2626d2ee535c}{oomph\+::\+Finite\+Element}.
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1RefineableSolidElement_a690e24cdbd9308da1b9e705fd0340de8}{oomph\+::\+Refineable\+Solid\+Element}.
+
+
+
+Definition at line 3408 of file elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_a4836c2e0228a5affcc0d0f84e16edfe4}\label{classoomph_1_1SolidFiniteElement_a4836c2e0228a5affcc0d0f84e16edfe4}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!nnodal\+\_\+lagrangian\+\_\+type@{nnodal\+\_\+lagrangian\+\_\+type}}
+\index{nnodal\+\_\+lagrangian\+\_\+type@{nnodal\+\_\+lagrangian\+\_\+type}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{nnodal\+\_\+lagrangian\+\_\+type()}{nnodal\_lagrangian\_type()}}
+{\footnotesize\ttfamily unsigned oomph\+::\+Solid\+Finite\+Element\+::nnodal\+\_\+lagrangian\+\_\+type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the number of types of (generalised) nodal Lagrangian coordinates required to interpolate the Lagrangian coordinates in the element. (E.\+g. 1 for Lagrange-\/type elements; 2 for Hermite beam elements; 4 for Hermite shell elements). Default value is 1. Needs to be overloaded for any other element. 
+
+
+
+Definition at line 3567 of file elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_a8632178393e76ffcd88888ab96616b1a}\label{classoomph_1_1SolidFiniteElement_a8632178393e76ffcd88888ab96616b1a}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!position\+\_\+local\+\_\+eqn@{position\+\_\+local\+\_\+eqn}}
+\index{position\+\_\+local\+\_\+eqn@{position\+\_\+local\+\_\+eqn}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{position\+\_\+local\+\_\+eqn()}{position\_local\_eqn()}}
+{\footnotesize\ttfamily int oomph\+::\+Solid\+Finite\+Element\+::position\+\_\+local\+\_\+eqn (\begin{DoxyParamCaption}\item[{const unsigned \&}]{n,  }\item[{const unsigned \&}]{k,  }\item[{const unsigned \&}]{j }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Access function that returns the local equation number that corresponds to the j-\/th coordinate of the k-\/th position-\/type at the n-\/th local node. 
+
+
+
+Definition at line 3922 of file elements.\+h.
+
+
+
+Referenced by oomph\+::\+Clamped\+Sliding\+Hermite\+Beam\+Boundary\+Condition\+Element\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals(), oomph\+::\+Clamped\+Hermite\+Shell\+Boundary\+Condition\+Element\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals(), oomph\+::\+Axisymmetric\+P\+V\+D\+Equations\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+axisym\+\_\+pvd(), oomph\+::\+Kirchhoff\+Love\+Beam\+Equations\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+beam(), oomph\+::\+Kirchhoff\+Love\+Shell\+Equations\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+shell(), oomph\+::\+Axisymmetric\+P\+V\+D\+Equations\+With\+Pressure\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+axisym\+\_\+pvd\+\_\+with\+\_\+pressure(), oomph\+::\+P\+V\+D\+Equations\+Base$<$ D\+I\+M $>$\+::get\+\_\+dof\+\_\+numbers\+\_\+for\+\_\+unknowns(), oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element\+::get\+\_\+dof\+\_\+numbers\+\_\+for\+\_\+unknowns(), oomph\+::\+F\+S\+I\+Diag\+Hermite\+Shell\+Element\+::get\+\_\+dof\+\_\+numbers\+\_\+for\+\_\+unknowns(), oomph\+::\+Clamped\+Hermite\+Shell\+Boundary\+Condition\+Element\+::get\+\_\+dof\+\_\+numbers\+\_\+for\+\_\+unknowns(), oomph\+::\+P\+V\+D\+Equations\+With\+Pressure$<$ D\+I\+M $>$\+::get\+\_\+dof\+\_\+numbers\+\_\+for\+\_\+unknowns(), oomph\+::\+Projectable\+Element$<$ T\+I\+M\+E\+\_\+\+H\+A\+R\+M\+O\+N\+I\+C\+\_\+\+L\+I\+N\+E\+A\+R\+\_\+\+E\+L\+A\+S\+T\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::residual\+\_\+for\+\_\+projection(), oomph\+::\+Projectable\+Darcy\+Element$<$ D\+A\+R\+C\+Y\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::residual\+\_\+for\+\_\+projection(), and oomph\+::\+Projectable\+Axisymmetric\+Poroelasticity\+Element$<$ A\+X\+I\+S\+Y\+M\+M\+E\+T\+R\+I\+C\+\_\+\+P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::residual\+\_\+for\+\_\+projection().
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_a41a77b7103970bbc6ca0aecaf81747b1}\label{classoomph_1_1SolidFiniteElement_a41a77b7103970bbc6ca0aecaf81747b1}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!raw\+\_\+lagrangian\+\_\+position@{raw\+\_\+lagrangian\+\_\+position}}
+\index{raw\+\_\+lagrangian\+\_\+position@{raw\+\_\+lagrangian\+\_\+position}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{raw\+\_\+lagrangian\+\_\+position()}{raw\_lagrangian\_position()}}
+{\footnotesize\ttfamily double oomph\+::\+Solid\+Finite\+Element\+::raw\+\_\+lagrangian\+\_\+position (\begin{DoxyParamCaption}\item[{const unsigned \&}]{n,  }\item[{const unsigned \&}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return i-\/th Lagrangian coordinate at local node n without using the hanging representation. 
+
+
+
+Definition at line 3672 of file elements.\+h.
+
+
+
+Referenced by oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element\+::locate\+\_\+zeta().
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_a1fe7adc8a71165fb86404d6028d19ae1}\label{classoomph_1_1SolidFiniteElement_a1fe7adc8a71165fb86404d6028d19ae1}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!raw\+\_\+lagrangian\+\_\+position\+\_\+gen@{raw\+\_\+lagrangian\+\_\+position\+\_\+gen}}
+\index{raw\+\_\+lagrangian\+\_\+position\+\_\+gen@{raw\+\_\+lagrangian\+\_\+position\+\_\+gen}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{raw\+\_\+lagrangian\+\_\+position\+\_\+gen()}{raw\_lagrangian\_position\_gen()}}
+{\footnotesize\ttfamily double oomph\+::\+Solid\+Finite\+Element\+::raw\+\_\+lagrangian\+\_\+position\+\_\+gen (\begin{DoxyParamCaption}\item[{const unsigned \&}]{n,  }\item[{const unsigned \&}]{k,  }\item[{const unsigned \&}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return Generalised Lagrangian coordinate at local node n. `\+Direction\textquotesingle{} i, `\+Type\textquotesingle{} k. Does not use the hanging node representation. 
+
+
+
+Definition at line 3677 of file elements.\+h.
+
+
+
+Referenced by oomph\+::\+Kirchhoff\+Love\+Beam\+Equations\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+beam(), oomph\+::\+Kirchhoff\+Love\+Shell\+Equations\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+shell(), oomph\+::\+Kirchhoff\+Love\+Beam\+Equations\+::get\+\_\+energy(), oomph\+::\+Kirchhoff\+Love\+Shell\+Equations\+::get\+\_\+strain\+\_\+and\+\_\+bend(), and oomph\+::\+Hermite\+Beam\+Element\+::output().
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_afab2124e079912fe9bf39bf9df8a42c2}\label{classoomph_1_1SolidFiniteElement_afab2124e079912fe9bf39bf9df8a42c2}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!reset\+\_\+after\+\_\+solid\+\_\+position\+\_\+fd@{reset\+\_\+after\+\_\+solid\+\_\+position\+\_\+fd}}
+\index{reset\+\_\+after\+\_\+solid\+\_\+position\+\_\+fd@{reset\+\_\+after\+\_\+solid\+\_\+position\+\_\+fd}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{reset\+\_\+after\+\_\+solid\+\_\+position\+\_\+fd()}{reset\_after\_solid\_position\_fd()}}
+{\footnotesize\ttfamily virtual void oomph\+::\+Solid\+Finite\+Element\+::reset\+\_\+after\+\_\+solid\+\_\+position\+\_\+fd (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Function that is call after the finite differencing of the solid position data. This may be overloaded to reset any slaved variables that may have changed during the finite differencing. 
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1FSIWallElement_ae960e2a896fc81320f08cdbda6dc6526}{oomph\+::\+F\+S\+I\+Wall\+Element}.
+
+
+
+Definition at line 4033 of file elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_a99e4613b1ac5f202c837c0e556f7b917}\label{classoomph_1_1SolidFiniteElement_a99e4613b1ac5f202c837c0e556f7b917}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!reset\+\_\+in\+\_\+solid\+\_\+position\+\_\+fd@{reset\+\_\+in\+\_\+solid\+\_\+position\+\_\+fd}}
+\index{reset\+\_\+in\+\_\+solid\+\_\+position\+\_\+fd@{reset\+\_\+in\+\_\+solid\+\_\+position\+\_\+fd}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{reset\+\_\+in\+\_\+solid\+\_\+position\+\_\+fd()}{reset\_in\_solid\_position\_fd()}}
+{\footnotesize\ttfamily virtual void oomph\+::\+Solid\+Finite\+Element\+::reset\+\_\+in\+\_\+solid\+\_\+position\+\_\+fd (\begin{DoxyParamCaption}\item[{const unsigned \&}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Function called within the finite difference loop for solid position data after the values in the i-\/th node are reset. The default behaviour is to call the update function. 
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1FSIWallElement_aa7a250a0958768f5393484ea3c528a37}{oomph\+::\+F\+S\+I\+Wall\+Element}.
+
+
+
+Definition at line 4043 of file elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_afae461c6679212165a47829662d0274d}\label{classoomph_1_1SolidFiniteElement_afae461c6679212165a47829662d0274d}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!set\+\_\+lagrangian\+\_\+dimension@{set\+\_\+lagrangian\+\_\+dimension}}
+\index{set\+\_\+lagrangian\+\_\+dimension@{set\+\_\+lagrangian\+\_\+dimension}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{set\+\_\+lagrangian\+\_\+dimension()}{set\_lagrangian\_dimension()}}
+{\footnotesize\ttfamily void oomph\+::\+Solid\+Finite\+Element\+::set\+\_\+lagrangian\+\_\+dimension (\begin{DoxyParamCaption}\item[{const unsigned \&}]{lagrangian\+\_\+dimension }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the lagrangian dimension of the element --- the number of lagrangian coordinates stored at the nodes in the element. 
+
+
+
+Definition at line 3368 of file elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_a07ac4c27457c64d9479c64ae8289daaf}\label{classoomph_1_1SolidFiniteElement_a07ac4c27457c64d9479c64ae8289daaf}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!set\+\_\+macro\+\_\+elem\+\_\+pt@{set\+\_\+macro\+\_\+elem\+\_\+pt}}
+\index{set\+\_\+macro\+\_\+elem\+\_\+pt@{set\+\_\+macro\+\_\+elem\+\_\+pt}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{set\+\_\+macro\+\_\+elem\+\_\+pt()}{set\_macro\_elem\_pt()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily virtual void oomph\+::\+Solid\+Finite\+Element\+::set\+\_\+macro\+\_\+elem\+\_\+pt (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1MacroElement}{Macro\+Element} $\ast$}]{macro\+\_\+elem\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Set pointer to \hyperlink{classoomph_1_1MacroElement}{Macro\+Element} -- overloads generic version and uses the \hyperlink{classoomph_1_1MacroElement}{Macro\+Element} also as the default for the \char`\"{}undeformed\char`\"{} configuration. This assignment must be overwritten with set\+\_\+undeformed\+\_\+macro\+\_\+elem\+\_\+pt(...) if the deformation of the solid body is driven by a deformation of the \char`\"{}current\char`\"{} Domain/\+Macro\+Element representation of it\textquotesingle{}s boundary. Can be overloaded in derived classes to perform additional tasks. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a170b030b8365ebbab5287f0a420cc8c8}{oomph\+::\+Finite\+Element}.
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1QSolidElementBase_a0ceca47c039bbb38b0feb3baa330a27f}{oomph\+::\+Q\+Solid\+Element\+Base}, \hyperlink{classoomph_1_1RefineableSolidQElement_3_013_01_4_a2b1aa7874048e0f38370ae7bf761d315}{oomph\+::\+Refineable\+Solid\+Q\+Element$<$ 3 $>$}, \hyperlink{classoomph_1_1RefineableSolidQElement_3_012_01_4_aac8a230631c509dd854d71a5f68b6483}{oomph\+::\+Refineable\+Solid\+Q\+Element$<$ 2 $>$}, and \hyperlink{classoomph_1_1RefineableSolidQElement_3_011_01_4_ae0cd264bee16dd1d05d35f79e33dd408}{oomph\+::\+Refineable\+Solid\+Q\+Element$<$ 1 $>$}.
+
+
+
+Definition at line 3472 of file elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_a05bdd718a54628b6cf81fc94ad4cb6ab}\label{classoomph_1_1SolidFiniteElement_a05bdd718a54628b6cf81fc94ad4cb6ab}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!set\+\_\+macro\+\_\+elem\+\_\+pt@{set\+\_\+macro\+\_\+elem\+\_\+pt}}
+\index{set\+\_\+macro\+\_\+elem\+\_\+pt@{set\+\_\+macro\+\_\+elem\+\_\+pt}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{set\+\_\+macro\+\_\+elem\+\_\+pt()}{set\_macro\_elem\_pt()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily virtual void oomph\+::\+Solid\+Finite\+Element\+::set\+\_\+macro\+\_\+elem\+\_\+pt (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1MacroElement}{Macro\+Element} $\ast$}]{macro\+\_\+elem\+\_\+pt,  }\item[{\hyperlink{classoomph_1_1MacroElement}{Macro\+Element} $\ast$}]{undeformed\+\_\+macro\+\_\+elem\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Set pointers to \char`\"{}current\char`\"{} and \char`\"{}undeformed\char`\"{} Macro\+Elements. Can be overloaded in derived classes to perform additional tasks. 
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1QSolidElementBase_aa7f14a039224fb4c513da587448d2c3b}{oomph\+::\+Q\+Solid\+Element\+Base}, \hyperlink{classoomph_1_1RefineableSolidQElement_3_013_01_4_ab2c2950454d7c4ea16a597192c7fae15}{oomph\+::\+Refineable\+Solid\+Q\+Element$<$ 3 $>$}, \hyperlink{classoomph_1_1RefineableSolidQElement_3_012_01_4_a8c0cb9d011cc070322945b1fecd03331}{oomph\+::\+Refineable\+Solid\+Q\+Element$<$ 2 $>$}, and \hyperlink{classoomph_1_1RefineableSolidQElement_3_011_01_4_a9dd7e2622260d14c2bf92125707a3401}{oomph\+::\+Refineable\+Solid\+Q\+Element$<$ 1 $>$}.
+
+
+
+Definition at line 3481 of file elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_a74b681075150c90417939b0b0c836dda}\label{classoomph_1_1SolidFiniteElement_a74b681075150c90417939b0b0c836dda}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!set\+\_\+nnodal\+\_\+lagrangian\+\_\+type@{set\+\_\+nnodal\+\_\+lagrangian\+\_\+type}}
+\index{set\+\_\+nnodal\+\_\+lagrangian\+\_\+type@{set\+\_\+nnodal\+\_\+lagrangian\+\_\+type}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{set\+\_\+nnodal\+\_\+lagrangian\+\_\+type()}{set\_nnodal\_lagrangian\_type()}}
+{\footnotesize\ttfamily void oomph\+::\+Solid\+Finite\+Element\+::set\+\_\+nnodal\+\_\+lagrangian\+\_\+type (\begin{DoxyParamCaption}\item[{const unsigned \&}]{nlagrangian\+\_\+type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Set the number of types required to interpolate the Lagrangian coordinates. 
+
+
+
+Definition at line 3859 of file elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_a10eef57caff6c5e65784525f4dcfc165}\label{classoomph_1_1SolidFiniteElement_a10eef57caff6c5e65784525f4dcfc165}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!set\+\_\+undeformed\+\_\+macro\+\_\+elem\+\_\+pt@{set\+\_\+undeformed\+\_\+macro\+\_\+elem\+\_\+pt}}
+\index{set\+\_\+undeformed\+\_\+macro\+\_\+elem\+\_\+pt@{set\+\_\+undeformed\+\_\+macro\+\_\+elem\+\_\+pt}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{set\+\_\+undeformed\+\_\+macro\+\_\+elem\+\_\+pt()}{set\_undeformed\_macro\_elem\_pt()}}
+{\footnotesize\ttfamily void oomph\+::\+Solid\+Finite\+Element\+::set\+\_\+undeformed\+\_\+macro\+\_\+elem\+\_\+pt (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1MacroElement}{Macro\+Element} $\ast$}]{undeformed\+\_\+macro\+\_\+elem\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set pointer to \char`\"{}undeformed\char`\"{} macro element. Can be overloaded in derived classes to perform additional tasks. 
+
+
+
+Definition at line 3491 of file elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_abb6ff13ecd9068e25dba4b8a63ffe5b0}\label{classoomph_1_1SolidFiniteElement_abb6ff13ecd9068e25dba4b8a63ffe5b0}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!solid\+\_\+ic\+\_\+pt@{solid\+\_\+ic\+\_\+pt}}
+\index{solid\+\_\+ic\+\_\+pt@{solid\+\_\+ic\+\_\+pt}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{solid\+\_\+ic\+\_\+pt()}{solid\_ic\_pt()}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1SolidInitialCondition}{Solid\+Initial\+Condition}$\ast$\& oomph\+::\+Solid\+Finite\+Element\+::solid\+\_\+ic\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Pointer to object that describes the initial condition. 
+
+
+
+Definition at line 3727 of file elements.\+h.
+
+
+
+Referenced by oomph\+::\+Solid\+I\+C\+Problem\+::set\+\_\+newmark\+\_\+initial\+\_\+condition\+\_\+consistently(), and oomph\+::\+Solid\+I\+C\+Problem\+::setup\+\_\+problem().
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_a20517d8d6ba84c8e90d880f38310915f}\label{classoomph_1_1SolidFiniteElement_a20517d8d6ba84c8e90d880f38310915f}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!undeformed\+\_\+macro\+\_\+elem\+\_\+pt@{undeformed\+\_\+macro\+\_\+elem\+\_\+pt}}
+\index{undeformed\+\_\+macro\+\_\+elem\+\_\+pt@{undeformed\+\_\+macro\+\_\+elem\+\_\+pt}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{undeformed\+\_\+macro\+\_\+elem\+\_\+pt()}{undeformed\_macro\_elem\_pt()}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1MacroElement}{Macro\+Element}$\ast$ oomph\+::\+Solid\+Finite\+Element\+::undeformed\+\_\+macro\+\_\+elem\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Access function to pointer to \char`\"{}undeformed\char`\"{} macro element. 
+
+
+
+Definition at line 3497 of file elements.\+h.
+
+
+
+Referenced by oomph\+::\+Tree\+Based\+Refineable\+Mesh\+Base\+::adapt\+\_\+mesh(), and oomph\+::\+Tree\+Based\+Refineable\+Mesh\+Base\+::p\+\_\+adapt\+\_\+mesh().
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_a51bdd2b180335e3ad41c6b818a2528e2}\label{classoomph_1_1SolidFiniteElement_a51bdd2b180335e3ad41c6b818a2528e2}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!update\+\_\+before\+\_\+solid\+\_\+position\+\_\+fd@{update\+\_\+before\+\_\+solid\+\_\+position\+\_\+fd}}
+\index{update\+\_\+before\+\_\+solid\+\_\+position\+\_\+fd@{update\+\_\+before\+\_\+solid\+\_\+position\+\_\+fd}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{update\+\_\+before\+\_\+solid\+\_\+position\+\_\+fd()}{update\_before\_solid\_position\_fd()}}
+{\footnotesize\ttfamily virtual void oomph\+::\+Solid\+Finite\+Element\+::update\+\_\+before\+\_\+solid\+\_\+position\+\_\+fd (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Function that is called before the finite differencing of any solid position data. This may be overloaded to update any slaved data before finite differencing takes place. 
+
+
+
+Definition at line 4028 of file elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_a84d5c177b27570c35dd7693b913c00a5}\label{classoomph_1_1SolidFiniteElement_a84d5c177b27570c35dd7693b913c00a5}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!update\+\_\+in\+\_\+solid\+\_\+position\+\_\+fd@{update\+\_\+in\+\_\+solid\+\_\+position\+\_\+fd}}
+\index{update\+\_\+in\+\_\+solid\+\_\+position\+\_\+fd@{update\+\_\+in\+\_\+solid\+\_\+position\+\_\+fd}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{update\+\_\+in\+\_\+solid\+\_\+position\+\_\+fd()}{update\_in\_solid\_position\_fd()}}
+{\footnotesize\ttfamily virtual void oomph\+::\+Solid\+Finite\+Element\+::update\+\_\+in\+\_\+solid\+\_\+position\+\_\+fd (\begin{DoxyParamCaption}\item[{const unsigned \&}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Function called within the finite difference loop for the solid position dat after a change in any values in the n-\/th node. 
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1FSIWallElement_ae05300394e531c7b80dc44d1f5e1dbfe}{oomph\+::\+F\+S\+I\+Wall\+Element}.
+
+
+
+Definition at line 4038 of file elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_a4a377d7acaa7fbe444a65ed3d4a79bed}\label{classoomph_1_1SolidFiniteElement_a4a377d7acaa7fbe444a65ed3d4a79bed}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!zeta\+\_\+nodal@{zeta\+\_\+nodal}}
+\index{zeta\+\_\+nodal@{zeta\+\_\+nodal}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{zeta\+\_\+nodal()}{zeta\_nodal()}}
+{\footnotesize\ttfamily double oomph\+::\+Solid\+Finite\+Element\+::zeta\+\_\+nodal (\begin{DoxyParamCaption}\item[{const unsigned \&}]{n,  }\item[{const unsigned \&}]{k,  }\item[{const unsigned \&}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+In a \hyperlink{classoomph_1_1SolidFiniteElement}{Solid\+Finite\+Element}, the \char`\"{}global\char`\"{} intrinsic coordinate of the element when viewed as part of a compound geometric object (a \hyperlink{classoomph_1_1Mesh}{Mesh}) is, by default, the Lagrangian coordinate Note the assumption here is that we are always using isoparameteric elements in which the lagrangian coordinate is interpolated by the same shape functions as the eulerian coordinate. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a849561c5fbcbc07dc49d2dc6cca68559}{oomph\+::\+Finite\+Element}.
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1SolidFaceElement_a28526b0f7a7daa2ab90348e16cf6a529}{oomph\+::\+Solid\+Face\+Element}.
+
+
+
+Definition at line 3437 of file elements.\+h.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_a4c2267355f097b864f9994f965ad8305}\label{classoomph_1_1SolidFiniteElement_a4c2267355f097b864f9994f965ad8305}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!Lagrangian\+\_\+dimension@{Lagrangian\+\_\+dimension}}
+\index{Lagrangian\+\_\+dimension@{Lagrangian\+\_\+dimension}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{Lagrangian\+\_\+dimension}{Lagrangian\_dimension}}
+{\footnotesize\ttfamily unsigned oomph\+::\+Solid\+Finite\+Element\+::\+Lagrangian\+\_\+dimension\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The Lagrangian dimension of the nodes stored in the element, / i.\+e. the number of Lagrangian coordinates. 
+
+
+
+Definition at line 4072 of file elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_ad93b1496c6d963fd7f7b28d0e78bcbff}\label{classoomph_1_1SolidFiniteElement_ad93b1496c6d963fd7f7b28d0e78bcbff}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!Multiplier\+\_\+fct\+\_\+pt@{Multiplier\+\_\+fct\+\_\+pt}}
+\index{Multiplier\+\_\+fct\+\_\+pt@{Multiplier\+\_\+fct\+\_\+pt}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{Multiplier\+\_\+fct\+\_\+pt}{Multiplier\_fct\_pt}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1SolidFiniteElement_a1ec1cdf98041a51f77aab2b892856fc4}{Multiplier\+Fct\+Pt} oomph\+::\+Solid\+Finite\+Element\+::\+Multiplier\+\_\+fct\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pointer to function that computes the \char`\"{}multiplier\char`\"{} for the inertia terms in the consistent determination of the initial conditions for \hyperlink{classoomph_1_1Newmark}{Newmark} timestepping. 
+
+
+
+Definition at line 4063 of file elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_a82f45b63fe051fc87deae77c6e6106e6}\label{classoomph_1_1SolidFiniteElement_a82f45b63fe051fc87deae77c6e6106e6}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!Nnodal\+\_\+lagrangian\+\_\+type@{Nnodal\+\_\+lagrangian\+\_\+type}}
+\index{Nnodal\+\_\+lagrangian\+\_\+type@{Nnodal\+\_\+lagrangian\+\_\+type}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{Nnodal\+\_\+lagrangian\+\_\+type}{Nnodal\_lagrangian\_type}}
+{\footnotesize\ttfamily unsigned oomph\+::\+Solid\+Finite\+Element\+::\+Nnodal\+\_\+lagrangian\+\_\+type\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The number of coordinate types requried to intepolate the Lagrangian coordinates in the element. For Lagrange elements it is 1 (the default). It must be over-\/ridden by using the set\+\_\+nlagrangian\+\_\+type() function in the constructors of elements that use generalised coordinate, e.\+g. for 1D Hermite elements Nnodal\+\_\+position\+\_\+types =2. 
+
+
+
+Definition at line 4080 of file elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_a32e61585f928d3cec6d61033a971776e}\label{classoomph_1_1SolidFiniteElement_a32e61585f928d3cec6d61033a971776e}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!Position\+\_\+local\+\_\+eqn@{Position\+\_\+local\+\_\+eqn}}
+\index{Position\+\_\+local\+\_\+eqn@{Position\+\_\+local\+\_\+eqn}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{Position\+\_\+local\+\_\+eqn}{Position\_local\_eqn}}
+{\footnotesize\ttfamily int$\ast$ oomph\+::\+Solid\+Finite\+Element\+::\+Position\+\_\+local\+\_\+eqn\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Array to hold the local equation number information for the solid equations, whatever they may be. 
+
+
+
+Definition at line 4068 of file elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_a65f789b537979bc3e1948ce529f1dabe}\label{classoomph_1_1SolidFiniteElement_a65f789b537979bc3e1948ce529f1dabe}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!Solid\+\_\+ic\+\_\+pt@{Solid\+\_\+ic\+\_\+pt}}
+\index{Solid\+\_\+ic\+\_\+pt@{Solid\+\_\+ic\+\_\+pt}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{Solid\+\_\+ic\+\_\+pt}{Solid\_ic\_pt}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1SolidInitialCondition}{Solid\+Initial\+Condition}$\ast$ oomph\+::\+Solid\+Finite\+Element\+::\+Solid\+\_\+ic\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Pointer to object that specifies the initial condition. 
+
+
+
+Definition at line 3915 of file elements.\+h.
+
+
+
+Referenced by oomph\+::\+P\+V\+D\+Equations$<$ D\+I\+M $>$\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian(), oomph\+::\+P\+V\+D\+Equations\+With\+Pressure$<$ D\+I\+M $>$\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian(), oomph\+::\+P\+V\+D\+Equations\+With\+Pressure$<$ D\+I\+M $>$\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian\+\_\+and\+\_\+mass\+\_\+matrix(), and oomph\+::\+Kirchhoff\+Love\+Beam\+Equations\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+beam().
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_a52ba6cbb89b5edfe7592a49171aeb436}\label{classoomph_1_1SolidFiniteElement_a52ba6cbb89b5edfe7592a49171aeb436}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!Solve\+\_\+for\+\_\+consistent\+\_\+newmark\+\_\+accel\+\_\+flag@{Solve\+\_\+for\+\_\+consistent\+\_\+newmark\+\_\+accel\+\_\+flag}}
+\index{Solve\+\_\+for\+\_\+consistent\+\_\+newmark\+\_\+accel\+\_\+flag@{Solve\+\_\+for\+\_\+consistent\+\_\+newmark\+\_\+accel\+\_\+flag}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{Solve\+\_\+for\+\_\+consistent\+\_\+newmark\+\_\+accel\+\_\+flag}{Solve\_for\_consistent\_newmark\_accel\_flag}}
+{\footnotesize\ttfamily bool oomph\+::\+Solid\+Finite\+Element\+::\+Solve\+\_\+for\+\_\+consistent\+\_\+newmark\+\_\+accel\+\_\+flag\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Flag to indicate which system of equations to solve when assigning initial conditions for time-\/dependent problems. If true, solve for the history value that corresponds to the acceleration in the \hyperlink{classoomph_1_1Newmark}{Newmark} scheme by demanding that the P\+DE is satisifed at the initial time. In this case the Jacobian is replaced by the mass matrix. 
+
+
+
+Definition at line 4090 of file elements.\+h.
+
+
+
+Referenced by oomph\+::\+Kirchhoff\+Love\+Shell\+Equations\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian(), oomph\+::\+Kirchhoff\+Love\+Beam\+Equations\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian(), oomph\+::\+Axisymmetric\+P\+V\+D\+Equations\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian(), oomph\+::\+P\+V\+D\+Equations$<$ D\+I\+M $>$\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian(), oomph\+::\+P\+V\+D\+Equations\+With\+Pressure$<$ D\+I\+M $>$\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian(), and oomph\+::\+P\+V\+D\+Equations\+With\+Pressure$<$ D\+I\+M $>$\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian\+\_\+and\+\_\+mass\+\_\+matrix().
+
+\mbox{\Hypertarget{classoomph_1_1SolidFiniteElement_a582281cb3abb1b0d120a2f3310e051f3}\label{classoomph_1_1SolidFiniteElement_a582281cb3abb1b0d120a2f3310e051f3}} 
+\index{oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}!Undeformed\+\_\+macro\+\_\+elem\+\_\+pt@{Undeformed\+\_\+macro\+\_\+elem\+\_\+pt}}
+\index{Undeformed\+\_\+macro\+\_\+elem\+\_\+pt@{Undeformed\+\_\+macro\+\_\+elem\+\_\+pt}!oomph\+::\+Solid\+Finite\+Element@{oomph\+::\+Solid\+Finite\+Element}}
+\subsubsection{\texorpdfstring{Undeformed\+\_\+macro\+\_\+elem\+\_\+pt}{Undeformed\_macro\_elem\_pt}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1MacroElement}{Macro\+Element}$\ast$ oomph\+::\+Solid\+Finite\+Element\+::\+Undeformed\+\_\+macro\+\_\+elem\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Pointer to the element\textquotesingle{}s \char`\"{}undeformed\char`\"{} macro element (N\+U\+LL by default) 
+
+
+
+Definition at line 3863 of file elements.\+h.
+
+
+
+Referenced by oomph\+::\+Refineable\+Solid\+Q\+Element$<$ 2 $>$\+::build(), and oomph\+::\+Refineable\+Solid\+Q\+Element$<$ 3 $>$\+::build().
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{elements_8h}{elements.\+h}\item 
+\hyperlink{elements_8cc}{elements.\+cc}\end{DoxyCompactItemize}

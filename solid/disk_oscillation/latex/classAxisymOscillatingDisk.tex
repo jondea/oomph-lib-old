@@ -1,0 +1,259 @@
+\hypertarget{classAxisymOscillatingDisk}{}\section{Axisym\+Oscillating\+Disk Class Reference}
+\label{classAxisymOscillatingDisk}\index{Axisym\+Oscillating\+Disk@{Axisym\+Oscillating\+Disk}}
+
+
+Axisymmetrially oscillating disk with displacement field according to linear elasticity.  
+
+
+Inheritance diagram for Axisym\+Oscillating\+Disk\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classAxisymOscillatingDisk}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classAxisymOscillatingDisk_a7671a9c1b8d4d854752ea14aa4f5865d}{Axisym\+Oscillating\+Disk} (const double \&ampl, const double \&nu, Time\+Stepper $\ast$time\+\_\+stepper\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Constructor\+: 2 Lagrangian coordinate, 2 Eulerian coords. Pass amplitude of oscillation, Poisson ratio nu, and pointer to global timestepper. \end{DoxyCompactList}\item 
+\hyperlink{classAxisymOscillatingDisk_ab79de13fa0dcfac5d04d6ff371241c5d}{$\sim$\+Axisym\+Oscillating\+Disk} ()
+\begin{DoxyCompactList}\small\item\em Destructor (empty) \end{DoxyCompactList}\item 
+void \hyperlink{classAxisymOscillatingDisk_ab63d762c8fecce8de5a2b7dc4b3b677a}{position} (const Vector$<$ double $>$ \&xi, Vector$<$ double $>$ \&r) const
+\begin{DoxyCompactList}\small\item\em Position vector at Lagrangian coordinate xi at present time. \end{DoxyCompactList}\item 
+void \hyperlink{classAxisymOscillatingDisk_a7b39985cb0658924472700f4383b53aa}{veloc} (const Vector$<$ double $>$ \&xi, Vector$<$ double $>$ \&veloc)
+\begin{DoxyCompactList}\small\item\em Parametrised velocity on object at current time\+: veloc = d r(xi)/dt. \end{DoxyCompactList}\item 
+void \hyperlink{classAxisymOscillatingDisk_a92993399b50f818c9045fe7cecf47fcb}{accel} (const Vector$<$ double $>$ \&xi, Vector$<$ double $>$ \&accel)
+\begin{DoxyCompactList}\small\item\em Parametrised acceleration on object at current time\+: accel = d$^\wedge$2 r(xi)/dt$^\wedge$2. \end{DoxyCompactList}\item 
+void \hyperlink{classAxisymOscillatingDisk_a47de8f45fc7006ccadb1300fefe54dfe}{dposition\+\_\+dt} (const Vector$<$ double $>$ \&xi, const unsigned \&j, Vector$<$ double $>$ \&drdt)
+\begin{DoxyCompactList}\small\item\em Parametrised j-\/th time-\/derivative on object at current time\+: $ \frac{d^{j} r(\zeta)}{dt^j} $. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{classAxisymOscillatingDisk_ae6a90b479781b587bb8905e7bf2bba3b}{residual\+\_\+for\+\_\+dispersion} (const Vector$<$ double $>$ \&param, const Vector$<$ double $>$ \&omega, Vector$<$ double $>$ \&residual)
+\begin{DoxyCompactList}\small\item\em Residual of dispersion relation for use in black-\/box Newton method which requires global (or static) functions. Poisson\textquotesingle{}s ratio is passed as parameter. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double \hyperlink{classAxisymOscillatingDisk_a9b73de59d11877c96bc85ad52fe7c407}{Ampl}
+\begin{DoxyCompactList}\small\item\em Amplitude of oscillation. \end{DoxyCompactList}\item 
+double \hyperlink{classAxisymOscillatingDisk_a7789dcf51ef2e2eb6e5eaa826f404da1}{T}
+\begin{DoxyCompactList}\small\item\em Period of oscillation. \end{DoxyCompactList}\item 
+double \hyperlink{classAxisymOscillatingDisk_abe977725f5fc04c5bfa8466ecdef0956}{Nu}
+\begin{DoxyCompactList}\small\item\em Poisson ratio nu. \end{DoxyCompactList}\item 
+double \hyperlink{classAxisymOscillatingDisk_ab0ae3a1a7324dd0ccce15fd84471e3d1}{Omega}
+\begin{DoxyCompactList}\small\item\em Eigenfrequency. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Axisymmetrially oscillating disk with displacement field according to linear elasticity. 
+
+Definition at line 88 of file disk\+\_\+oscillation.\+cc.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classAxisymOscillatingDisk_a7671a9c1b8d4d854752ea14aa4f5865d}\label{classAxisymOscillatingDisk_a7671a9c1b8d4d854752ea14aa4f5865d}} 
+\index{Axisym\+Oscillating\+Disk@{Axisym\+Oscillating\+Disk}!Axisym\+Oscillating\+Disk@{Axisym\+Oscillating\+Disk}}
+\index{Axisym\+Oscillating\+Disk@{Axisym\+Oscillating\+Disk}!Axisym\+Oscillating\+Disk@{Axisym\+Oscillating\+Disk}}
+\subsubsection{\texorpdfstring{Axisym\+Oscillating\+Disk()}{AxisymOscillatingDisk()}}
+{\footnotesize\ttfamily Axisym\+Oscillating\+Disk\+::\+Axisym\+Oscillating\+Disk (\begin{DoxyParamCaption}\item[{const double \&}]{ampl,  }\item[{const double \&}]{nu,  }\item[{Time\+Stepper $\ast$}]{time\+\_\+stepper\+\_\+pt }\end{DoxyParamCaption})}
+
+
+
+Constructor\+: 2 Lagrangian coordinate, 2 Eulerian coords. Pass amplitude of oscillation, Poisson ratio nu, and pointer to global timestepper. 
+
+Constructor\+: 2 Lagrangian coordinates, 2 Eulerian coords. Pass amplitude of oscillation, Poisson ratio nu, and pointer to global timestepper. 
+
+Definition at line 177 of file disk\+\_\+oscillation.\+cc.
+
+
+
+References Nu, Omega, residual\+\_\+for\+\_\+dispersion(), and T.
+
+
+
+Referenced by Disk\+Oscillation\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::run().
+
+\mbox{\Hypertarget{classAxisymOscillatingDisk_ab79de13fa0dcfac5d04d6ff371241c5d}\label{classAxisymOscillatingDisk_ab79de13fa0dcfac5d04d6ff371241c5d}} 
+\index{Axisym\+Oscillating\+Disk@{Axisym\+Oscillating\+Disk}!````~Axisym\+Oscillating\+Disk@{$\sim$\+Axisym\+Oscillating\+Disk}}
+\index{````~Axisym\+Oscillating\+Disk@{$\sim$\+Axisym\+Oscillating\+Disk}!Axisym\+Oscillating\+Disk@{Axisym\+Oscillating\+Disk}}
+\subsubsection{\texorpdfstring{$\sim$\+Axisym\+Oscillating\+Disk()}{~AxisymOscillatingDisk()}}
+{\footnotesize\ttfamily Axisym\+Oscillating\+Disk\+::$\sim$\+Axisym\+Oscillating\+Disk (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Destructor (empty) 
+
+
+
+Definition at line 100 of file disk\+\_\+oscillation.\+cc.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classAxisymOscillatingDisk_a92993399b50f818c9045fe7cecf47fcb}\label{classAxisymOscillatingDisk_a92993399b50f818c9045fe7cecf47fcb}} 
+\index{Axisym\+Oscillating\+Disk@{Axisym\+Oscillating\+Disk}!accel@{accel}}
+\index{accel@{accel}!Axisym\+Oscillating\+Disk@{Axisym\+Oscillating\+Disk}}
+\subsubsection{\texorpdfstring{accel()}{accel()}}
+{\footnotesize\ttfamily void Axisym\+Oscillating\+Disk\+::accel (\begin{DoxyParamCaption}\item[{const Vector$<$ double $>$ \&}]{xi,  }\item[{Vector$<$ double $>$ \&}]{accel }\end{DoxyParamCaption})}
+
+
+
+Parametrised acceleration on object at current time\+: accel = d$^\wedge$2 r(xi)/dt$^\wedge$2. 
+
+Parametrised acceleration on object at current time\+: accel = d$^\wedge$2 r(xi)/dt$^\wedge$2. 
+
+Definition at line 287 of file disk\+\_\+oscillation.\+cc.
+
+
+
+References Ampl, Omega, and T.
+
+\mbox{\Hypertarget{classAxisymOscillatingDisk_a47de8f45fc7006ccadb1300fefe54dfe}\label{classAxisymOscillatingDisk_a47de8f45fc7006ccadb1300fefe54dfe}} 
+\index{Axisym\+Oscillating\+Disk@{Axisym\+Oscillating\+Disk}!dposition\+\_\+dt@{dposition\+\_\+dt}}
+\index{dposition\+\_\+dt@{dposition\+\_\+dt}!Axisym\+Oscillating\+Disk@{Axisym\+Oscillating\+Disk}}
+\subsubsection{\texorpdfstring{dposition\+\_\+dt()}{dposition\_dt()}}
+{\footnotesize\ttfamily void Axisym\+Oscillating\+Disk\+::dposition\+\_\+dt (\begin{DoxyParamCaption}\item[{const Vector$<$ double $>$ \&}]{xi,  }\item[{const unsigned \&}]{j,  }\item[{Vector$<$ double $>$ \&}]{drdt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Parametrised j-\/th time-\/derivative on object at current time\+: $ \frac{d^{j} r(\zeta)}{dt^j} $. 
+
+
+
+Definition at line 115 of file disk\+\_\+oscillation.\+cc.
+
+\mbox{\Hypertarget{classAxisymOscillatingDisk_ab63d762c8fecce8de5a2b7dc4b3b677a}\label{classAxisymOscillatingDisk_ab63d762c8fecce8de5a2b7dc4b3b677a}} 
+\index{Axisym\+Oscillating\+Disk@{Axisym\+Oscillating\+Disk}!position@{position}}
+\index{position@{position}!Axisym\+Oscillating\+Disk@{Axisym\+Oscillating\+Disk}}
+\subsubsection{\texorpdfstring{position()}{position()}}
+{\footnotesize\ttfamily void Axisym\+Oscillating\+Disk\+::position (\begin{DoxyParamCaption}\item[{const Vector$<$ double $>$ \&}]{xi,  }\item[{Vector$<$ double $>$ \&}]{r }\end{DoxyParamCaption}) const}
+
+
+
+Position vector at Lagrangian coordinate xi at present time. 
+
+Position Vector at Lagrangian coordinate xi at present time. 
+
+Definition at line 210 of file disk\+\_\+oscillation.\+cc.
+
+
+
+References Ampl, Omega, and T.
+
+\mbox{\Hypertarget{classAxisymOscillatingDisk_ae6a90b479781b587bb8905e7bf2bba3b}\label{classAxisymOscillatingDisk_ae6a90b479781b587bb8905e7bf2bba3b}} 
+\index{Axisym\+Oscillating\+Disk@{Axisym\+Oscillating\+Disk}!residual\+\_\+for\+\_\+dispersion@{residual\+\_\+for\+\_\+dispersion}}
+\index{residual\+\_\+for\+\_\+dispersion@{residual\+\_\+for\+\_\+dispersion}!Axisym\+Oscillating\+Disk@{Axisym\+Oscillating\+Disk}}
+\subsubsection{\texorpdfstring{residual\+\_\+for\+\_\+dispersion()}{residual\_for\_dispersion()}}
+{\footnotesize\ttfamily void Axisym\+Oscillating\+Disk\+::residual\+\_\+for\+\_\+dispersion (\begin{DoxyParamCaption}\item[{const Vector$<$ double $>$ \&}]{param,  }\item[{const Vector$<$ double $>$ \&}]{omega,  }\item[{Vector$<$ double $>$ \&}]{residual }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Residual of dispersion relation for use in black-\/box Newton method which requires global (or static) functions. Poisson\textquotesingle{}s ratio is passed as parameter. 
+
+Residual of dispersion relation for use in black box Newton method which requires global (or static) functions. Poisson\textquotesingle{}s ratio is passed as parameter. 
+
+Definition at line 327 of file disk\+\_\+oscillation.\+cc.
+
+
+
+Referenced by Axisym\+Oscillating\+Disk().
+
+\mbox{\Hypertarget{classAxisymOscillatingDisk_a7b39985cb0658924472700f4383b53aa}\label{classAxisymOscillatingDisk_a7b39985cb0658924472700f4383b53aa}} 
+\index{Axisym\+Oscillating\+Disk@{Axisym\+Oscillating\+Disk}!veloc@{veloc}}
+\index{veloc@{veloc}!Axisym\+Oscillating\+Disk@{Axisym\+Oscillating\+Disk}}
+\subsubsection{\texorpdfstring{veloc()}{veloc()}}
+{\footnotesize\ttfamily void Axisym\+Oscillating\+Disk\+::veloc (\begin{DoxyParamCaption}\item[{const Vector$<$ double $>$ \&}]{xi,  }\item[{Vector$<$ double $>$ \&}]{veloc }\end{DoxyParamCaption})}
+
+
+
+Parametrised velocity on object at current time\+: veloc = d r(xi)/dt. 
+
+
+
+Definition at line 248 of file disk\+\_\+oscillation.\+cc.
+
+
+
+References Ampl, Omega, and T.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classAxisymOscillatingDisk_a9b73de59d11877c96bc85ad52fe7c407}\label{classAxisymOscillatingDisk_a9b73de59d11877c96bc85ad52fe7c407}} 
+\index{Axisym\+Oscillating\+Disk@{Axisym\+Oscillating\+Disk}!Ampl@{Ampl}}
+\index{Ampl@{Ampl}!Axisym\+Oscillating\+Disk@{Axisym\+Oscillating\+Disk}}
+\subsubsection{\texorpdfstring{Ampl}{Ampl}}
+{\footnotesize\ttfamily double Axisym\+Oscillating\+Disk\+::\+Ampl\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Amplitude of oscillation. 
+
+
+
+Definition at line 156 of file disk\+\_\+oscillation.\+cc.
+
+
+
+Referenced by accel(), position(), and veloc().
+
+\mbox{\Hypertarget{classAxisymOscillatingDisk_abe977725f5fc04c5bfa8466ecdef0956}\label{classAxisymOscillatingDisk_abe977725f5fc04c5bfa8466ecdef0956}} 
+\index{Axisym\+Oscillating\+Disk@{Axisym\+Oscillating\+Disk}!Nu@{Nu}}
+\index{Nu@{Nu}!Axisym\+Oscillating\+Disk@{Axisym\+Oscillating\+Disk}}
+\subsubsection{\texorpdfstring{Nu}{Nu}}
+{\footnotesize\ttfamily double Axisym\+Oscillating\+Disk\+::\+Nu\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Poisson ratio nu. 
+
+
+
+Definition at line 162 of file disk\+\_\+oscillation.\+cc.
+
+
+
+Referenced by Axisym\+Oscillating\+Disk().
+
+\mbox{\Hypertarget{classAxisymOscillatingDisk_ab0ae3a1a7324dd0ccce15fd84471e3d1}\label{classAxisymOscillatingDisk_ab0ae3a1a7324dd0ccce15fd84471e3d1}} 
+\index{Axisym\+Oscillating\+Disk@{Axisym\+Oscillating\+Disk}!Omega@{Omega}}
+\index{Omega@{Omega}!Axisym\+Oscillating\+Disk@{Axisym\+Oscillating\+Disk}}
+\subsubsection{\texorpdfstring{Omega}{Omega}}
+{\footnotesize\ttfamily double Axisym\+Oscillating\+Disk\+::\+Omega\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Eigenfrequency. 
+
+
+
+Definition at line 165 of file disk\+\_\+oscillation.\+cc.
+
+
+
+Referenced by accel(), Axisym\+Oscillating\+Disk(), position(), and veloc().
+
+\mbox{\Hypertarget{classAxisymOscillatingDisk_a7789dcf51ef2e2eb6e5eaa826f404da1}\label{classAxisymOscillatingDisk_a7789dcf51ef2e2eb6e5eaa826f404da1}} 
+\index{Axisym\+Oscillating\+Disk@{Axisym\+Oscillating\+Disk}!T@{T}}
+\index{T@{T}!Axisym\+Oscillating\+Disk@{Axisym\+Oscillating\+Disk}}
+\subsubsection{\texorpdfstring{T}{T}}
+{\footnotesize\ttfamily double Axisym\+Oscillating\+Disk\+::T\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Period of oscillation. 
+
+
+
+Definition at line 159 of file disk\+\_\+oscillation.\+cc.
+
+
+
+Referenced by accel(), Axisym\+Oscillating\+Disk(), position(), and veloc().
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{disk__oscillation_8cc}{disk\+\_\+oscillation.\+cc}\end{DoxyCompactItemize}

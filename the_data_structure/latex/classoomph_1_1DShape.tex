@@ -1,0 +1,500 @@
+\hypertarget{classoomph_1_1DShape}{}\section{oomph\+:\+:D\+Shape Class Reference}
+\label{classoomph_1_1DShape}\index{oomph\+::\+D\+Shape@{oomph\+::\+D\+Shape}}
+
+
+{\ttfamily \#include $<$shape.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1DShape_abeb261fc4fe276c22df040f8f754b151}{D\+Shape} (const unsigned \&N, const unsigned \&P)
+\begin{DoxyCompactList}\small\item\em Constructor with two parameters\+: a single-\/index shape function. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1DShape_a9b448ecb15766d223b7cd4b668729174}{D\+Shape} (const unsigned \&N, const unsigned \&M, const unsigned \&P)
+\begin{DoxyCompactList}\small\item\em Constructor with three paramters\+: a two-\/index shape function. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1DShape_a7a9884025650edf558112081e53d4dbb}{D\+Shape} ()
+\item 
+\hyperlink{classoomph_1_1DShape_a0624fe8be38d00a98802c6230acd7ed2}{D\+Shape} (const \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dshape)
+\begin{DoxyCompactList}\small\item\em Broken copy constructor. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1DShape_a65273775f2720c51a7d4c2e9b5d5a8a9}{operator=} (const \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dshape)
+\item 
+void \hyperlink{classoomph_1_1DShape_a50bb345fa38feb3b72244d94a0dbaf50}{operator=} (\hyperlink{classoomph_1_1DShape}{D\+Shape} $\ast$const \&dshape\+\_\+pt)
+\item 
+\hyperlink{classoomph_1_1DShape_a438b78cc767e134d1837bbf181cf4c07}{$\sim$\+D\+Shape} ()
+\begin{DoxyCompactList}\small\item\em Destructor, clean up the memory allocated by this object. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1DShape_a8332362ef8b25fbdad13fe2b81b5cca9}{resize} (const unsigned \&N, const unsigned \&P, const unsigned \&M=1)
+\item 
+double \& \hyperlink{classoomph_1_1DShape_aca7a3b5a8112835db2da558ab275d1a5}{operator()} (const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}, const unsigned \&k)
+\begin{DoxyCompactList}\small\item\em Overload the round bracket operator for access to the data. \end{DoxyCompactList}\item 
+const double \& \hyperlink{classoomph_1_1DShape_a661796d8dd59c34c2d9a45c580ba213c}{operator()} (const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}, const unsigned \&k) const
+\begin{DoxyCompactList}\small\item\em Overload the round bracket operator (const version) \end{DoxyCompactList}\item 
+double \& \hyperlink{classoomph_1_1DShape_ae9b6e45963e0c5bfb9df09e7acaf843b}{operator()} (const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}, const unsigned \&j, const unsigned \&k)
+\begin{DoxyCompactList}\small\item\em Overload the round bracket operator, with 3 indices. \end{DoxyCompactList}\item 
+const double \& \hyperlink{classoomph_1_1DShape_a6701a34fae38c907f2d57a292f5f6cf7}{operator()} (const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}, const unsigned \&j, const unsigned \&k) const
+\begin{DoxyCompactList}\small\item\em Overload the round bracket operator (const version) \end{DoxyCompactList}\item 
+double \& \hyperlink{classoomph_1_1DShape_a7974b4d85225de366759c5c96dd4e586}{raw\+\_\+direct\+\_\+access} (const unsigned long \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i})
+\begin{DoxyCompactList}\small\item\em Direct access to internal storage of data in flat-\/packed C-\/style column-\/major format. W\+A\+R\+N\+I\+NG\+: Only for experienced users. Only use this if raw speed is of the essence, as in the solid mechanics problems. \end{DoxyCompactList}\item 
+const double \& \hyperlink{classoomph_1_1DShape_a40a1725b36ba80253bea100c2716abbf}{raw\+\_\+direct\+\_\+access} (const unsigned long \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}) const
+\begin{DoxyCompactList}\small\item\em Direct access to internal storage of data in flat-\/packed C-\/style column-\/major format. W\+A\+R\+N\+I\+NG\+: Only for experienced users. Only use this if raw speed is of the essence, as in the solid mechanics problems. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1DShape_a2ab233f026b70956e8ab520470ef20ec}{offset} (const unsigned long \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}, const unsigned long \&j) const
+\begin{DoxyCompactList}\small\item\em Caculate the offset in flat-\/packed C-\/style, column-\/major format, required for a given i,j. W\+A\+R\+N\+I\+NG\+: Only for experienced users. Only use this if raw speed is of the essence, as in the solid mechanics problems. \end{DoxyCompactList}\item 
+unsigned long \hyperlink{classoomph_1_1DShape_a6c3a1de88d42417bbb35ad62655a5ed3}{nindex1} () const
+\begin{DoxyCompactList}\small\item\em Return the range of index 1 of the derivatives of the shape functions. \end{DoxyCompactList}\item 
+unsigned long \hyperlink{classoomph_1_1DShape_a1ce1aa1abc964aaea4b21d7de2aa559e}{nindex2} () const
+\begin{DoxyCompactList}\small\item\em Return the range of index 2 of the derivatives of the shape functions. \end{DoxyCompactList}\item 
+unsigned long \hyperlink{classoomph_1_1DShape_a1a5a3dc7227cdf09f16484e7125df913}{nindex3} () const
+\begin{DoxyCompactList}\small\item\em Return the range of index 3 of the derivatives of the shape functions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classoomph_1_1DShape_aa6dca57c2462c28257b67500e9840b98}{range\+\_\+check} (const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}, const unsigned \&j, const unsigned \&k) const
+\begin{DoxyCompactList}\small\item\em Private function that checks whether the indices are in range. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double $\ast$ \hyperlink{classoomph_1_1DShape_aedb450cd0b8aefc4ee216517c03e7f92}{D\+Psi}
+\begin{DoxyCompactList}\small\item\em Pointer that addresses the storage that will be used to read and set the shape-\/function derivatives. The values are packed into a flat array of doubles. \end{DoxyCompactList}\item 
+double $\ast$ \hyperlink{classoomph_1_1DShape_a7b5d34f932015974cdf764f44e04fafb}{Allocated\+\_\+storage}
+\begin{DoxyCompactList}\small\item\em Pointer that addresses the storage allocated by the object on construction. This will be the same as D\+Psi if the object is not copied. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1DShape_a8fe23f1bb30846c65bc7ee4f79e387c8}{Index1}
+\begin{DoxyCompactList}\small\item\em Size of the first index of the shape function. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1DShape_a4028a6e759b9f1905edf884aabaa2c6d}{Index2}
+\begin{DoxyCompactList}\small\item\em Size of the second index of the shape function. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1DShape_a9745c10dc781a90f38333b0862c86f3f}{Index3}
+\begin{DoxyCompactList}\small\item\em Size of the third index of the shape function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A Class for the derivatives of shape functions The class design is essentially the same as \hyperlink{classoomph_1_1Shape}{Shape}, but there is on additional index that is used to indicate the coordinate direction in which the derivative is taken. 
+
+Definition at line 275 of file shape.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1DShape_abeb261fc4fe276c22df040f8f754b151}\label{classoomph_1_1DShape_abeb261fc4fe276c22df040f8f754b151}} 
+\index{oomph\+::\+D\+Shape@{oomph\+::\+D\+Shape}!D\+Shape@{D\+Shape}}
+\index{D\+Shape@{D\+Shape}!oomph\+::\+D\+Shape@{oomph\+::\+D\+Shape}}
+\subsubsection{\texorpdfstring{D\+Shape()}{DShape()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily oomph\+::\+D\+Shape\+::\+D\+Shape (\begin{DoxyParamCaption}\item[{const unsigned \&}]{N,  }\item[{const unsigned \&}]{P }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor with two parameters\+: a single-\/index shape function. 
+
+
+
+Definition at line 335 of file shape.\+h.
+
+
+
+References oomph\+::\+Shape\+::\+Allocated\+\_\+storage.
+
+\mbox{\Hypertarget{classoomph_1_1DShape_a9b448ecb15766d223b7cd4b668729174}\label{classoomph_1_1DShape_a9b448ecb15766d223b7cd4b668729174}} 
+\index{oomph\+::\+D\+Shape@{oomph\+::\+D\+Shape}!D\+Shape@{D\+Shape}}
+\index{D\+Shape@{D\+Shape}!oomph\+::\+D\+Shape@{oomph\+::\+D\+Shape}}
+\subsubsection{\texorpdfstring{D\+Shape()}{DShape()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily oomph\+::\+D\+Shape\+::\+D\+Shape (\begin{DoxyParamCaption}\item[{const unsigned \&}]{N,  }\item[{const unsigned \&}]{M,  }\item[{const unsigned \&}]{P }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor with three paramters\+: a two-\/index shape function. 
+
+
+
+Definition at line 340 of file shape.\+h.
+
+
+
+References oomph\+::\+Shape\+::\+Allocated\+\_\+storage.
+
+\mbox{\Hypertarget{classoomph_1_1DShape_a7a9884025650edf558112081e53d4dbb}\label{classoomph_1_1DShape_a7a9884025650edf558112081e53d4dbb}} 
+\index{oomph\+::\+D\+Shape@{oomph\+::\+D\+Shape}!D\+Shape@{D\+Shape}}
+\index{D\+Shape@{D\+Shape}!oomph\+::\+D\+Shape@{oomph\+::\+D\+Shape}}
+\subsubsection{\texorpdfstring{D\+Shape()}{DShape()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily oomph\+::\+D\+Shape\+::\+D\+Shape (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Default constructor -\/ just assigns a null pointers and zero index sizes. 
+
+Definition at line 346 of file shape.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1DShape_a0624fe8be38d00a98802c6230acd7ed2}\label{classoomph_1_1DShape_a0624fe8be38d00a98802c6230acd7ed2}} 
+\index{oomph\+::\+D\+Shape@{oomph\+::\+D\+Shape}!D\+Shape@{D\+Shape}}
+\index{D\+Shape@{D\+Shape}!oomph\+::\+D\+Shape@{oomph\+::\+D\+Shape}}
+\subsubsection{\texorpdfstring{D\+Shape()}{DShape()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily oomph\+::\+D\+Shape\+::\+D\+Shape (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dshape }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Broken copy constructor. 
+
+
+
+Definition at line 349 of file shape.\+h.
+
+
+
+References oomph\+::\+Broken\+Copy\+::broken\+\_\+copy().
+
+\mbox{\Hypertarget{classoomph_1_1DShape_a438b78cc767e134d1837bbf181cf4c07}\label{classoomph_1_1DShape_a438b78cc767e134d1837bbf181cf4c07}} 
+\index{oomph\+::\+D\+Shape@{oomph\+::\+D\+Shape}!````~D\+Shape@{$\sim$\+D\+Shape}}
+\index{````~D\+Shape@{$\sim$\+D\+Shape}!oomph\+::\+D\+Shape@{oomph\+::\+D\+Shape}}
+\subsubsection{\texorpdfstring{$\sim$\+D\+Shape()}{~DShape()}}
+{\footnotesize\ttfamily oomph\+::\+D\+Shape\+::$\sim$\+D\+Shape (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Destructor, clean up the memory allocated by this object. 
+
+
+
+Definition at line 407 of file shape.\+h.
+
+
+
+References oomph\+::\+Shape\+::\+Allocated\+\_\+storage.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1DShape_a6c3a1de88d42417bbb35ad62655a5ed3}\label{classoomph_1_1DShape_a6c3a1de88d42417bbb35ad62655a5ed3}} 
+\index{oomph\+::\+D\+Shape@{oomph\+::\+D\+Shape}!nindex1@{nindex1}}
+\index{nindex1@{nindex1}!oomph\+::\+D\+Shape@{oomph\+::\+D\+Shape}}
+\subsubsection{\texorpdfstring{nindex1()}{nindex1()}}
+{\footnotesize\ttfamily unsigned long oomph\+::\+D\+Shape\+::nindex1 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the range of index 1 of the derivatives of the shape functions. 
+
+
+
+Definition at line 489 of file shape.\+h.
+
+
+
+References oomph\+::\+Shape\+::\+Index1.
+
+
+
+Referenced by oomph\+::\+Clamped\+Hermite\+Shell\+Boundary\+Condition\+Element\+::dshape\+\_\+local(), oomph\+::\+Finite\+Element\+::transform\+\_\+derivatives(), and oomph\+::\+Finite\+Element\+::transform\+\_\+derivatives\+\_\+diagonal().
+
+\mbox{\Hypertarget{classoomph_1_1DShape_a1ce1aa1abc964aaea4b21d7de2aa559e}\label{classoomph_1_1DShape_a1ce1aa1abc964aaea4b21d7de2aa559e}} 
+\index{oomph\+::\+D\+Shape@{oomph\+::\+D\+Shape}!nindex2@{nindex2}}
+\index{nindex2@{nindex2}!oomph\+::\+D\+Shape@{oomph\+::\+D\+Shape}}
+\subsubsection{\texorpdfstring{nindex2()}{nindex2()}}
+{\footnotesize\ttfamily unsigned long oomph\+::\+D\+Shape\+::nindex2 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the range of index 2 of the derivatives of the shape functions. 
+
+
+
+Definition at line 492 of file shape.\+h.
+
+
+
+References oomph\+::\+Shape\+::\+Index2.
+
+
+
+Referenced by oomph\+::\+Clamped\+Hermite\+Shell\+Boundary\+Condition\+Element\+::dshape\+\_\+local(), oomph\+::\+Finite\+Element\+::transform\+\_\+derivatives(), and oomph\+::\+Finite\+Element\+::transform\+\_\+derivatives\+\_\+diagonal().
+
+\mbox{\Hypertarget{classoomph_1_1DShape_a1a5a3dc7227cdf09f16484e7125df913}\label{classoomph_1_1DShape_a1a5a3dc7227cdf09f16484e7125df913}} 
+\index{oomph\+::\+D\+Shape@{oomph\+::\+D\+Shape}!nindex3@{nindex3}}
+\index{nindex3@{nindex3}!oomph\+::\+D\+Shape@{oomph\+::\+D\+Shape}}
+\subsubsection{\texorpdfstring{nindex3()}{nindex3()}}
+{\footnotesize\ttfamily unsigned long oomph\+::\+D\+Shape\+::nindex3 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the range of index 3 of the derivatives of the shape functions. 
+
+
+
+Definition at line 495 of file shape.\+h.
+
+
+
+Referenced by oomph\+::\+Clamped\+Hermite\+Shell\+Boundary\+Condition\+Element\+::dshape\+\_\+local().
+
+\mbox{\Hypertarget{classoomph_1_1DShape_a2ab233f026b70956e8ab520470ef20ec}\label{classoomph_1_1DShape_a2ab233f026b70956e8ab520470ef20ec}} 
+\index{oomph\+::\+D\+Shape@{oomph\+::\+D\+Shape}!offset@{offset}}
+\index{offset@{offset}!oomph\+::\+D\+Shape@{oomph\+::\+D\+Shape}}
+\subsubsection{\texorpdfstring{offset()}{offset()}}
+{\footnotesize\ttfamily unsigned oomph\+::\+D\+Shape\+::offset (\begin{DoxyParamCaption}\item[{const unsigned long \&}]{i,  }\item[{const unsigned long \&}]{j }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Caculate the offset in flat-\/packed C-\/style, column-\/major format, required for a given i,j. W\+A\+R\+N\+I\+NG\+: Only for experienced users. Only use this if raw speed is of the essence, as in the solid mechanics problems. 
+
+
+
+Definition at line 482 of file shape.\+h.
+
+
+
+Referenced by oomph\+::\+Refineable\+P\+V\+D\+Equations$<$ D\+I\+M $>$\+::fill\+\_\+in\+\_\+generic\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+pvd(), oomph\+::\+P\+V\+D\+Equations$<$ D\+I\+M $>$\+::fill\+\_\+in\+\_\+generic\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+pvd(), oomph\+::\+Refineable\+P\+V\+D\+Equations\+With\+Pressure$<$ D\+I\+M $>$\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+pvd\+\_\+with\+\_\+pressure(), and oomph\+::\+P\+V\+D\+Equations\+With\+Pressure$<$ D\+I\+M $>$\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+pvd\+\_\+with\+\_\+pressure().
+
+\mbox{\Hypertarget{classoomph_1_1DShape_aca7a3b5a8112835db2da558ab275d1a5}\label{classoomph_1_1DShape_aca7a3b5a8112835db2da558ab275d1a5}} 
+\index{oomph\+::\+D\+Shape@{oomph\+::\+D\+Shape}!operator()@{operator()}}
+\index{operator()@{operator()}!oomph\+::\+D\+Shape@{oomph\+::\+D\+Shape}}
+\subsubsection{\texorpdfstring{operator()()}{operator()()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily double\& oomph\+::\+D\+Shape\+::operator() (\begin{DoxyParamCaption}\item[{const unsigned \&}]{i,  }\item[{const unsigned \&}]{k }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Overload the round bracket operator for access to the data. 
+
+
+
+Definition at line 427 of file shape.\+h.
+
+
+
+References oomph\+::\+Shape\+::range\+\_\+check().
+
+\mbox{\Hypertarget{classoomph_1_1DShape_a661796d8dd59c34c2d9a45c580ba213c}\label{classoomph_1_1DShape_a661796d8dd59c34c2d9a45c580ba213c}} 
+\index{oomph\+::\+D\+Shape@{oomph\+::\+D\+Shape}!operator()@{operator()}}
+\index{operator()@{operator()}!oomph\+::\+D\+Shape@{oomph\+::\+D\+Shape}}
+\subsubsection{\texorpdfstring{operator()()}{operator()()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily const double\& oomph\+::\+D\+Shape\+::operator() (\begin{DoxyParamCaption}\item[{const unsigned \&}]{i,  }\item[{const unsigned \&}]{k }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Overload the round bracket operator (const version) 
+
+
+
+Definition at line 436 of file shape.\+h.
+
+
+
+References oomph\+::\+Shape\+::range\+\_\+check().
+
+\mbox{\Hypertarget{classoomph_1_1DShape_ae9b6e45963e0c5bfb9df09e7acaf843b}\label{classoomph_1_1DShape_ae9b6e45963e0c5bfb9df09e7acaf843b}} 
+\index{oomph\+::\+D\+Shape@{oomph\+::\+D\+Shape}!operator()@{operator()}}
+\index{operator()@{operator()}!oomph\+::\+D\+Shape@{oomph\+::\+D\+Shape}}
+\subsubsection{\texorpdfstring{operator()()}{operator()()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily double\& oomph\+::\+D\+Shape\+::operator() (\begin{DoxyParamCaption}\item[{const unsigned \&}]{i,  }\item[{const unsigned \&}]{j,  }\item[{const unsigned \&}]{k }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Overload the round bracket operator, with 3 indices. 
+
+
+
+Definition at line 445 of file shape.\+h.
+
+
+
+References oomph\+::\+Shape\+::range\+\_\+check().
+
+\mbox{\Hypertarget{classoomph_1_1DShape_a6701a34fae38c907f2d57a292f5f6cf7}\label{classoomph_1_1DShape_a6701a34fae38c907f2d57a292f5f6cf7}} 
+\index{oomph\+::\+D\+Shape@{oomph\+::\+D\+Shape}!operator()@{operator()}}
+\index{operator()@{operator()}!oomph\+::\+D\+Shape@{oomph\+::\+D\+Shape}}
+\subsubsection{\texorpdfstring{operator()()}{operator()()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily const double\& oomph\+::\+D\+Shape\+::operator() (\begin{DoxyParamCaption}\item[{const unsigned \&}]{i,  }\item[{const unsigned \&}]{j,  }\item[{const unsigned \&}]{k }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Overload the round bracket operator (const version) 
+
+
+
+Definition at line 455 of file shape.\+h.
+
+
+
+References oomph\+::\+Shape\+::range\+\_\+check().
+
+\mbox{\Hypertarget{classoomph_1_1DShape_a65273775f2720c51a7d4c2e9b5d5a8a9}\label{classoomph_1_1DShape_a65273775f2720c51a7d4c2e9b5d5a8a9}} 
+\index{oomph\+::\+D\+Shape@{oomph\+::\+D\+Shape}!operator=@{operator=}}
+\index{operator=@{operator=}!oomph\+::\+D\+Shape@{oomph\+::\+D\+Shape}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void oomph\+::\+D\+Shape\+::operator= (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dshape }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+The assignment operator does a shallow copy (resets the pointer to the data) 
+
+Definition at line 353 of file shape.\+h.
+
+
+
+References D\+Psi, Index1, Index2, and Index3.
+
+\mbox{\Hypertarget{classoomph_1_1DShape_a50bb345fa38feb3b72244d94a0dbaf50}\label{classoomph_1_1DShape_a50bb345fa38feb3b72244d94a0dbaf50}} 
+\index{oomph\+::\+D\+Shape@{oomph\+::\+D\+Shape}!operator=@{operator=}}
+\index{operator=@{operator=}!oomph\+::\+D\+Shape@{oomph\+::\+D\+Shape}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void oomph\+::\+D\+Shape\+::operator= (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} $\ast$const \&}]{dshape\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+The assignment operator does a shallow copy (resets the pointer to the data) 
+
+Definition at line 379 of file shape.\+h.
+
+
+
+References D\+Psi, Index1, Index2, and Index3.
+
+\mbox{\Hypertarget{classoomph_1_1DShape_aa6dca57c2462c28257b67500e9840b98}\label{classoomph_1_1DShape_aa6dca57c2462c28257b67500e9840b98}} 
+\index{oomph\+::\+D\+Shape@{oomph\+::\+D\+Shape}!range\+\_\+check@{range\+\_\+check}}
+\index{range\+\_\+check@{range\+\_\+check}!oomph\+::\+D\+Shape@{oomph\+::\+D\+Shape}}
+\subsubsection{\texorpdfstring{range\+\_\+check()}{range\_check()}}
+{\footnotesize\ttfamily void oomph\+::\+D\+Shape\+::range\+\_\+check (\begin{DoxyParamCaption}\item[{const unsigned \&}]{i,  }\item[{const unsigned \&}]{j,  }\item[{const unsigned \&}]{k }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Private function that checks whether the indices are in range. 
+
+
+
+Definition at line 299 of file shape.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1DShape_a7974b4d85225de366759c5c96dd4e586}\label{classoomph_1_1DShape_a7974b4d85225de366759c5c96dd4e586}} 
+\index{oomph\+::\+D\+Shape@{oomph\+::\+D\+Shape}!raw\+\_\+direct\+\_\+access@{raw\+\_\+direct\+\_\+access}}
+\index{raw\+\_\+direct\+\_\+access@{raw\+\_\+direct\+\_\+access}!oomph\+::\+D\+Shape@{oomph\+::\+D\+Shape}}
+\subsubsection{\texorpdfstring{raw\+\_\+direct\+\_\+access()}{raw\_direct\_access()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily double\& oomph\+::\+D\+Shape\+::raw\+\_\+direct\+\_\+access (\begin{DoxyParamCaption}\item[{const unsigned long \&}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Direct access to internal storage of data in flat-\/packed C-\/style column-\/major format. W\+A\+R\+N\+I\+NG\+: Only for experienced users. Only use this if raw speed is of the essence, as in the solid mechanics problems. 
+
+
+
+Definition at line 468 of file shape.\+h.
+
+
+
+References i.
+
+
+
+Referenced by oomph\+::\+Refineable\+P\+V\+D\+Equations$<$ D\+I\+M $>$\+::fill\+\_\+in\+\_\+generic\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+pvd(), oomph\+::\+P\+V\+D\+Equations$<$ D\+I\+M $>$\+::fill\+\_\+in\+\_\+generic\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+pvd(), oomph\+::\+Refineable\+P\+V\+D\+Equations\+With\+Pressure$<$ D\+I\+M $>$\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+pvd\+\_\+with\+\_\+pressure(), and oomph\+::\+P\+V\+D\+Equations\+With\+Pressure$<$ D\+I\+M $>$\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+pvd\+\_\+with\+\_\+pressure().
+
+\mbox{\Hypertarget{classoomph_1_1DShape_a40a1725b36ba80253bea100c2716abbf}\label{classoomph_1_1DShape_a40a1725b36ba80253bea100c2716abbf}} 
+\index{oomph\+::\+D\+Shape@{oomph\+::\+D\+Shape}!raw\+\_\+direct\+\_\+access@{raw\+\_\+direct\+\_\+access}}
+\index{raw\+\_\+direct\+\_\+access@{raw\+\_\+direct\+\_\+access}!oomph\+::\+D\+Shape@{oomph\+::\+D\+Shape}}
+\subsubsection{\texorpdfstring{raw\+\_\+direct\+\_\+access()}{raw\_direct\_access()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily const double\& oomph\+::\+D\+Shape\+::raw\+\_\+direct\+\_\+access (\begin{DoxyParamCaption}\item[{const unsigned long \&}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Direct access to internal storage of data in flat-\/packed C-\/style column-\/major format. W\+A\+R\+N\+I\+NG\+: Only for experienced users. Only use this if raw speed is of the essence, as in the solid mechanics problems. 
+
+
+
+Definition at line 475 of file shape.\+h.
+
+
+
+References i.
+
+\mbox{\Hypertarget{classoomph_1_1DShape_a8332362ef8b25fbdad13fe2b81b5cca9}\label{classoomph_1_1DShape_a8332362ef8b25fbdad13fe2b81b5cca9}} 
+\index{oomph\+::\+D\+Shape@{oomph\+::\+D\+Shape}!resize@{resize}}
+\index{resize@{resize}!oomph\+::\+D\+Shape@{oomph\+::\+D\+Shape}}
+\subsubsection{\texorpdfstring{resize()}{resize()}}
+{\footnotesize\ttfamily void oomph\+::\+D\+Shape\+::resize (\begin{DoxyParamCaption}\item[{const unsigned \&}]{N,  }\item[{const unsigned \&}]{P,  }\item[{const unsigned \&}]{M = {\ttfamily 1} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Change the size of the storage. Note that (for some strange reason) index2 is the \char`\"{}optional\char`\"{} index, to conform with the existing constructor. 
+
+Definition at line 412 of file shape.\+h.
+
+
+
+References oomph\+::\+Shape\+::\+Allocated\+\_\+storage, and oomph\+::\+Quad\+Tree\+Names\+::N.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1DShape_a7b5d34f932015974cdf764f44e04fafb}\label{classoomph_1_1DShape_a7b5d34f932015974cdf764f44e04fafb}} 
+\index{oomph\+::\+D\+Shape@{oomph\+::\+D\+Shape}!Allocated\+\_\+storage@{Allocated\+\_\+storage}}
+\index{Allocated\+\_\+storage@{Allocated\+\_\+storage}!oomph\+::\+D\+Shape@{oomph\+::\+D\+Shape}}
+\subsubsection{\texorpdfstring{Allocated\+\_\+storage}{Allocated\_storage}}
+{\footnotesize\ttfamily double$\ast$ oomph\+::\+D\+Shape\+::\+Allocated\+\_\+storage\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pointer that addresses the storage allocated by the object on construction. This will be the same as D\+Psi if the object is not copied. 
+
+
+
+Definition at line 287 of file shape.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1DShape_aedb450cd0b8aefc4ee216517c03e7f92}\label{classoomph_1_1DShape_aedb450cd0b8aefc4ee216517c03e7f92}} 
+\index{oomph\+::\+D\+Shape@{oomph\+::\+D\+Shape}!D\+Psi@{D\+Psi}}
+\index{D\+Psi@{D\+Psi}!oomph\+::\+D\+Shape@{oomph\+::\+D\+Shape}}
+\subsubsection{\texorpdfstring{D\+Psi}{DPsi}}
+{\footnotesize\ttfamily double$\ast$ oomph\+::\+D\+Shape\+::\+D\+Psi\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pointer that addresses the storage that will be used to read and set the shape-\/function derivatives. The values are packed into a flat array of doubles. 
+
+
+
+Definition at line 282 of file shape.\+h.
+
+
+
+Referenced by operator=().
+
+\mbox{\Hypertarget{classoomph_1_1DShape_a8fe23f1bb30846c65bc7ee4f79e387c8}\label{classoomph_1_1DShape_a8fe23f1bb30846c65bc7ee4f79e387c8}} 
+\index{oomph\+::\+D\+Shape@{oomph\+::\+D\+Shape}!Index1@{Index1}}
+\index{Index1@{Index1}!oomph\+::\+D\+Shape@{oomph\+::\+D\+Shape}}
+\subsubsection{\texorpdfstring{Index1}{Index1}}
+{\footnotesize\ttfamily unsigned oomph\+::\+D\+Shape\+::\+Index1\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Size of the first index of the shape function. 
+
+
+
+Definition at line 290 of file shape.\+h.
+
+
+
+Referenced by operator=().
+
+\mbox{\Hypertarget{classoomph_1_1DShape_a4028a6e759b9f1905edf884aabaa2c6d}\label{classoomph_1_1DShape_a4028a6e759b9f1905edf884aabaa2c6d}} 
+\index{oomph\+::\+D\+Shape@{oomph\+::\+D\+Shape}!Index2@{Index2}}
+\index{Index2@{Index2}!oomph\+::\+D\+Shape@{oomph\+::\+D\+Shape}}
+\subsubsection{\texorpdfstring{Index2}{Index2}}
+{\footnotesize\ttfamily unsigned oomph\+::\+D\+Shape\+::\+Index2\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Size of the second index of the shape function. 
+
+
+
+Definition at line 293 of file shape.\+h.
+
+
+
+Referenced by operator=().
+
+\mbox{\Hypertarget{classoomph_1_1DShape_a9745c10dc781a90f38333b0862c86f3f}\label{classoomph_1_1DShape_a9745c10dc781a90f38333b0862c86f3f}} 
+\index{oomph\+::\+D\+Shape@{oomph\+::\+D\+Shape}!Index3@{Index3}}
+\index{Index3@{Index3}!oomph\+::\+D\+Shape@{oomph\+::\+D\+Shape}}
+\subsubsection{\texorpdfstring{Index3}{Index3}}
+{\footnotesize\ttfamily unsigned oomph\+::\+D\+Shape\+::\+Index3\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Size of the third index of the shape function. 
+
+
+
+Definition at line 296 of file shape.\+h.
+
+
+
+Referenced by operator=().
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{shape_8h}{shape.\+h}\end{DoxyCompactItemize}

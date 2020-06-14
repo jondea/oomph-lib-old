@@ -1,0 +1,1095 @@
+\hypertarget{classoomph_1_1PMLHelmholtzEquationsBase}{}\section{oomph\+:\+:P\+M\+L\+Helmholtz\+Equations\+Base$<$ D\+IM $>$ Class Template Reference}
+\label{classoomph_1_1PMLHelmholtzEquationsBase}\index{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base$<$ D\+I\+M $>$@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base$<$ D\+I\+M $>$}}
+
+
+{\ttfamily \#include $<$pml\+\_\+helmholtz\+\_\+elements.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:P\+M\+L\+Helmholtz\+Equations\+Base$<$ D\+IM $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=0.746667cm]{classoomph_1_1PMLHelmholtzEquationsBase}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef void($\ast$ \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase_abf57477abc2672cd680742e17721a07f}{P\+M\+L\+Helmholtz\+Source\+Fct\+Pt}) (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&x, std\+::complex$<$ double $>$ \&f)
+\begin{DoxyCompactList}\small\item\em Function pointer to source function fct(x,f(x)) -- x is a Vector! \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1PMLHelmholtzEquationsBase_ac63587d3e479d38377e5330095f110b6}{P\+M\+L\+Helmholtz\+Equations\+Base} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1PMLHelmholtzEquationsBase_a13f521613ce7762c287091c53d9ae953}{P\+M\+L\+Helmholtz\+Equations\+Base} (const \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase}{P\+M\+L\+Helmholtz\+Equations\+Base} \&dummy)
+\begin{DoxyCompactList}\small\item\em Broken copy constructor. \end{DoxyCompactList}\item 
+virtual std\+::complex$<$ unsigned $>$ \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase_aecebb06e1f97f8ad44caa265c4bfd6eb}{u\+\_\+index\+\_\+helmholtz} () const
+\begin{DoxyCompactList}\small\item\em Broken assignment operator. \end{DoxyCompactList}\item 
+double $\ast$\& \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase_a4bf59f545ac99cdf9e44f6cb365de08a}{k\+\_\+squared\+\_\+pt} ()
+\begin{DoxyCompactList}\small\item\em Get pointer to k\+\_\+squared. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase_a1028cc3fdde3e57ffdfac5cba8893418}{k\+\_\+squared} () const
+\begin{DoxyCompactList}\small\item\em Get the square of wavenumber. \end{DoxyCompactList}\item 
+const double \& \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase_a1d829e0491550007a0474c639dea34ba}{alpha} () const
+\begin{DoxyCompactList}\small\item\em Alpha, wavenumber complex shift. \end{DoxyCompactList}\item 
+double $\ast$\& \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase_aaf031eceaf091f839e349040d88f69bf}{alpha\+\_\+pt} ()
+\begin{DoxyCompactList}\small\item\em Pointer to Alpha, wavenumber complex shift. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase_a7829f282edace6ed23d2042defb15186}{nscalar\+\_\+paraview} () const
+\begin{DoxyCompactList}\small\item\em Number of scalars/fields output by this element. Reimplements broken virtual function in base class. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase_aaeb408e55bccd67d03e70fe85cb1de9d}{scalar\+\_\+value\+\_\+paraview} (std\+::ofstream \&file\+\_\+out, const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}, const unsigned \&nplot) const
+\begin{DoxyCompactList}\small\item\em Write values of the i-\/th scalar field at the plot points. Needs to be implemented for each new specific element type. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase_a8285b79905851ee6bed5d8e25435ece2}{scalar\+\_\+value\+\_\+fct\+\_\+paraview} (std\+::ofstream \&file\+\_\+out, const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}, const unsigned \&nplot, \hyperlink{classoomph_1_1FiniteElement_a690fd33af26cc3e84f39bba6d5a85202}{Finite\+Element\+::\+Steady\+Exact\+Solution\+Fct\+Pt} exact\+\_\+soln\+\_\+pt) const
+\begin{DoxyCompactList}\small\item\em Write values of the i-\/th scalar field at the plot points. Needs to be implemented for each new specific element type. \end{DoxyCompactList}\item 
+std\+::string \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase_a35e78df31905f647be50f39eb639b503}{scalar\+\_\+name\+\_\+paraview} (const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}) const
+\begin{DoxyCompactList}\small\item\em Name of the i-\/th scalar field. Default implementation returns V1 for the first one, V2 for the second etc. Can (should!) be overloaded with more meaningful names in specific elements. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase_ad13677aed8be5a42b31a1f8d4f520d35}{output} (std\+::ostream \&outfile)
+\begin{DoxyCompactList}\small\item\em Output with default number of plot points. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase_a904736450d231513640224020566460f}{output} (std\+::ostream \&outfile, const unsigned \&n\+\_\+plot)
+\begin{DoxyCompactList}\small\item\em Output FE representation of soln\+: x,y,u\+\_\+re,u\+\_\+im or x,y,z,u\+\_\+re,u\+\_\+im at n\+\_\+plot$^\wedge$\+D\+IM plot points. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase_a1a5c423fc22940d1edb8c623266421de}{output\+\_\+total\+\_\+real} (std\+::ostream \&outfile, \hyperlink{classoomph_1_1FiniteElement_a690fd33af26cc3e84f39bba6d5a85202}{Finite\+Element\+::\+Steady\+Exact\+Solution\+Fct\+Pt} incoming\+\_\+wave\+\_\+fct\+\_\+pt, const double \&phi, const unsigned \&nplot)
+\item 
+void \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase_a823895b9525cf2ddb30517a64dc61a85}{output\+\_\+real} (std\+::ostream \&outfile, const double \&phi, const unsigned \&n\+\_\+plot)
+\begin{DoxyCompactList}\small\item\em Output function for real part of full time-\/dependent solution u = Re( (u\+\_\+r +i u\+\_\+i) exp(-\/i omega t)) at phase angle omega t = phi. x,y,u or x,y,z,u at n\+\_\+plot plot points in each coordinate direction. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase_a10e17c59371c3c3f1e7a1001837838ce}{output\+\_\+imag} (std\+::ostream \&outfile, const double \&phi, const unsigned \&n\+\_\+plot)
+\begin{DoxyCompactList}\small\item\em Output function for imaginary part of full time-\/dependent solution u = Im( (u\+\_\+r +i u\+\_\+i) exp(-\/i omega t) ) at phase angle omega t = phi. x,y,u or x,y,z,u at n\+\_\+plot plot points in each coordinate direction. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase_acabc2ace55a6f69cd3ef62fe82dc1790}{output} (F\+I\+LE $\ast$file\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em C\+\_\+style output with default number of plot points. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase_a2b5f6565c5fe24c2d01e630b33a46334}{output} (F\+I\+LE $\ast$file\+\_\+pt, const unsigned \&n\+\_\+plot)
+\begin{DoxyCompactList}\small\item\em C-\/style output FE representation of soln\+: x,y,u\+\_\+re,u\+\_\+im or x,y,z,u\+\_\+re,u\+\_\+im at n\+\_\+plot$^\wedge$\+D\+IM plot points. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase_ab1e06aa6838bb7136d1517f31bb95d4d}{output\+\_\+fct} (std\+::ostream \&outfile, const unsigned \&n\+\_\+plot, \hyperlink{classoomph_1_1FiniteElement_a690fd33af26cc3e84f39bba6d5a85202}{Finite\+Element\+::\+Steady\+Exact\+Solution\+Fct\+Pt} exact\+\_\+soln\+\_\+pt)
+\item 
+virtual void \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase_a5ecc9830498e4cc25a0898e676a8c0ef}{output\+\_\+fct} (std\+::ostream \&outfile, const unsigned \&n\+\_\+plot, const double \&time, \hyperlink{classoomph_1_1FiniteElement_ad4ecf2b61b158a4b4d351a60d23c633e}{Finite\+Element\+::\+Unsteady\+Exact\+Solution\+Fct\+Pt} exact\+\_\+soln\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Output exact soln\+: (dummy time-\/dependent version to keep intel compiler happy) \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase_a84f505b170bda355042f0a56df1deb63}{output\+\_\+real\+\_\+fct} (std\+::ostream \&outfile, const double \&phi, const unsigned \&n\+\_\+plot, \hyperlink{classoomph_1_1FiniteElement_a690fd33af26cc3e84f39bba6d5a85202}{Finite\+Element\+::\+Steady\+Exact\+Solution\+Fct\+Pt} exact\+\_\+soln\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Output function for real part of full time-\/dependent fct u = Re( (u\+\_\+r +i u\+\_\+i) exp(-\/i omega t) at phase angle omega t = phi. x,y,u or x,y,z,u at n\+\_\+plot plot points in each coordinate direction. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase_a87bf6ae358dbcf6614b97e8e92810ef3}{output\+\_\+imag\+\_\+fct} (std\+::ostream \&outfile, const double \&phi, const unsigned \&n\+\_\+plot, \hyperlink{classoomph_1_1FiniteElement_a690fd33af26cc3e84f39bba6d5a85202}{Finite\+Element\+::\+Steady\+Exact\+Solution\+Fct\+Pt} exact\+\_\+soln\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Output function for imaginary part of full time-\/dependent fct u = Im( (u\+\_\+r +i u\+\_\+i) exp(-\/i omega t)) at phase angle omega t = phi. x,y,u or x,y,z,u at n\+\_\+plot plot points in each coordinate direction. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase_a85866aff4a5644c26663ca73ed166c1b}{compute\+\_\+error} (std\+::ostream \&outfile, \hyperlink{classoomph_1_1FiniteElement_a690fd33af26cc3e84f39bba6d5a85202}{Finite\+Element\+::\+Steady\+Exact\+Solution\+Fct\+Pt} exact\+\_\+soln\+\_\+pt, double \&error, double \&norm)
+\begin{DoxyCompactList}\small\item\em Get error against and norm of exact solution. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase_a6cd8d2dfd17ff66f86faa87cc25ad113}{compute\+\_\+error} (std\+::ostream \&outfile, \hyperlink{classoomph_1_1FiniteElement_ad4ecf2b61b158a4b4d351a60d23c633e}{Finite\+Element\+::\+Unsteady\+Exact\+Solution\+Fct\+Pt} exact\+\_\+soln\+\_\+pt, const double \&time, double \&error, double \&norm)
+\begin{DoxyCompactList}\small\item\em Dummy, time dependent error checker. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase_ae426e5240fc08c0bee0f34862b22b286}{compute\+\_\+norm} (double \&norm)
+\begin{DoxyCompactList}\small\item\em Compute norm of fe solution. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1PMLHelmholtzEquationsBase_abf57477abc2672cd680742e17721a07f}{P\+M\+L\+Helmholtz\+Source\+Fct\+Pt} \& \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase_afc6e1b81652e12e1dcb7685baa02fce8}{source\+\_\+fct\+\_\+pt} ()
+\begin{DoxyCompactList}\small\item\em Access function\+: Pointer to source function. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1PMLHelmholtzEquationsBase_abf57477abc2672cd680742e17721a07f}{P\+M\+L\+Helmholtz\+Source\+Fct\+Pt} \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase_a185efe8aa7459ee8e6241eb94eb6e6f7}{source\+\_\+fct\+\_\+pt} () const
+\begin{DoxyCompactList}\small\item\em Access function\+: Pointer to source function. Const version. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase_adc5a0db474b2a7a857e2d5724f5293f5}{get\+\_\+source\+\_\+helmholtz} (const unsigned \&ipt, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&x, std\+::complex$<$ double $>$ \&source) const
+\item 
+void \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase_a5fc803f8c95512606666a7fe0dbb6f85}{values\+\_\+to\+\_\+be\+\_\+pinned\+\_\+on\+\_\+outer\+\_\+pml\+\_\+boundary} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ unsigned $>$ \&values\+\_\+to\+\_\+pin)
+\begin{DoxyCompactList}\small\item\em Pure virtual function in which we specify the values to be pinned (and set to zero) on the outer edge of the pml layer. All of them! \hyperlink{classoomph_1_1Vector}{Vector} is resized internally. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase_a255447874c4f8477e5358a253462bb62}{get\+\_\+flux} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Vector}{Vector}$<$ std\+::complex$<$ double $>$ $>$ \&flux) const
+\begin{DoxyCompactList}\small\item\em Get flux\+: flux\mbox{[}i\mbox{]} = du/dx\+\_\+i for real and imag part. \end{DoxyCompactList}\item 
+std\+::complex$<$ double $>$ \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase_aa9583162d7aa5422957ecff9ab189f3b}{interpolated\+\_\+u\+\_\+pml\+\_\+helmholtz} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}) const
+\begin{DoxyCompactList}\small\item\em Return FE representation of function value u\+\_\+helmholtz(s) at local coordinate s. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase_a92b8b911dde0f9ece84d1b06a7b93936}{self\+\_\+test} ()
+\begin{DoxyCompactList}\small\item\em Self-\/test\+: Return 0 for OK. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase_ab061223c28ff7ee0c3423bcabc543161}{ndof\+\_\+types} () const
+\begin{DoxyCompactList}\small\item\em The number of \char`\"{}\+D\+O\+F types\char`\"{} that degrees of freedom in this element are sub-\/divided into\+: real and imaginary part. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase_a5a398f15e17d34ae45b571fb9a53a1c1}{get\+\_\+dof\+\_\+numbers\+\_\+for\+\_\+unknowns} (std\+::list$<$ std\+::pair$<$ unsigned long, unsigned $>$ $>$ \&dof\+\_\+lookup\+\_\+list) const
+\begin{DoxyCompactList}\small\item\em Create a list of pairs for all unknowns in this element, so that the first entry in each pair contains the global equation number of the unknown, while the second one contains the number of the \char`\"{}\+D\+O\+F type\char`\"{} that this unknown is associated with. (Function can obviously only be called if the equation numbering scheme has been set up.) Real=0; Imag=1. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual double \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase_ad8b68169a39c90b30fb4340ce654a350}{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+helmholtz} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Shape}{Shape} \&psi, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dpsidx, \hyperlink{classoomph_1_1Shape}{Shape} \&test, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dtestdx) const =0
+\begin{DoxyCompactList}\small\item\em Shape/test functions and derivs w.\+r.\+t. to global coords at local coord. s; return Jacobian of mapping. \end{DoxyCompactList}\item 
+virtual double \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase_aa283cd2415e7b9f9f3f7a71188403c8a}{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+helmholtz} (const unsigned \&ipt, \hyperlink{classoomph_1_1Shape}{Shape} \&psi, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dpsidx, \hyperlink{classoomph_1_1Shape}{Shape} \&test, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dtestdx) const =0
+\begin{DoxyCompactList}\small\item\em Shape/test functions and derivs w.\+r.\+t. to global coords at integration point ipt; return Jacobian of mapping. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double $\ast$ \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase_a8edfd5d6b057ee97e9b95001c59dfa78}{Alpha\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to wavenumber complex shift. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1PMLHelmholtzEquationsBase_abf57477abc2672cd680742e17721a07f}{P\+M\+L\+Helmholtz\+Source\+Fct\+Pt} \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase_aba2080d52978ab390f035f0ee858c0d6}{Source\+\_\+fct\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to source function\+: \end{DoxyCompactList}\item 
+double $\ast$ \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase_aa214aa3a9117426abdceab9364c558b7}{K\+\_\+squared\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to wave number (must be set!) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static double \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase_a2a970f3f95953bd1c7978733201437a8}{Default\+\_\+\+Physical\+\_\+\+Constant\+\_\+\+Value} = 0.\+0
+\begin{DoxyCompactList}\small\item\em Static default value for the physical constants (initialised to zero) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$unsigned D\+IM$>$\newline
+class oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base$<$ D\+I\+M $>$}
+
+A class for all isoparametric elements that solve the Helmholtz equations with P\+M\+Ls, but without any of the P\+ML capability or depedence on a P\+ML element template parameter 
+
+Definition at line 64 of file pml\+\_\+helmholtz\+\_\+elements.\+h.
+
+
+
+\subsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classoomph_1_1PMLHelmholtzEquationsBase_abf57477abc2672cd680742e17721a07f}\label{classoomph_1_1PMLHelmholtzEquationsBase_abf57477abc2672cd680742e17721a07f}} 
+\index{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}!P\+M\+L\+Helmholtz\+Source\+Fct\+Pt@{P\+M\+L\+Helmholtz\+Source\+Fct\+Pt}}
+\index{P\+M\+L\+Helmholtz\+Source\+Fct\+Pt@{P\+M\+L\+Helmholtz\+Source\+Fct\+Pt}!oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}}
+\subsubsection{\texorpdfstring{P\+M\+L\+Helmholtz\+Source\+Fct\+Pt}{PMLHelmholtzSourceFctPt}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+typedef void($\ast$ \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase}{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}$<$ D\+IM $>$\+::P\+M\+L\+Helmholtz\+Source\+Fct\+Pt) (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&x, std\+::complex$<$ double $>$ \&f)}
+
+
+
+Function pointer to source function fct(x,f(x)) -- x is a Vector! 
+
+
+
+Definition at line 71 of file pml\+\_\+helmholtz\+\_\+elements.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1PMLHelmholtzEquationsBase_ac63587d3e479d38377e5330095f110b6}\label{classoomph_1_1PMLHelmholtzEquationsBase_ac63587d3e479d38377e5330095f110b6}} 
+\index{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}!P\+M\+L\+Helmholtz\+Equations\+Base@{P\+M\+L\+Helmholtz\+Equations\+Base}}
+\index{P\+M\+L\+Helmholtz\+Equations\+Base@{P\+M\+L\+Helmholtz\+Equations\+Base}!oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}}
+\subsubsection{\texorpdfstring{P\+M\+L\+Helmholtz\+Equations\+Base()}{PMLHelmholtzEquationsBase()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+\hyperlink{classoomph_1_1PMLHelmholtzEquationsBase}{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}$<$ D\+IM $>$\+::\hyperlink{classoomph_1_1PMLHelmholtzEquationsBase}{P\+M\+L\+Helmholtz\+Equations\+Base} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor. 
+
+
+
+Definition at line 75 of file pml\+\_\+helmholtz\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base$<$ D\+I\+M $>$\+::\+Alpha\+\_\+pt, and oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base$<$ D\+I\+M $>$\+::\+Default\+\_\+\+Physical\+\_\+\+Constant\+\_\+\+Value.
+
+\mbox{\Hypertarget{classoomph_1_1PMLHelmholtzEquationsBase_a13f521613ce7762c287091c53d9ae953}\label{classoomph_1_1PMLHelmholtzEquationsBase_a13f521613ce7762c287091c53d9ae953}} 
+\index{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}!P\+M\+L\+Helmholtz\+Equations\+Base@{P\+M\+L\+Helmholtz\+Equations\+Base}}
+\index{P\+M\+L\+Helmholtz\+Equations\+Base@{P\+M\+L\+Helmholtz\+Equations\+Base}!oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}}
+\subsubsection{\texorpdfstring{P\+M\+L\+Helmholtz\+Equations\+Base()}{PMLHelmholtzEquationsBase()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+\hyperlink{classoomph_1_1PMLHelmholtzEquationsBase}{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}$<$ D\+IM $>$\+::\hyperlink{classoomph_1_1PMLHelmholtzEquationsBase}{P\+M\+L\+Helmholtz\+Equations\+Base} (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase}{P\+M\+L\+Helmholtz\+Equations\+Base}$<$ D\+IM $>$ \&}]{dummy }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Broken copy constructor. 
+
+
+
+Definition at line 85 of file pml\+\_\+helmholtz\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Broken\+Copy\+::broken\+\_\+copy().
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1PMLHelmholtzEquationsBase_a1d829e0491550007a0474c639dea34ba}\label{classoomph_1_1PMLHelmholtzEquationsBase_a1d829e0491550007a0474c639dea34ba}} 
+\index{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}!alpha@{alpha}}
+\index{alpha@{alpha}!oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}}
+\subsubsection{\texorpdfstring{alpha()}{alpha()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+const double\& \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase}{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}$<$ D\+IM $>$\+::alpha (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Alpha, wavenumber complex shift. 
+
+
+
+Definition at line 124 of file pml\+\_\+helmholtz\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base$<$ D\+I\+M $>$\+::\+Alpha\+\_\+pt.
+
+\mbox{\Hypertarget{classoomph_1_1PMLHelmholtzEquationsBase_aaf031eceaf091f839e349040d88f69bf}\label{classoomph_1_1PMLHelmholtzEquationsBase_aaf031eceaf091f839e349040d88f69bf}} 
+\index{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}!alpha\+\_\+pt@{alpha\+\_\+pt}}
+\index{alpha\+\_\+pt@{alpha\+\_\+pt}!oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}}
+\subsubsection{\texorpdfstring{alpha\+\_\+pt()}{alpha\_pt()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+double$\ast$ \& \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase}{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}$<$ D\+IM $>$\+::alpha\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Pointer to Alpha, wavenumber complex shift. 
+
+
+
+Definition at line 127 of file pml\+\_\+helmholtz\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base$<$ D\+I\+M $>$\+::\+Alpha\+\_\+pt.
+
+
+
+Referenced by oomph\+::\+Helmholtz\+M\+G\+Preconditioner$<$ D\+I\+M $>$\+::setup\+\_\+mg\+\_\+structures().
+
+\mbox{\Hypertarget{classoomph_1_1PMLHelmholtzEquationsBase_a85866aff4a5644c26663ca73ed166c1b}\label{classoomph_1_1PMLHelmholtzEquationsBase_a85866aff4a5644c26663ca73ed166c1b}} 
+\index{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}!compute\+\_\+error@{compute\+\_\+error}}
+\index{compute\+\_\+error@{compute\+\_\+error}!oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}}
+\subsubsection{\texorpdfstring{compute\+\_\+error()}{compute\_error()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase}{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}$<$ D\+IM $>$\+::compute\+\_\+error (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile,  }\item[{\hyperlink{classoomph_1_1FiniteElement_a690fd33af26cc3e84f39bba6d5a85202}{Finite\+Element\+::\+Steady\+Exact\+Solution\+Fct\+Pt}}]{exact\+\_\+soln\+\_\+pt,  }\item[{double \&}]{error,  }\item[{double \&}]{norm }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get error against and norm of exact solution. 
+
+Validate against exact solution
+
+Solution is provided via function pointer. Plot error at a given number of plot points. 
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a73c79a1f1e5b1d334757812a6bbd58ff}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 731 of file pml\+\_\+helmholtz\+\_\+elements.\+cc.
+
+
+
+References i, s, and oomph\+::\+Quad\+Tree\+Names\+::W.
+
+
+
+Referenced by oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base$<$ D\+I\+M $>$\+::output\+\_\+fct().
+
+\mbox{\Hypertarget{classoomph_1_1PMLHelmholtzEquationsBase_a6cd8d2dfd17ff66f86faa87cc25ad113}\label{classoomph_1_1PMLHelmholtzEquationsBase_a6cd8d2dfd17ff66f86faa87cc25ad113}} 
+\index{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}!compute\+\_\+error@{compute\+\_\+error}}
+\index{compute\+\_\+error@{compute\+\_\+error}!oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}}
+\subsubsection{\texorpdfstring{compute\+\_\+error()}{compute\_error()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase}{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}$<$ D\+IM $>$\+::compute\+\_\+error (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile,  }\item[{\hyperlink{classoomph_1_1FiniteElement_ad4ecf2b61b158a4b4d351a60d23c633e}{Finite\+Element\+::\+Unsteady\+Exact\+Solution\+Fct\+Pt}}]{exact\+\_\+soln\+\_\+pt,  }\item[{const double \&}]{time,  }\item[{double \&}]{error,  }\item[{double \&}]{norm }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Dummy, time dependent error checker. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a7f67853506dc73fa6b7505108de22d1f}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 383 of file pml\+\_\+helmholtz\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base$<$ D\+I\+M $>$\+::compute\+\_\+norm().
+
+\mbox{\Hypertarget{classoomph_1_1PMLHelmholtzEquationsBase_ae426e5240fc08c0bee0f34862b22b286}\label{classoomph_1_1PMLHelmholtzEquationsBase_ae426e5240fc08c0bee0f34862b22b286}} 
+\index{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}!compute\+\_\+norm@{compute\+\_\+norm}}
+\index{compute\+\_\+norm@{compute\+\_\+norm}!oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}}
+\subsubsection{\texorpdfstring{compute\+\_\+norm()}{compute\_norm()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase}{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}$<$ D\+IM $>$\+::compute\+\_\+norm (\begin{DoxyParamCaption}\item[{double \&}]{norm }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Compute norm of fe solution. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1GeneralisedElement_af2025a472df6752a946739da58e7fb37}{oomph\+::\+Generalised\+Element}.
+
+
+
+Definition at line 814 of file pml\+\_\+helmholtz\+\_\+elements.\+cc.
+
+
+
+References i, s, and oomph\+::\+Quad\+Tree\+Names\+::W.
+
+
+
+Referenced by oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base$<$ D\+I\+M $>$\+::compute\+\_\+error().
+
+\mbox{\Hypertarget{classoomph_1_1PMLHelmholtzEquationsBase_aa283cd2415e7b9f9f3f7a71188403c8a}\label{classoomph_1_1PMLHelmholtzEquationsBase_aa283cd2415e7b9f9f3f7a71188403c8a}} 
+\index{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}!dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+helmholtz@{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+helmholtz}}
+\index{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+helmholtz@{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+helmholtz}!oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}}
+\subsubsection{\texorpdfstring{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+helmholtz()}{dshape\_and\_dtest\_eulerian\_at\_knot\_helmholtz()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+virtual double \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase}{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}$<$ D\+IM $>$\+::dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+helmholtz (\begin{DoxyParamCaption}\item[{const unsigned \&}]{ipt,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dpsidx,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{test,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dtestdx }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Shape/test functions and derivs w.\+r.\+t. to global coords at integration point ipt; return Jacobian of mapping. 
+
+
+
+Implemented in \hyperlink{classoomph_1_1QPMLHelmholtzElement_a89c593f771124ccb6e70b5abac7f709b}{oomph\+::\+Q\+P\+M\+L\+Helmholtz\+Element$<$ D\+I\+M, N\+N\+O\+D\+E\+\_\+1\+D, P\+M\+L\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$}, \hyperlink{classoomph_1_1QPMLHelmholtzElement_a89c593f771124ccb6e70b5abac7f709b}{oomph\+::\+Q\+P\+M\+L\+Helmholtz\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D, P\+M\+L\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$}, and \hyperlink{classoomph_1_1TPMLHelmholtzElement_aef6adcd4002aa3fac6d5d45ac5ac779b}{oomph\+::\+T\+P\+M\+L\+Helmholtz\+Element$<$ D\+I\+M, N\+N\+O\+D\+E\+\_\+1\+D, P\+M\+L\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$}.
+
+
+
+Referenced by oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base$<$ D\+I\+M $>$\+::get\+\_\+dof\+\_\+numbers\+\_\+for\+\_\+unknowns(), and oomph\+::\+Q\+P\+M\+L\+Helmholtz\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D, P\+M\+L\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::output\+\_\+fct().
+
+\mbox{\Hypertarget{classoomph_1_1PMLHelmholtzEquationsBase_ad8b68169a39c90b30fb4340ce654a350}\label{classoomph_1_1PMLHelmholtzEquationsBase_ad8b68169a39c90b30fb4340ce654a350}} 
+\index{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}!dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+helmholtz@{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+helmholtz}}
+\index{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+helmholtz@{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+helmholtz}!oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}}
+\subsubsection{\texorpdfstring{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+helmholtz()}{dshape\_and\_dtest\_eulerian\_helmholtz()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+virtual double \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase}{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}$<$ D\+IM $>$\+::dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+helmholtz (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dpsidx,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{test,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dtestdx }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Shape/test functions and derivs w.\+r.\+t. to global coords at local coord. s; return Jacobian of mapping. 
+
+
+
+Implemented in \hyperlink{classoomph_1_1QPMLHelmholtzElement_a0d5e590e5bd51ba8d2331c6fdced4653}{oomph\+::\+Q\+P\+M\+L\+Helmholtz\+Element$<$ D\+I\+M, N\+N\+O\+D\+E\+\_\+1\+D, P\+M\+L\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$}, \hyperlink{classoomph_1_1QPMLHelmholtzElement_a0d5e590e5bd51ba8d2331c6fdced4653}{oomph\+::\+Q\+P\+M\+L\+Helmholtz\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D, P\+M\+L\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$}, and \hyperlink{classoomph_1_1TPMLHelmholtzElement_a6a4c48e090653977917c463c628b0585}{oomph\+::\+T\+P\+M\+L\+Helmholtz\+Element$<$ D\+I\+M, N\+N\+O\+D\+E\+\_\+1\+D, P\+M\+L\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$}.
+
+
+
+Referenced by oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base$<$ D\+I\+M $>$\+::get\+\_\+dof\+\_\+numbers\+\_\+for\+\_\+unknowns(), oomph\+::\+Projectable\+P\+M\+L\+Helmholtz\+Element$<$ H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::jacobian\+\_\+and\+\_\+shape\+\_\+of\+\_\+field(), and oomph\+::\+Q\+P\+M\+L\+Helmholtz\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D, P\+M\+L\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::output\+\_\+fct().
+
+\mbox{\Hypertarget{classoomph_1_1PMLHelmholtzEquationsBase_a5a398f15e17d34ae45b571fb9a53a1c1}\label{classoomph_1_1PMLHelmholtzEquationsBase_a5a398f15e17d34ae45b571fb9a53a1c1}} 
+\index{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}!get\+\_\+dof\+\_\+numbers\+\_\+for\+\_\+unknowns@{get\+\_\+dof\+\_\+numbers\+\_\+for\+\_\+unknowns}}
+\index{get\+\_\+dof\+\_\+numbers\+\_\+for\+\_\+unknowns@{get\+\_\+dof\+\_\+numbers\+\_\+for\+\_\+unknowns}!oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}}
+\subsubsection{\texorpdfstring{get\+\_\+dof\+\_\+numbers\+\_\+for\+\_\+unknowns()}{get\_dof\_numbers\_for\_unknowns()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase}{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}$<$ D\+IM $>$\+::get\+\_\+dof\+\_\+numbers\+\_\+for\+\_\+unknowns (\begin{DoxyParamCaption}\item[{std\+::list$<$ std\+::pair$<$ unsigned long, unsigned $>$ $>$ \&}]{dof\+\_\+lookup\+\_\+list }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Create a list of pairs for all unknowns in this element, so that the first entry in each pair contains the global equation number of the unknown, while the second one contains the number of the \char`\"{}\+D\+O\+F type\char`\"{} that this unknown is associated with. (Function can obviously only be called if the equation numbering scheme has been set up.) Real=0; Imag=1. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1GeneralisedElement_a069f59bfc3e607a5bebba52c6314d777}{oomph\+::\+Generalised\+Element}.
+
+
+
+Definition at line 525 of file pml\+\_\+helmholtz\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base$<$ D\+I\+M $>$\+::dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+helmholtz(), oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base$<$ D\+I\+M $>$\+::dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+helmholtz(), oomph\+::\+Generalised\+Element\+::eqn\+\_\+number(), oomph\+::\+Generalised\+Element\+::local\+\_\+eqn\+\_\+number(), oomph\+::\+Finite\+Element\+::nnode(), oomph\+::\+Finite\+Element\+::nodal\+\_\+local\+\_\+eqn(), s, and oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base$<$ D\+I\+M $>$\+::u\+\_\+index\+\_\+helmholtz().
+
+\mbox{\Hypertarget{classoomph_1_1PMLHelmholtzEquationsBase_a255447874c4f8477e5358a253462bb62}\label{classoomph_1_1PMLHelmholtzEquationsBase_a255447874c4f8477e5358a253462bb62}} 
+\index{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}!get\+\_\+flux@{get\+\_\+flux}}
+\index{get\+\_\+flux@{get\+\_\+flux}!oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}}
+\subsubsection{\texorpdfstring{get\+\_\+flux()}{get\_flux()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase}{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}$<$ D\+IM $>$\+::get\+\_\+flux (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ std\+::complex$<$ double $>$ $>$ \&}]{flux }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get flux\+: flux\mbox{[}i\mbox{]} = du/dx\+\_\+i for real and imag part. 
+
+
+
+Definition at line 438 of file pml\+\_\+helmholtz\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Finite\+Element\+::dshape\+\_\+eulerian(), oomph\+::\+Finite\+Element\+::nnode(), oomph\+::\+Finite\+Element\+::nodal\+\_\+value(), and oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base$<$ D\+I\+M $>$\+::u\+\_\+index\+\_\+helmholtz().
+
+
+
+Referenced by oomph\+::\+Refineable\+P\+M\+L\+Helmholtz\+Equations$<$ D\+I\+M, P\+M\+L\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::get\+\_\+\+Z2\+\_\+flux(), and oomph\+::\+T\+P\+M\+L\+Helmholtz\+Element$<$ D\+I\+M, N\+N\+O\+D\+E\+\_\+1\+D, P\+M\+L\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::get\+\_\+\+Z2\+\_\+flux().
+
+\mbox{\Hypertarget{classoomph_1_1PMLHelmholtzEquationsBase_adc5a0db474b2a7a857e2d5724f5293f5}\label{classoomph_1_1PMLHelmholtzEquationsBase_adc5a0db474b2a7a857e2d5724f5293f5}} 
+\index{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}!get\+\_\+source\+\_\+helmholtz@{get\+\_\+source\+\_\+helmholtz}}
+\index{get\+\_\+source\+\_\+helmholtz@{get\+\_\+source\+\_\+helmholtz}!oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}}
+\subsubsection{\texorpdfstring{get\+\_\+source\+\_\+helmholtz()}{get\_source\_helmholtz()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+virtual void \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase}{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}$<$ D\+IM $>$\+::get\+\_\+source\+\_\+helmholtz (\begin{DoxyParamCaption}\item[{const unsigned \&}]{ipt,  }\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{x,  }\item[{std\+::complex$<$ double $>$ \&}]{source }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Get source term at (Eulerian) position x. This function is virtual to allow overloading in multi-\/physics problems where the strength of the source function might be determined by another system of equations. 
+
+Definition at line 408 of file pml\+\_\+helmholtz\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base$<$ D\+I\+M $>$\+::\+Source\+\_\+fct\+\_\+pt.
+
+\mbox{\Hypertarget{classoomph_1_1PMLHelmholtzEquationsBase_aa9583162d7aa5422957ecff9ab189f3b}\label{classoomph_1_1PMLHelmholtzEquationsBase_aa9583162d7aa5422957ecff9ab189f3b}} 
+\index{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}!interpolated\+\_\+u\+\_\+pml\+\_\+helmholtz@{interpolated\+\_\+u\+\_\+pml\+\_\+helmholtz}}
+\index{interpolated\+\_\+u\+\_\+pml\+\_\+helmholtz@{interpolated\+\_\+u\+\_\+pml\+\_\+helmholtz}!oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}}
+\subsubsection{\texorpdfstring{interpolated\+\_\+u\+\_\+pml\+\_\+helmholtz()}{interpolated\_u\_pml\_helmholtz()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+std\+::complex$<$double$>$ \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase}{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}$<$ D\+IM $>$\+::interpolated\+\_\+u\+\_\+pml\+\_\+helmholtz (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return FE representation of function value u\+\_\+helmholtz(s) at local coordinate s. 
+
+
+
+Definition at line 477 of file pml\+\_\+helmholtz\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Finite\+Element\+::nnode(), oomph\+::\+Finite\+Element\+::nodal\+\_\+value(), oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base$<$ D\+I\+M $>$\+::self\+\_\+test(), oomph\+::\+Finite\+Element\+::shape(), and oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base$<$ D\+I\+M $>$\+::u\+\_\+index\+\_\+helmholtz().
+
+
+
+Referenced by oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base$<$ D\+I\+M $>$\+::scalar\+\_\+value\+\_\+paraview().
+
+\mbox{\Hypertarget{classoomph_1_1PMLHelmholtzEquationsBase_a1028cc3fdde3e57ffdfac5cba8893418}\label{classoomph_1_1PMLHelmholtzEquationsBase_a1028cc3fdde3e57ffdfac5cba8893418}} 
+\index{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}!k\+\_\+squared@{k\+\_\+squared}}
+\index{k\+\_\+squared@{k\+\_\+squared}!oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}}
+\subsubsection{\texorpdfstring{k\+\_\+squared()}{k\_squared()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+double \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase}{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}$<$ D\+IM $>$\+::k\+\_\+squared (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the square of wavenumber. 
+
+
+
+Definition at line 109 of file pml\+\_\+helmholtz\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base$<$ D\+I\+M $>$\+::\+K\+\_\+squared\+\_\+pt.
+
+
+
+Referenced by oomph\+::\+Helmholtz\+M\+G\+Preconditioner$<$ D\+I\+M $>$\+::setup\+\_\+mg\+\_\+structures(), and oomph\+::\+P\+M\+L\+Helmholtz\+Equations$<$ D\+I\+M, P\+M\+L\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::wavenumber().
+
+\mbox{\Hypertarget{classoomph_1_1PMLHelmholtzEquationsBase_a4bf59f545ac99cdf9e44f6cb365de08a}\label{classoomph_1_1PMLHelmholtzEquationsBase_a4bf59f545ac99cdf9e44f6cb365de08a}} 
+\index{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}!k\+\_\+squared\+\_\+pt@{k\+\_\+squared\+\_\+pt}}
+\index{k\+\_\+squared\+\_\+pt@{k\+\_\+squared\+\_\+pt}!oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}}
+\subsubsection{\texorpdfstring{k\+\_\+squared\+\_\+pt()}{k\_squared\_pt()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+double$\ast$\& \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase}{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}$<$ D\+IM $>$\+::k\+\_\+squared\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get pointer to k\+\_\+squared. 
+
+
+
+Definition at line 106 of file pml\+\_\+helmholtz\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base$<$ D\+I\+M $>$\+::\+K\+\_\+squared\+\_\+pt.
+
+\mbox{\Hypertarget{classoomph_1_1PMLHelmholtzEquationsBase_ab061223c28ff7ee0c3423bcabc543161}\label{classoomph_1_1PMLHelmholtzEquationsBase_ab061223c28ff7ee0c3423bcabc543161}} 
+\index{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}!ndof\+\_\+types@{ndof\+\_\+types}}
+\index{ndof\+\_\+types@{ndof\+\_\+types}!oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}}
+\subsubsection{\texorpdfstring{ndof\+\_\+types()}{ndof\_types()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+unsigned \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase}{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}$<$ D\+IM $>$\+::ndof\+\_\+types (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+The number of \char`\"{}\+D\+O\+F types\char`\"{} that degrees of freedom in this element are sub-\/divided into\+: real and imaginary part. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1GeneralisedElement_a0c6037a870597b35dcf1c780710b9a56}{oomph\+::\+Generalised\+Element}.
+
+
+
+Definition at line 514 of file pml\+\_\+helmholtz\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1PMLHelmholtzEquationsBase_a7829f282edace6ed23d2042defb15186}\label{classoomph_1_1PMLHelmholtzEquationsBase_a7829f282edace6ed23d2042defb15186}} 
+\index{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}!nscalar\+\_\+paraview@{nscalar\+\_\+paraview}}
+\index{nscalar\+\_\+paraview@{nscalar\+\_\+paraview}!oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}}
+\subsubsection{\texorpdfstring{nscalar\+\_\+paraview()}{nscalar\_paraview()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+unsigned \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase}{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}$<$ D\+IM $>$\+::nscalar\+\_\+paraview (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Number of scalars/fields output by this element. Reimplements broken virtual function in base class. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a865e2e5586552ba80babdbe26a77fe8c}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 132 of file pml\+\_\+helmholtz\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1PMLHelmholtzEquationsBase_ad13677aed8be5a42b31a1f8d4f520d35}\label{classoomph_1_1PMLHelmholtzEquationsBase_ad13677aed8be5a42b31a1f8d4f520d35}} 
+\index{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}!output@{output}}
+\index{output@{output}!oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase}{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}$<$ D\+IM $>$\+::output (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Output with default number of plot points. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a2ad98a3d2ef4999f1bef62c0ff13f2a7}{oomph\+::\+Finite\+Element}.
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1QPMLHelmholtzElement_af05911b64893f693f25097dffa6a4955}{oomph\+::\+Q\+P\+M\+L\+Helmholtz\+Element$<$ D\+I\+M, N\+N\+O\+D\+E\+\_\+1\+D, P\+M\+L\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$}, \hyperlink{classoomph_1_1QPMLHelmholtzElement_af05911b64893f693f25097dffa6a4955}{oomph\+::\+Q\+P\+M\+L\+Helmholtz\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D, P\+M\+L\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$}, and \hyperlink{classoomph_1_1TPMLHelmholtzElement_a9dbd17c84f5b1f058ba8373daa03f7cd}{oomph\+::\+T\+P\+M\+L\+Helmholtz\+Element$<$ D\+I\+M, N\+N\+O\+D\+E\+\_\+1\+D, P\+M\+L\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$}.
+
+
+
+Definition at line 287 of file pml\+\_\+helmholtz\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base$<$ D\+I\+M $>$\+::output\+\_\+imag(), oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base$<$ D\+I\+M $>$\+::output\+\_\+real(), and oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base$<$ D\+I\+M $>$\+::output\+\_\+total\+\_\+real().
+
+
+
+Referenced by oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base$<$ D\+I\+M $>$\+::output().
+
+\mbox{\Hypertarget{classoomph_1_1PMLHelmholtzEquationsBase_a904736450d231513640224020566460f}\label{classoomph_1_1PMLHelmholtzEquationsBase_a904736450d231513640224020566460f}} 
+\index{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}!output@{output}}
+\index{output@{output}!oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase}{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}$<$ D\+IM $>$\+::output (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile,  }\item[{const unsigned \&}]{nplot }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Output FE representation of soln\+: x,y,u\+\_\+re,u\+\_\+im or x,y,z,u\+\_\+re,u\+\_\+im at n\+\_\+plot$^\wedge$\+D\+IM plot points. 
+
+Output function\+:
+
+x,y,u\+\_\+re,u\+\_\+imag or x,y,z,u\+\_\+re,u\+\_\+imag
+
+nplot points in each coordinate direction 
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_afa9d9b2670f999b43e6679c9dd28c457}{oomph\+::\+Finite\+Element}.
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1QPMLHelmholtzElement_a2a9014358af0d72ff3e06d11286beb84}{oomph\+::\+Q\+P\+M\+L\+Helmholtz\+Element$<$ D\+I\+M, N\+N\+O\+D\+E\+\_\+1\+D, P\+M\+L\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$}, \hyperlink{classoomph_1_1QPMLHelmholtzElement_a2a9014358af0d72ff3e06d11286beb84}{oomph\+::\+Q\+P\+M\+L\+Helmholtz\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D, P\+M\+L\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$}, and \hyperlink{classoomph_1_1TPMLHelmholtzElement_aa261cc229bf205167b1105e55385862b}{oomph\+::\+T\+P\+M\+L\+Helmholtz\+Element$<$ D\+I\+M, N\+N\+O\+D\+E\+\_\+1\+D, P\+M\+L\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$}.
+
+
+
+Definition at line 335 of file pml\+\_\+helmholtz\+\_\+elements.\+cc.
+
+
+
+References i, and s.
+
+\mbox{\Hypertarget{classoomph_1_1PMLHelmholtzEquationsBase_acabc2ace55a6f69cd3ef62fe82dc1790}\label{classoomph_1_1PMLHelmholtzEquationsBase_acabc2ace55a6f69cd3ef62fe82dc1790}} 
+\index{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}!output@{output}}
+\index{output@{output}!oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase}{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}$<$ D\+IM $>$\+::output (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{file\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+C\+\_\+style output with default number of plot points. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a72cddd09f8ddbee1a20a1ff404c6943e}{oomph\+::\+Finite\+Element}.
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1QPMLHelmholtzElement_acafc9a4a72c78e17f7d90b16263a196c}{oomph\+::\+Q\+P\+M\+L\+Helmholtz\+Element$<$ D\+I\+M, N\+N\+O\+D\+E\+\_\+1\+D, P\+M\+L\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$}, \hyperlink{classoomph_1_1QPMLHelmholtzElement_acafc9a4a72c78e17f7d90b16263a196c}{oomph\+::\+Q\+P\+M\+L\+Helmholtz\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D, P\+M\+L\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$}, and \hyperlink{classoomph_1_1TPMLHelmholtzElement_a71d5ae7a30f3f20a89fa20f5b84e2bef}{oomph\+::\+T\+P\+M\+L\+Helmholtz\+Element$<$ D\+I\+M, N\+N\+O\+D\+E\+\_\+1\+D, P\+M\+L\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$}.
+
+
+
+Definition at line 325 of file pml\+\_\+helmholtz\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base$<$ D\+I\+M $>$\+::output(), and oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base$<$ D\+I\+M $>$\+::output\+\_\+fct().
+
+\mbox{\Hypertarget{classoomph_1_1PMLHelmholtzEquationsBase_a2b5f6565c5fe24c2d01e630b33a46334}\label{classoomph_1_1PMLHelmholtzEquationsBase_a2b5f6565c5fe24c2d01e630b33a46334}} 
+\index{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}!output@{output}}
+\index{output@{output}!oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase}{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}$<$ D\+IM $>$\+::output (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{file\+\_\+pt,  }\item[{const unsigned \&}]{nplot }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+C-\/style output FE representation of soln\+: x,y,u\+\_\+re,u\+\_\+im or x,y,z,u\+\_\+re,u\+\_\+im at n\+\_\+plot$^\wedge$\+D\+IM plot points. 
+
+C-\/style output function\+:
+
+x,y,u or x,y,z,u
+
+nplot points in each coordinate direction 
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_adfaee690bb0608f03320eeb9d110d48c}{oomph\+::\+Finite\+Element}.
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1QPMLHelmholtzElement_a9cfa0d9c0635140f394be49e15e58f93}{oomph\+::\+Q\+P\+M\+L\+Helmholtz\+Element$<$ D\+I\+M, N\+N\+O\+D\+E\+\_\+1\+D, P\+M\+L\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$}, \hyperlink{classoomph_1_1QPMLHelmholtzElement_a9cfa0d9c0635140f394be49e15e58f93}{oomph\+::\+Q\+P\+M\+L\+Helmholtz\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D, P\+M\+L\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$}, and \hyperlink{classoomph_1_1TPMLHelmholtzElement_afd6b59e8e8c67ab656038b46ea573900}{oomph\+::\+T\+P\+M\+L\+Helmholtz\+Element$<$ D\+I\+M, N\+N\+O\+D\+E\+\_\+1\+D, P\+M\+L\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$}.
+
+
+
+Definition at line 520 of file pml\+\_\+helmholtz\+\_\+elements.\+cc.
+
+
+
+References i, oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base$<$ D\+I\+M $>$\+::output\+\_\+fct(), and s.
+
+\mbox{\Hypertarget{classoomph_1_1PMLHelmholtzEquationsBase_ab1e06aa6838bb7136d1517f31bb95d4d}\label{classoomph_1_1PMLHelmholtzEquationsBase_ab1e06aa6838bb7136d1517f31bb95d4d}} 
+\index{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}!output\+\_\+fct@{output\+\_\+fct}}
+\index{output\+\_\+fct@{output\+\_\+fct}!oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}}
+\subsubsection{\texorpdfstring{output\+\_\+fct()}{output\_fct()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase}{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}$<$ D\+IM $>$\+::output\+\_\+fct (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile,  }\item[{const unsigned \&}]{nplot,  }\item[{\hyperlink{classoomph_1_1FiniteElement_a690fd33af26cc3e84f39bba6d5a85202}{Finite\+Element\+::\+Steady\+Exact\+Solution\+Fct\+Pt}}]{exact\+\_\+soln\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Output exact soln\+: x,y,u\+\_\+re\+\_\+exact,u\+\_\+im\+\_\+exact or x,y,z,u\+\_\+re\+\_\+exact,u\+\_\+im\+\_\+exact at n\+\_\+plot$^\wedge$\+D\+IM plot points
+
+Output exact solution
+
+Solution is provided via function pointer. Plot at a given number of plot points.
+
+x,y,u\+\_\+exact or x,y,z,u\+\_\+exact 
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a22b695c714f60ee6cd145be348042035}{oomph\+::\+Finite\+Element}.
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1QPMLHelmholtzElement_a1697955b637445b14882b28ff8467f6e}{oomph\+::\+Q\+P\+M\+L\+Helmholtz\+Element$<$ D\+I\+M, N\+N\+O\+D\+E\+\_\+1\+D, P\+M\+L\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$}, \hyperlink{classoomph_1_1QPMLHelmholtzElement_a1697955b637445b14882b28ff8467f6e}{oomph\+::\+Q\+P\+M\+L\+Helmholtz\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D, P\+M\+L\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$}, and \hyperlink{classoomph_1_1TPMLHelmholtzElement_ad16e9353adb16154f2518ba37269d402}{oomph\+::\+T\+P\+M\+L\+Helmholtz\+Element$<$ D\+I\+M, N\+N\+O\+D\+E\+\_\+1\+D, P\+M\+L\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$}.
+
+
+
+Definition at line 567 of file pml\+\_\+helmholtz\+\_\+elements.\+cc.
+
+
+
+References i, and s.
+
+
+
+Referenced by oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base$<$ D\+I\+M $>$\+::output().
+
+\mbox{\Hypertarget{classoomph_1_1PMLHelmholtzEquationsBase_a5ecc9830498e4cc25a0898e676a8c0ef}\label{classoomph_1_1PMLHelmholtzEquationsBase_a5ecc9830498e4cc25a0898e676a8c0ef}} 
+\index{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}!output\+\_\+fct@{output\+\_\+fct}}
+\index{output\+\_\+fct@{output\+\_\+fct}!oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}}
+\subsubsection{\texorpdfstring{output\+\_\+fct()}{output\_fct()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+virtual void \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase}{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}$<$ D\+IM $>$\+::output\+\_\+fct (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile,  }\item[{const unsigned \&}]{n\+\_\+plot,  }\item[{const double \&}]{time,  }\item[{\hyperlink{classoomph_1_1FiniteElement_ad4ecf2b61b158a4b4d351a60d23c633e}{Finite\+Element\+::\+Unsteady\+Exact\+Solution\+Fct\+Pt}}]{exact\+\_\+soln\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Output exact soln\+: (dummy time-\/dependent version to keep intel compiler happy) 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a2a8426dccd57b927be0ae0eec00d0479}{oomph\+::\+Finite\+Element}.
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1QPMLHelmholtzElement_a3df73a2a3a9ad64f555719ecee3f7f40}{oomph\+::\+Q\+P\+M\+L\+Helmholtz\+Element$<$ D\+I\+M, N\+N\+O\+D\+E\+\_\+1\+D, P\+M\+L\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$}, \hyperlink{classoomph_1_1QPMLHelmholtzElement_a3df73a2a3a9ad64f555719ecee3f7f40}{oomph\+::\+Q\+P\+M\+L\+Helmholtz\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D, P\+M\+L\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$}, and \hyperlink{classoomph_1_1TPMLHelmholtzElement_a6484704096ebd1938d584c8059f9ba7d}{oomph\+::\+T\+P\+M\+L\+Helmholtz\+Element$<$ D\+I\+M, N\+N\+O\+D\+E\+\_\+1\+D, P\+M\+L\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$}.
+
+
+
+Definition at line 342 of file pml\+\_\+helmholtz\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base$<$ D\+I\+M $>$\+::compute\+\_\+error(), oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base$<$ D\+I\+M $>$\+::output\+\_\+imag\+\_\+fct(), and oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base$<$ D\+I\+M $>$\+::output\+\_\+real\+\_\+fct().
+
+\mbox{\Hypertarget{classoomph_1_1PMLHelmholtzEquationsBase_a10e17c59371c3c3f1e7a1001837838ce}\label{classoomph_1_1PMLHelmholtzEquationsBase_a10e17c59371c3c3f1e7a1001837838ce}} 
+\index{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}!output\+\_\+imag@{output\+\_\+imag}}
+\index{output\+\_\+imag@{output\+\_\+imag}!oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}}
+\subsubsection{\texorpdfstring{output\+\_\+imag()}{output\_imag()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase}{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}$<$ D\+IM $>$\+::output\+\_\+imag (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile,  }\item[{const double \&}]{phi,  }\item[{const unsigned \&}]{nplot }\end{DoxyParamCaption})}
+
+
+
+Output function for imaginary part of full time-\/dependent solution u = Im( (u\+\_\+r +i u\+\_\+i) exp(-\/i omega t) ) at phase angle omega t = phi. x,y,u or x,y,z,u at n\+\_\+plot plot points in each coordinate direction. 
+
+Output function for imaginary part of full time-\/dependent solution
+
+u = Im( (u\+\_\+r +i u\+\_\+i) exp(-\/i omega t))
+
+at phase angle omega t = phi.
+
+x,y,u or x,y,z,u
+
+Output at nplot points in each coordinate direction 
+
+Definition at line 482 of file pml\+\_\+helmholtz\+\_\+elements.\+cc.
+
+
+
+References i, and s.
+
+
+
+Referenced by oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base$<$ D\+I\+M $>$\+::output(), and oomph\+::\+Q\+P\+M\+L\+Helmholtz\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D, P\+M\+L\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::output\+\_\+imag().
+
+\mbox{\Hypertarget{classoomph_1_1PMLHelmholtzEquationsBase_a87bf6ae358dbcf6614b97e8e92810ef3}\label{classoomph_1_1PMLHelmholtzEquationsBase_a87bf6ae358dbcf6614b97e8e92810ef3}} 
+\index{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}!output\+\_\+imag\+\_\+fct@{output\+\_\+imag\+\_\+fct}}
+\index{output\+\_\+imag\+\_\+fct@{output\+\_\+imag\+\_\+fct}!oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}}
+\subsubsection{\texorpdfstring{output\+\_\+imag\+\_\+fct()}{output\_imag\_fct()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase}{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}$<$ D\+IM $>$\+::output\+\_\+imag\+\_\+fct (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile,  }\item[{const double \&}]{phi,  }\item[{const unsigned \&}]{nplot,  }\item[{\hyperlink{classoomph_1_1FiniteElement_a690fd33af26cc3e84f39bba6d5a85202}{Finite\+Element\+::\+Steady\+Exact\+Solution\+Fct\+Pt}}]{exact\+\_\+soln\+\_\+pt }\end{DoxyParamCaption})}
+
+
+
+Output function for imaginary part of full time-\/dependent fct u = Im( (u\+\_\+r +i u\+\_\+i) exp(-\/i omega t)) at phase angle omega t = phi. x,y,u or x,y,z,u at n\+\_\+plot plot points in each coordinate direction. 
+
+Output function for imaginary part of full time-\/dependent fct
+
+u = Im( (u\+\_\+r +i u\+\_\+i) exp(-\/i omega t))
+
+at phase angle omega t = phi.
+
+x,y,u or x,y,z,u
+
+Output at nplot points in each coordinate direction 
+
+Definition at line 676 of file pml\+\_\+helmholtz\+\_\+elements.\+cc.
+
+
+
+References i, and s.
+
+
+
+Referenced by oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base$<$ D\+I\+M $>$\+::output\+\_\+fct(), and oomph\+::\+Q\+P\+M\+L\+Helmholtz\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D, P\+M\+L\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::output\+\_\+imag\+\_\+fct().
+
+\mbox{\Hypertarget{classoomph_1_1PMLHelmholtzEquationsBase_a823895b9525cf2ddb30517a64dc61a85}\label{classoomph_1_1PMLHelmholtzEquationsBase_a823895b9525cf2ddb30517a64dc61a85}} 
+\index{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}!output\+\_\+real@{output\+\_\+real}}
+\index{output\+\_\+real@{output\+\_\+real}!oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}}
+\subsubsection{\texorpdfstring{output\+\_\+real()}{output\_real()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase}{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}$<$ D\+IM $>$\+::output\+\_\+real (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile,  }\item[{const double \&}]{phi,  }\item[{const unsigned \&}]{nplot }\end{DoxyParamCaption})}
+
+
+
+Output function for real part of full time-\/dependent solution u = Re( (u\+\_\+r +i u\+\_\+i) exp(-\/i omega t)) at phase angle omega t = phi. x,y,u or x,y,z,u at n\+\_\+plot plot points in each coordinate direction. 
+
+Output function for real part of full time-\/dependent solution
+
+u = Re( (u\+\_\+r +i u\+\_\+i) exp(-\/i omega t)
+
+at phase angle omega t = phi.
+
+x,y,u or x,y,z,u
+
+Output at nplot points in each coordinate direction 
+
+Definition at line 381 of file pml\+\_\+helmholtz\+\_\+elements.\+cc.
+
+
+
+References i, and s.
+
+
+
+Referenced by oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base$<$ D\+I\+M $>$\+::output(), and oomph\+::\+Q\+P\+M\+L\+Helmholtz\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D, P\+M\+L\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::output\+\_\+real().
+
+\mbox{\Hypertarget{classoomph_1_1PMLHelmholtzEquationsBase_a84f505b170bda355042f0a56df1deb63}\label{classoomph_1_1PMLHelmholtzEquationsBase_a84f505b170bda355042f0a56df1deb63}} 
+\index{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}!output\+\_\+real\+\_\+fct@{output\+\_\+real\+\_\+fct}}
+\index{output\+\_\+real\+\_\+fct@{output\+\_\+real\+\_\+fct}!oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}}
+\subsubsection{\texorpdfstring{output\+\_\+real\+\_\+fct()}{output\_real\_fct()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase}{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}$<$ D\+IM $>$\+::output\+\_\+real\+\_\+fct (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile,  }\item[{const double \&}]{phi,  }\item[{const unsigned \&}]{nplot,  }\item[{\hyperlink{classoomph_1_1FiniteElement_a690fd33af26cc3e84f39bba6d5a85202}{Finite\+Element\+::\+Steady\+Exact\+Solution\+Fct\+Pt}}]{exact\+\_\+soln\+\_\+pt }\end{DoxyParamCaption})}
+
+
+
+Output function for real part of full time-\/dependent fct u = Re( (u\+\_\+r +i u\+\_\+i) exp(-\/i omega t) at phase angle omega t = phi. x,y,u or x,y,z,u at n\+\_\+plot plot points in each coordinate direction. 
+
+Output function for real part of full time-\/dependent fct
+
+u = Re( (u\+\_\+r +i u\+\_\+i) exp(-\/i omega t)
+
+at phase angle omega t = phi.
+
+x,y,u or x,y,z,u
+
+Output at nplot points in each coordinate direction 
+
+Definition at line 621 of file pml\+\_\+helmholtz\+\_\+elements.\+cc.
+
+
+
+References i, and s.
+
+
+
+Referenced by oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base$<$ D\+I\+M $>$\+::output\+\_\+fct(), and oomph\+::\+Q\+P\+M\+L\+Helmholtz\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D, P\+M\+L\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::output\+\_\+real\+\_\+fct().
+
+\mbox{\Hypertarget{classoomph_1_1PMLHelmholtzEquationsBase_a1a5c423fc22940d1edb8c623266421de}\label{classoomph_1_1PMLHelmholtzEquationsBase_a1a5c423fc22940d1edb8c623266421de}} 
+\index{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}!output\+\_\+total\+\_\+real@{output\+\_\+total\+\_\+real}}
+\index{output\+\_\+total\+\_\+real@{output\+\_\+total\+\_\+real}!oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}}
+\subsubsection{\texorpdfstring{output\+\_\+total\+\_\+real()}{output\_total\_real()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase}{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}$<$ D\+IM $>$\+::output\+\_\+total\+\_\+real (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile,  }\item[{\hyperlink{classoomph_1_1FiniteElement_a690fd33af26cc3e84f39bba6d5a85202}{Finite\+Element\+::\+Steady\+Exact\+Solution\+Fct\+Pt}}]{incoming\+\_\+wave\+\_\+fct\+\_\+pt,  }\item[{const double \&}]{phi,  }\item[{const unsigned \&}]{nplot }\end{DoxyParamCaption})}
+
+Output function for real part of full time-\/dependent solution constructed by adding the scattered field u = Re( (u\+\_\+r +i u\+\_\+i) exp(-\/i omega t) at phase angle omega t = phi computed here, to the corresponding incoming wave specified via the function pointer.
+
+Output function for real part of full time-\/dependent solution constructed by adding the scattered field
+
+u = Re( (u\+\_\+r +i u\+\_\+i) exp(-\/i omega t)
+
+at phase angle omega t = phi computed here, to the corresponding incoming wave specified via the function pointer.
+
+x,y,u or x,y,z,u
+
+Output at nplot points in each coordinate direction 
+
+Definition at line 424 of file pml\+\_\+helmholtz\+\_\+elements.\+cc.
+
+
+
+References i, and s.
+
+
+
+Referenced by oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base$<$ D\+I\+M $>$\+::output().
+
+\mbox{\Hypertarget{classoomph_1_1PMLHelmholtzEquationsBase_a35e78df31905f647be50f39eb639b503}\label{classoomph_1_1PMLHelmholtzEquationsBase_a35e78df31905f647be50f39eb639b503}} 
+\index{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}!scalar\+\_\+name\+\_\+paraview@{scalar\+\_\+name\+\_\+paraview}}
+\index{scalar\+\_\+name\+\_\+paraview@{scalar\+\_\+name\+\_\+paraview}!oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}}
+\subsubsection{\texorpdfstring{scalar\+\_\+name\+\_\+paraview()}{scalar\_name\_paraview()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+std\+::string \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase}{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}$<$ D\+IM $>$\+::scalar\+\_\+name\+\_\+paraview (\begin{DoxyParamCaption}\item[{const unsigned \&}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Name of the i-\/th scalar field. Default implementation returns V1 for the first one, V2 for the second etc. Can (should!) be overloaded with more meaningful names in specific elements. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a49cc2d4f7ed5772bbc96f06760372b51}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 254 of file pml\+\_\+helmholtz\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1PMLHelmholtzEquationsBase_a8285b79905851ee6bed5d8e25435ece2}\label{classoomph_1_1PMLHelmholtzEquationsBase_a8285b79905851ee6bed5d8e25435ece2}} 
+\index{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}!scalar\+\_\+value\+\_\+fct\+\_\+paraview@{scalar\+\_\+value\+\_\+fct\+\_\+paraview}}
+\index{scalar\+\_\+value\+\_\+fct\+\_\+paraview@{scalar\+\_\+value\+\_\+fct\+\_\+paraview}!oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}}
+\subsubsection{\texorpdfstring{scalar\+\_\+value\+\_\+fct\+\_\+paraview()}{scalar\_value\_fct\_paraview()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase}{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}$<$ D\+IM $>$\+::scalar\+\_\+value\+\_\+fct\+\_\+paraview (\begin{DoxyParamCaption}\item[{std\+::ofstream \&}]{file\+\_\+out,  }\item[{const unsigned \&}]{i,  }\item[{const unsigned \&}]{nplot,  }\item[{\hyperlink{classoomph_1_1FiniteElement_a690fd33af26cc3e84f39bba6d5a85202}{Finite\+Element\+::\+Steady\+Exact\+Solution\+Fct\+Pt}}]{exact\+\_\+soln\+\_\+pt }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Write values of the i-\/th scalar field at the plot points. Needs to be implemented for each new specific element type. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_ac6ce34f52481195e8dba634618ef3f36}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 190 of file pml\+\_\+helmholtz\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Finite\+Element\+::get\+\_\+s\+\_\+plot(), oomph\+::\+Finite\+Element\+::interpolated\+\_\+x(), oomph\+::\+Finite\+Element\+::nplot\+\_\+points\+\_\+paraview(), and s.
+
+\mbox{\Hypertarget{classoomph_1_1PMLHelmholtzEquationsBase_aaeb408e55bccd67d03e70fe85cb1de9d}\label{classoomph_1_1PMLHelmholtzEquationsBase_aaeb408e55bccd67d03e70fe85cb1de9d}} 
+\index{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}!scalar\+\_\+value\+\_\+paraview@{scalar\+\_\+value\+\_\+paraview}}
+\index{scalar\+\_\+value\+\_\+paraview@{scalar\+\_\+value\+\_\+paraview}!oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}}
+\subsubsection{\texorpdfstring{scalar\+\_\+value\+\_\+paraview()}{scalar\_value\_paraview()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase}{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}$<$ D\+IM $>$\+::scalar\+\_\+value\+\_\+paraview (\begin{DoxyParamCaption}\item[{std\+::ofstream \&}]{file\+\_\+out,  }\item[{const unsigned \&}]{i,  }\item[{const unsigned \&}]{nplot }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Write values of the i-\/th scalar field at the plot points. Needs to be implemented for each new specific element type. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a02cf8832a5e2886f1572bd36f7a7c1e3}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 139 of file pml\+\_\+helmholtz\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Finite\+Element\+::get\+\_\+s\+\_\+plot(), oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base$<$ D\+I\+M $>$\+::interpolated\+\_\+u\+\_\+pml\+\_\+helmholtz(), oomph\+::\+Finite\+Element\+::nplot\+\_\+points\+\_\+paraview(), and s.
+
+\mbox{\Hypertarget{classoomph_1_1PMLHelmholtzEquationsBase_a92b8b911dde0f9ece84d1b06a7b93936}\label{classoomph_1_1PMLHelmholtzEquationsBase_a92b8b911dde0f9ece84d1b06a7b93936}} 
+\index{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}!self\+\_\+test@{self\+\_\+test}}
+\index{self\+\_\+test@{self\+\_\+test}!oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}}
+\subsubsection{\texorpdfstring{self\+\_\+test()}{self\_test()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+unsigned \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase}{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}$<$ D\+IM $>$\+::self\+\_\+test (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Self-\/test\+: Return 0 for OK. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_af94c5a5e22175d5420b33b3b79e46ed3}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 303 of file pml\+\_\+helmholtz\+\_\+elements.\+cc.
+
+
+
+References oomph\+::\+Finite\+Element\+::self\+\_\+test().
+
+
+
+Referenced by oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base$<$ D\+I\+M $>$\+::interpolated\+\_\+u\+\_\+pml\+\_\+helmholtz().
+
+\mbox{\Hypertarget{classoomph_1_1PMLHelmholtzEquationsBase_afc6e1b81652e12e1dcb7685baa02fce8}\label{classoomph_1_1PMLHelmholtzEquationsBase_afc6e1b81652e12e1dcb7685baa02fce8}} 
+\index{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}!source\+\_\+fct\+\_\+pt@{source\+\_\+fct\+\_\+pt}}
+\index{source\+\_\+fct\+\_\+pt@{source\+\_\+fct\+\_\+pt}!oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}}
+\subsubsection{\texorpdfstring{source\+\_\+fct\+\_\+pt()}{source\_fct\_pt()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+\hyperlink{classoomph_1_1PMLHelmholtzEquationsBase_abf57477abc2672cd680742e17721a07f}{P\+M\+L\+Helmholtz\+Source\+Fct\+Pt}\& \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase}{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}$<$ D\+IM $>$\+::source\+\_\+fct\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Access function\+: Pointer to source function. 
+
+
+
+Definition at line 398 of file pml\+\_\+helmholtz\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base$<$ D\+I\+M $>$\+::\+Source\+\_\+fct\+\_\+pt.
+
+
+
+Referenced by oomph\+::\+Refineable\+P\+M\+L\+Helmholtz\+Equations$<$ D\+I\+M, P\+M\+L\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::further\+\_\+build().
+
+\mbox{\Hypertarget{classoomph_1_1PMLHelmholtzEquationsBase_a185efe8aa7459ee8e6241eb94eb6e6f7}\label{classoomph_1_1PMLHelmholtzEquationsBase_a185efe8aa7459ee8e6241eb94eb6e6f7}} 
+\index{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}!source\+\_\+fct\+\_\+pt@{source\+\_\+fct\+\_\+pt}}
+\index{source\+\_\+fct\+\_\+pt@{source\+\_\+fct\+\_\+pt}!oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}}
+\subsubsection{\texorpdfstring{source\+\_\+fct\+\_\+pt()}{source\_fct\_pt()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+\hyperlink{classoomph_1_1PMLHelmholtzEquationsBase_abf57477abc2672cd680742e17721a07f}{P\+M\+L\+Helmholtz\+Source\+Fct\+Pt} \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase}{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}$<$ D\+IM $>$\+::source\+\_\+fct\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Access function\+: Pointer to source function. Const version. 
+
+
+
+Definition at line 401 of file pml\+\_\+helmholtz\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base$<$ D\+I\+M $>$\+::\+Source\+\_\+fct\+\_\+pt.
+
+\mbox{\Hypertarget{classoomph_1_1PMLHelmholtzEquationsBase_aecebb06e1f97f8ad44caa265c4bfd6eb}\label{classoomph_1_1PMLHelmholtzEquationsBase_aecebb06e1f97f8ad44caa265c4bfd6eb}} 
+\index{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}!u\+\_\+index\+\_\+helmholtz@{u\+\_\+index\+\_\+helmholtz}}
+\index{u\+\_\+index\+\_\+helmholtz@{u\+\_\+index\+\_\+helmholtz}!oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}}
+\subsubsection{\texorpdfstring{u\+\_\+index\+\_\+helmholtz()}{u\_index\_helmholtz()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+virtual std\+::complex$<$unsigned$>$ \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase}{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}$<$ D\+IM $>$\+::u\+\_\+index\+\_\+helmholtz (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Broken assignment operator. 
+
+Return the index at which the unknown value is stored. 
+
+Definition at line 102 of file pml\+\_\+helmholtz\+\_\+elements.\+h.
+
+
+
+Referenced by oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base$<$ D\+I\+M $>$\+::get\+\_\+dof\+\_\+numbers\+\_\+for\+\_\+unknowns(), oomph\+::\+Projectable\+P\+M\+L\+Helmholtz\+Element$<$ H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::get\+\_\+field(), oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base$<$ D\+I\+M $>$\+::get\+\_\+flux(), oomph\+::\+Refineable\+P\+M\+L\+Helmholtz\+Equations$<$ D\+I\+M, P\+M\+L\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::get\+\_\+interpolated\+\_\+values(), oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base$<$ D\+I\+M $>$\+::interpolated\+\_\+u\+\_\+pml\+\_\+helmholtz(), oomph\+::\+Projectable\+P\+M\+L\+Helmholtz\+Element$<$ H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::local\+\_\+equation(), oomph\+::\+P\+M\+L\+Helmholtz\+Flux\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+P\+M\+L\+Helmholtz\+Flux\+Element(), oomph\+::\+P\+M\+L\+Helmholtz\+Flux\+From\+Normal\+Displacement\+B\+C\+Element$<$ H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::\+P\+M\+L\+Helmholtz\+Flux\+From\+Normal\+Displacement\+B\+C\+Element(), and oomph\+::\+P\+M\+L\+Helmholtz\+Power\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+P\+M\+L\+Helmholtz\+Power\+Element().
+
+\mbox{\Hypertarget{classoomph_1_1PMLHelmholtzEquationsBase_a5fc803f8c95512606666a7fe0dbb6f85}\label{classoomph_1_1PMLHelmholtzEquationsBase_a5fc803f8c95512606666a7fe0dbb6f85}} 
+\index{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}!values\+\_\+to\+\_\+be\+\_\+pinned\+\_\+on\+\_\+outer\+\_\+pml\+\_\+boundary@{values\+\_\+to\+\_\+be\+\_\+pinned\+\_\+on\+\_\+outer\+\_\+pml\+\_\+boundary}}
+\index{values\+\_\+to\+\_\+be\+\_\+pinned\+\_\+on\+\_\+outer\+\_\+pml\+\_\+boundary@{values\+\_\+to\+\_\+be\+\_\+pinned\+\_\+on\+\_\+outer\+\_\+pml\+\_\+boundary}!oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}}
+\subsubsection{\texorpdfstring{values\+\_\+to\+\_\+be\+\_\+pinned\+\_\+on\+\_\+outer\+\_\+pml\+\_\+boundary()}{values\_to\_be\_pinned\_on\_outer\_pml\_boundary()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase}{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}$<$ D\+IM $>$\+::values\+\_\+to\+\_\+be\+\_\+pinned\+\_\+on\+\_\+outer\+\_\+pml\+\_\+boundary (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ unsigned $>$ \&}]{values\+\_\+to\+\_\+pin }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Pure virtual function in which we specify the values to be pinned (and set to zero) on the outer edge of the pml layer. All of them! \hyperlink{classoomph_1_1Vector}{Vector} is resized internally. 
+
+
+
+Definition at line 427 of file pml\+\_\+helmholtz\+\_\+elements.\+h.
+
+
+
+Referenced by oomph\+::\+P\+M\+L\+Helmholtz\+Equations$<$ D\+I\+M, P\+M\+L\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::values\+\_\+to\+\_\+be\+\_\+pinned\+\_\+on\+\_\+outer\+\_\+pml\+\_\+boundary().
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1PMLHelmholtzEquationsBase_a8edfd5d6b057ee97e9b95001c59dfa78}\label{classoomph_1_1PMLHelmholtzEquationsBase_a8edfd5d6b057ee97e9b95001c59dfa78}} 
+\index{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}!Alpha\+\_\+pt@{Alpha\+\_\+pt}}
+\index{Alpha\+\_\+pt@{Alpha\+\_\+pt}!oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}}
+\subsubsection{\texorpdfstring{Alpha\+\_\+pt}{Alpha\_pt}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+double$\ast$ \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase}{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}$<$ D\+IM $>$\+::Alpha\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Pointer to wavenumber complex shift. 
+
+
+
+Definition at line 594 of file pml\+\_\+helmholtz\+\_\+elements.\+h.
+
+
+
+Referenced by oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base$<$ D\+I\+M $>$\+::alpha(), oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base$<$ D\+I\+M $>$\+::alpha\+\_\+pt(), and oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base$<$ D\+I\+M $>$\+::\+P\+M\+L\+Helmholtz\+Equations\+Base().
+
+\mbox{\Hypertarget{classoomph_1_1PMLHelmholtzEquationsBase_a2a970f3f95953bd1c7978733201437a8}\label{classoomph_1_1PMLHelmholtzEquationsBase_a2a970f3f95953bd1c7978733201437a8}} 
+\index{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}!Default\+\_\+\+Physical\+\_\+\+Constant\+\_\+\+Value@{Default\+\_\+\+Physical\+\_\+\+Constant\+\_\+\+Value}}
+\index{Default\+\_\+\+Physical\+\_\+\+Constant\+\_\+\+Value@{Default\+\_\+\+Physical\+\_\+\+Constant\+\_\+\+Value}!oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}}
+\subsubsection{\texorpdfstring{Default\+\_\+\+Physical\+\_\+\+Constant\+\_\+\+Value}{Default\_Physical\_Constant\_Value}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+double \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase}{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}$<$ D\+IM $>$\+::Default\+\_\+\+Physical\+\_\+\+Constant\+\_\+\+Value = 0.\+0\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Static default value for the physical constants (initialised to zero) 
+
+P\+ML Helmholtz equations static data, so that by default we can point to a 0. 
+
+Definition at line 603 of file pml\+\_\+helmholtz\+\_\+elements.\+h.
+
+
+
+Referenced by oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base$<$ D\+I\+M $>$\+::\+P\+M\+L\+Helmholtz\+Equations\+Base().
+
+\mbox{\Hypertarget{classoomph_1_1PMLHelmholtzEquationsBase_aa214aa3a9117426abdceab9364c558b7}\label{classoomph_1_1PMLHelmholtzEquationsBase_aa214aa3a9117426abdceab9364c558b7}} 
+\index{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}!K\+\_\+squared\+\_\+pt@{K\+\_\+squared\+\_\+pt}}
+\index{K\+\_\+squared\+\_\+pt@{K\+\_\+squared\+\_\+pt}!oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}}
+\subsubsection{\texorpdfstring{K\+\_\+squared\+\_\+pt}{K\_squared\_pt}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+double$\ast$ \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase}{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}$<$ D\+IM $>$\+::K\+\_\+squared\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Pointer to wave number (must be set!) 
+
+
+
+Definition at line 600 of file pml\+\_\+helmholtz\+\_\+elements.\+h.
+
+
+
+Referenced by oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base$<$ D\+I\+M $>$\+::k\+\_\+squared(), and oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base$<$ D\+I\+M $>$\+::k\+\_\+squared\+\_\+pt().
+
+\mbox{\Hypertarget{classoomph_1_1PMLHelmholtzEquationsBase_aba2080d52978ab390f035f0ee858c0d6}\label{classoomph_1_1PMLHelmholtzEquationsBase_aba2080d52978ab390f035f0ee858c0d6}} 
+\index{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}!Source\+\_\+fct\+\_\+pt@{Source\+\_\+fct\+\_\+pt}}
+\index{Source\+\_\+fct\+\_\+pt@{Source\+\_\+fct\+\_\+pt}!oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base@{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}}
+\subsubsection{\texorpdfstring{Source\+\_\+fct\+\_\+pt}{Source\_fct\_pt}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+\hyperlink{classoomph_1_1PMLHelmholtzEquationsBase_abf57477abc2672cd680742e17721a07f}{P\+M\+L\+Helmholtz\+Source\+Fct\+Pt} \hyperlink{classoomph_1_1PMLHelmholtzEquationsBase}{oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base}$<$ D\+IM $>$\+::Source\+\_\+fct\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Pointer to source function\+: 
+
+
+
+Definition at line 597 of file pml\+\_\+helmholtz\+\_\+elements.\+h.
+
+
+
+Referenced by oomph\+::\+Refineable\+P\+M\+L\+Helmholtz\+Equations$<$ D\+I\+M, P\+M\+L\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::further\+\_\+build(), oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base$<$ D\+I\+M $>$\+::get\+\_\+source\+\_\+helmholtz(), and oomph\+::\+P\+M\+L\+Helmholtz\+Equations\+Base$<$ D\+I\+M $>$\+::source\+\_\+fct\+\_\+pt().
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{pml__helmholtz__elements_8h}{pml\+\_\+helmholtz\+\_\+elements.\+h}\item 
+\hyperlink{pml__helmholtz__elements_8cc}{pml\+\_\+helmholtz\+\_\+elements.\+cc}\end{DoxyCompactItemize}

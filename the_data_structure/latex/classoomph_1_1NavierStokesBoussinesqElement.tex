@@ -1,0 +1,240 @@
+\hypertarget{classoomph_1_1NavierStokesBoussinesqElement}{}\section{oomph\+:\+:Navier\+Stokes\+Boussinesq\+Element$<$ N\+S\+T\+\_\+\+E\+L\+E\+M\+E\+NT, A\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ Class Template Reference}
+\label{classoomph_1_1NavierStokesBoussinesqElement}\index{oomph\+::\+Navier\+Stokes\+Boussinesq\+Element$<$ N\+S\+T\+\_\+\+E\+L\+E\+M\+E\+N\+T, A\+D\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$@{oomph\+::\+Navier\+Stokes\+Boussinesq\+Element$<$ N\+S\+T\+\_\+\+E\+L\+E\+M\+E\+N\+T, A\+D\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$}}
+
+
+{\ttfamily \#include $<$multi\+\_\+domain\+\_\+boussinesq\+\_\+elements.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Navier\+Stokes\+Boussinesq\+Element$<$ N\+S\+T\+\_\+\+E\+L\+E\+M\+E\+NT, A\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.659259cm]{classoomph_1_1NavierStokesBoussinesqElement}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1NavierStokesBoussinesqElement_ad0ebb74a3963c0715e6e3e34ba8b1d7f}{Navier\+Stokes\+Boussinesq\+Element} ()
+\begin{DoxyCompactList}\small\item\em Constructor\+: call the underlying constructors and initialise the pointer to the Rayleigh number to point to the default value of 0.\+0. \end{DoxyCompactList}\item 
+const double \& \hyperlink{classoomph_1_1NavierStokesBoussinesqElement_a3318acc1306c60bd13b3bfe8e15a2fa5}{ra} () const
+\begin{DoxyCompactList}\small\item\em Access function for the Rayleigh number (const version) \end{DoxyCompactList}\item 
+double $\ast$\& \hyperlink{classoomph_1_1NavierStokesBoussinesqElement_ac822ef74e7bc0e55c917e58f2cd5a6fe}{ra\+\_\+pt} ()
+\begin{DoxyCompactList}\small\item\em Access function for the pointer to the Rayleigh number. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1NavierStokesBoussinesqElement_a2ff5be3155df975541a25444d43c1ca8}{get\+\_\+body\+\_\+force\+\_\+nst} (const double \&time, const unsigned \&ipt, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&x, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&result)
+\begin{DoxyCompactList}\small\item\em Overload get\+\_\+body\+\_\+force\+\_\+nst to get the temperature \char`\"{}body force\char`\"{} from the \char`\"{}source\char`\"{} Advection\+Diffusion element via current integration point. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1NavierStokesBoussinesqElement_a8a84c39e2156ab16b7aefc400891ac27}{get\+\_\+dbody\+\_\+force\+\_\+nst\+\_\+dexternal\+\_\+element\+\_\+data} (const unsigned \&ipt, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&result, \hyperlink{classoomph_1_1Vector}{Vector}$<$ unsigned $>$ \&global\+\_\+eqn\+\_\+number)
+\begin{DoxyCompactList}\small\item\em Fill in the derivatives of the body force with respect to the external unknowns. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1NavierStokesBoussinesqElement_a01483469b070309aeb8948273b974feb}{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&residuals, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&jacobian)
+\begin{DoxyCompactList}\small\item\em Compute the element\textquotesingle{}s residual vector and the Jacobian matrix. Jacobian is computed by finite-\/differencing or analytically. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1NavierStokesBoussinesqElement_a6c6cc7f75f0f9d61574293648bc4f148}{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian\+\_\+and\+\_\+mass\+\_\+matrix} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&residuals, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&jacobian, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&mass\+\_\+matrix)
+\begin{DoxyCompactList}\small\item\em Add the element\textquotesingle{}s contribution to its residuals vector, jacobian matrix and mass matrix. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1NavierStokesBoussinesqElement_a342613c3ceeaf4b5bb86c77dc150372d}{fill\+\_\+in\+\_\+off\+\_\+diagonal\+\_\+block\+\_\+analytic} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&residuals, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&jacobian)
+\begin{DoxyCompactList}\small\item\em Compute the contribution of the external degrees of freedom (temperatures) on the Navier-\/\+Stokes equations. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double $\ast$ \hyperlink{classoomph_1_1NavierStokesBoussinesqElement_a0f1c9b6947324c4d5386b9b68abba2d1}{Ra\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to a private data member, the Rayleigh number. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class N\+S\+T\+\_\+\+E\+L\+E\+M\+E\+NT, class A\+D\+\_\+\+E\+L\+E\+M\+E\+NT$>$\newline
+class oomph\+::\+Navier\+Stokes\+Boussinesq\+Element$<$ N\+S\+T\+\_\+\+E\+L\+E\+M\+E\+N\+T, A\+D\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$}
+
+Build \hyperlink{classoomph_1_1NavierStokesBoussinesqElement}{Navier\+Stokes\+Boussinesq\+Element} that inherits from \hyperlink{classoomph_1_1ElementWithExternalElement}{Element\+With\+External\+Element} so that it can \char`\"{}communicate\char`\"{} with Advection\+Diffusion\+Element\+With\+External\+Element 
+
+Definition at line 809 of file multi\+\_\+domain\+\_\+boussinesq\+\_\+elements.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1NavierStokesBoussinesqElement_ad0ebb74a3963c0715e6e3e34ba8b1d7f}\label{classoomph_1_1NavierStokesBoussinesqElement_ad0ebb74a3963c0715e6e3e34ba8b1d7f}} 
+\index{oomph\+::\+Navier\+Stokes\+Boussinesq\+Element@{oomph\+::\+Navier\+Stokes\+Boussinesq\+Element}!Navier\+Stokes\+Boussinesq\+Element@{Navier\+Stokes\+Boussinesq\+Element}}
+\index{Navier\+Stokes\+Boussinesq\+Element@{Navier\+Stokes\+Boussinesq\+Element}!oomph\+::\+Navier\+Stokes\+Boussinesq\+Element@{oomph\+::\+Navier\+Stokes\+Boussinesq\+Element}}
+\subsubsection{\texorpdfstring{Navier\+Stokes\+Boussinesq\+Element()}{NavierStokesBoussinesqElement()}}
+{\footnotesize\ttfamily template$<$class N\+S\+T\+\_\+\+E\+L\+E\+M\+E\+NT , class A\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classoomph_1_1NavierStokesBoussinesqElement}{oomph\+::\+Navier\+Stokes\+Boussinesq\+Element}$<$ N\+S\+T\+\_\+\+E\+L\+E\+M\+E\+NT, A\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::\hyperlink{classoomph_1_1NavierStokesBoussinesqElement}{Navier\+Stokes\+Boussinesq\+Element} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor\+: call the underlying constructors and initialise the pointer to the Rayleigh number to point to the default value of 0.\+0. 
+
+
+
+Definition at line 823 of file multi\+\_\+domain\+\_\+boussinesq\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Multi\+Domain\+Boussinesq\+Helper\+::\+Default\+\_\+\+Physical\+\_\+\+Constant\+\_\+\+Value.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1NavierStokesBoussinesqElement_a01483469b070309aeb8948273b974feb}\label{classoomph_1_1NavierStokesBoussinesqElement_a01483469b070309aeb8948273b974feb}} 
+\index{oomph\+::\+Navier\+Stokes\+Boussinesq\+Element@{oomph\+::\+Navier\+Stokes\+Boussinesq\+Element}!fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian}}
+\index{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian}!oomph\+::\+Navier\+Stokes\+Boussinesq\+Element@{oomph\+::\+Navier\+Stokes\+Boussinesq\+Element}}
+\subsubsection{\texorpdfstring{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian()}{fill\_in\_contribution\_to\_jacobian()}}
+{\footnotesize\ttfamily template$<$class N\+S\+T\+\_\+\+E\+L\+E\+M\+E\+NT , class A\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classoomph_1_1NavierStokesBoussinesqElement}{oomph\+::\+Navier\+Stokes\+Boussinesq\+Element}$<$ N\+S\+T\+\_\+\+E\+L\+E\+M\+E\+NT, A\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{residuals,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{jacobian }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Compute the element\textquotesingle{}s residual vector and the Jacobian matrix. Jacobian is computed by finite-\/differencing or analytically. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1ElementWithExternalElement_ae5fb09552a8271e891438f8d058ca1b8}{oomph\+::\+Element\+With\+External\+Element}.
+
+
+
+Definition at line 852 of file multi\+\_\+domain\+\_\+boussinesq\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Element\+With\+External\+Element\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian(), and oomph\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian().
+
+\mbox{\Hypertarget{classoomph_1_1NavierStokesBoussinesqElement_a6c6cc7f75f0f9d61574293648bc4f148}\label{classoomph_1_1NavierStokesBoussinesqElement_a6c6cc7f75f0f9d61574293648bc4f148}} 
+\index{oomph\+::\+Navier\+Stokes\+Boussinesq\+Element@{oomph\+::\+Navier\+Stokes\+Boussinesq\+Element}!fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian\+\_\+and\+\_\+mass\+\_\+matrix@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian\+\_\+and\+\_\+mass\+\_\+matrix}}
+\index{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian\+\_\+and\+\_\+mass\+\_\+matrix@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian\+\_\+and\+\_\+mass\+\_\+matrix}!oomph\+::\+Navier\+Stokes\+Boussinesq\+Element@{oomph\+::\+Navier\+Stokes\+Boussinesq\+Element}}
+\subsubsection{\texorpdfstring{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian\+\_\+and\+\_\+mass\+\_\+matrix()}{fill\_in\_contribution\_to\_jacobian\_and\_mass\_matrix()}}
+{\footnotesize\ttfamily template$<$class N\+S\+T\+\_\+\+E\+L\+E\+M\+E\+NT , class A\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classoomph_1_1NavierStokesBoussinesqElement}{oomph\+::\+Navier\+Stokes\+Boussinesq\+Element}$<$ N\+S\+T\+\_\+\+E\+L\+E\+M\+E\+NT, A\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian\+\_\+and\+\_\+mass\+\_\+matrix (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{residuals,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{jacobian,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{mass\+\_\+matrix }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Add the element\textquotesingle{}s contribution to its residuals vector, jacobian matrix and mass matrix. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1GeneralisedElement_a2b6294a730647cf865da94f2531466f8}{oomph\+::\+Generalised\+Element}.
+
+
+
+Definition at line 874 of file multi\+\_\+domain\+\_\+boussinesq\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Generalised\+Element\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian\+\_\+and\+\_\+mass\+\_\+matrix().
+
+\mbox{\Hypertarget{classoomph_1_1NavierStokesBoussinesqElement_a342613c3ceeaf4b5bb86c77dc150372d}\label{classoomph_1_1NavierStokesBoussinesqElement_a342613c3ceeaf4b5bb86c77dc150372d}} 
+\index{oomph\+::\+Navier\+Stokes\+Boussinesq\+Element@{oomph\+::\+Navier\+Stokes\+Boussinesq\+Element}!fill\+\_\+in\+\_\+off\+\_\+diagonal\+\_\+block\+\_\+analytic@{fill\+\_\+in\+\_\+off\+\_\+diagonal\+\_\+block\+\_\+analytic}}
+\index{fill\+\_\+in\+\_\+off\+\_\+diagonal\+\_\+block\+\_\+analytic@{fill\+\_\+in\+\_\+off\+\_\+diagonal\+\_\+block\+\_\+analytic}!oomph\+::\+Navier\+Stokes\+Boussinesq\+Element@{oomph\+::\+Navier\+Stokes\+Boussinesq\+Element}}
+\subsubsection{\texorpdfstring{fill\+\_\+in\+\_\+off\+\_\+diagonal\+\_\+block\+\_\+analytic()}{fill\_in\_off\_diagonal\_block\_analytic()}}
+{\footnotesize\ttfamily template$<$class N\+S\+T\+\_\+\+E\+L\+E\+M\+E\+NT , class A\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classoomph_1_1NavierStokesBoussinesqElement}{oomph\+::\+Navier\+Stokes\+Boussinesq\+Element}$<$ N\+S\+T\+\_\+\+E\+L\+E\+M\+E\+NT, A\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::fill\+\_\+in\+\_\+off\+\_\+diagonal\+\_\+block\+\_\+analytic (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{residuals,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{jacobian }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Compute the contribution of the external degrees of freedom (temperatures) on the Navier-\/\+Stokes equations. 
+
+
+
+Definition at line 887 of file multi\+\_\+domain\+\_\+boussinesq\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Navier\+Stokes\+Boussinesq\+Element$<$ N\+S\+T\+\_\+\+E\+L\+E\+M\+E\+N\+T, A\+D\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::get\+\_\+body\+\_\+force\+\_\+nst(), i, and oomph\+::\+Quad\+Tree\+Names\+::W.
+
+\mbox{\Hypertarget{classoomph_1_1NavierStokesBoussinesqElement_a2ff5be3155df975541a25444d43c1ca8}\label{classoomph_1_1NavierStokesBoussinesqElement_a2ff5be3155df975541a25444d43c1ca8}} 
+\index{oomph\+::\+Navier\+Stokes\+Boussinesq\+Element@{oomph\+::\+Navier\+Stokes\+Boussinesq\+Element}!get\+\_\+body\+\_\+force\+\_\+nst@{get\+\_\+body\+\_\+force\+\_\+nst}}
+\index{get\+\_\+body\+\_\+force\+\_\+nst@{get\+\_\+body\+\_\+force\+\_\+nst}!oomph\+::\+Navier\+Stokes\+Boussinesq\+Element@{oomph\+::\+Navier\+Stokes\+Boussinesq\+Element}}
+\subsubsection{\texorpdfstring{get\+\_\+body\+\_\+force\+\_\+nst()}{get\_body\_force\_nst()}}
+{\footnotesize\ttfamily template$<$class N\+S\+T\+\_\+\+E\+L\+E\+M\+E\+NT , class A\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classoomph_1_1NavierStokesBoussinesqElement}{oomph\+::\+Navier\+Stokes\+Boussinesq\+Element}$<$ N\+S\+T\+\_\+\+E\+L\+E\+M\+E\+NT, A\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::get\+\_\+body\+\_\+force\+\_\+nst (\begin{DoxyParamCaption}\item[{const double \&}]{time,  }\item[{const unsigned \&}]{ipt,  }\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{x,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{result }\end{DoxyParamCaption})}
+
+
+
+Overload get\+\_\+body\+\_\+force\+\_\+nst to get the temperature \char`\"{}body force\char`\"{} from the \char`\"{}source\char`\"{} Advection\+Diffusion element via current integration point. 
+
+Overload get\+\_\+body\+\_\+force\+\_\+nst to get the temperature \char`\"{}body force\char`\"{} from the \char`\"{}source\char`\"{} Advection\+Diffusion element via current integration point 
+
+Definition at line 987 of file multi\+\_\+domain\+\_\+boussinesq\+\_\+elements.\+h.
+
+
+
+References i.
+
+
+
+Referenced by oomph\+::\+Navier\+Stokes\+Boussinesq\+Element$<$ N\+S\+T\+\_\+\+E\+L\+E\+M\+E\+N\+T, A\+D\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+off\+\_\+diagonal\+\_\+block\+\_\+analytic().
+
+\mbox{\Hypertarget{classoomph_1_1NavierStokesBoussinesqElement_a8a84c39e2156ab16b7aefc400891ac27}\label{classoomph_1_1NavierStokesBoussinesqElement_a8a84c39e2156ab16b7aefc400891ac27}} 
+\index{oomph\+::\+Navier\+Stokes\+Boussinesq\+Element@{oomph\+::\+Navier\+Stokes\+Boussinesq\+Element}!get\+\_\+dbody\+\_\+force\+\_\+nst\+\_\+dexternal\+\_\+element\+\_\+data@{get\+\_\+dbody\+\_\+force\+\_\+nst\+\_\+dexternal\+\_\+element\+\_\+data}}
+\index{get\+\_\+dbody\+\_\+force\+\_\+nst\+\_\+dexternal\+\_\+element\+\_\+data@{get\+\_\+dbody\+\_\+force\+\_\+nst\+\_\+dexternal\+\_\+element\+\_\+data}!oomph\+::\+Navier\+Stokes\+Boussinesq\+Element@{oomph\+::\+Navier\+Stokes\+Boussinesq\+Element}}
+\subsubsection{\texorpdfstring{get\+\_\+dbody\+\_\+force\+\_\+nst\+\_\+dexternal\+\_\+element\+\_\+data()}{get\_dbody\_force\_nst\_dexternal\_element\_data()}}
+{\footnotesize\ttfamily template$<$class N\+S\+T\+\_\+\+E\+L\+E\+M\+E\+NT , class A\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classoomph_1_1NavierStokesBoussinesqElement}{oomph\+::\+Navier\+Stokes\+Boussinesq\+Element}$<$ N\+S\+T\+\_\+\+E\+L\+E\+M\+E\+NT, A\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::get\+\_\+dbody\+\_\+force\+\_\+nst\+\_\+dexternal\+\_\+element\+\_\+data (\begin{DoxyParamCaption}\item[{const unsigned \&}]{ipt,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{result,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ unsigned $>$ \&}]{global\+\_\+eqn\+\_\+number }\end{DoxyParamCaption})}
+
+
+
+Fill in the derivatives of the body force with respect to the external unknowns. 
+
+Fill in the derivatives of the body force with respect to the external unknowns in the Navier--Stokes equations 
+
+Definition at line 1347 of file multi\+\_\+domain\+\_\+boussinesq\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Refineable\+Navier\+Stokes\+Boussinesq\+Element$<$ N\+S\+T\+\_\+\+E\+L\+E\+M\+E\+N\+T, A\+D\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::get\+\_\+dbody\+\_\+force\+\_\+nst\+\_\+dexternal\+\_\+element\+\_\+data(), i, and oomph\+::\+Dense\+Matrix$<$ T $>$\+::resize().
+
+
+
+Referenced by oomph\+::\+Advection\+Diffusion\+Boussinesq\+Element$<$ A\+D\+\_\+\+E\+L\+E\+M\+E\+N\+T, N\+S\+T\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::get\+\_\+dwind\+\_\+adv\+\_\+diff\+\_\+dexternal\+\_\+element\+\_\+data().
+
+\mbox{\Hypertarget{classoomph_1_1NavierStokesBoussinesqElement_a3318acc1306c60bd13b3bfe8e15a2fa5}\label{classoomph_1_1NavierStokesBoussinesqElement_a3318acc1306c60bd13b3bfe8e15a2fa5}} 
+\index{oomph\+::\+Navier\+Stokes\+Boussinesq\+Element@{oomph\+::\+Navier\+Stokes\+Boussinesq\+Element}!ra@{ra}}
+\index{ra@{ra}!oomph\+::\+Navier\+Stokes\+Boussinesq\+Element@{oomph\+::\+Navier\+Stokes\+Boussinesq\+Element}}
+\subsubsection{\texorpdfstring{ra()}{ra()}}
+{\footnotesize\ttfamily template$<$class N\+S\+T\+\_\+\+E\+L\+E\+M\+E\+NT , class A\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+const double\& \hyperlink{classoomph_1_1NavierStokesBoussinesqElement}{oomph\+::\+Navier\+Stokes\+Boussinesq\+Element}$<$ N\+S\+T\+\_\+\+E\+L\+E\+M\+E\+NT, A\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::ra (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Access function for the Rayleigh number (const version) 
+
+
+
+Definition at line 832 of file multi\+\_\+domain\+\_\+boussinesq\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1NavierStokesBoussinesqElement_ac822ef74e7bc0e55c917e58f2cd5a6fe}\label{classoomph_1_1NavierStokesBoussinesqElement_ac822ef74e7bc0e55c917e58f2cd5a6fe}} 
+\index{oomph\+::\+Navier\+Stokes\+Boussinesq\+Element@{oomph\+::\+Navier\+Stokes\+Boussinesq\+Element}!ra\+\_\+pt@{ra\+\_\+pt}}
+\index{ra\+\_\+pt@{ra\+\_\+pt}!oomph\+::\+Navier\+Stokes\+Boussinesq\+Element@{oomph\+::\+Navier\+Stokes\+Boussinesq\+Element}}
+\subsubsection{\texorpdfstring{ra\+\_\+pt()}{ra\_pt()}}
+{\footnotesize\ttfamily template$<$class N\+S\+T\+\_\+\+E\+L\+E\+M\+E\+NT , class A\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+double$\ast$ \& \hyperlink{classoomph_1_1NavierStokesBoussinesqElement}{oomph\+::\+Navier\+Stokes\+Boussinesq\+Element}$<$ N\+S\+T\+\_\+\+E\+L\+E\+M\+E\+NT, A\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::ra\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Access function for the pointer to the Rayleigh number. 
+
+
+
+Definition at line 835 of file multi\+\_\+domain\+\_\+boussinesq\+\_\+elements.\+h.
+
+
+
+References s.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1NavierStokesBoussinesqElement_a0f1c9b6947324c4d5386b9b68abba2d1}\label{classoomph_1_1NavierStokesBoussinesqElement_a0f1c9b6947324c4d5386b9b68abba2d1}} 
+\index{oomph\+::\+Navier\+Stokes\+Boussinesq\+Element@{oomph\+::\+Navier\+Stokes\+Boussinesq\+Element}!Ra\+\_\+pt@{Ra\+\_\+pt}}
+\index{Ra\+\_\+pt@{Ra\+\_\+pt}!oomph\+::\+Navier\+Stokes\+Boussinesq\+Element@{oomph\+::\+Navier\+Stokes\+Boussinesq\+Element}}
+\subsubsection{\texorpdfstring{Ra\+\_\+pt}{Ra\_pt}}
+{\footnotesize\ttfamily template$<$class N\+S\+T\+\_\+\+E\+L\+E\+M\+E\+NT , class A\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+double$\ast$ \hyperlink{classoomph_1_1NavierStokesBoussinesqElement}{oomph\+::\+Navier\+Stokes\+Boussinesq\+Element}$<$ N\+S\+T\+\_\+\+E\+L\+E\+M\+E\+NT, A\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::Ra\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pointer to a private data member, the Rayleigh number. 
+
+
+
+Definition at line 816 of file multi\+\_\+domain\+\_\+boussinesq\+\_\+elements.\+h.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{multi__domain__boussinesq__elements_8h}{multi\+\_\+domain\+\_\+boussinesq\+\_\+elements.\+h}\end{DoxyCompactItemize}

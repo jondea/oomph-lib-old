@@ -1,0 +1,260 @@
+\hypertarget{classoomph_1_1QMacroElement_3_012_01_4}{}\section{oomph\+:\+:Q\+Macro\+Element$<$ 2 $>$ Class Template Reference}
+\label{classoomph_1_1QMacroElement_3_012_01_4}\index{oomph\+::\+Q\+Macro\+Element$<$ 2 $>$@{oomph\+::\+Q\+Macro\+Element$<$ 2 $>$}}
+
+
+{\ttfamily \#include $<$macro\+\_\+element.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Q\+Macro\+Element$<$ 2 $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classoomph_1_1QMacroElement_3_012_01_4}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1QMacroElement_3_012_01_4_a9a9a57f0903e521371ce99c06f81154f}{Q\+Macro\+Element} (\hyperlink{classoomph_1_1Domain}{Domain} $\ast$\hyperlink{classoomph_1_1MacroElement_ab086ff8cbdb656eff8ab5eafd67bca07}{domain\+\_\+pt}, const unsigned \&\hyperlink{classoomph_1_1MacroElement_acc146caf3839d234c62cf9a4de2fbe91}{macro\+\_\+element\+\_\+number})
+\begin{DoxyCompactList}\small\item\em Constructor\+: Pass the pointer to the domain and the macro element\textquotesingle{}s number within this domain. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1QMacroElement_3_012_01_4_ab709c20b82b4959edfa566b17e1b5441}{Q\+Macro\+Element} ()
+\begin{DoxyCompactList}\small\item\em Default constructor (empty and broken) \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1QMacroElement_3_012_01_4_afb16986bbc009e8d23a434d6dc6631bc}{Q\+Macro\+Element} (const \hyperlink{classoomph_1_1QMacroElement}{Q\+Macro\+Element} \&dummy)
+\begin{DoxyCompactList}\small\item\em Broken copy constructor. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1QMacroElement_3_012_01_4_a641551a6b40ff5b364eb10da19af8edf}{operator=} (const \hyperlink{classoomph_1_1QMacroElement}{Q\+Macro\+Element} \&)
+\begin{DoxyCompactList}\small\item\em Broken assignment operator. \end{DoxyCompactList}\item 
+virtual \hyperlink{classoomph_1_1QMacroElement_3_012_01_4_a5645cf8b388a4d7d51c1893d886db0cd}{$\sim$\+Q\+Macro\+Element} ()
+\begin{DoxyCompactList}\small\item\em Empty destructor. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1QMacroElement_3_012_01_4_a1fe56200453a2200e5103d3fb4793e38}{output} (const unsigned \&\hyperlink{cfortran_8h_af6f0bd3dc13317f895c91323c25c2b8f}{t}, std\+::ostream \&outfile, const unsigned \&nplot)
+\begin{DoxyCompactList}\small\item\em Plot\+: x,y in tecplot format at time level t (t=0\+: current; t$>$0\+: previous) \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1QMacroElement_3_012_01_4_ae717a0b0098f830a1b1a5019ce5431a8}{output\+\_\+macro\+\_\+element\+\_\+boundaries} (std\+::ostream \&outfile, const unsigned \&nplot)
+\begin{DoxyCompactList}\small\item\em Output all macro element boundaries as tecplot zones. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1QMacroElement_3_012_01_4_af78c96d14b561af4ee3b1bf6c5331766}{macro\+\_\+map} (const unsigned \&\hyperlink{cfortran_8h_af6f0bd3dc13317f895c91323c25c2b8f}{t}, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&S, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&r)
+\begin{DoxyCompactList}\small\item\em Get global position r(\+S) at discrete time level t. t=0\+: Present time; t$>$0\+: previous timestep. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1QMacroElement_3_012_01_4_a74aaa1b631144e956b5f61e8d0cd9f05}{assemble\+\_\+macro\+\_\+to\+\_\+eulerian\+\_\+jacobian} (const unsigned \&\hyperlink{cfortran_8h_af6f0bd3dc13317f895c91323c25c2b8f}{t}, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&jacobian)
+\begin{DoxyCompactList}\small\item\em assemble the jacobian of the mapping from the macro coordinates to the global coordinates \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1QMacroElement_3_012_01_4_aef266683860031114776d25f51e8e306}{assemble\+\_\+macro\+\_\+to\+\_\+eulerian\+\_\+jacobian2} (const unsigned \&\hyperlink{cfortran_8h_af6f0bd3dc13317f895c91323c25c2b8f}{t}, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&jacobian2)
+\begin{DoxyCompactList}\small\item\em Assembles the second derivative jacobian of the mapping from the macro coordinates to global coordinates x. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$$>$\newline
+class oomph\+::\+Q\+Macro\+Element$<$ 2 $>$}
+
+\hyperlink{classoomph_1_1QMacroElement}{Q\+Macro\+Element} specialised to 2 spatial dimensions.
+
+The macro element mapping is based on the member function pointer to the associated \hyperlink{classoomph_1_1Domain}{Domain} \textquotesingle{}s 
+\begin{DoxyCode}
+\hyperlink{classoomph_1_1Domain_a95f3e00d28ea37e6c4d3027bfac91096}{Domain::macro\_element\_boundary}(...) 
+\end{DoxyCode}
+ function which provides a parametrisation of the macro element\textquotesingle{}s boundaries in the form\+: \[ {\bf f}_{i} (t,{\bf S}) \] where
+\begin{DoxyItemize}
+\item $ i $ labels the boundary (N/\+S/\+W/E)
+\item $ {\bf S} \in [-1,1]^1 $ is the (1D) \hyperlink{classoomph_1_1Vector}{Vector} of local coordinate(s) along the boundary.
+\item $ {\bf f} $ is the position \hyperlink{classoomph_1_1Vector}{Vector} to the boundary.
+\item $ t $ is the time level (t=0\+: current; t$>$0 previous timestep) 
+\end{DoxyItemize}
+
+Definition at line 275 of file macro\+\_\+element.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1QMacroElement_3_012_01_4_a9a9a57f0903e521371ce99c06f81154f}\label{classoomph_1_1QMacroElement_3_012_01_4_a9a9a57f0903e521371ce99c06f81154f}} 
+\index{oomph\+::\+Q\+Macro\+Element$<$ 2 $>$@{oomph\+::\+Q\+Macro\+Element$<$ 2 $>$}!Q\+Macro\+Element@{Q\+Macro\+Element}}
+\index{Q\+Macro\+Element@{Q\+Macro\+Element}!oomph\+::\+Q\+Macro\+Element$<$ 2 $>$@{oomph\+::\+Q\+Macro\+Element$<$ 2 $>$}}
+\subsubsection{\texorpdfstring{Q\+Macro\+Element()}{QMacroElement()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1QMacroElement}{oomph\+::\+Q\+Macro\+Element}$<$ 2 $>$\+::\hyperlink{classoomph_1_1QMacroElement}{Q\+Macro\+Element} (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Domain}{Domain} $\ast$}]{domain\+\_\+pt,  }\item[{const unsigned \&}]{macro\+\_\+element\+\_\+number }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor\+: Pass the pointer to the domain and the macro element\textquotesingle{}s number within this domain. 
+
+
+
+Definition at line 282 of file macro\+\_\+element.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1QMacroElement_3_012_01_4_ab709c20b82b4959edfa566b17e1b5441}\label{classoomph_1_1QMacroElement_3_012_01_4_ab709c20b82b4959edfa566b17e1b5441}} 
+\index{oomph\+::\+Q\+Macro\+Element$<$ 2 $>$@{oomph\+::\+Q\+Macro\+Element$<$ 2 $>$}!Q\+Macro\+Element@{Q\+Macro\+Element}}
+\index{Q\+Macro\+Element@{Q\+Macro\+Element}!oomph\+::\+Q\+Macro\+Element$<$ 2 $>$@{oomph\+::\+Q\+Macro\+Element$<$ 2 $>$}}
+\subsubsection{\texorpdfstring{Q\+Macro\+Element()}{QMacroElement()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1QMacroElement}{oomph\+::\+Q\+Macro\+Element}$<$ 2 $>$\+::\hyperlink{classoomph_1_1QMacroElement}{Q\+Macro\+Element} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Default constructor (empty and broken) 
+
+
+
+Definition at line 287 of file macro\+\_\+element.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1QMacroElement_3_012_01_4_afb16986bbc009e8d23a434d6dc6631bc}\label{classoomph_1_1QMacroElement_3_012_01_4_afb16986bbc009e8d23a434d6dc6631bc}} 
+\index{oomph\+::\+Q\+Macro\+Element$<$ 2 $>$@{oomph\+::\+Q\+Macro\+Element$<$ 2 $>$}!Q\+Macro\+Element@{Q\+Macro\+Element}}
+\index{Q\+Macro\+Element@{Q\+Macro\+Element}!oomph\+::\+Q\+Macro\+Element$<$ 2 $>$@{oomph\+::\+Q\+Macro\+Element$<$ 2 $>$}}
+\subsubsection{\texorpdfstring{Q\+Macro\+Element()}{QMacroElement()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1QMacroElement}{oomph\+::\+Q\+Macro\+Element}$<$ 2 $>$\+::\hyperlink{classoomph_1_1QMacroElement}{Q\+Macro\+Element} (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1QMacroElement}{Q\+Macro\+Element}$<$ 2 $>$ \&}]{dummy }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Broken copy constructor. 
+
+
+
+Definition at line 295 of file macro\+\_\+element.\+h.
+
+
+
+References oomph\+::\+Broken\+Copy\+::broken\+\_\+copy().
+
+\mbox{\Hypertarget{classoomph_1_1QMacroElement_3_012_01_4_a5645cf8b388a4d7d51c1893d886db0cd}\label{classoomph_1_1QMacroElement_3_012_01_4_a5645cf8b388a4d7d51c1893d886db0cd}} 
+\index{oomph\+::\+Q\+Macro\+Element$<$ 2 $>$@{oomph\+::\+Q\+Macro\+Element$<$ 2 $>$}!````~Q\+Macro\+Element@{$\sim$\+Q\+Macro\+Element}}
+\index{````~Q\+Macro\+Element@{$\sim$\+Q\+Macro\+Element}!oomph\+::\+Q\+Macro\+Element$<$ 2 $>$@{oomph\+::\+Q\+Macro\+Element$<$ 2 $>$}}
+\subsubsection{\texorpdfstring{$\sim$\+Q\+Macro\+Element()}{~QMacroElement()}}
+{\footnotesize\ttfamily virtual \hyperlink{classoomph_1_1QMacroElement}{oomph\+::\+Q\+Macro\+Element}$<$ 2 $>$\+::$\sim$\hyperlink{classoomph_1_1QMacroElement}{Q\+Macro\+Element} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Empty destructor. 
+
+
+
+Definition at line 307 of file macro\+\_\+element.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1QMacroElement_3_012_01_4_a74aaa1b631144e956b5f61e8d0cd9f05}\label{classoomph_1_1QMacroElement_3_012_01_4_a74aaa1b631144e956b5f61e8d0cd9f05}} 
+\index{oomph\+::\+Q\+Macro\+Element$<$ 2 $>$@{oomph\+::\+Q\+Macro\+Element$<$ 2 $>$}!assemble\+\_\+macro\+\_\+to\+\_\+eulerian\+\_\+jacobian@{assemble\+\_\+macro\+\_\+to\+\_\+eulerian\+\_\+jacobian}}
+\index{assemble\+\_\+macro\+\_\+to\+\_\+eulerian\+\_\+jacobian@{assemble\+\_\+macro\+\_\+to\+\_\+eulerian\+\_\+jacobian}!oomph\+::\+Q\+Macro\+Element$<$ 2 $>$@{oomph\+::\+Q\+Macro\+Element$<$ 2 $>$}}
+\subsubsection{\texorpdfstring{assemble\+\_\+macro\+\_\+to\+\_\+eulerian\+\_\+jacobian()}{assemble\_macro\_to\_eulerian\_jacobian()}}
+{\footnotesize\ttfamily void \hyperlink{classoomph_1_1QMacroElement}{oomph\+::\+Q\+Macro\+Element}$<$ 2 $>$\+::assemble\+\_\+macro\+\_\+to\+\_\+eulerian\+\_\+jacobian (\begin{DoxyParamCaption}\item[{const unsigned \&}]{t,  }\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{S,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{jacobian }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+assemble the jacobian of the mapping from the macro coordinates to the global coordinates 
+
+Assembles the jacobian of the mapping from the macro coordinates to.
+
+the global coordinates 
+
+Reimplemented from \hyperlink{classoomph_1_1MacroElement_acd465f4065dee7acfbb36d307ad691f9}{oomph\+::\+Macro\+Element}.
+
+
+
+Definition at line 157 of file macro\+\_\+element.\+cc.
+
+
+
+References oomph\+::\+Macro\+Element\+::assemble\+\_\+macro\+\_\+to\+\_\+eulerian\+\_\+jacobian2(), oomph\+::\+Domain\+::dmacro\+\_\+element\+\_\+boundary(), oomph\+::\+Macro\+Element\+::\+Domain\+\_\+pt, oomph\+::\+Quad\+Tree\+Names\+::E, oomph\+::\+Domain\+::macro\+\_\+element\+\_\+boundary(), oomph\+::\+Macro\+Element\+::\+Macro\+\_\+element\+\_\+number, oomph\+::\+Quad\+Tree\+Names\+::N, oomph\+::\+Quad\+Tree\+Names\+::S, and oomph\+::\+Quad\+Tree\+Names\+::W.
+
+\mbox{\Hypertarget{classoomph_1_1QMacroElement_3_012_01_4_aef266683860031114776d25f51e8e306}\label{classoomph_1_1QMacroElement_3_012_01_4_aef266683860031114776d25f51e8e306}} 
+\index{oomph\+::\+Q\+Macro\+Element$<$ 2 $>$@{oomph\+::\+Q\+Macro\+Element$<$ 2 $>$}!assemble\+\_\+macro\+\_\+to\+\_\+eulerian\+\_\+jacobian2@{assemble\+\_\+macro\+\_\+to\+\_\+eulerian\+\_\+jacobian2}}
+\index{assemble\+\_\+macro\+\_\+to\+\_\+eulerian\+\_\+jacobian2@{assemble\+\_\+macro\+\_\+to\+\_\+eulerian\+\_\+jacobian2}!oomph\+::\+Q\+Macro\+Element$<$ 2 $>$@{oomph\+::\+Q\+Macro\+Element$<$ 2 $>$}}
+\subsubsection{\texorpdfstring{assemble\+\_\+macro\+\_\+to\+\_\+eulerian\+\_\+jacobian2()}{assemble\_macro\_to\_eulerian\_jacobian2()}}
+{\footnotesize\ttfamily void \hyperlink{classoomph_1_1QMacroElement}{oomph\+::\+Q\+Macro\+Element}$<$ 2 $>$\+::assemble\+\_\+macro\+\_\+to\+\_\+eulerian\+\_\+jacobian2 (\begin{DoxyParamCaption}\item[{const unsigned \&}]{t,  }\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{jacobian2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Assembles the second derivative jacobian of the mapping from the macro coordinates to global coordinates x. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1MacroElement_a3c898b6deef9f8bfcc957313030a3e68}{oomph\+::\+Macro\+Element}.
+
+
+
+Definition at line 253 of file macro\+\_\+element.\+cc.
+
+
+
+References oomph\+::\+Domain\+::d2macro\+\_\+element\+\_\+boundary(), oomph\+::\+Domain\+::dmacro\+\_\+element\+\_\+boundary(), oomph\+::\+Macro\+Element\+::\+Domain\+\_\+pt, oomph\+::\+Quad\+Tree\+Names\+::E, oomph\+::\+Domain\+::macro\+\_\+element\+\_\+boundary(), oomph\+::\+Macro\+Element\+::\+Macro\+\_\+element\+\_\+number, oomph\+::\+Quad\+Tree\+Names\+::N, oomph\+::\+Quad\+Tree\+Names\+::S, and oomph\+::\+Quad\+Tree\+Names\+::W.
+
+\mbox{\Hypertarget{classoomph_1_1QMacroElement_3_012_01_4_af78c96d14b561af4ee3b1bf6c5331766}\label{classoomph_1_1QMacroElement_3_012_01_4_af78c96d14b561af4ee3b1bf6c5331766}} 
+\index{oomph\+::\+Q\+Macro\+Element$<$ 2 $>$@{oomph\+::\+Q\+Macro\+Element$<$ 2 $>$}!macro\+\_\+map@{macro\+\_\+map}}
+\index{macro\+\_\+map@{macro\+\_\+map}!oomph\+::\+Q\+Macro\+Element$<$ 2 $>$@{oomph\+::\+Q\+Macro\+Element$<$ 2 $>$}}
+\subsubsection{\texorpdfstring{macro\+\_\+map()}{macro\_map()}}
+{\footnotesize\ttfamily void \hyperlink{classoomph_1_1QMacroElement}{oomph\+::\+Q\+Macro\+Element}$<$ 2 $>$\+::macro\+\_\+map (\begin{DoxyParamCaption}\item[{const unsigned \&}]{t,  }\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{S,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{r }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get global position r(\+S) at discrete time level t. t=0\+: Present time; t$>$0\+: previous timestep. 
+
+
+
+Implements \hyperlink{classoomph_1_1MacroElement_a819b095e97c92e634d6216ddce00c8a2}{oomph\+::\+Macro\+Element}.
+
+
+
+Definition at line 40 of file macro\+\_\+element.\+cc.
+
+
+
+References oomph\+::\+Macro\+Element\+::\+Domain\+\_\+pt, oomph\+::\+Quad\+Tree\+Names\+::E, i, oomph\+::\+Domain\+::macro\+\_\+element\+\_\+boundary(), oomph\+::\+Macro\+Element\+::\+Macro\+\_\+element\+\_\+number, oomph\+::\+Quad\+Tree\+Names\+::N, oomph\+::\+Quad\+Tree\+Names\+::S, and oomph\+::\+Quad\+Tree\+Names\+::W.
+
+\mbox{\Hypertarget{classoomph_1_1QMacroElement_3_012_01_4_a641551a6b40ff5b364eb10da19af8edf}\label{classoomph_1_1QMacroElement_3_012_01_4_a641551a6b40ff5b364eb10da19af8edf}} 
+\index{oomph\+::\+Q\+Macro\+Element$<$ 2 $>$@{oomph\+::\+Q\+Macro\+Element$<$ 2 $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!oomph\+::\+Q\+Macro\+Element$<$ 2 $>$@{oomph\+::\+Q\+Macro\+Element$<$ 2 $>$}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily void \hyperlink{classoomph_1_1QMacroElement}{oomph\+::\+Q\+Macro\+Element}$<$ 2 $>$\+::operator= (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1QMacroElement}{Q\+Macro\+Element}$<$ 2 $>$ \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Broken assignment operator. 
+
+
+
+Definition at line 301 of file macro\+\_\+element.\+h.
+
+
+
+References oomph\+::\+Broken\+Copy\+::broken\+\_\+assign().
+
+\mbox{\Hypertarget{classoomph_1_1QMacroElement_3_012_01_4_a1fe56200453a2200e5103d3fb4793e38}\label{classoomph_1_1QMacroElement_3_012_01_4_a1fe56200453a2200e5103d3fb4793e38}} 
+\index{oomph\+::\+Q\+Macro\+Element$<$ 2 $>$@{oomph\+::\+Q\+Macro\+Element$<$ 2 $>$}!output@{output}}
+\index{output@{output}!oomph\+::\+Q\+Macro\+Element$<$ 2 $>$@{oomph\+::\+Q\+Macro\+Element$<$ 2 $>$}}
+\subsubsection{\texorpdfstring{output()}{output()}}
+{\footnotesize\ttfamily void \hyperlink{classoomph_1_1QMacroElement}{oomph\+::\+Q\+Macro\+Element}$<$ 2 $>$\+::output (\begin{DoxyParamCaption}\item[{const unsigned \&}]{t,  }\item[{std\+::ostream \&}]{outfile,  }\item[{const unsigned \&}]{nplot }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Plot\+: x,y in tecplot format at time level t (t=0\+: current; t$>$0\+: previous) 
+
+
+
+Implements \hyperlink{classoomph_1_1MacroElement_a5d3646716d60aedf456889768a3c2dbe}{oomph\+::\+Macro\+Element}.
+
+
+
+Definition at line 312 of file macro\+\_\+element.\+h.
+
+
+
+References oomph\+::\+Macro\+Element\+::assemble\+\_\+macro\+\_\+to\+\_\+eulerian\+\_\+jacobian(), oomph\+::\+Macro\+Element\+::assemble\+\_\+macro\+\_\+to\+\_\+eulerian\+\_\+jacobian2(), i, oomph\+::\+Macro\+Element\+::macro\+\_\+map(), oomph\+::\+Macro\+Element\+::output\+\_\+macro\+\_\+element\+\_\+boundaries(), oomph\+::\+Quad\+Tree\+Names\+::S, s, and t.
+
+\mbox{\Hypertarget{classoomph_1_1QMacroElement_3_012_01_4_ae717a0b0098f830a1b1a5019ce5431a8}\label{classoomph_1_1QMacroElement_3_012_01_4_ae717a0b0098f830a1b1a5019ce5431a8}} 
+\index{oomph\+::\+Q\+Macro\+Element$<$ 2 $>$@{oomph\+::\+Q\+Macro\+Element$<$ 2 $>$}!output\+\_\+macro\+\_\+element\+\_\+boundaries@{output\+\_\+macro\+\_\+element\+\_\+boundaries}}
+\index{output\+\_\+macro\+\_\+element\+\_\+boundaries@{output\+\_\+macro\+\_\+element\+\_\+boundaries}!oomph\+::\+Q\+Macro\+Element$<$ 2 $>$@{oomph\+::\+Q\+Macro\+Element$<$ 2 $>$}}
+\subsubsection{\texorpdfstring{output\+\_\+macro\+\_\+element\+\_\+boundaries()}{output\_macro\_element\_boundaries()}}
+{\footnotesize\ttfamily void \hyperlink{classoomph_1_1QMacroElement}{oomph\+::\+Q\+Macro\+Element}$<$ 2 $>$\+::output\+\_\+macro\+\_\+element\+\_\+boundaries (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile,  }\item[{const unsigned \&}]{nplot }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Output all macro element boundaries as tecplot zones. 
+
+
+
+Implements \hyperlink{classoomph_1_1MacroElement_a748b561313e952c9767d278d0e99be4e}{oomph\+::\+Macro\+Element}.
+
+
+
+Definition at line 128 of file macro\+\_\+element.\+cc.
+
+
+
+References oomph\+::\+Macro\+Element\+::assemble\+\_\+macro\+\_\+to\+\_\+eulerian\+\_\+jacobian(), oomph\+::\+Macro\+Element\+::\+Domain\+\_\+pt, oomph\+::\+Domain\+::macro\+\_\+element\+\_\+boundary(), oomph\+::\+Macro\+Element\+::\+Macro\+\_\+element\+\_\+number, oomph\+::\+Quad\+Tree\+Names\+::N, s, t, and oomph\+::\+Quad\+Tree\+Names\+::W.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{macro__element_8h}{macro\+\_\+element.\+h}\item 
+\hyperlink{macro__element_8cc}{macro\+\_\+element.\+cc}\end{DoxyCompactItemize}

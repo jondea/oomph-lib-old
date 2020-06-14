@@ -1,0 +1,191 @@
+\hypertarget{classMyBiharmonicProblem}{}\section{My\+Biharmonic\+Problem$<$ E\+L\+E\+M\+E\+NT, D\+IM, N\+N\+O\+D\+E\+\_\+1D $>$ Class Template Reference}
+\label{classMyBiharmonicProblem}\index{My\+Biharmonic\+Problem$<$ E\+L\+E\+M\+E\+N\+T, D\+I\+M, N\+N\+O\+D\+E\+\_\+1\+D $>$@{My\+Biharmonic\+Problem$<$ E\+L\+E\+M\+E\+N\+T, D\+I\+M, N\+N\+O\+D\+E\+\_\+1\+D $>$}}
+
+
+2D Biharmonic problem.  
+
+
+Inheritance diagram for My\+Biharmonic\+Problem$<$ E\+L\+E\+M\+E\+NT, D\+IM, N\+N\+O\+D\+E\+\_\+1D $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classMyBiharmonicProblem}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classMyBiharmonicProblem_ab894abf54210a71c3b4e00e1b30e380e}{My\+Biharmonic\+Problem} (typename \hyperlink{classoomph_1_1MyBiharmonicEquations}{My\+Biharmonic\+Equations}$<$ D\+IM, N\+N\+O\+D\+E\+\_\+1D $>$\+::Source\+Fct\+Pt source\+\_\+fct\+\_\+pt, typename \hyperlink{classoomph_1_1MyBiharmonicEquations}{My\+Biharmonic\+Equations}$<$ D\+IM, N\+N\+O\+D\+E\+\_\+1D $>$\+::Exact\+Soln\+Pt exact\+\_\+pt, const string \&node\+\_\+file\+\_\+name, const string \&element\+\_\+file\+\_\+name, const string \&poly\+\_\+file\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Constructor\+: Pass number of elements and pointer to source function. \end{DoxyCompactList}\item 
+\hyperlink{classMyBiharmonicProblem_ad6d1bdce803ec5fd13bf6b0e3b1f3ca9}{$\sim$\+My\+Biharmonic\+Problem} ()
+\begin{DoxyCompactList}\small\item\em Destructor (empty) \end{DoxyCompactList}\item 
+void \hyperlink{classMyBiharmonicProblem_ae9a9d6db2c84c3cc12138558b60d676d}{actions\+\_\+before\+\_\+newton\+\_\+solve} ()
+\begin{DoxyCompactList}\small\item\em Update the problem specs before solve\+: (Re)set boundary conditions. \end{DoxyCompactList}\item 
+void \hyperlink{classMyBiharmonicProblem_a0600c4a7dff6f362b6171c66e07b594c}{actions\+\_\+after\+\_\+newton\+\_\+solve} ()
+\begin{DoxyCompactList}\small\item\em Update the problem specs after solve (empty) \end{DoxyCompactList}\item 
+void \hyperlink{classMyBiharmonicProblem_aa1c9d6b8298b2b78f5df9343349ecd70}{doc\+\_\+solution} (Doc\+Info \&doc\+\_\+info)
+\begin{DoxyCompactList}\small\item\em Doc the solution, pass the number of the case considered, so that output files can be distinguished. \end{DoxyCompactList}\item 
+void \hyperlink{classMyBiharmonicProblem_a40167119fb35b4926185b7adc23a6358}{nodal\+\_\+permutation} ()
+\begin{DoxyCompactList}\small\item\em Perform a nodal permutation in curved elements. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1MyBiharmonicEquations}{My\+Biharmonic\+Equations}$<$ D\+IM, N\+N\+O\+D\+E\+\_\+1D $>$\+::Source\+Fct\+Pt \hyperlink{classMyBiharmonicProblem_a1ba6c64955d32e319db7a7de7807458a}{Source\+\_\+fct\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to source function. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1MyBiharmonicEquations}{My\+Biharmonic\+Equations}$<$ D\+IM, N\+N\+O\+D\+E\+\_\+1D $>$\+::Exact\+Soln\+Pt \hyperlink{classMyBiharmonicProblem_a9f681412ab2041bf3ddcd668ee816362}{Exact\+\_\+soln\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to the exact solution. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class E\+L\+E\+M\+E\+NT, unsigned D\+IM, unsigned N\+N\+O\+D\+E\+\_\+1D$>$\newline
+class My\+Biharmonic\+Problem$<$ E\+L\+E\+M\+E\+N\+T, D\+I\+M, N\+N\+O\+D\+E\+\_\+1\+D $>$}
+
+2D Biharmonic problem. 
+
+Definition at line 1174 of file unstructured\+\_\+2d\+\_\+biharmonic\+\_\+curvedelement.\+cc.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classMyBiharmonicProblem_ab894abf54210a71c3b4e00e1b30e380e}\label{classMyBiharmonicProblem_ab894abf54210a71c3b4e00e1b30e380e}} 
+\index{My\+Biharmonic\+Problem@{My\+Biharmonic\+Problem}!My\+Biharmonic\+Problem@{My\+Biharmonic\+Problem}}
+\index{My\+Biharmonic\+Problem@{My\+Biharmonic\+Problem}!My\+Biharmonic\+Problem@{My\+Biharmonic\+Problem}}
+\subsubsection{\texorpdfstring{My\+Biharmonic\+Problem()}{MyBiharmonicProblem()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT , unsigned D\+IM, unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+\hyperlink{classMyBiharmonicProblem}{My\+Biharmonic\+Problem}$<$ E\+L\+E\+M\+E\+NT, D\+IM, N\+N\+O\+D\+E\+\_\+1D $>$\+::\hyperlink{classMyBiharmonicProblem}{My\+Biharmonic\+Problem} (\begin{DoxyParamCaption}\item[{typename \hyperlink{classoomph_1_1MyBiharmonicEquations}{My\+Biharmonic\+Equations}$<$ D\+IM, N\+N\+O\+D\+E\+\_\+1D $>$\+::Source\+Fct\+Pt}]{source\+\_\+fct\+\_\+pt,  }\item[{typename \hyperlink{classoomph_1_1MyBiharmonicEquations}{My\+Biharmonic\+Equations}$<$ D\+IM, N\+N\+O\+D\+E\+\_\+1D $>$\+::Exact\+Soln\+Pt}]{exact\+\_\+pt,  }\item[{const string \&}]{node\+\_\+file\+\_\+name,  }\item[{const string \&}]{element\+\_\+file\+\_\+name,  }\item[{const string \&}]{poly\+\_\+file\+\_\+name }\end{DoxyParamCaption})}
+
+
+
+Constructor\+: Pass number of elements and pointer to source function. 
+
+Constructor for 2D Biharmonic problem. Discretise the 2D domain with n\+\_\+element elements of type E\+L\+E\+M\+E\+NT. Specify function pointer to source function. 
+
+Definition at line 1226 of file unstructured\+\_\+2d\+\_\+biharmonic\+\_\+curvedelement.\+cc.
+
+\mbox{\Hypertarget{classMyBiharmonicProblem_ad6d1bdce803ec5fd13bf6b0e3b1f3ca9}\label{classMyBiharmonicProblem_ad6d1bdce803ec5fd13bf6b0e3b1f3ca9}} 
+\index{My\+Biharmonic\+Problem@{My\+Biharmonic\+Problem}!````~My\+Biharmonic\+Problem@{$\sim$\+My\+Biharmonic\+Problem}}
+\index{````~My\+Biharmonic\+Problem@{$\sim$\+My\+Biharmonic\+Problem}!My\+Biharmonic\+Problem@{My\+Biharmonic\+Problem}}
+\subsubsection{\texorpdfstring{$\sim$\+My\+Biharmonic\+Problem()}{~MyBiharmonicProblem()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT, unsigned D\+IM, unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+\hyperlink{classMyBiharmonicProblem}{My\+Biharmonic\+Problem}$<$ E\+L\+E\+M\+E\+NT, D\+IM, N\+N\+O\+D\+E\+\_\+1D $>$\+::$\sim$\hyperlink{classMyBiharmonicProblem}{My\+Biharmonic\+Problem} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Destructor (empty) 
+
+
+
+Definition at line 1186 of file unstructured\+\_\+2d\+\_\+biharmonic\+\_\+curvedelement.\+cc.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classMyBiharmonicProblem_a0600c4a7dff6f362b6171c66e07b594c}\label{classMyBiharmonicProblem_a0600c4a7dff6f362b6171c66e07b594c}} 
+\index{My\+Biharmonic\+Problem@{My\+Biharmonic\+Problem}!actions\+\_\+after\+\_\+newton\+\_\+solve@{actions\+\_\+after\+\_\+newton\+\_\+solve}}
+\index{actions\+\_\+after\+\_\+newton\+\_\+solve@{actions\+\_\+after\+\_\+newton\+\_\+solve}!My\+Biharmonic\+Problem@{My\+Biharmonic\+Problem}}
+\subsubsection{\texorpdfstring{actions\+\_\+after\+\_\+newton\+\_\+solve()}{actions\_after\_newton\_solve()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT, unsigned D\+IM, unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+void \hyperlink{classMyBiharmonicProblem}{My\+Biharmonic\+Problem}$<$ E\+L\+E\+M\+E\+NT, D\+IM, N\+N\+O\+D\+E\+\_\+1D $>$\+::actions\+\_\+after\+\_\+newton\+\_\+solve (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Update the problem specs after solve (empty) 
+
+
+
+Definition at line 1196 of file unstructured\+\_\+2d\+\_\+biharmonic\+\_\+curvedelement.\+cc.
+
+\mbox{\Hypertarget{classMyBiharmonicProblem_ae9a9d6db2c84c3cc12138558b60d676d}\label{classMyBiharmonicProblem_ae9a9d6db2c84c3cc12138558b60d676d}} 
+\index{My\+Biharmonic\+Problem@{My\+Biharmonic\+Problem}!actions\+\_\+before\+\_\+newton\+\_\+solve@{actions\+\_\+before\+\_\+newton\+\_\+solve}}
+\index{actions\+\_\+before\+\_\+newton\+\_\+solve@{actions\+\_\+before\+\_\+newton\+\_\+solve}!My\+Biharmonic\+Problem@{My\+Biharmonic\+Problem}}
+\subsubsection{\texorpdfstring{actions\+\_\+before\+\_\+newton\+\_\+solve()}{actions\_before\_newton\_solve()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT , unsigned D\+IM, unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+void \hyperlink{classMyBiharmonicProblem}{My\+Biharmonic\+Problem}$<$ E\+L\+E\+M\+E\+NT, D\+IM, N\+N\+O\+D\+E\+\_\+1D $>$\+::actions\+\_\+before\+\_\+newton\+\_\+solve (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Update the problem specs before solve\+: (Re)set boundary conditions. 
+
+Update the problem specs before solve\+: (Re)set boundary values from the exact solution. 
+
+Definition at line 1502 of file unstructured\+\_\+2d\+\_\+biharmonic\+\_\+curvedelement.\+cc.
+
+
+
+References Physical\+\_\+\+Variables\+::get\+\_\+exact\+\_\+u().
+
+\mbox{\Hypertarget{classMyBiharmonicProblem_aa1c9d6b8298b2b78f5df9343349ecd70}\label{classMyBiharmonicProblem_aa1c9d6b8298b2b78f5df9343349ecd70}} 
+\index{My\+Biharmonic\+Problem@{My\+Biharmonic\+Problem}!doc\+\_\+solution@{doc\+\_\+solution}}
+\index{doc\+\_\+solution@{doc\+\_\+solution}!My\+Biharmonic\+Problem@{My\+Biharmonic\+Problem}}
+\subsubsection{\texorpdfstring{doc\+\_\+solution()}{doc\_solution()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT , unsigned D\+IM, unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+void \hyperlink{classMyBiharmonicProblem}{My\+Biharmonic\+Problem}$<$ E\+L\+E\+M\+E\+NT, D\+IM, N\+N\+O\+D\+E\+\_\+1D $>$\+::doc\+\_\+solution (\begin{DoxyParamCaption}\item[{Doc\+Info \&}]{doc\+\_\+info }\end{DoxyParamCaption})}
+
+
+
+Doc the solution, pass the number of the case considered, so that output files can be distinguished. 
+
+Doc the solution in tecplot format. Label files with label. 
+
+Definition at line 1542 of file unstructured\+\_\+2d\+\_\+biharmonic\+\_\+curvedelement.\+cc.
+
+
+
+References Physical\+\_\+\+Variables\+::get\+\_\+exact\+\_\+u().
+
+
+
+Referenced by main().
+
+\mbox{\Hypertarget{classMyBiharmonicProblem_a40167119fb35b4926185b7adc23a6358}\label{classMyBiharmonicProblem_a40167119fb35b4926185b7adc23a6358}} 
+\index{My\+Biharmonic\+Problem@{My\+Biharmonic\+Problem}!nodal\+\_\+permutation@{nodal\+\_\+permutation}}
+\index{nodal\+\_\+permutation@{nodal\+\_\+permutation}!My\+Biharmonic\+Problem@{My\+Biharmonic\+Problem}}
+\subsubsection{\texorpdfstring{nodal\+\_\+permutation()}{nodal\_permutation()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT , unsigned D\+IM, unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+void \hyperlink{classMyBiharmonicProblem}{My\+Biharmonic\+Problem}$<$ E\+L\+E\+M\+E\+NT, D\+IM, N\+N\+O\+D\+E\+\_\+1D $>$\+::nodal\+\_\+permutation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Perform a nodal permutation in curved elements. 
+
+Update the nodal permutation in curved elements\+: (Re)assign coordinates so that the first and the second nodes are associated with the lower and upper position on a boundary, respectively. The third node is off-\/boundary node. Permutation just for the curved elements 
+
+Definition at line 1359 of file unstructured\+\_\+2d\+\_\+biharmonic\+\_\+curvedelement.\+cc.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classMyBiharmonicProblem_a9f681412ab2041bf3ddcd668ee816362}\label{classMyBiharmonicProblem_a9f681412ab2041bf3ddcd668ee816362}} 
+\index{My\+Biharmonic\+Problem@{My\+Biharmonic\+Problem}!Exact\+\_\+soln\+\_\+pt@{Exact\+\_\+soln\+\_\+pt}}
+\index{Exact\+\_\+soln\+\_\+pt@{Exact\+\_\+soln\+\_\+pt}!My\+Biharmonic\+Problem@{My\+Biharmonic\+Problem}}
+\subsubsection{\texorpdfstring{Exact\+\_\+soln\+\_\+pt}{Exact\_soln\_pt}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT, unsigned D\+IM, unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+\hyperlink{classoomph_1_1MyBiharmonicEquations}{My\+Biharmonic\+Equations}$<$D\+IM,N\+N\+O\+D\+E\+\_\+1D$>$\+::Exact\+Soln\+Pt \hyperlink{classMyBiharmonicProblem}{My\+Biharmonic\+Problem}$<$ E\+L\+E\+M\+E\+NT, D\+IM, N\+N\+O\+D\+E\+\_\+1D $>$\+::Exact\+\_\+soln\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pointer to the exact solution. 
+
+
+
+Definition at line 1211 of file unstructured\+\_\+2d\+\_\+biharmonic\+\_\+curvedelement.\+cc.
+
+\mbox{\Hypertarget{classMyBiharmonicProblem_a1ba6c64955d32e319db7a7de7807458a}\label{classMyBiharmonicProblem_a1ba6c64955d32e319db7a7de7807458a}} 
+\index{My\+Biharmonic\+Problem@{My\+Biharmonic\+Problem}!Source\+\_\+fct\+\_\+pt@{Source\+\_\+fct\+\_\+pt}}
+\index{Source\+\_\+fct\+\_\+pt@{Source\+\_\+fct\+\_\+pt}!My\+Biharmonic\+Problem@{My\+Biharmonic\+Problem}}
+\subsubsection{\texorpdfstring{Source\+\_\+fct\+\_\+pt}{Source\_fct\_pt}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT, unsigned D\+IM, unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+\hyperlink{classoomph_1_1MyBiharmonicEquations}{My\+Biharmonic\+Equations}$<$D\+IM,N\+N\+O\+D\+E\+\_\+1D$>$\+::Source\+Fct\+Pt \hyperlink{classMyBiharmonicProblem}{My\+Biharmonic\+Problem}$<$ E\+L\+E\+M\+E\+NT, D\+IM, N\+N\+O\+D\+E\+\_\+1D $>$\+::Source\+\_\+fct\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pointer to source function. 
+
+
+
+Definition at line 1208 of file unstructured\+\_\+2d\+\_\+biharmonic\+\_\+curvedelement.\+cc.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{unstructured__2d__biharmonic__curvedelement_8cc}{unstructured\+\_\+2d\+\_\+biharmonic\+\_\+curvedelement.\+cc}\end{DoxyCompactItemize}

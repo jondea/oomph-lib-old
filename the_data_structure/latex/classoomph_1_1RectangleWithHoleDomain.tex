@@ -1,0 +1,313 @@
+\hypertarget{classoomph_1_1RectangleWithHoleDomain}{}\section{oomph\+:\+:Rectangle\+With\+Hole\+Domain Class Reference}
+\label{classoomph_1_1RectangleWithHoleDomain}\index{oomph\+::\+Rectangle\+With\+Hole\+Domain@{oomph\+::\+Rectangle\+With\+Hole\+Domain}}
+
+
+Rectangular domain with circular whole.  
+
+
+
+
+{\ttfamily \#include $<$rectangle\+\_\+with\+\_\+hole\+\_\+domain.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Rectangle\+With\+Hole\+Domain\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classoomph_1_1RectangleWithHoleDomain}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1RectangleWithHoleDomain_a3c685f6d35bb842d50062ccaa63a5486}{Rectangle\+With\+Hole\+Domain} (\hyperlink{classoomph_1_1GeomObject}{Geom\+Object} $\ast$cylinder\+\_\+pt, const double \&length)
+\begin{DoxyCompactList}\small\item\em Constructor. Pass pointer to geometric object that represents the cylinder, the length of the (square) domain. The \hyperlink{classoomph_1_1GeomObject}{Geom\+Object} must be parametrised such that $\zeta \in [0,2\pi]$ sweeps around the circumference in anticlockwise direction. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1RectangleWithHoleDomain_adae7fabe3167ec35c1c0d4af813a4dca}{$\sim$\+Rectangle\+With\+Hole\+Domain} ()
+\begin{DoxyCompactList}\small\item\em Destructor\+: Kill macro elements, why isn\textquotesingle{}t this generic? \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1RectangleWithHoleDomain_a9548ab705821b22c43850b658a893fd8}{linear\+\_\+interpolate} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ left, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ right, const double \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&f)
+\begin{DoxyCompactList}\small\item\em Helper function to interpolate linearly between the \char`\"{}right\char`\"{} and \char`\"{}left\char`\"{} points; $ s \in [-1,1] $. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1RectangleWithHoleDomain_a514085f80059aa9f0cc3334a3cb408c1}{macro\+\_\+element\+\_\+boundary} (const unsigned \&time, const unsigned \&m, const unsigned \&direction, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&f)
+\begin{DoxyCompactList}\small\item\em Parametrisation of macro element boundaries\+: f(s) is the position vector to macro-\/element m\textquotesingle{}s boundary in the specified direction \mbox{[}N/\+S/\+E/W\mbox{]} at the specfied discrete time level (time=0\+: present; time$>$0\+: previous) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \hyperlink{classoomph_1_1RectangleWithHoleDomain_a6926164244a3726aa904023c014e2cf0}{Lower\+\_\+left}
+\begin{DoxyCompactList}\small\item\em Lower left corner of rectangle. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \hyperlink{classoomph_1_1RectangleWithHoleDomain_ab71febd980c61d0c2ba0a76eca053a97}{Lower\+\_\+right}
+\begin{DoxyCompactList}\small\item\em Lower right corner of rectangle. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \hyperlink{classoomph_1_1RectangleWithHoleDomain_aa643600f8269e6037a76832dd0fba0f9}{Lower\+\_\+mid\+\_\+left}
+\begin{DoxyCompactList}\small\item\em Where the \char`\"{}radial\char`\"{} line from circle meets lower boundary on left. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \hyperlink{classoomph_1_1RectangleWithHoleDomain_a9ef86489e71e2f67eec783b460694be2}{Lower\+\_\+mid\+\_\+right}
+\begin{DoxyCompactList}\small\item\em Where the \char`\"{}radial\char`\"{} line from circle meets lower boundary on right. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \hyperlink{classoomph_1_1RectangleWithHoleDomain_a0e5a29a907836dace560edd72a70917d}{Upper\+\_\+left}
+\begin{DoxyCompactList}\small\item\em Upper left corner of rectangle. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \hyperlink{classoomph_1_1RectangleWithHoleDomain_a3bc6d59a004c8fe1b634b43b6665c9b9}{Upper\+\_\+right}
+\begin{DoxyCompactList}\small\item\em Upper right corner of rectangle. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \hyperlink{classoomph_1_1RectangleWithHoleDomain_a025fb05e2f6905e62459ecd45ed389e2}{Upper\+\_\+mid\+\_\+left}
+\begin{DoxyCompactList}\small\item\em Where the \char`\"{}radial\char`\"{} line from circle meets upper boundary on left. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \hyperlink{classoomph_1_1RectangleWithHoleDomain_aa38db31456f7dd847e13d03d96fc99aa}{Upper\+\_\+mid\+\_\+right}
+\begin{DoxyCompactList}\small\item\em Where the \char`\"{}radial\char`\"{} line from circle meets upper boundary on right. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1GeomObject}{Geom\+Object} $\ast$ \hyperlink{classoomph_1_1RectangleWithHoleDomain_a4ca65e1f063e65c4254a594db66fabf8}{Cylinder\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to geometric object that represents the central cylinder. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Rectangular domain with circular whole. 
+
+Definition at line 49 of file rectangle\+\_\+with\+\_\+hole\+\_\+domain.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1RectangleWithHoleDomain_a3c685f6d35bb842d50062ccaa63a5486}\label{classoomph_1_1RectangleWithHoleDomain_a3c685f6d35bb842d50062ccaa63a5486}} 
+\index{oomph\+::\+Rectangle\+With\+Hole\+Domain@{oomph\+::\+Rectangle\+With\+Hole\+Domain}!Rectangle\+With\+Hole\+Domain@{Rectangle\+With\+Hole\+Domain}}
+\index{Rectangle\+With\+Hole\+Domain@{Rectangle\+With\+Hole\+Domain}!oomph\+::\+Rectangle\+With\+Hole\+Domain@{oomph\+::\+Rectangle\+With\+Hole\+Domain}}
+\subsubsection{\texorpdfstring{Rectangle\+With\+Hole\+Domain()}{RectangleWithHoleDomain()}}
+{\footnotesize\ttfamily oomph\+::\+Rectangle\+With\+Hole\+Domain\+::\+Rectangle\+With\+Hole\+Domain (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1GeomObject}{Geom\+Object} $\ast$}]{cylinder\+\_\+pt,  }\item[{const double \&}]{length }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor. Pass pointer to geometric object that represents the cylinder, the length of the (square) domain. The \hyperlink{classoomph_1_1GeomObject}{Geom\+Object} must be parametrised such that $\zeta \in [0,2\pi]$ sweeps around the circumference in anticlockwise direction. 
+
+
+
+Definition at line 60 of file rectangle\+\_\+with\+\_\+hole\+\_\+domain.\+h.
+
+
+
+References i, Lower\+\_\+left, Lower\+\_\+mid\+\_\+left, Lower\+\_\+mid\+\_\+right, Lower\+\_\+right, oomph\+::\+Domain\+::\+Macro\+\_\+element\+\_\+pt, Upper\+\_\+left, Upper\+\_\+mid\+\_\+left, Upper\+\_\+mid\+\_\+right, and Upper\+\_\+right.
+
+\mbox{\Hypertarget{classoomph_1_1RectangleWithHoleDomain_adae7fabe3167ec35c1c0d4af813a4dca}\label{classoomph_1_1RectangleWithHoleDomain_adae7fabe3167ec35c1c0d4af813a4dca}} 
+\index{oomph\+::\+Rectangle\+With\+Hole\+Domain@{oomph\+::\+Rectangle\+With\+Hole\+Domain}!````~Rectangle\+With\+Hole\+Domain@{$\sim$\+Rectangle\+With\+Hole\+Domain}}
+\index{````~Rectangle\+With\+Hole\+Domain@{$\sim$\+Rectangle\+With\+Hole\+Domain}!oomph\+::\+Rectangle\+With\+Hole\+Domain@{oomph\+::\+Rectangle\+With\+Hole\+Domain}}
+\subsubsection{\texorpdfstring{$\sim$\+Rectangle\+With\+Hole\+Domain()}{~RectangleWithHoleDomain()}}
+{\footnotesize\ttfamily oomph\+::\+Rectangle\+With\+Hole\+Domain\+::$\sim$\+Rectangle\+With\+Hole\+Domain (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Destructor\+: Kill macro elements, why isn\textquotesingle{}t this generic? 
+
+
+
+Definition at line 113 of file rectangle\+\_\+with\+\_\+hole\+\_\+domain.\+h.
+
+
+
+References i, and oomph\+::\+Domain\+::\+Macro\+\_\+element\+\_\+pt.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1RectangleWithHoleDomain_a9548ab705821b22c43850b658a893fd8}\label{classoomph_1_1RectangleWithHoleDomain_a9548ab705821b22c43850b658a893fd8}} 
+\index{oomph\+::\+Rectangle\+With\+Hole\+Domain@{oomph\+::\+Rectangle\+With\+Hole\+Domain}!linear\+\_\+interpolate@{linear\+\_\+interpolate}}
+\index{linear\+\_\+interpolate@{linear\+\_\+interpolate}!oomph\+::\+Rectangle\+With\+Hole\+Domain@{oomph\+::\+Rectangle\+With\+Hole\+Domain}}
+\subsubsection{\texorpdfstring{linear\+\_\+interpolate()}{linear\_interpolate()}}
+{\footnotesize\ttfamily void oomph\+::\+Rectangle\+With\+Hole\+Domain\+::linear\+\_\+interpolate (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$}]{left,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$}]{right,  }\item[{const double \&}]{s,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{f }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Helper function to interpolate linearly between the \char`\"{}right\char`\"{} and \char`\"{}left\char`\"{} points; $ s \in [-1,1] $. 
+
+
+
+Definition at line 121 of file rectangle\+\_\+with\+\_\+hole\+\_\+domain.\+h.
+
+
+
+References i.
+
+
+
+Referenced by macro\+\_\+element\+\_\+boundary().
+
+\mbox{\Hypertarget{classoomph_1_1RectangleWithHoleDomain_a514085f80059aa9f0cc3334a3cb408c1}\label{classoomph_1_1RectangleWithHoleDomain_a514085f80059aa9f0cc3334a3cb408c1}} 
+\index{oomph\+::\+Rectangle\+With\+Hole\+Domain@{oomph\+::\+Rectangle\+With\+Hole\+Domain}!macro\+\_\+element\+\_\+boundary@{macro\+\_\+element\+\_\+boundary}}
+\index{macro\+\_\+element\+\_\+boundary@{macro\+\_\+element\+\_\+boundary}!oomph\+::\+Rectangle\+With\+Hole\+Domain@{oomph\+::\+Rectangle\+With\+Hole\+Domain}}
+\subsubsection{\texorpdfstring{macro\+\_\+element\+\_\+boundary()}{macro\_element\_boundary()}}
+{\footnotesize\ttfamily void oomph\+::\+Rectangle\+With\+Hole\+Domain\+::macro\+\_\+element\+\_\+boundary (\begin{DoxyParamCaption}\item[{const unsigned \&}]{time,  }\item[{const unsigned \&}]{m,  }\item[{const unsigned \&}]{direction,  }\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{f }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Parametrisation of macro element boundaries\+: f(s) is the position vector to macro-\/element m\textquotesingle{}s boundary in the specified direction \mbox{[}N/\+S/\+E/W\mbox{]} at the specfied discrete time level (time=0\+: present; time$>$0\+: previous) 
+
+
+
+Implements \hyperlink{classoomph_1_1Domain_a95f3e00d28ea37e6c4d3027bfac91096}{oomph\+::\+Domain}.
+
+
+
+Definition at line 135 of file rectangle\+\_\+with\+\_\+hole\+\_\+domain.\+h.
+
+
+
+References Cylinder\+\_\+pt, oomph\+::\+Quad\+Tree\+Names\+::E, linear\+\_\+interpolate(), Lower\+\_\+mid\+\_\+left, Lower\+\_\+mid\+\_\+right, oomph\+::\+Quad\+Tree\+Names\+::N, oomph\+::\+Geom\+Object\+::position(), oomph\+::\+Quad\+Tree\+Names\+::S, Upper\+\_\+mid\+\_\+left, Upper\+\_\+mid\+\_\+right, and oomph\+::\+Quad\+Tree\+Names\+::W.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1RectangleWithHoleDomain_a4ca65e1f063e65c4254a594db66fabf8}\label{classoomph_1_1RectangleWithHoleDomain_a4ca65e1f063e65c4254a594db66fabf8}} 
+\index{oomph\+::\+Rectangle\+With\+Hole\+Domain@{oomph\+::\+Rectangle\+With\+Hole\+Domain}!Cylinder\+\_\+pt@{Cylinder\+\_\+pt}}
+\index{Cylinder\+\_\+pt@{Cylinder\+\_\+pt}!oomph\+::\+Rectangle\+With\+Hole\+Domain@{oomph\+::\+Rectangle\+With\+Hole\+Domain}}
+\subsubsection{\texorpdfstring{Cylinder\+\_\+pt}{Cylinder\_pt}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1GeomObject}{Geom\+Object}$\ast$ oomph\+::\+Rectangle\+With\+Hole\+Domain\+::\+Cylinder\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pointer to geometric object that represents the central cylinder. 
+
+
+
+Definition at line 348 of file rectangle\+\_\+with\+\_\+hole\+\_\+domain.\+h.
+
+
+
+Referenced by macro\+\_\+element\+\_\+boundary().
+
+\mbox{\Hypertarget{classoomph_1_1RectangleWithHoleDomain_a6926164244a3726aa904023c014e2cf0}\label{classoomph_1_1RectangleWithHoleDomain_a6926164244a3726aa904023c014e2cf0}} 
+\index{oomph\+::\+Rectangle\+With\+Hole\+Domain@{oomph\+::\+Rectangle\+With\+Hole\+Domain}!Lower\+\_\+left@{Lower\+\_\+left}}
+\index{Lower\+\_\+left@{Lower\+\_\+left}!oomph\+::\+Rectangle\+With\+Hole\+Domain@{oomph\+::\+Rectangle\+With\+Hole\+Domain}}
+\subsubsection{\texorpdfstring{Lower\+\_\+left}{Lower\_left}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1Vector}{Vector}$<$double$>$ oomph\+::\+Rectangle\+With\+Hole\+Domain\+::\+Lower\+\_\+left\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Lower left corner of rectangle. 
+
+
+
+Definition at line 324 of file rectangle\+\_\+with\+\_\+hole\+\_\+domain.\+h.
+
+
+
+Referenced by Rectangle\+With\+Hole\+Domain().
+
+\mbox{\Hypertarget{classoomph_1_1RectangleWithHoleDomain_aa643600f8269e6037a76832dd0fba0f9}\label{classoomph_1_1RectangleWithHoleDomain_aa643600f8269e6037a76832dd0fba0f9}} 
+\index{oomph\+::\+Rectangle\+With\+Hole\+Domain@{oomph\+::\+Rectangle\+With\+Hole\+Domain}!Lower\+\_\+mid\+\_\+left@{Lower\+\_\+mid\+\_\+left}}
+\index{Lower\+\_\+mid\+\_\+left@{Lower\+\_\+mid\+\_\+left}!oomph\+::\+Rectangle\+With\+Hole\+Domain@{oomph\+::\+Rectangle\+With\+Hole\+Domain}}
+\subsubsection{\texorpdfstring{Lower\+\_\+mid\+\_\+left}{Lower\_mid\_left}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1Vector}{Vector}$<$double$>$ oomph\+::\+Rectangle\+With\+Hole\+Domain\+::\+Lower\+\_\+mid\+\_\+left\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Where the \char`\"{}radial\char`\"{} line from circle meets lower boundary on left. 
+
+
+
+Definition at line 330 of file rectangle\+\_\+with\+\_\+hole\+\_\+domain.\+h.
+
+
+
+Referenced by macro\+\_\+element\+\_\+boundary(), and Rectangle\+With\+Hole\+Domain().
+
+\mbox{\Hypertarget{classoomph_1_1RectangleWithHoleDomain_a9ef86489e71e2f67eec783b460694be2}\label{classoomph_1_1RectangleWithHoleDomain_a9ef86489e71e2f67eec783b460694be2}} 
+\index{oomph\+::\+Rectangle\+With\+Hole\+Domain@{oomph\+::\+Rectangle\+With\+Hole\+Domain}!Lower\+\_\+mid\+\_\+right@{Lower\+\_\+mid\+\_\+right}}
+\index{Lower\+\_\+mid\+\_\+right@{Lower\+\_\+mid\+\_\+right}!oomph\+::\+Rectangle\+With\+Hole\+Domain@{oomph\+::\+Rectangle\+With\+Hole\+Domain}}
+\subsubsection{\texorpdfstring{Lower\+\_\+mid\+\_\+right}{Lower\_mid\_right}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1Vector}{Vector}$<$double$>$ oomph\+::\+Rectangle\+With\+Hole\+Domain\+::\+Lower\+\_\+mid\+\_\+right\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Where the \char`\"{}radial\char`\"{} line from circle meets lower boundary on right. 
+
+
+
+Definition at line 333 of file rectangle\+\_\+with\+\_\+hole\+\_\+domain.\+h.
+
+
+
+Referenced by macro\+\_\+element\+\_\+boundary(), and Rectangle\+With\+Hole\+Domain().
+
+\mbox{\Hypertarget{classoomph_1_1RectangleWithHoleDomain_ab71febd980c61d0c2ba0a76eca053a97}\label{classoomph_1_1RectangleWithHoleDomain_ab71febd980c61d0c2ba0a76eca053a97}} 
+\index{oomph\+::\+Rectangle\+With\+Hole\+Domain@{oomph\+::\+Rectangle\+With\+Hole\+Domain}!Lower\+\_\+right@{Lower\+\_\+right}}
+\index{Lower\+\_\+right@{Lower\+\_\+right}!oomph\+::\+Rectangle\+With\+Hole\+Domain@{oomph\+::\+Rectangle\+With\+Hole\+Domain}}
+\subsubsection{\texorpdfstring{Lower\+\_\+right}{Lower\_right}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1Vector}{Vector}$<$double$>$ oomph\+::\+Rectangle\+With\+Hole\+Domain\+::\+Lower\+\_\+right\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Lower right corner of rectangle. 
+
+
+
+Definition at line 327 of file rectangle\+\_\+with\+\_\+hole\+\_\+domain.\+h.
+
+
+
+Referenced by Rectangle\+With\+Hole\+Domain().
+
+\mbox{\Hypertarget{classoomph_1_1RectangleWithHoleDomain_a0e5a29a907836dace560edd72a70917d}\label{classoomph_1_1RectangleWithHoleDomain_a0e5a29a907836dace560edd72a70917d}} 
+\index{oomph\+::\+Rectangle\+With\+Hole\+Domain@{oomph\+::\+Rectangle\+With\+Hole\+Domain}!Upper\+\_\+left@{Upper\+\_\+left}}
+\index{Upper\+\_\+left@{Upper\+\_\+left}!oomph\+::\+Rectangle\+With\+Hole\+Domain@{oomph\+::\+Rectangle\+With\+Hole\+Domain}}
+\subsubsection{\texorpdfstring{Upper\+\_\+left}{Upper\_left}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1Vector}{Vector}$<$double$>$ oomph\+::\+Rectangle\+With\+Hole\+Domain\+::\+Upper\+\_\+left\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Upper left corner of rectangle. 
+
+
+
+Definition at line 336 of file rectangle\+\_\+with\+\_\+hole\+\_\+domain.\+h.
+
+
+
+Referenced by Rectangle\+With\+Hole\+Domain().
+
+\mbox{\Hypertarget{classoomph_1_1RectangleWithHoleDomain_a025fb05e2f6905e62459ecd45ed389e2}\label{classoomph_1_1RectangleWithHoleDomain_a025fb05e2f6905e62459ecd45ed389e2}} 
+\index{oomph\+::\+Rectangle\+With\+Hole\+Domain@{oomph\+::\+Rectangle\+With\+Hole\+Domain}!Upper\+\_\+mid\+\_\+left@{Upper\+\_\+mid\+\_\+left}}
+\index{Upper\+\_\+mid\+\_\+left@{Upper\+\_\+mid\+\_\+left}!oomph\+::\+Rectangle\+With\+Hole\+Domain@{oomph\+::\+Rectangle\+With\+Hole\+Domain}}
+\subsubsection{\texorpdfstring{Upper\+\_\+mid\+\_\+left}{Upper\_mid\_left}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1Vector}{Vector}$<$double$>$ oomph\+::\+Rectangle\+With\+Hole\+Domain\+::\+Upper\+\_\+mid\+\_\+left\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Where the \char`\"{}radial\char`\"{} line from circle meets upper boundary on left. 
+
+
+
+Definition at line 342 of file rectangle\+\_\+with\+\_\+hole\+\_\+domain.\+h.
+
+
+
+Referenced by macro\+\_\+element\+\_\+boundary(), and Rectangle\+With\+Hole\+Domain().
+
+\mbox{\Hypertarget{classoomph_1_1RectangleWithHoleDomain_aa38db31456f7dd847e13d03d96fc99aa}\label{classoomph_1_1RectangleWithHoleDomain_aa38db31456f7dd847e13d03d96fc99aa}} 
+\index{oomph\+::\+Rectangle\+With\+Hole\+Domain@{oomph\+::\+Rectangle\+With\+Hole\+Domain}!Upper\+\_\+mid\+\_\+right@{Upper\+\_\+mid\+\_\+right}}
+\index{Upper\+\_\+mid\+\_\+right@{Upper\+\_\+mid\+\_\+right}!oomph\+::\+Rectangle\+With\+Hole\+Domain@{oomph\+::\+Rectangle\+With\+Hole\+Domain}}
+\subsubsection{\texorpdfstring{Upper\+\_\+mid\+\_\+right}{Upper\_mid\_right}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1Vector}{Vector}$<$double$>$ oomph\+::\+Rectangle\+With\+Hole\+Domain\+::\+Upper\+\_\+mid\+\_\+right\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Where the \char`\"{}radial\char`\"{} line from circle meets upper boundary on right. 
+
+
+
+Definition at line 345 of file rectangle\+\_\+with\+\_\+hole\+\_\+domain.\+h.
+
+
+
+Referenced by macro\+\_\+element\+\_\+boundary(), and Rectangle\+With\+Hole\+Domain().
+
+\mbox{\Hypertarget{classoomph_1_1RectangleWithHoleDomain_a3bc6d59a004c8fe1b634b43b6665c9b9}\label{classoomph_1_1RectangleWithHoleDomain_a3bc6d59a004c8fe1b634b43b6665c9b9}} 
+\index{oomph\+::\+Rectangle\+With\+Hole\+Domain@{oomph\+::\+Rectangle\+With\+Hole\+Domain}!Upper\+\_\+right@{Upper\+\_\+right}}
+\index{Upper\+\_\+right@{Upper\+\_\+right}!oomph\+::\+Rectangle\+With\+Hole\+Domain@{oomph\+::\+Rectangle\+With\+Hole\+Domain}}
+\subsubsection{\texorpdfstring{Upper\+\_\+right}{Upper\_right}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1Vector}{Vector}$<$double$>$ oomph\+::\+Rectangle\+With\+Hole\+Domain\+::\+Upper\+\_\+right\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Upper right corner of rectangle. 
+
+
+
+Definition at line 339 of file rectangle\+\_\+with\+\_\+hole\+\_\+domain.\+h.
+
+
+
+Referenced by Rectangle\+With\+Hole\+Domain().
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{rectangle__with__hole__domain_8h}{rectangle\+\_\+with\+\_\+hole\+\_\+domain.\+h}\end{DoxyCompactItemize}

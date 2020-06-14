@@ -1,0 +1,520 @@
+\hypertarget{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement}{}\section{oomph\+:\+:Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element$<$ D\+IM $>$ Class Template Reference}
+\label{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement}\index{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element$<$ D\+I\+M $>$@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element$<$ D\+I\+M $>$}}
+
+
+{\ttfamily \#include $<$generalised\+\_\+newtonian\+\_\+refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element$<$ D\+IM $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=0.717029cm]{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_a9f535663f1439f9da8be4dc0e888da07}{Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_a9b84c1c9ffa3262c0bb3c4762eebb3f5}{required\+\_\+nvalue} (const unsigned \&n) const
+\begin{DoxyCompactList}\small\item\em Number of values required at local node n. In order to simplify matters, we allocate storage for pressure variables at all the nodes and then pin those that are not used. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_a010adb919ba9b8850e5f586467777052}{ncont\+\_\+interpolated\+\_\+values} () const
+\begin{DoxyCompactList}\small\item\em Number of continuously interpolated values\+: (D\+IM velocities + 1 pressure) \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_a356391ebd65c493cc40bf1df0749047a}{rebuild\+\_\+from\+\_\+sons} (\hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$\&mesh\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Rebuild from sons\+: empty. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_ab162e59c24eff8cce5e43ce30c537efc}{nrecovery\+\_\+order} ()
+\begin{DoxyCompactList}\small\item\em Order of recovery shape functions for Z2 error estimation\+: Same order as shape functions. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_a23fd2cabf9e407ed4d134f9af2208a70}{nvertex\+\_\+node} () const
+\begin{DoxyCompactList}\small\item\em Number of vertex nodes in the element. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Node}{Node} $\ast$ \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_aff468e174668cbc2f30c420ec5d2a52b}{vertex\+\_\+node\+\_\+pt} (const unsigned \&j) const
+\begin{DoxyCompactList}\small\item\em Pointer to the j-\/th vertex node in the element. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_ab3951f1b651181efd1eac3221939b0ca}{get\+\_\+interpolated\+\_\+values} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&values)
+\begin{DoxyCompactList}\small\item\em Get the function value u in \hyperlink{classoomph_1_1Vector}{Vector}. Note\+: Given the generality of the interface (this function is usually called from black-\/box documentation or interpolation routines), the values \hyperlink{classoomph_1_1Vector}{Vector} sets its own size in here. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_a268e35d957a20409a230d53d9d05442d}{get\+\_\+interpolated\+\_\+values} (const unsigned \&\hyperlink{cfortran_8h_af6f0bd3dc13317f895c91323c25c2b8f}{t}, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&values)
+\begin{DoxyCompactList}\small\item\em Get the function value u in \hyperlink{classoomph_1_1Vector}{Vector}. Note\+: Given the generality of the interface (this function is usually called from black-\/box documentation or interpolation routines), the values \hyperlink{classoomph_1_1Vector}{Vector} sets its own size in here. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_a1b26f16b86c5d72d9da4bf2c2b7741d0}{further\+\_\+setup\+\_\+hanging\+\_\+nodes} ()
+\begin{DoxyCompactList}\small\item\em Perform additional hanging node procedures for variables that are not interpolated by all nodes. The pressures are stored at the p\+\_\+nodal\+\_\+index\+\_\+nst-\/th location in each node. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Node}{Node} $\ast$ \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_a464263e4f629fd72b8b97329eb0a2194}{pressure\+\_\+node\+\_\+pt} (const unsigned \&n\+\_\+p)
+\begin{DoxyCompactList}\small\item\em Pointer to n\+\_\+p-\/th pressure node. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Node}{Node} $\ast$ \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_a698043f19ce65cb9a8cc85bc816ccd7d}{interpolating\+\_\+node\+\_\+pt} (const unsigned \&n, const int \&value\+\_\+id)
+\begin{DoxyCompactList}\small\item\em The velocities are isoparametric and so the \char`\"{}nodes\char`\"{} interpolating the velocities are the geometric nodes. The pressure \char`\"{}nodes\char`\"{} are a subset of the nodes, so when value\+\_\+id==D\+IM, the n-\/th pressure node is returned. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_ae5eda68a83a1e61082f813c7500b698c}{local\+\_\+one\+\_\+d\+\_\+fraction\+\_\+of\+\_\+interpolating\+\_\+node} (const unsigned \&n1d, const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}, const int \&value\+\_\+id)
+\begin{DoxyCompactList}\small\item\em The pressure nodes are the corner nodes, so when n\+\_\+value==D\+IM, the fraction is the same as the 1d node number, 0 or 1. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Node}{Node} $\ast$ \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_a0766216e91d89a8459e650b6b5a72f2c}{get\+\_\+interpolating\+\_\+node\+\_\+at\+\_\+local\+\_\+coordinate} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, const int \&value\+\_\+id)
+\begin{DoxyCompactList}\small\item\em The velocity nodes are the same as the geometric nodes. The pressure nodes must be calculated by using the same methods as the geometric nodes, but by recalling that there are only two pressure nodes per edge. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_accecb785cec4dd63c6e4b1804c1697a5}{ninterpolating\+\_\+node\+\_\+1d} (const int \&value\+\_\+id)
+\begin{DoxyCompactList}\small\item\em The number of 1d pressure nodes is 2, the number of 1d velocity nodes is the same as the number of 1d geometric nodes. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_a074d030db713c63e1077446d0bab5c1a}{ninterpolating\+\_\+node} (const int \&value\+\_\+id)
+\begin{DoxyCompactList}\small\item\em The number of pressure nodes is 2$^\wedge$\+D\+IM. The number of velocity nodes is the same as the number of geometric nodes. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_ae0ff45825430e85d615efd287f4a5d6b}{interpolating\+\_\+basis} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Shape}{Shape} \&psi, const int \&value\+\_\+id) const
+\begin{DoxyCompactList}\small\item\em The basis interpolating the pressure is given by pshape(). / The basis interpolating the velocity is \hyperlink{classoomph_1_1FiniteElement_a58a25b6859ddd43b7bfe64a19fee5023}{shape()}. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_a1ac7edfbc1114f039d4ed73ad9234be3}{identify\+\_\+load\+\_\+data} (std\+::set$<$ std\+::pair$<$ \hyperlink{classoomph_1_1Data}{Data} $\ast$, unsigned $>$ $>$ \&paired\+\_\+load\+\_\+data)
+\begin{DoxyCompactList}\small\item\em Add to the set {\ttfamily paired\+\_\+load\+\_\+data} pairs containing. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_aab4ac8ef8f49d09cd1a32e292e0ca621}{unpin\+\_\+elemental\+\_\+pressure\+\_\+dofs} ()
+\begin{DoxyCompactList}\small\item\em Unpin all pressure dofs. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_a809f295d07ea41ff6a71cf15ffb82692}{pin\+\_\+elemental\+\_\+redundant\+\_\+nodal\+\_\+pressure\+\_\+dofs} ()
+\begin{DoxyCompactList}\small\item\em Pin all nodal pressure dofs that are not required. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$unsigned D\+IM$>$\newline
+class oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element$<$ D\+I\+M $>$}
+
+Refineable version of Taylor Hood elements. These classes can be written in total generality. 
+
+Definition at line 387 of file generalised\+\_\+newtonian\+\_\+refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_a9f535663f1439f9da8be4dc0e888da07}\label{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_a9f535663f1439f9da8be4dc0e888da07}} 
+\index{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}!Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element@{Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}}
+\index{Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element@{Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}!oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}}
+\subsubsection{\texorpdfstring{Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element()}{RefineableGeneralisedNewtonianQTaylorHoodElement()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+\hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}$<$ D\+IM $>$\+::\hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement}{Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor. 
+
+
+
+Definition at line 427 of file generalised\+\_\+newtonian\+\_\+refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_a1b26f16b86c5d72d9da4bf2c2b7741d0}\label{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_a1b26f16b86c5d72d9da4bf2c2b7741d0}} 
+\index{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}!further\+\_\+setup\+\_\+hanging\+\_\+nodes@{further\+\_\+setup\+\_\+hanging\+\_\+nodes}}
+\index{further\+\_\+setup\+\_\+hanging\+\_\+nodes@{further\+\_\+setup\+\_\+hanging\+\_\+nodes}!oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}}
+\subsubsection{\texorpdfstring{further\+\_\+setup\+\_\+hanging\+\_\+nodes()}{further\_setup\_hanging\_nodes()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}$<$ D\+IM $>$\+::further\+\_\+setup\+\_\+hanging\+\_\+nodes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Perform additional hanging node procedures for variables that are not interpolated by all nodes. The pressures are stored at the p\+\_\+nodal\+\_\+index\+\_\+nst-\/th location in each node. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1RefineableElement_a86ea01c485f7ff822dce74b884312ccb}{oomph\+::\+Refineable\+Element}.
+
+
+
+Definition at line 512 of file generalised\+\_\+newtonian\+\_\+refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::p\+\_\+nodal\+\_\+index\+\_\+nst().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_ab3951f1b651181efd1eac3221939b0ca}\label{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_ab3951f1b651181efd1eac3221939b0ca}} 
+\index{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}!get\+\_\+interpolated\+\_\+values@{get\+\_\+interpolated\+\_\+values}}
+\index{get\+\_\+interpolated\+\_\+values@{get\+\_\+interpolated\+\_\+values}!oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}}
+\subsubsection{\texorpdfstring{get\+\_\+interpolated\+\_\+values()}{get\_interpolated\_values()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}$<$ D\+IM $>$\+::get\+\_\+interpolated\+\_\+values (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{values }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get the function value u in \hyperlink{classoomph_1_1Vector}{Vector}. Note\+: Given the generality of the interface (this function is usually called from black-\/box documentation or interpolation routines), the values \hyperlink{classoomph_1_1Vector}{Vector} sets its own size in here. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1RefineableElement_ad9a4f92880668a2373326d8306365c43}{oomph\+::\+Refineable\+Element}.
+
+
+
+Definition at line 460 of file generalised\+\_\+newtonian\+\_\+refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References i, oomph\+::\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::interpolated\+\_\+p\+\_\+nst(), and oomph\+::\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::interpolated\+\_\+u\+\_\+nst().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_a268e35d957a20409a230d53d9d05442d}\label{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_a268e35d957a20409a230d53d9d05442d}} 
+\index{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}!get\+\_\+interpolated\+\_\+values@{get\+\_\+interpolated\+\_\+values}}
+\index{get\+\_\+interpolated\+\_\+values@{get\+\_\+interpolated\+\_\+values}!oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}}
+\subsubsection{\texorpdfstring{get\+\_\+interpolated\+\_\+values()}{get\_interpolated\_values()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}$<$ D\+IM $>$\+::get\+\_\+interpolated\+\_\+values (\begin{DoxyParamCaption}\item[{const unsigned \&}]{t,  }\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{values }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get the function value u in \hyperlink{classoomph_1_1Vector}{Vector}. Note\+: Given the generality of the interface (this function is usually called from black-\/box documentation or interpolation routines), the values \hyperlink{classoomph_1_1Vector}{Vector} sets its own size in here. 
+
+
+
+Implements \hyperlink{classoomph_1_1RefineableElement_ada6f0efe831ffefb1d2829ce01d45bfc}{oomph\+::\+Refineable\+Element}.
+
+
+
+Definition at line 476 of file generalised\+\_\+newtonian\+\_\+refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References i, oomph\+::\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::interpolated\+\_\+p\+\_\+nst(), oomph\+::\+Finite\+Element\+::nnode(), oomph\+::\+Finite\+Element\+::nodal\+\_\+value(), oomph\+::\+Finite\+Element\+::shape(), and oomph\+::\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::u\+\_\+index\+\_\+nst().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_a0766216e91d89a8459e650b6b5a72f2c}\label{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_a0766216e91d89a8459e650b6b5a72f2c}} 
+\index{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}!get\+\_\+interpolating\+\_\+node\+\_\+at\+\_\+local\+\_\+coordinate@{get\+\_\+interpolating\+\_\+node\+\_\+at\+\_\+local\+\_\+coordinate}}
+\index{get\+\_\+interpolating\+\_\+node\+\_\+at\+\_\+local\+\_\+coordinate@{get\+\_\+interpolating\+\_\+node\+\_\+at\+\_\+local\+\_\+coordinate}!oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}}
+\subsubsection{\texorpdfstring{get\+\_\+interpolating\+\_\+node\+\_\+at\+\_\+local\+\_\+coordinate()}{get\_interpolating\_node\_at\_local\_coordinate()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+\hyperlink{classoomph_1_1Node}{Node}$\ast$ \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}$<$ D\+IM $>$\+::get\+\_\+interpolating\+\_\+node\+\_\+at\+\_\+local\+\_\+coordinate (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{const int \&}]{value\+\_\+id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+The velocity nodes are the same as the geometric nodes. The pressure nodes must be calculated by using the same methods as the geometric nodes, but by recalling that there are only two pressure nodes per edge. 
+
+Construct the general pressure index from the components. 
+
+Reimplemented from \hyperlink{classoomph_1_1RefineableElement_ad920e66c00888c450f926f08c7793f78}{oomph\+::\+Refineable\+Element}.
+
+
+
+Definition at line 557 of file generalised\+\_\+newtonian\+\_\+refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Finite\+Element\+::get\+\_\+node\+\_\+at\+\_\+local\+\_\+coordinate(), i, oomph\+::\+Finite\+Element\+::\+Node\+\_\+location\+\_\+tolerance, and oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::pressure\+\_\+node\+\_\+pt().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_a1ac7edfbc1114f039d4ed73ad9234be3}\label{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_a1ac7edfbc1114f039d4ed73ad9234be3}} 
+\index{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}!identify\+\_\+load\+\_\+data@{identify\+\_\+load\+\_\+data}}
+\index{identify\+\_\+load\+\_\+data@{identify\+\_\+load\+\_\+data}!oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}}
+\subsubsection{\texorpdfstring{identify\+\_\+load\+\_\+data()}{identify\_load\_data()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}$<$ D\+IM $>$\+::identify\+\_\+load\+\_\+data (\begin{DoxyParamCaption}\item[{std\+::set$<$ std\+::pair$<$ \hyperlink{classoomph_1_1Data}{Data} $\ast$, unsigned $>$ $>$ \&}]{paired\+\_\+load\+\_\+data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Add to the set {\ttfamily paired\+\_\+load\+\_\+data} pairs containing. 
+
+
+\begin{DoxyItemize}
+\item the pointer to a \hyperlink{classoomph_1_1Data}{Data} object and
+\item the index of the value in that \hyperlink{classoomph_1_1Data}{Data} object
+\end{DoxyItemize}for all values (pressures, velocities) that affect the load computed in the {\ttfamily get\+\_\+load}(...) function. (Overloads non-\/refineable version and takes hanging nodes into account) 
+
+Reimplemented from \hyperlink{classoomph_1_1GeneralisedNewtonianQTaylorHoodElement_a93fa12a6111a676cb6e7ac2528266d07}{oomph\+::\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element$<$ D\+I\+M $>$}.
+
+
+
+Definition at line 652 of file generalised\+\_\+newtonian\+\_\+refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Node\+::hanging\+\_\+pt(), i, oomph\+::\+Node\+::is\+\_\+hanging(), oomph\+::\+Hang\+Info\+::master\+\_\+node\+\_\+pt(), oomph\+::\+Hang\+Info\+::nmaster(), oomph\+::\+Finite\+Element\+::nnode(), oomph\+::\+Finite\+Element\+::node\+\_\+pt(), oomph\+::\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::npres\+\_\+nst(), oomph\+::\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::p\+\_\+nodal\+\_\+index\+\_\+nst(), oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::pressure\+\_\+node\+\_\+pt(), and oomph\+::\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::u\+\_\+index\+\_\+nst().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_ae0ff45825430e85d615efd287f4a5d6b}\label{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_ae0ff45825430e85d615efd287f4a5d6b}} 
+\index{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}!interpolating\+\_\+basis@{interpolating\+\_\+basis}}
+\index{interpolating\+\_\+basis@{interpolating\+\_\+basis}!oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}}
+\subsubsection{\texorpdfstring{interpolating\+\_\+basis()}{interpolating\_basis()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}$<$ D\+IM $>$\+::interpolating\+\_\+basis (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi,  }\item[{const int \&}]{value\+\_\+id }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+The basis interpolating the pressure is given by pshape(). / The basis interpolating the velocity is \hyperlink{classoomph_1_1FiniteElement_a58a25b6859ddd43b7bfe64a19fee5023}{shape()}. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1RefineableElement_a8ca420443c28708e5c6315a80f520137}{oomph\+::\+Refineable\+Element}.
+
+
+
+Definition at line 634 of file generalised\+\_\+newtonian\+\_\+refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::pshape\+\_\+nst(), and oomph\+::\+Finite\+Element\+::shape().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_a698043f19ce65cb9a8cc85bc816ccd7d}\label{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_a698043f19ce65cb9a8cc85bc816ccd7d}} 
+\index{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}!interpolating\+\_\+node\+\_\+pt@{interpolating\+\_\+node\+\_\+pt}}
+\index{interpolating\+\_\+node\+\_\+pt@{interpolating\+\_\+node\+\_\+pt}!oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}}
+\subsubsection{\texorpdfstring{interpolating\+\_\+node\+\_\+pt()}{interpolating\_node\_pt()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+\hyperlink{classoomph_1_1Node}{Node}$\ast$ \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}$<$ D\+IM $>$\+::interpolating\+\_\+node\+\_\+pt (\begin{DoxyParamCaption}\item[{const unsigned \&}]{n,  }\item[{const int \&}]{value\+\_\+id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+The velocities are isoparametric and so the \char`\"{}nodes\char`\"{} interpolating the velocities are the geometric nodes. The pressure \char`\"{}nodes\char`\"{} are a subset of the nodes, so when value\+\_\+id==D\+IM, the n-\/th pressure node is returned. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1RefineableElement_ab27986fc2f6033a4758662cde78a7b76}{oomph\+::\+Refineable\+Element}.
+
+
+
+Definition at line 525 of file generalised\+\_\+newtonian\+\_\+refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Finite\+Element\+::node\+\_\+pt(), and oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::pressure\+\_\+node\+\_\+pt().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_ae5eda68a83a1e61082f813c7500b698c}\label{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_ae5eda68a83a1e61082f813c7500b698c}} 
+\index{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}!local\+\_\+one\+\_\+d\+\_\+fraction\+\_\+of\+\_\+interpolating\+\_\+node@{local\+\_\+one\+\_\+d\+\_\+fraction\+\_\+of\+\_\+interpolating\+\_\+node}}
+\index{local\+\_\+one\+\_\+d\+\_\+fraction\+\_\+of\+\_\+interpolating\+\_\+node@{local\+\_\+one\+\_\+d\+\_\+fraction\+\_\+of\+\_\+interpolating\+\_\+node}!oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}}
+\subsubsection{\texorpdfstring{local\+\_\+one\+\_\+d\+\_\+fraction\+\_\+of\+\_\+interpolating\+\_\+node()}{local\_one\_d\_fraction\_of\_interpolating\_node()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+double \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}$<$ D\+IM $>$\+::local\+\_\+one\+\_\+d\+\_\+fraction\+\_\+of\+\_\+interpolating\+\_\+node (\begin{DoxyParamCaption}\item[{const unsigned \&}]{n1d,  }\item[{const unsigned \&}]{i,  }\item[{const int \&}]{value\+\_\+id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+The pressure nodes are the corner nodes, so when n\+\_\+value==D\+IM, the fraction is the same as the 1d node number, 0 or 1. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1RefineableElement_ac4e4ae5374154855ae9b072c6269f76e}{oomph\+::\+Refineable\+Element}.
+
+
+
+Definition at line 537 of file generalised\+\_\+newtonian\+\_\+refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Finite\+Element\+::local\+\_\+one\+\_\+d\+\_\+fraction\+\_\+of\+\_\+node().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_a010adb919ba9b8850e5f586467777052}\label{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_a010adb919ba9b8850e5f586467777052}} 
+\index{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}!ncont\+\_\+interpolated\+\_\+values@{ncont\+\_\+interpolated\+\_\+values}}
+\index{ncont\+\_\+interpolated\+\_\+values@{ncont\+\_\+interpolated\+\_\+values}!oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}}
+\subsubsection{\texorpdfstring{ncont\+\_\+interpolated\+\_\+values()}{ncont\_interpolated\_values()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+unsigned \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}$<$ D\+IM $>$\+::ncont\+\_\+interpolated\+\_\+values (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Number of continuously interpolated values\+: (D\+IM velocities + 1 pressure) 
+
+
+
+Implements \hyperlink{classoomph_1_1RefineableElement_a53e171a18c9f43f1db90a6876516a073}{oomph\+::\+Refineable\+Element}.
+
+
+
+Definition at line 439 of file generalised\+\_\+newtonian\+\_\+refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_a074d030db713c63e1077446d0bab5c1a}\label{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_a074d030db713c63e1077446d0bab5c1a}} 
+\index{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}!ninterpolating\+\_\+node@{ninterpolating\+\_\+node}}
+\index{ninterpolating\+\_\+node@{ninterpolating\+\_\+node}!oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}}
+\subsubsection{\texorpdfstring{ninterpolating\+\_\+node()}{ninterpolating\_node()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+unsigned \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}$<$ D\+IM $>$\+::ninterpolating\+\_\+node (\begin{DoxyParamCaption}\item[{const int \&}]{value\+\_\+id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+The number of pressure nodes is 2$^\wedge$\+D\+IM. The number of velocity nodes is the same as the number of geometric nodes. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1RefineableElement_a8b1b5031b55141567ba24913a21534f4}{oomph\+::\+Refineable\+Element}.
+
+
+
+Definition at line 625 of file generalised\+\_\+newtonian\+\_\+refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Finite\+Element\+::nnode().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_accecb785cec4dd63c6e4b1804c1697a5}\label{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_accecb785cec4dd63c6e4b1804c1697a5}} 
+\index{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}!ninterpolating\+\_\+node\+\_\+1d@{ninterpolating\+\_\+node\+\_\+1d}}
+\index{ninterpolating\+\_\+node\+\_\+1d@{ninterpolating\+\_\+node\+\_\+1d}!oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}}
+\subsubsection{\texorpdfstring{ninterpolating\+\_\+node\+\_\+1d()}{ninterpolating\_node\_1d()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+unsigned \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}$<$ D\+IM $>$\+::ninterpolating\+\_\+node\+\_\+1d (\begin{DoxyParamCaption}\item[{const int \&}]{value\+\_\+id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+The number of 1d pressure nodes is 2, the number of 1d velocity nodes is the same as the number of 1d geometric nodes. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1RefineableElement_a850180084aaf164550b4f4978b42cda7}{oomph\+::\+Refineable\+Element}.
+
+
+
+Definition at line 617 of file generalised\+\_\+newtonian\+\_\+refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Finite\+Element\+::nnode\+\_\+1d().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_ab162e59c24eff8cce5e43ce30c537efc}\label{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_ab162e59c24eff8cce5e43ce30c537efc}} 
+\index{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}!nrecovery\+\_\+order@{nrecovery\+\_\+order}}
+\index{nrecovery\+\_\+order@{nrecovery\+\_\+order}!oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}}
+\subsubsection{\texorpdfstring{nrecovery\+\_\+order()}{nrecovery\_order()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+unsigned \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}$<$ D\+IM $>$\+::nrecovery\+\_\+order (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Order of recovery shape functions for Z2 error estimation\+: Same order as shape functions. 
+
+
+
+Implements \hyperlink{classoomph_1_1ElementWithZ2ErrorEstimator_af39480835bd3e0f6b2f4f7a9a4044798}{oomph\+::\+Element\+With\+Z2\+Error\+Estimator}.
+
+
+
+Definition at line 446 of file generalised\+\_\+newtonian\+\_\+refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_a23fd2cabf9e407ed4d134f9af2208a70}\label{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_a23fd2cabf9e407ed4d134f9af2208a70}} 
+\index{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}!nvertex\+\_\+node@{nvertex\+\_\+node}}
+\index{nvertex\+\_\+node@{nvertex\+\_\+node}!oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}}
+\subsubsection{\texorpdfstring{nvertex\+\_\+node()}{nvertex\_node()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+unsigned \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}$<$ D\+IM $>$\+::nvertex\+\_\+node (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Number of vertex nodes in the element. 
+
+
+
+Implements \hyperlink{classoomph_1_1ElementWithZ2ErrorEstimator_a19495a0e77ef4ff35f15fdf7913b4077}{oomph\+::\+Element\+With\+Z2\+Error\+Estimator}.
+
+
+
+Definition at line 449 of file generalised\+\_\+newtonian\+\_\+refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Finite\+Element\+::nvertex\+\_\+node().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_a809f295d07ea41ff6a71cf15ffb82692}\label{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_a809f295d07ea41ff6a71cf15ffb82692}} 
+\index{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}!pin\+\_\+elemental\+\_\+redundant\+\_\+nodal\+\_\+pressure\+\_\+dofs@{pin\+\_\+elemental\+\_\+redundant\+\_\+nodal\+\_\+pressure\+\_\+dofs}}
+\index{pin\+\_\+elemental\+\_\+redundant\+\_\+nodal\+\_\+pressure\+\_\+dofs@{pin\+\_\+elemental\+\_\+redundant\+\_\+nodal\+\_\+pressure\+\_\+dofs}!oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}}
+\subsubsection{\texorpdfstring{pin\+\_\+elemental\+\_\+redundant\+\_\+nodal\+\_\+pressure\+\_\+dofs()}{pin\_elemental\_redundant\_nodal\_pressure\_dofs()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}$<$ D\+IM $>$\+::pin\+\_\+elemental\+\_\+redundant\+\_\+nodal\+\_\+pressure\+\_\+dofs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Pin all nodal pressure dofs that are not required. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations_a9a4ca54f9b1f7d1b783b5ee0c561a236}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$}.
+
+
+
+Definition at line 406 of file generalised\+\_\+newtonian\+\_\+refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Node\+::is\+\_\+hanging(), oomph\+::\+Finite\+Element\+::nnode(), oomph\+::\+Finite\+Element\+::node\+\_\+pt(), oomph\+::\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::npres\+\_\+nst(), oomph\+::\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::p\+\_\+nodal\+\_\+index\+\_\+nst(), oomph\+::\+Data\+::pin(), oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::pressure\+\_\+node\+\_\+pt(), and oomph\+::\+Data\+::unpin().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_a464263e4f629fd72b8b97329eb0a2194}\label{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_a464263e4f629fd72b8b97329eb0a2194}} 
+\index{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}!pressure\+\_\+node\+\_\+pt@{pressure\+\_\+node\+\_\+pt}}
+\index{pressure\+\_\+node\+\_\+pt@{pressure\+\_\+node\+\_\+pt}!oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}}
+\subsubsection{\texorpdfstring{pressure\+\_\+node\+\_\+pt()}{pressure\_node\_pt()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+\hyperlink{classoomph_1_1Node}{Node}$\ast$ \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}$<$ D\+IM $>$\+::pressure\+\_\+node\+\_\+pt (\begin{DoxyParamCaption}\item[{const unsigned \&}]{n\+\_\+p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Pointer to n\+\_\+p-\/th pressure node. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations_a7192c00c8efe7f1bc48d28122f120899}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$}.
+
+
+
+Definition at line 518 of file generalised\+\_\+newtonian\+\_\+refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Finite\+Element\+::node\+\_\+pt().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_a356391ebd65c493cc40bf1df0749047a}\label{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_a356391ebd65c493cc40bf1df0749047a}} 
+\index{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}!rebuild\+\_\+from\+\_\+sons@{rebuild\+\_\+from\+\_\+sons}}
+\index{rebuild\+\_\+from\+\_\+sons@{rebuild\+\_\+from\+\_\+sons}!oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}}
+\subsubsection{\texorpdfstring{rebuild\+\_\+from\+\_\+sons()}{rebuild\_from\_sons()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}$<$ D\+IM $>$\+::rebuild\+\_\+from\+\_\+sons (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$\&}]{mesh\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Rebuild from sons\+: empty. 
+
+
+
+Implements \hyperlink{classoomph_1_1RefineableElement_a33324be27833fa4b78279d17158215fa}{oomph\+::\+Refineable\+Element}.
+
+
+
+Definition at line 442 of file generalised\+\_\+newtonian\+\_\+refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_a9b84c1c9ffa3262c0bb3c4762eebb3f5}\label{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_a9b84c1c9ffa3262c0bb3c4762eebb3f5}} 
+\index{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}!required\+\_\+nvalue@{required\+\_\+nvalue}}
+\index{required\+\_\+nvalue@{required\+\_\+nvalue}!oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}}
+\subsubsection{\texorpdfstring{required\+\_\+nvalue()}{required\_nvalue()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+unsigned \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}$<$ D\+IM $>$\+::required\+\_\+nvalue (\begin{DoxyParamCaption}\item[{const unsigned \&}]{n }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Number of values required at local node n. In order to simplify matters, we allocate storage for pressure variables at all the nodes and then pin those that are not used. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1GeneralisedNewtonianQTaylorHoodElement_a8da856de8ba84f81516e487b65cc7d9c}{oomph\+::\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element$<$ D\+I\+M $>$}.
+
+
+
+Definition at line 436 of file generalised\+\_\+newtonian\+\_\+refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_aab4ac8ef8f49d09cd1a32e292e0ca621}\label{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_aab4ac8ef8f49d09cd1a32e292e0ca621}} 
+\index{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}!unpin\+\_\+elemental\+\_\+pressure\+\_\+dofs@{unpin\+\_\+elemental\+\_\+pressure\+\_\+dofs}}
+\index{unpin\+\_\+elemental\+\_\+pressure\+\_\+dofs@{unpin\+\_\+elemental\+\_\+pressure\+\_\+dofs}!oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}}
+\subsubsection{\texorpdfstring{unpin\+\_\+elemental\+\_\+pressure\+\_\+dofs()}{unpin\_elemental\_pressure\_dofs()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}$<$ D\+IM $>$\+::unpin\+\_\+elemental\+\_\+pressure\+\_\+dofs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Unpin all pressure dofs. 
+
+
+
+Implements \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations_a5e80fae3c3c4373e082867a49cc78ad0}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$}.
+
+
+
+Definition at line 395 of file generalised\+\_\+newtonian\+\_\+refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Finite\+Element\+::nnode(), oomph\+::\+Finite\+Element\+::node\+\_\+pt(), oomph\+::\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::p\+\_\+nodal\+\_\+index\+\_\+nst(), and oomph\+::\+Data\+::unpin().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_aff468e174668cbc2f30c420ec5d2a52b}\label{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_aff468e174668cbc2f30c420ec5d2a52b}} 
+\index{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}!vertex\+\_\+node\+\_\+pt@{vertex\+\_\+node\+\_\+pt}}
+\index{vertex\+\_\+node\+\_\+pt@{vertex\+\_\+node\+\_\+pt}!oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}}
+\subsubsection{\texorpdfstring{vertex\+\_\+node\+\_\+pt()}{vertex\_node\_pt()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+\hyperlink{classoomph_1_1Node}{Node}$\ast$ \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element}$<$ D\+IM $>$\+::vertex\+\_\+node\+\_\+pt (\begin{DoxyParamCaption}\item[{const unsigned \&}]{j }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Pointer to the j-\/th vertex node in the element. 
+
+
+
+Implements \hyperlink{classoomph_1_1ElementWithZ2ErrorEstimator_a0eedccc33519f852c5dc2055ddf2774b}{oomph\+::\+Element\+With\+Z2\+Error\+Estimator}.
+
+
+
+Definition at line 453 of file generalised\+\_\+newtonian\+\_\+refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Finite\+Element\+::vertex\+\_\+node\+\_\+pt().
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{generalised__newtonian__refineable__navier__stokes__elements_8h}{generalised\+\_\+newtonian\+\_\+refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h}\end{DoxyCompactItemize}

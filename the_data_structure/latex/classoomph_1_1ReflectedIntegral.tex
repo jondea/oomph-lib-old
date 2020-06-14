@@ -1,0 +1,299 @@
+\hypertarget{classoomph_1_1ReflectedIntegral}{}\section{oomph\+:\+:Reflected\+Integral Class Reference}
+\label{classoomph_1_1ReflectedIntegral}\index{oomph\+::\+Reflected\+Integral@{oomph\+::\+Reflected\+Integral}}
+
+
+{\ttfamily \#include $<$integral.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Reflected\+Integral\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classoomph_1_1ReflectedIntegral}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1ReflectedIntegral_af915034fdc52963d3f177be829e6ef1a}{Reflected\+Integral} (const \hyperlink{classoomph_1_1Integral}{Integral} $\ast$integral\+\_\+to\+\_\+reflect\+\_\+pt, const unsigned index\+\_\+s, const double s\+\_\+reflect, const double s\+\_\+min, const double s\+\_\+max)
+\begin{DoxyCompactList}\small\item\em Construct reflected integral, note s refers to local coordinate. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1ReflectedIntegral_ad448bbdee22baa638f492ef42327f0d3}{nweight} () const
+\begin{DoxyCompactList}\small\item\em Number of integration points of the scheme, two times the base scheme. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1ReflectedIntegral_af315971c60753e39fca60c108da3e5c0}{knot} (const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}, const unsigned \&j) const
+\begin{DoxyCompactList}\small\item\em Return local coordinate s\mbox{[}j\mbox{]} of i-\/th integration point. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1ReflectedIntegral_afe7ded626ef075a55f6e99abf258e362}{weight} (const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}) const
+\begin{DoxyCompactList}\small\item\em Return weight of i-\/th integration point. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \hyperlink{classoomph_1_1ReflectedIntegral_a80aea32b954d235adaff8889eb69cfcd}{local\+\_\+to\+\_\+fraction} (const double \&local\+\_\+coord) const
+\begin{DoxyCompactList}\small\item\em Helper function to convert from local coordinate (s in \mbox{[}-\/1,1\mbox{]} for quads) to fraction \mbox{[}0,1\mbox{]}. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1ReflectedIntegral_ac8500d64678b3477335ef639716f7cbe}{fraction\+\_\+to\+\_\+local} (const double \&fraction) const
+\begin{DoxyCompactList}\small\item\em Helper function to convert from fraction \mbox{[}0,1\mbox{]} to local coordinate (s in \mbox{[}-\/1,1\mbox{]} for quads) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const \hyperlink{classoomph_1_1Integral}{Integral} $\ast$ \hyperlink{classoomph_1_1ReflectedIntegral_ae1f3c64912a966f525f1c731cf78f9ef}{Integral\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to integral which we will reflect. \end{DoxyCompactList}\item 
+const unsigned \hyperlink{classoomph_1_1ReflectedIntegral_af0174c09605e1c073b719e65b3922257}{Index\+\_\+s}
+\begin{DoxyCompactList}\small\item\em Index of local coord (s) which scheme will be reflected along. \end{DoxyCompactList}\item 
+const double \hyperlink{classoomph_1_1ReflectedIntegral_a9f279264ea2f217727ecef0f911c4dc8}{S\+\_\+reflect}
+\begin{DoxyCompactList}\small\item\em Value of local coord (s) where scheme will be reflected. \end{DoxyCompactList}\item 
+const double \hyperlink{classoomph_1_1ReflectedIntegral_a9284add785f137dc8a9fe67ffee61a8a}{S\+\_\+min}
+\begin{DoxyCompactList}\small\item\em Minimum value of local coord (s) over whole domain. \end{DoxyCompactList}\item 
+const double \hyperlink{classoomph_1_1ReflectedIntegral_a000d0b1a2ff6bdd496fa915f9949b39b}{S\+\_\+max}
+\begin{DoxyCompactList}\small\item\em Maximum value of local coord (s) over whole domain. \end{DoxyCompactList}\item 
+const double \hyperlink{classoomph_1_1ReflectedIntegral_a6a91bd7e0119b0132273a625d6dba6d0}{S\+\_\+reflect\+\_\+fraction}
+\begin{DoxyCompactList}\small\item\em Position where scheme will be reflected as of fraction of domain \mbox{[}0,1\mbox{]}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Wrapper for an integral that reflects one integral at point inside the domain, such that the integral is used on both sides of the line of reflection $\vert$ . . .$\vert$ . . . $\vert$ 
+
+Definition at line 107 of file integral.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1ReflectedIntegral_af915034fdc52963d3f177be829e6ef1a}\label{classoomph_1_1ReflectedIntegral_af915034fdc52963d3f177be829e6ef1a}} 
+\index{oomph\+::\+Reflected\+Integral@{oomph\+::\+Reflected\+Integral}!Reflected\+Integral@{Reflected\+Integral}}
+\index{Reflected\+Integral@{Reflected\+Integral}!oomph\+::\+Reflected\+Integral@{oomph\+::\+Reflected\+Integral}}
+\subsubsection{\texorpdfstring{Reflected\+Integral()}{ReflectedIntegral()}}
+{\footnotesize\ttfamily oomph\+::\+Reflected\+Integral\+::\+Reflected\+Integral (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Integral}{Integral} $\ast$}]{integral\+\_\+to\+\_\+reflect\+\_\+pt,  }\item[{const unsigned}]{index\+\_\+s,  }\item[{const double}]{s\+\_\+reflect,  }\item[{const double}]{s\+\_\+min,  }\item[{const double}]{s\+\_\+max }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct reflected integral, note s refers to local coordinate. 
+
+
+
+Definition at line 112 of file integral.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1ReflectedIntegral_ac8500d64678b3477335ef639716f7cbe}\label{classoomph_1_1ReflectedIntegral_ac8500d64678b3477335ef639716f7cbe}} 
+\index{oomph\+::\+Reflected\+Integral@{oomph\+::\+Reflected\+Integral}!fraction\+\_\+to\+\_\+local@{fraction\+\_\+to\+\_\+local}}
+\index{fraction\+\_\+to\+\_\+local@{fraction\+\_\+to\+\_\+local}!oomph\+::\+Reflected\+Integral@{oomph\+::\+Reflected\+Integral}}
+\subsubsection{\texorpdfstring{fraction\+\_\+to\+\_\+local()}{fraction\_to\_local()}}
+{\footnotesize\ttfamily double oomph\+::\+Reflected\+Integral\+::fraction\+\_\+to\+\_\+local (\begin{DoxyParamCaption}\item[{const double \&}]{fraction }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Helper function to convert from fraction \mbox{[}0,1\mbox{]} to local coordinate (s in \mbox{[}-\/1,1\mbox{]} for quads) 
+
+
+
+Definition at line 74 of file integral.\+cc.
+
+
+
+References S\+\_\+max, and S\+\_\+min.
+
+
+
+Referenced by knot().
+
+\mbox{\Hypertarget{classoomph_1_1ReflectedIntegral_af315971c60753e39fca60c108da3e5c0}\label{classoomph_1_1ReflectedIntegral_af315971c60753e39fca60c108da3e5c0}} 
+\index{oomph\+::\+Reflected\+Integral@{oomph\+::\+Reflected\+Integral}!knot@{knot}}
+\index{knot@{knot}!oomph\+::\+Reflected\+Integral@{oomph\+::\+Reflected\+Integral}}
+\subsubsection{\texorpdfstring{knot()}{knot()}}
+{\footnotesize\ttfamily double oomph\+::\+Reflected\+Integral\+::knot (\begin{DoxyParamCaption}\item[{const unsigned \&}]{i,  }\item[{const unsigned \&}]{j }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Return local coordinate s\mbox{[}j\mbox{]} of i-\/th integration point. 
+
+
+
+Implements \hyperlink{classoomph_1_1Integral_a1a2122f99a87c18649bafdd9ed739758}{oomph\+::\+Integral}.
+
+
+
+Definition at line 38 of file integral.\+cc.
+
+
+
+References fraction\+\_\+to\+\_\+local(), Index\+\_\+s, Integral\+\_\+pt, oomph\+::\+Integral\+::knot(), local\+\_\+to\+\_\+fraction(), oomph\+::\+Integral\+::nweight(), and S\+\_\+reflect\+\_\+fraction.
+
+\mbox{\Hypertarget{classoomph_1_1ReflectedIntegral_a80aea32b954d235adaff8889eb69cfcd}\label{classoomph_1_1ReflectedIntegral_a80aea32b954d235adaff8889eb69cfcd}} 
+\index{oomph\+::\+Reflected\+Integral@{oomph\+::\+Reflected\+Integral}!local\+\_\+to\+\_\+fraction@{local\+\_\+to\+\_\+fraction}}
+\index{local\+\_\+to\+\_\+fraction@{local\+\_\+to\+\_\+fraction}!oomph\+::\+Reflected\+Integral@{oomph\+::\+Reflected\+Integral}}
+\subsubsection{\texorpdfstring{local\+\_\+to\+\_\+fraction()}{local\_to\_fraction()}}
+{\footnotesize\ttfamily double oomph\+::\+Reflected\+Integral\+::local\+\_\+to\+\_\+fraction (\begin{DoxyParamCaption}\item[{const double \&}]{local\+\_\+coord }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Helper function to convert from local coordinate (s in \mbox{[}-\/1,1\mbox{]} for quads) to fraction \mbox{[}0,1\mbox{]}. 
+
+
+
+Definition at line 69 of file integral.\+cc.
+
+
+
+References S\+\_\+max, and S\+\_\+min.
+
+
+
+Referenced by knot().
+
+\mbox{\Hypertarget{classoomph_1_1ReflectedIntegral_ad448bbdee22baa638f492ef42327f0d3}\label{classoomph_1_1ReflectedIntegral_ad448bbdee22baa638f492ef42327f0d3}} 
+\index{oomph\+::\+Reflected\+Integral@{oomph\+::\+Reflected\+Integral}!nweight@{nweight}}
+\index{nweight@{nweight}!oomph\+::\+Reflected\+Integral@{oomph\+::\+Reflected\+Integral}}
+\subsubsection{\texorpdfstring{nweight()}{nweight()}}
+{\footnotesize\ttfamily unsigned oomph\+::\+Reflected\+Integral\+::nweight (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Number of integration points of the scheme, two times the base scheme. 
+
+
+
+Implements \hyperlink{classoomph_1_1Integral_a1a270de9d99a1fcf1d25a6c1017f65fa}{oomph\+::\+Integral}.
+
+
+
+Definition at line 123 of file integral.\+h.
+
+
+
+References i, oomph\+::\+Integral\+::knot(), and oomph\+::\+Integral\+::weight().
+
+
+
+Referenced by weight().
+
+\mbox{\Hypertarget{classoomph_1_1ReflectedIntegral_afe7ded626ef075a55f6e99abf258e362}\label{classoomph_1_1ReflectedIntegral_afe7ded626ef075a55f6e99abf258e362}} 
+\index{oomph\+::\+Reflected\+Integral@{oomph\+::\+Reflected\+Integral}!weight@{weight}}
+\index{weight@{weight}!oomph\+::\+Reflected\+Integral@{oomph\+::\+Reflected\+Integral}}
+\subsubsection{\texorpdfstring{weight()}{weight()}}
+{\footnotesize\ttfamily double oomph\+::\+Reflected\+Integral\+::weight (\begin{DoxyParamCaption}\item[{const unsigned \&}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Return weight of i-\/th integration point. 
+
+
+
+Implements \hyperlink{classoomph_1_1Integral_ac65335e2aab120b285b3d6c294507b06}{oomph\+::\+Integral}.
+
+
+
+Definition at line 79 of file integral.\+cc.
+
+
+
+References Integral\+\_\+pt, oomph\+::\+Integral\+::nweight(), nweight(), S\+\_\+reflect\+\_\+fraction, and oomph\+::\+Integral\+::weight().
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1ReflectedIntegral_af0174c09605e1c073b719e65b3922257}\label{classoomph_1_1ReflectedIntegral_af0174c09605e1c073b719e65b3922257}} 
+\index{oomph\+::\+Reflected\+Integral@{oomph\+::\+Reflected\+Integral}!Index\+\_\+s@{Index\+\_\+s}}
+\index{Index\+\_\+s@{Index\+\_\+s}!oomph\+::\+Reflected\+Integral@{oomph\+::\+Reflected\+Integral}}
+\subsubsection{\texorpdfstring{Index\+\_\+s}{Index\_s}}
+{\footnotesize\ttfamily const unsigned oomph\+::\+Reflected\+Integral\+::\+Index\+\_\+s\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Index of local coord (s) which scheme will be reflected along. 
+
+
+
+Definition at line 145 of file integral.\+h.
+
+
+
+Referenced by knot().
+
+\mbox{\Hypertarget{classoomph_1_1ReflectedIntegral_ae1f3c64912a966f525f1c731cf78f9ef}\label{classoomph_1_1ReflectedIntegral_ae1f3c64912a966f525f1c731cf78f9ef}} 
+\index{oomph\+::\+Reflected\+Integral@{oomph\+::\+Reflected\+Integral}!Integral\+\_\+pt@{Integral\+\_\+pt}}
+\index{Integral\+\_\+pt@{Integral\+\_\+pt}!oomph\+::\+Reflected\+Integral@{oomph\+::\+Reflected\+Integral}}
+\subsubsection{\texorpdfstring{Integral\+\_\+pt}{Integral\_pt}}
+{\footnotesize\ttfamily const \hyperlink{classoomph_1_1Integral}{Integral}$\ast$ oomph\+::\+Reflected\+Integral\+::\+Integral\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pointer to integral which we will reflect. 
+
+
+
+Definition at line 142 of file integral.\+h.
+
+
+
+Referenced by knot(), and weight().
+
+\mbox{\Hypertarget{classoomph_1_1ReflectedIntegral_a000d0b1a2ff6bdd496fa915f9949b39b}\label{classoomph_1_1ReflectedIntegral_a000d0b1a2ff6bdd496fa915f9949b39b}} 
+\index{oomph\+::\+Reflected\+Integral@{oomph\+::\+Reflected\+Integral}!S\+\_\+max@{S\+\_\+max}}
+\index{S\+\_\+max@{S\+\_\+max}!oomph\+::\+Reflected\+Integral@{oomph\+::\+Reflected\+Integral}}
+\subsubsection{\texorpdfstring{S\+\_\+max}{S\_max}}
+{\footnotesize\ttfamily const double oomph\+::\+Reflected\+Integral\+::\+S\+\_\+max\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Maximum value of local coord (s) over whole domain. 
+
+
+
+Definition at line 154 of file integral.\+h.
+
+
+
+Referenced by fraction\+\_\+to\+\_\+local(), and local\+\_\+to\+\_\+fraction().
+
+\mbox{\Hypertarget{classoomph_1_1ReflectedIntegral_a9284add785f137dc8a9fe67ffee61a8a}\label{classoomph_1_1ReflectedIntegral_a9284add785f137dc8a9fe67ffee61a8a}} 
+\index{oomph\+::\+Reflected\+Integral@{oomph\+::\+Reflected\+Integral}!S\+\_\+min@{S\+\_\+min}}
+\index{S\+\_\+min@{S\+\_\+min}!oomph\+::\+Reflected\+Integral@{oomph\+::\+Reflected\+Integral}}
+\subsubsection{\texorpdfstring{S\+\_\+min}{S\_min}}
+{\footnotesize\ttfamily const double oomph\+::\+Reflected\+Integral\+::\+S\+\_\+min\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Minimum value of local coord (s) over whole domain. 
+
+
+
+Definition at line 151 of file integral.\+h.
+
+
+
+Referenced by fraction\+\_\+to\+\_\+local(), and local\+\_\+to\+\_\+fraction().
+
+\mbox{\Hypertarget{classoomph_1_1ReflectedIntegral_a9f279264ea2f217727ecef0f911c4dc8}\label{classoomph_1_1ReflectedIntegral_a9f279264ea2f217727ecef0f911c4dc8}} 
+\index{oomph\+::\+Reflected\+Integral@{oomph\+::\+Reflected\+Integral}!S\+\_\+reflect@{S\+\_\+reflect}}
+\index{S\+\_\+reflect@{S\+\_\+reflect}!oomph\+::\+Reflected\+Integral@{oomph\+::\+Reflected\+Integral}}
+\subsubsection{\texorpdfstring{S\+\_\+reflect}{S\_reflect}}
+{\footnotesize\ttfamily const double oomph\+::\+Reflected\+Integral\+::\+S\+\_\+reflect\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Value of local coord (s) where scheme will be reflected. 
+
+
+
+Definition at line 148 of file integral.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1ReflectedIntegral_a6a91bd7e0119b0132273a625d6dba6d0}\label{classoomph_1_1ReflectedIntegral_a6a91bd7e0119b0132273a625d6dba6d0}} 
+\index{oomph\+::\+Reflected\+Integral@{oomph\+::\+Reflected\+Integral}!S\+\_\+reflect\+\_\+fraction@{S\+\_\+reflect\+\_\+fraction}}
+\index{S\+\_\+reflect\+\_\+fraction@{S\+\_\+reflect\+\_\+fraction}!oomph\+::\+Reflected\+Integral@{oomph\+::\+Reflected\+Integral}}
+\subsubsection{\texorpdfstring{S\+\_\+reflect\+\_\+fraction}{S\_reflect\_fraction}}
+{\footnotesize\ttfamily const double oomph\+::\+Reflected\+Integral\+::\+S\+\_\+reflect\+\_\+fraction\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Position where scheme will be reflected as of fraction of domain \mbox{[}0,1\mbox{]}. 
+
+
+
+Definition at line 157 of file integral.\+h.
+
+
+
+Referenced by knot(), and weight().
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{integral_8h}{integral.\+h}\item 
+\hyperlink{integral_8cc}{integral.\+cc}\end{DoxyCompactItemize}

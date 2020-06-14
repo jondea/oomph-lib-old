@@ -1,0 +1,287 @@
+\hypertarget{classoomph_1_1AxisymmetricSolidTractionElement}{}\section{oomph\+:\+:Axisymmetric\+Solid\+Traction\+Element$<$ E\+L\+E\+M\+E\+NT $>$ Class Template Reference}
+\label{classoomph_1_1AxisymmetricSolidTractionElement}\index{oomph\+::\+Axisymmetric\+Solid\+Traction\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$@{oomph\+::\+Axisymmetric\+Solid\+Traction\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$}}
+
+
+{\ttfamily \#include $<$axisym\+\_\+solid\+\_\+traction\+\_\+elements.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Axisymmetric\+Solid\+Traction\+Element$<$ E\+L\+E\+M\+E\+NT $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.215628cm]{classoomph_1_1AxisymmetricSolidTractionElement}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1AxisymmetricSolidTractionElement_add2978a434bca4d36ca2dc5ec0107ff9}{Axisymmetric\+Solid\+Traction\+Element} (\hyperlink{classoomph_1_1FiniteElement}{Finite\+Element} $\ast$const \&element\+\_\+pt, const int \&\hyperlink{classoomph_1_1FaceElement_a478d577ac6db67ecc80f1f02ae3ab170}{face\+\_\+index})
+\begin{DoxyCompactList}\small\item\em Constructor, which takes a \char`\"{}bulk\char`\"{} element and the value of the index and its limit. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1AxisymmetricSolidTractionElement_a4cd8a5664e8a62263e376dd9eb9ea985}{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&residuals)
+\begin{DoxyCompactList}\small\item\em Return the residuals. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1AxisymmetricSolidTractionElement_a49de689d7dc2efecd8bbdbd6673c1fb8}{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&residuals, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&jacobian)
+\begin{DoxyCompactList}\small\item\em Return the jacobian. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1AxisymmetricSolidTractionElement_a26333e5b7fd2aabb61d21f3289797b27}{output} (std\+::ostream \&outfile)
+\begin{DoxyCompactList}\small\item\em Overload the output function. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1AxisymmetricSolidTractionElement_a018d7c00d4eacabec5f9c30968b6bab7}{output} (std\+::ostream \&outfile, const unsigned \&n\+\_\+plot)
+\begin{DoxyCompactList}\small\item\em Output function\+: x,y,\mbox{[}z\mbox{]},u,v,\mbox{[}w\mbox{]},p in tecplot format. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1AxisymmetricSolidTractionElement_a3f3170465a5605f057a4b4dc8201c3ca}{output} (F\+I\+LE $\ast$file\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Overload the output function. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1AxisymmetricSolidTractionElement_ad171b0825d7e4a37d7675deaaa789058}{output} (F\+I\+LE $\ast$file\+\_\+pt, const unsigned \&n\+\_\+plot)
+\begin{DoxyCompactList}\small\item\em Output function\+: x,y,\mbox{[}z\mbox{]},u,v,\mbox{[}w\mbox{]},p in tecplot format. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+void($\ast$\&)(const double \&, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&) \hyperlink{classoomph_1_1AxisymmetricSolidTractionElement_a437b43759687da0f3f49e0b13d1afe10}{traction\+\_\+fct\+\_\+pt} ()
+\begin{DoxyCompactList}\small\item\em Return the imposed traction pointer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classoomph_1_1AxisymmetricSolidTractionElement_a1386f6f1d58c17fc9357f01ddaf38742}{get\+\_\+traction} (const double \&time, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&x, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&n, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&result) const
+\begin{DoxyCompactList}\small\item\em Return the surface traction force. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+void($\ast$ \hyperlink{classoomph_1_1AxisymmetricSolidTractionElement_af81e4c31c910c253faeeba17f1070000}{Traction\+\_\+fct\+\_\+pt} )(const double \&time, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&x, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&n, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&result)
+\begin{DoxyCompactList}\small\item\em Pointer to an imposed traction function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class E\+L\+E\+M\+E\+NT$>$\newline
+class oomph\+::\+Axisymmetric\+Solid\+Traction\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$}
+
+A class for elements that allow the imposition of an applied traction in the principle of virtual displacements. The geometrical information can be read from the Face\+Geometry$<$\+E\+L\+E\+M\+E\+N\+T$>$ class and and thus, we can be generic enough without the need to have a separate equations class. 
+
+Definition at line 56 of file axisym\+\_\+solid\+\_\+traction\+\_\+elements.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1AxisymmetricSolidTractionElement_add2978a434bca4d36ca2dc5ec0107ff9}\label{classoomph_1_1AxisymmetricSolidTractionElement_add2978a434bca4d36ca2dc5ec0107ff9}} 
+\index{oomph\+::\+Axisymmetric\+Solid\+Traction\+Element@{oomph\+::\+Axisymmetric\+Solid\+Traction\+Element}!Axisymmetric\+Solid\+Traction\+Element@{Axisymmetric\+Solid\+Traction\+Element}}
+\index{Axisymmetric\+Solid\+Traction\+Element@{Axisymmetric\+Solid\+Traction\+Element}!oomph\+::\+Axisymmetric\+Solid\+Traction\+Element@{oomph\+::\+Axisymmetric\+Solid\+Traction\+Element}}
+\subsubsection{\texorpdfstring{Axisymmetric\+Solid\+Traction\+Element()}{AxisymmetricSolidTractionElement()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classoomph_1_1AxisymmetricSolidTractionElement}{oomph\+::\+Axisymmetric\+Solid\+Traction\+Element}$<$ E\+L\+E\+M\+E\+NT $>$\+::\hyperlink{classoomph_1_1AxisymmetricSolidTractionElement}{Axisymmetric\+Solid\+Traction\+Element} (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1FiniteElement}{Finite\+Element} $\ast$const \&}]{element\+\_\+pt,  }\item[{const int \&}]{face\+\_\+index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor, which takes a \char`\"{}bulk\char`\"{} element and the value of the index and its limit. 
+
+
+
+Definition at line 90 of file axisym\+\_\+solid\+\_\+traction\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Finite\+Element\+::build\+\_\+face\+\_\+element(), and oomph\+::\+Axisymmetric\+Solid\+Traction\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Traction\+\_\+fct\+\_\+pt.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1AxisymmetricSolidTractionElement_a49de689d7dc2efecd8bbdbd6673c1fb8}\label{classoomph_1_1AxisymmetricSolidTractionElement_a49de689d7dc2efecd8bbdbd6673c1fb8}} 
+\index{oomph\+::\+Axisymmetric\+Solid\+Traction\+Element@{oomph\+::\+Axisymmetric\+Solid\+Traction\+Element}!fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian}}
+\index{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian}!oomph\+::\+Axisymmetric\+Solid\+Traction\+Element@{oomph\+::\+Axisymmetric\+Solid\+Traction\+Element}}
+\subsubsection{\texorpdfstring{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian()}{fill\_in\_contribution\_to\_jacobian()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classoomph_1_1AxisymmetricSolidTractionElement}{oomph\+::\+Axisymmetric\+Solid\+Traction\+Element}$<$ E\+L\+E\+M\+E\+NT $>$\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{residuals,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{jacobian }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Return the jacobian. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1GeneralisedElement_a6ae09fc0d68e4309ac1b03583d252845}{oomph\+::\+Generalised\+Element}.
+
+
+
+Definition at line 111 of file axisym\+\_\+solid\+\_\+traction\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Axisymmetric\+Solid\+Traction\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals().
+
+\mbox{\Hypertarget{classoomph_1_1AxisymmetricSolidTractionElement_a4cd8a5664e8a62263e376dd9eb9ea985}\label{classoomph_1_1AxisymmetricSolidTractionElement_a4cd8a5664e8a62263e376dd9eb9ea985}} 
+\index{oomph\+::\+Axisymmetric\+Solid\+Traction\+Element@{oomph\+::\+Axisymmetric\+Solid\+Traction\+Element}!fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals}}
+\index{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals}!oomph\+::\+Axisymmetric\+Solid\+Traction\+Element@{oomph\+::\+Axisymmetric\+Solid\+Traction\+Element}}
+\subsubsection{\texorpdfstring{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals()}{fill\_in\_contribution\_to\_residuals()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classoomph_1_1AxisymmetricSolidTractionElement}{oomph\+::\+Axisymmetric\+Solid\+Traction\+Element}$<$ E\+L\+E\+M\+E\+NT $>$\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{residuals }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Return the residuals. 
+
+Return the residuals for the Axisymmetric\+Solid\+Traction\+Elements. 
+
+Reimplemented from \hyperlink{classoomph_1_1GeneralisedElement_a310c97f515e8504a48179c0e72c550d7}{oomph\+::\+Generalised\+Element}.
+
+
+
+Definition at line 147 of file axisym\+\_\+solid\+\_\+traction\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Face\+Element\+::bulk\+\_\+position\+\_\+type(), oomph\+::\+Finite\+Element\+::dshape\+\_\+local\+\_\+at\+\_\+knot(), oomph\+::\+Axisymmetric\+Solid\+Traction\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::get\+\_\+traction(), i, oomph\+::\+Finite\+Element\+::integral\+\_\+pt(), oomph\+::\+Face\+Element\+::interpolated\+\_\+x(), oomph\+::\+Finite\+Element\+::nnodal\+\_\+position\+\_\+type(), oomph\+::\+Finite\+Element\+::nnode(), oomph\+::\+Finite\+Element\+::nodal\+\_\+position\+\_\+gen(), oomph\+::\+Face\+Element\+::normal\+\_\+sign(), oomph\+::\+Integral\+::nweight(), oomph\+::\+Quad\+Tree\+Names\+::W, and oomph\+::\+Integral\+::weight().
+
+
+
+Referenced by oomph\+::\+Axisymmetric\+Solid\+Traction\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian(), and oomph\+::\+Axisymmetric\+Solid\+Traction\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::output().
+
+\mbox{\Hypertarget{classoomph_1_1AxisymmetricSolidTractionElement_a1386f6f1d58c17fc9357f01ddaf38742}\label{classoomph_1_1AxisymmetricSolidTractionElement_a1386f6f1d58c17fc9357f01ddaf38742}} 
+\index{oomph\+::\+Axisymmetric\+Solid\+Traction\+Element@{oomph\+::\+Axisymmetric\+Solid\+Traction\+Element}!get\+\_\+traction@{get\+\_\+traction}}
+\index{get\+\_\+traction@{get\+\_\+traction}!oomph\+::\+Axisymmetric\+Solid\+Traction\+Element@{oomph\+::\+Axisymmetric\+Solid\+Traction\+Element}}
+\subsubsection{\texorpdfstring{get\+\_\+traction()}{get\_traction()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classoomph_1_1AxisymmetricSolidTractionElement}{oomph\+::\+Axisymmetric\+Solid\+Traction\+Element}$<$ E\+L\+E\+M\+E\+NT $>$\+::get\+\_\+traction (\begin{DoxyParamCaption}\item[{const double \&}]{time,  }\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{x,  }\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{n,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{result }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Return the surface traction force. 
+
+
+
+Definition at line 69 of file axisym\+\_\+solid\+\_\+traction\+\_\+elements.\+h.
+
+
+
+References i, and oomph\+::\+Axisymmetric\+Solid\+Traction\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Traction\+\_\+fct\+\_\+pt.
+
+
+
+Referenced by oomph\+::\+Axisymmetric\+Solid\+Traction\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals().
+
+\mbox{\Hypertarget{classoomph_1_1AxisymmetricSolidTractionElement_a26333e5b7fd2aabb61d21f3289797b27}\label{classoomph_1_1AxisymmetricSolidTractionElement_a26333e5b7fd2aabb61d21f3289797b27}} 
+\index{oomph\+::\+Axisymmetric\+Solid\+Traction\+Element@{oomph\+::\+Axisymmetric\+Solid\+Traction\+Element}!output@{output}}
+\index{output@{output}!oomph\+::\+Axisymmetric\+Solid\+Traction\+Element@{oomph\+::\+Axisymmetric\+Solid\+Traction\+Element}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classoomph_1_1AxisymmetricSolidTractionElement}{oomph\+::\+Axisymmetric\+Solid\+Traction\+Element}$<$ E\+L\+E\+M\+E\+NT $>$\+::output (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Overload the output function. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a2ad98a3d2ef4999f1bef62c0ff13f2a7}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 120 of file axisym\+\_\+solid\+\_\+traction\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Finite\+Element\+::output().
+
+\mbox{\Hypertarget{classoomph_1_1AxisymmetricSolidTractionElement_a018d7c00d4eacabec5f9c30968b6bab7}\label{classoomph_1_1AxisymmetricSolidTractionElement_a018d7c00d4eacabec5f9c30968b6bab7}} 
+\index{oomph\+::\+Axisymmetric\+Solid\+Traction\+Element@{oomph\+::\+Axisymmetric\+Solid\+Traction\+Element}!output@{output}}
+\index{output@{output}!oomph\+::\+Axisymmetric\+Solid\+Traction\+Element@{oomph\+::\+Axisymmetric\+Solid\+Traction\+Element}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classoomph_1_1AxisymmetricSolidTractionElement}{oomph\+::\+Axisymmetric\+Solid\+Traction\+Element}$<$ E\+L\+E\+M\+E\+NT $>$\+::output (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile,  }\item[{const unsigned \&}]{n\+\_\+plot }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Output function\+: x,y,\mbox{[}z\mbox{]},u,v,\mbox{[}w\mbox{]},p in tecplot format. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_afa9d9b2670f999b43e6679c9dd28c457}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 123 of file axisym\+\_\+solid\+\_\+traction\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Finite\+Element\+::output().
+
+\mbox{\Hypertarget{classoomph_1_1AxisymmetricSolidTractionElement_a3f3170465a5605f057a4b4dc8201c3ca}\label{classoomph_1_1AxisymmetricSolidTractionElement_a3f3170465a5605f057a4b4dc8201c3ca}} 
+\index{oomph\+::\+Axisymmetric\+Solid\+Traction\+Element@{oomph\+::\+Axisymmetric\+Solid\+Traction\+Element}!output@{output}}
+\index{output@{output}!oomph\+::\+Axisymmetric\+Solid\+Traction\+Element@{oomph\+::\+Axisymmetric\+Solid\+Traction\+Element}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classoomph_1_1AxisymmetricSolidTractionElement}{oomph\+::\+Axisymmetric\+Solid\+Traction\+Element}$<$ E\+L\+E\+M\+E\+NT $>$\+::output (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{file\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Overload the output function. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a72cddd09f8ddbee1a20a1ff404c6943e}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 127 of file axisym\+\_\+solid\+\_\+traction\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Finite\+Element\+::output().
+
+\mbox{\Hypertarget{classoomph_1_1AxisymmetricSolidTractionElement_ad171b0825d7e4a37d7675deaaa789058}\label{classoomph_1_1AxisymmetricSolidTractionElement_ad171b0825d7e4a37d7675deaaa789058}} 
+\index{oomph\+::\+Axisymmetric\+Solid\+Traction\+Element@{oomph\+::\+Axisymmetric\+Solid\+Traction\+Element}!output@{output}}
+\index{output@{output}!oomph\+::\+Axisymmetric\+Solid\+Traction\+Element@{oomph\+::\+Axisymmetric\+Solid\+Traction\+Element}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classoomph_1_1AxisymmetricSolidTractionElement}{oomph\+::\+Axisymmetric\+Solid\+Traction\+Element}$<$ E\+L\+E\+M\+E\+NT $>$\+::output (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{file\+\_\+pt,  }\item[{const unsigned \&}]{n\+\_\+plot }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Output function\+: x,y,\mbox{[}z\mbox{]},u,v,\mbox{[}w\mbox{]},p in tecplot format. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_adfaee690bb0608f03320eeb9d110d48c}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 130 of file axisym\+\_\+solid\+\_\+traction\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Axisymmetric\+Solid\+Traction\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals(), and oomph\+::\+Finite\+Element\+::output().
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1AxisymmetricSolidTractionElement_af81e4c31c910c253faeeba17f1070000}\label{classoomph_1_1AxisymmetricSolidTractionElement_af81e4c31c910c253faeeba17f1070000}} 
+\index{oomph\+::\+Axisymmetric\+Solid\+Traction\+Element@{oomph\+::\+Axisymmetric\+Solid\+Traction\+Element}!Traction\+\_\+fct\+\_\+pt@{Traction\+\_\+fct\+\_\+pt}}
+\index{Traction\+\_\+fct\+\_\+pt@{Traction\+\_\+fct\+\_\+pt}!oomph\+::\+Axisymmetric\+Solid\+Traction\+Element@{oomph\+::\+Axisymmetric\+Solid\+Traction\+Element}}
+\subsubsection{\texorpdfstring{Traction\+\_\+fct\+\_\+pt}{Traction\_fct\_pt}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void($\ast$ \hyperlink{classoomph_1_1AxisymmetricSolidTractionElement}{oomph\+::\+Axisymmetric\+Solid\+Traction\+Element}$<$ E\+L\+E\+M\+E\+NT $>$\+::Traction\+\_\+fct\+\_\+pt) (const double \&time, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&x, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&n, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&result)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pointer to an imposed traction function. 
+
+
+
+Definition at line 62 of file axisym\+\_\+solid\+\_\+traction\+\_\+elements.\+h.
+
+
+
+Referenced by oomph\+::\+Axisymmetric\+Solid\+Traction\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Axisymmetric\+Solid\+Traction\+Element(), and oomph\+::\+Axisymmetric\+Solid\+Traction\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::get\+\_\+traction().
+
+\mbox{\Hypertarget{classoomph_1_1AxisymmetricSolidTractionElement_a437b43759687da0f3f49e0b13d1afe10}\label{classoomph_1_1AxisymmetricSolidTractionElement_a437b43759687da0f3f49e0b13d1afe10}} 
+\index{oomph\+::\+Axisymmetric\+Solid\+Traction\+Element@{oomph\+::\+Axisymmetric\+Solid\+Traction\+Element}!traction\+\_\+fct\+\_\+pt@{traction\+\_\+fct\+\_\+pt}}
+\index{traction\+\_\+fct\+\_\+pt@{traction\+\_\+fct\+\_\+pt}!oomph\+::\+Axisymmetric\+Solid\+Traction\+Element@{oomph\+::\+Axisymmetric\+Solid\+Traction\+Element}}
+\subsubsection{\texorpdfstring{traction\+\_\+fct\+\_\+pt}{traction\_fct\_pt}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void($\ast$ \&)(const double\&, const \hyperlink{classoomph_1_1Vector}{Vector}$<$double$>$ \&, const \hyperlink{classoomph_1_1Vector}{Vector}$<$double$>$ \&, \hyperlink{classoomph_1_1Vector}{Vector}$<$double$>$ \&) \hyperlink{classoomph_1_1AxisymmetricSolidTractionElement}{oomph\+::\+Axisymmetric\+Solid\+Traction\+Element}$<$ E\+L\+E\+M\+E\+NT $>$\+::traction\+\_\+fct\+\_\+pt()\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the imposed traction pointer. 
+
+
+
+Definition at line 103 of file axisym\+\_\+solid\+\_\+traction\+\_\+elements.\+h.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{axisym__solid__traction__elements_8h}{axisym\+\_\+solid\+\_\+traction\+\_\+elements.\+h}\end{DoxyCompactItemize}

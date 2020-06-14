@@ -1,0 +1,97 @@
+\hypertarget{classoomph_1_1RefineableQuarterCircleSectorMesh}{}\section{oomph\+:\+:Refineable\+Quarter\+Circle\+Sector\+Mesh$<$ E\+L\+E\+M\+E\+NT $>$ Class Template Reference}
+\label{classoomph_1_1RefineableQuarterCircleSectorMesh}\index{oomph\+::\+Refineable\+Quarter\+Circle\+Sector\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$@{oomph\+::\+Refineable\+Quarter\+Circle\+Sector\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$}}
+
+
+{\ttfamily \#include $<$quarter\+\_\+circle\+\_\+sector\+\_\+mesh.\+template.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Refineable\+Quarter\+Circle\+Sector\+Mesh$<$ E\+L\+E\+M\+E\+NT $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.235529cm]{classoomph_1_1RefineableQuarterCircleSectorMesh}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1RefineableQuarterCircleSectorMesh_a07b183ff3e548456e67b92b6fce41cde}{Refineable\+Quarter\+Circle\+Sector\+Mesh} (Geom\+Object $\ast$\hyperlink{classoomph_1_1QuarterCircleSectorMesh_a0b03071bbe7e95cc6723c221ddc0998a}{wall\+\_\+pt}, const double \&xi\+\_\+lo, const double \&fract\+\_\+mid, const double \&xi\+\_\+hi, Time\+Stepper $\ast$time\+\_\+stepper\+\_\+pt=\&Mesh\+::\+Default\+\_\+\+Time\+Stepper)
+\begin{DoxyCompactList}\small\item\em Constructor\+: Pass pointer to geometric object that specifies the wall, start and end coordinates on the geometric object, and the fraction along which the dividing line is to be placed, and the timestepper (defaults to (Steady) default timestepper defined in Mesh). Adds refinement data to elements of \hyperlink{classoomph_1_1QuarterCircleSectorMesh}{Quarter\+Circle\+Sector\+Mesh}. \end{DoxyCompactList}\item 
+virtual \hyperlink{classoomph_1_1RefineableQuarterCircleSectorMesh_abf958060ab5ea27a2ca079cba58af8f5}{$\sim$\+Refineable\+Quarter\+Circle\+Sector\+Mesh} ()
+\begin{DoxyCompactList}\small\item\em Destructor\+: Empty. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class E\+L\+E\+M\+E\+NT$>$\newline
+class oomph\+::\+Refineable\+Quarter\+Circle\+Sector\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$}
+
+2D quarter ring mesh class inherited from Refineable\+Quad\+Mesh. The domain is specified by the Geom\+Object that identifies boundary 1.
+
+
+\begin{DoxyCode}
+                     ---\_\_\_
+                    |      ---\_\_\_\_
+                    |              -   BOUNDARY 1
+                    |               /  
+                    |     [2]      /  |  
+                    |             /     | 
+                    | N          /        |  
+                    | |\_ E      /          |    
+     BOUNDARY 2     |-----------           |  
+                    |          |    [1]    |
+                    |   [0]    |           |  ^
+                    |          |           | / \(\backslash\)  direction of
+                    | N        |    N      |  |   Lagrangian 
+                    | |\_ E     |    |\_ E   |  |   coordinate 
+                    |\_\_\_\_\_\_\_\_\_\_|\_\_\_\_\_\_\_\_\_\_\_|  |   along wall GeomObject
+
+                         BOUNDARY 0
+
+Within the elements (MacroElements), the local coordinates
+are such that the (E)astern direction coincides with the positive 
+s\_0 direction,  \textcolor{keywordflow}{while} the (N)orther direction coincides with the positive 
+s\_1 direction.
+\end{DoxyCode}
+
+
+Domain is parametrised by three macro elements as sketched. 
+
+Definition at line 196 of file quarter\+\_\+circle\+\_\+sector\+\_\+mesh.\+template.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1RefineableQuarterCircleSectorMesh_a07b183ff3e548456e67b92b6fce41cde}\label{classoomph_1_1RefineableQuarterCircleSectorMesh_a07b183ff3e548456e67b92b6fce41cde}} 
+\index{oomph\+::\+Refineable\+Quarter\+Circle\+Sector\+Mesh@{oomph\+::\+Refineable\+Quarter\+Circle\+Sector\+Mesh}!Refineable\+Quarter\+Circle\+Sector\+Mesh@{Refineable\+Quarter\+Circle\+Sector\+Mesh}}
+\index{Refineable\+Quarter\+Circle\+Sector\+Mesh@{Refineable\+Quarter\+Circle\+Sector\+Mesh}!oomph\+::\+Refineable\+Quarter\+Circle\+Sector\+Mesh@{oomph\+::\+Refineable\+Quarter\+Circle\+Sector\+Mesh}}
+\subsubsection{\texorpdfstring{Refineable\+Quarter\+Circle\+Sector\+Mesh()}{RefineableQuarterCircleSectorMesh()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classoomph_1_1RefineableQuarterCircleSectorMesh}{oomph\+::\+Refineable\+Quarter\+Circle\+Sector\+Mesh}$<$ E\+L\+E\+M\+E\+NT $>$\+::\hyperlink{classoomph_1_1RefineableQuarterCircleSectorMesh}{Refineable\+Quarter\+Circle\+Sector\+Mesh} (\begin{DoxyParamCaption}\item[{Geom\+Object $\ast$}]{wall\+\_\+pt,  }\item[{const double \&}]{xi\+\_\+lo,  }\item[{const double \&}]{fract\+\_\+mid,  }\item[{const double \&}]{xi\+\_\+hi,  }\item[{Time\+Stepper $\ast$}]{time\+\_\+stepper\+\_\+pt = {\ttfamily \&Mesh\+:\+:Default\+\_\+TimeStepper} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor\+: Pass pointer to geometric object that specifies the wall, start and end coordinates on the geometric object, and the fraction along which the dividing line is to be placed, and the timestepper (defaults to (Steady) default timestepper defined in Mesh). Adds refinement data to elements of \hyperlink{classoomph_1_1QuarterCircleSectorMesh}{Quarter\+Circle\+Sector\+Mesh}. 
+
+
+
+Definition at line 210 of file quarter\+\_\+circle\+\_\+sector\+\_\+mesh.\+template.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableQuarterCircleSectorMesh_abf958060ab5ea27a2ca079cba58af8f5}\label{classoomph_1_1RefineableQuarterCircleSectorMesh_abf958060ab5ea27a2ca079cba58af8f5}} 
+\index{oomph\+::\+Refineable\+Quarter\+Circle\+Sector\+Mesh@{oomph\+::\+Refineable\+Quarter\+Circle\+Sector\+Mesh}!````~Refineable\+Quarter\+Circle\+Sector\+Mesh@{$\sim$\+Refineable\+Quarter\+Circle\+Sector\+Mesh}}
+\index{````~Refineable\+Quarter\+Circle\+Sector\+Mesh@{$\sim$\+Refineable\+Quarter\+Circle\+Sector\+Mesh}!oomph\+::\+Refineable\+Quarter\+Circle\+Sector\+Mesh@{oomph\+::\+Refineable\+Quarter\+Circle\+Sector\+Mesh}}
+\subsubsection{\texorpdfstring{$\sim$\+Refineable\+Quarter\+Circle\+Sector\+Mesh()}{~RefineableQuarterCircleSectorMesh()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+virtual \hyperlink{classoomph_1_1RefineableQuarterCircleSectorMesh}{oomph\+::\+Refineable\+Quarter\+Circle\+Sector\+Mesh}$<$ E\+L\+E\+M\+E\+NT $>$\+::$\sim$\hyperlink{classoomph_1_1RefineableQuarterCircleSectorMesh}{Refineable\+Quarter\+Circle\+Sector\+Mesh} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Destructor\+: Empty. 
+
+
+
+Definition at line 227 of file quarter\+\_\+circle\+\_\+sector\+\_\+mesh.\+template.\+h.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{quarter__circle__sector__mesh_8template_8h}{quarter\+\_\+circle\+\_\+sector\+\_\+mesh.\+template.\+h}\end{DoxyCompactItemize}

@@ -1,0 +1,458 @@
+\hypertarget{namespaceGlobal__Parameters}{}\section{Global\+\_\+\+Parameters Namespace Reference}
+\label{namespaceGlobal__Parameters}\index{Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}}
+
+
+Global variables.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{namespaceGlobal__Parameters_aafb6ae2e2642a42a7c8ce999837d18b1}{compute\+\_\+dependent\+\_\+parameters} ()
+\begin{DoxyCompactList}\small\item\em Function to compute dependent parameters. \end{DoxyCompactList}\item 
+void \hyperlink{namespaceGlobal__Parameters_a28ae8c02f7e4ef9d552591d22f1c26f9}{Hankel\+\_\+first} (const unsigned \&n, const double \&x, Vector$<$ std\+::complex$<$ double $>$ $>$ \&h, Vector$<$ std\+::complex$<$ double $>$ $>$ \&hp)
+\begin{DoxyCompactList}\small\item\em Compute Hankel function of the first kind of orders 0...n and its derivates at coordinate x. The function returns the vector then its derivative. \end{DoxyCompactList}\item 
+void \hyperlink{namespaceGlobal__Parameters_a97162dba4bd29a15067b9c9bbe53c754}{exact\+\_\+u} (const Vector$<$ double $>$ \&x, Vector$<$ double $>$ \&u)
+\begin{DoxyCompactList}\small\item\em Exact solution as a Vector\+: \{u\+\_\+x\+\_\+real, u\+\_\+y\+\_\+real, u\+\_\+x\+\_\+imag, u\+\_\+y\+\_\+imag\}. \end{DoxyCompactList}\item 
+void \hyperlink{namespaceGlobal__Parameters_a1db5d755b9fc9faa6cd74f4747264acc}{body\+\_\+force} (const Vector$<$ double $>$ \&x, Vector$<$ std\+::complex$<$ double $>$ $>$ \&b)
+\begin{DoxyCompactList}\small\item\em Body force. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+double \hyperlink{namespaceGlobal__Parameters_af365b0769e142cabdaed848057332858}{Element\+\_\+area} = 0.\+01
+\begin{DoxyCompactList}\small\item\em helper to set target mesh element size \end{DoxyCompactList}\item 
+double \hyperlink{namespaceGlobal__Parameters_a6106a50c4a420f4040e2ccd7d443267c}{T\+\_\+start} = 0.\+0
+\begin{DoxyCompactList}\small\item\em helpers to time the code \end{DoxyCompactList}\item 
+double \hyperlink{namespaceGlobal__Parameters_a42ef00f24f3bc5c16dae72557c736634}{T\+\_\+end} = 0.\+0
+\item 
+unsigned \hyperlink{namespaceGlobal__Parameters_a9af8f57814ac363b52f2a88d75864524}{N\+\_\+pml\+\_\+multiplier} = 1
+\begin{DoxyCompactList}\small\item\em P\+ML width in elements for the right layer. \end{DoxyCompactList}\item 
+double \hyperlink{namespaceGlobal__Parameters_a7a49a7bc4052082ccf10caf8ff7a52b6}{L\+\_\+pml\+\_\+multiplier} = 1.\+0
+\item 
+unsigned \hyperlink{namespaceGlobal__Parameters_a401ab27b40efe725bc047909ae65b4b1}{N\+\_\+x\+\_\+right\+\_\+pml} = 8
+\begin{DoxyCompactList}\small\item\em P\+ML width in elements for the right layer. \end{DoxyCompactList}\item 
+unsigned \hyperlink{namespaceGlobal__Parameters_ade86fec7e40fc9a5330e6213482f09d6}{N\+\_\+y\+\_\+top\+\_\+pml} = 8
+\begin{DoxyCompactList}\small\item\em P\+ML width in elements for the top layer. \end{DoxyCompactList}\item 
+unsigned \hyperlink{namespaceGlobal__Parameters_accf11b5794502b15efd0aa37347f6994}{N\+\_\+x\+\_\+left\+\_\+pml} = 8
+\begin{DoxyCompactList}\small\item\em P\+ML width in elements for the left layer. \end{DoxyCompactList}\item 
+unsigned \hyperlink{namespaceGlobal__Parameters_a79bff9b8e3435255541b71c0e3cc30a1}{N\+\_\+y\+\_\+bottom\+\_\+pml} = 8
+\begin{DoxyCompactList}\small\item\em P\+ML width in elements for the left layer. \end{DoxyCompactList}\item 
+double \hyperlink{namespaceGlobal__Parameters_a140b1b8aaef0bf2b94acf75d681d4545}{Width\+\_\+x\+\_\+right\+\_\+pml} = 2.\+0
+\item 
+double \hyperlink{namespaceGlobal__Parameters_a175759402c54bb216b0599c6a031abea}{Width\+\_\+y\+\_\+top\+\_\+pml} = 2.\+0
+\item 
+double \hyperlink{namespaceGlobal__Parameters_a28925335dcc7b2bed01d744a543be9aa}{Width\+\_\+x\+\_\+left\+\_\+pml} = 2.\+0
+\item 
+double \hyperlink{namespaceGlobal__Parameters_a67848e80f63ec793108a4710a28cc3a9}{Width\+\_\+y\+\_\+bottom\+\_\+pml} = 2.\+0
+\item 
+double \hyperlink{namespaceGlobal__Parameters_a20fccdcfa2c15ad8b951b9ada3bb1661}{Nu} =0.\+3
+\begin{DoxyCompactList}\small\item\em Poisson\textquotesingle{}s ratio. \end{DoxyCompactList}\item 
+double \hyperlink{namespaceGlobal__Parameters_af9e1e178dfb7f5e35b452599bd4c4324}{Omega\+\_\+sq} =30.\+0
+\begin{DoxyCompactList}\small\item\em Square of non-\/dim frequency. \end{DoxyCompactList}\item 
+P\+M\+L\+Time\+Harmonic\+Isotropic\+Elasticity\+Tensor $\ast$ \hyperlink{namespaceGlobal__Parameters_a9dc0631434879b47501f64851ad679b8}{E\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em The elasticity tensor. \end{DoxyCompactList}\item 
+double \hyperlink{namespaceGlobal__Parameters_a0b73c5ead1114ae88bbd4cb0eb54f078}{H\+\_\+annulus} =0.\+5
+\begin{DoxyCompactList}\small\item\em Thickness of annulus. \end{DoxyCompactList}\item 
+string \hyperlink{namespaceGlobal__Parameters_a301ab922df72030c660b21328d6caf76}{Directory} =\char`\"{}R\+E\+S\+LT\char`\"{}
+\begin{DoxyCompactList}\small\item\em Output directory. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Global variables. 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceGlobal__Parameters_a1db5d755b9fc9faa6cd74f4747264acc}\label{namespaceGlobal__Parameters_a1db5d755b9fc9faa6cd74f4747264acc}} 
+\index{Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}!body\+\_\+force@{body\+\_\+force}}
+\index{body\+\_\+force@{body\+\_\+force}!Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}}
+\subsubsection{\texorpdfstring{body\+\_\+force()}{body\_force()}}
+{\footnotesize\ttfamily void Global\+\_\+\+Parameters\+::body\+\_\+force (\begin{DoxyParamCaption}\item[{const Vector$<$ double $>$ \&}]{x,  }\item[{Vector$<$ std\+::complex$<$ double $>$ $>$ \&}]{b }\end{DoxyParamCaption})}
+
+
+
+Body force. 
+
+Define the magnitude of the forcing
+
+Define the decay rate
+
+The forcing used is of damped exponential type to generate axisymmetric results after post-\/processing
+
+Assign the source in each dimension 
+
+Definition at line 64 of file time\+\_\+harmonic\+\_\+elasticity\+\_\+driver\+\_\+source.\+cc.
+
+
+
+References compute\+\_\+dependent\+\_\+parameters(), Directory, E\+\_\+pt, L\+\_\+pml\+\_\+multiplier, N\+\_\+pml\+\_\+multiplier, N\+\_\+x\+\_\+left\+\_\+pml, N\+\_\+x\+\_\+right\+\_\+pml, N\+\_\+y\+\_\+bottom\+\_\+pml, N\+\_\+y\+\_\+top\+\_\+pml, Nu, Omega\+\_\+sq, T\+\_\+end, T\+\_\+start, Width\+\_\+x\+\_\+left\+\_\+pml, Width\+\_\+x\+\_\+right\+\_\+pml, Width\+\_\+y\+\_\+bottom\+\_\+pml, and Width\+\_\+y\+\_\+top\+\_\+pml.
+
+\mbox{\Hypertarget{namespaceGlobal__Parameters_aafb6ae2e2642a42a7c8ce999837d18b1}\label{namespaceGlobal__Parameters_aafb6ae2e2642a42a7c8ce999837d18b1}} 
+\index{Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}!compute\+\_\+dependent\+\_\+parameters@{compute\+\_\+dependent\+\_\+parameters}}
+\index{compute\+\_\+dependent\+\_\+parameters@{compute\+\_\+dependent\+\_\+parameters}!Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}}
+\subsubsection{\texorpdfstring{compute\+\_\+dependent\+\_\+parameters()}{compute\_dependent\_parameters()}}
+{\footnotesize\ttfamily void Global\+\_\+\+Parameters\+::compute\+\_\+dependent\+\_\+parameters (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Function to compute dependent parameters. 
+
+Adjust number of P\+ML elements, set to be equal for all layers
+
+Adjust physical size of P\+ML layers, set to be equal for all layers
+
+Adjust number of P\+ML elements, set to be equal for all layers
+
+Adjust physical size of P\+ML layers, set to be equal for all layers
+
+Adjust number of P\+ML elements, set to be equal for all layers
+
+Adjust physical size of P\+ML layers, set to be equal for all layers 
+
+Definition at line 93 of file time\+\_\+harmonic\+\_\+elasticity\+\_\+driver.\+cc.
+
+
+
+References L\+\_\+pml\+\_\+multiplier, and N\+\_\+pml\+\_\+multiplier.
+
+
+
+Referenced by body\+\_\+force(), and main().
+
+\mbox{\Hypertarget{namespaceGlobal__Parameters_a97162dba4bd29a15067b9c9bbe53c754}\label{namespaceGlobal__Parameters_a97162dba4bd29a15067b9c9bbe53c754}} 
+\index{Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}!exact\+\_\+u@{exact\+\_\+u}}
+\index{exact\+\_\+u@{exact\+\_\+u}!Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}}
+\subsubsection{\texorpdfstring{exact\+\_\+u()}{exact\_u()}}
+{\footnotesize\ttfamily void Global\+\_\+\+Parameters\+::exact\+\_\+u (\begin{DoxyParamCaption}\item[{const Vector$<$ double $>$ \&}]{x,  }\item[{Vector$<$ double $>$ \&}]{u }\end{DoxyParamCaption})}
+
+
+
+Exact solution as a Vector\+: \{u\+\_\+x\+\_\+real, u\+\_\+y\+\_\+real, u\+\_\+x\+\_\+imag, u\+\_\+y\+\_\+imag\}. 
+
+
+
+Definition at line 156 of file time\+\_\+harmonic\+\_\+elasticity\+\_\+driver.\+cc.
+
+
+
+References Hankel\+\_\+first(), and Nu.
+
+
+
+Referenced by Elastic\+Annulus\+Problem$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::complete\+\_\+problem\+\_\+setup(), and Elastic\+Annulus\+Problem$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::doc\+\_\+solution().
+
+\mbox{\Hypertarget{namespaceGlobal__Parameters_a28ae8c02f7e4ef9d552591d22f1c26f9}\label{namespaceGlobal__Parameters_a28ae8c02f7e4ef9d552591d22f1c26f9}} 
+\index{Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}!Hankel\+\_\+first@{Hankel\+\_\+first}}
+\index{Hankel\+\_\+first@{Hankel\+\_\+first}!Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}}
+\subsubsection{\texorpdfstring{Hankel\+\_\+first()}{Hankel\_first()}}
+{\footnotesize\ttfamily void Global\+\_\+\+Parameters\+::\+Hankel\+\_\+first (\begin{DoxyParamCaption}\item[{const unsigned \&}]{n,  }\item[{const double \&}]{x,  }\item[{Vector$<$ std\+::complex$<$ double $>$ $>$ \&}]{h,  }\item[{Vector$<$ std\+::complex$<$ double $>$ $>$ \&}]{hp }\end{DoxyParamCaption})}
+
+
+
+Compute Hankel function of the first kind of orders 0...n and its derivates at coordinate x. The function returns the vector then its derivative. 
+
+
+
+Definition at line 126 of file time\+\_\+harmonic\+\_\+elasticity\+\_\+driver.\+cc.
+
+
+
+Referenced by exact\+\_\+u().
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceGlobal__Parameters_a301ab922df72030c660b21328d6caf76}\label{namespaceGlobal__Parameters_a301ab922df72030c660b21328d6caf76}} 
+\index{Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}!Directory@{Directory}}
+\index{Directory@{Directory}!Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}}
+\subsubsection{\texorpdfstring{Directory}{Directory}}
+{\footnotesize\ttfamily string Global\+\_\+\+Parameters\+::\+Directory =\char`\"{}R\+E\+S\+LT\char`\"{}}
+
+
+
+Output directory. 
+
+
+
+Definition at line 121 of file time\+\_\+harmonic\+\_\+elasticity\+\_\+driver.\+cc.
+
+
+
+Referenced by body\+\_\+force(), Elastic\+Annulus\+Problem$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::\+Elastic\+Annulus\+Problem(), and main().
+
+\mbox{\Hypertarget{namespaceGlobal__Parameters_a9dc0631434879b47501f64851ad679b8}\label{namespaceGlobal__Parameters_a9dc0631434879b47501f64851ad679b8}} 
+\index{Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}!E\+\_\+pt@{E\+\_\+pt}}
+\index{E\+\_\+pt@{E\+\_\+pt}!Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}}
+\subsubsection{\texorpdfstring{E\+\_\+pt}{E\_pt}}
+{\footnotesize\ttfamily P\+M\+L\+Time\+Harmonic\+Isotropic\+Elasticity\+Tensor $\ast$ Global\+\_\+\+Parameters\+::\+E\+\_\+pt}
+
+
+
+The elasticity tensor. 
+
+
+
+Definition at line 115 of file time\+\_\+harmonic\+\_\+elasticity\+\_\+driver.\+cc.
+
+
+
+Referenced by body\+\_\+force(), Elastic\+Annulus\+Problem$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::complete\+\_\+problem\+\_\+setup(), and main().
+
+\mbox{\Hypertarget{namespaceGlobal__Parameters_af365b0769e142cabdaed848057332858}\label{namespaceGlobal__Parameters_af365b0769e142cabdaed848057332858}} 
+\index{Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}!Element\+\_\+area@{Element\+\_\+area}}
+\index{Element\+\_\+area@{Element\+\_\+area}!Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}}
+\subsubsection{\texorpdfstring{Element\+\_\+area}{Element\_area}}
+{\footnotesize\ttfamily double Global\+\_\+\+Parameters\+::\+Element\+\_\+area = 0.\+01}
+
+
+
+helper to set target mesh element size 
+
+
+
+Definition at line 62 of file time\+\_\+harmonic\+\_\+elasticity\+\_\+driver.\+cc.
+
+
+
+Referenced by Elastic\+Annulus\+Problem$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::\+Elastic\+Annulus\+Problem(), and main().
+
+\mbox{\Hypertarget{namespaceGlobal__Parameters_a0b73c5ead1114ae88bbd4cb0eb54f078}\label{namespaceGlobal__Parameters_a0b73c5ead1114ae88bbd4cb0eb54f078}} 
+\index{Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}!H\+\_\+annulus@{H\+\_\+annulus}}
+\index{H\+\_\+annulus@{H\+\_\+annulus}!Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}}
+\subsubsection{\texorpdfstring{H\+\_\+annulus}{H\_annulus}}
+{\footnotesize\ttfamily double Global\+\_\+\+Parameters\+::\+H\+\_\+annulus =0.\+5}
+
+
+
+Thickness of annulus. 
+
+
+
+Definition at line 118 of file time\+\_\+harmonic\+\_\+elasticity\+\_\+driver.\+cc.
+
+\mbox{\Hypertarget{namespaceGlobal__Parameters_a7a49a7bc4052082ccf10caf8ff7a52b6}\label{namespaceGlobal__Parameters_a7a49a7bc4052082ccf10caf8ff7a52b6}} 
+\index{Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}!L\+\_\+pml\+\_\+multiplier@{L\+\_\+pml\+\_\+multiplier}}
+\index{L\+\_\+pml\+\_\+multiplier@{L\+\_\+pml\+\_\+multiplier}!Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}}
+\subsubsection{\texorpdfstring{L\+\_\+pml\+\_\+multiplier}{L\_pml\_multiplier}}
+{\footnotesize\ttfamily double Global\+\_\+\+Parameters\+::\+L\+\_\+pml\+\_\+multiplier = 1.\+0}
+
+
+
+Definition at line 70 of file time\+\_\+harmonic\+\_\+elasticity\+\_\+driver.\+cc.
+
+
+
+Referenced by body\+\_\+force(), compute\+\_\+dependent\+\_\+parameters(), and main().
+
+\mbox{\Hypertarget{namespaceGlobal__Parameters_a9af8f57814ac363b52f2a88d75864524}\label{namespaceGlobal__Parameters_a9af8f57814ac363b52f2a88d75864524}} 
+\index{Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}!N\+\_\+pml\+\_\+multiplier@{N\+\_\+pml\+\_\+multiplier}}
+\index{N\+\_\+pml\+\_\+multiplier@{N\+\_\+pml\+\_\+multiplier}!Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}}
+\subsubsection{\texorpdfstring{N\+\_\+pml\+\_\+multiplier}{N\_pml\_multiplier}}
+{\footnotesize\ttfamily unsigned Global\+\_\+\+Parameters\+::\+N\+\_\+pml\+\_\+multiplier = 1}
+
+
+
+P\+ML width in elements for the right layer. 
+
+
+
+Definition at line 69 of file time\+\_\+harmonic\+\_\+elasticity\+\_\+driver.\+cc.
+
+
+
+Referenced by body\+\_\+force(), compute\+\_\+dependent\+\_\+parameters(), and main().
+
+\mbox{\Hypertarget{namespaceGlobal__Parameters_accf11b5794502b15efd0aa37347f6994}\label{namespaceGlobal__Parameters_accf11b5794502b15efd0aa37347f6994}} 
+\index{Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}!N\+\_\+x\+\_\+left\+\_\+pml@{N\+\_\+x\+\_\+left\+\_\+pml}}
+\index{N\+\_\+x\+\_\+left\+\_\+pml@{N\+\_\+x\+\_\+left\+\_\+pml}!Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}}
+\subsubsection{\texorpdfstring{N\+\_\+x\+\_\+left\+\_\+pml}{N\_x\_left\_pml}}
+{\footnotesize\ttfamily unsigned Global\+\_\+\+Parameters\+::\+N\+\_\+x\+\_\+left\+\_\+pml = 8}
+
+
+
+P\+ML width in elements for the left layer. 
+
+
+
+Definition at line 79 of file time\+\_\+harmonic\+\_\+elasticity\+\_\+driver.\+cc.
+
+
+
+Referenced by body\+\_\+force(), Elastic\+Annulus\+Problem$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::create\+\_\+pml\+\_\+meshes(), and main().
+
+\mbox{\Hypertarget{namespaceGlobal__Parameters_a401ab27b40efe725bc047909ae65b4b1}\label{namespaceGlobal__Parameters_a401ab27b40efe725bc047909ae65b4b1}} 
+\index{Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}!N\+\_\+x\+\_\+right\+\_\+pml@{N\+\_\+x\+\_\+right\+\_\+pml}}
+\index{N\+\_\+x\+\_\+right\+\_\+pml@{N\+\_\+x\+\_\+right\+\_\+pml}!Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}}
+\subsubsection{\texorpdfstring{N\+\_\+x\+\_\+right\+\_\+pml}{N\_x\_right\_pml}}
+{\footnotesize\ttfamily unsigned Global\+\_\+\+Parameters\+::\+N\+\_\+x\+\_\+right\+\_\+pml = 8}
+
+
+
+P\+ML width in elements for the right layer. 
+
+
+
+Definition at line 73 of file time\+\_\+harmonic\+\_\+elasticity\+\_\+driver.\+cc.
+
+
+
+Referenced by body\+\_\+force(), Elastic\+Annulus\+Problem$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::create\+\_\+pml\+\_\+meshes(), and main().
+
+\mbox{\Hypertarget{namespaceGlobal__Parameters_a79bff9b8e3435255541b71c0e3cc30a1}\label{namespaceGlobal__Parameters_a79bff9b8e3435255541b71c0e3cc30a1}} 
+\index{Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}!N\+\_\+y\+\_\+bottom\+\_\+pml@{N\+\_\+y\+\_\+bottom\+\_\+pml}}
+\index{N\+\_\+y\+\_\+bottom\+\_\+pml@{N\+\_\+y\+\_\+bottom\+\_\+pml}!Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}}
+\subsubsection{\texorpdfstring{N\+\_\+y\+\_\+bottom\+\_\+pml}{N\_y\_bottom\_pml}}
+{\footnotesize\ttfamily unsigned Global\+\_\+\+Parameters\+::\+N\+\_\+y\+\_\+bottom\+\_\+pml = 8}
+
+
+
+P\+ML width in elements for the left layer. 
+
+
+
+Definition at line 82 of file time\+\_\+harmonic\+\_\+elasticity\+\_\+driver.\+cc.
+
+
+
+Referenced by body\+\_\+force(), Elastic\+Annulus\+Problem$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::create\+\_\+pml\+\_\+meshes(), and main().
+
+\mbox{\Hypertarget{namespaceGlobal__Parameters_ade86fec7e40fc9a5330e6213482f09d6}\label{namespaceGlobal__Parameters_ade86fec7e40fc9a5330e6213482f09d6}} 
+\index{Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}!N\+\_\+y\+\_\+top\+\_\+pml@{N\+\_\+y\+\_\+top\+\_\+pml}}
+\index{N\+\_\+y\+\_\+top\+\_\+pml@{N\+\_\+y\+\_\+top\+\_\+pml}!Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}}
+\subsubsection{\texorpdfstring{N\+\_\+y\+\_\+top\+\_\+pml}{N\_y\_top\_pml}}
+{\footnotesize\ttfamily unsigned Global\+\_\+\+Parameters\+::\+N\+\_\+y\+\_\+top\+\_\+pml = 8}
+
+
+
+P\+ML width in elements for the top layer. 
+
+
+
+Definition at line 76 of file time\+\_\+harmonic\+\_\+elasticity\+\_\+driver.\+cc.
+
+
+
+Referenced by body\+\_\+force(), Elastic\+Annulus\+Problem$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::create\+\_\+pml\+\_\+meshes(), and main().
+
+\mbox{\Hypertarget{namespaceGlobal__Parameters_a20fccdcfa2c15ad8b951b9ada3bb1661}\label{namespaceGlobal__Parameters_a20fccdcfa2c15ad8b951b9ada3bb1661}} 
+\index{Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}!Nu@{Nu}}
+\index{Nu@{Nu}!Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}}
+\subsubsection{\texorpdfstring{Nu}{Nu}}
+{\footnotesize\ttfamily double Global\+\_\+\+Parameters\+::\+Nu =0.\+3}
+
+
+
+Poisson\textquotesingle{}s ratio. 
+
+
+
+Definition at line 109 of file time\+\_\+harmonic\+\_\+elasticity\+\_\+driver.\+cc.
+
+
+
+Referenced by body\+\_\+force(), exact\+\_\+u(), and main().
+
+\mbox{\Hypertarget{namespaceGlobal__Parameters_af9e1e178dfb7f5e35b452599bd4c4324}\label{namespaceGlobal__Parameters_af9e1e178dfb7f5e35b452599bd4c4324}} 
+\index{Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}!Omega\+\_\+sq@{Omega\+\_\+sq}}
+\index{Omega\+\_\+sq@{Omega\+\_\+sq}!Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}}
+\subsubsection{\texorpdfstring{Omega\+\_\+sq}{Omega\_sq}}
+{\footnotesize\ttfamily double Global\+\_\+\+Parameters\+::\+Omega\+\_\+sq =30.\+0}
+
+
+
+Square of non-\/dim frequency. 
+
+
+
+Definition at line 112 of file time\+\_\+harmonic\+\_\+elasticity\+\_\+driver.\+cc.
+
+
+
+Referenced by body\+\_\+force(), Elastic\+Annulus\+Problem$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::complete\+\_\+problem\+\_\+setup(), and main().
+
+\mbox{\Hypertarget{namespaceGlobal__Parameters_a42ef00f24f3bc5c16dae72557c736634}\label{namespaceGlobal__Parameters_a42ef00f24f3bc5c16dae72557c736634}} 
+\index{Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}!T\+\_\+end@{T\+\_\+end}}
+\index{T\+\_\+end@{T\+\_\+end}!Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}}
+\subsubsection{\texorpdfstring{T\+\_\+end}{T\_end}}
+{\footnotesize\ttfamily double Global\+\_\+\+Parameters\+::\+T\+\_\+end = 0.\+0}
+
+
+
+Definition at line 66 of file time\+\_\+harmonic\+\_\+elasticity\+\_\+driver.\+cc.
+
+
+
+Referenced by body\+\_\+force(), Elastic\+Annulus\+Problem$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::doc\+\_\+solution(), and main().
+
+\mbox{\Hypertarget{namespaceGlobal__Parameters_a6106a50c4a420f4040e2ccd7d443267c}\label{namespaceGlobal__Parameters_a6106a50c4a420f4040e2ccd7d443267c}} 
+\index{Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}!T\+\_\+start@{T\+\_\+start}}
+\index{T\+\_\+start@{T\+\_\+start}!Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}}
+\subsubsection{\texorpdfstring{T\+\_\+start}{T\_start}}
+{\footnotesize\ttfamily double Global\+\_\+\+Parameters\+::\+T\+\_\+start = 0.\+0}
+
+
+
+helpers to time the code 
+
+
+
+Definition at line 65 of file time\+\_\+harmonic\+\_\+elasticity\+\_\+driver.\+cc.
+
+
+
+Referenced by body\+\_\+force(), Elastic\+Annulus\+Problem$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::doc\+\_\+solution(), and main().
+
+\mbox{\Hypertarget{namespaceGlobal__Parameters_a28925335dcc7b2bed01d744a543be9aa}\label{namespaceGlobal__Parameters_a28925335dcc7b2bed01d744a543be9aa}} 
+\index{Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}!Width\+\_\+x\+\_\+left\+\_\+pml@{Width\+\_\+x\+\_\+left\+\_\+pml}}
+\index{Width\+\_\+x\+\_\+left\+\_\+pml@{Width\+\_\+x\+\_\+left\+\_\+pml}!Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}}
+\subsubsection{\texorpdfstring{Width\+\_\+x\+\_\+left\+\_\+pml}{Width\_x\_left\_pml}}
+{\footnotesize\ttfamily double Global\+\_\+\+Parameters\+::\+Width\+\_\+x\+\_\+left\+\_\+pml = 2.\+0}
+
+
+
+Definition at line 89 of file time\+\_\+harmonic\+\_\+elasticity\+\_\+driver.\+cc.
+
+
+
+Referenced by body\+\_\+force(), Elastic\+Annulus\+Problem$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::create\+\_\+pml\+\_\+meshes(), and main().
+
+\mbox{\Hypertarget{namespaceGlobal__Parameters_a140b1b8aaef0bf2b94acf75d681d4545}\label{namespaceGlobal__Parameters_a140b1b8aaef0bf2b94acf75d681d4545}} 
+\index{Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}!Width\+\_\+x\+\_\+right\+\_\+pml@{Width\+\_\+x\+\_\+right\+\_\+pml}}
+\index{Width\+\_\+x\+\_\+right\+\_\+pml@{Width\+\_\+x\+\_\+right\+\_\+pml}!Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}}
+\subsubsection{\texorpdfstring{Width\+\_\+x\+\_\+right\+\_\+pml}{Width\_x\_right\_pml}}
+{\footnotesize\ttfamily double Global\+\_\+\+Parameters\+::\+Width\+\_\+x\+\_\+right\+\_\+pml = 2.\+0}
+
+
+
+Definition at line 87 of file time\+\_\+harmonic\+\_\+elasticity\+\_\+driver.\+cc.
+
+
+
+Referenced by body\+\_\+force(), Elastic\+Annulus\+Problem$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::create\+\_\+pml\+\_\+meshes(), and main().
+
+\mbox{\Hypertarget{namespaceGlobal__Parameters_a67848e80f63ec793108a4710a28cc3a9}\label{namespaceGlobal__Parameters_a67848e80f63ec793108a4710a28cc3a9}} 
+\index{Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}!Width\+\_\+y\+\_\+bottom\+\_\+pml@{Width\+\_\+y\+\_\+bottom\+\_\+pml}}
+\index{Width\+\_\+y\+\_\+bottom\+\_\+pml@{Width\+\_\+y\+\_\+bottom\+\_\+pml}!Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}}
+\subsubsection{\texorpdfstring{Width\+\_\+y\+\_\+bottom\+\_\+pml}{Width\_y\_bottom\_pml}}
+{\footnotesize\ttfamily double Global\+\_\+\+Parameters\+::\+Width\+\_\+y\+\_\+bottom\+\_\+pml = 2.\+0}
+
+
+
+Definition at line 90 of file time\+\_\+harmonic\+\_\+elasticity\+\_\+driver.\+cc.
+
+
+
+Referenced by body\+\_\+force(), Elastic\+Annulus\+Problem$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::create\+\_\+pml\+\_\+meshes(), and main().
+
+\mbox{\Hypertarget{namespaceGlobal__Parameters_a175759402c54bb216b0599c6a031abea}\label{namespaceGlobal__Parameters_a175759402c54bb216b0599c6a031abea}} 
+\index{Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}!Width\+\_\+y\+\_\+top\+\_\+pml@{Width\+\_\+y\+\_\+top\+\_\+pml}}
+\index{Width\+\_\+y\+\_\+top\+\_\+pml@{Width\+\_\+y\+\_\+top\+\_\+pml}!Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}}
+\subsubsection{\texorpdfstring{Width\+\_\+y\+\_\+top\+\_\+pml}{Width\_y\_top\_pml}}
+{\footnotesize\ttfamily double Global\+\_\+\+Parameters\+::\+Width\+\_\+y\+\_\+top\+\_\+pml = 2.\+0}
+
+
+
+Definition at line 88 of file time\+\_\+harmonic\+\_\+elasticity\+\_\+driver.\+cc.
+
+
+
+Referenced by body\+\_\+force(), Elastic\+Annulus\+Problem$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::create\+\_\+pml\+\_\+meshes(), and main().
+

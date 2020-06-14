@@ -1,0 +1,580 @@
+\hypertarget{classoomph_1_1RefineableQElement_3_013_01_4}{}\section{oomph\+:\+:Refineable\+Q\+Element$<$ 3 $>$ Class Template Reference}
+\label{classoomph_1_1RefineableQElement_3_013_01_4}\index{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$@{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$}}
+
+
+{\ttfamily \#include $<$refineable\+\_\+brick\+\_\+element.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Refineable\+Q\+Element$<$ 3 $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.873900cm]{classoomph_1_1RefineableQElement_3_013_01_4}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef void(\hyperlink{classoomph_1_1RefineableQElement}{Refineable\+Q\+Element}$<$ 3 $>$\+::$\ast$ \hyperlink{classoomph_1_1RefineableQElement_3_013_01_4_ad23b3146537ecd540f79f485cc1d9e3f}{Void\+Mem\+Fct\+Pt}) ()
+\begin{DoxyCompactList}\small\item\em Shorthand for pointer to an argument-\/free void member function of the refineable element. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1RefineableQElement_3_013_01_4_afebcbfcb8c222f8912043b0c9513a945}{Refineable\+Q\+Element} ()
+\begin{DoxyCompactList}\small\item\em Constructor\+: Pass refinement level (default 0 = root) \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1RefineableQElement_3_013_01_4_a3357a1cd5bb746a97973ee6019e5bd04}{Refineable\+Q\+Element} (const \hyperlink{classoomph_1_1RefineableQElement}{Refineable\+Q\+Element}$<$ 3 $>$ \&dummy)
+\begin{DoxyCompactList}\small\item\em Broken copy constructor. \end{DoxyCompactList}\item 
+virtual \hyperlink{classoomph_1_1RefineableQElement_3_013_01_4_abbdc6a7895845fd7a30ecc5b35be2764}{$\sim$\+Refineable\+Q\+Element} ()
+\begin{DoxyCompactList}\small\item\em Broken assignment operator. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1RefineableQElement_3_013_01_4_a1eff24cfc9bead67647d7df95dad97c8}{required\+\_\+nsons} () const
+\begin{DoxyCompactList}\small\item\em A refineable brick element has eight sons. \end{DoxyCompactList}\item 
+virtual \hyperlink{classoomph_1_1Node}{Node} $\ast$ \hyperlink{classoomph_1_1RefineableQElement_3_013_01_4_a3651ba128941c12c7da6521ae82af8ff}{node\+\_\+created\+\_\+by\+\_\+neighbour} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&s\+\_\+fraction)
+\begin{DoxyCompactList}\small\item\em If a neighbouring element has already created a node at a position corresponding to the local fractional position within the present element, s\+\_\+fraction, return a pointer to that node. If not, return N\+U\+LL (0). \end{DoxyCompactList}\item 
+virtual \hyperlink{classoomph_1_1Node}{Node} $\ast$ \hyperlink{classoomph_1_1RefineableQElement_3_013_01_4_aab54b116a277372d4af7d7c93301ecda}{node\+\_\+created\+\_\+by\+\_\+son\+\_\+of\+\_\+neighbour} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&s\+\_\+fraction)
+\begin{DoxyCompactList}\small\item\em If a neighbouring element has already created a node at a position corresponding to the local fractional position within the present element, s\+\_\+fraction, return a pointer to that node. If not, return N\+U\+LL (0). \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1RefineableQElement_3_013_01_4_a8e7f6c2a6aa695c1b6fcd4dbeba3fac6}{build} (\hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$\&mesh\+\_\+pt, \hyperlink{classoomph_1_1Vector}{Vector}$<$ \hyperlink{classoomph_1_1Node}{Node} $\ast$$>$ \&new\+\_\+node\+\_\+pt, bool \&was\+\_\+already\+\_\+built, std\+::ofstream \&new\+\_\+nodes\+\_\+file)
+\begin{DoxyCompactList}\small\item\em Build the element\+: i.\+e. give it nodal positions, apply B\+Cs, etc. Pointers to any new nodes will be returned in new\+\_\+node\+\_\+pt. If it is open, the positions of the new nodes will be written to the file stream new\+\_\+nodes\+\_\+file. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1RefineableQElement_3_013_01_4_ac956bd05c434861ba65b0431024c1072}{check\+\_\+integrity} (double \&max\+\_\+error)
+\begin{DoxyCompactList}\small\item\em Check the integrity of the element\+: ensure that the position and values are continuous across the element faces. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1RefineableQElement_3_013_01_4_aa8ea5cf2c9fee8ff9a1c52505e736bbb}{output\+\_\+corners} (std\+::ostream \&outfile, const std\+::string \&colour) const
+\begin{DoxyCompactList}\small\item\em Print corner nodes, use colour. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1OcTree}{Oc\+Tree} $\ast$ \hyperlink{classoomph_1_1RefineableQElement_3_013_01_4_ae80b5899ce103e76f1ccea34d371c2ed}{octree\+\_\+pt} ()
+\begin{DoxyCompactList}\small\item\em Pointer to octree representation of this element. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1OcTree}{Oc\+Tree} $\ast$ \hyperlink{classoomph_1_1RefineableQElement_3_013_01_4_a58e295694d08140d1060f79005129fb9}{octree\+\_\+pt} () const
+\begin{DoxyCompactList}\small\item\em Pointer to octree representation of this element. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1RefineableQElement_3_013_01_4_aceb41f87bfce0e333ee0a713e382075f}{setup\+\_\+hanging\+\_\+nodes} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ std\+::ofstream $\ast$$>$ \&output\+\_\+stream)
+\begin{DoxyCompactList}\small\item\em Markup all hanging nodes \& document the results in the output streams contained in the vector output\+\_\+stream, if they are open. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1RefineableQElement_3_013_01_4_aae91537ebb3f511bf48397b3324f424a}{further\+\_\+setup\+\_\+hanging\+\_\+nodes} ()=0
+\begin{DoxyCompactList}\small\item\em Perform additional hanging node procedures for variables that are not interpolated by all nodes (e.\+g. lower order interpolations as for the pressure in Taylor Hood). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classoomph_1_1RefineableQElement_3_013_01_4_a8e9be85046f3898ece0a328512392ca8}{setup\+\_\+father\+\_\+bounds} ()
+\begin{DoxyCompactList}\small\item\em Setup static matrix for coincidence between son nodal points and father boundaries. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1RefineableQElement_3_013_01_4_ab7548543df38dcc3a011d51c6ed357ac}{get\+\_\+face\+\_\+bcs} (const int \&edge, \hyperlink{classoomph_1_1Vector}{Vector}$<$ int $>$ \&bound\+\_\+cons) const
+\begin{DoxyCompactList}\small\item\em Determine \hyperlink{classoomph_1_1Vector}{Vector} of boundary conditions along the element\textquotesingle{}s face (R/\+L/\+U/\+D/\+B/F) -- BC is the least restrictive combination of all the nodes on this face. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1RefineableQElement_3_013_01_4_ac61083ce6abe6338ec5d7795d9f1e051}{get\+\_\+boundaries} (const int \&edge, std\+::set$<$ unsigned $>$ \&boundaries) const
+\item 
+void \hyperlink{classoomph_1_1RefineableQElement_3_013_01_4_aac2601ff8f740680675e5e6ba5c35e9d}{get\+\_\+bcs} (int bound, \hyperlink{classoomph_1_1Vector}{Vector}$<$ int $>$ \&bound\+\_\+cons) const
+\begin{DoxyCompactList}\small\item\em Determine \hyperlink{classoomph_1_1Vector}{Vector} of boundary conditions along the element\textquotesingle{}s boundary (or vertex) bound (S/\+W/\+N/\+E/\+S\+W/\+S\+E/\+N\+W/\+NE). \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1RefineableQElement_3_013_01_4_aa0feadb4fbbe8861366a77373b122293}{interpolated\+\_\+zeta\+\_\+on\+\_\+face} (const unsigned \&boundary, const int \&face, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&zeta)
+\begin{DoxyCompactList}\small\item\em Return the value of the intrinsic boundary coordinate interpolated along the face. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1RefineableQElement_3_013_01_4_a3d38b1cfacb055140a330e3d251b601f}{setup\+\_\+hang\+\_\+for\+\_\+value} (const int \&value\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Internal helper function that is used to construct the hanging node schemes for the value\+\_\+id-\/th interpolated value. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1RefineableQElement_3_013_01_4_abde04c6b8616bd2551b24ac1abade563}{oc\+\_\+hang\+\_\+helper} (const int \&value\+\_\+id, const int \&my\+\_\+edge, std\+::ofstream \&output\+\_\+hangfile)
+\begin{DoxyCompactList}\small\item\em Internal helper function that is used to construct the hanging node schemes for the positions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::map$<$ unsigned, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ int $>$ $>$ \hyperlink{classoomph_1_1RefineableQElement_3_013_01_4_a0c02f69b5f451db97099acb1e2960738}{Father\+\_\+bound}
+\begin{DoxyCompactList}\small\item\em Coincidence between son nodal points and father boundaries\+: Father\+\_\+bound\mbox{[}nnode\+\_\+1d\mbox{]}(nnode\+\_\+son,son\+\_\+type)=\{R\+U/\+R\+F/\+R\+D/\+R\+B/.../ O\+M\+E\+GA\} so that node nnode\+\_\+son in element of type son\+\_\+type lies on boundary/vertex Father\+\_\+bound\mbox{[}nnode\+\_\+1d\mbox{]}(nnode\+\_\+son,son\+\_\+type) in its father element. If the node doesn\textquotesingle{}t lie on a boundary the value is O\+M\+E\+GA. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$$>$\newline
+class oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$}
+
+Refineable version of \hyperlink{classoomph_1_1QElement_3_013_00_01NNODE__1D_01_4}{Q\+Element$<$3,\+N\+N\+O\+D\+E\+\_\+1\+D$>$}.
+
+Refinement is performed by octree procedures. When the element is subdivided, the geometry of its sons is established by calls to their father\textquotesingle{}s 
+\begin{DoxyCode}
+\hyperlink{classoomph_1_1FiniteElement_a6fc14cbf4e1d031acbc59b415cefa1ca}{get\_x}(...) 
+\end{DoxyCode}
+ function which refers to
+\begin{DoxyItemize}
+\item the father element\textquotesingle{}s geometric FE mapping (this is the default)
+\end{DoxyItemize}or
+\begin{DoxyItemize}
+\item to a \hyperlink{classoomph_1_1MacroElement}{Macro\+Element} \textquotesingle{}s \hyperlink{classoomph_1_1MacroElement_a85e7842ad949bb4062a9ff302fa452e5}{Macro\+Element\+::macro\+\_\+map} (if the pointer to the macro element is non-\/\+N\+U\+LL)
+\end{DoxyItemize}
+
+The class provides a generic \hyperlink{classoomph_1_1RefineableQElement_3_013_01_4_a8e7f6c2a6aa695c1b6fcd4dbeba3fac6}{Refineable\+Q\+Element$<$3$>$\+::build()} function which deals with generic isoparametric Q\+Elements in which all values are associated with nodes. The \hyperlink{classoomph_1_1RefineableElement_a26628ce36dfad028686adeb4694a9ef3}{Refineable\+Q\+Element$<$3$>$\+::further\+\_\+build()} function provides an interface for any element-\/specific non-\/generic build operations. 
+
+Definition at line 71 of file refineable\+\_\+brick\+\_\+element.\+h.
+
+
+
+\subsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classoomph_1_1RefineableQElement_3_013_01_4_ad23b3146537ecd540f79f485cc1d9e3f}\label{classoomph_1_1RefineableQElement_3_013_01_4_ad23b3146537ecd540f79f485cc1d9e3f}} 
+\index{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$@{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$}!Void\+Mem\+Fct\+Pt@{Void\+Mem\+Fct\+Pt}}
+\index{Void\+Mem\+Fct\+Pt@{Void\+Mem\+Fct\+Pt}!oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$@{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$}}
+\subsubsection{\texorpdfstring{Void\+Mem\+Fct\+Pt}{VoidMemFctPt}}
+{\footnotesize\ttfamily typedef void(\hyperlink{classoomph_1_1RefineableQElement}{Refineable\+Q\+Element}$<$3$>$\+::$\ast$ \hyperlink{classoomph_1_1RefineableQElement}{oomph\+::\+Refineable\+Q\+Element}$<$ 3 $>$\+::Void\+Mem\+Fct\+Pt) ()}
+
+
+
+Shorthand for pointer to an argument-\/free void member function of the refineable element. 
+
+
+
+Definition at line 79 of file refineable\+\_\+brick\+\_\+element.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1RefineableQElement_3_013_01_4_afebcbfcb8c222f8912043b0c9513a945}\label{classoomph_1_1RefineableQElement_3_013_01_4_afebcbfcb8c222f8912043b0c9513a945}} 
+\index{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$@{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$}!Refineable\+Q\+Element@{Refineable\+Q\+Element}}
+\index{Refineable\+Q\+Element@{Refineable\+Q\+Element}!oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$@{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$}}
+\subsubsection{\texorpdfstring{Refineable\+Q\+Element()}{RefineableQElement()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1RefineableQElement}{oomph\+::\+Refineable\+Q\+Element}$<$ 3 $>$\+::\hyperlink{classoomph_1_1RefineableQElement}{Refineable\+Q\+Element} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor\+: Pass refinement level (default 0 = root) 
+
+
+
+Definition at line 82 of file refineable\+\_\+brick\+\_\+element.\+h.
+
+
+
+References oomph\+::\+Leak\+Check\+Names\+::\+\_\+build.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableQElement_3_013_01_4_a3357a1cd5bb746a97973ee6019e5bd04}\label{classoomph_1_1RefineableQElement_3_013_01_4_a3357a1cd5bb746a97973ee6019e5bd04}} 
+\index{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$@{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$}!Refineable\+Q\+Element@{Refineable\+Q\+Element}}
+\index{Refineable\+Q\+Element@{Refineable\+Q\+Element}!oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$@{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$}}
+\subsubsection{\texorpdfstring{Refineable\+Q\+Element()}{RefineableQElement()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1RefineableQElement}{oomph\+::\+Refineable\+Q\+Element}$<$ 3 $>$\+::\hyperlink{classoomph_1_1RefineableQElement}{Refineable\+Q\+Element} (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1RefineableQElement}{Refineable\+Q\+Element}$<$ 3 $>$ \&}]{dummy }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Broken copy constructor. 
+
+
+
+Definition at line 90 of file refineable\+\_\+brick\+\_\+element.\+h.
+
+
+
+References oomph\+::\+Broken\+Copy\+::broken\+\_\+copy().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableQElement_3_013_01_4_abbdc6a7895845fd7a30ecc5b35be2764}\label{classoomph_1_1RefineableQElement_3_013_01_4_abbdc6a7895845fd7a30ecc5b35be2764}} 
+\index{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$@{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$}!````~Refineable\+Q\+Element@{$\sim$\+Refineable\+Q\+Element}}
+\index{````~Refineable\+Q\+Element@{$\sim$\+Refineable\+Q\+Element}!oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$@{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$}}
+\subsubsection{\texorpdfstring{$\sim$\+Refineable\+Q\+Element()}{~RefineableQElement()}}
+{\footnotesize\ttfamily virtual \hyperlink{classoomph_1_1RefineableQElement}{oomph\+::\+Refineable\+Q\+Element}$<$ 3 $>$\+::$\sim$\hyperlink{classoomph_1_1RefineableQElement}{Refineable\+Q\+Element} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Broken assignment operator. 
+
+Destructor 
+
+Definition at line 106 of file refineable\+\_\+brick\+\_\+element.\+h.
+
+
+
+References oomph\+::\+Leak\+Check\+Names\+::\+\_\+build.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1RefineableQElement_3_013_01_4_a8e7f6c2a6aa695c1b6fcd4dbeba3fac6}\label{classoomph_1_1RefineableQElement_3_013_01_4_a8e7f6c2a6aa695c1b6fcd4dbeba3fac6}} 
+\index{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$@{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$}!build@{build}}
+\index{build@{build}!oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$@{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$}}
+\subsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily void \hyperlink{classoomph_1_1RefineableQElement}{oomph\+::\+Refineable\+Q\+Element}$<$ 3 $>$\+::build (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$\&}]{mesh\+\_\+pt,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ \hyperlink{classoomph_1_1Node}{Node} $\ast$$>$ \&}]{new\+\_\+node\+\_\+pt,  }\item[{bool \&}]{was\+\_\+already\+\_\+built,  }\item[{std\+::ofstream \&}]{new\+\_\+nodes\+\_\+file }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Build the element\+: i.\+e. give it nodal positions, apply B\+Cs, etc. Pointers to any new nodes will be returned in new\+\_\+node\+\_\+pt. If it is open, the positions of the new nodes will be written to the file stream new\+\_\+nodes\+\_\+file. 
+
+Build the element by doing the following\+:
+\begin{DoxyItemize}
+\item Give it nodal positions (by establishing the pointers to its nodes)
+\item In the process create new nodes where required (i.\+e. if they don\textquotesingle{}t exist in father element or have already been created while building new neighbour elements). \hyperlink{classoomph_1_1Node}{Node} building involves the following steps\+:
+\begin{DoxyItemize}
+\item Get nodal position from father element.
+\item Establish the time-\/history of the newly created nodal point (its coordinates and the previous values) consistent with the father\textquotesingle{}s history.
+\item Determine the boundary conditions of the nodes (newly created nodes can only lie on the interior of any edges of the father element -- this makes it possible to to figure out what their bc should be...)
+\item Add node to the mesh\textquotesingle{}s stoarge scheme for the boundary nodes.
+\item Add the new node to the mesh itself
+\item Doc newly created nodes in file \char`\"{}new\+\_\+nodes.\+dat\char`\"{} in the directory of the \hyperlink{classoomph_1_1DocInfo}{Doc\+Info} object (only if it\textquotesingle{}s open!)
+\end{DoxyItemize}
+\item Finally, excute the element-\/specific \hyperlink{classoomph_1_1RefineableElement_a26628ce36dfad028686adeb4694a9ef3}{further\+\_\+build()} (empty by default -- must be overloaded for specific elements). This deals with any build operations that are not included in the generic process outlined above. For instance, in Crouzeix Raviart elements we need to initialise the internal pressure values in manner consistent with the pressure distribution in the father element. 
+\end{DoxyItemize}
+
+Implements \hyperlink{classoomph_1_1RefineableElement_adc31f0903b4cbd9574017dda44cf6523}{oomph\+::\+Refineable\+Element}.
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1RefineableSolidQElement_3_013_01_4_a62db84d609d99537e4180bf897a81a9b}{oomph\+::\+Refineable\+Solid\+Q\+Element$<$ 3 $>$}.
+
+
+
+Definition at line 1205 of file refineable\+\_\+brick\+\_\+element.\+cc.
+
+
+
+References oomph\+::\+Mesh\+::add\+\_\+boundary\+\_\+node(), oomph\+::\+Mesh\+::add\+\_\+node\+\_\+pt(), oomph\+::\+Mesh\+::boundary\+\_\+coordinate\+\_\+exists(), oomph\+::\+Element\+With\+Moving\+Nodes\+::enable\+\_\+bypass\+\_\+fill\+\_\+in\+\_\+jacobian\+\_\+from\+\_\+geometric\+\_\+data(), oomph\+::\+Macro\+Element\+Node\+Update\+Element\+Base\+::geom\+\_\+object\+\_\+pt(), get\+\_\+bcs(), get\+\_\+boundaries(), oomph\+::\+Refineable\+Element\+::get\+\_\+interpolated\+\_\+values(), oomph\+::\+Finite\+Element\+::get\+\_\+node\+\_\+at\+\_\+local\+\_\+coordinate(), oomph\+::\+Finite\+Element\+::get\+\_\+x(), i, interpolated\+\_\+zeta\+\_\+on\+\_\+face(), oomph\+::\+Data\+::is\+\_\+a\+\_\+copy(), oomph\+::\+Finite\+Element\+::macro\+\_\+elem\+\_\+pt(), oomph\+::\+Element\+With\+Moving\+Nodes\+::method\+\_\+for\+\_\+shape\+\_\+derivs(), oomph\+::\+Node\+::ndim(), oomph\+::\+Finite\+Element\+::node\+\_\+pt(), oomph\+::\+Node\+::nposition\+\_\+type(), oomph\+::\+Data\+::nvalue(), oomph\+::\+Tree\+::object\+\_\+pt(), oomph\+::\+Tree\+::\+O\+M\+E\+GA, oomph\+::\+Data\+::pin(), oomph\+::\+Solid\+Node\+::pin\+\_\+position(), oomph\+::\+Node\+::position\+\_\+is\+\_\+a\+\_\+copy(), s, oomph\+::\+Q\+Element\+Base\+::s\+\_\+macro\+\_\+ll(), oomph\+::\+Q\+Element\+Base\+::s\+\_\+macro\+\_\+ur(), oomph\+::\+Node\+::set\+\_\+coordinates\+\_\+on\+\_\+boundary(), oomph\+::\+Data\+::set\+\_\+value(), oomph\+::\+Algebraic\+Element\+Base\+::setup\+\_\+algebraic\+\_\+node\+\_\+update(), oomph\+::\+Tree\+::son\+\_\+type(), oomph\+::\+Global\+\_\+string\+\_\+for\+\_\+annotation\+::string(), t, oomph\+::\+Data\+::time\+\_\+stepper\+\_\+pt(), and oomph\+::\+Node\+::x().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableQElement_3_013_01_4_ac956bd05c434861ba65b0431024c1072}\label{classoomph_1_1RefineableQElement_3_013_01_4_ac956bd05c434861ba65b0431024c1072}} 
+\index{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$@{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$}!check\+\_\+integrity@{check\+\_\+integrity}}
+\index{check\+\_\+integrity@{check\+\_\+integrity}!oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$@{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$}}
+\subsubsection{\texorpdfstring{check\+\_\+integrity()}{check\_integrity()}}
+{\footnotesize\ttfamily void \hyperlink{classoomph_1_1RefineableQElement}{oomph\+::\+Refineable\+Q\+Element}$<$ 3 $>$\+::check\+\_\+integrity (\begin{DoxyParamCaption}\item[{double \&}]{max\+\_\+error }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Check the integrity of the element\+: ensure that the position and values are continuous across the element faces. 
+
+Check inter-\/element continuity of
+\begin{DoxyItemize}
+\item nodal positions
+\item (nodally) interpolated function values 
+\end{DoxyItemize}
+
+Implements \hyperlink{classoomph_1_1RefineableElement_ae665f2d2eb0b6410ddcb101caa80922a}{oomph\+::\+Refineable\+Element}.
+
+
+
+Definition at line 2117 of file refineable\+\_\+brick\+\_\+element.\+cc.
+
+
+
+References oomph\+::\+Oc\+Tree\+Names\+::B, oomph\+::\+Oc\+Tree\+Names\+::D, e, oomph\+::\+Oc\+Tree\+Names\+::F, oomph\+::\+Oc\+Tree\+::gteq\+\_\+face\+\_\+neighbour(), i, oomph\+::\+Finite\+Element\+::interpolated\+\_\+x(), oomph\+::\+Binary\+Tree\+Names\+::L, oomph\+::\+Refineable\+Element\+::nodes\+\_\+built(), oomph\+::\+Tree\+::object\+\_\+pt(), oomph\+::oomph\+\_\+info, oomph\+::\+Binary\+Tree\+Names\+::R, s, t, and oomph\+::\+Oc\+Tree\+Names\+::U.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableQElement_3_013_01_4_aae91537ebb3f511bf48397b3324f424a}\label{classoomph_1_1RefineableQElement_3_013_01_4_aae91537ebb3f511bf48397b3324f424a}} 
+\index{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$@{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$}!further\+\_\+setup\+\_\+hanging\+\_\+nodes@{further\+\_\+setup\+\_\+hanging\+\_\+nodes}}
+\index{further\+\_\+setup\+\_\+hanging\+\_\+nodes@{further\+\_\+setup\+\_\+hanging\+\_\+nodes}!oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$@{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$}}
+\subsubsection{\texorpdfstring{further\+\_\+setup\+\_\+hanging\+\_\+nodes()}{further\_setup\_hanging\_nodes()}}
+{\footnotesize\ttfamily virtual void \hyperlink{classoomph_1_1RefineableQElement}{oomph\+::\+Refineable\+Q\+Element}$<$ 3 $>$\+::further\+\_\+setup\+\_\+hanging\+\_\+nodes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Perform additional hanging node procedures for variables that are not interpolated by all nodes (e.\+g. lower order interpolations as for the pressure in Taylor Hood). 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1RefineableElement_a86ea01c485f7ff822dce74b884312ccb}{oomph\+::\+Refineable\+Element}.
+
+
+
+Implemented in \hyperlink{classoomph_1_1PRefineableQElement_3_013_00_01INITIAL__NNODE__1D_01_4_a502fd0f80738b3e7d185662595fbbb1b}{oomph\+::\+P\+Refineable\+Q\+Element$<$ 3, I\+N\+I\+T\+I\+A\+L\+\_\+\+N\+N\+O\+D\+E\+\_\+1\+D $>$}.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableQElement_3_013_01_4_aac2601ff8f740680675e5e6ba5c35e9d}\label{classoomph_1_1RefineableQElement_3_013_01_4_aac2601ff8f740680675e5e6ba5c35e9d}} 
+\index{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$@{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$}!get\+\_\+bcs@{get\+\_\+bcs}}
+\index{get\+\_\+bcs@{get\+\_\+bcs}!oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$@{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$}}
+\subsubsection{\texorpdfstring{get\+\_\+bcs()}{get\_bcs()}}
+{\footnotesize\ttfamily void \hyperlink{classoomph_1_1RefineableQElement}{oomph\+::\+Refineable\+Q\+Element}$<$ 3 $>$\+::get\+\_\+bcs (\begin{DoxyParamCaption}\item[{int}]{bound,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ int $>$ \&}]{bound\+\_\+cons }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Determine \hyperlink{classoomph_1_1Vector}{Vector} of boundary conditions along the element\textquotesingle{}s boundary (or vertex) bound (S/\+W/\+N/\+E/\+S\+W/\+S\+E/\+N\+W/\+NE). 
+
+This function assumes that the same boundary condition is applied along the entire area of an element\textquotesingle{}s face (of course, the vertices combine the boundary conditions of their two adjacent edges in the most restrictive combination. Hence, if we\textquotesingle{}re at a vertex, we apply the most restrictive boundary condition of the two adjacent edges. If we\textquotesingle{}re on an edge (in its proper interior), we apply the least restrictive boundary condition of all nodes along the edge.
+
+Usual convention\+:
+\begin{DoxyItemize}
+\item bound\+\_\+cons\mbox{[}ival\mbox{]}=0 if value ival on this boundary is free
+\item bound\+\_\+cons\mbox{[}ival\mbox{]}=1 if value ival on this boundary is pinned
+\end{DoxyItemize}
+
+Determine \hyperlink{classoomph_1_1Vector}{Vector} of boundary conditions along the element\textquotesingle{}s boundary bound.
+
+This function assumes that the same boundary condition is applied along the entire area of an element\textquotesingle{}s face (of course, the vertices combine the boundary conditions of their two adjacent edges in the most restrictive combination. Hence, if we\textquotesingle{}re at a vertex, we apply the most restrictive boundary condition of the two adjacent edges. If we\textquotesingle{}re on an edge (in its proper interior), we apply the least restrictive boundary condition of all nodes along the edge.
+
+Usual convention\+:
+\begin{DoxyItemize}
+\item bound\+\_\+cons\mbox{[}ival\mbox{]}=0 if value ival on this boundary is free
+\item bound\+\_\+cons\mbox{[}ival\mbox{]}=1 if value ival on this boundary is pinned 
+\end{DoxyItemize}
+
+Definition at line 226 of file refineable\+\_\+brick\+\_\+element.\+cc.
+
+
+
+References oomph\+::\+Oc\+Tree\+::\+Direction\+\_\+to\+\_\+vector, i, and oomph\+::\+Oc\+Tree\+::\+Vector\+\_\+to\+\_\+direction.
+
+
+
+Referenced by build(), oomph\+::\+P\+Refineable\+Q\+Element$<$ 3, I\+N\+I\+T\+I\+A\+L\+\_\+\+N\+N\+O\+D\+E\+\_\+1\+D $>$\+::p\+\_\+refine(), oomph\+::\+Refineable\+Q\+Spectral\+Element$<$ 3 $>$\+::rebuild\+\_\+from\+\_\+sons(), and oomph\+::\+P\+Refineable\+Q\+Element$<$ 3, I\+N\+I\+T\+I\+A\+L\+\_\+\+N\+N\+O\+D\+E\+\_\+1\+D $>$\+::rebuild\+\_\+from\+\_\+sons().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableQElement_3_013_01_4_ac61083ce6abe6338ec5d7795d9f1e051}\label{classoomph_1_1RefineableQElement_3_013_01_4_ac61083ce6abe6338ec5d7795d9f1e051}} 
+\index{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$@{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$}!get\+\_\+boundaries@{get\+\_\+boundaries}}
+\index{get\+\_\+boundaries@{get\+\_\+boundaries}!oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$@{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$}}
+\subsubsection{\texorpdfstring{get\+\_\+boundaries()}{get\_boundaries()}}
+{\footnotesize\ttfamily void \hyperlink{classoomph_1_1RefineableQElement}{oomph\+::\+Refineable\+Q\+Element}$<$ 3 $>$\+::get\+\_\+boundaries (\begin{DoxyParamCaption}\item[{const int \&}]{element,  }\item[{std\+::set$<$ unsigned $>$ \&}]{boundary }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+
+Given an element edge/vertex, return a \hyperlink{classoomph_1_1Vector}{Vector} which contains all the (mesh-\/)boundary numbers that this element edge/vertex lives on.
+
+For proper edges, the boundary is the one (if any) that is shared by both vertex nodes). For vertex nodes, we just return their boundaries. 
+
+Definition at line 412 of file refineable\+\_\+brick\+\_\+element.\+cc.
+
+
+
+References oomph\+::\+Oc\+Tree\+::\+Direction\+\_\+to\+\_\+vector, and i.
+
+
+
+Referenced by build(), oomph\+::\+P\+Refineable\+Q\+Element$<$ 3, I\+N\+I\+T\+I\+A\+L\+\_\+\+N\+N\+O\+D\+E\+\_\+1\+D $>$\+::p\+\_\+refine(), oomph\+::\+Refineable\+Q\+Spectral\+Element$<$ 3 $>$\+::rebuild\+\_\+from\+\_\+sons(), and oomph\+::\+P\+Refineable\+Q\+Element$<$ 3, I\+N\+I\+T\+I\+A\+L\+\_\+\+N\+N\+O\+D\+E\+\_\+1\+D $>$\+::rebuild\+\_\+from\+\_\+sons().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableQElement_3_013_01_4_ab7548543df38dcc3a011d51c6ed357ac}\label{classoomph_1_1RefineableQElement_3_013_01_4_ab7548543df38dcc3a011d51c6ed357ac}} 
+\index{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$@{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$}!get\+\_\+face\+\_\+bcs@{get\+\_\+face\+\_\+bcs}}
+\index{get\+\_\+face\+\_\+bcs@{get\+\_\+face\+\_\+bcs}!oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$@{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$}}
+\subsubsection{\texorpdfstring{get\+\_\+face\+\_\+bcs()}{get\_face\_bcs()}}
+{\footnotesize\ttfamily void \hyperlink{classoomph_1_1RefineableQElement}{oomph\+::\+Refineable\+Q\+Element}$<$ 3 $>$\+::get\+\_\+face\+\_\+bcs (\begin{DoxyParamCaption}\item[{const int \&}]{face,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ int $>$ \&}]{bound\+\_\+cons }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Determine \hyperlink{classoomph_1_1Vector}{Vector} of boundary conditions along the element\textquotesingle{}s face (R/\+L/\+U/\+D/\+B/F) -- BC is the least restrictive combination of all the nodes on this face. 
+
+Usual convention\+:
+\begin{DoxyItemize}
+\item bound\+\_\+cons\mbox{[}ival\mbox{]}=0 if value ival on this boundary is free
+\item bound\+\_\+cons\mbox{[}ival\mbox{]}=1 if value ival on this boundary is pinned
+\end{DoxyItemize}
+
+Determine \hyperlink{classoomph_1_1Vector}{Vector} of boundary conditions along the element\textquotesingle{}s face (R/\+L/\+U/\+D/\+B/F) -- BC is the least restrictive combination of all the nodes on this face
+
+Usual convention\+:
+\begin{DoxyItemize}
+\item bound\+\_\+cons\mbox{[}ival\mbox{]}=0 if value ival on this boundary is free
+\item bound\+\_\+cons\mbox{[}ival\mbox{]}=1 if value ival on this boundary is pinned 
+\end{DoxyItemize}
+
+Definition at line 324 of file refineable\+\_\+brick\+\_\+element.\+cc.
+
+
+
+References oomph\+::\+Oc\+Tree\+Names\+::B, oomph\+::\+Oc\+Tree\+Names\+::D, oomph\+::\+Oc\+Tree\+Names\+::F, oomph\+::\+Binary\+Tree\+Names\+::L, oomph\+::\+Binary\+Tree\+Names\+::R, and oomph\+::\+Oc\+Tree\+Names\+::U.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableQElement_3_013_01_4_aa0feadb4fbbe8861366a77373b122293}\label{classoomph_1_1RefineableQElement_3_013_01_4_aa0feadb4fbbe8861366a77373b122293}} 
+\index{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$@{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$}!interpolated\+\_\+zeta\+\_\+on\+\_\+face@{interpolated\+\_\+zeta\+\_\+on\+\_\+face}}
+\index{interpolated\+\_\+zeta\+\_\+on\+\_\+face@{interpolated\+\_\+zeta\+\_\+on\+\_\+face}!oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$@{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$}}
+\subsubsection{\texorpdfstring{interpolated\+\_\+zeta\+\_\+on\+\_\+face()}{interpolated\_zeta\_on\_face()}}
+{\footnotesize\ttfamily void \hyperlink{classoomph_1_1RefineableQElement}{oomph\+::\+Refineable\+Q\+Element}$<$ 3 $>$\+::interpolated\+\_\+zeta\+\_\+on\+\_\+face (\begin{DoxyParamCaption}\item[{const unsigned \&}]{boundary,  }\item[{const int \&}]{face,  }\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{zeta }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Return the value of the intrinsic boundary coordinate interpolated along the face. 
+
+Return the value of the intrinsic boundary coordinate interpolated along the face 
+
+Definition at line 567 of file refineable\+\_\+brick\+\_\+element.\+cc.
+
+
+
+References oomph\+::\+Oc\+Tree\+Names\+::B, oomph\+::\+Oc\+Tree\+Names\+::D, oomph\+::\+Oc\+Tree\+Names\+::\+DB, oomph\+::\+Oc\+Tree\+Names\+::\+DF, oomph\+::\+Oc\+Tree\+::\+Direct\+\_\+string, oomph\+::\+Oc\+Tree\+Names\+::F, oomph\+::\+Binary\+Tree\+Names\+::L, oomph\+::\+Oc\+Tree\+Names\+::\+LB, oomph\+::\+Oc\+Tree\+Names\+::\+LD, oomph\+::\+Oc\+Tree\+Names\+::\+LF, oomph\+::\+Oc\+Tree\+Names\+::\+LU, oomph\+::\+Binary\+Tree\+Names\+::R, oomph\+::\+Oc\+Tree\+Names\+::\+RB, oomph\+::\+Oc\+Tree\+Names\+::\+RD, oomph\+::\+Oc\+Tree\+Names\+::\+RF, oomph\+::\+Oc\+Tree\+Names\+::\+RU, oomph\+::\+One\+Dim\+Lagrange\+::shape(), oomph\+::\+Cumulative\+Timings\+::start(), oomph\+::\+Oc\+Tree\+Names\+::U, oomph\+::\+Oc\+Tree\+Names\+::\+UB, and oomph\+::\+Oc\+Tree\+Names\+::\+UF.
+
+
+
+Referenced by build(), oomph\+::\+P\+Refineable\+Q\+Element$<$ 3, I\+N\+I\+T\+I\+A\+L\+\_\+\+N\+N\+O\+D\+E\+\_\+1\+D $>$\+::p\+\_\+refine(), oomph\+::\+Refineable\+Q\+Spectral\+Element$<$ 3 $>$\+::rebuild\+\_\+from\+\_\+sons(), and oomph\+::\+P\+Refineable\+Q\+Element$<$ 3, I\+N\+I\+T\+I\+A\+L\+\_\+\+N\+N\+O\+D\+E\+\_\+1\+D $>$\+::rebuild\+\_\+from\+\_\+sons().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableQElement_3_013_01_4_a3651ba128941c12c7da6521ae82af8ff}\label{classoomph_1_1RefineableQElement_3_013_01_4_a3651ba128941c12c7da6521ae82af8ff}} 
+\index{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$@{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$}!node\+\_\+created\+\_\+by\+\_\+neighbour@{node\+\_\+created\+\_\+by\+\_\+neighbour}}
+\index{node\+\_\+created\+\_\+by\+\_\+neighbour@{node\+\_\+created\+\_\+by\+\_\+neighbour}!oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$@{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$}}
+\subsubsection{\texorpdfstring{node\+\_\+created\+\_\+by\+\_\+neighbour()}{node\_created\_by\_neighbour()}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1Node}{Node} $\ast$ \hyperlink{classoomph_1_1RefineableQElement}{oomph\+::\+Refineable\+Q\+Element}$<$ 3 $>$\+::node\+\_\+created\+\_\+by\+\_\+neighbour (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s\+\_\+fraction }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+If a neighbouring element has already created a node at a position corresponding to the local fractional position within the present element, s\+\_\+fraction, return a pointer to that node. If not, return N\+U\+LL (0). 
+
+If a neighbouring element has already created a node at a position corresponding to the local fractional position within the present element, s\+\_\+fraction, return a pointer to that node. If not, return N\+U\+LL (0). 
+
+Reimplemented in \hyperlink{classoomph_1_1PRefineableQElement_3_013_00_01INITIAL__NNODE__1D_01_4_a4dde880cb5445319e81552bd152d39a1}{oomph\+::\+P\+Refineable\+Q\+Element$<$ 3, I\+N\+I\+T\+I\+A\+L\+\_\+\+N\+N\+O\+D\+E\+\_\+1\+D $>$}.
+
+
+
+Definition at line 981 of file refineable\+\_\+brick\+\_\+element.\+cc.
+
+
+
+References oomph\+::\+Oc\+Tree\+Names\+::B, oomph\+::\+Oc\+Tree\+Names\+::D, oomph\+::\+Oc\+Tree\+Names\+::\+DB, oomph\+::\+Oc\+Tree\+Names\+::\+DF, oomph\+::\+Oc\+Tree\+Names\+::F, oomph\+::\+Finite\+Element\+::get\+\_\+node\+\_\+at\+\_\+local\+\_\+coordinate(), i, oomph\+::\+Binary\+Tree\+Names\+::L, oomph\+::\+Oc\+Tree\+Names\+::\+LB, oomph\+::\+Oc\+Tree\+Names\+::\+LD, oomph\+::\+Oc\+Tree\+Names\+::\+LF, oomph\+::\+Oc\+Tree\+Names\+::\+LU, oomph\+::\+Refineable\+Element\+::nodes\+\_\+built(), oomph\+::\+Tree\+::object\+\_\+pt(), oomph\+::\+Binary\+Tree\+Names\+::R, oomph\+::\+Oc\+Tree\+Names\+::\+RB, oomph\+::\+Oc\+Tree\+Names\+::\+RD, oomph\+::\+Oc\+Tree\+Names\+::\+RF, oomph\+::\+Oc\+Tree\+Names\+::\+RU, s, oomph\+::\+Oc\+Tree\+Names\+::U, oomph\+::\+Oc\+Tree\+Names\+::\+UB, and oomph\+::\+Oc\+Tree\+Names\+::\+UF.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableQElement_3_013_01_4_aab54b116a277372d4af7d7c93301ecda}\label{classoomph_1_1RefineableQElement_3_013_01_4_aab54b116a277372d4af7d7c93301ecda}} 
+\index{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$@{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$}!node\+\_\+created\+\_\+by\+\_\+son\+\_\+of\+\_\+neighbour@{node\+\_\+created\+\_\+by\+\_\+son\+\_\+of\+\_\+neighbour}}
+\index{node\+\_\+created\+\_\+by\+\_\+son\+\_\+of\+\_\+neighbour@{node\+\_\+created\+\_\+by\+\_\+son\+\_\+of\+\_\+neighbour}!oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$@{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$}}
+\subsubsection{\texorpdfstring{node\+\_\+created\+\_\+by\+\_\+son\+\_\+of\+\_\+neighbour()}{node\_created\_by\_son\_of\_neighbour()}}
+{\footnotesize\ttfamily virtual \hyperlink{classoomph_1_1Node}{Node}$\ast$ \hyperlink{classoomph_1_1RefineableQElement}{oomph\+::\+Refineable\+Q\+Element}$<$ 3 $>$\+::node\+\_\+created\+\_\+by\+\_\+son\+\_\+of\+\_\+neighbour (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s\+\_\+fraction }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+If a neighbouring element has already created a node at a position corresponding to the local fractional position within the present element, s\+\_\+fraction, return a pointer to that node. If not, return N\+U\+LL (0). 
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1PRefineableQElement_3_013_00_01INITIAL__NNODE__1D_01_4_aee94f17bdc0cf3de22308e57121866dd}{oomph\+::\+P\+Refineable\+Q\+Element$<$ 3, I\+N\+I\+T\+I\+A\+L\+\_\+\+N\+N\+O\+D\+E\+\_\+1\+D $>$}.
+
+
+
+Definition at line 126 of file refineable\+\_\+brick\+\_\+element.\+h.
+
+
+
+References oomph\+::\+Tecplot\+Names\+::colour, and oomph\+::\+Global\+\_\+string\+\_\+for\+\_\+annotation\+::string().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableQElement_3_013_01_4_abde04c6b8616bd2551b24ac1abade563}\label{classoomph_1_1RefineableQElement_3_013_01_4_abde04c6b8616bd2551b24ac1abade563}} 
+\index{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$@{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$}!oc\+\_\+hang\+\_\+helper@{oc\+\_\+hang\+\_\+helper}}
+\index{oc\+\_\+hang\+\_\+helper@{oc\+\_\+hang\+\_\+helper}!oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$@{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$}}
+\subsubsection{\texorpdfstring{oc\+\_\+hang\+\_\+helper()}{oc\_hang\_helper()}}
+{\footnotesize\ttfamily void \hyperlink{classoomph_1_1RefineableQElement}{oomph\+::\+Refineable\+Q\+Element}$<$ 3 $>$\+::oc\+\_\+hang\+\_\+helper (\begin{DoxyParamCaption}\item[{const int \&}]{value\+\_\+id,  }\item[{const int \&}]{my\+\_\+face,  }\item[{std\+::ofstream \&}]{output\+\_\+hangfile }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Internal helper function that is used to construct the hanging node schemes for the positions. 
+
+Internal function to set up the hanging nodes on a particular face of the element 
+
+Reimplemented in \hyperlink{classoomph_1_1PRefineableQElement_3_013_00_01INITIAL__NNODE__1D_01_4_ae291430b43e01a7d20c411ef4ac79e45}{oomph\+::\+P\+Refineable\+Q\+Element$<$ 3, I\+N\+I\+T\+I\+A\+L\+\_\+\+N\+N\+O\+D\+E\+\_\+1\+D $>$}.
+
+
+
+Definition at line 1837 of file refineable\+\_\+brick\+\_\+element.\+cc.
+
+
+
+References oomph\+::\+Oc\+Tree\+Names\+::B, oomph\+::\+Oc\+Tree\+Names\+::D, oomph\+::\+Oc\+Tree\+Names\+::F, oomph\+::\+Refineable\+Element\+::get\+\_\+interpolating\+\_\+node\+\_\+at\+\_\+local\+\_\+coordinate(), oomph\+::\+Node\+::hanging\+\_\+pt(), i, oomph\+::\+Finite\+Element\+::interpolated\+\_\+x(), oomph\+::\+Refineable\+Element\+::interpolating\+\_\+basis(), oomph\+::\+Refineable\+Element\+::interpolating\+\_\+node\+\_\+pt(), oomph\+::\+Node\+::is\+\_\+hanging(), oomph\+::\+Binary\+Tree\+Names\+::L, oomph\+::\+Refineable\+Element\+::ninterpolating\+\_\+node(), oomph\+::\+Tree\+::object\+\_\+pt(), oomph\+::\+Binary\+Tree\+Names\+::R, oomph\+::\+Node\+::set\+\_\+hanging\+\_\+pt(), oomph\+::\+Oc\+Tree\+Names\+::U, and oomph\+::\+Node\+::x().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableQElement_3_013_01_4_ae80b5899ce103e76f1ccea34d371c2ed}\label{classoomph_1_1RefineableQElement_3_013_01_4_ae80b5899ce103e76f1ccea34d371c2ed}} 
+\index{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$@{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$}!octree\+\_\+pt@{octree\+\_\+pt}}
+\index{octree\+\_\+pt@{octree\+\_\+pt}!oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$@{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$}}
+\subsubsection{\texorpdfstring{octree\+\_\+pt()}{octree\_pt()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1OcTree}{Oc\+Tree}$\ast$ \hyperlink{classoomph_1_1RefineableQElement}{oomph\+::\+Refineable\+Q\+Element}$<$ 3 $>$\+::octree\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Pointer to octree representation of this element. 
+
+
+
+Definition at line 150 of file refineable\+\_\+brick\+\_\+element.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableQElement_3_013_01_4_a58e295694d08140d1060f79005129fb9}\label{classoomph_1_1RefineableQElement_3_013_01_4_a58e295694d08140d1060f79005129fb9}} 
+\index{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$@{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$}!octree\+\_\+pt@{octree\+\_\+pt}}
+\index{octree\+\_\+pt@{octree\+\_\+pt}!oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$@{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$}}
+\subsubsection{\texorpdfstring{octree\+\_\+pt()}{octree\_pt()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1OcTree}{Oc\+Tree}$\ast$ \hyperlink{classoomph_1_1RefineableQElement}{oomph\+::\+Refineable\+Q\+Element}$<$ 3 $>$\+::octree\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Pointer to octree representation of this element. 
+
+
+
+Definition at line 153 of file refineable\+\_\+brick\+\_\+element.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableQElement_3_013_01_4_aa8ea5cf2c9fee8ff9a1c52505e736bbb}\label{classoomph_1_1RefineableQElement_3_013_01_4_aa8ea5cf2c9fee8ff9a1c52505e736bbb}} 
+\index{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$@{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$}!output\+\_\+corners@{output\+\_\+corners}}
+\index{output\+\_\+corners@{output\+\_\+corners}!oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$@{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$}}
+\subsubsection{\texorpdfstring{output\+\_\+corners()}{output\_corners()}}
+{\footnotesize\ttfamily void \hyperlink{classoomph_1_1RefineableQElement}{oomph\+::\+Refineable\+Q\+Element}$<$ 3 $>$\+::output\+\_\+corners (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile,  }\item[{const std\+::string \&}]{colour }\end{DoxyParamCaption}) const}
+
+
+
+Print corner nodes, use colour. 
+
+Print corner nodes, use colour (default \char`\"{}\+B\+L\+A\+C\+K\char`\"{}) in right order so that tecplot can draw a cube without crossed lines 
+
+Definition at line 46 of file refineable\+\_\+brick\+\_\+element.\+cc.
+
+
+
+References oomph\+::\+Global\+\_\+unsigned\+::\+Number, and s.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableQElement_3_013_01_4_a1eff24cfc9bead67647d7df95dad97c8}\label{classoomph_1_1RefineableQElement_3_013_01_4_a1eff24cfc9bead67647d7df95dad97c8}} 
+\index{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$@{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$}!required\+\_\+nsons@{required\+\_\+nsons}}
+\index{required\+\_\+nsons@{required\+\_\+nsons}!oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$@{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$}}
+\subsubsection{\texorpdfstring{required\+\_\+nsons()}{required\_nsons()}}
+{\footnotesize\ttfamily unsigned \hyperlink{classoomph_1_1RefineableQElement}{oomph\+::\+Refineable\+Q\+Element}$<$ 3 $>$\+::required\+\_\+nsons (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+A refineable brick element has eight sons. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1RefineableElement_a9761852271f6cc9a1a0552ad7e054e4b}{oomph\+::\+Refineable\+Element}.
+
+
+
+Definition at line 114 of file refineable\+\_\+brick\+\_\+element.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableQElement_3_013_01_4_a8e9be85046f3898ece0a328512392ca8}\label{classoomph_1_1RefineableQElement_3_013_01_4_a8e9be85046f3898ece0a328512392ca8}} 
+\index{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$@{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$}!setup\+\_\+father\+\_\+bounds@{setup\+\_\+father\+\_\+bounds}}
+\index{setup\+\_\+father\+\_\+bounds@{setup\+\_\+father\+\_\+bounds}!oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$@{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$}}
+\subsubsection{\texorpdfstring{setup\+\_\+father\+\_\+bounds()}{setup\_father\_bounds()}}
+{\footnotesize\ttfamily void \hyperlink{classoomph_1_1RefineableQElement}{oomph\+::\+Refineable\+Q\+Element}$<$ 3 $>$\+::setup\+\_\+father\+\_\+bounds (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Setup static matrix for coincidence between son nodal points and father boundaries. 
+
+Setup static matrix for coincidence between son nodal points and father boundaries\+:
+
+Father\+\_\+bound\mbox{[}nnode\+\_\+1d\mbox{]}(nnode\+\_\+son,son\+\_\+type)=\{R\+U/\+R\+F/\+R\+D/\+R\+B/.../ O\+M\+E\+GA\}
+
+so that node nnode\+\_\+son in element of type son\+\_\+type lies on boundary/vertex Father\+\_\+bound\mbox{[}nnode\+\_\+1d\mbox{]}(nnode\+\_\+son,son\+\_\+type) in its father element. If the node doesn\textquotesingle{}t lie on a boundary the value is O\+M\+E\+GA. 
+
+Definition at line 136 of file refineable\+\_\+brick\+\_\+element.\+cc.
+
+
+
+References oomph\+::\+Oc\+Tree\+::\+Direction\+\_\+to\+\_\+vector, i, oomph\+::\+Oc\+Tree\+Names\+::\+L\+DB, oomph\+::\+Tree\+::\+O\+M\+E\+GA, oomph\+::\+Oc\+Tree\+Names\+::\+R\+UF, and oomph\+::\+Oc\+Tree\+::\+Vector\+\_\+to\+\_\+direction.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableQElement_3_013_01_4_a3d38b1cfacb055140a330e3d251b601f}\label{classoomph_1_1RefineableQElement_3_013_01_4_a3d38b1cfacb055140a330e3d251b601f}} 
+\index{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$@{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$}!setup\+\_\+hang\+\_\+for\+\_\+value@{setup\+\_\+hang\+\_\+for\+\_\+value}}
+\index{setup\+\_\+hang\+\_\+for\+\_\+value@{setup\+\_\+hang\+\_\+for\+\_\+value}!oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$@{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$}}
+\subsubsection{\texorpdfstring{setup\+\_\+hang\+\_\+for\+\_\+value()}{setup\_hang\_for\_value()}}
+{\footnotesize\ttfamily void \hyperlink{classoomph_1_1RefineableQElement}{oomph\+::\+Refineable\+Q\+Element}$<$ 3 $>$\+::setup\+\_\+hang\+\_\+for\+\_\+value (\begin{DoxyParamCaption}\item[{const int \&}]{value\+\_\+id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Internal helper function that is used to construct the hanging node schemes for the value\+\_\+id-\/th interpolated value. 
+
+Internal function that sets up the hanging node scheme for a particular value 
+
+Definition at line 1818 of file refineable\+\_\+brick\+\_\+element.\+cc.
+
+
+
+References oomph\+::\+Oc\+Tree\+Names\+::B, oomph\+::\+Oc\+Tree\+Names\+::D, oomph\+::\+Oc\+Tree\+Names\+::F, oomph\+::\+Binary\+Tree\+Names\+::L, oomph\+::\+Binary\+Tree\+Names\+::R, and oomph\+::\+Oc\+Tree\+Names\+::U.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableQElement_3_013_01_4_aceb41f87bfce0e333ee0a713e382075f}\label{classoomph_1_1RefineableQElement_3_013_01_4_aceb41f87bfce0e333ee0a713e382075f}} 
+\index{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$@{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$}!setup\+\_\+hanging\+\_\+nodes@{setup\+\_\+hanging\+\_\+nodes}}
+\index{setup\+\_\+hanging\+\_\+nodes@{setup\+\_\+hanging\+\_\+nodes}!oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$@{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$}}
+\subsubsection{\texorpdfstring{setup\+\_\+hanging\+\_\+nodes()}{setup\_hanging\_nodes()}}
+{\footnotesize\ttfamily void \hyperlink{classoomph_1_1RefineableQElement}{oomph\+::\+Refineable\+Q\+Element}$<$ 3 $>$\+::setup\+\_\+hanging\+\_\+nodes (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ std\+::ofstream $\ast$$>$ \&}]{output\+\_\+stream }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Markup all hanging nodes \& document the results in the output streams contained in the vector output\+\_\+stream, if they are open. 
+
+Set up all hanging nodes.
+
+(Wrapper to avoid specification of the unwanted output file). 
+
+Reimplemented from \hyperlink{classoomph_1_1RefineableElement_a9368e9ffa7d06a436253d0e23f874d65}{oomph\+::\+Refineable\+Element}.
+
+
+
+Definition at line 1791 of file refineable\+\_\+brick\+\_\+element.\+cc.
+
+
+
+References oomph\+::\+Oc\+Tree\+Names\+::B, oomph\+::\+Oc\+Tree\+Names\+::D, oomph\+::\+Oc\+Tree\+Names\+::F, oomph\+::\+Binary\+Tree\+Names\+::L, oomph\+::\+Binary\+Tree\+Names\+::R, and oomph\+::\+Oc\+Tree\+Names\+::U.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1RefineableQElement_3_013_01_4_a0c02f69b5f451db97099acb1e2960738}\label{classoomph_1_1RefineableQElement_3_013_01_4_a0c02f69b5f451db97099acb1e2960738}} 
+\index{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$@{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$}!Father\+\_\+bound@{Father\+\_\+bound}}
+\index{Father\+\_\+bound@{Father\+\_\+bound}!oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$@{oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$}}
+\subsubsection{\texorpdfstring{Father\+\_\+bound}{Father\_bound}}
+{\footnotesize\ttfamily std\+::map$<$ unsigned, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ int $>$ $>$ \hyperlink{classoomph_1_1RefineableQElement}{oomph\+::\+Refineable\+Q\+Element}$<$ 3 $>$\+::Father\+\_\+bound\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Coincidence between son nodal points and father boundaries\+: Father\+\_\+bound\mbox{[}nnode\+\_\+1d\mbox{]}(nnode\+\_\+son,son\+\_\+type)=\{R\+U/\+R\+F/\+R\+D/\+R\+B/.../ O\+M\+E\+GA\} so that node nnode\+\_\+son in element of type son\+\_\+type lies on boundary/vertex Father\+\_\+bound\mbox{[}nnode\+\_\+1d\mbox{]}(nnode\+\_\+son,son\+\_\+type) in its father element. If the node doesn\textquotesingle{}t lie on a boundary the value is O\+M\+E\+GA. 
+
+Static matrix for coincidence between son nodal points and father boundaries 
+
+Definition at line 173 of file refineable\+\_\+brick\+\_\+element.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{refineable__brick__element_8h}{refineable\+\_\+brick\+\_\+element.\+h}\item 
+\hyperlink{refineable__brick__element_8cc}{refineable\+\_\+brick\+\_\+element.\+cc}\end{DoxyCompactItemize}

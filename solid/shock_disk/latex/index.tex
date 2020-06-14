@@ -1,0 +1,932 @@
+Detailed documentation to be written. Here\textquotesingle{}s the already fairly well documented driver code...
+
+
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//LIC// ====================================================================}
+\textcolor{comment}{//LIC// This file forms part of oomph-lib, the object-oriented, }
+\textcolor{comment}{//LIC// multi-physics finite-element library, available }
+\textcolor{comment}{//LIC// at http://www.oomph-lib.org.}
+\textcolor{comment}{//LIC// }
+\textcolor{comment}{//LIC//    Version 1.0; svn revision $LastChangedRevision$}
+\textcolor{comment}{//LIC//}
+\textcolor{comment}{//LIC// $LastChangedDate$}
+\textcolor{comment}{//LIC// }
+\textcolor{comment}{//LIC// Copyright (C) 2006-2016 Matthias Heil and Andrew Hazel}
+\textcolor{comment}{//LIC// }
+\textcolor{comment}{//LIC// This library is free software; you can redistribute it and/or}
+\textcolor{comment}{//LIC// modify it under the terms of the GNU Lesser General Public}
+\textcolor{comment}{//LIC// License as published by the Free Software Foundation; either}
+\textcolor{comment}{//LIC// version 2.1 of the License, or (at your option) any later version.}
+\textcolor{comment}{//LIC// }
+\textcolor{comment}{//LIC// This library is distributed in the hope that it will be useful,}
+\textcolor{comment}{//LIC// but WITHOUT ANY WARRANTY; without even the implied warranty of}
+\textcolor{comment}{//LIC// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU}
+\textcolor{comment}{//LIC// Lesser General Public License for more details.}
+\textcolor{comment}{//LIC// }
+\textcolor{comment}{//LIC// You should have received a copy of the GNU Lesser General Public}
+\textcolor{comment}{//LIC// License along with this library; if not, write to the Free Software}
+\textcolor{comment}{//LIC// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA}
+\textcolor{comment}{//LIC// 02110-1301  USA.}
+\textcolor{comment}{//LIC// }
+\textcolor{comment}{//LIC// The authors may be contacted at oomph-lib@maths.man.ac.uk.}
+\textcolor{comment}{//LIC// }
+\textcolor{comment}{//LIC//====================================================================}
+\textcolor{comment}{// Driver for large-displacement elasto-dynamic test problem:}
+\textcolor{comment}{// Circular disk impulsively loaded by compressive load.}
+
+\textcolor{preprocessor}{#include <iostream>}
+\textcolor{preprocessor}{#include <fstream>}
+\textcolor{preprocessor}{#include <cmath>}
+
+\textcolor{comment}{//My own includes}
+\textcolor{preprocessor}{#include "generic.h"}
+\textcolor{preprocessor}{#include "solid.h"}
+
+\textcolor{comment}{//Need to instantiate templated mesh}
+\textcolor{preprocessor}{#include "meshes/quarter\_circle\_sector\_mesh.h"}
+
+\textcolor{keyword}{using namespace }\hyperlink{namespacestd}{std};
+
+\textcolor{keyword}{using namespace }\hyperlink{namespaceoomph}{oomph};
+ \textcolor{comment}{}
+\textcolor{comment}{///////////////////////////////////////////////////////////////////////}
+\textcolor{comment}{///////////////////////////////////////////////////////////////////////}
+\textcolor{comment}{///////////////////////////////////////////////////////////////////////}
+\textcolor{comment}{}
+
+\textcolor{comment}{//================================================================}\textcolor{comment}{}
+\textcolor{comment}{/// Global variables}
+\textcolor{comment}{}\textcolor{comment}{//================================================================}
+\textcolor{keyword}{namespace }\hyperlink{namespaceGlobal__Physical__Variables}{Global\_Physical\_Variables}
+\{\textcolor{comment}{}
+\textcolor{comment}{ /// Pointer to constitutive law}
+\textcolor{comment}{} ConstitutiveLaw* \hyperlink{namespaceGlobal__Physical__Variables_a2a37fb040c832ee7a086bb13bb02a100}{Constitutive\_law\_pt};
+\textcolor{comment}{}
+\textcolor{comment}{ /// Elastic modulus}
+\textcolor{comment}{} \textcolor{keywordtype}{double} E=1.0;
+\textcolor{comment}{}
+\textcolor{comment}{ /// Poisson's ratio}
+\textcolor{comment}{} \textcolor{keywordtype}{double} Nu=0.3;
+\textcolor{comment}{}
+\textcolor{comment}{ /// Uniform pressure}
+\textcolor{comment}{} \textcolor{keywordtype}{double} P = 0.00;
+\textcolor{comment}{}
+\textcolor{comment}{ /// Constant pressure load}
+\textcolor{comment}{} \textcolor{keywordtype}{void} \hyperlink{namespaceGlobal__Physical__Variables_a19f4e20a92e7d216b4d2b00308f96917}{constant\_pressure}(\textcolor{keyword}{const} Vector<double> &xi,\textcolor{keyword}{const} Vector<double> &x,
+                        \textcolor{keyword}{const} Vector<double> &n, Vector<double> &traction)
+ \{
+  \textcolor{keywordtype}{unsigned} dim = traction.size();
+  \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} i=0;i<dim;i++)
+   \{
+    traction[i] = -P*n[i];
+   \}
+ \}
+
+\}
+
+
+\textcolor{comment}{}
+\textcolor{comment}{///////////////////////////////////////////////////////////////////////}
+\textcolor{comment}{///////////////////////////////////////////////////////////////////////}
+\textcolor{comment}{///////////////////////////////////////////////////////////////////////}
+\textcolor{comment}{}
+
+
+\textcolor{comment}{//================================================================}\textcolor{comment}{}
+\textcolor{comment}{/// Elastic quarter circle sector mesh with functionality to}
+\textcolor{comment}{/// attach traction elements to the curved surface. We "upgrade"}
+\textcolor{comment}{/// the RefineableQuarterCircleSectorMesh to become an}
+\textcolor{comment}{/// SolidMesh and equate the Eulerian and Lagrangian coordinates,}
+\textcolor{comment}{/// thus making the domain represented by the mesh the stress-free }
+\textcolor{comment}{/// configuration. }
+\textcolor{comment}{/// \(\backslash\)n\(\backslash\)n}
+\textcolor{comment}{/// The member function \(\backslash\)c make\_traction\_element\_mesh() creates}
+\textcolor{comment}{/// a separate mesh of SolidTractionElements that are attached to the}
+\textcolor{comment}{/// mesh's curved boundary (boundary 1). }
+\textcolor{comment}{}\textcolor{comment}{//================================================================}
+\textcolor{keyword}{template} <\textcolor{keyword}{class} ELEMENT>
+\textcolor{keyword}{class }\hyperlink{classElasticRefineableQuarterCircleSectorMesh}{ElasticRefineableQuarterCircleSectorMesh} :
+ \textcolor{keyword}{public} \textcolor{keyword}{virtual} RefineableQuarterCircleSectorMesh<ELEMENT>,
+ \textcolor{keyword}{public} \textcolor{keyword}{virtual} SolidMesh
+\{
+
+
+\textcolor{keyword}{public}:
+\textcolor{comment}{}
+\textcolor{comment}{ /// \(\backslash\)short Constructor: Build mesh and copy Eulerian coords to Lagrangian}
+\textcolor{comment}{ /// ones so that the initial configuration is the stress-free one.}
+\textcolor{comment}{} \hyperlink{classElasticRefineableQuarterCircleSectorMesh}{ElasticRefineableQuarterCircleSectorMesh<ELEMENT>}(
+      GeomObject* wall\_pt,
+                                         \textcolor{keyword}{const} \textcolor{keywordtype}{double}& xi\_lo,
+                                         \textcolor{keyword}{const} \textcolor{keywordtype}{double}& fract\_mid,
+                                         \textcolor{keyword}{const} \textcolor{keywordtype}{double}& xi\_hi,
+                                         TimeStepper* time\_stepper\_pt=
+                                         &Mesh::Default\_TimeStepper) :
+  RefineableQuarterCircleSectorMesh<ELEMENT>(wall\_pt,xi\_lo,fract\_mid,xi\_hi,
+                                             time\_stepper\_pt)
+  \{
+\textcolor{preprocessor}{#ifdef PARANOID}
+\textcolor{comment}{   /// Check that the element type is derived from the SolidFiniteElement}
+\textcolor{comment}{}   SolidFiniteElement* el\_pt=\textcolor{keyword}{dynamic\_cast<}SolidFiniteElement*\textcolor{keyword}{>}
+    (finite\_element\_pt(0));
+   \textcolor{keywordflow}{if} (el\_pt==0)
+    \{
+     \textcolor{keywordflow}{throw} OomphLibError(
+      \textcolor{stringliteral}{"Element needs to be derived from SolidFiniteElement\(\backslash\)n"},
+      OOMPH\_CURRENT\_FUNCTION,
+      OOMPH\_EXCEPTION\_LOCATION);
+    \}
+\textcolor{preprocessor}{#endif}
+
+   \textcolor{comment}{// Make the current configuration the undeformed one by}
+   \textcolor{comment}{// setting the nodal Lagrangian coordinates to their current}
+   \textcolor{comment}{// Eulerian ones}
+   set\_lagrangian\_nodal\_coordinates();
+  \}
+
+\textcolor{comment}{}
+\textcolor{comment}{ /// Function to create mesh made of traction elements}
+\textcolor{comment}{} \textcolor{keywordtype}{void} make\_traction\_element\_mesh(SolidMesh*& traction\_mesh\_pt)
+  \{
+
+   \textcolor{comment}{// Make new mesh}
+   traction\_mesh\_pt=\textcolor{keyword}{new} SolidMesh;
+
+   \textcolor{comment}{// Loop over all elements on boundary 1:}
+   \textcolor{keywordtype}{unsigned} b=1;
+   \textcolor{keywordtype}{unsigned} n\_element = this->nboundary\_element(b);
+   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} e=0;e<n\_element;e++)
+    \{
+     \textcolor{comment}{// The element itself:}
+     FiniteElement* fe\_pt = this->boundary\_element\_pt(b,e);
+     
+     \textcolor{comment}{// Find the index of the face of element e along boundary b}
+     \textcolor{keywordtype}{int} face\_index = this->face\_index\_at\_boundary(b,e);
+     
+     \textcolor{comment}{// Create new element}
+     traction\_mesh\_pt->add\_element\_pt(\textcolor{keyword}{new} SolidTractionElement<ELEMENT>
+                                      (fe\_pt,face\_index));
+    \}
+  \}
+
+\textcolor{comment}{}
+\textcolor{comment}{ /// Function to wipe and re-create mesh made of traction elements}
+\textcolor{comment}{} \textcolor{keywordtype}{void} remake\_traction\_element\_mesh(SolidMesh*& traction\_mesh\_pt)
+  \{
+
+   \textcolor{comment}{// Wipe existing mesh (but don't call it's destructor as this}
+   \textcolor{comment}{// would wipe all the nodes too!)}
+   traction\_mesh\_pt->flush\_element\_and\_node\_storage();
+
+   \textcolor{comment}{// Loop over all elements on boundary 1:}
+   \textcolor{keywordtype}{unsigned} b=1;
+   \textcolor{keywordtype}{unsigned} n\_element = this->nboundary\_element(b);
+   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} e=0;e<n\_element;e++)
+    \{
+     \textcolor{comment}{// The element itself:}
+     FiniteElement* fe\_pt = this->boundary\_element\_pt(b,e);
+     
+     \textcolor{comment}{// Find the index of the face of element e along boundary b}
+     \textcolor{keywordtype}{int} face\_index = this->face\_index\_at\_boundary(b,e);
+     
+     \textcolor{comment}{// Create new element}
+     traction\_mesh\_pt->add\_element\_pt(\textcolor{keyword}{new} SolidTractionElement<ELEMENT>
+                                      (fe\_pt,face\_index));
+    \}
+  \}
+
+
+\};
+
+
+
+
+\textcolor{comment}{}
+\textcolor{comment}{/////////////////////////////////////////////////////////////////////////}
+\textcolor{comment}{/////////////////////////////////////////////////////////////////////////}
+\textcolor{comment}{/////////////////////////////////////////////////////////////////////////}
+\textcolor{comment}{}
+
+
+\textcolor{comment}{//====================================================================== }\textcolor{comment}{}
+\textcolor{comment}{/// "Shock" wave propagates through an impulsively loaded}
+\textcolor{comment}{/// circular disk.}
+\textcolor{comment}{}\textcolor{comment}{//====================================================================== }
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT, \textcolor{keyword}{class} TIMESTEPPER>
+\textcolor{keyword}{class }\hyperlink{classDiskShockWaveProblem}{DiskShockWaveProblem} : \textcolor{keyword}{public} Problem
+\{
+
+\textcolor{keyword}{public}:
+\textcolor{comment}{}
+\textcolor{comment}{ /// Constructor:}
+\textcolor{comment}{} \hyperlink{classDiskShockWaveProblem}{DiskShockWaveProblem}();
+\textcolor{comment}{}
+\textcolor{comment}{ /// \(\backslash\)short Run the problem; specify case\_number to label output}
+\textcolor{comment}{ /// directory}
+\textcolor{comment}{} \textcolor{keywordtype}{void} run(\textcolor{keyword}{const} \textcolor{keywordtype}{unsigned}& case\_number);
+ \textcolor{comment}{}
+\textcolor{comment}{ /// Access function for the solid mesh}
+\textcolor{comment}{} \hyperlink{classElasticRefineableQuarterCircleSectorMesh}{ElasticRefineableQuarterCircleSectorMesh<ELEMENT>}*& 
+      solid\_mesh\_pt() 
+  \{
+   \textcolor{keywordflow}{return} Solid\_mesh\_pt;  
+  \} 
+\textcolor{comment}{}
+\textcolor{comment}{ /// Access function for the mesh of surface traction elements}
+\textcolor{comment}{} SolidMesh*& traction\_mesh\_pt() 
+  \{
+   \textcolor{keywordflow}{return} Traction\_mesh\_pt;  
+  \} 
+\textcolor{comment}{}
+\textcolor{comment}{ /// Doc the solution}
+\textcolor{comment}{} \textcolor{keywordtype}{void} doc\_solution();
+\textcolor{comment}{}
+\textcolor{comment}{ /// Update function (empty)}
+\textcolor{comment}{} \textcolor{keywordtype}{void} actions\_after\_newton\_solve() \{\}
+\textcolor{comment}{}
+\textcolor{comment}{ /// Update function (empty)}
+\textcolor{comment}{} \textcolor{keywordtype}{void} actions\_before\_newton\_solve() \{\}
+\textcolor{comment}{}
+\textcolor{comment}{ /// \(\backslash\)short Actions after adaption: Kill and then re-build the traction }
+\textcolor{comment}{ /// elements on boundary 1 and re-assign the equation numbers}
+\textcolor{comment}{} \textcolor{keywordtype}{void} actions\_after\_adapt();
+\textcolor{comment}{}
+\textcolor{comment}{ /// \(\backslash\)short Doc displacement and velocity: label file with before and after}
+\textcolor{comment}{} \textcolor{keywordtype}{void} doc\_displ\_and\_veloc(\textcolor{keyword}{const} \textcolor{keywordtype}{int}& stage=0);
+\textcolor{comment}{}
+\textcolor{comment}{ /// \(\backslash\)short Dump problem-specific parameters values, then dump}
+\textcolor{comment}{ /// generic problem data.}
+\textcolor{comment}{} \textcolor{keywordtype}{void} dump\_it(ofstream& dump\_file);
+\textcolor{comment}{}
+\textcolor{comment}{ /// \(\backslash\)short Read problem-specific parameter values, then recover}
+\textcolor{comment}{ /// generic problem data.}
+\textcolor{comment}{} \textcolor{keywordtype}{void} restart(ifstream& restart\_file);
+
+\textcolor{keyword}{private}:
+
+ \textcolor{comment}{// Output}
+ DocInfo Doc\_info;
+\textcolor{comment}{}
+\textcolor{comment}{ /// Trace file}
+\textcolor{comment}{} ofstream Trace\_file;
+ \textcolor{comment}{}
+\textcolor{comment}{ /// Vector of pointers to nodes whose position we're tracing}
+\textcolor{comment}{} Vector<Node*> Trace\_node\_pt;
+\textcolor{comment}{}
+\textcolor{comment}{ /// Pointer to solid mesh}
+\textcolor{comment}{} \hyperlink{classElasticRefineableQuarterCircleSectorMesh}{ElasticRefineableQuarterCircleSectorMesh<ELEMENT>}* 
+      Solid\_mesh\_pt;
+\textcolor{comment}{}
+\textcolor{comment}{ /// Pointer to mesh of traction elements}
+\textcolor{comment}{} SolidMesh* Traction\_mesh\_pt;
+
+\};
+
+
+
+
+
+\textcolor{comment}{//====================================================================== }\textcolor{comment}{}
+\textcolor{comment}{/// Constructor}
+\textcolor{comment}{}\textcolor{comment}{//====================================================================== }
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT, \textcolor{keyword}{class} TIMESTEPPER>
+\hyperlink{classDiskShockWaveProblem_ae670d0120936f410134ba3e3b61aa880}{DiskShockWaveProblem<ELEMENT,TIMESTEPPER>::DiskShockWaveProblem}
+      () 
+\{
+
+
+ \textcolor{comment}{//Allocate the timestepper}
+ add\_time\_stepper\_pt(\textcolor{keyword}{new} TIMESTEPPER);
+ 
+ \textcolor{comment}{// Set coordinates and radius for the circle that defines }
+ \textcolor{comment}{// the outer curvilinear boundary of the domain}
+ \textcolor{keywordtype}{double} x\_c=0.0;
+ \textcolor{keywordtype}{double} y\_c=0.0;
+ \textcolor{keywordtype}{double} r=1.0;
+ 
+ \textcolor{comment}{// Build geometric object that specifies the fish back in the}
+ \textcolor{comment}{// undeformed configuration (basically a deep copy of the previous one)}
+ GeomObject* curved\_boundary\_pt=\textcolor{keyword}{new} Circle(x\_c,y\_c,r,time\_stepper\_pt());
+
+ \textcolor{comment}{// The curved boundary of the mesh is defined by the geometric object}
+ \textcolor{comment}{// What follows are the start and end coordinates on the geometric object:}
+ \textcolor{keywordtype}{double} xi\_lo=0.0;
+ \textcolor{keywordtype}{double} xi\_hi=2.0*atan(1.0);
+
+ \textcolor{comment}{// Fraction along geometric object at which the radial dividing line}
+ \textcolor{comment}{// is placed}
+ \textcolor{keywordtype}{double} fract\_mid=0.5;
+
+ \textcolor{comment}{//Now create the mesh}
+ solid\_mesh\_pt() = \textcolor{keyword}{new} \hyperlink{classElasticRefineableQuarterCircleSectorMesh}{ElasticRefineableQuarterCircleSectorMesh<ELEMENT>}
+      (
+  curved\_boundary\_pt,xi\_lo,fract\_mid,xi\_hi,time\_stepper\_pt());
+
+ \textcolor{comment}{// Set up trace nodes as the nodes on boundary 1 (=curved boundary) in }
+ \textcolor{comment}{// the original mesh (they exist under any refinement!) }
+ \textcolor{keywordtype}{unsigned} nnod0=solid\_mesh\_pt()->nboundary\_node(0);
+ \textcolor{keywordtype}{unsigned} nnod1=solid\_mesh\_pt()->nboundary\_node(1);
+ Trace\_node\_pt.resize(nnod0+nnod1);
+ \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} j=0;j<nnod0;j++)
+  \{
+   Trace\_node\_pt[j]=solid\_mesh\_pt()->boundary\_node\_pt(0,j);
+  \}
+ \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} j=0;j<nnod1;j++)
+  \{
+   Trace\_node\_pt[j+nnod0]=solid\_mesh\_pt()->boundary\_node\_pt(1,j);
+  \}
+
+ \textcolor{comment}{// Build traction element mesh}
+ solid\_mesh\_pt()->\hyperlink{classElasticRefineableQuarterCircleSectorMesh_ad9734ea7aee2141079544bb782d3ace1}{make\_traction\_element\_mesh}(traction\_mesh\_pt());
+ 
+ \textcolor{comment}{// Solid mesh is first sub-mesh}
+ add\_sub\_mesh(solid\_mesh\_pt());
+
+ \textcolor{comment}{// Traction mesh is first sub-mesh}
+ add\_sub\_mesh(traction\_mesh\_pt());
+
+ \textcolor{comment}{// Build combined "global" mesh}
+ build\_global\_mesh();
+
+
+ \textcolor{comment}{// Create/set error estimator}
+ solid\_mesh\_pt()->spatial\_error\_estimator\_pt()=\textcolor{keyword}{new} Z2ErrorEstimator;
+  
+ \textcolor{comment}{// Fiddle with adaptivity targets and doc}
+ solid\_mesh\_pt()->max\_permitted\_error()=0.006; \textcolor{comment}{//0.03;}
+ solid\_mesh\_pt()->min\_permitted\_error()=0.0006;\textcolor{comment}{// 0.0006; //0.003;}
+ solid\_mesh\_pt()->doc\_adaptivity\_targets(cout);
+
+ \textcolor{comment}{// Pin the bottom in the vertical direction}
+ \textcolor{keywordtype}{unsigned} n\_bottom = solid\_mesh\_pt()->nboundary\_node(0);
+
+ \textcolor{comment}{//Loop over the node}
+ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} i=0;i<n\_bottom;i++)
+  \{
+   solid\_mesh\_pt()->boundary\_node\_pt(0,i)->pin\_position(1);
+  \}
+
+ \textcolor{comment}{// Pin the left edge in the horizontal direction}
+ \textcolor{keywordtype}{unsigned} n\_side = solid\_mesh\_pt()->nboundary\_node(2);
+ \textcolor{comment}{//Loop over the node}
+ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} i=0;i<n\_side;i++)
+  \{
+   solid\_mesh\_pt()->boundary\_node\_pt(2,i)->pin\_position(0);
+  \}
+
+ \textcolor{comment}{//Find number of elements in solid mesh}
+ \textcolor{keywordtype}{unsigned} n\_element =solid\_mesh\_pt()->nelement();
+  
+ \textcolor{comment}{//Set parameters and function pointers for solid elements}
+ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} i=0;i<n\_element;i++)
+  \{
+   \textcolor{comment}{//Cast to a solid element}
+   ELEMENT *el\_pt = \textcolor{keyword}{dynamic\_cast<}ELEMENT*\textcolor{keyword}{>}(mesh\_pt()->element\_pt(i));
+
+   \textcolor{comment}{//Set the constitutive law}
+   el\_pt->constitutive\_law\_pt() =
+    \hyperlink{namespaceGlobal__Physical__Variables_a2a37fb040c832ee7a086bb13bb02a100}{Global\_Physical\_Variables::Constitutive\_law\_pt};
+   
+   \textcolor{comment}{// Switch on inertia}
+   el\_pt->enable\_inertia();
+  \}
+
+ \textcolor{comment}{// Pin the redundant solid pressures}
+ PVDEquationsBase<2>::pin\_redundant\_nodal\_solid\_pressures(
+  solid\_mesh\_pt()->element\_pt());
+
+ \textcolor{comment}{//Find number of elements in traction mesh}
+ n\_element=traction\_mesh\_pt()->nelement();
+  
+ \textcolor{comment}{//Set function pointers for traction elements}
+ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} i=0;i<n\_element;i++)
+  \{
+   \textcolor{comment}{//Cast to a solid traction element}
+   SolidTractionElement<ELEMENT> *el\_pt = 
+    \textcolor{keyword}{dynamic\_cast<}SolidTractionElement<ELEMENT>*\textcolor{keyword}{>}
+    (traction\_mesh\_pt()->element\_pt(i));
+
+   \textcolor{comment}{//Set the traction function}
+   el\_pt->traction\_fct\_pt() = \hyperlink{namespaceGlobal__Physical__Variables_a19f4e20a92e7d216b4d2b00308f96917}{Global\_Physical\_Variables::constant\_pressure}
+      ;
+  \}
+
+ \textcolor{comment}{//Attach the boundary conditions to the mesh}
+ cout << assign\_eqn\_numbers() << std::endl; 
+
+ \textcolor{comment}{// Refine uniformly}
+ refine\_uniformly();
+ refine\_uniformly();
+ refine\_uniformly();
+ 
+
+ \textcolor{comment}{// Now the non-pinned positions of the SolidNodes will have been}
+ \textcolor{comment}{// determined by interpolation. This is appropriate for uniform}
+ \textcolor{comment}{// refinements once the code is up and running since we can't place}
+ \textcolor{comment}{// new SolidNodes at the positions determined by the MacroElement.}
+ \textcolor{comment}{// However, here we want to update the nodes to fit the exact}
+ \textcolor{comment}{// intitial configuration.}
+
+ \textcolor{comment}{// Update all solid nodes based on the Mesh's Domain/MacroElement}
+ \textcolor{comment}{// representation}
+ \textcolor{keywordtype}{bool} update\_all\_solid\_nodes=\textcolor{keyword}{true};
+ solid\_mesh\_pt()->node\_update(update\_all\_solid\_nodes);
+
+ \textcolor{comment}{// Now set the Eulerian equal to the Lagrangian coordinates}
+ solid\_mesh\_pt()->set\_lagrangian\_nodal\_coordinates();
+ 
+\}
+
+
+
+
+
+
+\textcolor{comment}{//==================================================================}\textcolor{comment}{}
+\textcolor{comment}{/// Kill and then re-build the traction elements on boundary 1,}
+\textcolor{comment}{/// pin redundant pressure dofs and re-assign the equation numbers.}
+\textcolor{comment}{}\textcolor{comment}{//==================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT, \textcolor{keyword}{class} TIMESTEPPER>
+\textcolor{keywordtype}{void} \hyperlink{classDiskShockWaveProblem_ac2a22a8399355e461d1a9ad1e5425c9a}{DiskShockWaveProblem<ELEMENT,TIMESTEPPER>::actions\_after\_adapt}
+      ()
+\{ 
+ \textcolor{comment}{// Wipe and re-build traction element mesh}
+ solid\_mesh\_pt()->remake\_traction\_element\_mesh(traction\_mesh\_pt());
+ 
+ \textcolor{comment}{// Re-build combined "global" mesh}
+ rebuild\_global\_mesh();
+
+ \textcolor{comment}{//Find number of elements in traction mesh}
+ \textcolor{keywordtype}{unsigned} n\_element=traction\_mesh\_pt()->nelement();
+  
+ \textcolor{comment}{//Loop over the elements in the traction element mesh}
+ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} i=0;i<n\_element;i++)
+  \{
+   \textcolor{comment}{//Cast to a solid traction element}
+   SolidTractionElement<ELEMENT> *el\_pt = 
+    \textcolor{keyword}{dynamic\_cast<}SolidTractionElement<ELEMENT>*\textcolor{keyword}{>}
+    (traction\_mesh\_pt()->element\_pt(i));
+
+   \textcolor{comment}{//Set the traction function}
+   el\_pt->traction\_fct\_pt() = \hyperlink{namespaceGlobal__Physical__Variables_a19f4e20a92e7d216b4d2b00308f96917}{Global\_Physical\_Variables::constant\_pressure}
+      ;
+  \}
+
+ \textcolor{comment}{// Pin the redundant solid pressures}
+ PVDEquationsBase<2>::pin\_redundant\_nodal\_solid\_pressures(
+  solid\_mesh\_pt()->element\_pt());
+
+
+ \textcolor{comment}{//Do equation numbering}
+ cout << assign\_eqn\_numbers() << std::endl; 
+
+\}
+
+
+\textcolor{comment}{//==================================================================}\textcolor{comment}{}
+\textcolor{comment}{/// Doc the solution}
+\textcolor{comment}{}\textcolor{comment}{//==================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT, \textcolor{keyword}{class} TIMESTEPPER>
+\textcolor{keywordtype}{void} \hyperlink{classDiskShockWaveProblem_a7685309caac199d18f3f81468d9fcb23}{DiskShockWaveProblem<ELEMENT,TIMESTEPPER>::doc\_solution}
+      ()
+\{
+ \textcolor{comment}{// Number of plot points}
+ \textcolor{keywordtype}{unsigned} npts;
+ npts=5; 
+
+ \textcolor{comment}{// Output shape of deformed body}
+ ofstream some\_file;
+ \textcolor{keywordtype}{char} filename[100];
+ sprintf(filename,\textcolor{stringliteral}{"%s/soln%i.dat"},Doc\_info.directory().c\_str(),
+         Doc\_info.number());
+ some\_file.open(filename);
+ solid\_mesh\_pt()->output(some\_file,npts);
+ some\_file.close();
+
+
+ \textcolor{comment}{// Output traction}
+ \textcolor{keywordtype}{unsigned} nel=traction\_mesh\_pt()->nelement();
+ sprintf(filename,\textcolor{stringliteral}{"%s/traction%i.dat"},Doc\_info.directory().c\_str(),
+         Doc\_info.number());
+ some\_file.open(filename);
+ Vector<double> unit\_normal(2);
+ Vector<double> traction(2);
+ Vector<double> x\_dummy(2);
+ Vector<double> s\_dummy(1);
+ \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} e=0;e<nel;e++)
+  \{
+   some\_file << \textcolor{stringliteral}{"ZONE "} << std::endl;
+   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} i=0;i<npts;i++)
+    \{
+     s\_dummy[0]=-1.0+2.0*double(i)/double(npts-1);
+     SolidTractionElement<ELEMENT>* el\_pt=
+      \textcolor{keyword}{dynamic\_cast<}SolidTractionElement<ELEMENT>*\textcolor{keyword}{>}(
+       traction\_mesh\_pt()->finite\_element\_pt(e));
+     el\_pt->outer\_unit\_normal(s\_dummy,unit\_normal);
+     el\_pt->traction(s\_dummy,traction);
+     el\_pt->interpolated\_x(s\_dummy,x\_dummy);
+     some\_file << x\_dummy[0] << \textcolor{stringliteral}{" "} << x\_dummy[1] << \textcolor{stringliteral}{" "} 
+               << traction[0] << \textcolor{stringliteral}{" "} << traction[1] << \textcolor{stringliteral}{" "}  
+               << std::endl;
+    \}
+  \}
+ some\_file.close(); 
+
+ \textcolor{comment}{// Doc displacement and velocity}
+ doc\_displ\_and\_veloc();
+
+ \textcolor{comment}{// Get displacement as a function of the radial coordinate}
+ \textcolor{comment}{// along boundary 0}
+ \{
+
+  \textcolor{comment}{// Number of elements along boundary 0:}
+  \textcolor{keywordtype}{unsigned} nelem=solid\_mesh\_pt()->nboundary\_element(0);
+
+  \textcolor{comment}{// Open files}
+  sprintf(filename,\textcolor{stringliteral}{"%s/displ%i.dat"},Doc\_info.directory().c\_str(),
+          Doc\_info.number());
+  some\_file.open(filename);
+  
+  Vector<double> s(2);
+  Vector<double> x(2);
+  Vector<double> dxdt(2);
+  Vector<double> xi(2);
+  Vector<double> r\_exact(2);
+  Vector<double> v\_exact(2);
+
+  \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} e=0;e<nelem;e++)
+   \{
+    some\_file << \textcolor{stringliteral}{"ZONE "} << std::endl;
+    \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} i=0;i<npts;i++)
+     \{
+      \textcolor{comment}{// Move along bottom edge of element}
+      s[0]=-1.0+2.0*double(i)/double(npts-1);
+      s[1]=-1.0;
+
+      \textcolor{comment}{// Get pointer to element}
+      SolidFiniteElement* el\_pt=\textcolor{keyword}{dynamic\_cast<}SolidFiniteElement*\textcolor{keyword}{>}
+       (solid\_mesh\_pt()->boundary\_element\_pt(0,e));
+      
+      \textcolor{comment}{// Get Lagrangian coordinate}
+      el\_pt->interpolated\_xi(s,xi);
+
+      \textcolor{comment}{// Get Eulerian coordinate}
+      el\_pt->interpolated\_x(s,x);
+
+      \textcolor{comment}{// Get velocity }
+      el\_pt->interpolated\_dxdt(s,1,dxdt);
+  
+      \textcolor{comment}{// Plot radial distance and displacement}
+      some\_file << xi[0] << \textcolor{stringliteral}{" "} << x[0]-xi[0] << \textcolor{stringliteral}{" "} 
+                << dxdt[0] << std::endl;
+     \}
+   \}
+  some\_file.close(); 
+ \}
+
+  
+ \textcolor{comment}{// Write trace file}
+ Trace\_file << time\_pt()->time()  << \textcolor{stringliteral}{" "};
+ \textcolor{keywordtype}{unsigned} ntrace\_node=Trace\_node\_pt.size();
+ \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} j=0;j<ntrace\_node;j++)
+  \{
+   Trace\_file << sqrt(pow(Trace\_node\_pt[j]->x(0),2)+
+                      pow(Trace\_node\_pt[j]->x(1),2)) << \textcolor{stringliteral}{" "};
+  \}
+ Trace\_file << std::endl;
+
+
+ \textcolor{comment}{// removed until Jacobi eigensolver is re-instated}
+ \textcolor{comment}{// // Output principal stress vectors at the centre of all elements}
+ \textcolor{comment}{// SolidHelpers::doc\_2D\_principal\_stress<ELEMENT>(Doc\_info,solid\_mesh\_pt());}
+
+\textcolor{comment}{//  // Write restart file}
+\textcolor{comment}{//  sprintf(filename,"%s/restart%i.dat",Doc\_info.directory().c\_str(),}
+\textcolor{comment}{//          Doc\_info.number());}
+\textcolor{comment}{//  some\_file.open(filename);}
+\textcolor{comment}{//  dump\_it(some\_file);}
+\textcolor{comment}{//  some\_file.close();}
+ 
+
+ cout << \textcolor{stringliteral}{"Doced solution for step "} 
+      << Doc\_info.number() 
+      << std::endl << std::endl << std::endl;
+\}
+
+
+
+
+
+
+\textcolor{comment}{//==================================================================}\textcolor{comment}{}
+\textcolor{comment}{/// Doc displacement and veloc in displ\_and\_veloc*.dat.}
+\textcolor{comment}{/// The int stage defaults to 0, in which case the '*' in the}
+\textcolor{comment}{/// filename is simply the step number specified by the Problem's}
+\textcolor{comment}{/// DocInfo object. If it's +/-1, the word "before" and "after"}
+\textcolor{comment}{/// get inserted. This allows checking of the veloc/displacment}
+\textcolor{comment}{/// interpolation during adaptive mesh refinement.}
+\textcolor{comment}{}\textcolor{comment}{//==================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT, \textcolor{keyword}{class} TIMESTEPPER>
+\textcolor{keywordtype}{void} \hyperlink{classDiskShockWaveProblem_a75403423b0a031adabb5b487fa88373f}{DiskShockWaveProblem<ELEMENT,TIMESTEPPER>::doc\_displ\_and\_veloc}
+      (
+ \textcolor{keyword}{const} \textcolor{keywordtype}{int}& stage)
+\{
+
+ ofstream some\_file;
+ \textcolor{keywordtype}{char} filename[100];
+
+ \textcolor{comment}{// Number of plot points}
+ \textcolor{keywordtype}{unsigned} npts;
+ npts=5; 
+
+ \textcolor{comment}{// Open file}
+ \textcolor{keywordflow}{if} (stage==-1)
+  \{
+   sprintf(filename,\textcolor{stringliteral}{"%s/displ\_and\_veloc\_before%i.dat"},
+           Doc\_info.directory().c\_str(),Doc\_info.number());
+  \}
+ \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (stage==1)
+  \{
+   sprintf(filename,\textcolor{stringliteral}{"%s/displ\_and\_veloc\_after%i.dat"},
+           Doc\_info.directory().c\_str(),Doc\_info.number());
+  \}
+ \textcolor{keywordflow}{else} 
+  \{
+   sprintf(filename,\textcolor{stringliteral}{"%s/displ\_and\_veloc%i.dat"},
+           Doc\_info.directory().c\_str(),Doc\_info.number());
+  \}
+ some\_file.open(filename);
+
+ Vector<double> s(2),x(2),dxdt(2),xi(2),displ(2);
+
+ \textcolor{comment}{//Loop over solid elements}
+ \textcolor{keywordtype}{unsigned} nel=solid\_mesh\_pt()->nelement();
+ \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} e=0;e<nel;e++)
+  \{
+   some\_file << \textcolor{stringliteral}{"ZONE I="} << npts << \textcolor{stringliteral}{", J="} << npts << std::endl;
+   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} i=0;i<npts;i++)
+    \{
+     s[0]=-1.0+2.0*double(i)/double(npts-1);
+     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} j=0;j<npts;j++)
+      \{
+       s[1]=-1.0+2.0*double(j)/double(npts-1);
+
+       \textcolor{comment}{// Cast to full element type}
+       ELEMENT* el\_pt=\textcolor{keyword}{dynamic\_cast<}ELEMENT*\textcolor{keyword}{>}(solid\_mesh\_pt()->
+                                             finite\_element\_pt(e));
+
+       \textcolor{comment}{// Eulerian coordinate}
+       el\_pt->interpolated\_x(s,x);
+
+       \textcolor{comment}{// Lagrangian coordinate}
+       el\_pt->interpolated\_xi(s,xi);
+
+       \textcolor{comment}{// Displacement}
+       displ[0]=x[0]-xi[0];
+       displ[1]=x[1]-xi[1];
+
+       \textcolor{comment}{// Velocity (1st deriv)}
+       el\_pt->interpolated\_dxdt(s,1,dxdt);
+
+       some\_file << x[0] << \textcolor{stringliteral}{" "} << x[1] << \textcolor{stringliteral}{" "} 
+                 << displ[0] << \textcolor{stringliteral}{" "} << displ[1] << \textcolor{stringliteral}{" "}  
+                 << dxdt[0] << \textcolor{stringliteral}{" "} << dxdt[1] << \textcolor{stringliteral}{" "}  
+                 << std::endl;
+      \}
+    \}
+  \}
+ some\_file.close(); 
+
+\}
+
+
+
+\textcolor{comment}{//========================================================================}\textcolor{comment}{}
+\textcolor{comment}{/// Dump the solution}
+\textcolor{comment}{}\textcolor{comment}{//========================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT, \textcolor{keyword}{class} TIMESTEPPER>
+\textcolor{keywordtype}{void} \hyperlink{classDiskShockWaveProblem_a2eaf91d3e0eb5f37b9920fc3d9d54cb9}{DiskShockWaveProblem<ELEMENT,TIMESTEPPER>::dump\_it}(
+      ofstream& dump\_file)
+\{
+ \textcolor{comment}{// Call generic dump()}
+ Problem::dump(dump\_file);
+\}
+
+
+
+\textcolor{comment}{//========================================================================}\textcolor{comment}{}
+\textcolor{comment}{/// Read solution from disk}
+\textcolor{comment}{}\textcolor{comment}{//========================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT, \textcolor{keyword}{class} TIMESTEPPER>
+\textcolor{keywordtype}{void} \hyperlink{classDiskShockWaveProblem_ae883625e9bbe6ea442413f7c970d3fb1}{DiskShockWaveProblem<ELEMENT,TIMESTEPPER>::restart}(
+      ifstream& restart\_file)
+\{
+ \textcolor{comment}{// Read generic problem data}
+ Problem::read(restart\_file);
+\}
+
+
+
+\textcolor{comment}{//==================================================================}\textcolor{comment}{}
+\textcolor{comment}{/// Run the problem; specify case\_number to label output directory}
+\textcolor{comment}{}\textcolor{comment}{//==================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT, \textcolor{keyword}{class} TIMESTEPPER>
+\textcolor{keywordtype}{void} \hyperlink{classDiskShockWaveProblem_af8dc3befd3eba59b008c315bfe077340}{DiskShockWaveProblem<ELEMENT,TIMESTEPPER>::run}(
+ \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned}& case\_number)
+\{
+
+ \textcolor{comment}{// If there's a command line argument, run the validation (i.e. do only }
+ \textcolor{comment}{// 3 timesteps; otherwise do a few cycles}
+ \textcolor{keywordtype}{unsigned} nstep=400;
+ \textcolor{keywordflow}{if} (CommandLineArgs::Argc!=1)
+  \{
+   nstep=3;
+  \}
+
+ \textcolor{comment}{// Define output directory}
+ \textcolor{keywordtype}{char} dirname[100];
+ sprintf(dirname,\textcolor{stringliteral}{"RESLT%i"},case\_number);
+ Doc\_info.set\_directory(dirname);
+
+ \textcolor{comment}{// Step number}
+ Doc\_info.number()=0;
+
+ \textcolor{comment}{// Open trace file}
+ \textcolor{keywordtype}{char} filename[100];   
+ sprintf(filename,\textcolor{stringliteral}{"%s/trace.dat"},Doc\_info.directory().c\_str());
+ Trace\_file.open(filename);
+
+ \textcolor{comment}{// Set up trace nodes as the nodes on boundary 1 (=curved boundary) in }
+ \textcolor{comment}{// the original mesh (they exist under any refinement!) }
+ \textcolor{keywordtype}{unsigned} nnod0=solid\_mesh\_pt()->nboundary\_node(0);
+ \textcolor{keywordtype}{unsigned} nnod1=solid\_mesh\_pt()->nboundary\_node(1);
+ Trace\_file << \textcolor{stringliteral}{"VARIABLES=\(\backslash\)"time\(\backslash\)""};
+ \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} j=0;j<nnod0;j++)
+  \{
+   Trace\_file << \textcolor{stringliteral}{", \(\backslash\)"radial node "} << j << \textcolor{stringliteral}{"\(\backslash\)" "};
+  \}
+ \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} j=0;j<nnod1;j++)
+  \{
+   Trace\_file << \textcolor{stringliteral}{", \(\backslash\)"azimuthal node "} << j << \textcolor{stringliteral}{"\(\backslash\)" "};
+  \}
+ Trace\_file << std::endl;
+
+
+
+\textcolor{comment}{//  // Restart?}
+\textcolor{comment}{//  //---------}
+
+\textcolor{comment}{//  // Pointer to restart file}
+\textcolor{comment}{//  ifstream* restart\_file\_pt=0;}
+
+\textcolor{comment}{//  // No restart}
+\textcolor{comment}{//  //-----------}
+\textcolor{comment}{//  if (CommandLineArgs::Argc==1)}
+\textcolor{comment}{//   \{}
+\textcolor{comment}{//    cout << "No restart" << std::endl;}
+\textcolor{comment}{//   \}}
+\textcolor{comment}{//  // Restart}
+\textcolor{comment}{//  //--------}
+\textcolor{comment}{//  else if (CommandLineArgs::Argc==2)}
+\textcolor{comment}{//   \{}
+\textcolor{comment}{//    // Open restart file}
+\textcolor{comment}{//    restart\_file\_pt=new ifstream(CommandLineArgs::Argv[1],ios\_base::in);}
+\textcolor{comment}{//    if (restart\_file\_pt!=0)}
+\textcolor{comment}{//     \{}
+\textcolor{comment}{//      cout << "Have opened " << CommandLineArgs::Argv[1] << }
+\textcolor{comment}{//       " for restart. " << std::endl;}
+\textcolor{comment}{//     \}}
+\textcolor{comment}{//    else}
+\textcolor{comment}{//     \{}
+\textcolor{comment}{//      cout << "ERROR while trying to open " << CommandLineArgs::Argv[1] << }
+\textcolor{comment}{//       " for restart." << std::endl;}
+\textcolor{comment}{//     \}}
+\textcolor{comment}{//    // Do the actual restart}
+\textcolor{comment}{//    pause("need to do the actual restart");}
+\textcolor{comment}{//    //problem.restart(*restart\_file\_pt);}
+\textcolor{comment}{//   \}}
+\textcolor{comment}{//  // More than one restart file specified?}
+\textcolor{comment}{//  else }
+\textcolor{comment}{//   \{}
+\textcolor{comment}{//    cout << "Can only specify one input file " << std::endl;}
+\textcolor{comment}{//    cout << "You specified the following command line arguments: " << std::endl;}
+\textcolor{comment}{//    CommandLineArgs::output();}
+\textcolor{comment}{//    //assert(false);}
+\textcolor{comment}{//   \}}
+
+
+ \textcolor{comment}{// Initial parameter values}
+ \hyperlink{namespaceGlobal__Physical__Variables_a23c2ade6398f54040b869f7f3a2bcc4b}{Global\_Physical\_Variables::P} = 0.1; 
+
+ \textcolor{comment}{// Initialise time}
+ \textcolor{keywordtype}{double} time0=0.0;
+ time\_pt()->time()=time0;
+
+ \textcolor{comment}{// Set initial timestep}
+ \textcolor{keywordtype}{double} dt=0.01; 
+
+ \textcolor{comment}{// Impulsive start}
+ assign\_initial\_values\_impulsive(dt); 
+ 
+ \textcolor{comment}{// Doc initial state}
+ doc\_solution();
+ Doc\_info.number()++;
+
+ \textcolor{comment}{// First step without adaptivity}
+ unsteady\_newton\_solve(dt); 
+ doc\_solution();
+ Doc\_info.number()++;
+
+ \textcolor{comment}{//Timestepping loop for subsequent steps with adaptivity}
+ \textcolor{keywordtype}{unsigned} max\_adapt=1;
+ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} i=1;i<nstep;i++)
+  \{
+   unsteady\_newton\_solve(dt,max\_adapt,\textcolor{keyword}{false});
+   doc\_solution();
+   Doc\_info.number()++;
+  \}
+
+\}
+
+
+
+
+
+\textcolor{comment}{//======================================================================}\textcolor{comment}{}
+\textcolor{comment}{/// Driver for simple elastic problem}
+\textcolor{comment}{}\textcolor{comment}{//======================================================================}
+\textcolor{keywordtype}{int} \hyperlink{shock__disk_8cc_a0ddf1224851353fc92bfbff6f499fa97}{main}(\textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char}* argv[])
+\{
+
+ \textcolor{comment}{// Store command line arguments}
+ CommandLineArgs::setup(argc,argv);
+
+ \textcolor{comment}{//Initialise physical parameters}
+ \hyperlink{namespaceGlobal__Physical__Variables_a09a019474b7405b35da2437f7779bc7e}{Global\_Physical\_Variables::E} = 1.0; \textcolor{comment}{// ADJUST }
+ \hyperlink{namespaceGlobal__Physical__Variables_a3962c36313826b19f216f6bbbdd6a477}{Global\_Physical\_Variables::Nu} = 0.3; \textcolor{comment}{// ADJUST}
+
+  \textcolor{comment}{// "Big G" Linear constitutive equations:}
+  \hyperlink{namespaceGlobal__Physical__Variables_a2a37fb040c832ee7a086bb13bb02a100}{Global\_Physical\_Variables::Constitutive\_law\_pt} = 
+   \textcolor{keyword}{new} GeneralisedHookean(&\hyperlink{namespaceGlobal__Physical__Variables_a3962c36313826b19f216f6bbbdd6a477}{Global\_Physical\_Variables::Nu},
+                          &\hyperlink{namespaceGlobal__Physical__Variables_a09a019474b7405b35da2437f7779bc7e}{Global\_Physical\_Variables::E});
+ 
+  \textcolor{comment}{//Set up the problem:}
+  \textcolor{keywordtype}{unsigned} case\_number=0;
+
+
+ \textcolor{comment}{// Pure displacement formulation}
+  \{
+   cout << \textcolor{stringliteral}{"Running case "} << case\_number 
+        << \textcolor{stringliteral}{": Pure displacement formulation"} << std::endl;
+   \hyperlink{classDiskShockWaveProblem}{DiskShockWaveProblem<RefineableQPVDElement<2,3>}, 
+      Newmark<1> > problem;
+   problem.\hyperlink{classDiskShockWaveProblem_af8dc3befd3eba59b008c315bfe077340}{run}(case\_number);
+   case\_number++;
+  \}
+   
+ \textcolor{comment}{// Pressure-displacement with Crouzeix Raviart-type pressure}
+  \{
+   cout << \textcolor{stringliteral}{"Running case "} << case\_number 
+        << \textcolor{stringliteral}{": Pressure/displacement with Crouzeix-Raviart pressure"} << std::endl;
+   \hyperlink{classDiskShockWaveProblem}{DiskShockWaveProblem<RefineableQPVDElementWithPressure<2>}
+      , Newmark<1> >
+    problem;
+   problem.\hyperlink{classDiskShockWaveProblem_af8dc3befd3eba59b008c315bfe077340}{run}(case\_number);
+   case\_number++;
+  \}
+
+
+  \textcolor{comment}{// Pressure-displacement with Taylor-Hood-type pressure}
+  \{
+   cout << \textcolor{stringliteral}{"Running case "} << case\_number 
+        << \textcolor{stringliteral}{": Pressure/displacement with Taylor-Hood pressure"} << std::endl;
+   \hyperlink{classDiskShockWaveProblem}{DiskShockWaveProblem<RefineableQPVDElementWithContinuousPressure<2>}
+      , 
+    Newmark<1> > problem;
+   problem.\hyperlink{classDiskShockWaveProblem_af8dc3befd3eba59b008c315bfe077340}{run}(case\_number);
+   case\_number++;
+  \}
+
+ 
+ \textcolor{comment}{// Clean up }
+ \textcolor{keyword}{delete} \hyperlink{namespaceGlobal__Physical__Variables_a2a37fb040c832ee7a086bb13bb02a100}{Global\_Physical\_Variables::Constitutive\_law\_pt};
+ \hyperlink{namespaceGlobal__Physical__Variables_a2a37fb040c832ee7a086bb13bb02a100}{Global\_Physical\_Variables::Constitutive\_law\_pt}=0;
+
+\}
+
+
+
+
+
+
+
+
+\end{DoxyCodeInclude}
+
+
+
+
+ 
+
+ \hypertarget{index_pdf}{}\section{P\+D\+F file}\label{index_pdf}
+A \href{../latex/refman.pdf}{\tt pdf version} of this document is available. \end{document}

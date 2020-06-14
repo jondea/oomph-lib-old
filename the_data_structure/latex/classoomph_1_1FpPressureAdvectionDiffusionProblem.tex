@@ -1,0 +1,225 @@
+\hypertarget{classoomph_1_1FpPressureAdvectionDiffusionProblem}{}\section{oomph\+:\+:Fp\+Pressure\+Advection\+Diffusion\+Problem$<$ E\+L\+E\+M\+E\+NT $>$ Class Template Reference}
+\label{classoomph_1_1FpPressureAdvectionDiffusionProblem}\index{oomph\+::\+Fp\+Pressure\+Advection\+Diffusion\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$@{oomph\+::\+Fp\+Pressure\+Advection\+Diffusion\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$}}
+
+
+Auxiliary \hyperlink{classoomph_1_1Problem}{Problem} that can be used to assemble the pressure advection diffusion matrix needed by the Fp\+Preconditoner.  
+
+
+
+
+{\ttfamily \#include $<$navier\+\_\+stokes\+\_\+preconditioners.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Fp\+Pressure\+Advection\+Diffusion\+Problem$<$ E\+L\+E\+M\+E\+NT $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classoomph_1_1FpPressureAdvectionDiffusionProblem}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1FpPressureAdvectionDiffusionProblem_a6e592be14db55b57bf8045c5c7d1993b}{Fp\+Pressure\+Advection\+Diffusion\+Problem} (\hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$navier\+\_\+stokes\+\_\+mesh\+\_\+pt, \hyperlink{classoomph_1_1Problem}{Problem} $\ast$orig\+\_\+problem\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Constructor\+: Pass Navier-\/\+Stokes mesh and pointer to orig problem. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1FpPressureAdvectionDiffusionProblem_a54b59cff41c3b0cca9524e202bd49453}{get\+\_\+pressure\+\_\+advection\+\_\+diffusion\+\_\+jacobian} (\hyperlink{classoomph_1_1CRDoubleMatrix}{C\+R\+Double\+Matrix} \&jacobian)
+\begin{DoxyCompactList}\small\item\em Get the pressure advection diffusion Jacobian. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1FpPressureAdvectionDiffusionProblem_ad7d514f813007a3b381a2eb7a930f19e}{reset\+\_\+pin\+\_\+status} ()
+\begin{DoxyCompactList}\small\item\em Reset pin status of all values. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1FpPressureAdvectionDiffusionProblem_a7c1c429ed80863d9de3f3dd1bf8d1b3c}{pin\+\_\+all\+\_\+non\+\_\+pressure\+\_\+dofs} (const bool \&set\+\_\+pressure\+\_\+bc\+\_\+for\+\_\+validation=false)
+\begin{DoxyCompactList}\small\item\em Pin all non-\/pressure dofs and (if boolean flag is set to true also all pressure dofs along domain boundaries -- only used for validation) \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1FpPressureAdvectionDiffusionProblem_ae24eef02cff52b57dca6c1daf274bab2}{validate} (\hyperlink{classoomph_1_1DocInfo}{Doc\+Info} \&doc\+\_\+info)
+\begin{DoxyCompactList}\small\item\em Validate pressure advection diffusion problem and doc exact and computed solution in directory specified in \hyperlink{classoomph_1_1DocInfo}{Doc\+Info} object. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1FpPressureAdvectionDiffusionProblem_aa58589dc1ce278655255588f0006b530}{doc\+\_\+solution} (\hyperlink{classoomph_1_1DocInfo}{Doc\+Info} \&doc\+\_\+info)
+\begin{DoxyCompactList}\small\item\em Doc solution (only needed during development -- kept alive in case validation is required during code maintenance) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+unsigned \hyperlink{classoomph_1_1FpPressureAdvectionDiffusionProblem_a026383763af2a00ca7c9052f10098375}{Ndim}
+\begin{DoxyCompactList}\small\item\em The spatial dimension. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Problem}{Problem} $\ast$ \hyperlink{classoomph_1_1FpPressureAdvectionDiffusionProblem_aa39f26d35ad196059b7be871d77f04cc}{Orig\+\_\+problem\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to orig problem (required so we can re-\/assign eqn numbers) \end{DoxyCompactList}\item 
+std\+::map$<$ \hyperlink{classoomph_1_1Data}{Data} $\ast$, std\+::vector$<$ int $>$ $>$ \hyperlink{classoomph_1_1FpPressureAdvectionDiffusionProblem_ad2e52d2785ab08702684bab80542bbd8}{Eqn\+\_\+number\+\_\+backup}
+\begin{DoxyCompactList}\small\item\em Map to store original equation numbers. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class E\+L\+E\+M\+E\+NT$>$\newline
+class oomph\+::\+Fp\+Pressure\+Advection\+Diffusion\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$}
+
+Auxiliary \hyperlink{classoomph_1_1Problem}{Problem} that can be used to assemble the pressure advection diffusion matrix needed by the Fp\+Preconditoner. 
+
+Definition at line 170 of file navier\+\_\+stokes\+\_\+preconditioners.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1FpPressureAdvectionDiffusionProblem_a6e592be14db55b57bf8045c5c7d1993b}\label{classoomph_1_1FpPressureAdvectionDiffusionProblem_a6e592be14db55b57bf8045c5c7d1993b}} 
+\index{oomph\+::\+Fp\+Pressure\+Advection\+Diffusion\+Problem@{oomph\+::\+Fp\+Pressure\+Advection\+Diffusion\+Problem}!Fp\+Pressure\+Advection\+Diffusion\+Problem@{Fp\+Pressure\+Advection\+Diffusion\+Problem}}
+\index{Fp\+Pressure\+Advection\+Diffusion\+Problem@{Fp\+Pressure\+Advection\+Diffusion\+Problem}!oomph\+::\+Fp\+Pressure\+Advection\+Diffusion\+Problem@{oomph\+::\+Fp\+Pressure\+Advection\+Diffusion\+Problem}}
+\subsubsection{\texorpdfstring{Fp\+Pressure\+Advection\+Diffusion\+Problem()}{FpPressureAdvectionDiffusionProblem()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+\hyperlink{classoomph_1_1FpPressureAdvectionDiffusionProblem}{oomph\+::\+Fp\+Pressure\+Advection\+Diffusion\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::\hyperlink{classoomph_1_1FpPressureAdvectionDiffusionProblem}{Fp\+Pressure\+Advection\+Diffusion\+Problem} (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$}]{navier\+\_\+stokes\+\_\+mesh\+\_\+pt,  }\item[{\hyperlink{classoomph_1_1Problem}{Problem} $\ast$}]{orig\+\_\+problem\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor\+: Pass Navier-\/\+Stokes mesh and pointer to orig problem. 
+
+
+
+Definition at line 176 of file navier\+\_\+stokes\+\_\+preconditioners.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1FpPressureAdvectionDiffusionProblem_aa58589dc1ce278655255588f0006b530}\label{classoomph_1_1FpPressureAdvectionDiffusionProblem_aa58589dc1ce278655255588f0006b530}} 
+\index{oomph\+::\+Fp\+Pressure\+Advection\+Diffusion\+Problem@{oomph\+::\+Fp\+Pressure\+Advection\+Diffusion\+Problem}!doc\+\_\+solution@{doc\+\_\+solution}}
+\index{doc\+\_\+solution@{doc\+\_\+solution}!oomph\+::\+Fp\+Pressure\+Advection\+Diffusion\+Problem@{oomph\+::\+Fp\+Pressure\+Advection\+Diffusion\+Problem}}
+\subsubsection{\texorpdfstring{doc\+\_\+solution()}{doc\_solution()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+void \hyperlink{classoomph_1_1FpPressureAdvectionDiffusionProblem}{oomph\+::\+Fp\+Pressure\+Advection\+Diffusion\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::doc\+\_\+solution (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1DocInfo}{Doc\+Info} \&}]{doc\+\_\+info }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Doc solution (only needed during development -- kept alive in case validation is required during code maintenance) 
+
+
+
+Definition at line 503 of file navier\+\_\+stokes\+\_\+preconditioners.\+h.
+
+
+
+References oomph\+::\+Doc\+Info\+::directory(), oomph\+::\+Pressure\+Advection\+Diffusion\+Validation\+::get\+\_\+exact\+\_\+u(), oomph\+::\+Doc\+Info\+::number(), and s.
+
+\mbox{\Hypertarget{classoomph_1_1FpPressureAdvectionDiffusionProblem_a54b59cff41c3b0cca9524e202bd49453}\label{classoomph_1_1FpPressureAdvectionDiffusionProblem_a54b59cff41c3b0cca9524e202bd49453}} 
+\index{oomph\+::\+Fp\+Pressure\+Advection\+Diffusion\+Problem@{oomph\+::\+Fp\+Pressure\+Advection\+Diffusion\+Problem}!get\+\_\+pressure\+\_\+advection\+\_\+diffusion\+\_\+jacobian@{get\+\_\+pressure\+\_\+advection\+\_\+diffusion\+\_\+jacobian}}
+\index{get\+\_\+pressure\+\_\+advection\+\_\+diffusion\+\_\+jacobian@{get\+\_\+pressure\+\_\+advection\+\_\+diffusion\+\_\+jacobian}!oomph\+::\+Fp\+Pressure\+Advection\+Diffusion\+Problem@{oomph\+::\+Fp\+Pressure\+Advection\+Diffusion\+Problem}}
+\subsubsection{\texorpdfstring{get\+\_\+pressure\+\_\+advection\+\_\+diffusion\+\_\+jacobian()}{get\_pressure\_advection\_diffusion\_jacobian()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+void \hyperlink{classoomph_1_1FpPressureAdvectionDiffusionProblem}{oomph\+::\+Fp\+Pressure\+Advection\+Diffusion\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::get\+\_\+pressure\+\_\+advection\+\_\+diffusion\+\_\+jacobian (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1CRDoubleMatrix}{C\+R\+Double\+Matrix} \&}]{jacobian }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the pressure advection diffusion Jacobian. 
+
+
+
+Definition at line 196 of file navier\+\_\+stokes\+\_\+preconditioners.\+h.
+
+
+
+References oomph\+::oomph\+\_\+info.
+
+\mbox{\Hypertarget{classoomph_1_1FpPressureAdvectionDiffusionProblem_a7c1c429ed80863d9de3f3dd1bf8d1b3c}\label{classoomph_1_1FpPressureAdvectionDiffusionProblem_a7c1c429ed80863d9de3f3dd1bf8d1b3c}} 
+\index{oomph\+::\+Fp\+Pressure\+Advection\+Diffusion\+Problem@{oomph\+::\+Fp\+Pressure\+Advection\+Diffusion\+Problem}!pin\+\_\+all\+\_\+non\+\_\+pressure\+\_\+dofs@{pin\+\_\+all\+\_\+non\+\_\+pressure\+\_\+dofs}}
+\index{pin\+\_\+all\+\_\+non\+\_\+pressure\+\_\+dofs@{pin\+\_\+all\+\_\+non\+\_\+pressure\+\_\+dofs}!oomph\+::\+Fp\+Pressure\+Advection\+Diffusion\+Problem@{oomph\+::\+Fp\+Pressure\+Advection\+Diffusion\+Problem}}
+\subsubsection{\texorpdfstring{pin\+\_\+all\+\_\+non\+\_\+pressure\+\_\+dofs()}{pin\_all\_non\_pressure\_dofs()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+void \hyperlink{classoomph_1_1FpPressureAdvectionDiffusionProblem}{oomph\+::\+Fp\+Pressure\+Advection\+Diffusion\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::pin\+\_\+all\+\_\+non\+\_\+pressure\+\_\+dofs (\begin{DoxyParamCaption}\item[{const bool \&}]{set\+\_\+pressure\+\_\+bc\+\_\+for\+\_\+validation = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Pin all non-\/pressure dofs and (if boolean flag is set to true also all pressure dofs along domain boundaries -- only used for validation) 
+
+
+
+Definition at line 277 of file navier\+\_\+stokes\+\_\+preconditioners.\+h.
+
+
+
+References e, oomph\+::\+Data\+::eqn\+\_\+number(), i, oomph\+::\+Data\+::nvalue(), oomph\+::\+Data\+::pin(), oomph\+::\+Data\+::set\+\_\+value(), oomph\+::\+Pressure\+Advection\+Diffusion\+Validation\+::wind\+\_\+function(), and oomph\+::\+Node\+::x().
+
+\mbox{\Hypertarget{classoomph_1_1FpPressureAdvectionDiffusionProblem_ad7d514f813007a3b381a2eb7a930f19e}\label{classoomph_1_1FpPressureAdvectionDiffusionProblem_ad7d514f813007a3b381a2eb7a930f19e}} 
+\index{oomph\+::\+Fp\+Pressure\+Advection\+Diffusion\+Problem@{oomph\+::\+Fp\+Pressure\+Advection\+Diffusion\+Problem}!reset\+\_\+pin\+\_\+status@{reset\+\_\+pin\+\_\+status}}
+\index{reset\+\_\+pin\+\_\+status@{reset\+\_\+pin\+\_\+status}!oomph\+::\+Fp\+Pressure\+Advection\+Diffusion\+Problem@{oomph\+::\+Fp\+Pressure\+Advection\+Diffusion\+Problem}}
+\subsubsection{\texorpdfstring{reset\+\_\+pin\+\_\+status()}{reset\_pin\_status()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+void \hyperlink{classoomph_1_1FpPressureAdvectionDiffusionProblem}{oomph\+::\+Fp\+Pressure\+Advection\+Diffusion\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::reset\+\_\+pin\+\_\+status (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Reset pin status of all values. 
+
+
+
+Definition at line 221 of file navier\+\_\+stokes\+\_\+preconditioners.\+h.
+
+
+
+References e, oomph\+::\+Data\+::eqn\+\_\+number(), i, and oomph\+::\+Data\+::nvalue().
+
+\mbox{\Hypertarget{classoomph_1_1FpPressureAdvectionDiffusionProblem_ae24eef02cff52b57dca6c1daf274bab2}\label{classoomph_1_1FpPressureAdvectionDiffusionProblem_ae24eef02cff52b57dca6c1daf274bab2}} 
+\index{oomph\+::\+Fp\+Pressure\+Advection\+Diffusion\+Problem@{oomph\+::\+Fp\+Pressure\+Advection\+Diffusion\+Problem}!validate@{validate}}
+\index{validate@{validate}!oomph\+::\+Fp\+Pressure\+Advection\+Diffusion\+Problem@{oomph\+::\+Fp\+Pressure\+Advection\+Diffusion\+Problem}}
+\subsubsection{\texorpdfstring{validate()}{validate()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+void \hyperlink{classoomph_1_1FpPressureAdvectionDiffusionProblem}{oomph\+::\+Fp\+Pressure\+Advection\+Diffusion\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::validate (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1DocInfo}{Doc\+Info} \&}]{doc\+\_\+info }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Validate pressure advection diffusion problem and doc exact and computed solution in directory specified in \hyperlink{classoomph_1_1DocInfo}{Doc\+Info} object. 
+
+
+
+Definition at line 386 of file navier\+\_\+stokes\+\_\+preconditioners.\+h.
+
+
+
+References oomph\+::\+Template\+Free\+Navier\+Stokes\+Equations\+Base\+::build\+\_\+fp\+\_\+press\+\_\+adv\+\_\+diff\+\_\+robin\+\_\+bc\+\_\+element(), oomph\+::\+Template\+Free\+Navier\+Stokes\+Equations\+Base\+::delete\+\_\+pressure\+\_\+advection\+\_\+diffusion\+\_\+robin\+\_\+elements(), e, oomph\+::\+Pressure\+Advection\+Diffusion\+Validation\+::\+Flag, oomph\+::oomph\+\_\+info, oomph\+::\+Pressure\+Advection\+Diffusion\+Validation\+::\+Peclet, and oomph\+::\+Pressure\+Advection\+Diffusion\+Validation\+::source\+\_\+function().
+
+
+
+Referenced by oomph\+::\+Navier\+Stokes\+Schur\+Complement\+Preconditioner\+::validate().
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1FpPressureAdvectionDiffusionProblem_ad2e52d2785ab08702684bab80542bbd8}\label{classoomph_1_1FpPressureAdvectionDiffusionProblem_ad2e52d2785ab08702684bab80542bbd8}} 
+\index{oomph\+::\+Fp\+Pressure\+Advection\+Diffusion\+Problem@{oomph\+::\+Fp\+Pressure\+Advection\+Diffusion\+Problem}!Eqn\+\_\+number\+\_\+backup@{Eqn\+\_\+number\+\_\+backup}}
+\index{Eqn\+\_\+number\+\_\+backup@{Eqn\+\_\+number\+\_\+backup}!oomph\+::\+Fp\+Pressure\+Advection\+Diffusion\+Problem@{oomph\+::\+Fp\+Pressure\+Advection\+Diffusion\+Problem}}
+\subsubsection{\texorpdfstring{Eqn\+\_\+number\+\_\+backup}{Eqn\_number\_backup}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+std\+::map$<$\hyperlink{classoomph_1_1Data}{Data}$\ast$,std\+::vector$<$int$>$ $>$ \hyperlink{classoomph_1_1FpPressureAdvectionDiffusionProblem}{oomph\+::\+Fp\+Pressure\+Advection\+Diffusion\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::Eqn\+\_\+number\+\_\+backup\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Map to store original equation numbers. 
+
+
+
+Definition at line 563 of file navier\+\_\+stokes\+\_\+preconditioners.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1FpPressureAdvectionDiffusionProblem_a026383763af2a00ca7c9052f10098375}\label{classoomph_1_1FpPressureAdvectionDiffusionProblem_a026383763af2a00ca7c9052f10098375}} 
+\index{oomph\+::\+Fp\+Pressure\+Advection\+Diffusion\+Problem@{oomph\+::\+Fp\+Pressure\+Advection\+Diffusion\+Problem}!Ndim@{Ndim}}
+\index{Ndim@{Ndim}!oomph\+::\+Fp\+Pressure\+Advection\+Diffusion\+Problem@{oomph\+::\+Fp\+Pressure\+Advection\+Diffusion\+Problem}}
+\subsubsection{\texorpdfstring{Ndim}{Ndim}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+unsigned \hyperlink{classoomph_1_1FpPressureAdvectionDiffusionProblem}{oomph\+::\+Fp\+Pressure\+Advection\+Diffusion\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::Ndim\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The spatial dimension. 
+
+
+
+Definition at line 556 of file navier\+\_\+stokes\+\_\+preconditioners.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1FpPressureAdvectionDiffusionProblem_aa39f26d35ad196059b7be871d77f04cc}\label{classoomph_1_1FpPressureAdvectionDiffusionProblem_aa39f26d35ad196059b7be871d77f04cc}} 
+\index{oomph\+::\+Fp\+Pressure\+Advection\+Diffusion\+Problem@{oomph\+::\+Fp\+Pressure\+Advection\+Diffusion\+Problem}!Orig\+\_\+problem\+\_\+pt@{Orig\+\_\+problem\+\_\+pt}}
+\index{Orig\+\_\+problem\+\_\+pt@{Orig\+\_\+problem\+\_\+pt}!oomph\+::\+Fp\+Pressure\+Advection\+Diffusion\+Problem@{oomph\+::\+Fp\+Pressure\+Advection\+Diffusion\+Problem}}
+\subsubsection{\texorpdfstring{Orig\+\_\+problem\+\_\+pt}{Orig\_problem\_pt}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+\hyperlink{classoomph_1_1Problem}{Problem}$\ast$ \hyperlink{classoomph_1_1FpPressureAdvectionDiffusionProblem}{oomph\+::\+Fp\+Pressure\+Advection\+Diffusion\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::Orig\+\_\+problem\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pointer to orig problem (required so we can re-\/assign eqn numbers) 
+
+
+
+Definition at line 560 of file navier\+\_\+stokes\+\_\+preconditioners.\+h.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{navier__stokes__preconditioners_8h}{navier\+\_\+stokes\+\_\+preconditioners.\+h}\end{DoxyCompactItemize}

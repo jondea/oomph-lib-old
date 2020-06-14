@@ -1,0 +1,244 @@
+\hypertarget{classoomph_1_1GeneralisedMooneyRivlin}{}\section{oomph\+:\+:Generalised\+Mooney\+Rivlin Class Reference}
+\label{classoomph_1_1GeneralisedMooneyRivlin}\index{oomph\+::\+Generalised\+Mooney\+Rivlin@{oomph\+::\+Generalised\+Mooney\+Rivlin}}
+
+
+Generalisation of Mooney Rivlin constitutive law to compressible media as suggested on p. 553 of Fung, Y.\+C. \& Tong, P. \char`\"{}\+Classical and 
+\+Computational Solid Mechanics\char`\"{} World Scientific (2001). Input parameters are Young\textquotesingle{}s modulus E, Poisson ratio nu and the Mooney-\/\+Rivlin constant C1. In the small-\/deformation-\/limit the behaviour becomes equivalent to that of linear elasticity with the same E and nu.  
+
+
+
+
+{\ttfamily \#include $<$constitutive\+\_\+laws.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Generalised\+Mooney\+Rivlin\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classoomph_1_1GeneralisedMooneyRivlin}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1GeneralisedMooneyRivlin_a04bdac757114843e1b758b64a552c23b}{Generalised\+Mooney\+Rivlin} (double $\ast$nu\+\_\+pt, double $\ast$c1\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Constructor takes the pointers to the constitutive parameters\+: Poisson\textquotesingle{}s ratio, the Mooney-\/\+Rivlin parameter. Young\textquotesingle{}s modulus is set to 1, implying that it has been used to scale the stresses. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1GeneralisedMooneyRivlin_a4c709851b0ed6e9a975d69c1b2146429}{Generalised\+Mooney\+Rivlin} (double $\ast$nu\+\_\+pt, double $\ast$c1\+\_\+pt, double $\ast$e\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Constructor takes the pointers to the constitutive parameters\+: Poisson\textquotesingle{}s ratio, the Mooney-\/\+Rivlin parameter and Young\textquotesingle{}s modulus. \end{DoxyCompactList}\item 
+virtual \hyperlink{classoomph_1_1GeneralisedMooneyRivlin_a855599e1cbdfbb9eb5aad3c5931e4f03}{$\sim$\+Generalised\+Mooney\+Rivlin} ()
+\begin{DoxyCompactList}\small\item\em Virtual destructor. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1GeneralisedMooneyRivlin_a91ff4fa7c19304c98f9a0017c22747a9}{W} (const \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&gamma)
+\begin{DoxyCompactList}\small\item\em Return the strain energy in terms of strain tensor. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1GeneralisedMooneyRivlin_a2edff387e97632febd90938b27a30a14}{W} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&I)
+\begin{DoxyCompactList}\small\item\em Return the strain energy in terms of the strain invariants. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1GeneralisedMooneyRivlin_aa0ca6d085deb4758119ff68222a27a8b}{derivatives} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&I, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&d\+WdI)
+\begin{DoxyCompactList}\small\item\em Return the derivatives of the strain energy function with respect to the strain invariants. \end{DoxyCompactList}\item 
+bool \hyperlink{classoomph_1_1GeneralisedMooneyRivlin_a2b41a132a90707ee2901787d398f45f8}{requires\+\_\+incompressibility\+\_\+constraint} ()
+\begin{DoxyCompactList}\small\item\em Pure virtual function in which the user must declare if the constitutive equation requires an incompressible formulation in which the volume constraint is enforced explicitly. Used as a sanity check in P\+A\+R\+A\+N\+O\+ID mode. False. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double $\ast$ \hyperlink{classoomph_1_1GeneralisedMooneyRivlin_ae66d1130fccc98fc68d810f1f3e6b281}{Nu\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Poisson\textquotesingle{}s ratio. \end{DoxyCompactList}\item 
+double $\ast$ \hyperlink{classoomph_1_1GeneralisedMooneyRivlin_aebb4709747e2855ddaa8b455d50d0174}{C1\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Mooney-\/\+Rivlin parameter. \end{DoxyCompactList}\item 
+double $\ast$ \hyperlink{classoomph_1_1GeneralisedMooneyRivlin_a4844de8de168e51c24c5508ef195ae7a}{E\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Young\textquotesingle{}s modulus. \end{DoxyCompactList}\item 
+bool \hyperlink{classoomph_1_1GeneralisedMooneyRivlin_a38d89cd3412cac1adb945713168a5c86}{Must\+\_\+delete\+\_\+e}
+\begin{DoxyCompactList}\small\item\em Boolean flag to indicate if storage for elastic modulus must be deleted in destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Generalisation of Mooney Rivlin constitutive law to compressible media as suggested on p. 553 of Fung, Y.\+C. \& Tong, P. \char`\"{}\+Classical and 
+\+Computational Solid Mechanics\char`\"{} World Scientific (2001). Input parameters are Young\textquotesingle{}s modulus E, Poisson ratio nu and the Mooney-\/\+Rivlin constant C1. In the small-\/deformation-\/limit the behaviour becomes equivalent to that of linear elasticity with the same E and nu. 
+
+Note that there\textquotesingle{}s a factor of 2 difference between C1 and the Mooney Rivlin C1! 
+
+Definition at line 225 of file constitutive\+\_\+laws.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1GeneralisedMooneyRivlin_a04bdac757114843e1b758b64a552c23b}\label{classoomph_1_1GeneralisedMooneyRivlin_a04bdac757114843e1b758b64a552c23b}} 
+\index{oomph\+::\+Generalised\+Mooney\+Rivlin@{oomph\+::\+Generalised\+Mooney\+Rivlin}!Generalised\+Mooney\+Rivlin@{Generalised\+Mooney\+Rivlin}}
+\index{Generalised\+Mooney\+Rivlin@{Generalised\+Mooney\+Rivlin}!oomph\+::\+Generalised\+Mooney\+Rivlin@{oomph\+::\+Generalised\+Mooney\+Rivlin}}
+\subsubsection{\texorpdfstring{Generalised\+Mooney\+Rivlin()}{GeneralisedMooneyRivlin()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily oomph\+::\+Generalised\+Mooney\+Rivlin\+::\+Generalised\+Mooney\+Rivlin (\begin{DoxyParamCaption}\item[{double $\ast$}]{nu\+\_\+pt,  }\item[{double $\ast$}]{c1\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor takes the pointers to the constitutive parameters\+: Poisson\textquotesingle{}s ratio, the Mooney-\/\+Rivlin parameter. Young\textquotesingle{}s modulus is set to 1, implying that it has been used to scale the stresses. 
+
+
+
+Definition at line 233 of file constitutive\+\_\+laws.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1GeneralisedMooneyRivlin_a4c709851b0ed6e9a975d69c1b2146429}\label{classoomph_1_1GeneralisedMooneyRivlin_a4c709851b0ed6e9a975d69c1b2146429}} 
+\index{oomph\+::\+Generalised\+Mooney\+Rivlin@{oomph\+::\+Generalised\+Mooney\+Rivlin}!Generalised\+Mooney\+Rivlin@{Generalised\+Mooney\+Rivlin}}
+\index{Generalised\+Mooney\+Rivlin@{Generalised\+Mooney\+Rivlin}!oomph\+::\+Generalised\+Mooney\+Rivlin@{oomph\+::\+Generalised\+Mooney\+Rivlin}}
+\subsubsection{\texorpdfstring{Generalised\+Mooney\+Rivlin()}{GeneralisedMooneyRivlin()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily oomph\+::\+Generalised\+Mooney\+Rivlin\+::\+Generalised\+Mooney\+Rivlin (\begin{DoxyParamCaption}\item[{double $\ast$}]{nu\+\_\+pt,  }\item[{double $\ast$}]{c1\+\_\+pt,  }\item[{double $\ast$}]{e\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor takes the pointers to the constitutive parameters\+: Poisson\textquotesingle{}s ratio, the Mooney-\/\+Rivlin parameter and Young\textquotesingle{}s modulus. 
+
+
+
+Definition at line 239 of file constitutive\+\_\+laws.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1GeneralisedMooneyRivlin_a855599e1cbdfbb9eb5aad3c5931e4f03}\label{classoomph_1_1GeneralisedMooneyRivlin_a855599e1cbdfbb9eb5aad3c5931e4f03}} 
+\index{oomph\+::\+Generalised\+Mooney\+Rivlin@{oomph\+::\+Generalised\+Mooney\+Rivlin}!````~Generalised\+Mooney\+Rivlin@{$\sim$\+Generalised\+Mooney\+Rivlin}}
+\index{````~Generalised\+Mooney\+Rivlin@{$\sim$\+Generalised\+Mooney\+Rivlin}!oomph\+::\+Generalised\+Mooney\+Rivlin@{oomph\+::\+Generalised\+Mooney\+Rivlin}}
+\subsubsection{\texorpdfstring{$\sim$\+Generalised\+Mooney\+Rivlin()}{~GeneralisedMooneyRivlin()}}
+{\footnotesize\ttfamily virtual oomph\+::\+Generalised\+Mooney\+Rivlin\+::$\sim$\+Generalised\+Mooney\+Rivlin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Virtual destructor. 
+
+
+
+Definition at line 246 of file constitutive\+\_\+laws.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1GeneralisedMooneyRivlin_aa0ca6d085deb4758119ff68222a27a8b}\label{classoomph_1_1GeneralisedMooneyRivlin_aa0ca6d085deb4758119ff68222a27a8b}} 
+\index{oomph\+::\+Generalised\+Mooney\+Rivlin@{oomph\+::\+Generalised\+Mooney\+Rivlin}!derivatives@{derivatives}}
+\index{derivatives@{derivatives}!oomph\+::\+Generalised\+Mooney\+Rivlin@{oomph\+::\+Generalised\+Mooney\+Rivlin}}
+\subsubsection{\texorpdfstring{derivatives()}{derivatives()}}
+{\footnotesize\ttfamily void oomph\+::\+Generalised\+Mooney\+Rivlin\+::derivatives (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{I,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{d\+WdI }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Return the derivatives of the strain energy function with respect to the strain invariants. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1StrainEnergyFunction_a81ca7bb14cce217ffac9d308dba39756}{oomph\+::\+Strain\+Energy\+Function}.
+
+
+
+Definition at line 269 of file constitutive\+\_\+laws.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1GeneralisedMooneyRivlin_a2b41a132a90707ee2901787d398f45f8}\label{classoomph_1_1GeneralisedMooneyRivlin_a2b41a132a90707ee2901787d398f45f8}} 
+\index{oomph\+::\+Generalised\+Mooney\+Rivlin@{oomph\+::\+Generalised\+Mooney\+Rivlin}!requires\+\_\+incompressibility\+\_\+constraint@{requires\+\_\+incompressibility\+\_\+constraint}}
+\index{requires\+\_\+incompressibility\+\_\+constraint@{requires\+\_\+incompressibility\+\_\+constraint}!oomph\+::\+Generalised\+Mooney\+Rivlin@{oomph\+::\+Generalised\+Mooney\+Rivlin}}
+\subsubsection{\texorpdfstring{requires\+\_\+incompressibility\+\_\+constraint()}{requires\_incompressibility\_constraint()}}
+{\footnotesize\ttfamily bool oomph\+::\+Generalised\+Mooney\+Rivlin\+::requires\+\_\+incompressibility\+\_\+constraint (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Pure virtual function in which the user must declare if the constitutive equation requires an incompressible formulation in which the volume constraint is enforced explicitly. Used as a sanity check in P\+A\+R\+A\+N\+O\+ID mode. False. 
+
+
+
+Implements \hyperlink{classoomph_1_1StrainEnergyFunction_a312fe03c070f5c45a99ae4e186936147}{oomph\+::\+Strain\+Energy\+Function}.
+
+
+
+Definition at line 283 of file constitutive\+\_\+laws.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1GeneralisedMooneyRivlin_a91ff4fa7c19304c98f9a0017c22747a9}\label{classoomph_1_1GeneralisedMooneyRivlin_a91ff4fa7c19304c98f9a0017c22747a9}} 
+\index{oomph\+::\+Generalised\+Mooney\+Rivlin@{oomph\+::\+Generalised\+Mooney\+Rivlin}!W@{W}}
+\index{W@{W}!oomph\+::\+Generalised\+Mooney\+Rivlin@{oomph\+::\+Generalised\+Mooney\+Rivlin}}
+\subsubsection{\texorpdfstring{W()}{W()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily double oomph\+::\+Generalised\+Mooney\+Rivlin\+::W (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{gamma }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Return the strain energy in terms of strain tensor. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1StrainEnergyFunction_a76cadaefaa89b93793c893f1302bd68a}{oomph\+::\+Strain\+Energy\+Function}.
+
+
+
+Definition at line 252 of file constitutive\+\_\+laws.\+h.
+
+
+
+References oomph\+::\+Strain\+Energy\+Function\+::\+W().
+
+\mbox{\Hypertarget{classoomph_1_1GeneralisedMooneyRivlin_a2edff387e97632febd90938b27a30a14}\label{classoomph_1_1GeneralisedMooneyRivlin_a2edff387e97632febd90938b27a30a14}} 
+\index{oomph\+::\+Generalised\+Mooney\+Rivlin@{oomph\+::\+Generalised\+Mooney\+Rivlin}!W@{W}}
+\index{W@{W}!oomph\+::\+Generalised\+Mooney\+Rivlin@{oomph\+::\+Generalised\+Mooney\+Rivlin}}
+\subsubsection{\texorpdfstring{W()}{W()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily double oomph\+::\+Generalised\+Mooney\+Rivlin\+::W (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{I }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Return the strain energy in terms of the strain invariants. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1StrainEnergyFunction_a99df34610d4542568f65c568ae3a908f}{oomph\+::\+Strain\+Energy\+Function}.
+
+
+
+Definition at line 257 of file constitutive\+\_\+laws.\+h.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1GeneralisedMooneyRivlin_aebb4709747e2855ddaa8b455d50d0174}\label{classoomph_1_1GeneralisedMooneyRivlin_aebb4709747e2855ddaa8b455d50d0174}} 
+\index{oomph\+::\+Generalised\+Mooney\+Rivlin@{oomph\+::\+Generalised\+Mooney\+Rivlin}!C1\+\_\+pt@{C1\+\_\+pt}}
+\index{C1\+\_\+pt@{C1\+\_\+pt}!oomph\+::\+Generalised\+Mooney\+Rivlin@{oomph\+::\+Generalised\+Mooney\+Rivlin}}
+\subsubsection{\texorpdfstring{C1\+\_\+pt}{C1\_pt}}
+{\footnotesize\ttfamily double$\ast$ oomph\+::\+Generalised\+Mooney\+Rivlin\+::\+C1\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mooney-\/\+Rivlin parameter. 
+
+
+
+Definition at line 291 of file constitutive\+\_\+laws.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1GeneralisedMooneyRivlin_a4844de8de168e51c24c5508ef195ae7a}\label{classoomph_1_1GeneralisedMooneyRivlin_a4844de8de168e51c24c5508ef195ae7a}} 
+\index{oomph\+::\+Generalised\+Mooney\+Rivlin@{oomph\+::\+Generalised\+Mooney\+Rivlin}!E\+\_\+pt@{E\+\_\+pt}}
+\index{E\+\_\+pt@{E\+\_\+pt}!oomph\+::\+Generalised\+Mooney\+Rivlin@{oomph\+::\+Generalised\+Mooney\+Rivlin}}
+\subsubsection{\texorpdfstring{E\+\_\+pt}{E\_pt}}
+{\footnotesize\ttfamily double$\ast$ oomph\+::\+Generalised\+Mooney\+Rivlin\+::\+E\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Young\textquotesingle{}s modulus. 
+
+
+
+Definition at line 294 of file constitutive\+\_\+laws.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1GeneralisedMooneyRivlin_a38d89cd3412cac1adb945713168a5c86}\label{classoomph_1_1GeneralisedMooneyRivlin_a38d89cd3412cac1adb945713168a5c86}} 
+\index{oomph\+::\+Generalised\+Mooney\+Rivlin@{oomph\+::\+Generalised\+Mooney\+Rivlin}!Must\+\_\+delete\+\_\+e@{Must\+\_\+delete\+\_\+e}}
+\index{Must\+\_\+delete\+\_\+e@{Must\+\_\+delete\+\_\+e}!oomph\+::\+Generalised\+Mooney\+Rivlin@{oomph\+::\+Generalised\+Mooney\+Rivlin}}
+\subsubsection{\texorpdfstring{Must\+\_\+delete\+\_\+e}{Must\_delete\_e}}
+{\footnotesize\ttfamily bool oomph\+::\+Generalised\+Mooney\+Rivlin\+::\+Must\+\_\+delete\+\_\+e\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Boolean flag to indicate if storage for elastic modulus must be deleted in destructor. 
+
+
+
+Definition at line 298 of file constitutive\+\_\+laws.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1GeneralisedMooneyRivlin_ae66d1130fccc98fc68d810f1f3e6b281}\label{classoomph_1_1GeneralisedMooneyRivlin_ae66d1130fccc98fc68d810f1f3e6b281}} 
+\index{oomph\+::\+Generalised\+Mooney\+Rivlin@{oomph\+::\+Generalised\+Mooney\+Rivlin}!Nu\+\_\+pt@{Nu\+\_\+pt}}
+\index{Nu\+\_\+pt@{Nu\+\_\+pt}!oomph\+::\+Generalised\+Mooney\+Rivlin@{oomph\+::\+Generalised\+Mooney\+Rivlin}}
+\subsubsection{\texorpdfstring{Nu\+\_\+pt}{Nu\_pt}}
+{\footnotesize\ttfamily double$\ast$ oomph\+::\+Generalised\+Mooney\+Rivlin\+::\+Nu\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Poisson\textquotesingle{}s ratio. 
+
+
+
+Definition at line 288 of file constitutive\+\_\+laws.\+h.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{constitutive__laws_8h}{constitutive\+\_\+laws.\+h}\end{DoxyCompactItemize}

@@ -1,0 +1,258 @@
+\hypertarget{namespaceGlobal__Physical__Variables}{}\section{Global\+\_\+\+Physical\+\_\+\+Variables Namespace Reference}
+\label{namespaceGlobal__Physical__Variables}\index{Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}}
+
+
+Namespace for physical parameters.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{namespaceGlobal__Physical__Variables_a5928252d8e7440b329065c223926d4d2}{set\+\_\+params} ()
+\begin{DoxyCompactList}\small\item\em Set the parameters that are used in the code as a function of the Womersley number, the density ratio and H. \end{DoxyCompactList}\item 
+void \hyperlink{namespaceGlobal__Physical__Variables_aa08c246eac99f59be33ef4a6ee924990}{pcos\+\_\+load} (const Vector$<$ double $>$ \&xi, const Vector$<$ double $>$ \&x, const Vector$<$ double $>$ \&N, Vector$<$ double $>$ \&load)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+double \hyperlink{namespaceGlobal__Physical__Variables_a056817f9a80034eff75fcf94c44b08cd}{Alpha\+\_\+sq} =50.\+0
+\begin{DoxyCompactList}\small\item\em Square of Womersly number (a frequency parameter) \end{DoxyCompactList}\item 
+double \hyperlink{namespaceGlobal__Physical__Variables_af5163137c5b98c6ebb942973cba4e297}{Density\+\_\+ratio} =1.\+0
+\begin{DoxyCompactList}\small\item\em Density ratio of the solid and the fluid. \end{DoxyCompactList}\item 
+double \hyperlink{namespaceGlobal__Physical__Variables_a00f471db241ed712eaefcbaf4fb1d6a9}{Pext} =0.\+0
+\begin{DoxyCompactList}\small\item\em External Pressure. \end{DoxyCompactList}\item 
+double \hyperlink{namespaceGlobal__Physical__Variables_a3962c36313826b19f216f6bbbdd6a477}{Nu} =0.\+49
+\begin{DoxyCompactList}\small\item\em Poisson ratio. \end{DoxyCompactList}\item 
+double \hyperlink{namespaceGlobal__Physical__Variables_af6e07423e22c0991084d9a2f43727805}{H} =0.\+05
+\begin{DoxyCompactList}\small\item\em Nondimensional thickness of the beam. \end{DoxyCompactList}\item 
+double \hyperlink{namespaceGlobal__Physical__Variables_ab55734aaa66260cd9d4bf68a4ecafdd5}{Pcos} =0.\+0
+\begin{DoxyCompactList}\small\item\em Perturbation pressure. \end{DoxyCompactList}\item 
+double \hyperlink{namespaceGlobal__Physical__Variables_ab814e627d2eb5bc50318879d19ab16b9}{Re} =100.\+0
+\begin{DoxyCompactList}\small\item\em Reynolds number. \end{DoxyCompactList}\item 
+double \hyperlink{namespaceGlobal__Physical__Variables_a085ee4bf968ffdd01a41b8c41864f907}{Re\+St} =100.\+0
+\begin{DoxyCompactList}\small\item\em Reynolds x Strouhal number. \end{DoxyCompactList}\item 
+double \hyperlink{namespaceGlobal__Physical__Variables_a6fe17557ceb32dd353827fba60408363}{Lambda\+\_\+sq}
+\begin{DoxyCompactList}\small\item\em Timescale ratio (non-\/dimensation density) \end{DoxyCompactList}\item 
+double \hyperlink{namespaceGlobal__Physical__Variables_a66cb7ecda9ba0cd72367dd697f154545}{Q}
+\begin{DoxyCompactList}\small\item\em Stress ratio. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Namespace for physical parameters. 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceGlobal__Physical__Variables_aa08c246eac99f59be33ef4a6ee924990}\label{namespaceGlobal__Physical__Variables_aa08c246eac99f59be33ef4a6ee924990}} 
+\index{Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}!pcos\+\_\+load@{pcos\+\_\+load}}
+\index{pcos\+\_\+load@{pcos\+\_\+load}!Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}}
+\subsubsection{\texorpdfstring{pcos\+\_\+load()}{pcos\_load()}}
+{\footnotesize\ttfamily void Global\+\_\+\+Physical\+\_\+\+Variables\+::pcos\+\_\+load (\begin{DoxyParamCaption}\item[{const Vector$<$ double $>$ \&}]{xi,  }\item[{const Vector$<$ double $>$ \&}]{x,  }\item[{const Vector$<$ double $>$ \&}]{N,  }\item[{Vector$<$ double $>$ \&}]{load }\end{DoxyParamCaption})}
+
+Non-\/\+F\+SI load function, a constant external pressure plus a (small) sinusoidal perturbation of wavenumber two. 
+
+Definition at line 129 of file fsi\+\_\+osc\+\_\+ring.\+cc.
+
+
+
+Referenced by F\+S\+I\+Ring\+Problem\+::\+F\+S\+I\+Ring\+Problem().
+
+\mbox{\Hypertarget{namespaceGlobal__Physical__Variables_a5928252d8e7440b329065c223926d4d2}\label{namespaceGlobal__Physical__Variables_a5928252d8e7440b329065c223926d4d2}} 
+\index{Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}!set\+\_\+params@{set\+\_\+params}}
+\index{set\+\_\+params@{set\+\_\+params}!Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}}
+\subsubsection{\texorpdfstring{set\+\_\+params()}{set\_params()}}
+{\footnotesize\ttfamily void Global\+\_\+\+Physical\+\_\+\+Variables\+::set\+\_\+params (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Set the parameters that are used in the code as a function of the Womersley number, the density ratio and H. 
+
+
+
+Definition at line 91 of file fsi\+\_\+osc\+\_\+ring.\+cc.
+
+
+
+References Alpha\+\_\+sq, Density\+\_\+ratio, and Re.
+
+
+
+Referenced by F\+S\+I\+Ring\+Problem\+::dynamic\+\_\+run().
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceGlobal__Physical__Variables_a056817f9a80034eff75fcf94c44b08cd}\label{namespaceGlobal__Physical__Variables_a056817f9a80034eff75fcf94c44b08cd}} 
+\index{Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}!Alpha\+\_\+sq@{Alpha\+\_\+sq}}
+\index{Alpha\+\_\+sq@{Alpha\+\_\+sq}!Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}}
+\subsubsection{\texorpdfstring{Alpha\+\_\+sq}{Alpha\_sq}}
+{\footnotesize\ttfamily double Global\+\_\+\+Physical\+\_\+\+Variables\+::\+Alpha\+\_\+sq =50.\+0}
+
+
+
+Square of Womersly number (a frequency parameter) 
+
+
+
+Definition at line 56 of file fsi\+\_\+osc\+\_\+ring.\+cc.
+
+
+
+Referenced by F\+S\+I\+Ring\+Problem\+::dynamic\+\_\+run(), and set\+\_\+params().
+
+\mbox{\Hypertarget{namespaceGlobal__Physical__Variables_af5163137c5b98c6ebb942973cba4e297}\label{namespaceGlobal__Physical__Variables_af5163137c5b98c6ebb942973cba4e297}} 
+\index{Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}!Density\+\_\+ratio@{Density\+\_\+ratio}}
+\index{Density\+\_\+ratio@{Density\+\_\+ratio}!Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}}
+\subsubsection{\texorpdfstring{Density\+\_\+ratio}{Density\_ratio}}
+{\footnotesize\ttfamily double Global\+\_\+\+Physical\+\_\+\+Variables\+::\+Density\+\_\+ratio =1.\+0}
+
+
+
+Density ratio of the solid and the fluid. 
+
+
+
+Definition at line 59 of file fsi\+\_\+osc\+\_\+ring.\+cc.
+
+
+
+Referenced by F\+S\+I\+Ring\+Problem\+::dynamic\+\_\+run(), and set\+\_\+params().
+
+\mbox{\Hypertarget{namespaceGlobal__Physical__Variables_af6e07423e22c0991084d9a2f43727805}\label{namespaceGlobal__Physical__Variables_af6e07423e22c0991084d9a2f43727805}} 
+\index{Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}!H@{H}}
+\index{H@{H}!Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}}
+\subsubsection{\texorpdfstring{H}{H}}
+{\footnotesize\ttfamily double Global\+\_\+\+Physical\+\_\+\+Variables\+::H =0.\+05}
+
+
+
+Nondimensional thickness of the beam. 
+
+
+
+Definition at line 68 of file fsi\+\_\+osc\+\_\+ring.\+cc.
+
+
+
+Referenced by F\+S\+I\+Ring\+Problem\+::actions\+\_\+after\+\_\+adapt(), F\+S\+I\+Ring\+Problem\+::dynamic\+\_\+run(), F\+S\+I\+Ring\+Problem\+::\+F\+S\+I\+Ring\+Problem(), and F\+S\+I\+Ring\+Problem\+::set\+\_\+wall\+\_\+initial\+\_\+condition().
+
+\mbox{\Hypertarget{namespaceGlobal__Physical__Variables_a6fe17557ceb32dd353827fba60408363}\label{namespaceGlobal__Physical__Variables_a6fe17557ceb32dd353827fba60408363}} 
+\index{Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}!Lambda\+\_\+sq@{Lambda\+\_\+sq}}
+\index{Lambda\+\_\+sq@{Lambda\+\_\+sq}!Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}}
+\subsubsection{\texorpdfstring{Lambda\+\_\+sq}{Lambda\_sq}}
+{\footnotesize\ttfamily double Global\+\_\+\+Physical\+\_\+\+Variables\+::\+Lambda\+\_\+sq}
+
+
+
+Timescale ratio (non-\/dimensation density) 
+
+
+
+Definition at line 84 of file fsi\+\_\+osc\+\_\+ring.\+cc.
+
+
+
+Referenced by F\+S\+I\+Ring\+Problem\+::\+F\+S\+I\+Ring\+Problem().
+
+\mbox{\Hypertarget{namespaceGlobal__Physical__Variables_a3962c36313826b19f216f6bbbdd6a477}\label{namespaceGlobal__Physical__Variables_a3962c36313826b19f216f6bbbdd6a477}} 
+\index{Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}!Nu@{Nu}}
+\index{Nu@{Nu}!Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}}
+\subsubsection{\texorpdfstring{Nu}{Nu}}
+{\footnotesize\ttfamily double Global\+\_\+\+Physical\+\_\+\+Variables\+::\+Nu =0.\+49}
+
+
+
+Poisson ratio. 
+
+
+
+Definition at line 65 of file fsi\+\_\+osc\+\_\+ring.\+cc.
+
+\mbox{\Hypertarget{namespaceGlobal__Physical__Variables_ab55734aaa66260cd9d4bf68a4ecafdd5}\label{namespaceGlobal__Physical__Variables_ab55734aaa66260cd9d4bf68a4ecafdd5}} 
+\index{Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}!Pcos@{Pcos}}
+\index{Pcos@{Pcos}!Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}}
+\subsubsection{\texorpdfstring{Pcos}{Pcos}}
+{\footnotesize\ttfamily double Global\+\_\+\+Physical\+\_\+\+Variables\+::\+Pcos =0.\+0}
+
+
+
+Perturbation pressure. 
+
+
+
+Definition at line 71 of file fsi\+\_\+osc\+\_\+ring.\+cc.
+
+
+
+Referenced by F\+S\+I\+Ring\+Problem\+::dynamic\+\_\+run().
+
+\mbox{\Hypertarget{namespaceGlobal__Physical__Variables_a00f471db241ed712eaefcbaf4fb1d6a9}\label{namespaceGlobal__Physical__Variables_a00f471db241ed712eaefcbaf4fb1d6a9}} 
+\index{Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}!Pext@{Pext}}
+\index{Pext@{Pext}!Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}}
+\subsubsection{\texorpdfstring{Pext}{Pext}}
+{\footnotesize\ttfamily double Global\+\_\+\+Physical\+\_\+\+Variables\+::\+Pext =0.\+0}
+
+
+
+External Pressure. 
+
+
+
+Definition at line 62 of file fsi\+\_\+osc\+\_\+ring.\+cc.
+
+
+
+Referenced by F\+S\+I\+Ring\+Problem\+::dynamic\+\_\+run().
+
+\mbox{\Hypertarget{namespaceGlobal__Physical__Variables_a66cb7ecda9ba0cd72367dd697f154545}\label{namespaceGlobal__Physical__Variables_a66cb7ecda9ba0cd72367dd697f154545}} 
+\index{Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}!Q@{Q}}
+\index{Q@{Q}!Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}}
+\subsubsection{\texorpdfstring{Q}{Q}}
+{\footnotesize\ttfamily double Global\+\_\+\+Physical\+\_\+\+Variables\+::Q}
+
+
+
+Stress ratio. 
+
+
+
+Definition at line 87 of file fsi\+\_\+osc\+\_\+ring.\+cc.
+
+
+
+Referenced by F\+S\+I\+Ring\+Problem\+::\+F\+S\+I\+Ring\+Problem().
+
+\mbox{\Hypertarget{namespaceGlobal__Physical__Variables_ab814e627d2eb5bc50318879d19ab16b9}\label{namespaceGlobal__Physical__Variables_ab814e627d2eb5bc50318879d19ab16b9}} 
+\index{Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}!Re@{Re}}
+\index{Re@{Re}!Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}}
+\subsubsection{\texorpdfstring{Re}{Re}}
+{\footnotesize\ttfamily double Global\+\_\+\+Physical\+\_\+\+Variables\+::\+Re =100.\+0}
+
+
+
+Reynolds number. 
+
+
+
+Definition at line 78 of file fsi\+\_\+osc\+\_\+ring.\+cc.
+
+
+
+Referenced by F\+S\+I\+Ring\+Problem\+::\+F\+S\+I\+Ring\+Problem(), Osc\+Ring\+N\+St\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Osc\+Ring\+N\+St\+Problem(), set\+\_\+params(), and Osc\+Ring\+N\+St\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::write\+\_\+trace\+\_\+file\+\_\+header().
+
+\mbox{\Hypertarget{namespaceGlobal__Physical__Variables_a085ee4bf968ffdd01a41b8c41864f907}\label{namespaceGlobal__Physical__Variables_a085ee4bf968ffdd01a41b8c41864f907}} 
+\index{Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}!Re\+St@{Re\+St}}
+\index{Re\+St@{Re\+St}!Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}}
+\subsubsection{\texorpdfstring{Re\+St}{ReSt}}
+{\footnotesize\ttfamily double Global\+\_\+\+Physical\+\_\+\+Variables\+::\+Re\+St =100.\+0}
+
+
+
+Reynolds x Strouhal number. 
+
+
+
+Definition at line 81 of file fsi\+\_\+osc\+\_\+ring.\+cc.
+
+
+
+Referenced by F\+S\+I\+Ring\+Problem\+::\+F\+S\+I\+Ring\+Problem(), Osc\+Ring\+N\+St\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Osc\+Ring\+N\+St\+Problem(), and Osc\+Ring\+N\+St\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::write\+\_\+trace\+\_\+file\+\_\+header().
+

@@ -1,0 +1,521 @@
+Detailed documentation to be written. Here\textquotesingle{}s a plot of the result and the already fairly well documented driver code...
+
+ 
+\begin{DoxyImage}
+\includegraphics[width=0.75\textwidth]{elastic_poisson}
+\doxyfigcaption{Adaptive solution of Poisson\textquotesingle{}s equation in a fish-\/shaped domain for various `widths\textquotesingle{} of the domain. The update of the nodal positions in response to changes in the boundary shape is done by pseudo-\/elasticity. }
+\end{DoxyImage}
+
+
+
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//LIC// ====================================================================}
+\textcolor{comment}{//LIC// This file forms part of oomph-lib, the object-oriented, }
+\textcolor{comment}{//LIC// multi-physics finite-element library, available }
+\textcolor{comment}{//LIC// at http://www.oomph-lib.org.}
+\textcolor{comment}{//LIC// }
+\textcolor{comment}{//LIC//    Version 1.0; svn revision $LastChangedRevision$}
+\textcolor{comment}{//LIC//}
+\textcolor{comment}{//LIC// $LastChangedDate$}
+\textcolor{comment}{//LIC// }
+\textcolor{comment}{//LIC// Copyright (C) 2006-2016 Matthias Heil and Andrew Hazel}
+\textcolor{comment}{//LIC// }
+\textcolor{comment}{//LIC// This library is free software; you can redistribute it and/or}
+\textcolor{comment}{//LIC// modify it under the terms of the GNU Lesser General Public}
+\textcolor{comment}{//LIC// License as published by the Free Software Foundation; either}
+\textcolor{comment}{//LIC// version 2.1 of the License, or (at your option) any later version.}
+\textcolor{comment}{//LIC// }
+\textcolor{comment}{//LIC// This library is distributed in the hope that it will be useful,}
+\textcolor{comment}{//LIC// but WITHOUT ANY WARRANTY; without even the implied warranty of}
+\textcolor{comment}{//LIC// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU}
+\textcolor{comment}{//LIC// Lesser General Public License for more details.}
+\textcolor{comment}{//LIC// }
+\textcolor{comment}{//LIC// You should have received a copy of the GNU Lesser General Public}
+\textcolor{comment}{//LIC// License along with this library; if not, write to the Free Software}
+\textcolor{comment}{//LIC// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA}
+\textcolor{comment}{//LIC// 02110-1301  USA.}
+\textcolor{comment}{//LIC// }
+\textcolor{comment}{//LIC// The authors may be contacted at oomph-lib@maths.man.ac.uk.}
+\textcolor{comment}{//LIC// }
+\textcolor{comment}{//LIC//====================================================================}
+\textcolor{comment}{// Solve Poisson equation in deformable fish-shaped domain.}
+\textcolor{comment}{// Mesh deformation is driven by pseudo-elasticity approach.}
+
+\textcolor{comment}{// Generic oomph-lib headers}
+\textcolor{preprocessor}{#include "generic.h"}  
+
+\textcolor{comment}{// Poisson equations}
+\textcolor{preprocessor}{#include "poisson.h"}
+
+\textcolor{comment}{// Solid mechanics}
+\textcolor{preprocessor}{#include "solid.h"}
+ 
+\textcolor{comment}{// The fish mesh }
+\textcolor{preprocessor}{#include "meshes/fish\_mesh.h"} 
+
+\textcolor{comment}{// Circle as generalised element:}
+\textcolor{preprocessor}{#include "\hyperlink{circle__as__generalised__element_8h}{circle\_as\_generalised\_element.h}"}
+
+\textcolor{keyword}{using namespace }\hyperlink{namespacestd}{std};
+
+\textcolor{keyword}{using namespace }\hyperlink{namespaceoomph}{oomph};
+\textcolor{comment}{}
+\textcolor{comment}{///////////////////////////////////////////////////////////////////////}
+\textcolor{comment}{///////////////////////////////////////////////////////////////////////}
+\textcolor{comment}{///////////////////////////////////////////////////////////////////////}
+\textcolor{comment}{}
+
+
+\textcolor{comment}{//====================================================================}\textcolor{comment}{}
+\textcolor{comment}{/// Namespace for const source term in Poisson equation}
+\textcolor{comment}{}\textcolor{comment}{//====================================================================}
+\textcolor{keyword}{namespace }\hyperlink{namespaceConstSourceForPoisson}{ConstSourceForPoisson}
+\{\textcolor{comment}{}
+\textcolor{comment}{ /// Strength of source function: default value 1.0}
+\textcolor{comment}{} \textcolor{keywordtype}{double} \hyperlink{namespaceConstSourceForPoisson_add351c5acab2561d68d1fc9ec3d5fc5e}{Strength}=1.0;
+\textcolor{comment}{}
+\textcolor{comment}{/// Const source function}
+\textcolor{comment}{} \textcolor{keywordtype}{void} \hyperlink{namespaceConstSourceForPoisson_a40ef79083874b58ed42b4df2ca0f4c10}{get\_source}(\textcolor{keyword}{const} Vector<double>& x, \textcolor{keywordtype}{double}& source)
+ \{
+  source = -\hyperlink{namespaceConstSourceForPoisson_add351c5acab2561d68d1fc9ec3d5fc5e}{Strength};
+ \}
+ 
+\}
+\textcolor{comment}{}
+\textcolor{comment}{///////////////////////////////////////////////////////////////////////}
+\textcolor{comment}{///////////////////////////////////////////////////////////////////////}
+\textcolor{comment}{///////////////////////////////////////////////////////////////////////}
+\textcolor{comment}{}
+\textcolor{comment}{//=========================================================================}\textcolor{comment}{}
+\textcolor{comment}{/// Refineable fish mesh upgraded to become a solid mesh}
+\textcolor{comment}{}\textcolor{comment}{//=========================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>
+\textcolor{keyword}{class }\hyperlink{classElasticFishMesh}{ElasticFishMesh} : \textcolor{keyword}{public} \textcolor{keyword}{virtual} RefineableFishMesh<ELEMENT>, 
+                        \textcolor{keyword}{public} \textcolor{keyword}{virtual} SolidMesh 
+\{
+
+\textcolor{keyword}{public}:
+\textcolor{comment}{}
+\textcolor{comment}{ /// \(\backslash\)short Constructor: Build underlying adaptive fish mesh and then }
+\textcolor{comment}{ /// set current Eulerian coordinates to be the Lagrangian ones.}
+\textcolor{comment}{ /// Pass pointer to geometric objects that specify the }
+\textcolor{comment}{ /// fish's back in the "current" and "undeformed" configurations,}
+\textcolor{comment}{ /// and pointer to timestepper (defaults to Static)}
+\textcolor{comment}{} \textcolor{comment}{// Note: FishMesh is virtual base and its constructor is automatically}
+ \textcolor{comment}{// called first! --> this is where we need to build the mesh;}
+ \textcolor{comment}{// the constructors of the derived meshes don't call the}
+ \textcolor{comment}{// base constructor again and simply add the extra functionality.}
+ \hyperlink{classElasticFishMesh}{ElasticFishMesh}(GeomObject* back\_pt, GeomObject* undeformed\_back\_pt, 
+                 TimeStepper* time\_stepper\_pt=&Mesh::Default\_TimeStepper) : 
+  FishMesh<ELEMENT>(back\_pt,time\_stepper\_pt), 
+  RefineableFishMesh<ELEMENT>(back\_pt,time\_stepper\_pt)
+  \{
+   \textcolor{comment}{// Mesh has been built, adaptivity etc has been set up --> }
+   \textcolor{comment}{// assign the Lagrangian coordinates so that the current}
+   \textcolor{comment}{// configuration becomes the stress-free initial configuration }
+   set\_lagrangian\_nodal\_coordinates();
+
+   \textcolor{comment}{// Build "undeformed" domain: This is a "deep" copy of the}
+   \textcolor{comment}{// Domain that we used to create set the Eulerian coordinates}
+   \textcolor{comment}{// in the initial mesh -- the original domain (accessible via }
+   \textcolor{comment}{// the private member data Domain\_pt) will be used to update}
+   \textcolor{comment}{// the position of boundary nodes; the copy that we're}
+   \textcolor{comment}{// creating here will be used to determine the Lagrangian coordinates}
+   \textcolor{comment}{// of any newly created SolidNodes during mesh refinement}
+   \textcolor{keywordtype}{double} xi\_nose = this->Domain\_pt->xi\_nose(); 
+   \textcolor{keywordtype}{double} xi\_tail = this->Domain\_pt->xi\_tail();
+   Undeformed\_domain\_pt=\textcolor{keyword}{new} FishDomain(undeformed\_back\_pt,xi\_nose,xi\_tail);
+
+   \textcolor{comment}{// Loop over all elements and set the undeformed macro element pointer}
+   \textcolor{keywordtype}{unsigned} n\_element=this->nelement();
+   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} e=0;e<n\_element;e++)
+    \{
+     \textcolor{comment}{// Get pointer to full element type }
+     ELEMENT* el\_pt=\textcolor{keyword}{dynamic\_cast<}ELEMENT*\textcolor{keyword}{>}(this->element\_pt(e));
+     
+     \textcolor{comment}{// Set pointer to macro element so the curvlinear boundaries}
+     \textcolor{comment}{// of the undeformed mesh/domain get picked up during adaptive}
+     \textcolor{comment}{// mesh refinement}
+     el\_pt->set\_undeformed\_macro\_elem\_pt(
+      Undeformed\_domain\_pt->macro\_element\_pt(e));
+    \}
+   
+  \}
+\textcolor{comment}{}
+\textcolor{comment}{ /// Destructor: Kill "undeformed" Domain}
+\textcolor{comment}{} \textcolor{keyword}{virtual} ~\hyperlink{classElasticFishMesh}{ElasticFishMesh}()
+  \{
+   \textcolor{keyword}{delete} Undeformed\_domain\_pt;
+  \}
+
+\textcolor{keyword}{private}:
+\textcolor{comment}{}
+\textcolor{comment}{ /// Pointer to "undeformed" Domain -- used to determine the}
+\textcolor{comment}{ /// Lagrangian coordinates of any newly created SolidNodes during}
+\textcolor{comment}{ /// Mesh refinement}
+\textcolor{comment}{} Domain* Undeformed\_domain\_pt;
+
+\};
+
+
+
+\textcolor{comment}{}
+\textcolor{comment}{///////////////////////////////////////////////////////////////////////}
+\textcolor{comment}{///////////////////////////////////////////////////////////////////////}
+\textcolor{comment}{///////////////////////////////////////////////////////////////////////}
+\textcolor{comment}{}
+
+
+
+\textcolor{comment}{//================================================================}\textcolor{comment}{}
+\textcolor{comment}{/// Global variables}
+\textcolor{comment}{}\textcolor{comment}{//================================================================}
+\textcolor{keyword}{namespace }\hyperlink{namespaceGlobal__Physical__Variables}{Global\_Physical\_Variables}
+\{\textcolor{comment}{}
+\textcolor{comment}{ /// Pointer to constitutive law}
+\textcolor{comment}{} ConstitutiveLaw* \hyperlink{namespaceGlobal__Physical__Variables_a5d5f19442938130d36ee7476ae25049c}{Constitutive\_law\_pt};
+\textcolor{comment}{}
+\textcolor{comment}{ /// Poisson's ratio}
+\textcolor{comment}{} \textcolor{keywordtype}{double} \hyperlink{namespaceGlobal__Physical__Variables_a3962c36313826b19f216f6bbbdd6a477}{Nu}=0.3;
+
+\}
+
+\textcolor{comment}{}
+\textcolor{comment}{///////////////////////////////////////////////////////////////////////}
+\textcolor{comment}{///////////////////////////////////////////////////////////////////////}
+\textcolor{comment}{///////////////////////////////////////////////////////////////////////}
+\textcolor{comment}{}
+
+
+\textcolor{comment}{//====================================================================== }\textcolor{comment}{}
+\textcolor{comment}{/// Solve Poisson equation on deforming fish-shaped domain.}
+\textcolor{comment}{/// Mesh update via pseudo-elasticity.}
+\textcolor{comment}{}\textcolor{comment}{//====================================================================== }
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>
+\textcolor{keyword}{class }\hyperlink{classDeformableFishPoissonProblem}{DeformableFishPoissonProblem} : \textcolor{keyword}{public} Problem
+\{
+
+\textcolor{keyword}{public}:
+\textcolor{comment}{}
+\textcolor{comment}{ /// Constructor:}
+\textcolor{comment}{} \hyperlink{classDeformableFishPoissonProblem}{DeformableFishPoissonProblem}();
+\textcolor{comment}{}
+\textcolor{comment}{ /// Run simulation}
+\textcolor{comment}{} \textcolor{keywordtype}{void} run();
+ \textcolor{comment}{}
+\textcolor{comment}{ /// Access function for the specific mesh}
+\textcolor{comment}{} \hyperlink{classElasticFishMesh}{ElasticFishMesh<ELEMENT>}* mesh\_pt() 
+  \{\textcolor{keywordflow}{return} \textcolor{keyword}{dynamic\_cast<}\hyperlink{classElasticFishMesh}{ElasticFishMesh<ELEMENT>}*\textcolor{keyword}{>}(Problem::mesh\_pt());\} 
+\textcolor{comment}{}
+\textcolor{comment}{ /// Doc the solution}
+\textcolor{comment}{} \textcolor{keywordtype}{void} doc\_solution(DocInfo& doc\_info);
+\textcolor{comment}{}
+\textcolor{comment}{ /// Update function (empty)}
+\textcolor{comment}{} \textcolor{keywordtype}{void} actions\_after\_newton\_solve() \{\}
+\textcolor{comment}{}
+\textcolor{comment}{ /// \(\backslash\)short Update before solve: We're dealing with a static problem so}
+\textcolor{comment}{ /// the nodal positions before the next solve merely serve as}
+\textcolor{comment}{ /// initial conditions. For meshes that are very strongly refined}
+\textcolor{comment}{ /// near the boundary, the update of the displacement boundary}
+\textcolor{comment}{ /// conditions (which only moves the SolidNodes *on* the boundary),}
+\textcolor{comment}{ /// can lead to strongly distorted meshes. This can cause the}
+\textcolor{comment}{ /// Newton method to fail --> the overall method is actually more robust}
+\textcolor{comment}{ /// if we use the nodal positions as determined by the Domain/MacroElement-}
+\textcolor{comment}{ /// based mesh update as initial guesses. }
+\textcolor{comment}{} \textcolor{keywordtype}{void} actions\_before\_newton\_solve()
+  \{ 
+   \textcolor{keywordtype}{bool} update\_all\_solid\_nodes=\textcolor{keyword}{true};
+   mesh\_pt()->node\_update(update\_all\_solid\_nodes);
+  \}   
+\textcolor{comment}{}
+\textcolor{comment}{ /// Update after adapt: Pin all redundant solid pressure nodes (if required)}
+\textcolor{comment}{} \textcolor{keywordtype}{void} actions\_after\_adapt()
+  \{ 
+   \textcolor{comment}{// Pin the redundant solid pressures (if any)}
+   PVDEquationsBase<2>::pin\_redundant\_nodal\_solid\_pressures(
+    mesh\_pt()->element\_pt());
+  \}
+
+\textcolor{keyword}{private}:
+
+\textcolor{comment}{}
+\textcolor{comment}{ /// Node at which the solution of the Poisson equation is documented}
+\textcolor{comment}{} Node* Doc\_node\_pt;
+\textcolor{comment}{}
+\textcolor{comment}{ /// Trace file}
+\textcolor{comment}{} ofstream Trace\_file;
+
+ \textcolor{comment}{// Geometric object/generalised element that represents the deformable }
+ \textcolor{comment}{// fish back}
+ \hyperlink{classoomph_1_1ElasticallySupportedRingElement}{ElasticallySupportedRingElement}* Fish\_back\_pt;
+
+\};
+
+
+
+\textcolor{comment}{//====================================================================== }\textcolor{comment}{}
+\textcolor{comment}{/// Constructor: }
+\textcolor{comment}{}\textcolor{comment}{//====================================================================== }
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>
+\hyperlink{classDeformableFishPoissonProblem_a383952a668f3cec16b85c6b35f437ddd}{DeformableFishPoissonProblem<ELEMENT>::DeformableFishPoissonProblem}
+      () 
+\{
+
+ \textcolor{comment}{// Set coordinates and radius for the circle that will become the fish back}
+ \textcolor{keywordtype}{double} x\_c=0.5;
+ \textcolor{keywordtype}{double} y\_c=0.0;
+ \textcolor{keywordtype}{double} r\_back=1.0;
+
+ \textcolor{comment}{// Build geometric object/generalised element that will become the }
+ \textcolor{comment}{// deformable fish back}
+ Fish\_back\_pt=\textcolor{keyword}{new} \hyperlink{classoomph_1_1ElasticallySupportedRingElement}{ElasticallySupportedRingElement}(x\_c,y\_c,r\_back);
+
+ \textcolor{comment}{// Build geometric object/generalised that specifies the fish back in the}
+ \textcolor{comment}{// undeformed configuration (basically a deep copy of the previous one)}
+ GeomObject* undeformed\_fish\_back\_pt=\textcolor{keyword}{new} 
+  \hyperlink{classoomph_1_1ElasticallySupportedRingElement}{ElasticallySupportedRingElement}(x\_c,y\_c,r\_back);
+
+ \textcolor{comment}{// Build fish mesh with geometric object that specifies the deformable}
+ \textcolor{comment}{// and undeformed fish back }
+ Problem::mesh\_pt()=\textcolor{keyword}{new} \hyperlink{classElasticFishMesh}{ElasticFishMesh<ELEMENT>}(Fish\_back\_pt,
+                                                 undeformed\_fish\_back\_pt);
+
+
+ \textcolor{comment}{// Choose a node at which the solution is documented: Choose}
+ \textcolor{comment}{// the central node that is shared by all four elements in}
+ \textcolor{comment}{// the base mesh because it exists at all refinement levels.}
+ 
+ \textcolor{comment}{// How many nodes does element 0 have?}
+ \textcolor{keywordtype}{unsigned} nnod=mesh\_pt()->finite\_element\_pt(0)->nnode();
+
+ \textcolor{comment}{// The central node is the last node in element 0:}
+ Doc\_node\_pt=mesh\_pt()->finite\_element\_pt(0)->node\_pt(nnod-1);
+
+ \textcolor{comment}{// Doc}
+ cout << std::endl <<  \textcolor{stringliteral}{"Control node is located at: "} 
+      << Doc\_node\_pt->x(0) << \textcolor{stringliteral}{" "} << Doc\_node\_pt->x(1) << std::endl << std::endl;
+
+
+ \textcolor{comment}{// Set error estimator}
+ Z2ErrorEstimator* error\_estimator\_pt=\textcolor{keyword}{new} Z2ErrorEstimator;
+ mesh\_pt()->spatial\_error\_estimator\_pt()=error\_estimator\_pt;
+ 
+ \textcolor{comment}{// Change/doc targets for mesh adaptation}
+ \textcolor{keywordflow}{if} (CommandLineArgs::Argc>1) 
+  \{
+   mesh\_pt()->max\_permitted\_error()=0.05;
+   mesh\_pt()->min\_permitted\_error()=0.005;
+  \}
+ mesh\_pt()->doc\_adaptivity\_targets(cout);
+
+
+ \textcolor{comment}{// Specify BC/source fct for Poisson problem:}
+ \textcolor{comment}{//-------------------------------------------}
+
+ \textcolor{comment}{// Set the Poisson boundary conditions for this problem: All nodes are}
+ \textcolor{comment}{// free by default -- just pin the ones that have Dirichlet conditions}
+ \textcolor{comment}{// here. }
+ \textcolor{keywordtype}{unsigned} num\_bound = mesh\_pt()->nboundary();
+ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} ibound=0;ibound<num\_bound;ibound++)
+  \{
+   \textcolor{keywordtype}{unsigned} num\_nod=mesh\_pt()->nboundary\_node(ibound);
+   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} inod=0;inod<num\_nod;inod++)
+    \{
+     mesh\_pt()->boundary\_node\_pt(ibound,inod)->pin(0); 
+    \}
+  \}
+
+ \textcolor{comment}{// Set homogeneous boundary conditions for the Poisson equation }
+ \textcolor{comment}{// on all boundaries }
+ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} ibound=0;ibound<num\_bound;ibound++)
+  \{
+   \textcolor{comment}{// Loop over the nodes on boundary}
+   \textcolor{keywordtype}{unsigned} num\_nod=mesh\_pt()->nboundary\_node(ibound);
+   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} inod=0;inod<num\_nod;inod++)
+    \{
+     mesh\_pt()->boundary\_node\_pt(ibound,inod)->set\_value(0,0.0);
+    \}
+  \}
+ \textcolor{comment}{}
+\textcolor{comment}{ /// Loop over elements and set pointers to source function}
+\textcolor{comment}{} \textcolor{keywordtype}{unsigned} n\_element = mesh\_pt()->nelement();
+ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} i=0;i<n\_element;i++)
+  \{
+   \textcolor{comment}{// Upcast from FiniteElement to the present element}
+   ELEMENT *el\_pt = \textcolor{keyword}{dynamic\_cast<}ELEMENT*\textcolor{keyword}{>}(mesh\_pt()->element\_pt(i));
+   
+   \textcolor{comment}{//Set the source function pointer}
+   el\_pt->source\_fct\_pt() = &\hyperlink{namespaceConstSourceForPoisson_a40ef79083874b58ed42b4df2ca0f4c10}{ConstSourceForPoisson::get\_source};
+  \}
+
+
+ \textcolor{comment}{// Specify BC/source fct etc for (pseudo-)Solid problem}
+ \textcolor{comment}{//-----------------------------------------------------}
+
+ \textcolor{comment}{// Pin all nodal positions}
+ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} ibound=0;ibound<num\_bound;ibound++)
+  \{
+   \textcolor{keywordtype}{unsigned} num\_nod=mesh\_pt()->nboundary\_node(ibound);
+   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} inod=0;inod<num\_nod;inod++)
+    \{
+     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} i=0;i<2;i++)
+      \{
+       mesh\_pt()->boundary\_node\_pt(ibound,inod)->pin\_position(i); 
+      \}
+    \}
+  \}
+
+ \textcolor{comment}{//Loop over the elements in the mesh to set Solid parameters/function pointers}
+ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} i=0;i<n\_element;i++)
+  \{
+   \textcolor{comment}{//Cast to a solid element}
+   ELEMENT *el\_pt = \textcolor{keyword}{dynamic\_cast<}ELEMENT*\textcolor{keyword}{>}(mesh\_pt()->element\_pt(i));
+   
+   \textcolor{comment}{// Set the constitutive law}
+   el\_pt->constitutive\_law\_pt() =
+    \hyperlink{namespaceGlobal__Physical__Variables_a5d5f19442938130d36ee7476ae25049c}{Global\_Physical\_Variables::Constitutive\_law\_pt};
+     
+  \}
+
+ \textcolor{comment}{// Pin the redundant solid pressures (if any)}
+ PVDEquationsBase<2>::pin\_redundant\_nodal\_solid\_pressures(
+  mesh\_pt()->element\_pt());
+
+ \textcolor{comment}{//Attach the boundary conditions to the mesh}
+ cout << assign\_eqn\_numbers() << std::endl; 
+
+ \textcolor{comment}{// Refine the problem uniformly (this automatically passes the}
+ \textcolor{comment}{// function pointers/parameters to the finer elements}
+ refine\_uniformly();
+
+ \textcolor{comment}{// The non-pinned positions of the newly SolidNodes will have been}
+ \textcolor{comment}{// determined by interpolation. Update all solid nodes based on }
+ \textcolor{comment}{// the Mesh's Domain/MacroElement representation.}
+ \textcolor{keywordtype}{bool} update\_all\_solid\_nodes=\textcolor{keyword}{true};
+ mesh\_pt()->node\_update(update\_all\_solid\_nodes);
+
+ \textcolor{comment}{// Now set the Eulerian equal to the Lagrangian coordinates}
+ mesh\_pt()->set\_lagrangian\_nodal\_coordinates();
+ 
+\} 
+
+
+\textcolor{comment}{//==================================================================}\textcolor{comment}{}
+\textcolor{comment}{/// Doc the solution}
+\textcolor{comment}{}\textcolor{comment}{//==================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>
+\textcolor{keywordtype}{void} \hyperlink{classDeformableFishPoissonProblem_aee9b59f35d1ae98cda29fba0c01b226a}{DeformableFishPoissonProblem<ELEMENT>::doc\_solution}
+      (DocInfo& doc\_info)
+\{
+ ofstream some\_file;
+ \textcolor{keywordtype}{char} filename[100];
+
+ \textcolor{comment}{// Number of plot points}
+ \textcolor{keywordtype}{unsigned} npts = 5; 
+
+ \textcolor{comment}{// Call output function for all elements}
+ sprintf(filename,\textcolor{stringliteral}{"%s/soln%i.dat"},doc\_info.directory().c\_str(),
+         doc\_info.number());
+ some\_file.open(filename);
+ mesh\_pt()->output(some\_file,npts);
+ some\_file.close();
+
+
+ \textcolor{comment}{// Write vertical position of the fish back, and solution at }
+ \textcolor{comment}{// control node to trace file}
+ Trace\_file 
+  << \textcolor{keyword}{static\_cast<}Circle*\textcolor{keyword}{>}(mesh\_pt()->fish\_back\_pt())->y\_c()
+  << \textcolor{stringliteral}{" "} << Doc\_node\_pt->value(0) << std::endl;
+
+\}
+ 
+
+\textcolor{comment}{//==================================================================}\textcolor{comment}{}
+\textcolor{comment}{/// Run the problem}
+\textcolor{comment}{}\textcolor{comment}{//==================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>
+\textcolor{keywordtype}{void} \hyperlink{classDeformableFishPoissonProblem_a0ef0e4ab464ab41a6f0b7e8a74a9c8a5}{DeformableFishPoissonProblem<ELEMENT>::run}()
+\{
+
+ \textcolor{comment}{// Output}
+ DocInfo doc\_info;
+
+ \textcolor{comment}{// Set output directory}
+ doc\_info.set\_directory(\textcolor{stringliteral}{"RESLT"});
+
+ \textcolor{comment}{// Step number}
+ doc\_info.number()=0;
+ 
+ \textcolor{comment}{// Open trace file}
+ \textcolor{keywordtype}{char} filename[100];
+ sprintf(filename,\textcolor{stringliteral}{"%s/trace.dat"},doc\_info.directory().c\_str());
+ Trace\_file.open(filename);
+
+ Trace\_file << \textcolor{stringliteral}{"VARIABLES=\(\backslash\)"y<sub>circle</sub>\(\backslash\)",\(\backslash\)"u<sub>control</sub>\(\backslash\)""}
+            << std::endl;
+
+  \textcolor{comment}{//Parameter incrementation}
+ \textcolor{keywordtype}{unsigned} nstep=5; 
+ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} i=0;i<nstep;i++)
+  \{
+   \textcolor{comment}{//Solve the problem with Newton's method, allowing for up to 2}
+   \textcolor{comment}{//rounds of adaptation}
+   newton\_solve(2);
+
+   \textcolor{comment}{// Doc solution}
+   doc\_solution(doc\_info);
+   doc\_info.number()++;
+
+   \textcolor{comment}{// Increment width of fish domain}
+   Fish\_back\_pt->y\_c()+=0.03;
+  \}
+
+\}
+
+\textcolor{comment}{//======================================================================}\textcolor{comment}{}
+\textcolor{comment}{/// Driver for simple elastic problem.}
+\textcolor{comment}{/// If there are any command line arguments, we regard this as a }
+\textcolor{comment}{/// validation run and perform only a single step.}
+\textcolor{comment}{}\textcolor{comment}{//======================================================================}
+\textcolor{keywordtype}{int} \hyperlink{algebraic__free__boundary__poisson_8cc_a0ddf1224851353fc92bfbff6f499fa97}{main}(\textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char}* argv[])
+\{
+
+ \textcolor{comment}{// Store command line arguments}
+ CommandLineArgs::setup(argc,argv);
+
+ \textcolor{comment}{//Set physical parameters}
+ \hyperlink{namespaceGlobal__Physical__Variables_a3962c36313826b19f216f6bbbdd6a477}{Global\_Physical\_Variables::Nu} = 0.4; 
+ 
+ \textcolor{comment}{// Define a constitutive law (based on strain energy function)}
+  \hyperlink{namespaceGlobal__Physical__Variables_a5d5f19442938130d36ee7476ae25049c}{Global\_Physical\_Variables::Constitutive\_law\_pt} = 
+   \textcolor{keyword}{new} GeneralisedHookean(&\hyperlink{namespaceGlobal__Physical__Variables_a3962c36313826b19f216f6bbbdd6a477}{Global\_Physical\_Variables::Nu});
+
+
+  \textcolor{comment}{// Set up the problem: Choose a hybrid element that combines the}
+  \textcolor{comment}{// 3x3 node refineable quad Poisson element with a displacement-based}
+  \textcolor{comment}{// solid-mechanics element (for the pseudo-elastic mesh update in response}
+  \textcolor{comment}{// to changes in the boundary shape)}
+  \hyperlink{classDeformableFishPoissonProblem}{DeformableFishPoissonProblem}<
+   RefineablePseudoSolidNodeUpdateElement<RefineableQPoissonElement<2,3>,
+   RefineableQPVDElement<2,3>  > 
+                              > problem;
+  
+  problem.\hyperlink{classDeformableFishPoissonProblem_a0ef0e4ab464ab41a6f0b7e8a74a9c8a5}{run}(); 
+
+
+\}
+
+ 
+
+
+
+ 
+\end{DoxyCodeInclude}
+
+
+
+
+ 
+
+ \hypertarget{index_pdf}{}\section{P\+D\+F file}\label{index_pdf}
+A \href{../latex/refman.pdf}{\tt pdf version} of this document is available. \end{document}

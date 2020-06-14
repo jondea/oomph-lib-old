@@ -1,0 +1,168 @@
+\hypertarget{classoomph_1_1EigenSolver}{}\section{oomph\+:\+:Eigen\+Solver Class Reference}
+\label{classoomph_1_1EigenSolver}\index{oomph\+::\+Eigen\+Solver@{oomph\+::\+Eigen\+Solver}}
+
+
+{\ttfamily \#include $<$eigen\+\_\+solver.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Eigen\+Solver\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.231076cm]{classoomph_1_1EigenSolver}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1EigenSolver_a677b40c853c649f87b52815a6fadb2c6}{Eigen\+Solver} ()
+\begin{DoxyCompactList}\small\item\em Empty constructor. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1EigenSolver_a2ab3e3ffc0a171dd5299d12d8be5d1b2}{Eigen\+Solver} (const \hyperlink{classoomph_1_1EigenSolver}{Eigen\+Solver} \&)
+\begin{DoxyCompactList}\small\item\em Empty copy constructor. \end{DoxyCompactList}\item 
+virtual \hyperlink{classoomph_1_1EigenSolver_a05742af42f53f3904b06c7650e3c10c5}{$\sim$\+Eigen\+Solver} ()
+\begin{DoxyCompactList}\small\item\em Empty destructor. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1EigenSolver_a6a6b09612ce16457b26fa0cfe996fa71}{solve\+\_\+eigenproblem} (\hyperlink{classoomph_1_1Problem}{Problem} $\ast$const \&problem\+\_\+pt, const int \&n\+\_\+eval, \hyperlink{classoomph_1_1Vector}{Vector}$<$ std\+::complex$<$ double $>$ $>$ \&eigenvalue, \hyperlink{classoomph_1_1Vector}{Vector}$<$ \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} $>$ \&eigenvector)=0
+\begin{DoxyCompactList}\small\item\em Actual eigensolver. This takes a pointer to a problem and returns a vector of complex numbers representing the eigenvalues and a corresponding vector of eigenvectors. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1EigenSolver_a8ab55677b39f98ed8ddb1b1ae682f07b}{set\+\_\+shift} (const double \&shift\+\_\+value)
+\begin{DoxyCompactList}\small\item\em Set the value of the shift. \end{DoxyCompactList}\item 
+const double \& \hyperlink{classoomph_1_1EigenSolver_ad468f4b075f09cee5efd6ac726ecad6e}{get\+\_\+shift} () const
+\begin{DoxyCompactList}\small\item\em Return the value of the shift (const version) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double \hyperlink{classoomph_1_1EigenSolver_ab0ead9f50f12f8d6acf9be4521de95a1}{Sigma\+\_\+real}
+\begin{DoxyCompactList}\small\item\em Double value that represents the real part of the shift in shifted eigensolvers. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Base class for all Eigen\+Problem solves. This simply defines standard interfaces so that different solvers can be used easily. 
+
+Definition at line 65 of file eigen\+\_\+solver.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1EigenSolver_a677b40c853c649f87b52815a6fadb2c6}\label{classoomph_1_1EigenSolver_a677b40c853c649f87b52815a6fadb2c6}} 
+\index{oomph\+::\+Eigen\+Solver@{oomph\+::\+Eigen\+Solver}!Eigen\+Solver@{Eigen\+Solver}}
+\index{Eigen\+Solver@{Eigen\+Solver}!oomph\+::\+Eigen\+Solver@{oomph\+::\+Eigen\+Solver}}
+\subsubsection{\texorpdfstring{Eigen\+Solver()}{EigenSolver()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily oomph\+::\+Eigen\+Solver\+::\+Eigen\+Solver (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Empty constructor. 
+
+
+
+Definition at line 75 of file eigen\+\_\+solver.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1EigenSolver_a2ab3e3ffc0a171dd5299d12d8be5d1b2}\label{classoomph_1_1EigenSolver_a2ab3e3ffc0a171dd5299d12d8be5d1b2}} 
+\index{oomph\+::\+Eigen\+Solver@{oomph\+::\+Eigen\+Solver}!Eigen\+Solver@{Eigen\+Solver}}
+\index{Eigen\+Solver@{Eigen\+Solver}!oomph\+::\+Eigen\+Solver@{oomph\+::\+Eigen\+Solver}}
+\subsubsection{\texorpdfstring{Eigen\+Solver()}{EigenSolver()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily oomph\+::\+Eigen\+Solver\+::\+Eigen\+Solver (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1EigenSolver}{Eigen\+Solver} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Empty copy constructor. 
+
+
+
+Definition at line 78 of file eigen\+\_\+solver.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1EigenSolver_a05742af42f53f3904b06c7650e3c10c5}\label{classoomph_1_1EigenSolver_a05742af42f53f3904b06c7650e3c10c5}} 
+\index{oomph\+::\+Eigen\+Solver@{oomph\+::\+Eigen\+Solver}!````~Eigen\+Solver@{$\sim$\+Eigen\+Solver}}
+\index{````~Eigen\+Solver@{$\sim$\+Eigen\+Solver}!oomph\+::\+Eigen\+Solver@{oomph\+::\+Eigen\+Solver}}
+\subsubsection{\texorpdfstring{$\sim$\+Eigen\+Solver()}{~EigenSolver()}}
+{\footnotesize\ttfamily virtual oomph\+::\+Eigen\+Solver\+::$\sim$\+Eigen\+Solver (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Empty destructor. 
+
+
+
+Definition at line 81 of file eigen\+\_\+solver.\+h.
+
+
+
+References solve\+\_\+eigenproblem().
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1EigenSolver_ad468f4b075f09cee5efd6ac726ecad6e}\label{classoomph_1_1EigenSolver_ad468f4b075f09cee5efd6ac726ecad6e}} 
+\index{oomph\+::\+Eigen\+Solver@{oomph\+::\+Eigen\+Solver}!get\+\_\+shift@{get\+\_\+shift}}
+\index{get\+\_\+shift@{get\+\_\+shift}!oomph\+::\+Eigen\+Solver@{oomph\+::\+Eigen\+Solver}}
+\subsubsection{\texorpdfstring{get\+\_\+shift()}{get\_shift()}}
+{\footnotesize\ttfamily const double\& oomph\+::\+Eigen\+Solver\+::get\+\_\+shift (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the value of the shift (const version) 
+
+
+
+Definition at line 96 of file eigen\+\_\+solver.\+h.
+
+
+
+References Sigma\+\_\+real.
+
+\mbox{\Hypertarget{classoomph_1_1EigenSolver_a8ab55677b39f98ed8ddb1b1ae682f07b}\label{classoomph_1_1EigenSolver_a8ab55677b39f98ed8ddb1b1ae682f07b}} 
+\index{oomph\+::\+Eigen\+Solver@{oomph\+::\+Eigen\+Solver}!set\+\_\+shift@{set\+\_\+shift}}
+\index{set\+\_\+shift@{set\+\_\+shift}!oomph\+::\+Eigen\+Solver@{oomph\+::\+Eigen\+Solver}}
+\subsubsection{\texorpdfstring{set\+\_\+shift()}{set\_shift()}}
+{\footnotesize\ttfamily void oomph\+::\+Eigen\+Solver\+::set\+\_\+shift (\begin{DoxyParamCaption}\item[{const double \&}]{shift\+\_\+value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the value of the shift. 
+
+
+
+Definition at line 93 of file eigen\+\_\+solver.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1EigenSolver_a6a6b09612ce16457b26fa0cfe996fa71}\label{classoomph_1_1EigenSolver_a6a6b09612ce16457b26fa0cfe996fa71}} 
+\index{oomph\+::\+Eigen\+Solver@{oomph\+::\+Eigen\+Solver}!solve\+\_\+eigenproblem@{solve\+\_\+eigenproblem}}
+\index{solve\+\_\+eigenproblem@{solve\+\_\+eigenproblem}!oomph\+::\+Eigen\+Solver@{oomph\+::\+Eigen\+Solver}}
+\subsubsection{\texorpdfstring{solve\+\_\+eigenproblem()}{solve\_eigenproblem()}}
+{\footnotesize\ttfamily virtual void oomph\+::\+Eigen\+Solver\+::solve\+\_\+eigenproblem (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Problem}{Problem} $\ast$const \&}]{problem\+\_\+pt,  }\item[{const int \&}]{n\+\_\+eval,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ std\+::complex$<$ double $>$ $>$ \&}]{eigenvalue,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} $>$ \&}]{eigenvector }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Actual eigensolver. This takes a pointer to a problem and returns a vector of complex numbers representing the eigenvalues and a corresponding vector of eigenvectors. 
+
+
+
+Implemented in \hyperlink{classoomph_1_1ANASAZI_a5b13a2a77a422033c6a522ec68549fa5}{oomph\+::\+A\+N\+A\+S\+A\+ZI}, \hyperlink{classoomph_1_1LAPACK__QZ_ae1efb27c494ea6fb0ce1267233c78f74}{oomph\+::\+L\+A\+P\+A\+C\+K\+\_\+\+QZ}, and \hyperlink{classoomph_1_1ARPACK_ac644213623ea3d91a42cf1ea4608cdf3}{oomph\+::\+A\+R\+P\+A\+CK}.
+
+
+
+Referenced by oomph\+::\+A\+R\+P\+A\+C\+K\+::disable\+\_\+compute\+\_\+eigenvectors(), oomph\+::\+Problem\+::solve\+\_\+eigenproblem(), $\sim$\+Eigen\+Solver(), and oomph\+::\+L\+A\+P\+A\+C\+K\+\_\+\+Q\+Z\+::$\sim$\+L\+A\+P\+A\+C\+K\+\_\+\+Q\+Z().
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1EigenSolver_ab0ead9f50f12f8d6acf9be4521de95a1}\label{classoomph_1_1EigenSolver_ab0ead9f50f12f8d6acf9be4521de95a1}} 
+\index{oomph\+::\+Eigen\+Solver@{oomph\+::\+Eigen\+Solver}!Sigma\+\_\+real@{Sigma\+\_\+real}}
+\index{Sigma\+\_\+real@{Sigma\+\_\+real}!oomph\+::\+Eigen\+Solver@{oomph\+::\+Eigen\+Solver}}
+\subsubsection{\texorpdfstring{Sigma\+\_\+real}{Sigma\_real}}
+{\footnotesize\ttfamily double oomph\+::\+Eigen\+Solver\+::\+Sigma\+\_\+real\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Double value that represents the real part of the shift in shifted eigensolvers. 
+
+
+
+Definition at line 71 of file eigen\+\_\+solver.\+h.
+
+
+
+Referenced by get\+\_\+shift(), oomph\+::\+A\+R\+P\+A\+C\+K\+::solve\+\_\+eigenproblem(), and oomph\+::\+L\+A\+P\+A\+C\+K\+\_\+\+Q\+Z\+::solve\+\_\+eigenproblem().
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{eigen__solver_8h}{eigen\+\_\+solver.\+h}\end{DoxyCompactItemize}

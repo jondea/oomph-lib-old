@@ -1,0 +1,18 @@
+\hypertarget{advection__diffusion__elements_8h}{}\section{advection\+\_\+diffusion\+\_\+elements.\+h File Reference}
+\label{advection__diffusion__elements_8h}\index{advection\+\_\+diffusion\+\_\+elements.\+h@{advection\+\_\+diffusion\+\_\+elements.\+h}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classoomph_1_1AdvectionDiffusionEquations}{oomph\+::\+Advection\+Diffusion\+Equations$<$ D\+I\+M $>$}
+\begin{DoxyCompactList}\small\item\em A class for all elements that solve the Advection Diffusion equations using isoparametric elements. \[ \frac{\partial^2 u}{\partial x_i^2} = Pe w_i(x_k) \frac{\partial u}{\partial x_i} + f(x_j) \] This contains the generic maths. \hyperlink{classoomph_1_1Shape}{Shape} functions, geometric mapping etc. must get implemented in derived class. \end{DoxyCompactList}\item 
+class \hyperlink{classoomph_1_1QAdvectionDiffusionElement}{oomph\+::\+Q\+Advection\+Diffusion\+Element$<$ D\+I\+M, N\+N\+O\+D\+E\+\_\+1\+D $>$}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classoomph_1_1QAdvectionDiffusionElement}{Q\+Advection\+Diffusion\+Element} elements are linear/quadrilateral/brick-\/shaped Advection Diffusion elements with isoparametric interpolation for the function. \end{DoxyCompactList}\item 
+class \hyperlink{classoomph_1_1FaceGeometry_3_01QAdvectionDiffusionElement_3_01DIM_00_01NNODE__1D_01_4_01_4}{oomph\+::\+Face\+Geometry$<$ Q\+Advection\+Diffusion\+Element$<$ D\+I\+M, N\+N\+O\+D\+E\+\_\+1\+D $>$ $>$}
+\begin{DoxyCompactList}\small\item\em Face geometry for the \hyperlink{classoomph_1_1QAdvectionDiffusionElement}{Q\+Advection\+Diffusion\+Element} elements\+: The spatial dimension of the face elements is one lower than that of the bulk element but they have the same number of points along their 1D edges. \end{DoxyCompactList}\item 
+class \hyperlink{classoomph_1_1FaceGeometry_3_01QAdvectionDiffusionElement_3_011_00_01NNODE__1D_01_4_01_4}{oomph\+::\+Face\+Geometry$<$ Q\+Advection\+Diffusion\+Element$<$ 1, N\+N\+O\+D\+E\+\_\+1\+D $>$ $>$}
+\begin{DoxyCompactList}\small\item\em Face geometry for the 1D Q\+Advection\+Diffusion elements\+: Point elements. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \hyperlink{namespaceoomph}{oomph}
+\end{DoxyCompactItemize}

@@ -1,0 +1,792 @@
+\hypertarget{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4}{}\section{oomph\+:\+:T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1D $>$ Class Template Reference}
+\label{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4}\index{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}}
+
+
+{\ttfamily \#include $<$Telements.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1D $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.843646cm]{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_a1954e5fad1d12b16e5c0bc64f3c12c97}{T\+Element} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_ae4a243526a78edfda756af931f9d2f60}{T\+Element} (const bool \&allow\+\_\+high\+\_\+order)
+\begin{DoxyCompactList}\small\item\em Alternative constructor. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_ae3eb1ea12648eff3cc688888ded91a03}{T\+Element} (const \hyperlink{classoomph_1_1TElement}{T\+Element} \&)
+\begin{DoxyCompactList}\small\item\em Broken copy constructor. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_a7ff2fe1600e3d50ad1f597a3d5076443}{$\sim$\+T\+Element} ()
+\begin{DoxyCompactList}\small\item\em Broken assignment operator. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_accd8f7c31e1d98bb33d186a01c9e5ad6}{nnode\+\_\+1d} () const
+\begin{DoxyCompactList}\small\item\em Number of nodes along each element edge. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_a0b3bdb736afb3d9d08708f6a34ccf0b3}{nvertex\+\_\+node} () const
+\begin{DoxyCompactList}\small\item\em Number of vertex nodes in the element\+: One more than spatial dimension. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_ae420264d2e271e3aba2403d61f713c54}{get\+\_\+bulk\+\_\+node\+\_\+number} (const int \&face\+\_\+index, const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}) const
+\begin{DoxyCompactList}\small\item\em Public access function for Node\+\_\+on\+\_\+face. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Node}{Node} $\ast$ \hyperlink{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_af6a40f8e3b8051f0b685e64957d47296}{vertex\+\_\+node\+\_\+pt} (const unsigned \&j) const
+\begin{DoxyCompactList}\small\item\em Pointer to the j-\/th vertex node in the element. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_a21c1b5f546026b5d45c61e25e803feb7}{shape} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Shape}{Shape} \&psi) const
+\begin{DoxyCompactList}\small\item\em Calculate the geometric shape functions at local coordinate s. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_a9b72261d8b53fa87f530653293163004}{dshape\+\_\+local} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Shape}{Shape} \&psi, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dpsids) const
+\begin{DoxyCompactList}\small\item\em Compute the geometric shape functions and derivatives w.\+r.\+t. local coordinates at local coordinate s. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_ab8f127689821bd33998c2fd9ae313dc2}{d2shape\+\_\+local} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Shape}{Shape} \&psi, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dpsids, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&d2psids) const
+\begin{DoxyCompactList}\small\item\em Compute the geometric shape functions, derivatives and second derivatives w.\+r.\+t local coordinates at local coordinate s d2psids(i,0) = $ \partial^2 \psi_j / \partial s_0^2 $ d2psids(i,1) = $ \partial^2 \psi_j / \partial s_1^2 $ d2psids(i,2) = $ \partial^2 \psi_j / \partial s_0 \partial s_1 $. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_a80334f2ec7d9f8795b9e260d185194d3}{invert\+\_\+jacobian\+\_\+mapping} (const \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&jacobian, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&inverse\+\_\+jacobian) const
+\begin{DoxyCompactList}\small\item\em Overload the template-\/free interface for the calculation of inverse jacobian matrix. This is a two dimensional element, so use the 2D version. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_a16749c4131f12c3723eb28a201370768}{s\+\_\+min} () const
+\begin{DoxyCompactList}\small\item\em Min. value of local coordinate. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_a5e7b1d34547ad697dd89e73944e5bfd1}{s\+\_\+max} () const
+\begin{DoxyCompactList}\small\item\em Max. value of local coordinate. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_acf3c8a84331e4ff80a9b270124a2730b}{local\+\_\+coordinate\+\_\+of\+\_\+node} (const unsigned \&j, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}) const
+\begin{DoxyCompactList}\small\item\em Return local coordinates of node j. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_a4f82b26b291f8d00592e48729c8f5bfb}{nplot\+\_\+points\+\_\+paraview} (const unsigned \&nplot) const
+\begin{DoxyCompactList}\small\item\em Return the number of actual plot points for paraview plot with parameter nplot. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_acbd9eea53952435fe3a1c7c1aef1312a}{nsub\+\_\+elements\+\_\+paraview} (const unsigned \&nplot) const
+\begin{DoxyCompactList}\small\item\em Return the number of local sub-\/elements for paraview plot with parameter nplot. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_a74e9ef1bdd8bbf4d7c2300004c13a151}{write\+\_\+paraview\+\_\+output\+\_\+offset\+\_\+information} (std\+::ofstream \&file\+\_\+out, const unsigned \&nplot, unsigned \&counter) const
+\begin{DoxyCompactList}\small\item\em Fill in the offset information for paraview plot. Needs to be implemented for each new geometric element type; see \href{http://www.vtk.org/VTK/img/file-formats.pdf}{\tt http\+://www.\+vtk.\+org/\+V\+T\+K/img/file-\/formats.\+pdf}. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_a076e986424d283bbf44db36bce8f498a}{write\+\_\+paraview\+\_\+type} (std\+::ofstream \&file\+\_\+out, const unsigned \&nplot) const
+\begin{DoxyCompactList}\small\item\em Return the paraview element type. Needs to be implemented for each new geometric element type; see \href{http://www.vtk.org/VTK/img/file-formats.pdf}{\tt http\+://www.\+vtk.\+org/\+V\+T\+K/img/file-\/formats.\+pdf}. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_a33b8548c4cdd2c28f663d47a5e616487}{write\+\_\+paraview\+\_\+offsets} (std\+::ofstream \&file\+\_\+out, const unsigned \&nplot, unsigned \&offset\+\_\+sum) const
+\begin{DoxyCompactList}\small\item\em Return the offsets for the paraview sub-\/elements. Needs to be implemented for each new geometric element type; see \href{http://www.vtk.org/VTK/img/file-formats.pdf}{\tt http\+://www.\+vtk.\+org/\+V\+T\+K/img/file-\/formats.\+pdf}. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_ad66ccbcca9ee2a4eb3c24bdd21c096f9}{output} (std\+::ostream \&output)
+\begin{DoxyCompactList}\small\item\em Output. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_a5e9bfd033563fd0da6e93b581991827f}{output} (std\+::ostream \&outfile, const unsigned \&nplot)
+\begin{DoxyCompactList}\small\item\em Output at specified number of plot points. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_acf3bfd1c5a6462aa9555bc8451914e63}{output} (F\+I\+LE $\ast$file\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em C-\/style output. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_a9c5e3dba68906cb65e1f38eb0638080c}{output} (F\+I\+LE $\ast$file\+\_\+pt, const unsigned \&n\+\_\+plot)
+\begin{DoxyCompactList}\small\item\em C\+\_\+style output at n\+\_\+plot points. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_a9276c0c42a0e98f0e72719f510a83bc8}{get\+\_\+s\+\_\+plot} (const unsigned \&iplot, const unsigned \&nplot, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, const bool \&use\+\_\+equally\+\_\+spaced\+\_\+interior\+\_\+sample\+\_\+points=false) const
+\begin{DoxyCompactList}\small\item\em Get vector of local coordinates of plot point i (when plotting nplot points in each \char`\"{}coordinate direction\char`\"{}). \end{DoxyCompactList}\item 
+std\+::string \hyperlink{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_a4f779eb32a1a91ae566a8a87ae6bc242}{tecplot\+\_\+zone\+\_\+string} (const unsigned \&nplot) const
+\begin{DoxyCompactList}\small\item\em Return string for tecplot zone header (when plotting nplot points in each "coordinate direction) \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_a1bc5afa4920836278400df77012cb1c3}{write\+\_\+tecplot\+\_\+zone\+\_\+footer} (std\+::ostream \&outfile, const unsigned \&nplot) const
+\begin{DoxyCompactList}\small\item\em Add tecplot zone \char`\"{}footer\char`\"{} to output stream (when plotting nplot points in each "coordinate direction). Empty by default -- can be used, e.\+g., to add FE connectivity lists to elements that need it. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_ae1fbb81a92bd1966ae7653afbe7eb593}{write\+\_\+tecplot\+\_\+zone\+\_\+footer} (F\+I\+LE $\ast$file\+\_\+pt, const unsigned \&nplot) const
+\begin{DoxyCompactList}\small\item\em Add tecplot zone \char`\"{}footer\char`\"{} to C-\/style output. (when plotting nplot points in each "coordinate direction). Empty by default -- can be used, e.\+g., to add FE connectivity lists to elements that need it. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_ad0c4aa55367140690c697ded11f234c0}{nplot\+\_\+points} (const unsigned \&nplot) const
+\item 
+void \hyperlink{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_adf9dd8fa1e2dedc481adfea443e8a926}{build\+\_\+face\+\_\+element} (const int \&face\+\_\+index, \hyperlink{classoomph_1_1FaceElement}{Face\+Element} $\ast$face\+\_\+element\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Build the lower-\/dimensional \hyperlink{classoomph_1_1FaceElement}{Face\+Element} (an element of type \hyperlink{classoomph_1_1TElement_3_011_00_01NNODE__1D_01_4}{T\+Element$<$1,\+N\+N\+O\+D\+E\+\_\+1\+D$>$}). The face index takes three possible values\+: 0 (Left) s\mbox{[}0\mbox{]} = 0.\+0 1 (Bottom) s\mbox{[}1\mbox{]} = 0.\+0 2 (Sloping face) s\mbox{[}0\mbox{]} = 1.\+0 -\/ s\mbox{[}1\mbox{]}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const unsigned \hyperlink{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_a75b99450e2a11a5d6723f86defde1cc0}{Node\+\_\+on\+\_\+face} \mbox{[}3\mbox{]}\mbox{[}N\+N\+O\+D\+E\+\_\+1D\mbox{]}
+\begin{DoxyCompactList}\small\item\em Nodal translation scheme for use when generating face elements. \end{DoxyCompactList}\item 
+static \hyperlink{classoomph_1_1TGauss}{T\+Gauss}$<$ 2, N\+N\+O\+D\+E\+\_\+1D $>$ \hyperlink{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_aa2eb2c7f5a5c0242bcc5cb270ee07b2d}{Default\+\_\+integration\+\_\+scheme}
+\begin{DoxyCompactList}\small\item\em Default integration rule\+: Gaussian integration of same \textquotesingle{}order\textquotesingle{} as the element. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$\newline
+class oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}
+
+General \hyperlink{classoomph_1_1TElement}{T\+Element} class specialised to two spatial dimensions Ordering of nodes as in Zienkiwizc sketches\+: vertex nodes 0 -\/ 1 -\/ 2 anticlockwise. Midside nodes filled in progressing along the consecutive edges. Central node(s) come(s) last. 
+
+Definition at line 1522 of file Telements.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_a1954e5fad1d12b16e5c0bc64f3c12c97}\label{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_a1954e5fad1d12b16e5c0bc64f3c12c97}} 
+\index{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}!T\+Element@{T\+Element}}
+\index{T\+Element@{T\+Element}!oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}}
+\subsubsection{\texorpdfstring{T\+Element()}{TElement()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+\hyperlink{classoomph_1_1TElement}{oomph\+::\+T\+Element}$<$ 2, N\+N\+O\+D\+E\+\_\+1D $>$\+::\hyperlink{classoomph_1_1TElement}{T\+Element} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor. 
+
+
+
+Definition at line 1540 of file Telements.\+h.
+
+
+
+References oomph\+::\+Global\+\_\+string\+\_\+for\+\_\+annotation\+::string().
+
+\mbox{\Hypertarget{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_ae4a243526a78edfda756af931f9d2f60}\label{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_ae4a243526a78edfda756af931f9d2f60}} 
+\index{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}!T\+Element@{T\+Element}}
+\index{T\+Element@{T\+Element}!oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}}
+\subsubsection{\texorpdfstring{T\+Element()}{TElement()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+\hyperlink{classoomph_1_1TElement}{oomph\+::\+T\+Element}$<$ 2, N\+N\+O\+D\+E\+\_\+1D $>$\+::\hyperlink{classoomph_1_1TElement}{T\+Element} (\begin{DoxyParamCaption}\item[{const bool \&}]{allow\+\_\+high\+\_\+order }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Alternative constructor. 
+
+
+
+Definition at line 1573 of file Telements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_ae3eb1ea12648eff3cc688888ded91a03}\label{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_ae3eb1ea12648eff3cc688888ded91a03}} 
+\index{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}!T\+Element@{T\+Element}}
+\index{T\+Element@{T\+Element}!oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}}
+\subsubsection{\texorpdfstring{T\+Element()}{TElement()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+\hyperlink{classoomph_1_1TElement}{oomph\+::\+T\+Element}$<$ 2, N\+N\+O\+D\+E\+\_\+1D $>$\+::\hyperlink{classoomph_1_1TElement}{T\+Element} (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1TElement}{T\+Element}$<$ 2, N\+N\+O\+D\+E\+\_\+1D $>$ \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Broken copy constructor. 
+
+
+
+Definition at line 1597 of file Telements.\+h.
+
+
+
+References oomph\+::\+Broken\+Copy\+::broken\+\_\+copy().
+
+\mbox{\Hypertarget{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_a7ff2fe1600e3d50ad1f597a3d5076443}\label{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_a7ff2fe1600e3d50ad1f597a3d5076443}} 
+\index{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}!````~T\+Element@{$\sim$\+T\+Element}}
+\index{````~T\+Element@{$\sim$\+T\+Element}!oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}}
+\subsubsection{\texorpdfstring{$\sim$\+T\+Element()}{~TElement()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+\hyperlink{classoomph_1_1TElement}{oomph\+::\+T\+Element}$<$ 2, N\+N\+O\+D\+E\+\_\+1D $>$\+::$\sim$\hyperlink{classoomph_1_1TElement}{T\+Element} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Broken assignment operator. 
+
+Destructor 
+
+Definition at line 1610 of file Telements.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_adf9dd8fa1e2dedc481adfea443e8a926}\label{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_adf9dd8fa1e2dedc481adfea443e8a926}} 
+\index{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}!build\+\_\+face\+\_\+element@{build\+\_\+face\+\_\+element}}
+\index{build\+\_\+face\+\_\+element@{build\+\_\+face\+\_\+element}!oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}}
+\subsubsection{\texorpdfstring{build\+\_\+face\+\_\+element()}{build\_face\_element()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+void \hyperlink{classoomph_1_1TElement}{oomph\+::\+T\+Element}$<$ 2, N\+N\+O\+D\+E\+\_\+1D $>$\+::build\+\_\+face\+\_\+element (\begin{DoxyParamCaption}\item[{const int \&}]{face\+\_\+index,  }\item[{\hyperlink{classoomph_1_1FaceElement}{Face\+Element} $\ast$}]{face\+\_\+element\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Build the lower-\/dimensional \hyperlink{classoomph_1_1FaceElement}{Face\+Element} (an element of type \hyperlink{classoomph_1_1TElement_3_011_00_01NNODE__1D_01_4}{T\+Element$<$1,\+N\+N\+O\+D\+E\+\_\+1\+D$>$}). The face index takes three possible values\+: 0 (Left) s\mbox{[}0\mbox{]} = 0.\+0 1 (Bottom) s\mbox{[}1\mbox{]} = 0.\+0 2 (Sloping face) s\mbox{[}0\mbox{]} = 1.\+0 -\/ s\mbox{[}1\mbox{]}. 
+
+Function to setup geometrical information for lower-\/dimensional Face\+Elements (which are of type \hyperlink{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4}{T\+Element$<$2,\+N\+N\+O\+D\+E\+\_\+1\+D$>$}). 
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_aaf7bead5b462cfd5401d97b3dbdc7af7}{oomph\+::\+Finite\+Element}.
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1SolidTElement_3_012_00_01NNODE__1D_01_4_a6357d971d1a29e15ec8fbd47c2945524}{oomph\+::\+Solid\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}.
+
+
+
+Definition at line 376 of file Telements.\+cc.
+
+
+
+References oomph\+::\+Face\+Element\+::bulk\+\_\+coordinate\+\_\+derivatives\+\_\+fct\+\_\+pt(), oomph\+::\+Face\+Element\+::bulk\+\_\+element\+\_\+pt(), oomph\+::\+Face\+Element\+::bulk\+\_\+node\+\_\+number(), oomph\+::\+Face\+Element\+::bulk\+\_\+node\+\_\+number\+\_\+resize(), oomph\+::\+T\+Element2\+Face\+To\+Bulk\+Coordinates\+::face0(), oomph\+::\+T\+Element2\+Bulk\+Coordinate\+Derivatives\+::face0(), oomph\+::\+T\+Element2\+Face\+To\+Bulk\+Coordinates\+::face1(), oomph\+::\+T\+Element2\+Bulk\+Coordinate\+Derivatives\+::face1(), oomph\+::\+T\+Element2\+Face\+To\+Bulk\+Coordinates\+::face2(), oomph\+::\+T\+Element2\+Bulk\+Coordinate\+Derivatives\+::face2(), oomph\+::\+Face\+Element\+::face\+\_\+index(), oomph\+::\+Face\+Element\+::face\+\_\+to\+\_\+bulk\+\_\+coordinate\+\_\+fct\+\_\+pt(), i, oomph\+::\+Face\+Element\+::nbulk\+\_\+value(), oomph\+::\+Face\+Element\+::nbulk\+\_\+value\+\_\+resize(), oomph\+::\+T\+Element$<$ D\+I\+M, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::\+Node\+\_\+on\+\_\+face(), oomph\+::\+Finite\+Element\+::node\+\_\+pt(), oomph\+::\+Face\+Element\+::normal\+\_\+sign(), oomph\+::\+Generalised\+Element\+::set\+\_\+halo(), and oomph\+::\+Finite\+Element\+::set\+\_\+nodal\+\_\+dimension().
+
+\mbox{\Hypertarget{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_ab8f127689821bd33998c2fd9ae313dc2}\label{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_ab8f127689821bd33998c2fd9ae313dc2}} 
+\index{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}!d2shape\+\_\+local@{d2shape\+\_\+local}}
+\index{d2shape\+\_\+local@{d2shape\+\_\+local}!oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}}
+\subsubsection{\texorpdfstring{d2shape\+\_\+local()}{d2shape\_local()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+void \hyperlink{classoomph_1_1TElement}{oomph\+::\+T\+Element}$<$ 2, N\+N\+O\+D\+E\+\_\+1D $>$\+::d2shape\+\_\+local (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dpsids,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{d2psids }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Compute the geometric shape functions, derivatives and second derivatives w.\+r.\+t local coordinates at local coordinate s d2psids(i,0) = $ \partial^2 \psi_j / \partial s_0^2 $ d2psids(i,1) = $ \partial^2 \psi_j / \partial s_1^2 $ d2psids(i,2) = $ \partial^2 \psi_j / \partial s_0 \partial s_1 $. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a53e5051582d9da07b9d35da9debd0cd7}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 1660 of file Telements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_a9b72261d8b53fa87f530653293163004}\label{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_a9b72261d8b53fa87f530653293163004}} 
+\index{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}!dshape\+\_\+local@{dshape\+\_\+local}}
+\index{dshape\+\_\+local@{dshape\+\_\+local}!oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}}
+\subsubsection{\texorpdfstring{dshape\+\_\+local()}{dshape\_local()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+void \hyperlink{classoomph_1_1TElement}{oomph\+::\+T\+Element}$<$ 2, N\+N\+O\+D\+E\+\_\+1D $>$\+::dshape\+\_\+local (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dpsids }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Compute the geometric shape functions and derivatives w.\+r.\+t. local coordinates at local coordinate s. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a9db1456b827131c21a991ac9fedf4b0c}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 1651 of file Telements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_ae420264d2e271e3aba2403d61f713c54}\label{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_ae420264d2e271e3aba2403d61f713c54}} 
+\index{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}!get\+\_\+bulk\+\_\+node\+\_\+number@{get\+\_\+bulk\+\_\+node\+\_\+number}}
+\index{get\+\_\+bulk\+\_\+node\+\_\+number@{get\+\_\+bulk\+\_\+node\+\_\+number}!oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}}
+\subsubsection{\texorpdfstring{get\+\_\+bulk\+\_\+node\+\_\+number()}{get\_bulk\_node\_number()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+unsigned \hyperlink{classoomph_1_1TElement}{oomph\+::\+T\+Element}$<$ 2, N\+N\+O\+D\+E\+\_\+1D $>$\+::get\+\_\+bulk\+\_\+node\+\_\+number (\begin{DoxyParamCaption}\item[{const int \&}]{face\+\_\+index,  }\item[{const unsigned \&}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Public access function for Node\+\_\+on\+\_\+face. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a2cd0ee849adf50dae1a70a20fab47119}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 1620 of file Telements.\+h.
+
+
+
+References i.
+
+\mbox{\Hypertarget{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_a9276c0c42a0e98f0e72719f510a83bc8}\label{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_a9276c0c42a0e98f0e72719f510a83bc8}} 
+\index{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}!get\+\_\+s\+\_\+plot@{get\+\_\+s\+\_\+plot}}
+\index{get\+\_\+s\+\_\+plot@{get\+\_\+s\+\_\+plot}!oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}}
+\subsubsection{\texorpdfstring{get\+\_\+s\+\_\+plot()}{get\_s\_plot()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+void \hyperlink{classoomph_1_1TElement}{oomph\+::\+T\+Element}$<$ 2, N\+N\+O\+D\+E\+\_\+1D $>$\+::get\+\_\+s\+\_\+plot (\begin{DoxyParamCaption}\item[{const unsigned \&}]{iplot,  }\item[{const unsigned \&}]{nplot,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{const bool \&}]{use\+\_\+equally\+\_\+spaced\+\_\+interior\+\_\+sample\+\_\+points = {\ttfamily false} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get vector of local coordinates of plot point i (when plotting nplot points in each \char`\"{}coordinate direction\char`\"{}). 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a82da844fd3ebb2005842464cdc148a03}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 1777 of file Telements.\+h.
+
+
+
+References i.
+
+\mbox{\Hypertarget{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_a80334f2ec7d9f8795b9e260d185194d3}\label{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_a80334f2ec7d9f8795b9e260d185194d3}} 
+\index{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}!invert\+\_\+jacobian\+\_\+mapping@{invert\+\_\+jacobian\+\_\+mapping}}
+\index{invert\+\_\+jacobian\+\_\+mapping@{invert\+\_\+jacobian\+\_\+mapping}!oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}}
+\subsubsection{\texorpdfstring{invert\+\_\+jacobian\+\_\+mapping()}{invert\_jacobian\_mapping()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+double \hyperlink{classoomph_1_1TElement}{oomph\+::\+T\+Element}$<$ 2, N\+N\+O\+D\+E\+\_\+1D $>$\+::invert\+\_\+jacobian\+\_\+mapping (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{jacobian,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{inverse\+\_\+jacobian }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Overload the template-\/free interface for the calculation of inverse jacobian matrix. This is a two dimensional element, so use the 2D version. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a42c86a7628fee00d3a9d35b935b29e48}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 1667 of file Telements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_acf3c8a84331e4ff80a9b270124a2730b}\label{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_acf3c8a84331e4ff80a9b270124a2730b}} 
+\index{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}!local\+\_\+coordinate\+\_\+of\+\_\+node@{local\+\_\+coordinate\+\_\+of\+\_\+node}}
+\index{local\+\_\+coordinate\+\_\+of\+\_\+node@{local\+\_\+coordinate\+\_\+of\+\_\+node}!oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}}
+\subsubsection{\texorpdfstring{local\+\_\+coordinate\+\_\+of\+\_\+node()}{local\_coordinate\_of\_node()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+void \hyperlink{classoomph_1_1TElement}{oomph\+::\+T\+Element}$<$ 2, N\+N\+O\+D\+E\+\_\+1D $>$\+::local\+\_\+coordinate\+\_\+of\+\_\+node (\begin{DoxyParamCaption}\item[{const unsigned \&}]{j,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Return local coordinates of node j. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a22bc4ee35e4f948d8d7fba18c7b4f4c4}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 1678 of file Telements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_accd8f7c31e1d98bb33d186a01c9e5ad6}\label{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_accd8f7c31e1d98bb33d186a01c9e5ad6}} 
+\index{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}!nnode\+\_\+1d@{nnode\+\_\+1d}}
+\index{nnode\+\_\+1d@{nnode\+\_\+1d}!oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}}
+\subsubsection{\texorpdfstring{nnode\+\_\+1d()}{nnode\_1d()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+unsigned \hyperlink{classoomph_1_1TElement}{oomph\+::\+T\+Element}$<$ 2, N\+N\+O\+D\+E\+\_\+1D $>$\+::nnode\+\_\+1d (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Number of nodes along each element edge. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_ab65c7a94dda80c1876a09ac12be4e39c}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 1613 of file Telements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_ad0c4aa55367140690c697ded11f234c0}\label{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_ad0c4aa55367140690c697ded11f234c0}} 
+\index{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}!nplot\+\_\+points@{nplot\+\_\+points}}
+\index{nplot\+\_\+points@{nplot\+\_\+points}!oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}}
+\subsubsection{\texorpdfstring{nplot\+\_\+points()}{nplot\_points()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+unsigned \hyperlink{classoomph_1_1TElement}{oomph\+::\+T\+Element}$<$ 2, N\+N\+O\+D\+E\+\_\+1D $>$\+::nplot\+\_\+points (\begin{DoxyParamCaption}\item[{const unsigned \&}]{nplot }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Return total number of plot points (when plotting nplot points in each "coordinate direction) 
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a8ed563c7ff0cfd8bafdbb0132b388106}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 1888 of file Telements.\+h.
+
+
+
+References i.
+
+\mbox{\Hypertarget{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_a4f82b26b291f8d00592e48729c8f5bfb}\label{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_a4f82b26b291f8d00592e48729c8f5bfb}} 
+\index{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}!nplot\+\_\+points\+\_\+paraview@{nplot\+\_\+points\+\_\+paraview}}
+\index{nplot\+\_\+points\+\_\+paraview@{nplot\+\_\+points\+\_\+paraview}!oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}}
+\subsubsection{\texorpdfstring{nplot\+\_\+points\+\_\+paraview()}{nplot\_points\_paraview()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+unsigned \hyperlink{classoomph_1_1TElement}{oomph\+::\+T\+Element}$<$ 2, N\+N\+O\+D\+E\+\_\+1D $>$\+::nplot\+\_\+points\+\_\+paraview (\begin{DoxyParamCaption}\item[{const unsigned \&}]{nplot }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Return the number of actual plot points for paraview plot with parameter nplot. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a06d32c85753a1e302c3b345ea27f6c85}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 1683 of file Telements.\+h.
+
+
+
+References i.
+
+\mbox{\Hypertarget{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_acbd9eea53952435fe3a1c7c1aef1312a}\label{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_acbd9eea53952435fe3a1c7c1aef1312a}} 
+\index{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}!nsub\+\_\+elements\+\_\+paraview@{nsub\+\_\+elements\+\_\+paraview}}
+\index{nsub\+\_\+elements\+\_\+paraview@{nsub\+\_\+elements\+\_\+paraview}!oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}}
+\subsubsection{\texorpdfstring{nsub\+\_\+elements\+\_\+paraview()}{nsub\_elements\_paraview()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+unsigned \hyperlink{classoomph_1_1TElement}{oomph\+::\+T\+Element}$<$ 2, N\+N\+O\+D\+E\+\_\+1D $>$\+::nsub\+\_\+elements\+\_\+paraview (\begin{DoxyParamCaption}\item[{const unsigned \&}]{nplot }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Return the number of local sub-\/elements for paraview plot with parameter nplot. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_aa1e11deffc8ee67adaa59ce3ade0579f}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 1692 of file Telements.\+h.
+
+
+
+References i.
+
+\mbox{\Hypertarget{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_a0b3bdb736afb3d9d08708f6a34ccf0b3}\label{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_a0b3bdb736afb3d9d08708f6a34ccf0b3}} 
+\index{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}!nvertex\+\_\+node@{nvertex\+\_\+node}}
+\index{nvertex\+\_\+node@{nvertex\+\_\+node}!oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}}
+\subsubsection{\texorpdfstring{nvertex\+\_\+node()}{nvertex\_node()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+unsigned \hyperlink{classoomph_1_1TElement}{oomph\+::\+T\+Element}$<$ 2, N\+N\+O\+D\+E\+\_\+1D $>$\+::nvertex\+\_\+node (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Number of vertex nodes in the element\+: One more than spatial dimension. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a45631a7aa50efc3123a921d114f84cba}{oomph\+::\+Finite\+Element}.
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1TTimeHarmonicFourierDecomposedLinearElasticityElement_a57870ab2c9c506070441d8a428820d27}{oomph\+::\+T\+Time\+Harmonic\+Fourier\+Decomposed\+Linear\+Elasticity\+Element$<$ N\+N\+O\+D\+E\+\_\+1\+D $>$}, and \hyperlink{classoomph_1_1TPMLFourierDecomposedHelmholtzElement_a1fe9d66fb864483105f2d2cbabd072a0}{oomph\+::\+T\+P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Element$<$ N\+N\+O\+D\+E\+\_\+1\+D, P\+M\+L\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$}.
+
+
+
+Definition at line 1617 of file Telements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_ad66ccbcca9ee2a4eb3c24bdd21c096f9}\label{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_ad66ccbcca9ee2a4eb3c24bdd21c096f9}} 
+\index{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}!output@{output}}
+\index{output@{output}!oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+void \hyperlink{classoomph_1_1TElement}{oomph\+::\+T\+Element}$<$ 2, N\+N\+O\+D\+E\+\_\+1D $>$\+::output (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{output }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Output. 
+
+The output function for \hyperlink{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4}{T\+Element$<$2,\+N\+N\+O\+D\+E\+\_\+1\+D$>$} 
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a2ad98a3d2ef4999f1bef62c0ff13f2a7}{oomph\+::\+Finite\+Element}.
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1TTimeHarmonicFourierDecomposedLinearElasticityElement_ae14527add57636a4412ea584dd66cdbe}{oomph\+::\+T\+Time\+Harmonic\+Fourier\+Decomposed\+Linear\+Elasticity\+Element$<$ N\+N\+O\+D\+E\+\_\+1\+D $>$}, and \hyperlink{classoomph_1_1TPMLFourierDecomposedHelmholtzElement_a7740f7614bd05db89ddf4e39668b8a75}{oomph\+::\+T\+P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Element$<$ N\+N\+O\+D\+E\+\_\+1\+D, P\+M\+L\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$}.
+
+
+
+Definition at line 502 of file Telements.\+cc.
+
+
+
+References oomph\+::output().
+
+\mbox{\Hypertarget{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_a5e9bfd033563fd0da6e93b581991827f}\label{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_a5e9bfd033563fd0da6e93b581991827f}} 
+\index{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}!output@{output}}
+\index{output@{output}!oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+void \hyperlink{classoomph_1_1TElement}{oomph\+::\+T\+Element}$<$ 2, N\+N\+O\+D\+E\+\_\+1D $>$\+::output (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile,  }\item[{const unsigned \&}]{nplot }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Output at specified number of plot points. 
+
+The output function for \hyperlink{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4}{T\+Element$<$2,\+N\+N\+O\+D\+E\+\_\+1\+D$>$} 
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_afa9d9b2670f999b43e6679c9dd28c457}{oomph\+::\+Finite\+Element}.
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1TTimeHarmonicFourierDecomposedLinearElasticityElement_a8f1141e19dcdd594824d1adc971b2832}{oomph\+::\+T\+Time\+Harmonic\+Fourier\+Decomposed\+Linear\+Elasticity\+Element$<$ N\+N\+O\+D\+E\+\_\+1\+D $>$}, and \hyperlink{classoomph_1_1TPMLFourierDecomposedHelmholtzElement_af0e567c1502be1edd09e7b3378caa1b0}{oomph\+::\+T\+P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Element$<$ N\+N\+O\+D\+E\+\_\+1\+D, P\+M\+L\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$}.
+
+
+
+Definition at line 514 of file Telements.\+cc.
+
+
+
+References i, and s.
+
+\mbox{\Hypertarget{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_acf3bfd1c5a6462aa9555bc8451914e63}\label{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_acf3bfd1c5a6462aa9555bc8451914e63}} 
+\index{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}!output@{output}}
+\index{output@{output}!oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+void \hyperlink{classoomph_1_1TElement}{oomph\+::\+T\+Element}$<$ 2, N\+N\+O\+D\+E\+\_\+1D $>$\+::output (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{file\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+C-\/style output. 
+
+The C-\/style output function for \hyperlink{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4}{T\+Element$<$2,\+N\+N\+O\+D\+E\+\_\+1\+D$>$} 
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a72cddd09f8ddbee1a20a1ff404c6943e}{oomph\+::\+Finite\+Element}.
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1TTimeHarmonicFourierDecomposedLinearElasticityElement_a81a75203b1c0d2f110259547e51c8cac}{oomph\+::\+T\+Time\+Harmonic\+Fourier\+Decomposed\+Linear\+Elasticity\+Element$<$ N\+N\+O\+D\+E\+\_\+1\+D $>$}, and \hyperlink{classoomph_1_1TPMLFourierDecomposedHelmholtzElement_a9fa5832723310e96902398d74e43313f}{oomph\+::\+T\+P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Element$<$ N\+N\+O\+D\+E\+\_\+1\+D, P\+M\+L\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$}.
+
+
+
+Definition at line 549 of file Telements.\+cc.
+
+
+
+References oomph\+::output().
+
+\mbox{\Hypertarget{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_a9c5e3dba68906cb65e1f38eb0638080c}\label{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_a9c5e3dba68906cb65e1f38eb0638080c}} 
+\index{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}!output@{output}}
+\index{output@{output}!oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+void \hyperlink{classoomph_1_1TElement}{oomph\+::\+T\+Element}$<$ 2, N\+N\+O\+D\+E\+\_\+1D $>$\+::output (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{file\+\_\+pt,  }\item[{const unsigned \&}]{n\+\_\+plot }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+C\+\_\+style output at n\+\_\+plot points. 
+
+The C-\/style output function for \hyperlink{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4}{T\+Element$<$2,\+N\+N\+O\+D\+E\+\_\+1\+D$>$} 
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_adfaee690bb0608f03320eeb9d110d48c}{oomph\+::\+Finite\+Element}.
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1TTimeHarmonicFourierDecomposedLinearElasticityElement_a05e2f49a9bd2941f4bbabd5f0279d86a}{oomph\+::\+T\+Time\+Harmonic\+Fourier\+Decomposed\+Linear\+Elasticity\+Element$<$ N\+N\+O\+D\+E\+\_\+1\+D $>$}, and \hyperlink{classoomph_1_1TPMLFourierDecomposedHelmholtzElement_aec6440de61dd7cd76b77ddd7732744d4}{oomph\+::\+T\+P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Element$<$ N\+N\+O\+D\+E\+\_\+1\+D, P\+M\+L\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$}.
+
+
+
+Definition at line 560 of file Telements.\+cc.
+
+
+
+References i, and s.
+
+\mbox{\Hypertarget{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_a5e7b1d34547ad697dd89e73944e5bfd1}\label{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_a5e7b1d34547ad697dd89e73944e5bfd1}} 
+\index{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}!s\+\_\+max@{s\+\_\+max}}
+\index{s\+\_\+max@{s\+\_\+max}!oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}}
+\subsubsection{\texorpdfstring{s\+\_\+max()}{s\_max()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+double \hyperlink{classoomph_1_1TElement}{oomph\+::\+T\+Element}$<$ 2, N\+N\+O\+D\+E\+\_\+1D $>$\+::s\+\_\+max (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Max. value of local coordinate. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a64adbe9356927133686ab53f00341ea8}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 1675 of file Telements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_a16749c4131f12c3723eb28a201370768}\label{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_a16749c4131f12c3723eb28a201370768}} 
+\index{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}!s\+\_\+min@{s\+\_\+min}}
+\index{s\+\_\+min@{s\+\_\+min}!oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}}
+\subsubsection{\texorpdfstring{s\+\_\+min()}{s\_min()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+double \hyperlink{classoomph_1_1TElement}{oomph\+::\+T\+Element}$<$ 2, N\+N\+O\+D\+E\+\_\+1D $>$\+::s\+\_\+min (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Min. value of local coordinate. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a35f0803115b68bd162c07de04eeb6c5c}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 1672 of file Telements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_a21c1b5f546026b5d45c61e25e803feb7}\label{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_a21c1b5f546026b5d45c61e25e803feb7}} 
+\index{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}!shape@{shape}}
+\index{shape@{shape}!oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}}
+\subsubsection{\texorpdfstring{shape()}{shape()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+void \hyperlink{classoomph_1_1TElement}{oomph\+::\+T\+Element}$<$ 2, N\+N\+O\+D\+E\+\_\+1D $>$\+::shape (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Calculate the geometric shape functions at local coordinate s. 
+
+
+
+Implements \hyperlink{classoomph_1_1FiniteElement_a58a25b6859ddd43b7bfe64a19fee5023}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 1646 of file Telements.\+h.
+
+
+
+References oomph\+::\+One\+Dim\+Lagrange\+::shape().
+
+\mbox{\Hypertarget{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_a4f779eb32a1a91ae566a8a87ae6bc242}\label{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_a4f779eb32a1a91ae566a8a87ae6bc242}} 
+\index{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}!tecplot\+\_\+zone\+\_\+string@{tecplot\+\_\+zone\+\_\+string}}
+\index{tecplot\+\_\+zone\+\_\+string@{tecplot\+\_\+zone\+\_\+string}!oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}}
+\subsubsection{\texorpdfstring{tecplot\+\_\+zone\+\_\+string()}{tecplot\_zone\_string()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+std\+::string \hyperlink{classoomph_1_1TElement}{oomph\+::\+T\+Element}$<$ 2, N\+N\+O\+D\+E\+\_\+1D $>$\+::tecplot\+\_\+zone\+\_\+string (\begin{DoxyParamCaption}\item[{const unsigned \&}]{nplot }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Return string for tecplot zone header (when plotting nplot points in each "coordinate direction) 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a3193df31f9ce38e0609d17a8ffb386c6}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 1817 of file Telements.\+h.
+
+
+
+References i.
+
+\mbox{\Hypertarget{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_af6a40f8e3b8051f0b685e64957d47296}\label{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_af6a40f8e3b8051f0b685e64957d47296}} 
+\index{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}!vertex\+\_\+node\+\_\+pt@{vertex\+\_\+node\+\_\+pt}}
+\index{vertex\+\_\+node\+\_\+pt@{vertex\+\_\+node\+\_\+pt}!oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}}
+\subsubsection{\texorpdfstring{vertex\+\_\+node\+\_\+pt()}{vertex\_node\_pt()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+\hyperlink{classoomph_1_1Node}{Node}$\ast$ \hyperlink{classoomph_1_1TElement}{oomph\+::\+T\+Element}$<$ 2, N\+N\+O\+D\+E\+\_\+1D $>$\+::vertex\+\_\+node\+\_\+pt (\begin{DoxyParamCaption}\item[{const unsigned \&}]{j }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Pointer to the j-\/th vertex node in the element. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a863c4382c879a77ad5607c6f9781c761}{oomph\+::\+Finite\+Element}.
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1TTimeHarmonicFourierDecomposedLinearElasticityElement_ad02188b226cc083ee4712a2dd51739ba}{oomph\+::\+T\+Time\+Harmonic\+Fourier\+Decomposed\+Linear\+Elasticity\+Element$<$ N\+N\+O\+D\+E\+\_\+1\+D $>$}, and \hyperlink{classoomph_1_1TPMLFourierDecomposedHelmholtzElement_a1060503e32a25da08137cf9203dd721f}{oomph\+::\+T\+P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Element$<$ N\+N\+O\+D\+E\+\_\+1\+D, P\+M\+L\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$}.
+
+
+
+Definition at line 1627 of file Telements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_a33b8548c4cdd2c28f663d47a5e616487}\label{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_a33b8548c4cdd2c28f663d47a5e616487}} 
+\index{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}!write\+\_\+paraview\+\_\+offsets@{write\+\_\+paraview\+\_\+offsets}}
+\index{write\+\_\+paraview\+\_\+offsets@{write\+\_\+paraview\+\_\+offsets}!oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}}
+\subsubsection{\texorpdfstring{write\+\_\+paraview\+\_\+offsets()}{write\_paraview\_offsets()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+void \hyperlink{classoomph_1_1TElement}{oomph\+::\+T\+Element}$<$ 2, N\+N\+O\+D\+E\+\_\+1D $>$\+::write\+\_\+paraview\+\_\+offsets (\begin{DoxyParamCaption}\item[{std\+::ofstream \&}]{file\+\_\+out,  }\item[{const unsigned \&}]{nplot,  }\item[{unsigned \&}]{offset\+\_\+sum }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Return the offsets for the paraview sub-\/elements. Needs to be implemented for each new geometric element type; see \href{http://www.vtk.org/VTK/img/file-formats.pdf}{\tt http\+://www.\+vtk.\+org/\+V\+T\+K/img/file-\/formats.\+pdf}. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_af11d35779224185e6693f2db450cc111}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 1749 of file Telements.\+h.
+
+
+
+References i, and oomph\+::output().
+
+\mbox{\Hypertarget{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_a74e9ef1bdd8bbf4d7c2300004c13a151}\label{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_a74e9ef1bdd8bbf4d7c2300004c13a151}} 
+\index{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}!write\+\_\+paraview\+\_\+output\+\_\+offset\+\_\+information@{write\+\_\+paraview\+\_\+output\+\_\+offset\+\_\+information}}
+\index{write\+\_\+paraview\+\_\+output\+\_\+offset\+\_\+information@{write\+\_\+paraview\+\_\+output\+\_\+offset\+\_\+information}!oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}}
+\subsubsection{\texorpdfstring{write\+\_\+paraview\+\_\+output\+\_\+offset\+\_\+information()}{write\_paraview\_output\_offset\_information()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+void \hyperlink{classoomph_1_1TElement}{oomph\+::\+T\+Element}$<$ 2, N\+N\+O\+D\+E\+\_\+1D $>$\+::write\+\_\+paraview\+\_\+output\+\_\+offset\+\_\+information (\begin{DoxyParamCaption}\item[{std\+::ofstream \&}]{file\+\_\+out,  }\item[{const unsigned \&}]{nplot,  }\item[{unsigned \&}]{counter }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Fill in the offset information for paraview plot. Needs to be implemented for each new geometric element type; see \href{http://www.vtk.org/VTK/img/file-formats.pdf}{\tt http\+://www.\+vtk.\+org/\+V\+T\+K/img/file-\/formats.\+pdf}. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_afed006dd5b9ab6bd613d8496e6048abf}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 1702 of file Telements.\+h.
+
+
+
+References i.
+
+\mbox{\Hypertarget{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_a076e986424d283bbf44db36bce8f498a}\label{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_a076e986424d283bbf44db36bce8f498a}} 
+\index{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}!write\+\_\+paraview\+\_\+type@{write\+\_\+paraview\+\_\+type}}
+\index{write\+\_\+paraview\+\_\+type@{write\+\_\+paraview\+\_\+type}!oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}}
+\subsubsection{\texorpdfstring{write\+\_\+paraview\+\_\+type()}{write\_paraview\_type()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+void \hyperlink{classoomph_1_1TElement}{oomph\+::\+T\+Element}$<$ 2, N\+N\+O\+D\+E\+\_\+1D $>$\+::write\+\_\+paraview\+\_\+type (\begin{DoxyParamCaption}\item[{std\+::ofstream \&}]{file\+\_\+out,  }\item[{const unsigned \&}]{nplot }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Return the paraview element type. Needs to be implemented for each new geometric element type; see \href{http://www.vtk.org/VTK/img/file-formats.pdf}{\tt http\+://www.\+vtk.\+org/\+V\+T\+K/img/file-\/formats.\+pdf}. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a68f0f8dc76f04e7d69983ec711b4ab08}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 1734 of file Telements.\+h.
+
+
+
+References i.
+
+\mbox{\Hypertarget{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_a1bc5afa4920836278400df77012cb1c3}\label{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_a1bc5afa4920836278400df77012cb1c3}} 
+\index{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}!write\+\_\+tecplot\+\_\+zone\+\_\+footer@{write\+\_\+tecplot\+\_\+zone\+\_\+footer}}
+\index{write\+\_\+tecplot\+\_\+zone\+\_\+footer@{write\+\_\+tecplot\+\_\+zone\+\_\+footer}!oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}}
+\subsubsection{\texorpdfstring{write\+\_\+tecplot\+\_\+zone\+\_\+footer()}{write\_tecplot\_zone\_footer()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+void \hyperlink{classoomph_1_1TElement}{oomph\+::\+T\+Element}$<$ 2, N\+N\+O\+D\+E\+\_\+1D $>$\+::write\+\_\+tecplot\+\_\+zone\+\_\+footer (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile,  }\item[{const unsigned \&}]{nplot }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Add tecplot zone \char`\"{}footer\char`\"{} to output stream (when plotting nplot points in each "coordinate direction). Empty by default -- can be used, e.\+g., to add FE connectivity lists to elements that need it. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_ac3987a5ead7dc20c63d86b333466e2b5}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 1831 of file Telements.\+h.
+
+
+
+References i.
+
+\mbox{\Hypertarget{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_ae1fbb81a92bd1966ae7653afbe7eb593}\label{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_ae1fbb81a92bd1966ae7653afbe7eb593}} 
+\index{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}!write\+\_\+tecplot\+\_\+zone\+\_\+footer@{write\+\_\+tecplot\+\_\+zone\+\_\+footer}}
+\index{write\+\_\+tecplot\+\_\+zone\+\_\+footer@{write\+\_\+tecplot\+\_\+zone\+\_\+footer}!oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}}
+\subsubsection{\texorpdfstring{write\+\_\+tecplot\+\_\+zone\+\_\+footer()}{write\_tecplot\_zone\_footer()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+void \hyperlink{classoomph_1_1TElement}{oomph\+::\+T\+Element}$<$ 2, N\+N\+O\+D\+E\+\_\+1D $>$\+::write\+\_\+tecplot\+\_\+zone\+\_\+footer (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{file\+\_\+pt,  }\item[{const unsigned \&}]{nplot }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Add tecplot zone \char`\"{}footer\char`\"{} to C-\/style output. (when plotting nplot points in each "coordinate direction). Empty by default -- can be used, e.\+g., to add FE connectivity lists to elements that need it. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a03e50fc04226b7fb7641e053d6fd97bf}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 1861 of file Telements.\+h.
+
+
+
+References i.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_aa2eb2c7f5a5c0242bcc5cb270ee07b2d}\label{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_aa2eb2c7f5a5c0242bcc5cb270ee07b2d}} 
+\index{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}!Default\+\_\+integration\+\_\+scheme@{Default\+\_\+integration\+\_\+scheme}}
+\index{Default\+\_\+integration\+\_\+scheme@{Default\+\_\+integration\+\_\+scheme}!oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}}
+\subsubsection{\texorpdfstring{Default\+\_\+integration\+\_\+scheme}{Default\_integration\_scheme}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+\hyperlink{classoomph_1_1TGauss}{T\+Gauss}$<$ 2, N\+N\+O\+D\+E\+\_\+1D $>$ \hyperlink{classoomph_1_1TElement}{oomph\+::\+T\+Element}$<$ 2, N\+N\+O\+D\+E\+\_\+1D $>$\+::Default\+\_\+integration\+\_\+scheme\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Default integration rule\+: Gaussian integration of same \textquotesingle{}order\textquotesingle{} as the element. 
+
+
+
+Definition at line 1534 of file Telements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_a75b99450e2a11a5d6723f86defde1cc0}\label{classoomph_1_1TElement_3_012_00_01NNODE__1D_01_4_a75b99450e2a11a5d6723f86defde1cc0}} 
+\index{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}!Node\+\_\+on\+\_\+face@{Node\+\_\+on\+\_\+face}}
+\index{Node\+\_\+on\+\_\+face@{Node\+\_\+on\+\_\+face}!oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$}}
+\subsubsection{\texorpdfstring{Node\+\_\+on\+\_\+face}{Node\_on\_face}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+const unsigned \hyperlink{classoomph_1_1TElement}{oomph\+::\+T\+Element}$<$ 2, N\+N\+O\+D\+E\+\_\+1D $>$\+::Node\+\_\+on\+\_\+face\mbox{[}3\mbox{]}\mbox{[}N\+N\+O\+D\+E\+\_\+1D\mbox{]}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Nodal translation scheme for use when generating face elements. 
+
+
+
+Definition at line 1528 of file Telements.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{Telements_8h}{Telements.\+h}\item 
+\hyperlink{Telements_8cc}{Telements.\+cc}\end{DoxyCompactItemize}

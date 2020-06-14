@@ -1,0 +1,208 @@
+\hypertarget{classDiskOscillationProblem}{}\section{Disk\+Oscillation\+Problem$<$ E\+L\+E\+M\+E\+NT $>$ Class Template Reference}
+\label{classDiskOscillationProblem}\index{Disk\+Oscillation\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$@{Disk\+Oscillation\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$}}
+
+
+Problem class to simulate small-\/amplitude oscillations of a circular disk.  
+
+
+Inheritance diagram for Disk\+Oscillation\+Problem$<$ E\+L\+E\+M\+E\+NT $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classDiskOscillationProblem}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classDiskOscillationProblem_a5ce89d95d655d8c5b579171c8e9a54b9}{Disk\+Oscillation\+Problem} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+void \hyperlink{classDiskOscillationProblem_a84fdc4311e8cc1fa5f80dc5568c88413}{actions\+\_\+after\+\_\+newton\+\_\+solve} ()
+\begin{DoxyCompactList}\small\item\em Update function (empty) \end{DoxyCompactList}\item 
+void \hyperlink{classDiskOscillationProblem_afea297af1844657099dec3d717fcccc5}{actions\+\_\+before\+\_\+newton\+\_\+solve} ()
+\begin{DoxyCompactList}\small\item\em Update function (empty) \end{DoxyCompactList}\item 
+\hyperlink{classElasticRefineableQuarterCircleSectorMesh}{Elastic\+Refineable\+Quarter\+Circle\+Sector\+Mesh}$<$ E\+L\+E\+M\+E\+NT $>$ $\ast$ \hyperlink{classDiskOscillationProblem_a9de851f400e5c161c5abf8efb2f2b082}{mesh\+\_\+pt} ()
+\begin{DoxyCompactList}\small\item\em Access function for the solid mesh. \end{DoxyCompactList}\item 
+void \hyperlink{classDiskOscillationProblem_ac0f7b36ffffa73ee49bc95bd961835dd}{run} (const unsigned \&nstep)
+\begin{DoxyCompactList}\small\item\em Run the problem\+: Pass number of timesteps to be performed. \end{DoxyCompactList}\item 
+void \hyperlink{classDiskOscillationProblem_adf6e2bf1843d5f5e3fa7b2fc5fb129a8}{doc\+\_\+solution} (Doc\+Info \&doc\+\_\+info)
+\begin{DoxyCompactList}\small\item\em Doc the solution. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+ofstream \hyperlink{classDiskOscillationProblem_a45a4b574c10c6416b3b6be950713f505}{Trace\+\_\+file}
+\begin{DoxyCompactList}\small\item\em Trace file. \end{DoxyCompactList}\item 
+Vector$<$ Node $\ast$ $>$ \hyperlink{classDiskOscillationProblem_a141a79f41b33b19a6fca57793836e4da}{Trace\+\_\+node\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Vector of pointers to nodes whose position we\textquotesingle{}re tracing. \end{DoxyCompactList}\item 
+\hyperlink{classAxisymOscillatingDisk}{Axisym\+Oscillating\+Disk} $\ast$ \hyperlink{classDiskOscillationProblem_a338517a04848bb75252751df32879e40}{I\+C\+\_\+geom\+\_\+object\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Geometric object that specifies the initial conditions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class E\+L\+E\+M\+E\+NT$>$\newline
+class Disk\+Oscillation\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$}
+
+Problem class to simulate small-\/amplitude oscillations of a circular disk. 
+
+Definition at line 418 of file disk\+\_\+oscillation.\+cc.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classDiskOscillationProblem_a5ce89d95d655d8c5b579171c8e9a54b9}\label{classDiskOscillationProblem_a5ce89d95d655d8c5b579171c8e9a54b9}} 
+\index{Disk\+Oscillation\+Problem@{Disk\+Oscillation\+Problem}!Disk\+Oscillation\+Problem@{Disk\+Oscillation\+Problem}}
+\index{Disk\+Oscillation\+Problem@{Disk\+Oscillation\+Problem}!Disk\+Oscillation\+Problem@{Disk\+Oscillation\+Problem}}
+\subsubsection{\texorpdfstring{Disk\+Oscillation\+Problem()}{DiskOscillationProblem()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classDiskOscillationProblem}{Disk\+Oscillation\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::\hyperlink{classDiskOscillationProblem}{Disk\+Oscillation\+Problem} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+
+
+Definition at line 466 of file disk\+\_\+oscillation.\+cc.
+
+
+
+References Global\+\_\+\+Physical\+\_\+\+Variables\+::\+Constitutive\+\_\+law\+\_\+pt, and Global\+\_\+\+Physical\+\_\+\+Variables\+::\+Lambda\+\_\+sq.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classDiskOscillationProblem_a84fdc4311e8cc1fa5f80dc5568c88413}\label{classDiskOscillationProblem_a84fdc4311e8cc1fa5f80dc5568c88413}} 
+\index{Disk\+Oscillation\+Problem@{Disk\+Oscillation\+Problem}!actions\+\_\+after\+\_\+newton\+\_\+solve@{actions\+\_\+after\+\_\+newton\+\_\+solve}}
+\index{actions\+\_\+after\+\_\+newton\+\_\+solve@{actions\+\_\+after\+\_\+newton\+\_\+solve}!Disk\+Oscillation\+Problem@{Disk\+Oscillation\+Problem}}
+\subsubsection{\texorpdfstring{actions\+\_\+after\+\_\+newton\+\_\+solve()}{actions\_after\_newton\_solve()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+void \hyperlink{classDiskOscillationProblem}{Disk\+Oscillation\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::actions\+\_\+after\+\_\+newton\+\_\+solve (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Update function (empty) 
+
+
+
+Definition at line 427 of file disk\+\_\+oscillation.\+cc.
+
+\mbox{\Hypertarget{classDiskOscillationProblem_afea297af1844657099dec3d717fcccc5}\label{classDiskOscillationProblem_afea297af1844657099dec3d717fcccc5}} 
+\index{Disk\+Oscillation\+Problem@{Disk\+Oscillation\+Problem}!actions\+\_\+before\+\_\+newton\+\_\+solve@{actions\+\_\+before\+\_\+newton\+\_\+solve}}
+\index{actions\+\_\+before\+\_\+newton\+\_\+solve@{actions\+\_\+before\+\_\+newton\+\_\+solve}!Disk\+Oscillation\+Problem@{Disk\+Oscillation\+Problem}}
+\subsubsection{\texorpdfstring{actions\+\_\+before\+\_\+newton\+\_\+solve()}{actions\_before\_newton\_solve()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+void \hyperlink{classDiskOscillationProblem}{Disk\+Oscillation\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::actions\+\_\+before\+\_\+newton\+\_\+solve (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Update function (empty) 
+
+
+
+Definition at line 430 of file disk\+\_\+oscillation.\+cc.
+
+\mbox{\Hypertarget{classDiskOscillationProblem_adf6e2bf1843d5f5e3fa7b2fc5fb129a8}\label{classDiskOscillationProblem_adf6e2bf1843d5f5e3fa7b2fc5fb129a8}} 
+\index{Disk\+Oscillation\+Problem@{Disk\+Oscillation\+Problem}!doc\+\_\+solution@{doc\+\_\+solution}}
+\index{doc\+\_\+solution@{doc\+\_\+solution}!Disk\+Oscillation\+Problem@{Disk\+Oscillation\+Problem}}
+\subsubsection{\texorpdfstring{doc\+\_\+solution()}{doc\_solution()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classDiskOscillationProblem}{Disk\+Oscillation\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::doc\+\_\+solution (\begin{DoxyParamCaption}\item[{Doc\+Info \&}]{doc\+\_\+info }\end{DoxyParamCaption})}
+
+
+
+Doc the solution. 
+
+
+
+Definition at line 558 of file disk\+\_\+oscillation.\+cc.
+
+\mbox{\Hypertarget{classDiskOscillationProblem_a9de851f400e5c161c5abf8efb2f2b082}\label{classDiskOscillationProblem_a9de851f400e5c161c5abf8efb2f2b082}} 
+\index{Disk\+Oscillation\+Problem@{Disk\+Oscillation\+Problem}!mesh\+\_\+pt@{mesh\+\_\+pt}}
+\index{mesh\+\_\+pt@{mesh\+\_\+pt}!Disk\+Oscillation\+Problem@{Disk\+Oscillation\+Problem}}
+\subsubsection{\texorpdfstring{mesh\+\_\+pt()}{mesh\_pt()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+\hyperlink{classElasticRefineableQuarterCircleSectorMesh}{Elastic\+Refineable\+Quarter\+Circle\+Sector\+Mesh}$<$E\+L\+E\+M\+E\+NT$>$$\ast$ \hyperlink{classDiskOscillationProblem}{Disk\+Oscillation\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::mesh\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Access function for the solid mesh. 
+
+
+
+Definition at line 433 of file disk\+\_\+oscillation.\+cc.
+
+\mbox{\Hypertarget{classDiskOscillationProblem_ac0f7b36ffffa73ee49bc95bd961835dd}\label{classDiskOscillationProblem_ac0f7b36ffffa73ee49bc95bd961835dd}} 
+\index{Disk\+Oscillation\+Problem@{Disk\+Oscillation\+Problem}!run@{run}}
+\index{run@{run}!Disk\+Oscillation\+Problem@{Disk\+Oscillation\+Problem}}
+\subsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classDiskOscillationProblem}{Disk\+Oscillation\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::run (\begin{DoxyParamCaption}\item[{const unsigned \&}]{nstep }\end{DoxyParamCaption})}
+
+
+
+Run the problem\+: Pass number of timesteps to be performed. 
+
+
+
+Definition at line 757 of file disk\+\_\+oscillation.\+cc.
+
+
+
+References Axisym\+Oscillating\+Disk\+::\+Axisym\+Oscillating\+Disk(), Global\+\_\+\+Physical\+\_\+\+Variables\+::multiplier(), and Global\+\_\+\+Physical\+\_\+\+Variables\+::\+Nu.
+
+
+
+Referenced by main().
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classDiskOscillationProblem_a338517a04848bb75252751df32879e40}\label{classDiskOscillationProblem_a338517a04848bb75252751df32879e40}} 
+\index{Disk\+Oscillation\+Problem@{Disk\+Oscillation\+Problem}!I\+C\+\_\+geom\+\_\+object\+\_\+pt@{I\+C\+\_\+geom\+\_\+object\+\_\+pt}}
+\index{I\+C\+\_\+geom\+\_\+object\+\_\+pt@{I\+C\+\_\+geom\+\_\+object\+\_\+pt}!Disk\+Oscillation\+Problem@{Disk\+Oscillation\+Problem}}
+\subsubsection{\texorpdfstring{I\+C\+\_\+geom\+\_\+object\+\_\+pt}{IC\_geom\_object\_pt}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+\hyperlink{classAxisymOscillatingDisk}{Axisym\+Oscillating\+Disk}$\ast$ \hyperlink{classDiskOscillationProblem}{Disk\+Oscillation\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::I\+C\+\_\+geom\+\_\+object\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Geometric object that specifies the initial conditions. 
+
+
+
+Definition at line 454 of file disk\+\_\+oscillation.\+cc.
+
+\mbox{\Hypertarget{classDiskOscillationProblem_a45a4b574c10c6416b3b6be950713f505}\label{classDiskOscillationProblem_a45a4b574c10c6416b3b6be950713f505}} 
+\index{Disk\+Oscillation\+Problem@{Disk\+Oscillation\+Problem}!Trace\+\_\+file@{Trace\+\_\+file}}
+\index{Trace\+\_\+file@{Trace\+\_\+file}!Disk\+Oscillation\+Problem@{Disk\+Oscillation\+Problem}}
+\subsubsection{\texorpdfstring{Trace\+\_\+file}{Trace\_file}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+ofstream \hyperlink{classDiskOscillationProblem}{Disk\+Oscillation\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::Trace\+\_\+file\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Trace file. 
+
+
+
+Definition at line 448 of file disk\+\_\+oscillation.\+cc.
+
+\mbox{\Hypertarget{classDiskOscillationProblem_a141a79f41b33b19a6fca57793836e4da}\label{classDiskOscillationProblem_a141a79f41b33b19a6fca57793836e4da}} 
+\index{Disk\+Oscillation\+Problem@{Disk\+Oscillation\+Problem}!Trace\+\_\+node\+\_\+pt@{Trace\+\_\+node\+\_\+pt}}
+\index{Trace\+\_\+node\+\_\+pt@{Trace\+\_\+node\+\_\+pt}!Disk\+Oscillation\+Problem@{Disk\+Oscillation\+Problem}}
+\subsubsection{\texorpdfstring{Trace\+\_\+node\+\_\+pt}{Trace\_node\_pt}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+Vector$<$Node$\ast$$>$ \hyperlink{classDiskOscillationProblem}{Disk\+Oscillation\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::Trace\+\_\+node\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Vector of pointers to nodes whose position we\textquotesingle{}re tracing. 
+
+
+
+Definition at line 451 of file disk\+\_\+oscillation.\+cc.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{disk__oscillation_8cc}{disk\+\_\+oscillation.\+cc}\end{DoxyCompactItemize}

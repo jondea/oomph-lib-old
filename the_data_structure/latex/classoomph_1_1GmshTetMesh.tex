@@ -1,0 +1,140 @@
+\hypertarget{classoomph_1_1GmshTetMesh}{}\section{oomph\+:\+:Gmsh\+Tet\+Mesh$<$ E\+L\+E\+M\+E\+NT $>$ Class Template Reference}
+\label{classoomph_1_1GmshTetMesh}\index{oomph\+::\+Gmsh\+Tet\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$@{oomph\+::\+Gmsh\+Tet\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$}}
+
+
+Forward declaration.  
+
+
+
+
+{\ttfamily \#include $<$gmsh\+\_\+tet\+\_\+mesh.\+template.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Gmsh\+Tet\+Mesh$<$ E\+L\+E\+M\+E\+NT $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.943662cm]{classoomph_1_1GmshTetMesh}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1GmshTetMesh_a3f9c7d2c2a617f4b497778ff44109dbc}{Gmsh\+Tet\+Mesh} (\hyperlink{classoomph_1_1GmshParameters}{Gmsh\+Parameters} $\ast$gmsh\+\_\+parameters\+\_\+pt, \hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper} $\ast$time\+\_\+stepper\+\_\+pt=\&\hyperlink{classoomph_1_1Mesh_a12243d0fee2b1fcee729ee5a4777ea10}{Mesh\+::\+Default\+\_\+\+Time\+Stepper})
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1GmshTetMesh_a8b93f46d9a6a442f6d5e9b8e86f33882}{Gmsh\+Tet\+Mesh} (\hyperlink{classoomph_1_1GmshParameters}{Gmsh\+Parameters} $\ast$gmsh\+\_\+parameters\+\_\+pt, const bool \&use\+\_\+mesh\+\_\+grading\+\_\+from\+\_\+file, \hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper} $\ast$time\+\_\+stepper\+\_\+pt=\&\hyperlink{classoomph_1_1Mesh_a12243d0fee2b1fcee729ee5a4777ea10}{Mesh\+::\+Default\+\_\+\+Time\+Stepper})
+\begin{DoxyCompactList}\small\item\em Constructor. If boolean is set to true, the target element sizes are read from file (used during adaptation; otherwise uniform target size is used). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1GmshParameters}{Gmsh\+Parameters} $\ast$ \hyperlink{classoomph_1_1GmshTetMesh_a6d9878df9dfca45b4883909ed1e78536}{Gmsh\+\_\+parameters\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Parameters. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classoomph_1_1GmshTetMesh_aaec22ccd211f81dd440e9618d6667718}{build\+\_\+it} (\hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper} $\ast$time\+\_\+stepper\+\_\+pt, const bool \&use\+\_\+mesh\+\_\+grading\+\_\+from\+\_\+file)
+\item 
+void \hyperlink{classoomph_1_1GmshTetMesh_a80132087ae6dd00c7631823a8453e078}{build\+\_\+from\+\_\+scaffold} (\hyperlink{classoomph_1_1GmshTetScaffoldMesh}{Gmsh\+Tet\+Scaffold\+Mesh} $\ast$tmp\+\_\+scaffold\+\_\+mesh\+\_\+pt, \hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper} $\ast$time\+\_\+stepper\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Build unstructured tet gmesh mesh based on output from scaffold. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class E\+L\+E\+M\+E\+NT$>$\newline
+class oomph\+::\+Gmsh\+Tet\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$}
+
+Forward declaration. 
+
+Definition at line 371 of file gmsh\+\_\+tet\+\_\+mesh.\+template.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1GmshTetMesh_a3f9c7d2c2a617f4b497778ff44109dbc}\label{classoomph_1_1GmshTetMesh_a3f9c7d2c2a617f4b497778ff44109dbc}} 
+\index{oomph\+::\+Gmsh\+Tet\+Mesh@{oomph\+::\+Gmsh\+Tet\+Mesh}!Gmsh\+Tet\+Mesh@{Gmsh\+Tet\+Mesh}}
+\index{Gmsh\+Tet\+Mesh@{Gmsh\+Tet\+Mesh}!oomph\+::\+Gmsh\+Tet\+Mesh@{oomph\+::\+Gmsh\+Tet\+Mesh}}
+\subsubsection{\texorpdfstring{Gmsh\+Tet\+Mesh()}{GmshTetMesh()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+\hyperlink{classoomph_1_1GmshTetMesh}{oomph\+::\+Gmsh\+Tet\+Mesh}$<$ E\+L\+E\+M\+E\+NT $>$\+::\hyperlink{classoomph_1_1GmshTetMesh}{Gmsh\+Tet\+Mesh} (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1GmshParameters}{Gmsh\+Parameters} $\ast$}]{gmsh\+\_\+parameters\+\_\+pt,  }\item[{\hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper} $\ast$}]{time\+\_\+stepper\+\_\+pt = {\ttfamily \&\hyperlink{classoomph_1_1Mesh_a12243d0fee2b1fcee729ee5a4777ea10}{Mesh\+::\+Default\+\_\+\+Time\+Stepper}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor. 
+
+
+
+Definition at line 1700 of file gmsh\+\_\+tet\+\_\+mesh.\+template.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1GmshTetMesh_a8b93f46d9a6a442f6d5e9b8e86f33882}\label{classoomph_1_1GmshTetMesh_a8b93f46d9a6a442f6d5e9b8e86f33882}} 
+\index{oomph\+::\+Gmsh\+Tet\+Mesh@{oomph\+::\+Gmsh\+Tet\+Mesh}!Gmsh\+Tet\+Mesh@{Gmsh\+Tet\+Mesh}}
+\index{Gmsh\+Tet\+Mesh@{Gmsh\+Tet\+Mesh}!oomph\+::\+Gmsh\+Tet\+Mesh@{oomph\+::\+Gmsh\+Tet\+Mesh}}
+\subsubsection{\texorpdfstring{Gmsh\+Tet\+Mesh()}{GmshTetMesh()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+\hyperlink{classoomph_1_1GmshTetMesh}{oomph\+::\+Gmsh\+Tet\+Mesh}$<$ E\+L\+E\+M\+E\+NT $>$\+::\hyperlink{classoomph_1_1GmshTetMesh}{Gmsh\+Tet\+Mesh} (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1GmshParameters}{Gmsh\+Parameters} $\ast$}]{gmsh\+\_\+parameters\+\_\+pt,  }\item[{const bool \&}]{use\+\_\+mesh\+\_\+grading\+\_\+from\+\_\+file,  }\item[{\hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper} $\ast$}]{time\+\_\+stepper\+\_\+pt = {\ttfamily \&\hyperlink{classoomph_1_1Mesh_a12243d0fee2b1fcee729ee5a4777ea10}{Mesh\+::\+Default\+\_\+\+Time\+Stepper}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor. If boolean is set to true, the target element sizes are read from file (used during adaptation; otherwise uniform target size is used). 
+
+
+
+Definition at line 1711 of file gmsh\+\_\+tet\+\_\+mesh.\+template.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1GmshTetMesh_a80132087ae6dd00c7631823a8453e078}\label{classoomph_1_1GmshTetMesh_a80132087ae6dd00c7631823a8453e078}} 
+\index{oomph\+::\+Gmsh\+Tet\+Mesh@{oomph\+::\+Gmsh\+Tet\+Mesh}!build\+\_\+from\+\_\+scaffold@{build\+\_\+from\+\_\+scaffold}}
+\index{build\+\_\+from\+\_\+scaffold@{build\+\_\+from\+\_\+scaffold}!oomph\+::\+Gmsh\+Tet\+Mesh@{oomph\+::\+Gmsh\+Tet\+Mesh}}
+\subsubsection{\texorpdfstring{build\+\_\+from\+\_\+scaffold()}{build\_from\_scaffold()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+void \hyperlink{classoomph_1_1GmshTetMesh}{oomph\+::\+Gmsh\+Tet\+Mesh}$<$ E\+L\+E\+M\+E\+NT $>$\+::build\+\_\+from\+\_\+scaffold (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1GmshTetScaffoldMesh}{Gmsh\+Tet\+Scaffold\+Mesh} $\ast$}]{tmp\+\_\+scaffold\+\_\+mesh\+\_\+pt,  }\item[{\hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper} $\ast$}]{time\+\_\+stepper\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Build unstructured tet gmesh mesh based on output from scaffold. 
+
+
+
+Definition at line 1833 of file gmsh\+\_\+tet\+\_\+mesh.\+template.\+h.
+
+
+
+References oomph\+::\+Finite\+Element\+::construct\+\_\+boundary\+\_\+node(), oomph\+::\+Finite\+Element\+::construct\+\_\+node(), e, oomph\+::\+Mesh\+::finite\+\_\+element\+\_\+pt(), oomph\+::\+Node\+::get\+\_\+boundaries\+\_\+pt(), i, oomph\+::\+Finite\+Element\+::interpolated\+\_\+x(), oomph\+::\+Finite\+Element\+::local\+\_\+coordinate\+\_\+of\+\_\+node(), oomph\+::\+Mesh\+::nboundary(), oomph\+::\+Mesh\+::nelement(), oomph\+::\+Mesh\+::nnode(), oomph\+::\+Finite\+Element\+::nnode(), oomph\+::\+Finite\+Element\+::node\+\_\+pt(), oomph\+::\+Tet\+Mesh\+Base\+::\+Region\+\_\+attribute, oomph\+::\+Tet\+Mesh\+Base\+::\+Region\+\_\+element\+\_\+pt, s, and oomph\+::\+Node\+::x().
+
+\mbox{\Hypertarget{classoomph_1_1GmshTetMesh_aaec22ccd211f81dd440e9618d6667718}\label{classoomph_1_1GmshTetMesh_aaec22ccd211f81dd440e9618d6667718}} 
+\index{oomph\+::\+Gmsh\+Tet\+Mesh@{oomph\+::\+Gmsh\+Tet\+Mesh}!build\+\_\+it@{build\+\_\+it}}
+\index{build\+\_\+it@{build\+\_\+it}!oomph\+::\+Gmsh\+Tet\+Mesh@{oomph\+::\+Gmsh\+Tet\+Mesh}}
+\subsubsection{\texorpdfstring{build\+\_\+it()}{build\_it()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+void \hyperlink{classoomph_1_1GmshTetMesh}{oomph\+::\+Gmsh\+Tet\+Mesh}$<$ E\+L\+E\+M\+E\+NT $>$\+::build\+\_\+it (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper} $\ast$}]{time\+\_\+stepper\+\_\+pt,  }\item[{const bool \&}]{use\+\_\+mesh\+\_\+grading\+\_\+from\+\_\+file }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Definition at line 1723 of file gmsh\+\_\+tet\+\_\+mesh.\+template.\+h.
+
+
+
+References oomph\+::\+Tet\+Mesh\+Faceted\+Surface\+::facet\+\_\+pt(), i, oomph\+::\+Gmsh\+Parameters\+::internal\+\_\+surface\+\_\+pt(), oomph\+::\+Gmsh\+Parameters\+::\+Internal\+\_\+surface\+\_\+pt, oomph\+::\+Tet\+Mesh\+Faceted\+Surface\+::nfacet(), oomph\+::\+Tet\+Mesh\+Faceted\+Surface\+::one\+\_\+based\+\_\+facet\+\_\+boundary\+\_\+id(), oomph\+::\+Gmsh\+Parameters\+::outer\+\_\+boundary\+\_\+pt(), and oomph\+::\+Gmsh\+Parameters\+::\+Outer\+\_\+boundary\+\_\+pt.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1GmshTetMesh_a6d9878df9dfca45b4883909ed1e78536}\label{classoomph_1_1GmshTetMesh_a6d9878df9dfca45b4883909ed1e78536}} 
+\index{oomph\+::\+Gmsh\+Tet\+Mesh@{oomph\+::\+Gmsh\+Tet\+Mesh}!Gmsh\+\_\+parameters\+\_\+pt@{Gmsh\+\_\+parameters\+\_\+pt}}
+\index{Gmsh\+\_\+parameters\+\_\+pt@{Gmsh\+\_\+parameters\+\_\+pt}!oomph\+::\+Gmsh\+Tet\+Mesh@{oomph\+::\+Gmsh\+Tet\+Mesh}}
+\subsubsection{\texorpdfstring{Gmsh\+\_\+parameters\+\_\+pt}{Gmsh\_parameters\_pt}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+\hyperlink{classoomph_1_1GmshParameters}{Gmsh\+Parameters}$\ast$ \hyperlink{classoomph_1_1GmshTetMesh}{oomph\+::\+Gmsh\+Tet\+Mesh}$<$ E\+L\+E\+M\+E\+NT $>$\+::Gmsh\+\_\+parameters\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Parameters. 
+
+
+
+Definition at line 1827 of file gmsh\+\_\+tet\+\_\+mesh.\+template.\+h.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{gmsh__tet__mesh_8template_8h}{gmsh\+\_\+tet\+\_\+mesh.\+template.\+h}\end{DoxyCompactItemize}

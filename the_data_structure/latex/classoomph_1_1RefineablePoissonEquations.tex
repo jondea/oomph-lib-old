@@ -1,0 +1,320 @@
+\hypertarget{classoomph_1_1RefineablePoissonEquations}{}\section{oomph\+:\+:Refineable\+Poisson\+Equations$<$ D\+IM $>$ Class Template Reference}
+\label{classoomph_1_1RefineablePoissonEquations}\index{oomph\+::\+Refineable\+Poisson\+Equations$<$ D\+I\+M $>$@{oomph\+::\+Refineable\+Poisson\+Equations$<$ D\+I\+M $>$}}
+
+
+{\ttfamily \#include $<$refineable\+\_\+poisson\+\_\+elements.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Refineable\+Poisson\+Equations$<$ D\+IM $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.190476cm]{classoomph_1_1RefineablePoissonEquations}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1RefineablePoissonEquations_acf636e8df990dace7887f67b04142391}{Refineable\+Poisson\+Equations} ()
+\begin{DoxyCompactList}\small\item\em Constructor, simply call other constructors. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1RefineablePoissonEquations_aa21dedcb00b52e0b564e275748baf7ed}{Refineable\+Poisson\+Equations} (const \hyperlink{classoomph_1_1RefineablePoissonEquations}{Refineable\+Poisson\+Equations}$<$ D\+IM $>$ \&dummy)
+\begin{DoxyCompactList}\small\item\em Broken copy constructor. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1RefineablePoissonEquations_abacc091fa206b7a94fea160835ea3a62}{operator=} (const \hyperlink{classoomph_1_1RefineablePoissonEquations}{Refineable\+Poisson\+Equations}$<$ D\+IM $>$ \&)
+\begin{DoxyCompactList}\small\item\em Broken assignment operator. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1RefineablePoissonEquations_ab778ee621a1e0fc89f10533134a6f825}{num\+\_\+\+Z2\+\_\+flux\+\_\+terms} ()
+\begin{DoxyCompactList}\small\item\em Number of \textquotesingle{}flux\textquotesingle{} terms for Z2 error estimation. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1RefineablePoissonEquations_a8050a73d9e6450e2b861b3d840f5f6ec}{get\+\_\+\+Z2\+\_\+flux} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&flux)
+\begin{DoxyCompactList}\small\item\em Get \textquotesingle{}flux\textquotesingle{} for Z2 error recovery\+: Standard flux.\+from Poisson equations. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1RefineablePoissonEquations_aa1330f79f5a9d44aef1a6984671fe160}{compute\+\_\+exact\+\_\+\+Z2\+\_\+error} (std\+::ostream \&outfile, \hyperlink{classoomph_1_1FiniteElement_a690fd33af26cc3e84f39bba6d5a85202}{Finite\+Element\+::\+Steady\+Exact\+Solution\+Fct\+Pt} exact\+\_\+flux\+\_\+pt, double \&error, double \&norm)
+\begin{DoxyCompactList}\small\item\em Get error against and norm of exact flux. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1RefineablePoissonEquations_a5e0651853bb43a4636168562a9ce854c}{get\+\_\+interpolated\+\_\+values} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&values)
+\begin{DoxyCompactList}\small\item\em Get the function value u in \hyperlink{classoomph_1_1Vector}{Vector}. Note\+: Given the generality of the interface (this function is usually called from black-\/box documentation or interpolation routines), the values \hyperlink{classoomph_1_1Vector}{Vector} sets its own size in here. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1RefineablePoissonEquations_affb65cdad97b93f4eff2e2f804efac02}{get\+\_\+interpolated\+\_\+values} (const unsigned \&\hyperlink{cfortran_8h_af6f0bd3dc13317f895c91323c25c2b8f}{t}, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&values)
+\begin{DoxyCompactList}\small\item\em Get the function value u in \hyperlink{classoomph_1_1Vector}{Vector}. Note\+: Given the generality of the interface (this function is usually called from black-\/box documentation or interpolation routines), the values \hyperlink{classoomph_1_1Vector}{Vector} sets its own size in here. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1RefineablePoissonEquations_adb5a117ca7556e66af8f3eeaf0bbee7a}{further\+\_\+build} ()
+\begin{DoxyCompactList}\small\item\em Further build\+: Copy source function pointer from father element. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classoomph_1_1RefineablePoissonEquations_a1cea3422561cd3016aa4cc04c0e5be56}{fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+poisson} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&residuals, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&jacobian, const unsigned \&flag)
+\begin{DoxyCompactList}\small\item\em Add element\textquotesingle{}s contribution to elemental residual vector and/or Jacobian matrix flag=1\+: compute both flag=0\+: compute only residual vector. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1RefineablePoissonEquations_a1cb1cf52a2332954f69199c7e0c219b4}{get\+\_\+dresidual\+\_\+dnodal\+\_\+coordinates} (\hyperlink{classoomph_1_1RankThreeTensor}{Rank\+Three\+Tensor}$<$ double $>$ \&dresidual\+\_\+dnodal\+\_\+coordinates)
+\begin{DoxyCompactList}\small\item\em Compute derivatives of elemental residual vector with respect to nodal coordinates. Overwrites default implementation in \hyperlink{classoomph_1_1FiniteElement}{Finite\+Element} base class. dresidual\+\_\+dnodal\+\_\+coordinates(l,i,j) = d res(l) / d\+X\+\_\+\{ij\}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$unsigned D\+IM$>$\newline
+class oomph\+::\+Refineable\+Poisson\+Equations$<$ D\+I\+M $>$}
+
+Refineable version of Poisson equations 
+
+Definition at line 62 of file refineable\+\_\+poisson\+\_\+elements.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1RefineablePoissonEquations_acf636e8df990dace7887f67b04142391}\label{classoomph_1_1RefineablePoissonEquations_acf636e8df990dace7887f67b04142391}} 
+\index{oomph\+::\+Refineable\+Poisson\+Equations@{oomph\+::\+Refineable\+Poisson\+Equations}!Refineable\+Poisson\+Equations@{Refineable\+Poisson\+Equations}}
+\index{Refineable\+Poisson\+Equations@{Refineable\+Poisson\+Equations}!oomph\+::\+Refineable\+Poisson\+Equations@{oomph\+::\+Refineable\+Poisson\+Equations}}
+\subsubsection{\texorpdfstring{Refineable\+Poisson\+Equations()}{RefineablePoissonEquations()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+\hyperlink{classoomph_1_1RefineablePoissonEquations}{oomph\+::\+Refineable\+Poisson\+Equations}$<$ D\+IM $>$\+::\hyperlink{classoomph_1_1RefineablePoissonEquations}{Refineable\+Poisson\+Equations} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor, simply call other constructors. 
+
+
+
+Definition at line 69 of file refineable\+\_\+poisson\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1RefineablePoissonEquations_aa21dedcb00b52e0b564e275748baf7ed}\label{classoomph_1_1RefineablePoissonEquations_aa21dedcb00b52e0b564e275748baf7ed}} 
+\index{oomph\+::\+Refineable\+Poisson\+Equations@{oomph\+::\+Refineable\+Poisson\+Equations}!Refineable\+Poisson\+Equations@{Refineable\+Poisson\+Equations}}
+\index{Refineable\+Poisson\+Equations@{Refineable\+Poisson\+Equations}!oomph\+::\+Refineable\+Poisson\+Equations@{oomph\+::\+Refineable\+Poisson\+Equations}}
+\subsubsection{\texorpdfstring{Refineable\+Poisson\+Equations()}{RefineablePoissonEquations()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+\hyperlink{classoomph_1_1RefineablePoissonEquations}{oomph\+::\+Refineable\+Poisson\+Equations}$<$ D\+IM $>$\+::\hyperlink{classoomph_1_1RefineablePoissonEquations}{Refineable\+Poisson\+Equations} (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1RefineablePoissonEquations}{Refineable\+Poisson\+Equations}$<$ D\+IM $>$ \&}]{dummy }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Broken copy constructor. 
+
+
+
+Definition at line 74 of file refineable\+\_\+poisson\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Broken\+Copy\+::broken\+\_\+copy().
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1RefineablePoissonEquations_aa1330f79f5a9d44aef1a6984671fe160}\label{classoomph_1_1RefineablePoissonEquations_aa1330f79f5a9d44aef1a6984671fe160}} 
+\index{oomph\+::\+Refineable\+Poisson\+Equations@{oomph\+::\+Refineable\+Poisson\+Equations}!compute\+\_\+exact\+\_\+\+Z2\+\_\+error@{compute\+\_\+exact\+\_\+\+Z2\+\_\+error}}
+\index{compute\+\_\+exact\+\_\+\+Z2\+\_\+error@{compute\+\_\+exact\+\_\+\+Z2\+\_\+error}!oomph\+::\+Refineable\+Poisson\+Equations@{oomph\+::\+Refineable\+Poisson\+Equations}}
+\subsubsection{\texorpdfstring{compute\+\_\+exact\+\_\+\+Z2\+\_\+error()}{compute\_exact\_Z2\_error()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1RefineablePoissonEquations}{oomph\+::\+Refineable\+Poisson\+Equations}$<$ D\+IM $>$\+::compute\+\_\+exact\+\_\+\+Z2\+\_\+error (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile,  }\item[{\hyperlink{classoomph_1_1FiniteElement_a690fd33af26cc3e84f39bba6d5a85202}{Finite\+Element\+::\+Steady\+Exact\+Solution\+Fct\+Pt}}]{exact\+\_\+flux\+\_\+pt,  }\item[{double \&}]{error,  }\item[{double \&}]{norm }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get error against and norm of exact flux. 
+
+Validate against exact flux. Flux is provided via function pointer. Plot error at a given number of plot points. 
+
+Reimplemented from \hyperlink{classoomph_1_1ElementWithZ2ErrorEstimator_a8632b99123982c3dd8b26a5eeea6dc20}{oomph\+::\+Element\+With\+Z2\+Error\+Estimator}.
+
+
+
+Definition at line 43 of file refineable\+\_\+poisson\+\_\+elements.\+cc.
+
+
+
+References oomph\+::\+Refineable\+Poisson\+Equations$<$ D\+I\+M $>$\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+poisson(), i, s, and oomph\+::\+Quad\+Tree\+Names\+::W.
+
+
+
+Referenced by oomph\+::\+Refineable\+Poisson\+Equations$<$ D\+I\+M $>$\+::get\+\_\+\+Z2\+\_\+flux().
+
+\mbox{\Hypertarget{classoomph_1_1RefineablePoissonEquations_a1cea3422561cd3016aa4cc04c0e5be56}\label{classoomph_1_1RefineablePoissonEquations_a1cea3422561cd3016aa4cc04c0e5be56}} 
+\index{oomph\+::\+Refineable\+Poisson\+Equations@{oomph\+::\+Refineable\+Poisson\+Equations}!fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+poisson@{fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+poisson}}
+\index{fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+poisson@{fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+poisson}!oomph\+::\+Refineable\+Poisson\+Equations@{oomph\+::\+Refineable\+Poisson\+Equations}}
+\subsubsection{\texorpdfstring{fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+poisson()}{fill\_in\_generic\_residual\_contribution\_poisson()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1RefineablePoissonEquations}{oomph\+::\+Refineable\+Poisson\+Equations}$<$ D\+IM $>$\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+poisson (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{residuals,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{jacobian,  }\item[{const unsigned \&}]{flag }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Add element\textquotesingle{}s contribution to elemental residual vector and/or Jacobian matrix flag=1\+: compute both flag=0\+: compute only residual vector. 
+
+Add element\textquotesingle{}s contribution to the elemental residual vector and/or Jacobian matrix. flag=1\+: compute both flag=0\+: compute only residual vector 
+
+Reimplemented from \hyperlink{classoomph_1_1PoissonEquations_a02c40bfa9b59fa7935677999623da633}{oomph\+::\+Poisson\+Equations$<$ D\+I\+M $>$}.
+
+
+
+Definition at line 147 of file refineable\+\_\+poisson\+\_\+elements.\+cc.
+
+
+
+References i, oomph\+::\+Hang\+Info\+::master\+\_\+node\+\_\+pt(), oomph\+::\+Hang\+Info\+::master\+\_\+weight(), oomph\+::\+Hang\+Info\+::nmaster(), and oomph\+::\+Quad\+Tree\+Names\+::W.
+
+
+
+Referenced by oomph\+::\+Refineable\+Poisson\+Equations$<$ D\+I\+M $>$\+::compute\+\_\+exact\+\_\+\+Z2\+\_\+error(), and oomph\+::\+Refineable\+Poisson\+Equations$<$ D\+I\+M $>$\+::further\+\_\+build().
+
+\mbox{\Hypertarget{classoomph_1_1RefineablePoissonEquations_adb5a117ca7556e66af8f3eeaf0bbee7a}\label{classoomph_1_1RefineablePoissonEquations_adb5a117ca7556e66af8f3eeaf0bbee7a}} 
+\index{oomph\+::\+Refineable\+Poisson\+Equations@{oomph\+::\+Refineable\+Poisson\+Equations}!further\+\_\+build@{further\+\_\+build}}
+\index{further\+\_\+build@{further\+\_\+build}!oomph\+::\+Refineable\+Poisson\+Equations@{oomph\+::\+Refineable\+Poisson\+Equations}}
+\subsubsection{\texorpdfstring{further\+\_\+build()}{further\_build()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1RefineablePoissonEquations}{oomph\+::\+Refineable\+Poisson\+Equations}$<$ D\+IM $>$\+::further\+\_\+build (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Further build\+: Copy source function pointer from father element. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1RefineableElement_a26628ce36dfad028686adeb4694a9ef3}{oomph\+::\+Refineable\+Element}.
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1PRefineableQPoissonElement_a953633adeb9bc3875113d3672c7d525f}{oomph\+::\+P\+Refineable\+Q\+Poisson\+Element$<$ D\+I\+M $>$}.
+
+
+
+Definition at line 157 of file refineable\+\_\+poisson\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Refineable\+Element\+::father\+\_\+element\+\_\+pt(), oomph\+::\+Refineable\+Poisson\+Equations$<$ D\+I\+M $>$\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+poisson(), oomph\+::\+Refineable\+Poisson\+Equations$<$ D\+I\+M $>$\+::get\+\_\+dresidual\+\_\+dnodal\+\_\+coordinates(), oomph\+::\+Poisson\+Equations$<$ D\+I\+M $>$\+::source\+\_\+fct\+\_\+pt(), and oomph\+::\+Poisson\+Equations$<$ D\+I\+M $>$\+::\+Source\+\_\+fct\+\_\+pt.
+
+
+
+Referenced by oomph\+::\+P\+Refineable\+Q\+Poisson\+Element$<$ D\+I\+M $>$\+::further\+\_\+build(), and oomph\+::\+P\+Refineable\+Q\+Poisson\+Element$<$ D\+I\+M $>$\+::operator=().
+
+\mbox{\Hypertarget{classoomph_1_1RefineablePoissonEquations_a1cb1cf52a2332954f69199c7e0c219b4}\label{classoomph_1_1RefineablePoissonEquations_a1cb1cf52a2332954f69199c7e0c219b4}} 
+\index{oomph\+::\+Refineable\+Poisson\+Equations@{oomph\+::\+Refineable\+Poisson\+Equations}!get\+\_\+dresidual\+\_\+dnodal\+\_\+coordinates@{get\+\_\+dresidual\+\_\+dnodal\+\_\+coordinates}}
+\index{get\+\_\+dresidual\+\_\+dnodal\+\_\+coordinates@{get\+\_\+dresidual\+\_\+dnodal\+\_\+coordinates}!oomph\+::\+Refineable\+Poisson\+Equations@{oomph\+::\+Refineable\+Poisson\+Equations}}
+\subsubsection{\texorpdfstring{get\+\_\+dresidual\+\_\+dnodal\+\_\+coordinates()}{get\_dresidual\_dnodal\_coordinates()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1RefineablePoissonEquations}{oomph\+::\+Refineable\+Poisson\+Equations}$<$ D\+IM $>$\+::get\+\_\+dresidual\+\_\+dnodal\+\_\+coordinates (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1RankThreeTensor}{Rank\+Three\+Tensor}$<$ double $>$ \&}]{dresidual\+\_\+dnodal\+\_\+coordinates }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Compute derivatives of elemental residual vector with respect to nodal coordinates. Overwrites default implementation in \hyperlink{classoomph_1_1FiniteElement}{Finite\+Element} base class. dresidual\+\_\+dnodal\+\_\+coordinates(l,i,j) = d res(l) / d\+X\+\_\+\{ij\}. 
+
+Compute derivatives of elemental residual vector with respect to nodal coordinates (fully analytical). dresidual\+\_\+dnodal\+\_\+coordinates(l,i,j) = d res(l) / d\+X\+\_\+\{ij\} Overloads the F\+D-\/based version in the FE base class. 
+
+Reimplemented from \hyperlink{classoomph_1_1RefineableElement_a83d4f26d6f427a6c9001c65c4263c622}{oomph\+::\+Refineable\+Element}.
+
+
+
+Definition at line 353 of file refineable\+\_\+poisson\+\_\+elements.\+cc.
+
+
+
+References i, oomph\+::\+Hang\+Info\+::master\+\_\+node\+\_\+pt(), oomph\+::\+Hang\+Info\+::master\+\_\+weight(), and oomph\+::\+Hang\+Info\+::nmaster().
+
+
+
+Referenced by oomph\+::\+Refineable\+Poisson\+Equations$<$ D\+I\+M $>$\+::further\+\_\+build().
+
+\mbox{\Hypertarget{classoomph_1_1RefineablePoissonEquations_a5e0651853bb43a4636168562a9ce854c}\label{classoomph_1_1RefineablePoissonEquations_a5e0651853bb43a4636168562a9ce854c}} 
+\index{oomph\+::\+Refineable\+Poisson\+Equations@{oomph\+::\+Refineable\+Poisson\+Equations}!get\+\_\+interpolated\+\_\+values@{get\+\_\+interpolated\+\_\+values}}
+\index{get\+\_\+interpolated\+\_\+values@{get\+\_\+interpolated\+\_\+values}!oomph\+::\+Refineable\+Poisson\+Equations@{oomph\+::\+Refineable\+Poisson\+Equations}}
+\subsubsection{\texorpdfstring{get\+\_\+interpolated\+\_\+values()}{get\_interpolated\_values()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1RefineablePoissonEquations}{oomph\+::\+Refineable\+Poisson\+Equations}$<$ D\+IM $>$\+::get\+\_\+interpolated\+\_\+values (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{values }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get the function value u in \hyperlink{classoomph_1_1Vector}{Vector}. Note\+: Given the generality of the interface (this function is usually called from black-\/box documentation or interpolation routines), the values \hyperlink{classoomph_1_1Vector}{Vector} sets its own size in here. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1RefineableElement_ad9a4f92880668a2373326d8306365c43}{oomph\+::\+Refineable\+Element}.
+
+
+
+Definition at line 102 of file refineable\+\_\+poisson\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Finite\+Element\+::nnode(), oomph\+::\+Finite\+Element\+::nodal\+\_\+value(), oomph\+::\+Finite\+Element\+::shape(), and oomph\+::\+Poisson\+Equations$<$ D\+I\+M $>$\+::u\+\_\+index\+\_\+poisson().
+
+
+
+Referenced by oomph\+::\+Refineable\+Poisson\+Equations$<$ D\+I\+M $>$\+::get\+\_\+interpolated\+\_\+values().
+
+\mbox{\Hypertarget{classoomph_1_1RefineablePoissonEquations_affb65cdad97b93f4eff2e2f804efac02}\label{classoomph_1_1RefineablePoissonEquations_affb65cdad97b93f4eff2e2f804efac02}} 
+\index{oomph\+::\+Refineable\+Poisson\+Equations@{oomph\+::\+Refineable\+Poisson\+Equations}!get\+\_\+interpolated\+\_\+values@{get\+\_\+interpolated\+\_\+values}}
+\index{get\+\_\+interpolated\+\_\+values@{get\+\_\+interpolated\+\_\+values}!oomph\+::\+Refineable\+Poisson\+Equations@{oomph\+::\+Refineable\+Poisson\+Equations}}
+\subsubsection{\texorpdfstring{get\+\_\+interpolated\+\_\+values()}{get\_interpolated\_values()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1RefineablePoissonEquations}{oomph\+::\+Refineable\+Poisson\+Equations}$<$ D\+IM $>$\+::get\+\_\+interpolated\+\_\+values (\begin{DoxyParamCaption}\item[{const unsigned \&}]{t,  }\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{values }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get the function value u in \hyperlink{classoomph_1_1Vector}{Vector}. Note\+: Given the generality of the interface (this function is usually called from black-\/box documentation or interpolation routines), the values \hyperlink{classoomph_1_1Vector}{Vector} sets its own size in here. 
+
+
+
+Implements \hyperlink{classoomph_1_1RefineableElement_ada6f0efe831ffefb1d2829ce01d45bfc}{oomph\+::\+Refineable\+Element}.
+
+
+
+Definition at line 134 of file refineable\+\_\+poisson\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Refineable\+Poisson\+Equations$<$ D\+I\+M $>$\+::get\+\_\+interpolated\+\_\+values(), and oomph\+::\+Global\+\_\+string\+\_\+for\+\_\+annotation\+::string().
+
+\mbox{\Hypertarget{classoomph_1_1RefineablePoissonEquations_a8050a73d9e6450e2b861b3d840f5f6ec}\label{classoomph_1_1RefineablePoissonEquations_a8050a73d9e6450e2b861b3d840f5f6ec}} 
+\index{oomph\+::\+Refineable\+Poisson\+Equations@{oomph\+::\+Refineable\+Poisson\+Equations}!get\+\_\+\+Z2\+\_\+flux@{get\+\_\+\+Z2\+\_\+flux}}
+\index{get\+\_\+\+Z2\+\_\+flux@{get\+\_\+\+Z2\+\_\+flux}!oomph\+::\+Refineable\+Poisson\+Equations@{oomph\+::\+Refineable\+Poisson\+Equations}}
+\subsubsection{\texorpdfstring{get\+\_\+\+Z2\+\_\+flux()}{get\_Z2\_flux()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1RefineablePoissonEquations}{oomph\+::\+Refineable\+Poisson\+Equations}$<$ D\+IM $>$\+::get\+\_\+\+Z2\+\_\+flux (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{flux }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get \textquotesingle{}flux\textquotesingle{} for Z2 error recovery\+: Standard flux.\+from Poisson equations. 
+
+
+
+Implements \hyperlink{classoomph_1_1ElementWithZ2ErrorEstimator_a5688ff5f546d81771cabad82ca5a7556}{oomph\+::\+Element\+With\+Z2\+Error\+Estimator}.
+
+
+
+Definition at line 89 of file refineable\+\_\+poisson\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Refineable\+Poisson\+Equations$<$ D\+I\+M $>$\+::compute\+\_\+exact\+\_\+\+Z2\+\_\+error(), and oomph\+::\+Poisson\+Equations$<$ D\+I\+M $>$\+::get\+\_\+flux().
+
+\mbox{\Hypertarget{classoomph_1_1RefineablePoissonEquations_ab778ee621a1e0fc89f10533134a6f825}\label{classoomph_1_1RefineablePoissonEquations_ab778ee621a1e0fc89f10533134a6f825}} 
+\index{oomph\+::\+Refineable\+Poisson\+Equations@{oomph\+::\+Refineable\+Poisson\+Equations}!num\+\_\+\+Z2\+\_\+flux\+\_\+terms@{num\+\_\+\+Z2\+\_\+flux\+\_\+terms}}
+\index{num\+\_\+\+Z2\+\_\+flux\+\_\+terms@{num\+\_\+\+Z2\+\_\+flux\+\_\+terms}!oomph\+::\+Refineable\+Poisson\+Equations@{oomph\+::\+Refineable\+Poisson\+Equations}}
+\subsubsection{\texorpdfstring{num\+\_\+\+Z2\+\_\+flux\+\_\+terms()}{num\_Z2\_flux\_terms()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+unsigned \hyperlink{classoomph_1_1RefineablePoissonEquations}{oomph\+::\+Refineable\+Poisson\+Equations}$<$ D\+IM $>$\+::num\+\_\+\+Z2\+\_\+flux\+\_\+terms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Number of \textquotesingle{}flux\textquotesingle{} terms for Z2 error estimation. 
+
+
+
+Implements \hyperlink{classoomph_1_1ElementWithZ2ErrorEstimator_ae82c5728902e13da31be19c390fc28e3}{oomph\+::\+Element\+With\+Z2\+Error\+Estimator}.
+
+
+
+Definition at line 86 of file refineable\+\_\+poisson\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1RefineablePoissonEquations_abacc091fa206b7a94fea160835ea3a62}\label{classoomph_1_1RefineablePoissonEquations_abacc091fa206b7a94fea160835ea3a62}} 
+\index{oomph\+::\+Refineable\+Poisson\+Equations@{oomph\+::\+Refineable\+Poisson\+Equations}!operator=@{operator=}}
+\index{operator=@{operator=}!oomph\+::\+Refineable\+Poisson\+Equations@{oomph\+::\+Refineable\+Poisson\+Equations}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1RefineablePoissonEquations}{oomph\+::\+Refineable\+Poisson\+Equations}$<$ D\+IM $>$\+::operator= (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1RefineablePoissonEquations}{Refineable\+Poisson\+Equations}$<$ D\+IM $>$ \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Broken assignment operator. 
+
+
+
+Definition at line 80 of file refineable\+\_\+poisson\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Broken\+Copy\+::broken\+\_\+assign().
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{refineable__poisson__elements_8h}{refineable\+\_\+poisson\+\_\+elements.\+h}\item 
+\hyperlink{refineable__poisson__elements_8cc}{refineable\+\_\+poisson\+\_\+elements.\+cc}\end{DoxyCompactItemize}

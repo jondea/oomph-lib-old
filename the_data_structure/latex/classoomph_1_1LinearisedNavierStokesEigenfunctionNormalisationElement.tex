@@ -1,0 +1,336 @@
+\hypertarget{classoomph_1_1LinearisedNavierStokesEigenfunctionNormalisationElement}{}\section{oomph\+:\+:Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element Class Reference}
+\label{classoomph_1_1LinearisedNavierStokesEigenfunctionNormalisationElement}\index{oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element@{oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element}}
+
+
+{\ttfamily \#include $<$linearised\+\_\+navier\+\_\+stokes\+\_\+eigenvalue\+\_\+elements.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classoomph_1_1LinearisedNavierStokesEigenfunctionNormalisationElement}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1LinearisedNavierStokesEigenfunctionNormalisationElement_a38ea9510f1bb602fa2d633f8dd2506de}{Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element} (std\+::complex$<$ double $>$ $\ast$const \&normalisation\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Constructor\+: Pass pointer to target volume. \char`\"{}\+Pressure\char`\"{} value that \char`\"{}traded\char`\"{} for the volume contraint is created internally (as a \hyperlink{classoomph_1_1Data}{Data} item with a single pressure value) \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1LinearisedNavierStokesEigenfunctionNormalisationElement_aa4f7bbda23fcf498f79b5e18c4a96f3b}{$\sim$\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element} ()
+\begin{DoxyCompactList}\small\item\em Constructor\+: Pass pointer to target volume, pointer to \hyperlink{classoomph_1_1Data}{Data} item whose value specified by index\+\_\+of\+\_\+traded\+\_\+pressure represents the \char`\"{}\+Pressure\char`\"{} value that \char`\"{}traded\char`\"{} for the volume contraint. The \hyperlink{classoomph_1_1Data}{Data} is stored as external \hyperlink{classoomph_1_1Data}{Data} for this element. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Data}{Data} $\ast$ \hyperlink{classoomph_1_1LinearisedNavierStokesEigenfunctionNormalisationElement_a4fd5c2630dc1fdf106791c4dfca7eef2}{eigenvalue\+\_\+data\+\_\+pt} ()
+\begin{DoxyCompactList}\small\item\em Access to \hyperlink{classoomph_1_1Data}{Data} that contains the traded pressure. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1LinearisedNavierStokesEigenfunctionNormalisationElement_a6813414a2848d332d50029de27b30d01}{eigenvalue} (const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i})
+\begin{DoxyCompactList}\small\item\em Return the traded pressure value. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1LinearisedNavierStokesEigenfunctionNormalisationElement_ac1eefe59911c0f64b40f31a040b1775a}{index\+\_\+of\+\_\+eigenvalue} ()
+\begin{DoxyCompactList}\small\item\em Return the index of \hyperlink{classoomph_1_1Data}{Data} object at which the traded pressure is stored. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1LinearisedNavierStokesEigenfunctionNormalisationElement_abc4ee2562952463b2a165779d84b4db9}{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&residuals)
+\begin{DoxyCompactList}\small\item\em Fill in the residuals for the volume constraint. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1LinearisedNavierStokesEigenfunctionNormalisationElement_a6493569eee1886773a37e5d2641a981c}{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&residuals, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&jacobian)
+\begin{DoxyCompactList}\small\item\em Fill in the residuals and jacobian for the volume constraint. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1LinearisedNavierStokesEigenfunctionNormalisationElement_a2ccaac6c10a84733c6efab8890d3f048}{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian\+\_\+and\+\_\+mass\+\_\+matrix} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&residuals, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&jacobian, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&mass\+\_\+matrix)
+\begin{DoxyCompactList}\small\item\em Fill in the residuals, jacobian and mass matrix for the volume constraint. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{classoomph_1_1LinearisedNavierStokesEigenfunctionNormalisationElement_aa129057d2e20f574e76f4f316d930afe}{eigenvalue\+\_\+local\+\_\+eqn} (const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i})
+\begin{DoxyCompactList}\small\item\em The local eqn number for the traded pressure. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1LinearisedNavierStokesEigenfunctionNormalisationElement_afb457ae7cd08c9b3c76f4b24ff81e132}{fill\+\_\+in\+\_\+generic\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+normalisation} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&residuals)
+\begin{DoxyCompactList}\small\item\em Fill in the residuals for the volume constraint. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::complex$<$ double $>$ $\ast$ \hyperlink{classoomph_1_1LinearisedNavierStokesEigenfunctionNormalisationElement_ad80670e9f19b1ae05e22a3ddfa5c4955}{Normalisation\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to the desired normalisation. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1LinearisedNavierStokesEigenfunctionNormalisationElement_ab76cf80d4d2c9856b1bde4b835107c99}{External\+\_\+or\+\_\+internal\+\_\+data\+\_\+index\+\_\+of\+\_\+eigenvalue}
+\begin{DoxyCompactList}\small\item\em Storage for the initial index of the eigenvalue. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1LinearisedNavierStokesEigenfunctionNormalisationElement_a4bf79b49dc13cd20d3640e622656657e}{Index\+\_\+of\+\_\+eigenvalue}
+\begin{DoxyCompactList}\small\item\em Storage for the offset index of the eigenvalue. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+A class that is used to implement the constraint that the eigenfunction has a particular normalisation. This element stores the two components of the eigenvalue. 
+
+Definition at line 55 of file linearised\+\_\+navier\+\_\+stokes\+\_\+eigenvalue\+\_\+elements.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1LinearisedNavierStokesEigenfunctionNormalisationElement_a38ea9510f1bb602fa2d633f8dd2506de}\label{classoomph_1_1LinearisedNavierStokesEigenfunctionNormalisationElement_a38ea9510f1bb602fa2d633f8dd2506de}} 
+\index{oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element@{oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element}!Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element@{Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element}}
+\index{Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element@{Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element}!oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element@{oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element}}
+\subsubsection{\texorpdfstring{Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element()}{LinearisedNavierStokesEigenfunctionNormalisationElement()}}
+{\footnotesize\ttfamily oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element (\begin{DoxyParamCaption}\item[{std\+::complex$<$ double $>$ $\ast$const \&}]{normalisation\+\_\+pt }\end{DoxyParamCaption})}
+
+
+
+Constructor\+: Pass pointer to target volume. \char`\"{}\+Pressure\char`\"{} value that \char`\"{}traded\char`\"{} for the volume contraint is created internally (as a \hyperlink{classoomph_1_1Data}{Data} item with a single pressure value) 
+
+
+
+Definition at line 79 of file linearised\+\_\+navier\+\_\+stokes\+\_\+eigenvalue\+\_\+elements.\+cc.
+
+
+
+References oomph\+::\+Generalised\+Element\+::add\+\_\+internal\+\_\+data(), External\+\_\+or\+\_\+internal\+\_\+data\+\_\+index\+\_\+of\+\_\+eigenvalue, Index\+\_\+of\+\_\+eigenvalue, and Normalisation\+\_\+pt.
+
+
+
+Referenced by eigenvalue\+\_\+local\+\_\+eqn(), and fill\+\_\+in\+\_\+generic\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+normalisation().
+
+\mbox{\Hypertarget{classoomph_1_1LinearisedNavierStokesEigenfunctionNormalisationElement_aa4f7bbda23fcf498f79b5e18c4a96f3b}\label{classoomph_1_1LinearisedNavierStokesEigenfunctionNormalisationElement_aa4f7bbda23fcf498f79b5e18c4a96f3b}} 
+\index{oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element@{oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element}!````~Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element@{$\sim$\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element}}
+\index{````~Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element@{$\sim$\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element}!oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element@{oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element}}
+\subsubsection{\texorpdfstring{$\sim$\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element()}{~LinearisedNavierStokesEigenfunctionNormalisationElement()}}
+{\footnotesize\ttfamily oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element\+::$\sim$\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor\+: Pass pointer to target volume, pointer to \hyperlink{classoomph_1_1Data}{Data} item whose value specified by index\+\_\+of\+\_\+traded\+\_\+pressure represents the \char`\"{}\+Pressure\char`\"{} value that \char`\"{}traded\char`\"{} for the volume contraint. The \hyperlink{classoomph_1_1Data}{Data} is stored as external \hyperlink{classoomph_1_1Data}{Data} for this element. 
+
+Empty destructor 
+
+Definition at line 98 of file linearised\+\_\+navier\+\_\+stokes\+\_\+eigenvalue\+\_\+elements.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1LinearisedNavierStokesEigenfunctionNormalisationElement_a6813414a2848d332d50029de27b30d01}\label{classoomph_1_1LinearisedNavierStokesEigenfunctionNormalisationElement_a6813414a2848d332d50029de27b30d01}} 
+\index{oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element@{oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element}!eigenvalue@{eigenvalue}}
+\index{eigenvalue@{eigenvalue}!oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element@{oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element}}
+\subsubsection{\texorpdfstring{eigenvalue()}{eigenvalue()}}
+{\footnotesize\ttfamily double oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element\+::eigenvalue (\begin{DoxyParamCaption}\item[{const unsigned \&}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the traded pressure value. 
+
+
+
+Definition at line 108 of file linearised\+\_\+navier\+\_\+stokes\+\_\+eigenvalue\+\_\+elements.\+h.
+
+
+
+References eigenvalue\+\_\+data\+\_\+pt(), and oomph\+::\+Data\+::value().
+
+
+
+Referenced by fill\+\_\+in\+\_\+generic\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+normalisation().
+
+\mbox{\Hypertarget{classoomph_1_1LinearisedNavierStokesEigenfunctionNormalisationElement_a4fd5c2630dc1fdf106791c4dfca7eef2}\label{classoomph_1_1LinearisedNavierStokesEigenfunctionNormalisationElement_a4fd5c2630dc1fdf106791c4dfca7eef2}} 
+\index{oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element@{oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element}!eigenvalue\+\_\+data\+\_\+pt@{eigenvalue\+\_\+data\+\_\+pt}}
+\index{eigenvalue\+\_\+data\+\_\+pt@{eigenvalue\+\_\+data\+\_\+pt}!oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element@{oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element}}
+\subsubsection{\texorpdfstring{eigenvalue\+\_\+data\+\_\+pt()}{eigenvalue\_data\_pt()}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1Data}{Data}$\ast$ oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element\+::eigenvalue\+\_\+data\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Access to \hyperlink{classoomph_1_1Data}{Data} that contains the traded pressure. 
+
+
+
+Definition at line 101 of file linearised\+\_\+navier\+\_\+stokes\+\_\+eigenvalue\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Generalised\+Element\+::internal\+\_\+data\+\_\+pt().
+
+
+
+Referenced by eigenvalue(), and oomph\+::\+Linearised\+Navier\+Stokes\+Equations\+::set\+\_\+eigenfunction\+\_\+normalisation\+\_\+element().
+
+\mbox{\Hypertarget{classoomph_1_1LinearisedNavierStokesEigenfunctionNormalisationElement_aa129057d2e20f574e76f4f316d930afe}\label{classoomph_1_1LinearisedNavierStokesEigenfunctionNormalisationElement_aa129057d2e20f574e76f4f316d930afe}} 
+\index{oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element@{oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element}!eigenvalue\+\_\+local\+\_\+eqn@{eigenvalue\+\_\+local\+\_\+eqn}}
+\index{eigenvalue\+\_\+local\+\_\+eqn@{eigenvalue\+\_\+local\+\_\+eqn}!oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element@{oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element}}
+\subsubsection{\texorpdfstring{eigenvalue\+\_\+local\+\_\+eqn()}{eigenvalue\_local\_eqn()}}
+{\footnotesize\ttfamily int oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element\+::eigenvalue\+\_\+local\+\_\+eqn (\begin{DoxyParamCaption}\item[{const unsigned \&}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+The local eqn number for the traded pressure. 
+
+
+
+Definition at line 70 of file linearised\+\_\+navier\+\_\+stokes\+\_\+eigenvalue\+\_\+elements.\+h.
+
+
+
+References fill\+\_\+in\+\_\+generic\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+normalisation(), oomph\+::\+Generalised\+Element\+::internal\+\_\+local\+\_\+eqn(), and Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element().
+
+
+
+Referenced by fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian(), and fill\+\_\+in\+\_\+generic\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+normalisation().
+
+\mbox{\Hypertarget{classoomph_1_1LinearisedNavierStokesEigenfunctionNormalisationElement_a6493569eee1886773a37e5d2641a981c}\label{classoomph_1_1LinearisedNavierStokesEigenfunctionNormalisationElement_a6493569eee1886773a37e5d2641a981c}} 
+\index{oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element@{oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element}!fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian}}
+\index{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian}!oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element@{oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element}}
+\subsubsection{\texorpdfstring{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian()}{fill\_in\_contribution\_to\_jacobian()}}
+{\footnotesize\ttfamily void oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{residuals,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{jacobian }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Fill in the residuals and jacobian for the volume constraint. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1GeneralisedElement_a6ae09fc0d68e4309ac1b03583d252845}{oomph\+::\+Generalised\+Element}.
+
+
+
+Definition at line 123 of file linearised\+\_\+navier\+\_\+stokes\+\_\+eigenvalue\+\_\+elements.\+h.
+
+
+
+References eigenvalue\+\_\+local\+\_\+eqn(), and fill\+\_\+in\+\_\+generic\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+normalisation().
+
+\mbox{\Hypertarget{classoomph_1_1LinearisedNavierStokesEigenfunctionNormalisationElement_a2ccaac6c10a84733c6efab8890d3f048}\label{classoomph_1_1LinearisedNavierStokesEigenfunctionNormalisationElement_a2ccaac6c10a84733c6efab8890d3f048}} 
+\index{oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element@{oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element}!fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian\+\_\+and\+\_\+mass\+\_\+matrix@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian\+\_\+and\+\_\+mass\+\_\+matrix}}
+\index{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian\+\_\+and\+\_\+mass\+\_\+matrix@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian\+\_\+and\+\_\+mass\+\_\+matrix}!oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element@{oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element}}
+\subsubsection{\texorpdfstring{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian\+\_\+and\+\_\+mass\+\_\+matrix()}{fill\_in\_contribution\_to\_jacobian\_and\_mass\_matrix()}}
+{\footnotesize\ttfamily void oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian\+\_\+and\+\_\+mass\+\_\+matrix (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{residuals,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{jacobian,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{mass\+\_\+matrix }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Fill in the residuals, jacobian and mass matrix for the volume constraint. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1GeneralisedElement_a2b6294a730647cf865da94f2531466f8}{oomph\+::\+Generalised\+Element}.
+
+
+
+Definition at line 140 of file linearised\+\_\+navier\+\_\+stokes\+\_\+eigenvalue\+\_\+elements.\+h.
+
+
+
+References fill\+\_\+in\+\_\+generic\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+normalisation().
+
+\mbox{\Hypertarget{classoomph_1_1LinearisedNavierStokesEigenfunctionNormalisationElement_abc4ee2562952463b2a165779d84b4db9}\label{classoomph_1_1LinearisedNavierStokesEigenfunctionNormalisationElement_abc4ee2562952463b2a165779d84b4db9}} 
+\index{oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element@{oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element}!fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals}}
+\index{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals}!oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element@{oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element}}
+\subsubsection{\texorpdfstring{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals()}{fill\_in\_contribution\_to\_residuals()}}
+{\footnotesize\ttfamily void oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{residuals }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Fill in the residuals for the volume constraint. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1GeneralisedElement_a310c97f515e8504a48179c0e72c550d7}{oomph\+::\+Generalised\+Element}.
+
+
+
+Definition at line 116 of file linearised\+\_\+navier\+\_\+stokes\+\_\+eigenvalue\+\_\+elements.\+h.
+
+
+
+References fill\+\_\+in\+\_\+generic\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+normalisation().
+
+\mbox{\Hypertarget{classoomph_1_1LinearisedNavierStokesEigenfunctionNormalisationElement_afb457ae7cd08c9b3c76f4b24ff81e132}\label{classoomph_1_1LinearisedNavierStokesEigenfunctionNormalisationElement_afb457ae7cd08c9b3c76f4b24ff81e132}} 
+\index{oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element@{oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element}!fill\+\_\+in\+\_\+generic\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+normalisation@{fill\+\_\+in\+\_\+generic\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+normalisation}}
+\index{fill\+\_\+in\+\_\+generic\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+normalisation@{fill\+\_\+in\+\_\+generic\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+normalisation}!oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element@{oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element}}
+\subsubsection{\texorpdfstring{fill\+\_\+in\+\_\+generic\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+normalisation()}{fill\_in\_generic\_contribution\_to\_residuals\_normalisation()}}
+{\footnotesize\ttfamily void oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element\+::fill\+\_\+in\+\_\+generic\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+normalisation (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{residuals }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Fill in the residuals for the volume constraint. 
+
+
+
+Definition at line 43 of file linearised\+\_\+navier\+\_\+stokes\+\_\+eigenvalue\+\_\+elements.\+cc.
+
+
+
+References eigenvalue(), eigenvalue\+\_\+local\+\_\+eqn(), and Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element().
+
+
+
+Referenced by eigenvalue\+\_\+local\+\_\+eqn(), fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian(), fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian\+\_\+and\+\_\+mass\+\_\+matrix(), and fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals().
+
+\mbox{\Hypertarget{classoomph_1_1LinearisedNavierStokesEigenfunctionNormalisationElement_ac1eefe59911c0f64b40f31a040b1775a}\label{classoomph_1_1LinearisedNavierStokesEigenfunctionNormalisationElement_ac1eefe59911c0f64b40f31a040b1775a}} 
+\index{oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element@{oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element}!index\+\_\+of\+\_\+eigenvalue@{index\+\_\+of\+\_\+eigenvalue}}
+\index{index\+\_\+of\+\_\+eigenvalue@{index\+\_\+of\+\_\+eigenvalue}!oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element@{oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element}}
+\subsubsection{\texorpdfstring{index\+\_\+of\+\_\+eigenvalue()}{index\_of\_eigenvalue()}}
+{\footnotesize\ttfamily unsigned oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element\+::index\+\_\+of\+\_\+eigenvalue (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the index of \hyperlink{classoomph_1_1Data}{Data} object at which the traded pressure is stored. 
+
+
+
+Definition at line 112 of file linearised\+\_\+navier\+\_\+stokes\+\_\+eigenvalue\+\_\+elements.\+h.
+
+
+
+References Index\+\_\+of\+\_\+eigenvalue.
+
+
+
+Referenced by oomph\+::\+Linearised\+Navier\+Stokes\+Equations\+::set\+\_\+eigenfunction\+\_\+normalisation\+\_\+element().
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1LinearisedNavierStokesEigenfunctionNormalisationElement_ab76cf80d4d2c9856b1bde4b835107c99}\label{classoomph_1_1LinearisedNavierStokesEigenfunctionNormalisationElement_ab76cf80d4d2c9856b1bde4b835107c99}} 
+\index{oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element@{oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element}!External\+\_\+or\+\_\+internal\+\_\+data\+\_\+index\+\_\+of\+\_\+eigenvalue@{External\+\_\+or\+\_\+internal\+\_\+data\+\_\+index\+\_\+of\+\_\+eigenvalue}}
+\index{External\+\_\+or\+\_\+internal\+\_\+data\+\_\+index\+\_\+of\+\_\+eigenvalue@{External\+\_\+or\+\_\+internal\+\_\+data\+\_\+index\+\_\+of\+\_\+eigenvalue}!oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element@{oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element}}
+\subsubsection{\texorpdfstring{External\+\_\+or\+\_\+internal\+\_\+data\+\_\+index\+\_\+of\+\_\+eigenvalue}{External\_or\_internal\_data\_index\_of\_eigenvalue}}
+{\footnotesize\ttfamily unsigned oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element\+::\+External\+\_\+or\+\_\+internal\+\_\+data\+\_\+index\+\_\+of\+\_\+eigenvalue\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Storage for the initial index of the eigenvalue. 
+
+
+
+Definition at line 63 of file linearised\+\_\+navier\+\_\+stokes\+\_\+eigenvalue\+\_\+elements.\+h.
+
+
+
+Referenced by Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element().
+
+\mbox{\Hypertarget{classoomph_1_1LinearisedNavierStokesEigenfunctionNormalisationElement_a4bf79b49dc13cd20d3640e622656657e}\label{classoomph_1_1LinearisedNavierStokesEigenfunctionNormalisationElement_a4bf79b49dc13cd20d3640e622656657e}} 
+\index{oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element@{oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element}!Index\+\_\+of\+\_\+eigenvalue@{Index\+\_\+of\+\_\+eigenvalue}}
+\index{Index\+\_\+of\+\_\+eigenvalue@{Index\+\_\+of\+\_\+eigenvalue}!oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element@{oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element}}
+\subsubsection{\texorpdfstring{Index\+\_\+of\+\_\+eigenvalue}{Index\_of\_eigenvalue}}
+{\footnotesize\ttfamily unsigned oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element\+::\+Index\+\_\+of\+\_\+eigenvalue\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Storage for the offset index of the eigenvalue. 
+
+
+
+Definition at line 66 of file linearised\+\_\+navier\+\_\+stokes\+\_\+eigenvalue\+\_\+elements.\+h.
+
+
+
+Referenced by index\+\_\+of\+\_\+eigenvalue(), and Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element().
+
+\mbox{\Hypertarget{classoomph_1_1LinearisedNavierStokesEigenfunctionNormalisationElement_ad80670e9f19b1ae05e22a3ddfa5c4955}\label{classoomph_1_1LinearisedNavierStokesEigenfunctionNormalisationElement_ad80670e9f19b1ae05e22a3ddfa5c4955}} 
+\index{oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element@{oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element}!Normalisation\+\_\+pt@{Normalisation\+\_\+pt}}
+\index{Normalisation\+\_\+pt@{Normalisation\+\_\+pt}!oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element@{oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element}}
+\subsubsection{\texorpdfstring{Normalisation\+\_\+pt}{Normalisation\_pt}}
+{\footnotesize\ttfamily std\+::complex$<$double$>$$\ast$ oomph\+::\+Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element\+::\+Normalisation\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pointer to the desired normalisation. 
+
+
+
+Definition at line 60 of file linearised\+\_\+navier\+\_\+stokes\+\_\+eigenvalue\+\_\+elements.\+h.
+
+
+
+Referenced by Linearised\+Navier\+Stokes\+Eigenfunction\+Normalisation\+Element().
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{linearised__navier__stokes__eigenvalue__elements_8h}{linearised\+\_\+navier\+\_\+stokes\+\_\+eigenvalue\+\_\+elements.\+h}\item 
+\hyperlink{linearised__navier__stokes__eigenvalue__elements_8cc}{linearised\+\_\+navier\+\_\+stokes\+\_\+eigenvalue\+\_\+elements.\+cc}\end{DoxyCompactItemize}

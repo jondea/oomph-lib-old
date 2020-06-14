@@ -1,0 +1,554 @@
+\hypertarget{classoomph_1_1PseudoSolidNodeUpdateElement}{}\section{oomph\+:\+:Pseudo\+Solid\+Node\+Update\+Element$<$ B\+A\+S\+IC, S\+O\+L\+ID $>$ Class Template Reference}
+\label{classoomph_1_1PseudoSolidNodeUpdateElement}\index{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element$<$ B\+A\+S\+I\+C, S\+O\+L\+I\+D $>$@{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element$<$ B\+A\+S\+I\+C, S\+O\+L\+I\+D $>$}}
+
+
+{\ttfamily \#include $<$pseudosolid\+\_\+node\+\_\+update\+\_\+elements.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Pseudo\+Solid\+Node\+Update\+Element$<$ B\+A\+S\+IC, S\+O\+L\+ID $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.586402cm]{classoomph_1_1PseudoSolidNodeUpdateElement}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement_afd44332410c5956938614b5899f85cb8}{Pseudo\+Solid\+Node\+Update\+Element} ()
+\begin{DoxyCompactList}\small\item\em Constructor, call the B\+A\+S\+IC and S\+O\+L\+ID elements\textquotesingle{} constructors and set the \char`\"{}density\char`\"{} parameter for solid element to zero. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement_a1736af22476b283ee75d4626ec1b0c7e}{describe\+\_\+local\+\_\+dofs} (std\+::ostream \&out, const std\+::string \&current\+\_\+string) const
+\begin{DoxyCompactList}\small\item\em Function to describe the local dofs of the element. The ostream specifies the output stream to which the description is written; the string stores the currently assembled output that is ultimately written to the output stream by \hyperlink{classoomph_1_1Data_a2dae16e2dcff9a40029f834c83364df5}{Data\+::describe\+\_\+dofs}(...); it is typically built up incrementally as we descend through the call hierarchy of this function when called from \hyperlink{classoomph_1_1Problem_abc103804eb319ae0b3d43870cc3e1eaf}{Problem\+::describe\+\_\+dofs}(...) \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement_a4db0954b3a48a6b1bb6df7a34d86b0e8}{compute\+\_\+norm} (double \&el\+\_\+norm)
+\begin{DoxyCompactList}\small\item\em Compute norm of solution\+: use the version in the B\+A\+S\+IC class if there\textquotesingle{}s any ambiguity. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement_a1d3ae58be7e3d2d9aa95086e631ce730}{required\+\_\+nvalue} (const unsigned \&n) const
+\begin{DoxyCompactList}\small\item\em The required number of values is the sum of the two. \end{DoxyCompactList}\item 
+int \hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement_ad78c40ba5be3d9b922dfd92f2e683ba8}{solid\+\_\+p\+\_\+nodal\+\_\+index} () const
+\begin{DoxyCompactList}\small\item\em We assume that the solid stuff is stored at the end of the nodes, i.\+e. its index is the number of continuously interplated values in the B\+A\+S\+IC equations. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement_a12009b16c000c65ad384c74246074384}{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&residuals)
+\begin{DoxyCompactList}\small\item\em Final override for the residuals function. Contributions are added from both underlying element types. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement_a6e3b3193e2d66317dc45f17217ddb5c3}{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&residuals, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&jacobian)
+\begin{DoxyCompactList}\small\item\em Final override for jacobian function\+: Contributions are included from both the underlying element types. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement_aba0869b0de889df9be90647c28632f8b}{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian\+\_\+and\+\_\+mass\+\_\+matrix} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&residuals, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&jacobian, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&mass\+\_\+matrix)
+\begin{DoxyCompactList}\small\item\em Final override for mass matrix function\+: contributions are included from both the underlying element types. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement_ad35128b838a51f8db6c3d51964b9b00a}{evaluate\+\_\+shape\+\_\+derivs\+\_\+by\+\_\+direct\+\_\+fd} ()
+\begin{DoxyCompactList}\small\item\em Evaluate shape derivatives by direct finite differencing. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement_a9f60c036205aacef2a97aafffb616d85}{evaluate\+\_\+shape\+\_\+derivs\+\_\+by\+\_\+chain\+\_\+rule} ()
+\begin{DoxyCompactList}\small\item\em Evaluate shape derivatives by chain rule. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement_a254e54579d692d4480e30dee7c6b71cc}{fill\+\_\+in\+\_\+shape\+\_\+derivatives} (\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&jacobian)
+\begin{DoxyCompactList}\small\item\em Fill in the shape derivatives of the B\+A\+S\+IC equations w.\+r.\+t. the solid position dofs. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement_a6f5600cb23d1e26816ae36ae8195c01e}{fill\+\_\+in\+\_\+shape\+\_\+derivatives\+\_\+by\+\_\+fd} (\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&jacobian)
+\begin{DoxyCompactList}\small\item\em Fill in the derivatives of the B\+A\+S\+IC equations w.\+r.\+t. the solid position dofs. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement_a2067e391f1fb7eccf8758e3787b3ba0d}{identify\+\_\+geometric\+\_\+data} (std\+::set$<$ \hyperlink{classoomph_1_1Data}{Data} $\ast$$>$ \&geometric\+\_\+data\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Specify \hyperlink{classoomph_1_1Data}{Data} that affects the geometry of the element by adding the position \hyperlink{classoomph_1_1Data}{Data} to the set that\textquotesingle{}s passed in. (This functionality is required in F\+SI problems; set is used to avoid double counting). \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement_a41addbcf4a1ed2711e24632c8a122dcb}{output} (std\+::ostream \&outfile)
+\begin{DoxyCompactList}\small\item\em Overload the output function\+: Call that of the basic element. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement_a293e9f73e7dd0429755379e17326994b}{output} (std\+::ostream \&outfile, const unsigned \&n\+\_\+p)
+\begin{DoxyCompactList}\small\item\em Output function\+: Plot at n\+\_\+p plot points using the basic element\textquotesingle{}s output function. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement_ade73359e3600d32d64cf8acced341776}{output} (F\+I\+LE $\ast$file\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Overload the output function\+: Call that of the basic element. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement_ac4e895c35d56c2137bd35ad988264bc8}{output} (F\+I\+LE $\ast$file\+\_\+pt, const unsigned \&n\+\_\+p)
+\begin{DoxyCompactList}\small\item\em Output function is just the same as the basic equations. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement_adbda8595ca36cd972870af6f1e498601}{num\+\_\+\+Z2\+\_\+flux\+\_\+terms} ()
+\begin{DoxyCompactList}\small\item\em Number of \textquotesingle{}flux\textquotesingle{} terms for Z2 error estimation\+: Error estimation is based on error in B\+A\+S\+IC element. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement_a1b1baac59b7500a04f06e9ac5bc534b0}{compute\+\_\+exact\+\_\+\+Z2\+\_\+error} (std\+::ostream \&outfile, \hyperlink{classoomph_1_1FiniteElement_a690fd33af26cc3e84f39bba6d5a85202}{Finite\+Element\+::\+Steady\+Exact\+Solution\+Fct\+Pt} exact\+\_\+flux\+\_\+pt, double \&error, double \&norm)
+\begin{DoxyCompactList}\small\item\em Plot the error when compared against a given exact flux. Also calculates the norm of the error and that of the exact flux. Use version in B\+A\+S\+IC element. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement_a6af297e5106ad545b61757ff020380ac}{get\+\_\+\+Z2\+\_\+flux} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&flux)
+\item 
+unsigned \hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement_a8a6830facb4584f4e077169296d3d88c}{nvertex\+\_\+node} () const
+\begin{DoxyCompactList}\small\item\em Number of vertex nodes in the element. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Node}{Node} $\ast$ \hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement_a6e580c17a0394f0dc056bbdc28229ea8}{vertex\+\_\+node\+\_\+pt} (const unsigned \&j) const
+\begin{DoxyCompactList}\small\item\em Pointer to the j-\/th vertex node in the element. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement_a673a5bdd155f24f333c0bb493f645202}{nrecovery\+\_\+order} ()
+\begin{DoxyCompactList}\small\item\em Order of recovery shape functions for Z2 error estimation\+: Done for B\+A\+S\+IC element since it determines the refinement. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement_afc87fa6598bbabf49d872296e47bf1ea}{ndof\+\_\+types} () const
+\begin{DoxyCompactList}\small\item\em The number of \char`\"{}\+D\+O\+F types\char`\"{} that degrees of freedom in this element are sub-\/divided into. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement_a6fbeab78f1f6ebe9fc76625d88009e61}{nbasic\+\_\+dof\+\_\+types} () const
+\begin{DoxyCompactList}\small\item\em return the number of D\+OF types associated with the B\+A\+S\+IC elements in this combined element \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement_a20d4f8be49920f8599b60981b1b1775f}{nsolid\+\_\+dof\+\_\+types} () const
+\begin{DoxyCompactList}\small\item\em return the number of D\+OF types associated with the S\+O\+L\+ID elements in this combined element \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement_a18101610910f61e68da44e0fedf68c2c}{get\+\_\+dof\+\_\+numbers\+\_\+for\+\_\+unknowns} (std\+::list$<$ std\+::pair$<$ unsigned long, unsigned $>$ $>$ \&dof\+\_\+lookup\+\_\+list) const
+\begin{DoxyCompactList}\small\item\em Create a list of pairs for all unknowns in this element, so that the first entry in each pair contains the global equation number of the unknown, while the second one contains the number of the \char`\"{}\+D\+O\+F type\char`\"{} that this unknown is associated with. This method combines the get\+\_\+dof\+\_\+numbers\+\_\+for\+\_\+unknowns(...) method for the B\+A\+S\+IC and S\+O\+L\+ID elements. The basic elements retain their D\+OF type numbering and the S\+O\+L\+ID elements D\+OF type numbers are incremented by \hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement_a6fbeab78f1f6ebe9fc76625d88009e61}{nbasic\+\_\+dof\+\_\+types()}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement_a09f75eb760cb430ff6a54a8e88a7bc16}{Shape\+\_\+derivs\+\_\+by\+\_\+direct\+\_\+fd}
+\begin{DoxyCompactList}\small\item\em Boolean flag to indicate shape derivative method. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class B\+A\+S\+IC, class S\+O\+L\+ID$>$\newline
+class oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element$<$ B\+A\+S\+I\+C, S\+O\+L\+I\+D $>$}
+
+A templated class that permits combination two different element types, for the solution of problems in deforming domains. The first template paremter B\+A\+S\+IC is the standard element and the second S\+O\+L\+ID solves the equations that are used to control the mesh deformation. 
+
+Definition at line 62 of file pseudosolid\+\_\+node\+\_\+update\+\_\+elements.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1PseudoSolidNodeUpdateElement_afd44332410c5956938614b5899f85cb8}\label{classoomph_1_1PseudoSolidNodeUpdateElement_afd44332410c5956938614b5899f85cb8}} 
+\index{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element@{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}!Pseudo\+Solid\+Node\+Update\+Element@{Pseudo\+Solid\+Node\+Update\+Element}}
+\index{Pseudo\+Solid\+Node\+Update\+Element@{Pseudo\+Solid\+Node\+Update\+Element}!oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element@{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}}
+\subsubsection{\texorpdfstring{Pseudo\+Solid\+Node\+Update\+Element()}{PseudoSolidNodeUpdateElement()}}
+{\footnotesize\ttfamily template$<$class B\+A\+S\+IC , class S\+O\+L\+ID $>$ \\
+\hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement}{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}$<$ B\+A\+S\+IC, S\+O\+L\+ID $>$\+::\hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement}{Pseudo\+Solid\+Node\+Update\+Element} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor, call the B\+A\+S\+IC and S\+O\+L\+ID elements\textquotesingle{} constructors and set the \char`\"{}density\char`\"{} parameter for solid element to zero. 
+
+
+
+Definition at line 73 of file pseudosolid\+\_\+node\+\_\+update\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Pseudo\+Solid\+Helper\+::\+Zero.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1PseudoSolidNodeUpdateElement_a1b1baac59b7500a04f06e9ac5bc534b0}\label{classoomph_1_1PseudoSolidNodeUpdateElement_a1b1baac59b7500a04f06e9ac5bc534b0}} 
+\index{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element@{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}!compute\+\_\+exact\+\_\+\+Z2\+\_\+error@{compute\+\_\+exact\+\_\+\+Z2\+\_\+error}}
+\index{compute\+\_\+exact\+\_\+\+Z2\+\_\+error@{compute\+\_\+exact\+\_\+\+Z2\+\_\+error}!oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element@{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}}
+\subsubsection{\texorpdfstring{compute\+\_\+exact\+\_\+\+Z2\+\_\+error()}{compute\_exact\_Z2\_error()}}
+{\footnotesize\ttfamily template$<$class B\+A\+S\+IC , class S\+O\+L\+ID $>$ \\
+void \hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement}{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}$<$ B\+A\+S\+IC, S\+O\+L\+ID $>$\+::compute\+\_\+exact\+\_\+\+Z2\+\_\+error (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile,  }\item[{\hyperlink{classoomph_1_1FiniteElement_a690fd33af26cc3e84f39bba6d5a85202}{Finite\+Element\+::\+Steady\+Exact\+Solution\+Fct\+Pt}}]{exact\+\_\+flux\+\_\+pt,  }\item[{double \&}]{error,  }\item[{double \&}]{norm }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Plot the error when compared against a given exact flux. Also calculates the norm of the error and that of the exact flux. Use version in B\+A\+S\+IC element. 
+
+
+
+Definition at line 438 of file pseudosolid\+\_\+node\+\_\+update\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1PseudoSolidNodeUpdateElement_a4db0954b3a48a6b1bb6df7a34d86b0e8}\label{classoomph_1_1PseudoSolidNodeUpdateElement_a4db0954b3a48a6b1bb6df7a34d86b0e8}} 
+\index{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element@{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}!compute\+\_\+norm@{compute\+\_\+norm}}
+\index{compute\+\_\+norm@{compute\+\_\+norm}!oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element@{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}}
+\subsubsection{\texorpdfstring{compute\+\_\+norm()}{compute\_norm()}}
+{\footnotesize\ttfamily template$<$class B\+A\+S\+IC , class S\+O\+L\+ID $>$ \\
+void \hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement}{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}$<$ B\+A\+S\+IC, S\+O\+L\+ID $>$\+::compute\+\_\+norm (\begin{DoxyParamCaption}\item[{double \&}]{el\+\_\+norm }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Compute norm of solution\+: use the version in the B\+A\+S\+IC class if there\textquotesingle{}s any ambiguity. 
+
+
+
+Definition at line 96 of file pseudosolid\+\_\+node\+\_\+update\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1PseudoSolidNodeUpdateElement_a1736af22476b283ee75d4626ec1b0c7e}\label{classoomph_1_1PseudoSolidNodeUpdateElement_a1736af22476b283ee75d4626ec1b0c7e}} 
+\index{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element@{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}!describe\+\_\+local\+\_\+dofs@{describe\+\_\+local\+\_\+dofs}}
+\index{describe\+\_\+local\+\_\+dofs@{describe\+\_\+local\+\_\+dofs}!oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element@{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}}
+\subsubsection{\texorpdfstring{describe\+\_\+local\+\_\+dofs()}{describe\_local\_dofs()}}
+{\footnotesize\ttfamily template$<$class B\+A\+S\+IC , class S\+O\+L\+ID $>$ \\
+void \hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement}{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}$<$ B\+A\+S\+IC, S\+O\+L\+ID $>$\+::describe\+\_\+local\+\_\+dofs (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{out,  }\item[{const std\+::string \&}]{current\+\_\+string }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to describe the local dofs of the element. The ostream specifies the output stream to which the description is written; the string stores the currently assembled output that is ultimately written to the output stream by \hyperlink{classoomph_1_1Data_a2dae16e2dcff9a40029f834c83364df5}{Data\+::describe\+\_\+dofs}(...); it is typically built up incrementally as we descend through the call hierarchy of this function when called from \hyperlink{classoomph_1_1Problem_abc103804eb319ae0b3d43870cc3e1eaf}{Problem\+::describe\+\_\+dofs}(...) 
+
+
+
+Definition at line 87 of file pseudosolid\+\_\+node\+\_\+update\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1PseudoSolidNodeUpdateElement_a9f60c036205aacef2a97aafffb616d85}\label{classoomph_1_1PseudoSolidNodeUpdateElement_a9f60c036205aacef2a97aafffb616d85}} 
+\index{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element@{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}!evaluate\+\_\+shape\+\_\+derivs\+\_\+by\+\_\+chain\+\_\+rule@{evaluate\+\_\+shape\+\_\+derivs\+\_\+by\+\_\+chain\+\_\+rule}}
+\index{evaluate\+\_\+shape\+\_\+derivs\+\_\+by\+\_\+chain\+\_\+rule@{evaluate\+\_\+shape\+\_\+derivs\+\_\+by\+\_\+chain\+\_\+rule}!oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element@{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}}
+\subsubsection{\texorpdfstring{evaluate\+\_\+shape\+\_\+derivs\+\_\+by\+\_\+chain\+\_\+rule()}{evaluate\_shape\_derivs\_by\_chain\_rule()}}
+{\footnotesize\ttfamily template$<$class B\+A\+S\+IC , class S\+O\+L\+ID $>$ \\
+void \hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement}{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}$<$ B\+A\+S\+IC, S\+O\+L\+ID $>$\+::evaluate\+\_\+shape\+\_\+derivs\+\_\+by\+\_\+chain\+\_\+rule (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Evaluate shape derivatives by chain rule. 
+
+
+
+Definition at line 170 of file pseudosolid\+\_\+node\+\_\+update\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1PseudoSolidNodeUpdateElement_ad35128b838a51f8db6c3d51964b9b00a}\label{classoomph_1_1PseudoSolidNodeUpdateElement_ad35128b838a51f8db6c3d51964b9b00a}} 
+\index{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element@{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}!evaluate\+\_\+shape\+\_\+derivs\+\_\+by\+\_\+direct\+\_\+fd@{evaluate\+\_\+shape\+\_\+derivs\+\_\+by\+\_\+direct\+\_\+fd}}
+\index{evaluate\+\_\+shape\+\_\+derivs\+\_\+by\+\_\+direct\+\_\+fd@{evaluate\+\_\+shape\+\_\+derivs\+\_\+by\+\_\+direct\+\_\+fd}!oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element@{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}}
+\subsubsection{\texorpdfstring{evaluate\+\_\+shape\+\_\+derivs\+\_\+by\+\_\+direct\+\_\+fd()}{evaluate\_shape\_derivs\_by\_direct\_fd()}}
+{\footnotesize\ttfamily template$<$class B\+A\+S\+IC , class S\+O\+L\+ID $>$ \\
+void \hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement}{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}$<$ B\+A\+S\+IC, S\+O\+L\+ID $>$\+::evaluate\+\_\+shape\+\_\+derivs\+\_\+by\+\_\+direct\+\_\+fd (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Evaluate shape derivatives by direct finite differencing. 
+
+
+
+Definition at line 166 of file pseudosolid\+\_\+node\+\_\+update\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1PseudoSolidNodeUpdateElement_a6e3b3193e2d66317dc45f17217ddb5c3}\label{classoomph_1_1PseudoSolidNodeUpdateElement_a6e3b3193e2d66317dc45f17217ddb5c3}} 
+\index{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element@{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}!fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian}}
+\index{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian}!oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element@{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}}
+\subsubsection{\texorpdfstring{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian()}{fill\_in\_contribution\_to\_jacobian()}}
+{\footnotesize\ttfamily template$<$class B\+A\+S\+IC , class S\+O\+L\+ID $>$ \\
+void \hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement}{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}$<$ B\+A\+S\+IC, S\+O\+L\+ID $>$\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{residuals,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{jacobian }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Final override for jacobian function\+: Contributions are included from both the underlying element types. 
+
+
+
+Definition at line 135 of file pseudosolid\+\_\+node\+\_\+update\+\_\+elements.\+h.
+
+
+
+References oomph\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian().
+
+\mbox{\Hypertarget{classoomph_1_1PseudoSolidNodeUpdateElement_aba0869b0de889df9be90647c28632f8b}\label{classoomph_1_1PseudoSolidNodeUpdateElement_aba0869b0de889df9be90647c28632f8b}} 
+\index{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element@{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}!fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian\+\_\+and\+\_\+mass\+\_\+matrix@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian\+\_\+and\+\_\+mass\+\_\+matrix}}
+\index{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian\+\_\+and\+\_\+mass\+\_\+matrix@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian\+\_\+and\+\_\+mass\+\_\+matrix}!oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element@{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}}
+\subsubsection{\texorpdfstring{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian\+\_\+and\+\_\+mass\+\_\+matrix()}{fill\_in\_contribution\_to\_jacobian\_and\_mass\_matrix()}}
+{\footnotesize\ttfamily template$<$class B\+A\+S\+IC , class S\+O\+L\+ID $>$ \\
+void \hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement}{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}$<$ B\+A\+S\+IC, S\+O\+L\+ID $>$\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian\+\_\+and\+\_\+mass\+\_\+matrix (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{residuals,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{jacobian,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{mass\+\_\+matrix }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Final override for mass matrix function\+: contributions are included from both the underlying element types. 
+
+
+
+Definition at line 149 of file pseudosolid\+\_\+node\+\_\+update\+\_\+elements.\+h.
+
+
+
+References oomph\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian\+\_\+and\+\_\+mass\+\_\+matrix().
+
+\mbox{\Hypertarget{classoomph_1_1PseudoSolidNodeUpdateElement_a12009b16c000c65ad384c74246074384}\label{classoomph_1_1PseudoSolidNodeUpdateElement_a12009b16c000c65ad384c74246074384}} 
+\index{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element@{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}!fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals}}
+\index{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals}!oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element@{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}}
+\subsubsection{\texorpdfstring{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals()}{fill\_in\_contribution\_to\_residuals()}}
+{\footnotesize\ttfamily template$<$class B\+A\+S\+IC , class S\+O\+L\+ID $>$ \\
+void \hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement}{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}$<$ B\+A\+S\+IC, S\+O\+L\+ID $>$\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{residuals }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Final override for the residuals function. Contributions are added from both underlying element types. 
+
+
+
+Definition at line 125 of file pseudosolid\+\_\+node\+\_\+update\+\_\+elements.\+h.
+
+
+
+References oomph\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals().
+
+\mbox{\Hypertarget{classoomph_1_1PseudoSolidNodeUpdateElement_a254e54579d692d4480e30dee7c6b71cc}\label{classoomph_1_1PseudoSolidNodeUpdateElement_a254e54579d692d4480e30dee7c6b71cc}} 
+\index{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element@{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}!fill\+\_\+in\+\_\+shape\+\_\+derivatives@{fill\+\_\+in\+\_\+shape\+\_\+derivatives}}
+\index{fill\+\_\+in\+\_\+shape\+\_\+derivatives@{fill\+\_\+in\+\_\+shape\+\_\+derivatives}!oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element@{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}}
+\subsubsection{\texorpdfstring{fill\+\_\+in\+\_\+shape\+\_\+derivatives()}{fill\_in\_shape\_derivatives()}}
+{\footnotesize\ttfamily template$<$class B\+A\+S\+IC , class S\+O\+L\+ID $>$ \\
+void \hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement}{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}$<$ B\+A\+S\+IC, S\+O\+L\+ID $>$\+::fill\+\_\+in\+\_\+shape\+\_\+derivatives (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{jacobian }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Fill in the shape derivatives of the B\+A\+S\+IC equations w.\+r.\+t. the solid position dofs. 
+
+
+
+Definition at line 176 of file pseudosolid\+\_\+node\+\_\+update\+\_\+elements.\+h.
+
+
+
+References i.
+
+\mbox{\Hypertarget{classoomph_1_1PseudoSolidNodeUpdateElement_a6f5600cb23d1e26816ae36ae8195c01e}\label{classoomph_1_1PseudoSolidNodeUpdateElement_a6f5600cb23d1e26816ae36ae8195c01e}} 
+\index{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element@{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}!fill\+\_\+in\+\_\+shape\+\_\+derivatives\+\_\+by\+\_\+fd@{fill\+\_\+in\+\_\+shape\+\_\+derivatives\+\_\+by\+\_\+fd}}
+\index{fill\+\_\+in\+\_\+shape\+\_\+derivatives\+\_\+by\+\_\+fd@{fill\+\_\+in\+\_\+shape\+\_\+derivatives\+\_\+by\+\_\+fd}!oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element@{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}}
+\subsubsection{\texorpdfstring{fill\+\_\+in\+\_\+shape\+\_\+derivatives\+\_\+by\+\_\+fd()}{fill\_in\_shape\_derivatives\_by\_fd()}}
+{\footnotesize\ttfamily template$<$class B\+A\+S\+IC , class S\+O\+L\+ID $>$ \\
+void \hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement}{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}$<$ B\+A\+S\+IC, S\+O\+L\+ID $>$\+::fill\+\_\+in\+\_\+shape\+\_\+derivatives\+\_\+by\+\_\+fd (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{jacobian }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Fill in the derivatives of the B\+A\+S\+IC equations w.\+r.\+t. the solid position dofs. 
+
+
+
+Definition at line 244 of file pseudosolid\+\_\+node\+\_\+update\+\_\+elements.\+h.
+
+
+
+References oomph\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals(), and i.
+
+\mbox{\Hypertarget{classoomph_1_1PseudoSolidNodeUpdateElement_a18101610910f61e68da44e0fedf68c2c}\label{classoomph_1_1PseudoSolidNodeUpdateElement_a18101610910f61e68da44e0fedf68c2c}} 
+\index{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element@{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}!get\+\_\+dof\+\_\+numbers\+\_\+for\+\_\+unknowns@{get\+\_\+dof\+\_\+numbers\+\_\+for\+\_\+unknowns}}
+\index{get\+\_\+dof\+\_\+numbers\+\_\+for\+\_\+unknowns@{get\+\_\+dof\+\_\+numbers\+\_\+for\+\_\+unknowns}!oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element@{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}}
+\subsubsection{\texorpdfstring{get\+\_\+dof\+\_\+numbers\+\_\+for\+\_\+unknowns()}{get\_dof\_numbers\_for\_unknowns()}}
+{\footnotesize\ttfamily template$<$class B\+A\+S\+IC , class S\+O\+L\+ID $>$ \\
+void \hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement}{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}$<$ B\+A\+S\+IC, S\+O\+L\+ID $>$\+::get\+\_\+dof\+\_\+numbers\+\_\+for\+\_\+unknowns (\begin{DoxyParamCaption}\item[{std\+::list$<$ std\+::pair$<$ unsigned long, unsigned $>$ $>$ \&}]{dof\+\_\+lookup\+\_\+list }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Create a list of pairs for all unknowns in this element, so that the first entry in each pair contains the global equation number of the unknown, while the second one contains the number of the \char`\"{}\+D\+O\+F type\char`\"{} that this unknown is associated with. This method combines the get\+\_\+dof\+\_\+numbers\+\_\+for\+\_\+unknowns(...) method for the B\+A\+S\+IC and S\+O\+L\+ID elements. The basic elements retain their D\+OF type numbering and the S\+O\+L\+ID elements D\+OF type numbers are incremented by \hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement_a6fbeab78f1f6ebe9fc76625d88009e61}{nbasic\+\_\+dof\+\_\+types()}. 
+
+
+
+Definition at line 496 of file pseudosolid\+\_\+node\+\_\+update\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1PseudoSolidNodeUpdateElement_a6af297e5106ad545b61757ff020380ac}\label{classoomph_1_1PseudoSolidNodeUpdateElement_a6af297e5106ad545b61757ff020380ac}} 
+\index{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element@{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}!get\+\_\+\+Z2\+\_\+flux@{get\+\_\+\+Z2\+\_\+flux}}
+\index{get\+\_\+\+Z2\+\_\+flux@{get\+\_\+\+Z2\+\_\+flux}!oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element@{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}}
+\subsubsection{\texorpdfstring{get\+\_\+\+Z2\+\_\+flux()}{get\_Z2\_flux()}}
+{\footnotesize\ttfamily template$<$class B\+A\+S\+IC , class S\+O\+L\+ID $>$ \\
+void \hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement}{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}$<$ B\+A\+S\+IC, S\+O\+L\+ID $>$\+::get\+\_\+\+Z2\+\_\+flux (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{flux }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\textquotesingle{}Flux\textquotesingle{} vector for Z2 error estimation\+: Error estimation is based on error in B\+A\+S\+IC element 
+
+Definition at line 449 of file pseudosolid\+\_\+node\+\_\+update\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1PseudoSolidNodeUpdateElement_a2067e391f1fb7eccf8758e3787b3ba0d}\label{classoomph_1_1PseudoSolidNodeUpdateElement_a2067e391f1fb7eccf8758e3787b3ba0d}} 
+\index{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element@{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}!identify\+\_\+geometric\+\_\+data@{identify\+\_\+geometric\+\_\+data}}
+\index{identify\+\_\+geometric\+\_\+data@{identify\+\_\+geometric\+\_\+data}!oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element@{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}}
+\subsubsection{\texorpdfstring{identify\+\_\+geometric\+\_\+data()}{identify\_geometric\_data()}}
+{\footnotesize\ttfamily template$<$class B\+A\+S\+IC , class S\+O\+L\+ID $>$ \\
+void \hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement}{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}$<$ B\+A\+S\+IC, S\+O\+L\+ID $>$\+::identify\+\_\+geometric\+\_\+data (\begin{DoxyParamCaption}\item[{std\+::set$<$ \hyperlink{classoomph_1_1Data}{Data} $\ast$$>$ \&}]{geometric\+\_\+data\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Specify \hyperlink{classoomph_1_1Data}{Data} that affects the geometry of the element by adding the position \hyperlink{classoomph_1_1Data}{Data} to the set that\textquotesingle{}s passed in. (This functionality is required in F\+SI problems; set is used to avoid double counting). 
+
+
+
+Definition at line 403 of file pseudosolid\+\_\+node\+\_\+update\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1PseudoSolidNodeUpdateElement_a6fbeab78f1f6ebe9fc76625d88009e61}\label{classoomph_1_1PseudoSolidNodeUpdateElement_a6fbeab78f1f6ebe9fc76625d88009e61}} 
+\index{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element@{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}!nbasic\+\_\+dof\+\_\+types@{nbasic\+\_\+dof\+\_\+types}}
+\index{nbasic\+\_\+dof\+\_\+types@{nbasic\+\_\+dof\+\_\+types}!oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element@{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}}
+\subsubsection{\texorpdfstring{nbasic\+\_\+dof\+\_\+types()}{nbasic\_dof\_types()}}
+{\footnotesize\ttfamily template$<$class B\+A\+S\+IC , class S\+O\+L\+ID $>$ \\
+unsigned \hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement}{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}$<$ B\+A\+S\+IC, S\+O\+L\+ID $>$\+::nbasic\+\_\+dof\+\_\+types (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+return the number of D\+OF types associated with the B\+A\+S\+IC elements in this combined element 
+
+
+
+Definition at line 476 of file pseudosolid\+\_\+node\+\_\+update\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1PseudoSolidNodeUpdateElement_afc87fa6598bbabf49d872296e47bf1ea}\label{classoomph_1_1PseudoSolidNodeUpdateElement_afc87fa6598bbabf49d872296e47bf1ea}} 
+\index{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element@{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}!ndof\+\_\+types@{ndof\+\_\+types}}
+\index{ndof\+\_\+types@{ndof\+\_\+types}!oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element@{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}}
+\subsubsection{\texorpdfstring{ndof\+\_\+types()}{ndof\_types()}}
+{\footnotesize\ttfamily template$<$class B\+A\+S\+IC , class S\+O\+L\+ID $>$ \\
+unsigned \hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement}{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}$<$ B\+A\+S\+IC, S\+O\+L\+ID $>$\+::ndof\+\_\+types (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+The number of \char`\"{}\+D\+O\+F types\char`\"{} that degrees of freedom in this element are sub-\/divided into. 
+
+
+
+Definition at line 469 of file pseudosolid\+\_\+node\+\_\+update\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1PseudoSolidNodeUpdateElement_a673a5bdd155f24f333c0bb493f645202}\label{classoomph_1_1PseudoSolidNodeUpdateElement_a673a5bdd155f24f333c0bb493f645202}} 
+\index{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element@{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}!nrecovery\+\_\+order@{nrecovery\+\_\+order}}
+\index{nrecovery\+\_\+order@{nrecovery\+\_\+order}!oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element@{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}}
+\subsubsection{\texorpdfstring{nrecovery\+\_\+order()}{nrecovery\_order()}}
+{\footnotesize\ttfamily template$<$class B\+A\+S\+IC , class S\+O\+L\+ID $>$ \\
+unsigned \hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement}{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}$<$ B\+A\+S\+IC, S\+O\+L\+ID $>$\+::nrecovery\+\_\+order (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Order of recovery shape functions for Z2 error estimation\+: Done for B\+A\+S\+IC element since it determines the refinement. 
+
+
+
+Definition at line 464 of file pseudosolid\+\_\+node\+\_\+update\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1PseudoSolidNodeUpdateElement_a20d4f8be49920f8599b60981b1b1775f}\label{classoomph_1_1PseudoSolidNodeUpdateElement_a20d4f8be49920f8599b60981b1b1775f}} 
+\index{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element@{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}!nsolid\+\_\+dof\+\_\+types@{nsolid\+\_\+dof\+\_\+types}}
+\index{nsolid\+\_\+dof\+\_\+types@{nsolid\+\_\+dof\+\_\+types}!oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element@{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}}
+\subsubsection{\texorpdfstring{nsolid\+\_\+dof\+\_\+types()}{nsolid\_dof\_types()}}
+{\footnotesize\ttfamily template$<$class B\+A\+S\+IC , class S\+O\+L\+ID $>$ \\
+unsigned \hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement}{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}$<$ B\+A\+S\+IC, S\+O\+L\+ID $>$\+::nsolid\+\_\+dof\+\_\+types (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+return the number of D\+OF types associated with the S\+O\+L\+ID elements in this combined element 
+
+
+
+Definition at line 483 of file pseudosolid\+\_\+node\+\_\+update\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1PseudoSolidNodeUpdateElement_adbda8595ca36cd972870af6f1e498601}\label{classoomph_1_1PseudoSolidNodeUpdateElement_adbda8595ca36cd972870af6f1e498601}} 
+\index{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element@{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}!num\+\_\+\+Z2\+\_\+flux\+\_\+terms@{num\+\_\+\+Z2\+\_\+flux\+\_\+terms}}
+\index{num\+\_\+\+Z2\+\_\+flux\+\_\+terms@{num\+\_\+\+Z2\+\_\+flux\+\_\+terms}!oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element@{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}}
+\subsubsection{\texorpdfstring{num\+\_\+\+Z2\+\_\+flux\+\_\+terms()}{num\_Z2\_flux\_terms()}}
+{\footnotesize\ttfamily template$<$class B\+A\+S\+IC , class S\+O\+L\+ID $>$ \\
+unsigned \hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement}{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}$<$ B\+A\+S\+IC, S\+O\+L\+ID $>$\+::num\+\_\+\+Z2\+\_\+flux\+\_\+terms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Number of \textquotesingle{}flux\textquotesingle{} terms for Z2 error estimation\+: Error estimation is based on error in B\+A\+S\+IC element. 
+
+
+
+Definition at line 432 of file pseudosolid\+\_\+node\+\_\+update\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1PseudoSolidNodeUpdateElement_a8a6830facb4584f4e077169296d3d88c}\label{classoomph_1_1PseudoSolidNodeUpdateElement_a8a6830facb4584f4e077169296d3d88c}} 
+\index{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element@{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}!nvertex\+\_\+node@{nvertex\+\_\+node}}
+\index{nvertex\+\_\+node@{nvertex\+\_\+node}!oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element@{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}}
+\subsubsection{\texorpdfstring{nvertex\+\_\+node()}{nvertex\_node()}}
+{\footnotesize\ttfamily template$<$class B\+A\+S\+IC , class S\+O\+L\+ID $>$ \\
+unsigned \hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement}{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}$<$ B\+A\+S\+IC, S\+O\+L\+ID $>$\+::nvertex\+\_\+node (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Number of vertex nodes in the element. 
+
+
+
+Definition at line 455 of file pseudosolid\+\_\+node\+\_\+update\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1PseudoSolidNodeUpdateElement_a41addbcf4a1ed2711e24632c8a122dcb}\label{classoomph_1_1PseudoSolidNodeUpdateElement_a41addbcf4a1ed2711e24632c8a122dcb}} 
+\index{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element@{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}!output@{output}}
+\index{output@{output}!oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element@{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily template$<$class B\+A\+S\+IC , class S\+O\+L\+ID $>$ \\
+void \hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement}{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}$<$ B\+A\+S\+IC, S\+O\+L\+ID $>$\+::output (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Overload the output function\+: Call that of the basic element. 
+
+
+
+Definition at line 416 of file pseudosolid\+\_\+node\+\_\+update\+\_\+elements.\+h.
+
+
+
+References oomph\+::output().
+
+\mbox{\Hypertarget{classoomph_1_1PseudoSolidNodeUpdateElement_a293e9f73e7dd0429755379e17326994b}\label{classoomph_1_1PseudoSolidNodeUpdateElement_a293e9f73e7dd0429755379e17326994b}} 
+\index{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element@{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}!output@{output}}
+\index{output@{output}!oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element@{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily template$<$class B\+A\+S\+IC , class S\+O\+L\+ID $>$ \\
+void \hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement}{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}$<$ B\+A\+S\+IC, S\+O\+L\+ID $>$\+::output (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile,  }\item[{const unsigned \&}]{n\+\_\+p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Output function\+: Plot at n\+\_\+p plot points using the basic element\textquotesingle{}s output function. 
+
+
+
+Definition at line 420 of file pseudosolid\+\_\+node\+\_\+update\+\_\+elements.\+h.
+
+
+
+References oomph\+::output().
+
+\mbox{\Hypertarget{classoomph_1_1PseudoSolidNodeUpdateElement_ade73359e3600d32d64cf8acced341776}\label{classoomph_1_1PseudoSolidNodeUpdateElement_ade73359e3600d32d64cf8acced341776}} 
+\index{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element@{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}!output@{output}}
+\index{output@{output}!oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element@{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily template$<$class B\+A\+S\+IC , class S\+O\+L\+ID $>$ \\
+void \hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement}{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}$<$ B\+A\+S\+IC, S\+O\+L\+ID $>$\+::output (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{file\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Overload the output function\+: Call that of the basic element. 
+
+
+
+Definition at line 424 of file pseudosolid\+\_\+node\+\_\+update\+\_\+elements.\+h.
+
+
+
+References oomph\+::output().
+
+\mbox{\Hypertarget{classoomph_1_1PseudoSolidNodeUpdateElement_ac4e895c35d56c2137bd35ad988264bc8}\label{classoomph_1_1PseudoSolidNodeUpdateElement_ac4e895c35d56c2137bd35ad988264bc8}} 
+\index{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element@{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}!output@{output}}
+\index{output@{output}!oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element@{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily template$<$class B\+A\+S\+IC , class S\+O\+L\+ID $>$ \\
+void \hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement}{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}$<$ B\+A\+S\+IC, S\+O\+L\+ID $>$\+::output (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{file\+\_\+pt,  }\item[{const unsigned \&}]{n\+\_\+p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Output function is just the same as the basic equations. 
+
+
+
+Definition at line 427 of file pseudosolid\+\_\+node\+\_\+update\+\_\+elements.\+h.
+
+
+
+References oomph\+::output().
+
+\mbox{\Hypertarget{classoomph_1_1PseudoSolidNodeUpdateElement_a1d3ae58be7e3d2d9aa95086e631ce730}\label{classoomph_1_1PseudoSolidNodeUpdateElement_a1d3ae58be7e3d2d9aa95086e631ce730}} 
+\index{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element@{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}!required\+\_\+nvalue@{required\+\_\+nvalue}}
+\index{required\+\_\+nvalue@{required\+\_\+nvalue}!oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element@{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}}
+\subsubsection{\texorpdfstring{required\+\_\+nvalue()}{required\_nvalue()}}
+{\footnotesize\ttfamily template$<$class B\+A\+S\+IC , class S\+O\+L\+ID $>$ \\
+unsigned \hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement}{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}$<$ B\+A\+S\+IC, S\+O\+L\+ID $>$\+::required\+\_\+nvalue (\begin{DoxyParamCaption}\item[{const unsigned \&}]{n }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+The required number of values is the sum of the two. 
+
+
+
+Definition at line 102 of file pseudosolid\+\_\+node\+\_\+update\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1PseudoSolidNodeUpdateElement_ad78c40ba5be3d9b922dfd92f2e683ba8}\label{classoomph_1_1PseudoSolidNodeUpdateElement_ad78c40ba5be3d9b922dfd92f2e683ba8}} 
+\index{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element@{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}!solid\+\_\+p\+\_\+nodal\+\_\+index@{solid\+\_\+p\+\_\+nodal\+\_\+index}}
+\index{solid\+\_\+p\+\_\+nodal\+\_\+index@{solid\+\_\+p\+\_\+nodal\+\_\+index}!oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element@{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}}
+\subsubsection{\texorpdfstring{solid\+\_\+p\+\_\+nodal\+\_\+index()}{solid\_p\_nodal\_index()}}
+{\footnotesize\ttfamily template$<$class B\+A\+S\+IC , class S\+O\+L\+ID $>$ \\
+int \hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement}{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}$<$ B\+A\+S\+IC, S\+O\+L\+ID $>$\+::solid\+\_\+p\+\_\+nodal\+\_\+index (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+We assume that the solid stuff is stored at the end of the nodes, i.\+e. its index is the number of continuously interplated values in the B\+A\+S\+IC equations. 
+
+
+
+Definition at line 108 of file pseudosolid\+\_\+node\+\_\+update\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1PseudoSolidNodeUpdateElement_a6e580c17a0394f0dc056bbdc28229ea8}\label{classoomph_1_1PseudoSolidNodeUpdateElement_a6e580c17a0394f0dc056bbdc28229ea8}} 
+\index{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element@{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}!vertex\+\_\+node\+\_\+pt@{vertex\+\_\+node\+\_\+pt}}
+\index{vertex\+\_\+node\+\_\+pt@{vertex\+\_\+node\+\_\+pt}!oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element@{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}}
+\subsubsection{\texorpdfstring{vertex\+\_\+node\+\_\+pt()}{vertex\_node\_pt()}}
+{\footnotesize\ttfamily template$<$class B\+A\+S\+IC , class S\+O\+L\+ID $>$ \\
+\hyperlink{classoomph_1_1Node}{Node}$\ast$ \hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement}{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}$<$ B\+A\+S\+IC, S\+O\+L\+ID $>$\+::vertex\+\_\+node\+\_\+pt (\begin{DoxyParamCaption}\item[{const unsigned \&}]{j }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Pointer to the j-\/th vertex node in the element. 
+
+
+
+Definition at line 459 of file pseudosolid\+\_\+node\+\_\+update\+\_\+elements.\+h.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1PseudoSolidNodeUpdateElement_a09f75eb760cb430ff6a54a8e88a7bc16}\label{classoomph_1_1PseudoSolidNodeUpdateElement_a09f75eb760cb430ff6a54a8e88a7bc16}} 
+\index{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element@{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}!Shape\+\_\+derivs\+\_\+by\+\_\+direct\+\_\+fd@{Shape\+\_\+derivs\+\_\+by\+\_\+direct\+\_\+fd}}
+\index{Shape\+\_\+derivs\+\_\+by\+\_\+direct\+\_\+fd@{Shape\+\_\+derivs\+\_\+by\+\_\+direct\+\_\+fd}!oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element@{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}}
+\subsubsection{\texorpdfstring{Shape\+\_\+derivs\+\_\+by\+\_\+direct\+\_\+fd}{Shape\_derivs\_by\_direct\_fd}}
+{\footnotesize\ttfamily template$<$class B\+A\+S\+IC , class S\+O\+L\+ID $>$ \\
+bool \hyperlink{classoomph_1_1PseudoSolidNodeUpdateElement}{oomph\+::\+Pseudo\+Solid\+Node\+Update\+Element}$<$ B\+A\+S\+IC, S\+O\+L\+ID $>$\+::Shape\+\_\+derivs\+\_\+by\+\_\+direct\+\_\+fd\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Boolean flag to indicate shape derivative method. 
+
+
+
+Definition at line 67 of file pseudosolid\+\_\+node\+\_\+update\+\_\+elements.\+h.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{pseudosolid__node__update__elements_8h}{pseudosolid\+\_\+node\+\_\+update\+\_\+elements.\+h}\end{DoxyCompactItemize}

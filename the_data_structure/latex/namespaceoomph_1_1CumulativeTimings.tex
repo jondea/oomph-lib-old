@@ -1,0 +1,202 @@
+\hypertarget{namespaceoomph_1_1CumulativeTimings}{}\section{oomph\+:\+:Cumulative\+Timings Namespace Reference}
+\label{namespaceoomph_1_1CumulativeTimings}\index{oomph\+::\+Cumulative\+Timings@{oomph\+::\+Cumulative\+Timings}}
+
+
+Namespace for global (cumulative) timings.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{namespaceoomph_1_1CumulativeTimings_aeafe5cb81741d54561e4b62572a1e3df}{start} (const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i})
+\begin{DoxyCompactList}\small\item\em (Re-\/)start i-\/th timer \end{DoxyCompactList}\item 
+void \hyperlink{namespaceoomph_1_1CumulativeTimings_ab64f3634df4fbe6790069dcc06fdc0bc}{halt} (const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i})
+\begin{DoxyCompactList}\small\item\em Halt i-\/th timer. \end{DoxyCompactList}\item 
+double \hyperlink{namespaceoomph_1_1CumulativeTimings_a33447b850b466ef8247b14af6623e07f}{cumulative\+\_\+time} (const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i})
+\begin{DoxyCompactList}\small\item\em Report time accumulated by i-\/th timer. \end{DoxyCompactList}\item 
+void \hyperlink{namespaceoomph_1_1CumulativeTimings_a843f5485fc01485965e5547f61ac069f}{reset} (const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i})
+\begin{DoxyCompactList}\small\item\em Reset i-\/th timer. \end{DoxyCompactList}\item 
+void \hyperlink{namespaceoomph_1_1CumulativeTimings_a15855a46d3acb353e3ca84c8d696d57d}{reset} ()
+\begin{DoxyCompactList}\small\item\em Reset all timers. \end{DoxyCompactList}\item 
+void \hyperlink{namespaceoomph_1_1CumulativeTimings_a49a6558826c7842f0e14dbdaccc3ed01}{set\+\_\+ntimers} (const unsigned \&ntimers)
+\begin{DoxyCompactList}\small\item\em Set number of timings that can be recorded in parallel. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1Vector}{Vector}$<$ clock\+\_\+t $>$ \hyperlink{namespaceoomph_1_1CumulativeTimings_aaa3cc3208ed1f841dd3ff0ddf346a067}{Timing}
+\begin{DoxyCompactList}\small\item\em Cumulative timings. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Vector}{Vector}$<$ clock\+\_\+t $>$ \hyperlink{namespaceoomph_1_1CumulativeTimings_ad9ef14aa764288369edd9265b61dc39c}{Start\+\_\+time}
+\begin{DoxyCompactList}\small\item\em Start times of active timers. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Namespace for global (cumulative) timings. 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceoomph_1_1CumulativeTimings_a33447b850b466ef8247b14af6623e07f}\label{namespaceoomph_1_1CumulativeTimings_a33447b850b466ef8247b14af6623e07f}} 
+\index{oomph\+::\+Cumulative\+Timings@{oomph\+::\+Cumulative\+Timings}!cumulative\+\_\+time@{cumulative\+\_\+time}}
+\index{cumulative\+\_\+time@{cumulative\+\_\+time}!oomph\+::\+Cumulative\+Timings@{oomph\+::\+Cumulative\+Timings}}
+\subsubsection{\texorpdfstring{cumulative\+\_\+time()}{cumulative\_time()}}
+{\footnotesize\ttfamily double oomph\+::\+Cumulative\+Timings\+::cumulative\+\_\+time (\begin{DoxyParamCaption}\item[{const unsigned \&}]{i }\end{DoxyParamCaption})}
+
+
+
+Report time accumulated by i-\/th timer. 
+
+
+
+Definition at line 153 of file oomph\+\_\+utilities.\+cc.
+
+
+
+References Timing.
+
+
+
+Referenced by oomph\+::\+Type\+Names\+::get\+\_\+type\+\_\+name().
+
+\mbox{\Hypertarget{namespaceoomph_1_1CumulativeTimings_ab64f3634df4fbe6790069dcc06fdc0bc}\label{namespaceoomph_1_1CumulativeTimings_ab64f3634df4fbe6790069dcc06fdc0bc}} 
+\index{oomph\+::\+Cumulative\+Timings@{oomph\+::\+Cumulative\+Timings}!halt@{halt}}
+\index{halt@{halt}!oomph\+::\+Cumulative\+Timings@{oomph\+::\+Cumulative\+Timings}}
+\subsubsection{\texorpdfstring{halt()}{halt()}}
+{\footnotesize\ttfamily void oomph\+::\+Cumulative\+Timings\+::halt (\begin{DoxyParamCaption}\item[{const unsigned \&}]{i }\end{DoxyParamCaption})}
+
+
+
+Halt i-\/th timer. 
+
+
+
+Definition at line 147 of file oomph\+\_\+utilities.\+cc.
+
+
+
+References i, Start\+\_\+time, and Timing.
+
+
+
+Referenced by oomph\+::\+Type\+Names\+::get\+\_\+type\+\_\+name().
+
+\mbox{\Hypertarget{namespaceoomph_1_1CumulativeTimings_a843f5485fc01485965e5547f61ac069f}\label{namespaceoomph_1_1CumulativeTimings_a843f5485fc01485965e5547f61ac069f}} 
+\index{oomph\+::\+Cumulative\+Timings@{oomph\+::\+Cumulative\+Timings}!reset@{reset}}
+\index{reset@{reset}!oomph\+::\+Cumulative\+Timings@{oomph\+::\+Cumulative\+Timings}}
+\subsubsection{\texorpdfstring{reset()}{reset()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void oomph\+::\+Cumulative\+Timings\+::reset (\begin{DoxyParamCaption}\item[{const unsigned \&}]{i }\end{DoxyParamCaption})}
+
+
+
+Reset i-\/th timer. 
+
+
+
+Definition at line 159 of file oomph\+\_\+utilities.\+cc.
+
+
+
+References i, and Timing.
+
+
+
+Referenced by oomph\+::\+Type\+Names\+::get\+\_\+type\+\_\+name(), and oomph\+::\+Non\+Linear\+Elasticity\+Smooth\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::operator()().
+
+\mbox{\Hypertarget{namespaceoomph_1_1CumulativeTimings_a15855a46d3acb353e3ca84c8d696d57d}\label{namespaceoomph_1_1CumulativeTimings_a15855a46d3acb353e3ca84c8d696d57d}} 
+\index{oomph\+::\+Cumulative\+Timings@{oomph\+::\+Cumulative\+Timings}!reset@{reset}}
+\index{reset@{reset}!oomph\+::\+Cumulative\+Timings@{oomph\+::\+Cumulative\+Timings}}
+\subsubsection{\texorpdfstring{reset()}{reset()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void oomph\+::\+Cumulative\+Timings\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Reset all timers. 
+
+
+
+Definition at line 165 of file oomph\+\_\+utilities.\+cc.
+
+
+
+References i, and Timing.
+
+\mbox{\Hypertarget{namespaceoomph_1_1CumulativeTimings_a49a6558826c7842f0e14dbdaccc3ed01}\label{namespaceoomph_1_1CumulativeTimings_a49a6558826c7842f0e14dbdaccc3ed01}} 
+\index{oomph\+::\+Cumulative\+Timings@{oomph\+::\+Cumulative\+Timings}!set\+\_\+ntimers@{set\+\_\+ntimers}}
+\index{set\+\_\+ntimers@{set\+\_\+ntimers}!oomph\+::\+Cumulative\+Timings@{oomph\+::\+Cumulative\+Timings}}
+\subsubsection{\texorpdfstring{set\+\_\+ntimers()}{set\_ntimers()}}
+{\footnotesize\ttfamily void oomph\+::\+Cumulative\+Timings\+::set\+\_\+ntimers (\begin{DoxyParamCaption}\item[{const unsigned \&}]{ntimers }\end{DoxyParamCaption})}
+
+
+
+Set number of timings that can be recorded in parallel. 
+
+
+
+Definition at line 175 of file oomph\+\_\+utilities.\+cc.
+
+
+
+References Start\+\_\+time, and Timing.
+
+
+
+Referenced by oomph\+::\+Type\+Names\+::get\+\_\+type\+\_\+name(), and oomph\+::\+Timer\+::\+Timer().
+
+\mbox{\Hypertarget{namespaceoomph_1_1CumulativeTimings_aeafe5cb81741d54561e4b62572a1e3df}\label{namespaceoomph_1_1CumulativeTimings_aeafe5cb81741d54561e4b62572a1e3df}} 
+\index{oomph\+::\+Cumulative\+Timings@{oomph\+::\+Cumulative\+Timings}!start@{start}}
+\index{start@{start}!oomph\+::\+Cumulative\+Timings@{oomph\+::\+Cumulative\+Timings}}
+\subsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily void oomph\+::\+Cumulative\+Timings\+::start (\begin{DoxyParamCaption}\item[{const unsigned \&}]{i }\end{DoxyParamCaption})}
+
+
+
+(Re-\/)start i-\/th timer 
+
+
+
+Definition at line 141 of file oomph\+\_\+utilities.\+cc.
+
+
+
+References i, and Start\+\_\+time.
+
+
+
+Referenced by oomph\+::\+Refineable\+Tet\+Mesh\+Base\+::compute\+\_\+volume\+\_\+target(), oomph\+::\+Super\+L\+U\+Solver\+::factorise\+\_\+serial(), oomph\+::\+Type\+Names\+::get\+\_\+type\+\_\+name(), oomph\+::\+Refineable\+Q\+Element$<$ 2 $>$\+::interpolated\+\_\+zeta\+\_\+on\+\_\+edge(), oomph\+::\+Refineable\+Q\+Element$<$ 3 $>$\+::interpolated\+\_\+zeta\+\_\+on\+\_\+face(), oomph\+::\+M\+E\+T\+I\+S\+::partition\+\_\+mesh(), oomph\+::\+Block\+Triangular\+Preconditioner$<$ M\+A\+T\+R\+I\+X $>$\+::preconditioner\+\_\+solve(), and oomph\+::\+Pseudo\+Elastic\+Preconditioner\+Subsidiary\+Block\+Preconditioner\+Old\+::preconditioner\+\_\+solve().
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceoomph_1_1CumulativeTimings_ad9ef14aa764288369edd9265b61dc39c}\label{namespaceoomph_1_1CumulativeTimings_ad9ef14aa764288369edd9265b61dc39c}} 
+\index{oomph\+::\+Cumulative\+Timings@{oomph\+::\+Cumulative\+Timings}!Start\+\_\+time@{Start\+\_\+time}}
+\index{Start\+\_\+time@{Start\+\_\+time}!oomph\+::\+Cumulative\+Timings@{oomph\+::\+Cumulative\+Timings}}
+\subsubsection{\texorpdfstring{Start\+\_\+time}{Start\_time}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1Vector}{Vector}$<$ clock\+\_\+t $>$ oomph\+::\+Cumulative\+Timings\+::\+Start\+\_\+time}
+
+
+
+Start times of active timers. 
+
+
+
+Definition at line 185 of file oomph\+\_\+utilities.\+cc.
+
+
+
+Referenced by oomph\+::\+Type\+Names\+::get\+\_\+type\+\_\+name(), halt(), oomph\+::\+Timer\+::halt(), set\+\_\+ntimers(), oomph\+::\+Timer\+::set\+\_\+ntimers(), start(), and oomph\+::\+Timer\+::start().
+
+\mbox{\Hypertarget{namespaceoomph_1_1CumulativeTimings_aaa3cc3208ed1f841dd3ff0ddf346a067}\label{namespaceoomph_1_1CumulativeTimings_aaa3cc3208ed1f841dd3ff0ddf346a067}} 
+\index{oomph\+::\+Cumulative\+Timings@{oomph\+::\+Cumulative\+Timings}!Timing@{Timing}}
+\index{Timing@{Timing}!oomph\+::\+Cumulative\+Timings@{oomph\+::\+Cumulative\+Timings}}
+\subsubsection{\texorpdfstring{Timing}{Timing}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1Vector}{Vector}$<$ clock\+\_\+t $>$ oomph\+::\+Cumulative\+Timings\+::\+Timing}
+
+
+
+Cumulative timings. 
+
+
+
+Definition at line 182 of file oomph\+\_\+utilities.\+cc.
+
+
+
+Referenced by cumulative\+\_\+time(), oomph\+::\+Timer\+::cumulative\+\_\+time(), oomph\+::\+Type\+Names\+::get\+\_\+type\+\_\+name(), halt(), oomph\+::\+Timer\+::halt(), reset(), oomph\+::\+Timer\+::reset(), set\+\_\+ntimers(), and oomph\+::\+Timer\+::set\+\_\+ntimers().
+

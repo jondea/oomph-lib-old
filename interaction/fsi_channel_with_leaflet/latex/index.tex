@@ -1,0 +1,1157 @@
+In this example we consider the flow in a 2D channel which is partially obstructed by an elastic leaflet -- the F\+SI generalisation of the \href{../../../navier_stokes/channel_with_leaflet/html/index.html}{\tt Navier-\/\+Stokes problem in which the motion of the leaflet is prescribed.} A particular feature of this problem is that the leaflet (modelled as a thin-\/walled beam structure) is totally immersed in the fluid and is therefore exposed to the fluid traction from both sides.
+
+The problem presented here was used as one of the test cases for {\ttfamily oomph-\/lib\textquotesingle{}s} F\+SI preconditioner; see ~\newline
+~\newline
+ \begin{center} \href{http://www.maths.man.ac.uk/~mheil/oomph_lib_additional_material/HeilHazelBoyleCompMech/HeilHazelBoyleCompMech.pdf}{\tt Heil, M., Hazel, A.\+L. \& Boyle, J. (2008)\+: Solvers for large-\/displacement fluid-\/structure interaction problems\+: Segregated vs. monolithic approaches. Computational Mechanics.} \end{center} 
+
+In this tutorial we concentrate on the problem formulation. The application of the preconditioner is discussed \href{../../../preconditioners/fsi/html/index.html}{\tt elsewhere} -- the required source code is contained in the \href{../../../../demo_drivers/interaction/fsi_channel_with_leaflet/fsi_channel_with_leaflet.cc}{\tt driver code.}
+
+
+
+ 
+
+\hypertarget{index_the_problem}{}\section{The Problem}\label{index_the_problem}
+The figure below shows a sketch of the problem\+: A 2D channel of height $ H^*_{tot}$ and length $ L^*_{left} + L^*_{right} $ is partially occluded by a thin-\/walled elastic leaflet of height $ H^*_{leaflet} $. (As usual, we use asterisks to distinguish dimensional quantities from their non-\/dimensional equivalents to be introduced later.) We assume that the leaflet is sufficiently thin so that, as far as the boundary conditions for the fluid are concerned, the leaflet can be assumed to be infinitely thin. This allows us to parametrise its shape by a single Lagrangian coordinate $ \xi^* $. Hence we write the position vector to a material point on the leaflet as $ {\bf R}^*_w(\xi^*,t^*) $. A pulsatile Poiseuille flow whose mean velocity fluctuates between $ U^* $ and $ 2 U^* $ is imposed at the upstream end of the channel. The outflow is assumed to be parallel and axially traction-\/free.
+
+ 
+\begin{DoxyImage}
+\includegraphics[width=0.75\textwidth]{fsi_channel_with_leaflet_dim}
+\doxyfigcaption{Sketch of the problem. }
+\end{DoxyImage}
+
+
+We non-\/dimensionalise all length and coordinates on the channel width, $ H^*_{tot} $ , time on the natural timescale of the flow, $ H^*_{tot}/U^* $, the velocities on the (minimum) mean velocity, $ U^* $, and the pressure on the viscous scale.
+
+The fluid flow is then governed by the non-\/dimensional Navier-\/\+Stokes equations \[ Re \left( St \frac{\partial u_i}{\partial t} + u_j \frac{\partial u_i}{\partial x_j} \right) = - \frac{\partial p}{\partial x_i} + \frac{\partial }{\partial x_j} \left[ \left( \frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i} \right) \right], \] where $ Re = \rho U^* H_0^* / \mu $ and $ St = 1 $, and \begin{center} \[ \frac{\partial u_i}{\partial x_i} = 0, \] \end{center}  subject to a time-\/periodic, parabolic inflow with non-\/dimensional period $ T $, \begin{center} \[ {\bf u} = 6 x_2 (1-x_2) \left( 1 + \frac{1}{2} (1-\cos(2 \pi t/T)) \right) {\bf e}_1 \] \end{center}  in the inflow cross-\/section; parallel, axially-\/traction-\/free outflow at the outlet; and no-\/slip on the stationary channel walls, $ {\bf u} = {\bf 0} $. The no-\/slip condition on the leaflet is \begin{center} \[ {\bf u} = \frac{\partial {\bf R}_w(\xi,t)}{\partial t}. \] \end{center} 
+
+We model the leaflet as a thin-\/walled, massless, elastic Kirchhoff-\/\+Love beam of wall thickness $ h^* $. The beam\textquotesingle{}s effective (1D) elastic modulus is given by $ E_{eff} = E/(1-\nu^2), $ where $ E $ and $ \nu $ are its 3D Young\textquotesingle{}s modulus and Poisson\textquotesingle{}s ratio, respectively. The beam\textquotesingle{}s deformation is governed by the principle of virtual displacements, discussed in detail \href{../../../beam/tensioned_string/html/index.html}{\tt in another tutorial.} As in the Navier-\/\+Stokes equations, we scale all lengths in the beam problem on the channel\textquotesingle{}s width, $ H^*_{tot}. $ The non-\/dimensional position vector $ {\bf r}_w(\xi) $ to the undeformed wall is then given by \[ {\bf r}_w(\xi) = {\bf R}_w(\xi,t=0) = \left( \begin{array}{c} X_0 \\ \xi \end{array} \right) \ \ \ \ \ \ \mbox{where $\xi \in [0,H_{leaflet}].$} \] Our non-\/dimensionalisation of the principle of virtual displacements requires all stresses and tractions to be non-\/dimensionalised on the beam\textquotesingle{}s (effective 1D) elastic modulus, $ E_{eff} $. The non-\/dimensional load vector $ {\bf f} = {\bf f}^{*}/E_{eff} $ that acts on the leaflet (combining the fluid tractions acting on its front and back faces) is then given by \[ f_i = Q \bigg\{ \left( p\big|_{front} \ N_i^{[front]} - \left( \frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i} \right)\bigg|_{front} N_j^{[front]} \right) + \] \[ . \hspace{3cm} + \left( p\big|_{back} \ N_i^{[back]} - \left( \frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i} \right)\bigg|_{back} N_j^{[back]} \right) \bigg\} \ \ \ \ \ \ \mbox{for $i=1,2,$} \] where \[ Q = \frac{\mu U}{E_{eff} H_{tot}^*} \] is the ratio of the fluid pressure scale, $ \mu U/H_{tot}^* $ , used to non-\/dimensionalise the Navier-\/\+Stokes equations, to the beam\textquotesingle{}s effective elastic modulus, $ E_{eff} $. The parameter $ Q $ therefore indicates the strength of the fluid-\/structure interaction. In particular, if $ Q=0 $ the leaflet does not \char`\"{}feel\char`\"{} the fluid traction. $ {\bf N}_{front} $ and $ {\bf N}_{back} $ are the outer unit normals on the \char`\"{}front\char`\"{} and \char`\"{}back\char`\"{} faces of the deformed leaflet, as shown in this sketch of the non-\/dimensional version of the problem\+:
+
+ 
+\begin{DoxyImage}
+\includegraphics[width=0.75\textwidth]{fsi_channel_with_leaflet}
+\doxyfigcaption{Sketch of the problem in dimensionless variables. }
+\end{DoxyImage}
+
+
+
+
+ 
+
+\hypertarget{index_results}{}\section{Results}\label{index_results}
+The figure below shows (a) a snapshot of the flow field (pressure contours and instantaneous streamlines) and (b) the time-\/trace of the horizontal position of the leaflet\textquotesingle{}s tip for a Reynolds number of $ Re = 200 $, a non-\/dimensional period of $ T=2 $, and an interaction parameter of $ Q = 10^{-6} $. Following the decay of initial transients the leaflet performs periodic large-\/amplitude oscillations with the period of the pulsating inflow. Large velocity gradients develop at the front of the leaflet and in the shear layer that emanates from its tip and separates the recirculating flow region behind the leaflet from the main flow. Fig. (c) illustrates the non-\/uniform mesh refinement and shows the improved resolution in the high-\/shear regions, particularly near the leaflet\textquotesingle{}s tip where the pressure is singular. The mesh was continuously adapted throughout the simulation and contained an average of about 32,000 degrees of freedom. This is a fraction of the 1,324,343 degrees of freedom that would be required to achieve the same local resolution via uniform mesh refinement.
+
+ 
+\begin{DoxyImage}
+\includegraphics[width=0.75\textwidth]{flow_from_paper}
+\doxyfigcaption{Computational results. }
+\end{DoxyImage}
+
+
+The corresponding \href{../figures/fsi_channel_with_leaflet_flow.avi}{\tt animation} illustrates the algebraic node update strategy (implemented with an {\ttfamily Algebraic\+Mesh}, discussed in more detail in \href{../../fsi_collapsible_channel_algebraic/html/index.html}{\tt another tutorial}) and the evolution of the flow field. Note that the instantaneous streamlines intersect the (impermeable) leaflet because the leaflet is not stationary. The animation shows how the mesh adapts itself to changes in the flow field -- using much smaller elements in high-\/shear regions, including the artificial outflow boundary layer that is created by the imposition of parallel outflow in a region where the flow is far from fully-\/developed.
+
+
+
+ 
+
+\hypertarget{index_parameters}{}\section{The global parameters}\label{index_parameters}
+As usual we use a namespace to define the problem parameters\+: The Reynolds number and its product with the Strouhal number (both initialised to 50),
+
+ 
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//==== start\_of\_global\_parameters================================}
+\textcolor{comment}{/// Global parameters}
+\textcolor{comment}{}\textcolor{comment}{//===============================================================}
+\textcolor{keyword}{namespace }\hyperlink{namespaceGlobal__Physical__Variables}{Global\_Physical\_Variables}
+\{\textcolor{comment}{}
+\textcolor{comment}{ /// Reynolds number}
+\textcolor{comment}{} \textcolor{keywordtype}{double} Re=50.0;
+\textcolor{comment}{}
+\textcolor{comment}{ /// Womersley number: Product of Reynolds and Strouhal numbers}
+\textcolor{comment}{} \textcolor{keywordtype}{double} ReSt=50.0;
+
+\end{DoxyCodeInclude}
+
+
+the leaflet\textquotesingle{}s non-\/dimensional wall thickness, $ h = h^*/H^*_{tot} $, and the F\+SI parameter,
+
+
+\begin{DoxyCodeInclude}
+\textcolor{comment}{}
+\textcolor{comment}{ /// Non-dimensional wall thickness.}
+\textcolor{comment}{} \textcolor{keywordtype}{double} H=0.05;
+ \textcolor{comment}{}
+\textcolor{comment}{ /// \(\backslash\)short Fluid structure interaction parameter: Ratio of stresses used for}
+\textcolor{comment}{ /// non-dimensionalisation of fluid to solid stresses. }
+\textcolor{comment}{} \textcolor{keywordtype}{double} Q=1.0e-6;
+
+\end{DoxyCodeInclude}
+
+
+and the parameters that define the magnitude of the pulsating inflow.
+
+
+\begin{DoxyCodeInclude}
+\textcolor{comment}{}
+\textcolor{comment}{ /// Period for fluctuations in flux}
+\textcolor{comment}{} \textcolor{keywordtype}{double} Period=2.0;
+\textcolor{comment}{}
+\textcolor{comment}{ /// Min. flux}
+\textcolor{comment}{} \textcolor{keywordtype}{double} Min\_flux=1.0;
+ \textcolor{comment}{}
+\textcolor{comment}{ /// Max. flux}
+\textcolor{comment}{} \textcolor{keywordtype}{double} Max\_flux=2.0;
+ \textcolor{comment}{}
+\textcolor{comment}{ /// \(\backslash\)short Flux: Pulsatile flow fluctuating between Min\_flux and Max\_flux }
+\textcolor{comment}{ /// with period Period}
+\textcolor{comment}{} \textcolor{keywordtype}{double} \hyperlink{namespaceGlobal__Physical__Variables_ad651484fe06209606bccefe6fe23be0c}{flux}(\textcolor{keyword}{const} \textcolor{keywordtype}{double}& t)
+ \{  
+  \textcolor{keywordflow}{return} Min\_flux+
+   (Max\_flux-\hyperlink{namespaceGlobal__Physical__Variables_aa46dc81a0757e8f9707646e03c32d4fc}{Min\_flux})*0.5*(1.0-cos(2.0*MathematicalConstants::Pi*t/Period));
+ \}
+
+\} \textcolor{comment}{// end\_of\_namespace}
+
+\end{DoxyCodeInclude}
+
+
+
+
+ 
+
+\hypertarget{index_leaflet}{}\section{The undeformed leaflet}\label{index_leaflet}
+We use a {\ttfamily Geom\+Object} to describe the initial, stress-\/free shape of the elastic leaflet\+: a vertical straight line. The member function {\ttfamily d2position}(...) provides the first and second derivatives of the position vector, as required by the variational principle that governs the beam\textquotesingle{}s deformation; see \href{../../../beam/tensioned_string/html/index.html}{\tt the beam theory tutorial for details. }
+
+
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//=====start\_of\_undeformed\_leaflet=================================}
+\textcolor{comment}{///GeomObject: Undeformed straight, vertical leaflet}
+\textcolor{comment}{}\textcolor{comment}{//=================================================================}
+\textcolor{keyword}{class }\hyperlink{classUndeformedLeaflet}{UndeformedLeaflet} : \textcolor{keyword}{public} GeomObject
+\{
+
+\textcolor{keyword}{public}:
+\textcolor{comment}{}
+\textcolor{comment}{ /// Constructor: argument is the x-coordinate of the leaflet}
+\textcolor{comment}{} \hyperlink{classUndeformedLeaflet_ac4c0478b1f329360684af14b59043b12}{UndeformedLeaflet}(\textcolor{keyword}{const} \textcolor{keywordtype}{double}& x0): GeomObject(1,2)
+  \{
+   \hyperlink{classUndeformedLeaflet_aa89fc695af9e53aa38894c9d875afd36}{X0}=x0;
+  \}
+ \textcolor{comment}{}
+\textcolor{comment}{ /// \(\backslash\)short Position vector at Lagrangian coordinate zeta }
+\textcolor{comment}{} \textcolor{keywordtype}{void} \hyperlink{classUndeformedLeaflet_a8e9b79702eb9a38e19886b84aeb47918}{position}(\textcolor{keyword}{const} Vector<double>& zeta, Vector<double>& r)\textcolor{keyword}{ const}
+\textcolor{keyword}{  }\{
+   \textcolor{comment}{// Position Vector}
+   r[0] = \hyperlink{classUndeformedLeaflet_aa89fc695af9e53aa38894c9d875afd36}{X0};
+   r[1] = zeta[0];
+  \}
+
+\textcolor{comment}{}
+\textcolor{comment}{ /// \(\backslash\)short Parametrised position on object: r(zeta). Evaluated at}
+\textcolor{comment}{ /// previous timestep. t=0: current time; t>0: previous}
+\textcolor{comment}{ /// timestep. Calls steady version.}
+\textcolor{comment}{} \textcolor{keywordtype}{void} \hyperlink{classUndeformedLeaflet_a8e9b79702eb9a38e19886b84aeb47918}{position}(\textcolor{keyword}{const} \textcolor{keywordtype}{unsigned}& t, \textcolor{keyword}{const} Vector<double>& zeta,
+               Vector<double>& r)\textcolor{keyword}{ const}
+\textcolor{keyword}{  }\{
+   \textcolor{comment}{// Use the steady version}
+   \hyperlink{classUndeformedLeaflet_a8e9b79702eb9a38e19886b84aeb47918}{position}(zeta,r);
+  \} \textcolor{comment}{// end of position}
+
+\textcolor{comment}{}
+\textcolor{comment}{ /// \(\backslash\)short Posn vector and its  1st & 2nd derivatives}
+\textcolor{comment}{ /// w.r.t. to coordinates:}
+\textcolor{comment}{ /// \(\backslash\)f$ \(\backslash\)frac\{dR\_i\}\{d \(\backslash\)zeta\_\(\backslash\)alpha\}\(\backslash\)f$ = drdzeta(alpha,i). }
+\textcolor{comment}{ /// \(\backslash\)f$ \(\backslash\)frac\{d^2R\_i\}\{d \(\backslash\)zeta\_\(\backslash\)alpha d \(\backslash\)zeta\_\(\backslash\)beta\}\(\backslash\)f$ = }
+\textcolor{comment}{ /// ddrdzeta(alpha,beta,i). Evaluated at current time.}
+\textcolor{comment}{} \textcolor{keywordtype}{void} \hyperlink{classUndeformedLeaflet_a47d674756ce22e00a44ca0bd030a99da}{d2position}(\textcolor{keyword}{const} Vector<double>& zeta,
+                 Vector<double>& r,
+                 DenseMatrix<double> &drdzeta,
+                 RankThreeTensor<double> &ddrdzeta)\textcolor{keyword}{ const}
+\textcolor{keyword}{  }\{
+   \textcolor{comment}{// Position vector}
+   r[0] = \hyperlink{classUndeformedLeaflet_aa89fc695af9e53aa38894c9d875afd36}{X0};
+   r[1] = zeta[0];
+
+   \textcolor{comment}{// Tangent vector}
+   drdzeta(0,0)=0.0;
+   drdzeta(0,1)=1.0;
+
+   \textcolor{comment}{// Derivative of tangent vector}
+   ddrdzeta(0,0,0)=0.0;
+   ddrdzeta(0,0,1)=0.0;
+  \} \textcolor{comment}{// end of d2position}
+\textcolor{comment}{}
+\textcolor{comment}{ /// Number of geometric Data in GeomObject: None.}
+\textcolor{comment}{} \textcolor{keywordtype}{unsigned} \hyperlink{classUndeformedLeaflet_a56153a1d117dd41657183655de094d3e}{ngeom\_data}()\textcolor{keyword}{ const }\{\textcolor{keywordflow}{return} 0;\}  
+
+ private :
+\textcolor{comment}{}
+\textcolor{comment}{ /// x position of the undeformed leaflet's origin. }
+\textcolor{comment}{} \textcolor{keywordtype}{double} \hyperlink{classUndeformedLeaflet_aa89fc695af9e53aa38894c9d875afd36}{X0};
+
+\}; \textcolor{comment}{//end\_of\_undeformed\_wall}
+
+\end{DoxyCodeInclude}
+
+
+
+
+ 
+
+\hypertarget{index_main}{}\section{The driver code}\label{index_main}
+As with most time-\/dependent demo codes, the specification of a non-\/zero number of command line arguments will be interpreted as the code being run as part of {\ttfamily oomph-\/lib\textquotesingle{}s} self-\/test in which case only a few timesteps will be performed. Therefore we start by storing the command line arguments in the namespace {\ttfamily Command\+Line\+Args} to make them accessible throughout the code.
+
+
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//======= start\_of\_main================================================}
+\textcolor{comment}{/// Driver code  -- pass a command line argument if you want to run}
+\textcolor{comment}{}\textcolor{comment}{/// the code in validation mode where it only performs a few steps}
+\textcolor{comment}{}\textcolor{comment}{//=====================================================================}
+\textcolor{keywordtype}{int} \hyperlink{fsi__channel__with__leaflet_8cc_a0ddf1224851353fc92bfbff6f499fa97}{main}(\textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char}* argv[])
+\{
+ \textcolor{comment}{// Store command line arguments}
+ CommandLineArgs::setup(argc,argv);
+
+\end{DoxyCodeInclude}
+
+
+Next we specify the geometry and mesh parameters, and build the {\ttfamily Problem} object, using the {\ttfamily Algebraic\+Element} version of the two-\/dimensional {\ttfamily Refineable\+Q\+Taylor\+Hood\+Elements}.
+
+
+\begin{DoxyCodeInclude}
+
+ \textcolor{comment}{//Parameters for the leaflet: x-position of root and height}
+ \textcolor{keywordtype}{double} x\_0 = 1.0; 
+ \textcolor{keywordtype}{double} hleaflet=0.5;
+
+ \textcolor{comment}{// Number of elements in various regions of mesh}
+ \textcolor{keywordtype}{unsigned} nleft=6; 
+ \textcolor{keywordtype}{unsigned} nright=18;
+ \textcolor{keywordtype}{unsigned} ny1=3; 
+ \textcolor{keywordtype}{unsigned} ny2=3; 
+
+ \textcolor{comment}{// Dimensions of fluid mesh: length to the left and right of leaflet}
+ \textcolor{comment}{// and total height}
+ \textcolor{keywordtype}{double} lleft =1.0; 
+ \textcolor{keywordtype}{double} lright=3.0; 
+ \textcolor{keywordtype}{double} htot=1.0;
+  
+ \textcolor{comment}{//Build the problem}
+ \hyperlink{classFSIChannelWithLeafletProblem}{FSIChannelWithLeafletProblem}<
+  AlgebraicElement<RefineableQTaylorHoodElement<2> > >
+  problem(lleft,lright,hleaflet,
+          htot,nleft,nright,ny1,ny2,x\_0); 
+
+\end{DoxyCodeInclude}
+
+
+We prepare a {\ttfamily Doc\+Info} object and open a trace file to document the system\textquotesingle{}s evolution.
+
+
+\begin{DoxyCodeInclude}
+
+ \textcolor{comment}{// Set up doc info}
+ DocInfo doc\_info; 
+ doc\_info.set\_directory(\textcolor{stringliteral}{"RESLT"});
+
+ \textcolor{comment}{// Trace file}
+ ofstream trace;
+ \textcolor{keywordtype}{char} filename[100];
+ sprintf(filename,\textcolor{stringliteral}{"%s/trace.dat"},doc\_info.directory().c\_str());
+ trace.open(filename);
+
+\end{DoxyCodeInclude}
+
+
+Next we assign the timestepping parameters (using fewer timesteps if the code is run during a self-\/test) and document the system\textquotesingle{}s initial state which provides the initial guess for the Newton iteration in the subsequent steady solve.
+
+
+\begin{DoxyCodeInclude}
+
+
+ \textcolor{comment}{// Number of timesteps (reduced for validation)}
+ \textcolor{keywordtype}{unsigned} nstep=200;
+ \textcolor{keywordflow}{if} (CommandLineArgs::Argc>1)
+  \{
+   nstep=2;
+  \}
+
+ \textcolor{comment}{//Timestep: }
+ \textcolor{keywordtype}{double} dt=0.05;
+ 
+ \textcolor{comment}{// Initialise timestep }
+ problem.initialise\_dt(dt);
+
+ \textcolor{comment}{// Doc initial guess for steady solve}
+ problem.doc\_solution(doc\_info,trace);
+ doc\_info.number()++; 
+
+\end{DoxyCodeInclude}
+
+
+We wish to start the time-\/dependent simulation from an initial condition that corresponds to the steady solution of the problem with unit influx (i.\+e. the steady solution obtained if the time-\/dependent boundary condition that is applied at the inlet is held fixed at its value for $ t= 0 $). For the required Reynolds number of $ Re=200 $, the currently assigned initial guess (zero velocity and pressure, with the wall in its undeformed position) is \char`\"{}too far\char`\"{} from the actual solution and the Newton method would diverge (try it!). Therefore we generate the initial steady solution in a preliminary sequence of steady computations in which we first compute the solution for a Reynolds number of $ Re=50 $ (for this value the Newton method does converge). This solution is then used as the initial guess for the computation at $ Re=100 $, etc. We allow for up to 3 mesh adaptations for each Reynolds number to allow the mesh to adapt itself to the flow conditions before starting the time-\/dependent run.
+
+
+\begin{DoxyCodeInclude}
+
+ 
+ \textcolor{comment}{// Initial loop to increment the Reynolds number in sequence of steady solves}
+ \textcolor{comment}{//---------------------------------------------------------------------------}
+ \textcolor{keywordtype}{unsigned} n\_increment=4;
+ \textcolor{comment}{// Just to one step for validation run}
+ \textcolor{keywordflow}{if} (CommandLineArgs::Argc>1)
+  \{
+   n\_increment=1;
+  \}
+
+ \textcolor{comment}{// Set max. number of adaptations}
+ \textcolor{keywordtype}{unsigned} max\_adapt=3;
+
+ \hyperlink{namespaceGlobal__Physical__Variables_ab814e627d2eb5bc50318879d19ab16b9}{Global\_Physical\_Variables::Re}=0.0;
+ \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} i=0;i<n\_increment;i++)
+  \{
+   \textcolor{comment}{// Increase Re and ReSt (for St=1)}
+   \hyperlink{namespaceGlobal__Physical__Variables_ab814e627d2eb5bc50318879d19ab16b9}{Global\_Physical\_Variables::Re}+=50.0;
+   \hyperlink{namespaceGlobal__Physical__Variables_a085ee4bf968ffdd01a41b8c41864f907}{Global\_Physical\_Variables::ReSt}=
+      \hyperlink{namespaceGlobal__Physical__Variables_ab814e627d2eb5bc50318879d19ab16b9}{Global\_Physical\_Variables::Re};
+
+   \textcolor{comment}{// Solve the steady problem }
+   std::cout << \textcolor{stringliteral}{"Computing a steady solution for Re="} 
+             <<  \hyperlink{namespaceGlobal__Physical__Variables_ab814e627d2eb5bc50318879d19ab16b9}{Global\_Physical\_Variables::Re} << std::endl;
+   problem.steady\_newton\_solve(max\_adapt);
+   problem.doc\_solution(doc\_info,trace);
+   doc\_info.number()++; 
+  \} \textcolor{comment}{// reached final Reynolds number }
+
+\end{DoxyCodeInclude}
+
+
+Finally, we start the proper timestepping procedure, allowing for one mesh adaptation per timestep and suppressing the re-\/assignment of the initial condition after the mesh adaptation by setting the {\ttfamily first} flag to false.
+
+
+\begin{DoxyCodeInclude}
+
+
+
+ \textcolor{comment}{// Proper time-dependent run}
+ \textcolor{comment}{//--------------------------}
+
+ \textcolor{comment}{// Limit the number of adaptations during unsteady run to one per timestep}
+ max\_adapt=1;
+ 
+ \textcolor{comment}{// Don't re-set the initial conditions when adapting the mesh}
+ \textcolor{keywordtype}{bool} first = \textcolor{keyword}{false};
+
+ \textcolor{comment}{// Timestepping loop}
+ \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} istep=0;istep<nstep;istep++)
+  \{ 
+   \textcolor{comment}{// Solve the problem}
+   problem.unsteady\_newton\_solve(dt,max\_adapt,first);
+   
+   \textcolor{comment}{// Output the solution}
+   problem.doc\_solution(doc\_info,trace);
+   
+   \textcolor{comment}{// Step number}
+   doc\_info.number()++;
+
+  \}
+
+\}\textcolor{comment}{//end of main}
+
+\end{DoxyCodeInclude}
+
+
+
+
+ 
+
+\hypertarget{index_problem}{}\section{The Problem class}\label{index_problem}
+The {\ttfamily Problem} class contains the usual member functions, most of which are either empty or explained in more detail below.
+
+ 
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//=====start\_of\_problem\_class========================================}
+\textcolor{comment}{/// FSI leaflet in channel}
+\textcolor{comment}{}\textcolor{comment}{//===================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>
+\textcolor{keyword}{class }\hyperlink{classFSIChannelWithLeafletProblem}{FSIChannelWithLeafletProblem} : \textcolor{keyword}{public} Problem
+\{
+
+\textcolor{keyword}{public}:
+\textcolor{comment}{}
+\textcolor{comment}{ /// \(\backslash\)short Constructor: Pass the lenght of the domain at the left}
+\textcolor{comment}{ /// of the leaflet lleft,the lenght of the domain at the right of the}
+\textcolor{comment}{ /// leaflet lright,the height of the leaflet hleaflet, the total height}
+\textcolor{comment}{ /// of the domain htot, the number of macro-elements at the left of the}
+\textcolor{comment}{ /// leaflet nleft, the number of macro-elements at the right of the}
+\textcolor{comment}{ /// leaflet nright, the number of macro-elements under hleaflet ny1,}
+\textcolor{comment}{ /// the number of macro-elements above hleaflet ny2, the abscissa}
+\textcolor{comment}{ /// of the origin of the leaflet x\_0.}
+\textcolor{comment}{} \hyperlink{classFSIChannelWithLeafletProblem_aaa0a455e91c4fb2dd9696607b802d01b}{FSIChannelWithLeafletProblem}(\textcolor{keyword}{const} \textcolor{keywordtype}{double}& lleft,
+                              \textcolor{keyword}{const} \textcolor{keywordtype}{double}& lright, \textcolor{keyword}{const} \textcolor{keywordtype}{double}& hleaflet,
+                              \textcolor{keyword}{const} \textcolor{keywordtype}{double}& htot,
+                              \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned}& nleft, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned}& nright,
+                              \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned}& ny1, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned}&  ny2,
+                              \textcolor{keyword}{const} \textcolor{keywordtype}{double}& x\_0);  
+\textcolor{comment}{}
+\textcolor{comment}{ /// Destructor empty}
+\textcolor{comment}{} \hyperlink{classFSIChannelWithLeafletProblem_a5df1d8f7229314a92ffb48ec61f56fe0}{~FSIChannelWithLeafletProblem}()\{\}
+ \textcolor{comment}{}
+\textcolor{comment}{ /// Actions after solve (empty)}
+\textcolor{comment}{} \textcolor{keywordtype}{void} \hyperlink{classFSIChannelWithLeafletProblem_abff6e46a940263c9255a61f649bb4239}{actions\_after\_newton\_solve}()\{\}
+\textcolor{comment}{}
+\textcolor{comment}{ /// Actions before solve (empty) }
+\textcolor{comment}{} \textcolor{keywordtype}{void} \hyperlink{classFSIChannelWithLeafletProblem_a8a32ef77f32b3283b4b509669deb0a11}{actions\_before\_newton\_solve}()\{\}
+\textcolor{comment}{}
+\textcolor{comment}{ /// Actions after adaptation}
+\textcolor{comment}{} \textcolor{keywordtype}{void} \hyperlink{classFSIChannelWithLeafletProblem_acc3f4745ea9b4524aebbc4f2556d1286}{actions\_after\_adapt}();
+\textcolor{comment}{}
+\textcolor{comment}{ /// Access function to the wall mesh}
+\textcolor{comment}{} OneDLagrangianMesh<FSIHermiteBeamElement>* \hyperlink{classFSIChannelWithLeafletProblem_ab6a1c532882a71ddd576c752da389de0}{wall\_mesh\_pt}() 
+  \{
+   \textcolor{keywordflow}{return} \hyperlink{classFSIChannelWithLeafletProblem_a943437726f0a54fa8f7fc9ffb12bc4cd}{Wall\_mesh\_pt};
+  \} 
+\textcolor{comment}{}
+\textcolor{comment}{ /// Access function to fluid mesh}
+\textcolor{comment}{} RefineableAlgebraicChannelWithLeafletMesh<ELEMENT>* \hyperlink{classFSIChannelWithLeafletProblem_aec9244497829f9a85cbca7307c4d4e10}{fluid\_mesh\_pt}()
+  \{
+   \textcolor{keywordflow}{return} \hyperlink{classFSIChannelWithLeafletProblem_a40cee3652918bdcf67569afc89d3074d}{Fluid\_mesh\_pt};
+  \}
+\textcolor{comment}{}
+\textcolor{comment}{ /// Doc the solution}
+\textcolor{comment}{} \textcolor{keywordtype}{void} \hyperlink{classFSIChannelWithLeafletProblem_a055f124f38dca43bc3ed36b80c5c0880}{doc\_solution}(DocInfo& doc\_info, ofstream& trace);
+
+\end{DoxyCodeInclude}
+
+
+Two member functions are implemented here\+: The function {\ttfamily actions\+\_\+before\+\_\+implicit\+\_\+timestep()} updates the time-\/dependent velocity profile at the upstream boundary (boundary 3; see the enumeration of the mesh boundaries in the \href{../../../meshes/mesh_list/html/index.html#channel_with_leaflet}{\tt {\ttfamily Channel\+With\+Leaflet\+Mesh}})\+: 
+\begin{DoxyCodeInclude}
+
+\textcolor{comment}{}
+\textcolor{comment}{/// Update the inflow velocity}
+\textcolor{comment}{} \textcolor{keywordtype}{void} actions\_before\_implicit\_timestep()
+  \{
+   \textcolor{comment}{// Actual time}
+   \textcolor{keywordtype}{double} t=time\_pt()->time();
+
+   \textcolor{comment}{// Amplitude of flow}
+   \textcolor{keywordtype}{double} ampl=\hyperlink{namespaceGlobal__Physical__Variables_ad651484fe06209606bccefe6fe23be0c}{Global\_Physical\_Variables::flux}(t);
+
+   \textcolor{comment}{// Update parabolic flow along boundary 3}
+   \textcolor{keywordtype}{unsigned} ibound=3; 
+   \textcolor{keywordtype}{unsigned} num\_nod= Fluid\_mesh\_pt->nboundary\_node(ibound);
+   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} inod=0;inod<num\_nod;inod++)
+   \{
+    \textcolor{keywordtype}{double} ycoord = Fluid\_mesh\_pt->boundary\_node\_pt(ibound,inod)->x(1); 
+    \textcolor{keywordtype}{double} uy = ampl*6.0*ycoord/Htot*(1.0-ycoord/Htot);
+    Fluid\_mesh\_pt->boundary\_node\_pt(ibound,inod)->set\_value(0,uy);
+    Fluid\_mesh\_pt->boundary\_node\_pt(ibound,inod)->set\_value(1,0.0);    
+   \}
+  \} \textcolor{comment}{// end of actions\_before\_implicit\_timestep}
+
+\end{DoxyCodeInclude}
+
+
+Since the node-\/update is performed by an algebraic node-\/update procedure the nodal positions in the fluid mesh must be updated whenever any of the (solid) degrees-\/of-\/freedom change. This is done automatically during the computation of the shape derivatives (implemented in the {\ttfamily Algebraic\+Element} wrapper class described \href{../../fsi_collapsible_channel_algebraic/html/index.html}{\tt another tutorial}), but an additional node update must be performed when the unknowns are updated by the Newton solver. This is achieved by performing a further node-\/update in the function {\ttfamily actions\+\_\+before\+\_\+newton\+\_\+convergence\+\_\+check()}\+:
+
+
+\begin{DoxyCodeInclude}
+\textcolor{comment}{}
+\textcolor{comment}{ /// \(\backslash\)short Update before checking Newton convergence: Update the}
+\textcolor{comment}{ /// nodal positions in the fluid mesh in response to possible }
+\textcolor{comment}{ /// changes in the wall shape}
+\textcolor{comment}{} \textcolor{keywordtype}{void} actions\_before\_newton\_convergence\_check()
+  \{
+   Fluid\_mesh\_pt->node\_update();
+  \}
+
+\end{DoxyCodeInclude}
+
+
+The private member data contains the usual pointers to the {\ttfamily Problem\textquotesingle{}s} two sub-\/meshes, the pointer to {\ttfamily Geom\+Object} that represents the leaflet, and the total height of the channel.
+
+
+\begin{DoxyCodeInclude}
+
+\textcolor{keyword}{private}:
+ \textcolor{comment}{}
+\textcolor{comment}{ /// Pointer to the fluid mesh}
+\textcolor{comment}{} RefineableAlgebraicChannelWithLeafletMesh<ELEMENT>* Fluid\_mesh\_pt;
+\textcolor{comment}{}
+\textcolor{comment}{ /// Pointer to the "wall" mesh}
+\textcolor{comment}{} OneDLagrangianMesh<FSIHermiteBeamElement>* Wall\_mesh\_pt;
+\textcolor{comment}{}
+\textcolor{comment}{ /// Pointer to the GeomObject that represents the wall}
+\textcolor{comment}{} GeomObject* Leaflet\_pt;
+ \textcolor{comment}{}
+\textcolor{comment}{ /// Total height of the domain}
+\textcolor{comment}{} \textcolor{keywordtype}{double} Htot;
+
+\};
+
+\end{DoxyCodeInclude}
+
+
+
+
+ 
+
+\hypertarget{index_constructor}{}\section{The problem constructor}\label{index_constructor}
+We start the problem construction by creating two timesteppers\+: A {\ttfamily B\+F\+D$<$2$>$} timestepper for the fluid and the fake timestepper {\ttfamily Steady$<$2$>$} for the (massless) solid. (\href{../../fsi_collapsible_channel_adapt/html/index.html}{\tt Recall } that timesteppers from the {\ttfamily Steady} family return zero time-\/derivatives but keep track of the past histories. These are needed during the adaptive refinement of the fluid mesh\+: when assigning the history of the previous nodal positions for newly created fluid nodes, we must evaluate the position of the leaflet at previous timesteps; this is discussed in more detail in \href{../../fsi_collapsible_channel_adapt/html/index.html}{\tt another tutorial}.)
+
+
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//=====start\_of\_constructor==============================================}
+\textcolor{comment}{/// Constructor}
+\textcolor{comment}{}\textcolor{comment}{//=======================================================================}
+\textcolor{keyword}{template} <\textcolor{keyword}{class} ELEMENT>
+\hyperlink{classFSIChannelWithLeafletProblem_aaa0a455e91c4fb2dd9696607b802d01b}{FSIChannelWithLeafletProblem<ELEMENT>::FSIChannelWithLeafletProblem}
+      (
+ \textcolor{keyword}{const} \textcolor{keywordtype}{double}& lleft,
+ \textcolor{keyword}{const} \textcolor{keywordtype}{double}& lright,
+ \textcolor{keyword}{const} \textcolor{keywordtype}{double}& hleaflet,
+ \textcolor{keyword}{const} \textcolor{keywordtype}{double}& htot,
+ \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned}& nleft,
+ \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned}& nright,
+ \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned}& ny1,
+ \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned}&  ny2,
+ \textcolor{keyword}{const} \textcolor{keywordtype}{double}& x\_0) : Htot(htot)
+\{
+ \textcolor{comment}{// Timesteppers:}
+ \textcolor{comment}{//--------------}
+
+ \textcolor{comment}{// Allocate the timestepper}
+ BDF<2>* fluid\_time\_stepper\_pt=\textcolor{keyword}{new} BDF<2>;
+ add\_time\_stepper\_pt(fluid\_time\_stepper\_pt);
+
+ \textcolor{comment}{// Allocate the wall timestepper}
+ Steady<2>* wall\_time\_stepper\_pt=\textcolor{keyword}{new} Steady<2>;
+ add\_time\_stepper\_pt(wall\_time\_stepper\_pt);
+
+\end{DoxyCodeInclude}
+
+
+Next we create the mesh of 1D Hermite beam elements that represents the leaflet, passing a pointer to an instance of the {\ttfamily \hyperlink{classUndeformedLeaflet}{Undeformed\+Leaflet}} to its constructor.
+
+
+\begin{DoxyCodeInclude}
+
+
+ \textcolor{comment}{// Discretise leaflet}
+ \textcolor{comment}{//-------------------}
+
+ \textcolor{comment}{// Geometric object that represents the undeformed leaflet}
+ \hyperlink{classUndeformedLeaflet}{UndeformedLeaflet}* undeformed\_wall\_pt=\textcolor{keyword}{new} \hyperlink{classUndeformedLeaflet}{UndeformedLeaflet}(x\_0);
+
+ \textcolor{comment}{//Create the "wall" mesh with FSI Hermite beam elements}
+ \textcolor{keywordtype}{unsigned} n\_wall\_el=5;
+ Wall\_mesh\_pt = \textcolor{keyword}{new} OneDLagrangianMesh<FSIHermiteBeamElement>
+  (n\_wall\_el,hleaflet,undeformed\_wall\_pt,wall\_time\_stepper\_pt);
+
+\end{DoxyCodeInclude}
+
+
+The wall mesh defines the geometry of the deformed leaflet, therefore we create a {\ttfamily Geom\+Object} representation of that mesh, using the {\ttfamily Mesh\+As\+Geom\+Object} class, and pass it to the constructor of the fluid mesh\+:
+
+
+\begin{DoxyCodeInclude}
+
+
+ \textcolor{comment}{// Provide GeomObject representation of leaflet mesh and build fluid mesh}
+ \textcolor{comment}{//-----------------------------------------------------------------------}
+
+ \textcolor{comment}{// Build a geometric object (one Lagrangian, two Eulerian coordinates)}
+ \textcolor{comment}{// from the wall mesh}
+ MeshAsGeomObject* wall\_geom\_object\_pt=
+  \textcolor{keyword}{new} MeshAsGeomObject(Wall\_mesh\_pt); 
+
+\textcolor{comment}{//Build the mesh}
+ Fluid\_mesh\_pt =\textcolor{keyword}{new} RefineableAlgebraicChannelWithLeafletMesh<ELEMENT>(
+  wall\_geom\_object\_pt,
+  lleft, lright,
+  hleaflet,
+  htot,nleft,
+  nright,ny1,ny2,
+  fluid\_time\_stepper\_pt);
+
+\end{DoxyCodeInclude}
+
+
+We specify an error estimator for the fluid mesh and add both meshes to the {\ttfamily Problem} before combining them into a global mesh.
+
+
+\begin{DoxyCodeInclude}
+
+ \textcolor{comment}{// Set error estimator}
+ Z2ErrorEstimator* error\_estimator\_pt=\textcolor{keyword}{new} Z2ErrorEstimator;
+ Fluid\_mesh\_pt->spatial\_error\_estimator\_pt()=error\_estimator\_pt;
+
+
+
+ \textcolor{comment}{// Build global mesh}
+ \textcolor{comment}{//------------------}
+ 
+ \textcolor{comment}{// Add the sub meshes to the problem}
+ add\_sub\_mesh(Fluid\_mesh\_pt);
+ add\_sub\_mesh(Wall\_mesh\_pt);
+
+ \textcolor{comment}{// Combine all submeshes into a single Mesh}
+ build\_global\_mesh();
+
+\end{DoxyCodeInclude}
+
+
+Dirichlet conditions (prescribed velocity) are applied on virtually all boundaries of the fluid domain (prescribed inflow at the inlet; zero velocity on the rigid channel walls; fluid velocity prescribed by the wall motion on the leaflet), apart from the outflow (boundary 1; see the enumeration of the mesh boundaries in the \href{../../../meshes/mesh_list/html/index.html#channel_with_leaflet}{\tt {\ttfamily Channel\+With\+Leaflet\+Mesh}}) where the axial velocity is unknown (and determined indirectly by the \char`\"{}axially-\/traction-\/free\char`\"{} condition) while the vertical velocity has to be set to zero to ensure parallel outflow.
+
+
+\begin{DoxyCodeInclude}
+
+
+
+ \textcolor{comment}{// Fluid boundary conditions}
+ \textcolor{comment}{//--------------------------}
+
+ \textcolor{comment}{//Pin the boundary nodes of the fluid mesh}
+ \textcolor{keywordtype}{unsigned} num\_bound = Fluid\_mesh\_pt->nboundary();
+ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} ibound=0;ibound<num\_bound;ibound++)
+  \{
+   \textcolor{keywordtype}{unsigned} num\_nod= Fluid\_mesh\_pt->nboundary\_node(ibound);
+   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} inod=0;inod<num\_nod;inod++)
+    \{
+      Fluid\_mesh\_pt->boundary\_node\_pt(ibound,inod)->pin(1);
+     
+      \textcolor{comment}{// Do not pin the x velocity of the outflow}
+      \textcolor{keywordflow}{if}( ibound != 1)
+      \{
+       Fluid\_mesh\_pt->boundary\_node\_pt(ibound,inod)->pin(0); 
+      \}      
+    \}
+  \}
+ \textcolor{comment}{// end loop over boundaries}
+
+\end{DoxyCodeInclude}
+
+
+Next we assign the parabolic velocity profile at the inlet (recall that all values are initialised to zero so no further action is required on any of the other Dirichlet boundaries).
+
+
+\begin{DoxyCodeInclude}
+   
+
+ \textcolor{comment}{// Setup parabolic flow along boundary 3 (everything else that's }
+ \textcolor{comment}{// pinned has homogenous boundary conditions so no action is required}
+ \textcolor{comment}{// as that's the default assignment). Inflow profile is parabolic}
+ \textcolor{comment}{// and this is interpolated correctly during mesh refinement so}
+ \textcolor{comment}{// no re-assignment necessary after adaptation.}
+ \textcolor{keywordtype}{unsigned} ibound=3; 
+ \textcolor{keywordtype}{unsigned} num\_nod= Fluid\_mesh\_pt->nboundary\_node(ibound);
+ \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} inod=0;inod<num\_nod;inod++)
+  \{
+   \textcolor{keywordtype}{double} ycoord = Fluid\_mesh\_pt->boundary\_node\_pt(ibound,inod)->x(1); 
+   \textcolor{keywordtype}{double} uy = 6.0*ycoord/htot*(1.0-ycoord/htot);
+   Fluid\_mesh\_pt->boundary\_node\_pt(ibound,inod)->set\_value(0,uy);
+   Fluid\_mesh\_pt->boundary\_node\_pt(ibound,inod)->set\_value(1,0.0);    
+  \}\textcolor{comment}{// end of setup boundary condition}
+
+\end{DoxyCodeInclude}
+
+
+The leaflet is clamped at its lower end so we pin its $x_1$-\/ and $x_2$-\/positions, and impose a vertical slope by setting $ dx_1/ds = 0 $ (where s is the local coordinate along the element; see the discussion of the boundary conditions for beam elements in \href{../../../beam/tensioned_string/html/index.html}{\tt another tutorial} for details).
+
+
+\begin{DoxyCodeInclude}
+
+
+ 
+ \textcolor{comment}{// Boundary conditions for wall mesh}
+ \textcolor{comment}{//----------------------------------}
+
+ \textcolor{comment}{// Set the boundary conditions: the lower end of the beam is fixed in space}
+ \textcolor{keywordtype}{unsigned} b=0; 
+
+ \textcolor{comment}{// Pin displacements in both x and y directions}
+ wall\_mesh\_pt()->boundary\_node\_pt(b,0)->pin\_position(0); 
+ wall\_mesh\_pt()->boundary\_node\_pt(b,0)->pin\_position(1);
+ 
+ \textcolor{comment}{// Infinite slope: Pin type 1 (slope) dof for displacement direction 0 }
+ wall\_mesh\_pt()->boundary\_node\_pt(b,0)->pin\_position(1,0);
+
+\end{DoxyCodeInclude}
+
+
+Next, we complete the build of the fluid elements by passing pointers to the relevant physical parameters to the elements and pinning any redundant pressure degrees of freedom; see \href{../../../navier_stokes/adaptive_driven_cavity/html/index.html}{\tt another tutorial} for details.
+
+
+\begin{DoxyCodeInclude}
+ 
+
+
+ \textcolor{comment}{// Complete build of fluid elements}
+ \textcolor{comment}{//---------------------------------}
+ \textcolor{keywordtype}{unsigned} n\_element = Fluid\_mesh\_pt->nelement();
+
+ \textcolor{comment}{// Loop over the elements to set up element-specific }
+ \textcolor{comment}{// things that cannot be handled by constructor}
+ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} e=0;e<n\_element;e++)
+  \{
+   \textcolor{comment}{// Upcast from GeneralisedElement to the present element}
+   ELEMENT* el\_pt = \textcolor{keyword}{dynamic\_cast<}ELEMENT*\textcolor{keyword}{>}(Fluid\_mesh\_pt->element\_pt(e));
+
+   \textcolor{comment}{//Set the Reynolds number}
+   el\_pt->re\_pt() = &\hyperlink{namespaceGlobal__Physical__Variables_ab814e627d2eb5bc50318879d19ab16b9}{Global\_Physical\_Variables::Re};
+   
+   \textcolor{comment}{//Set the Womersley number}
+   el\_pt->re\_st\_pt() = &\hyperlink{namespaceGlobal__Physical__Variables_a085ee4bf968ffdd01a41b8c41864f907}{Global\_Physical\_Variables::ReSt};
+      
+  \}\textcolor{comment}{// end loop over elements}
+
+
+ \textcolor{comment}{// Pin redudant pressure dofs}
+ RefineableNavierStokesEquations<2>::
+  pin\_redundant\_nodal\_pressures(Fluid\_mesh\_pt->element\_pt());
+
+\end{DoxyCodeInclude}
+
+
+When completing the build of the wall elements we use the function {\ttfamily enable\+\_\+fluid\+\_\+loading\+\_\+on\+\_\+both\+\_\+sides()} to indicate that the leaflet is completely immersed in the fluid so that fluid tractions act on both of its faces. When setting up the fluid-\/structure interaction below, one of the two faces will have to be identified as the \char`\"{}front\char`\"{} (face 0) and the other one as the \char`\"{}back\char`\"{} (face 1). The function {\ttfamily normal\+\_\+points\+\_\+into\+\_\+fluid()} allows us to indicate if the outer unit normal on the leaflet (as computed by {\ttfamily F\+S\+I\+Hermite\+Beam\+Element\+::get\+\_\+normal}(...) points into the fluid, when viewed from the \char`\"{}front\char`\"{} face. Here it does not -- see \hyperlink{index_comm}{Further comments} for more details on this slightly subtle point).
+
+
+\begin{DoxyCodeInclude}
+ 
+ 
+ \textcolor{comment}{// Complete build of wall elements}
+ \textcolor{comment}{//--------------------------------}
+ n\_element = wall\_mesh\_pt()->nelement();
+ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} e=0;e<n\_element;e++)
+  \{
+   \textcolor{comment}{// Upcast to the specific element type}
+   FSIHermiteBeamElement *elem\_pt = 
+    \textcolor{keyword}{dynamic\_cast<}FSIHermiteBeamElement*\textcolor{keyword}{>}(wall\_mesh\_pt()->element\_pt(e));
+    
+   \textcolor{comment}{// Set physical parameters for each element:}
+   elem\_pt->h\_pt() = &\hyperlink{namespaceGlobal__Physical__Variables_af6e07423e22c0991084d9a2f43727805}{Global\_Physical\_Variables::H};
+    
+   \textcolor{comment}{// Function that specifies the load ratios}
+   elem\_pt->q\_pt() = &\hyperlink{namespaceGlobal__Physical__Variables_a66cb7ecda9ba0cd72367dd697f154545}{Global\_Physical\_Variables::Q};
+
+   \textcolor{comment}{// Set the undeformed shape for each element}
+   elem\_pt->undeformed\_beam\_pt() = undeformed\_wall\_pt;
+
+   \textcolor{comment}{// Leaflet is immersed and loaded by fluid on both sides}
+   elem\_pt->enable\_fluid\_loading\_on\_both\_sides();
+
+   \textcolor{comment}{// The normal to the leaflet, as computed by the }
+   \textcolor{comment}{// FSIHermiteElements points away from the fluid rather than }
+   \textcolor{comment}{// into the fluid (as assumed by default) when viewed from}
+   \textcolor{comment}{// the "front" (face 0).}
+   elem\_pt->set\_normal\_pointing\_out\_of\_fluid();
+
+  \} \textcolor{comment}{// end of loop over elements}
+
+\end{DoxyCodeInclude}
+
+
+We can now set up the fluid structure interaction. The motion of the leaflet determines the fluid velocity of all nodes on boundaries 4 and 5 via the no-\/slip condition (see the enumeration of the mesh boundaries in the \href{../../../meshes/mesh_list/html/index.html#channel_with_leaflet}{\tt {\ttfamily Channel\+With\+Leaflet\+Mesh}}). The fluid velocity at these nodes can be updated automatically whenever a fluid node is moved (by the fluid mesh\textquotesingle{}s node-\/update function) by specifying an auxiliary node update function.
+
+
+\begin{DoxyCodeInclude}
+
+ 
+ \textcolor{comment}{// Setup FSI}
+ \textcolor{comment}{//----------}
+ 
+ \textcolor{comment}{// The velocity of the fluid nodes on the wall (fluid mesh boundary 4,5)}
+ \textcolor{comment}{// is set by the wall motion -- hence the no-slip condition must be}
+ \textcolor{comment}{// re-applied whenever a node update is performed for these nodes. }
+ \textcolor{comment}{// Such tasks may be performed automatically by the auxiliary node update }
+ \textcolor{comment}{// function specified by a function pointer:}
+ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} ibound=4;ibound<6;ibound++ )
+  \{ 
+   \textcolor{keywordtype}{unsigned} num\_nod= Fluid\_mesh\_pt->nboundary\_node(ibound);
+   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} inod=0;inod<num\_nod;inod++)
+    \{   
+     Fluid\_mesh\_pt->boundary\_node\_pt(ibound, inod)->
+      set\_auxiliary\_node\_update\_fct\_pt(
+       FSI\_functions::apply\_no\_slip\_on\_moving\_wall);
+    \}
+  \}\textcolor{comment}{// aux node update fct has been set}
+
+\end{DoxyCodeInclude}
+
+
+Finally, we have to determine which fluid elements are adjacent to the two faces of the {\ttfamily F\+S\+I\+Hermite\+Beam\+Elements} to allow them to compute the fluid traction they are exposed to. This is done separately for the \char`\"{}front\char`\"{} and \char`\"{}back\char`\"{} faces. The \char`\"{}front\char`\"{} of the leaflet (face 0) is assumed to coincide with the fluid mesh boundary 4; the \char`\"{}back\char`\"{} (face 1) is assumed to coincide with the fluid mesh boundary 5.
+
+
+\begin{DoxyCodeInclude}
+ 
+ \textcolor{comment}{// Work out which fluid dofs affect the residuals of the wall elements:}
+ \textcolor{comment}{// We pass the boundary between the fluid and solid meshes and }
+ \textcolor{comment}{// pointers to the meshes. The interaction boundary is boundary 4 and 5}
+ \textcolor{comment}{// of the 2D fluid mesh.}
+
+ \textcolor{comment}{// Front of leaflet: Set face=0 (which is also the default so this argument}
+ \textcolor{comment}{// could be omitted)}
+ \textcolor{keywordtype}{unsigned} face=0; 
+ FSI\_functions::setup\_fluid\_load\_info\_for\_solid\_elements<ELEMENT,2>
+  (\textcolor{keyword}{this},4,Fluid\_mesh\_pt,Wall\_mesh\_pt,face); 
+ 
+ \textcolor{comment}{// Back of leaflet: face 1, needs to be specified explicitly}
+ face=1; 
+ FSI\_functions::setup\_fluid\_load\_info\_for\_solid\_elements<ELEMENT,2>
+  (\textcolor{keyword}{this},5,Fluid\_mesh\_pt,Wall\_mesh\_pt,face); 
+
+\end{DoxyCodeInclude}
+
+
+Following the setup of the fluid-\/structure interaction we assign the equation numbers\+:
+
+
+\begin{DoxyCodeInclude}
+ \textcolor{comment}{// Setup equation numbering scheme}
+ cout <<\textcolor{stringliteral}{"Number of equations: "} << assign\_eqn\_numbers() << std::endl; 
+\}\textcolor{comment}{//end of constructor}
+
+\end{DoxyCodeInclude}
+
+
+
+
+ 
+
+\hypertarget{index_adapt}{}\section{Actions after the mesh adaptation}\label{index_adapt}
+Once the fluid mesh has been adapted we free all pressure degrees of freedom and then (re-\/)pin any redundant ones; see the discussion in \href{../../../navier_stokes/adaptive_driven_cavity/html/index.html}{\tt another tutorial} for details.
+
+
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//==== start\_of\_actions\_after\_adapt=================================}
+\textcolor{comment}{/// Actions\_after\_adapt()}
+\textcolor{comment}{}\textcolor{comment}{//==================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>
+\textcolor{keywordtype}{void} \hyperlink{classFSIChannelWithLeafletProblem_acc3f4745ea9b4524aebbc4f2556d1286}{FSIChannelWithLeafletProblem<ELEMENT>::actions\_after\_adapt}
+      ()
+\{
+ \textcolor{comment}{// Unpin all pressure dofs}
+ RefineableNavierStokesEquations<2>::
+  unpin\_all\_pressure\_dofs(Fluid\_mesh\_pt->element\_pt());
+ 
+ \textcolor{comment}{// Pin redundant pressure dofs}
+ RefineableNavierStokesEquations<2>::
+  pin\_redundant\_nodal\_pressures(Fluid\_mesh\_pt->element\_pt());
+
+\end{DoxyCodeInclude}
+
+
+Any newly created fluid nodes on the leaflet (i.\+e. on the fluid mesh boundaries 4 and 5) must be subjected to the automatic application of the no-\/slip condition. For simplicity we (re-\/)specify the auxiliary node update function pointer for all of the nodes on those boundaries.
+
+
+\begin{DoxyCodeInclude}
+ 
+
+ \textcolor{comment}{// (Re-)apply the no slip condition on the moving wall}
+ \textcolor{comment}{//-----------------------------------------------------}
+
+ \textcolor{comment}{// The velocity of the fluid nodes on the wall (fluid mesh boundary 4,5)}
+ \textcolor{comment}{// is set by the wall motion -- hence the no-slip condition must be}
+ \textcolor{comment}{// re-applied whenever a node update is performed for these nodes. }
+ \textcolor{comment}{// Such tasks may be performed automatically by the auxiliary node update }
+ \textcolor{comment}{// function specified by a function pointer:}
+ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} ibound=4;ibound<6;ibound++ )
+  \{ 
+   \textcolor{keywordtype}{unsigned} num\_nod= Fluid\_mesh\_pt->nboundary\_node(ibound);
+   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} inod=0;inod<num\_nod;inod++)
+    \{   
+     Fluid\_mesh\_pt->boundary\_node\_pt(ibound, inod)->
+      set\_auxiliary\_node\_update\_fct\_pt(
+       FSI\_functions::apply\_no\_slip\_on\_moving\_wall);
+    \}
+  \} \textcolor{comment}{// aux node update fct has been (re-)set}
+
+\end{DoxyCodeInclude}
+
+
+Finally, the adaptation of the fluid mesh may change the fluid elements that are adjacent to the wall elements so we re-\/generate the corresponding F\+SI lookup schemes.
+
+
+\begin{DoxyCodeInclude}
+
+ 
+ 
+ \textcolor{comment}{// Re-setup FSI}
+ \textcolor{comment}{//-------------}
+ 
+ \textcolor{comment}{// Work out which fluid dofs affect the residuals of the wall elements:}
+ \textcolor{comment}{// We pass the boundary between the fluid and solid meshes and }
+ \textcolor{comment}{// pointers to the meshes. The interaction boundary is boundary 4 and 5}
+ \textcolor{comment}{// of the 2D fluid mesh.}
+
+ \textcolor{comment}{// Front of leaflet: Set face=0 (which is also the default so this argument}
+ \textcolor{comment}{// could be omitted)}
+ \textcolor{keywordtype}{unsigned} face=0; 
+ FSI\_functions::setup\_fluid\_load\_info\_for\_solid\_elements<ELEMENT,2>
+  (\textcolor{keyword}{this},4,Fluid\_mesh\_pt,Wall\_mesh\_pt,face); 
+ 
+ \textcolor{comment}{// Back of leaflet: face 1, needs to be specified explicitly}
+ face=1; 
+ FSI\_functions::setup\_fluid\_load\_info\_for\_solid\_elements<ELEMENT,2>
+  (\textcolor{keyword}{this},5,Fluid\_mesh\_pt,Wall\_mesh\_pt,face); 
+  
+\} \textcolor{comment}{// end\_of\_actions\_after\_adapt}
+
+\end{DoxyCodeInclude}
+
+
+
+
+ 
+
+\hypertarget{index_doc}{}\section{Post Processing}\label{index_doc}
+The function {\ttfamily doc\+\_\+solution}(...) documents the results. We output the fluid and solid meshes and document selected additional quantities in the trace file.
+
+
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//==start\_of\_doc\_solution=================================================}
+\textcolor{comment}{/// Doc the solution}
+\textcolor{comment}{}\textcolor{comment}{//========================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>
+\textcolor{keywordtype}{void} \hyperlink{classFSIChannelWithLeafletProblem_a055f124f38dca43bc3ed36b80c5c0880}{FSIChannelWithLeafletProblem<ELEMENT>::doc\_solution}
+      (DocInfo& doc\_info,
+                                                         ofstream& trace)
+\{ 
+ ofstream some\_file;
+ \textcolor{keywordtype}{char} filename[100];
+
+ \textcolor{comment}{// Number of plot points}
+ \textcolor{keywordtype}{unsigned} npts;
+ npts=5; 
+
+ \textcolor{comment}{// Output fluid solution }
+ sprintf(filename,\textcolor{stringliteral}{"%s/soln%i.dat"},doc\_info.directory().c\_str(),
+         doc\_info.number());
+ some\_file.open(filename);
+ Fluid\_mesh\_pt->output(some\_file,npts);
+ some\_file.close();
+
+ \textcolor{comment}{// Output wall solution }
+ sprintf(filename,\textcolor{stringliteral}{"%s/wall\_soln%i.dat"},doc\_info.directory().c\_str(),
+         doc\_info.number());
+ some\_file.open(filename);
+ Wall\_mesh\_pt->output(some\_file,npts);
+ some\_file.close();
+
+ \textcolor{comment}{// Get node at tip of leaflet}
+ \textcolor{keywordtype}{unsigned} n\_el\_wall=Wall\_mesh\_pt->nelement();
+ Node* tip\_node\_pt=Wall\_mesh\_pt->finite\_element\_pt(n\_el\_wall-1)->node\_pt(1);
+
+ \textcolor{comment}{// Get time:}
+ \textcolor{keywordtype}{double} time=time\_pt()->time();
+
+ \textcolor{comment}{// Write trace file}
+ trace << time << \textcolor{stringliteral}{" "} 
+       << \hyperlink{namespaceGlobal__Physical__Variables_ad651484fe06209606bccefe6fe23be0c}{Global\_Physical\_Variables::flux}(time) << \textcolor{stringliteral}{" "} 
+       << tip\_node\_pt->x(0) << \textcolor{stringliteral}{" "}
+       << tip\_node\_pt->x(1) << \textcolor{stringliteral}{" "}
+       << tip\_node\_pt->dposition\_dt(0) << \textcolor{stringliteral}{" "}
+       << tip\_node\_pt->dposition\_dt(1) << \textcolor{stringliteral}{" "}
+       << doc\_info.number() << \textcolor{stringliteral}{" "} 
+       << std::endl;
+
+\end{DoxyCodeInclude}
+
+
+The remaining output is created to determine which elements are located next to the fluid mesh boundaries 4 and 5 (Yes, \href{../../../meshes/mesh_list/html/index.html#channel_with_leaflet}{\tt the documentation for the mesh} illustrates the enumeration of the mesh boundaries but we generally prefer to be paranoid; see \hyperlink{index_comm}{Further comments} ), and to establish the direction of the unit normal on the beam.
+
+
+\begin{DoxyCodeInclude}
+
+
+ \textcolor{comment}{// Help me figure out what the "front" and "back" faces of the leaflet are}
+ \textcolor{comment}{//------------------------------------------------------------------------}
+
+ \textcolor{comment}{// Output fluid elements on fluid mesh boundary 4 (associated with}
+ \textcolor{comment}{// the "front")}
+ \textcolor{keywordtype}{unsigned} bound=4;
+ sprintf(filename,\textcolor{stringliteral}{"%s/fluid\_boundary\_elements\_front\_%i.dat"},
+         doc\_info.directory().c\_str(),
+         doc\_info.number());
+ some\_file.open(filename);
+ \textcolor{keywordtype}{unsigned} nel= Fluid\_mesh\_pt->nboundary\_element(bound);
+ \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} e=0;e<nel;e++)
+  \{
+   \textcolor{keyword}{dynamic\_cast<}ELEMENT*\textcolor{keyword}{>}(Fluid\_mesh\_pt->boundary\_element\_pt(bound,e))
+    ->output(some\_file,npts);
+  \}
+ some\_file.close();
+
+
+ \textcolor{comment}{// Output fluid elements on fluid mesh boundary 5 (associated with}
+ \textcolor{comment}{// the "back")}
+ bound=5;
+ sprintf(filename,\textcolor{stringliteral}{"%s/fluid\_boundary\_elements\_back\_%i.dat"},
+         doc\_info.directory().c\_str(),
+         doc\_info.number());
+ some\_file.open(filename);
+ nel= Fluid\_mesh\_pt->nboundary\_element(bound);
+ \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} e=0;e<nel;e++)
+  \{
+   \textcolor{keyword}{dynamic\_cast<}ELEMENT*\textcolor{keyword}{>}(Fluid\_mesh\_pt->boundary\_element\_pt(bound,e))
+    ->output(some\_file,npts);
+  \}
+ some\_file.close();
+
+
+ \textcolor{comment}{// Output normal vector on wall elements}
+ sprintf(filename,\textcolor{stringliteral}{"%s/wall\_normal\_%i.dat"},
+         doc\_info.directory().c\_str(),
+         doc\_info.number());
+ some\_file.open(filename);
+ nel=Wall\_mesh\_pt->nelement();
+ Vector<double> s(1);
+ Vector<double> x(2);
+ Vector<double> xi(1);
+ Vector<double> N(2);
+ \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} e=0;e<nel;e++)
+  \{
+   \textcolor{comment}{// Get pointer to element}
+   FSIHermiteBeamElement* el\_pt=
+    \textcolor{keyword}{dynamic\_cast<}FSIHermiteBeamElement*\textcolor{keyword}{>}(Wall\_mesh\_pt->element\_pt(e));
+
+   \textcolor{comment}{// Loop over plot points}
+   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} i=0;i<npts;i++)
+    \{
+     s[0]=-1.0+2.0*double(i)/double(npts-1);
+
+     \textcolor{comment}{// Get Eulerian position}
+     el\_pt->interpolated\_x(s,x);
+
+     \textcolor{comment}{// Get unit normal}
+     el\_pt->get\_normal(s,N);
+
+     \textcolor{comment}{// Get Lagrangian coordinate}
+     el\_pt->interpolated\_xi(s,xi);
+     
+     some\_file << x[0] << \textcolor{stringliteral}{" "} << x[1] << \textcolor{stringliteral}{" "} 
+               << N[0] << \textcolor{stringliteral}{" "} << N[1] << \textcolor{stringliteral}{" "} 
+               << xi[0] << std::endl;
+    \}
+  \}
+ some\_file.close();
+
+\} \textcolor{comment}{// end\_of\_doc\_solution}
+
+\end{DoxyCodeInclude}
+
+
+
+
+ 
+
+\hypertarget{index_comm_ex}{}\section{Further comments and exercises}\label{index_comm_ex}
+\hypertarget{index_comm}{}\subsection{Further comments}\label{index_comm}
+
+\begin{DoxyEnumerate}
+\item {\bfseries How does one identify the \char`\"{}front\char`\"{} and \char`\"{}back\char`\"{} of an immersed beam structure?} ~\newline
+~\newline
+ When setting up the fluid-\/structure interaction in the \hyperlink{index_constructor}{The problem constructor} we had to associate the fluid mesh boundaries 4 and 5 (the boundaries adjacent to the leaflet (see the enumeration of the mesh boundaries in the \href{../../../meshes/mesh_list/html/index.html#channel_with_leaflet}{\tt {\ttfamily Channel\+With\+Leaflet\+Mesh}}) with the \char`\"{}front\char`\"{} and \char`\"{}back\char`\"{} of the fully immersed beam structure. Furthermore, since the computation of the fluid traction acting on the leaflet depends on the direction of the normal, and the normal on the \char`\"{}front\char`\"{} of the leaflet points in the opposite direction to that on its \char`\"{}back\char`\"{} it is important to assess which normal is used in the automatic computation of the fluid traction. There are two ways of establishing this\+: ~\newline
+~\newline
+
+\begin{DoxyEnumerate}
+\item {\bfseries Quick and dirty\+:} ~\newline
+ Set {\ttfamily F\+S\+I\+Hermite\+Beam\+Element\+::normal\+\_\+points\+\_\+into\+\_\+fluid()} to {\ttfamily true} and perform a steady computation. If the leaflet is sucked towards the high-\/pressure region you got it wrong. ~\newline
+~\newline
+
+\item {\bfseries Do it properly\+:} ~\newline
+ Use the output generated in {\ttfamily doc\+\_\+solution}(...) to identify the elements adjacent to the fluid mesh boundaries 4 and 5 (i.\+e. the fluid elements next to the leaflet\textquotesingle{}s \char`\"{}front\char`\"{} and \char`\"{}back\char`\"{} faces), respectively, and the normal vector returned by {\ttfamily F\+S\+I\+Hermite\+Beam\+Element\+::get\+\_\+normal}(...) -- this is the normal that is used in the computation of the fluid traction. The figure below shows a plot of these within an adaptively refined fluid mesh. ~\newline
+~\newline
+ 
+\begin{DoxyImage}
+\includegraphics[width=0.75\textwidth]{front_and_back}
+\doxyfigcaption{Elements near the `front\textquotesingle{} (red) and `back\textquotesingle{} (green) of the leaflet and the outer unit normal on the leaflet. }
+\end{DoxyImage}
+ The red and green elements are the fluid elements adjacent to the fluid mesh boundaries 4 and 5 (i.\+e. the \char`\"{}front\char`\"{} and \char`\"{}back\char`\"{} of the leaflet), respectively. The normal vectors (shown in blue) point towards the upstream end of the channel so they point {\itshape away} {\itshape from} (rather than {\itshape into}) the fluid that is adjacent to the \char`\"{}front\char`\"{} (the red region). This is why we set {\ttfamily F\+S\+I\+Hermite\+Beam\+Element\+::normal\+\_\+points\+\_\+into\+\_\+fluid()=false} (Admittedly, we used the former method to get this right and only documented the proper way to do it when writing this tutorial...) ~\newline
+~\newline
+
+\end{DoxyEnumerate}
+\item {\bfseries Use of faster solvers\+: {\ttfamily oomph-\/lib\textquotesingle{}s} F\+SI preconditioner} ~\newline
+~\newline
+ The problem presented in this tutorial was used as one of the test cases for {\ttfamily oomph-\/lib\textquotesingle{}s} F\+SI preconditioner; see ~\newline
+~\newline
+ \begin{center} \href{http://www.maths.man.ac.uk/~mheil/oomph_lib_additional_material/HeilHazelBoyleCompMech/HeilHazelBoyleCompMech.pdf}{\tt Heil, M., Hazel, A.\+L. \& Boyle, J. (2008)\+: Solvers for large-\/displacement fluid-\/structure interaction problems\+: Segregated vs. monolithic approaches. Computational Mechanics.} \end{center}  ~\newline
+~\newline
+ The use of this preconditioner (which leads to much faster solution times) is described in another tutorial. However, the required source code is already part of the driver code and has simply been ignored in this tutorial. Feel free to experiment with the preconditioner by modifying \href{../../../../demo_drivers/interaction/fsi_channel_with_leaflet/fsi_channel_with_leaflet.cc}{\tt the source code.}
+\end{DoxyEnumerate}\hypertarget{index_ex}{}\subsection{Exercises}\label{index_ex}
+
+\begin{DoxyEnumerate}
+\item Confirm that choosing the wrong value for the flag {\ttfamily F\+S\+I\+Hermite\+Beam\+Element\+::normal\+\_\+points\+\_\+into\+\_\+fluid()} makes the leaflet move in the wrong direction as it perceives positive fluid tractions as negative ones and vice versa. Here is what you should get\+:  
+\begin{DoxyImage}
+\includegraphics[width=0.75\textwidth]{normal_points_in_wrong_direction}
+\doxyfigcaption{Deformation of the leaflet with the wrong choice of F\+S\+I\+Hermite\+Beam\+Element\+:\+:normal\+\_\+points\+\_\+into\+\_\+fluid()\+: The leaflet gets sucked towards the high-\/pressure region. }
+\end{DoxyImage}
+ Clearly, the normal points in the wrong direction and the tractions have the wrong sign. This can be made \char`\"{}consistent\char`\"{}, however, by also swapping the association between the mesh boundaries and the leaflet\textquotesingle{}s faces. I.\+e. if we associate mesh boundary 5 with the \char`\"{}front\char`\"{} via ~\newline
+~\newline
+
+\begin{DoxyCode}
+\textcolor{comment}{// Front of leaflet: face 0}
+face=0; 
+FSI\_functions::setup\_fluid\_load\_info\_for\_solid\_elements<ELEMENT,2>
+ (\textcolor{keyword}{this},5,Fluid\_mesh\_pt,Wall\_mesh\_pt,face); 
+\end{DoxyCode}
+ ~\newline
+ and mesh boundary 4 with the \char`\"{}back\char`\"{} via ~\newline
+~\newline
+
+\begin{DoxyCode}
+\textcolor{comment}{// Back of leaflet: face 1}
+face=1; 
+FSI\_functions::setup\_fluid\_load\_info\_for\_solid\_elements<ELEMENT,2>
+ (\textcolor{keyword}{this},4,Fluid\_mesh\_pt,Wall\_mesh\_pt,face); 
+\end{DoxyCode}
+ ~\newline
+ the code gives the right results again (make sure you change the code in the problem constructor and in the actions after adaptation!) -- sometimes two wrongs do cancel each other out! ~\newline
+~\newline
+
+\item \href{../figures/fsi_channel_with_leaflet_flow.avi}{\tt The animation} of the flow field shows that the outflow boundary condition is applied \char`\"{}too close\char`\"{} to the leaflet\+: in the relatively short domain chosen here, the outflow is far from fully developed and as a result the imposition of a parallel flow leads to the development of a artificial outflow boundary layer. ~\newline
+~\newline
+ 
+\begin{DoxyImage}
+\includegraphics[width=0.75\textwidth]{outflow_bl}
+\doxyfigcaption{Artificial outflow boundary layer. }
+\end{DoxyImage}
+ Confirm that an increase in the downstream length of the domain (or a reduction in the Reynolds number) improves the situation. ~\newline
+~\newline
+
+\item The algebraic node-\/update technique employed in the \href{../../../meshes/mesh_list/html/index.html#channel_with_leaflet}{\tt {\ttfamily Channel\+With\+Leaflet\+Mesh}} forces {\itshape all} fluid nodes to move when the leaflet deforms. An increase in the downstream length of the fluid domain therefore leads to a significant increase in computational cost. Use the improved node-\/update technique suggested in the \href{../../../navier_stokes/channel_with_leaflet/html/index.html#ex}{\tt corresponding Navier-\/\+Stokes example} (only move the nodes in the vicinity of the leaflet) to improve the efficiency of the code.
+\end{DoxyEnumerate}
+
+ 
+
+ \hypertarget{index_ackn}{}\section{Acknowledgements}\label{index_ackn}
+
+\begin{DoxyItemize}
+\item This code was originally developed by Floraine Cordier.
+\end{DoxyItemize}
+
+
+
+ 
+
+\hypertarget{index_sources}{}\section{Source files for this tutorial}\label{index_sources}
+
+\begin{DoxyItemize}
+\item The source files for this tutorial are located in the directory\+:~\newline
+~\newline
+\begin{center} \href{
+../../../../
+demo_drivers/interaction/fsi_channel_with_leaflet/
+}{\tt demo\+\_\+drivers/interaction/fsi\+\_\+channel\+\_\+with\+\_\+leaflet/ } \end{center} ~\newline
+
+\item The driver code is\+: ~\newline
+~\newline
+\begin{center} \href{
+../../../../
+demo_drivers/interaction/fsi_channel_with_leaflet/fsi_channel_with_leaflet.cc
+}{\tt demo\+\_\+drivers/interaction/fsi\+\_\+channel\+\_\+with\+\_\+leaflet/fsi\+\_\+channel\+\_\+with\+\_\+leaflet.\+cc } \end{center} 
+\end{DoxyItemize}
+
+ 
+
+ \hypertarget{index_pdf}{}\section{P\+D\+F file}\label{index_pdf}
+A \href{../latex/refman.pdf}{\tt pdf version} of this document is available. \end{document}

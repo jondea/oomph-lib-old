@@ -1,0 +1,380 @@
+\hypertarget{classUnstructuredFSIProblem}{}\section{Unstructured\+F\+S\+I\+Problem$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ Class Template Reference}
+\label{classUnstructuredFSIProblem}\index{Unstructured\+F\+S\+I\+Problem$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+N\+T, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$@{Unstructured\+F\+S\+I\+Problem$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+N\+T, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$}}
+
+
+Unstructured F\+SI problem.  
+
+
+Inheritance diagram for Unstructured\+F\+S\+I\+Problem$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classUnstructuredFSIProblem}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classUnstructuredFSIProblem_a6a31fd839e0215ef1312942cf7284bd2}{Unstructured\+F\+S\+I\+Problem} ()
+\begin{DoxyCompactList}\small\item\em Constructor\+: \end{DoxyCompactList}\item 
+\hyperlink{classUnstructuredFSIProblem_a976a81e0dee902f6713bd8ca4d79d000}{$\sim$\+Unstructured\+F\+S\+I\+Problem} ()
+\begin{DoxyCompactList}\small\item\em Destructor (empty) \end{DoxyCompactList}\item 
+void \hyperlink{classUnstructuredFSIProblem_a15f581318b505de07f50bd570da8c8d0}{doc\+\_\+solution} (Doc\+Info \&doc\+\_\+info)
+\begin{DoxyCompactList}\small\item\em Doc the solution. \end{DoxyCompactList}\item 
+void \hyperlink{classUnstructuredFSIProblem_a47a4307323e4dd598fdca542144f4bd2}{actions\+\_\+before\+\_\+adapt} ()
+\begin{DoxyCompactList}\small\item\em Actions before adapt. \end{DoxyCompactList}\item 
+void \hyperlink{classUnstructuredFSIProblem_ae91b90874744a5eb1870da3873841e09}{actions\+\_\+after\+\_\+adapt} ()
+\begin{DoxyCompactList}\small\item\em Actions after adapt. \end{DoxyCompactList}\item 
+void \hyperlink{classUnstructuredFSIProblem_ab6430426df11c9d690539f6d5d4fbf2e}{output\+\_\+strain\+\_\+and\+\_\+dissipation} (std\+::ostream \&trace)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Refineable\+Solid\+Triangle\+Mesh$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ $\ast$ \hyperlink{classUnstructuredFSIProblem_a97363ac2b89dd5d37e969b30a4f14ad4}{Fluid\+\_\+mesh\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Bulk fluid mesh. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classUnstructuredFSIProblem_a934a587c99668fca969a72814b3142a7}{create\+\_\+fsi\+\_\+traction\+\_\+elements} ()
+\begin{DoxyCompactList}\small\item\em Create the traction element. \end{DoxyCompactList}\item 
+void \hyperlink{classUnstructuredFSIProblem_a94b06aac5a09774894dfab4acd972c31}{delete\+\_\+fsi\+\_\+traction\+\_\+elements} ()
+\begin{DoxyCompactList}\small\item\em Delete the traction elements. \end{DoxyCompactList}\item 
+void \hyperlink{classUnstructuredFSIProblem_a6f810c300f373cfc79e23d58f95944e3}{create\+\_\+lagrange\+\_\+multiplier\+\_\+elements} ()
+\item 
+void \hyperlink{classUnstructuredFSIProblem_ac11cb83a769e5d741e0e091b7667ec1b}{delete\+\_\+lagrange\+\_\+multiplier\+\_\+elements} ()
+\begin{DoxyCompactList}\small\item\em Delete the traction elements. \end{DoxyCompactList}\item 
+double \hyperlink{classUnstructuredFSIProblem_a65306eb8f4336bd673a2d364e45a3a9f}{get\+\_\+solid\+\_\+strain\+\_\+energy} ()
+\begin{DoxyCompactList}\small\item\em Calculate the strain energy of the solid. \end{DoxyCompactList}\item 
+double \hyperlink{classUnstructuredFSIProblem_af858e70358cf9ce9c917eb5a773cf898}{get\+\_\+fluid\+\_\+dissipation} ()
+\begin{DoxyCompactList}\small\item\em Calculate the fluid dissipation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Refineable\+Solid\+Triangle\+Mesh$<$ S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ $\ast$ \hyperlink{classUnstructuredFSIProblem_a37c1850e8750ce80c8323438e99c1059}{Solid\+\_\+mesh\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Bulk solid mesh. \end{DoxyCompactList}\item 
+Vector$<$ Solid\+Mesh $\ast$ $>$ \hyperlink{classUnstructuredFSIProblem_a2e942a90cc462bf0df04ad28057d4071}{Lagrange\+\_\+multiplier\+\_\+mesh\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Vector of pointers to mesh of Lagrange multiplier elements. \end{DoxyCompactList}\item 
+Vector$<$ Solid\+Mesh $\ast$ $>$ \hyperlink{classUnstructuredFSIProblem_ab722df0380d0c045f093472173340fa1}{Traction\+\_\+mesh\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Vectors of pointers to mesh of traction elements. \end{DoxyCompactList}\item 
+Triangle\+Mesh\+Polygon $\ast$ \hyperlink{classUnstructuredFSIProblem_afae1de4c7e087e2ba4f60f4f7632674b}{Solid\+\_\+outer\+\_\+boundary\+\_\+polyline\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Triangle mesh polygon for outer boundary. \end{DoxyCompactList}\item 
+Triangle\+Mesh\+Polygon $\ast$ \hyperlink{classUnstructuredFSIProblem_adbe081be33298732323b23d89f23f29f}{Fluid\+\_\+outer\+\_\+boundary\+\_\+polyline\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Triangle mesh polygon for outer boundary. \end{DoxyCompactList}\item 
+Vector$<$ Mesh\+As\+Geom\+Object $\ast$ $>$ \hyperlink{classUnstructuredFSIProblem_a292fef90d668209e31d51db20d6bfd9a}{Solid\+\_\+fsi\+\_\+boundary\+\_\+pt}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT, class S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT$>$\newline
+class Unstructured\+F\+S\+I\+Problem$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+N\+T, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$}
+
+Unstructured F\+SI problem. 
+
+Definition at line 112 of file unstructured\+\_\+adaptive\+\_\+2d\+\_\+fsi.\+cc.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classUnstructuredFSIProblem_a6a31fd839e0215ef1312942cf7284bd2}\label{classUnstructuredFSIProblem_a6a31fd839e0215ef1312942cf7284bd2}} 
+\index{Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}!Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}}
+\index{Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}!Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}}
+\subsubsection{\texorpdfstring{Unstructured\+F\+S\+I\+Problem()}{UnstructuredFSIProblem()}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT , class S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classUnstructuredFSIProblem}{Unstructured\+F\+S\+I\+Problem}$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::\hyperlink{classUnstructuredFSIProblem}{Unstructured\+F\+S\+I\+Problem} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor\+: 
+
+Constructor for unstructured solid problem. 
+
+Definition at line 500 of file unstructured\+\_\+adaptive\+\_\+2d\+\_\+fsi.\+cc.
+
+
+
+References Global\+\_\+\+Physical\+\_\+\+Variables\+::\+Constitutive\+\_\+law\+\_\+pt, Unstructured\+F\+S\+I\+Problem$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+N\+T, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::doc\+\_\+solution(), Global\+\_\+\+Physical\+\_\+\+Variables\+::\+Mesh\+\_\+constitutive\+\_\+law\+\_\+pt, and Global\+\_\+\+Physical\+\_\+\+Variables\+::\+Re.
+
+\mbox{\Hypertarget{classUnstructuredFSIProblem_a976a81e0dee902f6713bd8ca4d79d000}\label{classUnstructuredFSIProblem_a976a81e0dee902f6713bd8ca4d79d000}} 
+\index{Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}!````~Unstructured\+F\+S\+I\+Problem@{$\sim$\+Unstructured\+F\+S\+I\+Problem}}
+\index{````~Unstructured\+F\+S\+I\+Problem@{$\sim$\+Unstructured\+F\+S\+I\+Problem}!Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}}
+\subsubsection{\texorpdfstring{$\sim$\+Unstructured\+F\+S\+I\+Problem()}{~UnstructuredFSIProblem()}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT , class S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classUnstructuredFSIProblem}{Unstructured\+F\+S\+I\+Problem}$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::$\sim$\hyperlink{classUnstructuredFSIProblem}{Unstructured\+F\+S\+I\+Problem} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Destructor (empty) 
+
+
+
+Definition at line 121 of file unstructured\+\_\+adaptive\+\_\+2d\+\_\+fsi.\+cc.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classUnstructuredFSIProblem_ae91b90874744a5eb1870da3873841e09}\label{classUnstructuredFSIProblem_ae91b90874744a5eb1870da3873841e09}} 
+\index{Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}!actions\+\_\+after\+\_\+adapt@{actions\+\_\+after\+\_\+adapt}}
+\index{actions\+\_\+after\+\_\+adapt@{actions\+\_\+after\+\_\+adapt}!Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}}
+\subsubsection{\texorpdfstring{actions\+\_\+after\+\_\+adapt()}{actions\_after\_adapt()}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT , class S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classUnstructuredFSIProblem}{Unstructured\+F\+S\+I\+Problem}$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::actions\+\_\+after\+\_\+adapt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Actions after adapt. 
+
+
+
+Definition at line 139 of file unstructured\+\_\+adaptive\+\_\+2d\+\_\+fsi.\+cc.
+
+
+
+References Global\+\_\+\+Physical\+\_\+\+Variables\+::\+Constitutive\+\_\+law\+\_\+pt, Global\+\_\+\+Physical\+\_\+\+Variables\+::\+Mesh\+\_\+constitutive\+\_\+law\+\_\+pt, and Global\+\_\+\+Physical\+\_\+\+Variables\+::\+Re.
+
+\mbox{\Hypertarget{classUnstructuredFSIProblem_a47a4307323e4dd598fdca542144f4bd2}\label{classUnstructuredFSIProblem_a47a4307323e4dd598fdca542144f4bd2}} 
+\index{Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}!actions\+\_\+before\+\_\+adapt@{actions\+\_\+before\+\_\+adapt}}
+\index{actions\+\_\+before\+\_\+adapt@{actions\+\_\+before\+\_\+adapt}!Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}}
+\subsubsection{\texorpdfstring{actions\+\_\+before\+\_\+adapt()}{actions\_before\_adapt()}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT , class S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classUnstructuredFSIProblem}{Unstructured\+F\+S\+I\+Problem}$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::actions\+\_\+before\+\_\+adapt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Actions before adapt. 
+
+
+
+Definition at line 127 of file unstructured\+\_\+adaptive\+\_\+2d\+\_\+fsi.\+cc.
+
+\mbox{\Hypertarget{classUnstructuredFSIProblem_a934a587c99668fca969a72814b3142a7}\label{classUnstructuredFSIProblem_a934a587c99668fca969a72814b3142a7}} 
+\index{Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}!create\+\_\+fsi\+\_\+traction\+\_\+elements@{create\+\_\+fsi\+\_\+traction\+\_\+elements}}
+\index{create\+\_\+fsi\+\_\+traction\+\_\+elements@{create\+\_\+fsi\+\_\+traction\+\_\+elements}!Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}}
+\subsubsection{\texorpdfstring{create\+\_\+fsi\+\_\+traction\+\_\+elements()}{create\_fsi\_traction\_elements()}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT , class S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classUnstructuredFSIProblem}{Unstructured\+F\+S\+I\+Problem}$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::create\+\_\+fsi\+\_\+traction\+\_\+elements (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Create the traction element. 
+
+
+
+Definition at line 289 of file unstructured\+\_\+adaptive\+\_\+2d\+\_\+fsi.\+cc.
+
+
+
+References Global\+\_\+\+Physical\+\_\+\+Variables\+::Q.
+
+\mbox{\Hypertarget{classUnstructuredFSIProblem_a6f810c300f373cfc79e23d58f95944e3}\label{classUnstructuredFSIProblem_a6f810c300f373cfc79e23d58f95944e3}} 
+\index{Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}!create\+\_\+lagrange\+\_\+multiplier\+\_\+elements@{create\+\_\+lagrange\+\_\+multiplier\+\_\+elements}}
+\index{create\+\_\+lagrange\+\_\+multiplier\+\_\+elements@{create\+\_\+lagrange\+\_\+multiplier\+\_\+elements}!Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}}
+\subsubsection{\texorpdfstring{create\+\_\+lagrange\+\_\+multiplier\+\_\+elements()}{create\_lagrange\_multiplier\_elements()}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT , class S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classUnstructuredFSIProblem}{Unstructured\+F\+S\+I\+Problem}$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::create\+\_\+lagrange\+\_\+multiplier\+\_\+elements (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Create the multipliers that add lagrange multipliers to the fluid elements that apply the solid displacement conditions 
+
+Definition at line 344 of file unstructured\+\_\+adaptive\+\_\+2d\+\_\+fsi.\+cc.
+
+\mbox{\Hypertarget{classUnstructuredFSIProblem_a94b06aac5a09774894dfab4acd972c31}\label{classUnstructuredFSIProblem_a94b06aac5a09774894dfab4acd972c31}} 
+\index{Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}!delete\+\_\+fsi\+\_\+traction\+\_\+elements@{delete\+\_\+fsi\+\_\+traction\+\_\+elements}}
+\index{delete\+\_\+fsi\+\_\+traction\+\_\+elements@{delete\+\_\+fsi\+\_\+traction\+\_\+elements}!Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}}
+\subsubsection{\texorpdfstring{delete\+\_\+fsi\+\_\+traction\+\_\+elements()}{delete\_fsi\_traction\_elements()}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT , class S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classUnstructuredFSIProblem}{Unstructured\+F\+S\+I\+Problem}$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::delete\+\_\+fsi\+\_\+traction\+\_\+elements (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Delete the traction elements. 
+
+
+
+Definition at line 324 of file unstructured\+\_\+adaptive\+\_\+2d\+\_\+fsi.\+cc.
+
+\mbox{\Hypertarget{classUnstructuredFSIProblem_ac11cb83a769e5d741e0e091b7667ec1b}\label{classUnstructuredFSIProblem_ac11cb83a769e5d741e0e091b7667ec1b}} 
+\index{Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}!delete\+\_\+lagrange\+\_\+multiplier\+\_\+elements@{delete\+\_\+lagrange\+\_\+multiplier\+\_\+elements}}
+\index{delete\+\_\+lagrange\+\_\+multiplier\+\_\+elements@{delete\+\_\+lagrange\+\_\+multiplier\+\_\+elements}!Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}}
+\subsubsection{\texorpdfstring{delete\+\_\+lagrange\+\_\+multiplier\+\_\+elements()}{delete\_lagrange\_multiplier\_elements()}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT , class S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classUnstructuredFSIProblem}{Unstructured\+F\+S\+I\+Problem}$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::delete\+\_\+lagrange\+\_\+multiplier\+\_\+elements (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Delete the traction elements. 
+
+
+
+Definition at line 416 of file unstructured\+\_\+adaptive\+\_\+2d\+\_\+fsi.\+cc.
+
+\mbox{\Hypertarget{classUnstructuredFSIProblem_a15f581318b505de07f50bd570da8c8d0}\label{classUnstructuredFSIProblem_a15f581318b505de07f50bd570da8c8d0}} 
+\index{Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}!doc\+\_\+solution@{doc\+\_\+solution}}
+\index{doc\+\_\+solution@{doc\+\_\+solution}!Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}}
+\subsubsection{\texorpdfstring{doc\+\_\+solution()}{doc\_solution()}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT , class S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classUnstructuredFSIProblem}{Unstructured\+F\+S\+I\+Problem}$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::doc\+\_\+solution (\begin{DoxyParamCaption}\item[{Doc\+Info \&}]{doc\+\_\+info }\end{DoxyParamCaption})}
+
+
+
+Doc the solution. 
+
+
+
+Definition at line 892 of file unstructured\+\_\+adaptive\+\_\+2d\+\_\+fsi.\+cc.
+
+
+
+Referenced by main(), and Unstructured\+F\+S\+I\+Problem$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+N\+T, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::\+Unstructured\+F\+S\+I\+Problem().
+
+\mbox{\Hypertarget{classUnstructuredFSIProblem_af858e70358cf9ce9c917eb5a773cf898}\label{classUnstructuredFSIProblem_af858e70358cf9ce9c917eb5a773cf898}} 
+\index{Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}!get\+\_\+fluid\+\_\+dissipation@{get\+\_\+fluid\+\_\+dissipation}}
+\index{get\+\_\+fluid\+\_\+dissipation@{get\+\_\+fluid\+\_\+dissipation}!Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}}
+\subsubsection{\texorpdfstring{get\+\_\+fluid\+\_\+dissipation()}{get\_fluid\_dissipation()}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT , class S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+double \hyperlink{classUnstructuredFSIProblem}{Unstructured\+F\+S\+I\+Problem}$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::get\+\_\+fluid\+\_\+dissipation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Calculate the fluid dissipation. 
+
+
+
+Definition at line 453 of file unstructured\+\_\+adaptive\+\_\+2d\+\_\+fsi.\+cc.
+
+\mbox{\Hypertarget{classUnstructuredFSIProblem_a65306eb8f4336bd673a2d364e45a3a9f}\label{classUnstructuredFSIProblem_a65306eb8f4336bd673a2d364e45a3a9f}} 
+\index{Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}!get\+\_\+solid\+\_\+strain\+\_\+energy@{get\+\_\+solid\+\_\+strain\+\_\+energy}}
+\index{get\+\_\+solid\+\_\+strain\+\_\+energy@{get\+\_\+solid\+\_\+strain\+\_\+energy}!Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}}
+\subsubsection{\texorpdfstring{get\+\_\+solid\+\_\+strain\+\_\+energy()}{get\_solid\_strain\_energy()}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT , class S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+double \hyperlink{classUnstructuredFSIProblem}{Unstructured\+F\+S\+I\+Problem}$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::get\+\_\+solid\+\_\+strain\+\_\+energy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Calculate the strain energy of the solid. 
+
+
+
+Definition at line 435 of file unstructured\+\_\+adaptive\+\_\+2d\+\_\+fsi.\+cc.
+
+\mbox{\Hypertarget{classUnstructuredFSIProblem_ab6430426df11c9d690539f6d5d4fbf2e}\label{classUnstructuredFSIProblem_ab6430426df11c9d690539f6d5d4fbf2e}} 
+\index{Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}!output\+\_\+strain\+\_\+and\+\_\+dissipation@{output\+\_\+strain\+\_\+and\+\_\+dissipation}}
+\index{output\+\_\+strain\+\_\+and\+\_\+dissipation@{output\+\_\+strain\+\_\+and\+\_\+dissipation}!Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}}
+\subsubsection{\texorpdfstring{output\+\_\+strain\+\_\+and\+\_\+dissipation()}{output\_strain\_and\_dissipation()}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT , class S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classUnstructuredFSIProblem}{Unstructured\+F\+S\+I\+Problem}$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::output\+\_\+strain\+\_\+and\+\_\+dissipation (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{trace }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Output function to compute the strain energy in the solid and the dissipation in the fluid and write to the output stream trace 
+
+Definition at line 276 of file unstructured\+\_\+adaptive\+\_\+2d\+\_\+fsi.\+cc.
+
+
+
+References Global\+\_\+\+Physical\+\_\+\+Variables\+::Q.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classUnstructuredFSIProblem_a97363ac2b89dd5d37e969b30a4f14ad4}\label{classUnstructuredFSIProblem_a97363ac2b89dd5d37e969b30a4f14ad4}} 
+\index{Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}!Fluid\+\_\+mesh\+\_\+pt@{Fluid\+\_\+mesh\+\_\+pt}}
+\index{Fluid\+\_\+mesh\+\_\+pt@{Fluid\+\_\+mesh\+\_\+pt}!Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}}
+\subsubsection{\texorpdfstring{Fluid\+\_\+mesh\+\_\+pt}{Fluid\_mesh\_pt}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT , class S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+Refineable\+Solid\+Triangle\+Mesh$<$F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT$>$$\ast$ \hyperlink{classUnstructuredFSIProblem}{Unstructured\+F\+S\+I\+Problem}$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::Fluid\+\_\+mesh\+\_\+pt}
+
+
+
+Bulk fluid mesh. 
+
+
+
+Definition at line 473 of file unstructured\+\_\+adaptive\+\_\+2d\+\_\+fsi.\+cc.
+
+\mbox{\Hypertarget{classUnstructuredFSIProblem_adbe081be33298732323b23d89f23f29f}\label{classUnstructuredFSIProblem_adbe081be33298732323b23d89f23f29f}} 
+\index{Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}!Fluid\+\_\+outer\+\_\+boundary\+\_\+polyline\+\_\+pt@{Fluid\+\_\+outer\+\_\+boundary\+\_\+polyline\+\_\+pt}}
+\index{Fluid\+\_\+outer\+\_\+boundary\+\_\+polyline\+\_\+pt@{Fluid\+\_\+outer\+\_\+boundary\+\_\+polyline\+\_\+pt}!Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}}
+\subsubsection{\texorpdfstring{Fluid\+\_\+outer\+\_\+boundary\+\_\+polyline\+\_\+pt}{Fluid\_outer\_boundary\_polyline\_pt}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT , class S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+Triangle\+Mesh\+Polygon$\ast$ \hyperlink{classUnstructuredFSIProblem}{Unstructured\+F\+S\+I\+Problem}$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::Fluid\+\_\+outer\+\_\+boundary\+\_\+polyline\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Triangle mesh polygon for outer boundary. 
+
+
+
+Definition at line 487 of file unstructured\+\_\+adaptive\+\_\+2d\+\_\+fsi.\+cc.
+
+\mbox{\Hypertarget{classUnstructuredFSIProblem_a2e942a90cc462bf0df04ad28057d4071}\label{classUnstructuredFSIProblem_a2e942a90cc462bf0df04ad28057d4071}} 
+\index{Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}!Lagrange\+\_\+multiplier\+\_\+mesh\+\_\+pt@{Lagrange\+\_\+multiplier\+\_\+mesh\+\_\+pt}}
+\index{Lagrange\+\_\+multiplier\+\_\+mesh\+\_\+pt@{Lagrange\+\_\+multiplier\+\_\+mesh\+\_\+pt}!Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}}
+\subsubsection{\texorpdfstring{Lagrange\+\_\+multiplier\+\_\+mesh\+\_\+pt}{Lagrange\_multiplier\_mesh\_pt}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT , class S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+Vector$<$Solid\+Mesh$\ast$$>$ \hyperlink{classUnstructuredFSIProblem}{Unstructured\+F\+S\+I\+Problem}$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::Lagrange\+\_\+multiplier\+\_\+mesh\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Vector of pointers to mesh of Lagrange multiplier elements. 
+
+
+
+Definition at line 478 of file unstructured\+\_\+adaptive\+\_\+2d\+\_\+fsi.\+cc.
+
+\mbox{\Hypertarget{classUnstructuredFSIProblem_a292fef90d668209e31d51db20d6bfd9a}\label{classUnstructuredFSIProblem_a292fef90d668209e31d51db20d6bfd9a}} 
+\index{Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}!Solid\+\_\+fsi\+\_\+boundary\+\_\+pt@{Solid\+\_\+fsi\+\_\+boundary\+\_\+pt}}
+\index{Solid\+\_\+fsi\+\_\+boundary\+\_\+pt@{Solid\+\_\+fsi\+\_\+boundary\+\_\+pt}!Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}}
+\subsubsection{\texorpdfstring{Solid\+\_\+fsi\+\_\+boundary\+\_\+pt}{Solid\_fsi\_boundary\_pt}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT , class S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+Vector$<$Mesh\+As\+Geom\+Object$\ast$$>$ \hyperlink{classUnstructuredFSIProblem}{Unstructured\+F\+S\+I\+Problem}$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::Solid\+\_\+fsi\+\_\+boundary\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 490 of file unstructured\+\_\+adaptive\+\_\+2d\+\_\+fsi.\+cc.
+
+\mbox{\Hypertarget{classUnstructuredFSIProblem_a37c1850e8750ce80c8323438e99c1059}\label{classUnstructuredFSIProblem_a37c1850e8750ce80c8323438e99c1059}} 
+\index{Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}!Solid\+\_\+mesh\+\_\+pt@{Solid\+\_\+mesh\+\_\+pt}}
+\index{Solid\+\_\+mesh\+\_\+pt@{Solid\+\_\+mesh\+\_\+pt}!Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}}
+\subsubsection{\texorpdfstring{Solid\+\_\+mesh\+\_\+pt}{Solid\_mesh\_pt}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT , class S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+Refineable\+Solid\+Triangle\+Mesh$<$S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT$>$$\ast$ \hyperlink{classUnstructuredFSIProblem}{Unstructured\+F\+S\+I\+Problem}$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::Solid\+\_\+mesh\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Bulk solid mesh. 
+
+
+
+Definition at line 469 of file unstructured\+\_\+adaptive\+\_\+2d\+\_\+fsi.\+cc.
+
+\mbox{\Hypertarget{classUnstructuredFSIProblem_afae1de4c7e087e2ba4f60f4f7632674b}\label{classUnstructuredFSIProblem_afae1de4c7e087e2ba4f60f4f7632674b}} 
+\index{Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}!Solid\+\_\+outer\+\_\+boundary\+\_\+polyline\+\_\+pt@{Solid\+\_\+outer\+\_\+boundary\+\_\+polyline\+\_\+pt}}
+\index{Solid\+\_\+outer\+\_\+boundary\+\_\+polyline\+\_\+pt@{Solid\+\_\+outer\+\_\+boundary\+\_\+polyline\+\_\+pt}!Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}}
+\subsubsection{\texorpdfstring{Solid\+\_\+outer\+\_\+boundary\+\_\+polyline\+\_\+pt}{Solid\_outer\_boundary\_polyline\_pt}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT , class S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+Triangle\+Mesh\+Polygon$\ast$ \hyperlink{classUnstructuredFSIProblem}{Unstructured\+F\+S\+I\+Problem}$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::Solid\+\_\+outer\+\_\+boundary\+\_\+polyline\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Triangle mesh polygon for outer boundary. 
+
+
+
+Definition at line 484 of file unstructured\+\_\+adaptive\+\_\+2d\+\_\+fsi.\+cc.
+
+\mbox{\Hypertarget{classUnstructuredFSIProblem_ab722df0380d0c045f093472173340fa1}\label{classUnstructuredFSIProblem_ab722df0380d0c045f093472173340fa1}} 
+\index{Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}!Traction\+\_\+mesh\+\_\+pt@{Traction\+\_\+mesh\+\_\+pt}}
+\index{Traction\+\_\+mesh\+\_\+pt@{Traction\+\_\+mesh\+\_\+pt}!Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}}
+\subsubsection{\texorpdfstring{Traction\+\_\+mesh\+\_\+pt}{Traction\_mesh\_pt}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT , class S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+Vector$<$Solid\+Mesh$\ast$$>$ \hyperlink{classUnstructuredFSIProblem}{Unstructured\+F\+S\+I\+Problem}$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::Traction\+\_\+mesh\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Vectors of pointers to mesh of traction elements. 
+
+
+
+Definition at line 481 of file unstructured\+\_\+adaptive\+\_\+2d\+\_\+fsi.\+cc.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{unstructured__adaptive__2d__fsi_8cc}{unstructured\+\_\+adaptive\+\_\+2d\+\_\+fsi.\+cc}\end{DoxyCompactItemize}

@@ -1,0 +1,931 @@
+We study the problem of the motion of a rigid elliptical particle freely suspended in a shear flow as described by Jeffery (1922) \mbox{[}The motion of elliptical particles immersed in viscous fluid, {\itshape  Proc. Roy. Soc. A } {\bfseries  102 } 161-\/179\mbox{]}. The problem is solved using {\ttfamily oomph-\/lib\textquotesingle{}s} \href{../../../../doc/meshes/mesh_from_inline_triangle/html/index.html}{\tt inline unstructured mesh generation } procedures to modify the fluid mesh in response to changes in orientation of the ellipse.\hypertarget{index_overview}{}\section{Overview of the problem}\label{index_overview}
+ 
+\begin{DoxyImage}
+\includegraphics[width=0.75\textwidth]{jeff_sketch}
+\doxyfigcaption{A rigid ellipse immersed in a shear flow }
+\end{DoxyImage}
+
+
+We consider an ellipse with centre of mass fixed at the origin of a Cartesian coordinate system $ (x_{1}^{*}, x_{2}^{*}) $, but immersed in a viscous fluid undergoing a linear shear flow with shear rate $ G $. In the absence of the ellipse the fluid velocity field would be $ u^{*}_{1} = Gx^{*}_{2} $, $ u^{*}_{2} = 0 $, where $ u^{*}_{i} $ is the dimensional velocity component in the $ x^{*}_{i} $ coordinate direction.
+
+The configuration of a rigid body in two dimensions is determined entirely by the position of its centre of mass, $(X^{*}_{1},X^{*}_{2})$ and an angle, $\chi$ that specifies its orientation to a fixed axis. The equations governing the motion of the particle are then simply conservation of linear and angular momentum\+: \begin{center} \[ M \frac{\mbox{d}^{2} X^{*}_{i}}{\mbox{d} t^{*2}} = F^{*}_{i} \quad \mbox{and} \quad I \frac{\mbox{d}^{2} \chi}{\mbox{d} t^{*2}} = T^{*}, \] \end{center}  where $M$ is the mass of the body, $I$ is its moment of inertia about the centre of mass, $(F^{*}_{1},F^{*}_{2})$ is the resultant force on the body and $T^{*}$ is the resultant torque about the centre of mass.
+
+In the present context, the force and torque on the body are entirely due to the viscous fluid loading on its surface in which case \begin{center} \[ F^{*}_{i} = \int \tau^{*}_{ij}\, n_{j}\, \mbox{d} s \quad\mbox{and}\quad T^{*} = \oint (x^{*}_{1} - X^{*}_{1}) \tau^{*}_{2j}\,n_{j} - (x^{*}_{2} - X^{*}_{2}) \tau^{*}_{1j}\,n_{j}\, \mbox{d} s, \] \end{center}  where the integral is around the perimeter of the ellipse, $\tau^{*}_{ij}$ is the fluid stress tensor and $(n_{1},n_{2})$ is the unit normal to the ellipse surface, directed away from the solid body.
+
+We non-\/dimensionalise the rigid-\/body equations, using the same problem-\/specific reference quantities as used in the non-\/dimensionalisation of the Navier--Stokes equations, described \href{../../../../doc/navier_stokes/driven_cavity/html/index.html}{\tt in another tutorial. } Thus, $ {\cal U}$ is a typical fluid velocity, $ {\cal L} $ is the length scale, ${\cal T}$ is the time scale and the fluid pressure is non-\/dimensionalised on the viscous scale, $ \mu_{ref} {\cal U}/{\cal L} $, where $ \mu_{ref} $ is the reference fluid viscosity. Hence, \begin{center} \[ \tau^{*}_{ij} = \frac{\mu_{ref} {\cal U}}{{\cal L}} \, \tau_{ij}, \qquad x_i^{*} = {\cal L}\, x_i, \qquad X_i^* = {\cal L}\, X_i, \qquad t^* = {\cal T}\, t. \] \end{center}  The external forces and torques are non-\/dimensionalised on the viscous scales per unit length, $ F^{*}_{i} = \mu_{ref} {\cal U} F_{i} $ and $ T^{*} = \mu_{ref} {\cal U} {\cal L} T $. The dimensionless rigid-\/body equations are then \begin{center} \[ Re St^{2} \frac{\rho_{s}}{\rho_{f}}\, \bar{M}\, \frac{\mbox{d}^{2} X_{i}}{\mbox{d} t^{2}} = F_{i} \quad \mbox{and} \quad Re St^{2} \frac{\rho_{s}}{\rho_{f}}\, \bar{I}\, \frac{\mbox{d}^{2} \chi}{\mbox{d} t^{2}} = T, \] \end{center}  where the dimensionless parameters \begin{center} \[ Re = \frac{\rho_{f} {\cal U}{\cal L}}{\mu_{ref}}, \quad St = \frac{\cal L}{{\cal U}{\cal T}},\quad \frac{\rho_{s}}{\rho_{f}}, \quad \bar{M} = \frac{M}{\rho_{s} {\cal L}^{2}}, \quad \bar{I} = \frac{I}{\rho_{s} {\cal L}^{4}}, \] \end{center}  are the Reynolds number, the Strouhal number, the density ratio, and the dimensionless mass and moment of inertia, respectively. In the above $ \rho_{f} $ is the fluid density and $ \rho_{s} $ is the solid density.
+
+In the specific problem considered here, the centre of mass is fixed, and the only possible motion of the particle is free rotation. The particle motion is therefore reduced to the solution of a single equation for the unknown angle. We choose $ {\cal L} = 2b $, the major axis of the ellipse, $ {\cal U} = 2Gb $ and $ {\cal T} = G^{-1} $, so that $ St = 1 $ and the governing equations for the fluid and solid become \begin{center} \[ Re \left (\frac{\partial u_i}{\partial t} + u_j \frac{\partial u_i}{\partial x_j} \right) = - \frac{\partial p}{\partial x_i} + \frac{\partial }{\partial x_j} \left[ \frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i} \right] \quad\mbox{and}\quad \frac{\partial u_i}{\partial x_i} = 0. \] \end{center}  and \begin{center} \[ Re \left(\frac{\rho_{s}}{\rho_{f}}\right) \bar{I} = \oint \left[x_{1}\tau_{2j}\,n_{j} - x_{2} \tau_{1j}\,n_{j}\, \right] \mbox{d} s, \]. \end{center} 
+
+We perform the computations in the domain $ x_{1} \in [-L, L]$ and $ x_{2} \in [-H, H] $, and apply the boundary conditions \begin{center} \[ u_{1} = H f(t), u_{2} = 0, \quad\mbox{on}\quad x_{2} = -H; \] \[ u_{1} = -H f(t), u_{2} = 0, \quad\mbox{on}\quad x_{2} = H; \] \[ \tau_{11} = 0, u_{2} = 0, \quad\mbox{on}\quad x_{1} = -L, L; \] where $f(t)$ is a smooth ramp function such that $f(0) = \dot{f}(0) = \ddot{f}(0) = 0$ and $f(t) \to 1$ as $ t \to \infty$. \end{center} \hypertarget{index_results}{}\section{Results}\label{index_results}
+Jeffery (1922) showed that for a two-\/dimensional ellipse in Stokes flow ( $ Re = 0 $), the exact solution for the angle as a function of time is \[ \chi = \tan^{-1}\left(\frac{b}{a}\tan \frac{abGt}{a^{2} + b^{2}}\right),\quad\mbox{and}\quad \dot{\chi} = \frac{G}{a^{2} + b^{2}}\left(b^{2}\cos^{2}\chi + a^{2}\sin^{2}\chi\right). \] Thus, the ellipse performs periodic orbits but with a non-\/uniform velocity. For sufficiently small $ Re $, Ding \& Aidun (2000) \mbox{[}The dynamics and scaling law for particles suspended in shear flow with inertia, {\itshape  J. Fluid Mech. } {\bfseries  423 } 317-\/344\mbox{]} showed that the system approximates the Jeffery orbits but with an increased period. Typical solutions for $ Re = 1$ are shown below.
+
+ 
+\begin{DoxyImage}
+\includegraphics[width=0.75\textwidth]{orbit_mesh}
+\doxyfigcaption{An ellipse performing approximate Jeffery orbits at Re = 1 }
+\end{DoxyImage}
+
+
+ 
+\begin{DoxyImage}
+\includegraphics[width=0.75\textwidth]{jeff_graph}
+\doxyfigcaption{Angle and angular velocity as functions of time for Re = 1 }
+\end{DoxyImage}
+\hypertarget{index_fsi}{}\section{Implementation as a fluid-\/structure interaction problem}\label{index_fsi}
+The problem is a fluid-\/structure interaction problem in which the structural dynamics are particularly simple, depending only on a single degree of freedom. Nonetheless, the two types of physical coupling between the fluid and the solid remain\+:
+\begin{DoxyEnumerate}
+\item The position of the free boundary depends on the position of the rigid body.
+\item The rigid body is loaded by the fluid traction.
+\end{DoxyEnumerate}As in other \href{../../../../doc/interaction/unstructured_fsi/html/index.html}{\tt 2D unstructured F\+SI } problems, we treat the fluid mesh as a pseudo-\/solid body and determine the position of the boundary nodes on the fluid-\/solid interface using {\ttfamily Impose\+Displacement\+By\+Lagrange\+Multiplier\+Elements}.
+
+The rigid body mechanics is handled by using a {\ttfamily Geom\+Object} that represents the perimeter of the rigid body to create an {\ttfamily Immersed\+Rigid\+Body\+Element} that solves the three equations of motion for a rigid body; and the load is applied to the rigid body using {\ttfamily Navier\+Stokes\+Surface\+Drag\+Torque\+Elements}.
+
+
+
+ 
+
+\hypertarget{index_global}{}\section{Problem Parameters}\label{index_global}
+We use a namespace to define the parameters used in the problem
+
+ 
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//==start\_of\_namespace==============================}
+\textcolor{comment}{/// Namespace for Problem Parameters}
+\textcolor{comment}{}\textcolor{comment}{//==================================================}
+ \textcolor{keyword}{namespace }\hyperlink{namespaceProblem__Parameter}{Problem\_Parameter}
+ \{    \textcolor{comment}{}
+\textcolor{comment}{  /// Reynolds number}
+\textcolor{comment}{}  \textcolor{keywordtype}{double} \hyperlink{namespaceProblem__Parameter_acc656299287d4d9a8374c2c501750b4f}{Re}=1.0;
+\textcolor{comment}{}
+\textcolor{comment}{  /// Strouhal number}
+\textcolor{comment}{}  \textcolor{keywordtype}{double} \hyperlink{namespaceProblem__Parameter_a8d9b76e390569bac0095bd0952281a30}{St} = 1.0;
+ \textcolor{comment}{}
+\textcolor{comment}{  /// \(\backslash\)short Density ratio (Solid density / Fluid density)}
+\textcolor{comment}{}  \textcolor{keywordtype}{double} \hyperlink{namespaceProblem__Parameter_a7fcb9a415485247d626190923235be2a}{Density\_ratio} = 1.0;
+\textcolor{comment}{}
+\textcolor{comment}{  /// Initial axis of the elliptical solid in x-direction}
+\textcolor{comment}{}  \textcolor{keywordtype}{double} A = 0.25;
+  \textcolor{comment}{}
+\textcolor{comment}{  /// Initial axis of the elliptical solid in y-direction}
+\textcolor{comment}{  /// (N.B. 2B = 1 is the reference length scale)}
+\textcolor{comment}{}  \textcolor{keywordtype}{double} B = 0.5;
+\textcolor{comment}{}
+\textcolor{comment}{  /// Pseudo-solid (mesh) Poisson ratio}
+\textcolor{comment}{}  \textcolor{keywordtype}{double} \hyperlink{namespaceProblem__Parameter_abec2e733c8f2d3c18ebc702b3f80cc17}{Nu}=0.3;
+\textcolor{comment}{}
+\textcolor{comment}{  /// \(\backslash\)short Pseudo-solid (mesh) "density" }
+\textcolor{comment}{  /// Set to zero because we don't want inertia in the node update!}
+\textcolor{comment}{}  \textcolor{keywordtype}{double} \hyperlink{namespaceProblem__Parameter_a20ea33c391abd96d43f79913377c1e12}{Lambda\_sq}=0.0;
+\textcolor{comment}{}
+\textcolor{comment}{  /// Constitutive law used to determine the mesh deformation}
+\textcolor{comment}{}  ConstitutiveLaw *\hyperlink{namespaceProblem__Parameter_a9852a6077458693983628319d429f11f}{Constitutive\_law\_pt}=   
+   \textcolor{keyword}{new} GeneralisedHookean(&\hyperlink{namespaceProblem__Parameter_abec2e733c8f2d3c18ebc702b3f80cc17}{Problem\_Parameter::Nu});
+
+ \} \textcolor{comment}{// end\_of\_namespace}
+
+\end{DoxyCodeInclude}
+
+
+
+
+ 
+
+\hypertarget{index_ellipse}{}\section{Defining the ellipse as a Geom\+Object}\label{index_ellipse}
+We create a basic {\ttfamily Geom\+Object} to represent the ellipse whose boundary we parametrise by the polar angle, measured from its centre of mass.
+
+ 
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//===================start\_of\_general\_ellipse=================================}
+\textcolor{comment}{/// \(\backslash\)short A geometric object for an ellipse with initial centre of mass at}
+\textcolor{comment}{}\textcolor{comment}{/// (centre\_x, centre\_y) with axis in the x direction given by 2a}
+\textcolor{comment}{}\textcolor{comment}{/// and in the y-direction given by 2b. The boundary of the ellipse is}
+\textcolor{comment}{}\textcolor{comment}{/// parametrised by its angle.}
+\textcolor{comment}{}\textcolor{comment}{//============================================================================}
+\textcolor{keyword}{class }\hyperlink{classGeneralEllipse}{GeneralEllipse} : \textcolor{keyword}{public} GeomObject
+\{
+\textcolor{keyword}{private}:
+ 
+ \textcolor{comment}{//Storage for the centre of mass and semi-major and semi-minor axes}
+ \textcolor{keywordtype}{double} \hyperlink{classGeneralEllipse_aeb974769f58d136a12ac1532506304cc}{Centre\_x}, \hyperlink{classGeneralEllipse_abf2def5a5140bb35e381b800c4b91dc9}{Centre\_y}, \hyperlink{classGeneralEllipse_ae583e1437da6ad4eb228dda60b61808a}{A}, \hyperlink{classGeneralEllipse_a185ae9786d5c6c82eef61e163e9310c6}{B};
+
+\textcolor{keyword}{public}:
+ \textcolor{comment}{}
+\textcolor{comment}{ /// \(\backslash\)short Simple Constructor that transfers appropriate geometric }
+\textcolor{comment}{ /// parameters into internal data}
+\textcolor{comment}{} \hyperlink{classGeneralEllipse_a50dc036d709bcd1d53eafb62b5548f67}{GeneralEllipse}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} &centre\_x, \textcolor{keyword}{const} \textcolor{keywordtype}{double} &centre\_y,
+                \textcolor{keyword}{const} \textcolor{keywordtype}{double} &a, \textcolor{keyword}{const} \textcolor{keywordtype}{double} &b)
+  : GeomObject(1,2), Centre\_x(centre\_x), Centre\_y(centre\_y), A(a), B(b)
+  \{\}
+\textcolor{comment}{}
+\textcolor{comment}{ /// Empty Destructor}
+\textcolor{comment}{} \hyperlink{classGeneralEllipse_a3ac5c17cf8c4998f1b74913860cb3bb9}{~GeneralEllipse}() \{\}
+\textcolor{comment}{}
+\textcolor{comment}{ ///Return the position of the ellipse boundary as a function of }
+\textcolor{comment}{ ///the angle xi[0]}
+\textcolor{comment}{} \textcolor{keywordtype}{void} \hyperlink{classGeneralEllipse_a85e975c70441a9c9c711b5e27d124bff}{position}(\textcolor{keyword}{const} Vector<double> &xi, Vector<double> &r)\textcolor{keyword}{ const}
+\textcolor{keyword}{  }\{
+   r[0] = Centre\_x + A*cos(xi[0]);
+   r[1] = Centre\_y + B*sin(xi[0]);
+  \}
+
+ \textcolor{comment}{//Return the position which is always fixed}
+ \textcolor{keywordtype}{void} \hyperlink{classGeneralEllipse_a85e975c70441a9c9c711b5e27d124bff}{position}(\textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} &t,
+               \textcolor{keyword}{const} Vector<double> &xi, Vector<double> &r)\textcolor{keyword}{ const}
+\textcolor{keyword}{  }\{
+   \textcolor{keywordflow}{return} \hyperlink{classGeneralEllipse_a85e975c70441a9c9c711b5e27d124bff}{position}(xi,r);
+  \}
+
+\};
+\textcolor{comment}{//end\_of\_general\_ellipse}
+
+\end{DoxyCodeInclude}
+
+
+
+
+ 
+
+\hypertarget{index_driver}{}\section{The driver code}\label{index_driver}
+After parsing the command-\/line arguments, which are used to modify certain parameters for validation runs, a single instance of the {\ttfamily \hyperlink{classUnstructuredImmersedEllipseProblem}{Unstructured\+Immersed\+Ellipse\+Problem}} (described below) is constructed using Taylor Hood elements.
+
+ 
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//==========start\_of\_main======================================}
+\textcolor{comment}{/// Driver code for immersed ellipse problem}
+\textcolor{comment}{}\textcolor{comment}{//============================================================}
+\textcolor{keywordtype}{int} \hyperlink{jeffery__orbit_8cc_a3c04138a5bfe5d72780bb7e82a18e627}{main}(\textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} **argv)
+\{
+ \textcolor{comment}{// Store command line arguments}
+ CommandLineArgs::setup(argc,argv);
+
+ \textcolor{comment}{// Define possible command line arguments and parse the ones that}
+ \textcolor{comment}{// were actually specified}
+ 
+ \textcolor{comment}{// Validation?}
+ CommandLineArgs::specify\_command\_line\_flag(\textcolor{stringliteral}{"--validation"});
+
+ \textcolor{comment}{// Parse command line}
+ CommandLineArgs::parse\_and\_assign(); 
+ 
+ \textcolor{comment}{// Doc what has actually been specified on the command line}
+ CommandLineArgs::doc\_specified\_flags();
+  
+ \textcolor{comment}{// Create problem in initial configuration}
+ \hyperlink{classUnstructuredImmersedEllipseProblem}{UnstructuredImmersedEllipseProblem}<
+ ProjectableTaylorHoodElement<MyTaylorHoodElement> > problem;  
+
+\end{DoxyCodeInclude}
+
+
+After construction the {\ttfamily Nodes} on the boundary of the ellipse will have been directly mapped onto the curvilinear surface using a strong (collocation) condition, $ x_{i} = R_{i}$, where $R_{i}$ is the corresponding boundary of the ellipse. In the full problem the displacement boundary condition is enforced weakly via Lagrange multipliers $ \oint \left\{x_{i} - R_{i}\right\}\psi \mbox{d} s = 0$. In order to ensure consistency, we initially solve the problem in which the rigid body is pinned so that the boundary nodes are adjusted to be consistent with the weak form of the boundary condition. We note that for sufficiently fine initial meshes the difference is minimal.
+
+
+\begin{DoxyCodeInclude}
+
+ \textcolor{comment}{//Initially ensure that the nodal positions are consistent with }
+ \textcolor{comment}{//their weak imposition}
+ problem.solve\_for\_consistent\_nodal\_positions();
+
+\end{DoxyCodeInclude}
+
+
+Now that we have a consistent initial condition, we initialise the timestepper and set conditions consistent with a impulsive start from rest.
+
+
+\begin{DoxyCodeInclude}
+ 
+ \textcolor{comment}{// Initialise timestepper}
+ \textcolor{keywordtype}{double} dt=0.05;
+ problem.initialise\_dt(dt);
+
+ \textcolor{comment}{// Perform impulsive start}
+ problem.assign\_initial\_values\_impulsive();
+
+ \textcolor{comment}{// Output initial conditions}
+ problem.doc\_solution();
+
+\end{DoxyCodeInclude}
+
+
+We then take a fixed number of timesteps on the initial mesh, documenting the solution after each solve.
+
+
+\begin{DoxyCodeInclude}
+
+ \textcolor{comment}{// Solve problem a few times on given mesh}
+ \textcolor{keywordtype}{unsigned} nstep=3;
+ \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} i=0;i<nstep;i++)
+  \{
+   \textcolor{comment}{// Solve the problem}
+   problem.unsteady\_newton\_solve(dt);    
+   problem.doc\_solution();
+  \}
+
+\end{DoxyCodeInclude}
+
+
+Finally, we loop over a number of ``cycles\textquotesingle{}\textquotesingle{} in which we adapt the problem and then solve for a fixed number of time steps on the each mesh.
+
+
+\begin{DoxyCodeInclude}
+ \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} j=0;j<ncycle;j++)
+  \{       
+   \textcolor{comment}{// Adapt the problem}
+   problem.adapt();
+
+   \textcolor{comment}{//Solve problem a few times}
+   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} i=0;i<nstep;i++)
+    \{     
+     \textcolor{comment}{// Solve the problem}
+     problem.unsteady\_newton\_solve(dt);
+     problem.doc\_solution();
+    \}
+  \}
+
+\} \textcolor{comment}{//end of main}
+
+\end{DoxyCodeInclude}
+
+
+
+
+ 
+
+ \hypertarget{index_problem}{}\section{The Problem class}\label{index_problem}
+The Problem class follows the usual pattern. The time-\/dependent boundary conditions are applied using the {\ttfamily actions\+\_\+before\+\_\+implicit\+\_\+timestep()} function and the no-\/slip boundary condition is applied in {\ttfamily actions\+\_\+before\+\_\+newton\+\_\+convergence\+\_\+check()} via an auxiliary node update function.
+
+\href{../../../../doc/meshes/mesh_from_inline_triangle/html/index.html#adapt}{\tt Recall} that when adapting an unstructured mesh, its constituent elements are completely re-\/generated. Physical parameters and boundary conditions must therefore be reassigned, which is the task of the {\ttfamily complete\+\_\+problem\+\_\+setup()} function, called in {\ttfamily actions\+\_\+after\+\_\+adapt()}. Helper functions are also provided to solve the initial problem to move the boundary nodes \mbox{[}{\ttfamily solve\+\_\+for\+\_\+consistent\+\_\+nodal\+\_\+positions()}\mbox{]}; to apply the boundary conditions \mbox{[}{\ttfamily set\+\_\+boundary\+\_\+velocity()}\mbox{]}; and to construct and delete the surface elements that impose the Lagrange multiplier constraints and compute the load on the rigid body \mbox{[}{\ttfamily create\+\_\+lagrange\+\_\+multiplier\+\_\+elements()}, {\ttfamily delete\+\_\+lagrange\+\_\+multiplier\+\_\+elements()}, {\ttfamily create\+\_\+drag\+\_\+elements()}, {\ttfamily delete\+\_\+drag\+\_\+elements()}\mbox{]}.
+
+The class also provides storage for the meshes, the rigid body and file handles for documentation.
+
+ 
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//==start\_of\_problem\_class============================================}
+\textcolor{comment}{/// Unstructured Navier-Stokes ALE Problem for a rigid ellipse }
+\textcolor{comment}{}\textcolor{comment}{/// immersed within a viscous fluid}
+\textcolor{comment}{}\textcolor{comment}{//====================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>
+\textcolor{keyword}{class }\hyperlink{classUnstructuredImmersedEllipseProblem}{UnstructuredImmersedEllipseProblem} : \textcolor{keyword}{public} Problem
+\{
+
+\textcolor{keyword}{public}:
+\textcolor{comment}{}
+\textcolor{comment}{ /// Constructor}
+\textcolor{comment}{} \hyperlink{classUnstructuredImmersedEllipseProblem_a544a35f261200bb4a4e29a88faa1a69c}{UnstructuredImmersedEllipseProblem}();
+ \textcolor{comment}{}
+\textcolor{comment}{ /// Destructor}
+\textcolor{comment}{} \hyperlink{classUnstructuredImmersedEllipseProblem_a84cdf81be59fc646eb4d5b3bc0ff4280}{~UnstructuredImmersedEllipseProblem}();
+\textcolor{comment}{}
+\textcolor{comment}{ /// Reset the boundary conditions when timestepping}
+\textcolor{comment}{} \textcolor{keywordtype}{void} \hyperlink{classUnstructuredImmersedEllipseProblem_a368c412c4c9a9e9403b4e67d3582e3a5}{actions\_before\_implicit\_timestep}()
+  \{
+   this->\hyperlink{classUnstructuredImmersedEllipseProblem_ab201b187b240105fd8d444d943f6dada}{set\_boundary\_velocity}();
+  \}
+ \textcolor{comment}{}
+\textcolor{comment}{ /// Wipe the meshes of Lagrange multiplier and drag elements}
+\textcolor{comment}{} \textcolor{keywordtype}{void} \hyperlink{classUnstructuredImmersedEllipseProblem_aa560217a33a9a9bc150fbdf15dbf1877}{actions\_before\_adapt}();
+ \textcolor{comment}{}
+\textcolor{comment}{ /// Rebuild the meshes of Lagrange multiplier and drag elements}
+\textcolor{comment}{} \textcolor{keywordtype}{void} \hyperlink{classUnstructuredImmersedEllipseProblem_ab1558b409285aea617f4abf7d3a64b3d}{actions\_after\_adapt}();
+ \textcolor{comment}{}
+\textcolor{comment}{ /// \(\backslash\)short Re-apply the no slip condition (imposed indirectly via enslaved}
+\textcolor{comment}{ /// velocities)}
+\textcolor{comment}{} \textcolor{keywordtype}{void} \hyperlink{classUnstructuredImmersedEllipseProblem_afa51876a2af9dd7640ff1f5a434804bf}{actions\_before\_newton\_convergence\_check}()
+  \{
+   \textcolor{comment}{// Update mesh -- this applies the auxiliary node update function}
+   \hyperlink{classUnstructuredImmersedEllipseProblem_a0ba79ccde26b781b66d9839460f08bd3}{Fluid\_mesh\_pt}->node\_update();
+  \}
+ \textcolor{comment}{}
+\textcolor{comment}{ /// \(\backslash\)short Set boundary condition, assign auxiliary node update fct.}
+\textcolor{comment}{ /// Complete the build of all elements, attach power elements that allow}
+\textcolor{comment}{ /// computation of drag vector}
+\textcolor{comment}{} \textcolor{keywordtype}{void} \hyperlink{classUnstructuredImmersedEllipseProblem_a42b13e3306ff2a94053907644ba17c8d}{complete\_problem\_setup}();
+\textcolor{comment}{}
+\textcolor{comment}{ ///Set the boundary velocity}
+\textcolor{comment}{} \textcolor{keywordtype}{void} \hyperlink{classUnstructuredImmersedEllipseProblem_ab201b187b240105fd8d444d943f6dada}{set\_boundary\_velocity}();
+\textcolor{comment}{}
+\textcolor{comment}{ ///\(\backslash\)short Function that solves a simplified problem to ensure that }
+\textcolor{comment}{ ///the positions of the boundary nodes are initially consistent with}
+\textcolor{comment}{ ///the lagrange multiplier formulation}
+\textcolor{comment}{} \textcolor{keywordtype}{void} \hyperlink{classUnstructuredImmersedEllipseProblem_a2a88b40ff1988de0fc696f1eb755ea54}{solve\_for\_consistent\_nodal\_positions}();
+\textcolor{comment}{}
+\textcolor{comment}{ /// Doc the solution}
+\textcolor{comment}{} \textcolor{keywordtype}{void} \hyperlink{classUnstructuredImmersedEllipseProblem_a08e12dd83c98f96e14e8152cc758d398}{doc\_solution}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool}& project=\textcolor{keyword}{false});
+  \textcolor{comment}{}
+\textcolor{comment}{ /// Output the exact solution}
+\textcolor{comment}{} \textcolor{keywordtype}{void} \hyperlink{classUnstructuredImmersedEllipseProblem_a29a232dfac18ea901332bebdc14fad15}{output\_exact\_solution}(std::ofstream &output\_file);
+
+\textcolor{keyword}{private}:
+ \textcolor{comment}{}
+\textcolor{comment}{ /// \(\backslash\)short Create elements that enforce prescribed boundary motion}
+\textcolor{comment}{ /// for the pseudo-solid fluid mesh by Lagrange multipliers}
+\textcolor{comment}{} \textcolor{keywordtype}{void} \hyperlink{classUnstructuredImmersedEllipseProblem_a3b4a4e279a11b37d79d040b348008765}{create\_lagrange\_multiplier\_elements}();
+\textcolor{comment}{}
+\textcolor{comment}{ /// \(\backslash\)short Delete elements that impose the prescribed boundary displacement}
+\textcolor{comment}{ /// and wipe the associated mesh}
+\textcolor{comment}{} \textcolor{keywordtype}{void} \hyperlink{classUnstructuredImmersedEllipseProblem_a51555f77dc360c94591ee68c3fc9928a}{delete\_lagrange\_multiplier\_elements}();
+\textcolor{comment}{}
+\textcolor{comment}{ /// \(\backslash\)short Create elements that calculate the drag and torque on}
+\textcolor{comment}{ /// the boundaries}
+\textcolor{comment}{} \textcolor{keywordtype}{void} \hyperlink{classUnstructuredImmersedEllipseProblem_a16a7c6022867f709ebdd59b8fee2004a}{create\_drag\_elements}();
+ \textcolor{comment}{}
+\textcolor{comment}{ /// \(\backslash\)short Delete elements that calculate the drag and torque on the }
+\textcolor{comment}{ /// boundaries}
+\textcolor{comment}{} \textcolor{keywordtype}{void} \hyperlink{classUnstructuredImmersedEllipseProblem_a7d7b84968988d37091b29957b0af5bfa}{delete\_drag\_elements}();
+\textcolor{comment}{}
+\textcolor{comment}{ ///Pin the degrees of freedom associated with the solid bodies}
+\textcolor{comment}{} \textcolor{keywordtype}{void} \hyperlink{classUnstructuredImmersedEllipseProblem_a07dc16909c0223fe4b656fd270f27c11}{pin\_rigid\_body}();
+\textcolor{comment}{}
+\textcolor{comment}{ ///Unpin the degrees of freedom associated with the solid bodies}
+\textcolor{comment}{} \textcolor{keywordtype}{void} \hyperlink{classUnstructuredImmersedEllipseProblem_a4f8c7e7e4d626084f6515a152b165567}{unpin\_rigid\_body}();
+ \textcolor{comment}{}
+\textcolor{comment}{ /// Pointers to mesh of Lagrange multiplier elements}
+\textcolor{comment}{} SolidMesh* \hyperlink{classUnstructuredImmersedEllipseProblem_ad644e67ccd6ab0811c5fe2b7b944fbca}{Lagrange\_multiplier\_mesh\_pt};
+\textcolor{comment}{}
+\textcolor{comment}{ /// Pointer to Fluid\_mesh}
+\textcolor{comment}{} RefineableSolidTriangleMesh<ELEMENT>* \hyperlink{classUnstructuredImmersedEllipseProblem_a0ba79ccde26b781b66d9839460f08bd3}{Fluid\_mesh\_pt};
+ \textcolor{comment}{}
+\textcolor{comment}{ /// Triangle mesh polygon for outer boundary }
+\textcolor{comment}{} TriangleMeshPolygon* \hyperlink{classUnstructuredImmersedEllipseProblem_ae0b35188432c371804887b6de86b48c7}{Outer\_boundary\_polygon\_pt};
+\textcolor{comment}{}
+\textcolor{comment}{ /// Mesh of drag elements}
+\textcolor{comment}{} Vector<Mesh*> \hyperlink{classUnstructuredImmersedEllipseProblem_a9b4d04277b1f42c9428b610968f6f10d}{Drag\_mesh\_pt};
+\textcolor{comment}{}
+\textcolor{comment}{ /// Mesh of the generalised elements for the rigid bodies}
+\textcolor{comment}{} Mesh* \hyperlink{classUnstructuredImmersedEllipseProblem_a34f1376227d4b995678eedd77813388b}{Rigid\_body\_mesh\_pt};
+\textcolor{comment}{}
+\textcolor{comment}{ /// Storage for the geom object}
+\textcolor{comment}{} Vector<GeomObject*> \hyperlink{classUnstructuredImmersedEllipseProblem_aaa6d1c19f3634a6f08f3dd7e5046217e}{Rigid\_body\_pt};
+ \textcolor{comment}{}
+\textcolor{comment}{ /// Internal DocInfo object}
+\textcolor{comment}{} DocInfo \hyperlink{classUnstructuredImmersedEllipseProblem_a1c463ed904f01e6466baae0533c79780}{Doc\_info};
+ \textcolor{comment}{}
+\textcolor{comment}{ /// File to document the norm of the solution (for validation purposes)}
+\textcolor{comment}{} ofstream \hyperlink{classUnstructuredImmersedEllipseProblem_a71a3b24b610e05f7be916c4214dab8dc}{Norm\_file};
+ \textcolor{comment}{}
+\textcolor{comment}{ /// File to document the motion of the centre of gravity}
+\textcolor{comment}{} ofstream \hyperlink{classUnstructuredImmersedEllipseProblem_acd1e8ec8e510f029f449f13dfdebbc99}{Cog\_file};
+ \textcolor{comment}{}
+\textcolor{comment}{ /// File to document the exact motion of the centre of gravity}
+\textcolor{comment}{} ofstream \hyperlink{classUnstructuredImmersedEllipseProblem_a3dc1ec2e066466a6f228864b873d95fa}{Cog\_exact\_file};
+
+\}; \textcolor{comment}{// end\_of\_problem\_class}
+
+\end{DoxyCodeInclude}
+
+
+
+
+ 
+
+ \hypertarget{index_constructor}{}\section{The Problem Constructor}\label{index_constructor}
+We begin by opening the output files and allocating two time steppers, one for the fluid problem and one for the rigid body problem.
+
+
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//==start\_constructor=====================================================}
+\textcolor{comment}{/// Constructor: Open output files, construct time steppers, build }
+\textcolor{comment}{}\textcolor{comment}{///  fluid mesh, immersed rigid body and combine to form the problem}
+\textcolor{comment}{}\textcolor{comment}{//========================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>
+\hyperlink{classUnstructuredImmersedEllipseProblem_a544a35f261200bb4a4e29a88faa1a69c}{UnstructuredImmersedEllipseProblem<ELEMENT>::}
+\hyperlink{classUnstructuredImmersedEllipseProblem_a544a35f261200bb4a4e29a88faa1a69c}{UnstructuredImmersedEllipseProblem}()
+\{ 
+ \textcolor{comment}{// Output directory}
+ this->Doc\_info.set\_directory(\textcolor{stringliteral}{"RESLT"});
+
+ \textcolor{comment}{// Open norm file}
+ this->Norm\_file.open(\textcolor{stringliteral}{"RESLT/norm.dat"});
+
+ \textcolor{comment}{// Open file to trace the centre of gravity}
+ this->Cog\_file.open(\textcolor{stringliteral}{"RESLT/cog\_trace.dat"});
+
+ \textcolor{comment}{// Open file to document the exact motion of the centre of gravity}
+ this->Cog\_exact\_file.open(\textcolor{stringliteral}{"RESLT/cog\_exact\_trace.dat"});
+
+ \textcolor{comment}{// Allocate the timestepper -- this constructs the Problem's }
+ \textcolor{comment}{// time object with a sufficient amount of storage to store the}
+ \textcolor{comment}{// previous timsteps. }
+ this->add\_time\_stepper\_pt(\textcolor{keyword}{new} BDF<2>);
+
+ \textcolor{comment}{// Allocate a timestepper for the rigid body}
+ this->add\_time\_stepper\_pt(\textcolor{keyword}{new} Newmark<2>);
+
+\end{DoxyCodeInclude}
+
+
+We then define the geometry that defines the outer boundary of the unstructured mesh by constructing a {\ttfamily Triangle\+Mesh\+Polygon} that consists of four straight-\/line boundaries.
+
+
+\begin{DoxyCodeInclude}
+
+ \textcolor{comment}{// Define the boundaries: Polyline with 4 different}
+ \textcolor{comment}{// boundaries for the outer boundary and 1 internal elliptical hole}
+ 
+ \textcolor{comment}{// Build the boundary segments for outer boundary, consisting of}
+ \textcolor{comment}{//--------------------------------------------------------------}
+ \textcolor{comment}{// four separate polyline segments}
+ \textcolor{comment}{//---------------------------------}
+ Vector<TriangleMeshCurveSection*> boundary\_segment\_pt(4);
+
+ \textcolor{comment}{//Set the length of the channel}
+ \textcolor{keywordtype}{double} half\_length = 5.0;
+ \textcolor{keywordtype}{double} half\_height = 2.5;
+ 
+ \textcolor{comment}{// Initialize boundary segment}
+ Vector<Vector<double> > bound\_seg(2);
+ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} i=0;i<2;i++) \{bound\_seg[i].resize(2);\}
+
+ \textcolor{comment}{// First boundary segment}
+ bound\_seg[0][0]=-half\_length;
+ bound\_seg[0][1]=-half\_height;
+ bound\_seg[1][0]=-half\_length;
+ bound\_seg[1][1]=half\_height;
+ 
+ \textcolor{comment}{// Specify 1st boundary id}
+ \textcolor{keywordtype}{unsigned} bound\_id = 0;
+
+ \textcolor{comment}{// Build the 1st boundary segment}
+ boundary\_segment\_pt[0] = \textcolor{keyword}{new} TriangleMeshPolyLine(bound\_seg,bound\_id);
+ 
+ \textcolor{comment}{// Second boundary segment}
+ bound\_seg[0][0]=-half\_length;
+ bound\_seg[0][1]=half\_height;
+ bound\_seg[1][0]=half\_length;
+ bound\_seg[1][1]=half\_height;
+
+ \textcolor{comment}{// Specify 2nd boundary id}
+ bound\_id = 1;
+
+ \textcolor{comment}{// Build the 2nd boundary segment}
+ boundary\_segment\_pt[1] = \textcolor{keyword}{new} TriangleMeshPolyLine(bound\_seg,bound\_id);
+
+ \textcolor{comment}{// Third boundary segment}
+ bound\_seg[0][0]=half\_length;
+ bound\_seg[0][1]=half\_height;
+ bound\_seg[1][0]=half\_length;
+ bound\_seg[1][1]=-half\_height;
+
+ \textcolor{comment}{// Specify 3rd boundary id}
+ bound\_id = 2;
+
+ \textcolor{comment}{// Build the 3rd boundary segment}
+ boundary\_segment\_pt[2] = \textcolor{keyword}{new} TriangleMeshPolyLine(bound\_seg,bound\_id);
+
+ \textcolor{comment}{// Fourth boundary segment}
+ bound\_seg[0][0]=half\_length;
+ bound\_seg[0][1]=-half\_height;
+ bound\_seg[1][0]=-half\_length;
+ bound\_seg[1][1]=-half\_height;
+
+ \textcolor{comment}{// Specify 4th boundary id}
+ bound\_id = 3;
+
+ \textcolor{comment}{// Build the 4th boundary segment}
+ boundary\_segment\_pt[3] = \textcolor{keyword}{new} TriangleMeshPolyLine(bound\_seg,bound\_id);
+  
+ \textcolor{comment}{// Create the triangle mesh polygon for outer boundary using boundary segment}
+ Outer\_boundary\_polygon\_pt = \textcolor{keyword}{new} TriangleMeshPolygon(boundary\_segment\_pt);
+
+\end{DoxyCodeInclude}
+
+
+Next we build the single {\ttfamily Immersed\+Rigid\+Body\+Element} from an instantiation of a {\ttfamily \hyperlink{classGeneralEllipse}{General\+Ellipse}} geometric object.
+
+
+\begin{DoxyCodeInclude}
+
+ \textcolor{comment}{// Now build the moving rigid body}
+ \textcolor{comment}{//-------------------------------------}
+
+ \textcolor{comment}{// We have one rigid body}
+ Rigid\_body\_pt.resize(1);
+ Vector<TriangleMeshClosedCurve*> hole\_pt(1);
+
+ \textcolor{comment}{// Build Rigid Body}
+ \textcolor{comment}{//-----------------}
+ \textcolor{keywordtype}{double} x\_center = 0.0;
+ \textcolor{keywordtype}{double} y\_center = 0.0;
+ \textcolor{keywordtype}{double} A = \hyperlink{namespaceProblem__Parameter_a23071148de0fea3597c2a7eb848320b6}{Problem\_Parameter::A};
+ \textcolor{keywordtype}{double} B = \hyperlink{namespaceProblem__Parameter_ac2362a46222574a21338a113e2bee27e}{Problem\_Parameter::B};
+ GeomObject* temp\_hole\_pt = \textcolor{keyword}{new} \hyperlink{classGeneralEllipse}{GeneralEllipse}(x\_center,y\_center,A,B);
+ Rigid\_body\_pt[0] = \textcolor{keyword}{new} ImmersedRigidBodyElement(temp\_hole\_pt,
+                                                 this->time\_stepper\_pt(1));
+
+\end{DoxyCodeInclude}
+
+
+The {\ttfamily Immersed\+Rigid\+Body\+Element} is used to define a {\ttfamily Triangle\+Mesh\+Curvilinear\+Closed\+Curve} in exactly the same way as if it were simply a (passive) {\ttfamily Geom\+Object}, as discussed in \href{../../../../doc/meshes/mesh_from_inline_triangle/html/index.html}{\tt another tutorial. }
+
+
+\begin{DoxyCodeInclude}
+
+ \textcolor{comment}{// Build the two parts of the curvilinear boundary from the rigid body}
+ Vector<TriangleMeshCurveSection*> curvilinear\_boundary\_pt(2);
+
+ \textcolor{comment}{//First section (boundary 4)}
+ \textcolor{keywordtype}{double} zeta\_start=0.0;
+ \textcolor{keywordtype}{double} zeta\_end=MathematicalConstants::Pi;
+ \textcolor{keywordtype}{unsigned} nsegment=8; 
+ \textcolor{keywordtype}{unsigned} boundary\_id=4; 
+ curvilinear\_boundary\_pt[0]=\textcolor{keyword}{new} TriangleMeshCurviLine(
+  Rigid\_body\_pt[0],zeta\_start,zeta\_end,nsegment,boundary\_id);
+
+ \textcolor{comment}{//Second section (boundary 5)}
+ zeta\_start=MathematicalConstants::Pi;
+ zeta\_end=2.0*MathematicalConstants::Pi;
+ nsegment=8; 
+ boundary\_id=5; 
+ curvilinear\_boundary\_pt[1]=\textcolor{keyword}{new} TriangleMeshCurviLine(
+  Rigid\_body\_pt[0],zeta\_start,zeta\_end, 
+  nsegment,boundary\_id);
+  
+ \textcolor{comment}{// Combine to form a hole in the fluid mesh}
+ Vector<double> hole\_coords(2);
+ hole\_coords[0]=0.0;
+ hole\_coords[1]=0.0;
+ Vector<TriangleMeshClosedCurve*> curvilinear\_hole\_pt(1);
+ hole\_pt[0]=
+  \textcolor{keyword}{new} TriangleMeshClosedCurve(
+   curvilinear\_boundary\_pt,hole\_coords);
+
+\end{DoxyCodeInclude}
+
+
+We then build the unstructured fluid mesh using the boundary information, set a spatial error estimator and complete the setup of the problem
+
+
+\begin{DoxyCodeInclude}
+ 
+ \textcolor{comment}{// Now build the mesh, based on the boundaries specified by}
+ \textcolor{comment}{//---------------------------------------------------------}
+ \textcolor{comment}{// polygons just created}
+ \textcolor{comment}{//----------------------}
+
+ TriangleMeshClosedCurve* closed\_curve\_pt=Outer\_boundary\_polygon\_pt;
+
+ \textcolor{keywordtype}{double} uniform\_element\_area=1.0;
+
+ \textcolor{comment}{// Use the TriangleMeshParameters object for gathering all}
+ \textcolor{comment}{// the necessary arguments for the TriangleMesh object}
+ TriangleMeshParameters triangle\_mesh\_parameters(
+   closed\_curve\_pt);
+
+ \textcolor{comment}{// Define the holes on the domain}
+ triangle\_mesh\_parameters.internal\_closed\_curve\_pt() =
+   hole\_pt;
+
+ \textcolor{comment}{// Define the maximum element area}
+ triangle\_mesh\_parameters.element\_area() =
+   uniform\_element\_area;
+
+ \textcolor{comment}{// Create the mesh}
+ Fluid\_mesh\_pt =
+   \textcolor{keyword}{new} RefineableSolidTriangleMesh<ELEMENT>(
+     triangle\_mesh\_parameters, this->time\_stepper\_pt());
+
+ \textcolor{comment}{// Set error estimator for bulk mesh}
+ Z2ErrorEstimator* error\_estimator\_pt=\textcolor{keyword}{new} Z2ErrorEstimator;
+ Fluid\_mesh\_pt->spatial\_error\_estimator\_pt()=error\_estimator\_pt;
+
+ \textcolor{comment}{// Set targets for spatial adaptivity}
+ Fluid\_mesh\_pt->max\_permitted\_error()=0.005;
+ Fluid\_mesh\_pt->min\_permitted\_error()=0.001; 
+ Fluid\_mesh\_pt->max\_element\_size()=1.0;
+ Fluid\_mesh\_pt->min\_element\_size()=0.001; 
+
+ \textcolor{comment}{// Use coarser mesh during validation}
+ \textcolor{keywordflow}{if} (CommandLineArgs::command\_line\_flag\_has\_been\_set(\textcolor{stringliteral}{"--validation"}))
+  \{
+   Fluid\_mesh\_pt->min\_element\_size()=0.01; 
+  \}
+
+ \textcolor{comment}{// Set boundary condition, assign auxiliary node update fct,}
+ \textcolor{comment}{// complete the build of all elements, attach power elements that allow}
+ \textcolor{comment}{// computation of drag vector}
+ complete\_problem\_setup();
+
+\end{DoxyCodeInclude}
+
+
+The {\ttfamily Immersed\+Rigid\+Body\+Element} is not deleted during the adaptation process and so its physical parameters can be set once in the constructor. We set the initial position of the centre of mass, as well as the non-\/dimensional mass and moment of inertia shape, the Reynolds and Strouhal numbers, and the density ratio, which appear in the governing equations above. For this problem, we also fix the location of the centre of mass. (The section \hyperlink{index_comments}{Comments and Exercises} contains an exercise that asks you to explore what happens when you omit this step).
+
+
+\begin{DoxyCodeInclude}
+  
+ \textcolor{comment}{//Set the parameters of the rigid body elements}
+ ImmersedRigidBodyElement* rigid\_element1\_pt = 
+  \textcolor{keyword}{dynamic\_cast<}ImmersedRigidBodyElement*\textcolor{keyword}{>}(Rigid\_body\_pt[0]);
+ rigid\_element1\_pt->initial\_centre\_of\_mass(0) = x\_center;
+ rigid\_element1\_pt->initial\_centre\_of\_mass(1) = y\_center; 
+ rigid\_element1\_pt->mass\_shape() = MathematicalConstants::Pi*A*\hyperlink{namespaceProblem__Parameter_ac2362a46222574a21338a113e2bee27e}{B};
+ rigid\_element1\_pt->moment\_of\_inertia\_shape() = 
+ 0.25*MathematicalConstants::Pi*A*B*(A*A + B*\hyperlink{namespaceProblem__Parameter_ac2362a46222574a21338a113e2bee27e}{B});
+ rigid\_element1\_pt->re\_pt() = &\hyperlink{namespaceProblem__Parameter_acc656299287d4d9a8374c2c501750b4f}{Problem\_Parameter::Re};
+ rigid\_element1\_pt->st\_pt() = &\hyperlink{namespaceProblem__Parameter_a8d9b76e390569bac0095bd0952281a30}{Problem\_Parameter::St};
+ rigid\_element1\_pt->density\_ratio\_pt() = &\hyperlink{namespaceProblem__Parameter_a7fcb9a415485247d626190923235be2a}{Problem\_Parameter::Density\_ratio};
+
+ \textcolor{comment}{//Pin the position of the centre of mass}
+ rigid\_element1\_pt->pin\_centre\_of\_mass\_coordinate(0);
+ rigid\_element1\_pt->pin\_centre\_of\_mass\_coordinate(1);
+
+\end{DoxyCodeInclude}
+
+
+For later reference, we store the single {\ttfamily Immersed\+Rigid\+Body\+Element} in a mesh
+
+
+\begin{DoxyCodeInclude}
+
+  \textcolor{comment}{// Create the mesh for the rigid bodies}
+ Rigid\_body\_mesh\_pt = \textcolor{keyword}{new} Mesh;
+ Rigid\_body\_mesh\_pt->add\_element\_pt(rigid\_element1\_pt);
+
+\end{DoxyCodeInclude}
+
+
+We then create the elements that apply the load on the rigid body and pass the entire mesh of elements to the rigid body. This is the equivalent of the function {\ttfamily F\+S\+I\+\_\+functions\+::setup\+\_\+fluid\+\_\+load\+\_\+info\+\_\+for\+\_\+solid\+\_\+elements}(..), but here the procedure is very simple because {\bfseries  all } the surface elements affect the single rigid body.
+
+
+\begin{DoxyCodeInclude}
+
+ \textcolor{comment}{// Create the drag mesh for the rigid bodies}
+ Drag\_mesh\_pt.resize(1);
+ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} m=0;m<1;m++) \{Drag\_mesh\_pt[m] = \textcolor{keyword}{new} Mesh;\}
+ this->create\_drag\_elements();
+
+ \textcolor{comment}{//Add the drag mesh to the appropriate rigid bodies}
+ rigid\_element1\_pt->set\_drag\_mesh(Drag\_mesh\_pt[0]);
+
+\end{DoxyCodeInclude}
+
+
+We next create the mesh of Lagrange-\/multiplier elements that drive the deformation of the fluid mesh in response to the motion of the ellipse
+
+
+\begin{DoxyCodeInclude}
+
+
+
+ \textcolor{comment}{// Create Lagrange multiplier mesh for boundary motion}
+ \textcolor{comment}{//----------------------------------------------------}
+ \textcolor{comment}{// Construct the mesh of elements that enforce prescribed boundary motion}
+ \textcolor{comment}{// of pseudo-solid fluid mesh by Lagrange multipliers}
+ Lagrange\_multiplier\_mesh\_pt=\textcolor{keyword}{new} SolidMesh;
+ create\_lagrange\_multiplier\_elements();
+
+\end{DoxyCodeInclude}
+
+
+and then construct the global mesh and assign equation numbers.
+
+
+\begin{DoxyCodeInclude}
+
+
+ \textcolor{comment}{// Combine meshes}
+ \textcolor{comment}{//---------------}
+ 
+ \textcolor{comment}{// Add Fluid\_mesh\_pt sub meshes}
+ this->add\_sub\_mesh(Fluid\_mesh\_pt);
+
+ \textcolor{comment}{// Add Lagrange\_multiplier sub meshes}
+ this->add\_sub\_mesh(this->Lagrange\_multiplier\_mesh\_pt);
+
+ this->add\_sub\_mesh(this->Rigid\_body\_mesh\_pt);
+ 
+ \textcolor{comment}{// Build global mesh}
+ this->build\_global\_mesh();
+    
+ \textcolor{comment}{// Setup equation numbering scheme}
+ cout <<\textcolor{stringliteral}{"Number of equations: "} << this->assign\_eqn\_numbers() << std::endl;
+ 
+\} \textcolor{comment}{// end\_of\_constructor}
+
+\end{DoxyCodeInclude}
+
+
+Note that the {\ttfamily Drag\+\_\+mesh\+\_\+pt} does not need to be added as a sub-\/mesh because its elements do not contribute {\itshape  directly } to the residuals and Jacobian.
+
+
+
+ 
+
+\hypertarget{index_complete}{}\section{Completing the problem setup}\label{index_complete}
+The helper function {\ttfamily complete\+\_\+problem\+\_\+setup()} starts by (re-\/)applying the boundary conditions by pinning the fluid velocity in the $ x_{2}$-\/direction on all boundaries and that in the $ x_{1} $-\/direction on the top and bottom (boundaries 1 and 3).
+
+ 
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//============start\_complete\_problem\_setup=================================}
+\textcolor{comment}{/// \(\backslash\)short Set boundary condition, assign auxiliary node update fct.}
+\textcolor{comment}{}\textcolor{comment}{/// Complete the build of all elements, attach power elements that allow}
+\textcolor{comment}{}\textcolor{comment}{/// computation of drag vector}
+\textcolor{comment}{}\textcolor{comment}{//=========================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>
+\textcolor{keywordtype}{void} \hyperlink{classUnstructuredImmersedEllipseProblem_a42b13e3306ff2a94053907644ba17c8d}{UnstructuredImmersedEllipseProblem<ELEMENT>::complete\_problem\_setup}
+      ()
+\{   
+ \textcolor{comment}{// Set the boundary conditions for fluid problem: All nodes are}
+ \textcolor{comment}{// free by default -- just pin the ones that have Dirichlet conditions}
+ \textcolor{comment}{// here. }
+ \textcolor{keywordtype}{unsigned} nbound=Fluid\_mesh\_pt->nboundary();
+ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} ibound=0;ibound<nbound;ibound++)
+  \{
+   \textcolor{keywordtype}{unsigned} num\_nod=Fluid\_mesh\_pt->nboundary\_node(ibound);
+   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} inod=0;inod<num\_nod;inod++)
+    \{
+     \textcolor{comment}{// Cache pointer to node}
+     Node* \textcolor{keyword}{const} nod\_pt=Fluid\_mesh\_pt->boundary\_node\_pt(ibound,inod);
+     
+     \textcolor{comment}{//Pin x-velocity unless on inlet (0) and outlet (2) boundaries}
+     \textcolor{comment}{//of the external rectangular box}
+     \textcolor{keywordflow}{if}((ibound!=0) && (ibound!=2)) \{nod\_pt->pin(0);\}
+     \textcolor{comment}{//Pin the y-velocity on all boundaries}
+     nod\_pt->pin(1);
+
+\end{DoxyCodeInclude}
+
+
+The boundary conditions for the solid degrees of freedom that describe the mesh deformation are assigned next by pinning the nodal positions on the fixed domain boundaries (boundaries 0, 1, 2, 3)\+:
+
+
+\begin{DoxyCodeInclude}
+     
+     \textcolor{comment}{// Pin pseudo-solid positions apart from on the }
+     \textcolor{comment}{// ellipse boundary that is allowed to move}
+     \textcolor{comment}{// Cache cast pointer to solid node}
+     SolidNode* \textcolor{keyword}{const} solid\_node\_pt = \textcolor{keyword}{dynamic\_cast<}SolidNode*\textcolor{keyword}{>}(nod\_pt);
+          
+     \textcolor{comment}{//Pin the solid positions on all external boundaries}
+     \textcolor{keywordflow}{if}(ibound < 4)
+      \{
+       solid\_node\_pt->pin\_position(0);
+       solid\_node\_pt->pin\_position(1);
+      \}
+
+\end{DoxyCodeInclude}
+
+
+The nodes on the boundary of the rigid body should be free to move, so they are unpinned and an auxiliary node update function is set to apply the no-\/slip boundary condition from the {\ttfamily Node\textquotesingle{}s} positional history values.
+
+
+\begin{DoxyCodeInclude}
+     \textcolor{comment}{// Unpin the position of all the nodes on hole boundaries:}
+     \textcolor{comment}{// since they will be moved using Lagrange Multiplier}
+     \textcolor{keywordflow}{else}
+      \{
+       solid\_node\_pt->unpin\_position(0);
+       solid\_node\_pt->unpin\_position(1);
+       
+       \textcolor{comment}{// Assign auxiliary node update fct, which determines the}
+       \textcolor{comment}{// velocity on the moving boundary using the position history}
+       \textcolor{comment}{// values}
+       \textcolor{comment}{// A more accurate version may be obtained by using velocity}
+       \textcolor{comment}{// based on the actual position of the geometric object,}
+       \textcolor{comment}{// but this introduces additional dependencies between the}
+       \textcolor{comment}{// Data of the rigid body and the fluid elements.}
+       nod\_pt->set\_auxiliary\_node\_update\_fct\_pt(
+        FSI\_functions::apply\_no\_slip\_on\_moving\_wall); 
+      \}
+    \} \textcolor{comment}{//End of loop over boundary nodes}
+  \} \textcolor{comment}{// End loop over boundaries}
+
+\end{DoxyCodeInclude}
+
+
+We then loop over the fluid elements and set pointers to the physical parameters and the apply the velocity boundary conditions
+
+
+\begin{DoxyCodeInclude}
+ 
+ \textcolor{comment}{// Complete the build of all elements so they are fully functional}
+ \textcolor{keywordtype}{unsigned} n\_element = Fluid\_mesh\_pt->nelement();
+ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} e=0;e<n\_element;e++)
+  \{
+   \textcolor{comment}{// Upcast from GeneralisedElement to the present element}
+   ELEMENT* el\_pt = \textcolor{keyword}{dynamic\_cast<}ELEMENT*\textcolor{keyword}{>}(Fluid\_mesh\_pt->element\_pt(e));
+   
+   \textcolor{comment}{// Set the Reynolds number}
+   el\_pt->re\_pt() = &\hyperlink{namespaceProblem__Parameter_acc656299287d4d9a8374c2c501750b4f}{Problem\_Parameter::Re};
+   
+   \textcolor{comment}{// Set the Womersley number (same as Re since St=1)}
+   el\_pt->re\_st\_pt() = &\hyperlink{namespaceProblem__Parameter_acc656299287d4d9a8374c2c501750b4f}{Problem\_Parameter::Re};
+   
+   \textcolor{comment}{// Set the constitutive law for pseudo-elastic mesh deformation}
+   el\_pt->constitutive\_law\_pt()=\hyperlink{namespaceProblem__Parameter_a9852a6077458693983628319d429f11f}{Problem\_Parameter::Constitutive\_law\_pt}
+      ;
+   
+   \textcolor{comment}{// Set the "density" for pseudo-elastic mesh deformation}
+   el\_pt->lambda\_sq\_pt()=&\hyperlink{namespaceProblem__Parameter_a20ea33c391abd96d43f79913377c1e12}{Problem\_Parameter::Lambda\_sq};
+  \}
+ 
+ \textcolor{comment}{// Re-apply Dirichlet boundary conditions for current and history values}
+ \textcolor{comment}{// (projection ignores boundary conditions!)}
+ this->set\_boundary\_velocity();
+
+\} \textcolor{comment}{//end\_of\_complete\_problem\_setup}
+
+\end{DoxyCodeInclude}
+
+
+
+
+ 
+
+\hypertarget{index_surface}{}\section{Creating and destroying the surface elements}\label{index_surface}
+The general procedure for creating, attaching and deleting{\ttfamily Face\+Elements} is exactly the same as described \href{../../../../doc/poisson/two_d_poisson_flux_bc/html/index.html}{\tt in another tutorial, } so is not described in detail here.
+
+The functions {\ttfamily create\+\_\+lagrange\+\_\+multiplier\+\_\+elements()} and {\ttfamily create\+\_\+drag\+\_\+elements()} construct surface {\ttfamily Impose\+Displacement\+By\+Lagrange\+Mulitiplier\+Elements} and {\ttfamily Navier\+Stokes\+Surface\+Drag\+Torque\+Elements}, respectively, around the boundary of the rigid body, setting any required member data. For example, the {\ttfamily Navier\+Stokes\+Surface\+Drag\+Torque\+Elements} require the location of the centre of mass in order to compute the torque. The elements are added to the internal storage containers {\ttfamily Lagrange\+\_\+multiplier\+\_\+mesh\+\_\+pt} and {\ttfamily Drag\+\_\+mesh\+\_\+pt}. The corresponding functions {\ttfamily delete\+\_\+lagrange\+\_\+multiplier\+\_\+elements()} and {\ttfamily delete\+\_\+drag\+\_\+elements()} are used to delete and remove the elements before adaptation.
+
+
+
+ 
+
+\hypertarget{index_bc}{}\section{Setting the boundary velocity}\label{index_bc}
+The function {\ttfamily set\+\_\+boundary\+\_\+velocity()} is used to apply the time-\/dependent boundary conditions to the external boundaries of the fluid domain. The only subtlety is that after a remesh the history values for the boundary nodes must also be (re-\/)applied; and, for simplicity, the history values are always reset.
+
+
+
+ 
+
+\hypertarget{index_initial}{}\section{Solving for consistent initial nodal positions}\label{index_initial}
+The initial nodal positions are made consistent with the weakly-\/imposed displacement boundary condition by pinning the rigid body degrees of freedom, performing a steady Newton solve and then releasing the rigid body degrees of freedom.
+
+
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//==========start\_solve\_for\_consistent\_nodal\_positions================}
+\textcolor{comment}{///Assemble and solve a simplified problem that ensures that the }
+\textcolor{comment}{}\textcolor{comment}{///positions of the boundary nodes are consistent with the weak }
+\textcolor{comment}{}\textcolor{comment}{///imposition of the displacement boundary conditions on the surface}
+\textcolor{comment}{}\textcolor{comment}{///of the ellipse.}
+\textcolor{comment}{}\textcolor{comment}{//===================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>
+\textcolor{keywordtype}{void} \hyperlink{classUnstructuredImmersedEllipseProblem_a2a88b40ff1988de0fc696f1eb755ea54}{UnstructuredImmersedEllipseProblem<ELEMENT>::}
+\hyperlink{classUnstructuredImmersedEllipseProblem_a2a88b40ff1988de0fc696f1eb755ea54}{solve\_for\_consistent\_nodal\_positions}()
+\{
+ \textcolor{comment}{//First pin all degrees of freedom in the rigid body}
+ this->pin\_rigid\_body();
+
+ \textcolor{comment}{//Must reassign equation numbrs}
+ this->assign\_eqn\_numbers();
+
+ \textcolor{comment}{//Do a steady solve to map the nodes to the boundary of the ellipse}
+ this->steady\_newton\_solve();
+
+ \textcolor{comment}{//Now unpin the rigid body...}
+ this->unpin\_rigid\_body();
+
+ \textcolor{comment}{//...and then repin the position of the centre of mass}
+ ImmersedRigidBodyElement* rigid\_element1\_pt = 
+  \textcolor{keyword}{dynamic\_cast<}ImmersedRigidBodyElement*\textcolor{keyword}{>}(Rigid\_body\_pt[0]);
+ rigid\_element1\_pt->pin\_centre\_of\_mass\_coordinate(0);
+ rigid\_element1\_pt->pin\_centre\_of\_mass\_coordinate(1);
+
+ \textcolor{comment}{//and then reassign equation numbers}
+ this->assign\_eqn\_numbers();
+
+\} \textcolor{comment}{//end\_solve\_for\_consistent\_nodal\_positions}
+
+\end{DoxyCodeInclude}
+
+
+
+
+ 
+
+\hypertarget{index_comments}{}\section{Comments and Exercises}\label{index_comments}
+\hypertarget{index_exercises}{}\subsection{Exercises}\label{index_exercises}
+
+\begin{DoxyEnumerate}
+\item Confirm that for sufficiently large times the solution agrees with Jeffery\textquotesingle{}s analytic solution when you set $ Re=0 $. Explain why you expect there to be a discrepancy at early times.~\newline
+~\newline
+
+\item What happens when the centre of mass is not fixed? Can you explain the observed behaviour?~\newline
+~\newline
+
+\item What happens if you don\textquotesingle{}t call the function {\ttfamily solve\+\_\+for\+\_\+consistent\+\_\+nodal\+\_\+positions()}? Can you explain the observed behaviour?~\newline
+~\newline
+
+\item Investigate the behaviour of the system with increasing $Re$. What happens to the oscillations for $ Re > 30 $?~\newline
+~\newline
+
+\end{DoxyEnumerate}
+
+ 
+
+\hypertarget{index_sources}{}\section{Source files for this tutorial}\label{index_sources}
+
+\begin{DoxyItemize}
+\item The source files for this tutorial are located in the directory\+:~\newline
+~\newline
+\begin{center} \href{../../../../demo_drivers/navier_stokes/jeffery_orbit/}{\tt demo\+\_\+drivers/navier\+\_\+stokes/jeffery\+\_\+orbit/ } \end{center} ~\newline
+
+\item The driver code is\+: ~\newline
+~\newline
+\begin{center} \href{../../../../demo_drivers/navier_stokes/jeffery_orbit/jeffery_orbit.cc}{\tt demo\+\_\+drivers/navier\+\_\+stokes/jeffery\+\_\+orbit/jeffery\+\_\+orbit.\+cc } \end{center} 
+\end{DoxyItemize}
+
+ 
+
+ \hypertarget{index_pdf}{}\section{P\+D\+F file}\label{index_pdf}
+A \href{../latex/refman.pdf}{\tt pdf version} of this document is available. \end{document}

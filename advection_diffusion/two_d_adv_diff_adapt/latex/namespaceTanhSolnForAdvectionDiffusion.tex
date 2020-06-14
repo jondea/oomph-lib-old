@@ -1,0 +1,195 @@
+\hypertarget{namespaceTanhSolnForAdvectionDiffusion}{}\section{Tanh\+Soln\+For\+Advection\+Diffusion Namespace Reference}
+\label{namespaceTanhSolnForAdvectionDiffusion}\index{Tanh\+Soln\+For\+Advection\+Diffusion@{Tanh\+Soln\+For\+Advection\+Diffusion}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{namespaceTanhSolnForAdvectionDiffusion_ae4c9ed0a4f123ec8e634f0cc45bfcebc}{get\+\_\+exact\+\_\+u} (const Vector$<$ double $>$ \&x, Vector$<$ double $>$ \&u)
+\begin{DoxyCompactList}\small\item\em Exact solution as a Vector. \end{DoxyCompactList}\item 
+void \hyperlink{namespaceTanhSolnForAdvectionDiffusion_af302dc41c1e494b3430fe6654bd1fd39}{get\+\_\+exact\+\_\+u} (const Vector$<$ double $>$ \&x, double \&u)
+\begin{DoxyCompactList}\small\item\em Exact solution as a scalar. \end{DoxyCompactList}\item 
+void \hyperlink{namespaceTanhSolnForAdvectionDiffusion_aaa1aa95713b02b211812fdd18eeaa369}{source\+\_\+function} (const Vector$<$ double $>$ \&x\+\_\+vect, double \&source)
+\begin{DoxyCompactList}\small\item\em Source function required to make the solution above an exact solution. \end{DoxyCompactList}\item 
+void \hyperlink{namespaceTanhSolnForAdvectionDiffusion_ab40e93031d34986762c69616c3c8b065}{wind\+\_\+function} (const Vector$<$ double $>$ \&x, Vector$<$ double $>$ \&wind)
+\begin{DoxyCompactList}\small\item\em Wind. \end{DoxyCompactList}\item 
+void \hyperlink{namespaceTanhSolnForAdvectionDiffusion_a4016f2f5bd0c82061bee09043dc8e8e6}{tanh\+\_\+profile} (const Vector$<$ double $>$ \&x, Vector$<$ double $>$ \&u)
+\begin{DoxyCompactList}\small\item\em Tanh profile for assignment of boundary conditons as a Vector. \end{DoxyCompactList}\item 
+void \hyperlink{namespaceTanhSolnForAdvectionDiffusion_afee88c1e0f93cc56d06c2e94aaf8449c}{tanh\+\_\+profile} (const Vector$<$ double $>$ \&x, double \&u)
+\begin{DoxyCompactList}\small\item\em Tanh profile for assignment of boundary conditons as a Vector. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+double \hyperlink{namespaceTanhSolnForAdvectionDiffusion_aeba486af70e92ab7eec1da3ce44d51ee}{Peclet} =200.\+0
+\begin{DoxyCompactList}\small\item\em Peclet number. \end{DoxyCompactList}\item 
+double \hyperlink{namespaceTanhSolnForAdvectionDiffusion_a4d202e8ac48cc75f760ef40681402ec7}{Alpha}
+\begin{DoxyCompactList}\small\item\em Parameter for steepness of step. \end{DoxyCompactList}\item 
+double \hyperlink{namespaceTanhSolnForAdvectionDiffusion_a236bf82c661189623706b7c9d9b0c52f}{Tan\+Phi}
+\begin{DoxyCompactList}\small\item\em Parameter for angle of step. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Namespace for exact solution for Advection\+Diffusion equation with \char`\"{}sharp\char`\"{} step
+
+Namespace for physical parameters and boundary conditions \char`\"{}sharp\char`\"{} step 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceTanhSolnForAdvectionDiffusion_ae4c9ed0a4f123ec8e634f0cc45bfcebc}\label{namespaceTanhSolnForAdvectionDiffusion_ae4c9ed0a4f123ec8e634f0cc45bfcebc}} 
+\index{Tanh\+Soln\+For\+Advection\+Diffusion@{Tanh\+Soln\+For\+Advection\+Diffusion}!get\+\_\+exact\+\_\+u@{get\+\_\+exact\+\_\+u}}
+\index{get\+\_\+exact\+\_\+u@{get\+\_\+exact\+\_\+u}!Tanh\+Soln\+For\+Advection\+Diffusion@{Tanh\+Soln\+For\+Advection\+Diffusion}}
+\subsubsection{\texorpdfstring{get\+\_\+exact\+\_\+u()}{get\_exact\_u()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Tanh\+Soln\+For\+Advection\+Diffusion\+::get\+\_\+exact\+\_\+u (\begin{DoxyParamCaption}\item[{const Vector$<$ double $>$ \&}]{x,  }\item[{Vector$<$ double $>$ \&}]{u }\end{DoxyParamCaption})}
+
+
+
+Exact solution as a Vector. 
+
+
+
+Definition at line 63 of file two\+\_\+d\+\_\+adv\+\_\+diff\+\_\+adapt.\+cc.
+
+
+
+Referenced by Refineable\+Advection\+Diffusion\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::actions\+\_\+before\+\_\+newton\+\_\+solve(), and Refineable\+Advection\+Diffusion\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::doc\+\_\+solution().
+
+\mbox{\Hypertarget{namespaceTanhSolnForAdvectionDiffusion_af302dc41c1e494b3430fe6654bd1fd39}\label{namespaceTanhSolnForAdvectionDiffusion_af302dc41c1e494b3430fe6654bd1fd39}} 
+\index{Tanh\+Soln\+For\+Advection\+Diffusion@{Tanh\+Soln\+For\+Advection\+Diffusion}!get\+\_\+exact\+\_\+u@{get\+\_\+exact\+\_\+u}}
+\index{get\+\_\+exact\+\_\+u@{get\+\_\+exact\+\_\+u}!Tanh\+Soln\+For\+Advection\+Diffusion@{Tanh\+Soln\+For\+Advection\+Diffusion}}
+\subsubsection{\texorpdfstring{get\+\_\+exact\+\_\+u()}{get\_exact\_u()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Tanh\+Soln\+For\+Advection\+Diffusion\+::get\+\_\+exact\+\_\+u (\begin{DoxyParamCaption}\item[{const Vector$<$ double $>$ \&}]{x,  }\item[{double \&}]{u }\end{DoxyParamCaption})}
+
+
+
+Exact solution as a scalar. 
+
+
+
+Definition at line 69 of file two\+\_\+d\+\_\+adv\+\_\+diff\+\_\+adapt.\+cc.
+
+\mbox{\Hypertarget{namespaceTanhSolnForAdvectionDiffusion_aaa1aa95713b02b211812fdd18eeaa369}\label{namespaceTanhSolnForAdvectionDiffusion_aaa1aa95713b02b211812fdd18eeaa369}} 
+\index{Tanh\+Soln\+For\+Advection\+Diffusion@{Tanh\+Soln\+For\+Advection\+Diffusion}!source\+\_\+function@{source\+\_\+function}}
+\index{source\+\_\+function@{source\+\_\+function}!Tanh\+Soln\+For\+Advection\+Diffusion@{Tanh\+Soln\+For\+Advection\+Diffusion}}
+\subsubsection{\texorpdfstring{source\+\_\+function()}{source\_function()}}
+{\footnotesize\ttfamily void Tanh\+Soln\+For\+Advection\+Diffusion\+::source\+\_\+function (\begin{DoxyParamCaption}\item[{const Vector$<$ double $>$ \&}]{x\+\_\+vect,  }\item[{double \&}]{source }\end{DoxyParamCaption})}
+
+
+
+Source function required to make the solution above an exact solution. 
+
+Zero source function. 
+
+Definition at line 75 of file two\+\_\+d\+\_\+adv\+\_\+diff\+\_\+adapt.\+cc.
+
+
+
+Referenced by main(), and tanh\+\_\+profile().
+
+\mbox{\Hypertarget{namespaceTanhSolnForAdvectionDiffusion_a4016f2f5bd0c82061bee09043dc8e8e6}\label{namespaceTanhSolnForAdvectionDiffusion_a4016f2f5bd0c82061bee09043dc8e8e6}} 
+\index{Tanh\+Soln\+For\+Advection\+Diffusion@{Tanh\+Soln\+For\+Advection\+Diffusion}!tanh\+\_\+profile@{tanh\+\_\+profile}}
+\index{tanh\+\_\+profile@{tanh\+\_\+profile}!Tanh\+Soln\+For\+Advection\+Diffusion@{Tanh\+Soln\+For\+Advection\+Diffusion}}
+\subsubsection{\texorpdfstring{tanh\+\_\+profile()}{tanh\_profile()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Tanh\+Soln\+For\+Advection\+Diffusion\+::tanh\+\_\+profile (\begin{DoxyParamCaption}\item[{const Vector$<$ double $>$ \&}]{x,  }\item[{Vector$<$ double $>$ \&}]{u }\end{DoxyParamCaption})}
+
+
+
+Tanh profile for assignment of boundary conditons as a Vector. 
+
+
+
+Definition at line 62 of file two\+\_\+d\+\_\+adv\+\_\+diff\+\_\+adapt2.\+cc.
+
+
+
+Referenced by Refineable\+Advection\+Diffusion\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::mesh\+\_\+pt().
+
+\mbox{\Hypertarget{namespaceTanhSolnForAdvectionDiffusion_afee88c1e0f93cc56d06c2e94aaf8449c}\label{namespaceTanhSolnForAdvectionDiffusion_afee88c1e0f93cc56d06c2e94aaf8449c}} 
+\index{Tanh\+Soln\+For\+Advection\+Diffusion@{Tanh\+Soln\+For\+Advection\+Diffusion}!tanh\+\_\+profile@{tanh\+\_\+profile}}
+\index{tanh\+\_\+profile@{tanh\+\_\+profile}!Tanh\+Soln\+For\+Advection\+Diffusion@{Tanh\+Soln\+For\+Advection\+Diffusion}}
+\subsubsection{\texorpdfstring{tanh\+\_\+profile()}{tanh\_profile()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Tanh\+Soln\+For\+Advection\+Diffusion\+::tanh\+\_\+profile (\begin{DoxyParamCaption}\item[{const Vector$<$ double $>$ \&}]{x,  }\item[{double \&}]{u }\end{DoxyParamCaption})}
+
+
+
+Tanh profile for assignment of boundary conditons as a Vector. 
+
+
+
+Definition at line 68 of file two\+\_\+d\+\_\+adv\+\_\+diff\+\_\+adapt2.\+cc.
+
+
+
+References source\+\_\+function(), and wind\+\_\+function().
+
+\mbox{\Hypertarget{namespaceTanhSolnForAdvectionDiffusion_ab40e93031d34986762c69616c3c8b065}\label{namespaceTanhSolnForAdvectionDiffusion_ab40e93031d34986762c69616c3c8b065}} 
+\index{Tanh\+Soln\+For\+Advection\+Diffusion@{Tanh\+Soln\+For\+Advection\+Diffusion}!wind\+\_\+function@{wind\+\_\+function}}
+\index{wind\+\_\+function@{wind\+\_\+function}!Tanh\+Soln\+For\+Advection\+Diffusion@{Tanh\+Soln\+For\+Advection\+Diffusion}}
+\subsubsection{\texorpdfstring{wind\+\_\+function()}{wind\_function()}}
+{\footnotesize\ttfamily void Tanh\+Soln\+For\+Advection\+Diffusion\+::wind\+\_\+function (\begin{DoxyParamCaption}\item[{const Vector$<$ double $>$ \&}]{x,  }\item[{Vector$<$ double $>$ \&}]{wind }\end{DoxyParamCaption})}
+
+
+
+Wind. 
+
+Wind\+: Recirculating cells. 
+
+Definition at line 88 of file two\+\_\+d\+\_\+adv\+\_\+diff\+\_\+adapt.\+cc.
+
+
+
+Referenced by main(), and tanh\+\_\+profile().
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceTanhSolnForAdvectionDiffusion_a4d202e8ac48cc75f760ef40681402ec7}\label{namespaceTanhSolnForAdvectionDiffusion_a4d202e8ac48cc75f760ef40681402ec7}} 
+\index{Tanh\+Soln\+For\+Advection\+Diffusion@{Tanh\+Soln\+For\+Advection\+Diffusion}!Alpha@{Alpha}}
+\index{Alpha@{Alpha}!Tanh\+Soln\+For\+Advection\+Diffusion@{Tanh\+Soln\+For\+Advection\+Diffusion}}
+\subsubsection{\texorpdfstring{Alpha}{Alpha}}
+{\footnotesize\ttfamily double Tanh\+Soln\+For\+Advection\+Diffusion\+::\+Alpha}
+
+
+
+Parameter for steepness of step. 
+
+Parameter for steepness of step in tanh profile. 
+
+Definition at line 57 of file two\+\_\+d\+\_\+adv\+\_\+diff\+\_\+adapt.\+cc.
+
+
+
+Referenced by main().
+
+\mbox{\Hypertarget{namespaceTanhSolnForAdvectionDiffusion_aeba486af70e92ab7eec1da3ce44d51ee}\label{namespaceTanhSolnForAdvectionDiffusion_aeba486af70e92ab7eec1da3ce44d51ee}} 
+\index{Tanh\+Soln\+For\+Advection\+Diffusion@{Tanh\+Soln\+For\+Advection\+Diffusion}!Peclet@{Peclet}}
+\index{Peclet@{Peclet}!Tanh\+Soln\+For\+Advection\+Diffusion@{Tanh\+Soln\+For\+Advection\+Diffusion}}
+\subsubsection{\texorpdfstring{Peclet}{Peclet}}
+{\footnotesize\ttfamily double Tanh\+Soln\+For\+Advection\+Diffusion\+::\+Peclet =200.\+0}
+
+
+
+Peclet number. 
+
+
+
+Definition at line 54 of file two\+\_\+d\+\_\+adv\+\_\+diff\+\_\+adapt.\+cc.
+
+
+
+Referenced by Refineable\+Advection\+Diffusion\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::mesh\+\_\+pt(), and Refineable\+Advection\+Diffusion\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Refineable\+Advection\+Diffusion\+Problem().
+
+\mbox{\Hypertarget{namespaceTanhSolnForAdvectionDiffusion_a236bf82c661189623706b7c9d9b0c52f}\label{namespaceTanhSolnForAdvectionDiffusion_a236bf82c661189623706b7c9d9b0c52f}} 
+\index{Tanh\+Soln\+For\+Advection\+Diffusion@{Tanh\+Soln\+For\+Advection\+Diffusion}!Tan\+Phi@{Tan\+Phi}}
+\index{Tan\+Phi@{Tan\+Phi}!Tanh\+Soln\+For\+Advection\+Diffusion@{Tanh\+Soln\+For\+Advection\+Diffusion}}
+\subsubsection{\texorpdfstring{Tan\+Phi}{TanPhi}}
+{\footnotesize\ttfamily double Tanh\+Soln\+For\+Advection\+Diffusion\+::\+Tan\+Phi}
+
+
+
+Parameter for angle of step. 
+
+Parameter for angle of step in tanh profile. 
+
+Definition at line 60 of file two\+\_\+d\+\_\+adv\+\_\+diff\+\_\+adapt.\+cc.
+
+
+
+Referenced by main().
+

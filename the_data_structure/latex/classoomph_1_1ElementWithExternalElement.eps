@@ -1,0 +1,393 @@
+%!PS-Adobe-2.0 EPSF-2.0
+%%Title: ClassName
+%%Creator: Doxygen
+%%CreationDate: Time
+%%For: 
+%Magnification: 1.00
+%%Orientation: Portrait
+%%BoundingBox: 0 0 500 314.672521
+%%Pages: 0
+%%BeginSetup
+%%EndSetup
+%%EndComments
+
+% ----- variables -----
+
+/boxwidth 0 def
+/boxheight 40 def
+/fontheight 24 def
+/marginwidth 10 def
+/distx 20 def
+/disty 40 def
+/boundaspect 1.588953 def  % aspect ratio of the BoundingBox (width/height)
+/boundx 500 def
+/boundy boundx boundaspect div def
+/xspacing 0 def
+/yspacing 0 def
+/rows 43 def
+/cols 3 def
+/scalefactor 0 def
+/boxfont /Times-Roman findfont fontheight scalefont def
+
+% ----- procedures -----
+
+/dotted { [1 4] 0 setdash } def
+/dashed { [5] 0 setdash } def
+/solid  { [] 0 setdash } def
+
+/max % result = MAX(arg1,arg2)
+{
+  /a exch def
+  /b exch def
+  a b gt {a} {b} ifelse
+} def
+
+/xoffset % result = MAX(0,(scalefactor-(boxwidth*cols+distx*(cols-1)))/2)
+{
+  0 scalefactor boxwidth cols mul distx cols 1 sub mul add sub 2 div max
+} def
+
+/cw % boxwidth = MAX(boxwidth, stringwidth(arg1))
+{
+  /str exch def
+  /boxwidth boxwidth str stringwidth pop max def
+} def
+
+/box % draws a box with text `arg1' at grid pos (arg2,arg3)
+{ gsave
+  2 setlinewidth
+  newpath
+  exch xspacing mul xoffset add
+  exch yspacing mul
+  moveto
+  boxwidth 0 rlineto 
+  0 boxheight rlineto 
+  boxwidth neg 0 rlineto 
+  0 boxheight neg rlineto 
+  closepath
+  dup stringwidth pop neg boxwidth add 2 div
+  boxheight fontheight 2 div sub 2 div
+  rmoveto show stroke
+  grestore
+} def  
+
+/mark
+{ newpath
+  exch xspacing mul xoffset add boxwidth add
+  exch yspacing mul
+  moveto
+  0 boxheight 4 div rlineto
+  boxheight neg 4 div boxheight neg 4 div rlineto
+  closepath
+  eofill
+  stroke
+} def
+
+/arrow
+{ newpath
+  moveto
+  3 -8 rlineto
+  -6 0 rlineto
+  3 8 rlineto
+  closepath
+  eofill
+  stroke
+} def
+
+/out % draws an output connector for the block at (arg1,arg2)
+{
+  newpath
+  exch xspacing mul xoffset add boxwidth 2 div add
+  exch yspacing mul boxheight add
+  /y exch def
+  /x exch def
+  x y moveto
+  0 disty 2 div rlineto 
+  stroke
+  1 eq { x y disty 2 div add arrow } if
+} def
+
+/in % draws an input connector for the block at (arg1,arg2)
+{
+  newpath
+  exch xspacing mul xoffset add boxwidth 2 div add
+  exch yspacing mul disty 2 div sub
+  /y exch def
+  /x exch def
+  x y moveto
+  0 disty 2 div rlineto
+  stroke
+  1 eq { x y disty 2 div add arrow } if
+} def
+
+/hedge
+{
+  exch xspacing mul xoffset add boxwidth 2 div add
+  exch yspacing mul boxheight 2 div sub
+  /y exch def
+  /x exch def
+  newpath
+  x y moveto
+  boxwidth 2 div distx add 0 rlineto
+  stroke
+  1 eq
+  { newpath x boxwidth 2 div distx add add y moveto
+    -8 3 rlineto
+    0 -6 rlineto
+    8 3 rlineto
+    closepath
+    eofill
+    stroke
+  } if
+} def
+
+/vedge
+{
+  /ye exch def
+  /ys exch def
+  /xs exch def
+  newpath
+  xs xspacing mul xoffset add boxwidth 2 div add dup
+  ys yspacing mul boxheight 2 div sub
+  moveto
+  ye yspacing mul boxheight 2 div sub
+  lineto
+  stroke
+} def
+
+/conn % connections the blocks from col `arg1' to `arg2' of row `arg3'
+{
+  /ys exch def
+  /xe exch def
+  /xs exch def
+  newpath
+  xs xspacing mul xoffset add boxwidth 2 div add
+  ys yspacing mul disty 2 div sub
+  moveto
+  xspacing xe xs sub mul 0
+  rlineto
+  stroke
+} def
+
+% ----- main ------
+
+boxfont setfont
+1 boundaspect scale
+(oomph::ElementWithExternalElement) cw
+(oomph::FiniteElement) cw
+(oomph::GeneralisedElement) cw
+(oomph::GeomObject) cw
+(LinearisedAxisymmetricQCrouzeixRaviartMultiDomainElement) cw
+(LinearisedAxisymmetricQTaylorHoodMultiDomainElement) cw
+(LinearisedQCrouzeixRaviartMultiDomainElement) cw
+(LinearisedQTaylorHoodMultiDomainElement) cw
+(oomph::AdvectionDiffusionBoussinesqElement< AD_ELEMENT, NST_ELEMENT >) cw
+(oomph::FaceElementAsGeomObject< ELEMENT >) cw
+(oomph::FourierDecomposedHelmholtzFluxFromNormalDisplacementBCElement< HELMHOLTZ_BULK_ELEMENT, ELASTICITY_BULK_ELEMENT >) cw
+(oomph::FourierDecomposedTimeHarmonicLinElastLoadedByHelmholtzPressureBCElement< ELASTICITY_BULK_ELEMENT, HELMHOLTZ_BULK_ELEMENT >) cw
+(oomph::FSIAxisymFoepplvonKarmanElement< NNODE_1D, FLUID_ELEMENT >) cw
+(oomph::FSIAxisymmetricLinearElasticityTractionElement< ELASTICITY_BULK_ELEMENT, NAVIER_STOKES_BULK_ELEMENT >) cw
+(oomph::FSIImposeDisplacementByLagrangeMultiplierElement< ELEMENT >) cw
+(oomph::FSILinearisedAxisymPoroelasticTractionElement< POROELASTICITY_BULK_ELEMENT, NAVIER_STOKES_BULK_ELEMENT >) cw
+(oomph::FSIWallElement) cw
+(oomph::HelmholtzFluxFromNormalDisplacementBCElement< HELMHOLTZ_BULK_ELEMENT, ELASTICITY_BULK_ELEMENT >) cw
+(oomph::LinearisedAxisymPoroelasticBJS_FSIElement< FLUID_BULK_ELEMENT, POROELASTICITY_BULK_ELEMENT >) cw
+(oomph::LinearisedFSIAxisymmetricNStNoSlipBCElementElement< FLUID_BULK_ELEMENT, SOLID_BULK_ELEMENT >) cw
+(oomph::NavierStokesBoussinesqElement< NST_ELEMENT, AD_ELEMENT >) cw
+(oomph::PMLHelmholtzFluxFromNormalDisplacementBCElement< HELMHOLTZ_BULK_ELEMENT, ELASTICITY_BULK_ELEMENT >) cw
+(oomph::ProjectableElement< ELEMENT >) cw
+(oomph::RefineableAdvectionDiffusionBoussinesqElement< AD_ELEMENT, NST_ELEMENT >) cw
+(oomph::RefineableNavierStokesBoussinesqElement< NST_ELEMENT, AD_ELEMENT >) cw
+(oomph::TimeHarmonicLinElastLoadedByHelmholtzPressureBCElement< ELASTICITY_BULK_ELEMENT, HELMHOLTZ_BULK_ELEMENT >) cw
+(oomph::TimeHarmonicLinElastLoadedByPMLHelmholtzPressureBCElement< ELASTICITY_BULK_ELEMENT, HELMHOLTZ_BULK_ELEMENT >) cw
+(oomph::ProjectableElement< AXISYM_LINEAR_ELAST_ELEMENT >) cw
+(oomph::ProjectableElement< AXISYMMETRIC_POROELASTICITY_ELEMENT >) cw
+(oomph::ProjectableElement< CROUZEIX_RAVIART_ELEMENT >) cw
+(oomph::ProjectableElement< DARCY_ELEMENT >) cw
+(oomph::ProjectableElement< FOURIER_DECOMPOSED_HELMHOLTZ_ELEMENT >) cw
+(oomph::ProjectableElement< FVK_ELEMENT >) cw
+(oomph::ProjectableElement< HELMHOLTZ_ELEMENT >) cw
+(oomph::ProjectableElement< LINEAR_ELAST_ELEMENT >) cw
+(oomph::ProjectableElement< POISSON_ELEMENT >) cw
+(oomph::ProjectableElement< PVD_ELEMENT >) cw
+(oomph::ProjectableElement< TAYLOR_HOOD_ELEMENT >) cw
+(oomph::ProjectableElement< TIME_HARMONIC_LINEAR_ELAST_ELEMENT >) cw
+(oomph::ProjectableElement< UNSTEADY_HEAT_ELEMENT >) cw
+(RefineableLinearisedAxisymmetricQCrouzeixRaviartMultiDomainElement) cw
+(RefineableLinearisedAxisymmetricQTaylorHoodMultiDomainElement) cw
+(RefineableLinearisedQCrouzeixRaviartMultiDomainElement) cw
+(RefineableLinearisedQTaylorHoodMultiDomainElement) cw
+/boxwidth boxwidth marginwidth 2 mul add def
+/xspacing boxwidth distx add def
+/yspacing boxheight disty add def
+/scalefactor 
+  boxwidth cols mul distx cols 1 sub mul add
+  boxheight rows mul disty rows 1 sub mul add boundaspect mul 
+  max def
+boundx scalefactor div boundy scalefactor div scale
+
+% ----- classes -----
+
+ (oomph::ElementWithExternalElement) 0.500000 40.000000 box
+dashed
+ (oomph::FiniteElement) 0.500000 41.000000 box
+solid
+dashed
+ (oomph::GeneralisedElement) 0.000000 42.000000 box
+solid
+ (oomph::GeomObject) 1.000000 42.000000 box
+ (LinearisedAxisymmetricQCrouzeixRaviartMultiDomainElement) 1.500000 39.000000 box
+ (LinearisedAxisymmetricQTaylorHoodMultiDomainElement) 1.500000 38.000000 box
+ (LinearisedQCrouzeixRaviartMultiDomainElement) 1.500000 37.000000 box
+ (LinearisedQTaylorHoodMultiDomainElement) 1.500000 36.000000 box
+ (oomph::AdvectionDiffusionBoussinesqElement< AD_ELEMENT, NST_ELEMENT >) 1.500000 35.000000 box
+ (oomph::FaceElementAsGeomObject< ELEMENT >) 1.500000 34.000000 box
+ (oomph::FourierDecomposedHelmholtzFluxFromNormalDisplacementBCElement< HELMHOLTZ_BULK_ELEMENT, ELASTICITY_BULK_ELEMENT >) 1.500000 33.000000 box
+ (oomph::FourierDecomposedTimeHarmonicLinElastLoadedByHelmholtzPressureBCElement< ELASTICITY_BULK_ELEMENT, HELMHOLTZ_BULK_ELEMENT >) 1.500000 32.000000 box
+ (oomph::FSIAxisymFoepplvonKarmanElement< NNODE_1D, FLUID_ELEMENT >) 1.500000 31.000000 box
+ (oomph::FSIAxisymmetricLinearElasticityTractionElement< ELASTICITY_BULK_ELEMENT, NAVIER_STOKES_BULK_ELEMENT >) 1.500000 30.000000 box
+ (oomph::FSIImposeDisplacementByLagrangeMultiplierElement< ELEMENT >) 1.500000 29.000000 box
+1.500000 29.000000 mark
+ (oomph::FSILinearisedAxisymPoroelasticTractionElement< POROELASTICITY_BULK_ELEMENT, NAVIER_STOKES_BULK_ELEMENT >) 1.500000 28.000000 box
+ (oomph::FSIWallElement) 1.500000 27.000000 box
+1.500000 27.000000 mark
+ (oomph::HelmholtzFluxFromNormalDisplacementBCElement< HELMHOLTZ_BULK_ELEMENT, ELASTICITY_BULK_ELEMENT >) 1.500000 26.000000 box
+ (oomph::LinearisedAxisymPoroelasticBJS_FSIElement< FLUID_BULK_ELEMENT, POROELASTICITY_BULK_ELEMENT >) 1.500000 25.000000 box
+ (oomph::LinearisedFSIAxisymmetricNStNoSlipBCElementElement< FLUID_BULK_ELEMENT, SOLID_BULK_ELEMENT >) 1.500000 24.000000 box
+ (oomph::NavierStokesBoussinesqElement< NST_ELEMENT, AD_ELEMENT >) 1.500000 23.000000 box
+ (oomph::PMLHelmholtzFluxFromNormalDisplacementBCElement< HELMHOLTZ_BULK_ELEMENT, ELASTICITY_BULK_ELEMENT >) 1.500000 22.000000 box
+ (oomph::ProjectableElement< ELEMENT >) 1.500000 21.000000 box
+1.500000 21.000000 mark
+ (oomph::RefineableAdvectionDiffusionBoussinesqElement< AD_ELEMENT, NST_ELEMENT >) 1.500000 20.000000 box
+ (oomph::RefineableNavierStokesBoussinesqElement< NST_ELEMENT, AD_ELEMENT >) 1.500000 19.000000 box
+ (oomph::TimeHarmonicLinElastLoadedByHelmholtzPressureBCElement< ELASTICITY_BULK_ELEMENT, HELMHOLTZ_BULK_ELEMENT >) 1.500000 18.000000 box
+ (oomph::TimeHarmonicLinElastLoadedByPMLHelmholtzPressureBCElement< ELASTICITY_BULK_ELEMENT, HELMHOLTZ_BULK_ELEMENT >) 1.500000 17.000000 box
+ (oomph::ProjectableElement< AXISYM_LINEAR_ELAST_ELEMENT >) 1.500000 16.000000 box
+1.500000 16.000000 mark
+ (oomph::ProjectableElement< AXISYMMETRIC_POROELASTICITY_ELEMENT >) 1.500000 15.000000 box
+1.500000 15.000000 mark
+ (oomph::ProjectableElement< CROUZEIX_RAVIART_ELEMENT >) 1.500000 14.000000 box
+1.500000 14.000000 mark
+ (oomph::ProjectableElement< DARCY_ELEMENT >) 1.500000 13.000000 box
+1.500000 13.000000 mark
+ (oomph::ProjectableElement< FOURIER_DECOMPOSED_HELMHOLTZ_ELEMENT >) 1.500000 12.000000 box
+1.500000 12.000000 mark
+ (oomph::ProjectableElement< FVK_ELEMENT >) 1.500000 11.000000 box
+1.500000 11.000000 mark
+ (oomph::ProjectableElement< HELMHOLTZ_ELEMENT >) 1.500000 10.000000 box
+1.500000 10.000000 mark
+ (oomph::ProjectableElement< LINEAR_ELAST_ELEMENT >) 1.500000 9.000000 box
+1.500000 9.000000 mark
+ (oomph::ProjectableElement< POISSON_ELEMENT >) 1.500000 8.000000 box
+1.500000 8.000000 mark
+ (oomph::ProjectableElement< PVD_ELEMENT >) 1.500000 7.000000 box
+1.500000 7.000000 mark
+ (oomph::ProjectableElement< TAYLOR_HOOD_ELEMENT >) 1.500000 6.000000 box
+1.500000 6.000000 mark
+ (oomph::ProjectableElement< TIME_HARMONIC_LINEAR_ELAST_ELEMENT >) 1.500000 5.000000 box
+1.500000 5.000000 mark
+ (oomph::ProjectableElement< UNSTEADY_HEAT_ELEMENT >) 1.500000 4.000000 box
+1.500000 4.000000 mark
+ (RefineableLinearisedAxisymmetricQCrouzeixRaviartMultiDomainElement) 1.500000 3.000000 box
+ (RefineableLinearisedAxisymmetricQTaylorHoodMultiDomainElement) 1.500000 2.000000 box
+ (RefineableLinearisedQCrouzeixRaviartMultiDomainElement) 1.500000 1.000000 box
+ (RefineableLinearisedQTaylorHoodMultiDomainElement) 1.500000 0.000000 box
+
+% ----- relations -----
+
+solid
+0 0.500000 40.000000 out
+solid
+1 0.500000 41.000000 in
+solid
+0 0.500000 41.000000 out
+solid
+0.000000 1.000000 42.000000 conn
+solid
+1 0.000000 42.000000 in
+solid
+1 1.000000 42.000000 in
+solid
+1 0.500000 39.250000 out
+solid
+0 0.500000 39.500000 hedge
+solid
+0 0.500000 38.500000 hedge
+solid
+0 0.500000 37.500000 hedge
+solid
+0 0.500000 36.500000 hedge
+solid
+0 0.500000 35.500000 hedge
+solid
+0 0.500000 34.500000 hedge
+solid
+0 0.500000 33.500000 hedge
+solid
+0 0.500000 32.500000 hedge
+solid
+0 0.500000 31.500000 hedge
+solid
+0 0.500000 30.500000 hedge
+solid
+0 0.500000 29.500000 hedge
+solid
+0 0.500000 28.500000 hedge
+solid
+0 0.500000 27.500000 hedge
+solid
+0 0.500000 26.500000 hedge
+solid
+0 0.500000 25.500000 hedge
+solid
+0 0.500000 24.500000 hedge
+solid
+0 0.500000 23.500000 hedge
+solid
+0 0.500000 22.500000 hedge
+solid
+0 0.500000 21.500000 hedge
+solid
+0 0.500000 20.500000 hedge
+solid
+0 0.500000 19.500000 hedge
+solid
+0 0.500000 18.500000 hedge
+solid
+0 0.500000 17.500000 hedge
+solid
+0 0.500000 16.500000 hedge
+solid
+0 0.500000 15.500000 hedge
+solid
+0 0.500000 14.500000 hedge
+solid
+0 0.500000 13.500000 hedge
+solid
+0 0.500000 12.500000 hedge
+solid
+0 0.500000 11.500000 hedge
+solid
+0 0.500000 10.500000 hedge
+solid
+0 0.500000 9.500000 hedge
+solid
+0 0.500000 8.500000 hedge
+solid
+0 0.500000 7.500000 hedge
+solid
+0 0.500000 6.500000 hedge
+solid
+0 0.500000 5.500000 hedge
+solid
+0 0.500000 4.500000 hedge
+solid
+0 0.500000 3.500000 hedge
+solid
+0 0.500000 2.500000 hedge
+solid
+0 0.500000 1.500000 hedge
+solid
+0 0.500000 0.500000 hedge
+solid
+0.500000 40.000000 0.500000 vedge

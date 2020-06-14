@@ -1,0 +1,583 @@
+\hypertarget{classoomph_1_1BellElementBase}{}\section{oomph\+:\+:Bell\+Element\+Base$<$ N\+N\+O\+D\+E\+\_\+1D $>$ Class Template Reference}
+\label{classoomph_1_1BellElementBase}\index{oomph\+::\+Bell\+Element\+Base$<$ N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+Bell\+Element\+Base$<$ N\+N\+O\+D\+E\+\_\+1\+D $>$}}
+
+
+{\ttfamily \#include $<$Subparametric\+\_\+\+Telements.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Bell\+Element\+Base$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{classoomph_1_1BellElementBase}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1BellElementBase_a79c5e60fb98c9e69b096ed84b3430376}{Bell\+Element\+Base} ()
+\begin{DoxyCompactList}\small\item\em Constructor\+: Call constructors for \hyperlink{classoomph_1_1FiniteElement}{Finite\+Element}. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1BellElementBase_aee9266910010dcfca375fe0de13c17bb}{basis} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Shape}{Shape} \&psi) const
+\item 
+virtual void \hyperlink{classoomph_1_1BellElementBase_a02f75fd57e4f6329a4b551df3d3c81eb}{dbasis\+\_\+local} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Shape}{Shape} \&psi, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dpsids) const
+\item 
+virtual void \hyperlink{classoomph_1_1BellElementBase_ac6c1add4a996cf149da6c85ee3f4b637}{d2basis\+\_\+local} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Shape}{Shape} \&psi, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dpsids, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&d2psids) const
+\item 
+virtual void \hyperlink{classoomph_1_1BellElementBase_a2c9a75b9d07c0aa569ba24d2b3228800}{basis\+\_\+c0} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Shape}{Shape} \&psi) const
+\item 
+virtual void \hyperlink{classoomph_1_1BellElementBase_ae863013db88be8402457a77eb5d5862f}{dbasis\+\_\+c0\+\_\+local} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Shape}{Shape} \&psi, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dpsids) const
+\item 
+virtual void \hyperlink{classoomph_1_1BellElementBase_aa9db3995e26ddee02bdae16dae111c03}{d2basis\+\_\+c0\+\_\+local} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Shape}{Shape} \&psi, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dpsids, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&d2psids) const
+\item 
+virtual void \hyperlink{classoomph_1_1BellElementBase_a76ddb90394c979f9967e8fd068bdf220}{test} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Shape}{Shape} \&phi) const
+\item 
+virtual void \hyperlink{classoomph_1_1BellElementBase_aab180be9cd6347005c5505bedf673db2}{dtest\+\_\+local} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Shape}{Shape} \&phi, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dphids) const
+\item 
+virtual void \hyperlink{classoomph_1_1BellElementBase_ae576f35c4faeeed475dff67a8b31ac37}{d2test\+\_\+local} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Shape}{Shape} \&phi, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dphids, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&d2phids) const
+\item 
+void \hyperlink{classoomph_1_1BellElementBase_af00e238530de6269b51b57a4357d1dd6}{basis\+\_\+at\+\_\+knot} (const unsigned \&ipt, \hyperlink{classoomph_1_1Shape}{Shape} \&psi) const
+\begin{DoxyCompactList}\small\item\em Return the C1-\/basis function stored at the ipt-\/th integration point. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1BellElementBase_a795fca0c9cfa01bf6f966f4f0a69b312}{dbasis\+\_\+local\+\_\+at\+\_\+knot} (const unsigned \&ipt, \hyperlink{classoomph_1_1Shape}{Shape} \&psi, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dpsids) const
+\begin{DoxyCompactList}\small\item\em Return the C1-\/basis function and its derivatives w.\+r.\+t. the global coordinates at the ipt-\/th integration point. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1BellElementBase_ae5a43211398722298cf88ded87dee6ab}{d2basis\+\_\+local\+\_\+at\+\_\+knot} (const unsigned \&ipt, \hyperlink{classoomph_1_1Shape}{Shape} \&psi, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dpsids, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&d2psids) const
+\item 
+void \hyperlink{classoomph_1_1BellElementBase_a0952ed8fcba04688fdf895dc25bb8c30}{basis\+\_\+c0\+\_\+at\+\_\+knot} (const unsigned \&ipt, \hyperlink{classoomph_1_1Shape}{Shape} \&psi) const
+\begin{DoxyCompactList}\small\item\em Return the C0-\/basis function stored at the ipt-\/th integration point. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1BellElementBase_a1d20473bb357a28c9aeea91454b4c959}{dbasis\+\_\+c0\+\_\+local\+\_\+at\+\_\+knot} (const unsigned \&ipt, \hyperlink{classoomph_1_1Shape}{Shape} \&psi, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dpsids) const
+\begin{DoxyCompactList}\small\item\em Return the C0-\/basis function and its derivatives w.\+r.\+t. the local coordinates at the ipt-\/th integration point. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1BellElementBase_ac452af5196c5a49040a2d6ab871a1284}{d2basis\+\_\+c0\+\_\+local\+\_\+at\+\_\+knot} (const unsigned \&ipt, \hyperlink{classoomph_1_1Shape}{Shape} \&psi, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dpsids, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&d2psids) const
+\item 
+void \hyperlink{classoomph_1_1BellElementBase_aa838429de6549ebb7b9c6d47b17b7859}{test\+\_\+at\+\_\+knot} (const unsigned \&ipt, \hyperlink{classoomph_1_1Shape}{Shape} \&phi) const
+\begin{DoxyCompactList}\small\item\em Return the test function stored at the ipt-\/th integration point. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1BellElementBase_a5ca86e4bbc0c1c0df2554e02669a0949}{dtest\+\_\+local\+\_\+at\+\_\+knot} (const unsigned \&ipt, \hyperlink{classoomph_1_1Shape}{Shape} \&phi, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dphids) const
+\begin{DoxyCompactList}\small\item\em Return the test function and its derivatives w.\+r.\+t. the local coordinates at the ipt-\/th integration point. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1BellElementBase_acad63d477784e6b88b92804b0f1b375e}{d2test\+\_\+local\+\_\+at\+\_\+knot} (const unsigned \&ipt, \hyperlink{classoomph_1_1Shape}{Shape} \&phi, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dphids, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&d2phids) const
+\item 
+double \hyperlink{classoomph_1_1BellElementBase_a27559cf4dd3cb50a84dfe40378c9c453}{dbasis\+\_\+c0\+\_\+eulerian} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Shape}{Shape} \&psi, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dpsi) const
+\begin{DoxyCompactList}\small\item\em Compute the curved-\/element shape functions and also first derivatives w.\+r.\+t. local coordinates at local coordinate s; Returns Jacobian of mapping from global to local coordinates. Most general form of the function, but may be over-\/loaded, if desired. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1BellElementBase_ac975de34dadf1e1409bb022af6ed1b1d}{d2basis\+\_\+c0\+\_\+eulerian} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Shape}{Shape} \&psi, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dpsi, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&d2psi) const
+\begin{DoxyCompactList}\small\item\em Compute the c0-\/basis functions and also first and second derivatives w.\+r.\+t. local coordinates at ipt-\/th integration point. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1BellElementBase_a3264c8f4cac79ac554015658e1074dbc}{dbasis\+\_\+eulerian} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Shape}{Shape} \&psi, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dpsi) const
+\begin{DoxyCompactList}\small\item\em Compute the c1-\/basis functions and also first derivatives w.\+r.\+t. global coordinates at local coordinate s; Returns Jacobian of mapping from global to local coordinates. Most general form of the function, but may be over-\/loaded, if desired. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1BellElementBase_af6a719134aecd142c6a9667607993171}{d2basis\+\_\+eulerian} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Shape}{Shape} \&psi, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dpsi, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&d2psi) const
+\begin{DoxyCompactList}\small\item\em Compute the c1-\/basis functions and also first and second derivatives w.\+r.\+t. global coordinates at ipt-\/th integration point. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1BellElementBase_ade54f5038bd917ff2a4c636e066db00e}{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot} (const unsigned \&ipt, \hyperlink{classoomph_1_1Shape}{Shape} \&psi, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dpsi, \hyperlink{classoomph_1_1Shape}{Shape} \&\hyperlink{classoomph_1_1BellElementBase_a76ddb90394c979f9967e8fd068bdf220}{test}, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dtest) const
+\item 
+double \hyperlink{classoomph_1_1BellElementBase_a8bf466c908c0c3cf661229429961d5d0}{d2shape\+\_\+and\+\_\+d2test\+\_\+eulerian\+\_\+at\+\_\+knot} (const unsigned \&ipt, \hyperlink{classoomph_1_1Shape}{Shape} \&psi, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dpsi, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&d2psi, \hyperlink{classoomph_1_1Shape}{Shape} \&\hyperlink{classoomph_1_1BellElementBase_a76ddb90394c979f9967e8fd068bdf220}{test}, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dtest, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&d2test) const
+\begin{DoxyCompactList}\small\item\em Compute the c1-\/shape functions and also first and second derivatives w.\+r.\+t. global coordinates at ipt-\/th integration points Returns Jacobian of mapping from global to local coordinates. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1BellElementBase_a17c3c26035cb8f8696073b97dabbe392}{local\+\_\+to\+\_\+eulerian\+\_\+mapping2} (const \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dpsids, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&inverse\+\_\+jacobian) const
+\begin{DoxyCompactList}\small\item\em Calculate the mapping from local to Eulerian coordinates, given the derivatives of the shape functions w.\+r.\+t. local coordinates, Return only the determinant of the jacobian and the inverse of the mapping (ds/dx). \end{DoxyCompactList}\item 
+virtual double \hyperlink{classoomph_1_1BellElementBase_a20792e4f9ae0fcfadc406c4fca5ca0f6}{local\+\_\+to\+\_\+eulerian\+\_\+mapping2} (const \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dpsids, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&jacobian, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&inverse\+\_\+jacobian) const
+\item 
+double \hyperlink{classoomph_1_1BellElementBase_ae19c2d108290a6d46d6453ea324820f6}{J\+\_\+eulerian1} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}) const
+\begin{DoxyCompactList}\small\item\em Calculate the Jacobian of the mapping between local and global coordinates at the position s. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1BellElementBase_abd5f258248221f2f564c87ced9e0a83e}{myassemble\+\_\+local\+\_\+to\+\_\+eulerian\+\_\+jacobian2} (const \hyperlink{classoomph_1_1DShape}{D\+Shape} \&d2psids, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&jacobian2) const
+\item 
+void \hyperlink{classoomph_1_1BellElementBase_a4dfe41d9fa313dcc843d17144c553190}{my\+\_\+interpolated\+\_\+x} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&x) const
+\begin{DoxyCompactList}\small\item\em Return FE interpolated position x\mbox{[}\mbox{]} at local coordinate s as \hyperlink{classoomph_1_1Vector}{Vector}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$\newline
+class oomph\+::\+Bell\+Element\+Base$<$ N\+N\+O\+D\+E\+\_\+1\+D $>$}
+
+Empty base class for the subparametric Bellelements (created so that we can use dynamic\+\_\+cast$<$$>$() to figure out if a an element is a C1\+Curvedelement). This element is sub-\/parametric which means the geometry will be parametrised by the linear Lagrange functions, while unknowns will be parametrised by two kinds of shape functions basis \+: denotes C1-\/interpolations for c1-\/variables basis\+\_\+c0 \+: denotes C0-\/interpolations for c0-\/variables 
+
+Definition at line 3056 of file Subparametric\+\_\+\+Telements.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1BellElementBase_a79c5e60fb98c9e69b096ed84b3430376}\label{classoomph_1_1BellElementBase_a79c5e60fb98c9e69b096ed84b3430376}} 
+\index{oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}!Bell\+Element\+Base@{Bell\+Element\+Base}}
+\index{Bell\+Element\+Base@{Bell\+Element\+Base}!oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}}
+\subsubsection{\texorpdfstring{Bell\+Element\+Base()}{BellElementBase()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+\hyperlink{classoomph_1_1BellElementBase}{oomph\+::\+Bell\+Element\+Base}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::\hyperlink{classoomph_1_1BellElementBase}{Bell\+Element\+Base} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor\+: Call constructors for \hyperlink{classoomph_1_1FiniteElement}{Finite\+Element}. 
+
+
+
+Definition at line 3060 of file Subparametric\+\_\+\+Telements.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1BellElementBase_aee9266910010dcfca375fe0de13c17bb}\label{classoomph_1_1BellElementBase_aee9266910010dcfca375fe0de13c17bb}} 
+\index{oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}!basis@{basis}}
+\index{basis@{basis}!oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}}
+\subsubsection{\texorpdfstring{basis()}{basis()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+virtual void \hyperlink{classoomph_1_1BellElementBase}{oomph\+::\+Bell\+Element\+Base}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::basis (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1BellElement_a31a6dfd140d030104094a333d4331dbc}{oomph\+::\+Bell\+Element$<$ D\+I\+M, N\+N\+O\+D\+E\+\_\+1\+D $>$}.
+
+
+
+Definition at line 3063 of file Subparametric\+\_\+\+Telements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1BellElementBase_af00e238530de6269b51b57a4357d1dd6}\label{classoomph_1_1BellElementBase_af00e238530de6269b51b57a4357d1dd6}} 
+\index{oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}!basis\+\_\+at\+\_\+knot@{basis\+\_\+at\+\_\+knot}}
+\index{basis\+\_\+at\+\_\+knot@{basis\+\_\+at\+\_\+knot}!oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}}
+\subsubsection{\texorpdfstring{basis\+\_\+at\+\_\+knot()}{basis\_at\_knot()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+void \hyperlink{classoomph_1_1BellElementBase}{oomph\+::\+Bell\+Element\+Base}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::basis\+\_\+at\+\_\+knot (\begin{DoxyParamCaption}\item[{const unsigned \&}]{ipt,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the C1-\/basis function stored at the ipt-\/th integration point. 
+
+
+
+Definition at line 3110 of file Subparametric\+\_\+\+Telements.\+h.
+
+
+
+References i, and s.
+
+\mbox{\Hypertarget{classoomph_1_1BellElementBase_a2c9a75b9d07c0aa569ba24d2b3228800}\label{classoomph_1_1BellElementBase_a2c9a75b9d07c0aa569ba24d2b3228800}} 
+\index{oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}!basis\+\_\+c0@{basis\+\_\+c0}}
+\index{basis\+\_\+c0@{basis\+\_\+c0}!oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}}
+\subsubsection{\texorpdfstring{basis\+\_\+c0()}{basis\_c0()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+virtual void \hyperlink{classoomph_1_1BellElementBase}{oomph\+::\+Bell\+Element\+Base}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::basis\+\_\+c0 (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1BellElement_ad99554f0767e1d82e371ebce2219521b}{oomph\+::\+Bell\+Element$<$ D\+I\+M, N\+N\+O\+D\+E\+\_\+1\+D $>$}.
+
+
+
+Definition at line 3077 of file Subparametric\+\_\+\+Telements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1BellElementBase_a0952ed8fcba04688fdf895dc25bb8c30}\label{classoomph_1_1BellElementBase_a0952ed8fcba04688fdf895dc25bb8c30}} 
+\index{oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}!basis\+\_\+c0\+\_\+at\+\_\+knot@{basis\+\_\+c0\+\_\+at\+\_\+knot}}
+\index{basis\+\_\+c0\+\_\+at\+\_\+knot@{basis\+\_\+c0\+\_\+at\+\_\+knot}!oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}}
+\subsubsection{\texorpdfstring{basis\+\_\+c0\+\_\+at\+\_\+knot()}{basis\_c0\_at\_knot()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+void \hyperlink{classoomph_1_1BellElementBase}{oomph\+::\+Bell\+Element\+Base}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::basis\+\_\+c0\+\_\+at\+\_\+knot (\begin{DoxyParamCaption}\item[{const unsigned \&}]{ipt,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the C0-\/basis function stored at the ipt-\/th integration point. 
+
+
+
+Definition at line 3164 of file Subparametric\+\_\+\+Telements.\+h.
+
+
+
+References i, and s.
+
+\mbox{\Hypertarget{classoomph_1_1BellElementBase_ac975de34dadf1e1409bb022af6ed1b1d}\label{classoomph_1_1BellElementBase_ac975de34dadf1e1409bb022af6ed1b1d}} 
+\index{oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}!d2basis\+\_\+c0\+\_\+eulerian@{d2basis\+\_\+c0\+\_\+eulerian}}
+\index{d2basis\+\_\+c0\+\_\+eulerian@{d2basis\+\_\+c0\+\_\+eulerian}!oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}}
+\subsubsection{\texorpdfstring{d2basis\+\_\+c0\+\_\+eulerian()}{d2basis\_c0\_eulerian()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+double \hyperlink{classoomph_1_1BellElementBase}{oomph\+::\+Bell\+Element\+Base}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::d2basis\+\_\+c0\+\_\+eulerian (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dpsi,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{d2psi }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Compute the c0-\/basis functions and also first and second derivatives w.\+r.\+t. local coordinates at ipt-\/th integration point. 
+
+
+
+Definition at line 3309 of file Subparametric\+\_\+\+Telements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1BellElementBase_aa9db3995e26ddee02bdae16dae111c03}\label{classoomph_1_1BellElementBase_aa9db3995e26ddee02bdae16dae111c03}} 
+\index{oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}!d2basis\+\_\+c0\+\_\+local@{d2basis\+\_\+c0\+\_\+local}}
+\index{d2basis\+\_\+c0\+\_\+local@{d2basis\+\_\+c0\+\_\+local}!oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}}
+\subsubsection{\texorpdfstring{d2basis\+\_\+c0\+\_\+local()}{d2basis\_c0\_local()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+virtual void \hyperlink{classoomph_1_1BellElementBase}{oomph\+::\+Bell\+Element\+Base}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::d2basis\+\_\+c0\+\_\+local (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dpsids,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{d2psids }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1BellElement_a23f34f6479128e7e8c694fbcb72aae78}{oomph\+::\+Bell\+Element$<$ D\+I\+M, N\+N\+O\+D\+E\+\_\+1\+D $>$}.
+
+
+
+Definition at line 3085 of file Subparametric\+\_\+\+Telements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1BellElementBase_ac452af5196c5a49040a2d6ab871a1284}\label{classoomph_1_1BellElementBase_ac452af5196c5a49040a2d6ab871a1284}} 
+\index{oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}!d2basis\+\_\+c0\+\_\+local\+\_\+at\+\_\+knot@{d2basis\+\_\+c0\+\_\+local\+\_\+at\+\_\+knot}}
+\index{d2basis\+\_\+c0\+\_\+local\+\_\+at\+\_\+knot@{d2basis\+\_\+c0\+\_\+local\+\_\+at\+\_\+knot}!oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}}
+\subsubsection{\texorpdfstring{d2basis\+\_\+c0\+\_\+local\+\_\+at\+\_\+knot()}{d2basis\_c0\_local\_at\_knot()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+void \hyperlink{classoomph_1_1BellElementBase}{oomph\+::\+Bell\+Element\+Base}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::d2basis\+\_\+c0\+\_\+local\+\_\+at\+\_\+knot (\begin{DoxyParamCaption}\item[{const unsigned \&}]{ipt,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dpsids,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{d2psids }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Calculate the C0-\/basis function and its first and second derivatives w.\+r.\+t. local coordinates at the ipt-\/th integration point. ~\newline
+~\newline
+ Numbering\+: 
+
+Definition at line 3200 of file Subparametric\+\_\+\+Telements.\+h.
+
+
+
+References i, and s.
+
+\mbox{\Hypertarget{classoomph_1_1BellElementBase_af6a719134aecd142c6a9667607993171}\label{classoomph_1_1BellElementBase_af6a719134aecd142c6a9667607993171}} 
+\index{oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}!d2basis\+\_\+eulerian@{d2basis\+\_\+eulerian}}
+\index{d2basis\+\_\+eulerian@{d2basis\+\_\+eulerian}!oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}}
+\subsubsection{\texorpdfstring{d2basis\+\_\+eulerian()}{d2basis\_eulerian()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+double \hyperlink{classoomph_1_1BellElementBase}{oomph\+::\+Bell\+Element\+Base}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::d2basis\+\_\+eulerian (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dpsi,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{d2psi }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Compute the c1-\/basis functions and also first and second derivatives w.\+r.\+t. global coordinates at ipt-\/th integration point. 
+
+
+
+Definition at line 3386 of file Subparametric\+\_\+\+Telements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1BellElementBase_ac6c1add4a996cf149da6c85ee3f4b637}\label{classoomph_1_1BellElementBase_ac6c1add4a996cf149da6c85ee3f4b637}} 
+\index{oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}!d2basis\+\_\+local@{d2basis\+\_\+local}}
+\index{d2basis\+\_\+local@{d2basis\+\_\+local}!oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}}
+\subsubsection{\texorpdfstring{d2basis\+\_\+local()}{d2basis\_local()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+virtual void \hyperlink{classoomph_1_1BellElementBase}{oomph\+::\+Bell\+Element\+Base}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::d2basis\+\_\+local (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dpsids,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{d2psids }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1BellElement_a58254e48913aa6428db33338b010a911}{oomph\+::\+Bell\+Element$<$ D\+I\+M, N\+N\+O\+D\+E\+\_\+1\+D $>$}.
+
+
+
+Definition at line 3071 of file Subparametric\+\_\+\+Telements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1BellElementBase_ae5a43211398722298cf88ded87dee6ab}\label{classoomph_1_1BellElementBase_ae5a43211398722298cf88ded87dee6ab}} 
+\index{oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}!d2basis\+\_\+local\+\_\+at\+\_\+knot@{d2basis\+\_\+local\+\_\+at\+\_\+knot}}
+\index{d2basis\+\_\+local\+\_\+at\+\_\+knot@{d2basis\+\_\+local\+\_\+at\+\_\+knot}!oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}}
+\subsubsection{\texorpdfstring{d2basis\+\_\+local\+\_\+at\+\_\+knot()}{d2basis\_local\_at\_knot()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+void \hyperlink{classoomph_1_1BellElementBase}{oomph\+::\+Bell\+Element\+Base}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::d2basis\+\_\+local\+\_\+at\+\_\+knot (\begin{DoxyParamCaption}\item[{const unsigned \&}]{ipt,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dpsids,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{d2psids }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Calculate the C1-\/basis function and its first and second derivatives w.\+r.\+t. global coordinates at the ipt-\/th integration point. ~\newline
+~\newline
+ Numbering\+: 
+
+Definition at line 3145 of file Subparametric\+\_\+\+Telements.\+h.
+
+
+
+References i, and s.
+
+\mbox{\Hypertarget{classoomph_1_1BellElementBase_a8bf466c908c0c3cf661229429961d5d0}\label{classoomph_1_1BellElementBase_a8bf466c908c0c3cf661229429961d5d0}} 
+\index{oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}!d2shape\+\_\+and\+\_\+d2test\+\_\+eulerian\+\_\+at\+\_\+knot@{d2shape\+\_\+and\+\_\+d2test\+\_\+eulerian\+\_\+at\+\_\+knot}}
+\index{d2shape\+\_\+and\+\_\+d2test\+\_\+eulerian\+\_\+at\+\_\+knot@{d2shape\+\_\+and\+\_\+d2test\+\_\+eulerian\+\_\+at\+\_\+knot}!oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}}
+\subsubsection{\texorpdfstring{d2shape\+\_\+and\+\_\+d2test\+\_\+eulerian\+\_\+at\+\_\+knot()}{d2shape\_and\_d2test\_eulerian\_at\_knot()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+double \hyperlink{classoomph_1_1BellElementBase}{oomph\+::\+Bell\+Element\+Base}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::d2shape\+\_\+and\+\_\+d2test\+\_\+eulerian\+\_\+at\+\_\+knot (\begin{DoxyParamCaption}\item[{const unsigned \&}]{ipt,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dpsi,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{d2psi,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{test,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dtest,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{d2test }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Compute the c1-\/shape functions and also first and second derivatives w.\+r.\+t. global coordinates at ipt-\/th integration points Returns Jacobian of mapping from global to local coordinates. 
+
+
+
+Definition at line 3458 of file Subparametric\+\_\+\+Telements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1BellElementBase_ae576f35c4faeeed475dff67a8b31ac37}\label{classoomph_1_1BellElementBase_ae576f35c4faeeed475dff67a8b31ac37}} 
+\index{oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}!d2test\+\_\+local@{d2test\+\_\+local}}
+\index{d2test\+\_\+local@{d2test\+\_\+local}!oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}}
+\subsubsection{\texorpdfstring{d2test\+\_\+local()}{d2test\_local()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+virtual void \hyperlink{classoomph_1_1BellElementBase}{oomph\+::\+Bell\+Element\+Base}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::d2test\+\_\+local (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{phi,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dphids,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{d2phids }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1BellElement_a2d7e1df2f16e344721161ac2de099483}{oomph\+::\+Bell\+Element$<$ D\+I\+M, N\+N\+O\+D\+E\+\_\+1\+D $>$}.
+
+
+
+Definition at line 3099 of file Subparametric\+\_\+\+Telements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1BellElementBase_acad63d477784e6b88b92804b0f1b375e}\label{classoomph_1_1BellElementBase_acad63d477784e6b88b92804b0f1b375e}} 
+\index{oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}!d2test\+\_\+local\+\_\+at\+\_\+knot@{d2test\+\_\+local\+\_\+at\+\_\+knot}}
+\index{d2test\+\_\+local\+\_\+at\+\_\+knot@{d2test\+\_\+local\+\_\+at\+\_\+knot}!oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}}
+\subsubsection{\texorpdfstring{d2test\+\_\+local\+\_\+at\+\_\+knot()}{d2test\_local\_at\_knot()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+void \hyperlink{classoomph_1_1BellElementBase}{oomph\+::\+Bell\+Element\+Base}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::d2test\+\_\+local\+\_\+at\+\_\+knot (\begin{DoxyParamCaption}\item[{const unsigned \&}]{ipt,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{phi,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dphids,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{d2phids }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Calculate the test function and its first and second derivatives w.\+r.\+t. local coordinates at the ipt-\/th integration point. ~\newline
+~\newline
+ Numbering\+: 
+
+Definition at line 3253 of file Subparametric\+\_\+\+Telements.\+h.
+
+
+
+References i, and s.
+
+\mbox{\Hypertarget{classoomph_1_1BellElementBase_a27559cf4dd3cb50a84dfe40378c9c453}\label{classoomph_1_1BellElementBase_a27559cf4dd3cb50a84dfe40378c9c453}} 
+\index{oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}!dbasis\+\_\+c0\+\_\+eulerian@{dbasis\+\_\+c0\+\_\+eulerian}}
+\index{dbasis\+\_\+c0\+\_\+eulerian@{dbasis\+\_\+c0\+\_\+eulerian}!oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}}
+\subsubsection{\texorpdfstring{dbasis\+\_\+c0\+\_\+eulerian()}{dbasis\_c0\_eulerian()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+double \hyperlink{classoomph_1_1BellElementBase}{oomph\+::\+Bell\+Element\+Base}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::dbasis\+\_\+c0\+\_\+eulerian (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dpsi }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Compute the curved-\/element shape functions and also first derivatives w.\+r.\+t. local coordinates at local coordinate s; Returns Jacobian of mapping from global to local coordinates. Most general form of the function, but may be over-\/loaded, if desired. 
+
+
+
+Definition at line 3273 of file Subparametric\+\_\+\+Telements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1BellElementBase_ae863013db88be8402457a77eb5d5862f}\label{classoomph_1_1BellElementBase_ae863013db88be8402457a77eb5d5862f}} 
+\index{oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}!dbasis\+\_\+c0\+\_\+local@{dbasis\+\_\+c0\+\_\+local}}
+\index{dbasis\+\_\+c0\+\_\+local@{dbasis\+\_\+c0\+\_\+local}!oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}}
+\subsubsection{\texorpdfstring{dbasis\+\_\+c0\+\_\+local()}{dbasis\_c0\_local()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+virtual void \hyperlink{classoomph_1_1BellElementBase}{oomph\+::\+Bell\+Element\+Base}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::dbasis\+\_\+c0\+\_\+local (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dpsids }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1BellElement_a3a7b703738e3de182b26b299626d869a}{oomph\+::\+Bell\+Element$<$ D\+I\+M, N\+N\+O\+D\+E\+\_\+1\+D $>$}.
+
+
+
+Definition at line 3081 of file Subparametric\+\_\+\+Telements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1BellElementBase_a1d20473bb357a28c9aeea91454b4c959}\label{classoomph_1_1BellElementBase_a1d20473bb357a28c9aeea91454b4c959}} 
+\index{oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}!dbasis\+\_\+c0\+\_\+local\+\_\+at\+\_\+knot@{dbasis\+\_\+c0\+\_\+local\+\_\+at\+\_\+knot}}
+\index{dbasis\+\_\+c0\+\_\+local\+\_\+at\+\_\+knot@{dbasis\+\_\+c0\+\_\+local\+\_\+at\+\_\+knot}!oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}}
+\subsubsection{\texorpdfstring{dbasis\+\_\+c0\+\_\+local\+\_\+at\+\_\+knot()}{dbasis\_c0\_local\_at\_knot()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+void \hyperlink{classoomph_1_1BellElementBase}{oomph\+::\+Bell\+Element\+Base}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::dbasis\+\_\+c0\+\_\+local\+\_\+at\+\_\+knot (\begin{DoxyParamCaption}\item[{const unsigned \&}]{ipt,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dpsids }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the C0-\/basis function and its derivatives w.\+r.\+t. the local coordinates at the ipt-\/th integration point. 
+
+
+
+Definition at line 3180 of file Subparametric\+\_\+\+Telements.\+h.
+
+
+
+References i, and s.
+
+\mbox{\Hypertarget{classoomph_1_1BellElementBase_a3264c8f4cac79ac554015658e1074dbc}\label{classoomph_1_1BellElementBase_a3264c8f4cac79ac554015658e1074dbc}} 
+\index{oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}!dbasis\+\_\+eulerian@{dbasis\+\_\+eulerian}}
+\index{dbasis\+\_\+eulerian@{dbasis\+\_\+eulerian}!oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}}
+\subsubsection{\texorpdfstring{dbasis\+\_\+eulerian()}{dbasis\_eulerian()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+double \hyperlink{classoomph_1_1BellElementBase}{oomph\+::\+Bell\+Element\+Base}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::dbasis\+\_\+eulerian (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dpsi }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Compute the c1-\/basis functions and also first derivatives w.\+r.\+t. global coordinates at local coordinate s; Returns Jacobian of mapping from global to local coordinates. Most general form of the function, but may be over-\/loaded, if desired. 
+
+
+
+Definition at line 3353 of file Subparametric\+\_\+\+Telements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1BellElementBase_a02f75fd57e4f6329a4b551df3d3c81eb}\label{classoomph_1_1BellElementBase_a02f75fd57e4f6329a4b551df3d3c81eb}} 
+\index{oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}!dbasis\+\_\+local@{dbasis\+\_\+local}}
+\index{dbasis\+\_\+local@{dbasis\+\_\+local}!oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}}
+\subsubsection{\texorpdfstring{dbasis\+\_\+local()}{dbasis\_local()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+virtual void \hyperlink{classoomph_1_1BellElementBase}{oomph\+::\+Bell\+Element\+Base}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::dbasis\+\_\+local (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dpsids }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1BellElement_aeeceae57e24c50d838e993fd92c8bc68}{oomph\+::\+Bell\+Element$<$ D\+I\+M, N\+N\+O\+D\+E\+\_\+1\+D $>$}.
+
+
+
+Definition at line 3067 of file Subparametric\+\_\+\+Telements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1BellElementBase_a795fca0c9cfa01bf6f966f4f0a69b312}\label{classoomph_1_1BellElementBase_a795fca0c9cfa01bf6f966f4f0a69b312}} 
+\index{oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}!dbasis\+\_\+local\+\_\+at\+\_\+knot@{dbasis\+\_\+local\+\_\+at\+\_\+knot}}
+\index{dbasis\+\_\+local\+\_\+at\+\_\+knot@{dbasis\+\_\+local\+\_\+at\+\_\+knot}!oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}}
+\subsubsection{\texorpdfstring{dbasis\+\_\+local\+\_\+at\+\_\+knot()}{dbasis\_local\_at\_knot()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+void \hyperlink{classoomph_1_1BellElementBase}{oomph\+::\+Bell\+Element\+Base}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::dbasis\+\_\+local\+\_\+at\+\_\+knot (\begin{DoxyParamCaption}\item[{const unsigned \&}]{ipt,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dpsids }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the C1-\/basis function and its derivatives w.\+r.\+t. the global coordinates at the ipt-\/th integration point. 
+
+
+
+Definition at line 3126 of file Subparametric\+\_\+\+Telements.\+h.
+
+
+
+References i, and s.
+
+\mbox{\Hypertarget{classoomph_1_1BellElementBase_ade54f5038bd917ff2a4c636e066db00e}\label{classoomph_1_1BellElementBase_ade54f5038bd917ff2a4c636e066db00e}} 
+\index{oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}!dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot@{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot}}
+\index{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot@{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot}!oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}}
+\subsubsection{\texorpdfstring{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot()}{dshape\_and\_dtest\_eulerian\_at\_knot()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+double \hyperlink{classoomph_1_1BellElementBase}{oomph\+::\+Bell\+Element\+Base}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot (\begin{DoxyParamCaption}\item[{const unsigned \&}]{ipt,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dpsi,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{test,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dtest }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Calculate the c0-\/shape function and its first-\/order derivatives w.\+r.\+t. local coordinates at the ipt-\/th integration point. ~\newline
+~\newline
+ Numbering\+: 
+
+Definition at line 3421 of file Subparametric\+\_\+\+Telements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1BellElementBase_aab180be9cd6347005c5505bedf673db2}\label{classoomph_1_1BellElementBase_aab180be9cd6347005c5505bedf673db2}} 
+\index{oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}!dtest\+\_\+local@{dtest\+\_\+local}}
+\index{dtest\+\_\+local@{dtest\+\_\+local}!oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}}
+\subsubsection{\texorpdfstring{dtest\+\_\+local()}{dtest\_local()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+virtual void \hyperlink{classoomph_1_1BellElementBase}{oomph\+::\+Bell\+Element\+Base}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::dtest\+\_\+local (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{phi,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dphids }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1BellElement_ae0b6d4d44df8a05a9dd1b8709c9f0247}{oomph\+::\+Bell\+Element$<$ D\+I\+M, N\+N\+O\+D\+E\+\_\+1\+D $>$}.
+
+
+
+Definition at line 3095 of file Subparametric\+\_\+\+Telements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1BellElementBase_a5ca86e4bbc0c1c0df2554e02669a0949}\label{classoomph_1_1BellElementBase_a5ca86e4bbc0c1c0df2554e02669a0949}} 
+\index{oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}!dtest\+\_\+local\+\_\+at\+\_\+knot@{dtest\+\_\+local\+\_\+at\+\_\+knot}}
+\index{dtest\+\_\+local\+\_\+at\+\_\+knot@{dtest\+\_\+local\+\_\+at\+\_\+knot}!oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}}
+\subsubsection{\texorpdfstring{dtest\+\_\+local\+\_\+at\+\_\+knot()}{dtest\_local\_at\_knot()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+void \hyperlink{classoomph_1_1BellElementBase}{oomph\+::\+Bell\+Element\+Base}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::dtest\+\_\+local\+\_\+at\+\_\+knot (\begin{DoxyParamCaption}\item[{const unsigned \&}]{ipt,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{phi,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dphids }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the test function and its derivatives w.\+r.\+t. the local coordinates at the ipt-\/th integration point. 
+
+
+
+Definition at line 3235 of file Subparametric\+\_\+\+Telements.\+h.
+
+
+
+References i, and s.
+
+\mbox{\Hypertarget{classoomph_1_1BellElementBase_ae19c2d108290a6d46d6453ea324820f6}\label{classoomph_1_1BellElementBase_ae19c2d108290a6d46d6453ea324820f6}} 
+\index{oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}!J\+\_\+eulerian1@{J\+\_\+eulerian1}}
+\index{J\+\_\+eulerian1@{J\+\_\+eulerian1}!oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}}
+\subsubsection{\texorpdfstring{J\+\_\+eulerian1()}{J\_eulerian1()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+double \hyperlink{classoomph_1_1BellElementBase}{oomph\+::\+Bell\+Element\+Base}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::J\+\_\+eulerian1 (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Calculate the Jacobian of the mapping between local and global coordinates at the position s. 
+
+
+
+Definition at line 3555 of file Subparametric\+\_\+\+Telements.\+h.
+
+
+
+References i, and oomph\+::oomph\+\_\+info.
+
+\mbox{\Hypertarget{classoomph_1_1BellElementBase_a17c3c26035cb8f8696073b97dabbe392}\label{classoomph_1_1BellElementBase_a17c3c26035cb8f8696073b97dabbe392}} 
+\index{oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}!local\+\_\+to\+\_\+eulerian\+\_\+mapping2@{local\+\_\+to\+\_\+eulerian\+\_\+mapping2}}
+\index{local\+\_\+to\+\_\+eulerian\+\_\+mapping2@{local\+\_\+to\+\_\+eulerian\+\_\+mapping2}!oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}}
+\subsubsection{\texorpdfstring{local\+\_\+to\+\_\+eulerian\+\_\+mapping2()}{local\_to\_eulerian\_mapping2()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+double \hyperlink{classoomph_1_1BellElementBase}{oomph\+::\+Bell\+Element\+Base}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::local\+\_\+to\+\_\+eulerian\+\_\+mapping2 (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dpsids,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{inverse\+\_\+jacobian }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Calculate the mapping from local to Eulerian coordinates, given the derivatives of the shape functions w.\+r.\+t. local coordinates, Return only the determinant of the jacobian and the inverse of the mapping (ds/dx). 
+
+
+
+Definition at line 3498 of file Subparametric\+\_\+\+Telements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1BellElementBase_a20792e4f9ae0fcfadc406c4fca5ca0f6}\label{classoomph_1_1BellElementBase_a20792e4f9ae0fcfadc406c4fca5ca0f6}} 
+\index{oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}!local\+\_\+to\+\_\+eulerian\+\_\+mapping2@{local\+\_\+to\+\_\+eulerian\+\_\+mapping2}}
+\index{local\+\_\+to\+\_\+eulerian\+\_\+mapping2@{local\+\_\+to\+\_\+eulerian\+\_\+mapping2}!oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}}
+\subsubsection{\texorpdfstring{local\+\_\+to\+\_\+eulerian\+\_\+mapping2()}{local\_to\_eulerian\_mapping2()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+virtual double \hyperlink{classoomph_1_1BellElementBase}{oomph\+::\+Bell\+Element\+Base}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::local\+\_\+to\+\_\+eulerian\+\_\+mapping2 (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dpsids,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{jacobian,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{inverse\+\_\+jacobian }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Definition at line 3510 of file Subparametric\+\_\+\+Telements.\+h.
+
+
+
+References i.
+
+\mbox{\Hypertarget{classoomph_1_1BellElementBase_a4dfe41d9fa313dcc843d17144c553190}\label{classoomph_1_1BellElementBase_a4dfe41d9fa313dcc843d17144c553190}} 
+\index{oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}!my\+\_\+interpolated\+\_\+x@{my\+\_\+interpolated\+\_\+x}}
+\index{my\+\_\+interpolated\+\_\+x@{my\+\_\+interpolated\+\_\+x}!oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}}
+\subsubsection{\texorpdfstring{my\+\_\+interpolated\+\_\+x()}{my\_interpolated\_x()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+void \hyperlink{classoomph_1_1BellElementBase}{oomph\+::\+Bell\+Element\+Base}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::my\+\_\+interpolated\+\_\+x (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{x }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return FE interpolated position x\mbox{[}\mbox{]} at local coordinate s as \hyperlink{classoomph_1_1Vector}{Vector}. 
+
+
+
+Definition at line 3688 of file Subparametric\+\_\+\+Telements.\+h.
+
+
+
+References i, and oomph\+::\+One\+Dim\+Lagrange\+::shape().
+
+\mbox{\Hypertarget{classoomph_1_1BellElementBase_abd5f258248221f2f564c87ced9e0a83e}\label{classoomph_1_1BellElementBase_abd5f258248221f2f564c87ced9e0a83e}} 
+\index{oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}!myassemble\+\_\+local\+\_\+to\+\_\+eulerian\+\_\+jacobian2@{myassemble\+\_\+local\+\_\+to\+\_\+eulerian\+\_\+jacobian2}}
+\index{myassemble\+\_\+local\+\_\+to\+\_\+eulerian\+\_\+jacobian2@{myassemble\+\_\+local\+\_\+to\+\_\+eulerian\+\_\+jacobian2}!oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}}
+\subsubsection{\texorpdfstring{myassemble\+\_\+local\+\_\+to\+\_\+eulerian\+\_\+jacobian2()}{myassemble\_local\_to\_eulerian\_jacobian2()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+void \hyperlink{classoomph_1_1BellElementBase}{oomph\+::\+Bell\+Element\+Base}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::myassemble\+\_\+local\+\_\+to\+\_\+eulerian\+\_\+jacobian2 (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{d2psids,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{jacobian2 }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Internal function that is used to assemble the jacobian of second derivatives of the the mapping from local coordinates (s) to the eulerian coordinates (x), given the second derivatives of the shape functions. 
+
+Definition at line 3646 of file Subparametric\+\_\+\+Telements.\+h.
+
+
+
+References i.
+
+\mbox{\Hypertarget{classoomph_1_1BellElementBase_a76ddb90394c979f9967e8fd068bdf220}\label{classoomph_1_1BellElementBase_a76ddb90394c979f9967e8fd068bdf220}} 
+\index{oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}!test@{test}}
+\index{test@{test}!oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}}
+\subsubsection{\texorpdfstring{test()}{test()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+virtual void \hyperlink{classoomph_1_1BellElementBase}{oomph\+::\+Bell\+Element\+Base}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::test (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{phi }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1BellElement_a99afdb504fee71cb9c557ecb5069cd95}{oomph\+::\+Bell\+Element$<$ D\+I\+M, N\+N\+O\+D\+E\+\_\+1\+D $>$}.
+
+
+
+Definition at line 3091 of file Subparametric\+\_\+\+Telements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1BellElementBase_aa838429de6549ebb7b9c6d47b17b7859}\label{classoomph_1_1BellElementBase_aa838429de6549ebb7b9c6d47b17b7859}} 
+\index{oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}!test\+\_\+at\+\_\+knot@{test\+\_\+at\+\_\+knot}}
+\index{test\+\_\+at\+\_\+knot@{test\+\_\+at\+\_\+knot}!oomph\+::\+Bell\+Element\+Base@{oomph\+::\+Bell\+Element\+Base}}
+\subsubsection{\texorpdfstring{test\+\_\+at\+\_\+knot()}{test\_at\_knot()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+void \hyperlink{classoomph_1_1BellElementBase}{oomph\+::\+Bell\+Element\+Base}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::test\+\_\+at\+\_\+knot (\begin{DoxyParamCaption}\item[{const unsigned \&}]{ipt,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{phi }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the test function stored at the ipt-\/th integration point. 
+
+
+
+Definition at line 3219 of file Subparametric\+\_\+\+Telements.\+h.
+
+
+
+References i, and s.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{Subparametric__Telements_8h}{Subparametric\+\_\+\+Telements.\+h}\end{DoxyCompactItemize}

@@ -1,0 +1,421 @@
+This document provides an overview of the general coding conventions that are used throughout {\ttfamily oomph-\/lib}. Knowledge of these conventions will greatly facilitate the use of the library. Contributors to the library are expected to adhere to these standards.
+
+
+
+ 
+
+\hypertarget{index_naming}{}\section{Naming conventions}\label{index_naming}
+\hypertarget{index_filenames}{}\subsection{File names}\label{index_filenames}
+All C++ source files end with the standard extensions $\ast$.h and $\ast$.cc.
+
+
+\begin{DoxyItemize}
+\item {\ttfamily $\ast$}.h\+: Contains the class definitions and any inline functions.
+\item {\ttfamily $\ast$}.cc\+: Contains all non-\/inline member functions that can be compiled once and for all. This includes
+\begin{DoxyItemize}
+\item member functions of classes that do not have any template parameters
+\item member functions of templated classes for which it is known a priori which instantiations are required. Examples are classes that are templated by the spatial dimension. In this case we\textquotesingle{}re unlikely to require instantiations for any values other than 0,1,2 and 3.
+\end{DoxyItemize}
+\item {\ttfamily $\ast$}.template.\+cc\+: Contains any non-\/inline member function of templated classes. This file must be included (together with the corresponding {\ttfamily $\ast$}.h file) when a specific instantiation of a templated class is required. For instance, most specific {\ttfamily Mesh} classes are templated by the element type and the mesh writer can obviously not predict which element types his/her specific mesh is going to be used with.
+\end{DoxyItemize}\hypertarget{index_variables}{}\subsection{General variables}\label{index_variables}
+
+\begin{DoxyItemize}
+\item General variables are all lowercase
+\item Variables that contain multiple words contain underscores to separate them, e.\+g. 
+\begin{DoxyCode}
+FiniteElement* surface\_element\_pt; 
+\end{DoxyCode}
+
+\end{DoxyItemize}\hypertarget{index_classes}{}\subsection{Classes}\label{index_classes}
+
+\begin{DoxyItemize}
+\item Classes start with capital letter, e.\+g. 
+\begin{DoxyCode}
+\textcolor{keyword}{class }Shape 
+\end{DoxyCode}
+
+\item If the class name contains multiple words, the first letter of any subsequent word also gets capitalised, e.\+g. 
+\begin{DoxyCode}
+\textcolor{keyword}{class }AlgebraicElement 
+\end{DoxyCode}
+ {\bfseries Note\+:} No underscores in class names.
+\end{DoxyItemize}\hypertarget{index_private_public}{}\subsection{Private data and access functions to  private data}\label{index_private_public}
+Use a capital first letter for private data, and the all-\/lowercase equivalent for the access functions. Examples\+:
+\begin{DoxyItemize}
+\item This is a declaration for a private data member\+: 
+\begin{DoxyCode}
+\textcolor{keyword}{private}: 
+\textcolor{comment}{}
+\textcolor{comment}{  /// Pointer to boundary node}
+\textcolor{comment}{}  Node* Boundary\_node\_pt; 
+\end{DoxyCode}
+
+\item Here are two public access functions to the private data member\+: 
+\begin{DoxyCode}
+\textcolor{keyword}{public}: 
+\textcolor{comment}{}
+\textcolor{comment}{ /// Access to boundary node (const version)}
+\textcolor{comment}{} Node* boundary\_node\_pt()\textcolor{keyword}{ const }\{\textcolor{keywordflow}{return} Boundary\_node\_pt;\}
+\textcolor{comment}{}
+\textcolor{comment}{ /// Access to boundary node}
+\textcolor{comment}{} Node*& boundary\_node\_pt() \{\textcolor{keywordflow}{return} Boundary\_node\_pt;\}
+\end{DoxyCode}
+
+\end{DoxyItemize}
+
+{\bfseries Note\+:} Do {\bfseries not} use public data -- ever! Make it private and and provide an access function -- even if it seems \char`\"{}perfectly
+ obvious\char`\"{} at the time of writing the class that the internal storage for the data item is \char`\"{}never going to be changed\char`\"{}.\hypertarget{index_pointers}{}\subsection{Pointers}\label{index_pointers}
+
+\begin{DoxyItemize}
+\item Pointers and access functions to pointers are identified explicitly by the postfix {\itshape \+\_\+pt} to the variable names, as shown in the previous examples.
+\end{DoxyItemize}\hypertarget{index_numbering}{}\subsection{Access functions to containers}\label{index_numbering}
+Many classes have member functions that provide access to data in private containers (e.\+g. vectors); they are usually accompanied by a member function that returns the number of entries in that container. Naming conventions\+:
+\begin{DoxyItemize}
+\item Use singular for the access function to the container, i.\+e. 
+\begin{DoxyCode}
+\textcolor{comment}{/// Return pointer to e-th element}
+\textcolor{comment}{}FiniteElement* element\_pt(\textcolor{keyword}{const} \textcolor{keywordtype}{unsigned}& e);
+\end{DoxyCode}
+ rather than {\ttfamily elements\+\_\+pt}(...)
+\item Use a prefix `{\ttfamily n\textquotesingle{}} for the access function for the number of entries in the container, i.\+e. 
+\begin{DoxyCode}
+\textcolor{comment}{/// Total number of elements }
+\textcolor{comment}{}\textcolor{keywordtype}{unsigned} nelement();
+\end{DoxyCode}
+ {\bfseries Notes\+:} (i) No underscore between the \char`\"{}n\char`\"{} and the container\textquotesingle{}s name. (ii) No trailing {\ttfamily \+\_\+pt} in the function that returns the number of objects in the container.
+\end{DoxyItemize}\hypertarget{index_template}{}\subsection{Template parameters}\label{index_template}
+
+\begin{DoxyItemize}
+\item Template parameters are all caps, e.\+g. 
+\begin{DoxyCode}
+\textcolor{keyword}{template}<\textcolor{keywordtype}{unsigned} DIM>
+\textcolor{keyword}{class }NavierStokesEquations
+\{
+  \textcolor{keyword}{public}:
+  [...]
+
+\};
+\end{DoxyCode}
+
+\end{DoxyItemize}\hypertarget{index_verbose}{}\subsection{Use descriptive function/variable names}\label{index_verbose}
+
+\begin{DoxyItemize}
+\item Make sure you choose descriptive names for functions and variables, even if the names become long.
+\end{DoxyItemize}
+
+
+
+ 
+
+\hypertarget{index_layout}{}\section{Layout etc.}\label{index_layout}
+\hypertarget{index_include_files}{}\subsection{Position of include statements}\label{index_include_files}
+
+\begin{DoxyItemize}
+\item Place include statements at the beginning of each file.
+\end{DoxyItemize}\hypertarget{index_layout_blocks}{}\subsection{Layout of blocks}\label{index_layout_blocks}
+
+\begin{DoxyItemize}
+\item Braces on separate lines (unless the content is extremely short) 
+\begin{DoxyCode}
+\textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} i=0;i<10;i++)
+  \{
+
+   [...]
+
+   std::cout << \textcolor{stringliteral}{"doing something"} << std::endl;
+
+   [...]
+
+  \}
+\end{DoxyCode}
+
+\end{DoxyItemize}\hypertarget{index_indentation}{}\subsection{Indentation}\label{index_indentation}
+
+\begin{DoxyItemize}
+\item Indentation of blocks etc. should follow the emacs standards.
+\end{DoxyItemize}\hypertarget{index_layout_functions_etc}{}\subsection{Layout of functions, classes, etc.}\label{index_layout_functions_etc}
+
+\begin{DoxyItemize}
+\item Precede all functions by a comment block, enclosed between lines of `===\textquotesingle{} 
+\begin{DoxyCode}
+\textcolor{comment}{// =============================================================}\textcolor{comment}{}
+\textcolor{comment}{/// \(\backslash\)short (add \(\backslash\)short to make sure that multi-line descriptions}
+\textcolor{comment}{/// appear in doxygen's short documentation. Include lists with items}
+\textcolor{comment}{/// - first item}
+\textcolor{comment}{/// - second item}
+\textcolor{comment}{///   - first item of sublist}
+\textcolor{comment}{///   - second item of sublist}
+\textcolor{comment}{///   . //end of sublist}
+\textcolor{comment}{/// . //end of main list}
+\textcolor{comment}{}\textcolor{comment}{// =============================================================}
+\textcolor{keywordtype}{void} SomeClass::some\_function()
+\{
+ \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} i=0;i<10;i++)
+  \{
+   std::cout << \textcolor{stringliteral}{"doing something"} << std::endl;
+  \}
+ \}
+\end{DoxyCode}
+ Note the triple slash \char`\"{}///\char`\"{} in the comment block that preceeds the function definition -- comments contained in such lines are automatically extracted by doxygen and inserted into the code documentation.
+\end{DoxyItemize}\hypertarget{index_oomph}{}\subsection{The oomph-\/lib namespace}\label{index_oomph}
+
+\begin{DoxyItemize}
+\item {\ttfamily oomph-\/lib} is contained in its own namespace, {\ttfamily oomph}, to avoid clashes of class names with those of other (third-\/party) libraries. If there is no danger of name clashes, the entire {\ttfamily oomph} namespace may be imported at the beginning of each driver code by placing the statement 
+\begin{DoxyCode}
+\textcolor{keyword}{using namespace }oomph;
+\end{DoxyCode}
+ at the beginning of the source code (after the included header files). Any additions to the library (this includes the instantiation of templated {\ttfamily oomph-\/lib} classes inside a driver code!) must be included into the {\ttfamily oomph} namespace by surrounding the code by 
+\begin{DoxyCode}
+\textcolor{keyword}{namespace }oomph
+ \{
+
+    \textcolor{comment}{// Additions to the library go here...}
+    [...]
+ 
+ \}
+\end{DoxyCode}
+
+\end{DoxyItemize}\hypertarget{index_std}{}\subsection{Namespace pollution}\label{index_std}
+
+\begin{DoxyItemize}
+\item To avoid namespace pollution, the namespace {\ttfamily std} {\bfseries must} {\bfseries not} be included globally in any header files. The statement 
+\begin{DoxyCode}
+\textcolor{keyword}{using namespace }std;
+\end{DoxyCode}
+ may only be used in driver codes, in $\ast$.cc files, or inside specific functions in a $\ast$.h file.
+\end{DoxyItemize}\hypertarget{index_layout_classes}{}\subsection{Layout of class definitions and include guards.}\label{index_layout_classes}
+Here is an example of a complete header file, including include guards and library includes. 
+\begin{DoxyCode}
+\textcolor{preprocessor}{#ifndef OOMPH\_SOME\_CLASS\_HEADER     // Assuming that the file is }
+\textcolor{preprocessor}{#define OOMPH\_SOME\_CLASS\_HEADER     // called some\_class.h}
+
+\textcolor{comment}{// Include generic oomph-lib library}
+\textcolor{preprocessor}{#include "generic.h"}
+
+\textcolor{comment}{// Add to oomph-lib namespace}
+\textcolor{keyword}{namespace }oomph
+\{
+
+\textcolor{comment}{// =============================================================}\textcolor{comment}{}
+\textcolor{comment}{/// Waffle about what the class does etc.}
+\textcolor{comment}{/// }
+\textcolor{comment}{}\textcolor{comment}{// =============================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} T>
+\textcolor{keyword}{class }SomeClass : \textcolor{keyword}{public} SomeBaseClass
+ \{
+   \textcolor{keyword}{public}: 
+\textcolor{comment}{}
+\textcolor{comment}{    /// Constructor: Pass coefficients n1 and n2}
+\textcolor{comment}{}    SomeClass(\textcolor{keyword}{const} \textcolor{keywordtype}{unsigned}& n1, \textcolor{keyword}{const} T& n2) : N1(n1), N2(n2)
+     \{\}
+\textcolor{comment}{}
+\textcolor{comment}{    /// Access function to coefficient }
+\textcolor{comment}{}    \textcolor{keyword}{inline} \textcolor{keywordtype}{unsigned} n1()\textcolor{keyword}{ const}
+\textcolor{keyword}{     }\{
+      \textcolor{keywordflow}{return} N1;
+     \}
+\textcolor{comment}{}
+\textcolor{comment}{    /// Access function to other coefficient}
+\textcolor{comment}{}    \textcolor{keyword}{inline} T& n2()\textcolor{keyword}{ const}
+\textcolor{keyword}{     }\{
+      \textcolor{keywordflow}{return} N2;
+     \}
+   
+
+   \textcolor{keyword}{protected}:
+\textcolor{comment}{}
+\textcolor{comment}{      /// Coefficient }
+\textcolor{comment}{}      \textcolor{keywordtype}{unsigned} N1;
+
+   \textcolor{keyword}{private}:
+\textcolor{comment}{}
+\textcolor{comment}{      /// Second coefficient}
+\textcolor{comment}{}      T  N2;
+
+  \};
+
+ \} 
+\textcolor{preprocessor}{ #endif}
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item Order of public/protected/private may be reversed but the declarations should always be explicit (even though everything is private by default).
+\item Note the prefix {\ttfamily  O\+O\+M\+P\+H\+\_\+$\ast$} in the include guard. This is to avoid clashes with include guards of other libraries.
+\end{DoxyItemize}
+
+
+
+ 
+
+\hypertarget{index_debug}{}\section{Debugging etc.}\label{index_debug}
+\hypertarget{index_paranoia}{}\subsection{The P\+A\+R\+A\+N\+O\+I\+D flag and error handling}\label{index_paranoia}
+
+\begin{DoxyItemize}
+\item Implement optional validation routines, self-\/tests, and other sanity checks via conditional compilation, using the compiler flag P\+A\+R\+A\+N\+O\+ID, so that the relevant statements are only activated if {\ttfamily -\/\+D\+P\+A\+R\+A\+N\+O\+ID} is specified as a compilation flag for the C++ compiler. If errors are detected, a meaningful diagnostic should be issued, by throwing an {\ttfamily Oomph\+Lib\+Error}. If the code is compiled without the P\+A\+R\+A\+N\+O\+ID flag, all sanity checks are bypassed -- good for the overall execution speed, bad for error handling... The user can choose. ~\newline
+~\newline
+ Here\textquotesingle{}s an example\+: ~\newline
+~\newline
+
+\begin{DoxyCode}
+\textcolor{comment}{// Has a global mesh already been built?}
+\textcolor{keywordflow}{if}(Mesh\_pt!=0)
+ \{
+  std::string error\_message = 
+   \textcolor{stringliteral}{"Problem::build\_global\_mesh() called,\(\backslash\)n"};
+  error\_message += \textcolor{stringliteral}{" but a global mesh has already been built:\(\backslash\)n"};
+  error\_message += \textcolor{stringliteral}{"Problem::Mesh\_pt is not zero!\(\backslash\)n"};
+
+  \textcolor{keywordflow}{throw} OomphLibError(error\_message,
+                      OOMPH\_CURRENT\_FUNCTION,
+                      OOMPH\_EXCEPTION\_LOCATION);
+ \}
+\end{DoxyCode}
+
+\item {\ttfamily oomph-\/lib} also has an object that allows warning messages to be issued in a uniform format. Here\textquotesingle{}s an example of its use\+: 
+\begin{DoxyCode}
+\textcolor{comment}{// Was it a duplicate?}
+\textcolor{keywordtype}{unsigned} nel\_now=element\_set\_pt.size();
+\textcolor{keywordflow}{if} (nel\_now==nel\_before)
+ \{
+  std::ostringstream warning\_stream;
+  warning\_stream  <<\textcolor{stringliteral}{"WARNING: "} << std::endl
+                  <<\textcolor{stringliteral}{"Element "} << e << \textcolor{stringliteral}{" in submesh "} << imesh 
+                  <<\textcolor{stringliteral}{" is a duplicate \(\backslash\)n and was ignored when assembling "} 
+                  <<\textcolor{stringliteral}{"global mesh."} << std::endl;
+  OomphLibWarning(warning\_stream.str(),
+                  OOMPH\_CURRENT\_FUNCTION,
+                  OOMPH\_EXCEPTION\_LOCATION);
+ \}
+\end{DoxyCode}
+
+\end{DoxyItemize}\hypertarget{index_range}{}\subsection{Range checking}\label{index_range}
+
+\begin{DoxyItemize}
+\item Most access functions that provide indexed access to a private container, do, in fact, access a private S\+TL vector. Explicit range checking for these (frequent!) cases can be avoided by changing to container to Vector class instead. Vectors performs automatic range checking, if the {\ttfamily generic} library is compiled with the {\ttfamily R\+A\+N\+G\+E\+\_\+\+C\+H\+E\+C\+K\+I\+NG} flag, i.\+e. if {\ttfamily -\/\+D\+R\+A\+N\+G\+E\+\_\+\+C\+H\+E\+C\+K\+I\+NG} is specified as a compilation flag for the C++ compiler. {\bfseries Note\+:} While it is generally a good idea to compile with {\ttfamily P\+A\+R\+A\+N\+O\+ID} while developing code, {\ttfamily R\+A\+N\+G\+E\+\_\+\+C\+H\+E\+C\+K\+I\+NG} is {\bfseries very} {\bfseries expensive} and is therefore activated via a second independent flag. We only tend to active this flag as a last resort, typically to track down particularly stubborn segmentation faults.
+\end{DoxyItemize}\hypertarget{index_self_test}{}\subsection{Self test routines}\label{index_self_test}
+
+\begin{DoxyItemize}
+\item Every sufficiently complex class should come with its own 
+\begin{DoxyCode}
+\textcolor{keywordtype}{unsigned} self\_test() 
+\end{DoxyCode}
+ routine which returns 1 for failure, 0 for successful test.
+\end{DoxyItemize}
+
+
+
+ 
+
+\hypertarget{index_other}{}\section{Other conventions}\label{index_other}
+\hypertarget{index_constness}{}\subsection{Const-\/ness}\label{index_constness}
+
+\begin{DoxyItemize}
+\item Use const wherever applicable (arguments, member functions,...)
+\item Always provide const and non-\/const overloaded subscript operators.
+\item Example\+: 
+\begin{DoxyCode}
+\textcolor{comment}{// Return i-th coordinate of Point}
+ \textcolor{keywordtype}{double}& operator[](\textcolor{keyword}{const} \textcolor{keywordtype}{unsigned}& i)\{\textcolor{keywordflow}{return} x[i];\}  
+
+\textcolor{comment}{// Return i-th coordinate of Point -- const version}
+\textcolor{keyword}{const} \textcolor{keywordtype}{double}& operator[](\textcolor{keyword}{const} \textcolor{keywordtype}{unsigned}& i)\textcolor{keyword}{ const }\{\textcolor{keywordflow}{return} x[i];\} 
+\end{DoxyCode}
+
+\end{DoxyItemize}\hypertarget{index_unsigned}{}\subsection{Only use int if a variable can actually take negative values}\label{index_unsigned}
+
+\begin{DoxyItemize}
+\item Just as the name of a variable gives some indication of its likely use, its type does too. For instance this code fragment ~\newline
+
+\begin{DoxyCode}
+\textcolor{comment}{// Create a counter}
+\textcolor{keywordtype}{int} counter=0;
+\end{DoxyCode}
+ ~\newline
+ immediately raises the question why the programmer anticipates circumstances in which the counter might be negative. Are negative values used to indicate special cases; etc? If the name of the variable was chosen correctly (i.\+e. if the variable really is used as a counter) then ~\newline
+
+\begin{DoxyCode}
+\textcolor{comment}{// Create a counter}
+\textcolor{keywordtype}{unsigned} counter=0;
+\end{DoxyCode}
+ ~\newline
+ is much clearer and therefore preferable, even if the two versions of the code would, of course, give the same result.
+\end{DoxyItemize}\hypertarget{index_pass_by_reference}{}\subsection{Only use \char`\"{}pass by reference\char`\"{}}\label{index_pass_by_reference}
+
+\begin{DoxyItemize}
+\item Arguments to functions should only be passed \char`\"{}by reference\char`\"{}, not \char`\"{}by value\char`\"{}. Use \char`\"{}pass by constant reference\char`\"{} if you want to ensure the const-\/ness of any (input) arguments.
+\item To \char`\"{}encourage\char`\"{} this behaviour, most {\ttfamily oomph-\/lib} objects have (deliberately) broken copy constructors and assignment operators, making a \char`\"{}pass by value\char`\"{} impossible. The only exceptions are cases in which we could see a good reason why a fully-\/functional, non-\/memory-\/leaking copy/assignment operator might be required.
+\end{DoxyItemize}\hypertarget{index_break_copy}{}\subsection{Provide fully-\/functional or deliberately-\/broken copy constructors and assignment operators}\label{index_break_copy}
+
+\begin{DoxyItemize}
+\item For the reasons mentioned above, \char`\"{}passing by value\char`\"{} is discouraged and we have only implemented copy constructors for very few classes. To make the use of C++\textquotesingle{}s default copy constructor impossible (as their accidental use may lead to serious memory leaks) all classes should either have a deliberately-\/broken copy constructor or provide a \char`\"{}proper\char`\"{} implementation (as in the case of {\ttfamily oomph-\/lib\textquotesingle{}s} {\ttfamily Vector} class). The same applies to assignment operators. ~\newline
+ ~\newline
+ The namespace {\ttfamily Broken\+Copy} provides two helper functions, {\ttfamily Broken\+Copy\+::broken\+\_\+copy}(...) and {\ttfamily Broken\+Copy\+::broken\+\_\+assign}(...) that issue a suitable error message and then throw an {\ttfamily Oomph\+Lib\+Error}. The name of the class should be passed to these functions as a string, as in this example from the {\ttfamily Mesh} class\+: ~\newline
+~\newline
+
+\begin{DoxyCode}
+\textcolor{comment}{/// Broken copy constructor}
+\textcolor{comment}{}Mesh(\textcolor{keyword}{const} Mesh& dummy) 
+ \{ 
+  BrokenCopy::broken\_copy(\textcolor{stringliteral}{"Mesh"});
+ \} 
+\textcolor{comment}{}
+\textcolor{comment}{/// Broken assignment operator}
+\textcolor{comment}{}\textcolor{keywordtype}{void} operator=(\textcolor{keyword}{const} Mesh&) 
+ \{
+  BrokenCopy::broken\_assign(\textcolor{stringliteral}{"Mesh"});
+ \}
+\end{DoxyCode}
+
+\end{DoxyItemize}\hypertarget{index_order_of_args}{}\subsection{Order of arguments}\label{index_order_of_args}
+
+\begin{DoxyItemize}
+\item If values are returned from a function, put them at the end of the argument list.
+\item \char`\"{}\+Time\char`\"{} arguments always come first, e.\+g. 
+\begin{DoxyCode}
+\textcolor{comment}{/// \(\backslash\)short Return FE interpolated coordinate x[i] at local coordinate s}
+\textcolor{comment}{}\textcolor{comment}{/// at previous timestep t (t=0: present; t>0: previous timestep)}
+\textcolor{comment}{}\textcolor{keyword}{virtual} \textcolor{keywordtype}{double} interpolated\_x(\textcolor{keyword}{const} \textcolor{keywordtype}{unsigned}& t, 
+                              \textcolor{keyword}{const} Vector<double> &s,
+                              \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} &i) \textcolor{keyword}{const};
+\end{DoxyCode}
+
+\end{DoxyItemize}\hypertarget{index_brackets}{}\subsection{Access to elements in containers}\label{index_brackets}
+
+\begin{DoxyItemize}
+\item Avoid access via square brackets (i.\+e. via operators) and write access functions instead, as they can be overloaded more easily.
+\end{DoxyItemize}\hypertarget{index_boolean}{}\subsection{Boolean member data}\label{index_boolean}
+
+\begin{DoxyItemize}
+\item Avoid access to boolean member data via trivial wrapper functions that return references. These constructions lead to somewhat ugly driver codes and can lead to code that appears to set a boolean, when it does not. Instead the status of the boolean should be modified by two set/unset or enable/disable subroutines (i.\+e. returning void) and tested using a (const) has\+\_\+ or is\+\_\+ function that returns a bool . For example 
+\begin{DoxyCode}
+\textcolor{keyword}{private}:\textcolor{comment}{}
+\textcolor{comment}{  /// Boolean to indicate whether documentation should be on or off}
+\textcolor{comment}{}  \textcolor{keywordtype}{bool} Doc\_flag;
+\textcolor{keyword}{public}:\textcolor{comment}{}
+\textcolor{comment}{  /// Enable documentation}
+\textcolor{comment}{}  \textcolor{keywordtype}{void} enable\_doc() \{Doc\_flag=\textcolor{keyword}{true};\}\textcolor{comment}{}
+\textcolor{comment}{  /// Disable documentation}
+\textcolor{comment}{}  \textcolor{keywordtype}{void} disable\_doc() \{Doc\_flag=\textcolor{keyword}{false};\}\textcolor{comment}{}
+\textcolor{comment}{  /// Test whether documentation is on or off}
+\textcolor{comment}{}  \textcolor{keywordtype}{bool} is\_doc\_enabled()\textcolor{keyword}{ const }\{\textcolor{keywordflow}{return} Doc\_flag;\}
+\end{DoxyCode}
+
+\end{DoxyItemize}\hypertarget{index_dont_use_macros}{}\subsection{Macros}\label{index_dont_use_macros}
+
+\begin{DoxyItemize}
+\item Don\textquotesingle{}t use macros! There are two exceptions to this rule\+: We use the macros {\ttfamily O\+O\+M\+P\+H\+\_\+\+E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+L\+O\+C\+A\+T\+I\+ON} and {\ttfamily O\+O\+M\+P\+H\+\_\+\+C\+U\+R\+R\+E\+N\+T\+\_\+\+F\+U\+N\+C\+T\+I\+ON} to make the file name, line number and current function name available to the {\ttfamily Oomph\+Lib\+Exception} object -- the object that is thrown if a run-\/time error is detected.
+\end{DoxyItemize}\hypertarget{index_inlining}{}\subsection{Inlining}\label{index_inlining}
+
+\begin{DoxyItemize}
+\item Inline all simple set/get functions by placing them into the $\ast$.h file.
+\item {\bfseries Careful\+:} Inlined functions should not contain calls to member functions of classes that are defined in other files as this can lead to triangular dependencies.
+\end{DoxyItemize}
+
+
+
+ 
+
+ \hypertarget{index_pdf}{}\section{P\+D\+F file}\label{index_pdf}
+A \href{../latex/refman.pdf}{\tt pdf version} of this document is available. \end{document}

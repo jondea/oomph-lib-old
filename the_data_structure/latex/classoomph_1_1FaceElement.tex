@@ -1,0 +1,1274 @@
+\hypertarget{classoomph_1_1FaceElement}{}\section{oomph\+:\+:Face\+Element Class Reference}
+\label{classoomph_1_1FaceElement}\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+
+
+{\ttfamily \#include $<$elements.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Face\+Element\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=11.679473cm]{classoomph_1_1FaceElement}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1FaceElement_a63f236503b58841500498b98d4fb9721}{Face\+Element} ()
+\begin{DoxyCompactList}\small\item\em Constructor\+: Initialise all appropriate member data. \end{DoxyCompactList}\item 
+virtual \hyperlink{classoomph_1_1FaceElement_af1eb8c85722a8bdb196f94758dc3c630}{$\sim$\+Face\+Element} ()
+\begin{DoxyCompactList}\small\item\em Empty virtual destructor. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1FaceElement_a21acf2a56f732a3378674f74525effbf}{Face\+Element} (const \hyperlink{classoomph_1_1FaceElement}{Face\+Element} \&)
+\begin{DoxyCompactList}\small\item\em Broken copy constructor. \end{DoxyCompactList}\item 
+const unsigned \& \hyperlink{classoomph_1_1FaceElement_a7658b23bf2cf041883f51b827eab9059}{boundary\+\_\+number\+\_\+in\+\_\+bulk\+\_\+mesh} () const
+\begin{DoxyCompactList}\small\item\em Broken assignment operator. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1FaceElement_aaaa03a7db357facfbcfc480d8e0db404}{set\+\_\+boundary\+\_\+number\+\_\+in\+\_\+bulk\+\_\+mesh} (const unsigned \&b)
+\begin{DoxyCompactList}\small\item\em Set function for the boundary number in bulk mesh. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1FaceElement_a58c9f93705c7741f76c8487d152e68a6}{zeta\+\_\+nodal} (const unsigned \&n, const unsigned \&k, const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}) const
+\begin{DoxyCompactList}\small\item\em In a \hyperlink{classoomph_1_1FaceElement}{Face\+Element}, the \char`\"{}global\char`\"{} intrinsic coordinate of the element along the boundary, when viewed as part of a compound geometric object is specified using the boundary coordinate defined by the mesh. Note\+: Boundary coordinates will have been set up when creating the underlying mesh, and their values will have been stored at the nodes. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1FaceElement_a919d0d76746eaa78a8a3c7f75f99a9e5}{J\+\_\+eulerian} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}) const
+\begin{DoxyCompactList}\small\item\em Return the Jacobian of mapping from local to global coordinates at local position s. Overloaded from \hyperlink{classoomph_1_1FiniteElement}{Finite\+Element}. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1FaceElement_aa6380a08afc18bd4f35e337a1131a9d8}{J\+\_\+eulerian\+\_\+at\+\_\+knot} (const unsigned \&ipt) const
+\begin{DoxyCompactList}\small\item\em Return the Jacobian of the mapping from local to global coordinates at the ipt-\/th integration point Overloaded from \hyperlink{classoomph_1_1FiniteElement}{Finite\+Element}. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1FaceElement_aabfb54314baeb47bb56f8de8e4dfe513}{check\+\_\+\+J\+\_\+eulerian\+\_\+at\+\_\+knots} (bool \&passed) const
+\begin{DoxyCompactList}\small\item\em Check that Jacobian of mapping between local and Eulerian. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1FaceElement_a7aa612fec3604e08344503fbcdc357c8}{interpolated\+\_\+x} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}) const
+\begin{DoxyCompactList}\small\item\em Return FE interpolated coordinate x\mbox{[}i\mbox{]} at local coordinate s. Overloaded to get information from bulk. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1FaceElement_ac923e43c8868ffe4c6e2284bb63013f0}{interpolated\+\_\+x} (const unsigned \&\hyperlink{cfortran_8h_af6f0bd3dc13317f895c91323c25c2b8f}{t}, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}) const
+\begin{DoxyCompactList}\small\item\em Return FE interpolated coordinate x\mbox{[}i\mbox{]} at local coordinate s at previous timestep t (t=0\+: present; t$>$0\+: previous timestep). Overloaded to get information from bulk. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1FaceElement_a01b07e01c23777ed539a6b6d37f069ee}{interpolated\+\_\+x} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&x) const
+\begin{DoxyCompactList}\small\item\em Return FE interpolated position x\mbox{[}\mbox{]} at local coordinate s as \hyperlink{classoomph_1_1Vector}{Vector} Overloaded to get information from bulk. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1FaceElement_a73520230d5b6cabea8ae25ad4b762f12}{interpolated\+\_\+x} (const unsigned \&\hyperlink{cfortran_8h_af6f0bd3dc13317f895c91323c25c2b8f}{t}, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&x) const
+\begin{DoxyCompactList}\small\item\em Return FE interpolated position x\mbox{[}\mbox{]} at local coordinate s at previous timestep t as \hyperlink{classoomph_1_1Vector}{Vector} (t=0\+: present; t$>$0\+: previous timestep). Overloaded to get information from bulk. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1FaceElement_a0bd0b6164be27b3e959de84c609ca0ff}{interpolated\+\_\+dxdt} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}, const unsigned \&\hyperlink{cfortran_8h_af6f0bd3dc13317f895c91323c25c2b8f}{t})
+\begin{DoxyCompactList}\small\item\em Return t-\/th time-\/derivative of the i-\/th F\+E-\/interpolated Eulerian coordinate at local coordinate s. Overloaded to get information from bulk. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1FaceElement_ae8741b05add40d08bb324c8e44effa11}{interpolated\+\_\+dxdt} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, const unsigned \&\hyperlink{cfortran_8h_af6f0bd3dc13317f895c91323c25c2b8f}{t}, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&dxdt)
+\begin{DoxyCompactList}\small\item\em Compte t-\/th time-\/derivative of the F\+E-\/interpolated Eulerian coordinate vector at local coordinate s. Overloaded to get information from bulk. \end{DoxyCompactList}\item 
+int \& \hyperlink{classoomph_1_1FaceElement_add995e91979ad663e21cc2b63dd710d9}{normal\+\_\+sign} ()
+\begin{DoxyCompactList}\small\item\em Sign of outer unit normal (relative to cross-\/products of tangent vectors in the corresponding \char`\"{}bulk\char`\"{} element. \end{DoxyCompactList}\item 
+int \hyperlink{classoomph_1_1FaceElement_a7a3b1effe068221ac39c14a9ed71d34d}{normal\+\_\+sign} () const
+\begin{DoxyCompactList}\small\item\em Return sign of outer unit normal (relative to cross-\/products of tangent vectors in the corresponding \char`\"{}bulk\char`\"{} element. (const version) \end{DoxyCompactList}\item 
+int \& \hyperlink{classoomph_1_1FaceElement_a478d577ac6db67ecc80f1f02ae3ab170}{face\+\_\+index} ()
+\begin{DoxyCompactList}\small\item\em Index of the face (a number that uniquely identifies the face in the element) \end{DoxyCompactList}\item 
+int \hyperlink{classoomph_1_1FaceElement_a387bc31caaf8c6a8c2f8b287823bfd85}{face\+\_\+index} () const
+\begin{DoxyCompactList}\small\item\em Index of the face (a number that uniquely identifies the face in the element) (const version) \end{DoxyCompactList}\item 
+const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ $\ast$ \hyperlink{classoomph_1_1FaceElement_a361f92bae4d926903947e2e0d7672f3c}{tangent\+\_\+direction\+\_\+pt} () const
+\begin{DoxyCompactList}\small\item\em Public access function for the tangent direction pointer. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1FaceElement_a9dc897bfa6a1738a7a81ab9cd160ffb0}{set\+\_\+tangent\+\_\+direction} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ $\ast$\hyperlink{classoomph_1_1FaceElement_a361f92bae4d926903947e2e0d7672f3c}{tangent\+\_\+direction\+\_\+pt})
+\begin{DoxyCompactList}\small\item\em Set the tangent direction vector. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1FaceElement_a025b2cae37ba7d8067bf87f885cd11f5}{turn\+\_\+on\+\_\+warning\+\_\+for\+\_\+discontinuous\+\_\+tangent} ()
+\begin{DoxyCompactList}\small\item\em Turn on warning for when there may be discontinuous tangent vectors from continuous\+\_\+tangent\+\_\+and\+\_\+outer\+\_\+unit\+\_\+normal(...) \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1FaceElement_a4c3159cad8dd11618c201d8b66651cd3}{turn\+\_\+off\+\_\+warning\+\_\+for\+\_\+discontinuous\+\_\+tangent} ()
+\begin{DoxyCompactList}\small\item\em Turn off warning for when there may be discontinuous tangent vectors from continuous\+\_\+tangent\+\_\+and\+\_\+outer\+\_\+unit\+\_\+normal(...) \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1FaceElement_a182997beb4a64fde40a47007344913f1}{continuous\+\_\+tangent\+\_\+and\+\_\+outer\+\_\+unit\+\_\+normal} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Vector}{Vector}$<$ \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ $>$ \&tang\+\_\+vec, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&unit\+\_\+normal) const
+\begin{DoxyCompactList}\small\item\em Compute the tangent vector(s) and the outer unit normal vector at the specified local coordinate. In two spatial dimensions, a \char`\"{}tangent direction\char`\"{} is not required. In three spatial dimensions, a tangent direction is required (set via set\+\_\+tangent\+\_\+direction(...)), and we project the tanent direction on to the surface. The second tangent vector is taken to be the cross product of the projection and the unit normal. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1FaceElement_a2114d937858d142142ea4f4e2342e7b9}{continuous\+\_\+tangent\+\_\+and\+\_\+outer\+\_\+unit\+\_\+normal} (const unsigned \&ipt, \hyperlink{classoomph_1_1Vector}{Vector}$<$ \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ $>$ \&tang\+\_\+vec, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&unit\+\_\+normal) const
+\begin{DoxyCompactList}\small\item\em Compute the tangent vector(s) and the outer unit normal vector at the ipt-\/th integration point. This is a wrapper around continuous\+\_\+tangent\+\_\+and\+\_\+outer\+\_\+unit\+\_\+normal(...) with the integration points converted into local coordinates. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1FaceElement_a49cf44d89e80926635d2a26abfbbf3b0}{outer\+\_\+unit\+\_\+normal} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&unit\+\_\+normal) const
+\begin{DoxyCompactList}\small\item\em Compute outer unit normal at the specified local coordinate. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1FaceElement_ada4480c304100898d0c45be6d3ce181f}{outer\+\_\+unit\+\_\+normal} (const unsigned \&ipt, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&unit\+\_\+normal) const
+\begin{DoxyCompactList}\small\item\em Compute outer unit normal at ipt-\/th integration point. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1FiniteElement}{Finite\+Element} $\ast$\& \hyperlink{classoomph_1_1FaceElement_a7539054d858d73989d7c1166e333e0f8}{bulk\+\_\+element\+\_\+pt} ()
+\begin{DoxyCompactList}\small\item\em Pointer to higher-\/dimensional \char`\"{}bulk\char`\"{} element. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1FiniteElement}{Finite\+Element} $\ast$ \hyperlink{classoomph_1_1FaceElement_a8d2cf880d94b4b23ca2a25a6afaf7146}{bulk\+\_\+element\+\_\+pt} () const
+\begin{DoxyCompactList}\small\item\em Pointer to higher-\/dimensional \char`\"{}bulk\char`\"{} element (const version) \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1FaceElement_aaa3af8b5d2e9584bdcd9b133990d7591}{Coordinate\+Mapping\+Fct\+Pt} \& \hyperlink{classoomph_1_1FaceElement_a284064de90f834ec3a877d49bdee759a}{face\+\_\+to\+\_\+bulk\+\_\+coordinate\+\_\+fct\+\_\+pt} ()
+\begin{DoxyCompactList}\small\item\em Return the pointer to the function that maps the face coordinate to the bulk coordinate. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1FaceElement_aaa3af8b5d2e9584bdcd9b133990d7591}{Coordinate\+Mapping\+Fct\+Pt} \hyperlink{classoomph_1_1FaceElement_a2168997e5ea9064d74e1c9ad220eba69}{face\+\_\+to\+\_\+bulk\+\_\+coordinate\+\_\+fct\+\_\+pt} () const
+\begin{DoxyCompactList}\small\item\em Return the pointer to the function that maps the face coordinate to the bulk coordinate (const version) \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1FaceElement_a67356b9329923767ab8f13fed85f7f88}{Bulk\+Coordinate\+Derivatives\+Fct\+Pt} \& \hyperlink{classoomph_1_1FaceElement_abac8bdefea177d3a6f3a89ebbaf4ed4a}{bulk\+\_\+coordinate\+\_\+derivatives\+\_\+fct\+\_\+pt} ()
+\begin{DoxyCompactList}\small\item\em Return the pointer to the function that returns the derivatives of the bulk coordinates wrt the face coordinates. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1FaceElement_a67356b9329923767ab8f13fed85f7f88}{Bulk\+Coordinate\+Derivatives\+Fct\+Pt} \hyperlink{classoomph_1_1FaceElement_a42c2096f5c785657c3a09edce458296a}{bulk\+\_\+coordinate\+\_\+derivatives\+\_\+fct\+\_\+pt} () const
+\begin{DoxyCompactList}\small\item\em Return the pointer to the function that returns the derivatives of the bulk coordinates wrt the face coordinates (const version) \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \hyperlink{classoomph_1_1FaceElement_a5dd56d5b438c316aca9efa815441b74d}{local\+\_\+coordinate\+\_\+in\+\_\+bulk} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}) const
+\begin{DoxyCompactList}\small\item\em Return vector of local coordinates in bulk element, given the local coordinates in this \hyperlink{classoomph_1_1FaceElement}{Face\+Element}. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1FaceElement_aced9ec5b182220c0f50b1714638ee8f3}{get\+\_\+local\+\_\+coordinate\+\_\+in\+\_\+bulk} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&s\+\_\+bulk) const
+\begin{DoxyCompactList}\small\item\em Calculate the vector of local coordinate in the bulk element given the local coordinates in this \hyperlink{classoomph_1_1FaceElement}{Face\+Element}. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1FaceElement_ac1e67f910b557da8ef2eb68977c17cad}{get\+\_\+ds\+\_\+bulk\+\_\+ds\+\_\+face} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&dsbulk\+\_\+dsface, unsigned \&interior\+\_\+direction) const
+\begin{DoxyCompactList}\small\item\em Calculate the derivatives of the local coordinates in the bulk element with respect to the local coordinates in this \hyperlink{classoomph_1_1FaceElement}{Face\+Element}. In addition return the index of a bulk local coordinate that varies away from the face. \end{DoxyCompactList}\item 
+unsigned \& \hyperlink{classoomph_1_1FaceElement_a0800385f7d11703d4bbae06e1c322b04}{bulk\+\_\+position\+\_\+type} (const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i})
+\begin{DoxyCompactList}\small\item\em Return the position type in the \char`\"{}bulk\char`\"{} element that corresponds to position type i on the \hyperlink{classoomph_1_1FaceElement}{Face\+Element}. \end{DoxyCompactList}\item 
+const unsigned \& \hyperlink{classoomph_1_1FaceElement_aa99f478e771d753e93cc748caf0e5302}{bulk\+\_\+position\+\_\+type} (const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}) const
+\begin{DoxyCompactList}\small\item\em Return the position type in the \char`\"{}bulk\char`\"{} element that corresponds to the position type i on the \hyperlink{classoomph_1_1FaceElement}{Face\+Element}. Const version. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1FaceElement_a2f1891fcc8fc36bd263f62a54d792dac}{bulk\+\_\+node\+\_\+number\+\_\+resize} (const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i})
+\begin{DoxyCompactList}\small\item\em Resize the storage for the bulk node numbers. \end{DoxyCompactList}\item 
+unsigned \& \hyperlink{classoomph_1_1FaceElement_ae437e62de81be4c4183de872d1119b16}{bulk\+\_\+node\+\_\+number} (const unsigned \&n)
+\begin{DoxyCompactList}\small\item\em Return the bulk node number that corresponds to the n-\/th local node number. \end{DoxyCompactList}\item 
+const unsigned \& \hyperlink{classoomph_1_1FaceElement_ad520ea8561262ec0adc5d9cb8bd2797e}{bulk\+\_\+node\+\_\+number} (const unsigned \&n) const
+\begin{DoxyCompactList}\small\item\em Return the bulk node number that corresponds to the n-\/th local node number (const version) \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1FaceElement_a7e6ac88c4dbc58f16e9c7ca60b6b9c0f}{bulk\+\_\+position\+\_\+type\+\_\+resize} (const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i})
+\begin{DoxyCompactList}\small\item\em Resize the storage for bulk\+\_\+position\+\_\+type to i entries. \end{DoxyCompactList}\item 
+unsigned \& \hyperlink{classoomph_1_1FaceElement_a58b9a1328c1c991142d58d1202c561e1}{nbulk\+\_\+value} (const unsigned \&n)
+\begin{DoxyCompactList}\small\item\em Return the number of values originally stored at local node n (before the \hyperlink{classoomph_1_1FaceElement}{Face\+Element} added additional values to it (if it did)) \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1FaceElement_a1045ac3ff9a56b0e4bd86b8e62f9d80c}{nbulk\+\_\+value} (const unsigned \&n) const
+\begin{DoxyCompactList}\small\item\em Return the number of values originally stored at local node n (before the \hyperlink{classoomph_1_1FaceElement}{Face\+Element} added additional values to it (if it did)) (const version) \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1FaceElement_afd5c80da03ec10df9887e57ee3bce773}{nbulk\+\_\+value\+\_\+resize} (const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i})
+\begin{DoxyCompactList}\small\item\em Resize the storage for the number of values originally stored at the local nodes to i entries. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1FaceElement_ae7513d0db79b9ec47f9d72f40dbb4417}{resize\+\_\+nodes} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ unsigned $>$ \&nadditional\+\_\+data\+\_\+values)
+\begin{DoxyCompactList}\small\item\em Provide additional storage for a specified number of values at the nodes of the \hyperlink{classoomph_1_1FaceElement}{Face\+Element}. (This is needed, for instance, in free-\/surface elements, if the non-\/penetration condition is imposed by Lagrange multipliers whose values are only stored at the surface nodes but not in the interior of the bulk element). {\ttfamily nadditional\+\_\+data\+\_\+values}\mbox{[}n\mbox{]} specifies the number of additional values required at node {\ttfamily n} of the \hyperlink{classoomph_1_1FaceElement}{Face\+Element}. {\bfseries Note\+:} Since this function is executed separately for each \hyperlink{classoomph_1_1FaceElement}{Face\+Element}, nodes that are common to multiple elements might be resized repeatedly. To avoid this, we only allow a single resize operation by comparing the number of values stored at each node to the number of values the node had when it was simply a member of the associated \char`\"{}bulk\char`\"{} element. {\bfseries There are cases where this will break!} -- e.\+g. if a node is common to two Face\+Elements which require additional storage for distinct quantities. Such cases need to be handled by \char`\"{}hand-\/crafted\char`\"{} face elements. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1FaceElement_adf2632a515afa6efdc884e6def8a4163}{output\+\_\+zeta} (std\+::ostream \&outfile, const unsigned \&nplot)
+\begin{DoxyCompactList}\small\item\em Output boundary coordinate zeta. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classoomph_1_1FaceElement_a652aa3d84b6d91e0ce93bdb2e6718338}{add\+\_\+additional\+\_\+values} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ unsigned $>$ \&nadditional\+\_\+values, const unsigned \&id)
+\begin{DoxyCompactList}\small\item\em Helper function adding additional values for the unknowns associated with the \hyperlink{classoomph_1_1FaceElement}{Face\+Element}. This function also sets the map containing the position of the first entry of this face element\textquotesingle{}s additional values.\+The inputs are the number of additional values and the face element\textquotesingle{}s ID. Note the same number of additonal values are allocated at A\+LL nodes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+unsigned \hyperlink{classoomph_1_1FaceElement_a12768f6229f232be88da7dfa10fd87be}{Boundary\+\_\+number\+\_\+in\+\_\+bulk\+\_\+mesh}
+\begin{DoxyCompactList}\small\item\em The boundary number in the bulk mesh to which this element is attached. \end{DoxyCompactList}\item 
+bool \hyperlink{classoomph_1_1FaceElement_a113a0f8d3d26af5e684b549e9a44a37e}{Boundary\+\_\+number\+\_\+in\+\_\+bulk\+\_\+mesh\+\_\+has\+\_\+been\+\_\+set}
+\begin{DoxyCompactList}\small\item\em Has the Boundary\+\_\+number\+\_\+in\+\_\+bulk\+\_\+mesh been set? Only included if compiled with P\+A\+R\+A\+N\+O\+ID switched on. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1FiniteElement}{Finite\+Element} $\ast$ \hyperlink{classoomph_1_1FaceElement_a2d616b77ff557bbc70ece741fa2c6d96}{Bulk\+\_\+element\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to the associated higher-\/dimensional \char`\"{}bulk\char`\"{} element. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Vector}{Vector}$<$ unsigned $>$ \hyperlink{classoomph_1_1FaceElement_a27a8a3240049a53c7fac20ebde716846}{Bulk\+\_\+node\+\_\+number}
+\begin{DoxyCompactList}\small\item\em List of indices of the local node numbers in the \char`\"{}bulk\char`\"{} element that correspond to the local node numbers in the \hyperlink{classoomph_1_1FaceElement}{Face\+Element}. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Vector}{Vector}$<$ unsigned $>$ \hyperlink{classoomph_1_1FaceElement_abd04b85066da626341294b5f0b97516e}{Nbulk\+\_\+value}
+\begin{DoxyCompactList}\small\item\em A vector that will hold the number of data values at the nodes that are associated with the \char`\"{}bulk\char`\"{} element. i.\+e. not including any additional degrees of freedom that might be required for extra equations that are being solved by the \hyperlink{classoomph_1_1FaceElement}{Face\+Element}. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ $\ast$ \hyperlink{classoomph_1_1FaceElement_a6be4abd12fb4edbd94b7613f62de3593}{Tangent\+\_\+direction\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em A general direction pointer for the tangent vectors. This is used in the function \hyperlink{classoomph_1_1FaceElement_a182997beb4a64fde40a47007344913f1}{continuous\+\_\+tangent\+\_\+and\+\_\+outer\+\_\+unit\+\_\+normal()} for creating continuous tangent vectors in spatial dimensions. The general direction is projected on to the surface. This technique is not required in two spatial dimensions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef void($\ast$ \hyperlink{classoomph_1_1FaceElement_aaa3af8b5d2e9584bdcd9b133990d7591}{Coordinate\+Mapping\+Fct\+Pt}) (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&s\+\_\+bulk)
+\begin{DoxyCompactList}\small\item\em Typedef for the function that translates the face coordinate to the coordinate in the bulk element. \end{DoxyCompactList}\item 
+typedef void($\ast$ \hyperlink{classoomph_1_1FaceElement_a67356b9329923767ab8f13fed85f7f88}{Bulk\+Coordinate\+Derivatives\+Fct\+Pt}) (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&ds\+\_\+bulk\+\_\+dsface, unsigned \&interior\+\_\+direction)
+\begin{DoxyCompactList}\small\item\em Typedef for the function that returns the partial derivative of the local coordinates in the bulk element with respect to the coordinates along the face. In addition this function returns an index of one of the bulk local coordinates that varies away from the edge. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1FaceElement_aaa3af8b5d2e9584bdcd9b133990d7591}{Coordinate\+Mapping\+Fct\+Pt} \hyperlink{classoomph_1_1FaceElement_ad679fad61e43e7a537df4f7b148f0ebc}{Face\+\_\+to\+\_\+bulk\+\_\+coordinate\+\_\+fct\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to a function that translates the face coordinate to the coordinate in the bulk element. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1FaceElement_a67356b9329923767ab8f13fed85f7f88}{Bulk\+Coordinate\+Derivatives\+Fct\+Pt} \hyperlink{classoomph_1_1FaceElement_a5dc24a15c7486ef1859223ac9dd4c78e}{Bulk\+\_\+coordinate\+\_\+derivatives\+\_\+fct\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to a function that returns the derivatives of the local \char`\"{}bulk\char`\"{} coordinates with respect to the local face coordinates. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Vector}{Vector}$<$ unsigned $>$ \hyperlink{classoomph_1_1FaceElement_a94b5c274338bd257c0d18b381b216984}{Bulk\+\_\+position\+\_\+type}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classoomph_1_1Vector}{Vector} holding integers to translate additional position types to those of the \char`\"{}bulk\char`\"{} element; e.\+g. Bulk\+\_\+position\+\_\+type(1) is the position type of the \char`\"{}bulk\char`\"{} element that corresponds to face position type 1. This is required in Q\+Hermite\+Elements, where the slope in the direction of the 1D element is face position type 1, but may be position type 1 or 2 in the \char`\"{}bulk\char`\"{} element, depending upon which face, we are located. \end{DoxyCompactList}\item 
+int \hyperlink{classoomph_1_1FaceElement_a5b72b90a01168c323f57714bb9a27376}{Normal\+\_\+sign}
+\begin{DoxyCompactList}\small\item\em Sign of outer unit normal (relative to cross-\/products of tangent vectors in the corresponding \char`\"{}bulk\char`\"{} element. \end{DoxyCompactList}\item 
+int \hyperlink{classoomph_1_1FaceElement_a528cd1e95e0c231f757e54b751c50f8f}{Face\+\_\+index}
+\begin{DoxyCompactList}\small\item\em Index of the face. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static bool \hyperlink{classoomph_1_1FaceElement_a95ac8141871cfe5353667b64fddee734}{Ignore\+\_\+discontinuous\+\_\+tangent\+\_\+warning} = false
+\begin{DoxyCompactList}\small\item\em Ignores the warning when the tangent vectors from continuous\+\_\+tangent\+\_\+and\+\_\+outer\+\_\+unit\+\_\+normal may not be continuous as a result of the unit normal being aligned with the z axis. This can be avoided by supplying a general direction vector for the tangent vector via set\+\_\+tangent\+\_\+direction(...). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Face\+Elements are elements that coincide with the faces of higher-\/dimensional \char`\"{}bulk\char`\"{} elements. They are used on boundaries where additional non-\/trivial boundary conditions need to be applied. Examples include free surfaces, and applied traction conditions. In many cases, Face\+Elements need to evaluate to quantities in the associated bulk elements. For instance, the evaluation of a shear stresses on 2D \hyperlink{classoomph_1_1FaceElement}{Face\+Element} requires the evaluation of velocity derivatives in the associated 3D volume element etc. Therefore we store a pointer to the associated bulk element, and information about the relation between the local coordinates in the face and bulk elements. 
+
+Definition at line 4130 of file elements.\+h.
+
+
+
+\subsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classoomph_1_1FaceElement_a67356b9329923767ab8f13fed85f7f88}\label{classoomph_1_1FaceElement_a67356b9329923767ab8f13fed85f7f88}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!Bulk\+Coordinate\+Derivatives\+Fct\+Pt@{Bulk\+Coordinate\+Derivatives\+Fct\+Pt}}
+\index{Bulk\+Coordinate\+Derivatives\+Fct\+Pt@{Bulk\+Coordinate\+Derivatives\+Fct\+Pt}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{Bulk\+Coordinate\+Derivatives\+Fct\+Pt}{BulkCoordinateDerivativesFctPt}}
+{\footnotesize\ttfamily typedef void($\ast$ oomph\+::\+Face\+Element\+::\+Bulk\+Coordinate\+Derivatives\+Fct\+Pt) (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&ds\+\_\+bulk\+\_\+dsface, unsigned \&interior\+\_\+direction)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Typedef for the function that returns the partial derivative of the local coordinates in the bulk element with respect to the coordinates along the face. In addition this function returns an index of one of the bulk local coordinates that varies away from the edge. 
+
+
+
+Definition at line 4142 of file elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_aaa3af8b5d2e9584bdcd9b133990d7591}\label{classoomph_1_1FaceElement_aaa3af8b5d2e9584bdcd9b133990d7591}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!Coordinate\+Mapping\+Fct\+Pt@{Coordinate\+Mapping\+Fct\+Pt}}
+\index{Coordinate\+Mapping\+Fct\+Pt@{Coordinate\+Mapping\+Fct\+Pt}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{Coordinate\+Mapping\+Fct\+Pt}{CoordinateMappingFctPt}}
+{\footnotesize\ttfamily typedef void($\ast$ oomph\+::\+Face\+Element\+::\+Coordinate\+Mapping\+Fct\+Pt) (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&s\+\_\+bulk)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Typedef for the function that translates the face coordinate to the coordinate in the bulk element. 
+
+
+
+Definition at line 4134 of file elements.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1FaceElement_a63f236503b58841500498b98d4fb9721}\label{classoomph_1_1FaceElement_a63f236503b58841500498b98d4fb9721}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!Face\+Element@{Face\+Element}}
+\index{Face\+Element@{Face\+Element}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{Face\+Element()}{FaceElement()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily oomph\+::\+Face\+Element\+::\+Face\+Element (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor\+: Initialise all appropriate member data. 
+
+
+
+Definition at line 4242 of file elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_af1eb8c85722a8bdb196f94758dc3c630}\label{classoomph_1_1FaceElement_af1eb8c85722a8bdb196f94758dc3c630}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!````~Face\+Element@{$\sim$\+Face\+Element}}
+\index{````~Face\+Element@{$\sim$\+Face\+Element}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{$\sim$\+Face\+Element()}{~FaceElement()}}
+{\footnotesize\ttfamily virtual oomph\+::\+Face\+Element\+::$\sim$\+Face\+Element (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Empty virtual destructor. 
+
+
+
+Definition at line 4256 of file elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_a21acf2a56f732a3378674f74525effbf}\label{classoomph_1_1FaceElement_a21acf2a56f732a3378674f74525effbf}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!Face\+Element@{Face\+Element}}
+\index{Face\+Element@{Face\+Element}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{Face\+Element()}{FaceElement()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily oomph\+::\+Face\+Element\+::\+Face\+Element (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1FaceElement}{Face\+Element} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Broken copy constructor. 
+
+
+
+Definition at line 4260 of file elements.\+h.
+
+
+
+References oomph\+::\+Broken\+Copy\+::broken\+\_\+copy().
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1FaceElement_a652aa3d84b6d91e0ce93bdb2e6718338}\label{classoomph_1_1FaceElement_a652aa3d84b6d91e0ce93bdb2e6718338}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!add\+\_\+additional\+\_\+values@{add\+\_\+additional\+\_\+values}}
+\index{add\+\_\+additional\+\_\+values@{add\+\_\+additional\+\_\+values}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{add\+\_\+additional\+\_\+values()}{add\_additional\_values()}}
+{\footnotesize\ttfamily void oomph\+::\+Face\+Element\+::add\+\_\+additional\+\_\+values (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ unsigned $>$ \&}]{nadditional\+\_\+values,  }\item[{const unsigned \&}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Helper function adding additional values for the unknowns associated with the \hyperlink{classoomph_1_1FaceElement}{Face\+Element}. This function also sets the map containing the position of the first entry of this face element\textquotesingle{}s additional values.\+The inputs are the number of additional values and the face element\textquotesingle{}s ID. Note the same number of additonal values are allocated at A\+LL nodes. 
+
+
+
+Definition at line 4222 of file elements.\+h.
+
+
+
+Referenced by oomph\+::\+Impose\+Impenetrability\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Impose\+Impenetrability\+Element(), oomph\+::\+Impose\+Parallel\+Outflow\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Impose\+Parallel\+Outflow\+Element(), oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element(), and oomph\+::\+Linearised\+F\+S\+I\+Axisymmetric\+N\+St\+No\+Slip\+B\+C\+Element\+Element$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, S\+O\+L\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::\+Linearised\+F\+S\+I\+Axisymmetric\+N\+St\+No\+Slip\+B\+C\+Element\+Element().
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_a7658b23bf2cf041883f51b827eab9059}\label{classoomph_1_1FaceElement_a7658b23bf2cf041883f51b827eab9059}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!boundary\+\_\+number\+\_\+in\+\_\+bulk\+\_\+mesh@{boundary\+\_\+number\+\_\+in\+\_\+bulk\+\_\+mesh}}
+\index{boundary\+\_\+number\+\_\+in\+\_\+bulk\+\_\+mesh@{boundary\+\_\+number\+\_\+in\+\_\+bulk\+\_\+mesh}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{boundary\+\_\+number\+\_\+in\+\_\+bulk\+\_\+mesh()}{boundary\_number\_in\_bulk\_mesh()}}
+{\footnotesize\ttfamily const unsigned\& oomph\+::\+Face\+Element\+::boundary\+\_\+number\+\_\+in\+\_\+bulk\+\_\+mesh (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Broken assignment operator. 
+
+Access function for the boundary number in bulk mesh 
+
+Definition at line 4272 of file elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_abac8bdefea177d3a6f3a89ebbaf4ed4a}\label{classoomph_1_1FaceElement_abac8bdefea177d3a6f3a89ebbaf4ed4a}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!bulk\+\_\+coordinate\+\_\+derivatives\+\_\+fct\+\_\+pt@{bulk\+\_\+coordinate\+\_\+derivatives\+\_\+fct\+\_\+pt}}
+\index{bulk\+\_\+coordinate\+\_\+derivatives\+\_\+fct\+\_\+pt@{bulk\+\_\+coordinate\+\_\+derivatives\+\_\+fct\+\_\+pt}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{bulk\+\_\+coordinate\+\_\+derivatives\+\_\+fct\+\_\+pt()}{bulk\_coordinate\_derivatives\_fct\_pt()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1FaceElement_a67356b9329923767ab8f13fed85f7f88}{Bulk\+Coordinate\+Derivatives\+Fct\+Pt}\& oomph\+::\+Face\+Element\+::bulk\+\_\+coordinate\+\_\+derivatives\+\_\+fct\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the pointer to the function that returns the derivatives of the bulk coordinates wrt the face coordinates. 
+
+
+
+Definition at line 4540 of file elements.\+h.
+
+
+
+Referenced by oomph\+::\+Q\+Hermite\+Element$<$ D\+I\+M-\/1 $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+Q\+Spectral\+Element$<$ 1, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+Q\+Spectral\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+Q\+Spectral\+Element$<$ 3, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+T\+Element$<$ 1, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::build\+\_\+face\+\_\+element(), and oomph\+::\+Finite\+Element\+::build\+\_\+face\+\_\+element().
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_a42c2096f5c785657c3a09edce458296a}\label{classoomph_1_1FaceElement_a42c2096f5c785657c3a09edce458296a}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!bulk\+\_\+coordinate\+\_\+derivatives\+\_\+fct\+\_\+pt@{bulk\+\_\+coordinate\+\_\+derivatives\+\_\+fct\+\_\+pt}}
+\index{bulk\+\_\+coordinate\+\_\+derivatives\+\_\+fct\+\_\+pt@{bulk\+\_\+coordinate\+\_\+derivatives\+\_\+fct\+\_\+pt}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{bulk\+\_\+coordinate\+\_\+derivatives\+\_\+fct\+\_\+pt()}{bulk\_coordinate\_derivatives\_fct\_pt()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1FaceElement_a67356b9329923767ab8f13fed85f7f88}{Bulk\+Coordinate\+Derivatives\+Fct\+Pt} oomph\+::\+Face\+Element\+::bulk\+\_\+coordinate\+\_\+derivatives\+\_\+fct\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the pointer to the function that returns the derivatives of the bulk coordinates wrt the face coordinates (const version) 
+
+
+
+Definition at line 4545 of file elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_a7539054d858d73989d7c1166e333e0f8}\label{classoomph_1_1FaceElement_a7539054d858d73989d7c1166e333e0f8}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!bulk\+\_\+element\+\_\+pt@{bulk\+\_\+element\+\_\+pt}}
+\index{bulk\+\_\+element\+\_\+pt@{bulk\+\_\+element\+\_\+pt}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{bulk\+\_\+element\+\_\+pt()}{bulk\_element\_pt()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1FiniteElement}{Finite\+Element}$\ast$\& oomph\+::\+Face\+Element\+::bulk\+\_\+element\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Pointer to higher-\/dimensional \char`\"{}bulk\char`\"{} element. 
+
+
+
+Definition at line 4515 of file elements.\+h.
+
+
+
+Referenced by oomph\+::\+Young\+Laplace\+Contact\+Angle\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::actual\+\_\+cos\+\_\+contact\+\_\+angle(), oomph\+::\+D\+G\+Face\+Element\+::add\+\_\+flux\+\_\+contributions(), oomph\+::\+Q\+Hermite\+Element$<$ D\+I\+M-\/1 $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+Q\+Spectral\+Element$<$ 1, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+Q\+Spectral\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+Q\+Spectral\+Element$<$ 3, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+T\+Element$<$ 1, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+Finite\+Element\+::build\+\_\+face\+\_\+element(), oomph\+::\+T\+Element$<$ 3, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Boundary\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::compute\+\_\+gamma\+\_\+contribution(), oomph\+::\+Young\+Laplace\+Contact\+Angle\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::contact\+\_\+line\+\_\+vectors(), oomph\+::\+Navier\+Stokes\+Surface\+Power\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::drag\+\_\+force(), oomph\+::\+Clamped\+Sliding\+Hermite\+Beam\+Boundary\+Condition\+Element\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals(), oomph\+::\+Clamped\+Hermite\+Shell\+Boundary\+Condition\+Element\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals(), oomph\+::\+Impose\+Impenetrability\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+generic\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+parall\+\_\+lagr\+\_\+multiplier(), oomph\+::\+Impose\+Parallel\+Outflow\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+generic\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+parall\+\_\+lagr\+\_\+multiplier(), oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+axisym\+\_\+poroelastic\+\_\+fsi(), oomph\+::\+Refineable\+Fp\+Pressure\+Adv\+Diff\+Robin\+B\+C\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+fp\+\_\+press\+\_\+adv\+\_\+diff\+\_\+robin\+\_\+bc(), oomph\+::\+Fp\+Pressure\+Adv\+Diff\+Robin\+B\+C\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+fp\+\_\+press\+\_\+adv\+\_\+diff\+\_\+robin\+\_\+bc(), oomph\+::\+Point\+Fluid\+Interface\+Bounding\+Element\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+interface\+\_\+boundary(), oomph\+::\+Line\+Fluid\+Interface\+Bounding\+Element\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+interface\+\_\+boundary(), oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::get\+\_\+drag\+\_\+and\+\_\+torque(), oomph\+::\+Navier\+Stokes\+Surface\+Power\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::get\+\_\+kinetic\+\_\+energy\+\_\+flux(), oomph\+::\+Navier\+Stokes\+Surface\+Power\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::get\+\_\+rate\+\_\+of\+\_\+traction\+\_\+work(), oomph\+::\+Navier\+Stokes\+Surface\+Power\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::get\+\_\+rate\+\_\+of\+\_\+traction\+\_\+work\+\_\+components(), oomph\+::\+Navier\+Stokes\+Surface\+Power\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::get\+\_\+volume\+\_\+flux(), oomph\+::\+P\+M\+L\+Helmholtz\+Power\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::global\+\_\+flux\+\_\+contribution(), oomph\+::\+Time\+Harmonic\+Lin\+Elast\+Loaded\+By\+P\+M\+L\+Helmholtz\+Pressure\+B\+C\+Element$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::global\+\_\+flux\+\_\+contribution\+\_\+from\+\_\+solid(), oomph\+::\+P\+M\+L\+Helmholtz\+Power\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::global\+\_\+power\+\_\+contribution(), oomph\+::\+Fourier\+Decomposed\+Helmholtz\+B\+C\+Element\+Base$<$ E\+L\+E\+M\+E\+N\+T $>$\+::global\+\_\+power\+\_\+contribution(), oomph\+::\+P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Power\+Monitor\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::global\+\_\+power\+\_\+contribution(), oomph\+::\+Problem\+::load\+\_\+balance(), oomph\+::\+Multi\+\_\+domain\+\_\+functions\+::locate\+\_\+zeta\+\_\+for\+\_\+local\+\_\+coordinates(), oomph\+::\+Refineable\+Navier\+Stokes\+Traction\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::ncont\+\_\+interpolated\+\_\+values(), oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::output(), oomph\+::\+Clamped\+Hermite\+Shell\+Boundary\+Condition\+Element\+::output(), oomph\+::\+Problem\+::read(), oomph\+::\+Refineable\+Navier\+Stokes\+Traction\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::refineable\+\_\+fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+fluid\+\_\+traction(), oomph\+::\+Fluid\+Interface\+Bounding\+Element\+::reset\+\_\+after\+\_\+external\+\_\+fd(), oomph\+::\+Fluid\+Interface\+Bounding\+Element\+::set\+\_\+contact\+\_\+angle(), oomph\+::\+D\+G\+Face\+Element\+::setup\+\_\+neighbour\+\_\+info(), oomph\+::\+D\+G\+Element\+::slope\+\_\+limit(), and oomph\+::\+Fluid\+Interface\+Bounding\+Element\+::update\+\_\+in\+\_\+external\+\_\+fd().
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_a8d2cf880d94b4b23ca2a25a6afaf7146}\label{classoomph_1_1FaceElement_a8d2cf880d94b4b23ca2a25a6afaf7146}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!bulk\+\_\+element\+\_\+pt@{bulk\+\_\+element\+\_\+pt}}
+\index{bulk\+\_\+element\+\_\+pt@{bulk\+\_\+element\+\_\+pt}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{bulk\+\_\+element\+\_\+pt()}{bulk\_element\_pt()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1FiniteElement}{Finite\+Element}$\ast$ oomph\+::\+Face\+Element\+::bulk\+\_\+element\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Pointer to higher-\/dimensional \char`\"{}bulk\char`\"{} element (const version) 
+
+
+
+Definition at line 4519 of file elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_ae437e62de81be4c4183de872d1119b16}\label{classoomph_1_1FaceElement_ae437e62de81be4c4183de872d1119b16}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!bulk\+\_\+node\+\_\+number@{bulk\+\_\+node\+\_\+number}}
+\index{bulk\+\_\+node\+\_\+number@{bulk\+\_\+node\+\_\+number}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{bulk\+\_\+node\+\_\+number()}{bulk\_node\_number()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily unsigned\& oomph\+::\+Face\+Element\+::bulk\+\_\+node\+\_\+number (\begin{DoxyParamCaption}\item[{const unsigned \&}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the bulk node number that corresponds to the n-\/th local node number. 
+
+
+
+Definition at line 4584 of file elements.\+h.
+
+
+
+Referenced by oomph\+::\+D\+G\+Face\+Element\+::add\+\_\+flux\+\_\+contributions(), oomph\+::\+Q\+Hermite\+Element$<$ D\+I\+M-\/1 $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+Q\+Spectral\+Element$<$ 1, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+Q\+Spectral\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+T\+Bubble\+Enriched\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+T\+Element$<$ 1, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+Finite\+Element\+::build\+\_\+face\+\_\+element(), oomph\+::\+T\+Element$<$ 3, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::build\+\_\+face\+\_\+element(), and oomph\+::\+Fluid\+Interface\+Element\+::make\+\_\+bounding\+\_\+element().
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_ad520ea8561262ec0adc5d9cb8bd2797e}\label{classoomph_1_1FaceElement_ad520ea8561262ec0adc5d9cb8bd2797e}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!bulk\+\_\+node\+\_\+number@{bulk\+\_\+node\+\_\+number}}
+\index{bulk\+\_\+node\+\_\+number@{bulk\+\_\+node\+\_\+number}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{bulk\+\_\+node\+\_\+number()}{bulk\_node\_number()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily const unsigned\& oomph\+::\+Face\+Element\+::bulk\+\_\+node\+\_\+number (\begin{DoxyParamCaption}\item[{const unsigned \&}]{n }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the bulk node number that corresponds to the n-\/th local node number (const version) 
+
+
+
+Definition at line 4588 of file elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_a2f1891fcc8fc36bd263f62a54d792dac}\label{classoomph_1_1FaceElement_a2f1891fcc8fc36bd263f62a54d792dac}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!bulk\+\_\+node\+\_\+number\+\_\+resize@{bulk\+\_\+node\+\_\+number\+\_\+resize}}
+\index{bulk\+\_\+node\+\_\+number\+\_\+resize@{bulk\+\_\+node\+\_\+number\+\_\+resize}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{bulk\+\_\+node\+\_\+number\+\_\+resize()}{bulk\_node\_number\_resize()}}
+{\footnotesize\ttfamily void oomph\+::\+Face\+Element\+::bulk\+\_\+node\+\_\+number\+\_\+resize (\begin{DoxyParamCaption}\item[{const unsigned \&}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Resize the storage for the bulk node numbers. 
+
+
+
+Definition at line 4580 of file elements.\+h.
+
+
+
+Referenced by oomph\+::\+Q\+Hermite\+Element$<$ D\+I\+M-\/1 $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+Q\+Spectral\+Element$<$ 1, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+Q\+Spectral\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+T\+Bubble\+Enriched\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+T\+Element$<$ 1, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+Finite\+Element\+::build\+\_\+face\+\_\+element(), and oomph\+::\+T\+Element$<$ 3, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::build\+\_\+face\+\_\+element().
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_a0800385f7d11703d4bbae06e1c322b04}\label{classoomph_1_1FaceElement_a0800385f7d11703d4bbae06e1c322b04}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!bulk\+\_\+position\+\_\+type@{bulk\+\_\+position\+\_\+type}}
+\index{bulk\+\_\+position\+\_\+type@{bulk\+\_\+position\+\_\+type}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{bulk\+\_\+position\+\_\+type()}{bulk\_position\_type()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily unsigned\& oomph\+::\+Face\+Element\+::bulk\+\_\+position\+\_\+type (\begin{DoxyParamCaption}\item[{const unsigned \&}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the position type in the \char`\"{}bulk\char`\"{} element that corresponds to position type i on the \hyperlink{classoomph_1_1FaceElement}{Face\+Element}. 
+
+
+
+Definition at line 4571 of file elements.\+h.
+
+
+
+References i.
+
+
+
+Referenced by oomph\+::\+Q\+Hermite\+Element$<$ D\+I\+M-\/1 $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+Clamped\+Hermite\+Shell\+Boundary\+Condition\+Element\+::\+Clamped\+Hermite\+Shell\+Boundary\+Condition\+Element(), oomph\+::\+Axisymmetric\+Solid\+Traction\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals(), oomph\+::\+Biharmonic\+Flux\+Element$<$ D\+I\+M $>$\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+biharmonic\+\_\+flux(), and oomph\+::\+Biharmonic\+Flux\+Element$<$ D\+I\+M $>$\+::\+J\+\_\+eulerian().
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_aa99f478e771d753e93cc748caf0e5302}\label{classoomph_1_1FaceElement_aa99f478e771d753e93cc748caf0e5302}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!bulk\+\_\+position\+\_\+type@{bulk\+\_\+position\+\_\+type}}
+\index{bulk\+\_\+position\+\_\+type@{bulk\+\_\+position\+\_\+type}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{bulk\+\_\+position\+\_\+type()}{bulk\_position\_type()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily const unsigned\& oomph\+::\+Face\+Element\+::bulk\+\_\+position\+\_\+type (\begin{DoxyParamCaption}\item[{const unsigned \&}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the position type in the \char`\"{}bulk\char`\"{} element that corresponds to the position type i on the \hyperlink{classoomph_1_1FaceElement}{Face\+Element}. Const version. 
+
+
+
+Definition at line 4576 of file elements.\+h.
+
+
+
+References i.
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_a7e6ac88c4dbc58f16e9c7ca60b6b9c0f}\label{classoomph_1_1FaceElement_a7e6ac88c4dbc58f16e9c7ca60b6b9c0f}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!bulk\+\_\+position\+\_\+type\+\_\+resize@{bulk\+\_\+position\+\_\+type\+\_\+resize}}
+\index{bulk\+\_\+position\+\_\+type\+\_\+resize@{bulk\+\_\+position\+\_\+type\+\_\+resize}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{bulk\+\_\+position\+\_\+type\+\_\+resize()}{bulk\_position\_type\_resize()}}
+{\footnotesize\ttfamily void oomph\+::\+Face\+Element\+::bulk\+\_\+position\+\_\+type\+\_\+resize (\begin{DoxyParamCaption}\item[{const unsigned \&}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Resize the storage for bulk\+\_\+position\+\_\+type to i entries. 
+
+
+
+Definition at line 4592 of file elements.\+h.
+
+
+
+Referenced by oomph\+::\+Q\+Hermite\+Element$<$ D\+I\+M-\/1 $>$\+::build\+\_\+face\+\_\+element(), and oomph\+::\+Clamped\+Hermite\+Shell\+Boundary\+Condition\+Element\+::\+Clamped\+Hermite\+Shell\+Boundary\+Condition\+Element().
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_aabfb54314baeb47bb56f8de8e4dfe513}\label{classoomph_1_1FaceElement_aabfb54314baeb47bb56f8de8e4dfe513}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!check\+\_\+\+J\+\_\+eulerian\+\_\+at\+\_\+knots@{check\+\_\+\+J\+\_\+eulerian\+\_\+at\+\_\+knots}}
+\index{check\+\_\+\+J\+\_\+eulerian\+\_\+at\+\_\+knots@{check\+\_\+\+J\+\_\+eulerian\+\_\+at\+\_\+knots}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{check\+\_\+\+J\+\_\+eulerian\+\_\+at\+\_\+knots()}{check\_J\_eulerian\_at\_knots()}}
+{\footnotesize\ttfamily void oomph\+::\+Face\+Element\+::check\+\_\+\+J\+\_\+eulerian\+\_\+at\+\_\+knots (\begin{DoxyParamCaption}\item[{bool \&}]{passed }\end{DoxyParamCaption}) const}
+
+
+
+Check that Jacobian of mapping between local and Eulerian. 
+
+Check that Jacobian of mapping between local and Eulerian coordinates at all integration points is positive.
+
+coordinates at all integration points is positive. 
+
+Definition at line 5285 of file elements.\+cc.
+
+
+
+References continuous\+\_\+tangent\+\_\+and\+\_\+outer\+\_\+unit\+\_\+normal(), and i.
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_a182997beb4a64fde40a47007344913f1}\label{classoomph_1_1FaceElement_a182997beb4a64fde40a47007344913f1}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!continuous\+\_\+tangent\+\_\+and\+\_\+outer\+\_\+unit\+\_\+normal@{continuous\+\_\+tangent\+\_\+and\+\_\+outer\+\_\+unit\+\_\+normal}}
+\index{continuous\+\_\+tangent\+\_\+and\+\_\+outer\+\_\+unit\+\_\+normal@{continuous\+\_\+tangent\+\_\+and\+\_\+outer\+\_\+unit\+\_\+normal}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{continuous\+\_\+tangent\+\_\+and\+\_\+outer\+\_\+unit\+\_\+normal()}{continuous\_tangent\_and\_outer\_unit\_normal()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void oomph\+::\+Face\+Element\+::continuous\+\_\+tangent\+\_\+and\+\_\+outer\+\_\+unit\+\_\+normal (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ $>$ \&}]{tang\+\_\+vec,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{unit\+\_\+normal }\end{DoxyParamCaption}) const}
+
+
+
+Compute the tangent vector(s) and the outer unit normal vector at the specified local coordinate. In two spatial dimensions, a \char`\"{}tangent direction\char`\"{} is not required. In three spatial dimensions, a tangent direction is required (set via set\+\_\+tangent\+\_\+direction(...)), and we project the tanent direction on to the surface. The second tangent vector is taken to be the cross product of the projection and the unit normal. 
+
+
+
+Definition at line 5389 of file elements.\+cc.
+
+
+
+References oomph\+::\+Vector\+Helpers\+::angle(), oomph\+::\+Vector\+Helpers\+::cross(), oomph\+::\+Vector\+Helpers\+::dot(), i, oomph\+::\+Vector\+Helpers\+::magnitude(), and oomph\+::\+Mathematical\+Constants\+::\+Pi.
+
+
+
+Referenced by check\+\_\+\+J\+\_\+eulerian\+\_\+at\+\_\+knots(), and oomph\+::\+Impose\+Parallel\+Outflow\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+generic\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+parall\+\_\+lagr\+\_\+multiplier().
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_a2114d937858d142142ea4f4e2342e7b9}\label{classoomph_1_1FaceElement_a2114d937858d142142ea4f4e2342e7b9}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!continuous\+\_\+tangent\+\_\+and\+\_\+outer\+\_\+unit\+\_\+normal@{continuous\+\_\+tangent\+\_\+and\+\_\+outer\+\_\+unit\+\_\+normal}}
+\index{continuous\+\_\+tangent\+\_\+and\+\_\+outer\+\_\+unit\+\_\+normal@{continuous\+\_\+tangent\+\_\+and\+\_\+outer\+\_\+unit\+\_\+normal}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{continuous\+\_\+tangent\+\_\+and\+\_\+outer\+\_\+unit\+\_\+normal()}{continuous\_tangent\_and\_outer\_unit\_normal()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void oomph\+::\+Face\+Element\+::continuous\+\_\+tangent\+\_\+and\+\_\+outer\+\_\+unit\+\_\+normal (\begin{DoxyParamCaption}\item[{const unsigned \&}]{ipt,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ $>$ \&}]{tang\+\_\+vec,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{unit\+\_\+normal }\end{DoxyParamCaption}) const}
+
+
+
+Compute the tangent vector(s) and the outer unit normal vector at the ipt-\/th integration point. This is a wrapper around continuous\+\_\+tangent\+\_\+and\+\_\+outer\+\_\+unit\+\_\+normal(...) with the integration points converted into local coordinates. 
+
+
+
+Definition at line 5858 of file elements.\+cc.
+
+
+
+References i, and s.
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_a478d577ac6db67ecc80f1f02ae3ab170}\label{classoomph_1_1FaceElement_a478d577ac6db67ecc80f1f02ae3ab170}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!face\+\_\+index@{face\+\_\+index}}
+\index{face\+\_\+index@{face\+\_\+index}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{face\+\_\+index()}{face\_index()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily int\& oomph\+::\+Face\+Element\+::face\+\_\+index (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Index of the face (a number that uniquely identifies the face in the element) 
+
+
+
+Definition at line 4412 of file elements.\+h.
+
+
+
+Referenced by oomph\+::\+Q\+Hermite\+Element$<$ D\+I\+M-\/1 $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+Q\+Spectral\+Element$<$ 1, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+Q\+Spectral\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+Q\+Spectral\+Element$<$ 3, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+T\+Element$<$ 1, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+Finite\+Element\+::build\+\_\+face\+\_\+element(), oomph\+::\+T\+Element$<$ 3, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+Biharmonic\+Flux\+Element$<$ D\+I\+M $>$\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+biharmonic\+\_\+flux(), oomph\+::\+Problem\+::load\+\_\+balance(), oomph\+::\+D\+G\+Element\+::output\+\_\+faces(), oomph\+::\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::pin\+\_\+all\+\_\+non\+\_\+pressure\+\_\+dofs(), oomph\+::\+D\+G\+Face\+Element\+::setup\+\_\+neighbour\+\_\+info(), and oomph\+::\+Template\+Free\+Navier\+Stokes\+Equations\+Base\+::$\sim$\+Template\+Free\+Navier\+Stokes\+Equations\+Base().
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_a387bc31caaf8c6a8c2f8b287823bfd85}\label{classoomph_1_1FaceElement_a387bc31caaf8c6a8c2f8b287823bfd85}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!face\+\_\+index@{face\+\_\+index}}
+\index{face\+\_\+index@{face\+\_\+index}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{face\+\_\+index()}{face\_index()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily int oomph\+::\+Face\+Element\+::face\+\_\+index (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Index of the face (a number that uniquely identifies the face in the element) (const version) 
+
+
+
+Definition at line 4416 of file elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_a284064de90f834ec3a877d49bdee759a}\label{classoomph_1_1FaceElement_a284064de90f834ec3a877d49bdee759a}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!face\+\_\+to\+\_\+bulk\+\_\+coordinate\+\_\+fct\+\_\+pt@{face\+\_\+to\+\_\+bulk\+\_\+coordinate\+\_\+fct\+\_\+pt}}
+\index{face\+\_\+to\+\_\+bulk\+\_\+coordinate\+\_\+fct\+\_\+pt@{face\+\_\+to\+\_\+bulk\+\_\+coordinate\+\_\+fct\+\_\+pt}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{face\+\_\+to\+\_\+bulk\+\_\+coordinate\+\_\+fct\+\_\+pt()}{face\_to\_bulk\_coordinate\_fct\_pt()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1FaceElement_aaa3af8b5d2e9584bdcd9b133990d7591}{Coordinate\+Mapping\+Fct\+Pt}\& oomph\+::\+Face\+Element\+::face\+\_\+to\+\_\+bulk\+\_\+coordinate\+\_\+fct\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the pointer to the function that maps the face coordinate to the bulk coordinate. 
+
+
+
+Definition at line 4529 of file elements.\+h.
+
+
+
+Referenced by oomph\+::\+Q\+Hermite\+Element$<$ D\+I\+M-\/1 $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+Q\+Spectral\+Element$<$ 1, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+Q\+Spectral\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+Q\+Spectral\+Element$<$ 3, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+T\+Element$<$ 1, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+Finite\+Element\+::build\+\_\+face\+\_\+element(), and oomph\+::\+T\+Element$<$ 3, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::build\+\_\+face\+\_\+element().
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_a2168997e5ea9064d74e1c9ad220eba69}\label{classoomph_1_1FaceElement_a2168997e5ea9064d74e1c9ad220eba69}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!face\+\_\+to\+\_\+bulk\+\_\+coordinate\+\_\+fct\+\_\+pt@{face\+\_\+to\+\_\+bulk\+\_\+coordinate\+\_\+fct\+\_\+pt}}
+\index{face\+\_\+to\+\_\+bulk\+\_\+coordinate\+\_\+fct\+\_\+pt@{face\+\_\+to\+\_\+bulk\+\_\+coordinate\+\_\+fct\+\_\+pt}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{face\+\_\+to\+\_\+bulk\+\_\+coordinate\+\_\+fct\+\_\+pt()}{face\_to\_bulk\_coordinate\_fct\_pt()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1FaceElement_aaa3af8b5d2e9584bdcd9b133990d7591}{Coordinate\+Mapping\+Fct\+Pt} oomph\+::\+Face\+Element\+::face\+\_\+to\+\_\+bulk\+\_\+coordinate\+\_\+fct\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the pointer to the function that maps the face coordinate to the bulk coordinate (const version) 
+
+
+
+Definition at line 4534 of file elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_ac1e67f910b557da8ef2eb68977c17cad}\label{classoomph_1_1FaceElement_ac1e67f910b557da8ef2eb68977c17cad}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!get\+\_\+ds\+\_\+bulk\+\_\+ds\+\_\+face@{get\+\_\+ds\+\_\+bulk\+\_\+ds\+\_\+face}}
+\index{get\+\_\+ds\+\_\+bulk\+\_\+ds\+\_\+face@{get\+\_\+ds\+\_\+bulk\+\_\+ds\+\_\+face}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{get\+\_\+ds\+\_\+bulk\+\_\+ds\+\_\+face()}{get\_ds\_bulk\_ds\_face()}}
+{\footnotesize\ttfamily void oomph\+::\+Face\+Element\+::get\+\_\+ds\+\_\+bulk\+\_\+ds\+\_\+face (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{dsbulk\+\_\+dsface,  }\item[{unsigned \&}]{interior\+\_\+direction }\end{DoxyParamCaption}) const}
+
+
+
+Calculate the derivatives of the local coordinates in the bulk element with respect to the local coordinates in this \hyperlink{classoomph_1_1FaceElement}{Face\+Element}. In addition return the index of a bulk local coordinate that varies away from the face. 
+
+Calculate the derivatives of the local coordinates in the bulk element with respect to the local coordinates in this \hyperlink{classoomph_1_1FaceElement}{Face\+Element}. In addition return the index of a bulk local coordinate that varies away from the face. 
+
+Definition at line 6267 of file elements.\+cc.
+
+
+
+References s.
+
+
+
+Referenced by oomph\+::\+Young\+Laplace\+Contact\+Angle\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::contact\+\_\+line\+\_\+vectors().
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_aced9ec5b182220c0f50b1714638ee8f3}\label{classoomph_1_1FaceElement_aced9ec5b182220c0f50b1714638ee8f3}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!get\+\_\+local\+\_\+coordinate\+\_\+in\+\_\+bulk@{get\+\_\+local\+\_\+coordinate\+\_\+in\+\_\+bulk}}
+\index{get\+\_\+local\+\_\+coordinate\+\_\+in\+\_\+bulk@{get\+\_\+local\+\_\+coordinate\+\_\+in\+\_\+bulk}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{get\+\_\+local\+\_\+coordinate\+\_\+in\+\_\+bulk()}{get\_local\_coordinate\_in\_bulk()}}
+{\footnotesize\ttfamily void oomph\+::\+Face\+Element\+::get\+\_\+local\+\_\+coordinate\+\_\+in\+\_\+bulk (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s\+\_\+bulk }\end{DoxyParamCaption}) const}
+
+
+
+Calculate the vector of local coordinate in the bulk element given the local coordinates in this \hyperlink{classoomph_1_1FaceElement}{Face\+Element}. 
+
+Calculate the vector of local coordinates in bulk element, given the local coordinates in this \hyperlink{classoomph_1_1FaceElement}{Face\+Element} 
+
+Definition at line 6242 of file elements.\+cc.
+
+
+
+References s.
+
+
+
+Referenced by oomph\+::\+Navier\+Stokes\+Surface\+Power\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::drag\+\_\+force(), oomph\+::\+Clamped\+Sliding\+Hermite\+Beam\+Boundary\+Condition\+Element\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals(), oomph\+::\+Point\+Fluid\+Interface\+Bounding\+Element\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+interface\+\_\+boundary(), oomph\+::\+Line\+Fluid\+Interface\+Bounding\+Element\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+interface\+\_\+boundary(), oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::get\+\_\+drag\+\_\+and\+\_\+torque(), oomph\+::\+Navier\+Stokes\+Surface\+Power\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::get\+\_\+kinetic\+\_\+energy\+\_\+flux(), oomph\+::\+Navier\+Stokes\+Surface\+Power\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::get\+\_\+rate\+\_\+of\+\_\+traction\+\_\+work(), oomph\+::\+Navier\+Stokes\+Surface\+Power\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::get\+\_\+rate\+\_\+of\+\_\+traction\+\_\+work\+\_\+components(), oomph\+::\+Navier\+Stokes\+Surface\+Power\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::get\+\_\+volume\+\_\+flux(), oomph\+::\+Multi\+\_\+domain\+\_\+functions\+::locate\+\_\+zeta\+\_\+for\+\_\+local\+\_\+coordinates(), oomph\+::\+Multi\+\_\+domain\+\_\+functions\+::locate\+\_\+zeta\+\_\+for\+\_\+missing\+\_\+coordinates(), oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::output(), and oomph\+::\+D\+G\+Face\+Element\+::setup\+\_\+neighbour\+\_\+info().
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_a0bd0b6164be27b3e959de84c609ca0ff}\label{classoomph_1_1FaceElement_a0bd0b6164be27b3e959de84c609ca0ff}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!interpolated\+\_\+dxdt@{interpolated\+\_\+dxdt}}
+\index{interpolated\+\_\+dxdt@{interpolated\+\_\+dxdt}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{interpolated\+\_\+dxdt()}{interpolated\_dxdt()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily double oomph\+::\+Face\+Element\+::interpolated\+\_\+dxdt (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{const unsigned \&}]{i,  }\item[{const unsigned \&}]{t }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Return t-\/th time-\/derivative of the i-\/th F\+E-\/interpolated Eulerian coordinate at local coordinate s. Overloaded to get information from bulk. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a7e5ddde616cfd7fdd86a71d4120c9784}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 4375 of file elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_ae8741b05add40d08bb324c8e44effa11}\label{classoomph_1_1FaceElement_ae8741b05add40d08bb324c8e44effa11}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!interpolated\+\_\+dxdt@{interpolated\+\_\+dxdt}}
+\index{interpolated\+\_\+dxdt@{interpolated\+\_\+dxdt}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{interpolated\+\_\+dxdt()}{interpolated\_dxdt()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void oomph\+::\+Face\+Element\+::interpolated\+\_\+dxdt (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{const unsigned \&}]{t,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{dxdt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Compte t-\/th time-\/derivative of the F\+E-\/interpolated Eulerian coordinate vector at local coordinate s. Overloaded to get information from bulk. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a60cfd1dabcc51fa90d19512fd9f793cb}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 4390 of file elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_a7aa612fec3604e08344503fbcdc357c8}\label{classoomph_1_1FaceElement_a7aa612fec3604e08344503fbcdc357c8}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!interpolated\+\_\+x@{interpolated\+\_\+x}}
+\index{interpolated\+\_\+x@{interpolated\+\_\+x}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{interpolated\+\_\+x()}{interpolated\_x()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily double oomph\+::\+Face\+Element\+::interpolated\+\_\+x (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{const unsigned \&}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Return FE interpolated coordinate x\mbox{[}i\mbox{]} at local coordinate s. Overloaded to get information from bulk. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a5a9c1ead9819cd17603096e63087020f}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 4322 of file elements.\+h.
+
+
+
+Referenced by oomph\+::\+Axisymmetric\+Derivatives\+::\+Axisymmetric\+Derivatives(), oomph\+::\+Brick\+From\+Tet\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::build\+\_\+mesh(), oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Boundary\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::compute\+\_\+gamma\+\_\+contribution(), oomph\+::\+Mesh\+::doc\+\_\+boundary\+\_\+coordinates(), oomph\+::\+Navier\+Stokes\+Surface\+Power\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::drag\+\_\+force(), oomph\+::\+Surfactant\+Transport\+Interface\+Element\+::dsigma\+\_\+d\+C(), oomph\+::\+Axisymmetric\+Solid\+Traction\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals(), oomph\+::\+Time\+Harmonic\+Lin\+Elast\+Loaded\+By\+Helmholtz\+Pressure\+B\+C\+Element$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+helmholtz\+\_\+traction(), oomph\+::\+Time\+Harmonic\+Lin\+Elast\+Loaded\+By\+P\+M\+L\+Helmholtz\+Pressure\+B\+C\+Element$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+helmholtz\+\_\+traction(), oomph\+::\+Fourier\+Decomposed\+Time\+Harmonic\+Lin\+Elast\+Loaded\+By\+Helmholtz\+Pressure\+B\+C\+Element$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+helmholtz\+\_\+traction(), oomph\+::\+Polar\+Navier\+Stokes\+Traction\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution(), oomph\+::\+Advection\+Diffusion\+Flux\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+adv\+\_\+diff\+\_\+flux(), oomph\+::\+Steady\+Axisym\+Advection\+Diffusion\+Flux\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+adv\+\_\+diff\+\_\+flux(), oomph\+::\+Axisym\+Advection\+Diffusion\+Flux\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+axi\+\_\+adv\+\_\+diff\+\_\+flux(), oomph\+::\+Navier\+Stokes\+Traction\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+fluid\+\_\+traction(), oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Flux\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+fourier\+\_\+decomposed\+\_\+helmholtz\+\_\+flux(), oomph\+::\+Helmholtz\+Flux\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+helmholtz\+\_\+flux(), oomph\+::\+P\+M\+L\+Helmholtz\+Flux\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+helmholtz\+\_\+flux(), oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Flux\+From\+Normal\+Displacement\+B\+C\+Element$<$ H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+helmholtz\+\_\+flux\+\_\+from\+\_\+displacement(), oomph\+::\+Helmholtz\+Flux\+From\+Normal\+Displacement\+B\+C\+Element$<$ H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+helmholtz\+\_\+flux\+\_\+from\+\_\+displacement(), oomph\+::\+P\+M\+L\+Helmholtz\+Flux\+From\+Normal\+Displacement\+B\+C\+Element$<$ H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+helmholtz\+\_\+flux\+\_\+from\+\_\+displacement(), oomph\+::\+Fluid\+Interface\+Element\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+interface(), oomph\+::\+Point\+Fluid\+Interface\+Bounding\+Element\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+interface\+\_\+boundary(), oomph\+::\+Linear\+Wave\+Flux\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+lin\+\_\+wave\+\_\+flux(), oomph\+::\+P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Flux\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+pml\+\_\+fourier\+\_\+decomposed\+\_\+helmholtz\+\_\+flux(), oomph\+::\+Poisson\+Flux\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+poisson\+\_\+flux(), oomph\+::\+Spherical\+Advection\+Diffusion\+Flux\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+spherical\+\_\+adv\+\_\+diff\+\_\+flux(), oomph\+::\+Unsteady\+Heat\+Flux\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+ust\+\_\+heat\+\_\+flux(), oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::get\+\_\+drag\+\_\+and\+\_\+torque(), oomph\+::\+Navier\+Stokes\+Surface\+Power\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::get\+\_\+kinetic\+\_\+energy\+\_\+flux(), oomph\+::\+Navier\+Stokes\+Surface\+Power\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::get\+\_\+rate\+\_\+of\+\_\+traction\+\_\+work(), oomph\+::\+Navier\+Stokes\+Surface\+Power\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::get\+\_\+rate\+\_\+of\+\_\+traction\+\_\+work\+\_\+components(), oomph\+::\+Polar\+Stress\+Integral\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::get\+\_\+shear\+\_\+stress(), oomph\+::\+Navier\+Stokes\+Surface\+Power\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::get\+\_\+volume\+\_\+flux(), oomph\+::\+P\+M\+L\+Helmholtz\+Power\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::global\+\_\+flux\+\_\+contribution(), oomph\+::\+Time\+Harmonic\+Lin\+Elast\+Loaded\+By\+P\+M\+L\+Helmholtz\+Pressure\+B\+C\+Element$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::global\+\_\+flux\+\_\+contribution\+\_\+from\+\_\+helmholtz(), oomph\+::\+Time\+Harmonic\+Lin\+Elast\+Loaded\+By\+P\+M\+L\+Helmholtz\+Pressure\+B\+C\+Element$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::global\+\_\+flux\+\_\+contribution\+\_\+from\+\_\+solid(), oomph\+::\+P\+M\+L\+Helmholtz\+Power\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::global\+\_\+power\+\_\+contribution(), oomph\+::\+Fourier\+Decomposed\+Helmholtz\+B\+C\+Element\+Base$<$ E\+L\+E\+M\+E\+N\+T $>$\+::global\+\_\+power\+\_\+contribution(), oomph\+::\+P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Power\+Monitor\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::global\+\_\+power\+\_\+contribution(), oomph\+::\+Surfactant\+Transport\+Interface\+Element\+::integrate\+\_\+c(), oomph\+::\+Line\+Derivatives\+::\+Line\+Derivatives(), oomph\+::\+Poisson\+Flux\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::output(), oomph\+::\+Surfactant\+Transport\+Interface\+Element\+::output(), oomph\+::\+Time\+Harmonic\+Lin\+Elast\+Loaded\+By\+Helmholtz\+Pressure\+B\+C\+Element$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::output(), oomph\+::\+Time\+Harmonic\+Lin\+Elast\+Loaded\+By\+P\+M\+L\+Helmholtz\+Pressure\+B\+C\+Element$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::output(), oomph\+::\+Helmholtz\+Flux\+From\+Normal\+Displacement\+B\+C\+Element$<$ H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::output(), oomph\+::\+Fluid\+Interface\+Element\+::output(), oomph\+::\+Clamped\+Hermite\+Shell\+Boundary\+Condition\+Element\+::output(), oomph\+::\+P\+M\+L\+Helmholtz\+Flux\+From\+Normal\+Displacement\+B\+C\+Element$<$ H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::output(), oomph\+::\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::output\+\_\+pressure\+\_\+advection\+\_\+diffusion\+\_\+robin\+\_\+elements(), oomph\+::\+Fluid\+Interface\+Element\+::pext\+\_\+local\+\_\+eqn(), oomph\+::\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::point\+\_\+output\+\_\+data(), oomph\+::\+Refineable\+Navier\+Stokes\+Traction\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::refineable\+\_\+fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+fluid\+\_\+traction(), oomph\+::\+D\+G\+Face\+Element\+::report\+\_\+info(), oomph\+::\+Multi\+\_\+domain\+\_\+functions\+::setup\+\_\+bulk\+\_\+elements\+\_\+adjacent\+\_\+to\+\_\+face\+\_\+mesh(), oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::setup\+\_\+gamma(), oomph\+::\+Helmholtz\+Dt\+N\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::setup\+\_\+gamma(), oomph\+::\+Surface\+Derivatives\+::\+Surface\+Derivatives(), and oomph\+::\+Thin\+Layer\+Brick\+On\+Tet\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Thin\+Layer\+Brick\+On\+Tet\+Mesh().
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_ac923e43c8868ffe4c6e2284bb63013f0}\label{classoomph_1_1FaceElement_ac923e43c8868ffe4c6e2284bb63013f0}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!interpolated\+\_\+x@{interpolated\+\_\+x}}
+\index{interpolated\+\_\+x@{interpolated\+\_\+x}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{interpolated\+\_\+x()}{interpolated\_x()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily double oomph\+::\+Face\+Element\+::interpolated\+\_\+x (\begin{DoxyParamCaption}\item[{const unsigned \&}]{t,  }\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{const unsigned \&}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Return FE interpolated coordinate x\mbox{[}i\mbox{]} at local coordinate s at previous timestep t (t=0\+: present; t$>$0\+: previous timestep). Overloaded to get information from bulk. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_aba7e6f4acad38c5f9188238b256da4a3}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 4335 of file elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_a01b07e01c23777ed539a6b6d37f069ee}\label{classoomph_1_1FaceElement_a01b07e01c23777ed539a6b6d37f069ee}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!interpolated\+\_\+x@{interpolated\+\_\+x}}
+\index{interpolated\+\_\+x@{interpolated\+\_\+x}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{interpolated\+\_\+x()}{interpolated\_x()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily void oomph\+::\+Face\+Element\+::interpolated\+\_\+x (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{x }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Return FE interpolated position x\mbox{[}\mbox{]} at local coordinate s as \hyperlink{classoomph_1_1Vector}{Vector} Overloaded to get information from bulk. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a8a14a32734ecc92987fdd5dbd34227d2}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 4348 of file elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_a73520230d5b6cabea8ae25ad4b762f12}\label{classoomph_1_1FaceElement_a73520230d5b6cabea8ae25ad4b762f12}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!interpolated\+\_\+x@{interpolated\+\_\+x}}
+\index{interpolated\+\_\+x@{interpolated\+\_\+x}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{interpolated\+\_\+x()}{interpolated\_x()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily void oomph\+::\+Face\+Element\+::interpolated\+\_\+x (\begin{DoxyParamCaption}\item[{const unsigned \&}]{t,  }\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{x }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Return FE interpolated position x\mbox{[}\mbox{]} at local coordinate s at previous timestep t as \hyperlink{classoomph_1_1Vector}{Vector} (t=0\+: present; t$>$0\+: previous timestep). Overloaded to get information from bulk. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_af099c245fe3e3ec7ac75a78de31ac200}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 4361 of file elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_a919d0d76746eaa78a8a3c7f75f99a9e5}\label{classoomph_1_1FaceElement_a919d0d76746eaa78a8a3c7f75f99a9e5}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!J\+\_\+eulerian@{J\+\_\+eulerian}}
+\index{J\+\_\+eulerian@{J\+\_\+eulerian}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{J\+\_\+eulerian()}{J\_eulerian()}}
+{\footnotesize\ttfamily double oomph\+::\+Face\+Element\+::\+J\+\_\+eulerian (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Return the Jacobian of mapping from local to global coordinates at local position s. Overloaded from \hyperlink{classoomph_1_1FiniteElement}{Finite\+Element}. 
+
+Calculate the determinant of the Jacobian of the mapping between local and global coordinates at the position s. Overloaded from \hyperlink{classoomph_1_1FiniteElement}{Finite\+Element}. 
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a089e58d5ad9b8efee637221b0e264563}{oomph\+::\+Finite\+Element}.
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1BiharmonicFluxElement_af47fac27f81814b471df73b8c956a63e}{oomph\+::\+Biharmonic\+Flux\+Element$<$ D\+I\+M $>$}.
+
+
+
+Definition at line 5113 of file elements.\+cc.
+
+
+
+References i.
+
+
+
+Referenced by oomph\+::\+Fourier\+Decomposed\+Helmholtz\+B\+C\+Element\+Base$<$ E\+L\+E\+M\+E\+N\+T $>$\+::d\+\_\+shape\+\_\+and\+\_\+test\+\_\+local(), oomph\+::\+P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Power\+Monitor\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::d\+\_\+shape\+\_\+and\+\_\+test\+\_\+local(), oomph\+::\+Navier\+Stokes\+Surface\+Power\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::drag\+\_\+force(), oomph\+::\+Clamped\+Hermite\+Shell\+Boundary\+Condition\+Element\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals(), oomph\+::\+Refineable\+Fp\+Pressure\+Adv\+Diff\+Robin\+B\+C\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+fp\+\_\+press\+\_\+adv\+\_\+diff\+\_\+robin\+\_\+bc(), oomph\+::\+Fp\+Pressure\+Adv\+Diff\+Robin\+B\+C\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+fp\+\_\+press\+\_\+adv\+\_\+diff\+\_\+robin\+\_\+bc(), oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::get\+\_\+drag\+\_\+and\+\_\+torque(), oomph\+::\+Navier\+Stokes\+Surface\+Power\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::get\+\_\+kinetic\+\_\+energy\+\_\+flux(), oomph\+::\+Navier\+Stokes\+Surface\+Power\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::get\+\_\+rate\+\_\+of\+\_\+traction\+\_\+work(), oomph\+::\+Navier\+Stokes\+Surface\+Power\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::get\+\_\+rate\+\_\+of\+\_\+traction\+\_\+work\+\_\+components(), oomph\+::\+Navier\+Stokes\+Surface\+Power\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::get\+\_\+volume\+\_\+flux(), oomph\+::\+P\+M\+L\+Helmholtz\+Power\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::global\+\_\+flux\+\_\+contribution(), oomph\+::\+Time\+Harmonic\+Lin\+Elast\+Loaded\+By\+P\+M\+L\+Helmholtz\+Pressure\+B\+C\+Element$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::global\+\_\+flux\+\_\+contribution\+\_\+from\+\_\+helmholtz(), oomph\+::\+Time\+Harmonic\+Lin\+Elast\+Loaded\+By\+P\+M\+L\+Helmholtz\+Pressure\+B\+C\+Element$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::global\+\_\+flux\+\_\+contribution\+\_\+from\+\_\+solid(), oomph\+::\+P\+M\+L\+Helmholtz\+Power\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::global\+\_\+power\+\_\+contribution(), oomph\+::\+Fourier\+Decomposed\+Helmholtz\+B\+C\+Element\+Base$<$ E\+L\+E\+M\+E\+N\+T $>$\+::global\+\_\+power\+\_\+contribution(), oomph\+::\+P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Power\+Monitor\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::global\+\_\+power\+\_\+contribution(), oomph\+::\+Clamped\+Hermite\+Shell\+Boundary\+Condition\+Element\+::output(), oomph\+::\+Advection\+Diffusion\+Flux\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::shape\+\_\+and\+\_\+test(), oomph\+::\+Unsteady\+Heat\+Flux\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::shape\+\_\+and\+\_\+test(), oomph\+::\+Linear\+Wave\+Flux\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::shape\+\_\+and\+\_\+test(), oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Flux\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::shape\+\_\+and\+\_\+test(), oomph\+::\+Helmholtz\+Flux\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::shape\+\_\+and\+\_\+test(), oomph\+::\+P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Flux\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::shape\+\_\+and\+\_\+test(), oomph\+::\+Poisson\+Flux\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::shape\+\_\+and\+\_\+test(), oomph\+::\+Fourier\+Decomposed\+Helmholtz\+B\+C\+Element\+Base$<$ E\+L\+E\+M\+E\+N\+T $>$\+::shape\+\_\+and\+\_\+test(), oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Flux\+From\+Normal\+Displacement\+B\+C\+Element$<$ H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::shape\+\_\+and\+\_\+test(), oomph\+::\+Helmholtz\+Flux\+From\+Normal\+Displacement\+B\+C\+Element$<$ H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::shape\+\_\+and\+\_\+test(), oomph\+::\+P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Power\+Monitor\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::shape\+\_\+and\+\_\+test(), oomph\+::\+P\+M\+L\+Helmholtz\+Flux\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::shape\+\_\+and\+\_\+test(), and oomph\+::\+P\+M\+L\+Helmholtz\+Flux\+From\+Normal\+Displacement\+B\+C\+Element$<$ H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::shape\+\_\+and\+\_\+test().
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_aa6380a08afc18bd4f35e337a1131a9d8}\label{classoomph_1_1FaceElement_aa6380a08afc18bd4f35e337a1131a9d8}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!J\+\_\+eulerian\+\_\+at\+\_\+knot@{J\+\_\+eulerian\+\_\+at\+\_\+knot}}
+\index{J\+\_\+eulerian\+\_\+at\+\_\+knot@{J\+\_\+eulerian\+\_\+at\+\_\+knot}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{J\+\_\+eulerian\+\_\+at\+\_\+knot()}{J\_eulerian\_at\_knot()}}
+{\footnotesize\ttfamily double oomph\+::\+Face\+Element\+::\+J\+\_\+eulerian\+\_\+at\+\_\+knot (\begin{DoxyParamCaption}\item[{const unsigned \&}]{ipt }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Return the Jacobian of the mapping from local to global coordinates at the ipt-\/th integration point Overloaded from \hyperlink{classoomph_1_1FiniteElement}{Finite\+Element}. 
+
+Compute the Jacobian of the mapping between the local and global coordinates at the ipt-\/th integration point. Overloaded from \hyperlink{classoomph_1_1FiniteElement}{Finite\+Element}. 
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_aa8a201e448a9200af7f87d612ef01227}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 5201 of file elements.\+cc.
+
+
+
+References i.
+
+
+
+Referenced by oomph\+::\+D\+G\+Face\+Element\+::add\+\_\+flux\+\_\+contributions(), oomph\+::\+Impose\+Impenetrability\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+generic\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+parall\+\_\+lagr\+\_\+multiplier(), oomph\+::\+Impose\+Parallel\+Outflow\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+generic\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+parall\+\_\+lagr\+\_\+multiplier(), oomph\+::\+Clamped\+Hermite\+Shell\+Boundary\+Condition\+Element\+::output(), oomph\+::\+Polar\+Stress\+Integral\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::shape\+\_\+and\+\_\+test\+\_\+at\+\_\+knot(), oomph\+::\+Polar\+Navier\+Stokes\+Traction\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::shape\+\_\+and\+\_\+test\+\_\+at\+\_\+knot(), oomph\+::\+Navier\+Stokes\+Traction\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::shape\+\_\+and\+\_\+test\+\_\+at\+\_\+knot(), oomph\+::\+Advection\+Diffusion\+Flux\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::shape\+\_\+and\+\_\+test\+\_\+at\+\_\+knot(), oomph\+::\+Helmholtz\+Flux\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::shape\+\_\+and\+\_\+test\+\_\+at\+\_\+knot(), oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Flux\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::shape\+\_\+and\+\_\+test\+\_\+at\+\_\+knot(), oomph\+::\+P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Flux\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::shape\+\_\+and\+\_\+test\+\_\+at\+\_\+knot(), oomph\+::\+Poisson\+Flux\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::shape\+\_\+and\+\_\+test\+\_\+at\+\_\+knot(), oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Flux\+From\+Normal\+Displacement\+B\+C\+Element$<$ H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::shape\+\_\+and\+\_\+test\+\_\+at\+\_\+knot(), oomph\+::\+Helmholtz\+Flux\+From\+Normal\+Displacement\+B\+C\+Element$<$ H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::shape\+\_\+and\+\_\+test\+\_\+at\+\_\+knot(), oomph\+::\+P\+M\+L\+Helmholtz\+Flux\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::shape\+\_\+and\+\_\+test\+\_\+at\+\_\+knot(), and oomph\+::\+P\+M\+L\+Helmholtz\+Flux\+From\+Normal\+Displacement\+B\+C\+Element$<$ H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::shape\+\_\+and\+\_\+test\+\_\+at\+\_\+knot().
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_a5dd56d5b438c316aca9efa815441b74d}\label{classoomph_1_1FaceElement_a5dd56d5b438c316aca9efa815441b74d}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!local\+\_\+coordinate\+\_\+in\+\_\+bulk@{local\+\_\+coordinate\+\_\+in\+\_\+bulk}}
+\index{local\+\_\+coordinate\+\_\+in\+\_\+bulk@{local\+\_\+coordinate\+\_\+in\+\_\+bulk}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{local\+\_\+coordinate\+\_\+in\+\_\+bulk()}{local\_coordinate\_in\_bulk()}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ oomph\+::\+Face\+Element\+::local\+\_\+coordinate\+\_\+in\+\_\+bulk (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s }\end{DoxyParamCaption}) const}
+
+
+
+Return vector of local coordinates in bulk element, given the local coordinates in this \hyperlink{classoomph_1_1FaceElement}{Face\+Element}. 
+
+Return vector of local coordinates in bulk element, given the local coordinates in this \hyperlink{classoomph_1_1FaceElement}{Face\+Element} 
+
+Definition at line 6210 of file elements.\+cc.
+
+
+
+References s.
+
+
+
+Referenced by oomph\+::\+Young\+Laplace\+Contact\+Angle\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::actual\+\_\+cos\+\_\+contact\+\_\+angle(), oomph\+::\+Young\+Laplace\+Contact\+Angle\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::contact\+\_\+line\+\_\+vectors(), oomph\+::\+Clamped\+Hermite\+Shell\+Boundary\+Condition\+Element\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals(), oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+axisym\+\_\+poroelastic\+\_\+fsi(), oomph\+::\+Refineable\+Fp\+Pressure\+Adv\+Diff\+Robin\+B\+C\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+fp\+\_\+press\+\_\+adv\+\_\+diff\+\_\+robin\+\_\+bc(), oomph\+::\+Fp\+Pressure\+Adv\+Diff\+Robin\+B\+C\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+fp\+\_\+press\+\_\+adv\+\_\+diff\+\_\+robin\+\_\+bc(), oomph\+::\+Polar\+Stress\+Integral\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::get\+\_\+shear\+\_\+stress(), oomph\+::\+P\+M\+L\+Helmholtz\+Power\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::global\+\_\+flux\+\_\+contribution(), oomph\+::\+Time\+Harmonic\+Lin\+Elast\+Loaded\+By\+P\+M\+L\+Helmholtz\+Pressure\+B\+C\+Element$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::global\+\_\+flux\+\_\+contribution\+\_\+from\+\_\+helmholtz(), oomph\+::\+Time\+Harmonic\+Lin\+Elast\+Loaded\+By\+P\+M\+L\+Helmholtz\+Pressure\+B\+C\+Element$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::global\+\_\+flux\+\_\+contribution\+\_\+from\+\_\+solid(), oomph\+::\+P\+M\+L\+Helmholtz\+Power\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::global\+\_\+power\+\_\+contribution(), oomph\+::\+Fourier\+Decomposed\+Helmholtz\+B\+C\+Element\+Base$<$ E\+L\+E\+M\+E\+N\+T $>$\+::global\+\_\+power\+\_\+contribution(), oomph\+::\+P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Power\+Monitor\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::global\+\_\+power\+\_\+contribution(), and oomph\+::\+Clamped\+Hermite\+Shell\+Boundary\+Condition\+Element\+::output().
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_a58b9a1328c1c991142d58d1202c561e1}\label{classoomph_1_1FaceElement_a58b9a1328c1c991142d58d1202c561e1}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!nbulk\+\_\+value@{nbulk\+\_\+value}}
+\index{nbulk\+\_\+value@{nbulk\+\_\+value}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{nbulk\+\_\+value()}{nbulk\_value()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily unsigned\& oomph\+::\+Face\+Element\+::nbulk\+\_\+value (\begin{DoxyParamCaption}\item[{const unsigned \&}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the number of values originally stored at local node n (before the \hyperlink{classoomph_1_1FaceElement}{Face\+Element} added additional values to it (if it did)) 
+
+
+
+Definition at line 4597 of file elements.\+h.
+
+
+
+Referenced by oomph\+::\+Q\+Hermite\+Element$<$ D\+I\+M-\/1 $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+Q\+Spectral\+Element$<$ 1, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+Q\+Spectral\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+T\+Bubble\+Enriched\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+T\+Element$<$ 1, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+Finite\+Element\+::build\+\_\+face\+\_\+element(), and oomph\+::\+T\+Element$<$ 3, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::build\+\_\+face\+\_\+element().
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_a1045ac3ff9a56b0e4bd86b8e62f9d80c}\label{classoomph_1_1FaceElement_a1045ac3ff9a56b0e4bd86b8e62f9d80c}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!nbulk\+\_\+value@{nbulk\+\_\+value}}
+\index{nbulk\+\_\+value@{nbulk\+\_\+value}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{nbulk\+\_\+value()}{nbulk\_value()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily unsigned oomph\+::\+Face\+Element\+::nbulk\+\_\+value (\begin{DoxyParamCaption}\item[{const unsigned \&}]{n }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the number of values originally stored at local node n (before the \hyperlink{classoomph_1_1FaceElement}{Face\+Element} added additional values to it (if it did)) (const version) 
+
+
+
+Definition at line 4602 of file elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_afd5c80da03ec10df9887e57ee3bce773}\label{classoomph_1_1FaceElement_afd5c80da03ec10df9887e57ee3bce773}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!nbulk\+\_\+value\+\_\+resize@{nbulk\+\_\+value\+\_\+resize}}
+\index{nbulk\+\_\+value\+\_\+resize@{nbulk\+\_\+value\+\_\+resize}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{nbulk\+\_\+value\+\_\+resize()}{nbulk\_value\_resize()}}
+{\footnotesize\ttfamily void oomph\+::\+Face\+Element\+::nbulk\+\_\+value\+\_\+resize (\begin{DoxyParamCaption}\item[{const unsigned \&}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Resize the storage for the number of values originally stored at the local nodes to i entries. 
+
+
+
+Definition at line 4607 of file elements.\+h.
+
+
+
+Referenced by oomph\+::\+Q\+Hermite\+Element$<$ D\+I\+M-\/1 $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+Q\+Spectral\+Element$<$ 1, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+Q\+Spectral\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+T\+Bubble\+Enriched\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+Q\+Spectral\+Element$<$ 3, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+T\+Element$<$ 1, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+Finite\+Element\+::build\+\_\+face\+\_\+element(), and oomph\+::\+T\+Element$<$ 3, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::build\+\_\+face\+\_\+element().
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_add995e91979ad663e21cc2b63dd710d9}\label{classoomph_1_1FaceElement_add995e91979ad663e21cc2b63dd710d9}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!normal\+\_\+sign@{normal\+\_\+sign}}
+\index{normal\+\_\+sign@{normal\+\_\+sign}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{normal\+\_\+sign()}{normal\_sign()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily int\& oomph\+::\+Face\+Element\+::normal\+\_\+sign (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sign of outer unit normal (relative to cross-\/products of tangent vectors in the corresponding \char`\"{}bulk\char`\"{} element. 
+
+
+
+Definition at line 4404 of file elements.\+h.
+
+
+
+Referenced by oomph\+::\+Q\+Hermite\+Element$<$ D\+I\+M-\/1 $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+Q\+Spectral\+Element$<$ 1, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+Q\+Spectral\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+Q\+Spectral\+Element$<$ 3, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+T\+Element$<$ 1, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+T\+Element$<$ 2, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+Finite\+Element\+::build\+\_\+face\+\_\+element(), oomph\+::\+T\+Element$<$ 3, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::build\+\_\+face\+\_\+element(), oomph\+::\+Brick\+From\+Tet\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::build\+\_\+mesh(), oomph\+::\+Young\+Laplace\+Contact\+Angle\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::contact\+\_\+line\+\_\+vectors(), oomph\+::\+Axisymmetric\+Solid\+Traction\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals(), oomph\+::\+Biharmonic\+Flux\+Element$<$ D\+I\+M $>$\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+biharmonic\+\_\+flux(), and oomph\+::\+Thin\+Layer\+Brick\+On\+Tet\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Thin\+Layer\+Brick\+On\+Tet\+Mesh().
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_a7a3b1effe068221ac39c14a9ed71d34d}\label{classoomph_1_1FaceElement_a7a3b1effe068221ac39c14a9ed71d34d}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!normal\+\_\+sign@{normal\+\_\+sign}}
+\index{normal\+\_\+sign@{normal\+\_\+sign}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{normal\+\_\+sign()}{normal\_sign()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily int oomph\+::\+Face\+Element\+::normal\+\_\+sign (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return sign of outer unit normal (relative to cross-\/products of tangent vectors in the corresponding \char`\"{}bulk\char`\"{} element. (const version) 
+
+
+
+Definition at line 4408 of file elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_a49cf44d89e80926635d2a26abfbbf3b0}\label{classoomph_1_1FaceElement_a49cf44d89e80926635d2a26abfbbf3b0}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!outer\+\_\+unit\+\_\+normal@{outer\+\_\+unit\+\_\+normal}}
+\index{outer\+\_\+unit\+\_\+normal@{outer\+\_\+unit\+\_\+normal}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{outer\+\_\+unit\+\_\+normal()}{outer\_unit\_normal()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void oomph\+::\+Face\+Element\+::outer\+\_\+unit\+\_\+normal (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{unit\+\_\+normal }\end{DoxyParamCaption}) const}
+
+
+
+Compute outer unit normal at the specified local coordinate. 
+
+Compute the outer unit normal at the specified local coordinate. 
+
+Definition at line 5873 of file elements.\+cc.
+
+
+
+References oomph\+::\+Vector\+Helpers\+::cross(), i, and oomph\+::\+Vector\+Helpers\+::magnitude().
+
+
+
+Referenced by oomph\+::\+Young\+Laplace\+Contact\+Angle\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::actual\+\_\+cos\+\_\+contact\+\_\+angle(), oomph\+::\+Navier\+Stokes\+Surface\+Power\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::drag\+\_\+force(), oomph\+::\+Time\+Harmonic\+Lin\+Elast\+Loaded\+By\+Helmholtz\+Pressure\+B\+C\+Element$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+helmholtz\+\_\+traction(), oomph\+::\+Time\+Harmonic\+Lin\+Elast\+Loaded\+By\+P\+M\+L\+Helmholtz\+Pressure\+B\+C\+Element$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+helmholtz\+\_\+traction(), oomph\+::\+Fourier\+Decomposed\+Time\+Harmonic\+Lin\+Elast\+Loaded\+By\+Helmholtz\+Pressure\+B\+C\+Element$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+helmholtz\+\_\+traction(), oomph\+::\+Impose\+Impenetrability\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+generic\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+parall\+\_\+lagr\+\_\+multiplier(), oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+axisym\+\_\+poroelastic\+\_\+fsi(), oomph\+::\+Navier\+Stokes\+Traction\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+fluid\+\_\+traction(), oomph\+::\+Refineable\+Fp\+Pressure\+Adv\+Diff\+Robin\+B\+C\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+fp\+\_\+press\+\_\+adv\+\_\+diff\+\_\+robin\+\_\+bc(), oomph\+::\+Fp\+Pressure\+Adv\+Diff\+Robin\+B\+C\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+fp\+\_\+press\+\_\+adv\+\_\+diff\+\_\+robin\+\_\+bc(), oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Flux\+From\+Normal\+Displacement\+B\+C\+Element$<$ H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+helmholtz\+\_\+flux\+\_\+from\+\_\+displacement(), oomph\+::\+Helmholtz\+Flux\+From\+Normal\+Displacement\+B\+C\+Element$<$ H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+helmholtz\+\_\+flux\+\_\+from\+\_\+displacement(), oomph\+::\+P\+M\+L\+Helmholtz\+Flux\+From\+Normal\+Displacement\+B\+C\+Element$<$ H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+helmholtz\+\_\+flux\+\_\+from\+\_\+displacement(), oomph\+::\+Fluid\+Interface\+Element\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+interface(), oomph\+::\+Point\+Fluid\+Interface\+Bounding\+Element\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+interface\+\_\+boundary(), oomph\+::\+Line\+Fluid\+Interface\+Bounding\+Element\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+interface\+\_\+boundary(), oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::get\+\_\+drag\+\_\+and\+\_\+torque(), oomph\+::\+Navier\+Stokes\+Surface\+Power\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::get\+\_\+kinetic\+\_\+energy\+\_\+flux(), oomph\+::\+Navier\+Stokes\+Surface\+Power\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::get\+\_\+rate\+\_\+of\+\_\+traction\+\_\+work(), oomph\+::\+Navier\+Stokes\+Surface\+Power\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::get\+\_\+rate\+\_\+of\+\_\+traction\+\_\+work\+\_\+components(), oomph\+::\+Navier\+Stokes\+Surface\+Power\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::get\+\_\+volume\+\_\+flux(), oomph\+::\+P\+M\+L\+Helmholtz\+Power\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::global\+\_\+flux\+\_\+contribution(), oomph\+::\+Time\+Harmonic\+Lin\+Elast\+Loaded\+By\+P\+M\+L\+Helmholtz\+Pressure\+B\+C\+Element$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::global\+\_\+flux\+\_\+contribution\+\_\+from\+\_\+helmholtz(), oomph\+::\+Time\+Harmonic\+Lin\+Elast\+Loaded\+By\+P\+M\+L\+Helmholtz\+Pressure\+B\+C\+Element$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::global\+\_\+flux\+\_\+contribution\+\_\+from\+\_\+solid(), oomph\+::\+P\+M\+L\+Helmholtz\+Power\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::global\+\_\+power\+\_\+contribution(), oomph\+::\+Fourier\+Decomposed\+Helmholtz\+B\+C\+Element\+Base$<$ E\+L\+E\+M\+E\+N\+T $>$\+::global\+\_\+power\+\_\+contribution(), oomph\+::\+P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Power\+Monitor\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::global\+\_\+power\+\_\+contribution(), oomph\+::\+D\+G\+Face\+Element\+::numerical\+\_\+flux\+\_\+at\+\_\+knot(), oomph\+::\+Surfactant\+Transport\+Interface\+Element\+::output(), oomph\+::\+Time\+Harmonic\+Lin\+Elast\+Loaded\+By\+Helmholtz\+Pressure\+B\+C\+Element$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::output(), oomph\+::\+Fourier\+Decomposed\+Time\+Harmonic\+Lin\+Elast\+Loaded\+By\+Helmholtz\+Pressure\+B\+C\+Element$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::output(), oomph\+::\+Time\+Harmonic\+Lin\+Elast\+Loaded\+By\+P\+M\+L\+Helmholtz\+Pressure\+B\+C\+Element$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::output(), oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::output(), oomph\+::\+Helmholtz\+Flux\+From\+Normal\+Displacement\+B\+C\+Element$<$ H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::output(), oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Flux\+From\+Normal\+Displacement\+B\+C\+Element$<$ H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::output(), oomph\+::\+P\+M\+L\+Helmholtz\+Flux\+From\+Normal\+Displacement\+B\+C\+Element$<$ H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::output(), oomph\+::\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::output\+\_\+pressure\+\_\+advection\+\_\+diffusion\+\_\+robin\+\_\+elements(), oomph\+::\+Refineable\+Navier\+Stokes\+Traction\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::refineable\+\_\+fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+fluid\+\_\+traction(), and oomph\+::\+Thin\+Layer\+Brick\+On\+Tet\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Thin\+Layer\+Brick\+On\+Tet\+Mesh().
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_ada4480c304100898d0c45be6d3ce181f}\label{classoomph_1_1FaceElement_ada4480c304100898d0c45be6d3ce181f}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!outer\+\_\+unit\+\_\+normal@{outer\+\_\+unit\+\_\+normal}}
+\index{outer\+\_\+unit\+\_\+normal@{outer\+\_\+unit\+\_\+normal}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{outer\+\_\+unit\+\_\+normal()}{outer\_unit\_normal()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void oomph\+::\+Face\+Element\+::outer\+\_\+unit\+\_\+normal (\begin{DoxyParamCaption}\item[{const unsigned \&}]{ipt,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{unit\+\_\+normal }\end{DoxyParamCaption}) const}
+
+
+
+Compute outer unit normal at ipt-\/th integration point. 
+
+Compute the outer unit normal at the ipt-\/th integration point. 
+
+Definition at line 6192 of file elements.\+cc.
+
+
+
+References i, and s.
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_adf2632a515afa6efdc884e6def8a4163}\label{classoomph_1_1FaceElement_adf2632a515afa6efdc884e6def8a4163}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!output\+\_\+zeta@{output\+\_\+zeta}}
+\index{output\+\_\+zeta@{output\+\_\+zeta}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{output\+\_\+zeta()}{output\_zeta()}}
+{\footnotesize\ttfamily void oomph\+::\+Face\+Element\+::output\+\_\+zeta (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile,  }\item[{const unsigned \&}]{nplot }\end{DoxyParamCaption})}
+
+
+
+Output boundary coordinate zeta. 
+
+
+
+Definition at line 5071 of file elements.\+cc.
+
+
+
+References i, and s.
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_ae7513d0db79b9ec47f9d72f40dbb4417}\label{classoomph_1_1FaceElement_ae7513d0db79b9ec47f9d72f40dbb4417}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!resize\+\_\+nodes@{resize\+\_\+nodes}}
+\index{resize\+\_\+nodes@{resize\+\_\+nodes}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{resize\+\_\+nodes()}{resize\_nodes()}}
+{\footnotesize\ttfamily void oomph\+::\+Face\+Element\+::resize\+\_\+nodes (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ unsigned $>$ \&}]{nadditional\+\_\+data\+\_\+values }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Provide additional storage for a specified number of values at the nodes of the \hyperlink{classoomph_1_1FaceElement}{Face\+Element}. (This is needed, for instance, in free-\/surface elements, if the non-\/penetration condition is imposed by Lagrange multipliers whose values are only stored at the surface nodes but not in the interior of the bulk element). {\ttfamily nadditional\+\_\+data\+\_\+values}\mbox{[}n\mbox{]} specifies the number of additional values required at node {\ttfamily n} of the \hyperlink{classoomph_1_1FaceElement}{Face\+Element}. {\bfseries Note\+:} Since this function is executed separately for each \hyperlink{classoomph_1_1FaceElement}{Face\+Element}, nodes that are common to multiple elements might be resized repeatedly. To avoid this, we only allow a single resize operation by comparing the number of values stored at each node to the number of values the node had when it was simply a member of the associated \char`\"{}bulk\char`\"{} element. {\bfseries There are cases where this will break!} -- e.\+g. if a node is common to two Face\+Elements which require additional storage for distinct quantities. Such cases need to be handled by \char`\"{}hand-\/crafted\char`\"{} face elements. 
+
+
+
+Definition at line 4626 of file elements.\+h.
+
+
+
+References oomph\+::\+Data\+::nvalue(), and oomph\+::\+Node\+::resize().
+
+
+
+Referenced by oomph\+::\+Clamped\+Hermite\+Shell\+Boundary\+Condition\+Element\+::\+Clamped\+Hermite\+Shell\+Boundary\+Condition\+Element(), and oomph\+::\+Clamped\+Sliding\+Hermite\+Beam\+Boundary\+Condition\+Element\+::\+Clamped\+Sliding\+Hermite\+Beam\+Boundary\+Condition\+Element().
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_aaaa03a7db357facfbcfc480d8e0db404}\label{classoomph_1_1FaceElement_aaaa03a7db357facfbcfc480d8e0db404}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!set\+\_\+boundary\+\_\+number\+\_\+in\+\_\+bulk\+\_\+mesh@{set\+\_\+boundary\+\_\+number\+\_\+in\+\_\+bulk\+\_\+mesh}}
+\index{set\+\_\+boundary\+\_\+number\+\_\+in\+\_\+bulk\+\_\+mesh@{set\+\_\+boundary\+\_\+number\+\_\+in\+\_\+bulk\+\_\+mesh}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{set\+\_\+boundary\+\_\+number\+\_\+in\+\_\+bulk\+\_\+mesh()}{set\_boundary\_number\_in\_bulk\_mesh()}}
+{\footnotesize\ttfamily void oomph\+::\+Face\+Element\+::set\+\_\+boundary\+\_\+number\+\_\+in\+\_\+bulk\+\_\+mesh (\begin{DoxyParamCaption}\item[{const unsigned \&}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set function for the boundary number in bulk mesh. 
+
+
+
+Definition at line 4277 of file elements.\+h.
+
+
+
+Referenced by oomph\+::\+Brick\+From\+Tet\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::build\+\_\+mesh(), oomph\+::\+Refineable\+Triangle\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::create\+\_\+unsorted\+\_\+face\+\_\+mesh\+\_\+representation(), oomph\+::\+Mesh\+::doc\+\_\+boundary\+\_\+coordinates(), oomph\+::\+Refineable\+Triangle\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::get\+\_\+face\+\_\+mesh\+\_\+representation(), oomph\+::\+Non\+Linear\+Elasticity\+Smooth\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::operator()(), oomph\+::\+Multi\+\_\+domain\+\_\+functions\+::setup\+\_\+bulk\+\_\+elements\+\_\+adjacent\+\_\+to\+\_\+face\+\_\+mesh(), and oomph\+::\+Thin\+Layer\+Brick\+On\+Tet\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Thin\+Layer\+Brick\+On\+Tet\+Mesh().
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_a9dc897bfa6a1738a7a81ab9cd160ffb0}\label{classoomph_1_1FaceElement_a9dc897bfa6a1738a7a81ab9cd160ffb0}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!set\+\_\+tangent\+\_\+direction@{set\+\_\+tangent\+\_\+direction}}
+\index{set\+\_\+tangent\+\_\+direction@{set\+\_\+tangent\+\_\+direction}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{set\+\_\+tangent\+\_\+direction()}{set\_tangent\_direction()}}
+{\footnotesize\ttfamily void oomph\+::\+Face\+Element\+::set\+\_\+tangent\+\_\+direction (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ $\ast$}]{tangent\+\_\+direction\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the tangent direction vector. 
+
+
+
+Definition at line 4425 of file elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_a361f92bae4d926903947e2e0d7672f3c}\label{classoomph_1_1FaceElement_a361f92bae4d926903947e2e0d7672f3c}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!tangent\+\_\+direction\+\_\+pt@{tangent\+\_\+direction\+\_\+pt}}
+\index{tangent\+\_\+direction\+\_\+pt@{tangent\+\_\+direction\+\_\+pt}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{tangent\+\_\+direction\+\_\+pt()}{tangent\_direction\_pt()}}
+{\footnotesize\ttfamily const \hyperlink{classoomph_1_1Vector}{Vector}$<$double$>$$\ast$ oomph\+::\+Face\+Element\+::tangent\+\_\+direction\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Public access function for the tangent direction pointer. 
+
+
+
+Definition at line 4419 of file elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_a4c3159cad8dd11618c201d8b66651cd3}\label{classoomph_1_1FaceElement_a4c3159cad8dd11618c201d8b66651cd3}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!turn\+\_\+off\+\_\+warning\+\_\+for\+\_\+discontinuous\+\_\+tangent@{turn\+\_\+off\+\_\+warning\+\_\+for\+\_\+discontinuous\+\_\+tangent}}
+\index{turn\+\_\+off\+\_\+warning\+\_\+for\+\_\+discontinuous\+\_\+tangent@{turn\+\_\+off\+\_\+warning\+\_\+for\+\_\+discontinuous\+\_\+tangent}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{turn\+\_\+off\+\_\+warning\+\_\+for\+\_\+discontinuous\+\_\+tangent()}{turn\_off\_warning\_for\_discontinuous\_tangent()}}
+{\footnotesize\ttfamily void oomph\+::\+Face\+Element\+::turn\+\_\+off\+\_\+warning\+\_\+for\+\_\+discontinuous\+\_\+tangent (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Turn off warning for when there may be discontinuous tangent vectors from continuous\+\_\+tangent\+\_\+and\+\_\+outer\+\_\+unit\+\_\+normal(...) 
+
+
+
+Definition at line 4482 of file elements.\+h.
+
+
+
+References Ignore\+\_\+discontinuous\+\_\+tangent\+\_\+warning.
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_a025b2cae37ba7d8067bf87f885cd11f5}\label{classoomph_1_1FaceElement_a025b2cae37ba7d8067bf87f885cd11f5}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!turn\+\_\+on\+\_\+warning\+\_\+for\+\_\+discontinuous\+\_\+tangent@{turn\+\_\+on\+\_\+warning\+\_\+for\+\_\+discontinuous\+\_\+tangent}}
+\index{turn\+\_\+on\+\_\+warning\+\_\+for\+\_\+discontinuous\+\_\+tangent@{turn\+\_\+on\+\_\+warning\+\_\+for\+\_\+discontinuous\+\_\+tangent}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{turn\+\_\+on\+\_\+warning\+\_\+for\+\_\+discontinuous\+\_\+tangent()}{turn\_on\_warning\_for\_discontinuous\_tangent()}}
+{\footnotesize\ttfamily void oomph\+::\+Face\+Element\+::turn\+\_\+on\+\_\+warning\+\_\+for\+\_\+discontinuous\+\_\+tangent (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Turn on warning for when there may be discontinuous tangent vectors from continuous\+\_\+tangent\+\_\+and\+\_\+outer\+\_\+unit\+\_\+normal(...) 
+
+
+
+Definition at line 4475 of file elements.\+h.
+
+
+
+References Ignore\+\_\+discontinuous\+\_\+tangent\+\_\+warning.
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_a58c9f93705c7741f76c8487d152e68a6}\label{classoomph_1_1FaceElement_a58c9f93705c7741f76c8487d152e68a6}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!zeta\+\_\+nodal@{zeta\+\_\+nodal}}
+\index{zeta\+\_\+nodal@{zeta\+\_\+nodal}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{zeta\+\_\+nodal()}{zeta\_nodal()}}
+{\footnotesize\ttfamily double oomph\+::\+Face\+Element\+::zeta\+\_\+nodal (\begin{DoxyParamCaption}\item[{const unsigned \&}]{n,  }\item[{const unsigned \&}]{k,  }\item[{const unsigned \&}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+In a \hyperlink{classoomph_1_1FaceElement}{Face\+Element}, the \char`\"{}global\char`\"{} intrinsic coordinate of the element along the boundary, when viewed as part of a compound geometric object is specified using the boundary coordinate defined by the mesh. Note\+: Boundary coordinates will have been set up when creating the underlying mesh, and their values will have been stored at the nodes. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a849561c5fbcbc07dc49d2dc6cca68559}{oomph\+::\+Finite\+Element}.
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1DummyFaceElement_a2ee49bd3158d30c0c84c63dbd25e7196}{oomph\+::\+Dummy\+Face\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$}, \hyperlink{classoomph_1_1SolidFaceElement_a28526b0f7a7daa2ab90348e16cf6a529}{oomph\+::\+Solid\+Face\+Element}, \hyperlink{classoomph_1_1NavierStokesImpedanceTractionElement_a3be6b5b3152e35c76339a5de6ec1e93a}{oomph\+::\+Navier\+Stokes\+Impedance\+Traction\+Element$<$ B\+U\+L\+K\+\_\+\+N\+A\+V\+I\+E\+R\+\_\+\+S\+T\+O\+K\+E\+S\+\_\+\+E\+L\+E\+M\+E\+N\+T, W\+O\+M\+E\+R\+S\+L\+E\+Y\+\_\+\+E\+L\+E\+M\+E\+N\+T, D\+I\+M $>$}, \hyperlink{classoomph_1_1SphericalAdvectionDiffusionFluxElement_ab7dc1526807ada4b9189526b69653c91}{oomph\+::\+Spherical\+Advection\+Diffusion\+Flux\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$}, \hyperlink{classoomph_1_1ElasticUpdateFluidInterfaceElement_a41706192ce4de3c4c51a70086199d8fa}{oomph\+::\+Elastic\+Update\+Fluid\+Interface\+Element$<$ Fluid\+Interface\+Element, Surface\+Derivatives, E\+L\+E\+M\+E\+N\+T $>$}, \hyperlink{classoomph_1_1ElasticUpdateFluidInterfaceElement_a41706192ce4de3c4c51a70086199d8fa}{oomph\+::\+Elastic\+Update\+Fluid\+Interface\+Element$<$ Surfactant\+Transport\+Interface\+Element, Axisymmetric\+Derivatives, E\+L\+E\+M\+E\+N\+T $>$}, \hyperlink{classoomph_1_1ElasticUpdateFluidInterfaceElement_a41706192ce4de3c4c51a70086199d8fa}{oomph\+::\+Elastic\+Update\+Fluid\+Interface\+Element$<$ Fluid\+Interface\+Element, Axisymmetric\+Derivatives, E\+L\+E\+M\+E\+N\+T $>$}, \hyperlink{classoomph_1_1ElasticUpdateFluidInterfaceElement_a41706192ce4de3c4c51a70086199d8fa}{oomph\+::\+Elastic\+Update\+Fluid\+Interface\+Element$<$ Fluid\+Interface\+Element, Line\+Derivatives, E\+L\+E\+M\+E\+N\+T $>$}, \hyperlink{classoomph_1_1SteadyAxisymAdvectionDiffusionFluxElement_a0aee153365d2f5e3cefac8b0ff38150b}{oomph\+::\+Steady\+Axisym\+Advection\+Diffusion\+Flux\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$}, \hyperlink{classoomph_1_1PMLHelmholtzFluxElement_a660d5d2b8d4b49a504b0f6c95348891a}{oomph\+::\+P\+M\+L\+Helmholtz\+Flux\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$}, \hyperlink{classoomph_1_1PMLFourierDecomposedHelmholtzPowerMonitorElement_a4618f13a3a0d53cc95a2f4951f7e40e9}{oomph\+::\+P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Power\+Monitor\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$}, \hyperlink{classoomph_1_1AxisymmetricPoroelasticityTractionElement_a8c215f2c9d8b8e66513397b102b1e4aa}{oomph\+::\+Axisymmetric\+Poroelasticity\+Traction\+Element$<$ P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$}, \hyperlink{classoomph_1_1PoroelasticityFaceElement_af8381ad4d2c26cbc397d571ff56bc85f}{oomph\+::\+Poroelasticity\+Face\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$}, \hyperlink{classoomph_1_1NavierStokesSurfaceDragTorqueElement_af864929a9dbd0ed1d464db1a1d9a93b9}{oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$}, \hyperlink{classoomph_1_1HelmholtzBCElementBase_a66defe3dfc1150d37015c43c08fd93b1}{oomph\+::\+Helmholtz\+B\+C\+Element\+Base$<$ E\+L\+E\+M\+E\+N\+T $>$}, \hyperlink{classoomph_1_1PMLTimeHarmonicLinearElasticityTractionElement_a035a8fcd22c01966f16e83e7c3517569}{oomph\+::\+P\+M\+L\+Time\+Harmonic\+Linear\+Elasticity\+Traction\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$}, \hyperlink{classoomph_1_1TimeHarmonicLinearElasticityTractionElement_a6477822c4cd242cccaacaea672155b8f}{oomph\+::\+Time\+Harmonic\+Linear\+Elasticity\+Traction\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$}, \hyperlink{classoomph_1_1LinearElasticityTractionElement_a1e9b037926aad0682fd195bb5a9d4f55}{oomph\+::\+Linear\+Elasticity\+Traction\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$}, \hyperlink{classoomph_1_1TimeHarmonicFourierDecomposedLinearElasticityTractionElement_aac54793d84bff0a227ee5fefa279b7ad}{oomph\+::\+Time\+Harmonic\+Fourier\+Decomposed\+Linear\+Elasticity\+Traction\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$}, \hyperlink{classoomph_1_1HelmholtzFluxElement_a02ce0bfabe6ce7ef3901bb4155806d86}{oomph\+::\+Helmholtz\+Flux\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$}, \hyperlink{classoomph_1_1LinearWaveFluxElement_a6fb1a0846c91406e86f598c8eb0fafb2}{oomph\+::\+Linear\+Wave\+Flux\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$}, \hyperlink{classoomph_1_1ImposeParallelOutflowElement_afa3691d3309b635967e81461b7db8173}{oomph\+::\+Impose\+Parallel\+Outflow\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$}, \hyperlink{classoomph_1_1YoungLaplaceContactAngleElement_ac6e3f26da35682eb715693755b661a5c}{oomph\+::\+Young\+Laplace\+Contact\+Angle\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$}, \hyperlink{classoomph_1_1UnsteadyHeatFluxElement_a5ee386604e4a99eb2daa220c98f17513}{oomph\+::\+Unsteady\+Heat\+Flux\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$}, \hyperlink{classoomph_1_1FaceElementAsGeomObject_aa5971a8b6d24780bfc3c05be7a88852d}{oomph\+::\+Face\+Element\+As\+Geom\+Object$<$ E\+L\+E\+M\+E\+N\+T $>$}, \hyperlink{classoomph_1_1ImposeImpenetrabilityElement_acd1ef4e239729447691ba0b973e395ae}{oomph\+::\+Impose\+Impenetrability\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$}, \hyperlink{classoomph_1_1PMLHelmholtzPowerElement_a5ee9ddb45e780e47245fc31b7f38ba19}{oomph\+::\+P\+M\+L\+Helmholtz\+Power\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$}, \hyperlink{classoomph_1_1PoissonFluxElement_acf4651fa89a7f6c5a23c1960423dc8e6}{oomph\+::\+Poisson\+Flux\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$}, \hyperlink{classoomph_1_1NavierStokesSurfacePowerElement_add4a49170201b878ed97449dd3d55a42}{oomph\+::\+Navier\+Stokes\+Surface\+Power\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$}, and \hyperlink{classoomph_1_1NavierStokesTractionElement_a8ddd7c891c2654ea277fc569b4a0725a}{oomph\+::\+Navier\+Stokes\+Traction\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$}.
+
+
+
+Definition at line 4292 of file elements.\+h.
+
+
+
+References oomph\+::\+Node\+::get\+\_\+coordinates\+\_\+on\+\_\+boundary(), and i.
+
+
+
+Referenced by oomph\+::\+Navier\+Stokes\+Traction\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::zeta\+\_\+nodal(), oomph\+::\+Navier\+Stokes\+Surface\+Power\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::zeta\+\_\+nodal(), oomph\+::\+Poisson\+Flux\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::zeta\+\_\+nodal(), oomph\+::\+P\+M\+L\+Helmholtz\+Power\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::zeta\+\_\+nodal(), oomph\+::\+Fourier\+Decomposed\+Helmholtz\+B\+C\+Element\+Base$<$ E\+L\+E\+M\+E\+N\+T $>$\+::zeta\+\_\+nodal(), oomph\+::\+Impose\+Impenetrability\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::zeta\+\_\+nodal(), oomph\+::\+Face\+Element\+As\+Geom\+Object$<$ E\+L\+E\+M\+E\+N\+T $>$\+::zeta\+\_\+nodal(), oomph\+::\+Unsteady\+Heat\+Flux\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::zeta\+\_\+nodal(), oomph\+::\+Young\+Laplace\+Contact\+Angle\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::zeta\+\_\+nodal(), oomph\+::\+Linear\+Wave\+Flux\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::zeta\+\_\+nodal(), oomph\+::\+Impose\+Parallel\+Outflow\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::zeta\+\_\+nodal(), oomph\+::\+Advection\+Diffusion\+Flux\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::zeta\+\_\+nodal(), oomph\+::\+Helmholtz\+Flux\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::zeta\+\_\+nodal(), oomph\+::\+Biharmonic\+Flux\+Element$<$ D\+I\+M $>$\+::zeta\+\_\+nodal(), oomph\+::\+Axisymmetric\+Navier\+Stokes\+Traction\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::zeta\+\_\+nodal(), oomph\+::\+Darcy\+Face\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::zeta\+\_\+nodal(), oomph\+::\+Axisymmetric\+Linear\+Elasticity\+Traction\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::zeta\+\_\+nodal(), oomph\+::\+Time\+Harmonic\+Fourier\+Decomposed\+Linear\+Elasticity\+Traction\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::zeta\+\_\+nodal(), oomph\+::\+Linear\+Elasticity\+Traction\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::zeta\+\_\+nodal(), oomph\+::\+P\+M\+L\+Time\+Harmonic\+Linear\+Elasticity\+Traction\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::zeta\+\_\+nodal(), oomph\+::\+Time\+Harmonic\+Linear\+Elasticity\+Traction\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::zeta\+\_\+nodal(), oomph\+::\+Helmholtz\+B\+C\+Element\+Base$<$ E\+L\+E\+M\+E\+N\+T $>$\+::zeta\+\_\+nodal(), oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::zeta\+\_\+nodal(), oomph\+::\+Poroelasticity\+Face\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::zeta\+\_\+nodal(), oomph\+::\+Axisymmetric\+Poroelasticity\+Traction\+Element$<$ P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::zeta\+\_\+nodal(), oomph\+::\+Elastic\+Line\+Volume\+Constraint\+Bounding\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::zeta\+\_\+nodal(), oomph\+::\+P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Power\+Monitor\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::zeta\+\_\+nodal(), oomph\+::\+D\+G\+Euler\+Face\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::zeta\+\_\+nodal(), oomph\+::\+Spine\+Line\+Volume\+Constraint\+Bounding\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::zeta\+\_\+nodal(), oomph\+::\+P\+M\+L\+Helmholtz\+Flux\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::zeta\+\_\+nodal(), oomph\+::\+Elastic\+Axisymmetric\+Volume\+Constraint\+Bounding\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::zeta\+\_\+nodal(), oomph\+::\+D\+G\+Euler\+Face\+Reflection\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::zeta\+\_\+nodal(), oomph\+::\+Spine\+Axisymmetric\+Volume\+Constraint\+Bounding\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::zeta\+\_\+nodal(), oomph\+::\+Steady\+Axisym\+Advection\+Diffusion\+Flux\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::zeta\+\_\+nodal(), oomph\+::\+Elastic\+Update\+Fluid\+Interface\+Element$<$ Fluid\+Interface\+Element, Line\+Derivatives, E\+L\+E\+M\+E\+N\+T $>$\+::zeta\+\_\+nodal(), oomph\+::\+Spherical\+Advection\+Diffusion\+Flux\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::zeta\+\_\+nodal(), oomph\+::\+Elastic\+Surface\+Volume\+Constraint\+Bounding\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::zeta\+\_\+nodal(), oomph\+::\+Spine\+Surface\+Volume\+Constraint\+Bounding\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::zeta\+\_\+nodal(), oomph\+::\+Axisym\+Advection\+Diffusion\+Flux\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::zeta\+\_\+nodal(), oomph\+::\+Elastic\+Point\+Fluid\+Interface\+Bounding\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::zeta\+\_\+nodal(), oomph\+::\+Elastic\+Line\+Fluid\+Interface\+Bounding\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::zeta\+\_\+nodal(), oomph\+::\+Solid\+Face\+Element\+::zeta\+\_\+nodal(), and oomph\+::\+Dummy\+Face\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::zeta\+\_\+nodal().
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1FaceElement_a12768f6229f232be88da7dfa10fd87be}\label{classoomph_1_1FaceElement_a12768f6229f232be88da7dfa10fd87be}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!Boundary\+\_\+number\+\_\+in\+\_\+bulk\+\_\+mesh@{Boundary\+\_\+number\+\_\+in\+\_\+bulk\+\_\+mesh}}
+\index{Boundary\+\_\+number\+\_\+in\+\_\+bulk\+\_\+mesh@{Boundary\+\_\+number\+\_\+in\+\_\+bulk\+\_\+mesh}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{Boundary\+\_\+number\+\_\+in\+\_\+bulk\+\_\+mesh}{Boundary\_number\_in\_bulk\_mesh}}
+{\footnotesize\ttfamily unsigned oomph\+::\+Face\+Element\+::\+Boundary\+\_\+number\+\_\+in\+\_\+bulk\+\_\+mesh\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The boundary number in the bulk mesh to which this element is attached. 
+
+
+
+Definition at line 4182 of file elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_a113a0f8d3d26af5e684b549e9a44a37e}\label{classoomph_1_1FaceElement_a113a0f8d3d26af5e684b549e9a44a37e}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!Boundary\+\_\+number\+\_\+in\+\_\+bulk\+\_\+mesh\+\_\+has\+\_\+been\+\_\+set@{Boundary\+\_\+number\+\_\+in\+\_\+bulk\+\_\+mesh\+\_\+has\+\_\+been\+\_\+set}}
+\index{Boundary\+\_\+number\+\_\+in\+\_\+bulk\+\_\+mesh\+\_\+has\+\_\+been\+\_\+set@{Boundary\+\_\+number\+\_\+in\+\_\+bulk\+\_\+mesh\+\_\+has\+\_\+been\+\_\+set}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{Boundary\+\_\+number\+\_\+in\+\_\+bulk\+\_\+mesh\+\_\+has\+\_\+been\+\_\+set}{Boundary\_number\_in\_bulk\_mesh\_has\_been\_set}}
+{\footnotesize\ttfamily bool oomph\+::\+Face\+Element\+::\+Boundary\+\_\+number\+\_\+in\+\_\+bulk\+\_\+mesh\+\_\+has\+\_\+been\+\_\+set\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Has the Boundary\+\_\+number\+\_\+in\+\_\+bulk\+\_\+mesh been set? Only included if compiled with P\+A\+R\+A\+N\+O\+ID switched on. 
+
+
+
+Definition at line 4188 of file elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_a5dc24a15c7486ef1859223ac9dd4c78e}\label{classoomph_1_1FaceElement_a5dc24a15c7486ef1859223ac9dd4c78e}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!Bulk\+\_\+coordinate\+\_\+derivatives\+\_\+fct\+\_\+pt@{Bulk\+\_\+coordinate\+\_\+derivatives\+\_\+fct\+\_\+pt}}
+\index{Bulk\+\_\+coordinate\+\_\+derivatives\+\_\+fct\+\_\+pt@{Bulk\+\_\+coordinate\+\_\+derivatives\+\_\+fct\+\_\+pt}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{Bulk\+\_\+coordinate\+\_\+derivatives\+\_\+fct\+\_\+pt}{Bulk\_coordinate\_derivatives\_fct\_pt}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1FaceElement_a67356b9329923767ab8f13fed85f7f88}{Bulk\+Coordinate\+Derivatives\+Fct\+Pt} oomph\+::\+Face\+Element\+::\+Bulk\+\_\+coordinate\+\_\+derivatives\+\_\+fct\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pointer to a function that returns the derivatives of the local \char`\"{}bulk\char`\"{} coordinates with respect to the local face coordinates. 
+
+
+
+Definition at line 4154 of file elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_a2d616b77ff557bbc70ece741fa2c6d96}\label{classoomph_1_1FaceElement_a2d616b77ff557bbc70ece741fa2c6d96}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!Bulk\+\_\+element\+\_\+pt@{Bulk\+\_\+element\+\_\+pt}}
+\index{Bulk\+\_\+element\+\_\+pt@{Bulk\+\_\+element\+\_\+pt}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{Bulk\+\_\+element\+\_\+pt}{Bulk\_element\_pt}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1FiniteElement}{Finite\+Element}$\ast$ oomph\+::\+Face\+Element\+::\+Bulk\+\_\+element\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Pointer to the associated higher-\/dimensional \char`\"{}bulk\char`\"{} element. 
+
+
+
+Definition at line 4193 of file elements.\+h.
+
+
+
+Referenced by oomph\+::\+Impose\+Impenetrability\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::get\+\_\+dof\+\_\+numbers\+\_\+for\+\_\+unknowns(), oomph\+::\+Impose\+Parallel\+Outflow\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::get\+\_\+dof\+\_\+numbers\+\_\+for\+\_\+unknowns(), and oomph\+::\+Polar\+Stress\+Integral\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::get\+\_\+shear\+\_\+stress().
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_a27a8a3240049a53c7fac20ebde716846}\label{classoomph_1_1FaceElement_a27a8a3240049a53c7fac20ebde716846}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!Bulk\+\_\+node\+\_\+number@{Bulk\+\_\+node\+\_\+number}}
+\index{Bulk\+\_\+node\+\_\+number@{Bulk\+\_\+node\+\_\+number}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{Bulk\+\_\+node\+\_\+number}{Bulk\_node\_number}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1Vector}{Vector}$<$unsigned$>$ oomph\+::\+Face\+Element\+::\+Bulk\+\_\+node\+\_\+number\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+List of indices of the local node numbers in the \char`\"{}bulk\char`\"{} element that correspond to the local node numbers in the \hyperlink{classoomph_1_1FaceElement}{Face\+Element}. 
+
+
+
+Definition at line 4197 of file elements.\+h.
+
+
+
+Referenced by oomph\+::\+Impose\+Impenetrability\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::get\+\_\+dof\+\_\+numbers\+\_\+for\+\_\+unknowns(), oomph\+::\+Impose\+Parallel\+Outflow\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::get\+\_\+dof\+\_\+numbers\+\_\+for\+\_\+unknowns(), and oomph\+::\+Fluid\+Interface\+Bounding\+Element\+::set\+\_\+contact\+\_\+angle().
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_a94b5c274338bd257c0d18b381b216984}\label{classoomph_1_1FaceElement_a94b5c274338bd257c0d18b381b216984}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!Bulk\+\_\+position\+\_\+type@{Bulk\+\_\+position\+\_\+type}}
+\index{Bulk\+\_\+position\+\_\+type@{Bulk\+\_\+position\+\_\+type}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{Bulk\+\_\+position\+\_\+type}{Bulk\_position\_type}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1Vector}{Vector}$<$unsigned$>$ oomph\+::\+Face\+Element\+::\+Bulk\+\_\+position\+\_\+type\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\hyperlink{classoomph_1_1Vector}{Vector} holding integers to translate additional position types to those of the \char`\"{}bulk\char`\"{} element; e.\+g. Bulk\+\_\+position\+\_\+type(1) is the position type of the \char`\"{}bulk\char`\"{} element that corresponds to face position type 1. This is required in Q\+Hermite\+Elements, where the slope in the direction of the 1D element is face position type 1, but may be position type 1 or 2 in the \char`\"{}bulk\char`\"{} element, depending upon which face, we are located. 
+
+
+
+Definition at line 4163 of file elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_a528cd1e95e0c231f757e54b751c50f8f}\label{classoomph_1_1FaceElement_a528cd1e95e0c231f757e54b751c50f8f}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!Face\+\_\+index@{Face\+\_\+index}}
+\index{Face\+\_\+index@{Face\+\_\+index}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{Face\+\_\+index}{Face\_index}}
+{\footnotesize\ttfamily int oomph\+::\+Face\+Element\+::\+Face\+\_\+index\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Index of the face. 
+
+
+
+Definition at line 4170 of file elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_ad679fad61e43e7a537df4f7b148f0ebc}\label{classoomph_1_1FaceElement_ad679fad61e43e7a537df4f7b148f0ebc}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!Face\+\_\+to\+\_\+bulk\+\_\+coordinate\+\_\+fct\+\_\+pt@{Face\+\_\+to\+\_\+bulk\+\_\+coordinate\+\_\+fct\+\_\+pt}}
+\index{Face\+\_\+to\+\_\+bulk\+\_\+coordinate\+\_\+fct\+\_\+pt@{Face\+\_\+to\+\_\+bulk\+\_\+coordinate\+\_\+fct\+\_\+pt}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{Face\+\_\+to\+\_\+bulk\+\_\+coordinate\+\_\+fct\+\_\+pt}{Face\_to\_bulk\_coordinate\_fct\_pt}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1FaceElement_aaa3af8b5d2e9584bdcd9b133990d7591}{Coordinate\+Mapping\+Fct\+Pt} oomph\+::\+Face\+Element\+::\+Face\+\_\+to\+\_\+bulk\+\_\+coordinate\+\_\+fct\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pointer to a function that translates the face coordinate to the coordinate in the bulk element. 
+
+
+
+Definition at line 4150 of file elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_a95ac8141871cfe5353667b64fddee734}\label{classoomph_1_1FaceElement_a95ac8141871cfe5353667b64fddee734}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!Ignore\+\_\+discontinuous\+\_\+tangent\+\_\+warning@{Ignore\+\_\+discontinuous\+\_\+tangent\+\_\+warning}}
+\index{Ignore\+\_\+discontinuous\+\_\+tangent\+\_\+warning@{Ignore\+\_\+discontinuous\+\_\+tangent\+\_\+warning}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{Ignore\+\_\+discontinuous\+\_\+tangent\+\_\+warning}{Ignore\_discontinuous\_tangent\_warning}}
+{\footnotesize\ttfamily bool oomph\+::\+Face\+Element\+::\+Ignore\+\_\+discontinuous\+\_\+tangent\+\_\+warning = false\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Ignores the warning when the tangent vectors from continuous\+\_\+tangent\+\_\+and\+\_\+outer\+\_\+unit\+\_\+normal may not be continuous as a result of the unit normal being aligned with the z axis. This can be avoided by supplying a general direction vector for the tangent vector via set\+\_\+tangent\+\_\+direction(...). 
+
+
+
+Definition at line 4177 of file elements.\+h.
+
+
+
+Referenced by oomph\+::\+Finite\+Element\+::build\+\_\+face\+\_\+element(), turn\+\_\+off\+\_\+warning\+\_\+for\+\_\+discontinuous\+\_\+tangent(), and turn\+\_\+on\+\_\+warning\+\_\+for\+\_\+discontinuous\+\_\+tangent().
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_abd04b85066da626341294b5f0b97516e}\label{classoomph_1_1FaceElement_abd04b85066da626341294b5f0b97516e}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!Nbulk\+\_\+value@{Nbulk\+\_\+value}}
+\index{Nbulk\+\_\+value@{Nbulk\+\_\+value}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{Nbulk\+\_\+value}{Nbulk\_value}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1Vector}{Vector}$<$unsigned$>$ oomph\+::\+Face\+Element\+::\+Nbulk\+\_\+value\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+A vector that will hold the number of data values at the nodes that are associated with the \char`\"{}bulk\char`\"{} element. i.\+e. not including any additional degrees of freedom that might be required for extra equations that are being solved by the \hyperlink{classoomph_1_1FaceElement}{Face\+Element}. 
+
+
+
+Definition at line 4207 of file elements.\+h.
+
+
+
+Referenced by oomph\+::\+Clamped\+Sliding\+Hermite\+Beam\+Boundary\+Condition\+Element\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals(), oomph\+::\+Clamped\+Hermite\+Shell\+Boundary\+Condition\+Element\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals(), and oomph\+::\+Clamped\+Hermite\+Shell\+Boundary\+Condition\+Element\+::output().
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_a5b72b90a01168c323f57714bb9a27376}\label{classoomph_1_1FaceElement_a5b72b90a01168c323f57714bb9a27376}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!Normal\+\_\+sign@{Normal\+\_\+sign}}
+\index{Normal\+\_\+sign@{Normal\+\_\+sign}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{Normal\+\_\+sign}{Normal\_sign}}
+{\footnotesize\ttfamily int oomph\+::\+Face\+Element\+::\+Normal\+\_\+sign\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Sign of outer unit normal (relative to cross-\/products of tangent vectors in the corresponding \char`\"{}bulk\char`\"{} element. 
+
+
+
+Definition at line 4167 of file elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1FaceElement_a6be4abd12fb4edbd94b7613f62de3593}\label{classoomph_1_1FaceElement_a6be4abd12fb4edbd94b7613f62de3593}} 
+\index{oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}!Tangent\+\_\+direction\+\_\+pt@{Tangent\+\_\+direction\+\_\+pt}}
+\index{Tangent\+\_\+direction\+\_\+pt@{Tangent\+\_\+direction\+\_\+pt}!oomph\+::\+Face\+Element@{oomph\+::\+Face\+Element}}
+\subsubsection{\texorpdfstring{Tangent\+\_\+direction\+\_\+pt}{Tangent\_direction\_pt}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1Vector}{Vector}$<$double$>$$\ast$ oomph\+::\+Face\+Element\+::\+Tangent\+\_\+direction\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+A general direction pointer for the tangent vectors. This is used in the function \hyperlink{classoomph_1_1FaceElement_a182997beb4a64fde40a47007344913f1}{continuous\+\_\+tangent\+\_\+and\+\_\+outer\+\_\+unit\+\_\+normal()} for creating continuous tangent vectors in spatial dimensions. The general direction is projected on to the surface. This technique is not required in two spatial dimensions. 
+
+
+
+Definition at line 4214 of file elements.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{elements_8h}{elements.\+h}\item 
+\hyperlink{elements_8cc}{elements.\+cc}\end{DoxyCompactItemize}

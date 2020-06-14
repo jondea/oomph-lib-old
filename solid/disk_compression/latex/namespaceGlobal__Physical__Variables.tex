@@ -1,0 +1,206 @@
+\hypertarget{namespaceGlobal__Physical__Variables}{}\section{Global\+\_\+\+Physical\+\_\+\+Variables Namespace Reference}
+\label{namespaceGlobal__Physical__Variables}\index{Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}}
+
+
+Global variables.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{namespaceGlobal__Physical__Variables_a19f4e20a92e7d216b4d2b00308f96917}{constant\+\_\+pressure} (const Vector$<$ double $>$ \&xi, const Vector$<$ double $>$ \&x, const Vector$<$ double $>$ \&n, Vector$<$ double $>$ \&traction)
+\begin{DoxyCompactList}\small\item\em Constant pressure load. \end{DoxyCompactList}\item 
+void \hyperlink{namespaceGlobal__Physical__Variables_a6be3760e5494b1772e4bfe5d5f3c5d53}{growth\+\_\+function} (const Vector$<$ double $>$ \&xi, double \&gamma)
+\begin{DoxyCompactList}\small\item\em Growth function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+Strain\+Energy\+Function $\ast$ \hyperlink{namespaceGlobal__Physical__Variables_a73135f793690b4386bf83bbefc7bf310}{Strain\+\_\+energy\+\_\+function\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to strain energy function. \end{DoxyCompactList}\item 
+Constitutive\+Law $\ast$ \hyperlink{namespaceGlobal__Physical__Variables_a2a37fb040c832ee7a086bb13bb02a100}{Constitutive\+\_\+law\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to constitutive law. \end{DoxyCompactList}\item 
+double \hyperlink{namespaceGlobal__Physical__Variables_a09a019474b7405b35da2437f7779bc7e}{E} =1.\+0
+\begin{DoxyCompactList}\small\item\em Elastic modulus. \end{DoxyCompactList}\item 
+double \hyperlink{namespaceGlobal__Physical__Variables_a3962c36313826b19f216f6bbbdd6a477}{Nu} =0.\+3
+\begin{DoxyCompactList}\small\item\em Poisson\textquotesingle{}s ratio. \end{DoxyCompactList}\item 
+double \hyperlink{namespaceGlobal__Physical__Variables_a849754fa7155c1a31481674ce4845658}{C1} =1.\+3
+\begin{DoxyCompactList}\small\item\em \char`\"{}\+Mooney Rivlin\char`\"{} coefficient for generalised Mooney Rivlin law \end{DoxyCompactList}\item 
+double \hyperlink{namespaceGlobal__Physical__Variables_a23c2ade6398f54040b869f7f3a2bcc4b}{P} = 0.\+0
+\begin{DoxyCompactList}\small\item\em Uniform pressure. \end{DoxyCompactList}\item 
+double \hyperlink{namespaceGlobal__Physical__Variables_ae02b5f5b098b05fba75f3b61f381c5f7}{Uniform\+\_\+gamma} =1.\+1
+\begin{DoxyCompactList}\small\item\em Uniform volumetric expansion. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Global variables. 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceGlobal__Physical__Variables_a19f4e20a92e7d216b4d2b00308f96917}\label{namespaceGlobal__Physical__Variables_a19f4e20a92e7d216b4d2b00308f96917}} 
+\index{Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}!constant\+\_\+pressure@{constant\+\_\+pressure}}
+\index{constant\+\_\+pressure@{constant\+\_\+pressure}!Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}}
+\subsubsection{\texorpdfstring{constant\+\_\+pressure()}{constant\_pressure()}}
+{\footnotesize\ttfamily void Global\+\_\+\+Physical\+\_\+\+Variables\+::constant\+\_\+pressure (\begin{DoxyParamCaption}\item[{const Vector$<$ double $>$ \&}]{xi,  }\item[{const Vector$<$ double $>$ \&}]{x,  }\item[{const Vector$<$ double $>$ \&}]{n,  }\item[{Vector$<$ double $>$ \&}]{traction }\end{DoxyParamCaption})}
+
+
+
+Constant pressure load. 
+
+
+
+Definition at line 74 of file disk\+\_\+compression.\+cc.
+
+
+
+Referenced by Static\+Disk\+Compression\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Static\+Disk\+Compression\+Problem().
+
+\mbox{\Hypertarget{namespaceGlobal__Physical__Variables_a6be3760e5494b1772e4bfe5d5f3c5d53}\label{namespaceGlobal__Physical__Variables_a6be3760e5494b1772e4bfe5d5f3c5d53}} 
+\index{Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}!growth\+\_\+function@{growth\+\_\+function}}
+\index{growth\+\_\+function@{growth\+\_\+function}!Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}}
+\subsubsection{\texorpdfstring{growth\+\_\+function()}{growth\_function()}}
+{\footnotesize\ttfamily void Global\+\_\+\+Physical\+\_\+\+Variables\+::growth\+\_\+function (\begin{DoxyParamCaption}\item[{const Vector$<$ double $>$ \&}]{xi,  }\item[{double \&}]{gamma }\end{DoxyParamCaption})}
+
+
+
+Growth function. 
+
+
+
+Definition at line 89 of file disk\+\_\+compression.\+cc.
+
+
+
+References Uniform\+\_\+gamma.
+
+
+
+Referenced by Static\+Disk\+Compression\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Static\+Disk\+Compression\+Problem().
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceGlobal__Physical__Variables_a849754fa7155c1a31481674ce4845658}\label{namespaceGlobal__Physical__Variables_a849754fa7155c1a31481674ce4845658}} 
+\index{Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}!C1@{C1}}
+\index{C1@{C1}!Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}}
+\subsubsection{\texorpdfstring{C1}{C1}}
+{\footnotesize\ttfamily double Global\+\_\+\+Physical\+\_\+\+Variables\+::\+C1 =1.\+3}
+
+
+
+\char`\"{}\+Mooney Rivlin\char`\"{} coefficient for generalised Mooney Rivlin law 
+
+
+
+Definition at line 68 of file disk\+\_\+compression.\+cc.
+
+
+
+Referenced by main().
+
+\mbox{\Hypertarget{namespaceGlobal__Physical__Variables_a2a37fb040c832ee7a086bb13bb02a100}\label{namespaceGlobal__Physical__Variables_a2a37fb040c832ee7a086bb13bb02a100}} 
+\index{Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}!Constitutive\+\_\+law\+\_\+pt@{Constitutive\+\_\+law\+\_\+pt}}
+\index{Constitutive\+\_\+law\+\_\+pt@{Constitutive\+\_\+law\+\_\+pt}!Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}}
+\subsubsection{\texorpdfstring{Constitutive\+\_\+law\+\_\+pt}{Constitutive\_law\_pt}}
+{\footnotesize\ttfamily Constitutive\+Law$\ast$ Global\+\_\+\+Physical\+\_\+\+Variables\+::\+Constitutive\+\_\+law\+\_\+pt}
+
+
+
+Pointer to constitutive law. 
+
+
+
+Definition at line 59 of file disk\+\_\+compression.\+cc.
+
+
+
+Referenced by main(), and Static\+Disk\+Compression\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Static\+Disk\+Compression\+Problem().
+
+\mbox{\Hypertarget{namespaceGlobal__Physical__Variables_a09a019474b7405b35da2437f7779bc7e}\label{namespaceGlobal__Physical__Variables_a09a019474b7405b35da2437f7779bc7e}} 
+\index{Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}!E@{E}}
+\index{E@{E}!Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}}
+\subsubsection{\texorpdfstring{E}{E}}
+{\footnotesize\ttfamily double Global\+\_\+\+Physical\+\_\+\+Variables\+::E =1.\+0}
+
+
+
+Elastic modulus. 
+
+
+
+Definition at line 62 of file disk\+\_\+compression.\+cc.
+
+
+
+Referenced by Static\+Disk\+Compression\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::doc\+\_\+solution(), and main().
+
+\mbox{\Hypertarget{namespaceGlobal__Physical__Variables_a3962c36313826b19f216f6bbbdd6a477}\label{namespaceGlobal__Physical__Variables_a3962c36313826b19f216f6bbbdd6a477}} 
+\index{Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}!Nu@{Nu}}
+\index{Nu@{Nu}!Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}}
+\subsubsection{\texorpdfstring{Nu}{Nu}}
+{\footnotesize\ttfamily double Global\+\_\+\+Physical\+\_\+\+Variables\+::\+Nu =0.\+3}
+
+
+
+Poisson\textquotesingle{}s ratio. 
+
+
+
+Definition at line 65 of file disk\+\_\+compression.\+cc.
+
+
+
+Referenced by Static\+Disk\+Compression\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::doc\+\_\+solution(), and main().
+
+\mbox{\Hypertarget{namespaceGlobal__Physical__Variables_a23c2ade6398f54040b869f7f3a2bcc4b}\label{namespaceGlobal__Physical__Variables_a23c2ade6398f54040b869f7f3a2bcc4b}} 
+\index{Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}!P@{P}}
+\index{P@{P}!Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}}
+\subsubsection{\texorpdfstring{P}{P}}
+{\footnotesize\ttfamily double Global\+\_\+\+Physical\+\_\+\+Variables\+::P = 0.\+0}
+
+
+
+Uniform pressure. 
+
+
+
+Definition at line 71 of file disk\+\_\+compression.\+cc.
+
+
+
+Referenced by Static\+Disk\+Compression\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::doc\+\_\+solution(), and Static\+Disk\+Compression\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::parameter\+\_\+study().
+
+\mbox{\Hypertarget{namespaceGlobal__Physical__Variables_a73135f793690b4386bf83bbefc7bf310}\label{namespaceGlobal__Physical__Variables_a73135f793690b4386bf83bbefc7bf310}} 
+\index{Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}!Strain\+\_\+energy\+\_\+function\+\_\+pt@{Strain\+\_\+energy\+\_\+function\+\_\+pt}}
+\index{Strain\+\_\+energy\+\_\+function\+\_\+pt@{Strain\+\_\+energy\+\_\+function\+\_\+pt}!Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}}
+\subsubsection{\texorpdfstring{Strain\+\_\+energy\+\_\+function\+\_\+pt}{Strain\_energy\_function\_pt}}
+{\footnotesize\ttfamily Strain\+Energy\+Function$\ast$ Global\+\_\+\+Physical\+\_\+\+Variables\+::\+Strain\+\_\+energy\+\_\+function\+\_\+pt}
+
+
+
+Pointer to strain energy function. 
+
+
+
+Definition at line 56 of file disk\+\_\+compression.\+cc.
+
+
+
+Referenced by main().
+
+\mbox{\Hypertarget{namespaceGlobal__Physical__Variables_ae02b5f5b098b05fba75f3b61f381c5f7}\label{namespaceGlobal__Physical__Variables_ae02b5f5b098b05fba75f3b61f381c5f7}} 
+\index{Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}!Uniform\+\_\+gamma@{Uniform\+\_\+gamma}}
+\index{Uniform\+\_\+gamma@{Uniform\+\_\+gamma}!Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}}
+\subsubsection{\texorpdfstring{Uniform\+\_\+gamma}{Uniform\_gamma}}
+{\footnotesize\ttfamily double Global\+\_\+\+Physical\+\_\+\+Variables\+::\+Uniform\+\_\+gamma =1.\+1}
+
+
+
+Uniform volumetric expansion. 
+
+
+
+Definition at line 86 of file disk\+\_\+compression.\+cc.
+
+
+
+Referenced by Static\+Disk\+Compression\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::doc\+\_\+solution(), and growth\+\_\+function().
+

@@ -1,0 +1,153 @@
+\hypertarget{classoomph_1_1DGEulerFaceReflectionElement}{}\section{oomph\+:\+:D\+G\+Euler\+Face\+Reflection\+Element$<$ E\+L\+E\+M\+E\+NT $>$ Class Template Reference}
+\label{classoomph_1_1DGEulerFaceReflectionElement}\index{oomph\+::\+D\+G\+Euler\+Face\+Reflection\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$@{oomph\+::\+D\+G\+Euler\+Face\+Reflection\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$}}
+
+
+\hyperlink{classoomph_1_1FaceElement}{Face\+Element} for Discontinuous Galerkin Problems with reflection boundary conditions.  
+
+
+
+
+{\ttfamily \#include $<$euler\+\_\+elements.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:D\+G\+Euler\+Face\+Reflection\+Element$<$ E\+L\+E\+M\+E\+NT $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.898551cm]{classoomph_1_1DGEulerFaceReflectionElement}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1DGEulerFaceReflectionElement_abf3440cd3556c0d9f968dab2a4b90c24}{D\+G\+Euler\+Face\+Reflection\+Element} (\hyperlink{classoomph_1_1FiniteElement}{Finite\+Element} $\ast$const \&element\+\_\+pt, const int \&\hyperlink{classoomph_1_1FaceElement_a478d577ac6db67ecc80f1f02ae3ab170}{face\+\_\+index})
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1DGEulerFaceReflectionElement_a0abd251e086372b7d18e06713890e25c}{zeta\+\_\+nodal} (const unsigned \&n, const unsigned \&k, const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}) const
+\begin{DoxyCompactList}\small\item\em The \char`\"{}global\char`\"{} intrinsic coordinate of the element when viewed as part of a geometric object should be given by the \hyperlink{classoomph_1_1FaceElement}{Face\+Element} representation, by default (needed to break indeterminacy if bulk element is Solid\+Element) \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1DGEulerFaceReflectionElement_a51f6048bc1f1c033933c65430dd0c323}{required\+\_\+nflux} ()
+\begin{DoxyCompactList}\small\item\em Set the number of flux components. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1DGEulerFaceReflectionElement_a288fa54f9022aac4bf060ca19a0c8a67}{interpolated\+\_\+u} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&u)
+\begin{DoxyCompactList}\small\item\em We overload interpolated\+\_\+u to reflect. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+unsigned \hyperlink{classoomph_1_1DGEulerFaceReflectionElement_afdb06b622f23a5ccea9173283d68df2f}{Nflux}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class E\+L\+E\+M\+E\+NT$>$\newline
+class oomph\+::\+D\+G\+Euler\+Face\+Reflection\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$}
+
+\hyperlink{classoomph_1_1FaceElement}{Face\+Element} for Discontinuous Galerkin Problems with reflection boundary conditions. 
+
+Definition at line 663 of file euler\+\_\+elements.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1DGEulerFaceReflectionElement_abf3440cd3556c0d9f968dab2a4b90c24}\label{classoomph_1_1DGEulerFaceReflectionElement_abf3440cd3556c0d9f968dab2a4b90c24}} 
+\index{oomph\+::\+D\+G\+Euler\+Face\+Reflection\+Element@{oomph\+::\+D\+G\+Euler\+Face\+Reflection\+Element}!D\+G\+Euler\+Face\+Reflection\+Element@{D\+G\+Euler\+Face\+Reflection\+Element}}
+\index{D\+G\+Euler\+Face\+Reflection\+Element@{D\+G\+Euler\+Face\+Reflection\+Element}!oomph\+::\+D\+G\+Euler\+Face\+Reflection\+Element@{oomph\+::\+D\+G\+Euler\+Face\+Reflection\+Element}}
+\subsubsection{\texorpdfstring{D\+G\+Euler\+Face\+Reflection\+Element()}{DGEulerFaceReflectionElement()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classoomph_1_1DGEulerFaceReflectionElement}{oomph\+::\+D\+G\+Euler\+Face\+Reflection\+Element}$<$ E\+L\+E\+M\+E\+NT $>$\+::\hyperlink{classoomph_1_1DGEulerFaceReflectionElement}{D\+G\+Euler\+Face\+Reflection\+Element} (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1FiniteElement}{Finite\+Element} $\ast$const \&}]{element\+\_\+pt,  }\item[{const int \&}]{face\+\_\+index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor. 
+
+
+
+Definition at line 671 of file euler\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Finite\+Element\+::build\+\_\+face\+\_\+element(), and oomph\+::\+Finite\+Element\+::dim().
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1DGEulerFaceReflectionElement_a288fa54f9022aac4bf060ca19a0c8a67}\label{classoomph_1_1DGEulerFaceReflectionElement_a288fa54f9022aac4bf060ca19a0c8a67}} 
+\index{oomph\+::\+D\+G\+Euler\+Face\+Reflection\+Element@{oomph\+::\+D\+G\+Euler\+Face\+Reflection\+Element}!interpolated\+\_\+u@{interpolated\+\_\+u}}
+\index{interpolated\+\_\+u@{interpolated\+\_\+u}!oomph\+::\+D\+G\+Euler\+Face\+Reflection\+Element@{oomph\+::\+D\+G\+Euler\+Face\+Reflection\+Element}}
+\subsubsection{\texorpdfstring{interpolated\+\_\+u()}{interpolated\_u()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classoomph_1_1DGEulerFaceReflectionElement}{oomph\+::\+D\+G\+Euler\+Face\+Reflection\+Element}$<$ E\+L\+E\+M\+E\+NT $>$\+::interpolated\+\_\+u (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{u }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+We overload interpolated\+\_\+u to reflect. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1DGFaceElement_ab58cee592775f0ae54ac0b0087eb9d35}{oomph\+::\+D\+G\+Face\+Element}.
+
+
+
+Definition at line 697 of file euler\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Vector\+Helpers\+::dot(), oomph\+::\+D\+G\+Face\+Element\+::interpolated\+\_\+u(), and oomph\+::\+Finite\+Element\+::nodal\+\_\+dimension().
+
+\mbox{\Hypertarget{classoomph_1_1DGEulerFaceReflectionElement_a51f6048bc1f1c033933c65430dd0c323}\label{classoomph_1_1DGEulerFaceReflectionElement_a51f6048bc1f1c033933c65430dd0c323}} 
+\index{oomph\+::\+D\+G\+Euler\+Face\+Reflection\+Element@{oomph\+::\+D\+G\+Euler\+Face\+Reflection\+Element}!required\+\_\+nflux@{required\+\_\+nflux}}
+\index{required\+\_\+nflux@{required\+\_\+nflux}!oomph\+::\+D\+G\+Euler\+Face\+Reflection\+Element@{oomph\+::\+D\+G\+Euler\+Face\+Reflection\+Element}}
+\subsubsection{\texorpdfstring{required\+\_\+nflux()}{required\_nflux()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+unsigned \hyperlink{classoomph_1_1DGEulerFaceReflectionElement}{oomph\+::\+D\+G\+Euler\+Face\+Reflection\+Element}$<$ E\+L\+E\+M\+E\+NT $>$\+::required\+\_\+nflux (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Set the number of flux components. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1DGFaceElement_af45b5a88226a143c8fafbc5f3e097526}{oomph\+::\+D\+G\+Face\+Element}.
+
+
+
+Definition at line 694 of file euler\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1DGEulerFaceReflectionElement_a0abd251e086372b7d18e06713890e25c}\label{classoomph_1_1DGEulerFaceReflectionElement_a0abd251e086372b7d18e06713890e25c}} 
+\index{oomph\+::\+D\+G\+Euler\+Face\+Reflection\+Element@{oomph\+::\+D\+G\+Euler\+Face\+Reflection\+Element}!zeta\+\_\+nodal@{zeta\+\_\+nodal}}
+\index{zeta\+\_\+nodal@{zeta\+\_\+nodal}!oomph\+::\+D\+G\+Euler\+Face\+Reflection\+Element@{oomph\+::\+D\+G\+Euler\+Face\+Reflection\+Element}}
+\subsubsection{\texorpdfstring{zeta\+\_\+nodal()}{zeta\_nodal()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+double \hyperlink{classoomph_1_1DGEulerFaceReflectionElement}{oomph\+::\+D\+G\+Euler\+Face\+Reflection\+Element}$<$ E\+L\+E\+M\+E\+NT $>$\+::zeta\+\_\+nodal (\begin{DoxyParamCaption}\item[{const unsigned \&}]{n,  }\item[{const unsigned \&}]{k,  }\item[{const unsigned \&}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+The \char`\"{}global\char`\"{} intrinsic coordinate of the element when viewed as part of a geometric object should be given by the \hyperlink{classoomph_1_1FaceElement}{Face\+Element} representation, by default (needed to break indeterminacy if bulk element is Solid\+Element) 
+
+Specify the value of nodal zeta from the face geometry 
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a849561c5fbcbc07dc49d2dc6cca68559}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 689 of file euler\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Face\+Element\+::zeta\+\_\+nodal().
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1DGEulerFaceReflectionElement_afdb06b622f23a5ccea9173283d68df2f}\label{classoomph_1_1DGEulerFaceReflectionElement_afdb06b622f23a5ccea9173283d68df2f}} 
+\index{oomph\+::\+D\+G\+Euler\+Face\+Reflection\+Element@{oomph\+::\+D\+G\+Euler\+Face\+Reflection\+Element}!Nflux@{Nflux}}
+\index{Nflux@{Nflux}!oomph\+::\+D\+G\+Euler\+Face\+Reflection\+Element@{oomph\+::\+D\+G\+Euler\+Face\+Reflection\+Element}}
+\subsubsection{\texorpdfstring{Nflux}{Nflux}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+unsigned \hyperlink{classoomph_1_1DGEulerFaceReflectionElement}{oomph\+::\+D\+G\+Euler\+Face\+Reflection\+Element}$<$ E\+L\+E\+M\+E\+NT $>$\+::Nflux\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 666 of file euler\+\_\+elements.\+h.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{euler__elements_8h}{euler\+\_\+elements.\+h}\end{DoxyCompactItemize}

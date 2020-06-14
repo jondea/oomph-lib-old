@@ -1,0 +1,184 @@
+\hypertarget{classoomph_1_1HeightControlElement}{}\section{oomph\+:\+:Height\+Control\+Element Class Reference}
+\label{classoomph_1_1HeightControlElement}\index{oomph\+::\+Height\+Control\+Element@{oomph\+::\+Height\+Control\+Element}}
+
+
+{\ttfamily \#include $<$young\+\_\+laplace\+\_\+elements.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Height\+Control\+Element\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classoomph_1_1HeightControlElement}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1HeightControlElement_abb74c76bc5615a50794d1d26711f1203}{Height\+Control\+Element} (\hyperlink{classoomph_1_1Node}{Node} $\ast$control\+\_\+node\+\_\+pt, double $\ast$prescribed\+\_\+height\+\_\+pt)
+\item 
+\hyperlink{classoomph_1_1Data}{Data} $\ast$\& \hyperlink{classoomph_1_1HeightControlElement_ac99cf23c634731656b17c18ece472b85}{kappa\+\_\+pt} ()
+\begin{DoxyCompactList}\small\item\em Access function to the pointer to the \hyperlink{classoomph_1_1Data}{Data} object that stores the curvature. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1HeightControlElement_a1d14c779f9ca1dcf26864406d6d32adb}{assign\+\_\+additional\+\_\+local\+\_\+eqn\+\_\+numbers} ()
+\begin{DoxyCompactList}\small\item\em Setup local equation number for the height-\/control equation. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1HeightControlElement_a4b60627344a4a3d6647aabc994059d9d}{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&residuals)
+\begin{DoxyCompactList}\small\item\em Add the element\textquotesingle{}s contribution to its residual vector\+: The height constraint. \mbox{[}Note\+: Jacobian is computed automatically by finite-\/differencing\mbox{]}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double $\ast$ \hyperlink{classoomph_1_1HeightControlElement_a84d4b72f7ce6ed722a5deac748ec874b}{Prescribed\+\_\+height\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to value that stores the controlled height. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Node}{Node} $\ast$ \hyperlink{classoomph_1_1HeightControlElement_a7950b34b4d99cf59df12a1c458b42540}{Control\+\_\+node\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to node at which the height is controlled. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1HeightControlElement_a2e03540694fb3d599770106ca460281e}{Curvature\+\_\+data\+\_\+index}
+\begin{DoxyCompactList}\small\item\em In which component (in the vector of the element\textquotesingle{}s internal \hyperlink{classoomph_1_1Data}{Data}) is the unknown curvature stored? \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1HeightControlElement_adbcff51a8787697ba2179442b9c2a753}{Height\+\_\+ctrl\+\_\+local\+\_\+eqn}
+\begin{DoxyCompactList}\small\item\em Local equation number of the height-\/control equation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Height control element for Young\+Laplace equations\+: Prescribe displacement along a spine (i.\+e. the \char`\"{}height of the meniscus\char`\"{} in exchange for treating the curvature as an unknown. Very similar to the \hyperlink{classoomph_1_1DisplacementControlElement}{Displacement\+Control\+Element} used in solid mechanics problems. 
+
+Definition at line 575 of file young\+\_\+laplace\+\_\+elements.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1HeightControlElement_abb74c76bc5615a50794d1d26711f1203}\label{classoomph_1_1HeightControlElement_abb74c76bc5615a50794d1d26711f1203}} 
+\index{oomph\+::\+Height\+Control\+Element@{oomph\+::\+Height\+Control\+Element}!Height\+Control\+Element@{Height\+Control\+Element}}
+\index{Height\+Control\+Element@{Height\+Control\+Element}!oomph\+::\+Height\+Control\+Element@{oomph\+::\+Height\+Control\+Element}}
+\subsubsection{\texorpdfstring{Height\+Control\+Element()}{HeightControlElement()}}
+{\footnotesize\ttfamily oomph\+::\+Height\+Control\+Element\+::\+Height\+Control\+Element (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Node}{Node} $\ast$}]{control\+\_\+node\+\_\+pt,  }\item[{double $\ast$}]{prescribed\+\_\+height\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Constructor\+: Pass pointer to node at which the height is controlled and pointer to double that stores the prescribed height at that node. 
+
+Definition at line 583 of file young\+\_\+laplace\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Generalised\+Element\+::add\+\_\+external\+\_\+data(), and oomph\+::\+Generalised\+Element\+::add\+\_\+internal\+\_\+data().
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1HeightControlElement_a1d14c779f9ca1dcf26864406d6d32adb}\label{classoomph_1_1HeightControlElement_a1d14c779f9ca1dcf26864406d6d32adb}} 
+\index{oomph\+::\+Height\+Control\+Element@{oomph\+::\+Height\+Control\+Element}!assign\+\_\+additional\+\_\+local\+\_\+eqn\+\_\+numbers@{assign\+\_\+additional\+\_\+local\+\_\+eqn\+\_\+numbers}}
+\index{assign\+\_\+additional\+\_\+local\+\_\+eqn\+\_\+numbers@{assign\+\_\+additional\+\_\+local\+\_\+eqn\+\_\+numbers}!oomph\+::\+Height\+Control\+Element@{oomph\+::\+Height\+Control\+Element}}
+\subsubsection{\texorpdfstring{assign\+\_\+additional\+\_\+local\+\_\+eqn\+\_\+numbers()}{assign\_additional\_local\_eqn\_numbers()}}
+{\footnotesize\ttfamily void oomph\+::\+Height\+Control\+Element\+::assign\+\_\+additional\+\_\+local\+\_\+eqn\+\_\+numbers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Setup local equation number for the height-\/control equation. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1GeneralisedElement_a4cdd0d1eef33b43f652c8f0b9e43967b}{oomph\+::\+Generalised\+Element}.
+
+
+
+Definition at line 612 of file young\+\_\+laplace\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Generalised\+Element\+::internal\+\_\+local\+\_\+eqn().
+
+\mbox{\Hypertarget{classoomph_1_1HeightControlElement_a4b60627344a4a3d6647aabc994059d9d}\label{classoomph_1_1HeightControlElement_a4b60627344a4a3d6647aabc994059d9d}} 
+\index{oomph\+::\+Height\+Control\+Element@{oomph\+::\+Height\+Control\+Element}!fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals}}
+\index{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals}!oomph\+::\+Height\+Control\+Element@{oomph\+::\+Height\+Control\+Element}}
+\subsubsection{\texorpdfstring{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals()}{fill\_in\_contribution\_to\_residuals()}}
+{\footnotesize\ttfamily void oomph\+::\+Height\+Control\+Element\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{residuals }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Add the element\textquotesingle{}s contribution to its residual vector\+: The height constraint. \mbox{[}Note\+: Jacobian is computed automatically by finite-\/differencing\mbox{]}. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1GeneralisedElement_a310c97f515e8504a48179c0e72c550d7}{oomph\+::\+Generalised\+Element}.
+
+
+
+Definition at line 625 of file young\+\_\+laplace\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1HeightControlElement_ac99cf23c634731656b17c18ece472b85}\label{classoomph_1_1HeightControlElement_ac99cf23c634731656b17c18ece472b85}} 
+\index{oomph\+::\+Height\+Control\+Element@{oomph\+::\+Height\+Control\+Element}!kappa\+\_\+pt@{kappa\+\_\+pt}}
+\index{kappa\+\_\+pt@{kappa\+\_\+pt}!oomph\+::\+Height\+Control\+Element@{oomph\+::\+Height\+Control\+Element}}
+\subsubsection{\texorpdfstring{kappa\+\_\+pt()}{kappa\_pt()}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1Data}{Data}$\ast$\& oomph\+::\+Height\+Control\+Element\+::kappa\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Access function to the pointer to the \hyperlink{classoomph_1_1Data}{Data} object that stores the curvature. 
+
+
+
+Definition at line 606 of file young\+\_\+laplace\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Generalised\+Element\+::internal\+\_\+data\+\_\+pt().
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1HeightControlElement_a7950b34b4d99cf59df12a1c458b42540}\label{classoomph_1_1HeightControlElement_a7950b34b4d99cf59df12a1c458b42540}} 
+\index{oomph\+::\+Height\+Control\+Element@{oomph\+::\+Height\+Control\+Element}!Control\+\_\+node\+\_\+pt@{Control\+\_\+node\+\_\+pt}}
+\index{Control\+\_\+node\+\_\+pt@{Control\+\_\+node\+\_\+pt}!oomph\+::\+Height\+Control\+Element@{oomph\+::\+Height\+Control\+Element}}
+\subsubsection{\texorpdfstring{Control\+\_\+node\+\_\+pt}{Control\_node\_pt}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1Node}{Node}$\ast$ oomph\+::\+Height\+Control\+Element\+::\+Control\+\_\+node\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pointer to node at which the height is controlled. 
+
+
+
+Definition at line 637 of file young\+\_\+laplace\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1HeightControlElement_a2e03540694fb3d599770106ca460281e}\label{classoomph_1_1HeightControlElement_a2e03540694fb3d599770106ca460281e}} 
+\index{oomph\+::\+Height\+Control\+Element@{oomph\+::\+Height\+Control\+Element}!Curvature\+\_\+data\+\_\+index@{Curvature\+\_\+data\+\_\+index}}
+\index{Curvature\+\_\+data\+\_\+index@{Curvature\+\_\+data\+\_\+index}!oomph\+::\+Height\+Control\+Element@{oomph\+::\+Height\+Control\+Element}}
+\subsubsection{\texorpdfstring{Curvature\+\_\+data\+\_\+index}{Curvature\_data\_index}}
+{\footnotesize\ttfamily unsigned oomph\+::\+Height\+Control\+Element\+::\+Curvature\+\_\+data\+\_\+index\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+In which component (in the vector of the element\textquotesingle{}s internal \hyperlink{classoomph_1_1Data}{Data}) is the unknown curvature stored? 
+
+
+
+Definition at line 641 of file young\+\_\+laplace\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1HeightControlElement_adbcff51a8787697ba2179442b9c2a753}\label{classoomph_1_1HeightControlElement_adbcff51a8787697ba2179442b9c2a753}} 
+\index{oomph\+::\+Height\+Control\+Element@{oomph\+::\+Height\+Control\+Element}!Height\+\_\+ctrl\+\_\+local\+\_\+eqn@{Height\+\_\+ctrl\+\_\+local\+\_\+eqn}}
+\index{Height\+\_\+ctrl\+\_\+local\+\_\+eqn@{Height\+\_\+ctrl\+\_\+local\+\_\+eqn}!oomph\+::\+Height\+Control\+Element@{oomph\+::\+Height\+Control\+Element}}
+\subsubsection{\texorpdfstring{Height\+\_\+ctrl\+\_\+local\+\_\+eqn}{Height\_ctrl\_local\_eqn}}
+{\footnotesize\ttfamily unsigned oomph\+::\+Height\+Control\+Element\+::\+Height\+\_\+ctrl\+\_\+local\+\_\+eqn\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Local equation number of the height-\/control equation. 
+
+
+
+Definition at line 644 of file young\+\_\+laplace\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1HeightControlElement_a84d4b72f7ce6ed722a5deac748ec874b}\label{classoomph_1_1HeightControlElement_a84d4b72f7ce6ed722a5deac748ec874b}} 
+\index{oomph\+::\+Height\+Control\+Element@{oomph\+::\+Height\+Control\+Element}!Prescribed\+\_\+height\+\_\+pt@{Prescribed\+\_\+height\+\_\+pt}}
+\index{Prescribed\+\_\+height\+\_\+pt@{Prescribed\+\_\+height\+\_\+pt}!oomph\+::\+Height\+Control\+Element@{oomph\+::\+Height\+Control\+Element}}
+\subsubsection{\texorpdfstring{Prescribed\+\_\+height\+\_\+pt}{Prescribed\_height\_pt}}
+{\footnotesize\ttfamily double$\ast$ oomph\+::\+Height\+Control\+Element\+::\+Prescribed\+\_\+height\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pointer to value that stores the controlled height. 
+
+
+
+Definition at line 634 of file young\+\_\+laplace\+\_\+elements.\+h.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{young__laplace__elements_8h}{young\+\_\+laplace\+\_\+elements.\+h}\end{DoxyCompactItemize}

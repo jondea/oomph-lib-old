@@ -1,0 +1,214 @@
+\hypertarget{classoomph_1_1ExactSubBiharmonicPreconditioner}{}\section{oomph\+:\+:Exact\+Sub\+Biharmonic\+Preconditioner Class Reference}
+\label{classoomph_1_1ExactSubBiharmonicPreconditioner}\index{oomph\+::\+Exact\+Sub\+Biharmonic\+Preconditioner@{oomph\+::\+Exact\+Sub\+Biharmonic\+Preconditioner}}
+
+
+Sub Biharmonic \hyperlink{classoomph_1_1Preconditioner}{Preconditioner} -\/ an exact preconditioner for the 3x3 top left hand corner sub block matrix. Used as part of the Biharmonic\+Preconditioner$<$\+M\+A\+T\+R\+I\+X$>$ . By default this uses the B\+BD (block-\/bordered-\/diagonal/arrow-\/shaped) preconditioner; can also switch to full BD version (in which case all the 3x3 blocks are retained)  
+
+
+
+
+{\ttfamily \#include $<$biharmonic\+\_\+preconditioner.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Exact\+Sub\+Biharmonic\+Preconditioner\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{classoomph_1_1ExactSubBiharmonicPreconditioner}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1ExactSubBiharmonicPreconditioner_a20ae03e4e565855d9985a91ecf701ac3}{Exact\+Sub\+Biharmonic\+Preconditioner} (\hyperlink{classoomph_1_1BiharmonicPreconditioner}{Biharmonic\+Preconditioner} $\ast$master\+\_\+prec\+\_\+pt, const bool \&retain\+\_\+all\+\_\+blocks=false)
+\begin{DoxyCompactList}\small\item\em Constructor -\/ for a preconditioner acting as a sub preconditioner. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1ExactSubBiharmonicPreconditioner_abe047bf4a40267be81164fd0132b08cd}{$\sim$\+Exact\+Sub\+Biharmonic\+Preconditioner} ()
+\begin{DoxyCompactList}\small\item\em destructor deletes the exact preconditioner \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1ExactSubBiharmonicPreconditioner_a846adc01b62a36c06686b50c16f37ac6}{clean\+\_\+up\+\_\+memory} ()
+\begin{DoxyCompactList}\small\item\em delete the subsidiary preconditioner pointer \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1ExactSubBiharmonicPreconditioner_a5db2f5766547c7b931252ffbe0192dad}{Exact\+Sub\+Biharmonic\+Preconditioner} (const \hyperlink{classoomph_1_1ExactSubBiharmonicPreconditioner}{Exact\+Sub\+Biharmonic\+Preconditioner} \&)
+\begin{DoxyCompactList}\small\item\em Broken copy constructor. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1ExactSubBiharmonicPreconditioner_a0ef8a2355dbe216c986392e942dc64dd}{operator=} (const \hyperlink{classoomph_1_1ExactSubBiharmonicPreconditioner}{Exact\+Sub\+Biharmonic\+Preconditioner} \&)
+\begin{DoxyCompactList}\small\item\em Broken assignment operator. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1ExactSubBiharmonicPreconditioner_af2c9a65ab49cdc6dd0b0d5339833c407}{setup} ()
+\begin{DoxyCompactList}\small\item\em Setup the preconditioner. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1ExactSubBiharmonicPreconditioner_aaf4493aaa8dcd46cf585b7585d246ad0}{preconditioner\+\_\+solve} (const \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} \&r, \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} \&z)
+\begin{DoxyCompactList}\small\item\em Apply preconditioner to r. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1Preconditioner}{Preconditioner} $\ast$ \hyperlink{classoomph_1_1ExactSubBiharmonicPreconditioner_aa6ff92b55858721d83cf933d39484ed3}{Sub\+\_\+preconditioner\+\_\+pt}
+\item 
+bool \hyperlink{classoomph_1_1ExactSubBiharmonicPreconditioner_aa70a47f3675b510ae74ae11b86648f93}{Retain\+\_\+all\+\_\+blocks}
+\begin{DoxyCompactList}\small\item\em Boolean indicating that all blocks are to be retained (defaults to false) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Sub Biharmonic \hyperlink{classoomph_1_1Preconditioner}{Preconditioner} -\/ an exact preconditioner for the 3x3 top left hand corner sub block matrix. Used as part of the Biharmonic\+Preconditioner$<$\+M\+A\+T\+R\+I\+X$>$ . By default this uses the B\+BD (block-\/bordered-\/diagonal/arrow-\/shaped) preconditioner; can also switch to full BD version (in which case all the 3x3 blocks are retained) 
+
+Definition at line 204 of file biharmonic\+\_\+preconditioner.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1ExactSubBiharmonicPreconditioner_a20ae03e4e565855d9985a91ecf701ac3}\label{classoomph_1_1ExactSubBiharmonicPreconditioner_a20ae03e4e565855d9985a91ecf701ac3}} 
+\index{oomph\+::\+Exact\+Sub\+Biharmonic\+Preconditioner@{oomph\+::\+Exact\+Sub\+Biharmonic\+Preconditioner}!Exact\+Sub\+Biharmonic\+Preconditioner@{Exact\+Sub\+Biharmonic\+Preconditioner}}
+\index{Exact\+Sub\+Biharmonic\+Preconditioner@{Exact\+Sub\+Biharmonic\+Preconditioner}!oomph\+::\+Exact\+Sub\+Biharmonic\+Preconditioner@{oomph\+::\+Exact\+Sub\+Biharmonic\+Preconditioner}}
+\subsubsection{\texorpdfstring{Exact\+Sub\+Biharmonic\+Preconditioner()}{ExactSubBiharmonicPreconditioner()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily oomph\+::\+Exact\+Sub\+Biharmonic\+Preconditioner\+::\+Exact\+Sub\+Biharmonic\+Preconditioner (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1BiharmonicPreconditioner}{Biharmonic\+Preconditioner} $\ast$}]{master\+\_\+prec\+\_\+pt,  }\item[{const bool \&}]{retain\+\_\+all\+\_\+blocks = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor -\/ for a preconditioner acting as a sub preconditioner. 
+
+
+
+Definition at line 211 of file biharmonic\+\_\+preconditioner.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1ExactSubBiharmonicPreconditioner_abe047bf4a40267be81164fd0132b08cd}\label{classoomph_1_1ExactSubBiharmonicPreconditioner_abe047bf4a40267be81164fd0132b08cd}} 
+\index{oomph\+::\+Exact\+Sub\+Biharmonic\+Preconditioner@{oomph\+::\+Exact\+Sub\+Biharmonic\+Preconditioner}!````~Exact\+Sub\+Biharmonic\+Preconditioner@{$\sim$\+Exact\+Sub\+Biharmonic\+Preconditioner}}
+\index{````~Exact\+Sub\+Biharmonic\+Preconditioner@{$\sim$\+Exact\+Sub\+Biharmonic\+Preconditioner}!oomph\+::\+Exact\+Sub\+Biharmonic\+Preconditioner@{oomph\+::\+Exact\+Sub\+Biharmonic\+Preconditioner}}
+\subsubsection{\texorpdfstring{$\sim$\+Exact\+Sub\+Biharmonic\+Preconditioner()}{~ExactSubBiharmonicPreconditioner()}}
+{\footnotesize\ttfamily oomph\+::\+Exact\+Sub\+Biharmonic\+Preconditioner\+::$\sim$\+Exact\+Sub\+Biharmonic\+Preconditioner (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+destructor deletes the exact preconditioner 
+
+
+
+Definition at line 230 of file biharmonic\+\_\+preconditioner.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1ExactSubBiharmonicPreconditioner_a5db2f5766547c7b931252ffbe0192dad}\label{classoomph_1_1ExactSubBiharmonicPreconditioner_a5db2f5766547c7b931252ffbe0192dad}} 
+\index{oomph\+::\+Exact\+Sub\+Biharmonic\+Preconditioner@{oomph\+::\+Exact\+Sub\+Biharmonic\+Preconditioner}!Exact\+Sub\+Biharmonic\+Preconditioner@{Exact\+Sub\+Biharmonic\+Preconditioner}}
+\index{Exact\+Sub\+Biharmonic\+Preconditioner@{Exact\+Sub\+Biharmonic\+Preconditioner}!oomph\+::\+Exact\+Sub\+Biharmonic\+Preconditioner@{oomph\+::\+Exact\+Sub\+Biharmonic\+Preconditioner}}
+\subsubsection{\texorpdfstring{Exact\+Sub\+Biharmonic\+Preconditioner()}{ExactSubBiharmonicPreconditioner()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily oomph\+::\+Exact\+Sub\+Biharmonic\+Preconditioner\+::\+Exact\+Sub\+Biharmonic\+Preconditioner (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1ExactSubBiharmonicPreconditioner}{Exact\+Sub\+Biharmonic\+Preconditioner} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Broken copy constructor. 
+
+
+
+Definition at line 242 of file biharmonic\+\_\+preconditioner.\+h.
+
+
+
+References oomph\+::\+Broken\+Copy\+::broken\+\_\+copy().
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1ExactSubBiharmonicPreconditioner_a846adc01b62a36c06686b50c16f37ac6}\label{classoomph_1_1ExactSubBiharmonicPreconditioner_a846adc01b62a36c06686b50c16f37ac6}} 
+\index{oomph\+::\+Exact\+Sub\+Biharmonic\+Preconditioner@{oomph\+::\+Exact\+Sub\+Biharmonic\+Preconditioner}!clean\+\_\+up\+\_\+memory@{clean\+\_\+up\+\_\+memory}}
+\index{clean\+\_\+up\+\_\+memory@{clean\+\_\+up\+\_\+memory}!oomph\+::\+Exact\+Sub\+Biharmonic\+Preconditioner@{oomph\+::\+Exact\+Sub\+Biharmonic\+Preconditioner}}
+\subsubsection{\texorpdfstring{clean\+\_\+up\+\_\+memory()}{clean\_up\_memory()}}
+{\footnotesize\ttfamily void oomph\+::\+Exact\+Sub\+Biharmonic\+Preconditioner\+::clean\+\_\+up\+\_\+memory (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+delete the subsidiary preconditioner pointer 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1Preconditioner_a46c31c416829bedcd9db238431262027}{oomph\+::\+Preconditioner}.
+
+
+
+Definition at line 236 of file biharmonic\+\_\+preconditioner.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1ExactSubBiharmonicPreconditioner_a0ef8a2355dbe216c986392e942dc64dd}\label{classoomph_1_1ExactSubBiharmonicPreconditioner_a0ef8a2355dbe216c986392e942dc64dd}} 
+\index{oomph\+::\+Exact\+Sub\+Biharmonic\+Preconditioner@{oomph\+::\+Exact\+Sub\+Biharmonic\+Preconditioner}!operator=@{operator=}}
+\index{operator=@{operator=}!oomph\+::\+Exact\+Sub\+Biharmonic\+Preconditioner@{oomph\+::\+Exact\+Sub\+Biharmonic\+Preconditioner}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily void oomph\+::\+Exact\+Sub\+Biharmonic\+Preconditioner\+::operator= (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1ExactSubBiharmonicPreconditioner}{Exact\+Sub\+Biharmonic\+Preconditioner} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Broken assignment operator. 
+
+
+
+Definition at line 248 of file biharmonic\+\_\+preconditioner.\+h.
+
+
+
+References oomph\+::\+Broken\+Copy\+::broken\+\_\+assign(), and oomph\+::\+Terminate\+Helper\+::setup().
+
+\mbox{\Hypertarget{classoomph_1_1ExactSubBiharmonicPreconditioner_aaf4493aaa8dcd46cf585b7585d246ad0}\label{classoomph_1_1ExactSubBiharmonicPreconditioner_aaf4493aaa8dcd46cf585b7585d246ad0}} 
+\index{oomph\+::\+Exact\+Sub\+Biharmonic\+Preconditioner@{oomph\+::\+Exact\+Sub\+Biharmonic\+Preconditioner}!preconditioner\+\_\+solve@{preconditioner\+\_\+solve}}
+\index{preconditioner\+\_\+solve@{preconditioner\+\_\+solve}!oomph\+::\+Exact\+Sub\+Biharmonic\+Preconditioner@{oomph\+::\+Exact\+Sub\+Biharmonic\+Preconditioner}}
+\subsubsection{\texorpdfstring{preconditioner\+\_\+solve()}{preconditioner\_solve()}}
+{\footnotesize\ttfamily void oomph\+::\+Exact\+Sub\+Biharmonic\+Preconditioner\+::preconditioner\+\_\+solve (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} \&}]{r,  }\item[{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} \&}]{z }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Apply preconditioner to r. 
+
+preconditioner solve for the exact sub biharmonic preconditioner 
+
+Implements \hyperlink{classoomph_1_1Preconditioner_ace1199369e4465cd2b9a34884bb64ec8}{oomph\+::\+Preconditioner}.
+
+
+
+Definition at line 347 of file biharmonic\+\_\+preconditioner.\+cc.
+
+
+
+Referenced by setup().
+
+\mbox{\Hypertarget{classoomph_1_1ExactSubBiharmonicPreconditioner_af2c9a65ab49cdc6dd0b0d5339833c407}\label{classoomph_1_1ExactSubBiharmonicPreconditioner_af2c9a65ab49cdc6dd0b0d5339833c407}} 
+\index{oomph\+::\+Exact\+Sub\+Biharmonic\+Preconditioner@{oomph\+::\+Exact\+Sub\+Biharmonic\+Preconditioner}!setup@{setup}}
+\index{setup@{setup}!oomph\+::\+Exact\+Sub\+Biharmonic\+Preconditioner@{oomph\+::\+Exact\+Sub\+Biharmonic\+Preconditioner}}
+\subsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily void oomph\+::\+Exact\+Sub\+Biharmonic\+Preconditioner\+::setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Setup the preconditioner. 
+
+setup for the exact sub biharmonic preconditioner 
+
+Implements \hyperlink{classoomph_1_1Preconditioner_af4886f4efe510e5c9b0eb19422943588}{oomph\+::\+Preconditioner}.
+
+
+
+Definition at line 284 of file biharmonic\+\_\+preconditioner.\+cc.
+
+
+
+References preconditioner\+\_\+solve(), and oomph\+::\+Super\+L\+U\+Preconditioner\+::setup().
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1ExactSubBiharmonicPreconditioner_aa70a47f3675b510ae74ae11b86648f93}\label{classoomph_1_1ExactSubBiharmonicPreconditioner_aa70a47f3675b510ae74ae11b86648f93}} 
+\index{oomph\+::\+Exact\+Sub\+Biharmonic\+Preconditioner@{oomph\+::\+Exact\+Sub\+Biharmonic\+Preconditioner}!Retain\+\_\+all\+\_\+blocks@{Retain\+\_\+all\+\_\+blocks}}
+\index{Retain\+\_\+all\+\_\+blocks@{Retain\+\_\+all\+\_\+blocks}!oomph\+::\+Exact\+Sub\+Biharmonic\+Preconditioner@{oomph\+::\+Exact\+Sub\+Biharmonic\+Preconditioner}}
+\subsubsection{\texorpdfstring{Retain\+\_\+all\+\_\+blocks}{Retain\_all\_blocks}}
+{\footnotesize\ttfamily bool oomph\+::\+Exact\+Sub\+Biharmonic\+Preconditioner\+::\+Retain\+\_\+all\+\_\+blocks}
+
+
+
+Boolean indicating that all blocks are to be retained (defaults to false) 
+
+
+
+Definition at line 266 of file biharmonic\+\_\+preconditioner.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1ExactSubBiharmonicPreconditioner_aa6ff92b55858721d83cf933d39484ed3}\label{classoomph_1_1ExactSubBiharmonicPreconditioner_aa6ff92b55858721d83cf933d39484ed3}} 
+\index{oomph\+::\+Exact\+Sub\+Biharmonic\+Preconditioner@{oomph\+::\+Exact\+Sub\+Biharmonic\+Preconditioner}!Sub\+\_\+preconditioner\+\_\+pt@{Sub\+\_\+preconditioner\+\_\+pt}}
+\index{Sub\+\_\+preconditioner\+\_\+pt@{Sub\+\_\+preconditioner\+\_\+pt}!oomph\+::\+Exact\+Sub\+Biharmonic\+Preconditioner@{oomph\+::\+Exact\+Sub\+Biharmonic\+Preconditioner}}
+\subsubsection{\texorpdfstring{Sub\+\_\+preconditioner\+\_\+pt}{Sub\_preconditioner\_pt}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1Preconditioner}{Preconditioner}$\ast$ oomph\+::\+Exact\+Sub\+Biharmonic\+Preconditioner\+::\+Sub\+\_\+preconditioner\+\_\+pt}
+
+
+
+Definition at line 262 of file biharmonic\+\_\+preconditioner.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{biharmonic__preconditioner_8h}{biharmonic\+\_\+preconditioner.\+h}\item 
+\hyperlink{biharmonic__preconditioner_8cc}{biharmonic\+\_\+preconditioner.\+cc}\end{DoxyCompactItemize}

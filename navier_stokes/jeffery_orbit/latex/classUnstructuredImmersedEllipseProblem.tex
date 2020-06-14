@@ -1,0 +1,556 @@
+\hypertarget{classUnstructuredImmersedEllipseProblem}{}\section{Unstructured\+Immersed\+Ellipse\+Problem$<$ E\+L\+E\+M\+E\+NT $>$ Class Template Reference}
+\label{classUnstructuredImmersedEllipseProblem}\index{Unstructured\+Immersed\+Ellipse\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$@{Unstructured\+Immersed\+Ellipse\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$}}
+Inheritance diagram for Unstructured\+Immersed\+Ellipse\+Problem$<$ E\+L\+E\+M\+E\+NT $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classUnstructuredImmersedEllipseProblem}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classUnstructuredImmersedEllipseProblem_a544a35f261200bb4a4e29a88faa1a69c}{Unstructured\+Immersed\+Ellipse\+Problem} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\hyperlink{classUnstructuredImmersedEllipseProblem_a84cdf81be59fc646eb4d5b3bc0ff4280}{$\sim$\+Unstructured\+Immersed\+Ellipse\+Problem} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+void \hyperlink{classUnstructuredImmersedEllipseProblem_a368c412c4c9a9e9403b4e67d3582e3a5}{actions\+\_\+before\+\_\+implicit\+\_\+timestep} ()
+\begin{DoxyCompactList}\small\item\em Reset the boundary conditions when timestepping. \end{DoxyCompactList}\item 
+void \hyperlink{classUnstructuredImmersedEllipseProblem_aa560217a33a9a9bc150fbdf15dbf1877}{actions\+\_\+before\+\_\+adapt} ()
+\begin{DoxyCompactList}\small\item\em Wipe the meshes of Lagrange multiplier and drag elements. \end{DoxyCompactList}\item 
+void \hyperlink{classUnstructuredImmersedEllipseProblem_ab1558b409285aea617f4abf7d3a64b3d}{actions\+\_\+after\+\_\+adapt} ()
+\begin{DoxyCompactList}\small\item\em Rebuild the meshes of Lagrange multiplier and drag elements. \end{DoxyCompactList}\item 
+void \hyperlink{classUnstructuredImmersedEllipseProblem_afa51876a2af9dd7640ff1f5a434804bf}{actions\+\_\+before\+\_\+newton\+\_\+convergence\+\_\+check} ()
+\begin{DoxyCompactList}\small\item\em Re-\/apply the no slip condition (imposed indirectly via enslaved velocities) \end{DoxyCompactList}\item 
+void \hyperlink{classUnstructuredImmersedEllipseProblem_a42b13e3306ff2a94053907644ba17c8d}{complete\+\_\+problem\+\_\+setup} ()
+\begin{DoxyCompactList}\small\item\em Set boundary condition, assign auxiliary node update fct. Complete the build of all elements, attach power elements that allow computation of drag vector. \end{DoxyCompactList}\item 
+void \hyperlink{classUnstructuredImmersedEllipseProblem_ab201b187b240105fd8d444d943f6dada}{set\+\_\+boundary\+\_\+velocity} ()
+\begin{DoxyCompactList}\small\item\em Set the boundary velocity. \end{DoxyCompactList}\item 
+void \hyperlink{classUnstructuredImmersedEllipseProblem_a2a88b40ff1988de0fc696f1eb755ea54}{solve\+\_\+for\+\_\+consistent\+\_\+nodal\+\_\+positions} ()
+\begin{DoxyCompactList}\small\item\em Function that solves a simplified problem to ensure that the positions of the boundary nodes are initially consistent with the lagrange multiplier formulation. \end{DoxyCompactList}\item 
+void \hyperlink{classUnstructuredImmersedEllipseProblem_a08e12dd83c98f96e14e8152cc758d398}{doc\+\_\+solution} (const bool \&project=false)
+\begin{DoxyCompactList}\small\item\em Doc the solution. \end{DoxyCompactList}\item 
+void \hyperlink{classUnstructuredImmersedEllipseProblem_a29a232dfac18ea901332bebdc14fad15}{output\+\_\+exact\+\_\+solution} (std\+::ofstream \&output\+\_\+file)
+\begin{DoxyCompactList}\small\item\em Output the exact solution. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classUnstructuredImmersedEllipseProblem_a3b4a4e279a11b37d79d040b348008765}{create\+\_\+lagrange\+\_\+multiplier\+\_\+elements} ()
+\begin{DoxyCompactList}\small\item\em Create elements that enforce prescribed boundary motion for the pseudo-\/solid fluid mesh by Lagrange multipliers. \end{DoxyCompactList}\item 
+void \hyperlink{classUnstructuredImmersedEllipseProblem_a51555f77dc360c94591ee68c3fc9928a}{delete\+\_\+lagrange\+\_\+multiplier\+\_\+elements} ()
+\begin{DoxyCompactList}\small\item\em Delete elements that impose the prescribed boundary displacement and wipe the associated mesh. \end{DoxyCompactList}\item 
+void \hyperlink{classUnstructuredImmersedEllipseProblem_a16a7c6022867f709ebdd59b8fee2004a}{create\+\_\+drag\+\_\+elements} ()
+\begin{DoxyCompactList}\small\item\em Create elements that calculate the drag and torque on the boundaries. \end{DoxyCompactList}\item 
+void \hyperlink{classUnstructuredImmersedEllipseProblem_a7d7b84968988d37091b29957b0af5bfa}{delete\+\_\+drag\+\_\+elements} ()
+\begin{DoxyCompactList}\small\item\em Delete elements that calculate the drag and torque on the boundaries. \end{DoxyCompactList}\item 
+void \hyperlink{classUnstructuredImmersedEllipseProblem_a07dc16909c0223fe4b656fd270f27c11}{pin\+\_\+rigid\+\_\+body} ()
+\begin{DoxyCompactList}\small\item\em Pin the degrees of freedom associated with the solid bodies. \end{DoxyCompactList}\item 
+void \hyperlink{classUnstructuredImmersedEllipseProblem_a4f8c7e7e4d626084f6515a152b165567}{unpin\+\_\+rigid\+\_\+body} ()
+\begin{DoxyCompactList}\small\item\em Unpin the degrees of freedom associated with the solid bodies. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Solid\+Mesh $\ast$ \hyperlink{classUnstructuredImmersedEllipseProblem_ad644e67ccd6ab0811c5fe2b7b944fbca}{Lagrange\+\_\+multiplier\+\_\+mesh\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointers to mesh of Lagrange multiplier elements. \end{DoxyCompactList}\item 
+Refineable\+Solid\+Triangle\+Mesh$<$ E\+L\+E\+M\+E\+NT $>$ $\ast$ \hyperlink{classUnstructuredImmersedEllipseProblem_a0ba79ccde26b781b66d9839460f08bd3}{Fluid\+\_\+mesh\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to Fluid\+\_\+mesh. \end{DoxyCompactList}\item 
+Triangle\+Mesh\+Polygon $\ast$ \hyperlink{classUnstructuredImmersedEllipseProblem_ae0b35188432c371804887b6de86b48c7}{Outer\+\_\+boundary\+\_\+polygon\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Triangle mesh polygon for outer boundary. \end{DoxyCompactList}\item 
+Vector$<$ Mesh $\ast$ $>$ \hyperlink{classUnstructuredImmersedEllipseProblem_a9b4d04277b1f42c9428b610968f6f10d}{Drag\+\_\+mesh\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Mesh of drag elements. \end{DoxyCompactList}\item 
+Mesh $\ast$ \hyperlink{classUnstructuredImmersedEllipseProblem_a34f1376227d4b995678eedd77813388b}{Rigid\+\_\+body\+\_\+mesh\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Mesh of the generalised elements for the rigid bodies. \end{DoxyCompactList}\item 
+Vector$<$ Geom\+Object $\ast$ $>$ \hyperlink{classUnstructuredImmersedEllipseProblem_aaa6d1c19f3634a6f08f3dd7e5046217e}{Rigid\+\_\+body\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Storage for the geom object. \end{DoxyCompactList}\item 
+Doc\+Info \hyperlink{classUnstructuredImmersedEllipseProblem_a1c463ed904f01e6466baae0533c79780}{Doc\+\_\+info}
+\begin{DoxyCompactList}\small\item\em Internal Doc\+Info object. \end{DoxyCompactList}\item 
+ofstream \hyperlink{classUnstructuredImmersedEllipseProblem_a71a3b24b610e05f7be916c4214dab8dc}{Norm\+\_\+file}
+\begin{DoxyCompactList}\small\item\em File to document the norm of the solution (for validation purposes) \end{DoxyCompactList}\item 
+ofstream \hyperlink{classUnstructuredImmersedEllipseProblem_acd1e8ec8e510f029f449f13dfdebbc99}{Cog\+\_\+file}
+\begin{DoxyCompactList}\small\item\em File to document the motion of the centre of gravity. \end{DoxyCompactList}\item 
+ofstream \hyperlink{classUnstructuredImmersedEllipseProblem_a3dc1ec2e066466a6f228864b873d95fa}{Cog\+\_\+exact\+\_\+file}
+\begin{DoxyCompactList}\small\item\em File to document the exact motion of the centre of gravity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class E\+L\+E\+M\+E\+NT$>$\newline
+class Unstructured\+Immersed\+Ellipse\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$}
+
+Unstructured Navier-\/\+Stokes A\+LE Problem for a rigid ellipse immersed within a viscous fluid 
+
+Definition at line 197 of file jeffery\+\_\+orbit.\+cc.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classUnstructuredImmersedEllipseProblem_a544a35f261200bb4a4e29a88faa1a69c}\label{classUnstructuredImmersedEllipseProblem_a544a35f261200bb4a4e29a88faa1a69c}} 
+\index{Unstructured\+Immersed\+Ellipse\+Problem@{Unstructured\+Immersed\+Ellipse\+Problem}!Unstructured\+Immersed\+Ellipse\+Problem@{Unstructured\+Immersed\+Ellipse\+Problem}}
+\index{Unstructured\+Immersed\+Ellipse\+Problem@{Unstructured\+Immersed\+Ellipse\+Problem}!Unstructured\+Immersed\+Ellipse\+Problem@{Unstructured\+Immersed\+Ellipse\+Problem}}
+\subsubsection{\texorpdfstring{Unstructured\+Immersed\+Ellipse\+Problem()}{UnstructuredImmersedEllipseProblem()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classUnstructuredImmersedEllipseProblem}{Unstructured\+Immersed\+Ellipse\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::\hyperlink{classUnstructuredImmersedEllipseProblem}{Unstructured\+Immersed\+Ellipse\+Problem} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+Constructor\+: Open output files, construct time steppers, build fluid mesh, immersed rigid body and combine to form the problem 
+
+Definition at line 310 of file jeffery\+\_\+orbit.\+cc.
+
+
+
+References Problem\+\_\+\+Parameter\+::A, Problem\+\_\+\+Parameter\+::B, Problem\+\_\+\+Parameter\+::\+Density\+\_\+ratio, Problem\+\_\+\+Parameter\+::\+Re, Problem\+\_\+\+Parameter\+::\+St, and Unstructured\+Immersed\+Ellipse\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::$\sim$\+Unstructured\+Immersed\+Ellipse\+Problem().
+
+\mbox{\Hypertarget{classUnstructuredImmersedEllipseProblem_a84cdf81be59fc646eb4d5b3bc0ff4280}\label{classUnstructuredImmersedEllipseProblem_a84cdf81be59fc646eb4d5b3bc0ff4280}} 
+\index{Unstructured\+Immersed\+Ellipse\+Problem@{Unstructured\+Immersed\+Ellipse\+Problem}!````~Unstructured\+Immersed\+Ellipse\+Problem@{$\sim$\+Unstructured\+Immersed\+Ellipse\+Problem}}
+\index{````~Unstructured\+Immersed\+Ellipse\+Problem@{$\sim$\+Unstructured\+Immersed\+Ellipse\+Problem}!Unstructured\+Immersed\+Ellipse\+Problem@{Unstructured\+Immersed\+Ellipse\+Problem}}
+\subsubsection{\texorpdfstring{$\sim$\+Unstructured\+Immersed\+Ellipse\+Problem()}{~UnstructuredImmersedEllipseProblem()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classUnstructuredImmersedEllipseProblem}{Unstructured\+Immersed\+Ellipse\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::$\sim$\hyperlink{classUnstructuredImmersedEllipseProblem}{Unstructured\+Immersed\+Ellipse\+Problem} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destructor. 
+
+Destructor that cleans up memory and closes files. 
+
+Definition at line 557 of file jeffery\+\_\+orbit.\+cc.
+
+
+
+References Problem\+\_\+\+Parameter\+::\+Constitutive\+\_\+law\+\_\+pt.
+
+
+
+Referenced by Unstructured\+Immersed\+Ellipse\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Unstructured\+Immersed\+Ellipse\+Problem().
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classUnstructuredImmersedEllipseProblem_ab1558b409285aea617f4abf7d3a64b3d}\label{classUnstructuredImmersedEllipseProblem_ab1558b409285aea617f4abf7d3a64b3d}} 
+\index{Unstructured\+Immersed\+Ellipse\+Problem@{Unstructured\+Immersed\+Ellipse\+Problem}!actions\+\_\+after\+\_\+adapt@{actions\+\_\+after\+\_\+adapt}}
+\index{actions\+\_\+after\+\_\+adapt@{actions\+\_\+after\+\_\+adapt}!Unstructured\+Immersed\+Ellipse\+Problem@{Unstructured\+Immersed\+Ellipse\+Problem}}
+\subsubsection{\texorpdfstring{actions\+\_\+after\+\_\+adapt()}{actions\_after\_adapt()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classUnstructuredImmersedEllipseProblem}{Unstructured\+Immersed\+Ellipse\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::actions\+\_\+after\+\_\+adapt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Rebuild the meshes of Lagrange multiplier and drag elements. 
+
+Actions after adapt\+: Rebuild the mesh of Lagrange multiplier elements. 
+
+Definition at line 622 of file jeffery\+\_\+orbit.\+cc.
+
+\mbox{\Hypertarget{classUnstructuredImmersedEllipseProblem_aa560217a33a9a9bc150fbdf15dbf1877}\label{classUnstructuredImmersedEllipseProblem_aa560217a33a9a9bc150fbdf15dbf1877}} 
+\index{Unstructured\+Immersed\+Ellipse\+Problem@{Unstructured\+Immersed\+Ellipse\+Problem}!actions\+\_\+before\+\_\+adapt@{actions\+\_\+before\+\_\+adapt}}
+\index{actions\+\_\+before\+\_\+adapt@{actions\+\_\+before\+\_\+adapt}!Unstructured\+Immersed\+Ellipse\+Problem@{Unstructured\+Immersed\+Ellipse\+Problem}}
+\subsubsection{\texorpdfstring{actions\+\_\+before\+\_\+adapt()}{actions\_before\_adapt()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classUnstructuredImmersedEllipseProblem}{Unstructured\+Immersed\+Ellipse\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::actions\+\_\+before\+\_\+adapt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Wipe the meshes of Lagrange multiplier and drag elements. 
+
+Actions before adapt\+: Wipe the mesh of Lagrange multiplier elements. 
+
+Definition at line 601 of file jeffery\+\_\+orbit.\+cc.
+
+\mbox{\Hypertarget{classUnstructuredImmersedEllipseProblem_a368c412c4c9a9e9403b4e67d3582e3a5}\label{classUnstructuredImmersedEllipseProblem_a368c412c4c9a9e9403b4e67d3582e3a5}} 
+\index{Unstructured\+Immersed\+Ellipse\+Problem@{Unstructured\+Immersed\+Ellipse\+Problem}!actions\+\_\+before\+\_\+implicit\+\_\+timestep@{actions\+\_\+before\+\_\+implicit\+\_\+timestep}}
+\index{actions\+\_\+before\+\_\+implicit\+\_\+timestep@{actions\+\_\+before\+\_\+implicit\+\_\+timestep}!Unstructured\+Immersed\+Ellipse\+Problem@{Unstructured\+Immersed\+Ellipse\+Problem}}
+\subsubsection{\texorpdfstring{actions\+\_\+before\+\_\+implicit\+\_\+timestep()}{actions\_before\_implicit\_timestep()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classUnstructuredImmersedEllipseProblem}{Unstructured\+Immersed\+Ellipse\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::actions\+\_\+before\+\_\+implicit\+\_\+timestep (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Reset the boundary conditions when timestepping. 
+
+
+
+Definition at line 209 of file jeffery\+\_\+orbit.\+cc.
+
+\mbox{\Hypertarget{classUnstructuredImmersedEllipseProblem_afa51876a2af9dd7640ff1f5a434804bf}\label{classUnstructuredImmersedEllipseProblem_afa51876a2af9dd7640ff1f5a434804bf}} 
+\index{Unstructured\+Immersed\+Ellipse\+Problem@{Unstructured\+Immersed\+Ellipse\+Problem}!actions\+\_\+before\+\_\+newton\+\_\+convergence\+\_\+check@{actions\+\_\+before\+\_\+newton\+\_\+convergence\+\_\+check}}
+\index{actions\+\_\+before\+\_\+newton\+\_\+convergence\+\_\+check@{actions\+\_\+before\+\_\+newton\+\_\+convergence\+\_\+check}!Unstructured\+Immersed\+Ellipse\+Problem@{Unstructured\+Immersed\+Ellipse\+Problem}}
+\subsubsection{\texorpdfstring{actions\+\_\+before\+\_\+newton\+\_\+convergence\+\_\+check()}{actions\_before\_newton\_convergence\_check()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classUnstructuredImmersedEllipseProblem}{Unstructured\+Immersed\+Ellipse\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::actions\+\_\+before\+\_\+newton\+\_\+convergence\+\_\+check (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Re-\/apply the no slip condition (imposed indirectly via enslaved velocities) 
+
+
+
+Definition at line 222 of file jeffery\+\_\+orbit.\+cc.
+
+\mbox{\Hypertarget{classUnstructuredImmersedEllipseProblem_a42b13e3306ff2a94053907644ba17c8d}\label{classUnstructuredImmersedEllipseProblem_a42b13e3306ff2a94053907644ba17c8d}} 
+\index{Unstructured\+Immersed\+Ellipse\+Problem@{Unstructured\+Immersed\+Ellipse\+Problem}!complete\+\_\+problem\+\_\+setup@{complete\+\_\+problem\+\_\+setup}}
+\index{complete\+\_\+problem\+\_\+setup@{complete\+\_\+problem\+\_\+setup}!Unstructured\+Immersed\+Ellipse\+Problem@{Unstructured\+Immersed\+Ellipse\+Problem}}
+\subsubsection{\texorpdfstring{complete\+\_\+problem\+\_\+setup()}{complete\_problem\_setup()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classUnstructuredImmersedEllipseProblem}{Unstructured\+Immersed\+Ellipse\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::complete\+\_\+problem\+\_\+setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Set boundary condition, assign auxiliary node update fct. Complete the build of all elements, attach power elements that allow computation of drag vector. 
+
+
+
+Definition at line 658 of file jeffery\+\_\+orbit.\+cc.
+
+
+
+References Problem\+\_\+\+Parameter\+::\+Constitutive\+\_\+law\+\_\+pt, Problem\+\_\+\+Parameter\+::\+Lambda\+\_\+sq, Problem\+\_\+\+Parameter\+::\+Re, and Unstructured\+Immersed\+Ellipse\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::set\+\_\+boundary\+\_\+velocity().
+
+\mbox{\Hypertarget{classUnstructuredImmersedEllipseProblem_a16a7c6022867f709ebdd59b8fee2004a}\label{classUnstructuredImmersedEllipseProblem_a16a7c6022867f709ebdd59b8fee2004a}} 
+\index{Unstructured\+Immersed\+Ellipse\+Problem@{Unstructured\+Immersed\+Ellipse\+Problem}!create\+\_\+drag\+\_\+elements@{create\+\_\+drag\+\_\+elements}}
+\index{create\+\_\+drag\+\_\+elements@{create\+\_\+drag\+\_\+elements}!Unstructured\+Immersed\+Ellipse\+Problem@{Unstructured\+Immersed\+Ellipse\+Problem}}
+\subsubsection{\texorpdfstring{create\+\_\+drag\+\_\+elements()}{create\_drag\_elements()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classUnstructuredImmersedEllipseProblem}{Unstructured\+Immersed\+Ellipse\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::create\+\_\+drag\+\_\+elements (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Create elements that calculate the drag and torque on the boundaries. 
+
+Create elements that calculate the drag and torque on the obstacles in the fluid mesh 
+
+Definition at line 1010 of file jeffery\+\_\+orbit.\+cc.
+
+\mbox{\Hypertarget{classUnstructuredImmersedEllipseProblem_a3b4a4e279a11b37d79d040b348008765}\label{classUnstructuredImmersedEllipseProblem_a3b4a4e279a11b37d79d040b348008765}} 
+\index{Unstructured\+Immersed\+Ellipse\+Problem@{Unstructured\+Immersed\+Ellipse\+Problem}!create\+\_\+lagrange\+\_\+multiplier\+\_\+elements@{create\+\_\+lagrange\+\_\+multiplier\+\_\+elements}}
+\index{create\+\_\+lagrange\+\_\+multiplier\+\_\+elements@{create\+\_\+lagrange\+\_\+multiplier\+\_\+elements}!Unstructured\+Immersed\+Ellipse\+Problem@{Unstructured\+Immersed\+Ellipse\+Problem}}
+\subsubsection{\texorpdfstring{create\+\_\+lagrange\+\_\+multiplier\+\_\+elements()}{create\_lagrange\_multiplier\_elements()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classUnstructuredImmersedEllipseProblem}{Unstructured\+Immersed\+Ellipse\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::create\+\_\+lagrange\+\_\+multiplier\+\_\+elements (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Create elements that enforce prescribed boundary motion for the pseudo-\/solid fluid mesh by Lagrange multipliers. 
+
+Create elements that impose the prescribed boundary displacement for the pseudo-\/solid fluid mesh 
+
+Definition at line 902 of file jeffery\+\_\+orbit.\+cc.
+
+
+
+References Unstructured\+Immersed\+Ellipse\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::delete\+\_\+lagrange\+\_\+multiplier\+\_\+elements().
+
+
+
+Referenced by Unstructured\+Immersed\+Ellipse\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::solve\+\_\+for\+\_\+consistent\+\_\+nodal\+\_\+positions().
+
+\mbox{\Hypertarget{classUnstructuredImmersedEllipseProblem_a7d7b84968988d37091b29957b0af5bfa}\label{classUnstructuredImmersedEllipseProblem_a7d7b84968988d37091b29957b0af5bfa}} 
+\index{Unstructured\+Immersed\+Ellipse\+Problem@{Unstructured\+Immersed\+Ellipse\+Problem}!delete\+\_\+drag\+\_\+elements@{delete\+\_\+drag\+\_\+elements}}
+\index{delete\+\_\+drag\+\_\+elements@{delete\+\_\+drag\+\_\+elements}!Unstructured\+Immersed\+Ellipse\+Problem@{Unstructured\+Immersed\+Ellipse\+Problem}}
+\subsubsection{\texorpdfstring{delete\+\_\+drag\+\_\+elements()}{delete\_drag\_elements()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classUnstructuredImmersedEllipseProblem}{Unstructured\+Immersed\+Ellipse\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::delete\+\_\+drag\+\_\+elements (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Delete elements that calculate the drag and torque on the boundaries. 
+
+
+
+Definition at line 1083 of file jeffery\+\_\+orbit.\+cc.
+
+\mbox{\Hypertarget{classUnstructuredImmersedEllipseProblem_a51555f77dc360c94591ee68c3fc9928a}\label{classUnstructuredImmersedEllipseProblem_a51555f77dc360c94591ee68c3fc9928a}} 
+\index{Unstructured\+Immersed\+Ellipse\+Problem@{Unstructured\+Immersed\+Ellipse\+Problem}!delete\+\_\+lagrange\+\_\+multiplier\+\_\+elements@{delete\+\_\+lagrange\+\_\+multiplier\+\_\+elements}}
+\index{delete\+\_\+lagrange\+\_\+multiplier\+\_\+elements@{delete\+\_\+lagrange\+\_\+multiplier\+\_\+elements}!Unstructured\+Immersed\+Ellipse\+Problem@{Unstructured\+Immersed\+Ellipse\+Problem}}
+\subsubsection{\texorpdfstring{delete\+\_\+lagrange\+\_\+multiplier\+\_\+elements()}{delete\_lagrange\_multiplier\_elements()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classUnstructuredImmersedEllipseProblem}{Unstructured\+Immersed\+Ellipse\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::delete\+\_\+lagrange\+\_\+multiplier\+\_\+elements (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Delete elements that impose the prescribed boundary displacement and wipe the associated mesh. 
+
+
+
+Definition at line 985 of file jeffery\+\_\+orbit.\+cc.
+
+
+
+Referenced by Unstructured\+Immersed\+Ellipse\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::create\+\_\+lagrange\+\_\+multiplier\+\_\+elements().
+
+\mbox{\Hypertarget{classUnstructuredImmersedEllipseProblem_a08e12dd83c98f96e14e8152cc758d398}\label{classUnstructuredImmersedEllipseProblem_a08e12dd83c98f96e14e8152cc758d398}} 
+\index{Unstructured\+Immersed\+Ellipse\+Problem@{Unstructured\+Immersed\+Ellipse\+Problem}!doc\+\_\+solution@{doc\+\_\+solution}}
+\index{doc\+\_\+solution@{doc\+\_\+solution}!Unstructured\+Immersed\+Ellipse\+Problem@{Unstructured\+Immersed\+Ellipse\+Problem}}
+\subsubsection{\texorpdfstring{doc\+\_\+solution()}{doc\_solution()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classUnstructuredImmersedEllipseProblem}{Unstructured\+Immersed\+Ellipse\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::doc\+\_\+solution (\begin{DoxyParamCaption}\item[{const bool \&}]{project = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+Doc the solution. 
+
+
+
+Definition at line 1110 of file jeffery\+\_\+orbit.\+cc.
+
+
+
+References Unstructured\+Immersed\+Ellipse\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::output\+\_\+exact\+\_\+solution().
+
+\mbox{\Hypertarget{classUnstructuredImmersedEllipseProblem_a29a232dfac18ea901332bebdc14fad15}\label{classUnstructuredImmersedEllipseProblem_a29a232dfac18ea901332bebdc14fad15}} 
+\index{Unstructured\+Immersed\+Ellipse\+Problem@{Unstructured\+Immersed\+Ellipse\+Problem}!output\+\_\+exact\+\_\+solution@{output\+\_\+exact\+\_\+solution}}
+\index{output\+\_\+exact\+\_\+solution@{output\+\_\+exact\+\_\+solution}!Unstructured\+Immersed\+Ellipse\+Problem@{Unstructured\+Immersed\+Ellipse\+Problem}}
+\subsubsection{\texorpdfstring{output\+\_\+exact\+\_\+solution()}{output\_exact\_solution()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classUnstructuredImmersedEllipseProblem}{Unstructured\+Immersed\+Ellipse\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::output\+\_\+exact\+\_\+solution (\begin{DoxyParamCaption}\item[{std\+::ofstream \&}]{output\+\_\+file }\end{DoxyParamCaption})}
+
+
+
+Output the exact solution. 
+
+
+
+Definition at line 1187 of file jeffery\+\_\+orbit.\+cc.
+
+
+
+References Jeffery\+\_\+\+Solution\+::acceleration(), Jeffery\+\_\+\+Solution\+::angle(), and Jeffery\+\_\+\+Solution\+::velocity().
+
+
+
+Referenced by Unstructured\+Immersed\+Ellipse\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::doc\+\_\+solution().
+
+\mbox{\Hypertarget{classUnstructuredImmersedEllipseProblem_a07dc16909c0223fe4b656fd270f27c11}\label{classUnstructuredImmersedEllipseProblem_a07dc16909c0223fe4b656fd270f27c11}} 
+\index{Unstructured\+Immersed\+Ellipse\+Problem@{Unstructured\+Immersed\+Ellipse\+Problem}!pin\+\_\+rigid\+\_\+body@{pin\+\_\+rigid\+\_\+body}}
+\index{pin\+\_\+rigid\+\_\+body@{pin\+\_\+rigid\+\_\+body}!Unstructured\+Immersed\+Ellipse\+Problem@{Unstructured\+Immersed\+Ellipse\+Problem}}
+\subsubsection{\texorpdfstring{pin\+\_\+rigid\+\_\+body()}{pin\_rigid\_body()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classUnstructuredImmersedEllipseProblem}{Unstructured\+Immersed\+Ellipse\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::pin\+\_\+rigid\+\_\+body (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pin the degrees of freedom associated with the solid bodies. 
+
+
+
+Definition at line 828 of file jeffery\+\_\+orbit.\+cc.
+
+\mbox{\Hypertarget{classUnstructuredImmersedEllipseProblem_ab201b187b240105fd8d444d943f6dada}\label{classUnstructuredImmersedEllipseProblem_ab201b187b240105fd8d444d943f6dada}} 
+\index{Unstructured\+Immersed\+Ellipse\+Problem@{Unstructured\+Immersed\+Ellipse\+Problem}!set\+\_\+boundary\+\_\+velocity@{set\+\_\+boundary\+\_\+velocity}}
+\index{set\+\_\+boundary\+\_\+velocity@{set\+\_\+boundary\+\_\+velocity}!Unstructured\+Immersed\+Ellipse\+Problem@{Unstructured\+Immersed\+Ellipse\+Problem}}
+\subsubsection{\texorpdfstring{set\+\_\+boundary\+\_\+velocity()}{set\_boundary\_velocity()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classUnstructuredImmersedEllipseProblem}{Unstructured\+Immersed\+Ellipse\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::set\+\_\+boundary\+\_\+velocity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Set the boundary velocity. 
+
+Set the boundary velocity for current and history values. 
+
+Definition at line 741 of file jeffery\+\_\+orbit.\+cc.
+
+
+
+Referenced by Unstructured\+Immersed\+Ellipse\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::complete\+\_\+problem\+\_\+setup().
+
+\mbox{\Hypertarget{classUnstructuredImmersedEllipseProblem_a2a88b40ff1988de0fc696f1eb755ea54}\label{classUnstructuredImmersedEllipseProblem_a2a88b40ff1988de0fc696f1eb755ea54}} 
+\index{Unstructured\+Immersed\+Ellipse\+Problem@{Unstructured\+Immersed\+Ellipse\+Problem}!solve\+\_\+for\+\_\+consistent\+\_\+nodal\+\_\+positions@{solve\+\_\+for\+\_\+consistent\+\_\+nodal\+\_\+positions}}
+\index{solve\+\_\+for\+\_\+consistent\+\_\+nodal\+\_\+positions@{solve\+\_\+for\+\_\+consistent\+\_\+nodal\+\_\+positions}!Unstructured\+Immersed\+Ellipse\+Problem@{Unstructured\+Immersed\+Ellipse\+Problem}}
+\subsubsection{\texorpdfstring{solve\+\_\+for\+\_\+consistent\+\_\+nodal\+\_\+positions()}{solve\_for\_consistent\_nodal\_positions()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classUnstructuredImmersedEllipseProblem}{Unstructured\+Immersed\+Ellipse\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::solve\+\_\+for\+\_\+consistent\+\_\+nodal\+\_\+positions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Function that solves a simplified problem to ensure that the positions of the boundary nodes are initially consistent with the lagrange multiplier formulation. 
+
+Assemble and solve a simplified problem that ensures that the positions of the boundary nodes are consistent with the weak imposition of the displacement boundary conditions on the surface of the ellipse. 
+
+Definition at line 868 of file jeffery\+\_\+orbit.\+cc.
+
+
+
+References Unstructured\+Immersed\+Ellipse\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::create\+\_\+lagrange\+\_\+multiplier\+\_\+elements().
+
+
+
+Referenced by main(), and Unstructured\+Immersed\+Ellipse\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::unpin\+\_\+rigid\+\_\+body().
+
+\mbox{\Hypertarget{classUnstructuredImmersedEllipseProblem_a4f8c7e7e4d626084f6515a152b165567}\label{classUnstructuredImmersedEllipseProblem_a4f8c7e7e4d626084f6515a152b165567}} 
+\index{Unstructured\+Immersed\+Ellipse\+Problem@{Unstructured\+Immersed\+Ellipse\+Problem}!unpin\+\_\+rigid\+\_\+body@{unpin\+\_\+rigid\+\_\+body}}
+\index{unpin\+\_\+rigid\+\_\+body@{unpin\+\_\+rigid\+\_\+body}!Unstructured\+Immersed\+Ellipse\+Problem@{Unstructured\+Immersed\+Ellipse\+Problem}}
+\subsubsection{\texorpdfstring{unpin\+\_\+rigid\+\_\+body()}{unpin\_rigid\_body()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classUnstructuredImmersedEllipseProblem}{Unstructured\+Immersed\+Ellipse\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::unpin\+\_\+rigid\+\_\+body (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Unpin the degrees of freedom associated with the solid bodies. 
+
+
+
+Definition at line 846 of file jeffery\+\_\+orbit.\+cc.
+
+
+
+References Unstructured\+Immersed\+Ellipse\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::solve\+\_\+for\+\_\+consistent\+\_\+nodal\+\_\+positions().
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classUnstructuredImmersedEllipseProblem_a3dc1ec2e066466a6f228864b873d95fa}\label{classUnstructuredImmersedEllipseProblem_a3dc1ec2e066466a6f228864b873d95fa}} 
+\index{Unstructured\+Immersed\+Ellipse\+Problem@{Unstructured\+Immersed\+Ellipse\+Problem}!Cog\+\_\+exact\+\_\+file@{Cog\+\_\+exact\+\_\+file}}
+\index{Cog\+\_\+exact\+\_\+file@{Cog\+\_\+exact\+\_\+file}!Unstructured\+Immersed\+Ellipse\+Problem@{Unstructured\+Immersed\+Ellipse\+Problem}}
+\subsubsection{\texorpdfstring{Cog\+\_\+exact\+\_\+file}{Cog\_exact\_file}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+ofstream \hyperlink{classUnstructuredImmersedEllipseProblem}{Unstructured\+Immersed\+Ellipse\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::Cog\+\_\+exact\+\_\+file\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+File to document the exact motion of the centre of gravity. 
+
+
+
+Definition at line 299 of file jeffery\+\_\+orbit.\+cc.
+
+\mbox{\Hypertarget{classUnstructuredImmersedEllipseProblem_acd1e8ec8e510f029f449f13dfdebbc99}\label{classUnstructuredImmersedEllipseProblem_acd1e8ec8e510f029f449f13dfdebbc99}} 
+\index{Unstructured\+Immersed\+Ellipse\+Problem@{Unstructured\+Immersed\+Ellipse\+Problem}!Cog\+\_\+file@{Cog\+\_\+file}}
+\index{Cog\+\_\+file@{Cog\+\_\+file}!Unstructured\+Immersed\+Ellipse\+Problem@{Unstructured\+Immersed\+Ellipse\+Problem}}
+\subsubsection{\texorpdfstring{Cog\+\_\+file}{Cog\_file}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+ofstream \hyperlink{classUnstructuredImmersedEllipseProblem}{Unstructured\+Immersed\+Ellipse\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::Cog\+\_\+file\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+File to document the motion of the centre of gravity. 
+
+
+
+Definition at line 296 of file jeffery\+\_\+orbit.\+cc.
+
+\mbox{\Hypertarget{classUnstructuredImmersedEllipseProblem_a1c463ed904f01e6466baae0533c79780}\label{classUnstructuredImmersedEllipseProblem_a1c463ed904f01e6466baae0533c79780}} 
+\index{Unstructured\+Immersed\+Ellipse\+Problem@{Unstructured\+Immersed\+Ellipse\+Problem}!Doc\+\_\+info@{Doc\+\_\+info}}
+\index{Doc\+\_\+info@{Doc\+\_\+info}!Unstructured\+Immersed\+Ellipse\+Problem@{Unstructured\+Immersed\+Ellipse\+Problem}}
+\subsubsection{\texorpdfstring{Doc\+\_\+info}{Doc\_info}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+Doc\+Info \hyperlink{classUnstructuredImmersedEllipseProblem}{Unstructured\+Immersed\+Ellipse\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::Doc\+\_\+info\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Internal Doc\+Info object. 
+
+
+
+Definition at line 290 of file jeffery\+\_\+orbit.\+cc.
+
+\mbox{\Hypertarget{classUnstructuredImmersedEllipseProblem_a9b4d04277b1f42c9428b610968f6f10d}\label{classUnstructuredImmersedEllipseProblem_a9b4d04277b1f42c9428b610968f6f10d}} 
+\index{Unstructured\+Immersed\+Ellipse\+Problem@{Unstructured\+Immersed\+Ellipse\+Problem}!Drag\+\_\+mesh\+\_\+pt@{Drag\+\_\+mesh\+\_\+pt}}
+\index{Drag\+\_\+mesh\+\_\+pt@{Drag\+\_\+mesh\+\_\+pt}!Unstructured\+Immersed\+Ellipse\+Problem@{Unstructured\+Immersed\+Ellipse\+Problem}}
+\subsubsection{\texorpdfstring{Drag\+\_\+mesh\+\_\+pt}{Drag\_mesh\_pt}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+Vector$<$Mesh$\ast$$>$ \hyperlink{classUnstructuredImmersedEllipseProblem}{Unstructured\+Immersed\+Ellipse\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::Drag\+\_\+mesh\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mesh of drag elements. 
+
+
+
+Definition at line 281 of file jeffery\+\_\+orbit.\+cc.
+
+\mbox{\Hypertarget{classUnstructuredImmersedEllipseProblem_a0ba79ccde26b781b66d9839460f08bd3}\label{classUnstructuredImmersedEllipseProblem_a0ba79ccde26b781b66d9839460f08bd3}} 
+\index{Unstructured\+Immersed\+Ellipse\+Problem@{Unstructured\+Immersed\+Ellipse\+Problem}!Fluid\+\_\+mesh\+\_\+pt@{Fluid\+\_\+mesh\+\_\+pt}}
+\index{Fluid\+\_\+mesh\+\_\+pt@{Fluid\+\_\+mesh\+\_\+pt}!Unstructured\+Immersed\+Ellipse\+Problem@{Unstructured\+Immersed\+Ellipse\+Problem}}
+\subsubsection{\texorpdfstring{Fluid\+\_\+mesh\+\_\+pt}{Fluid\_mesh\_pt}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+Refineable\+Solid\+Triangle\+Mesh$<$E\+L\+E\+M\+E\+NT$>$$\ast$ \hyperlink{classUnstructuredImmersedEllipseProblem}{Unstructured\+Immersed\+Ellipse\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::Fluid\+\_\+mesh\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pointer to Fluid\+\_\+mesh. 
+
+
+
+Definition at line 275 of file jeffery\+\_\+orbit.\+cc.
+
+\mbox{\Hypertarget{classUnstructuredImmersedEllipseProblem_ad644e67ccd6ab0811c5fe2b7b944fbca}\label{classUnstructuredImmersedEllipseProblem_ad644e67ccd6ab0811c5fe2b7b944fbca}} 
+\index{Unstructured\+Immersed\+Ellipse\+Problem@{Unstructured\+Immersed\+Ellipse\+Problem}!Lagrange\+\_\+multiplier\+\_\+mesh\+\_\+pt@{Lagrange\+\_\+multiplier\+\_\+mesh\+\_\+pt}}
+\index{Lagrange\+\_\+multiplier\+\_\+mesh\+\_\+pt@{Lagrange\+\_\+multiplier\+\_\+mesh\+\_\+pt}!Unstructured\+Immersed\+Ellipse\+Problem@{Unstructured\+Immersed\+Ellipse\+Problem}}
+\subsubsection{\texorpdfstring{Lagrange\+\_\+multiplier\+\_\+mesh\+\_\+pt}{Lagrange\_multiplier\_mesh\_pt}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+Solid\+Mesh$\ast$ \hyperlink{classUnstructuredImmersedEllipseProblem}{Unstructured\+Immersed\+Ellipse\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::Lagrange\+\_\+multiplier\+\_\+mesh\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pointers to mesh of Lagrange multiplier elements. 
+
+
+
+Definition at line 272 of file jeffery\+\_\+orbit.\+cc.
+
+\mbox{\Hypertarget{classUnstructuredImmersedEllipseProblem_a71a3b24b610e05f7be916c4214dab8dc}\label{classUnstructuredImmersedEllipseProblem_a71a3b24b610e05f7be916c4214dab8dc}} 
+\index{Unstructured\+Immersed\+Ellipse\+Problem@{Unstructured\+Immersed\+Ellipse\+Problem}!Norm\+\_\+file@{Norm\+\_\+file}}
+\index{Norm\+\_\+file@{Norm\+\_\+file}!Unstructured\+Immersed\+Ellipse\+Problem@{Unstructured\+Immersed\+Ellipse\+Problem}}
+\subsubsection{\texorpdfstring{Norm\+\_\+file}{Norm\_file}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+ofstream \hyperlink{classUnstructuredImmersedEllipseProblem}{Unstructured\+Immersed\+Ellipse\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::Norm\+\_\+file\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+File to document the norm of the solution (for validation purposes) 
+
+
+
+Definition at line 293 of file jeffery\+\_\+orbit.\+cc.
+
+\mbox{\Hypertarget{classUnstructuredImmersedEllipseProblem_ae0b35188432c371804887b6de86b48c7}\label{classUnstructuredImmersedEllipseProblem_ae0b35188432c371804887b6de86b48c7}} 
+\index{Unstructured\+Immersed\+Ellipse\+Problem@{Unstructured\+Immersed\+Ellipse\+Problem}!Outer\+\_\+boundary\+\_\+polygon\+\_\+pt@{Outer\+\_\+boundary\+\_\+polygon\+\_\+pt}}
+\index{Outer\+\_\+boundary\+\_\+polygon\+\_\+pt@{Outer\+\_\+boundary\+\_\+polygon\+\_\+pt}!Unstructured\+Immersed\+Ellipse\+Problem@{Unstructured\+Immersed\+Ellipse\+Problem}}
+\subsubsection{\texorpdfstring{Outer\+\_\+boundary\+\_\+polygon\+\_\+pt}{Outer\_boundary\_polygon\_pt}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+Triangle\+Mesh\+Polygon$\ast$ \hyperlink{classUnstructuredImmersedEllipseProblem}{Unstructured\+Immersed\+Ellipse\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::Outer\+\_\+boundary\+\_\+polygon\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Triangle mesh polygon for outer boundary. 
+
+
+
+Definition at line 278 of file jeffery\+\_\+orbit.\+cc.
+
+\mbox{\Hypertarget{classUnstructuredImmersedEllipseProblem_a34f1376227d4b995678eedd77813388b}\label{classUnstructuredImmersedEllipseProblem_a34f1376227d4b995678eedd77813388b}} 
+\index{Unstructured\+Immersed\+Ellipse\+Problem@{Unstructured\+Immersed\+Ellipse\+Problem}!Rigid\+\_\+body\+\_\+mesh\+\_\+pt@{Rigid\+\_\+body\+\_\+mesh\+\_\+pt}}
+\index{Rigid\+\_\+body\+\_\+mesh\+\_\+pt@{Rigid\+\_\+body\+\_\+mesh\+\_\+pt}!Unstructured\+Immersed\+Ellipse\+Problem@{Unstructured\+Immersed\+Ellipse\+Problem}}
+\subsubsection{\texorpdfstring{Rigid\+\_\+body\+\_\+mesh\+\_\+pt}{Rigid\_body\_mesh\_pt}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+Mesh$\ast$ \hyperlink{classUnstructuredImmersedEllipseProblem}{Unstructured\+Immersed\+Ellipse\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::Rigid\+\_\+body\+\_\+mesh\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mesh of the generalised elements for the rigid bodies. 
+
+
+
+Definition at line 284 of file jeffery\+\_\+orbit.\+cc.
+
+\mbox{\Hypertarget{classUnstructuredImmersedEllipseProblem_aaa6d1c19f3634a6f08f3dd7e5046217e}\label{classUnstructuredImmersedEllipseProblem_aaa6d1c19f3634a6f08f3dd7e5046217e}} 
+\index{Unstructured\+Immersed\+Ellipse\+Problem@{Unstructured\+Immersed\+Ellipse\+Problem}!Rigid\+\_\+body\+\_\+pt@{Rigid\+\_\+body\+\_\+pt}}
+\index{Rigid\+\_\+body\+\_\+pt@{Rigid\+\_\+body\+\_\+pt}!Unstructured\+Immersed\+Ellipse\+Problem@{Unstructured\+Immersed\+Ellipse\+Problem}}
+\subsubsection{\texorpdfstring{Rigid\+\_\+body\+\_\+pt}{Rigid\_body\_pt}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+Vector$<$Geom\+Object$\ast$$>$ \hyperlink{classUnstructuredImmersedEllipseProblem}{Unstructured\+Immersed\+Ellipse\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::Rigid\+\_\+body\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Storage for the geom object. 
+
+
+
+Definition at line 287 of file jeffery\+\_\+orbit.\+cc.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{jeffery__orbit_8cc}{jeffery\+\_\+orbit.\+cc}\end{DoxyCompactItemize}

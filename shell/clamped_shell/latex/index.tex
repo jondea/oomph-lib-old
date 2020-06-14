@@ -1,0 +1,584 @@
+In this document, we discuss the solution of the buckling of a cylindrical shell using {\ttfamily oomph-\/lib\textquotesingle{}s} Kirchhoff\+Love\+Shell elements.
+
+\mbox{[}No documentation yet\+: Here\textquotesingle{}s the driver code.\mbox{]}
+
+
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//LIC// ====================================================================}
+\textcolor{comment}{//LIC// This file forms part of oomph-lib, the object-oriented, }
+\textcolor{comment}{//LIC// multi-physics finite-element library, available }
+\textcolor{comment}{//LIC// at http://www.oomph-lib.org.}
+\textcolor{comment}{//LIC// }
+\textcolor{comment}{//LIC//    Version 1.0; svn revision $LastChangedRevision$}
+\textcolor{comment}{//LIC//}
+\textcolor{comment}{//LIC// $LastChangedDate$}
+\textcolor{comment}{//LIC// }
+\textcolor{comment}{//LIC// Copyright (C) 2006-2016 Matthias Heil and Andrew Hazel}
+\textcolor{comment}{//LIC// }
+\textcolor{comment}{//LIC// This library is free software; you can redistribute it and/or}
+\textcolor{comment}{//LIC// modify it under the terms of the GNU Lesser General Public}
+\textcolor{comment}{//LIC// License as published by the Free Software Foundation; either}
+\textcolor{comment}{//LIC// version 2.1 of the License, or (at your option) any later version.}
+\textcolor{comment}{//LIC// }
+\textcolor{comment}{//LIC// This library is distributed in the hope that it will be useful,}
+\textcolor{comment}{//LIC// but WITHOUT ANY WARRANTY; without even the implied warranty of}
+\textcolor{comment}{//LIC// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU}
+\textcolor{comment}{//LIC// Lesser General Public License for more details.}
+\textcolor{comment}{//LIC// }
+\textcolor{comment}{//LIC// You should have received a copy of the GNU Lesser General Public}
+\textcolor{comment}{//LIC// License along with this library; if not, write to the Free Software}
+\textcolor{comment}{//LIC// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA}
+\textcolor{comment}{//LIC// 02110-1301  USA.}
+\textcolor{comment}{//LIC// }
+\textcolor{comment}{//LIC// The authors may be contacted at oomph-lib@maths.man.ac.uk.}
+\textcolor{comment}{//LIC// }
+\textcolor{comment}{//LIC//====================================================================}
+\textcolor{comment}{//Driver function for a simple test shell problem:}
+\textcolor{comment}{//Calculate the deformation of an elastic tube approximated}
+\textcolor{comment}{//using Kirchoff--Love shell theory}
+
+\textcolor{comment}{//Standard system includes}
+\textcolor{preprocessor}{#include <iostream>}
+\textcolor{preprocessor}{#include <fstream>}
+\textcolor{preprocessor}{#include <cmath>}
+\textcolor{preprocessor}{#include <typeinfo>}
+\textcolor{preprocessor}{#include <algorithm>}
+\textcolor{preprocessor}{#include <cstdio>}
+
+\textcolor{comment}{//Include files from the finite-element library}
+\textcolor{preprocessor}{#include "generic.h"}
+\textcolor{preprocessor}{#include "shell.h"}
+\textcolor{preprocessor}{#include "meshes/rectangular\_quadmesh.h"}
+
+\textcolor{keyword}{using namespace }\hyperlink{namespacestd}{std};
+
+\textcolor{keyword}{using namespace }\hyperlink{namespaceoomph}{oomph};
+
+\textcolor{comment}{//======================================================================== }\textcolor{comment}{}
+\textcolor{comment}{/// Global variables that represent physical properties}
+\textcolor{comment}{}\textcolor{comment}{//======================================================================== }
+\textcolor{keyword}{namespace }\hyperlink{namespaceGlobal__Physical__Variables}{Global\_Physical\_Variables}
+\{
+\textcolor{comment}{}
+\textcolor{comment}{ /// Prescribed position of control point}
+\textcolor{comment}{} \textcolor{keywordtype}{double} Prescribed\_y = 1.0;
+\textcolor{comment}{}
+\textcolor{comment}{ /// \(\backslash\)short Pointer to pressure load (stored in Data so it can }
+\textcolor{comment}{ /// become an unknown in the problem when displacement control is used}
+\textcolor{comment}{} Data* \hyperlink{namespaceGlobal__Physical__Variables_ae5107b48f68b31302f3d37b038739904}{Pext\_data\_pt};
+\textcolor{comment}{}
+\textcolor{comment}{ /// Perturbation pressure}
+\textcolor{comment}{} \textcolor{keywordtype}{double} Pcos=1.0;
+
+\textcolor{comment}{}
+\textcolor{comment}{ /// \(\backslash\)short Return a reference to the external pressure }
+\textcolor{comment}{ /// load on the elastic tube.}
+\textcolor{comment}{} \textcolor{keywordtype}{double} \hyperlink{namespaceGlobal__Physical__Variables_a80149b39ce76ea0a779f7493905eb1b8}{external\_pressure}() 
+  \{\textcolor{keywordflow}{return} (*Pext\_data\_pt->value\_pt(0))*pow(0.05,3)/12.0;\}
+
+\textcolor{comment}{}
+\textcolor{comment}{ /// Load function, normal pressure loading}
+\textcolor{comment}{} \textcolor{keywordtype}{void} \hyperlink{namespaceGlobal__Physical__Variables_a86fd8f502cb8c4c7939ffae742f023eb}{press\_load}(\textcolor{keyword}{const} Vector<double> &xi,
+                 \textcolor{keyword}{const} Vector<double> &x,
+                 \textcolor{keyword}{const} Vector<double> &N,
+                 Vector<double>& load)
+ \{
+  \textcolor{comment}{//std::cout << N[0] << " " << N[1] << " " << N[2] << std::endl;}
+  \textcolor{comment}{//std::cout << xi[0] << " " << xi[1] << std::endl;}
+  \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} i=0;i<3;i++) 
+   \{
+    load[i] = (\hyperlink{namespaceGlobal__Physical__Variables_a80149b39ce76ea0a779f7493905eb1b8}{external\_pressure}() - 
+               Pcos*pow(0.05,3)/12.0*cos(2.0*xi[1]))*N[i];
+   \}
+ \}
+
+\}
+
+\textcolor{comment}{//======================================================================== }\textcolor{comment}{}
+\textcolor{comment}{/// A 2D Mesh class. The tube wall is represented by two Lagrangian }
+\textcolor{comment}{/// coordinates that correspond to z and theta in cylindrical polars. }
+\textcolor{comment}{/// The required mesh is therefore a  2D mesh and is therefore inherited }
+\textcolor{comment}{/// from the generic RectangularQuadMesh }
+\textcolor{comment}{}\textcolor{comment}{//=======================================================================}
+\textcolor{keyword}{template} <\textcolor{keyword}{class} ELEMENT>
+\textcolor{keyword}{class }\hyperlink{classShellMesh}{ShellMesh} : \textcolor{keyword}{public} \textcolor{keyword}{virtual} RectangularQuadMesh<ELEMENT>,
+                  \textcolor{keyword}{public} \textcolor{keyword}{virtual} SolidMesh
+\{
+\textcolor{keyword}{public}:
+ \textcolor{comment}{}
+\textcolor{comment}{ ///Constructor for the mesh}
+\textcolor{comment}{} \hyperlink{classShellMesh}{ShellMesh}(\textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} &nx, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} &ny, 
+           \textcolor{keyword}{const} \textcolor{keywordtype}{double} &lx, \textcolor{keyword}{const} \textcolor{keywordtype}{double} &ly);
+ \textcolor{comment}{}
+\textcolor{comment}{ /// \(\backslash\)short In all elastic problems, the nodes must be assigned an undeformed,}
+\textcolor{comment}{ /// or reference, position, corresponding to the stress-free state}
+\textcolor{comment}{ /// of the elastic body. This function assigns the undeformed position }
+\textcolor{comment}{ /// for the nodes on the elastic tube}
+\textcolor{comment}{} \textcolor{keywordtype}{void} assign\_undeformed\_positions(GeomObject* \textcolor{keyword}{const} &undeformed\_midplane\_pt);
+
+\};
+
+
+
+
+
+\textcolor{comment}{//=======================================================================}\textcolor{comment}{}
+\textcolor{comment}{/// Mesh constructor}
+\textcolor{comment}{/// Argument list:}
+\textcolor{comment}{/// nx  : number of elements in the axial direction}
+\textcolor{comment}{/// ny : number of elements in the azimuthal direction}
+\textcolor{comment}{/// lx  : length in the axial direction}
+\textcolor{comment}{/// ly  : length in theta direction}
+\textcolor{comment}{}\textcolor{comment}{//=======================================================================}
+\textcolor{keyword}{template} <\textcolor{keyword}{class} ELEMENT>
+\hyperlink{classShellMesh_a6ce8404f69fa3f4c10dac5c18cff0699}{ShellMesh<ELEMENT>::ShellMesh}(\textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} &nx, 
+                              \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} &ny,
+                              \textcolor{keyword}{const} \textcolor{keywordtype}{double} &lx, 
+                              \textcolor{keyword}{const} \textcolor{keywordtype}{double} &ly) :
+ RectangularQuadMesh<ELEMENT>(nx,ny,lx,ly)
+\{
+ \textcolor{comment}{//Find out how many nodes there are}
+ \textcolor{keywordtype}{unsigned} n\_node = nnode();
+ 
+ \textcolor{comment}{//Now in this case it is the Lagrangian coordinates that we want to set,}
+ \textcolor{comment}{//so we have to loop over all nodes and set them to the Eulerian}
+ \textcolor{comment}{//coordinates that are set by the generic mesh generator}
+ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} i=0;i<n\_node;i++)
+  \{
+   node\_pt(i)->xi(0) = node\_pt(i)->x(0);
+   node\_pt(i)->xi(1) = node\_pt(i)->x(1);
+  \}
+ 
+
+ \textcolor{comment}{//Assign gradients, etc for the Lagrangian coordinates of }
+ \textcolor{comment}{//hermite-type elements}
+ 
+ \textcolor{comment}{//Read out number of position dofs}
+ \textcolor{keywordtype}{unsigned} n\_position\_type = finite\_element\_pt(0)->nnodal\_position\_type();
+
+ \textcolor{comment}{//If this is greater than 1 set the slopes, which are the distances between }
+ \textcolor{comment}{//nodes. If the spacing were non-uniform, this part would be more difficult}
+ \textcolor{keywordflow}{if}(n\_position\_type > 1)
+  \{
+   \textcolor{keywordtype}{double} xstep = (this->Xmax - this->Xmin)/((this->Np-1)*this->Nx);
+   \textcolor{keywordtype}{double} ystep = (this->Ymax - this->Ymin)/((this->Np-1)*this->Ny);
+   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} n=0;n<n\_node;n++)
+    \{
+     \textcolor{comment}{//The factor 0.5 is because our reference element has length 2.0}
+     node\_pt(n)->xi\_gen(1,0) = 0.5*xstep;
+     node\_pt(n)->xi\_gen(2,1) = 0.5*ystep;
+    \}
+  \}
+\}
+
+
+\textcolor{comment}{//=======================================================================}\textcolor{comment}{}
+\textcolor{comment}{/// Set the undeformed coordinates of the nodes}
+\textcolor{comment}{}\textcolor{comment}{//=======================================================================}
+\textcolor{keyword}{template} <\textcolor{keyword}{class} ELEMENT>
+\textcolor{keywordtype}{void} \hyperlink{classShellMesh_a3576870121fad30d0f99588ea8082ca1}{ShellMesh<ELEMENT>::assign\_undeformed\_positions}(
+ GeomObject* \textcolor{keyword}{const} &undeformed\_midplane\_pt)
+\{
+ \textcolor{comment}{//Find out how many nodes there are}
+ \textcolor{keywordtype}{unsigned} n\_node = nnode();
+
+ \textcolor{comment}{//Loop over all the nodes}
+ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} n=0;n<n\_node;n++)
+  \{
+   \textcolor{comment}{//Get the Lagrangian coordinates}
+   Vector<double> xi(2);
+   xi[0] = node\_pt(n)->xi(0); 
+   xi[1] = node\_pt(n)->xi(1);
+   
+   \textcolor{comment}{//Assign memory for values of derivatives, etc}
+   Vector<double> R(3);
+   DenseMatrix<double> a(2,3); 
+   RankThreeTensor<double>  dadxi(2,2,3);
+   
+   \textcolor{comment}{//Get the geometrical information from the geometric object}
+   undeformed\_midplane\_pt->d2position(xi,R,a,dadxi);
+   
+   \textcolor{comment}{//Loop over coordinate directions}
+   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} i=0;i<3;i++)
+    \{
+     \textcolor{comment}{//Set the position}
+     node\_pt(n)->x\_gen(0,i) = R[i];
+
+     \textcolor{comment}{//Set the derivative wrt Lagrangian coordinates}
+     \textcolor{comment}{//Note that we need to scale by the length of each element here!!}
+     node\_pt(n)->x\_gen(1,i) = 0.5*a(0,i)*((this->Xmax - this->Xmin)/this->Nx);
+     node\_pt(n)->x\_gen(2,i) = 0.5*a(1,i)*((this->Ymax - this->Ymin)/this->Ny);
+
+     \textcolor{comment}{//Set the mixed derivative }
+     \textcolor{comment}{//(symmetric so doesn't matter which one we use)}
+     node\_pt(n)->x\_gen(3,i) = 0.25*dadxi(0,1,i);
+    \}
+  \}
+\}
+
+
+\textcolor{comment}{//======================================================================}
+\textcolor{comment}{//Problem class to solve the deformation of an elastic tube}
+\textcolor{comment}{//=====================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>
+\textcolor{keyword}{class }\hyperlink{classShellProblem}{ShellProblem} : \textcolor{keyword}{public} Problem
+\{
+
+\textcolor{keyword}{public}:
+\textcolor{comment}{}
+\textcolor{comment}{ /// Constructor}
+\textcolor{comment}{} \hyperlink{classShellProblem_a1ec644498c95acea00cc05c5bd30d075}{ShellProblem}(\textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} &nx, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} &ny, 
+              \textcolor{keyword}{const} \textcolor{keywordtype}{double} &lx, \textcolor{keyword}{const} \textcolor{keywordtype}{double} &ly);
+\textcolor{comment}{}
+\textcolor{comment}{ /// Overload Access function for the mesh}
+\textcolor{comment}{} \hyperlink{classShellMesh}{ShellMesh<ELEMENT>}* \hyperlink{classShellProblem_a1905a1b913469ed54f7c8f55d133ff57}{mesh\_pt}() 
+  \{\textcolor{keywordflow}{return} \textcolor{keyword}{dynamic\_cast<}\hyperlink{classShellMesh}{ShellMesh<ELEMENT>}*\textcolor{keyword}{>}(Problem::mesh\_pt());\}
+\textcolor{comment}{}
+\textcolor{comment}{ /// Actions after solve empty}
+\textcolor{comment}{} \textcolor{keywordtype}{void} \hyperlink{classShellProblem_a65636b791c99203ecbb09ba2a2eec214}{actions\_after\_newton\_solve}() \{\}
+\textcolor{comment}{}
+\textcolor{comment}{ /// Actions before solve empty}
+\textcolor{comment}{} \textcolor{keywordtype}{void} \hyperlink{classShellProblem_a379156a43ce05fe0e2dcf8a986a2ac64}{actions\_before\_newton\_solve}() \{\}
+ 
+ \textcolor{comment}{//A self\_test function}
+ \textcolor{keywordtype}{void} \hyperlink{classShellProblem_aa6d150bd1c137edbf4ded27ed044766d}{solve}();
+
+\textcolor{keyword}{private}:
+\textcolor{comment}{}
+\textcolor{comment}{ /// Pointer to GeomObject that specifies the undeformed midplane}
+\textcolor{comment}{} GeomObject* \hyperlink{classShellProblem_a1c9e4492c7c7c2716fdf8b812ec41651}{Undeformed\_midplane\_pt};
+\textcolor{comment}{}
+\textcolor{comment}{ /// First trace node}
+\textcolor{comment}{} Node* \hyperlink{classShellProblem_a45230216c4791c683218ff6d7f4ba9a0}{Trace\_node\_pt};
+\textcolor{comment}{}
+\textcolor{comment}{ /// Second trace node}
+\textcolor{comment}{} Node* \hyperlink{classShellProblem_a1933abc1b3e5637e23fa2809eb1cd88f}{Trace\_node2\_pt};
+
+\};
+
+
+
+\textcolor{comment}{//======================================================================}\textcolor{comment}{}
+\textcolor{comment}{/// Constructor}
+\textcolor{comment}{}\textcolor{comment}{//======================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>
+\hyperlink{classShellProblem_a1ec644498c95acea00cc05c5bd30d075}{ShellProblem<ELEMENT>::ShellProblem}(\textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} &nx, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} &
+      ny, 
+                                    \textcolor{keyword}{const} \textcolor{keywordtype}{double} &lx, \textcolor{keyword}{const} \textcolor{keywordtype}{double} &ly)
+\{
+ \textcolor{comment}{//Create the undeformed midplane object}
+ \hyperlink{classShellProblem_a1c9e4492c7c7c2716fdf8b812ec41651}{Undeformed\_midplane\_pt} = \textcolor{keyword}{new} EllipticalTube(1.0,1.0);
+
+ \textcolor{comment}{//Now create the mesh}
+ Problem::mesh\_pt() = \textcolor{keyword}{new} \hyperlink{classShellMesh}{ShellMesh<ELEMENT>}(nx,ny,lx,ly); 
+
+ \textcolor{comment}{//Set the undeformed positions in the mesh}
+ \hyperlink{classShellProblem_a1905a1b913469ed54f7c8f55d133ff57}{mesh\_pt}()->assign\_undeformed\_positions(\hyperlink{classShellProblem_a1c9e4492c7c7c2716fdf8b812ec41651}{Undeformed\_midplane\_pt});
+
+ \textcolor{comment}{//Reorder the elements, since I know what's best for them....}
+ \hyperlink{classShellProblem_a1905a1b913469ed54f7c8f55d133ff57}{mesh\_pt}()->element\_reorder();
+
+ \textcolor{comment}{//Apply boundary conditions to the ends of the tube}
+ \textcolor{keywordtype}{unsigned} n\_ends = \hyperlink{classShellProblem_a1905a1b913469ed54f7c8f55d133ff57}{mesh\_pt}()->nboundary\_node(1);
+ \textcolor{comment}{//Loop over the node}
+ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} i=0;i<n\_ends;i++)
+  \{
+   \textcolor{comment}{//Pin in the axial direction (prevents rigid body motions)}
+   \hyperlink{classShellProblem_a1905a1b913469ed54f7c8f55d133ff57}{mesh\_pt}()->boundary\_node\_pt(1,i)->pin\_position(2);
+   \hyperlink{classShellProblem_a1905a1b913469ed54f7c8f55d133ff57}{mesh\_pt}()->boundary\_node\_pt(3,i)->pin\_position(2);
+   \textcolor{comment}{//Derived conditions}
+   \hyperlink{classShellProblem_a1905a1b913469ed54f7c8f55d133ff57}{mesh\_pt}()->boundary\_node\_pt(1,i)->pin\_position(2,2);
+   \hyperlink{classShellProblem_a1905a1b913469ed54f7c8f55d133ff57}{mesh\_pt}()->boundary\_node\_pt(3,i)->pin\_position(2,2);
+
+   \textcolor{comment}{//------------------CLAMPING CONDITIONS----------------------}
+   \textcolor{comment}{//------Pin positions in the transverse directions-----------}
+   \textcolor{comment}{// Comment these out to get the ring case}
+   \hyperlink{classShellProblem_a1905a1b913469ed54f7c8f55d133ff57}{mesh\_pt}()->boundary\_node\_pt(1,i)->pin\_position(0);
+   \hyperlink{classShellProblem_a1905a1b913469ed54f7c8f55d133ff57}{mesh\_pt}()->boundary\_node\_pt(3,i)->pin\_position(0);
+   \textcolor{comment}{//Derived conditions}
+   \hyperlink{classShellProblem_a1905a1b913469ed54f7c8f55d133ff57}{mesh\_pt}()->boundary\_node\_pt(1,i)->pin\_position(2,0);
+   \hyperlink{classShellProblem_a1905a1b913469ed54f7c8f55d133ff57}{mesh\_pt}()->boundary\_node\_pt(3,i)->pin\_position(2,0);
+
+   \hyperlink{classShellProblem_a1905a1b913469ed54f7c8f55d133ff57}{mesh\_pt}()->boundary\_node\_pt(1,i)->pin\_position(1);
+   \hyperlink{classShellProblem_a1905a1b913469ed54f7c8f55d133ff57}{mesh\_pt}()->boundary\_node\_pt(3,i)->pin\_position(1);
+   \textcolor{comment}{//Derived conditions}
+   \hyperlink{classShellProblem_a1905a1b913469ed54f7c8f55d133ff57}{mesh\_pt}()->boundary\_node\_pt(1,i)->pin\_position(2,1);
+   \hyperlink{classShellProblem_a1905a1b913469ed54f7c8f55d133ff57}{mesh\_pt}()->boundary\_node\_pt(3,i)->pin\_position(2,1);
+   \textcolor{comment}{//----------------------------------------------------------}
+
+   \textcolor{comment}{// Set the axial gradients of the transverse coordinates to be}
+   \textcolor{comment}{// zero --- need to be enforced for ring or tube buckling}
+   \textcolor{comment}{//Pin dx/dz and dy/dz}
+   \hyperlink{classShellProblem_a1905a1b913469ed54f7c8f55d133ff57}{mesh\_pt}()->boundary\_node\_pt(1,i)->pin\_position(1,0);
+   \hyperlink{classShellProblem_a1905a1b913469ed54f7c8f55d133ff57}{mesh\_pt}()->boundary\_node\_pt(1,i)->pin\_position(1,1);
+   \hyperlink{classShellProblem_a1905a1b913469ed54f7c8f55d133ff57}{mesh\_pt}()->boundary\_node\_pt(3,i)->pin\_position(1,0);
+   \hyperlink{classShellProblem_a1905a1b913469ed54f7c8f55d133ff57}{mesh\_pt}()->boundary\_node\_pt(3,i)->pin\_position(1,1);
+   \textcolor{comment}{//Derived conditions}
+   \hyperlink{classShellProblem_a1905a1b913469ed54f7c8f55d133ff57}{mesh\_pt}()->boundary\_node\_pt(1,i)->pin\_position(3,0);
+   \hyperlink{classShellProblem_a1905a1b913469ed54f7c8f55d133ff57}{mesh\_pt}()->boundary\_node\_pt(1,i)->pin\_position(3,1);
+   \hyperlink{classShellProblem_a1905a1b913469ed54f7c8f55d133ff57}{mesh\_pt}()->boundary\_node\_pt(3,i)->pin\_position(3,0);
+   \hyperlink{classShellProblem_a1905a1b913469ed54f7c8f55d133ff57}{mesh\_pt}()->boundary\_node\_pt(3,i)->pin\_position(3,1);
+ \}
+
+ \textcolor{comment}{//Now loop over the sides and apply symmetry conditions}
+ \textcolor{keywordtype}{unsigned} n\_side = \hyperlink{classShellProblem_a1905a1b913469ed54f7c8f55d133ff57}{mesh\_pt}()->nboundary\_node(0);
+ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} i=0;i<n\_side;i++)
+  \{
+   \textcolor{comment}{//At the side where theta is 0, pin in the y direction}
+   \hyperlink{classShellProblem_a1905a1b913469ed54f7c8f55d133ff57}{mesh\_pt}()->boundary\_node\_pt(0,i)->pin\_position(1);
+   \textcolor{comment}{//Derived condition}
+   \hyperlink{classShellProblem_a1905a1b913469ed54f7c8f55d133ff57}{mesh\_pt}()->boundary\_node\_pt(0,i)->pin\_position(1,1);
+   \textcolor{comment}{//Pin dx/dtheta and dz/dtheta}
+   \hyperlink{classShellProblem_a1905a1b913469ed54f7c8f55d133ff57}{mesh\_pt}()->boundary\_node\_pt(0,i)->pin\_position(2,0);
+   \hyperlink{classShellProblem_a1905a1b913469ed54f7c8f55d133ff57}{mesh\_pt}()->boundary\_node\_pt(0,i)->pin\_position(2,2);
+   \textcolor{comment}{//Pin the mixed derivative}
+   \hyperlink{classShellProblem_a1905a1b913469ed54f7c8f55d133ff57}{mesh\_pt}()->boundary\_node\_pt(0,i)->pin\_position(3,0);
+   \hyperlink{classShellProblem_a1905a1b913469ed54f7c8f55d133ff57}{mesh\_pt}()->boundary\_node\_pt(0,i)->pin\_position(3,2);
+
+   \textcolor{comment}{//At the side when theta is 0.5pi  pin in the x direction}
+   \hyperlink{classShellProblem_a1905a1b913469ed54f7c8f55d133ff57}{mesh\_pt}()->boundary\_node\_pt(2,i)->pin\_position(0);
+   \textcolor{comment}{//Derived condition}
+   \hyperlink{classShellProblem_a1905a1b913469ed54f7c8f55d133ff57}{mesh\_pt}()->boundary\_node\_pt(2,i)->pin\_position(1,0);
+   \textcolor{comment}{//Pin dy/dtheta and dz/dtheta}
+   \hyperlink{classShellProblem_a1905a1b913469ed54f7c8f55d133ff57}{mesh\_pt}()->boundary\_node\_pt(2,i)->pin\_position(2,1);
+   \hyperlink{classShellProblem_a1905a1b913469ed54f7c8f55d133ff57}{mesh\_pt}()->boundary\_node\_pt(2,i)->pin\_position(2,2);
+   \textcolor{comment}{//Pin the mixed derivative}
+   \hyperlink{classShellProblem_a1905a1b913469ed54f7c8f55d133ff57}{mesh\_pt}()->boundary\_node\_pt(2,i)->pin\_position(3,1);
+   \hyperlink{classShellProblem_a1905a1b913469ed54f7c8f55d133ff57}{mesh\_pt}()->boundary\_node\_pt(2,i)->pin\_position(3,2);
+
+\textcolor{comment}{//    //Set an initial kick to make sure that we hop onto the}
+\textcolor{comment}{//    //non-axisymmetric branch}
+\textcolor{comment}{//    if((i>1) && (i<n\_side-1))}
+\textcolor{comment}{//     \{}
+\textcolor{comment}{//      mesh\_pt()->boundary\_node\_pt(0,i)->x(0) += 0.05;}
+\textcolor{comment}{//      mesh\_pt()->boundary\_node\_pt(2,i)->x(1) -= 0.1;}
+\textcolor{comment}{//     \}}
+  \}
+
+
+ \textcolor{comment}{// Setup displacement control}
+ \textcolor{comment}{//---------------------------}
+
+
+
+\textcolor{comment}{//  //Setup displacement control}
+\textcolor{comment}{//  //Fix the displacement at the mid-point of the tube in the "vertical"}
+\textcolor{comment}{//  //(y) direction.}
+\textcolor{comment}{//  //Set the displacement control element (located halfway along the tube)}
+\textcolor{comment}{// Disp\_ctl\_element\_pt = dynamic\_cast<ELEMENT*>(mesh\_pt()->element\_pt(3*Ny-1));}
+\textcolor{comment}{//  //The midpoint of the tube is located exactly half-way along the element}
+\textcolor{comment}{//  Vector<double> s(2);  s[0] = 1.0; s[1] = 0.0; //s[1] = 0.5}
+\textcolor{comment}{//  //Fix the displacement at this point in the y (1) direction}
+\textcolor{comment}{//  Disp\_ctl\_element\_pt->fix\_displacement\_for\_displacement\_control(s,1);}
+\textcolor{comment}{//  //Set the pointer to the prescribed position}
+\textcolor{comment}{//  Disp\_ctl\_element\_pt->prescribed\_position\_pt() = &Prescribed\_y; }
+ 
+
+
+ \textcolor{comment}{// Choose element in which displacement control is applied: This}
+ \textcolor{comment}{// one is located about halfway along the tube -- remember that}
+ \textcolor{comment}{// we've renumbered the elements!}
+ \textcolor{keywordtype}{unsigned} nel\_ctrl=0;
+ Vector<double> s\_displ\_control(2);
+
+ \textcolor{comment}{// Even/odd number of elements in axial direction}
+ \textcolor{keywordflow}{if} (nx%2==1)
+  \{
+   nel\_ctrl=unsigned(floor(0.5*\textcolor{keywordtype}{double}(nx))+1.0)*ny-1;
+   s\_displ\_control[0]=0.0;
+   s\_displ\_control[1]=1.0;
+  \}
+ \textcolor{keywordflow}{else}
+  \{
+   nel\_ctrl=unsigned(floor(0.5*\textcolor{keywordtype}{double}(nx))+1.0)*ny-1;
+   s\_displ\_control[0]=-1.0;
+   s\_displ\_control[1]=1.0;
+  \}
+
+ \textcolor{comment}{// Controlled element}
+ SolidFiniteElement* controlled\_element\_pt=
+  \textcolor{keyword}{dynamic\_cast<}ELEMENT*\textcolor{keyword}{>}(\hyperlink{classShellProblem_a1905a1b913469ed54f7c8f55d133ff57}{mesh\_pt}()->element\_pt(nel\_ctrl));
+ 
+
+ \textcolor{comment}{// Fix the displacement in the y (1) direction...}
+ \textcolor{keywordtype}{unsigned} controlled\_direction=1;
+
+ \textcolor{comment}{// Pointer to displacement control element}
+ DisplacementControlElement* displ\_control\_el\_pt;
+ 
+ \textcolor{comment}{// Build displacement control element}
+ displ\_control\_el\_pt=
+  \textcolor{keyword}{new} DisplacementControlElement(controlled\_element\_pt,
+                                 s\_displ\_control,
+                                 controlled\_direction,
+                                 &\hyperlink{namespaceGlobal__Physical__Variables_aa2f7ea98cb8462b3920a026bed5f6099}{Global\_Physical\_Variables::Prescribed\_y}
+      );
+ 
+
+ \textcolor{comment}{// Doc control point}
+ Vector<double> xi(2);
+ Vector<double> x(3);
+ controlled\_element\_pt->interpolated\_xi(s\_displ\_control,xi);
+ controlled\_element\_pt->interpolated\_x(s\_displ\_control,x);
+ std::cout << std::endl;
+ std::cout << \textcolor{stringliteral}{"Controlled element: "} << nel\_ctrl << std::endl;
+ std::cout << \textcolor{stringliteral}{"Displacement control applied at xi = ("} 
+           << xi[0] << \textcolor{stringliteral}{", "} << xi[1] << \textcolor{stringliteral}{")"} << std::endl;
+ std::cout << \textcolor{stringliteral}{"Corresponding to                x  = ("} 
+           << x[0] << \textcolor{stringliteral}{", "} << x[1] << \textcolor{stringliteral}{", "} << x[2] << \textcolor{stringliteral}{")"} << std::endl;
+
+
+ \textcolor{comment}{// The constructor of the  DisplacementControlElement has created}
+ \textcolor{comment}{// a new Data object whose one-and-only value contains the}
+ \textcolor{comment}{// adjustable load: Use this Data object in the load function:}
+ \hyperlink{namespaceGlobal__Physical__Variables_ae5107b48f68b31302f3d37b038739904}{Global\_Physical\_Variables::Pext\_data\_pt}=displ\_control\_el\_pt->
+  displacement\_control\_load\_pt();
+ 
+ \textcolor{comment}{// Add the displacement-control element to the mesh}
+ \hyperlink{classShellProblem_a1905a1b913469ed54f7c8f55d133ff57}{mesh\_pt}()->add\_element\_pt(displ\_control\_el\_pt); 
+
+ 
+
+ \textcolor{comment}{// Complete build of shell elements}
+ \textcolor{comment}{//---------------------------------}
+
+ \textcolor{comment}{//Find number of shell elements in mesh}
+ \textcolor{keywordtype}{unsigned} n\_element = nx*ny;
+
+ \textcolor{comment}{//Explicit pointer to first element in the mesh}
+ ELEMENT* first\_el\_pt = \textcolor{keyword}{dynamic\_cast<}ELEMENT*\textcolor{keyword}{>}(\hyperlink{classShellProblem_a1905a1b913469ed54f7c8f55d133ff57}{mesh\_pt}()->element\_pt(0));
+ 
+ \textcolor{comment}{//Loop over the elements }
+ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} e=0;e<n\_element;e++)
+  \{
+   \textcolor{comment}{//Cast to a shell element}
+   ELEMENT *el\_pt = \textcolor{keyword}{dynamic\_cast<}ELEMENT*\textcolor{keyword}{>}(\hyperlink{classShellProblem_a1905a1b913469ed54f7c8f55d133ff57}{mesh\_pt}()->element\_pt(e));
+
+   \textcolor{comment}{//Set the load function}
+   el\_pt->load\_vector\_fct\_pt() = & \hyperlink{namespaceGlobal__Physical__Variables_a86fd8f502cb8c4c7939ffae742f023eb}{Global\_Physical\_Variables::press\_load}
+      ;
+
+   \textcolor{comment}{//Set the undeformed surface}
+   el\_pt->undeformed\_midplane\_pt() = \hyperlink{classShellProblem_a1c9e4492c7c7c2716fdf8b812ec41651}{Undeformed\_midplane\_pt};
+
+   \textcolor{comment}{//The external pressure is external data for all elements}
+   el\_pt->add\_external\_data(\hyperlink{namespaceGlobal__Physical__Variables_ae5107b48f68b31302f3d37b038739904}{Global\_Physical\_Variables::Pext\_data\_pt})
+      ;
+   
+   \textcolor{comment}{//Pre-compute the second derivatives wrt Lagrangian coordinates}
+   \textcolor{comment}{//for the first element only}
+   \textcolor{keywordflow}{if}(e==0)
+    \{
+     el\_pt->pre\_compute\_d2shape\_lagrangian\_at\_knots();
+    \}
+
+   \textcolor{comment}{//Otherwise set the values to be the same as those in the first element}
+   \textcolor{comment}{//this is OK because the Lagrangian mesh is uniform.}
+   \textcolor{keywordflow}{else}
+    \{
+     el\_pt->set\_dshape\_lagrangian\_stored\_from\_element(first\_el\_pt);
+    \}
+  \}
+
+ \textcolor{comment}{//Set pointers to two trace nodes, used for output}
+ \hyperlink{classShellProblem_a45230216c4791c683218ff6d7f4ba9a0}{Trace\_node\_pt} = \hyperlink{classShellProblem_a1905a1b913469ed54f7c8f55d133ff57}{mesh\_pt}()->finite\_element\_pt(2*ny-1)->node\_pt(3);
+ \hyperlink{classShellProblem_a1933abc1b3e5637e23fa2809eb1cd88f}{Trace\_node2\_pt} = \hyperlink{classShellProblem_a1905a1b913469ed54f7c8f55d133ff57}{mesh\_pt}()->finite\_element\_pt(ny)->node\_pt(1);
+
+ \textcolor{comment}{// Do equation numbering}
+ cout << std::endl;
+ cout << \textcolor{stringliteral}{"# of dofs "} << assign\_eqn\_numbers() << std::endl;
+ cout << std::endl;
+
+\}
+
+
+\textcolor{comment}{//================================================================}
+\textcolor{comment}{// /Define the solve function, disp ctl and then continuation}
+\textcolor{comment}{//================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>
+\textcolor{keywordtype}{void} \hyperlink{classShellProblem_aa6d150bd1c137edbf4ded27ed044766d}{ShellProblem<ELEMENT>::solve}()
+\{
+
+ \textcolor{comment}{//Increase the maximum number of Newton iterations.}
+ \textcolor{comment}{//Finding the first buckled solution requires a large(ish) number}
+ \textcolor{comment}{//of Newton steps -- shells are just a bit twitchy}
+ Max\_newton\_iterations = 40;
+ Max\_residuals=1.0e6;
+
+ 
+ \textcolor{comment}{//Open an output trace file}
+ ofstream trace(\textcolor{stringliteral}{"trace.dat"});
+
+
+ \textcolor{comment}{//Gradually compress the tube by decreasing the value of the prescribed}
+ \textcolor{comment}{//position }
+ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} i=1;i<11;i++)
+  \{
+
+   \hyperlink{namespaceGlobal__Physical__Variables_aa2f7ea98cb8462b3920a026bed5f6099}{Global\_Physical\_Variables::Prescribed\_y} -= 0.05;
+
+   cout << std::endl << \textcolor{stringliteral}{"Increasing displacement: Prescribed\_y is "} 
+        << \hyperlink{namespaceGlobal__Physical__Variables_aa2f7ea98cb8462b3920a026bed5f6099}{Global\_Physical\_Variables::Prescribed\_y} << std::endl;
+
+   \textcolor{comment}{// Solve}
+   newton\_solve();
+   
+
+   \textcolor{comment}{//Output the pressure (on the bending scale)}
+   trace << \hyperlink{namespaceGlobal__Physical__Variables_a80149b39ce76ea0a779f7493905eb1b8}{Global\_Physical\_Variables::external\_pressure}()/(pow
+      (0.05,3)/12.0) 
+         << \textcolor{stringliteral}{" "}
+         \textcolor{comment}{//Position of first trace node}
+         << \hyperlink{classShellProblem_a45230216c4791c683218ff6d7f4ba9a0}{Trace\_node\_pt}->x(0) << \textcolor{stringliteral}{" "} << \hyperlink{classShellProblem_a45230216c4791c683218ff6d7f4ba9a0}{Trace\_node\_pt}->x(1) << \textcolor{stringliteral}{" "} 
+          \textcolor{comment}{//Position of second trace node}
+         << \hyperlink{classShellProblem_a1933abc1b3e5637e23fa2809eb1cd88f}{Trace\_node2\_pt}->x(0) << \textcolor{stringliteral}{" "} << \hyperlink{classShellProblem_a1933abc1b3e5637e23fa2809eb1cd88f}{Trace\_node2\_pt}->x(1) << std::endl;
+
+   \textcolor{comment}{// Reset perturbation}
+   \hyperlink{namespaceGlobal__Physical__Variables_ab55734aaa66260cd9d4bf68a4ecafdd5}{Global\_Physical\_Variables::Pcos}=0.0;
+  \}
+
+ \textcolor{comment}{//Close the trace file}
+ trace.close();
+ 
+ \textcolor{comment}{//Output the tube shape in the most strongly collapsed configuration}
+ ofstream file(\textcolor{stringliteral}{"final\_shape.dat"});
+ \hyperlink{classShellProblem_a1905a1b913469ed54f7c8f55d133ff57}{mesh\_pt}()->output(file,5);
+ file.close();
+
+
+\}
+
+
+\textcolor{comment}{//====================================================================}\textcolor{comment}{}
+\textcolor{comment}{/// Driver}
+\textcolor{comment}{}\textcolor{comment}{//====================================================================}
+\textcolor{keywordtype}{int} \hyperlink{clamped__shell_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}()
+\{
+
+ \textcolor{comment}{//Length of domain}
+ \textcolor{keywordtype}{double} L = 10.0;
+ \textcolor{keywordtype}{double} L\_phi=0.5*MathematicalConstants::Pi;
+
+ \textcolor{comment}{//Set up the problem}
+ \hyperlink{classShellProblem}{ShellProblem<StorableShapeSolidElement<DiagHermiteShellElement>}
+       > 
+  problem(5,3,L,L\_phi);
+
+ \textcolor{comment}{//Solve the problem}
+ problem.solve();
+\}
+
+
+
+
+
+
+\end{DoxyCodeInclude}
+
+
+
+
+ 
+
+ \hypertarget{index_pdf}{}\section{P\+D\+F file}\label{index_pdf}
+A \href{../latex/refman.pdf}{\tt pdf version} of this document is available. \end{document}
