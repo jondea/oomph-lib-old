@@ -227,11 +227,11 @@ am__distuninstallcheck_listfiles = $(distuninstallcheck_listfiles) \
 distcleancheck_listfiles = find . -type f -print
 ACLOCAL = ${SHELL} /home/runner/work/oomph-lib/oomph-lib/missing aclocal-1.15
 AMTAR = $${TAR-tar}
-AM_CPPFLAGS = -DOOMPH_HAS_STACKTRACE -DOOMPH_HAS_UNISTDH -DOOMPH_HAS_FPUCONTROLH -DOOMPH_HAS_MALLOCH -DOOMPH_HAS_TRIANGLE_LIB -DOOMPH_HAS_TETGEN_LIB -DUSING_OOMPH_SUPERLU -DUSING_OOMPH_SUPERLU_DIST
+AM_CPPFLAGS = -isystem /home/runner/work/oomph-lib/oomph-lib/external_distributions/boost/boost_default_installation/include -DOOMPH_HAS_BOOST -isystem /home/runner/work/oomph-lib/oomph-lib/external_distributions/gmp/gmp_default_installation/include -DOOMPH_HAS_GMP -isystem /home/runner/work/oomph-lib/oomph-lib/external_distributions/mpfr/mpfr_default_installation/include -DOOMPH_HAS_MPFR -isystem /home/runner/work/oomph-lib/oomph-lib/external_distributions/cgal/cgal_default_installation/include -DOOMPH_HAS_CGAL -DOOMPH_HAS_STACKTRACE -DOOMPH_HAS_UNISTDH -DOOMPH_HAS_FPUCONTROLH -DOOMPH_HAS_MALLOCH -DOOMPH_HAS_TRIANGLE_LIB -DOOMPH_HAS_TETGEN_LIB -DUSING_OOMPH_SUPERLU -DUSING_OOMPH_SUPERLU_DIST
 AM_CXXFLAGS = -DgFortran
 AM_DEFAULT_VERBOSITY = 1
 AM_FFLAGS = 
-AM_LDFLAGS = 
+AM_LDFLAGS = -L/home/runner/work/oomph-lib/oomph-lib/external_distributions/boost/boost_default_installation/lib -Wl,-rpath,/home/runner/work/oomph-lib/oomph-lib/external_distributions/boost/boost_default_installation/lib -L/home/runner/work/oomph-lib/oomph-lib/external_distributions/gmp/gmp_default_installation/lib -L/home/runner/work/oomph-lib/oomph-lib/external_distributions/mpfr/mpfr_default_installation/lib -L/home/runner/work/oomph-lib/oomph-lib/external_distributions/cgal/cgal_default_installation/lib -Wl,-rpath,/home/runner/work/oomph-lib/oomph-lib/external_distributions/cgal/cgal_default_installation/lib
 AR = ar
 AUTOCONF = ${SHELL} /home/runner/work/oomph-lib/oomph-lib/missing autoconf
 AUTOHEADER = ${SHELL} /home/runner/work/oomph-lib/oomph-lib/missing autoheader
@@ -239,15 +239,15 @@ AUTOMAKE = ${SHELL} /home/runner/work/oomph-lib/oomph-lib/missing automake-1.15
 AWK = gawk
 BLACS_LIB = 
 BLAS_LIB = 
-BOOST_DIR = 
-BOOST_INCLUDE = 
-BOOST_LIB = 
+BOOST_DIR = /home/runner/work/oomph-lib/oomph-lib/external_distributions/boost/boost_default_installation
+BOOST_INCLUDE = /home/runner/work/oomph-lib/oomph-lib/external_distributions/boost/boost_default_installation/include
+BOOST_LIB = /home/runner/work/oomph-lib/oomph-lib/external_distributions/boost/boost_default_installation/lib
 CC = gcc
 CCDEPMODE = depmode=gcc3
 CFLAGS = -g -Wall
-CGAL_DIR = 
-CGAL_INCLUDE = 
-CGAL_LIB = 
+CGAL_DIR = /home/runner/work/oomph-lib/oomph-lib/external_distributions/cgal/cgal_default_installation
+CGAL_INCLUDE = /home/runner/work/oomph-lib/oomph-lib/external_distributions/cgal/cgal_default_installation/include
+CGAL_LIB = /home/runner/work/oomph-lib/oomph-lib/external_distributions/cgal/cgal_default_installation/lib
 CGAL_PERMANENT_INSTALLATION_DIR = 
 CPP = gcc -E
 CPPFLAGS = 
@@ -267,7 +267,7 @@ ECHO_N = -n
 ECHO_T = 
 EGREP = /bin/grep -E
 EXEEXT = 
-EXTERNAL_LIBS = -loomph_hsl -loomph_arpack -loomph_crbond_bessel -loomph_triangle -loomph_tetgen -loomph_superlu_4.3 -loomph_metis_from_parmetis_3.1.1 -loomph_lapack -loomph_flapack -loomph_blas
+EXTERNAL_LIBS = -lpthread -lboost_thread -lboost_system -lgmp -lmpfr -lCGAL_Core -lCGAL -loomph_hsl -loomph_arpack -loomph_crbond_bessel -loomph_triangle -loomph_tetgen -loomph_superlu_4.3 -loomph_metis_from_parmetis_3.1.1 -loomph_lapack -loomph_flapack -loomph_blas
 F77 = f77
 FC = gfortran
 FCFLAGS = -g -O2
@@ -275,9 +275,9 @@ FFLAGS = -g -Wall
 FFLAGS_NO_OPT = -O0
 FGREP = /bin/grep -F
 FLIBS =  -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/7/../../.. -lgfortran -lm -lquadmath
-GMP_DIR = 
-GMP_INCLUDE = 
-GMP_LIB = 
+GMP_DIR = /home/runner/work/oomph-lib/oomph-lib/external_distributions/gmp/gmp_default_installation
+GMP_INCLUDE = /home/runner/work/oomph-lib/oomph-lib/external_distributions/gmp/gmp_default_installation/include
+GMP_LIB = /home/runner/work/oomph-lib/oomph-lib/external_distributions/gmp/gmp_default_installation/lib
 GMSH_RUN_COMMAND = 
 GREP = /bin/grep
 HLIB_INCLUDE = 
@@ -302,9 +302,9 @@ LT_SYS_LIBRARY_PATH =
 MAKEINFO = ${SHELL} /home/runner/work/oomph-lib/oomph-lib/missing makeinfo
 MANIFEST_TOOL = :
 MKDIR_P = /bin/mkdir -p
-MPFR_DIR = 
-MPFR_INCLUDE = 
-MPFR_LIB = 
+MPFR_DIR = /home/runner/work/oomph-lib/oomph-lib/external_distributions/mpfr/mpfr_default_installation
+MPFR_INCLUDE = /home/runner/work/oomph-lib/oomph-lib/external_distributions/mpfr/mpfr_default_installation/include
+MPFR_LIB = /home/runner/work/oomph-lib/oomph-lib/external_distributions/mpfr/mpfr_default_installation/lib
 MPI_INCLUDE_DIRECTORY = 
 MPI_RUN_COMMAND = 
 MPI_VARIABLENP_RUN_COMMAND = 
@@ -409,11 +409,11 @@ top_srcdir = .
 
 # Initialisation script for self-tests wipes the master log validation.log
 TESTS = validate.sh
-demo_dirs = 
+#demo_dirs = 
 
 # Do we want to build the demo_drivers?
 #--------------------------------------
-#demo_dirs = demo_drivers
+demo_dirs = demo_drivers
 #user_src_dirs = 
 
 # Do we want to build the user sources?
