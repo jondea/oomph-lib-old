@@ -141,7 +141,7 @@ compute_laplace_matrix_and_det(const DiagonalComplexMatrix& J,
 {
   const unsigned DIM = 2;
 
-  detJ = J(0,0) * J(1,0);
+  detJ = J(0,0) * J(1,1);
 
   // resize and intialize result
   laplace_matrix.resize(DIM, DIM, 0.0);
@@ -158,7 +158,7 @@ compute_laplace_matrix_and_det(const DiagonalComplexMatrix& J,
 {
   const unsigned DIM = 2;
 
-  detJ = J(0,0) * J(1,0);
+  detJ = J(0,0) * J(1,1);
 
   // resize and intialize result
   laplace_matrix.resize(DIM, DIM, 0.0);
@@ -175,7 +175,7 @@ compute_jacobian_inverse_and_det(const DiagonalComplexMatrix& J,
 {
   const unsigned DIM = 2;
 
-  J_det = J(0,0) * J(1,0);
+  J_det = J(0,0) * J(1,1);
 
   // resize and intialize result
   J_inv.resize(DIM, DIM, 0.0);

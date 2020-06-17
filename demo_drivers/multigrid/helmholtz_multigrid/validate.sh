@@ -134,7 +134,7 @@ trace_file="/trace.dat"
 
 # Threshold for number of iterations in comparison of convergence histories:
 #---------------------------------------------------------------------------
-threshold_n_its=3;
+threshold_n_its=5;
 
 # The address of the bash script to compare file lengths
 #-------------------------------------------------------
