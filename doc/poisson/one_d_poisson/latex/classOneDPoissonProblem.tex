@@ -1,0 +1,165 @@
+\hypertarget{classOneDPoissonProblem}{}\section{One\+D\+Poisson\+Problem$<$ E\+L\+E\+M\+E\+NT $>$ Class Template Reference}
+\label{classOneDPoissonProblem}\index{One\+D\+Poisson\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$@{One\+D\+Poisson\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$}}
+
+
+1D Poisson problem in unit interval.  
+
+
+Inheritance diagram for One\+D\+Poisson\+Problem$<$ E\+L\+E\+M\+E\+NT $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classOneDPoissonProblem}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classOneDPoissonProblem_ab814af5dfd3b7ae665cd20e27da5d9ae}{One\+D\+Poisson\+Problem} (const unsigned \&n\+\_\+element, Poisson\+Equations$<$ 1 $>$\+::Poisson\+Source\+Fct\+Pt source\+\_\+fct\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Constructor\+: Pass number of elements and pointer to source function. \end{DoxyCompactList}\item 
+\hyperlink{classOneDPoissonProblem_a940fa32d7939788e27b708818fb046ec}{$\sim$\+One\+D\+Poisson\+Problem} ()
+\begin{DoxyCompactList}\small\item\em Destructor (empty) \end{DoxyCompactList}\item 
+void \hyperlink{classOneDPoissonProblem_a6e42423869771fbd216326cba516a76b}{actions\+\_\+before\+\_\+newton\+\_\+solve} ()
+\begin{DoxyCompactList}\small\item\em Update the problem specs before solve\+: (Re)set boundary conditions. \end{DoxyCompactList}\item 
+void \hyperlink{classOneDPoissonProblem_ab023d367cc68b77a7828536333c924ed}{actions\+\_\+after\+\_\+newton\+\_\+solve} ()
+\begin{DoxyCompactList}\small\item\em Update the problem specs after solve (empty) \end{DoxyCompactList}\item 
+void \hyperlink{classOneDPoissonProblem_aaf42d034e42e7615acfa262a9c56b638}{doc\+\_\+solution} (const unsigned \&label)
+\begin{DoxyCompactList}\small\item\em Doc the solution, pass the number of the case considered, so that output files can be distinguished. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Poisson\+Equations$<$ 1 $>$\+::Poisson\+Source\+Fct\+Pt \hyperlink{classOneDPoissonProblem_a5fdff4b9218f56dec7fbc282f2428eef}{Source\+\_\+fct\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to source function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class E\+L\+E\+M\+E\+NT$>$\newline
+class One\+D\+Poisson\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$}
+
+1D Poisson problem in unit interval. 
+
+Definition at line 82 of file one\+\_\+d\+\_\+poisson.\+cc.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classOneDPoissonProblem_ab814af5dfd3b7ae665cd20e27da5d9ae}\label{classOneDPoissonProblem_ab814af5dfd3b7ae665cd20e27da5d9ae}} 
+\index{One\+D\+Poisson\+Problem@{One\+D\+Poisson\+Problem}!One\+D\+Poisson\+Problem@{One\+D\+Poisson\+Problem}}
+\index{One\+D\+Poisson\+Problem@{One\+D\+Poisson\+Problem}!One\+D\+Poisson\+Problem@{One\+D\+Poisson\+Problem}}
+\subsubsection{\texorpdfstring{One\+D\+Poisson\+Problem()}{OneDPoissonProblem()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classOneDPoissonProblem}{One\+D\+Poisson\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::\hyperlink{classOneDPoissonProblem}{One\+D\+Poisson\+Problem} (\begin{DoxyParamCaption}\item[{const unsigned \&}]{n\+\_\+element,  }\item[{Poisson\+Equations$<$ 1 $>$\+::Poisson\+Source\+Fct\+Pt}]{source\+\_\+fct\+\_\+pt }\end{DoxyParamCaption})}
+
+
+
+Constructor\+: Pass number of elements and pointer to source function. 
+
+Constructor for 1D Poisson problem in unit interval. Discretise the 1D domain with n\+\_\+element elements of type E\+L\+E\+M\+E\+NT. Specify function pointer to source function. 
+
+Definition at line 124 of file one\+\_\+d\+\_\+poisson.\+cc.
+
+
+
+References One\+D\+Poisson\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Source\+\_\+fct\+\_\+pt.
+
+\mbox{\Hypertarget{classOneDPoissonProblem_a940fa32d7939788e27b708818fb046ec}\label{classOneDPoissonProblem_a940fa32d7939788e27b708818fb046ec}} 
+\index{One\+D\+Poisson\+Problem@{One\+D\+Poisson\+Problem}!````~One\+D\+Poisson\+Problem@{$\sim$\+One\+D\+Poisson\+Problem}}
+\index{````~One\+D\+Poisson\+Problem@{$\sim$\+One\+D\+Poisson\+Problem}!One\+D\+Poisson\+Problem@{One\+D\+Poisson\+Problem}}
+\subsubsection{\texorpdfstring{$\sim$\+One\+D\+Poisson\+Problem()}{~OneDPoissonProblem()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+\hyperlink{classOneDPoissonProblem}{One\+D\+Poisson\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::$\sim$\hyperlink{classOneDPoissonProblem}{One\+D\+Poisson\+Problem} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Destructor (empty) 
+
+
+
+Definition at line 92 of file one\+\_\+d\+\_\+poisson.\+cc.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classOneDPoissonProblem_ab023d367cc68b77a7828536333c924ed}\label{classOneDPoissonProblem_ab023d367cc68b77a7828536333c924ed}} 
+\index{One\+D\+Poisson\+Problem@{One\+D\+Poisson\+Problem}!actions\+\_\+after\+\_\+newton\+\_\+solve@{actions\+\_\+after\+\_\+newton\+\_\+solve}}
+\index{actions\+\_\+after\+\_\+newton\+\_\+solve@{actions\+\_\+after\+\_\+newton\+\_\+solve}!One\+D\+Poisson\+Problem@{One\+D\+Poisson\+Problem}}
+\subsubsection{\texorpdfstring{actions\+\_\+after\+\_\+newton\+\_\+solve()}{actions\_after\_newton\_solve()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+void \hyperlink{classOneDPoissonProblem}{One\+D\+Poisson\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::actions\+\_\+after\+\_\+newton\+\_\+solve (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Update the problem specs after solve (empty) 
+
+
+
+Definition at line 101 of file one\+\_\+d\+\_\+poisson.\+cc.
+
+\mbox{\Hypertarget{classOneDPoissonProblem_a6e42423869771fbd216326cba516a76b}\label{classOneDPoissonProblem_a6e42423869771fbd216326cba516a76b}} 
+\index{One\+D\+Poisson\+Problem@{One\+D\+Poisson\+Problem}!actions\+\_\+before\+\_\+newton\+\_\+solve@{actions\+\_\+before\+\_\+newton\+\_\+solve}}
+\index{actions\+\_\+before\+\_\+newton\+\_\+solve@{actions\+\_\+before\+\_\+newton\+\_\+solve}!One\+D\+Poisson\+Problem@{One\+D\+Poisson\+Problem}}
+\subsubsection{\texorpdfstring{actions\+\_\+before\+\_\+newton\+\_\+solve()}{actions\_before\_newton\_solve()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classOneDPoissonProblem}{One\+D\+Poisson\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::actions\+\_\+before\+\_\+newton\+\_\+solve (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Update the problem specs before solve\+: (Re)set boundary conditions. 
+
+Update the problem specs before solve\+: (Re)set boundary values from the exact solution. 
+
+Definition at line 174 of file one\+\_\+d\+\_\+poisson.\+cc.
+
+
+
+References Fish\+Soln\+One\+D\+Poisson\+::get\+\_\+exact\+\_\+u().
+
+\mbox{\Hypertarget{classOneDPoissonProblem_aaf42d034e42e7615acfa262a9c56b638}\label{classOneDPoissonProblem_aaf42d034e42e7615acfa262a9c56b638}} 
+\index{One\+D\+Poisson\+Problem@{One\+D\+Poisson\+Problem}!doc\+\_\+solution@{doc\+\_\+solution}}
+\index{doc\+\_\+solution@{doc\+\_\+solution}!One\+D\+Poisson\+Problem@{One\+D\+Poisson\+Problem}}
+\subsubsection{\texorpdfstring{doc\+\_\+solution()}{doc\_solution()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classOneDPoissonProblem}{One\+D\+Poisson\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::doc\+\_\+solution (\begin{DoxyParamCaption}\item[{const unsigned \&}]{label }\end{DoxyParamCaption})}
+
+
+
+Doc the solution, pass the number of the case considered, so that output files can be distinguished. 
+
+Doc the solution in tecplot format. Label files with label. 
+
+Definition at line 220 of file one\+\_\+d\+\_\+poisson.\+cc.
+
+
+
+References Fish\+Soln\+One\+D\+Poisson\+::get\+\_\+exact\+\_\+u().
+
+
+
+Referenced by main().
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classOneDPoissonProblem_a5fdff4b9218f56dec7fbc282f2428eef}\label{classOneDPoissonProblem_a5fdff4b9218f56dec7fbc282f2428eef}} 
+\index{One\+D\+Poisson\+Problem@{One\+D\+Poisson\+Problem}!Source\+\_\+fct\+\_\+pt@{Source\+\_\+fct\+\_\+pt}}
+\index{Source\+\_\+fct\+\_\+pt@{Source\+\_\+fct\+\_\+pt}!One\+D\+Poisson\+Problem@{One\+D\+Poisson\+Problem}}
+\subsubsection{\texorpdfstring{Source\+\_\+fct\+\_\+pt}{Source\_fct\_pt}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+Poisson\+Equations$<$1$>$\+::Poisson\+Source\+Fct\+Pt \hyperlink{classOneDPoissonProblem}{One\+D\+Poisson\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::Source\+\_\+fct\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pointer to source function. 
+
+
+
+Definition at line 110 of file one\+\_\+d\+\_\+poisson.\+cc.
+
+
+
+Referenced by One\+D\+Poisson\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+One\+D\+Poisson\+Problem().
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{one__d__poisson_8cc}{one\+\_\+d\+\_\+poisson.\+cc}\end{DoxyCompactItemize}

@@ -1,0 +1,387 @@
+\hypertarget{classUnstructuredPoissonProblem}{}\section{Unstructured\+Poisson\+Problem$<$ E\+L\+E\+M\+E\+NT $>$ Class Template Reference}
+\label{classUnstructuredPoissonProblem}\index{Unstructured\+Poisson\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$@{Unstructured\+Poisson\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$}}
+
+
+Class definition.  
+
+
+Inheritance diagram for Unstructured\+Poisson\+Problem$<$ E\+L\+E\+M\+E\+NT $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classUnstructuredPoissonProblem}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classUnstructuredPoissonProblem_a26e7610a714aea17c9278beec4842371}{Unstructured\+Poisson\+Problem} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\hyperlink{classUnstructuredPoissonProblem_aeae85592e36ba7be6b4891fb49d2197b}{$\sim$\+Unstructured\+Poisson\+Problem} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+void \hyperlink{classUnstructuredPoissonProblem_ac9627efd3c311156e5347ed37d4ea4b0}{actions\+\_\+before\+\_\+adapt} ()
+\begin{DoxyCompactList}\small\item\em Actions before adapt. Empty. \end{DoxyCompactList}\item 
+void \hyperlink{classUnstructuredPoissonProblem_a6f3e089824cfbb4f458efd8c8ffd376d}{actions\+\_\+after\+\_\+adapt} ()
+\begin{DoxyCompactList}\small\item\em Actions after adapt\+: Setup the problem again -- remember that the mesh has been completely rebuilt and its element\textquotesingle{}s don\textquotesingle{}t have any pointers to source fcts etc. yet. \end{DoxyCompactList}\item 
+void \hyperlink{classUnstructuredPoissonProblem_a822bd18e50ebeefd6d1c196fad7c0bf1}{actions\+\_\+after\+\_\+newton\+\_\+solve} ()
+\begin{DoxyCompactList}\small\item\em Update after solve (empty) \end{DoxyCompactList}\item 
+void \hyperlink{classUnstructuredPoissonProblem_a2ab9d23c0e6e6631ffe1a761f6bdf026}{actions\+\_\+before\+\_\+newton\+\_\+solve} ()
+\begin{DoxyCompactList}\small\item\em Update the problem specs before solve\+: Re-\/apply boundary conditons. \end{DoxyCompactList}\item 
+void \hyperlink{classUnstructuredPoissonProblem_a9b21a3c3f574da71411f852006fe2a0c}{doc\+\_\+solution} (const std\+::string \&comment=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Doc the solution. \end{DoxyCompactList}\item 
+\hyperlink{classUnstructuredPoissonProblem_a26e7610a714aea17c9278beec4842371}{Unstructured\+Poisson\+Problem} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\hyperlink{classUnstructuredPoissonProblem_aeae85592e36ba7be6b4891fb49d2197b}{$\sim$\+Unstructured\+Poisson\+Problem} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+void \hyperlink{classUnstructuredPoissonProblem_a822bd18e50ebeefd6d1c196fad7c0bf1}{actions\+\_\+after\+\_\+newton\+\_\+solve} ()
+\begin{DoxyCompactList}\small\item\em Update after solve (empty) \end{DoxyCompactList}\item 
+void \hyperlink{classUnstructuredPoissonProblem_a2ab9d23c0e6e6631ffe1a761f6bdf026}{actions\+\_\+before\+\_\+newton\+\_\+solve} ()
+\begin{DoxyCompactList}\small\item\em Update the problem specs before solve\+: Re-\/apply boundary conditons. \end{DoxyCompactList}\item 
+void \hyperlink{classUnstructuredPoissonProblem_a9b21a3c3f574da71411f852006fe2a0c}{doc\+\_\+solution} (const std\+::string \&comment=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Doc the solution. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classUnstructuredPoissonProblem_ace8b8b3097ae2024a0589b2bf9b4ee7b}{apply\+\_\+boundary\+\_\+conditions} ()
+\begin{DoxyCompactList}\small\item\em Helper function to apply boundary conditions. \end{DoxyCompactList}\item 
+void \hyperlink{classUnstructuredPoissonProblem_a5cbf00790e8469b43c64c6aaadfe7b41}{complete\+\_\+problem\+\_\+setup} ()
+\begin{DoxyCompactList}\small\item\em Helper function to (re-\/)set boundary condition and complete the build of all elements. \end{DoxyCompactList}\item 
+void \hyperlink{classUnstructuredPoissonProblem_ace8b8b3097ae2024a0589b2bf9b4ee7b}{apply\+\_\+boundary\+\_\+conditions} ()
+\begin{DoxyCompactList}\small\item\em Helper function to apply boundary conditions. \end{DoxyCompactList}\item 
+void \hyperlink{classUnstructuredPoissonProblem_a5cbf00790e8469b43c64c6aaadfe7b41}{complete\+\_\+problem\+\_\+setup} ()
+\begin{DoxyCompactList}\small\item\em Helper function to (re-\/)set boundary condition and complete the build of all elements. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Doc\+Info \hyperlink{classUnstructuredPoissonProblem_a5c4c29b1c95cd63055e5aced124ca708}{Doc\+\_\+info}
+\begin{DoxyCompactList}\small\item\em Doc info object for labeling output. \end{DoxyCompactList}\item 
+Refineable\+Triangle\+Mesh$<$ E\+L\+E\+M\+E\+NT $>$ $\ast$ \hyperlink{classUnstructuredPoissonProblem_af95c713f5db16c288e307768b6bf9bb8}{My\+\_\+mesh\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointers to specific mesh. \end{DoxyCompactList}\item 
+ofstream \hyperlink{classUnstructuredPoissonProblem_ac7fdb8fb9a886ced0ee7244890406d90}{Trace\+\_\+file}
+\begin{DoxyCompactList}\small\item\em Trace file to document norm of solution. \end{DoxyCompactList}\item 
+Triangle\+Mesh$<$ E\+L\+E\+M\+E\+NT $>$ $\ast$ \hyperlink{classUnstructuredPoissonProblem_a138fcf0adb978a7f3ae9e27ba6df900b}{My\+\_\+mesh\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointers to specific mesh. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class E\+L\+E\+M\+E\+NT$>$\newline
+class Unstructured\+Poisson\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$}
+
+Class definition. 
+
+Definition at line 94 of file mesh\+\_\+from\+\_\+inline\+\_\+triangle.\+cc.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classUnstructuredPoissonProblem_a26e7610a714aea17c9278beec4842371}\label{classUnstructuredPoissonProblem_a26e7610a714aea17c9278beec4842371}} 
+\index{Unstructured\+Poisson\+Problem@{Unstructured\+Poisson\+Problem}!Unstructured\+Poisson\+Problem@{Unstructured\+Poisson\+Problem}}
+\index{Unstructured\+Poisson\+Problem@{Unstructured\+Poisson\+Problem}!Unstructured\+Poisson\+Problem@{Unstructured\+Poisson\+Problem}}
+\subsubsection{\texorpdfstring{Unstructured\+Poisson\+Problem()}{UnstructuredPoissonProblem()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classUnstructuredPoissonProblem}{Unstructured\+Poisson\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::\hyperlink{classUnstructuredPoissonProblem}{Unstructured\+Poisson\+Problem} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+
+
+Definition at line 158 of file mesh\+\_\+from\+\_\+inline\+\_\+triangle.\+cc.
+
+\mbox{\Hypertarget{classUnstructuredPoissonProblem_aeae85592e36ba7be6b4891fb49d2197b}\label{classUnstructuredPoissonProblem_aeae85592e36ba7be6b4891fb49d2197b}} 
+\index{Unstructured\+Poisson\+Problem@{Unstructured\+Poisson\+Problem}!````~Unstructured\+Poisson\+Problem@{$\sim$\+Unstructured\+Poisson\+Problem}}
+\index{````~Unstructured\+Poisson\+Problem@{$\sim$\+Unstructured\+Poisson\+Problem}!Unstructured\+Poisson\+Problem@{Unstructured\+Poisson\+Problem}}
+\subsubsection{\texorpdfstring{$\sim$\+Unstructured\+Poisson\+Problem()}{~UnstructuredPoissonProblem()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+\hyperlink{classUnstructuredPoissonProblem}{Unstructured\+Poisson\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::$\sim$\hyperlink{classUnstructuredPoissonProblem}{Unstructured\+Poisson\+Problem} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Destructor. 
+
+
+
+Definition at line 103 of file mesh\+\_\+from\+\_\+inline\+\_\+triangle.\+cc.
+
+\mbox{\Hypertarget{classUnstructuredPoissonProblem_a26e7610a714aea17c9278beec4842371}\label{classUnstructuredPoissonProblem_a26e7610a714aea17c9278beec4842371}} 
+\index{Unstructured\+Poisson\+Problem@{Unstructured\+Poisson\+Problem}!Unstructured\+Poisson\+Problem@{Unstructured\+Poisson\+Problem}}
+\index{Unstructured\+Poisson\+Problem@{Unstructured\+Poisson\+Problem}!Unstructured\+Poisson\+Problem@{Unstructured\+Poisson\+Problem}}
+\subsubsection{\texorpdfstring{Unstructured\+Poisson\+Problem()}{UnstructuredPoissonProblem()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+\hyperlink{classUnstructuredPoissonProblem}{Unstructured\+Poisson\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::\hyperlink{classUnstructuredPoissonProblem}{Unstructured\+Poisson\+Problem} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+\mbox{\Hypertarget{classUnstructuredPoissonProblem_aeae85592e36ba7be6b4891fb49d2197b}\label{classUnstructuredPoissonProblem_aeae85592e36ba7be6b4891fb49d2197b}} 
+\index{Unstructured\+Poisson\+Problem@{Unstructured\+Poisson\+Problem}!````~Unstructured\+Poisson\+Problem@{$\sim$\+Unstructured\+Poisson\+Problem}}
+\index{````~Unstructured\+Poisson\+Problem@{$\sim$\+Unstructured\+Poisson\+Problem}!Unstructured\+Poisson\+Problem@{Unstructured\+Poisson\+Problem}}
+\subsubsection{\texorpdfstring{$\sim$\+Unstructured\+Poisson\+Problem()}{~UnstructuredPoissonProblem()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+\hyperlink{classUnstructuredPoissonProblem}{Unstructured\+Poisson\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::$\sim$\hyperlink{classUnstructuredPoissonProblem}{Unstructured\+Poisson\+Problem} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Destructor. 
+
+
+
+Definition at line 103 of file mesh\+\_\+from\+\_\+inline\+\_\+triangle\+\_\+no\+\_\+adapt.\+cc.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classUnstructuredPoissonProblem_a6f3e089824cfbb4f458efd8c8ffd376d}\label{classUnstructuredPoissonProblem_a6f3e089824cfbb4f458efd8c8ffd376d}} 
+\index{Unstructured\+Poisson\+Problem@{Unstructured\+Poisson\+Problem}!actions\+\_\+after\+\_\+adapt@{actions\+\_\+after\+\_\+adapt}}
+\index{actions\+\_\+after\+\_\+adapt@{actions\+\_\+after\+\_\+adapt}!Unstructured\+Poisson\+Problem@{Unstructured\+Poisson\+Problem}}
+\subsubsection{\texorpdfstring{actions\+\_\+after\+\_\+adapt()}{actions\_after\_adapt()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+void \hyperlink{classUnstructuredPoissonProblem}{Unstructured\+Poisson\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::actions\+\_\+after\+\_\+adapt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Actions after adapt\+: Setup the problem again -- remember that the mesh has been completely rebuilt and its element\textquotesingle{}s don\textquotesingle{}t have any pointers to source fcts etc. yet. 
+
+
+
+Definition at line 112 of file mesh\+\_\+from\+\_\+inline\+\_\+triangle.\+cc.
+
+\mbox{\Hypertarget{classUnstructuredPoissonProblem_a822bd18e50ebeefd6d1c196fad7c0bf1}\label{classUnstructuredPoissonProblem_a822bd18e50ebeefd6d1c196fad7c0bf1}} 
+\index{Unstructured\+Poisson\+Problem@{Unstructured\+Poisson\+Problem}!actions\+\_\+after\+\_\+newton\+\_\+solve@{actions\+\_\+after\+\_\+newton\+\_\+solve}}
+\index{actions\+\_\+after\+\_\+newton\+\_\+solve@{actions\+\_\+after\+\_\+newton\+\_\+solve}!Unstructured\+Poisson\+Problem@{Unstructured\+Poisson\+Problem}}
+\subsubsection{\texorpdfstring{actions\+\_\+after\+\_\+newton\+\_\+solve()}{actions\_after\_newton\_solve()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+void \hyperlink{classUnstructuredPoissonProblem}{Unstructured\+Poisson\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::actions\+\_\+after\+\_\+newton\+\_\+solve (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Update after solve (empty) 
+
+
+
+Definition at line 106 of file mesh\+\_\+from\+\_\+inline\+\_\+triangle\+\_\+no\+\_\+adapt.\+cc.
+
+\mbox{\Hypertarget{classUnstructuredPoissonProblem_a822bd18e50ebeefd6d1c196fad7c0bf1}\label{classUnstructuredPoissonProblem_a822bd18e50ebeefd6d1c196fad7c0bf1}} 
+\index{Unstructured\+Poisson\+Problem@{Unstructured\+Poisson\+Problem}!actions\+\_\+after\+\_\+newton\+\_\+solve@{actions\+\_\+after\+\_\+newton\+\_\+solve}}
+\index{actions\+\_\+after\+\_\+newton\+\_\+solve@{actions\+\_\+after\+\_\+newton\+\_\+solve}!Unstructured\+Poisson\+Problem@{Unstructured\+Poisson\+Problem}}
+\subsubsection{\texorpdfstring{actions\+\_\+after\+\_\+newton\+\_\+solve()}{actions\_after\_newton\_solve()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+void \hyperlink{classUnstructuredPoissonProblem}{Unstructured\+Poisson\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::actions\+\_\+after\+\_\+newton\+\_\+solve (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Update after solve (empty) 
+
+
+
+Definition at line 118 of file mesh\+\_\+from\+\_\+inline\+\_\+triangle.\+cc.
+
+\mbox{\Hypertarget{classUnstructuredPoissonProblem_ac9627efd3c311156e5347ed37d4ea4b0}\label{classUnstructuredPoissonProblem_ac9627efd3c311156e5347ed37d4ea4b0}} 
+\index{Unstructured\+Poisson\+Problem@{Unstructured\+Poisson\+Problem}!actions\+\_\+before\+\_\+adapt@{actions\+\_\+before\+\_\+adapt}}
+\index{actions\+\_\+before\+\_\+adapt@{actions\+\_\+before\+\_\+adapt}!Unstructured\+Poisson\+Problem@{Unstructured\+Poisson\+Problem}}
+\subsubsection{\texorpdfstring{actions\+\_\+before\+\_\+adapt()}{actions\_before\_adapt()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+void \hyperlink{classUnstructuredPoissonProblem}{Unstructured\+Poisson\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::actions\+\_\+before\+\_\+adapt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Actions before adapt. Empty. 
+
+
+
+Definition at line 106 of file mesh\+\_\+from\+\_\+inline\+\_\+triangle.\+cc.
+
+\mbox{\Hypertarget{classUnstructuredPoissonProblem_a2ab9d23c0e6e6631ffe1a761f6bdf026}\label{classUnstructuredPoissonProblem_a2ab9d23c0e6e6631ffe1a761f6bdf026}} 
+\index{Unstructured\+Poisson\+Problem@{Unstructured\+Poisson\+Problem}!actions\+\_\+before\+\_\+newton\+\_\+solve@{actions\+\_\+before\+\_\+newton\+\_\+solve}}
+\index{actions\+\_\+before\+\_\+newton\+\_\+solve@{actions\+\_\+before\+\_\+newton\+\_\+solve}!Unstructured\+Poisson\+Problem@{Unstructured\+Poisson\+Problem}}
+\subsubsection{\texorpdfstring{actions\+\_\+before\+\_\+newton\+\_\+solve()}{actions\_before\_newton\_solve()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+void \hyperlink{classUnstructuredPoissonProblem}{Unstructured\+Poisson\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::actions\+\_\+before\+\_\+newton\+\_\+solve (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Update the problem specs before solve\+: Re-\/apply boundary conditons. 
+
+
+
+Definition at line 109 of file mesh\+\_\+from\+\_\+inline\+\_\+triangle\+\_\+no\+\_\+adapt.\+cc.
+
+\mbox{\Hypertarget{classUnstructuredPoissonProblem_a2ab9d23c0e6e6631ffe1a761f6bdf026}\label{classUnstructuredPoissonProblem_a2ab9d23c0e6e6631ffe1a761f6bdf026}} 
+\index{Unstructured\+Poisson\+Problem@{Unstructured\+Poisson\+Problem}!actions\+\_\+before\+\_\+newton\+\_\+solve@{actions\+\_\+before\+\_\+newton\+\_\+solve}}
+\index{actions\+\_\+before\+\_\+newton\+\_\+solve@{actions\+\_\+before\+\_\+newton\+\_\+solve}!Unstructured\+Poisson\+Problem@{Unstructured\+Poisson\+Problem}}
+\subsubsection{\texorpdfstring{actions\+\_\+before\+\_\+newton\+\_\+solve()}{actions\_before\_newton\_solve()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+void \hyperlink{classUnstructuredPoissonProblem}{Unstructured\+Poisson\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::actions\+\_\+before\+\_\+newton\+\_\+solve (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Update the problem specs before solve\+: Re-\/apply boundary conditons. 
+
+
+
+Definition at line 121 of file mesh\+\_\+from\+\_\+inline\+\_\+triangle.\+cc.
+
+\mbox{\Hypertarget{classUnstructuredPoissonProblem_ace8b8b3097ae2024a0589b2bf9b4ee7b}\label{classUnstructuredPoissonProblem_ace8b8b3097ae2024a0589b2bf9b4ee7b}} 
+\index{Unstructured\+Poisson\+Problem@{Unstructured\+Poisson\+Problem}!apply\+\_\+boundary\+\_\+conditions@{apply\+\_\+boundary\+\_\+conditions}}
+\index{apply\+\_\+boundary\+\_\+conditions@{apply\+\_\+boundary\+\_\+conditions}!Unstructured\+Poisson\+Problem@{Unstructured\+Poisson\+Problem}}
+\subsubsection{\texorpdfstring{apply\+\_\+boundary\+\_\+conditions()}{apply\_boundary\_conditions()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+void \hyperlink{classUnstructuredPoissonProblem}{Unstructured\+Poisson\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::apply\+\_\+boundary\+\_\+conditions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Helper function to apply boundary conditions. 
+
+\mbox{\Hypertarget{classUnstructuredPoissonProblem_ace8b8b3097ae2024a0589b2bf9b4ee7b}\label{classUnstructuredPoissonProblem_ace8b8b3097ae2024a0589b2bf9b4ee7b}} 
+\index{Unstructured\+Poisson\+Problem@{Unstructured\+Poisson\+Problem}!apply\+\_\+boundary\+\_\+conditions@{apply\+\_\+boundary\+\_\+conditions}}
+\index{apply\+\_\+boundary\+\_\+conditions@{apply\+\_\+boundary\+\_\+conditions}!Unstructured\+Poisson\+Problem@{Unstructured\+Poisson\+Problem}}
+\subsubsection{\texorpdfstring{apply\+\_\+boundary\+\_\+conditions()}{apply\_boundary\_conditions()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classUnstructuredPoissonProblem}{Unstructured\+Poisson\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::apply\+\_\+boundary\+\_\+conditions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Helper function to apply boundary conditions. 
+
+
+
+Definition at line 506 of file mesh\+\_\+from\+\_\+inline\+\_\+triangle.\+cc.
+
+
+
+References Tanh\+Soln\+For\+Poisson\+::get\+\_\+exact\+\_\+u().
+
+\mbox{\Hypertarget{classUnstructuredPoissonProblem_a5cbf00790e8469b43c64c6aaadfe7b41}\label{classUnstructuredPoissonProblem_a5cbf00790e8469b43c64c6aaadfe7b41}} 
+\index{Unstructured\+Poisson\+Problem@{Unstructured\+Poisson\+Problem}!complete\+\_\+problem\+\_\+setup@{complete\+\_\+problem\+\_\+setup}}
+\index{complete\+\_\+problem\+\_\+setup@{complete\+\_\+problem\+\_\+setup}!Unstructured\+Poisson\+Problem@{Unstructured\+Poisson\+Problem}}
+\subsubsection{\texorpdfstring{complete\+\_\+problem\+\_\+setup()}{complete\_problem\_setup()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+void \hyperlink{classUnstructuredPoissonProblem}{Unstructured\+Poisson\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::complete\+\_\+problem\+\_\+setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Helper function to (re-\/)set boundary condition and complete the build of all elements. 
+
+\mbox{\Hypertarget{classUnstructuredPoissonProblem_a5cbf00790e8469b43c64c6aaadfe7b41}\label{classUnstructuredPoissonProblem_a5cbf00790e8469b43c64c6aaadfe7b41}} 
+\index{Unstructured\+Poisson\+Problem@{Unstructured\+Poisson\+Problem}!complete\+\_\+problem\+\_\+setup@{complete\+\_\+problem\+\_\+setup}}
+\index{complete\+\_\+problem\+\_\+setup@{complete\+\_\+problem\+\_\+setup}!Unstructured\+Poisson\+Problem@{Unstructured\+Poisson\+Problem}}
+\subsubsection{\texorpdfstring{complete\+\_\+problem\+\_\+setup()}{complete\_problem\_setup()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classUnstructuredPoissonProblem}{Unstructured\+Poisson\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::complete\+\_\+problem\+\_\+setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Helper function to (re-\/)set boundary condition and complete the build of all elements. 
+
+Set boundary condition exactly, and complete the build of all elements 
+
+Definition at line 462 of file mesh\+\_\+from\+\_\+inline\+\_\+triangle.\+cc.
+
+
+
+References Tanh\+Soln\+For\+Poisson\+::get\+\_\+source().
+
+\mbox{\Hypertarget{classUnstructuredPoissonProblem_a9b21a3c3f574da71411f852006fe2a0c}\label{classUnstructuredPoissonProblem_a9b21a3c3f574da71411f852006fe2a0c}} 
+\index{Unstructured\+Poisson\+Problem@{Unstructured\+Poisson\+Problem}!doc\+\_\+solution@{doc\+\_\+solution}}
+\index{doc\+\_\+solution@{doc\+\_\+solution}!Unstructured\+Poisson\+Problem@{Unstructured\+Poisson\+Problem}}
+\subsubsection{\texorpdfstring{doc\+\_\+solution()}{doc\_solution()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+void \hyperlink{classUnstructuredPoissonProblem}{Unstructured\+Poisson\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::doc\+\_\+solution (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{comment = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})}
+
+
+
+Doc the solution. 
+
+\mbox{\Hypertarget{classUnstructuredPoissonProblem_a9b21a3c3f574da71411f852006fe2a0c}\label{classUnstructuredPoissonProblem_a9b21a3c3f574da71411f852006fe2a0c}} 
+\index{Unstructured\+Poisson\+Problem@{Unstructured\+Poisson\+Problem}!doc\+\_\+solution@{doc\+\_\+solution}}
+\index{doc\+\_\+solution@{doc\+\_\+solution}!Unstructured\+Poisson\+Problem@{Unstructured\+Poisson\+Problem}}
+\subsubsection{\texorpdfstring{doc\+\_\+solution()}{doc\_solution()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classUnstructuredPoissonProblem}{Unstructured\+Poisson\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::doc\+\_\+solution (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{comment = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})}
+
+
+
+Doc the solution. 
+
+
+
+Definition at line 540 of file mesh\+\_\+from\+\_\+inline\+\_\+triangle.\+cc.
+
+
+
+References Tanh\+Soln\+For\+Poisson\+::get\+\_\+exact\+\_\+u(), and Tanh\+Soln\+For\+Poisson\+::zero().
+
+
+
+Referenced by main().
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classUnstructuredPoissonProblem_a5c4c29b1c95cd63055e5aced124ca708}\label{classUnstructuredPoissonProblem_a5c4c29b1c95cd63055e5aced124ca708}} 
+\index{Unstructured\+Poisson\+Problem@{Unstructured\+Poisson\+Problem}!Doc\+\_\+info@{Doc\+\_\+info}}
+\index{Doc\+\_\+info@{Doc\+\_\+info}!Unstructured\+Poisson\+Problem@{Unstructured\+Poisson\+Problem}}
+\subsubsection{\texorpdfstring{Doc\+\_\+info}{Doc\_info}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+Doc\+Info \hyperlink{classUnstructuredPoissonProblem}{Unstructured\+Poisson\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::Doc\+\_\+info\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Doc info object for labeling output. 
+
+
+
+Definition at line 133 of file mesh\+\_\+from\+\_\+inline\+\_\+triangle.\+cc.
+
+\mbox{\Hypertarget{classUnstructuredPoissonProblem_a138fcf0adb978a7f3ae9e27ba6df900b}\label{classUnstructuredPoissonProblem_a138fcf0adb978a7f3ae9e27ba6df900b}} 
+\index{Unstructured\+Poisson\+Problem@{Unstructured\+Poisson\+Problem}!My\+\_\+mesh\+\_\+pt@{My\+\_\+mesh\+\_\+pt}}
+\index{My\+\_\+mesh\+\_\+pt@{My\+\_\+mesh\+\_\+pt}!Unstructured\+Poisson\+Problem@{Unstructured\+Poisson\+Problem}}
+\subsubsection{\texorpdfstring{My\+\_\+mesh\+\_\+pt}{My\_mesh\_pt}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+Triangle\+Mesh$<$E\+L\+E\+M\+E\+NT$>$$\ast$ \hyperlink{classUnstructuredPoissonProblem}{Unstructured\+Poisson\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::My\+\_\+mesh\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pointers to specific mesh. 
+
+
+
+Definition at line 131 of file mesh\+\_\+from\+\_\+inline\+\_\+triangle\+\_\+no\+\_\+adapt.\+cc.
+
+\mbox{\Hypertarget{classUnstructuredPoissonProblem_af95c713f5db16c288e307768b6bf9bb8}\label{classUnstructuredPoissonProblem_af95c713f5db16c288e307768b6bf9bb8}} 
+\index{Unstructured\+Poisson\+Problem@{Unstructured\+Poisson\+Problem}!My\+\_\+mesh\+\_\+pt@{My\+\_\+mesh\+\_\+pt}}
+\index{My\+\_\+mesh\+\_\+pt@{My\+\_\+mesh\+\_\+pt}!Unstructured\+Poisson\+Problem@{Unstructured\+Poisson\+Problem}}
+\subsubsection{\texorpdfstring{My\+\_\+mesh\+\_\+pt}{My\_mesh\_pt}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+Refineable\+Triangle\+Mesh$<$E\+L\+E\+M\+E\+NT$>$$\ast$ \hyperlink{classUnstructuredPoissonProblem}{Unstructured\+Poisson\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::My\+\_\+mesh\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pointers to specific mesh. 
+
+
+
+Definition at line 143 of file mesh\+\_\+from\+\_\+inline\+\_\+triangle.\+cc.
+
+\mbox{\Hypertarget{classUnstructuredPoissonProblem_ac7fdb8fb9a886ced0ee7244890406d90}\label{classUnstructuredPoissonProblem_ac7fdb8fb9a886ced0ee7244890406d90}} 
+\index{Unstructured\+Poisson\+Problem@{Unstructured\+Poisson\+Problem}!Trace\+\_\+file@{Trace\+\_\+file}}
+\index{Trace\+\_\+file@{Trace\+\_\+file}!Unstructured\+Poisson\+Problem@{Unstructured\+Poisson\+Problem}}
+\subsubsection{\texorpdfstring{Trace\+\_\+file}{Trace\_file}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+ofstream \hyperlink{classUnstructuredPoissonProblem}{Unstructured\+Poisson\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::Trace\+\_\+file\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Trace file to document norm of solution. 
+
+
+
+Definition at line 146 of file mesh\+\_\+from\+\_\+inline\+\_\+triangle.\+cc.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{mesh__from__inline__triangle_8cc}{mesh\+\_\+from\+\_\+inline\+\_\+triangle.\+cc}\item 
+\hyperlink{mesh__from__inline__triangle__no__adapt_8cc}{mesh\+\_\+from\+\_\+inline\+\_\+triangle\+\_\+no\+\_\+adapt.\+cc}\end{DoxyCompactItemize}

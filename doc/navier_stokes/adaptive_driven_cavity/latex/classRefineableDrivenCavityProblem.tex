@@ -1,0 +1,162 @@
+\hypertarget{classRefineableDrivenCavityProblem}{}\section{Refineable\+Driven\+Cavity\+Problem$<$ E\+L\+E\+M\+E\+NT $>$ Class Template Reference}
+\label{classRefineableDrivenCavityProblem}\index{Refineable\+Driven\+Cavity\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$@{Refineable\+Driven\+Cavity\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$}}
+Inheritance diagram for Refineable\+Driven\+Cavity\+Problem$<$ E\+L\+E\+M\+E\+NT $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classRefineableDrivenCavityProblem}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classRefineableDrivenCavityProblem_aef71ddbff081a1f9c7f5484a6c80598a}{Refineable\+Driven\+Cavity\+Problem} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\hyperlink{classRefineableDrivenCavityProblem_a7d90594e973d54ee79a11fff828e124b}{$\sim$\+Refineable\+Driven\+Cavity\+Problem} ()
+\begin{DoxyCompactList}\small\item\em Destructor\+: Empty. \end{DoxyCompactList}\item 
+void \hyperlink{classRefineableDrivenCavityProblem_a168df1ad7b08cf8b760b6d56e9920479}{actions\+\_\+after\+\_\+newton\+\_\+solve} ()
+\begin{DoxyCompactList}\small\item\em Update the after solve (empty) \end{DoxyCompactList}\item 
+void \hyperlink{classRefineableDrivenCavityProblem_af83cad4653c7ac633538ebf46657659a}{actions\+\_\+before\+\_\+newton\+\_\+solve} ()
+\begin{DoxyCompactList}\small\item\em Update the problem specs before solve. (Re-\/)set velocity boundary conditions just to be on the safe side... \end{DoxyCompactList}\item 
+void \hyperlink{classRefineableDrivenCavityProblem_ad0dd51a90826a15f83edc2d222102852}{actions\+\_\+after\+\_\+adapt} ()
+\begin{DoxyCompactList}\small\item\em After adaptation\+: Unpin pressure and pin redudant pressure dofs. \end{DoxyCompactList}\item 
+void \hyperlink{classRefineableDrivenCavityProblem_a0baa1e8f1d1f6f73ef921b06a9b20836}{doc\+\_\+solution} (Doc\+Info \&doc\+\_\+info)
+\begin{DoxyCompactList}\small\item\em Doc the solution. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classRefineableDrivenCavityProblem_adaf562f21e050496c5390e10bdb39889}{fix\+\_\+pressure} (const unsigned \&e, const unsigned \&pdof, const double \&pvalue)
+\begin{DoxyCompactList}\small\item\em Fix pressure in element e at pressure dof pdof and set to pvalue. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class E\+L\+E\+M\+E\+NT$>$\newline
+class Refineable\+Driven\+Cavity\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$}
+
+Driven cavity problem in rectangular domain, templated by element type. 
+
+Definition at line 62 of file adaptive\+\_\+driven\+\_\+cavity.\+cc.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classRefineableDrivenCavityProblem_aef71ddbff081a1f9c7f5484a6c80598a}\label{classRefineableDrivenCavityProblem_aef71ddbff081a1f9c7f5484a6c80598a}} 
+\index{Refineable\+Driven\+Cavity\+Problem@{Refineable\+Driven\+Cavity\+Problem}!Refineable\+Driven\+Cavity\+Problem@{Refineable\+Driven\+Cavity\+Problem}}
+\index{Refineable\+Driven\+Cavity\+Problem@{Refineable\+Driven\+Cavity\+Problem}!Refineable\+Driven\+Cavity\+Problem@{Refineable\+Driven\+Cavity\+Problem}}
+\subsubsection{\texorpdfstring{Refineable\+Driven\+Cavity\+Problem()}{RefineableDrivenCavityProblem()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classRefineableDrivenCavityProblem}{Refineable\+Driven\+Cavity\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::\hyperlink{classRefineableDrivenCavityProblem}{Refineable\+Driven\+Cavity\+Problem} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+Constructor for Refineable\+Driven\+Cavity problem 
+
+Definition at line 148 of file adaptive\+\_\+driven\+\_\+cavity.\+cc.
+
+
+
+References Global\+\_\+\+Physical\+\_\+\+Variables\+::\+Re.
+
+\mbox{\Hypertarget{classRefineableDrivenCavityProblem_a7d90594e973d54ee79a11fff828e124b}\label{classRefineableDrivenCavityProblem_a7d90594e973d54ee79a11fff828e124b}} 
+\index{Refineable\+Driven\+Cavity\+Problem@{Refineable\+Driven\+Cavity\+Problem}!````~Refineable\+Driven\+Cavity\+Problem@{$\sim$\+Refineable\+Driven\+Cavity\+Problem}}
+\index{````~Refineable\+Driven\+Cavity\+Problem@{$\sim$\+Refineable\+Driven\+Cavity\+Problem}!Refineable\+Driven\+Cavity\+Problem@{Refineable\+Driven\+Cavity\+Problem}}
+\subsubsection{\texorpdfstring{$\sim$\+Refineable\+Driven\+Cavity\+Problem()}{~RefineableDrivenCavityProblem()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+\hyperlink{classRefineableDrivenCavityProblem}{Refineable\+Driven\+Cavity\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::$\sim$\hyperlink{classRefineableDrivenCavityProblem}{Refineable\+Driven\+Cavity\+Problem} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Destructor\+: Empty. 
+
+
+
+Definition at line 71 of file adaptive\+\_\+driven\+\_\+cavity.\+cc.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classRefineableDrivenCavityProblem_ad0dd51a90826a15f83edc2d222102852}\label{classRefineableDrivenCavityProblem_ad0dd51a90826a15f83edc2d222102852}} 
+\index{Refineable\+Driven\+Cavity\+Problem@{Refineable\+Driven\+Cavity\+Problem}!actions\+\_\+after\+\_\+adapt@{actions\+\_\+after\+\_\+adapt}}
+\index{actions\+\_\+after\+\_\+adapt@{actions\+\_\+after\+\_\+adapt}!Refineable\+Driven\+Cavity\+Problem@{Refineable\+Driven\+Cavity\+Problem}}
+\subsubsection{\texorpdfstring{actions\+\_\+after\+\_\+adapt()}{actions\_after\_adapt()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+void \hyperlink{classRefineableDrivenCavityProblem}{Refineable\+Driven\+Cavity\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::actions\+\_\+after\+\_\+adapt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+After adaptation\+: Unpin pressure and pin redudant pressure dofs. 
+
+
+
+Definition at line 110 of file adaptive\+\_\+driven\+\_\+cavity.\+cc.
+
+\mbox{\Hypertarget{classRefineableDrivenCavityProblem_a168df1ad7b08cf8b760b6d56e9920479}\label{classRefineableDrivenCavityProblem_a168df1ad7b08cf8b760b6d56e9920479}} 
+\index{Refineable\+Driven\+Cavity\+Problem@{Refineable\+Driven\+Cavity\+Problem}!actions\+\_\+after\+\_\+newton\+\_\+solve@{actions\+\_\+after\+\_\+newton\+\_\+solve}}
+\index{actions\+\_\+after\+\_\+newton\+\_\+solve@{actions\+\_\+after\+\_\+newton\+\_\+solve}!Refineable\+Driven\+Cavity\+Problem@{Refineable\+Driven\+Cavity\+Problem}}
+\subsubsection{\texorpdfstring{actions\+\_\+after\+\_\+newton\+\_\+solve()}{actions\_after\_newton\_solve()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+void \hyperlink{classRefineableDrivenCavityProblem}{Refineable\+Driven\+Cavity\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::actions\+\_\+after\+\_\+newton\+\_\+solve (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Update the after solve (empty) 
+
+
+
+Definition at line 74 of file adaptive\+\_\+driven\+\_\+cavity.\+cc.
+
+\mbox{\Hypertarget{classRefineableDrivenCavityProblem_af83cad4653c7ac633538ebf46657659a}\label{classRefineableDrivenCavityProblem_af83cad4653c7ac633538ebf46657659a}} 
+\index{Refineable\+Driven\+Cavity\+Problem@{Refineable\+Driven\+Cavity\+Problem}!actions\+\_\+before\+\_\+newton\+\_\+solve@{actions\+\_\+before\+\_\+newton\+\_\+solve}}
+\index{actions\+\_\+before\+\_\+newton\+\_\+solve@{actions\+\_\+before\+\_\+newton\+\_\+solve}!Refineable\+Driven\+Cavity\+Problem@{Refineable\+Driven\+Cavity\+Problem}}
+\subsubsection{\texorpdfstring{actions\+\_\+before\+\_\+newton\+\_\+solve()}{actions\_before\_newton\_solve()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+void \hyperlink{classRefineableDrivenCavityProblem}{Refineable\+Driven\+Cavity\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::actions\+\_\+before\+\_\+newton\+\_\+solve (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Update the problem specs before solve. (Re-\/)set velocity boundary conditions just to be on the safe side... 
+
+
+
+Definition at line 78 of file adaptive\+\_\+driven\+\_\+cavity.\+cc.
+
+\mbox{\Hypertarget{classRefineableDrivenCavityProblem_a0baa1e8f1d1f6f73ef921b06a9b20836}\label{classRefineableDrivenCavityProblem_a0baa1e8f1d1f6f73ef921b06a9b20836}} 
+\index{Refineable\+Driven\+Cavity\+Problem@{Refineable\+Driven\+Cavity\+Problem}!doc\+\_\+solution@{doc\+\_\+solution}}
+\index{doc\+\_\+solution@{doc\+\_\+solution}!Refineable\+Driven\+Cavity\+Problem@{Refineable\+Driven\+Cavity\+Problem}}
+\subsubsection{\texorpdfstring{doc\+\_\+solution()}{doc\_solution()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classRefineableDrivenCavityProblem}{Refineable\+Driven\+Cavity\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::doc\+\_\+solution (\begin{DoxyParamCaption}\item[{Doc\+Info \&}]{doc\+\_\+info }\end{DoxyParamCaption})}
+
+
+
+Doc the solution. 
+
+
+
+Definition at line 223 of file adaptive\+\_\+driven\+\_\+cavity.\+cc.
+
+
+
+Referenced by main().
+
+\mbox{\Hypertarget{classRefineableDrivenCavityProblem_adaf562f21e050496c5390e10bdb39889}\label{classRefineableDrivenCavityProblem_adaf562f21e050496c5390e10bdb39889}} 
+\index{Refineable\+Driven\+Cavity\+Problem@{Refineable\+Driven\+Cavity\+Problem}!fix\+\_\+pressure@{fix\+\_\+pressure}}
+\index{fix\+\_\+pressure@{fix\+\_\+pressure}!Refineable\+Driven\+Cavity\+Problem@{Refineable\+Driven\+Cavity\+Problem}}
+\subsubsection{\texorpdfstring{fix\+\_\+pressure()}{fix\_pressure()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+void \hyperlink{classRefineableDrivenCavityProblem}{Refineable\+Driven\+Cavity\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::fix\+\_\+pressure (\begin{DoxyParamCaption}\item[{const unsigned \&}]{e,  }\item[{const unsigned \&}]{pdof,  }\item[{const double \&}]{pvalue }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Fix pressure in element e at pressure dof pdof and set to pvalue. 
+
+
+
+Definition at line 131 of file adaptive\+\_\+driven\+\_\+cavity.\+cc.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{adaptive__driven__cavity_8cc}{adaptive\+\_\+driven\+\_\+cavity.\+cc}\end{DoxyCompactItemize}

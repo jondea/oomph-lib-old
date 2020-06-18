@@ -1,0 +1,244 @@
+\hypertarget{classoomph_1_1NavierStokesSurfaceDragTorqueElement}{}\section{oomph\+:\+:Navier\+Stokes\+Surface\+Drag\+Torque\+Element$<$ E\+L\+E\+M\+E\+NT $>$ Class Template Reference}
+\label{classoomph_1_1NavierStokesSurfaceDragTorqueElement}\index{oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$@{oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$}}
+
+
+{\ttfamily \#include $<$navier\+\_\+stokes\+\_\+surface\+\_\+drag\+\_\+torque\+\_\+elements.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Navier\+Stokes\+Surface\+Drag\+Torque\+Element$<$ E\+L\+E\+M\+E\+NT $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.985816cm]{classoomph_1_1NavierStokesSurfaceDragTorqueElement}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1NavierStokesSurfaceDragTorqueElement_a78e757739ad818c8a96309fcb515f44a}{Navier\+Stokes\+Surface\+Drag\+Torque\+Element} (\hyperlink{classoomph_1_1FiniteElement}{Finite\+Element} $\ast$const \&element\+\_\+pt, const int \&\hyperlink{classoomph_1_1FaceElement_a478d577ac6db67ecc80f1f02ae3ab170}{face\+\_\+index})
+\begin{DoxyCompactList}\small\item\em Constructor, which takes a \char`\"{}bulk\char`\"{} element and the value of an index describing to which face the element should be attached. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1NavierStokesSurfaceDragTorqueElement_a12dcbd193703aefcd56632bff6c065d8}{set\+\_\+translation\+\_\+and\+\_\+rotation} (\hyperlink{classoomph_1_1Data}{Data} $\ast$const \&object\+\_\+data\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Set the translation and rotation of the rigid object as external data. \end{DoxyCompactList}\item 
+double \& \hyperlink{classoomph_1_1NavierStokesSurfaceDragTorqueElement_a8e8ee8de7783e5899909ed0a8842984e}{centre\+\_\+of\+\_\+rotation} (const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i})
+\begin{DoxyCompactList}\small\item\em Access function for the centre of rotation. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1NavierStokesSurfaceDragTorqueElement_a3772165689b96fc7206d2a7c6da3a200}{get\+\_\+drag\+\_\+and\+\_\+torque} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&drag\+\_\+force, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&drag\+\_\+torque)
+\begin{DoxyCompactList}\small\item\em Function that specifies the drag force and the torque about the origin. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1NavierStokesSurfaceDragTorqueElement_af864929a9dbd0ed1d464db1a1d9a93b9}{zeta\+\_\+nodal} (const unsigned \&n, const unsigned \&k, const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}) const
+\begin{DoxyCompactList}\small\item\em Specify the value of nodal zeta from the face geometry The \char`\"{}global\char`\"{} intrinsic coordinate of the element when viewed as part of a geometric object should be given by the \hyperlink{classoomph_1_1FaceElement}{Face\+Element} representation, by default (needed to break indeterminacy if bulk element is Solid\+Element) \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1NavierStokesSurfaceDragTorqueElement_a33f0eed12184789804f001c58d5fea87}{output} (std\+::ostream \&outfile, const unsigned \&n\+\_\+plot)
+\begin{DoxyCompactList}\small\item\em Output function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+unsigned \hyperlink{classoomph_1_1NavierStokesSurfaceDragTorqueElement_a94a4f0f7a59474a11bcf590320edaa43}{Dim}
+\begin{DoxyCompactList}\small\item\em The highest dimension of the problem. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \hyperlink{classoomph_1_1NavierStokesSurfaceDragTorqueElement_a259b32d562083695f6d187e1ec997a69}{Centre\+\_\+of\+\_\+rotation}
+\begin{DoxyCompactList}\small\item\em The centre of rotation for the torque calculation. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1NavierStokesSurfaceDragTorqueElement_a2069bd9eecb7f131738d98e0b110c66d}{Translation\+\_\+index}
+\begin{DoxyCompactList}\small\item\em The index of where the translation and rotation data is stored. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class E\+L\+E\+M\+E\+NT$>$\newline
+class oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$}
+
+A class of elements that allow the determination of the drag and toque, relative to a given centre of rotation, along a domain boundary. The element operates as a \hyperlink{classoomph_1_1FaceElement}{Face\+Element} and attaches itself to a bulk element of the type specified by the template argument. 
+
+Definition at line 52 of file navier\+\_\+stokes\+\_\+surface\+\_\+drag\+\_\+torque\+\_\+elements.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1NavierStokesSurfaceDragTorqueElement_a78e757739ad818c8a96309fcb515f44a}\label{classoomph_1_1NavierStokesSurfaceDragTorqueElement_a78e757739ad818c8a96309fcb515f44a}} 
+\index{oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element@{oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element}!Navier\+Stokes\+Surface\+Drag\+Torque\+Element@{Navier\+Stokes\+Surface\+Drag\+Torque\+Element}}
+\index{Navier\+Stokes\+Surface\+Drag\+Torque\+Element@{Navier\+Stokes\+Surface\+Drag\+Torque\+Element}!oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element@{oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element}}
+\subsubsection{\texorpdfstring{Navier\+Stokes\+Surface\+Drag\+Torque\+Element()}{NavierStokesSurfaceDragTorqueElement()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classoomph_1_1NavierStokesSurfaceDragTorqueElement}{oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element}$<$ E\+L\+E\+M\+E\+NT $>$\+::\hyperlink{classoomph_1_1NavierStokesSurfaceDragTorqueElement}{Navier\+Stokes\+Surface\+Drag\+Torque\+Element} (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1FiniteElement}{Finite\+Element} $\ast$const \&}]{element\+\_\+pt,  }\item[{const int \&}]{face\+\_\+index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor, which takes a \char`\"{}bulk\char`\"{} element and the value of an index describing to which face the element should be attached. 
+
+
+
+Definition at line 62 of file navier\+\_\+stokes\+\_\+surface\+\_\+drag\+\_\+torque\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Finite\+Element\+::build\+\_\+face\+\_\+element(), oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Centre\+\_\+of\+\_\+rotation, oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Dim, oomph\+::\+Node\+::ndim(), and oomph\+::\+Finite\+Element\+::node\+\_\+pt().
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1NavierStokesSurfaceDragTorqueElement_a8e8ee8de7783e5899909ed0a8842984e}\label{classoomph_1_1NavierStokesSurfaceDragTorqueElement_a8e8ee8de7783e5899909ed0a8842984e}} 
+\index{oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element@{oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element}!centre\+\_\+of\+\_\+rotation@{centre\+\_\+of\+\_\+rotation}}
+\index{centre\+\_\+of\+\_\+rotation@{centre\+\_\+of\+\_\+rotation}!oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element@{oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element}}
+\subsubsection{\texorpdfstring{centre\+\_\+of\+\_\+rotation()}{centre\_of\_rotation()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+double\& \hyperlink{classoomph_1_1NavierStokesSurfaceDragTorqueElement}{oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element}$<$ E\+L\+E\+M\+E\+NT $>$\+::centre\+\_\+of\+\_\+rotation (\begin{DoxyParamCaption}\item[{const unsigned \&}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Access function for the centre of rotation. 
+
+
+
+Definition at line 86 of file navier\+\_\+stokes\+\_\+surface\+\_\+drag\+\_\+torque\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Centre\+\_\+of\+\_\+rotation, and i.
+
+\mbox{\Hypertarget{classoomph_1_1NavierStokesSurfaceDragTorqueElement_a3772165689b96fc7206d2a7c6da3a200}\label{classoomph_1_1NavierStokesSurfaceDragTorqueElement_a3772165689b96fc7206d2a7c6da3a200}} 
+\index{oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element@{oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element}!get\+\_\+drag\+\_\+and\+\_\+torque@{get\+\_\+drag\+\_\+and\+\_\+torque}}
+\index{get\+\_\+drag\+\_\+and\+\_\+torque@{get\+\_\+drag\+\_\+and\+\_\+torque}!oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element@{oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element}}
+\subsubsection{\texorpdfstring{get\+\_\+drag\+\_\+and\+\_\+torque()}{get\_drag\_and\_torque()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+virtual void \hyperlink{classoomph_1_1NavierStokesSurfaceDragTorqueElement}{oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element}$<$ E\+L\+E\+M\+E\+NT $>$\+::get\+\_\+drag\+\_\+and\+\_\+torque (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{drag\+\_\+force,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{drag\+\_\+torque }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Function that specifies the drag force and the torque about the origin. 
+
+
+
+Implements \hyperlink{classoomph_1_1ElementWithDragFunction_a25eba94e85107e4361476861af2ef274}{oomph\+::\+Element\+With\+Drag\+Function}.
+
+
+
+Definition at line 92 of file navier\+\_\+stokes\+\_\+surface\+\_\+drag\+\_\+torque\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Face\+Element\+::bulk\+\_\+element\+\_\+pt(), oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Centre\+\_\+of\+\_\+rotation, oomph\+::\+Finite\+Element\+::dim(), oomph\+::\+Generalised\+Element\+::external\+\_\+data\+\_\+pt(), oomph\+::\+Face\+Element\+::get\+\_\+local\+\_\+coordinate\+\_\+in\+\_\+bulk(), i, oomph\+::\+Finite\+Element\+::integral\+\_\+pt(), oomph\+::\+Face\+Element\+::interpolated\+\_\+x(), oomph\+::\+Face\+Element\+::\+J\+\_\+eulerian(), oomph\+::\+Integral\+::knot(), oomph\+::\+Geom\+Object\+::ndim(), oomph\+::\+Integral\+::nweight(), oomph\+::\+Face\+Element\+::outer\+\_\+unit\+\_\+normal(), s, oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Translation\+\_\+index, oomph\+::\+Data\+::value(), oomph\+::\+Quad\+Tree\+Names\+::W, and oomph\+::\+Integral\+::weight().
+
+\mbox{\Hypertarget{classoomph_1_1NavierStokesSurfaceDragTorqueElement_a33f0eed12184789804f001c58d5fea87}\label{classoomph_1_1NavierStokesSurfaceDragTorqueElement_a33f0eed12184789804f001c58d5fea87}} 
+\index{oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element@{oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element}!output@{output}}
+\index{output@{output}!oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element@{oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element}}
+\subsubsection{\texorpdfstring{output()}{output()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classoomph_1_1NavierStokesSurfaceDragTorqueElement}{oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element}$<$ E\+L\+E\+M\+E\+NT $>$\+::output (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile,  }\item[{const unsigned \&}]{n\+\_\+plot }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Output function. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_afa9d9b2670f999b43e6679c9dd28c457}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 234 of file navier\+\_\+stokes\+\_\+surface\+\_\+drag\+\_\+torque\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Face\+Element\+::bulk\+\_\+element\+\_\+pt(), oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Centre\+\_\+of\+\_\+rotation, oomph\+::\+Finite\+Element\+::dim(), oomph\+::\+Generalised\+Element\+::external\+\_\+data\+\_\+pt(), oomph\+::\+Face\+Element\+::get\+\_\+local\+\_\+coordinate\+\_\+in\+\_\+bulk(), oomph\+::\+Finite\+Element\+::get\+\_\+s\+\_\+plot(), i, oomph\+::\+Finite\+Element\+::nplot\+\_\+points(), oomph\+::\+Face\+Element\+::outer\+\_\+unit\+\_\+normal(), s, oomph\+::\+Finite\+Element\+::tecplot\+\_\+zone\+\_\+string(), oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Translation\+\_\+index, oomph\+::\+Data\+::value(), and oomph\+::\+Finite\+Element\+::write\+\_\+tecplot\+\_\+zone\+\_\+footer().
+
+\mbox{\Hypertarget{classoomph_1_1NavierStokesSurfaceDragTorqueElement_a12dcbd193703aefcd56632bff6c065d8}\label{classoomph_1_1NavierStokesSurfaceDragTorqueElement_a12dcbd193703aefcd56632bff6c065d8}} 
+\index{oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element@{oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element}!set\+\_\+translation\+\_\+and\+\_\+rotation@{set\+\_\+translation\+\_\+and\+\_\+rotation}}
+\index{set\+\_\+translation\+\_\+and\+\_\+rotation@{set\+\_\+translation\+\_\+and\+\_\+rotation}!oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element@{oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element}}
+\subsubsection{\texorpdfstring{set\+\_\+translation\+\_\+and\+\_\+rotation()}{set\_translation\_and\_rotation()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classoomph_1_1NavierStokesSurfaceDragTorqueElement}{oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element}$<$ E\+L\+E\+M\+E\+NT $>$\+::set\+\_\+translation\+\_\+and\+\_\+rotation (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Data}{Data} $\ast$const \&}]{object\+\_\+data\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the translation and rotation of the rigid object as external data. 
+
+
+
+Definition at line 79 of file navier\+\_\+stokes\+\_\+surface\+\_\+drag\+\_\+torque\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Generalised\+Element\+::add\+\_\+external\+\_\+data(), and oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Translation\+\_\+index.
+
+\mbox{\Hypertarget{classoomph_1_1NavierStokesSurfaceDragTorqueElement_af864929a9dbd0ed1d464db1a1d9a93b9}\label{classoomph_1_1NavierStokesSurfaceDragTorqueElement_af864929a9dbd0ed1d464db1a1d9a93b9}} 
+\index{oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element@{oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element}!zeta\+\_\+nodal@{zeta\+\_\+nodal}}
+\index{zeta\+\_\+nodal@{zeta\+\_\+nodal}!oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element@{oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element}}
+\subsubsection{\texorpdfstring{zeta\+\_\+nodal()}{zeta\_nodal()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+double \hyperlink{classoomph_1_1NavierStokesSurfaceDragTorqueElement}{oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element}$<$ E\+L\+E\+M\+E\+NT $>$\+::zeta\+\_\+nodal (\begin{DoxyParamCaption}\item[{const unsigned \&}]{n,  }\item[{const unsigned \&}]{k,  }\item[{const unsigned \&}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Specify the value of nodal zeta from the face geometry The \char`\"{}global\char`\"{} intrinsic coordinate of the element when viewed as part of a geometric object should be given by the \hyperlink{classoomph_1_1FaceElement}{Face\+Element} representation, by default (needed to break indeterminacy if bulk element is Solid\+Element) 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FaceElement_a58c9f93705c7741f76c8487d152e68a6}{oomph\+::\+Face\+Element}.
+
+
+
+Definition at line 227 of file navier\+\_\+stokes\+\_\+surface\+\_\+drag\+\_\+torque\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Face\+Element\+::zeta\+\_\+nodal().
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1NavierStokesSurfaceDragTorqueElement_a259b32d562083695f6d187e1ec997a69}\label{classoomph_1_1NavierStokesSurfaceDragTorqueElement_a259b32d562083695f6d187e1ec997a69}} 
+\index{oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element@{oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element}!Centre\+\_\+of\+\_\+rotation@{Centre\+\_\+of\+\_\+rotation}}
+\index{Centre\+\_\+of\+\_\+rotation@{Centre\+\_\+of\+\_\+rotation}!oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element@{oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element}}
+\subsubsection{\texorpdfstring{Centre\+\_\+of\+\_\+rotation}{Centre\_of\_rotation}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classoomph_1_1Vector}{Vector}$<$double$>$ \hyperlink{classoomph_1_1NavierStokesSurfaceDragTorqueElement}{oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element}$<$ E\+L\+E\+M\+E\+NT $>$\+::Centre\+\_\+of\+\_\+rotation\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The centre of rotation for the torque calculation. 
+
+
+
+Definition at line 322 of file navier\+\_\+stokes\+\_\+surface\+\_\+drag\+\_\+torque\+\_\+elements.\+h.
+
+
+
+Referenced by oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::centre\+\_\+of\+\_\+rotation(), oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::get\+\_\+drag\+\_\+and\+\_\+torque(), oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element(), and oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::output().
+
+\mbox{\Hypertarget{classoomph_1_1NavierStokesSurfaceDragTorqueElement_a94a4f0f7a59474a11bcf590320edaa43}\label{classoomph_1_1NavierStokesSurfaceDragTorqueElement_a94a4f0f7a59474a11bcf590320edaa43}} 
+\index{oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element@{oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element}!Dim@{Dim}}
+\index{Dim@{Dim}!oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element@{oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element}}
+\subsubsection{\texorpdfstring{Dim}{Dim}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+unsigned \hyperlink{classoomph_1_1NavierStokesSurfaceDragTorqueElement}{oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element}$<$ E\+L\+E\+M\+E\+NT $>$\+::Dim\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The highest dimension of the problem. 
+
+
+
+Definition at line 319 of file navier\+\_\+stokes\+\_\+surface\+\_\+drag\+\_\+torque\+\_\+elements.\+h.
+
+
+
+Referenced by oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element().
+
+\mbox{\Hypertarget{classoomph_1_1NavierStokesSurfaceDragTorqueElement_a2069bd9eecb7f131738d98e0b110c66d}\label{classoomph_1_1NavierStokesSurfaceDragTorqueElement_a2069bd9eecb7f131738d98e0b110c66d}} 
+\index{oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element@{oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element}!Translation\+\_\+index@{Translation\+\_\+index}}
+\index{Translation\+\_\+index@{Translation\+\_\+index}!oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element@{oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element}}
+\subsubsection{\texorpdfstring{Translation\+\_\+index}{Translation\_index}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+unsigned \hyperlink{classoomph_1_1NavierStokesSurfaceDragTorqueElement}{oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element}$<$ E\+L\+E\+M\+E\+NT $>$\+::Translation\+\_\+index\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The index of where the translation and rotation data is stored. 
+
+
+
+Definition at line 325 of file navier\+\_\+stokes\+\_\+surface\+\_\+drag\+\_\+torque\+\_\+elements.\+h.
+
+
+
+Referenced by oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::get\+\_\+drag\+\_\+and\+\_\+torque(), oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::output(), and oomph\+::\+Navier\+Stokes\+Surface\+Drag\+Torque\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::set\+\_\+translation\+\_\+and\+\_\+rotation().
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{navier__stokes__surface__drag__torque__elements_8h}{navier\+\_\+stokes\+\_\+surface\+\_\+drag\+\_\+torque\+\_\+elements.\+h}\end{DoxyCompactItemize}

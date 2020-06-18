@@ -1,0 +1,287 @@
+\hypertarget{classoomph_1_1FishMesh}{}\section{oomph\+:\+:Fish\+Mesh$<$ E\+L\+E\+M\+E\+NT $>$ Class Template Reference}
+\label{classoomph_1_1FishMesh}\index{oomph\+::\+Fish\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$@{oomph\+::\+Fish\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$}}
+
+
+Fish shaped mesh. The geometry is defined by the Domain object \hyperlink{classoomph_1_1FishDomain}{Fish\+Domain}.  
+
+
+
+
+{\ttfamily \#include $<$fish\+\_\+mesh.\+template.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Fish\+Mesh$<$ E\+L\+E\+M\+E\+NT $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.821138cm]{classoomph_1_1FishMesh}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1FishMesh_a492c0535a4a0bf97729dfdff3754d211}{Fish\+Mesh} (Time\+Stepper $\ast$time\+\_\+stepper\+\_\+pt=\&Mesh\+::\+Default\+\_\+\+Time\+Stepper)
+\begin{DoxyCompactList}\small\item\em Constructor\+: Pass pointer to timestepper (defaults to the (Steady) default timestepper defined in Mesh) \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1FishMesh_ac0b931509ec02c03f8ee5676355f196b}{Fish\+Mesh} (Geom\+Object $\ast$back\+\_\+pt, Time\+Stepper $\ast$time\+\_\+stepper\+\_\+pt=\&Mesh\+::\+Default\+\_\+\+Time\+Stepper)
+\begin{DoxyCompactList}\small\item\em Constructor\+: Pass pointer Geom\+Object that defines the fish\textquotesingle{}s back and pointer to timestepper (defaults to the (Steady) default timestepper defined in Mesh) \end{DoxyCompactList}\item 
+virtual \hyperlink{classoomph_1_1FishMesh_a3763b9be54c74d15a8c5b2129e0f4fae}{$\sim$\+Fish\+Mesh} ()
+\begin{DoxyCompactList}\small\item\em Destructor\+: Kill the geom object that represents the fish\textquotesingle{}s back (if necessary) \end{DoxyCompactList}\item 
+Geom\+Object $\ast$\& \hyperlink{classoomph_1_1FishMesh_aa6d659caf657ce5fd549431fadb009d7}{fish\+\_\+back\+\_\+pt} ()
+\begin{DoxyCompactList}\small\item\em Access function to geom object that represents the fish\textquotesingle{}s back. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1FishDomain}{Fish\+Domain} $\ast$\& \hyperlink{classoomph_1_1FishMesh_ad5076610d83a07e6306375a2632ee460}{domain\+\_\+pt} ()
+\begin{DoxyCompactList}\small\item\em Access function to \hyperlink{classoomph_1_1FishDomain}{Fish\+Domain}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \{ \hyperlink{classoomph_1_1FishMesh_a4a4137c4add890a283e51651c5c47f62a3d3771209da5e9d30eedf957678f24fb}{Lower\+\_\+body}, 
+\hyperlink{classoomph_1_1FishMesh_a4a4137c4add890a283e51651c5c47f62aee1779e3610fcc506554edb97df12b81}{Upper\+\_\+body}, 
+\hyperlink{classoomph_1_1FishMesh_a4a4137c4add890a283e51651c5c47f62a616ba7504cd0d8970e1e275579f5606d}{Lower\+\_\+fin}, 
+\hyperlink{classoomph_1_1FishMesh_a4a4137c4add890a283e51651c5c47f62a773d3896b889d4f05ed5902482650da1}{Upper\+\_\+fin}
+ \}\begin{DoxyCompactList}\small\item\em Remesh function ids. \end{DoxyCompactList}
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classoomph_1_1FishMesh_aabde81364817d938f0924997bf4f63cc}{build\+\_\+mesh} (Time\+Stepper $\ast$time\+\_\+stepper\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Build the mesh, using the geometric object identified by Back\+\_\+pt. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Geom\+Object $\ast$ \hyperlink{classoomph_1_1FishMesh_a26e8eb98c11d6b45cc3b5c5a8e45b530}{Back\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to fish back. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1FishDomain}{Fish\+Domain} $\ast$ \hyperlink{classoomph_1_1FishMesh_ae18c3154ad99054c073840c6b134c49b}{Domain\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to domain. \end{DoxyCompactList}\item 
+bool \hyperlink{classoomph_1_1FishMesh_ad1dd5a431f711d3ac14498cc6ab4d856}{Must\+\_\+kill\+\_\+fish\+\_\+back}
+\begin{DoxyCompactList}\small\item\em Do I need to kill the fish back geom object? \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class E\+L\+E\+M\+E\+NT$>$\newline
+class oomph\+::\+Fish\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$}
+
+Fish shaped mesh. The geometry is defined by the Domain object \hyperlink{classoomph_1_1FishDomain}{Fish\+Domain}. 
+
+Definition at line 59 of file fish\+\_\+mesh.\+template.\+h.
+
+
+
+\subsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{classoomph_1_1FishMesh_a4a4137c4add890a283e51651c5c47f62}\label{classoomph_1_1FishMesh_a4a4137c4add890a283e51651c5c47f62}} 
+\subsubsection{\texorpdfstring{anonymous enum}{anonymous enum}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+anonymous enum\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Remesh function ids. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Lower\+\_\+body@{Lower\+\_\+body}!oomph\+::\+Fish\+Mesh@{oomph\+::\+Fish\+Mesh}}\index{oomph\+::\+Fish\+Mesh@{oomph\+::\+Fish\+Mesh}!Lower\+\_\+body@{Lower\+\_\+body}}}\mbox{\Hypertarget{classoomph_1_1FishMesh_a4a4137c4add890a283e51651c5c47f62a3d3771209da5e9d30eedf957678f24fb}\label{classoomph_1_1FishMesh_a4a4137c4add890a283e51651c5c47f62a3d3771209da5e9d30eedf957678f24fb}} 
+Lower\+\_\+body&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Upper\+\_\+body@{Upper\+\_\+body}!oomph\+::\+Fish\+Mesh@{oomph\+::\+Fish\+Mesh}}\index{oomph\+::\+Fish\+Mesh@{oomph\+::\+Fish\+Mesh}!Upper\+\_\+body@{Upper\+\_\+body}}}\mbox{\Hypertarget{classoomph_1_1FishMesh_a4a4137c4add890a283e51651c5c47f62aee1779e3610fcc506554edb97df12b81}\label{classoomph_1_1FishMesh_a4a4137c4add890a283e51651c5c47f62aee1779e3610fcc506554edb97df12b81}} 
+Upper\+\_\+body&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Lower\+\_\+fin@{Lower\+\_\+fin}!oomph\+::\+Fish\+Mesh@{oomph\+::\+Fish\+Mesh}}\index{oomph\+::\+Fish\+Mesh@{oomph\+::\+Fish\+Mesh}!Lower\+\_\+fin@{Lower\+\_\+fin}}}\mbox{\Hypertarget{classoomph_1_1FishMesh_a4a4137c4add890a283e51651c5c47f62a616ba7504cd0d8970e1e275579f5606d}\label{classoomph_1_1FishMesh_a4a4137c4add890a283e51651c5c47f62a616ba7504cd0d8970e1e275579f5606d}} 
+Lower\+\_\+fin&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Upper\+\_\+fin@{Upper\+\_\+fin}!oomph\+::\+Fish\+Mesh@{oomph\+::\+Fish\+Mesh}}\index{oomph\+::\+Fish\+Mesh@{oomph\+::\+Fish\+Mesh}!Upper\+\_\+fin@{Upper\+\_\+fin}}}\mbox{\Hypertarget{classoomph_1_1FishMesh_a4a4137c4add890a283e51651c5c47f62a773d3896b889d4f05ed5902482650da1}\label{classoomph_1_1FishMesh_a4a4137c4add890a283e51651c5c47f62a773d3896b889d4f05ed5902482650da1}} 
+Upper\+\_\+fin&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 102 of file fish\+\_\+mesh.\+template.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1FishMesh_a492c0535a4a0bf97729dfdff3754d211}\label{classoomph_1_1FishMesh_a492c0535a4a0bf97729dfdff3754d211}} 
+\index{oomph\+::\+Fish\+Mesh@{oomph\+::\+Fish\+Mesh}!Fish\+Mesh@{Fish\+Mesh}}
+\index{Fish\+Mesh@{Fish\+Mesh}!oomph\+::\+Fish\+Mesh@{oomph\+::\+Fish\+Mesh}}
+\subsubsection{\texorpdfstring{Fish\+Mesh()}{FishMesh()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classoomph_1_1FishMesh}{oomph\+::\+Fish\+Mesh}$<$ E\+L\+E\+M\+E\+NT $>$\+::\hyperlink{classoomph_1_1FishMesh}{Fish\+Mesh} (\begin{DoxyParamCaption}\item[{Time\+Stepper $\ast$}]{time\+\_\+stepper\+\_\+pt = {\ttfamily \&Mesh\+:\+:Default\+\_\+TimeStepper} }\end{DoxyParamCaption})}
+
+
+
+Constructor\+: Pass pointer to timestepper (defaults to the (Steady) default timestepper defined in Mesh) 
+
+Constructor\+: Pass pointer to timestepper. (defaults to (Steady) default timestepper defined in Mesh) 
+
+Definition at line 44 of file fish\+\_\+mesh.\+template.\+cc.
+
+\mbox{\Hypertarget{classoomph_1_1FishMesh_ac0b931509ec02c03f8ee5676355f196b}\label{classoomph_1_1FishMesh_ac0b931509ec02c03f8ee5676355f196b}} 
+\index{oomph\+::\+Fish\+Mesh@{oomph\+::\+Fish\+Mesh}!Fish\+Mesh@{Fish\+Mesh}}
+\index{Fish\+Mesh@{Fish\+Mesh}!oomph\+::\+Fish\+Mesh@{oomph\+::\+Fish\+Mesh}}
+\subsubsection{\texorpdfstring{Fish\+Mesh()}{FishMesh()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classoomph_1_1FishMesh}{oomph\+::\+Fish\+Mesh}$<$ E\+L\+E\+M\+E\+NT $>$\+::\hyperlink{classoomph_1_1FishMesh}{Fish\+Mesh} (\begin{DoxyParamCaption}\item[{Geom\+Object $\ast$}]{back\+\_\+pt,  }\item[{Time\+Stepper $\ast$}]{time\+\_\+stepper\+\_\+pt = {\ttfamily \&Mesh\+:\+:Default\+\_\+TimeStepper} }\end{DoxyParamCaption})}
+
+
+
+Constructor\+: Pass pointer Geom\+Object that defines the fish\textquotesingle{}s back and pointer to timestepper (defaults to the (Steady) default timestepper defined in Mesh) 
+
+Constructor\+: Pass pointer Geom\+Object that defines the fish\textquotesingle{}s back and pointer to timestepper. (defaults to (Steady) default timestepper defined in Mesh) 
+
+Definition at line 70 of file fish\+\_\+mesh.\+template.\+cc.
+
+
+
+References oomph\+::\+Fish\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::build\+\_\+mesh(), and oomph\+::\+Fish\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Must\+\_\+kill\+\_\+fish\+\_\+back.
+
+\mbox{\Hypertarget{classoomph_1_1FishMesh_a3763b9be54c74d15a8c5b2129e0f4fae}\label{classoomph_1_1FishMesh_a3763b9be54c74d15a8c5b2129e0f4fae}} 
+\index{oomph\+::\+Fish\+Mesh@{oomph\+::\+Fish\+Mesh}!````~Fish\+Mesh@{$\sim$\+Fish\+Mesh}}
+\index{````~Fish\+Mesh@{$\sim$\+Fish\+Mesh}!oomph\+::\+Fish\+Mesh@{oomph\+::\+Fish\+Mesh}}
+\subsubsection{\texorpdfstring{$\sim$\+Fish\+Mesh()}{~FishMesh()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+virtual \hyperlink{classoomph_1_1FishMesh}{oomph\+::\+Fish\+Mesh}$<$ E\+L\+E\+M\+E\+NT $>$\+::$\sim$\hyperlink{classoomph_1_1FishMesh}{Fish\+Mesh} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Destructor\+: Kill the geom object that represents the fish\textquotesingle{}s back (if necessary) 
+
+
+
+Definition at line 77 of file fish\+\_\+mesh.\+template.\+h.
+
+
+
+References oomph\+::\+Fish\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Back\+\_\+pt, and oomph\+::\+Fish\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Must\+\_\+kill\+\_\+fish\+\_\+back.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1FishMesh_aabde81364817d938f0924997bf4f63cc}\label{classoomph_1_1FishMesh_aabde81364817d938f0924997bf4f63cc}} 
+\index{oomph\+::\+Fish\+Mesh@{oomph\+::\+Fish\+Mesh}!build\+\_\+mesh@{build\+\_\+mesh}}
+\index{build\+\_\+mesh@{build\+\_\+mesh}!oomph\+::\+Fish\+Mesh@{oomph\+::\+Fish\+Mesh}}
+\subsubsection{\texorpdfstring{build\+\_\+mesh()}{build\_mesh()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classoomph_1_1FishMesh}{oomph\+::\+Fish\+Mesh}$<$ E\+L\+E\+M\+E\+NT $>$\+::build\+\_\+mesh (\begin{DoxyParamCaption}\item[{Time\+Stepper $\ast$}]{time\+\_\+stepper\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Build the mesh, using the geometric object identified by Back\+\_\+pt. 
+
+Build the mesh, using the geometric object that defines the fish\textquotesingle{}s back. 
+
+Definition at line 89 of file fish\+\_\+mesh.\+template.\+cc.
+
+
+
+References oomph\+::\+Fish\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Back\+\_\+pt, and oomph\+::\+Fish\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Domain\+\_\+pt.
+
+
+
+Referenced by oomph\+::\+Fish\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Fish\+Mesh().
+
+\mbox{\Hypertarget{classoomph_1_1FishMesh_ad5076610d83a07e6306375a2632ee460}\label{classoomph_1_1FishMesh_ad5076610d83a07e6306375a2632ee460}} 
+\index{oomph\+::\+Fish\+Mesh@{oomph\+::\+Fish\+Mesh}!domain\+\_\+pt@{domain\+\_\+pt}}
+\index{domain\+\_\+pt@{domain\+\_\+pt}!oomph\+::\+Fish\+Mesh@{oomph\+::\+Fish\+Mesh}}
+\subsubsection{\texorpdfstring{domain\+\_\+pt()}{domain\_pt()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classoomph_1_1FishDomain}{Fish\+Domain}$\ast$\& \hyperlink{classoomph_1_1FishMesh}{oomph\+::\+Fish\+Mesh}$<$ E\+L\+E\+M\+E\+NT $>$\+::domain\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Access function to \hyperlink{classoomph_1_1FishDomain}{Fish\+Domain}. 
+
+
+
+Definition at line 94 of file fish\+\_\+mesh.\+template.\+h.
+
+
+
+References oomph\+::\+Fish\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Domain\+\_\+pt.
+
+
+
+Referenced by oomph\+::\+Macro\+Element\+Node\+Update\+Refineable\+Fish\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Macro\+Element\+Node\+Update\+Refineable\+Fish\+Mesh().
+
+\mbox{\Hypertarget{classoomph_1_1FishMesh_aa6d659caf657ce5fd549431fadb009d7}\label{classoomph_1_1FishMesh_aa6d659caf657ce5fd549431fadb009d7}} 
+\index{oomph\+::\+Fish\+Mesh@{oomph\+::\+Fish\+Mesh}!fish\+\_\+back\+\_\+pt@{fish\+\_\+back\+\_\+pt}}
+\index{fish\+\_\+back\+\_\+pt@{fish\+\_\+back\+\_\+pt}!oomph\+::\+Fish\+Mesh@{oomph\+::\+Fish\+Mesh}}
+\subsubsection{\texorpdfstring{fish\+\_\+back\+\_\+pt()}{fish\_back\_pt()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+Geom\+Object$\ast$\& \hyperlink{classoomph_1_1FishMesh}{oomph\+::\+Fish\+Mesh}$<$ E\+L\+E\+M\+E\+NT $>$\+::fish\+\_\+back\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Access function to geom object that represents the fish\textquotesingle{}s back. 
+
+
+
+Definition at line 87 of file fish\+\_\+mesh.\+template.\+h.
+
+
+
+References oomph\+::\+Fish\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Back\+\_\+pt.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1FishMesh_a26e8eb98c11d6b45cc3b5c5a8e45b530}\label{classoomph_1_1FishMesh_a26e8eb98c11d6b45cc3b5c5a8e45b530}} 
+\index{oomph\+::\+Fish\+Mesh@{oomph\+::\+Fish\+Mesh}!Back\+\_\+pt@{Back\+\_\+pt}}
+\index{Back\+\_\+pt@{Back\+\_\+pt}!oomph\+::\+Fish\+Mesh@{oomph\+::\+Fish\+Mesh}}
+\subsubsection{\texorpdfstring{Back\+\_\+pt}{Back\_pt}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+Geom\+Object$\ast$ \hyperlink{classoomph_1_1FishMesh}{oomph\+::\+Fish\+Mesh}$<$ E\+L\+E\+M\+E\+NT $>$\+::Back\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Pointer to fish back. 
+
+
+
+Definition at line 108 of file fish\+\_\+mesh.\+template.\+h.
+
+
+
+Referenced by oomph\+::\+Fish\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::build\+\_\+mesh(), oomph\+::\+Fish\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::fish\+\_\+back\+\_\+pt(), oomph\+::\+Macro\+Element\+Node\+Update\+Refineable\+Fish\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Macro\+Element\+Node\+Update\+Refineable\+Fish\+Mesh(), oomph\+::\+Algebraic\+Fish\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::setup\+\_\+algebraic\+\_\+node\+\_\+update(), oomph\+::\+Algebraic\+Fish\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::update\+\_\+node\+\_\+update(), and oomph\+::\+Fish\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::$\sim$\+Fish\+Mesh().
+
+\mbox{\Hypertarget{classoomph_1_1FishMesh_ae18c3154ad99054c073840c6b134c49b}\label{classoomph_1_1FishMesh_ae18c3154ad99054c073840c6b134c49b}} 
+\index{oomph\+::\+Fish\+Mesh@{oomph\+::\+Fish\+Mesh}!Domain\+\_\+pt@{Domain\+\_\+pt}}
+\index{Domain\+\_\+pt@{Domain\+\_\+pt}!oomph\+::\+Fish\+Mesh@{oomph\+::\+Fish\+Mesh}}
+\subsubsection{\texorpdfstring{Domain\+\_\+pt}{Domain\_pt}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classoomph_1_1FishDomain}{Fish\+Domain}$\ast$ \hyperlink{classoomph_1_1FishMesh}{oomph\+::\+Fish\+Mesh}$<$ E\+L\+E\+M\+E\+NT $>$\+::Domain\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Pointer to domain. 
+
+
+
+Definition at line 111 of file fish\+\_\+mesh.\+template.\+h.
+
+
+
+Referenced by oomph\+::\+Fish\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::build\+\_\+mesh(), oomph\+::\+Fish\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::domain\+\_\+pt(), oomph\+::\+Algebraic\+Fish\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::node\+\_\+update\+\_\+in\+\_\+body(), oomph\+::\+Algebraic\+Fish\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::node\+\_\+update\+\_\+in\+\_\+fin(), and oomph\+::\+Algebraic\+Fish\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::update\+\_\+node\+\_\+update().
+
+\mbox{\Hypertarget{classoomph_1_1FishMesh_ad1dd5a431f711d3ac14498cc6ab4d856}\label{classoomph_1_1FishMesh_ad1dd5a431f711d3ac14498cc6ab4d856}} 
+\index{oomph\+::\+Fish\+Mesh@{oomph\+::\+Fish\+Mesh}!Must\+\_\+kill\+\_\+fish\+\_\+back@{Must\+\_\+kill\+\_\+fish\+\_\+back}}
+\index{Must\+\_\+kill\+\_\+fish\+\_\+back@{Must\+\_\+kill\+\_\+fish\+\_\+back}!oomph\+::\+Fish\+Mesh@{oomph\+::\+Fish\+Mesh}}
+\subsubsection{\texorpdfstring{Must\+\_\+kill\+\_\+fish\+\_\+back}{Must\_kill\_fish\_back}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+bool \hyperlink{classoomph_1_1FishMesh}{oomph\+::\+Fish\+Mesh}$<$ E\+L\+E\+M\+E\+NT $>$\+::Must\+\_\+kill\+\_\+fish\+\_\+back\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Do I need to kill the fish back geom object? 
+
+
+
+Definition at line 114 of file fish\+\_\+mesh.\+template.\+h.
+
+
+
+Referenced by oomph\+::\+Fish\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Fish\+Mesh(), and oomph\+::\+Fish\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::$\sim$\+Fish\+Mesh().
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{fish__mesh_8template_8h}{fish\+\_\+mesh.\+template.\+h}\item 
+\hyperlink{fish__mesh_8template_8cc}{fish\+\_\+mesh.\+template.\+cc}\end{DoxyCompactItemize}

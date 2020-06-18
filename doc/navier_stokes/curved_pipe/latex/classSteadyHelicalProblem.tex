@@ -1,0 +1,224 @@
+\hypertarget{classSteadyHelicalProblem}{}\section{Steady\+Helical\+Problem$<$ E\+L\+E\+M\+E\+NT $>$ Class Template Reference}
+\label{classSteadyHelicalProblem}\index{Steady\+Helical\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$@{Steady\+Helical\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$}}
+
+
+Entry flow problem in tapered tube domain.  
+
+
+Inheritance diagram for Steady\+Helical\+Problem$<$ E\+L\+E\+M\+E\+NT $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classSteadyHelicalProblem}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classSteadyHelicalProblem_adbf13f3b2ffbcaaef6465d0d6583a1c9}{Steady\+Helical\+Problem} (Doc\+Info \&doc\+\_\+info, const double \&min\+\_\+error\+\_\+target, const double \&max\+\_\+error\+\_\+target)
+\begin{DoxyCompactList}\small\item\em Constructor\+: Pass Doc\+Info object and target errors. \end{DoxyCompactList}\item 
+\hyperlink{classSteadyHelicalProblem_adf88db88e0aef324db9a910126cac298}{$\sim$\+Steady\+Helical\+Problem} ()
+\begin{DoxyCompactList}\small\item\em Destructor (empty) \end{DoxyCompactList}\item 
+void \hyperlink{classSteadyHelicalProblem_a446b8b3e090f8349dc2c5de68190d6a4}{actions\+\_\+before\+\_\+newton\+\_\+solve} ()
+\begin{DoxyCompactList}\small\item\em Update the problem specs before solve. \end{DoxyCompactList}\item 
+void \hyperlink{classSteadyHelicalProblem_a7fb3fb4cfb399e20ac52816f9cdfc68d}{actions\+\_\+after\+\_\+adapt} ()
+\begin{DoxyCompactList}\small\item\em After adaptation\+: Pin redudant pressure dofs. \end{DoxyCompactList}\item 
+void \hyperlink{classSteadyHelicalProblem_af233588050a06523cd93f8bcdb0fa54c}{doc\+\_\+solution} ()
+\begin{DoxyCompactList}\small\item\em Doc the solution. \end{DoxyCompactList}\item 
+Refineable\+Tube\+Mesh$<$ E\+L\+E\+M\+E\+NT $>$ $\ast$ \hyperlink{classSteadyHelicalProblem_a8962f49b4abe06419311e2e9b312da67}{mesh\+\_\+pt} ()
+\begin{DoxyCompactList}\small\item\em Overload generic access function by one that returns a pointer to the specific mesh. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{classSteadyHelicalProblem_ae4357e3857463d21083f82a821aac10b}{Alpha}
+\begin{DoxyCompactList}\small\item\em Exponent for bluntness of velocity profile. \end{DoxyCompactList}\item 
+Doc\+Info \hyperlink{classSteadyHelicalProblem_a2b9bd1b93bad29a341e1718599a8a445}{Doc\+\_\+info}
+\begin{DoxyCompactList}\small\item\em Doc info object. \end{DoxyCompactList}\item 
+Geom\+Object $\ast$ \hyperlink{classSteadyHelicalProblem_a3ac6dc4f62f8ecadd4d6016b55af249a}{Wall\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to Geom\+Object that specifies the domain boundary. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class E\+L\+E\+M\+E\+NT$>$\newline
+class Steady\+Helical\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$}
+
+Entry flow problem in tapered tube domain. 
+
+Definition at line 106 of file helical\+\_\+pipe.\+cc.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classSteadyHelicalProblem_adbf13f3b2ffbcaaef6465d0d6583a1c9}\label{classSteadyHelicalProblem_adbf13f3b2ffbcaaef6465d0d6583a1c9}} 
+\index{Steady\+Helical\+Problem@{Steady\+Helical\+Problem}!Steady\+Helical\+Problem@{Steady\+Helical\+Problem}}
+\index{Steady\+Helical\+Problem@{Steady\+Helical\+Problem}!Steady\+Helical\+Problem@{Steady\+Helical\+Problem}}
+\subsubsection{\texorpdfstring{Steady\+Helical\+Problem()}{SteadyHelicalProblem()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classSteadyHelicalProblem}{Steady\+Helical\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::\hyperlink{classSteadyHelicalProblem}{Steady\+Helical\+Problem} (\begin{DoxyParamCaption}\item[{Doc\+Info \&}]{doc\+\_\+info,  }\item[{const double \&}]{min\+\_\+error\+\_\+target,  }\item[{const double \&}]{max\+\_\+error\+\_\+target }\end{DoxyParamCaption})}
+
+
+
+Constructor\+: Pass Doc\+Info object and target errors. 
+
+Constructor\+: Pass Doc\+Info object and error targets. 
+
+Definition at line 159 of file helical\+\_\+pipe.\+cc.
+
+
+
+References Global\+\_\+\+Physical\+\_\+\+Variables\+::\+Delta, Steady\+Helical\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::mesh\+\_\+pt(), Global\+\_\+\+Physical\+\_\+\+Variables\+::\+Pitch, Global\+\_\+\+Physical\+\_\+\+Variables\+::\+Re, and Steady\+Helical\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Wall\+\_\+pt.
+
+\mbox{\Hypertarget{classSteadyHelicalProblem_adf88db88e0aef324db9a910126cac298}\label{classSteadyHelicalProblem_adf88db88e0aef324db9a910126cac298}} 
+\index{Steady\+Helical\+Problem@{Steady\+Helical\+Problem}!````~Steady\+Helical\+Problem@{$\sim$\+Steady\+Helical\+Problem}}
+\index{````~Steady\+Helical\+Problem@{$\sim$\+Steady\+Helical\+Problem}!Steady\+Helical\+Problem@{Steady\+Helical\+Problem}}
+\subsubsection{\texorpdfstring{$\sim$\+Steady\+Helical\+Problem()}{~SteadyHelicalProblem()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+\hyperlink{classSteadyHelicalProblem}{Steady\+Helical\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::$\sim$\hyperlink{classSteadyHelicalProblem}{Steady\+Helical\+Problem} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Destructor (empty) 
+
+
+
+Definition at line 116 of file helical\+\_\+pipe.\+cc.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classSteadyHelicalProblem_a7fb3fb4cfb399e20ac52816f9cdfc68d}\label{classSteadyHelicalProblem_a7fb3fb4cfb399e20ac52816f9cdfc68d}} 
+\index{Steady\+Helical\+Problem@{Steady\+Helical\+Problem}!actions\+\_\+after\+\_\+adapt@{actions\+\_\+after\+\_\+adapt}}
+\index{actions\+\_\+after\+\_\+adapt@{actions\+\_\+after\+\_\+adapt}!Steady\+Helical\+Problem@{Steady\+Helical\+Problem}}
+\subsubsection{\texorpdfstring{actions\+\_\+after\+\_\+adapt()}{actions\_after\_adapt()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+void \hyperlink{classSteadyHelicalProblem}{Steady\+Helical\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::actions\+\_\+after\+\_\+adapt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+After adaptation\+: Pin redudant pressure dofs. 
+
+
+
+Definition at line 122 of file helical\+\_\+pipe.\+cc.
+
+\mbox{\Hypertarget{classSteadyHelicalProblem_a446b8b3e090f8349dc2c5de68190d6a4}\label{classSteadyHelicalProblem_a446b8b3e090f8349dc2c5de68190d6a4}} 
+\index{Steady\+Helical\+Problem@{Steady\+Helical\+Problem}!actions\+\_\+before\+\_\+newton\+\_\+solve@{actions\+\_\+before\+\_\+newton\+\_\+solve}}
+\index{actions\+\_\+before\+\_\+newton\+\_\+solve@{actions\+\_\+before\+\_\+newton\+\_\+solve}!Steady\+Helical\+Problem@{Steady\+Helical\+Problem}}
+\subsubsection{\texorpdfstring{actions\+\_\+before\+\_\+newton\+\_\+solve()}{actions\_before\_newton\_solve()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classSteadyHelicalProblem}{Steady\+Helical\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::actions\+\_\+before\+\_\+newton\+\_\+solve (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Update the problem specs before solve. 
+
+Set the inflow boundary conditions. 
+
+Definition at line 276 of file helical\+\_\+pipe.\+cc.
+
+
+
+References Global\+\_\+\+Physical\+\_\+\+Variables\+::\+Delta, and Steady\+Helical\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::mesh\+\_\+pt().
+
+\mbox{\Hypertarget{classSteadyHelicalProblem_af233588050a06523cd93f8bcdb0fa54c}\label{classSteadyHelicalProblem_af233588050a06523cd93f8bcdb0fa54c}} 
+\index{Steady\+Helical\+Problem@{Steady\+Helical\+Problem}!doc\+\_\+solution@{doc\+\_\+solution}}
+\index{doc\+\_\+solution@{doc\+\_\+solution}!Steady\+Helical\+Problem@{Steady\+Helical\+Problem}}
+\subsubsection{\texorpdfstring{doc\+\_\+solution()}{doc\_solution()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classSteadyHelicalProblem}{Steady\+Helical\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::doc\+\_\+solution (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Doc the solution. 
+
+
+
+Definition at line 303 of file helical\+\_\+pipe.\+cc.
+
+
+
+References Steady\+Helical\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Doc\+\_\+info, Steady\+Helical\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::mesh\+\_\+pt(), and Global\+\_\+\+Physical\+\_\+\+Variables\+::\+Re.
+
+
+
+Referenced by main().
+
+\mbox{\Hypertarget{classSteadyHelicalProblem_a8962f49b4abe06419311e2e9b312da67}\label{classSteadyHelicalProblem_a8962f49b4abe06419311e2e9b312da67}} 
+\index{Steady\+Helical\+Problem@{Steady\+Helical\+Problem}!mesh\+\_\+pt@{mesh\+\_\+pt}}
+\index{mesh\+\_\+pt@{mesh\+\_\+pt}!Steady\+Helical\+Problem@{Steady\+Helical\+Problem}}
+\subsubsection{\texorpdfstring{mesh\+\_\+pt()}{mesh\_pt()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+Refineable\+Tube\+Mesh$<$E\+L\+E\+M\+E\+NT$>$$\ast$ \hyperlink{classSteadyHelicalProblem}{Steady\+Helical\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::mesh\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Overload generic access function by one that returns a pointer to the specific mesh. 
+
+
+
+Definition at line 134 of file helical\+\_\+pipe.\+cc.
+
+
+
+Referenced by Steady\+Helical\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::actions\+\_\+before\+\_\+newton\+\_\+solve(), Steady\+Helical\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::doc\+\_\+solution(), and Steady\+Helical\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Steady\+Helical\+Problem().
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classSteadyHelicalProblem_ae4357e3857463d21083f82a821aac10b}\label{classSteadyHelicalProblem_ae4357e3857463d21083f82a821aac10b}} 
+\index{Steady\+Helical\+Problem@{Steady\+Helical\+Problem}!Alpha@{Alpha}}
+\index{Alpha@{Alpha}!Steady\+Helical\+Problem@{Steady\+Helical\+Problem}}
+\subsubsection{\texorpdfstring{Alpha}{Alpha}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+int \hyperlink{classSteadyHelicalProblem}{Steady\+Helical\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::Alpha\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Exponent for bluntness of velocity profile. 
+
+
+
+Definition at line 142 of file helical\+\_\+pipe.\+cc.
+
+\mbox{\Hypertarget{classSteadyHelicalProblem_a2b9bd1b93bad29a341e1718599a8a445}\label{classSteadyHelicalProblem_a2b9bd1b93bad29a341e1718599a8a445}} 
+\index{Steady\+Helical\+Problem@{Steady\+Helical\+Problem}!Doc\+\_\+info@{Doc\+\_\+info}}
+\index{Doc\+\_\+info@{Doc\+\_\+info}!Steady\+Helical\+Problem@{Steady\+Helical\+Problem}}
+\subsubsection{\texorpdfstring{Doc\+\_\+info}{Doc\_info}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+Doc\+Info \hyperlink{classSteadyHelicalProblem}{Steady\+Helical\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::Doc\+\_\+info\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Doc info object. 
+
+
+
+Definition at line 145 of file helical\+\_\+pipe.\+cc.
+
+
+
+Referenced by Steady\+Helical\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::doc\+\_\+solution().
+
+\mbox{\Hypertarget{classSteadyHelicalProblem_a3ac6dc4f62f8ecadd4d6016b55af249a}\label{classSteadyHelicalProblem_a3ac6dc4f62f8ecadd4d6016b55af249a}} 
+\index{Steady\+Helical\+Problem@{Steady\+Helical\+Problem}!Wall\+\_\+pt@{Wall\+\_\+pt}}
+\index{Wall\+\_\+pt@{Wall\+\_\+pt}!Steady\+Helical\+Problem@{Steady\+Helical\+Problem}}
+\subsubsection{\texorpdfstring{Wall\+\_\+pt}{Wall\_pt}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+Geom\+Object$\ast$ \hyperlink{classSteadyHelicalProblem}{Steady\+Helical\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::Wall\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pointer to Geom\+Object that specifies the domain boundary. 
+
+
+
+Definition at line 148 of file helical\+\_\+pipe.\+cc.
+
+
+
+Referenced by Steady\+Helical\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Steady\+Helical\+Problem().
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{helical__pipe_8cc}{helical\+\_\+pipe.\+cc}\end{DoxyCompactItemize}

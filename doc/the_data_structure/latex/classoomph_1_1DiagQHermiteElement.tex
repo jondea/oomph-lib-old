@@ -1,0 +1,191 @@
+\hypertarget{classoomph_1_1DiagQHermiteElement}{}\section{oomph\+:\+:Diag\+Q\+Hermite\+Element$<$ D\+IM $>$ Class Template Reference}
+\label{classoomph_1_1DiagQHermiteElement}\index{oomph\+::\+Diag\+Q\+Hermite\+Element$<$ D\+I\+M $>$@{oomph\+::\+Diag\+Q\+Hermite\+Element$<$ D\+I\+M $>$}}
+
+
+{\ttfamily \#include $<$hermite\+\_\+elements.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Diag\+Q\+Hermite\+Element$<$ D\+IM $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.610315cm]{classoomph_1_1DiagQHermiteElement}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1DiagQHermiteElement_a49b5a9df09fa243aa9cfe8df37bcfe92}{Diag\+Q\+Hermite\+Element} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1DiagQHermiteElement_aba6e3c5c6b6219bba7e073f25c3ae994}{Diag\+Q\+Hermite\+Element} (const \hyperlink{classoomph_1_1DiagQHermiteElement}{Diag\+Q\+Hermite\+Element} \&dummy)
+\begin{DoxyCompactList}\small\item\em Broken copy constructor. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1DiagQHermiteElement_a96a92b134a917b8e237f21ff4fd3e622}{operator=} (const \hyperlink{classoomph_1_1DiagQHermiteElement}{Diag\+Q\+Hermite\+Element} \&)
+\begin{DoxyCompactList}\small\item\em Broken assignment operator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \hyperlink{classoomph_1_1DiagQHermiteElement_a07bdc47a91aba325c148acae357b9365}{invert\+\_\+jacobian\+\_\+mapping} (const \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&jacobian, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&inverse\+\_\+jacobian) const
+\begin{DoxyCompactList}\small\item\em Overload the template-\/free interface for the calculation of the inverse jacobian. Pass the dimension of the element to the invert\+\_\+jacobian function. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1DiagQHermiteElement_a0b4a87e67172efe1c68eaac2c7d235a7}{local\+\_\+to\+\_\+eulerian\+\_\+mapping} (const \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dpsids, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&jacobian, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&inverse\+\_\+jacobian) const
+\begin{DoxyCompactList}\small\item\em Overload the local to eulerian mapping so that it uses diagonal terms only. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1DiagQHermiteElement_abae42df187036728d7d78467509f92af}{transform\+\_\+derivatives} (const \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&inverse\+\_\+jacobian, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dbasis) const
+\begin{DoxyCompactList}\small\item\em Overload the template-\/free interface for the transformation of derivatives, so that the diagonal version is used. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1DiagQHermiteElement_a6d6dbf192bc9284a87608e2699f8ebb1}{transform\+\_\+second\+\_\+derivatives} (const \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&jacobian, const \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&inverse\+\_\+jacobian, const \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&jacobian2, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dbasis, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&d2basis) const
+\begin{DoxyCompactList}\small\item\em Overload the template-\/free interface for the calculation of transformation of second derivatives. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$unsigned D\+IM$>$\newline
+class oomph\+::\+Diag\+Q\+Hermite\+Element$<$ D\+I\+M $>$}
+
+These elements are exactly the same as Q\+Hermite\+Elements, but they employ the simplifying assumption that the local and global coordinates are aligned. This makes the evaluation of the derivatives of the shape functions much cheaper. 
+
+Definition at line 443 of file hermite\+\_\+elements.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1DiagQHermiteElement_a49b5a9df09fa243aa9cfe8df37bcfe92}\label{classoomph_1_1DiagQHermiteElement_a49b5a9df09fa243aa9cfe8df37bcfe92}} 
+\index{oomph\+::\+Diag\+Q\+Hermite\+Element@{oomph\+::\+Diag\+Q\+Hermite\+Element}!Diag\+Q\+Hermite\+Element@{Diag\+Q\+Hermite\+Element}}
+\index{Diag\+Q\+Hermite\+Element@{Diag\+Q\+Hermite\+Element}!oomph\+::\+Diag\+Q\+Hermite\+Element@{oomph\+::\+Diag\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{Diag\+Q\+Hermite\+Element()}{DiagQHermiteElement()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+\hyperlink{classoomph_1_1DiagQHermiteElement}{oomph\+::\+Diag\+Q\+Hermite\+Element}$<$ D\+IM $>$\+::\hyperlink{classoomph_1_1DiagQHermiteElement}{Diag\+Q\+Hermite\+Element} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor. 
+
+
+
+Definition at line 492 of file hermite\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1DiagQHermiteElement_aba6e3c5c6b6219bba7e073f25c3ae994}\label{classoomph_1_1DiagQHermiteElement_aba6e3c5c6b6219bba7e073f25c3ae994}} 
+\index{oomph\+::\+Diag\+Q\+Hermite\+Element@{oomph\+::\+Diag\+Q\+Hermite\+Element}!Diag\+Q\+Hermite\+Element@{Diag\+Q\+Hermite\+Element}}
+\index{Diag\+Q\+Hermite\+Element@{Diag\+Q\+Hermite\+Element}!oomph\+::\+Diag\+Q\+Hermite\+Element@{oomph\+::\+Diag\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{Diag\+Q\+Hermite\+Element()}{DiagQHermiteElement()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+\hyperlink{classoomph_1_1DiagQHermiteElement}{oomph\+::\+Diag\+Q\+Hermite\+Element}$<$ D\+IM $>$\+::\hyperlink{classoomph_1_1DiagQHermiteElement}{Diag\+Q\+Hermite\+Element} (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1DiagQHermiteElement}{Diag\+Q\+Hermite\+Element}$<$ D\+IM $>$ \&}]{dummy }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Broken copy constructor. 
+
+
+
+Definition at line 495 of file hermite\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Broken\+Copy\+::broken\+\_\+copy().
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1DiagQHermiteElement_a07bdc47a91aba325c148acae357b9365}\label{classoomph_1_1DiagQHermiteElement_a07bdc47a91aba325c148acae357b9365}} 
+\index{oomph\+::\+Diag\+Q\+Hermite\+Element@{oomph\+::\+Diag\+Q\+Hermite\+Element}!invert\+\_\+jacobian\+\_\+mapping@{invert\+\_\+jacobian\+\_\+mapping}}
+\index{invert\+\_\+jacobian\+\_\+mapping@{invert\+\_\+jacobian\+\_\+mapping}!oomph\+::\+Diag\+Q\+Hermite\+Element@{oomph\+::\+Diag\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{invert\+\_\+jacobian\+\_\+mapping()}{invert\_jacobian\_mapping()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+double \hyperlink{classoomph_1_1DiagQHermiteElement}{oomph\+::\+Diag\+Q\+Hermite\+Element}$<$ D\+IM $>$\+::invert\+\_\+jacobian\+\_\+mapping (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{jacobian,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{inverse\+\_\+jacobian }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Overload the template-\/free interface for the calculation of the inverse jacobian. Pass the dimension of the element to the invert\+\_\+jacobian function. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1QHermiteElement_a1b5cb1c9b780010ae16a5107d811ce03}{oomph\+::\+Q\+Hermite\+Element$<$ D\+I\+M $>$}.
+
+
+
+Definition at line 450 of file hermite\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1DiagQHermiteElement_a0b4a87e67172efe1c68eaac2c7d235a7}\label{classoomph_1_1DiagQHermiteElement_a0b4a87e67172efe1c68eaac2c7d235a7}} 
+\index{oomph\+::\+Diag\+Q\+Hermite\+Element@{oomph\+::\+Diag\+Q\+Hermite\+Element}!local\+\_\+to\+\_\+eulerian\+\_\+mapping@{local\+\_\+to\+\_\+eulerian\+\_\+mapping}}
+\index{local\+\_\+to\+\_\+eulerian\+\_\+mapping@{local\+\_\+to\+\_\+eulerian\+\_\+mapping}!oomph\+::\+Diag\+Q\+Hermite\+Element@{oomph\+::\+Diag\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{local\+\_\+to\+\_\+eulerian\+\_\+mapping()}{local\_to\_eulerian\_mapping()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+double \hyperlink{classoomph_1_1DiagQHermiteElement}{oomph\+::\+Diag\+Q\+Hermite\+Element}$<$ D\+IM $>$\+::local\+\_\+to\+\_\+eulerian\+\_\+mapping (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dpsids,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{jacobian,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{inverse\+\_\+jacobian }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Overload the local to eulerian mapping so that it uses diagonal terms only. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a8a8d8f5529b13f3b9f07ee675c8d4d9c}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 456 of file hermite\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Finite\+Element\+::local\+\_\+to\+\_\+eulerian\+\_\+mapping\+\_\+diagonal().
+
+\mbox{\Hypertarget{classoomph_1_1DiagQHermiteElement_a96a92b134a917b8e237f21ff4fd3e622}\label{classoomph_1_1DiagQHermiteElement_a96a92b134a917b8e237f21ff4fd3e622}} 
+\index{oomph\+::\+Diag\+Q\+Hermite\+Element@{oomph\+::\+Diag\+Q\+Hermite\+Element}!operator=@{operator=}}
+\index{operator=@{operator=}!oomph\+::\+Diag\+Q\+Hermite\+Element@{oomph\+::\+Diag\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1DiagQHermiteElement}{oomph\+::\+Diag\+Q\+Hermite\+Element}$<$ D\+IM $>$\+::operator= (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1DiagQHermiteElement}{Diag\+Q\+Hermite\+Element}$<$ D\+IM $>$ \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Broken assignment operator. 
+
+
+
+Definition at line 501 of file hermite\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Broken\+Copy\+::broken\+\_\+assign().
+
+\mbox{\Hypertarget{classoomph_1_1DiagQHermiteElement_abae42df187036728d7d78467509f92af}\label{classoomph_1_1DiagQHermiteElement_abae42df187036728d7d78467509f92af}} 
+\index{oomph\+::\+Diag\+Q\+Hermite\+Element@{oomph\+::\+Diag\+Q\+Hermite\+Element}!transform\+\_\+derivatives@{transform\+\_\+derivatives}}
+\index{transform\+\_\+derivatives@{transform\+\_\+derivatives}!oomph\+::\+Diag\+Q\+Hermite\+Element@{oomph\+::\+Diag\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{transform\+\_\+derivatives()}{transform\_derivatives()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1DiagQHermiteElement}{oomph\+::\+Diag\+Q\+Hermite\+Element}$<$ D\+IM $>$\+::transform\+\_\+derivatives (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{inverse\+\_\+jacobian,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dbasis }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Overload the template-\/free interface for the transformation of derivatives, so that the diagonal version is used. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a2c2f243c9f450c4023e5aa4246facd20}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 466 of file hermite\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Finite\+Element\+::transform\+\_\+derivatives\+\_\+diagonal().
+
+\mbox{\Hypertarget{classoomph_1_1DiagQHermiteElement_a6d6dbf192bc9284a87608e2699f8ebb1}\label{classoomph_1_1DiagQHermiteElement_a6d6dbf192bc9284a87608e2699f8ebb1}} 
+\index{oomph\+::\+Diag\+Q\+Hermite\+Element@{oomph\+::\+Diag\+Q\+Hermite\+Element}!transform\+\_\+second\+\_\+derivatives@{transform\+\_\+second\+\_\+derivatives}}
+\index{transform\+\_\+second\+\_\+derivatives@{transform\+\_\+second\+\_\+derivatives}!oomph\+::\+Diag\+Q\+Hermite\+Element@{oomph\+::\+Diag\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{transform\+\_\+second\+\_\+derivatives()}{transform\_second\_derivatives()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1DiagQHermiteElement}{oomph\+::\+Diag\+Q\+Hermite\+Element}$<$ D\+IM $>$\+::transform\+\_\+second\+\_\+derivatives (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{jacobian,  }\item[{const \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{inverse\+\_\+jacobian,  }\item[{const \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{jacobian2,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dbasis,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{d2basis }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Overload the template-\/free interface for the calculation of transformation of second derivatives. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1QHermiteElement_a0f000889085286deef3b273043522834}{oomph\+::\+Q\+Hermite\+Element$<$ D\+I\+M $>$}.
+
+
+
+Definition at line 475 of file hermite\+\_\+elements.\+h.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{hermite__elements_8h}{hermite\+\_\+elements.\+h}\end{DoxyCompactItemize}

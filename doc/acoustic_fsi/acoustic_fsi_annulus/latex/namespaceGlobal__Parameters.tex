@@ -1,0 +1,498 @@
+\hypertarget{namespaceGlobal__Parameters}{}\section{Global\+\_\+\+Parameters Namespace Reference}
+\label{namespaceGlobal__Parameters}\index{Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}}
+
+
+Global variables.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+Time\+Harmonic\+Isotropic\+Elasticity\+Tensor \hyperlink{namespaceGlobal__Parameters_aeeb26e11ef275bdfce14710e00290bb6}{E} (\hyperlink{namespaceGlobal__Parameters_a20fccdcfa2c15ad8b951b9ada3bb1661}{Nu})
+\begin{DoxyCompactList}\small\item\em The elasticity tensor for the solid. \end{DoxyCompactList}\item 
+void \hyperlink{namespaceGlobal__Parameters_ae0f9a80fb7510dbfbbef22582da231b7}{update\+\_\+parameter\+\_\+values} ()
+\begin{DoxyCompactList}\small\item\em Function to update dependent parameter values. \end{DoxyCompactList}\item 
+void \hyperlink{namespaceGlobal__Parameters_ab51fa55d06d9963d363bcf966cfcc62b}{solid\+\_\+boundary\+\_\+displacement} (const Vector$<$ double $>$ \&x, Vector$<$ std\+::complex$<$ double $>$ $>$ \&u)
+\begin{DoxyCompactList}\small\item\em Displacement field on inner boundary of solid. \end{DoxyCompactList}\item 
+std\+::complex$<$ double $>$ \hyperlink{namespaceGlobal__Parameters_a116765fbd117ec6199c9399af801d510}{Hankel\+H1} (const double \&k, const double \&x)
+\begin{DoxyCompactList}\small\item\em Interface to Hankel function in maple style. \end{DoxyCompactList}\item 
+std\+::complex$<$ double $>$ \hyperlink{namespaceGlobal__Parameters_a12dd327bc592b36ffd4abbab5018146f}{axisym\+\_\+coefficient} ()
+\begin{DoxyCompactList}\small\item\em Coefficient in front of Hankel function for axisymmetric solution of Helmholtz potential. \end{DoxyCompactList}\item 
+void \hyperlink{namespaceGlobal__Parameters_af95baf4096a1393ab06bfa9ff9a57a35}{exact\+\_\+axisym\+\_\+potential} (const Vector$<$ double $>$ \&x, Vector$<$ double $>$ \&soln)
+\begin{DoxyCompactList}\small\item\em Exact solution for Helmholtz potential for axisymmetric solution. \end{DoxyCompactList}\item 
+double \hyperlink{namespaceGlobal__Parameters_a79131fd1bf3eb1ab080c21c2d98a92d5}{exact\+\_\+axisym\+\_\+radiated\+\_\+power} ()
+\begin{DoxyCompactList}\small\item\em Exact radiated power for axisymmetric solution. \end{DoxyCompactList}\item 
+Vector$<$ double $>$ \hyperlink{namespaceGlobal__Parameters_a461bb148c1f6494672520bdf8045483f}{Omega\+\_\+sq} (2, 0.\+0)
+\begin{DoxyCompactList}\small\item\em Square of non-\/dim frequency for the two regions -- dependent variable! \end{DoxyCompactList}\item 
+Vector$<$ double $>$ \hyperlink{namespaceGlobal__Parameters_a3ad42a80620a3847cf0d1b187e2ed2ec}{Density\+\_\+ratio} (2, 0.\+1)
+\begin{DoxyCompactList}\small\item\em Density ratio for the two regions\+: solid to fluid. \end{DoxyCompactList}\item 
+void \hyperlink{namespaceGlobal__Parameters_a0ddb3a77481b907fbb34f2e8d0a6eb9f}{pressure\+\_\+load} (const Vector$<$ double $>$ \&x, const Vector$<$ double $>$ \&n, Vector$<$ std\+::complex$<$ double $>$ $>$ \&traction)
+\begin{DoxyCompactList}\small\item\em Pressure load (real and imag part) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+double \hyperlink{namespaceGlobal__Parameters_a91a3fa265abaf9e724c668ee800ffb29}{K\+\_\+squared} =10.\+0
+\begin{DoxyCompactList}\small\item\em Square of wavenumber for the Helmholtz equation. \end{DoxyCompactList}\item 
+double \hyperlink{namespaceGlobal__Parameters_a88ded445ecd7bd89701409e68fd0b900}{Outer\+\_\+radius} =4.\+0
+\begin{DoxyCompactList}\small\item\em Radius of outer boundary of Helmholtz domain. \end{DoxyCompactList}\item 
+double \hyperlink{namespaceGlobal__Parameters_a7814fddf663e56168174a42d2cd6b4c1}{Q} =0.\+0
+\begin{DoxyCompactList}\small\item\em F\+SI parameter. \end{DoxyCompactList}\item 
+double \hyperlink{namespaceGlobal__Parameters_ae3cf8878ede839bffda01f79bbe3e819}{H\+\_\+coating} =0.\+3
+\begin{DoxyCompactList}\small\item\em Non-\/dim thickness of elastic coating. \end{DoxyCompactList}\item 
+double \hyperlink{namespaceGlobal__Parameters_a20fccdcfa2c15ad8b951b9ada3bb1661}{Nu} = 0.\+3
+\begin{DoxyCompactList}\small\item\em Poisson\textquotesingle{}s ratio. \end{DoxyCompactList}\item 
+double \hyperlink{namespaceGlobal__Parameters_a517d4c31b8bce6563c2f605266dd9679}{Density\+\_\+ratio} =0.\+0
+\begin{DoxyCompactList}\small\item\em Density ratio\+: solid to fluid. \end{DoxyCompactList}\item 
+double \hyperlink{namespaceGlobal__Parameters_af9e1e178dfb7f5e35b452599bd4c4324}{Omega\+\_\+sq} =0.\+0
+\begin{DoxyCompactList}\small\item\em Non-\/dim square of frequency for solid -- dependent variable! \end{DoxyCompactList}\item 
+unsigned \hyperlink{namespaceGlobal__Parameters_aff31353c09f439f3d537ad06ce868787}{N} =0
+\begin{DoxyCompactList}\small\item\em Azimuthal wavenumber for imposed displacement of coating on inner boundary. \end{DoxyCompactList}\item 
+string \hyperlink{namespaceGlobal__Parameters_a301ab922df72030c660b21328d6caf76}{Directory} =\char`\"{}R\+E\+S\+LT\char`\"{}
+\begin{DoxyCompactList}\small\item\em Output directory. \end{DoxyCompactList}\item 
+unsigned \hyperlink{namespaceGlobal__Parameters_a35d5d2ecfff0cec6150a5dc79e5c1ad1}{El\+\_\+multiplier} =1
+\begin{DoxyCompactList}\small\item\em Multiplier for number of elements. \end{DoxyCompactList}\item 
+unsigned \hyperlink{namespaceGlobal__Parameters_ae16eb10039cab2098b02ec7dff946277}{A\+B\+C\+\_\+order} =3
+\begin{DoxyCompactList}\small\item\em Order of absorbing/appproximate boundary condition. \end{DoxyCompactList}\item 
+Vector$<$ Time\+Harmonic\+Isotropic\+Elasticity\+Tensor $\ast$ $>$ \hyperlink{namespaceGlobal__Parameters_a73c731fa617a9d92851e4195493262e7}{E\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em The elasticity tensors for the two regions. \end{DoxyCompactList}\item 
+double \hyperlink{namespaceGlobal__Parameters_a31fb55c20db4aa0127aafa20f0d76731}{P} = 0.\+1
+\begin{DoxyCompactList}\small\item\em Uniform pressure. \end{DoxyCompactList}\item 
+double \hyperlink{namespaceGlobal__Parameters_afbe27ad463a1fb23cb99d029a9fac731}{Alpha} =200.\+0
+\begin{DoxyCompactList}\small\item\em Peakiness parameter for pressure load. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Global variables. 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceGlobal__Parameters_a12dd327bc592b36ffd4abbab5018146f}\label{namespaceGlobal__Parameters_a12dd327bc592b36ffd4abbab5018146f}} 
+\index{Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}!axisym\+\_\+coefficient@{axisym\+\_\+coefficient}}
+\index{axisym\+\_\+coefficient@{axisym\+\_\+coefficient}!Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}}
+\subsubsection{\texorpdfstring{axisym\+\_\+coefficient()}{axisym\_coefficient()}}
+{\footnotesize\ttfamily std\+::complex$<$double$>$ Global\+\_\+\+Parameters\+::axisym\+\_\+coefficient (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Coefficient in front of Hankel function for axisymmetric solution of Helmholtz potential. 
+
+
+
+Definition at line 137 of file acoustic\+\_\+fsi.\+cc.
+
+
+
+References H\+\_\+coating, Hankel\+H1(), and Nu.
+
+
+
+Referenced by exact\+\_\+axisym\+\_\+potential(), and exact\+\_\+axisym\+\_\+radiated\+\_\+power().
+
+\mbox{\Hypertarget{namespaceGlobal__Parameters_a3ad42a80620a3847cf0d1b187e2ed2ec}\label{namespaceGlobal__Parameters_a3ad42a80620a3847cf0d1b187e2ed2ec}} 
+\index{Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}!Density\+\_\+ratio@{Density\+\_\+ratio}}
+\index{Density\+\_\+ratio@{Density\+\_\+ratio}!Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}}
+\subsubsection{\texorpdfstring{Density\+\_\+ratio()}{Density\_ratio()}}
+{\footnotesize\ttfamily Vector$<$double$>$ Global\+\_\+\+Parameters\+::\+Density\+\_\+ratio (\begin{DoxyParamCaption}\item[{2}]{,  }\item[{0.}]{1 }\end{DoxyParamCaption})}
+
+
+
+Density ratio for the two regions\+: solid to fluid. 
+
+\mbox{\Hypertarget{namespaceGlobal__Parameters_aeeb26e11ef275bdfce14710e00290bb6}\label{namespaceGlobal__Parameters_aeeb26e11ef275bdfce14710e00290bb6}} 
+\index{Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}!E@{E}}
+\index{E@{E}!Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}}
+\subsubsection{\texorpdfstring{E()}{E()}}
+{\footnotesize\ttfamily Time\+Harmonic\+Isotropic\+Elasticity\+Tensor Global\+\_\+\+Parameters\+::E (\begin{DoxyParamCaption}\item[{\hyperlink{namespaceGlobal__Parameters_a20fccdcfa2c15ad8b951b9ada3bb1661}{Nu}}]{ }\end{DoxyParamCaption})}
+
+
+
+The elasticity tensor for the solid. 
+
+
+
+Referenced by Coated\+Disk\+Problem$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+E\+L\+E\+M\+E\+N\+T, H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::\+Coated\+Disk\+Problem().
+
+\mbox{\Hypertarget{namespaceGlobal__Parameters_af95baf4096a1393ab06bfa9ff9a57a35}\label{namespaceGlobal__Parameters_af95baf4096a1393ab06bfa9ff9a57a35}} 
+\index{Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}!exact\+\_\+axisym\+\_\+potential@{exact\+\_\+axisym\+\_\+potential}}
+\index{exact\+\_\+axisym\+\_\+potential@{exact\+\_\+axisym\+\_\+potential}!Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}}
+\subsubsection{\texorpdfstring{exact\+\_\+axisym\+\_\+potential()}{exact\_axisym\_potential()}}
+{\footnotesize\ttfamily void Global\+\_\+\+Parameters\+::exact\+\_\+axisym\+\_\+potential (\begin{DoxyParamCaption}\item[{const Vector$<$ double $>$ \&}]{x,  }\item[{Vector$<$ double $>$ \&}]{soln }\end{DoxyParamCaption})}
+
+
+
+Exact solution for Helmholtz potential for axisymmetric solution. 
+
+
+
+Definition at line 199 of file acoustic\+\_\+fsi.\+cc.
+
+
+
+References axisym\+\_\+coefficient(), and Hankel\+H1().
+
+
+
+Referenced by Coated\+Disk\+Problem$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+E\+L\+E\+M\+E\+N\+T, H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::doc\+\_\+solution().
+
+\mbox{\Hypertarget{namespaceGlobal__Parameters_a79131fd1bf3eb1ab080c21c2d98a92d5}\label{namespaceGlobal__Parameters_a79131fd1bf3eb1ab080c21c2d98a92d5}} 
+\index{Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}!exact\+\_\+axisym\+\_\+radiated\+\_\+power@{exact\+\_\+axisym\+\_\+radiated\+\_\+power}}
+\index{exact\+\_\+axisym\+\_\+radiated\+\_\+power@{exact\+\_\+axisym\+\_\+radiated\+\_\+power}!Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}}
+\subsubsection{\texorpdfstring{exact\+\_\+axisym\+\_\+radiated\+\_\+power()}{exact\_axisym\_radiated\_power()}}
+{\footnotesize\ttfamily double Global\+\_\+\+Parameters\+::exact\+\_\+axisym\+\_\+radiated\+\_\+power (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Exact radiated power for axisymmetric solution. 
+
+
+
+Definition at line 209 of file acoustic\+\_\+fsi.\+cc.
+
+
+
+References axisym\+\_\+coefficient().
+
+
+
+Referenced by Coated\+Disk\+Problem$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+E\+L\+E\+M\+E\+N\+T, H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::doc\+\_\+solution().
+
+\mbox{\Hypertarget{namespaceGlobal__Parameters_a116765fbd117ec6199c9399af801d510}\label{namespaceGlobal__Parameters_a116765fbd117ec6199c9399af801d510}} 
+\index{Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}!Hankel\+H1@{Hankel\+H1}}
+\index{Hankel\+H1@{Hankel\+H1}!Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}}
+\subsubsection{\texorpdfstring{Hankel\+H1()}{HankelH1()}}
+{\footnotesize\ttfamily std\+::complex$<$double$>$ Global\+\_\+\+Parameters\+::\+Hankel\+H1 (\begin{DoxyParamCaption}\item[{const double \&}]{k,  }\item[{const double \&}]{x }\end{DoxyParamCaption})}
+
+
+
+Interface to Hankel function in maple style. 
+
+
+
+Definition at line 111 of file acoustic\+\_\+fsi.\+cc.
+
+
+
+Referenced by axisym\+\_\+coefficient(), and exact\+\_\+axisym\+\_\+potential().
+
+\mbox{\Hypertarget{namespaceGlobal__Parameters_a461bb148c1f6494672520bdf8045483f}\label{namespaceGlobal__Parameters_a461bb148c1f6494672520bdf8045483f}} 
+\index{Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}!Omega\+\_\+sq@{Omega\+\_\+sq}}
+\index{Omega\+\_\+sq@{Omega\+\_\+sq}!Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}}
+\subsubsection{\texorpdfstring{Omega\+\_\+sq()}{Omega\_sq()}}
+{\footnotesize\ttfamily Vector$<$double$>$ Global\+\_\+\+Parameters\+::\+Omega\+\_\+sq (\begin{DoxyParamCaption}\item[{2}]{,  }\item[{0.}]{0 }\end{DoxyParamCaption})}
+
+
+
+Square of non-\/dim frequency for the two regions -- dependent variable! 
+
+\mbox{\Hypertarget{namespaceGlobal__Parameters_a0ddb3a77481b907fbb34f2e8d0a6eb9f}\label{namespaceGlobal__Parameters_a0ddb3a77481b907fbb34f2e8d0a6eb9f}} 
+\index{Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}!pressure\+\_\+load@{pressure\+\_\+load}}
+\index{pressure\+\_\+load@{pressure\+\_\+load}!Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}}
+\subsubsection{\texorpdfstring{pressure\+\_\+load()}{pressure\_load()}}
+{\footnotesize\ttfamily void Global\+\_\+\+Parameters\+::pressure\+\_\+load (\begin{DoxyParamCaption}\item[{const Vector$<$ double $>$ \&}]{x,  }\item[{const Vector$<$ double $>$ \&}]{n,  }\item[{Vector$<$ std\+::complex$<$ double $>$ $>$ \&}]{traction }\end{DoxyParamCaption})}
+
+
+
+Pressure load (real and imag part) 
+
+
+
+Definition at line 155 of file unstructured\+\_\+acoustic\+\_\+fsi.\+cc.
+
+
+
+References Directory, and El\+\_\+multiplier.
+
+
+
+Referenced by Coated\+Disk\+Problem$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+E\+L\+E\+M\+E\+N\+T, H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::create\+\_\+solid\+\_\+traction\+\_\+elements().
+
+\mbox{\Hypertarget{namespaceGlobal__Parameters_ab51fa55d06d9963d363bcf966cfcc62b}\label{namespaceGlobal__Parameters_ab51fa55d06d9963d363bcf966cfcc62b}} 
+\index{Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}!solid\+\_\+boundary\+\_\+displacement@{solid\+\_\+boundary\+\_\+displacement}}
+\index{solid\+\_\+boundary\+\_\+displacement@{solid\+\_\+boundary\+\_\+displacement}!Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}}
+\subsubsection{\texorpdfstring{solid\+\_\+boundary\+\_\+displacement()}{solid\_boundary\_displacement()}}
+{\footnotesize\ttfamily void Global\+\_\+\+Parameters\+::solid\+\_\+boundary\+\_\+displacement (\begin{DoxyParamCaption}\item[{const Vector$<$ double $>$ \&}]{x,  }\item[{Vector$<$ std\+::complex$<$ double $>$ $>$ \&}]{u }\end{DoxyParamCaption})}
+
+
+
+Displacement field on inner boundary of solid. 
+
+
+
+Definition at line 90 of file acoustic\+\_\+fsi.\+cc.
+
+
+
+Referenced by Coated\+Disk\+Problem$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+E\+L\+E\+M\+E\+N\+T, H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::\+Coated\+Disk\+Problem().
+
+\mbox{\Hypertarget{namespaceGlobal__Parameters_ae0f9a80fb7510dbfbbef22582da231b7}\label{namespaceGlobal__Parameters_ae0f9a80fb7510dbfbbef22582da231b7}} 
+\index{Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}!update\+\_\+parameter\+\_\+values@{update\+\_\+parameter\+\_\+values}}
+\index{update\+\_\+parameter\+\_\+values@{update\+\_\+parameter\+\_\+values}!Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}}
+\subsubsection{\texorpdfstring{update\+\_\+parameter\+\_\+values()}{update\_parameter\_values()}}
+{\footnotesize\ttfamily void Global\+\_\+\+Parameters\+::update\+\_\+parameter\+\_\+values (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Function to update dependent parameter values. 
+
+
+
+Definition at line 80 of file acoustic\+\_\+fsi.\+cc.
+
+
+
+References Q.
+
+
+
+Referenced by main().
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceGlobal__Parameters_ae16eb10039cab2098b02ec7dff946277}\label{namespaceGlobal__Parameters_ae16eb10039cab2098b02ec7dff946277}} 
+\index{Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}!A\+B\+C\+\_\+order@{A\+B\+C\+\_\+order}}
+\index{A\+B\+C\+\_\+order@{A\+B\+C\+\_\+order}!Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}}
+\subsubsection{\texorpdfstring{A\+B\+C\+\_\+order}{ABC\_order}}
+{\footnotesize\ttfamily unsigned Global\+\_\+\+Parameters\+::\+A\+B\+C\+\_\+order =3}
+
+
+
+Order of absorbing/appproximate boundary condition. 
+
+
+
+Definition at line 121 of file unstructured\+\_\+acoustic\+\_\+fsi.\+cc.
+
+
+
+Referenced by Coated\+Disk\+Problem$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+E\+L\+E\+M\+E\+N\+T, H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::create\+\_\+helmholtz\+\_\+\+A\+B\+C\+\_\+elements().
+
+\mbox{\Hypertarget{namespaceGlobal__Parameters_afbe27ad463a1fb23cb99d029a9fac731}\label{namespaceGlobal__Parameters_afbe27ad463a1fb23cb99d029a9fac731}} 
+\index{Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}!Alpha@{Alpha}}
+\index{Alpha@{Alpha}!Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}}
+\subsubsection{\texorpdfstring{Alpha}{Alpha}}
+{\footnotesize\ttfamily double Global\+\_\+\+Parameters\+::\+Alpha =200.\+0}
+
+
+
+Peakiness parameter for pressure load. 
+
+
+
+Definition at line 152 of file unstructured\+\_\+acoustic\+\_\+fsi.\+cc.
+
+
+
+Referenced by main().
+
+\mbox{\Hypertarget{namespaceGlobal__Parameters_a517d4c31b8bce6563c2f605266dd9679}\label{namespaceGlobal__Parameters_a517d4c31b8bce6563c2f605266dd9679}} 
+\index{Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}!Density\+\_\+ratio@{Density\+\_\+ratio}}
+\index{Density\+\_\+ratio@{Density\+\_\+ratio}!Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}}
+\subsubsection{\texorpdfstring{Density\+\_\+ratio}{Density\_ratio}}
+{\footnotesize\ttfamily double Global\+\_\+\+Parameters\+::\+Density\+\_\+ratio =0.\+0}
+
+
+
+Density ratio\+: solid to fluid. 
+
+
+
+Definition at line 74 of file acoustic\+\_\+fsi.\+cc.
+
+
+
+Referenced by Coated\+Disk\+Problem$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+E\+L\+E\+M\+E\+N\+T, H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::create\+\_\+helmholtz\+\_\+\+A\+B\+C\+\_\+elements(), Coated\+Disk\+Problem$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+E\+L\+E\+M\+E\+N\+T, H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::doc\+\_\+solution(), and main().
+
+\mbox{\Hypertarget{namespaceGlobal__Parameters_a301ab922df72030c660b21328d6caf76}\label{namespaceGlobal__Parameters_a301ab922df72030c660b21328d6caf76}} 
+\index{Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}!Directory@{Directory}}
+\index{Directory@{Directory}!Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}}
+\subsubsection{\texorpdfstring{Directory}{Directory}}
+{\footnotesize\ttfamily string Global\+\_\+\+Parameters\+::\+Directory =\char`\"{}R\+E\+S\+LT\char`\"{}}
+
+
+
+Output directory. 
+
+
+
+Definition at line 105 of file acoustic\+\_\+fsi.\+cc.
+
+
+
+Referenced by Coated\+Disk\+Problem$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+E\+L\+E\+M\+E\+N\+T, H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::\+Coated\+Disk\+Problem(), main(), and pressure\+\_\+load().
+
+\mbox{\Hypertarget{namespaceGlobal__Parameters_a73c731fa617a9d92851e4195493262e7}\label{namespaceGlobal__Parameters_a73c731fa617a9d92851e4195493262e7}} 
+\index{Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}!E\+\_\+pt@{E\+\_\+pt}}
+\index{E\+\_\+pt@{E\+\_\+pt}!Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}}
+\subsubsection{\texorpdfstring{E\+\_\+pt}{E\_pt}}
+{\footnotesize\ttfamily Vector$<$Time\+Harmonic\+Isotropic\+Elasticity\+Tensor$\ast$$>$ Global\+\_\+\+Parameters\+::\+E\+\_\+pt}
+
+
+
+The elasticity tensors for the two regions. 
+
+
+
+Definition at line 139 of file unstructured\+\_\+acoustic\+\_\+fsi.\+cc.
+
+
+
+Referenced by Coated\+Disk\+Problem$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+E\+L\+E\+M\+E\+N\+T, H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::complete\+\_\+problem\+\_\+setup(), and main().
+
+\mbox{\Hypertarget{namespaceGlobal__Parameters_a35d5d2ecfff0cec6150a5dc79e5c1ad1}\label{namespaceGlobal__Parameters_a35d5d2ecfff0cec6150a5dc79e5c1ad1}} 
+\index{Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}!El\+\_\+multiplier@{El\+\_\+multiplier}}
+\index{El\+\_\+multiplier@{El\+\_\+multiplier}!Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}}
+\subsubsection{\texorpdfstring{El\+\_\+multiplier}{El\_multiplier}}
+{\footnotesize\ttfamily unsigned Global\+\_\+\+Parameters\+::\+El\+\_\+multiplier =1}
+
+
+
+Multiplier for number of elements. 
+
+
+
+Definition at line 108 of file acoustic\+\_\+fsi.\+cc.
+
+
+
+Referenced by Coated\+Disk\+Problem$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+E\+L\+E\+M\+E\+N\+T, H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::\+Coated\+Disk\+Problem(), main(), and pressure\+\_\+load().
+
+\mbox{\Hypertarget{namespaceGlobal__Parameters_ae3cf8878ede839bffda01f79bbe3e819}\label{namespaceGlobal__Parameters_ae3cf8878ede839bffda01f79bbe3e819}} 
+\index{Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}!H\+\_\+coating@{H\+\_\+coating}}
+\index{H\+\_\+coating@{H\+\_\+coating}!Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}}
+\subsubsection{\texorpdfstring{H\+\_\+coating}{H\_coating}}
+{\footnotesize\ttfamily double Global\+\_\+\+Parameters\+::\+H\+\_\+coating =0.\+3}
+
+
+
+Non-\/dim thickness of elastic coating. 
+
+
+
+Definition at line 65 of file acoustic\+\_\+fsi.\+cc.
+
+
+
+Referenced by axisym\+\_\+coefficient(), and Coated\+Disk\+Problem$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+E\+L\+E\+M\+E\+N\+T, H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::\+Coated\+Disk\+Problem().
+
+\mbox{\Hypertarget{namespaceGlobal__Parameters_a91a3fa265abaf9e724c668ee800ffb29}\label{namespaceGlobal__Parameters_a91a3fa265abaf9e724c668ee800ffb29}} 
+\index{Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}!K\+\_\+squared@{K\+\_\+squared}}
+\index{K\+\_\+squared@{K\+\_\+squared}!Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}}
+\subsubsection{\texorpdfstring{K\+\_\+squared}{K\_squared}}
+{\footnotesize\ttfamily double Global\+\_\+\+Parameters\+::\+K\+\_\+squared =10.\+0}
+
+
+
+Square of wavenumber for the Helmholtz equation. 
+
+
+
+Definition at line 56 of file acoustic\+\_\+fsi.\+cc.
+
+
+
+Referenced by Coated\+Disk\+Problem$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+E\+L\+E\+M\+E\+N\+T, H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::\+Coated\+Disk\+Problem(), Coated\+Disk\+Problem$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+E\+L\+E\+M\+E\+N\+T, H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::create\+\_\+helmholtz\+\_\+\+A\+B\+C\+\_\+elements(), and Coated\+Disk\+Problem$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+E\+L\+E\+M\+E\+N\+T, H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::doc\+\_\+solution().
+
+\mbox{\Hypertarget{namespaceGlobal__Parameters_aff31353c09f439f3d537ad06ce868787}\label{namespaceGlobal__Parameters_aff31353c09f439f3d537ad06ce868787}} 
+\index{Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}!N@{N}}
+\index{N@{N}!Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}}
+\subsubsection{\texorpdfstring{N}{N}}
+{\footnotesize\ttfamily unsigned Global\+\_\+\+Parameters\+::N =0}
+
+
+
+Azimuthal wavenumber for imposed displacement of coating on inner boundary. 
+
+
+
+Definition at line 87 of file acoustic\+\_\+fsi.\+cc.
+
+
+
+Referenced by main().
+
+\mbox{\Hypertarget{namespaceGlobal__Parameters_a20fccdcfa2c15ad8b951b9ada3bb1661}\label{namespaceGlobal__Parameters_a20fccdcfa2c15ad8b951b9ada3bb1661}} 
+\index{Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}!Nu@{Nu}}
+\index{Nu@{Nu}!Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}}
+\subsubsection{\texorpdfstring{Nu}{Nu}}
+{\footnotesize\ttfamily double Global\+\_\+\+Parameters\+::\+Nu = 0.\+3}
+
+
+
+Poisson\textquotesingle{}s ratio. 
+
+
+
+Definition at line 68 of file acoustic\+\_\+fsi.\+cc.
+
+
+
+Referenced by axisym\+\_\+coefficient(), and main().
+
+\mbox{\Hypertarget{namespaceGlobal__Parameters_af9e1e178dfb7f5e35b452599bd4c4324}\label{namespaceGlobal__Parameters_af9e1e178dfb7f5e35b452599bd4c4324}} 
+\index{Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}!Omega\+\_\+sq@{Omega\+\_\+sq}}
+\index{Omega\+\_\+sq@{Omega\+\_\+sq}!Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}}
+\subsubsection{\texorpdfstring{Omega\+\_\+sq}{Omega\_sq}}
+{\footnotesize\ttfamily double Global\+\_\+\+Parameters\+::\+Omega\+\_\+sq =0.\+0}
+
+
+
+Non-\/dim square of frequency for solid -- dependent variable! 
+
+
+
+Definition at line 77 of file acoustic\+\_\+fsi.\+cc.
+
+
+
+Referenced by Coated\+Disk\+Problem$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+E\+L\+E\+M\+E\+N\+T, H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::\+Coated\+Disk\+Problem(), Coated\+Disk\+Problem$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+E\+L\+E\+M\+E\+N\+T, H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::complete\+\_\+problem\+\_\+setup(), Coated\+Disk\+Problem$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+E\+L\+E\+M\+E\+N\+T, H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::create\+\_\+helmholtz\+\_\+\+A\+B\+C\+\_\+elements(), and Coated\+Disk\+Problem$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+E\+L\+E\+M\+E\+N\+T, H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::doc\+\_\+solution().
+
+\mbox{\Hypertarget{namespaceGlobal__Parameters_a88ded445ecd7bd89701409e68fd0b900}\label{namespaceGlobal__Parameters_a88ded445ecd7bd89701409e68fd0b900}} 
+\index{Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}!Outer\+\_\+radius@{Outer\+\_\+radius}}
+\index{Outer\+\_\+radius@{Outer\+\_\+radius}!Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}}
+\subsubsection{\texorpdfstring{Outer\+\_\+radius}{Outer\_radius}}
+{\footnotesize\ttfamily double Global\+\_\+\+Parameters\+::\+Outer\+\_\+radius =4.\+0}
+
+
+
+Radius of outer boundary of Helmholtz domain. 
+
+
+
+Definition at line 59 of file acoustic\+\_\+fsi.\+cc.
+
+
+
+Referenced by Coated\+Disk\+Problem$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+E\+L\+E\+M\+E\+N\+T, H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::\+Coated\+Disk\+Problem(), Coated\+Disk\+Problem$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+E\+L\+E\+M\+E\+N\+T, H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::create\+\_\+helmholtz\+\_\+\+A\+B\+C\+\_\+elements(), and main().
+
+\mbox{\Hypertarget{namespaceGlobal__Parameters_a31fb55c20db4aa0127aafa20f0d76731}\label{namespaceGlobal__Parameters_a31fb55c20db4aa0127aafa20f0d76731}} 
+\index{Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}!P@{P}}
+\index{P@{P}!Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}}
+\subsubsection{\texorpdfstring{P}{P}}
+{\footnotesize\ttfamily double Global\+\_\+\+Parameters\+::P = 0.\+1}
+
+
+
+Uniform pressure. 
+
+
+
+Definition at line 149 of file unstructured\+\_\+acoustic\+\_\+fsi.\+cc.
+
+\mbox{\Hypertarget{namespaceGlobal__Parameters_a7814fddf663e56168174a42d2cd6b4c1}\label{namespaceGlobal__Parameters_a7814fddf663e56168174a42d2cd6b4c1}} 
+\index{Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}!Q@{Q}}
+\index{Q@{Q}!Global\+\_\+\+Parameters@{Global\+\_\+\+Parameters}}
+\subsubsection{\texorpdfstring{Q}{Q}}
+{\footnotesize\ttfamily double Global\+\_\+\+Parameters\+::Q =0.\+0}
+
+
+
+F\+SI parameter. 
+
+
+
+Definition at line 62 of file acoustic\+\_\+fsi.\+cc.
+
+
+
+Referenced by Coated\+Disk\+Problem$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+E\+L\+E\+M\+E\+N\+T, H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::create\+\_\+fsi\+\_\+traction\+\_\+elements(), Coated\+Disk\+Problem$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+E\+L\+E\+M\+E\+N\+T, H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::create\+\_\+helmholtz\+\_\+\+A\+B\+C\+\_\+elements(), Coated\+Disk\+Problem$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+E\+L\+E\+M\+E\+N\+T, H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::create\+\_\+solid\+\_\+traction\+\_\+elements(), Coated\+Disk\+Problem$<$ E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+E\+L\+E\+M\+E\+N\+T, H\+E\+L\+M\+H\+O\+L\+T\+Z\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::doc\+\_\+solution(), main(), and update\+\_\+parameter\+\_\+values().
+

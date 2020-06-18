@@ -1,0 +1,120 @@
+\hypertarget{classoomph_1_1LineVolumeConstraintBoundingElement}{}\section{oomph\+:\+:Line\+Volume\+Constraint\+Bounding\+Element Class Reference}
+\label{classoomph_1_1LineVolumeConstraintBoundingElement}\index{oomph\+::\+Line\+Volume\+Constraint\+Bounding\+Element@{oomph\+::\+Line\+Volume\+Constraint\+Bounding\+Element}}
+
+
+{\ttfamily \#include $<$constrained\+\_\+volume\+\_\+elements.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Line\+Volume\+Constraint\+Bounding\+Element\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.179104cm]{classoomph_1_1LineVolumeConstraintBoundingElement}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1LineVolumeConstraintBoundingElement_a39baabe26bcf3958b80fe3dd5430c347}{Line\+Volume\+Constraint\+Bounding\+Element} ()
+\begin{DoxyCompactList}\small\item\em Empty Contructor. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1LineVolumeConstraintBoundingElement_a905d0b20f7f9a009d07c7d4506b404ed}{$\sim$\+Line\+Volume\+Constraint\+Bounding\+Element} ()
+\begin{DoxyCompactList}\small\item\em Empty Destructor. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1LineVolumeConstraintBoundingElement_a099357dfeca3c4e1d84b0979cd495da9}{contribution\+\_\+to\+\_\+enclosed\+\_\+volume} ()
+\begin{DoxyCompactList}\small\item\em Return this element\textquotesingle{}s contribution to the total volume enclosed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classoomph_1_1LineVolumeConstraintBoundingElement_a03145a064e559d786f730c85000f9fb4}{fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+volume\+\_\+constraint} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&residuals)
+\begin{DoxyCompactList}\small\item\em Helper function to fill in contributions to residuals (remember that part of the residual is added by the the associated \hyperlink{classoomph_1_1VolumeConstraintElement}{Volume\+Constraint\+Element}). This is specific for 1D line elements that bound 2D cartesian fluid elements. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+One-\/dimensional interface elements that allow the application of a volume constraint on the region bounded by these elements. The volume is computed by integrating x.\+n around the boundary of the domain and then dividing by two. The sign is chosen so that the volume will be positive when the elements surround a fluid domain.
+
+These elements must be used together with the associated \hyperlink{classoomph_1_1VolumeConstraintElement}{Volume\+Constraint\+Element}, which stores the value of the target volume. 
+
+Definition at line 340 of file constrained\+\_\+volume\+\_\+elements.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1LineVolumeConstraintBoundingElement_a39baabe26bcf3958b80fe3dd5430c347}\label{classoomph_1_1LineVolumeConstraintBoundingElement_a39baabe26bcf3958b80fe3dd5430c347}} 
+\index{oomph\+::\+Line\+Volume\+Constraint\+Bounding\+Element@{oomph\+::\+Line\+Volume\+Constraint\+Bounding\+Element}!Line\+Volume\+Constraint\+Bounding\+Element@{Line\+Volume\+Constraint\+Bounding\+Element}}
+\index{Line\+Volume\+Constraint\+Bounding\+Element@{Line\+Volume\+Constraint\+Bounding\+Element}!oomph\+::\+Line\+Volume\+Constraint\+Bounding\+Element@{oomph\+::\+Line\+Volume\+Constraint\+Bounding\+Element}}
+\subsubsection{\texorpdfstring{Line\+Volume\+Constraint\+Bounding\+Element()}{LineVolumeConstraintBoundingElement()}}
+{\footnotesize\ttfamily oomph\+::\+Line\+Volume\+Constraint\+Bounding\+Element\+::\+Line\+Volume\+Constraint\+Bounding\+Element (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Empty Contructor. 
+
+
+
+Definition at line 355 of file constrained\+\_\+volume\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1LineVolumeConstraintBoundingElement_a905d0b20f7f9a009d07c7d4506b404ed}\label{classoomph_1_1LineVolumeConstraintBoundingElement_a905d0b20f7f9a009d07c7d4506b404ed}} 
+\index{oomph\+::\+Line\+Volume\+Constraint\+Bounding\+Element@{oomph\+::\+Line\+Volume\+Constraint\+Bounding\+Element}!````~Line\+Volume\+Constraint\+Bounding\+Element@{$\sim$\+Line\+Volume\+Constraint\+Bounding\+Element}}
+\index{````~Line\+Volume\+Constraint\+Bounding\+Element@{$\sim$\+Line\+Volume\+Constraint\+Bounding\+Element}!oomph\+::\+Line\+Volume\+Constraint\+Bounding\+Element@{oomph\+::\+Line\+Volume\+Constraint\+Bounding\+Element}}
+\subsubsection{\texorpdfstring{$\sim$\+Line\+Volume\+Constraint\+Bounding\+Element()}{~LineVolumeConstraintBoundingElement()}}
+{\footnotesize\ttfamily oomph\+::\+Line\+Volume\+Constraint\+Bounding\+Element\+::$\sim$\+Line\+Volume\+Constraint\+Bounding\+Element (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Empty Destructor. 
+
+
+
+Definition at line 358 of file constrained\+\_\+volume\+\_\+elements.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1LineVolumeConstraintBoundingElement_a099357dfeca3c4e1d84b0979cd495da9}\label{classoomph_1_1LineVolumeConstraintBoundingElement_a099357dfeca3c4e1d84b0979cd495da9}} 
+\index{oomph\+::\+Line\+Volume\+Constraint\+Bounding\+Element@{oomph\+::\+Line\+Volume\+Constraint\+Bounding\+Element}!contribution\+\_\+to\+\_\+enclosed\+\_\+volume@{contribution\+\_\+to\+\_\+enclosed\+\_\+volume}}
+\index{contribution\+\_\+to\+\_\+enclosed\+\_\+volume@{contribution\+\_\+to\+\_\+enclosed\+\_\+volume}!oomph\+::\+Line\+Volume\+Constraint\+Bounding\+Element@{oomph\+::\+Line\+Volume\+Constraint\+Bounding\+Element}}
+\subsubsection{\texorpdfstring{contribution\+\_\+to\+\_\+enclosed\+\_\+volume()}{contribution\_to\_enclosed\_volume()}}
+{\footnotesize\ttfamily double oomph\+::\+Line\+Volume\+Constraint\+Bounding\+Element\+::contribution\+\_\+to\+\_\+enclosed\+\_\+volume (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Return this element\textquotesingle{}s contribution to the total volume enclosed. 
+
+
+
+Definition at line 195 of file constrained\+\_\+volume\+\_\+elements.\+cc.
+
+
+
+References oomph\+::\+Axisymmetric\+Volume\+Constraint\+Bounding\+Element\+::contribution\+\_\+to\+\_\+enclosed\+\_\+volume(), oomph\+::\+Vector\+Helpers\+::dot(), i, s, and oomph\+::\+Quad\+Tree\+Names\+::W.
+
+\mbox{\Hypertarget{classoomph_1_1LineVolumeConstraintBoundingElement_a03145a064e559d786f730c85000f9fb4}\label{classoomph_1_1LineVolumeConstraintBoundingElement_a03145a064e559d786f730c85000f9fb4}} 
+\index{oomph\+::\+Line\+Volume\+Constraint\+Bounding\+Element@{oomph\+::\+Line\+Volume\+Constraint\+Bounding\+Element}!fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+volume\+\_\+constraint@{fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+volume\+\_\+constraint}}
+\index{fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+volume\+\_\+constraint@{fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+volume\+\_\+constraint}!oomph\+::\+Line\+Volume\+Constraint\+Bounding\+Element@{oomph\+::\+Line\+Volume\+Constraint\+Bounding\+Element}}
+\subsubsection{\texorpdfstring{fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+volume\+\_\+constraint()}{fill\_in\_generic\_residual\_contribution\_volume\_constraint()}}
+{\footnotesize\ttfamily void oomph\+::\+Line\+Volume\+Constraint\+Bounding\+Element\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+volume\+\_\+constraint (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{residuals }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Helper function to fill in contributions to residuals (remember that part of the residual is added by the the associated \hyperlink{classoomph_1_1VolumeConstraintElement}{Volume\+Constraint\+Element}). This is specific for 1D line elements that bound 2D cartesian fluid elements. 
+
+
+
+Implements \hyperlink{classoomph_1_1VolumeConstraintBoundingElement_a717f1085709bd8820b8043ff94ecb0c5}{oomph\+::\+Volume\+Constraint\+Bounding\+Element}.
+
+
+
+Definition at line 120 of file constrained\+\_\+volume\+\_\+elements.\+cc.
+
+
+
+References oomph\+::\+Vector\+Helpers\+::dot(), i, oomph\+::\+Volume\+Constraint\+Element\+::ptraded\+\_\+local\+\_\+eqn(), s, and oomph\+::\+Quad\+Tree\+Names\+::W.
+
+
+
+Referenced by oomph\+::\+Volume\+Constraint\+Element\+::\+Volume\+Constraint\+Element().
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{constrained__volume__elements_8h}{constrained\+\_\+volume\+\_\+elements.\+h}\item 
+\hyperlink{constrained__volume__elements_8cc}{constrained\+\_\+volume\+\_\+elements.\+cc}\end{DoxyCompactItemize}

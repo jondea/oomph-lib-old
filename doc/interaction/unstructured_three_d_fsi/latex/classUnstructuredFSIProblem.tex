@@ -1,0 +1,494 @@
+\hypertarget{classUnstructuredFSIProblem}{}\section{Unstructured\+F\+S\+I\+Problem$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ Class Template Reference}
+\label{classUnstructuredFSIProblem}\index{Unstructured\+F\+S\+I\+Problem$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+N\+T, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$@{Unstructured\+F\+S\+I\+Problem$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+N\+T, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$}}
+
+
+Unstructured 3D F\+SI problem.  
+
+
+Inheritance diagram for Unstructured\+F\+S\+I\+Problem$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classUnstructuredFSIProblem}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classUnstructuredFSIProblem_a6a31fd839e0215ef1312942cf7284bd2}{Unstructured\+F\+S\+I\+Problem} ()
+\begin{DoxyCompactList}\small\item\em Constructor\+: \end{DoxyCompactList}\item 
+\hyperlink{classUnstructuredFSIProblem_a976a81e0dee902f6713bd8ca4d79d000}{$\sim$\+Unstructured\+F\+S\+I\+Problem} ()
+\begin{DoxyCompactList}\small\item\em Destructor (empty) \end{DoxyCompactList}\item 
+void \hyperlink{classUnstructuredFSIProblem_a15f581318b505de07f50bd570da8c8d0}{doc\+\_\+solution} (Doc\+Info \&doc\+\_\+info)
+\begin{DoxyCompactList}\small\item\em Doc the solution. \end{DoxyCompactList}\item 
+void \hyperlink{classUnstructuredFSIProblem_af766e3bbc8963a286678cb1d277909f5}{create\+\_\+fluid\+\_\+traction\+\_\+elements} ()
+\begin{DoxyCompactList}\small\item\em Create fluid traction elements at inflow. \end{DoxyCompactList}\item 
+void \hyperlink{classUnstructuredFSIProblem_a934a587c99668fca969a72814b3142a7}{create\+\_\+fsi\+\_\+traction\+\_\+elements} ()
+\begin{DoxyCompactList}\small\item\em Create F\+SI traction elements. \end{DoxyCompactList}\item 
+void \hyperlink{classUnstructuredFSIProblem_a6f810c300f373cfc79e23d58f95944e3}{create\+\_\+lagrange\+\_\+multiplier\+\_\+elements} ()
+\begin{DoxyCompactList}\small\item\em Create elements that enforce prescribed boundary motion for the pseudo-\/solid fluid mesh by Lagrange multipliers. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classUnstructuredFSIProblem_a90c15e131c5ef01add676e0e78e5628c}{doc\+\_\+solid\+\_\+boundary\+\_\+coordinates} (const unsigned \&i)
+\begin{DoxyCompactList}\small\item\em Sanity check\+: Doc boundary coordinates on i-\/th solid F\+SI interface. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classUnstructuredFSIProblem_a74a81b12db3e54dffcb68ebd0447610c}{nfluid\+\_\+inflow\+\_\+traction\+\_\+boundary} ()
+\begin{DoxyCompactList}\small\item\em Return total number of mesh boundaries that make up the inflow boundary. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classUnstructuredFSIProblem_acc6f2d0f03a9bc1af96e85b54824a16b}{nfluid\+\_\+outflow\+\_\+traction\+\_\+boundary} ()
+\begin{DoxyCompactList}\small\item\em Return total number of mesh boundaries that make up the outflow boundary. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classUnstructuredFSIProblem_a476394046c343524eefff856715eb722}{nfluid\+\_\+traction\+\_\+boundary} ()
+\begin{DoxyCompactList}\small\item\em Return total number of mesh boundaries that make up the in-\/ and outflow boundaries where a traction has to be applied. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classUnstructuredFSIProblem_a3e4ee23245ec4c43e085006f5cd192e1}{nsolid\+\_\+fsi\+\_\+boundary} ()
+\begin{DoxyCompactList}\small\item\em Return total number of mesh boundaries in the solid mesh that make up the F\+SI interface. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classUnstructuredFSIProblem_a7ef3b155002c3a71a7cb43d8c86a7a6d}{nfluid\+\_\+fsi\+\_\+boundary} ()
+\begin{DoxyCompactList}\small\item\em Return total number of mesh boundaries in the fluid mesh that make up the F\+SI interface. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classUnstructuredFSIProblem_a221ed63d39e5377626e458b2c070541e}{npinned\+\_\+solid\+\_\+boundary} ()
+\begin{DoxyCompactList}\small\item\em Return total number of mesh boundaries in the solid mesh where the position is pinned. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classMySolidTetgenMesh}{My\+Solid\+Tetgen\+Mesh}$<$ S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ $\ast$ \hyperlink{classUnstructuredFSIProblem_a54debe981843ae9c7a40de65229698a3}{Solid\+\_\+mesh\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Bulk solid mesh. \end{DoxyCompactList}\item 
+Vector$<$ Solid\+Mesh $\ast$ $>$ \hyperlink{classUnstructuredFSIProblem_a5ff1c23ca84612c8bb468f1476e0bdd9}{Solid\+\_\+fsi\+\_\+traction\+\_\+mesh\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Meshes of F\+SI traction elements. \end{DoxyCompactList}\item 
+\hyperlink{classFluidTetMesh}{Fluid\+Tet\+Mesh}$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ $\ast$ \hyperlink{classUnstructuredFSIProblem_a7892a7d7fd6aeff9f7a391b70bab9c81}{Fluid\+\_\+mesh\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Bulk fluid mesh. \end{DoxyCompactList}\item 
+Vector$<$ Mesh $\ast$ $>$ \hyperlink{classUnstructuredFSIProblem_a1ae2785eef94e3ba41fe5562a4a32c8d}{Fluid\+\_\+traction\+\_\+mesh\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Meshes of fluid traction elements that apply pressure at in/outflow. \end{DoxyCompactList}\item 
+Vector$<$ Solid\+Mesh $\ast$ $>$ \hyperlink{classUnstructuredFSIProblem_a2e942a90cc462bf0df04ad28057d4071}{Lagrange\+\_\+multiplier\+\_\+mesh\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Meshes of Lagrange multiplier elements. \end{DoxyCompactList}\item 
+Vector$<$ Mesh\+As\+Geom\+Object $\ast$ $>$ \hyperlink{classUnstructuredFSIProblem_a292fef90d668209e31d51db20d6bfd9a}{Solid\+\_\+fsi\+\_\+boundary\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Geom\+Object incarnations of the F\+SI boundary in the solid mesh. \end{DoxyCompactList}\item 
+Vector$<$ unsigned $>$ \hyperlink{classUnstructuredFSIProblem_a788dde635a29da6a40b21629780eb9b8}{Pinned\+\_\+solid\+\_\+boundary\+\_\+id}
+\begin{DoxyCompactList}\small\item\em I\+Ds of solid mesh boundaries where displacements are pinned. \end{DoxyCompactList}\item 
+Vector$<$ unsigned $>$ \hyperlink{classUnstructuredFSIProblem_a286830595411866cbbb3a43313d76285}{Solid\+\_\+fsi\+\_\+boundary\+\_\+id}
+\begin{DoxyCompactList}\small\item\em I\+Ds of solid mesh boundaries which make up the F\+SI interface. \end{DoxyCompactList}\item 
+Vector$<$ unsigned $>$ \hyperlink{classUnstructuredFSIProblem_a75cb40c497f6b54e05741df6e9c430ba}{Inflow\+\_\+boundary\+\_\+id}
+\begin{DoxyCompactList}\small\item\em I\+Ds of fluid mesh boundaries along which inflow boundary conditions are applied. \end{DoxyCompactList}\item 
+Vector$<$ unsigned $>$ \hyperlink{classUnstructuredFSIProblem_ab3ca6da48fb75f5b56cd2f0b581a2da0}{Outflow\+\_\+boundary\+\_\+id}
+\begin{DoxyCompactList}\small\item\em I\+Ds of fluid mesh boundaries along which inflow boundary conditions are applied. \end{DoxyCompactList}\item 
+Vector$<$ unsigned $>$ \hyperlink{classUnstructuredFSIProblem_a79fee04b489d1ce1f822eec9d34251e5}{Fluid\+\_\+fsi\+\_\+boundary\+\_\+id}
+\begin{DoxyCompactList}\small\item\em I\+Ds of fluid mesh boundaries which make up the F\+SI interface. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT, class S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT$>$\newline
+class Unstructured\+F\+S\+I\+Problem$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+N\+T, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$}
+
+Unstructured 3D F\+SI problem. 
+
+Definition at line 216 of file unstructured\+\_\+three\+\_\+d\+\_\+fsi.\+cc.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classUnstructuredFSIProblem_a6a31fd839e0215ef1312942cf7284bd2}\label{classUnstructuredFSIProblem_a6a31fd839e0215ef1312942cf7284bd2}} 
+\index{Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}!Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}}
+\index{Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}!Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}}
+\subsubsection{\texorpdfstring{Unstructured\+F\+S\+I\+Problem()}{UnstructuredFSIProblem()}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT , class S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classUnstructuredFSIProblem}{Unstructured\+F\+S\+I\+Problem}$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::\hyperlink{classUnstructuredFSIProblem}{Unstructured\+F\+S\+I\+Problem} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor\+: 
+
+Constructor for unstructured 3D F\+SI problem. I\+Ds of solid mesh boundaries where displacements are pinned 
+
+Definition at line 322 of file unstructured\+\_\+three\+\_\+d\+\_\+fsi.\+cc.
+
+
+
+References Global\+\_\+\+Parameters\+::\+Constitutive\+\_\+law\+\_\+pt, Unstructured\+F\+S\+I\+Problem$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+N\+T, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::create\+\_\+fsi\+\_\+traction\+\_\+elements(), and Global\+\_\+\+Parameters\+::\+Re.
+
+\mbox{\Hypertarget{classUnstructuredFSIProblem_a976a81e0dee902f6713bd8ca4d79d000}\label{classUnstructuredFSIProblem_a976a81e0dee902f6713bd8ca4d79d000}} 
+\index{Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}!````~Unstructured\+F\+S\+I\+Problem@{$\sim$\+Unstructured\+F\+S\+I\+Problem}}
+\index{````~Unstructured\+F\+S\+I\+Problem@{$\sim$\+Unstructured\+F\+S\+I\+Problem}!Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}}
+\subsubsection{\texorpdfstring{$\sim$\+Unstructured\+F\+S\+I\+Problem()}{~UnstructuredFSIProblem()}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT , class S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classUnstructuredFSIProblem}{Unstructured\+F\+S\+I\+Problem}$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::$\sim$\hyperlink{classUnstructuredFSIProblem}{Unstructured\+F\+S\+I\+Problem} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Destructor (empty) 
+
+
+
+Definition at line 225 of file unstructured\+\_\+three\+\_\+d\+\_\+fsi.\+cc.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classUnstructuredFSIProblem_af766e3bbc8963a286678cb1d277909f5}\label{classUnstructuredFSIProblem_af766e3bbc8963a286678cb1d277909f5}} 
+\index{Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}!create\+\_\+fluid\+\_\+traction\+\_\+elements@{create\+\_\+fluid\+\_\+traction\+\_\+elements}}
+\index{create\+\_\+fluid\+\_\+traction\+\_\+elements@{create\+\_\+fluid\+\_\+traction\+\_\+elements}!Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}}
+\subsubsection{\texorpdfstring{create\+\_\+fluid\+\_\+traction\+\_\+elements()}{create\_fluid\_traction\_elements()}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT , class S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classUnstructuredFSIProblem}{Unstructured\+F\+S\+I\+Problem}$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::create\+\_\+fluid\+\_\+traction\+\_\+elements (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Create fluid traction elements at inflow. 
+
+Create fluid traction elements. 
+
+Definition at line 810 of file unstructured\+\_\+three\+\_\+d\+\_\+fsi.\+cc.
+
+
+
+References Unstructured\+F\+S\+I\+Problem$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+N\+T, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::doc\+\_\+solid\+\_\+boundary\+\_\+coordinates(), Global\+\_\+\+Parameters\+::prescribed\+\_\+inflow\+\_\+traction(), and Global\+\_\+\+Parameters\+::prescribed\+\_\+outflow\+\_\+traction().
+
+
+
+Referenced by Unstructured\+F\+S\+I\+Problem$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+N\+T, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::create\+\_\+lagrange\+\_\+multiplier\+\_\+elements().
+
+\mbox{\Hypertarget{classUnstructuredFSIProblem_a934a587c99668fca969a72814b3142a7}\label{classUnstructuredFSIProblem_a934a587c99668fca969a72814b3142a7}} 
+\index{Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}!create\+\_\+fsi\+\_\+traction\+\_\+elements@{create\+\_\+fsi\+\_\+traction\+\_\+elements}}
+\index{create\+\_\+fsi\+\_\+traction\+\_\+elements@{create\+\_\+fsi\+\_\+traction\+\_\+elements}!Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}}
+\subsubsection{\texorpdfstring{create\+\_\+fsi\+\_\+traction\+\_\+elements()}{create\_fsi\_traction\_elements()}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT , class S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classUnstructuredFSIProblem}{Unstructured\+F\+S\+I\+Problem}$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::create\+\_\+fsi\+\_\+traction\+\_\+elements (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Create F\+SI traction elements. 
+
+
+
+Definition at line 709 of file unstructured\+\_\+three\+\_\+d\+\_\+fsi.\+cc.
+
+
+
+References Unstructured\+F\+S\+I\+Problem$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+N\+T, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::create\+\_\+lagrange\+\_\+multiplier\+\_\+elements(), and Global\+\_\+\+Parameters\+::Q.
+
+
+
+Referenced by Unstructured\+F\+S\+I\+Problem$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+N\+T, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::\+Unstructured\+F\+S\+I\+Problem().
+
+\mbox{\Hypertarget{classUnstructuredFSIProblem_a6f810c300f373cfc79e23d58f95944e3}\label{classUnstructuredFSIProblem_a6f810c300f373cfc79e23d58f95944e3}} 
+\index{Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}!create\+\_\+lagrange\+\_\+multiplier\+\_\+elements@{create\+\_\+lagrange\+\_\+multiplier\+\_\+elements}}
+\index{create\+\_\+lagrange\+\_\+multiplier\+\_\+elements@{create\+\_\+lagrange\+\_\+multiplier\+\_\+elements}!Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}}
+\subsubsection{\texorpdfstring{create\+\_\+lagrange\+\_\+multiplier\+\_\+elements()}{create\_lagrange\_multiplier\_elements()}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT , class S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classUnstructuredFSIProblem}{Unstructured\+F\+S\+I\+Problem}$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::create\+\_\+lagrange\+\_\+multiplier\+\_\+elements (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Create elements that enforce prescribed boundary motion for the pseudo-\/solid fluid mesh by Lagrange multipliers. 
+
+Create elements that impose the prescribed boundary displacement for the pseudo-\/solid fluid mesh 
+
+Definition at line 756 of file unstructured\+\_\+three\+\_\+d\+\_\+fsi.\+cc.
+
+
+
+References Unstructured\+F\+S\+I\+Problem$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+N\+T, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::create\+\_\+fluid\+\_\+traction\+\_\+elements().
+
+
+
+Referenced by Unstructured\+F\+S\+I\+Problem$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+N\+T, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::create\+\_\+fsi\+\_\+traction\+\_\+elements().
+
+\mbox{\Hypertarget{classUnstructuredFSIProblem_a90c15e131c5ef01add676e0e78e5628c}\label{classUnstructuredFSIProblem_a90c15e131c5ef01add676e0e78e5628c}} 
+\index{Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}!doc\+\_\+solid\+\_\+boundary\+\_\+coordinates@{doc\+\_\+solid\+\_\+boundary\+\_\+coordinates}}
+\index{doc\+\_\+solid\+\_\+boundary\+\_\+coordinates@{doc\+\_\+solid\+\_\+boundary\+\_\+coordinates}!Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}}
+\subsubsection{\texorpdfstring{doc\+\_\+solid\+\_\+boundary\+\_\+coordinates()}{doc\_solid\_boundary\_coordinates()}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT , class S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classUnstructuredFSIProblem}{Unstructured\+F\+S\+I\+Problem}$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::doc\+\_\+solid\+\_\+boundary\+\_\+coordinates (\begin{DoxyParamCaption}\item[{const unsigned \&}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Sanity check\+: Doc boundary coordinates on i-\/th solid F\+SI interface. 
+
+Doc boundary coordinates of i-\/th solid F\+SI boundary. 
+
+Definition at line 882 of file unstructured\+\_\+three\+\_\+d\+\_\+fsi.\+cc.
+
+
+
+References Unstructured\+F\+S\+I\+Problem$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+N\+T, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::doc\+\_\+solution().
+
+
+
+Referenced by Unstructured\+F\+S\+I\+Problem$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+N\+T, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::create\+\_\+fluid\+\_\+traction\+\_\+elements().
+
+\mbox{\Hypertarget{classUnstructuredFSIProblem_a15f581318b505de07f50bd570da8c8d0}\label{classUnstructuredFSIProblem_a15f581318b505de07f50bd570da8c8d0}} 
+\index{Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}!doc\+\_\+solution@{doc\+\_\+solution}}
+\index{doc\+\_\+solution@{doc\+\_\+solution}!Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}}
+\subsubsection{\texorpdfstring{doc\+\_\+solution()}{doc\_solution()}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT , class S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classUnstructuredFSIProblem}{Unstructured\+F\+S\+I\+Problem}$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::doc\+\_\+solution (\begin{DoxyParamCaption}\item[{Doc\+Info \&}]{doc\+\_\+info }\end{DoxyParamCaption})}
+
+
+
+Doc the solution. 
+
+
+
+Definition at line 939 of file unstructured\+\_\+three\+\_\+d\+\_\+fsi.\+cc.
+
+
+
+Referenced by Unstructured\+F\+S\+I\+Problem$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+N\+T, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::doc\+\_\+solid\+\_\+boundary\+\_\+coordinates(), and main().
+
+\mbox{\Hypertarget{classUnstructuredFSIProblem_a7ef3b155002c3a71a7cb43d8c86a7a6d}\label{classUnstructuredFSIProblem_a7ef3b155002c3a71a7cb43d8c86a7a6d}} 
+\index{Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}!nfluid\+\_\+fsi\+\_\+boundary@{nfluid\+\_\+fsi\+\_\+boundary}}
+\index{nfluid\+\_\+fsi\+\_\+boundary@{nfluid\+\_\+fsi\+\_\+boundary}!Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}}
+\subsubsection{\texorpdfstring{nfluid\+\_\+fsi\+\_\+boundary()}{nfluid\_fsi\_boundary()}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT , class S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+unsigned \hyperlink{classUnstructuredFSIProblem}{Unstructured\+F\+S\+I\+Problem}$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::nfluid\+\_\+fsi\+\_\+boundary (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Return total number of mesh boundaries in the fluid mesh that make up the F\+SI interface. 
+
+
+
+Definition at line 268 of file unstructured\+\_\+three\+\_\+d\+\_\+fsi.\+cc.
+
+\mbox{\Hypertarget{classUnstructuredFSIProblem_a74a81b12db3e54dffcb68ebd0447610c}\label{classUnstructuredFSIProblem_a74a81b12db3e54dffcb68ebd0447610c}} 
+\index{Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}!nfluid\+\_\+inflow\+\_\+traction\+\_\+boundary@{nfluid\+\_\+inflow\+\_\+traction\+\_\+boundary}}
+\index{nfluid\+\_\+inflow\+\_\+traction\+\_\+boundary@{nfluid\+\_\+inflow\+\_\+traction\+\_\+boundary}!Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}}
+\subsubsection{\texorpdfstring{nfluid\+\_\+inflow\+\_\+traction\+\_\+boundary()}{nfluid\_inflow\_traction\_boundary()}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT , class S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+unsigned \hyperlink{classUnstructuredFSIProblem}{Unstructured\+F\+S\+I\+Problem}$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::nfluid\+\_\+inflow\+\_\+traction\+\_\+boundary (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Return total number of mesh boundaries that make up the inflow boundary. 
+
+
+
+Definition at line 248 of file unstructured\+\_\+three\+\_\+d\+\_\+fsi.\+cc.
+
+\mbox{\Hypertarget{classUnstructuredFSIProblem_acc6f2d0f03a9bc1af96e85b54824a16b}\label{classUnstructuredFSIProblem_acc6f2d0f03a9bc1af96e85b54824a16b}} 
+\index{Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}!nfluid\+\_\+outflow\+\_\+traction\+\_\+boundary@{nfluid\+\_\+outflow\+\_\+traction\+\_\+boundary}}
+\index{nfluid\+\_\+outflow\+\_\+traction\+\_\+boundary@{nfluid\+\_\+outflow\+\_\+traction\+\_\+boundary}!Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}}
+\subsubsection{\texorpdfstring{nfluid\+\_\+outflow\+\_\+traction\+\_\+boundary()}{nfluid\_outflow\_traction\_boundary()}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT , class S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+unsigned \hyperlink{classUnstructuredFSIProblem}{Unstructured\+F\+S\+I\+Problem}$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::nfluid\+\_\+outflow\+\_\+traction\+\_\+boundary (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Return total number of mesh boundaries that make up the outflow boundary. 
+
+
+
+Definition at line 253 of file unstructured\+\_\+three\+\_\+d\+\_\+fsi.\+cc.
+
+\mbox{\Hypertarget{classUnstructuredFSIProblem_a476394046c343524eefff856715eb722}\label{classUnstructuredFSIProblem_a476394046c343524eefff856715eb722}} 
+\index{Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}!nfluid\+\_\+traction\+\_\+boundary@{nfluid\+\_\+traction\+\_\+boundary}}
+\index{nfluid\+\_\+traction\+\_\+boundary@{nfluid\+\_\+traction\+\_\+boundary}!Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}}
+\subsubsection{\texorpdfstring{nfluid\+\_\+traction\+\_\+boundary()}{nfluid\_traction\_boundary()}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT , class S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+unsigned \hyperlink{classUnstructuredFSIProblem}{Unstructured\+F\+S\+I\+Problem}$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::nfluid\+\_\+traction\+\_\+boundary (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Return total number of mesh boundaries that make up the in-\/ and outflow boundaries where a traction has to be applied. 
+
+
+
+Definition at line 258 of file unstructured\+\_\+three\+\_\+d\+\_\+fsi.\+cc.
+
+\mbox{\Hypertarget{classUnstructuredFSIProblem_a221ed63d39e5377626e458b2c070541e}\label{classUnstructuredFSIProblem_a221ed63d39e5377626e458b2c070541e}} 
+\index{Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}!npinned\+\_\+solid\+\_\+boundary@{npinned\+\_\+solid\+\_\+boundary}}
+\index{npinned\+\_\+solid\+\_\+boundary@{npinned\+\_\+solid\+\_\+boundary}!Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}}
+\subsubsection{\texorpdfstring{npinned\+\_\+solid\+\_\+boundary()}{npinned\_solid\_boundary()}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT , class S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+unsigned \hyperlink{classUnstructuredFSIProblem}{Unstructured\+F\+S\+I\+Problem}$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::npinned\+\_\+solid\+\_\+boundary (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Return total number of mesh boundaries in the solid mesh where the position is pinned. 
+
+
+
+Definition at line 273 of file unstructured\+\_\+three\+\_\+d\+\_\+fsi.\+cc.
+
+\mbox{\Hypertarget{classUnstructuredFSIProblem_a3e4ee23245ec4c43e085006f5cd192e1}\label{classUnstructuredFSIProblem_a3e4ee23245ec4c43e085006f5cd192e1}} 
+\index{Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}!nsolid\+\_\+fsi\+\_\+boundary@{nsolid\+\_\+fsi\+\_\+boundary}}
+\index{nsolid\+\_\+fsi\+\_\+boundary@{nsolid\+\_\+fsi\+\_\+boundary}!Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}}
+\subsubsection{\texorpdfstring{nsolid\+\_\+fsi\+\_\+boundary()}{nsolid\_fsi\_boundary()}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT , class S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+unsigned \hyperlink{classUnstructuredFSIProblem}{Unstructured\+F\+S\+I\+Problem}$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::nsolid\+\_\+fsi\+\_\+boundary (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Return total number of mesh boundaries in the solid mesh that make up the F\+SI interface. 
+
+
+
+Definition at line 263 of file unstructured\+\_\+three\+\_\+d\+\_\+fsi.\+cc.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classUnstructuredFSIProblem_a79fee04b489d1ce1f822eec9d34251e5}\label{classUnstructuredFSIProblem_a79fee04b489d1ce1f822eec9d34251e5}} 
+\index{Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}!Fluid\+\_\+fsi\+\_\+boundary\+\_\+id@{Fluid\+\_\+fsi\+\_\+boundary\+\_\+id}}
+\index{Fluid\+\_\+fsi\+\_\+boundary\+\_\+id@{Fluid\+\_\+fsi\+\_\+boundary\+\_\+id}!Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}}
+\subsubsection{\texorpdfstring{Fluid\+\_\+fsi\+\_\+boundary\+\_\+id}{Fluid\_fsi\_boundary\_id}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT , class S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+Vector$<$unsigned$>$ \hyperlink{classUnstructuredFSIProblem}{Unstructured\+F\+S\+I\+Problem}$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::Fluid\+\_\+fsi\+\_\+boundary\+\_\+id\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+I\+Ds of fluid mesh boundaries which make up the F\+SI interface. 
+
+
+
+Definition at line 312 of file unstructured\+\_\+three\+\_\+d\+\_\+fsi.\+cc.
+
+\mbox{\Hypertarget{classUnstructuredFSIProblem_a7892a7d7fd6aeff9f7a391b70bab9c81}\label{classUnstructuredFSIProblem_a7892a7d7fd6aeff9f7a391b70bab9c81}} 
+\index{Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}!Fluid\+\_\+mesh\+\_\+pt@{Fluid\+\_\+mesh\+\_\+pt}}
+\index{Fluid\+\_\+mesh\+\_\+pt@{Fluid\+\_\+mesh\+\_\+pt}!Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}}
+\subsubsection{\texorpdfstring{Fluid\+\_\+mesh\+\_\+pt}{Fluid\_mesh\_pt}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT , class S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classFluidTetMesh}{Fluid\+Tet\+Mesh}$<$F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT$>$$\ast$ \hyperlink{classUnstructuredFSIProblem}{Unstructured\+F\+S\+I\+Problem}$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::Fluid\+\_\+mesh\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Bulk fluid mesh. 
+
+
+
+Definition at line 285 of file unstructured\+\_\+three\+\_\+d\+\_\+fsi.\+cc.
+
+\mbox{\Hypertarget{classUnstructuredFSIProblem_a1ae2785eef94e3ba41fe5562a4a32c8d}\label{classUnstructuredFSIProblem_a1ae2785eef94e3ba41fe5562a4a32c8d}} 
+\index{Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}!Fluid\+\_\+traction\+\_\+mesh\+\_\+pt@{Fluid\+\_\+traction\+\_\+mesh\+\_\+pt}}
+\index{Fluid\+\_\+traction\+\_\+mesh\+\_\+pt@{Fluid\+\_\+traction\+\_\+mesh\+\_\+pt}!Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}}
+\subsubsection{\texorpdfstring{Fluid\+\_\+traction\+\_\+mesh\+\_\+pt}{Fluid\_traction\_mesh\_pt}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT , class S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+Vector$<$Mesh$\ast$$>$ \hyperlink{classUnstructuredFSIProblem}{Unstructured\+F\+S\+I\+Problem}$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::Fluid\+\_\+traction\+\_\+mesh\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Meshes of fluid traction elements that apply pressure at in/outflow. 
+
+
+
+Definition at line 288 of file unstructured\+\_\+three\+\_\+d\+\_\+fsi.\+cc.
+
+\mbox{\Hypertarget{classUnstructuredFSIProblem_a75cb40c497f6b54e05741df6e9c430ba}\label{classUnstructuredFSIProblem_a75cb40c497f6b54e05741df6e9c430ba}} 
+\index{Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}!Inflow\+\_\+boundary\+\_\+id@{Inflow\+\_\+boundary\+\_\+id}}
+\index{Inflow\+\_\+boundary\+\_\+id@{Inflow\+\_\+boundary\+\_\+id}!Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}}
+\subsubsection{\texorpdfstring{Inflow\+\_\+boundary\+\_\+id}{Inflow\_boundary\_id}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT , class S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+Vector$<$unsigned$>$ \hyperlink{classUnstructuredFSIProblem}{Unstructured\+F\+S\+I\+Problem}$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::Inflow\+\_\+boundary\+\_\+id\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+I\+Ds of fluid mesh boundaries along which inflow boundary conditions are applied. 
+
+
+
+Definition at line 305 of file unstructured\+\_\+three\+\_\+d\+\_\+fsi.\+cc.
+
+\mbox{\Hypertarget{classUnstructuredFSIProblem_a2e942a90cc462bf0df04ad28057d4071}\label{classUnstructuredFSIProblem_a2e942a90cc462bf0df04ad28057d4071}} 
+\index{Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}!Lagrange\+\_\+multiplier\+\_\+mesh\+\_\+pt@{Lagrange\+\_\+multiplier\+\_\+mesh\+\_\+pt}}
+\index{Lagrange\+\_\+multiplier\+\_\+mesh\+\_\+pt@{Lagrange\+\_\+multiplier\+\_\+mesh\+\_\+pt}!Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}}
+\subsubsection{\texorpdfstring{Lagrange\+\_\+multiplier\+\_\+mesh\+\_\+pt}{Lagrange\_multiplier\_mesh\_pt}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT , class S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+Vector$<$Solid\+Mesh$\ast$$>$ \hyperlink{classUnstructuredFSIProblem}{Unstructured\+F\+S\+I\+Problem}$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::Lagrange\+\_\+multiplier\+\_\+mesh\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Meshes of Lagrange multiplier elements. 
+
+
+
+Definition at line 291 of file unstructured\+\_\+three\+\_\+d\+\_\+fsi.\+cc.
+
+\mbox{\Hypertarget{classUnstructuredFSIProblem_ab3ca6da48fb75f5b56cd2f0b581a2da0}\label{classUnstructuredFSIProblem_ab3ca6da48fb75f5b56cd2f0b581a2da0}} 
+\index{Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}!Outflow\+\_\+boundary\+\_\+id@{Outflow\+\_\+boundary\+\_\+id}}
+\index{Outflow\+\_\+boundary\+\_\+id@{Outflow\+\_\+boundary\+\_\+id}!Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}}
+\subsubsection{\texorpdfstring{Outflow\+\_\+boundary\+\_\+id}{Outflow\_boundary\_id}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT , class S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+Vector$<$unsigned$>$ \hyperlink{classUnstructuredFSIProblem}{Unstructured\+F\+S\+I\+Problem}$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::Outflow\+\_\+boundary\+\_\+id\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+I\+Ds of fluid mesh boundaries along which inflow boundary conditions are applied. 
+
+
+
+Definition at line 309 of file unstructured\+\_\+three\+\_\+d\+\_\+fsi.\+cc.
+
+\mbox{\Hypertarget{classUnstructuredFSIProblem_a788dde635a29da6a40b21629780eb9b8}\label{classUnstructuredFSIProblem_a788dde635a29da6a40b21629780eb9b8}} 
+\index{Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}!Pinned\+\_\+solid\+\_\+boundary\+\_\+id@{Pinned\+\_\+solid\+\_\+boundary\+\_\+id}}
+\index{Pinned\+\_\+solid\+\_\+boundary\+\_\+id@{Pinned\+\_\+solid\+\_\+boundary\+\_\+id}!Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}}
+\subsubsection{\texorpdfstring{Pinned\+\_\+solid\+\_\+boundary\+\_\+id}{Pinned\_solid\_boundary\_id}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT , class S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+Vector$<$unsigned$>$ \hyperlink{classUnstructuredFSIProblem}{Unstructured\+F\+S\+I\+Problem}$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::Pinned\+\_\+solid\+\_\+boundary\+\_\+id\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+I\+Ds of solid mesh boundaries where displacements are pinned. 
+
+
+
+Definition at line 298 of file unstructured\+\_\+three\+\_\+d\+\_\+fsi.\+cc.
+
+\mbox{\Hypertarget{classUnstructuredFSIProblem_a286830595411866cbbb3a43313d76285}\label{classUnstructuredFSIProblem_a286830595411866cbbb3a43313d76285}} 
+\index{Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}!Solid\+\_\+fsi\+\_\+boundary\+\_\+id@{Solid\+\_\+fsi\+\_\+boundary\+\_\+id}}
+\index{Solid\+\_\+fsi\+\_\+boundary\+\_\+id@{Solid\+\_\+fsi\+\_\+boundary\+\_\+id}!Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}}
+\subsubsection{\texorpdfstring{Solid\+\_\+fsi\+\_\+boundary\+\_\+id}{Solid\_fsi\_boundary\_id}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT , class S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+Vector$<$unsigned$>$ \hyperlink{classUnstructuredFSIProblem}{Unstructured\+F\+S\+I\+Problem}$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::Solid\+\_\+fsi\+\_\+boundary\+\_\+id\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+I\+Ds of solid mesh boundaries which make up the F\+SI interface. 
+
+
+
+Definition at line 301 of file unstructured\+\_\+three\+\_\+d\+\_\+fsi.\+cc.
+
+\mbox{\Hypertarget{classUnstructuredFSIProblem_a292fef90d668209e31d51db20d6bfd9a}\label{classUnstructuredFSIProblem_a292fef90d668209e31d51db20d6bfd9a}} 
+\index{Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}!Solid\+\_\+fsi\+\_\+boundary\+\_\+pt@{Solid\+\_\+fsi\+\_\+boundary\+\_\+pt}}
+\index{Solid\+\_\+fsi\+\_\+boundary\+\_\+pt@{Solid\+\_\+fsi\+\_\+boundary\+\_\+pt}!Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}}
+\subsubsection{\texorpdfstring{Solid\+\_\+fsi\+\_\+boundary\+\_\+pt}{Solid\_fsi\_boundary\_pt}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT , class S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+Vector$<$Mesh\+As\+Geom\+Object$\ast$$>$ \hyperlink{classUnstructuredFSIProblem}{Unstructured\+F\+S\+I\+Problem}$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::Solid\+\_\+fsi\+\_\+boundary\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Geom\+Object incarnations of the F\+SI boundary in the solid mesh. 
+
+
+
+Definition at line 295 of file unstructured\+\_\+three\+\_\+d\+\_\+fsi.\+cc.
+
+\mbox{\Hypertarget{classUnstructuredFSIProblem_a5ff1c23ca84612c8bb468f1476e0bdd9}\label{classUnstructuredFSIProblem_a5ff1c23ca84612c8bb468f1476e0bdd9}} 
+\index{Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}!Solid\+\_\+fsi\+\_\+traction\+\_\+mesh\+\_\+pt@{Solid\+\_\+fsi\+\_\+traction\+\_\+mesh\+\_\+pt}}
+\index{Solid\+\_\+fsi\+\_\+traction\+\_\+mesh\+\_\+pt@{Solid\+\_\+fsi\+\_\+traction\+\_\+mesh\+\_\+pt}!Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}}
+\subsubsection{\texorpdfstring{Solid\+\_\+fsi\+\_\+traction\+\_\+mesh\+\_\+pt}{Solid\_fsi\_traction\_mesh\_pt}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT , class S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+Vector$<$Solid\+Mesh$\ast$$>$ \hyperlink{classUnstructuredFSIProblem}{Unstructured\+F\+S\+I\+Problem}$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::Solid\+\_\+fsi\+\_\+traction\+\_\+mesh\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Meshes of F\+SI traction elements. 
+
+
+
+Definition at line 282 of file unstructured\+\_\+three\+\_\+d\+\_\+fsi.\+cc.
+
+\mbox{\Hypertarget{classUnstructuredFSIProblem_a54debe981843ae9c7a40de65229698a3}\label{classUnstructuredFSIProblem_a54debe981843ae9c7a40de65229698a3}} 
+\index{Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}!Solid\+\_\+mesh\+\_\+pt@{Solid\+\_\+mesh\+\_\+pt}}
+\index{Solid\+\_\+mesh\+\_\+pt@{Solid\+\_\+mesh\+\_\+pt}!Unstructured\+F\+S\+I\+Problem@{Unstructured\+F\+S\+I\+Problem}}
+\subsubsection{\texorpdfstring{Solid\+\_\+mesh\+\_\+pt}{Solid\_mesh\_pt}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT , class S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classMySolidTetgenMesh}{My\+Solid\+Tetgen\+Mesh}$<$S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT$>$$\ast$ \hyperlink{classUnstructuredFSIProblem}{Unstructured\+F\+S\+I\+Problem}$<$ F\+L\+U\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT, S\+O\+L\+I\+D\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::Solid\+\_\+mesh\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Bulk solid mesh. 
+
+
+
+Definition at line 279 of file unstructured\+\_\+three\+\_\+d\+\_\+fsi.\+cc.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{unstructured__three__d__fsi_8cc}{unstructured\+\_\+three\+\_\+d\+\_\+fsi.\+cc}\end{DoxyCompactItemize}

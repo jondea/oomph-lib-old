@@ -1,0 +1,570 @@
+In this tutorial we re-\/visit the solution of the time-\/harmonic equations of 3D linear elasticity in cylindrical polar coordinates, using a Fourier decomposition of the solution in the azimuthal direction. The driver code is very similar to the one discussed in \href{../../cylinder/html/index.html}{\tt another tutorial } -- the main purpose of the current tutorial is to demonstrate the use of spatial adaptivity on unstructured meshes. Compared to the test case considered in the \href{../../cylinder/html/index.html}{\tt other tutorial} we study a slightly less contrived test problem\+: the forced time-\/harmonic oscillations of a finite-\/length, hollow cylinder, loaded by a time-\/periodic pressure load on its inner surface.
+
+\begin{center} \tabulinesep=1mm
+\begin{longtabu} spread 0pt [c]{*{1}{|X[-1]}|}
+\hline
+\begin{center} {\bfseries Acknowledgement\+:} This implementation of the equations and the documentation were developed jointly with Robert Harter (Thales Underwater Systems Ltd) with financial support from a K\+TA Secondment grant from University of Manchester\textquotesingle{}s E\+P\+S\+R\+C-\/funded Knowledge Transfer Account. \end{center}    \\\cline{1-1}
+\end{longtabu}
+\end{center} 
+
+
+
+ 
+
+\hypertarget{index_test}{}\section{The test problem}\label{index_test}
+The figure below shows the problem considered in this tutorial\+: an annular elastic body that occupies the region $ r_{\rm min}\leq r\leq r_{\rm max}, z_{\rm min}\leq z\leq z_{\rm max} $ is loaded by a time-\/harmonic pressure load acting on its inner surface (at $ r = r_{\rm min} $). The upper and lower ends of the hollow cylinder (at $ z = z_{\rm min} $ and $ z = z_{\rm min} $) are held at a fixed position.
+
+Here is an animation of the resulting displacement field for $ r_{\rm min} = 0.1 $ and $ r_{\rm max} = 1.1. $
+
+ 
+\begin{DoxyImage}
+\includegraphics[width=0.6\textwidth]{anim}
+\doxyfigcaption{Forced oscillations of a thick-\/walled, hollow cylinder, subject to a pressure load on its inner surface. The pink shape in the background shows the cylinder\textquotesingle{}s undeformed shape (in a radial plane); the mesh plotted in the region r $<$ 0 illustrates how spatial adaptivity refines the mesh in regions of sharp displacement gradients (near the loaded surface and the supports). }
+\end{DoxyImage}
+
+
+
+
+ 
+
+\hypertarget{index_num}{}\section{The numerical solution}\label{index_num}
+The driver code for this problem is very similar to the one discussed in \href{../../cylinder/html/index.html}{\tt another tutorial}. Running {\ttfamily sdiff} on the two driver codes \begin{center} \href{../../../../demo_drivers/time_harmonic_fourier_decomposed_linear_elasticity/cylinder/cylinder.cc}{\tt demo\+\_\+drivers/time\+\_\+harmonic\+\_\+fourier\+\_\+decomposed\+\_\+linear\+\_\+elasticity/cylinder/cylinder.\+cc } \end{center}  and \begin{center} \href{../../../../demo_drivers/time_harmonic_fourier_decomposed_linear_elasticity/cylinder/pressure_loaded_cylinder.cc}{\tt demo\+\_\+drivers/time\+\_\+harmonic\+\_\+fourier\+\_\+decomposed\+\_\+linear\+\_\+elasticity/cylinder/pressure\+\_\+loaded\+\_\+cylinder.\+cc } \end{center}  shows you the differences, the most important of which are\+:
+\begin{DoxyItemize}
+\item The change of the forcing to a spatially constant pressure load on the inside boundary.
+\item The provision of the {\ttfamily actions\+\_\+before/after\+\_\+adapt}() functions and a helper function {\ttfamily complete\+\_\+problem\+\_\+setup()} which rebuilds the elements (by passing the problem parameters to the elements) following the unstructured mesh adaptation. (The need/rationale for such a function is discussed in \href{../../../meshes/mesh_from_inline_triangle/html/index.html}{\tt another tutorial.})
+\item The mesh generation and the application of boundary conditions at the upper and lower boundaries of the hollow cylinder.
+\end{DoxyItemize}All of this is reasonably straightforward and provides a powerful code that automatically adapts the mesh in regions of large displacement gradients. Have a look through the driver code and play with it.
+
+
+
+ 
+
+\hypertarget{index_code}{}\section{Code listing}\label{index_code}
+Here\textquotesingle{}s a listing of the complete driver code\+:
+
+
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//LIC// ====================================================================}
+\textcolor{comment}{//LIC// This file forms part of oomph-lib, the object-oriented, }
+\textcolor{comment}{//LIC// multi-physics finite-element library, available }
+\textcolor{comment}{//LIC// at http://www.oomph-lib.org.}
+\textcolor{comment}{//LIC// }
+\textcolor{comment}{//LIC//    Version 1.0; svn revision $LastChangedRevision$}
+\textcolor{comment}{//LIC//}
+\textcolor{comment}{//LIC// $LastChangedDate$}
+\textcolor{comment}{//LIC// }
+\textcolor{comment}{//LIC// Copyright (C) 2006-2016 Matthias Heil and Andrew Hazel}
+\textcolor{comment}{//LIC// }
+\textcolor{comment}{//LIC// This library is free software; you can redistribute it and/or}
+\textcolor{comment}{//LIC// modify it under the terms of the GNU Lesser General Public}
+\textcolor{comment}{//LIC// License as published by the Free Software Foundation; either}
+\textcolor{comment}{//LIC// version 2.1 of the License, or (at your option) any later version.}
+\textcolor{comment}{//LIC// }
+\textcolor{comment}{//LIC// This library is distributed in the hope that it will be useful,}
+\textcolor{comment}{//LIC// but WITHOUT ANY WARRANTY; without even the implied warranty of}
+\textcolor{comment}{//LIC// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU}
+\textcolor{comment}{//LIC// Lesser General Public License for more details.}
+\textcolor{comment}{//LIC// }
+\textcolor{comment}{//LIC// You should have received a copy of the GNU Lesser General Public}
+\textcolor{comment}{//LIC// License along with this library; if not, write to the Free Software}
+\textcolor{comment}{//LIC// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA}
+\textcolor{comment}{//LIC// 02110-1301  USA.}
+\textcolor{comment}{//LIC// }
+\textcolor{comment}{//LIC// The authors may be contacted at oomph-lib@maths.man.ac.uk.}
+\textcolor{comment}{//LIC// }
+\textcolor{comment}{//LIC//====================================================================}
+\textcolor{comment}{// Driver }
+
+\textcolor{comment}{// The oomphlib headers}
+\textcolor{preprocessor}{#include "generic.h"}
+\textcolor{preprocessor}{#include "time\_harmonic\_fourier\_decomposed\_linear\_elasticity.h"}
+
+\textcolor{comment}{// The mesh}
+\textcolor{preprocessor}{#include "meshes/rectangular\_quadmesh.h"}
+\textcolor{preprocessor}{#include "meshes/triangle\_mesh.h"}
+
+\textcolor{keyword}{using namespace }\hyperlink{namespacestd}{std};
+
+\textcolor{keyword}{using namespace }\hyperlink{namespaceoomph}{oomph};
+
+
+\textcolor{comment}{//===start\_of\_namespace=================================================}\textcolor{comment}{}
+\textcolor{comment}{/// Namespace for global parameters}
+\textcolor{comment}{}\textcolor{comment}{//======================================================================}
+\textcolor{keyword}{namespace }\hyperlink{namespaceGlobal__Parameters}{Global\_Parameters}
+\{\textcolor{comment}{}
+\textcolor{comment}{ /// Define Poisson's ratio Nu}
+\textcolor{comment}{} std::complex<double> \hyperlink{namespaceGlobal__Parameters_a5978c2a1498ec7775b228a11a3912209}{Nu}(0.3,0.0);
+\textcolor{comment}{}
+\textcolor{comment}{ /// Define the non-dimensional Young's modulus}
+\textcolor{comment}{} std::complex<double> \hyperlink{namespaceGlobal__Parameters_ac74d762d76b56416281173421b018460}{E}(1.0,0.0);
+\textcolor{comment}{}
+\textcolor{comment}{ /// Define Fourier wavenumber}
+\textcolor{comment}{} \textcolor{keywordtype}{int} Fourier\_wavenumber = 0;
+\textcolor{comment}{}
+\textcolor{comment}{ /// \(\backslash\)short Define the non-dimensional square angular frequency of }
+\textcolor{comment}{ /// time-harmonic motion}
+\textcolor{comment}{} std::complex<double> \hyperlink{namespaceGlobal__Parameters_aa7f960ed4311ccf6e3dbf9371f13876a}{Omega\_sq} (10.0,0.0);
+\textcolor{comment}{}
+\textcolor{comment}{ /// Length of domain in r direction}
+\textcolor{comment}{} \textcolor{keywordtype}{double} Lr = 1.0;
+\textcolor{comment}{}
+\textcolor{comment}{ /// Length of domain in z-direction}
+\textcolor{comment}{} \textcolor{keywordtype}{double} Lz = 2.0;
+
+ \textcolor{comment}{// Set up min & max (r,z) coordinates}
+ \textcolor{keywordtype}{double} rmin = 0.1;
+ \textcolor{keywordtype}{double} zmin = 0.3;
+ \textcolor{keywordtype}{double} rmax = rmin+\hyperlink{namespaceGlobal__Parameters_a444f5c911c8805ad2ba45ed8b1b8904e}{Lr};
+ \textcolor{keywordtype}{double} zmax = zmin+\hyperlink{namespaceGlobal__Parameters_a2bcf0bd846d839f1e3bb04a6c0a612c1}{Lz};
+ \textcolor{comment}{}
+\textcolor{comment}{ /// Define the imaginary unit}
+\textcolor{comment}{} \textcolor{keyword}{const} std::complex<double> \hyperlink{namespaceGlobal__Parameters_a2ceef30cf51dfd432bafde39945a4e45}{I}(0.0,1.0);
+
+ \textcolor{comment}{// Pressure load}
+ \textcolor{keywordtype}{double} \hyperlink{namespaceGlobal__Parameters_a31fb55c20db4aa0127aafa20f0d76731}{P}=1.0;
+\textcolor{comment}{}
+\textcolor{comment}{ /// The traction function at r=rmin: (t\_r, t\_z, t\_theta)}
+\textcolor{comment}{} \textcolor{keywordtype}{void} \hyperlink{namespaceGlobal__Parameters_a579fa434bf9ee57e66d4bd42b208fc23}{boundary\_traction}(\textcolor{keyword}{const} Vector<double> &x,
+                      \textcolor{keyword}{const} Vector<double> &n,
+                      Vector<std::complex<double> > &result)
+ \{
+  \textcolor{comment}{// Radial traction}
+  result[0] = \hyperlink{namespaceGlobal__Parameters_a31fb55c20db4aa0127aafa20f0d76731}{P};
+  \textcolor{comment}{// Axial traction}
+  result[1] = 0.0;
+  \textcolor{comment}{// Azimuthal traction}
+  result[2] = 0.0;
+ \}
+ 
+ 
+\} \textcolor{comment}{// end\_of\_namespace}
+
+
+\textcolor{comment}{//===start\_of\_problem\_class=============================================}\textcolor{comment}{}
+\textcolor{comment}{/// Class to validate time harmonic linear elasticity (Fourier }
+\textcolor{comment}{/// decomposed)}
+\textcolor{comment}{}\textcolor{comment}{//======================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>
+\textcolor{keyword}{class }\hyperlink{classFourierDecomposedTimeHarmonicLinearElasticityProblem}{FourierDecomposedTimeHarmonicLinearElasticityProblem}
+       : \textcolor{keyword}{public} Problem
+\{
+\textcolor{keyword}{public}:
+\textcolor{comment}{}
+\textcolor{comment}{ /// \(\backslash\)short Constructor: Pass number of elements in r and z directions }
+\textcolor{comment}{ /// and boundary locations}
+\textcolor{comment}{} \hyperlink{classFourierDecomposedTimeHarmonicLinearElasticityProblem}{FourierDecomposedTimeHarmonicLinearElasticityProblem}(
+ \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} &nr, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} &nz,
+ \textcolor{keyword}{const} \textcolor{keywordtype}{double} &rmin, \textcolor{keyword}{const} \textcolor{keywordtype}{double}& rmax,
+ \textcolor{keyword}{const} \textcolor{keywordtype}{double} &zmin, \textcolor{keyword}{const} \textcolor{keywordtype}{double}& zmax);
+
+ \textcolor{comment}{}
+\textcolor{comment}{ /// Update before solve is empty}
+\textcolor{comment}{} \textcolor{keywordtype}{void} actions\_before\_newton\_solve() \{\}
+\textcolor{comment}{}
+\textcolor{comment}{ /// Update after solve is empty}
+\textcolor{comment}{} \textcolor{keywordtype}{void} actions\_after\_newton\_solve() \{\}
+ \textcolor{comment}{}
+\textcolor{comment}{ /// Delete traction elements}
+\textcolor{comment}{} \textcolor{keywordtype}{void} delete\_traction\_elements();
+ \textcolor{comment}{}
+\textcolor{comment}{ /// Helper function to complete problem setup}
+\textcolor{comment}{} \textcolor{keywordtype}{void} complete\_problem\_setup();
+\textcolor{comment}{}
+\textcolor{comment}{ /// Actions before adapt: Wipe the mesh of traction elements}
+\textcolor{comment}{} \textcolor{keywordtype}{void} actions\_before\_adapt()
+  \{
+   \textcolor{comment}{// Kill the traction elements and wipe surface mesh}
+   delete\_traction\_elements();
+   
+   \textcolor{comment}{// Rebuild the Problem's global mesh from its various sub-meshes}
+   rebuild\_global\_mesh();
+  \}
+
+\textcolor{comment}{}
+\textcolor{comment}{ /// Actions after adapt: Rebuild the mesh of traction elements}
+\textcolor{comment}{} \textcolor{keywordtype}{void} actions\_after\_adapt()
+  \{
+   \textcolor{comment}{// Create traction elements from all elements that are }
+   \textcolor{comment}{// adjacent to FSI boundaries and add them to surface meshes}
+   assign\_traction\_elements();
+   
+   \textcolor{comment}{// Rebuild the Problem's global mesh from its various sub-meshes}
+   rebuild\_global\_mesh();
+   
+   \textcolor{comment}{// Complete problem setup}
+   complete\_problem\_setup();   
+  \}
+\textcolor{comment}{}
+\textcolor{comment}{ /// Doc the solution}
+\textcolor{comment}{} \textcolor{keywordtype}{void} doc\_solution(DocInfo& doc\_info);
+ 
+\textcolor{keyword}{private}:
+ \textcolor{comment}{}
+\textcolor{comment}{ /// Allocate traction elements on the bottom surface}
+\textcolor{comment}{} \textcolor{keywordtype}{void} assign\_traction\_elements();
+ 
+\textcolor{preprocessor}{#ifdef ADAPTIVE}
+\textcolor{comment}{}
+\textcolor{comment}{ /// Pointer to the bulk mesh}
+\textcolor{comment}{} RefineableTriangleMesh<ELEMENT>* Bulk\_mesh\_pt;
+
+\textcolor{preprocessor}{#else}
+\textcolor{comment}{}
+\textcolor{comment}{ /// Pointer to the bulk mesh}
+\textcolor{comment}{} Mesh* Bulk\_mesh\_pt;
+
+\textcolor{preprocessor}{#endif}
+ \textcolor{comment}{}
+\textcolor{comment}{ /// Pointer to the mesh of traction elements}
+\textcolor{comment}{} Mesh* Surface\_mesh\_pt;
+\}; \textcolor{comment}{// end\_of\_problem\_class}
+
+
+\textcolor{comment}{//===start\_of\_constructor=============================================}\textcolor{comment}{}
+\textcolor{comment}{/// Problem constructor: Pass number of elements in coordinate}
+\textcolor{comment}{/// directions and size of domain.}
+\textcolor{comment}{}\textcolor{comment}{//====================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>
+\hyperlink{classFourierDecomposedTimeHarmonicLinearElasticityProblem_a52597ec969cbd2aaa9fde263594c1c32}{FourierDecomposedTimeHarmonicLinearElasticityProblem<ELEMENT>::}
+\hyperlink{classFourierDecomposedTimeHarmonicLinearElasticityProblem_a52597ec969cbd2aaa9fde263594c1c32}{FourierDecomposedTimeHarmonicLinearElasticityProblem}
+(\textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} &nr, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} &nz,
+ \textcolor{keyword}{const} \textcolor{keywordtype}{double} &rmin, \textcolor{keyword}{const} \textcolor{keywordtype}{double}& rmax,
+ \textcolor{keyword}{const} \textcolor{keywordtype}{double} &zmin, \textcolor{keyword}{const} \textcolor{keywordtype}{double}& zmax)
+\{
+
+\textcolor{preprocessor}{#ifdef ADAPTIVE}
+
+ \textcolor{comment}{// The boundary is bounded by four distinct boundaries, each}
+ \textcolor{comment}{// represented by its own polyline}
+ Vector<TriangleMeshCurveSection*> boundary\_polyline\_pt(4);
+ 
+ \textcolor{comment}{// Vertex coordinates on boundary}
+ Vector<Vector<double> > bound\_coords(2);
+ bound\_coords[0].resize(2);
+ bound\_coords[1].resize(2);
+     
+ \textcolor{comment}{// Horizontal bottom boundary}
+ bound\_coords[0][0]=\hyperlink{namespaceGlobal__Parameters_ad454d80ae621f272dd1d7932249545a5}{rmin};
+ bound\_coords[0][1]=\hyperlink{namespaceGlobal__Parameters_ac6a17dbcf1b8f1136a1ec5c07efef708}{zmin};
+ bound\_coords[1][0]=\hyperlink{namespaceGlobal__Parameters_a5d7fb394c980bb4bf2a52158f9d7cc50}{rmax};
+ bound\_coords[1][1]=\hyperlink{namespaceGlobal__Parameters_ac6a17dbcf1b8f1136a1ec5c07efef708}{zmin};
+ 
+ \textcolor{comment}{// Build the boundary polyline}
+ \textcolor{keywordtype}{unsigned} boundary\_id=0;
+ boundary\_polyline\_pt[0]=\textcolor{keyword}{new} TriangleMeshPolyLine(bound\_coords,boundary\_id);
+ 
+ \textcolor{comment}{// Vertical outer boundary}
+ bound\_coords[0][0]=\hyperlink{namespaceGlobal__Parameters_a5d7fb394c980bb4bf2a52158f9d7cc50}{rmax};
+ bound\_coords[0][1]=\hyperlink{namespaceGlobal__Parameters_ac6a17dbcf1b8f1136a1ec5c07efef708}{zmin};
+ bound\_coords[1][0]=\hyperlink{namespaceGlobal__Parameters_a5d7fb394c980bb4bf2a52158f9d7cc50}{rmax};
+ bound\_coords[1][1]=\hyperlink{namespaceGlobal__Parameters_a8ee2afb91b9b105939f19a0efa8e1441}{zmax};
+ 
+ \textcolor{comment}{// Build the boundary polyline}
+ boundary\_id=1;
+ boundary\_polyline\_pt[1]=\textcolor{keyword}{new} TriangleMeshPolyLine(bound\_coords,boundary\_id);
+ 
+
+ \textcolor{comment}{// Horizontal top boundary}
+ bound\_coords[0][0]=\hyperlink{namespaceGlobal__Parameters_a5d7fb394c980bb4bf2a52158f9d7cc50}{rmax};
+ bound\_coords[0][1]=\hyperlink{namespaceGlobal__Parameters_a8ee2afb91b9b105939f19a0efa8e1441}{zmax};
+ bound\_coords[1][0]=\hyperlink{namespaceGlobal__Parameters_ad454d80ae621f272dd1d7932249545a5}{rmin};
+ bound\_coords[1][1]=\hyperlink{namespaceGlobal__Parameters_a8ee2afb91b9b105939f19a0efa8e1441}{zmax};
+ 
+ \textcolor{comment}{// Build the boundary polyline}
+ boundary\_id=2;
+ boundary\_polyline\_pt[2]=\textcolor{keyword}{new} TriangleMeshPolyLine(bound\_coords,boundary\_id);
+ 
+ \textcolor{comment}{// Vertical inner boundary}
+ bound\_coords[0][0]=\hyperlink{namespaceGlobal__Parameters_ad454d80ae621f272dd1d7932249545a5}{rmin};
+ bound\_coords[0][1]=\hyperlink{namespaceGlobal__Parameters_a8ee2afb91b9b105939f19a0efa8e1441}{zmax};
+ bound\_coords[1][0]=\hyperlink{namespaceGlobal__Parameters_ad454d80ae621f272dd1d7932249545a5}{rmin};
+ bound\_coords[1][1]=\hyperlink{namespaceGlobal__Parameters_ac6a17dbcf1b8f1136a1ec5c07efef708}{zmin};
+ 
+ \textcolor{comment}{// Build the boundary polyline}
+ boundary\_id=3;
+ boundary\_polyline\_pt[3]=\textcolor{keyword}{new} TriangleMeshPolyLine(bound\_coords,boundary\_id);
+ 
+ \textcolor{comment}{// Pointer to the closed curve that defines the outer boundary}
+ TriangleMeshClosedCurve* closed\_curve\_pt= 
+  \textcolor{keyword}{new} TriangleMeshPolygon(boundary\_polyline\_pt);
+  
+ \textcolor{comment}{// Use the TriangleMeshParameters object for helping on the manage of the}
+ \textcolor{comment}{// TriangleMesh parameters}
+ TriangleMeshParameters triangle\_mesh\_parameters(closed\_curve\_pt);
+
+ \textcolor{comment}{// Specify the maximum area element}
+ \textcolor{keywordtype}{double} uniform\_element\_area=0.2;
+ triangle\_mesh\_parameters.element\_area() = uniform\_element\_area;
+
+ \textcolor{comment}{// Create the mesh}
+ Bulk\_mesh\_pt=\textcolor{keyword}{new} RefineableTriangleMesh<ELEMENT>(triangle\_mesh\_parameters);
+
+ \textcolor{comment}{// Set error estimator}
+ Bulk\_mesh\_pt->spatial\_error\_estimator\_pt()=\textcolor{keyword}{new} Z2ErrorEstimator;
+
+\textcolor{preprocessor}{#else}
+
+ \textcolor{comment}{//Now create the mesh}
+ Bulk\_mesh\_pt = \textcolor{keyword}{new} RectangularQuadMesh<ELEMENT>(nr,nz,\hyperlink{namespaceGlobal__Parameters_ad454d80ae621f272dd1d7932249545a5}{rmin},\hyperlink{namespaceGlobal__Parameters_a5d7fb394c980bb4bf2a52158f9d7cc50}{rmax},\hyperlink{namespaceGlobal__Parameters_ac6a17dbcf1b8f1136a1ec5c07efef708}{zmin},
+      \hyperlink{namespaceGlobal__Parameters_a8ee2afb91b9b105939f19a0efa8e1441}{zmax});
+
+\textcolor{preprocessor}{#endif}
+
+ \textcolor{comment}{//Create the surface mesh of traction elements}
+ Surface\_mesh\_pt=\textcolor{keyword}{new} Mesh;
+ assign\_traction\_elements();
+ 
+ \textcolor{comment}{// Complete problem setup}
+ complete\_problem\_setup();
+
+ \textcolor{comment}{// Add the submeshes to the problem}
+ add\_sub\_mesh(Bulk\_mesh\_pt);
+ add\_sub\_mesh(Surface\_mesh\_pt);
+
+ \textcolor{comment}{// Now build the global mesh}
+ build\_global\_mesh();
+
+ \textcolor{comment}{// Assign equation numbers}
+ cout << assign\_eqn\_numbers() << \textcolor{stringliteral}{" equations assigned"} << std::endl; 
+
+\} \textcolor{comment}{// end of constructor}
+
+
+
+\textcolor{comment}{//===start\_of\_complete\_problem\_setup=================================}\textcolor{comment}{}
+\textcolor{comment}{/// Complete problem setup}
+\textcolor{comment}{}\textcolor{comment}{//===================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>
+\textcolor{keywordtype}{void} \hyperlink{classFourierDecomposedTimeHarmonicLinearElasticityProblem_aeb3e1638026cb1cabf1b16a32496f63c}{FourierDecomposedTimeHarmonicLinearElasticityProblem<ELEMENT>::}
+\hyperlink{classFourierDecomposedTimeHarmonicLinearElasticityProblem_aeb3e1638026cb1cabf1b16a32496f63c}{complete\_problem\_setup}()
+\{
+ \textcolor{comment}{// Set the boundary conditions for this problem: All nodes are}
+ \textcolor{comment}{// free by default -- just pin & set the ones that have Dirichlet }
+ \textcolor{comment}{// conditions here}
+
+ \textcolor{comment}{// Pin displacements everywhere apart from boundaries 1 and 3}
+ \textcolor{comment}{//-----------------------------------------------------------}
+ \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} ibound=0;ibound<3;ibound=ibound+2)
+  \{
+   \textcolor{keywordtype}{unsigned} num\_nod=Bulk\_mesh\_pt->nboundary\_node(ibound);
+   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} inod=0;inod<num\_nod;inod++) 
+    \{
+     \textcolor{comment}{// Get pointer to node}
+     Node* nod\_pt=Bulk\_mesh\_pt->boundary\_node\_pt(ibound,inod);
+     
+     \textcolor{comment}{// Pinned in r, z and theta}
+     nod\_pt->pin(0);nod\_pt->pin(1);nod\_pt->pin(2);
+     nod\_pt->pin(3);nod\_pt->pin(4);nod\_pt->pin(5);
+     
+     \textcolor{comment}{// Set the displacements}
+     nod\_pt->set\_value(0,0.0);
+     nod\_pt->set\_value(1,0.0);
+     nod\_pt->set\_value(2,0.0);
+     nod\_pt->set\_value(3,0.0);
+     nod\_pt->set\_value(4,0.0);
+     nod\_pt->set\_value(5,0.0);
+    \}
+  \}
+
+
+ \textcolor{comment}{// Complete the problem setup to make the elements fully functional}
+
+ \textcolor{comment}{// Loop over the elements}
+ \textcolor{keywordtype}{unsigned} n\_el = Bulk\_mesh\_pt->nelement();
+ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} e=0;e<n\_el;e++)
+  \{
+   \textcolor{comment}{// Cast to a bulk element}
+   ELEMENT *el\_pt = \textcolor{keyword}{dynamic\_cast<}ELEMENT*\textcolor{keyword}{>}(Bulk\_mesh\_pt->element\_pt(e));
+
+   \textcolor{comment}{// Set the pointer to Poisson's ratio}
+   el\_pt->nu\_pt() = &\hyperlink{namespaceGlobal__Parameters_a5978c2a1498ec7775b228a11a3912209}{Global\_Parameters::Nu};
+
+   \textcolor{comment}{// Set the pointer to Fourier wavenumber}
+   el\_pt->fourier\_wavenumber\_pt() = &\hyperlink{namespaceGlobal__Parameters_ae1198385d90f52c4ed921520ae43a9e7}{Global\_Parameters::Fourier\_wavenumber}
+      ;
+
+   \textcolor{comment}{// Set the pointer to non-dim Young's modulus}
+   el\_pt->youngs\_modulus\_pt() = &\hyperlink{namespaceGlobal__Parameters_ac74d762d76b56416281173421b018460}{Global\_Parameters::E};
+
+   \textcolor{comment}{// Set the pointer to square of the angular frequency}
+   el\_pt->omega\_sq\_pt() = &\hyperlink{namespaceGlobal__Parameters_aa7f960ed4311ccf6e3dbf9371f13876a}{Global\_Parameters::Omega\_sq};
+
+  \}\textcolor{comment}{// end loop over elements}
+
+ \textcolor{comment}{// Loop over the traction elements}
+ \textcolor{keywordtype}{unsigned} n\_traction =  Surface\_mesh\_pt->nelement();
+ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} e=0;e<n\_traction;e++)
+  \{
+   \textcolor{comment}{// Cast to a surface element}
+   TimeHarmonicFourierDecomposedLinearElasticityTractionElement<ELEMENT>*
+    el\_pt = 
+    \textcolor{keyword}{dynamic\_cast<}TimeHarmonicFourierDecomposedLinearElasticityTractionElement
+    <ELEMENT\textcolor{keyword}{>}* >(Surface\_mesh\_pt->element\_pt(e));
+   
+   \textcolor{comment}{// Set the applied traction}
+   el\_pt->traction\_fct\_pt() = &\hyperlink{namespaceGlobal__Parameters_a579fa434bf9ee57e66d4bd42b208fc23}{Global\_Parameters::boundary\_traction};
+   
+  \}\textcolor{comment}{// end loop over traction elements}
+ 
+\}
+
+\textcolor{comment}{//===start\_of\_traction===============================================}\textcolor{comment}{}
+\textcolor{comment}{/// Make traction elements along the boundary r=rmin}
+\textcolor{comment}{}\textcolor{comment}{//===================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>
+\textcolor{keywordtype}{void} \hyperlink{classFourierDecomposedTimeHarmonicLinearElasticityProblem_ab995077cbd92377b726d0ea0de81720e}{FourierDecomposedTimeHarmonicLinearElasticityProblem<ELEMENT>::}
+\hyperlink{classFourierDecomposedTimeHarmonicLinearElasticityProblem_ab995077cbd92377b726d0ea0de81720e}{assign\_traction\_elements}()
+\{
+ \textcolor{keywordtype}{unsigned} bound, n\_neigh;
+
+ \textcolor{comment}{// How many bulk elements are next to boundary 3}
+ bound=3;
+ n\_neigh = Bulk\_mesh\_pt->nboundary\_element(bound); 
+
+ \textcolor{comment}{// Now loop over bulk elements and create the face elements}
+ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} n=0;n<n\_neigh;n++)
+  \{
+   \textcolor{comment}{// Create the face element}
+   FiniteElement *traction\_element\_pt 
+    = \textcolor{keyword}{new} TimeHarmonicFourierDecomposedLinearElasticityTractionElement<ELEMENT>
+    (Bulk\_mesh\_pt->boundary\_element\_pt(bound,n),
+     Bulk\_mesh\_pt->face\_index\_at\_boundary(bound,n));
+ 
+   \textcolor{comment}{// Add to mesh}
+   Surface\_mesh\_pt->add\_element\_pt(traction\_element\_pt);
+  \}
+
+\} \textcolor{comment}{// end of assign\_traction\_elements}
+
+
+\textcolor{comment}{//===start\_of\_delete\_traction========================================}\textcolor{comment}{}
+\textcolor{comment}{/// Delete traction elements}
+\textcolor{comment}{}\textcolor{comment}{//===================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>
+\textcolor{keywordtype}{void} \hyperlink{classFourierDecomposedTimeHarmonicLinearElasticityProblem_ad51d1870683e0141c7854c583dd3916b}{FourierDecomposedTimeHarmonicLinearElasticityProblem<ELEMENT>::}
+\hyperlink{classFourierDecomposedTimeHarmonicLinearElasticityProblem_ad51d1870683e0141c7854c583dd3916b}{delete\_traction\_elements}()
+\{
+ \textcolor{comment}{// How many surface elements are in the surface mesh}
+ \textcolor{keywordtype}{unsigned} n\_element = Surface\_mesh\_pt->nelement();
+ 
+ \textcolor{comment}{// Loop over the surface elements}
+ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} e=0;e<n\_element;e++)
+  \{
+   \textcolor{comment}{// Kill surface element}
+   \textcolor{keyword}{delete} Surface\_mesh\_pt->element\_pt(e);
+  \}
+ 
+ \textcolor{comment}{// Wipe the mesh}
+ Surface\_mesh\_pt->flush\_element\_and\_node\_storage();
+
+\} \textcolor{comment}{// end of delete\_traction\_elements}
+
+
+\textcolor{comment}{//==start\_of\_doc\_solution=================================================}\textcolor{comment}{}
+\textcolor{comment}{/// Doc the solution}
+\textcolor{comment}{}\textcolor{comment}{//========================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>
+\textcolor{keywordtype}{void} \hyperlink{classFourierDecomposedTimeHarmonicLinearElasticityProblem_af328e5b2260377fa7df04b727ca130bd}{FourierDecomposedTimeHarmonicLinearElasticityProblem<ELEMENT>::}
+\hyperlink{classFourierDecomposedTimeHarmonicLinearElasticityProblem_af328e5b2260377fa7df04b727ca130bd}{doc\_solution}(DocInfo& doc\_info)
+\{ 
+ ofstream some\_file;
+ \textcolor{keywordtype}{char} filename[100];
+ 
+ \textcolor{comment}{// Number of plot points}
+ \textcolor{keywordtype}{unsigned} npts=5; 
+ 
+ \textcolor{comment}{// Output solution }
+ sprintf(filename,\textcolor{stringliteral}{"%s/soln.dat"},doc\_info.directory().c\_str());
+ some\_file.open(filename);
+ Bulk\_mesh\_pt->output(some\_file,npts);
+ some\_file.close();
+
+ \textcolor{comment}{// Output norm of solution (to allow validation of solution even}
+ \textcolor{comment}{// if triangle generates a slightly different mesh)}
+ sprintf(filename,\textcolor{stringliteral}{"%s/norm.dat"},doc\_info.directory().c\_str());   
+ some\_file.open(filename);   
+ \textcolor{keywordtype}{double} norm=0.0;
+ \textcolor{keywordtype}{unsigned} nel=Bulk\_mesh\_pt->nelement();
+ \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} e=0;e<nel;e++)
+  \{
+   \textcolor{keywordtype}{double} el\_norm=0.0;
+   Bulk\_mesh\_pt->compute\_norm(el\_norm);
+   norm+=el\_norm;
+  \}
+ some\_file << norm << std::endl;
+
+
+\} \textcolor{comment}{// end\_of\_doc\_solution   }
+
+
+\textcolor{comment}{//===start\_of\_main======================================================}\textcolor{comment}{}
+\textcolor{comment}{/// Driver code }
+\textcolor{comment}{}\textcolor{comment}{//======================================================================}
+\textcolor{keywordtype}{int} \hyperlink{cylinder_8cc_a0ddf1224851353fc92bfbff6f499fa97}{main}(\textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char}* argv[]) 
+\{
+ \textcolor{comment}{// Number of elements in r-direction}
+ \textcolor{keywordtype}{unsigned} nr=10;
+ 
+ \textcolor{comment}{// Number of elements in z-direction (for (approximately) square elements)}
+ \textcolor{keywordtype}{unsigned} nz=unsigned(\textcolor{keywordtype}{double}(nr)*\hyperlink{namespaceGlobal__Parameters_a2bcf0bd846d839f1e3bb04a6c0a612c1}{Global\_Parameters::Lz}/
+      \hyperlink{namespaceGlobal__Parameters_a444f5c911c8805ad2ba45ed8b1b8904e}{Global\_Parameters::Lr});
+
+ \textcolor{comment}{// Set up doc info}
+ DocInfo doc\_info;
+ 
+ \textcolor{comment}{// Set output directory}
+ doc\_info.set\_directory(\textcolor{stringliteral}{"RESLT"});
+
+\textcolor{preprocessor}{#ifdef ADAPTIVE}
+
+ \textcolor{comment}{// Set up problem}
+ \hyperlink{classFourierDecomposedTimeHarmonicLinearElasticityProblem}{FourierDecomposedTimeHarmonicLinearElasticityProblem}
+  <ProjectableTimeHarmonicFourierDecomposedLinearElasticityElement
+   <TTimeHarmonicFourierDecomposedLinearElasticityElement<3> > >
+  problem(nr,nz,\hyperlink{namespaceGlobal__Parameters_ad454d80ae621f272dd1d7932249545a5}{Global\_Parameters::rmin},
+      \hyperlink{namespaceGlobal__Parameters_a5d7fb394c980bb4bf2a52158f9d7cc50}{Global\_Parameters::rmax},
+          \hyperlink{namespaceGlobal__Parameters_ac6a17dbcf1b8f1136a1ec5c07efef708}{Global\_Parameters::zmin},\hyperlink{namespaceGlobal__Parameters_a8ee2afb91b9b105939f19a0efa8e1441}{Global\_Parameters::zmax});
+
+ \textcolor{comment}{// Solve}
+ \textcolor{keywordtype}{unsigned} max\_adapt=3;
+ problem.newton\_solve(max\_adapt);
+ 
+\textcolor{preprocessor}{#else}
+
+ \textcolor{comment}{// Set up problem}
+ \hyperlink{classFourierDecomposedTimeHarmonicLinearElasticityProblem}{FourierDecomposedTimeHarmonicLinearElasticityProblem}
+  <QTimeHarmonicFourierDecomposedLinearElasticityElement<3> > 
+  problem(nr,nz,\hyperlink{namespaceGlobal__Parameters_ad454d80ae621f272dd1d7932249545a5}{Global\_Parameters::rmin},
+      \hyperlink{namespaceGlobal__Parameters_a5d7fb394c980bb4bf2a52158f9d7cc50}{Global\_Parameters::rmax},
+          \hyperlink{namespaceGlobal__Parameters_ac6a17dbcf1b8f1136a1ec5c07efef708}{Global\_Parameters::zmin},\hyperlink{namespaceGlobal__Parameters_a8ee2afb91b9b105939f19a0efa8e1441}{Global\_Parameters::zmax});
+ 
+ \textcolor{comment}{// Solve}
+ problem.newton\_solve();
+
+\textcolor{preprocessor}{#endif}
+ 
+ \textcolor{comment}{// Output the solution}
+ problem.doc\_solution(doc\_info);
+  
+\} \textcolor{comment}{// end\_of\_main}
+\end{DoxyCodeInclude}
+
+
+
+
+ 
+
+\hypertarget{index_sources}{}\section{Source files for this tutorial}\label{index_sources}
+
+\begin{DoxyItemize}
+\item The source files for this tutorial are located in the directory\+: \begin{center} \href{../../../../demo_drivers/time_harmonic_fourier_decomposed_linear_elasticity/cylinder/}{\tt demo\+\_\+drivers/time\+\_\+harmonic\+\_\+fourier\+\_\+decomposed\+\_\+linear\+\_\+elasticity/cylinder/ } \end{center} 
+\item The driver code is\+: \begin{center} \href{../../../../demo_drivers/time_harmonic_fourier_decomposed_linear_elasticity/cylinder/pressure_loaded_cylinder.cc}{\tt demo\+\_\+drivers/time\+\_\+harmonic\+\_\+fourier\+\_\+decomposed\+\_\+linear\+\_\+elasticity/cylinder/pressure\+\_\+loaded\+\_\+cylinder.\+cc } \end{center} 
+\end{DoxyItemize}
+
+
+
+ 
+
+ \hypertarget{index_pdf}{}\section{P\+D\+F file}\label{index_pdf}
+A \href{../latex/refman.pdf}{\tt pdf version} of this document is available. \end{document}

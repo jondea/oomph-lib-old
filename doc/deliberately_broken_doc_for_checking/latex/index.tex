@@ -1,0 +1,57 @@
+Here\textquotesingle{}s a code inclusion that works\+:
+
+ 
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//===== start\_of\_namespace=============================================}
+\textcolor{comment}{/// Namespace for the Helmholtz problem parameters}
+\textcolor{comment}{}\textcolor{comment}{//=====================================================================}
+\textcolor{keyword}{namespace }GlobalParameters
+\{\textcolor{comment}{}
+\textcolor{comment}{ /// \(\backslash\)short Square of the wavenumber}
+\textcolor{comment}{} \textcolor{keywordtype}{double} K\_squared=10.0; 
+ \textcolor{comment}{}
+\textcolor{comment}{ /// \(\backslash\)short Number of terms used in the computation }
+\textcolor{comment}{ /// of the exact solution}
+\textcolor{comment}{} \textcolor{keywordtype}{unsigned} N\_fourier=10;
+ \textcolor{comment}{}
+\textcolor{comment}{ /// \(\backslash\)short Flag to choose the Dirichlet to Neumann BC}
+\textcolor{comment}{ /// or ABC BC}
+\textcolor{comment}{} \textcolor{keywordtype}{bool} DtN\_BC=\textcolor{keyword}{false};
+\textcolor{comment}{}
+\textcolor{comment}{ /// \(\backslash\)short Flag to choose wich order to use}
+\textcolor{comment}{} \textcolor{comment}{// in the ABCs BC: 1 for ABC 1st order...}
+ \textcolor{keywordtype}{unsigned} ABC\_order=3;
+\textcolor{comment}{}
+\textcolor{comment}{ /// Radius of outer boundary (must be a circle!)}
+\textcolor{comment}{} \textcolor{keywordtype}{double} Outer\_radius=1.5;
+\textcolor{comment}{}
+\textcolor{comment}{ /// Imaginary unit }
+\textcolor{comment}{} std::complex<double> I(0.0,1.0);
+
+\end{DoxyCodeInclude}
+
+
+...and here\textquotesingle{}s one that doesn\textquotesingle{}t because I\textquotesingle{}ve deliberately broken the hook\+:
+
+ 
+\begin{DoxyCodeInclude}
+
+\end{DoxyCodeInclude}
+
+
+Here\textquotesingle{}s a link that works
+
+\href{http://en.wikipedia.org/wiki/Sommerfeld_radiation_condition}{\tt Sommerfeld radiation condition}
+
+and here\textquotesingle{}s one that possibly doesn\textquotesingle{}t because of an isolated \char`\"{}$<$a\char`\"{}\+:
+
+\href{http://en.wikipedia.org/wiki/Sommerfeld_radiation_condition}{\tt Sommerfeld radiation condition}
+
+Bla bla \href{http://www.maths.man.ac.uk/~mheil/page_doesnt_exist}{\tt click on this and you won\textquotesingle{}t get anywhere because the link is broken!} bla bla.
+
+
+
+ 
+
+ \hypertarget{index_pdf}{}\section{P\+D\+F file}\label{index_pdf}
+A \href{../latex/refman.pdf}{\tt pdf version} of this document is available. \end{document}

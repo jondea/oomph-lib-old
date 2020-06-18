@@ -1,0 +1,113 @@
+\hypertarget{classoomph_1_1BackwardStepQuadMesh}{}\section{oomph\+:\+:Backward\+Step\+Quad\+Mesh$<$ E\+L\+E\+M\+E\+NT $>$ Class Template Reference}
+\label{classoomph_1_1BackwardStepQuadMesh}\index{oomph\+::\+Backward\+Step\+Quad\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$@{oomph\+::\+Backward\+Step\+Quad\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$}}
+
+
+Backward step mesh.  
+
+
+
+
+{\ttfamily \#include $<$backward\+\_\+step\+\_\+mesh.\+template.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Backward\+Step\+Quad\+Mesh$<$ E\+L\+E\+M\+E\+NT $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=5.000000cm]{classoomph_1_1BackwardStepQuadMesh}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1BackwardStepQuadMesh_ae8374ae7d3646c00fec4fc9c2d604cf8}{Backward\+Step\+Quad\+Mesh} (const unsigned \&\hyperlink{classoomph_1_1RectangularQuadMesh_abfef93d6322886cdce14a437186e4821}{nx}, const unsigned \&\hyperlink{classoomph_1_1RectangularQuadMesh_a86d76a55eb7c4e8bca9b74d23c8b0412}{ny}, const unsigned \&nx\+\_\+cut\+\_\+out, const unsigned \&ny\+\_\+cut\+\_\+out, const double \&lx, const double \&ly, \hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper} $\ast$time\+\_\+stepper\+\_\+pt=\&\hyperlink{classoomph_1_1Mesh_a12243d0fee2b1fcee729ee5a4777ea10}{Mesh\+::\+Default\+\_\+\+Time\+Stepper})
+\begin{DoxyCompactList}\small\item\em Pass overall number of elements in the horizontal and vertical directions, nx and ny, and the corresponding dimensions, lx and ly. nx\+\_\+cut\+\_\+out and ny\+\_\+cut\+\_\+out elements are cut out from the lower right corner to create the (reversed) backward step geometry. Timestepper defaults to \hyperlink{classoomph_1_1Steady}{Steady}. \end{DoxyCompactList}\item 
+virtual \hyperlink{classoomph_1_1BackwardStepQuadMesh_aec4e05ad80d83327050653ebabce9564}{$\sim$\+Backward\+Step\+Quad\+Mesh} ()
+\begin{DoxyCompactList}\small\item\em Destructor\+: Empty. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classoomph_1_1BackwardStepQuadMesh_ab71a6f2854d36b845ed79dccb0101991}{build\+\_\+mesh} (const unsigned \&\hyperlink{classoomph_1_1RectangularQuadMesh_abfef93d6322886cdce14a437186e4821}{nx}, const unsigned \&\hyperlink{classoomph_1_1RectangularQuadMesh_a86d76a55eb7c4e8bca9b74d23c8b0412}{ny}, const unsigned \&nx\+\_\+cut\+\_\+out, const unsigned \&ny\+\_\+cut\+\_\+out, const double \&lx, const double \&ly)
+\begin{DoxyCompactList}\small\item\em Actual build function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class E\+L\+E\+M\+E\+NT$>$\newline
+class oomph\+::\+Backward\+Step\+Quad\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$}
+
+Backward step mesh. 
+
+Definition at line 51 of file backward\+\_\+step\+\_\+mesh.\+template.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1BackwardStepQuadMesh_ae8374ae7d3646c00fec4fc9c2d604cf8}\label{classoomph_1_1BackwardStepQuadMesh_ae8374ae7d3646c00fec4fc9c2d604cf8}} 
+\index{oomph\+::\+Backward\+Step\+Quad\+Mesh@{oomph\+::\+Backward\+Step\+Quad\+Mesh}!Backward\+Step\+Quad\+Mesh@{Backward\+Step\+Quad\+Mesh}}
+\index{Backward\+Step\+Quad\+Mesh@{Backward\+Step\+Quad\+Mesh}!oomph\+::\+Backward\+Step\+Quad\+Mesh@{oomph\+::\+Backward\+Step\+Quad\+Mesh}}
+\subsubsection{\texorpdfstring{Backward\+Step\+Quad\+Mesh()}{BackwardStepQuadMesh()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classoomph_1_1BackwardStepQuadMesh}{oomph\+::\+Backward\+Step\+Quad\+Mesh}$<$ E\+L\+E\+M\+E\+NT $>$\+::\hyperlink{classoomph_1_1BackwardStepQuadMesh}{Backward\+Step\+Quad\+Mesh} (\begin{DoxyParamCaption}\item[{const unsigned \&}]{nx,  }\item[{const unsigned \&}]{ny,  }\item[{const unsigned \&}]{nx\+\_\+cut\+\_\+out,  }\item[{const unsigned \&}]{ny\+\_\+cut\+\_\+out,  }\item[{const double \&}]{lx,  }\item[{const double \&}]{ly,  }\item[{\hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper} $\ast$}]{time\+\_\+stepper\+\_\+pt = {\ttfamily \&\hyperlink{classoomph_1_1Mesh_a12243d0fee2b1fcee729ee5a4777ea10}{Mesh\+::\+Default\+\_\+\+Time\+Stepper}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Pass overall number of elements in the horizontal and vertical directions, nx and ny, and the corresponding dimensions, lx and ly. nx\+\_\+cut\+\_\+out and ny\+\_\+cut\+\_\+out elements are cut out from the lower right corner to create the (reversed) backward step geometry. Timestepper defaults to \hyperlink{classoomph_1_1Steady}{Steady}. 
+
+
+
+Definition at line 63 of file backward\+\_\+step\+\_\+mesh.\+template.\+h.
+
+
+
+References oomph\+::\+Backward\+Step\+Quad\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::build\+\_\+mesh().
+
+\mbox{\Hypertarget{classoomph_1_1BackwardStepQuadMesh_aec4e05ad80d83327050653ebabce9564}\label{classoomph_1_1BackwardStepQuadMesh_aec4e05ad80d83327050653ebabce9564}} 
+\index{oomph\+::\+Backward\+Step\+Quad\+Mesh@{oomph\+::\+Backward\+Step\+Quad\+Mesh}!````~Backward\+Step\+Quad\+Mesh@{$\sim$\+Backward\+Step\+Quad\+Mesh}}
+\index{````~Backward\+Step\+Quad\+Mesh@{$\sim$\+Backward\+Step\+Quad\+Mesh}!oomph\+::\+Backward\+Step\+Quad\+Mesh@{oomph\+::\+Backward\+Step\+Quad\+Mesh}}
+\subsubsection{\texorpdfstring{$\sim$\+Backward\+Step\+Quad\+Mesh()}{~BackwardStepQuadMesh()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+virtual \hyperlink{classoomph_1_1BackwardStepQuadMesh}{oomph\+::\+Backward\+Step\+Quad\+Mesh}$<$ E\+L\+E\+M\+E\+NT $>$\+::$\sim$\hyperlink{classoomph_1_1BackwardStepQuadMesh}{Backward\+Step\+Quad\+Mesh} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Destructor\+: Empty. 
+
+
+
+Definition at line 78 of file backward\+\_\+step\+\_\+mesh.\+template.\+h.
+
+
+
+References oomph\+::\+Backward\+Step\+Quad\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::build\+\_\+mesh(), oomph\+::\+Rectangular\+Quad\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::nx(), and oomph\+::\+Rectangular\+Quad\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::ny().
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1BackwardStepQuadMesh_ab71a6f2854d36b845ed79dccb0101991}\label{classoomph_1_1BackwardStepQuadMesh_ab71a6f2854d36b845ed79dccb0101991}} 
+\index{oomph\+::\+Backward\+Step\+Quad\+Mesh@{oomph\+::\+Backward\+Step\+Quad\+Mesh}!build\+\_\+mesh@{build\+\_\+mesh}}
+\index{build\+\_\+mesh@{build\+\_\+mesh}!oomph\+::\+Backward\+Step\+Quad\+Mesh@{oomph\+::\+Backward\+Step\+Quad\+Mesh}}
+\subsubsection{\texorpdfstring{build\+\_\+mesh()}{build\_mesh()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classoomph_1_1BackwardStepQuadMesh}{oomph\+::\+Backward\+Step\+Quad\+Mesh}$<$ E\+L\+E\+M\+E\+NT $>$\+::build\+\_\+mesh (\begin{DoxyParamCaption}\item[{const unsigned \&}]{nx,  }\item[{const unsigned \&}]{ny,  }\item[{const unsigned \&}]{nx\+\_\+cut\+\_\+out,  }\item[{const unsigned \&}]{ny\+\_\+cut\+\_\+out,  }\item[{const double \&}]{lx,  }\item[{const double \&}]{ly }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Actual build function. 
+
+Actual build function. Pass overall number of elements in the horizontal and vertical directions, nx and ny, and the corresponding dimensions, lx and ly. nx\+\_\+cut\+\_\+out and ny\+\_\+cut\+\_\+out elements are cut out from the lower right corner to create the (reversed) backward step geometry. Timestepper defaults to \hyperlink{classoomph_1_1Steady}{Steady}. 
+
+Definition at line 52 of file backward\+\_\+step\+\_\+mesh.\+template.\+cc.
+
+
+
+References e, i, oomph\+::\+Node\+::is\+\_\+on\+\_\+boundary(), oomph\+::\+Finite\+Element\+::nnode(), oomph\+::\+Finite\+Element\+::nnode\+\_\+1d(), and oomph\+::\+Finite\+Element\+::node\+\_\+pt().
+
+
+
+Referenced by oomph\+::\+Backward\+Step\+Quad\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Backward\+Step\+Quad\+Mesh(), and oomph\+::\+Backward\+Step\+Quad\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::$\sim$\+Backward\+Step\+Quad\+Mesh().
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{backward__step__mesh_8template_8h}{backward\+\_\+step\+\_\+mesh.\+template.\+h}\item 
+\hyperlink{backward__step__mesh_8template_8cc}{backward\+\_\+step\+\_\+mesh.\+template.\+cc}\end{DoxyCompactItemize}

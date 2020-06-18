@@ -1,0 +1,520 @@
+\hypertarget{classCapProblem}{}\section{Cap\+Problem$<$ E\+L\+E\+M\+E\+NT $>$ Class Template Reference}
+\label{classCapProblem}\index{Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$@{Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$}}
+Inheritance diagram for Cap\+Problem$<$ E\+L\+E\+M\+E\+NT $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classCapProblem}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classCapProblem_ab03ed8e2c1b44911d11209e00cb28a42}{Cap\+Problem} (const bool \&hijack\+\_\+internal)
+\item 
+\hyperlink{classCapProblem_ad2b434212ecb33467359aef1071bc964}{$\sim$\+Cap\+Problem} ()
+\item 
+void \hyperlink{classCapProblem_af54251f12b42b85c6caf88e5214f45da}{parameter\+\_\+study} (const string \&dir\+\_\+name)
+\item 
+void \hyperlink{classCapProblem_ac852570b51489f4bf744b6063fbfa01a}{actions\+\_\+before\+\_\+newton\+\_\+convergence\+\_\+check} ()
+\begin{DoxyCompactList}\small\item\em Update the spine mesh after every Newton step. \end{DoxyCompactList}\item 
+void \hyperlink{classCapProblem_aa3a891fe6f5fc5fb5829e3bf636eda2c}{create\+\_\+volume\+\_\+constraint\+\_\+elements} ()
+\begin{DoxyCompactList}\small\item\em Create the volume constraint elements. \end{DoxyCompactList}\item 
+void \hyperlink{classCapProblem_a8549ca722d2d151ebf3ef7b35b925fbb}{doc\+\_\+solution} (Doc\+Info \&doc\+\_\+info)
+\begin{DoxyCompactList}\small\item\em Doc the solution. \end{DoxyCompactList}\item 
+\hyperlink{classCapProblem_a7b3e0784884fa8bf9d151139b00951c7}{Cap\+Problem} (const unsigned \&Nx, const unsigned \&Nh1, const unsigned \&Nh2)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+void \hyperlink{classCapProblem_a680e8e486a229479dad687e10a5fa03a}{parameter\+\_\+study} ()
+\begin{DoxyCompactList}\small\item\em Peform a parameter study\+: Solve problem for a range of contact angles. \end{DoxyCompactList}\item 
+void \hyperlink{classCapProblem_a5dab5b1ae1d41cb23ac2bcb08fb3dc22}{finish\+\_\+problem\+\_\+setup} ()
+\begin{DoxyCompactList}\small\item\em Finish full specification of the elements. \end{DoxyCompactList}\item 
+void \hyperlink{classCapProblem_ac852570b51489f4bf744b6063fbfa01a}{actions\+\_\+before\+\_\+newton\+\_\+convergence\+\_\+check} ()
+\begin{DoxyCompactList}\small\item\em Update the spine mesh after every Newton step. \end{DoxyCompactList}\item 
+void \hyperlink{classCapProblem_aa3a891fe6f5fc5fb5829e3bf636eda2c}{create\+\_\+volume\+\_\+constraint\+\_\+elements} ()
+\begin{DoxyCompactList}\small\item\em Create the volume constraint elements. \end{DoxyCompactList}\item 
+void \hyperlink{classCapProblem_a8549ca722d2d151ebf3ef7b35b925fbb}{doc\+\_\+solution} (Doc\+Info \&doc\+\_\+info)
+\begin{DoxyCompactList}\small\item\em Doc the solution. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Two\+Layer\+Spine\+Mesh$<$ Spine\+Element$<$ E\+L\+E\+M\+E\+NT $>$ $>$ $\ast$ \hyperlink{classCapProblem_a98e8297aaedfba8624e3eb3aae29a237}{Bulk\+\_\+mesh\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to the mesh. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double \hyperlink{classCapProblem_ad856df0aa70d881a2b2bc81ad4e2e251}{Ca}
+\begin{DoxyCompactList}\small\item\em The Capillary number. \end{DoxyCompactList}\item 
+double \hyperlink{classCapProblem_ab1f403fd3be7648c3a52a66684a78f7e}{Volume}
+\begin{DoxyCompactList}\small\item\em The volume of the fluid. \end{DoxyCompactList}\item 
+double \hyperlink{classCapProblem_a6fcc40a7331c00739923b49c167b396f}{Pext}
+\begin{DoxyCompactList}\small\item\em The external pressure. \end{DoxyCompactList}\item 
+double \hyperlink{classCapProblem_a7a57e45e3f1b7d30ae9d99bff56e8f5d}{Angle}
+\begin{DoxyCompactList}\small\item\em The contact angle. \end{DoxyCompactList}\item 
+Single\+Layer\+Spine\+Mesh$<$ Spine\+Element$<$ E\+L\+E\+M\+E\+NT $>$ $>$ $\ast$ \hyperlink{classCapProblem_a6d74594a707d89fc3fd5b87bf1c26a5b}{Bulk\+\_\+mesh\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em The bulk mesh of fluid elements. \end{DoxyCompactList}\item 
+Mesh $\ast$ \hyperlink{classCapProblem_a1ebf7016d766c5de59d2a479e0733c69}{Surface\+\_\+mesh\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em The mesh for the interface elements. \end{DoxyCompactList}\item 
+Mesh $\ast$ \hyperlink{classCapProblem_ac889ff4b3a1297ee3848ee78d549e914}{Point\+\_\+mesh\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em The mesh for the element at the contact point. \end{DoxyCompactList}\item 
+Mesh $\ast$ \hyperlink{classCapProblem_a0a115f38ca8ff18937619dd918a38bb1}{Volume\+\_\+constraint\+\_\+mesh\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em The volume constraint mesh. \end{DoxyCompactList}\item 
+ofstream \hyperlink{classCapProblem_a46ba6cbe3e82a36db8831fdd53d9f3a9}{Trace\+\_\+file}
+\begin{DoxyCompactList}\small\item\em Trace file. \end{DoxyCompactList}\item 
+Data $\ast$ \hyperlink{classCapProblem_a3990e9e6a2e4545a470e84ff1fead5eb}{External\+\_\+pressure\+\_\+data\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Data object whose single value stores the external pressure. \end{DoxyCompactList}\item 
+Data $\ast$ \hyperlink{classCapProblem_a1ad1a124cb5aa9c1724cbef89e47a35b}{Traded\+\_\+pressure\+\_\+data\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Data that is traded for the volume constraint. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class E\+L\+E\+M\+E\+NT$>$\newline
+class Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$}
+
+A Problem class that solves the Navier--Stokes equations + free surface in a 2D geometry using a spine-\/based node update 
+
+Definition at line 81 of file static\+\_\+single\+\_\+layer.\+cc.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classCapProblem_ab03ed8e2c1b44911d11209e00cb28a42}\label{classCapProblem_ab03ed8e2c1b44911d11209e00cb28a42}} 
+\index{Cap\+Problem@{Cap\+Problem}!Cap\+Problem@{Cap\+Problem}}
+\index{Cap\+Problem@{Cap\+Problem}!Cap\+Problem@{Cap\+Problem}}
+\subsubsection{\texorpdfstring{Cap\+Problem()}{CapProblem()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classCapProblem}{Cap\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::\hyperlink{classCapProblem}{Cap\+Problem} (\begin{DoxyParamCaption}\item[{const bool \&}]{hijack\+\_\+internal }\end{DoxyParamCaption})}
+
+Constructor\+: Pass boolean flag to indicate if the volume constraint is applied by hijacking an internal pressure or the external pressure 
+
+Definition at line 151 of file static\+\_\+single\+\_\+layer.\+cc.
+
+
+
+References Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Angle, Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Bulk\+\_\+mesh\+\_\+pt, Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Ca, Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::create\+\_\+volume\+\_\+constraint\+\_\+elements(), Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+External\+\_\+pressure\+\_\+data\+\_\+pt, Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Pext, Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Point\+\_\+mesh\+\_\+pt, Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Surface\+\_\+mesh\+\_\+pt, Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Traded\+\_\+pressure\+\_\+data\+\_\+pt, Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Volume\+\_\+constraint\+\_\+mesh\+\_\+pt, Global\+\_\+\+Physical\+\_\+\+Variables\+::\+Wall\+\_\+normal, and Global\+\_\+\+Physical\+\_\+\+Variables\+::wall\+\_\+unit\+\_\+normal\+\_\+fct().
+
+
+
+Referenced by Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::actions\+\_\+before\+\_\+newton\+\_\+convergence\+\_\+check().
+
+\mbox{\Hypertarget{classCapProblem_ad2b434212ecb33467359aef1071bc964}\label{classCapProblem_ad2b434212ecb33467359aef1071bc964}} 
+\index{Cap\+Problem@{Cap\+Problem}!````~Cap\+Problem@{$\sim$\+Cap\+Problem}}
+\index{````~Cap\+Problem@{$\sim$\+Cap\+Problem}!Cap\+Problem@{Cap\+Problem}}
+\subsubsection{\texorpdfstring{$\sim$\+Cap\+Problem()}{~CapProblem()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classCapProblem}{Cap\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::$\sim$\hyperlink{classCapProblem}{Cap\+Problem} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Destructor. Make sure to clean up all allocated memory, so that multiple instances of the problem don\textquotesingle{}t lead to excessive memory usage. 
+
+Definition at line 334 of file static\+\_\+single\+\_\+layer.\+cc.
+
+
+
+References Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Bulk\+\_\+mesh\+\_\+pt, Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+External\+\_\+pressure\+\_\+data\+\_\+pt, Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Point\+\_\+mesh\+\_\+pt, Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Surface\+\_\+mesh\+\_\+pt, Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Traded\+\_\+pressure\+\_\+data\+\_\+pt, and Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Volume\+\_\+constraint\+\_\+mesh\+\_\+pt.
+
+\mbox{\Hypertarget{classCapProblem_a7b3e0784884fa8bf9d151139b00951c7}\label{classCapProblem_a7b3e0784884fa8bf9d151139b00951c7}} 
+\index{Cap\+Problem@{Cap\+Problem}!Cap\+Problem@{Cap\+Problem}}
+\index{Cap\+Problem@{Cap\+Problem}!Cap\+Problem@{Cap\+Problem}}
+\subsubsection{\texorpdfstring{Cap\+Problem()}{CapProblem()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classCapProblem}{Cap\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::\hyperlink{classCapProblem}{Cap\+Problem} (\begin{DoxyParamCaption}\item[{const unsigned \&}]{Nx,  }\item[{const unsigned \&}]{Nh1,  }\item[{const unsigned \&}]{Nh2 }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+
+
+Definition at line 143 of file static\+\_\+two\+\_\+layer.\+cc.
+
+
+
+References Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::create\+\_\+volume\+\_\+constraint\+\_\+elements(), Global\+\_\+\+Physical\+\_\+\+Variables\+::\+Wall\+\_\+normal, and Global\+\_\+\+Physical\+\_\+\+Variables\+::wall\+\_\+unit\+\_\+normal\+\_\+fct().
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classCapProblem_ac852570b51489f4bf744b6063fbfa01a}\label{classCapProblem_ac852570b51489f4bf744b6063fbfa01a}} 
+\index{Cap\+Problem@{Cap\+Problem}!actions\+\_\+before\+\_\+newton\+\_\+convergence\+\_\+check@{actions\+\_\+before\+\_\+newton\+\_\+convergence\+\_\+check}}
+\index{actions\+\_\+before\+\_\+newton\+\_\+convergence\+\_\+check@{actions\+\_\+before\+\_\+newton\+\_\+convergence\+\_\+check}!Cap\+Problem@{Cap\+Problem}}
+\subsubsection{\texorpdfstring{actions\+\_\+before\+\_\+newton\+\_\+convergence\+\_\+check()}{actions\_before\_newton\_convergence\_check()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+void \hyperlink{classCapProblem}{Cap\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::actions\+\_\+before\+\_\+newton\+\_\+convergence\+\_\+check (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Update the spine mesh after every Newton step. 
+
+
+
+Definition at line 98 of file static\+\_\+single\+\_\+layer.\+cc.
+
+\mbox{\Hypertarget{classCapProblem_ac852570b51489f4bf744b6063fbfa01a}\label{classCapProblem_ac852570b51489f4bf744b6063fbfa01a}} 
+\index{Cap\+Problem@{Cap\+Problem}!actions\+\_\+before\+\_\+newton\+\_\+convergence\+\_\+check@{actions\+\_\+before\+\_\+newton\+\_\+convergence\+\_\+check}}
+\index{actions\+\_\+before\+\_\+newton\+\_\+convergence\+\_\+check@{actions\+\_\+before\+\_\+newton\+\_\+convergence\+\_\+check}!Cap\+Problem@{Cap\+Problem}}
+\subsubsection{\texorpdfstring{actions\+\_\+before\+\_\+newton\+\_\+convergence\+\_\+check()}{actions\_before\_newton\_convergence\_check()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+void \hyperlink{classCapProblem}{Cap\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::actions\+\_\+before\+\_\+newton\+\_\+convergence\+\_\+check (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Update the spine mesh after every Newton step. 
+
+
+
+Definition at line 106 of file static\+\_\+two\+\_\+layer.\+cc.
+
+
+
+References Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Cap\+Problem().
+
+\mbox{\Hypertarget{classCapProblem_aa3a891fe6f5fc5fb5829e3bf636eda2c}\label{classCapProblem_aa3a891fe6f5fc5fb5829e3bf636eda2c}} 
+\index{Cap\+Problem@{Cap\+Problem}!create\+\_\+volume\+\_\+constraint\+\_\+elements@{create\+\_\+volume\+\_\+constraint\+\_\+elements}}
+\index{create\+\_\+volume\+\_\+constraint\+\_\+elements@{create\+\_\+volume\+\_\+constraint\+\_\+elements}!Cap\+Problem@{Cap\+Problem}}
+\subsubsection{\texorpdfstring{create\+\_\+volume\+\_\+constraint\+\_\+elements()}{create\_volume\_constraint\_elements()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classCapProblem}{Cap\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::create\+\_\+volume\+\_\+constraint\+\_\+elements (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Create the volume constraint elements. 
+
+
+
+Definition at line 378 of file static\+\_\+single\+\_\+layer.\+cc.
+
+
+
+References Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Bulk\+\_\+mesh\+\_\+pt, Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Traded\+\_\+pressure\+\_\+data\+\_\+pt, Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Volume, and Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Volume\+\_\+constraint\+\_\+mesh\+\_\+pt.
+
+
+
+Referenced by Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Cap\+Problem().
+
+\mbox{\Hypertarget{classCapProblem_aa3a891fe6f5fc5fb5829e3bf636eda2c}\label{classCapProblem_aa3a891fe6f5fc5fb5829e3bf636eda2c}} 
+\index{Cap\+Problem@{Cap\+Problem}!create\+\_\+volume\+\_\+constraint\+\_\+elements@{create\+\_\+volume\+\_\+constraint\+\_\+elements}}
+\index{create\+\_\+volume\+\_\+constraint\+\_\+elements@{create\+\_\+volume\+\_\+constraint\+\_\+elements}!Cap\+Problem@{Cap\+Problem}}
+\subsubsection{\texorpdfstring{create\+\_\+volume\+\_\+constraint\+\_\+elements()}{create\_volume\_constraint\_elements()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+void \hyperlink{classCapProblem}{Cap\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::create\+\_\+volume\+\_\+constraint\+\_\+elements (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Create the volume constraint elements. 
+
+\mbox{\Hypertarget{classCapProblem_a8549ca722d2d151ebf3ef7b35b925fbb}\label{classCapProblem_a8549ca722d2d151ebf3ef7b35b925fbb}} 
+\index{Cap\+Problem@{Cap\+Problem}!doc\+\_\+solution@{doc\+\_\+solution}}
+\index{doc\+\_\+solution@{doc\+\_\+solution}!Cap\+Problem@{Cap\+Problem}}
+\subsubsection{\texorpdfstring{doc\+\_\+solution()}{doc\_solution()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classCapProblem}{Cap\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::doc\+\_\+solution (\begin{DoxyParamCaption}\item[{Doc\+Info \&}]{doc\+\_\+info }\end{DoxyParamCaption})}
+
+
+
+Doc the solution. 
+
+
+
+Definition at line 467 of file static\+\_\+single\+\_\+layer.\+cc.
+
+
+
+References Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Angle, Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Bulk\+\_\+mesh\+\_\+pt, Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Ca, Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+External\+\_\+pressure\+\_\+data\+\_\+pt, Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Surface\+\_\+mesh\+\_\+pt, and Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Trace\+\_\+file.
+
+
+
+Referenced by Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::parameter\+\_\+study().
+
+\mbox{\Hypertarget{classCapProblem_a8549ca722d2d151ebf3ef7b35b925fbb}\label{classCapProblem_a8549ca722d2d151ebf3ef7b35b925fbb}} 
+\index{Cap\+Problem@{Cap\+Problem}!doc\+\_\+solution@{doc\+\_\+solution}}
+\index{doc\+\_\+solution@{doc\+\_\+solution}!Cap\+Problem@{Cap\+Problem}}
+\subsubsection{\texorpdfstring{doc\+\_\+solution()}{doc\_solution()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+void \hyperlink{classCapProblem}{Cap\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::doc\+\_\+solution (\begin{DoxyParamCaption}\item[{Doc\+Info \&}]{doc\+\_\+info }\end{DoxyParamCaption})}
+
+
+
+Doc the solution. 
+
+\mbox{\Hypertarget{classCapProblem_a5dab5b1ae1d41cb23ac2bcb08fb3dc22}\label{classCapProblem_a5dab5b1ae1d41cb23ac2bcb08fb3dc22}} 
+\index{Cap\+Problem@{Cap\+Problem}!finish\+\_\+problem\+\_\+setup@{finish\+\_\+problem\+\_\+setup}}
+\index{finish\+\_\+problem\+\_\+setup@{finish\+\_\+problem\+\_\+setup}!Cap\+Problem@{Cap\+Problem}}
+\subsubsection{\texorpdfstring{finish\+\_\+problem\+\_\+setup()}{finish\_problem\_setup()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+void \hyperlink{classCapProblem}{Cap\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::finish\+\_\+problem\+\_\+setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Finish full specification of the elements. 
+
+\mbox{\Hypertarget{classCapProblem_a680e8e486a229479dad687e10a5fa03a}\label{classCapProblem_a680e8e486a229479dad687e10a5fa03a}} 
+\index{Cap\+Problem@{Cap\+Problem}!parameter\+\_\+study@{parameter\+\_\+study}}
+\index{parameter\+\_\+study@{parameter\+\_\+study}!Cap\+Problem@{Cap\+Problem}}
+\subsubsection{\texorpdfstring{parameter\+\_\+study()}{parameter\_study()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classCapProblem}{Cap\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::parameter\+\_\+study (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Peform a parameter study\+: Solve problem for a range of contact angles. 
+
+Perform a parameter study. 
+
+Definition at line 339 of file static\+\_\+two\+\_\+layer.\+cc.
+
+
+
+References Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::doc\+\_\+solution().
+
+\mbox{\Hypertarget{classCapProblem_af54251f12b42b85c6caf88e5214f45da}\label{classCapProblem_af54251f12b42b85c6caf88e5214f45da}} 
+\index{Cap\+Problem@{Cap\+Problem}!parameter\+\_\+study@{parameter\+\_\+study}}
+\index{parameter\+\_\+study@{parameter\+\_\+study}!Cap\+Problem@{Cap\+Problem}}
+\subsubsection{\texorpdfstring{parameter\+\_\+study()}{parameter\_study()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classCapProblem}{Cap\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::parameter\+\_\+study (\begin{DoxyParamCaption}\item[{const string \&}]{dir\+\_\+name }\end{DoxyParamCaption})}
+
+Perform a parameter study\+: Solve problem for a range of contact angles Pass name of output directory as a string
+
+Perform a parameter study. Pass name of output directory as a string 
+
+Definition at line 423 of file static\+\_\+single\+\_\+layer.\+cc.
+
+
+
+References Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Angle, Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::doc\+\_\+solution(), and Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Trace\+\_\+file.
+
+
+
+Referenced by main().
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classCapProblem_a7a57e45e3f1b7d30ae9d99bff56e8f5d}\label{classCapProblem_a7a57e45e3f1b7d30ae9d99bff56e8f5d}} 
+\index{Cap\+Problem@{Cap\+Problem}!Angle@{Angle}}
+\index{Angle@{Angle}!Cap\+Problem@{Cap\+Problem}}
+\subsubsection{\texorpdfstring{Angle}{Angle}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+double \hyperlink{classCapProblem}{Cap\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::Angle\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The contact angle. 
+
+
+
+Definition at line 118 of file static\+\_\+single\+\_\+layer.\+cc.
+
+
+
+Referenced by Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Cap\+Problem(), Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::doc\+\_\+solution(), and Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::parameter\+\_\+study().
+
+\mbox{\Hypertarget{classCapProblem_a98e8297aaedfba8624e3eb3aae29a237}\label{classCapProblem_a98e8297aaedfba8624e3eb3aae29a237}} 
+\index{Cap\+Problem@{Cap\+Problem}!Bulk\+\_\+mesh\+\_\+pt@{Bulk\+\_\+mesh\+\_\+pt}}
+\index{Bulk\+\_\+mesh\+\_\+pt@{Bulk\+\_\+mesh\+\_\+pt}!Cap\+Problem@{Cap\+Problem}}
+\subsubsection{\texorpdfstring{Bulk\+\_\+mesh\+\_\+pt}{Bulk\_mesh\_pt}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+Two\+Layer\+Spine\+Mesh$<$Spine\+Element$<$E\+L\+E\+M\+E\+NT$>$ $>$$\ast$ \hyperlink{classCapProblem}{Cap\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::Bulk\+\_\+mesh\+\_\+pt}
+
+
+
+Pointer to the mesh. 
+
+
+
+Definition at line 97 of file static\+\_\+two\+\_\+layer.\+cc.
+
+\mbox{\Hypertarget{classCapProblem_a6d74594a707d89fc3fd5b87bf1c26a5b}\label{classCapProblem_a6d74594a707d89fc3fd5b87bf1c26a5b}} 
+\index{Cap\+Problem@{Cap\+Problem}!Bulk\+\_\+mesh\+\_\+pt@{Bulk\+\_\+mesh\+\_\+pt}}
+\index{Bulk\+\_\+mesh\+\_\+pt@{Bulk\+\_\+mesh\+\_\+pt}!Cap\+Problem@{Cap\+Problem}}
+\subsubsection{\texorpdfstring{Bulk\+\_\+mesh\+\_\+pt}{Bulk\_mesh\_pt}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+Single\+Layer\+Spine\+Mesh$<$Spine\+Element$<$E\+L\+E\+M\+E\+NT$>$ $>$$\ast$ \hyperlink{classCapProblem}{Cap\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::Bulk\+\_\+mesh\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The bulk mesh of fluid elements. 
+
+
+
+Definition at line 121 of file static\+\_\+single\+\_\+layer.\+cc.
+
+
+
+Referenced by Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Cap\+Problem(), Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::create\+\_\+volume\+\_\+constraint\+\_\+elements(), Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::doc\+\_\+solution(), and Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::$\sim$\+Cap\+Problem().
+
+\mbox{\Hypertarget{classCapProblem_ad856df0aa70d881a2b2bc81ad4e2e251}\label{classCapProblem_ad856df0aa70d881a2b2bc81ad4e2e251}} 
+\index{Cap\+Problem@{Cap\+Problem}!Ca@{Ca}}
+\index{Ca@{Ca}!Cap\+Problem@{Cap\+Problem}}
+\subsubsection{\texorpdfstring{Ca}{Ca}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+double \hyperlink{classCapProblem}{Cap\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::Ca\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The Capillary number. 
+
+
+
+Definition at line 109 of file static\+\_\+single\+\_\+layer.\+cc.
+
+
+
+Referenced by Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Cap\+Problem(), and Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::doc\+\_\+solution().
+
+\mbox{\Hypertarget{classCapProblem_a3990e9e6a2e4545a470e84ff1fead5eb}\label{classCapProblem_a3990e9e6a2e4545a470e84ff1fead5eb}} 
+\index{Cap\+Problem@{Cap\+Problem}!External\+\_\+pressure\+\_\+data\+\_\+pt@{External\+\_\+pressure\+\_\+data\+\_\+pt}}
+\index{External\+\_\+pressure\+\_\+data\+\_\+pt@{External\+\_\+pressure\+\_\+data\+\_\+pt}!Cap\+Problem@{Cap\+Problem}}
+\subsubsection{\texorpdfstring{External\+\_\+pressure\+\_\+data\+\_\+pt}{External\_pressure\_data\_pt}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+Data$\ast$ \hyperlink{classCapProblem}{Cap\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::External\+\_\+pressure\+\_\+data\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Data object whose single value stores the external pressure. 
+
+
+
+Definition at line 136 of file static\+\_\+single\+\_\+layer.\+cc.
+
+
+
+Referenced by Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Cap\+Problem(), Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::doc\+\_\+solution(), and Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::$\sim$\+Cap\+Problem().
+
+\mbox{\Hypertarget{classCapProblem_a6fcc40a7331c00739923b49c167b396f}\label{classCapProblem_a6fcc40a7331c00739923b49c167b396f}} 
+\index{Cap\+Problem@{Cap\+Problem}!Pext@{Pext}}
+\index{Pext@{Pext}!Cap\+Problem@{Cap\+Problem}}
+\subsubsection{\texorpdfstring{Pext}{Pext}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+double \hyperlink{classCapProblem}{Cap\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::Pext\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The external pressure. 
+
+
+
+Definition at line 115 of file static\+\_\+single\+\_\+layer.\+cc.
+
+
+
+Referenced by Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Cap\+Problem().
+
+\mbox{\Hypertarget{classCapProblem_ac889ff4b3a1297ee3848ee78d549e914}\label{classCapProblem_ac889ff4b3a1297ee3848ee78d549e914}} 
+\index{Cap\+Problem@{Cap\+Problem}!Point\+\_\+mesh\+\_\+pt@{Point\+\_\+mesh\+\_\+pt}}
+\index{Point\+\_\+mesh\+\_\+pt@{Point\+\_\+mesh\+\_\+pt}!Cap\+Problem@{Cap\+Problem}}
+\subsubsection{\texorpdfstring{Point\+\_\+mesh\+\_\+pt}{Point\_mesh\_pt}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+Mesh $\ast$ \hyperlink{classCapProblem}{Cap\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::Point\+\_\+mesh\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The mesh for the element at the contact point. 
+
+Pointer to the point mesh. 
+
+Definition at line 127 of file static\+\_\+single\+\_\+layer.\+cc.
+
+
+
+Referenced by Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Cap\+Problem(), and Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::$\sim$\+Cap\+Problem().
+
+\mbox{\Hypertarget{classCapProblem_a1ebf7016d766c5de59d2a479e0733c69}\label{classCapProblem_a1ebf7016d766c5de59d2a479e0733c69}} 
+\index{Cap\+Problem@{Cap\+Problem}!Surface\+\_\+mesh\+\_\+pt@{Surface\+\_\+mesh\+\_\+pt}}
+\index{Surface\+\_\+mesh\+\_\+pt@{Surface\+\_\+mesh\+\_\+pt}!Cap\+Problem@{Cap\+Problem}}
+\subsubsection{\texorpdfstring{Surface\+\_\+mesh\+\_\+pt}{Surface\_mesh\_pt}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+Mesh $\ast$ \hyperlink{classCapProblem}{Cap\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::Surface\+\_\+mesh\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The mesh for the interface elements. 
+
+Pointer to the surface mesh. 
+
+Definition at line 124 of file static\+\_\+single\+\_\+layer.\+cc.
+
+
+
+Referenced by Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Cap\+Problem(), Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::doc\+\_\+solution(), and Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::$\sim$\+Cap\+Problem().
+
+\mbox{\Hypertarget{classCapProblem_a46ba6cbe3e82a36db8831fdd53d9f3a9}\label{classCapProblem_a46ba6cbe3e82a36db8831fdd53d9f3a9}} 
+\index{Cap\+Problem@{Cap\+Problem}!Trace\+\_\+file@{Trace\+\_\+file}}
+\index{Trace\+\_\+file@{Trace\+\_\+file}!Cap\+Problem@{Cap\+Problem}}
+\subsubsection{\texorpdfstring{Trace\+\_\+file}{Trace\_file}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+ofstream \hyperlink{classCapProblem}{Cap\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::Trace\+\_\+file\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Trace file. 
+
+
+
+Definition at line 133 of file static\+\_\+single\+\_\+layer.\+cc.
+
+
+
+Referenced by Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::doc\+\_\+solution(), and Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::parameter\+\_\+study().
+
+\mbox{\Hypertarget{classCapProblem_a1ad1a124cb5aa9c1724cbef89e47a35b}\label{classCapProblem_a1ad1a124cb5aa9c1724cbef89e47a35b}} 
+\index{Cap\+Problem@{Cap\+Problem}!Traded\+\_\+pressure\+\_\+data\+\_\+pt@{Traded\+\_\+pressure\+\_\+data\+\_\+pt}}
+\index{Traded\+\_\+pressure\+\_\+data\+\_\+pt@{Traded\+\_\+pressure\+\_\+data\+\_\+pt}!Cap\+Problem@{Cap\+Problem}}
+\subsubsection{\texorpdfstring{Traded\+\_\+pressure\+\_\+data\+\_\+pt}{Traded\_pressure\_data\_pt}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+Data $\ast$ \hyperlink{classCapProblem}{Cap\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::Traded\+\_\+pressure\+\_\+data\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Data that is traded for the volume constraint. 
+
+
+
+Definition at line 139 of file static\+\_\+single\+\_\+layer.\+cc.
+
+
+
+Referenced by Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Cap\+Problem(), Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::create\+\_\+volume\+\_\+constraint\+\_\+elements(), and Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::$\sim$\+Cap\+Problem().
+
+\mbox{\Hypertarget{classCapProblem_ab1f403fd3be7648c3a52a66684a78f7e}\label{classCapProblem_ab1f403fd3be7648c3a52a66684a78f7e}} 
+\index{Cap\+Problem@{Cap\+Problem}!Volume@{Volume}}
+\index{Volume@{Volume}!Cap\+Problem@{Cap\+Problem}}
+\subsubsection{\texorpdfstring{Volume}{Volume}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+double \hyperlink{classCapProblem}{Cap\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::Volume\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The volume of the fluid. 
+
+
+
+Definition at line 112 of file static\+\_\+single\+\_\+layer.\+cc.
+
+
+
+Referenced by Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::create\+\_\+volume\+\_\+constraint\+\_\+elements().
+
+\mbox{\Hypertarget{classCapProblem_a0a115f38ca8ff18937619dd918a38bb1}\label{classCapProblem_a0a115f38ca8ff18937619dd918a38bb1}} 
+\index{Cap\+Problem@{Cap\+Problem}!Volume\+\_\+constraint\+\_\+mesh\+\_\+pt@{Volume\+\_\+constraint\+\_\+mesh\+\_\+pt}}
+\index{Volume\+\_\+constraint\+\_\+mesh\+\_\+pt@{Volume\+\_\+constraint\+\_\+mesh\+\_\+pt}!Cap\+Problem@{Cap\+Problem}}
+\subsubsection{\texorpdfstring{Volume\+\_\+constraint\+\_\+mesh\+\_\+pt}{Volume\_constraint\_mesh\_pt}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+Mesh $\ast$ \hyperlink{classCapProblem}{Cap\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::Volume\+\_\+constraint\+\_\+mesh\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The volume constraint mesh. 
+
+
+
+Definition at line 130 of file static\+\_\+single\+\_\+layer.\+cc.
+
+
+
+Referenced by Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Cap\+Problem(), Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::create\+\_\+volume\+\_\+constraint\+\_\+elements(), and Cap\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::$\sim$\+Cap\+Problem().
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{static__single__layer_8cc}{static\+\_\+single\+\_\+layer.\+cc}\item 
+\hyperlink{static__two__layer_8cc}{static\+\_\+two\+\_\+layer.\+cc}\end{DoxyCompactItemize}

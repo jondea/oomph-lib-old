@@ -1,0 +1,449 @@
+\hypertarget{classoomph_1_1Preconditioner}{}\section{oomph\+:\+:Preconditioner Class Reference}
+\label{classoomph_1_1Preconditioner}\index{oomph\+::\+Preconditioner@{oomph\+::\+Preconditioner}}
+
+
+\hyperlink{classoomph_1_1Preconditioner}{Preconditioner} base class. Gives an interface to call all other preconditioners through and stores the matrix and communicator pointers. All preconditioners should be derived from this class.  
+
+
+
+
+{\ttfamily \#include $<$preconditioner.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Preconditioner\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=11.360382cm]{classoomph_1_1Preconditioner}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1Preconditioner_a7bd8801e4395ccb88fe1f4296e77e9ab}{Preconditioner} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Preconditioner_ab1bf593b1c36c215423bbdb5a360388a}{Preconditioner} (const \hyperlink{classoomph_1_1Preconditioner}{Preconditioner} \&)
+\begin{DoxyCompactList}\small\item\em Broken copy constructor. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1Preconditioner_a0f853396c6275cc9bc31ecd9d148d112}{operator=} (const \hyperlink{classoomph_1_1Preconditioner}{Preconditioner} \&)
+\begin{DoxyCompactList}\small\item\em Broken assignment operator. \end{DoxyCompactList}\item 
+virtual \hyperlink{classoomph_1_1Preconditioner_ab60952a82cc1b6b91fff5924eaa62c0e}{$\sim$\+Preconditioner} ()
+\begin{DoxyCompactList}\small\item\em Destructor (empty) \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1Preconditioner_ace1199369e4465cd2b9a34884bb64ec8}{preconditioner\+\_\+solve} (const \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} \&r, \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} \&z)=0
+\begin{DoxyCompactList}\small\item\em Apply the preconditioner. Pure virtual generic interface function. This method should apply the preconditioner operator to the vector r and return the vector z. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1Preconditioner_a0b95e7159585b5151f9e5dc1d1713655}{setup} (\hyperlink{classoomph_1_1DoubleMatrixBase}{Double\+Matrix\+Base} $\ast$\hyperlink{classoomph_1_1Preconditioner_a66726e9df31365df646cdf83a975aa26}{matrix\+\_\+pt})
+\begin{DoxyCompactList}\small\item\em Setup the preconditioner\+: store the matrix pointer and the communicator pointer then call preconditioner specific \hyperlink{classoomph_1_1Preconditioner_af4886f4efe510e5c9b0eb19422943588}{setup()} function. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1Preconditioner_a783fae97e4b898f8de72b504a4f4bec6}{setup} (const \hyperlink{classoomph_1_1Problem}{Problem} $\ast$problem\+\_\+pt, \hyperlink{classoomph_1_1DoubleMatrixBase}{Double\+Matrix\+Base} $\ast$\hyperlink{classoomph_1_1Preconditioner_a66726e9df31365df646cdf83a975aa26}{matrix\+\_\+pt})
+\begin{DoxyCompactList}\small\item\em Compatability layer for old preconditioners where problem pointers were needed. The problem pointer is only used to get a communicator pointer. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1Preconditioner_af4886f4efe510e5c9b0eb19422943588}{setup} ()=0
+\begin{DoxyCompactList}\small\item\em Setup the preconditioner. Pure virtual generic interface function. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1Preconditioner_a46c31c416829bedcd9db238431262027}{clean\+\_\+up\+\_\+memory} ()
+\begin{DoxyCompactList}\small\item\em Clean up memory (empty). Generic interface function. \end{DoxyCompactList}\item 
+virtual \hyperlink{classoomph_1_1DoubleMatrixBase}{Double\+Matrix\+Base} $\ast$ \hyperlink{classoomph_1_1Preconditioner_a66726e9df31365df646cdf83a975aa26}{matrix\+\_\+pt} () const
+\begin{DoxyCompactList}\small\item\em Get function for matrix pointer. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1Preconditioner_af459b7333c4c64435fd8fa933535901f}{set\+\_\+matrix\+\_\+pt} (\hyperlink{classoomph_1_1DoubleMatrixBase}{Double\+Matrix\+Base} $\ast$\hyperlink{classoomph_1_1Preconditioner_a66726e9df31365df646cdf83a975aa26}{matrix\+\_\+pt})
+\begin{DoxyCompactList}\small\item\em Set the matrix pointer. \end{DoxyCompactList}\item 
+virtual const \hyperlink{classoomph_1_1OomphCommunicator}{Oomph\+Communicator} $\ast$ \hyperlink{classoomph_1_1Preconditioner_ada7219933e05d94f39a46a8ddb4c749a}{comm\+\_\+pt} () const
+\begin{DoxyCompactList}\small\item\em Get function for comm pointer. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1Preconditioner_a306f5a52f493816fcfda2dc9b2ee1dbf}{set\+\_\+comm\+\_\+pt} (const \hyperlink{classoomph_1_1OomphCommunicator}{Oomph\+Communicator} $\ast$const \hyperlink{classoomph_1_1Preconditioner_ada7219933e05d94f39a46a8ddb4c749a}{comm\+\_\+pt})
+\begin{DoxyCompactList}\small\item\em Set the communicator pointer. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1Preconditioner_a9202e15534f063a8e21a8a60623eac9f}{setup\+\_\+time} () const
+\begin{DoxyCompactList}\small\item\em Returns the time to setup the preconditioner. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1Preconditioner_a1183f65956ef8a5b332a1246f418e907}{turn\+\_\+into\+\_\+subsidiary\+\_\+block\+\_\+preconditioner} (\hyperlink{classoomph_1_1BlockPreconditioner}{Block\+Preconditioner}$<$ \hyperlink{classoomph_1_1CRDoubleMatrix}{C\+R\+Double\+Matrix} $>$ $\ast$master\+\_\+block\+\_\+prec\+\_\+pt, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ unsigned $>$ \&doftype\+\_\+in\+\_\+master\+\_\+preconditioner\+\_\+coarse)
+\item 
+virtual void \hyperlink{classoomph_1_1Preconditioner_a61a462f4266c22050b4ab9ab441c77a6}{turn\+\_\+into\+\_\+subsidiary\+\_\+block\+\_\+preconditioner} (\hyperlink{classoomph_1_1BlockPreconditioner}{Block\+Preconditioner}$<$ \hyperlink{classoomph_1_1CRDoubleMatrix}{C\+R\+Double\+Matrix} $>$ $\ast$master\+\_\+block\+\_\+prec\+\_\+pt, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ unsigned $>$ \&doftype\+\_\+in\+\_\+master\+\_\+preconditioner\+\_\+coarse, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ \hyperlink{classoomph_1_1Vector}{Vector}$<$ unsigned $>$ $>$ \&doftype\+\_\+coarsen\+\_\+map\+\_\+coarse)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1DoubleMatrixBase}{Double\+Matrix\+Base} $\ast$ \hyperlink{classoomph_1_1Preconditioner_a04caf49de41802ef112e4b8b644b1d4d}{Matrix\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Storage for a pointer to the matrix. \end{DoxyCompactList}\item 
+const \hyperlink{classoomph_1_1OomphCommunicator}{Oomph\+Communicator} $\ast$ \hyperlink{classoomph_1_1Preconditioner_aa580eb7cc01ac989201aac30c3a8eab5}{Comm\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Storage for a pointer to the communicator. Null if the preconditioner should not be distributed. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1Preconditioner_a00f5ae98e81e7cb9aa6a70a39a9759c8}{Setup\+\_\+time}
+\begin{DoxyCompactList}\small\item\em The time it takes to set up this preconditioner. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\hyperlink{classoomph_1_1Preconditioner}{Preconditioner} base class. Gives an interface to call all other preconditioners through and stores the matrix and communicator pointers. All preconditioners should be derived from this class. 
+
+Definition at line 58 of file preconditioner.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1Preconditioner_a7bd8801e4395ccb88fe1f4296e77e9ab}\label{classoomph_1_1Preconditioner_a7bd8801e4395ccb88fe1f4296e77e9ab}} 
+\index{oomph\+::\+Preconditioner@{oomph\+::\+Preconditioner}!Preconditioner@{Preconditioner}}
+\index{Preconditioner@{Preconditioner}!oomph\+::\+Preconditioner@{oomph\+::\+Preconditioner}}
+\subsubsection{\texorpdfstring{Preconditioner()}{Preconditioner()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily oomph\+::\+Preconditioner\+::\+Preconditioner (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor. 
+
+
+
+Definition at line 64 of file preconditioner.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1Preconditioner_ab1bf593b1c36c215423bbdb5a360388a}\label{classoomph_1_1Preconditioner_ab1bf593b1c36c215423bbdb5a360388a}} 
+\index{oomph\+::\+Preconditioner@{oomph\+::\+Preconditioner}!Preconditioner@{Preconditioner}}
+\index{Preconditioner@{Preconditioner}!oomph\+::\+Preconditioner@{oomph\+::\+Preconditioner}}
+\subsubsection{\texorpdfstring{Preconditioner()}{Preconditioner()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily oomph\+::\+Preconditioner\+::\+Preconditioner (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Preconditioner}{Preconditioner} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Broken copy constructor. 
+
+
+
+Definition at line 67 of file preconditioner.\+h.
+
+
+
+References oomph\+::\+Broken\+Copy\+::broken\+\_\+copy().
+
+\mbox{\Hypertarget{classoomph_1_1Preconditioner_ab60952a82cc1b6b91fff5924eaa62c0e}\label{classoomph_1_1Preconditioner_ab60952a82cc1b6b91fff5924eaa62c0e}} 
+\index{oomph\+::\+Preconditioner@{oomph\+::\+Preconditioner}!````~Preconditioner@{$\sim$\+Preconditioner}}
+\index{````~Preconditioner@{$\sim$\+Preconditioner}!oomph\+::\+Preconditioner@{oomph\+::\+Preconditioner}}
+\subsubsection{\texorpdfstring{$\sim$\+Preconditioner()}{~Preconditioner()}}
+{\footnotesize\ttfamily virtual oomph\+::\+Preconditioner\+::$\sim$\+Preconditioner (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Destructor (empty) 
+
+
+
+Definition at line 79 of file preconditioner.\+h.
+
+
+
+References preconditioner\+\_\+solve().
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1Preconditioner_a46c31c416829bedcd9db238431262027}\label{classoomph_1_1Preconditioner_a46c31c416829bedcd9db238431262027}} 
+\index{oomph\+::\+Preconditioner@{oomph\+::\+Preconditioner}!clean\+\_\+up\+\_\+memory@{clean\+\_\+up\+\_\+memory}}
+\index{clean\+\_\+up\+\_\+memory@{clean\+\_\+up\+\_\+memory}!oomph\+::\+Preconditioner@{oomph\+::\+Preconditioner}}
+\subsubsection{\texorpdfstring{clean\+\_\+up\+\_\+memory()}{clean\_up\_memory()}}
+{\footnotesize\ttfamily virtual void oomph\+::\+Preconditioner\+::clean\+\_\+up\+\_\+memory (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Clean up memory (empty). Generic interface function. 
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1HelmholtzGMRESMG_a81ddd10ccc03d6582dcadbd5cae1edda}{oomph\+::\+Helmholtz\+G\+M\+R\+E\+S\+M\+G$<$ M\+A\+T\+R\+I\+X $>$}, \hyperlink{classoomph_1_1HyprePreconditioner_a4d2ffc88b3a9e9ba84f969211b433231}{oomph\+::\+Hypre\+Preconditioner}, \hyperlink{classoomph_1_1NavierStokesSchurComplementPreconditioner_a5cac2493de85690e3954949eb2a27d2c}{oomph\+::\+Navier\+Stokes\+Schur\+Complement\+Preconditioner}, \hyperlink{classoomph_1_1MGPreconditioner_acc92bd3f8c9b729283d35c1f4ae37dd2}{oomph\+::\+M\+G\+Preconditioner$<$ D\+I\+M $>$}, \hyperlink{classoomph_1_1PseudoElasticPreconditionerSubsidiaryBlockPreconditionerOld_a8bb2215735df1a583b4bc1b92bded1e6}{oomph\+::\+Pseudo\+Elastic\+Preconditioner\+Subsidiary\+Block\+Preconditioner\+Old}, \hyperlink{classoomph_1_1PseudoElasticPreconditionerSubsidiaryPreconditionerOld_a45086bd75b2d82f65deae8cac23c4c47}{oomph\+::\+Pseudo\+Elastic\+Preconditioner\+Subsidiary\+Preconditioner\+Old}, \hyperlink{classoomph_1_1BlockTriangularPreconditioner_aec59a3bb131cd924d3efa6873a187a0f}{oomph\+::\+Block\+Triangular\+Preconditioner$<$ M\+A\+T\+R\+I\+X $>$}, \hyperlink{classoomph_1_1InnerIterationPreconditioner_a15c06204c6555fc4228fda0c71fcfce8}{oomph\+::\+Inner\+Iteration\+Preconditioner$<$ S\+O\+L\+V\+E\+R, P\+R\+E\+C\+O\+N\+D\+I\+T\+I\+O\+N\+E\+R $>$}, \hyperlink{classoomph_1_1PseudoElasticPreconditionerOld_acadd6682a6d25534d7e2be1e95c4d0e6}{oomph\+::\+Pseudo\+Elastic\+Preconditioner\+Old}, \hyperlink{classoomph_1_1BlockDiagonalPreconditioner_aced1bed34b9f6a11903d5fd3ae42ece8}{oomph\+::\+Block\+Diagonal\+Preconditioner$<$ M\+A\+T\+R\+I\+X $>$}, \hyperlink{classoomph_1_1PressureBasedSolidLSCPreconditioner_ad83eb2ddd12350bcba2cb8db074de2bd}{oomph\+::\+Pressure\+Based\+Solid\+L\+S\+C\+Preconditioner}, \hyperlink{classoomph_1_1NewMumpsPreconditioner_a4a6cb6cc1207a765cc02ef47c6efa6e0}{oomph\+::\+New\+Mumps\+Preconditioner}, \hyperlink{classoomph_1_1InexactSubBiharmonicPreconditioner_a5a8e4b8f01a5192066f1ac095845f308}{oomph\+::\+Inexact\+Sub\+Biharmonic\+Preconditioner}, \hyperlink{classoomph_1_1LagrangeEnforcedFlowPreconditioner_ace8141de668eb2a172ef9a25c932134a}{oomph\+::\+Lagrange\+Enforced\+Flow\+Preconditioner}, \hyperlink{classoomph_1_1PseudoElasticPreconditioner_adcc9487ec16eea12912b2f3a023b4129}{oomph\+::\+Pseudo\+Elastic\+Preconditioner}, \hyperlink{classoomph_1_1ExactSubBiharmonicPreconditioner_a846adc01b62a36c06686b50c16f37ac6}{oomph\+::\+Exact\+Sub\+Biharmonic\+Preconditioner}, \hyperlink{classoomph_1_1MatrixBasedLumpedPreconditioner_a17703845dc37066eb6851e12b1f182cb}{oomph\+::\+Matrix\+Based\+Lumped\+Preconditioner$<$ M\+A\+T\+R\+I\+X $>$}, \hyperlink{classoomph_1_1MatrixBasedLumpedPreconditioner_a17703845dc37066eb6851e12b1f182cb}{oomph\+::\+Matrix\+Based\+Lumped\+Preconditioner$<$ oomph\+::\+C\+R\+Double\+Matrix $>$}, \hyperlink{classoomph_1_1PseudoElasticFSIPreconditioner_a15859381010faa40a47fdca28b281475}{oomph\+::\+Pseudo\+Elastic\+F\+S\+I\+Preconditioner}, \hyperlink{classoomph_1_1BiharmonicPreconditioner_a1eec48fe85c0246c1a9ba1ad4cfa74e6}{oomph\+::\+Biharmonic\+Preconditioner}, \hyperlink{classoomph_1_1HelmholtzMGPreconditioner_a8ffcf85fcfeac6c4d17c14c6ee35549b}{oomph\+::\+Helmholtz\+M\+G\+Preconditioner$<$ D\+I\+M $>$}, \hyperlink{classoomph_1_1GeneralPurposeBlockPreconditioner_a3272742d3c7f86327d33c5647af874e6}{oomph\+::\+General\+Purpose\+Block\+Preconditioner$<$ M\+A\+T\+R\+I\+X $>$}, \hyperlink{classoomph_1_1SuperLUPreconditioner_aa0a50217f8416c55af700cbedd750900}{oomph\+::\+Super\+L\+U\+Preconditioner}, and \hyperlink{classoomph_1_1TrilinosPreconditionerBase_a6cc1da6ffb61bec844ccd33f6e5e8807}{oomph\+::\+Trilinos\+Preconditioner\+Base}.
+
+
+
+Definition at line 127 of file preconditioner.\+h.
+
+
+
+Referenced by oomph\+::\+Pseudo\+Elastic\+F\+S\+I\+Preconditioner\+::clean\+\_\+up\+\_\+memory(), oomph\+::\+Trilinos\+Aztec\+O\+O\+Solver\+::clean\+\_\+up\+\_\+memory(), and oomph\+::\+Matrix\+Based\+Lumped\+Preconditioner$<$ oomph\+::\+C\+R\+Double\+Matrix $>$\+::$\sim$\+Matrix\+Based\+Lumped\+Preconditioner().
+
+\mbox{\Hypertarget{classoomph_1_1Preconditioner_ada7219933e05d94f39a46a8ddb4c749a}\label{classoomph_1_1Preconditioner_ada7219933e05d94f39a46a8ddb4c749a}} 
+\index{oomph\+::\+Preconditioner@{oomph\+::\+Preconditioner}!comm\+\_\+pt@{comm\+\_\+pt}}
+\index{comm\+\_\+pt@{comm\+\_\+pt}!oomph\+::\+Preconditioner@{oomph\+::\+Preconditioner}}
+\subsubsection{\texorpdfstring{comm\+\_\+pt()}{comm\_pt()}}
+{\footnotesize\ttfamily virtual const \hyperlink{classoomph_1_1OomphCommunicator}{Oomph\+Communicator}$\ast$ oomph\+::\+Preconditioner\+::comm\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get function for comm pointer. 
+
+
+
+Definition at line 149 of file preconditioner.\+h.
+
+
+
+References Comm\+\_\+pt.
+
+
+
+Referenced by oomph\+::\+Pressure\+Based\+Solid\+L\+S\+C\+Preconditioner\+::assemble\+\_\+mass\+\_\+matrix\+\_\+diagonal(), set\+\_\+comm\+\_\+pt(), oomph\+::\+Matrix\+Based\+Diag\+Preconditioner\+::setup(), oomph\+::\+Matrix\+Based\+Lumped\+Preconditioner$<$ oomph\+::\+C\+R\+Double\+Matrix $>$\+::setup(), oomph\+::\+Identity\+Preconditioner\+::setup(), oomph\+::\+I\+L\+U\+Zero\+Preconditioner$<$ C\+C\+Double\+Matrix $>$\+::setup(), and oomph\+::\+Inner\+Iteration\+Preconditioner$<$ S\+O\+L\+V\+E\+R, P\+R\+E\+C\+O\+N\+D\+I\+T\+I\+O\+N\+E\+R $>$\+::setup().
+
+\mbox{\Hypertarget{classoomph_1_1Preconditioner_a66726e9df31365df646cdf83a975aa26}\label{classoomph_1_1Preconditioner_a66726e9df31365df646cdf83a975aa26}} 
+\index{oomph\+::\+Preconditioner@{oomph\+::\+Preconditioner}!matrix\+\_\+pt@{matrix\+\_\+pt}}
+\index{matrix\+\_\+pt@{matrix\+\_\+pt}!oomph\+::\+Preconditioner@{oomph\+::\+Preconditioner}}
+\subsubsection{\texorpdfstring{matrix\+\_\+pt()}{matrix\_pt()}}
+{\footnotesize\ttfamily virtual \hyperlink{classoomph_1_1DoubleMatrixBase}{Double\+Matrix\+Base}$\ast$ oomph\+::\+Preconditioner\+::matrix\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get function for matrix pointer. 
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1BlockPreconditioner_a9aac48fd53e579e6db8eeed58933a14b}{oomph\+::\+Block\+Preconditioner$<$ M\+A\+T\+R\+I\+X $>$}, and \hyperlink{classoomph_1_1BlockPreconditioner_a9aac48fd53e579e6db8eeed58933a14b}{oomph\+::\+Block\+Preconditioner$<$ C\+R\+Double\+Matrix $>$}.
+
+
+
+Definition at line 130 of file preconditioner.\+h.
+
+
+
+References Matrix\+\_\+pt.
+
+
+
+Referenced by oomph\+::\+Block\+Preconditioner$<$ C\+R\+Double\+Matrix $>$\+::matrix\+\_\+pt(), set\+\_\+matrix\+\_\+pt(), oomph\+::\+Super\+L\+U\+Preconditioner\+::setup(), oomph\+::\+Matrix\+Based\+Diag\+Preconditioner\+::setup(), setup(), oomph\+::\+Trilinos\+Preconditioner\+Base\+::setup(), oomph\+::\+Matrix\+Based\+Lumped\+Preconditioner$<$ oomph\+::\+C\+R\+Double\+Matrix $>$\+::setup(), oomph\+::\+Identity\+Preconditioner\+::setup(), oomph\+::\+I\+L\+U\+Zero\+Preconditioner$<$ C\+C\+Double\+Matrix $>$\+::setup(), oomph\+::\+I\+L\+U\+Zero\+Preconditioner$<$ C\+R\+Double\+Matrix $>$\+::setup(), and oomph\+::\+Inner\+Iteration\+Preconditioner$<$ S\+O\+L\+V\+E\+R, P\+R\+E\+C\+O\+N\+D\+I\+T\+I\+O\+N\+E\+R $>$\+::setup().
+
+\mbox{\Hypertarget{classoomph_1_1Preconditioner_a0f853396c6275cc9bc31ecd9d148d112}\label{classoomph_1_1Preconditioner_a0f853396c6275cc9bc31ecd9d148d112}} 
+\index{oomph\+::\+Preconditioner@{oomph\+::\+Preconditioner}!operator=@{operator=}}
+\index{operator=@{operator=}!oomph\+::\+Preconditioner@{oomph\+::\+Preconditioner}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily void oomph\+::\+Preconditioner\+::operator= (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Preconditioner}{Preconditioner} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Broken assignment operator. 
+
+
+
+Definition at line 73 of file preconditioner.\+h.
+
+
+
+References oomph\+::\+Broken\+Copy\+::broken\+\_\+assign().
+
+\mbox{\Hypertarget{classoomph_1_1Preconditioner_ace1199369e4465cd2b9a34884bb64ec8}\label{classoomph_1_1Preconditioner_ace1199369e4465cd2b9a34884bb64ec8}} 
+\index{oomph\+::\+Preconditioner@{oomph\+::\+Preconditioner}!preconditioner\+\_\+solve@{preconditioner\+\_\+solve}}
+\index{preconditioner\+\_\+solve@{preconditioner\+\_\+solve}!oomph\+::\+Preconditioner@{oomph\+::\+Preconditioner}}
+\subsubsection{\texorpdfstring{preconditioner\+\_\+solve()}{preconditioner\_solve()}}
+{\footnotesize\ttfamily virtual void oomph\+::\+Preconditioner\+::preconditioner\+\_\+solve (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} \&}]{r,  }\item[{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} \&}]{z }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Apply the preconditioner. Pure virtual generic interface function. This method should apply the preconditioner operator to the vector r and return the vector z. 
+
+
+
+Implemented in \hyperlink{classoomph_1_1HelmholtzGMRESMG_a6050720b0d12f422e4b2983378dc53e5}{oomph\+::\+Helmholtz\+G\+M\+R\+E\+S\+M\+G$<$ M\+A\+T\+R\+I\+X $>$}, \hyperlink{classoomph_1_1HyprePreconditioner_ad4967b01386d24d1839bccb99b2f9560}{oomph\+::\+Hypre\+Preconditioner}, \hyperlink{classoomph_1_1PseudoElasticPreconditionerScalingHelperOld_a185bc08ce33f220d9ef61745b46e0633}{oomph\+::\+Pseudo\+Elastic\+Preconditioner\+Scaling\+Helper\+Old}, \hyperlink{classoomph_1_1NavierStokesSchurComplementPreconditioner_adbc87003dd8e8c924ae802651b18f2ed}{oomph\+::\+Navier\+Stokes\+Schur\+Complement\+Preconditioner}, \hyperlink{classoomph_1_1MGPreconditioner_afa4c545cc49e9712e4d68f5c0275aefe}{oomph\+::\+M\+G\+Preconditioner$<$ D\+I\+M $>$}, \hyperlink{classoomph_1_1PseudoElasticPreconditionerSubsidiaryBlockPreconditionerOld_a31f3b927696c11c90f704178cae13e7e}{oomph\+::\+Pseudo\+Elastic\+Preconditioner\+Subsidiary\+Block\+Preconditioner\+Old}, \hyperlink{classoomph_1_1DummyBlockPreconditioner_a362eae22ec757442bf17aa2de9bc82da}{oomph\+::\+Dummy\+Block\+Preconditioner$<$ M\+A\+T\+R\+I\+X $>$}, \hyperlink{classoomph_1_1ExactBlockPreconditioner_a4267f2937d09e9949b355a19ad107044}{oomph\+::\+Exact\+Block\+Preconditioner$<$ M\+A\+T\+R\+I\+X $>$}, \hyperlink{classoomph_1_1SimpleFSIPreconditioner_a31684c26aa10a782189c32304d9d0824}{oomph\+::\+Simple\+F\+S\+I\+Preconditioner$<$ M\+A\+T\+R\+I\+X $>$}, \hyperlink{classoomph_1_1PseudoElasticPreconditionerSubsidiaryPreconditionerOld_a01d70c9e3454b52c86f4439d29fd4b22}{oomph\+::\+Pseudo\+Elastic\+Preconditioner\+Subsidiary\+Preconditioner\+Old}, \hyperlink{classoomph_1_1BlockTriangularPreconditioner_aede879082caa04a2de50c811ee6d7f5b}{oomph\+::\+Block\+Triangular\+Preconditioner$<$ M\+A\+T\+R\+I\+X $>$}, \hyperlink{classoomph_1_1InnerIterationPreconditioner_a6d30ced26206cb866f9ae51cc4caebae}{oomph\+::\+Inner\+Iteration\+Preconditioner$<$ S\+O\+L\+V\+E\+R, P\+R\+E\+C\+O\+N\+D\+I\+T\+I\+O\+N\+E\+R $>$}, \hyperlink{classoomph_1_1HelmholtzMGPreconditioner_a20e891e7a2d84f81fc56a003d7f2925f}{oomph\+::\+Helmholtz\+M\+G\+Preconditioner$<$ D\+I\+M $>$}, \hyperlink{classoomph_1_1PseudoElasticPreconditionerOld_a20b548d07e0f4116f59444ccb69d980f}{oomph\+::\+Pseudo\+Elastic\+Preconditioner\+Old}, \hyperlink{classoomph_1_1BlockDiagonalPreconditioner_a129f0d7877ced9efaa3a7f018618f44b}{oomph\+::\+Block\+Diagonal\+Preconditioner$<$ M\+A\+T\+R\+I\+X $>$}, \hyperlink{classoomph_1_1ILUZeroPreconditioner_3_01CRDoubleMatrix_01_4_ae0bff88ef761683c868110347c6d81db}{oomph\+::\+I\+L\+U\+Zero\+Preconditioner$<$ C\+R\+Double\+Matrix $>$}, \hyperlink{classoomph_1_1InexactSubBiharmonicPreconditioner_af15b753e7631a5f6de0bb33cebf37fad}{oomph\+::\+Inexact\+Sub\+Biharmonic\+Preconditioner}, \hyperlink{classoomph_1_1NewMumpsPreconditioner_a763a8297c031fab7f16b37eaf257aeb1}{oomph\+::\+New\+Mumps\+Preconditioner}, \hyperlink{classoomph_1_1ILUZeroPreconditioner_3_01CCDoubleMatrix_01_4_adadad5eca4d828d3d8a07547d83bd9a6}{oomph\+::\+I\+L\+U\+Zero\+Preconditioner$<$ C\+C\+Double\+Matrix $>$}, \hyperlink{classoomph_1_1IdentityPreconditioner_a8daf11465066158a258b5996984490af}{oomph\+::\+Identity\+Preconditioner}, \hyperlink{classoomph_1_1ExactSubBiharmonicPreconditioner_aaf4493aaa8dcd46cf585b7585d246ad0}{oomph\+::\+Exact\+Sub\+Biharmonic\+Preconditioner}, \hyperlink{classoomph_1_1PressureBasedSolidLSCPreconditioner_ab81479f6e6a91ecb048f8c8d7e050744}{oomph\+::\+Pressure\+Based\+Solid\+L\+S\+C\+Preconditioner}, \hyperlink{classoomph_1_1LagrangeEnforcedFlowPreconditioner_a519940fc2faee5faac00b80004f3edea}{oomph\+::\+Lagrange\+Enforced\+Flow\+Preconditioner}, \hyperlink{classoomph_1_1FSIPreconditioner_a31c84c3ca19c31488acd0bf2fe333a6b}{oomph\+::\+F\+S\+I\+Preconditioner}, \hyperlink{classoomph_1_1PseudoElasticPreconditioner_a2533d2574d2c7d6613fda72b96a5f885}{oomph\+::\+Pseudo\+Elastic\+Preconditioner}, \hyperlink{classoomph_1_1PseudoElasticFSIPreconditioner_ad29c2852949caec2d20cbe7cf99f1b38}{oomph\+::\+Pseudo\+Elastic\+F\+S\+I\+Preconditioner}, \hyperlink{classoomph_1_1BiharmonicPreconditioner_a205babb3fe007ed93113a0c52ee4cf7d}{oomph\+::\+Biharmonic\+Preconditioner}, \hyperlink{classoomph_1_1MatrixBasedLumpedPreconditioner_a48a9cbf7b1a6afbe60b050de87ec8047}{oomph\+::\+Matrix\+Based\+Lumped\+Preconditioner$<$ M\+A\+T\+R\+I\+X $>$}, \hyperlink{classoomph_1_1MatrixBasedLumpedPreconditioner_a48a9cbf7b1a6afbe60b050de87ec8047}{oomph\+::\+Matrix\+Based\+Lumped\+Preconditioner$<$ oomph\+::\+C\+R\+Double\+Matrix $>$}, \hyperlink{classoomph_1_1TrilinosPreconditionerBase_a12ec6cf14b8d27ed9ef810dcad5e1182}{oomph\+::\+Trilinos\+Preconditioner\+Base}, \hyperlink{classoomph_1_1SuperLUPreconditioner_a687a7578834939a5ca70bd4871189ad0}{oomph\+::\+Super\+L\+U\+Preconditioner}, and \hyperlink{classoomph_1_1MatrixBasedDiagPreconditioner_a202ee7ff4183a585a0b9bd772e2cbcc1}{oomph\+::\+Matrix\+Based\+Diag\+Preconditioner}.
+
+
+
+Referenced by oomph\+::\+Oomph\+Lib\+Preconditioner\+Epetra\+Operator\+::\+Apply\+Inverse(), oomph\+::\+Pseudo\+Elastic\+F\+S\+I\+Preconditioner\+::preconditioner\+\_\+solve(), oomph\+::\+F\+S\+I\+Preconditioner\+::preconditioner\+\_\+solve(), oomph\+::\+Pressure\+Based\+Solid\+L\+S\+C\+Preconditioner\+::preconditioner\+\_\+solve(), oomph\+::\+G\+M\+R\+E\+S$<$ M\+A\+T\+R\+I\+X $>$\+::solve\+\_\+helper(), oomph\+::\+Helmholtz\+G\+M\+R\+E\+S\+M\+G$<$ M\+A\+T\+R\+I\+X $>$\+::solve\+\_\+helper(), oomph\+::\+Helmholtz\+F\+G\+M\+R\+E\+S\+M\+G$<$ M\+A\+T\+R\+I\+X $>$\+::solve\+\_\+helper(), oomph\+::\+G\+M\+R\+E\+S$<$ M\+A\+T\+R\+I\+X $>$\+::update(), oomph\+::\+Helmholtz\+G\+M\+R\+E\+S\+M\+G$<$ M\+A\+T\+R\+I\+X $>$\+::update(), and $\sim$\+Preconditioner().
+
+\mbox{\Hypertarget{classoomph_1_1Preconditioner_a306f5a52f493816fcfda2dc9b2ee1dbf}\label{classoomph_1_1Preconditioner_a306f5a52f493816fcfda2dc9b2ee1dbf}} 
+\index{oomph\+::\+Preconditioner@{oomph\+::\+Preconditioner}!set\+\_\+comm\+\_\+pt@{set\+\_\+comm\+\_\+pt}}
+\index{set\+\_\+comm\+\_\+pt@{set\+\_\+comm\+\_\+pt}!oomph\+::\+Preconditioner@{oomph\+::\+Preconditioner}}
+\subsubsection{\texorpdfstring{set\+\_\+comm\+\_\+pt()}{set\_comm\_pt()}}
+{\footnotesize\ttfamily virtual void oomph\+::\+Preconditioner\+::set\+\_\+comm\+\_\+pt (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1OomphCommunicator}{Oomph\+Communicator} $\ast$const}]{comm\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Set the communicator pointer. 
+
+
+
+Definition at line 171 of file preconditioner.\+h.
+
+
+
+References comm\+\_\+pt(), and Comm\+\_\+pt.
+
+
+
+Referenced by setup().
+
+\mbox{\Hypertarget{classoomph_1_1Preconditioner_af459b7333c4c64435fd8fa933535901f}\label{classoomph_1_1Preconditioner_af459b7333c4c64435fd8fa933535901f}} 
+\index{oomph\+::\+Preconditioner@{oomph\+::\+Preconditioner}!set\+\_\+matrix\+\_\+pt@{set\+\_\+matrix\+\_\+pt}}
+\index{set\+\_\+matrix\+\_\+pt@{set\+\_\+matrix\+\_\+pt}!oomph\+::\+Preconditioner@{oomph\+::\+Preconditioner}}
+\subsubsection{\texorpdfstring{set\+\_\+matrix\+\_\+pt()}{set\_matrix\_pt()}}
+{\footnotesize\ttfamily virtual void oomph\+::\+Preconditioner\+::set\+\_\+matrix\+\_\+pt (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1DoubleMatrixBase}{Double\+Matrix\+Base} $\ast$}]{matrix\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Set the matrix pointer. 
+
+
+
+Definition at line 146 of file preconditioner.\+h.
+
+
+
+References matrix\+\_\+pt(), and Matrix\+\_\+pt.
+
+
+
+Referenced by setup(), and oomph\+::\+Trilinos\+Aztec\+O\+O\+Solver\+::solver\+\_\+setup().
+
+\mbox{\Hypertarget{classoomph_1_1Preconditioner_a0b95e7159585b5151f9e5dc1d1713655}\label{classoomph_1_1Preconditioner_a0b95e7159585b5151f9e5dc1d1713655}} 
+\index{oomph\+::\+Preconditioner@{oomph\+::\+Preconditioner}!setup@{setup}}
+\index{setup@{setup}!oomph\+::\+Preconditioner@{oomph\+::\+Preconditioner}}
+\subsubsection{\texorpdfstring{setup()}{setup()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily void oomph\+::\+Preconditioner\+::setup (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1DoubleMatrixBase}{Double\+Matrix\+Base} $\ast$}]{matrix\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Setup the preconditioner\+: store the matrix pointer and the communicator pointer then call preconditioner specific \hyperlink{classoomph_1_1Preconditioner_af4886f4efe510e5c9b0eb19422943588}{setup()} function. 
+
+
+
+Definition at line 90 of file preconditioner.\+h.
+
+
+
+References oomph\+::\+Linear\+Algebra\+Distribution\+::communicator\+\_\+pt(), oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::distribution\+\_\+pt(), matrix\+\_\+pt(), set\+\_\+comm\+\_\+pt(), set\+\_\+matrix\+\_\+pt(), setup(), Setup\+\_\+time, and oomph\+::\+Timing\+Helpers\+::timer().
+
+
+
+Referenced by oomph\+::\+Pseudo\+Elastic\+F\+S\+I\+Preconditioner\+::setup(), oomph\+::\+F\+S\+I\+Preconditioner\+::setup(), oomph\+::\+Lagrange\+Enforced\+Flow\+Preconditioner\+::setup(), oomph\+::\+Pressure\+Based\+Solid\+L\+S\+C\+Preconditioner\+::setup(), oomph\+::\+Navier\+Stokes\+Schur\+Complement\+Preconditioner\+::setup(), oomph\+::\+G\+M\+R\+E\+S$<$ M\+A\+T\+R\+I\+X $>$\+::solve\+\_\+helper(), oomph\+::\+Helmholtz\+G\+M\+R\+E\+S\+M\+G$<$ M\+A\+T\+R\+I\+X $>$\+::solve\+\_\+helper(), oomph\+::\+Helmholtz\+F\+G\+M\+R\+E\+S\+M\+G$<$ M\+A\+T\+R\+I\+X $>$\+::solve\+\_\+helper(), and oomph\+::\+Trilinos\+Aztec\+O\+O\+Solver\+::solver\+\_\+setup().
+
+\mbox{\Hypertarget{classoomph_1_1Preconditioner_a783fae97e4b898f8de72b504a4f4bec6}\label{classoomph_1_1Preconditioner_a783fae97e4b898f8de72b504a4f4bec6}} 
+\index{oomph\+::\+Preconditioner@{oomph\+::\+Preconditioner}!setup@{setup}}
+\index{setup@{setup}!oomph\+::\+Preconditioner@{oomph\+::\+Preconditioner}}
+\subsubsection{\texorpdfstring{setup()}{setup()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily void oomph\+::\+Preconditioner\+::setup (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Problem}{Problem} $\ast$}]{problem\+\_\+pt,  }\item[{\hyperlink{classoomph_1_1DoubleMatrixBase}{Double\+Matrix\+Base} $\ast$}]{matrix\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Compatability layer for old preconditioners where problem pointers were needed. The problem pointer is only used to get a communicator pointer. 
+
+
+
+Definition at line 116 of file preconditioner.\+h.
+
+
+
+References oomph\+::\+Obsolete\+Code\+::obsolete(), and setup().
+
+\mbox{\Hypertarget{classoomph_1_1Preconditioner_af4886f4efe510e5c9b0eb19422943588}\label{classoomph_1_1Preconditioner_af4886f4efe510e5c9b0eb19422943588}} 
+\index{oomph\+::\+Preconditioner@{oomph\+::\+Preconditioner}!setup@{setup}}
+\index{setup@{setup}!oomph\+::\+Preconditioner@{oomph\+::\+Preconditioner}}
+\subsubsection{\texorpdfstring{setup()}{setup()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily virtual void oomph\+::\+Preconditioner\+::setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Setup the preconditioner. Pure virtual generic interface function. 
+
+
+
+Implemented in \hyperlink{classoomph_1_1HelmholtzGMRESMG_ae566e34da6aa9ca70a034f7ef93a1aa5}{oomph\+::\+Helmholtz\+G\+M\+R\+E\+S\+M\+G$<$ M\+A\+T\+R\+I\+X $>$}, \hyperlink{classoomph_1_1NavierStokesExactPreconditioner_a2879372ba29ceaf57e68f711cd4113aa}{oomph\+::\+Navier\+Stokes\+Exact\+Preconditioner$<$ M\+A\+T\+R\+I\+X $>$}, \hyperlink{classoomph_1_1HyprePreconditioner_a5622db3b409cbdc49887aa65fa35215a}{oomph\+::\+Hypre\+Preconditioner}, \hyperlink{classoomph_1_1PseudoElasticPreconditionerScalingHelperOld_a42dca15c6f3678880f3b84ccb91513c7}{oomph\+::\+Pseudo\+Elastic\+Preconditioner\+Scaling\+Helper\+Old}, \hyperlink{classoomph_1_1NavierStokesSchurComplementPreconditioner_a03cbfa527081ea03c910aadc281615d7}{oomph\+::\+Navier\+Stokes\+Schur\+Complement\+Preconditioner}, \hyperlink{classoomph_1_1MGPreconditioner_a476a8e769a62e52e1db6c618ede7408d}{oomph\+::\+M\+G\+Preconditioner$<$ D\+I\+M $>$}, \hyperlink{classoomph_1_1PseudoElasticPreconditionerSubsidiaryBlockPreconditionerOld_a4477e968641690ab5c66c8155aef8a99}{oomph\+::\+Pseudo\+Elastic\+Preconditioner\+Subsidiary\+Block\+Preconditioner\+Old}, \hyperlink{classoomph_1_1DummyBlockPreconditioner_a5bca747d99ecd5b18aef416fb6ad2c99}{oomph\+::\+Dummy\+Block\+Preconditioner$<$ M\+A\+T\+R\+I\+X $>$}, \hyperlink{classoomph_1_1ExactBlockPreconditioner_a9961dff2ee506c32c52a04d1c0bd631d}{oomph\+::\+Exact\+Block\+Preconditioner$<$ M\+A\+T\+R\+I\+X $>$}, \hyperlink{classoomph_1_1SimpleFSIPreconditioner_aaf19c0c3f19f6d8ef4f36a1581829230}{oomph\+::\+Simple\+F\+S\+I\+Preconditioner$<$ M\+A\+T\+R\+I\+X $>$}, \hyperlink{classoomph_1_1HelmholtzMGPreconditioner_aba7a7fb0549452ac56c7e97bd5557c3f}{oomph\+::\+Helmholtz\+M\+G\+Preconditioner$<$ D\+I\+M $>$}, \hyperlink{classoomph_1_1PseudoElasticPreconditionerSubsidiaryPreconditionerOld_a532201f17edc43b3b475fff2d2744b8b}{oomph\+::\+Pseudo\+Elastic\+Preconditioner\+Subsidiary\+Preconditioner\+Old}, \hyperlink{classoomph_1_1BlockTriangularPreconditioner_a2d08f17f9ba08a5772cb32fabcd4f984}{oomph\+::\+Block\+Triangular\+Preconditioner$<$ M\+A\+T\+R\+I\+X $>$}, \hyperlink{classoomph_1_1InnerIterationPreconditioner_a0c20b28ab82a5d7f277c9afef8e99287}{oomph\+::\+Inner\+Iteration\+Preconditioner$<$ S\+O\+L\+V\+E\+R, P\+R\+E\+C\+O\+N\+D\+I\+T\+I\+O\+N\+E\+R $>$}, \hyperlink{classoomph_1_1PressureBasedSolidExactPreconditioner_ab9bdbcabd0ba8e9debfbec6679e66b08}{oomph\+::\+Pressure\+Based\+Solid\+Exact\+Preconditioner$<$ M\+A\+T\+R\+I\+X $>$}, \hyperlink{classoomph_1_1BlockDiagonalPreconditioner_a91bdd8e152045157f77c9cba513fe901}{oomph\+::\+Block\+Diagonal\+Preconditioner$<$ M\+A\+T\+R\+I\+X $>$}, \hyperlink{classoomph_1_1PseudoElasticPreconditionerOld_a25d542a5b98d70be1aa1dd6000402978}{oomph\+::\+Pseudo\+Elastic\+Preconditioner\+Old}, \hyperlink{classoomph_1_1ILUZeroPreconditioner_3_01CRDoubleMatrix_01_4_a2398a8674540bfdb8d69a699085107d8}{oomph\+::\+I\+L\+U\+Zero\+Preconditioner$<$ C\+R\+Double\+Matrix $>$}, \hyperlink{classoomph_1_1InexactSubBiharmonicPreconditioner_aedc32eecdba45ee74777d340665ebdee}{oomph\+::\+Inexact\+Sub\+Biharmonic\+Preconditioner}, \hyperlink{classoomph_1_1ILUZeroPreconditioner_3_01CCDoubleMatrix_01_4_ab72053725965ff961b01d6dc6d77c819}{oomph\+::\+I\+L\+U\+Zero\+Preconditioner$<$ C\+C\+Double\+Matrix $>$}, \hyperlink{classoomph_1_1NewMumpsPreconditioner_a47e894b47284711131cb0a13a65c24e5}{oomph\+::\+New\+Mumps\+Preconditioner}, \hyperlink{classoomph_1_1ExactSubBiharmonicPreconditioner_af2c9a65ab49cdc6dd0b0d5339833c407}{oomph\+::\+Exact\+Sub\+Biharmonic\+Preconditioner}, \hyperlink{classoomph_1_1IdentityPreconditioner_a7a747d5499c2b04a9ecedcf97d41ede8}{oomph\+::\+Identity\+Preconditioner}, \hyperlink{classoomph_1_1PressureBasedSolidLSCPreconditioner_aba594f38c2d36775115adbc90bcd0025}{oomph\+::\+Pressure\+Based\+Solid\+L\+S\+C\+Preconditioner}, \hyperlink{classoomph_1_1LagrangeEnforcedFlowPreconditioner_aadcbdb5af92d7889c956098cb86dee87}{oomph\+::\+Lagrange\+Enforced\+Flow\+Preconditioner}, \hyperlink{classoomph_1_1MatrixBasedLumpedPreconditioner_a05f9fa9aa3ed50ab59b066575a4ff919}{oomph\+::\+Matrix\+Based\+Lumped\+Preconditioner$<$ M\+A\+T\+R\+I\+X $>$}, \hyperlink{classoomph_1_1MatrixBasedLumpedPreconditioner_a05f9fa9aa3ed50ab59b066575a4ff919}{oomph\+::\+Matrix\+Based\+Lumped\+Preconditioner$<$ oomph\+::\+C\+R\+Double\+Matrix $>$}, \hyperlink{classoomph_1_1FSIPreconditioner_adadfe9f4332af610b00f1f45d1ad432e}{oomph\+::\+F\+S\+I\+Preconditioner}, \hyperlink{classoomph_1_1PseudoElasticPreconditioner_a69909eef3e1530ca7faf48c653ec7327}{oomph\+::\+Pseudo\+Elastic\+Preconditioner}, \hyperlink{classoomph_1_1MatrixBasedLumpedPreconditioner_ae8fe580054f7939179514762c6bf7bc2}{oomph\+::\+Matrix\+Based\+Lumped\+Preconditioner$<$ M\+A\+T\+R\+I\+X $>$}, \hyperlink{classoomph_1_1MatrixBasedLumpedPreconditioner_ae8fe580054f7939179514762c6bf7bc2}{oomph\+::\+Matrix\+Based\+Lumped\+Preconditioner$<$ oomph\+::\+C\+R\+Double\+Matrix $>$}, \hyperlink{classoomph_1_1PseudoElasticFSIPreconditioner_a460ad5eea59f4c07dfde8b11696fabb1}{oomph\+::\+Pseudo\+Elastic\+F\+S\+I\+Preconditioner}, \hyperlink{classoomph_1_1BiharmonicPreconditioner_a8f4c9b8a387e27191659e528f0ff82a1}{oomph\+::\+Biharmonic\+Preconditioner}, \hyperlink{classoomph_1_1MatrixBasedLumpedPreconditioner_a7fc9e4c0ef357cbbc421a5fb37076edb}{oomph\+::\+Matrix\+Based\+Lumped\+Preconditioner$<$ M\+A\+T\+R\+I\+X $>$}, \hyperlink{classoomph_1_1MatrixBasedLumpedPreconditioner_a7fc9e4c0ef357cbbc421a5fb37076edb}{oomph\+::\+Matrix\+Based\+Lumped\+Preconditioner$<$ oomph\+::\+C\+R\+Double\+Matrix $>$}, \hyperlink{classoomph_1_1TrilinosPreconditionerBase_aaef80c74c1d94a42420e3362194efce9}{oomph\+::\+Trilinos\+Preconditioner\+Base}, \hyperlink{classoomph_1_1MatrixBasedDiagPreconditioner_abdc2e202dcf014e49373b4c180033d29}{oomph\+::\+Matrix\+Based\+Diag\+Preconditioner}, and \hyperlink{classoomph_1_1SuperLUPreconditioner_a7a53307202af7c06a2a6b336e943b1b4}{oomph\+::\+Super\+L\+U\+Preconditioner}.
+
+
+
+Referenced by oomph\+::\+Navier\+Stokes\+Schur\+Complement\+Preconditioner\+::disable\+\_\+accept\+\_\+non\+\_\+\+Navier\+Stokes\+Element\+With\+Diagonal\+Mass\+Matrices\+\_\+elements(), oomph\+::\+Helmholtz\+M\+G\+Preconditioner$<$ D\+I\+M $>$\+::iterations(), oomph\+::\+Matrix\+Based\+Lumped\+Preconditioner$<$ oomph\+::\+C\+R\+Double\+Matrix $>$\+::operator=(), setup(), oomph\+::\+Pseudo\+Elastic\+F\+S\+I\+Preconditioner\+::setup(), and oomph\+::\+Pseudo\+Elastic\+Preconditioner\+Subsidiary\+Block\+Preconditioner\+Old\+::setup().
+
+\mbox{\Hypertarget{classoomph_1_1Preconditioner_a9202e15534f063a8e21a8a60623eac9f}\label{classoomph_1_1Preconditioner_a9202e15534f063a8e21a8a60623eac9f}} 
+\index{oomph\+::\+Preconditioner@{oomph\+::\+Preconditioner}!setup\+\_\+time@{setup\+\_\+time}}
+\index{setup\+\_\+time@{setup\+\_\+time}!oomph\+::\+Preconditioner@{oomph\+::\+Preconditioner}}
+\subsubsection{\texorpdfstring{setup\+\_\+time()}{setup\_time()}}
+{\footnotesize\ttfamily double oomph\+::\+Preconditioner\+::setup\+\_\+time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the time to setup the preconditioner. 
+
+
+
+Definition at line 175 of file preconditioner.\+h.
+
+
+
+References Setup\+\_\+time, and turn\+\_\+into\+\_\+subsidiary\+\_\+block\+\_\+preconditioner().
+
+
+
+Referenced by oomph\+::\+F\+S\+I\+Preconditioner\+::setup().
+
+\mbox{\Hypertarget{classoomph_1_1Preconditioner_a1183f65956ef8a5b332a1246f418e907}\label{classoomph_1_1Preconditioner_a1183f65956ef8a5b332a1246f418e907}} 
+\index{oomph\+::\+Preconditioner@{oomph\+::\+Preconditioner}!turn\+\_\+into\+\_\+subsidiary\+\_\+block\+\_\+preconditioner@{turn\+\_\+into\+\_\+subsidiary\+\_\+block\+\_\+preconditioner}}
+\index{turn\+\_\+into\+\_\+subsidiary\+\_\+block\+\_\+preconditioner@{turn\+\_\+into\+\_\+subsidiary\+\_\+block\+\_\+preconditioner}!oomph\+::\+Preconditioner@{oomph\+::\+Preconditioner}}
+\subsubsection{\texorpdfstring{turn\+\_\+into\+\_\+subsidiary\+\_\+block\+\_\+preconditioner()}{turn\_into\_subsidiary\_block\_preconditioner()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily virtual void oomph\+::\+Preconditioner\+::turn\+\_\+into\+\_\+subsidiary\+\_\+block\+\_\+preconditioner (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1BlockPreconditioner}{Block\+Preconditioner}$<$ \hyperlink{classoomph_1_1CRDoubleMatrix}{C\+R\+Double\+Matrix} $>$ $\ast$}]{master\+\_\+block\+\_\+prec\+\_\+pt,  }\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ unsigned $>$ \&}]{doftype\+\_\+in\+\_\+master\+\_\+preconditioner\+\_\+coarse }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Virtual interface function for making a preconditioner a subsidiary of a block preconditioner. By default nothing is needed, but if this preconditioner is also a block preconditioner then things need to happen. There\textquotesingle{}s an assumption here that the block preconditioner will be in CR form but since that assumption is hard coded all over \hyperlink{classoomph_1_1BlockPreconditioner}{Block\+Preconditioner} we\textquotesingle{}re safe. 
+
+Reimplemented in \hyperlink{classoomph_1_1BlockPreconditioner_ab8e2478caa8370dd12462f17e1cc8082}{oomph\+::\+Block\+Preconditioner$<$ C\+R\+Double\+Matrix $>$}.
+
+
+
+Definition at line 185 of file preconditioner.\+h.
+
+
+
+Referenced by setup\+\_\+time().
+
+\mbox{\Hypertarget{classoomph_1_1Preconditioner_a61a462f4266c22050b4ab9ab441c77a6}\label{classoomph_1_1Preconditioner_a61a462f4266c22050b4ab9ab441c77a6}} 
+\index{oomph\+::\+Preconditioner@{oomph\+::\+Preconditioner}!turn\+\_\+into\+\_\+subsidiary\+\_\+block\+\_\+preconditioner@{turn\+\_\+into\+\_\+subsidiary\+\_\+block\+\_\+preconditioner}}
+\index{turn\+\_\+into\+\_\+subsidiary\+\_\+block\+\_\+preconditioner@{turn\+\_\+into\+\_\+subsidiary\+\_\+block\+\_\+preconditioner}!oomph\+::\+Preconditioner@{oomph\+::\+Preconditioner}}
+\subsubsection{\texorpdfstring{turn\+\_\+into\+\_\+subsidiary\+\_\+block\+\_\+preconditioner()}{turn\_into\_subsidiary\_block\_preconditioner()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily virtual void oomph\+::\+Preconditioner\+::turn\+\_\+into\+\_\+subsidiary\+\_\+block\+\_\+preconditioner (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1BlockPreconditioner}{Block\+Preconditioner}$<$ \hyperlink{classoomph_1_1CRDoubleMatrix}{C\+R\+Double\+Matrix} $>$ $\ast$}]{master\+\_\+block\+\_\+prec\+\_\+pt,  }\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ unsigned $>$ \&}]{doftype\+\_\+in\+\_\+master\+\_\+preconditioner\+\_\+coarse,  }\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ \hyperlink{classoomph_1_1Vector}{Vector}$<$ unsigned $>$ $>$ \&}]{doftype\+\_\+coarsen\+\_\+map\+\_\+coarse }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Virtual interface function for making a preconditioner a subsidiary of a block preconditioner. By default nothing is needed, but if this preconditioner is also a block preconditioner then things need to happen. Version for coarsening dof-\/types. 
+
+Reimplemented in \hyperlink{classoomph_1_1BlockPreconditioner_ae9282acaaf19fa2cdb703d49f1a8de25}{oomph\+::\+Block\+Preconditioner$<$ C\+R\+Double\+Matrix $>$}.
+
+
+
+Definition at line 193 of file preconditioner.\+h.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1Preconditioner_aa580eb7cc01ac989201aac30c3a8eab5}\label{classoomph_1_1Preconditioner_aa580eb7cc01ac989201aac30c3a8eab5}} 
+\index{oomph\+::\+Preconditioner@{oomph\+::\+Preconditioner}!Comm\+\_\+pt@{Comm\+\_\+pt}}
+\index{Comm\+\_\+pt@{Comm\+\_\+pt}!oomph\+::\+Preconditioner@{oomph\+::\+Preconditioner}}
+\subsubsection{\texorpdfstring{Comm\+\_\+pt}{Comm\_pt}}
+{\footnotesize\ttfamily const \hyperlink{classoomph_1_1OomphCommunicator}{Oomph\+Communicator}$\ast$ oomph\+::\+Preconditioner\+::\+Comm\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Storage for a pointer to the communicator. Null if the preconditioner should not be distributed. 
+
+
+
+Definition at line 204 of file preconditioner.\+h.
+
+
+
+Referenced by comm\+\_\+pt(), and set\+\_\+comm\+\_\+pt().
+
+\mbox{\Hypertarget{classoomph_1_1Preconditioner_a04caf49de41802ef112e4b8b644b1d4d}\label{classoomph_1_1Preconditioner_a04caf49de41802ef112e4b8b644b1d4d}} 
+\index{oomph\+::\+Preconditioner@{oomph\+::\+Preconditioner}!Matrix\+\_\+pt@{Matrix\+\_\+pt}}
+\index{Matrix\+\_\+pt@{Matrix\+\_\+pt}!oomph\+::\+Preconditioner@{oomph\+::\+Preconditioner}}
+\subsubsection{\texorpdfstring{Matrix\+\_\+pt}{Matrix\_pt}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1DoubleMatrixBase}{Double\+Matrix\+Base}$\ast$ oomph\+::\+Preconditioner\+::\+Matrix\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Storage for a pointer to the matrix. 
+
+
+
+Definition at line 200 of file preconditioner.\+h.
+
+
+
+Referenced by matrix\+\_\+pt(), and set\+\_\+matrix\+\_\+pt().
+
+\mbox{\Hypertarget{classoomph_1_1Preconditioner_a00f5ae98e81e7cb9aa6a70a39a9759c8}\label{classoomph_1_1Preconditioner_a00f5ae98e81e7cb9aa6a70a39a9759c8}} 
+\index{oomph\+::\+Preconditioner@{oomph\+::\+Preconditioner}!Setup\+\_\+time@{Setup\+\_\+time}}
+\index{Setup\+\_\+time@{Setup\+\_\+time}!oomph\+::\+Preconditioner@{oomph\+::\+Preconditioner}}
+\subsubsection{\texorpdfstring{Setup\+\_\+time}{Setup\_time}}
+{\footnotesize\ttfamily double oomph\+::\+Preconditioner\+::\+Setup\+\_\+time\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The time it takes to set up this preconditioner. 
+
+
+
+Definition at line 207 of file preconditioner.\+h.
+
+
+
+Referenced by setup(), and setup\+\_\+time().
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{preconditioner_8h}{preconditioner.\+h}\end{DoxyCompactItemize}

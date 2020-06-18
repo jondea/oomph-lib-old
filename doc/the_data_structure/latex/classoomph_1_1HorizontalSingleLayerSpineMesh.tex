@@ -1,0 +1,114 @@
+\hypertarget{classoomph_1_1HorizontalSingleLayerSpineMesh}{}\section{oomph\+:\+:Horizontal\+Single\+Layer\+Spine\+Mesh$<$ E\+L\+E\+M\+E\+NT $>$ Class Template Reference}
+\label{classoomph_1_1HorizontalSingleLayerSpineMesh}\index{oomph\+::\+Horizontal\+Single\+Layer\+Spine\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$@{oomph\+::\+Horizontal\+Single\+Layer\+Spine\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$}}
+
+
+{\ttfamily \#include $<$horizontal\+\_\+single\+\_\+layer\+\_\+spine\+\_\+mesh.\+template.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Horizontal\+Single\+Layer\+Spine\+Mesh$<$ E\+L\+E\+M\+E\+NT $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.363364cm]{classoomph_1_1HorizontalSingleLayerSpineMesh}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1HorizontalSingleLayerSpineMesh_a765856597150d37a20eabdb53e58d49c}{Horizontal\+Single\+Layer\+Spine\+Mesh} (const unsigned \&\hyperlink{classoomph_1_1RectangularQuadMesh_abfef93d6322886cdce14a437186e4821}{nx}, const unsigned \&\hyperlink{classoomph_1_1RectangularQuadMesh_a86d76a55eb7c4e8bca9b74d23c8b0412}{ny}, const double \&lx, const double \&h, \hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper} $\ast$time\+\_\+stepper\+\_\+pt=\&\hyperlink{classoomph_1_1Mesh_a12243d0fee2b1fcee729ee5a4777ea10}{Mesh\+::\+Default\+\_\+\+Time\+Stepper})
+\begin{DoxyCompactList}\small\item\em Constructor\+: Pass number of elements in x-\/direction, number of elements in y-\/direction, axial length, height of layer, and pointer to timestepper (defaults to \hyperlink{classoomph_1_1Steady}{Steady} timestepper) \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1HorizontalSingleLayerSpineMesh_a4b9b833a281aa64a809b4e47159282e6}{spine\+\_\+node\+\_\+update} (\hyperlink{classoomph_1_1SpineNode}{Spine\+Node} $\ast$spine\+\_\+node\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em General node update function implements pure virtual function defined in \hyperlink{classoomph_1_1SpineMesh}{Spine\+Mesh} base class and performs specific node update actions\+: along vertical spines. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{classoomph_1_1HorizontalSingleLayerSpineMesh_a9bd06cd24d2c48c499bf149b1773b442}{build\+\_\+horizontal\+\_\+single\+\_\+layer\+\_\+mesh} (\hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper} $\ast$time\+\_\+stepper\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Helper function to actually build the single-\/layer spine mesh (called from various constructors) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class E\+L\+E\+M\+E\+NT$>$\newline
+class oomph\+::\+Horizontal\+Single\+Layer\+Spine\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$}
+
+Horizontal Single-\/layer spine mesh class derived from standard 2D mesh. The mesh contains a layer of spinified fluid elements (of type E\+L\+E\+M\+E\+NT; e.\+g \hyperlink{classoomph_1_1SpineElement}{Spine\+Element}$<$Q\+Crouzeix\+Raviart\+Element$<$2$>$) and the information required to update their position. Additional equations must be specified in order to determine how the spines move. 
+
+Definition at line 50 of file horizontal\+\_\+single\+\_\+layer\+\_\+spine\+\_\+mesh.\+template.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1HorizontalSingleLayerSpineMesh_a765856597150d37a20eabdb53e58d49c}\label{classoomph_1_1HorizontalSingleLayerSpineMesh_a765856597150d37a20eabdb53e58d49c}} 
+\index{oomph\+::\+Horizontal\+Single\+Layer\+Spine\+Mesh@{oomph\+::\+Horizontal\+Single\+Layer\+Spine\+Mesh}!Horizontal\+Single\+Layer\+Spine\+Mesh@{Horizontal\+Single\+Layer\+Spine\+Mesh}}
+\index{Horizontal\+Single\+Layer\+Spine\+Mesh@{Horizontal\+Single\+Layer\+Spine\+Mesh}!oomph\+::\+Horizontal\+Single\+Layer\+Spine\+Mesh@{oomph\+::\+Horizontal\+Single\+Layer\+Spine\+Mesh}}
+\subsubsection{\texorpdfstring{Horizontal\+Single\+Layer\+Spine\+Mesh()}{HorizontalSingleLayerSpineMesh()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classoomph_1_1HorizontalSingleLayerSpineMesh}{oomph\+::\+Horizontal\+Single\+Layer\+Spine\+Mesh}$<$ E\+L\+E\+M\+E\+NT $>$\+::\hyperlink{classoomph_1_1HorizontalSingleLayerSpineMesh}{Horizontal\+Single\+Layer\+Spine\+Mesh} (\begin{DoxyParamCaption}\item[{const unsigned \&}]{nx,  }\item[{const unsigned \&}]{ny,  }\item[{const double \&}]{lx,  }\item[{const double \&}]{h,  }\item[{\hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper} $\ast$}]{time\+\_\+stepper\+\_\+pt = {\ttfamily \&\hyperlink{classoomph_1_1Mesh_a12243d0fee2b1fcee729ee5a4777ea10}{Mesh\+::\+Default\+\_\+\+Time\+Stepper}} }\end{DoxyParamCaption})}
+
+
+
+Constructor\+: Pass number of elements in x-\/direction, number of elements in y-\/direction, axial length, height of layer, and pointer to timestepper (defaults to \hyperlink{classoomph_1_1Steady}{Steady} timestepper) 
+
+Constructor for spine 2D mesh\+: Pass number of elements in x-\/direction, number of elements in y-\/direction, axial length and height of layer, and pointer to timestepper (defaults to Static timestepper).
+
+The mesh contains a layer of spinified fluid elements (of type E\+L\+E\+M\+E\+NT; e.\+g \hyperlink{classoomph_1_1SpineElement}{Spine\+Element}$<$Q\+Crouzeix\+Raviart\+Element$<$2$>$) and information about how the internal nodes positions are affected by changes in spine length. Additional equations that determine the spine heights must be specified in order to use this mesh. 
+
+Definition at line 53 of file horizontal\+\_\+single\+\_\+layer\+\_\+spine\+\_\+mesh.\+template.\+cc.
+
+
+
+References oomph\+::\+Horizontal\+Single\+Layer\+Spine\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::build\+\_\+horizontal\+\_\+single\+\_\+layer\+\_\+mesh().
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1HorizontalSingleLayerSpineMesh_a9bd06cd24d2c48c499bf149b1773b442}\label{classoomph_1_1HorizontalSingleLayerSpineMesh_a9bd06cd24d2c48c499bf149b1773b442}} 
+\index{oomph\+::\+Horizontal\+Single\+Layer\+Spine\+Mesh@{oomph\+::\+Horizontal\+Single\+Layer\+Spine\+Mesh}!build\+\_\+horizontal\+\_\+single\+\_\+layer\+\_\+mesh@{build\+\_\+horizontal\+\_\+single\+\_\+layer\+\_\+mesh}}
+\index{build\+\_\+horizontal\+\_\+single\+\_\+layer\+\_\+mesh@{build\+\_\+horizontal\+\_\+single\+\_\+layer\+\_\+mesh}!oomph\+::\+Horizontal\+Single\+Layer\+Spine\+Mesh@{oomph\+::\+Horizontal\+Single\+Layer\+Spine\+Mesh}}
+\subsubsection{\texorpdfstring{build\+\_\+horizontal\+\_\+single\+\_\+layer\+\_\+mesh()}{build\_horizontal\_single\_layer\_mesh()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classoomph_1_1HorizontalSingleLayerSpineMesh}{oomph\+::\+Horizontal\+Single\+Layer\+Spine\+Mesh}$<$ E\+L\+E\+M\+E\+NT $>$\+::build\+\_\+horizontal\+\_\+single\+\_\+layer\+\_\+mesh (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper} $\ast$}]{time\+\_\+stepper\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Helper function to actually build the single-\/layer spine mesh (called from various constructors) 
+
+Helper function that actually builds the single-\/layer spine mesh based on the parameters set in the various constructors 
+
+Definition at line 78 of file horizontal\+\_\+single\+\_\+layer\+\_\+spine\+\_\+mesh.\+template.\+cc.
+
+
+
+References oomph\+::\+Rectangular\+Quad\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::build\+\_\+mesh(), oomph\+::\+Spine\+Mesh\+::element\+\_\+node\+\_\+pt(), oomph\+::\+Mesh\+::finite\+\_\+element\+\_\+pt(), oomph\+::\+Spine\+Node\+::fraction(), i, oomph\+::\+Rectangular\+Quad\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Nx, oomph\+::\+Rectangular\+Quad\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Ny, oomph\+::\+Spine\+Node\+::spine\+\_\+mesh\+\_\+pt(), oomph\+::\+Spine\+Node\+::spine\+\_\+pt(), and oomph\+::\+Spine\+Mesh\+::\+Spine\+\_\+pt.
+
+
+
+Referenced by oomph\+::\+Horizontal\+Single\+Layer\+Spine\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Horizontal\+Single\+Layer\+Spine\+Mesh(), and oomph\+::\+Horizontal\+Single\+Layer\+Spine\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::spine\+\_\+node\+\_\+update().
+
+\mbox{\Hypertarget{classoomph_1_1HorizontalSingleLayerSpineMesh_a4b9b833a281aa64a809b4e47159282e6}\label{classoomph_1_1HorizontalSingleLayerSpineMesh_a4b9b833a281aa64a809b4e47159282e6}} 
+\index{oomph\+::\+Horizontal\+Single\+Layer\+Spine\+Mesh@{oomph\+::\+Horizontal\+Single\+Layer\+Spine\+Mesh}!spine\+\_\+node\+\_\+update@{spine\+\_\+node\+\_\+update}}
+\index{spine\+\_\+node\+\_\+update@{spine\+\_\+node\+\_\+update}!oomph\+::\+Horizontal\+Single\+Layer\+Spine\+Mesh@{oomph\+::\+Horizontal\+Single\+Layer\+Spine\+Mesh}}
+\subsubsection{\texorpdfstring{spine\+\_\+node\+\_\+update()}{spine\_node\_update()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+virtual void \hyperlink{classoomph_1_1HorizontalSingleLayerSpineMesh}{oomph\+::\+Horizontal\+Single\+Layer\+Spine\+Mesh}$<$ E\+L\+E\+M\+E\+NT $>$\+::spine\+\_\+node\+\_\+update (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1SpineNode}{Spine\+Node} $\ast$}]{spine\+\_\+node\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+General node update function implements pure virtual function defined in \hyperlink{classoomph_1_1SpineMesh}{Spine\+Mesh} base class and performs specific node update actions\+: along vertical spines. 
+
+
+
+Implements \hyperlink{classoomph_1_1SpineMesh_aa7843aadce3c540f34442671f59eb75b}{oomph\+::\+Spine\+Mesh}.
+
+
+
+Definition at line 70 of file horizontal\+\_\+single\+\_\+layer\+\_\+spine\+\_\+mesh.\+template.\+h.
+
+
+
+References oomph\+::\+Horizontal\+Single\+Layer\+Spine\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::build\+\_\+horizontal\+\_\+single\+\_\+layer\+\_\+mesh(), oomph\+::\+Spine\+Node\+::fraction(), oomph\+::\+Spine\+Node\+::h(), oomph\+::\+Quad\+Tree\+Names\+::W, and oomph\+::\+Node\+::x().
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{horizontal__single__layer__spine__mesh_8template_8h}{horizontal\+\_\+single\+\_\+layer\+\_\+spine\+\_\+mesh.\+template.\+h}\item 
+\hyperlink{horizontal__single__layer__spine__mesh_8template_8cc}{horizontal\+\_\+single\+\_\+layer\+\_\+spine\+\_\+mesh.\+template.\+cc}\end{DoxyCompactItemize}

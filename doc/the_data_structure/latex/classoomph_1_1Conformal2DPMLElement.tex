@@ -1,0 +1,272 @@
+\hypertarget{classoomph_1_1Conformal2DPMLElement}{}\section{oomph\+:\+:Conformal2\+D\+P\+M\+L\+Element Class Reference}
+\label{classoomph_1_1Conformal2DPMLElement}\index{oomph\+::\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Conformal2\+D\+P\+M\+L\+Element}}
+
+
+{\ttfamily \#include $<$pml\+\_\+elements.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Conformal2\+D\+P\+M\+L\+Element\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.745763cm]{classoomph_1_1Conformal2DPMLElement}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1Conformal2DPMLElement_a6279ae664761a04681287176cc0ae9d4}{Conformal2\+D\+P\+M\+L\+Element} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Conformal2DPMLElement_a90de10011a8fb7062707d5c028a22d50}{Conformal2\+D\+P\+M\+L\+Element} (const unsigned \hyperlink{classoomph_1_1Conformal2DPMLElement_ac0fae35f94a70e615a8bbd47716a32d3}{nu\+\_\+s\+\_\+index}, const double nu\+\_\+at\+\_\+s\+\_\+min, const double nu\+\_\+at\+\_\+s\+\_\+max)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1Conformal2DPMLElement_ae30e06af48dbb74be0fc64173c8fbb63}{pml\+\_\+transformation\+\_\+jacobian} (const unsigned \&ipt, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&x, \hyperlink{classoomph_1_1DenseComplexMatrix}{Dense\+Complex\+Matrix} \&jacobian)
+\item 
+virtual void \hyperlink{classoomph_1_1Conformal2DPMLElement_a1d352e991b9ad7622c27b82d474b4877}{pml\+\_\+transformation\+\_\+jacobian} (const unsigned \&ipt, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&x, \hyperlink{classoomph_1_1DenseComplexMatrix}{Dense\+Complex\+Matrix} \&jacobian\+\_\+matrix, \hyperlink{classoomph_1_1Vector}{Vector}$<$ std\+::complex$<$ double $>$ $>$ \&transformed\+\_\+x)
+\item 
+virtual void \hyperlink{classoomph_1_1Conformal2DPMLElement_a8ac82beb6f246e627340df19ecd8c078}{enable\+\_\+pml} (\hyperlink{classoomph_1_1UniaxialPMLMapping}{Uniaxial\+P\+M\+L\+Mapping} $\ast$pml\+\_\+mapping\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Enable pml. Set the pointer to a P\+ML mapping function. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1Conformal2DPMLElement_ab11344b74ec10ba88440e04ab95b7426}{nu} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s})
+\begin{DoxyCompactList}\small\item\em Coordinate which goes through the P\+ML in terms of local coordinate. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1Conformal2DPMLElement_aa3eba3535690b3b8358123eb7a1160bc}{assemble\+\_\+conformal\+\_\+jacobian} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&p, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&dx\+\_\+inner\+\_\+dacross, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&dp\+\_\+dacross, const double \&\hyperlink{classoomph_1_1Conformal2DPMLElement_ab11344b74ec10ba88440e04ab95b7426}{nu}, const std\+::complex$<$ double $>$ \&tnu, const std\+::complex$<$ double $>$ \&dtnu\+\_\+dnu, \hyperlink{classoomph_1_1DenseComplexMatrix}{Dense\+Complex\+Matrix} \&mapping\+\_\+jacobian)
+\item 
+unsigned \hyperlink{classoomph_1_1Conformal2DPMLElement_ac0fae35f94a70e615a8bbd47716a32d3}{nu\+\_\+s\+\_\+index} () const
+\item 
+unsigned \hyperlink{classoomph_1_1Conformal2DPMLElement_a6692b634a5f689910e4acc42b7244868}{across\+\_\+s\+\_\+index} () const
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classoomph_1_1Conformal2DPMLElement_a42ec3c09776f3bd2cbb6b86dd1400cd0}{get\+\_\+pml\+\_\+properties} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&x\+\_\+inner, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&x\+\_\+outer, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&p, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&dx\+\_\+inner\+\_\+dacross, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&dp\+\_\+dacross, double \&delta)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+unsigned \hyperlink{classoomph_1_1Conformal2DPMLElement_a8c2bbfc42eb94014640a9945b698e107}{Nu\+\_\+s\+\_\+index}
+\begin{DoxyCompactList}\small\item\em Index of local coordinate which nu (through the P\+ML coordinate) is parametrised by. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1Conformal2DPMLElement_ad8d7cc7a1c6e6daf1e70f33e86ba6e89}{Nu\+\_\+at\+\_\+s\+\_\+min}
+\begin{DoxyCompactList}\small\item\em Value of nu at the minimum value of local coordinate. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1Conformal2DPMLElement_a465f23e8087bb37ff3f61f25c2722735}{Nu\+\_\+at\+\_\+s\+\_\+max}
+\begin{DoxyCompactList}\small\item\em Value of nu at the maximum value of local coordinate. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1UniaxialPMLMapping}{Uniaxial\+P\+M\+L\+Mapping} $\ast$ \hyperlink{classoomph_1_1Conformal2DPMLElement_a8e9046efb4999dbb5840917a9568aad4}{Pml\+\_\+mapping\+\_\+pt}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 569 of file pml\+\_\+elements.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1Conformal2DPMLElement_a6279ae664761a04681287176cc0ae9d4}\label{classoomph_1_1Conformal2DPMLElement_a6279ae664761a04681287176cc0ae9d4}} 
+\index{oomph\+::\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Conformal2\+D\+P\+M\+L\+Element}!Conformal2\+D\+P\+M\+L\+Element@{Conformal2\+D\+P\+M\+L\+Element}}
+\index{Conformal2\+D\+P\+M\+L\+Element@{Conformal2\+D\+P\+M\+L\+Element}!oomph\+::\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Conformal2\+D\+P\+M\+L\+Element}}
+\subsubsection{\texorpdfstring{Conformal2\+D\+P\+M\+L\+Element()}{Conformal2DPMLElement()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily oomph\+::\+Conformal2\+D\+P\+M\+L\+Element\+::\+Conformal2\+D\+P\+M\+L\+Element (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor. 
+
+
+
+Definition at line 574 of file pml\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1Conformal2DPMLElement_a90de10011a8fb7062707d5c028a22d50}\label{classoomph_1_1Conformal2DPMLElement_a90de10011a8fb7062707d5c028a22d50}} 
+\index{oomph\+::\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Conformal2\+D\+P\+M\+L\+Element}!Conformal2\+D\+P\+M\+L\+Element@{Conformal2\+D\+P\+M\+L\+Element}}
+\index{Conformal2\+D\+P\+M\+L\+Element@{Conformal2\+D\+P\+M\+L\+Element}!oomph\+::\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Conformal2\+D\+P\+M\+L\+Element}}
+\subsubsection{\texorpdfstring{Conformal2\+D\+P\+M\+L\+Element()}{Conformal2DPMLElement()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily oomph\+::\+Conformal2\+D\+P\+M\+L\+Element\+::\+Conformal2\+D\+P\+M\+L\+Element (\begin{DoxyParamCaption}\item[{const unsigned}]{nu\+\_\+s\+\_\+index,  }\item[{const double}]{nu\+\_\+at\+\_\+s\+\_\+min,  }\item[{const double}]{nu\+\_\+at\+\_\+s\+\_\+max }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor. 
+
+
+
+Definition at line 582 of file pml\+\_\+elements.\+h.
+
+
+
+References s.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1Conformal2DPMLElement_a6692b634a5f689910e4acc42b7244868}\label{classoomph_1_1Conformal2DPMLElement_a6692b634a5f689910e4acc42b7244868}} 
+\index{oomph\+::\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Conformal2\+D\+P\+M\+L\+Element}!across\+\_\+s\+\_\+index@{across\+\_\+s\+\_\+index}}
+\index{across\+\_\+s\+\_\+index@{across\+\_\+s\+\_\+index}!oomph\+::\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Conformal2\+D\+P\+M\+L\+Element}}
+\subsubsection{\texorpdfstring{across\+\_\+s\+\_\+index()}{across\_s\_index()}}
+{\footnotesize\ttfamily unsigned oomph\+::\+Conformal2\+D\+P\+M\+L\+Element\+::across\+\_\+s\+\_\+index (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 635 of file pml\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1Conformal2DPMLElement_aa3eba3535690b3b8358123eb7a1160bc}\label{classoomph_1_1Conformal2DPMLElement_aa3eba3535690b3b8358123eb7a1160bc}} 
+\index{oomph\+::\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Conformal2\+D\+P\+M\+L\+Element}!assemble\+\_\+conformal\+\_\+jacobian@{assemble\+\_\+conformal\+\_\+jacobian}}
+\index{assemble\+\_\+conformal\+\_\+jacobian@{assemble\+\_\+conformal\+\_\+jacobian}!oomph\+::\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Conformal2\+D\+P\+M\+L\+Element}}
+\subsubsection{\texorpdfstring{assemble\+\_\+conformal\+\_\+jacobian()}{assemble\_conformal\_jacobian()}}
+{\footnotesize\ttfamily void oomph\+::\+Conformal2\+D\+P\+M\+L\+Element\+::assemble\+\_\+conformal\+\_\+jacobian (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{p,  }\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{dx\+\_\+inner\+\_\+dacross,  }\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{dp\+\_\+dacross,  }\item[{const double \&}]{nu,  }\item[{const std\+::complex$<$ double $>$ \&}]{tnu,  }\item[{const std\+::complex$<$ double $>$ \&}]{dtnu\+\_\+dnu,  }\item[{\hyperlink{classoomph_1_1DenseComplexMatrix}{Dense\+Complex\+Matrix} \&}]{mapping\+\_\+jacobian }\end{DoxyParamCaption})}
+
+
+
+Definition at line 636 of file pml\+\_\+elements.\+cc.
+
+
+
+References oomph\+::\+Dense\+Complex\+Matrix\+::multiply().
+
+\mbox{\Hypertarget{classoomph_1_1Conformal2DPMLElement_a8ac82beb6f246e627340df19ecd8c078}\label{classoomph_1_1Conformal2DPMLElement_a8ac82beb6f246e627340df19ecd8c078}} 
+\index{oomph\+::\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Conformal2\+D\+P\+M\+L\+Element}!enable\+\_\+pml@{enable\+\_\+pml}}
+\index{enable\+\_\+pml@{enable\+\_\+pml}!oomph\+::\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Conformal2\+D\+P\+M\+L\+Element}}
+\subsubsection{\texorpdfstring{enable\+\_\+pml()}{enable\_pml()}}
+{\footnotesize\ttfamily virtual void oomph\+::\+Conformal2\+D\+P\+M\+L\+Element\+::enable\+\_\+pml (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1UniaxialPMLMapping}{Uniaxial\+P\+M\+L\+Mapping} $\ast$}]{pml\+\_\+mapping\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Enable pml. Set the pointer to a P\+ML mapping function. 
+
+
+
+Definition at line 608 of file pml\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+P\+M\+L\+Element\+Base$<$ D\+I\+M $>$\+::enable\+\_\+pml().
+
+\mbox{\Hypertarget{classoomph_1_1Conformal2DPMLElement_a42ec3c09776f3bd2cbb6b86dd1400cd0}\label{classoomph_1_1Conformal2DPMLElement_a42ec3c09776f3bd2cbb6b86dd1400cd0}} 
+\index{oomph\+::\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Conformal2\+D\+P\+M\+L\+Element}!get\+\_\+pml\+\_\+properties@{get\+\_\+pml\+\_\+properties}}
+\index{get\+\_\+pml\+\_\+properties@{get\+\_\+pml\+\_\+properties}!oomph\+::\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Conformal2\+D\+P\+M\+L\+Element}}
+\subsubsection{\texorpdfstring{get\+\_\+pml\+\_\+properties()}{get\_pml\_properties()}}
+{\footnotesize\ttfamily void oomph\+::\+Conformal2\+D\+P\+M\+L\+Element\+::get\+\_\+pml\+\_\+properties (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{x\+\_\+inner,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{x\+\_\+outer,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{p,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{dx\+\_\+inner\+\_\+dacross,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{dp\+\_\+dacross,  }\item[{double \&}]{delta }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 470 of file pml\+\_\+elements.\+cc.
+
+
+
+References i.
+
+\mbox{\Hypertarget{classoomph_1_1Conformal2DPMLElement_ab11344b74ec10ba88440e04ab95b7426}\label{classoomph_1_1Conformal2DPMLElement_ab11344b74ec10ba88440e04ab95b7426}} 
+\index{oomph\+::\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Conformal2\+D\+P\+M\+L\+Element}!nu@{nu}}
+\index{nu@{nu}!oomph\+::\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Conformal2\+D\+P\+M\+L\+Element}}
+\subsubsection{\texorpdfstring{nu()}{nu()}}
+{\footnotesize\ttfamily double oomph\+::\+Conformal2\+D\+P\+M\+L\+Element\+::nu (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Coordinate which goes through the P\+ML in terms of local coordinate. 
+
+
+
+Definition at line 615 of file pml\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1Conformal2DPMLElement_ac0fae35f94a70e615a8bbd47716a32d3}\label{classoomph_1_1Conformal2DPMLElement_ac0fae35f94a70e615a8bbd47716a32d3}} 
+\index{oomph\+::\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Conformal2\+D\+P\+M\+L\+Element}!nu\+\_\+s\+\_\+index@{nu\+\_\+s\+\_\+index}}
+\index{nu\+\_\+s\+\_\+index@{nu\+\_\+s\+\_\+index}!oomph\+::\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Conformal2\+D\+P\+M\+L\+Element}}
+\subsubsection{\texorpdfstring{nu\+\_\+s\+\_\+index()}{nu\_s\_index()}}
+{\footnotesize\ttfamily unsigned oomph\+::\+Conformal2\+D\+P\+M\+L\+Element\+::nu\+\_\+s\+\_\+index (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 632 of file pml\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1Conformal2DPMLElement_ae30e06af48dbb74be0fc64173c8fbb63}\label{classoomph_1_1Conformal2DPMLElement_ae30e06af48dbb74be0fc64173c8fbb63}} 
+\index{oomph\+::\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Conformal2\+D\+P\+M\+L\+Element}!pml\+\_\+transformation\+\_\+jacobian@{pml\+\_\+transformation\+\_\+jacobian}}
+\index{pml\+\_\+transformation\+\_\+jacobian@{pml\+\_\+transformation\+\_\+jacobian}!oomph\+::\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Conformal2\+D\+P\+M\+L\+Element}}
+\subsubsection{\texorpdfstring{pml\+\_\+transformation\+\_\+jacobian()}{pml\_transformation\_jacobian()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void oomph\+::\+Conformal2\+D\+P\+M\+L\+Element\+::pml\+\_\+transformation\+\_\+jacobian (\begin{DoxyParamCaption}\item[{const unsigned \&}]{ipt,  }\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{x,  }\item[{\hyperlink{classoomph_1_1DenseComplexMatrix}{Dense\+Complex\+Matrix} \&}]{jacobian }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \hyperlink{classoomph_1_1PMLElementBase_a770d8de20d8ae2d55f5f006052a39b3f}{oomph\+::\+P\+M\+L\+Element\+Base$<$ 2 $>$}.
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement_a906b78ba975b45dd3702ee8b42dc68cd}{oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element}, and \hyperlink{classoomph_1_1TangentiallyVaryingConformal2DPMLElement_adcd024767abae57059b87fa19b1d489c}{oomph\+::\+Tangentially\+Varying\+Conformal2\+D\+P\+M\+L\+Element}.
+
+
+
+Definition at line 573 of file pml\+\_\+elements.\+cc.
+
+\mbox{\Hypertarget{classoomph_1_1Conformal2DPMLElement_a1d352e991b9ad7622c27b82d474b4877}\label{classoomph_1_1Conformal2DPMLElement_a1d352e991b9ad7622c27b82d474b4877}} 
+\index{oomph\+::\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Conformal2\+D\+P\+M\+L\+Element}!pml\+\_\+transformation\+\_\+jacobian@{pml\+\_\+transformation\+\_\+jacobian}}
+\index{pml\+\_\+transformation\+\_\+jacobian@{pml\+\_\+transformation\+\_\+jacobian}!oomph\+::\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Conformal2\+D\+P\+M\+L\+Element}}
+\subsubsection{\texorpdfstring{pml\+\_\+transformation\+\_\+jacobian()}{pml\_transformation\_jacobian()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void oomph\+::\+Conformal2\+D\+P\+M\+L\+Element\+::pml\+\_\+transformation\+\_\+jacobian (\begin{DoxyParamCaption}\item[{const unsigned \&}]{ipt,  }\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{x,  }\item[{\hyperlink{classoomph_1_1DenseComplexMatrix}{Dense\+Complex\+Matrix} \&}]{jacobian\+\_\+matrix,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ std\+::complex$<$ double $>$ $>$ \&}]{transformed\+\_\+x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \hyperlink{classoomph_1_1PMLElementBase_a4b9d6d74aa15e6395590b27686477b20}{oomph\+::\+P\+M\+L\+Element\+Base$<$ 2 $>$}.
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement_a2436ebd949ec246a11a7b617a890443e}{oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element}, and \hyperlink{classoomph_1_1TangentiallyVaryingConformal2DPMLElement_a56a6af4af3774579d49d9dcc8c7e9bea}{oomph\+::\+Tangentially\+Varying\+Conformal2\+D\+P\+M\+L\+Element}.
+
+
+
+Definition at line 602 of file pml\+\_\+elements.\+cc.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1Conformal2DPMLElement_a465f23e8087bb37ff3f61f25c2722735}\label{classoomph_1_1Conformal2DPMLElement_a465f23e8087bb37ff3f61f25c2722735}} 
+\index{oomph\+::\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Conformal2\+D\+P\+M\+L\+Element}!Nu\+\_\+at\+\_\+s\+\_\+max@{Nu\+\_\+at\+\_\+s\+\_\+max}}
+\index{Nu\+\_\+at\+\_\+s\+\_\+max@{Nu\+\_\+at\+\_\+s\+\_\+max}!oomph\+::\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Conformal2\+D\+P\+M\+L\+Element}}
+\subsubsection{\texorpdfstring{Nu\+\_\+at\+\_\+s\+\_\+max}{Nu\_at\_s\_max}}
+{\footnotesize\ttfamily double oomph\+::\+Conformal2\+D\+P\+M\+L\+Element\+::\+Nu\+\_\+at\+\_\+s\+\_\+max\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Value of nu at the maximum value of local coordinate. 
+
+
+
+Definition at line 656 of file pml\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1Conformal2DPMLElement_ad8d7cc7a1c6e6daf1e70f33e86ba6e89}\label{classoomph_1_1Conformal2DPMLElement_ad8d7cc7a1c6e6daf1e70f33e86ba6e89}} 
+\index{oomph\+::\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Conformal2\+D\+P\+M\+L\+Element}!Nu\+\_\+at\+\_\+s\+\_\+min@{Nu\+\_\+at\+\_\+s\+\_\+min}}
+\index{Nu\+\_\+at\+\_\+s\+\_\+min@{Nu\+\_\+at\+\_\+s\+\_\+min}!oomph\+::\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Conformal2\+D\+P\+M\+L\+Element}}
+\subsubsection{\texorpdfstring{Nu\+\_\+at\+\_\+s\+\_\+min}{Nu\_at\_s\_min}}
+{\footnotesize\ttfamily double oomph\+::\+Conformal2\+D\+P\+M\+L\+Element\+::\+Nu\+\_\+at\+\_\+s\+\_\+min\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Value of nu at the minimum value of local coordinate. 
+
+
+
+Definition at line 653 of file pml\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1Conformal2DPMLElement_a8c2bbfc42eb94014640a9945b698e107}\label{classoomph_1_1Conformal2DPMLElement_a8c2bbfc42eb94014640a9945b698e107}} 
+\index{oomph\+::\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Conformal2\+D\+P\+M\+L\+Element}!Nu\+\_\+s\+\_\+index@{Nu\+\_\+s\+\_\+index}}
+\index{Nu\+\_\+s\+\_\+index@{Nu\+\_\+s\+\_\+index}!oomph\+::\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Conformal2\+D\+P\+M\+L\+Element}}
+\subsubsection{\texorpdfstring{Nu\+\_\+s\+\_\+index}{Nu\_s\_index}}
+{\footnotesize\ttfamily unsigned oomph\+::\+Conformal2\+D\+P\+M\+L\+Element\+::\+Nu\+\_\+s\+\_\+index\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Index of local coordinate which nu (through the P\+ML coordinate) is parametrised by. 
+
+
+
+Definition at line 650 of file pml\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1Conformal2DPMLElement_a8e9046efb4999dbb5840917a9568aad4}\label{classoomph_1_1Conformal2DPMLElement_a8e9046efb4999dbb5840917a9568aad4}} 
+\index{oomph\+::\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Conformal2\+D\+P\+M\+L\+Element}!Pml\+\_\+mapping\+\_\+pt@{Pml\+\_\+mapping\+\_\+pt}}
+\index{Pml\+\_\+mapping\+\_\+pt@{Pml\+\_\+mapping\+\_\+pt}!oomph\+::\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Conformal2\+D\+P\+M\+L\+Element}}
+\subsubsection{\texorpdfstring{Pml\+\_\+mapping\+\_\+pt}{Pml\_mapping\_pt}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1UniaxialPMLMapping}{Uniaxial\+P\+M\+L\+Mapping}$\ast$ oomph\+::\+Conformal2\+D\+P\+M\+L\+Element\+::\+Pml\+\_\+mapping\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 658 of file pml\+\_\+elements.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{pml__elements_8h}{pml\+\_\+elements.\+h}\item 
+\hyperlink{pml__elements_8cc}{pml\+\_\+elements.\+cc}\end{DoxyCompactItemize}

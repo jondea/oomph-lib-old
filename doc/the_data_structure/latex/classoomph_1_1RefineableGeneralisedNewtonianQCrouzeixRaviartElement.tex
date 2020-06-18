@@ -1,0 +1,440 @@
+\hypertarget{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement}{}\section{oomph\+:\+:Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element$<$ D\+IM $>$ Class Template Reference}
+\label{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement}\index{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element$<$ D\+I\+M $>$@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element$<$ D\+I\+M $>$}}
+
+
+Refineable version of Crouzeix Raviart elements. Generic class definitions.  
+
+
+
+
+{\ttfamily \#include $<$generalised\+\_\+newtonian\+\_\+refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element$<$ D\+IM $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=0.692641cm]{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement_a82a4fe5c2a152603bc51391de33d921c}{Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement_ad809cd0afcd3a24be4146cc29be143bc}{Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element} (const \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement}{Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element}$<$ D\+IM $>$ \&dummy)
+\begin{DoxyCompactList}\small\item\em Broken copy constructor. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement_aae8a005fdf9c488de07313101792164b}{ncont\+\_\+interpolated\+\_\+values} () const
+\begin{DoxyCompactList}\small\item\em Broken assignment operator. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement_a2615c4081c54f78cd9a76e1f8a233c29}{rebuild\+\_\+from\+\_\+sons} (\hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$\&mesh\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Rebuild from sons\+: Reconstruct pressure from the (merged) sons This must be specialised for each dimension. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement_a6a5c45a61f21c73dd72bce3adf0ebd07}{nrecovery\+\_\+order} ()
+\begin{DoxyCompactList}\small\item\em Order of recovery shape functions for Z2 error estimation\+: Same order as shape functions. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement_ac4a1100a3a8dc6f4994b622e50a76166}{nvertex\+\_\+node} () const
+\begin{DoxyCompactList}\small\item\em Number of vertex nodes in the element. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Node}{Node} $\ast$ \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement_a5c5acb0207b889707b138eec04b2b94d}{vertex\+\_\+node\+\_\+pt} (const unsigned \&j) const
+\begin{DoxyCompactList}\small\item\em Pointer to the j-\/th vertex node in the element. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement_ad67f1f733c17cbf0da9b1d5429b9fcf0}{get\+\_\+interpolated\+\_\+values} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&values)
+\begin{DoxyCompactList}\small\item\em Get the function value u in \hyperlink{classoomph_1_1Vector}{Vector}. Note\+: Given the generality of the interface (this function is usually called from black-\/box documentation or interpolation routines), the values \hyperlink{classoomph_1_1Vector}{Vector} sets its own size in here. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement_a6cbe5e87cd25badfbe4a83b853a8055d}{get\+\_\+interpolated\+\_\+values} (const unsigned \&\hyperlink{cfortran_8h_af6f0bd3dc13317f895c91323c25c2b8f}{t}, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&values)
+\begin{DoxyCompactList}\small\item\em Get all function values \mbox{[}u,v..,p\mbox{]} at previous timestep t (t=0\+: present; t$>$0\+: previous timestep). \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement_a7c7296ef46ec95a58de4b24201e7d7c1}{further\+\_\+setup\+\_\+hanging\+\_\+nodes} ()
+\begin{DoxyCompactList}\small\item\em Perform additional hanging node procedures for variables that are not interpolated by all nodes. Empty. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement_ab98f5825068568b99dd2f744a3e2afb3}{further\+\_\+build} ()
+\item 
+void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement_a14c12617fd3fe6ea248c2ec54993b0a5}{identify\+\_\+load\+\_\+data} (std\+::set$<$ std\+::pair$<$ \hyperlink{classoomph_1_1Data}{Data} $\ast$, unsigned $>$ $>$ \&paired\+\_\+load\+\_\+data)
+\begin{DoxyCompactList}\small\item\em Add to the set {\ttfamily paired\+\_\+load\+\_\+data} pairs containing. \end{DoxyCompactList}\item 
+{\footnotesize template$<$$>$ }\\void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement_a526ff9b95eb0f7628e00cc72f901c32e}{rebuild\+\_\+from\+\_\+sons} (\hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$\&mesh\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em 2D Rebuild from sons\+: Reconstruct pressure from the (merged) sons \end{DoxyCompactList}\item 
+{\footnotesize template$<$$>$ }\\void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement_ab52f6e7dbb9ddcd739af537607ef1d1a}{rebuild\+\_\+from\+\_\+sons} (\hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$\&mesh\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em 3D Rebuild from sons\+: Reconstruct pressure from the (merged) sons \end{DoxyCompactList}\item 
+{\footnotesize template$<$$>$ }\\void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement_a4e9f97f8423604d44da0843a46bb797d}{further\+\_\+build} ()
+\item 
+{\footnotesize template$<$$>$ }\\void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement_ab6ba5ac30da8e91baa12c59d7805f6e5}{further\+\_\+build} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement_a5f0ca1585eef5cae43ea9eafde474991}{unpin\+\_\+elemental\+\_\+pressure\+\_\+dofs} ()
+\begin{DoxyCompactList}\small\item\em Unpin all internal pressure dofs. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$unsigned D\+IM$>$\newline
+class oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element$<$ D\+I\+M $>$}
+
+Refineable version of Crouzeix Raviart elements. Generic class definitions. 
+
+Definition at line 780 of file generalised\+\_\+newtonian\+\_\+refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement_a82a4fe5c2a152603bc51391de33d921c}\label{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement_a82a4fe5c2a152603bc51391de33d921c}} 
+\index{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element}!Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element@{Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element}}
+\index{Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element@{Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element}!oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element}}
+\subsubsection{\texorpdfstring{Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element()}{RefineableGeneralisedNewtonianQCrouzeixRaviartElement()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+\hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element}$<$ D\+IM $>$\+::\hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement}{Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor. 
+
+
+
+Definition at line 799 of file generalised\+\_\+newtonian\+\_\+refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement_ad809cd0afcd3a24be4146cc29be143bc}\label{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement_ad809cd0afcd3a24be4146cc29be143bc}} 
+\index{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element}!Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element@{Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element}}
+\index{Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element@{Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element}!oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element}}
+\subsubsection{\texorpdfstring{Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element()}{RefineableGeneralisedNewtonianQCrouzeixRaviartElement()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+\hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element}$<$ D\+IM $>$\+::\hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement}{Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element} (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement}{Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element}$<$ D\+IM $>$ \&}]{dummy }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Broken copy constructor. 
+
+
+
+Definition at line 808 of file generalised\+\_\+newtonian\+\_\+refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Broken\+Copy\+::broken\+\_\+copy().
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement_ab98f5825068568b99dd2f744a3e2afb3}\label{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement_ab98f5825068568b99dd2f744a3e2afb3}} 
+\index{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element}!further\+\_\+build@{further\+\_\+build}}
+\index{further\+\_\+build@{further\+\_\+build}!oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element}}
+\subsubsection{\texorpdfstring{further\+\_\+build()}{further\_build()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element}$<$ D\+IM $>$\+::further\+\_\+build (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Further build for Crouzeix\+\_\+\+Raviart interpolates the internal pressure dofs from father element\+: Make sure pressure values and dp/ds agree between fathers and sons at the midpoints of the son elements. This must be specialised for each dimension. 
+
+Reimplemented from \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations_a53a4c5277d517f5df48df7c1953b2b02}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$}.
+
+
+
+Referenced by oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element$<$ D\+I\+M $>$\+::further\+\_\+build(), and oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element$<$ D\+I\+M $>$\+::rebuild\+\_\+from\+\_\+sons().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement_a4e9f97f8423604d44da0843a46bb797d}\label{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement_a4e9f97f8423604d44da0843a46bb797d}} 
+\index{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element}!further\+\_\+build@{further\+\_\+build}}
+\index{further\+\_\+build@{further\+\_\+build}!oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element}}
+\subsubsection{\texorpdfstring{further\+\_\+build()}{further\_build()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$$>$ \\
+void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element}$<$ 2 $>$\+::further\+\_\+build (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+2D Further build for Crouzeix\+\_\+\+Raviart interpolates the internal pressure dofs from father element\+: Make sure pressure values and dp/ds agree between fathers and sons at the midpoints of the son elements. 
+
+Reimplemented from \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations_a53a4c5277d517f5df48df7c1953b2b02}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$}.
+
+
+
+Definition at line 1480 of file generalised\+\_\+newtonian\+\_\+refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::further\+\_\+build(), oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element$<$ D\+I\+M $>$\+::further\+\_\+build(), i, oomph\+::\+Generalised\+Element\+::internal\+\_\+data\+\_\+pt(), oomph\+::\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::interpolated\+\_\+p\+\_\+nst(), oomph\+::\+Quad\+Tree\+Names\+::\+NE, oomph\+::\+Quad\+Tree\+Names\+::\+NW, oomph\+::\+Quad\+Tree\+Names\+::\+SE, oomph\+::\+Data\+::set\+\_\+value(), oomph\+::\+Quad\+Tree\+Names\+::\+SW, and oomph\+::\+Data\+::value().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement_ab6ba5ac30da8e91baa12c59d7805f6e5}\label{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement_ab6ba5ac30da8e91baa12c59d7805f6e5}} 
+\index{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element}!further\+\_\+build@{further\+\_\+build}}
+\index{further\+\_\+build@{further\+\_\+build}!oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element}}
+\subsubsection{\texorpdfstring{further\+\_\+build()}{further\_build()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$$>$ \\
+void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element}$<$ 3 $>$\+::further\+\_\+build (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+3D Further build for Crouzeix\+\_\+\+Raviart interpolates the internal pressure dofs from father element\+: Make sure pressure values and dp/ds agree between fathers and sons at the midpoints of the son elements. 
+
+Reimplemented from \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations_a53a4c5277d517f5df48df7c1953b2b02}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$}.
+
+
+
+Definition at line 1554 of file generalised\+\_\+newtonian\+\_\+refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Oc\+Tree\+::\+Direction\+\_\+to\+\_\+vector, oomph\+::\+P\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element$<$ D\+I\+M $>$\+::dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+nst(), oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::further\+\_\+build(), i, oomph\+::\+Generalised\+Element\+::internal\+\_\+data\+\_\+pt(), oomph\+::\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::interpolated\+\_\+p\+\_\+nst(), and oomph\+::\+Data\+::set\+\_\+value().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement_a7c7296ef46ec95a58de4b24201e7d7c1}\label{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement_a7c7296ef46ec95a58de4b24201e7d7c1}} 
+\index{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element}!further\+\_\+setup\+\_\+hanging\+\_\+nodes@{further\+\_\+setup\+\_\+hanging\+\_\+nodes}}
+\index{further\+\_\+setup\+\_\+hanging\+\_\+nodes@{further\+\_\+setup\+\_\+hanging\+\_\+nodes}!oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element}}
+\subsubsection{\texorpdfstring{further\+\_\+setup\+\_\+hanging\+\_\+nodes()}{further\_setup\_hanging\_nodes()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element}$<$ D\+IM $>$\+::further\+\_\+setup\+\_\+hanging\+\_\+nodes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Perform additional hanging node procedures for variables that are not interpolated by all nodes. Empty. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1RefineableElement_a86ea01c485f7ff822dce74b884312ccb}{oomph\+::\+Refineable\+Element}.
+
+
+
+Definition at line 899 of file generalised\+\_\+newtonian\+\_\+refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::further\+\_\+build().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement_ad67f1f733c17cbf0da9b1d5429b9fcf0}\label{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement_ad67f1f733c17cbf0da9b1d5429b9fcf0}} 
+\index{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element}!get\+\_\+interpolated\+\_\+values@{get\+\_\+interpolated\+\_\+values}}
+\index{get\+\_\+interpolated\+\_\+values@{get\+\_\+interpolated\+\_\+values}!oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element}}
+\subsubsection{\texorpdfstring{get\+\_\+interpolated\+\_\+values()}{get\_interpolated\_values()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element}$<$ D\+IM $>$\+::get\+\_\+interpolated\+\_\+values (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{values }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get the function value u in \hyperlink{classoomph_1_1Vector}{Vector}. Note\+: Given the generality of the interface (this function is usually called from black-\/box documentation or interpolation routines), the values \hyperlink{classoomph_1_1Vector}{Vector} sets its own size in here. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1RefineableElement_ad9a4f92880668a2373326d8306365c43}{oomph\+::\+Refineable\+Element}.
+
+
+
+Definition at line 851 of file generalised\+\_\+newtonian\+\_\+refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References i, and oomph\+::\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::interpolated\+\_\+u\+\_\+nst().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement_a6cbe5e87cd25badfbe4a83b853a8055d}\label{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement_a6cbe5e87cd25badfbe4a83b853a8055d}} 
+\index{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element}!get\+\_\+interpolated\+\_\+values@{get\+\_\+interpolated\+\_\+values}}
+\index{get\+\_\+interpolated\+\_\+values@{get\+\_\+interpolated\+\_\+values}!oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element}}
+\subsubsection{\texorpdfstring{get\+\_\+interpolated\+\_\+values()}{get\_interpolated\_values()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element}$<$ D\+IM $>$\+::get\+\_\+interpolated\+\_\+values (\begin{DoxyParamCaption}\item[{const unsigned \&}]{t,  }\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{values }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get all function values \mbox{[}u,v..,p\mbox{]} at previous timestep t (t=0\+: present; t$>$0\+: previous timestep). 
+
+Note\+: Given the generality of the interface (this function is usually called from black-\/box documentation or interpolation routines), the values \hyperlink{classoomph_1_1Vector}{Vector} sets its own size in here.
+
+Note\+: No pressure history is kept, so pressure is always the current value. 
+
+Implements \hyperlink{classoomph_1_1RefineableElement_ada6f0efe831ffefb1d2829ce01d45bfc}{oomph\+::\+Refineable\+Element}.
+
+
+
+Definition at line 869 of file generalised\+\_\+newtonian\+\_\+refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References i, oomph\+::\+Finite\+Element\+::nnode(), oomph\+::\+Finite\+Element\+::nodal\+\_\+value(), oomph\+::\+Finite\+Element\+::shape(), and oomph\+::\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::u\+\_\+index\+\_\+nst().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement_a14c12617fd3fe6ea248c2ec54993b0a5}\label{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement_a14c12617fd3fe6ea248c2ec54993b0a5}} 
+\index{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element}!identify\+\_\+load\+\_\+data@{identify\+\_\+load\+\_\+data}}
+\index{identify\+\_\+load\+\_\+data@{identify\+\_\+load\+\_\+data}!oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element}}
+\subsubsection{\texorpdfstring{identify\+\_\+load\+\_\+data()}{identify\_load\_data()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element}$<$ D\+IM $>$\+::identify\+\_\+load\+\_\+data (\begin{DoxyParamCaption}\item[{std\+::set$<$ std\+::pair$<$ \hyperlink{classoomph_1_1Data}{Data} $\ast$, unsigned $>$ $>$ \&}]{paired\+\_\+load\+\_\+data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Add to the set {\ttfamily paired\+\_\+load\+\_\+data} pairs containing. 
+
+
+\begin{DoxyItemize}
+\item the pointer to a \hyperlink{classoomph_1_1Data}{Data} object and
+\item the index of the value in that \hyperlink{classoomph_1_1Data}{Data} object
+\end{DoxyItemize}for all values (pressures, velocities) that affect the load computed in the {\ttfamily get\+\_\+load}(...) function. (Overloads non-\/refineable version and takes hanging nodes into account) 
+
+Reimplemented from \hyperlink{classoomph_1_1GeneralisedNewtonianQCrouzeixRaviartElement_a49a4adf55b10a9aab75f864597e892cd}{oomph\+::\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element$<$ D\+I\+M $>$}.
+
+
+
+Definition at line 917 of file generalised\+\_\+newtonian\+\_\+refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Node\+::hanging\+\_\+pt(), i, oomph\+::\+Generalised\+Element\+::internal\+\_\+data\+\_\+pt(), oomph\+::\+Node\+::is\+\_\+hanging(), oomph\+::\+Hang\+Info\+::master\+\_\+node\+\_\+pt(), oomph\+::\+Hang\+Info\+::nmaster(), oomph\+::\+Finite\+Element\+::nnode(), oomph\+::\+Finite\+Element\+::node\+\_\+pt(), oomph\+::\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::npres\+\_\+nst(), and oomph\+::\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::u\+\_\+index\+\_\+nst().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement_aae8a005fdf9c488de07313101792164b}\label{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement_aae8a005fdf9c488de07313101792164b}} 
+\index{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element}!ncont\+\_\+interpolated\+\_\+values@{ncont\+\_\+interpolated\+\_\+values}}
+\index{ncont\+\_\+interpolated\+\_\+values@{ncont\+\_\+interpolated\+\_\+values}!oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element}}
+\subsubsection{\texorpdfstring{ncont\+\_\+interpolated\+\_\+values()}{ncont\_interpolated\_values()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+unsigned \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element}$<$ D\+IM $>$\+::ncont\+\_\+interpolated\+\_\+values (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Broken assignment operator. 
+
+Number of continuously interpolated values\+: D\+IM (velocities) 
+
+Implements \hyperlink{classoomph_1_1RefineableElement_a53e171a18c9f43f1db90a6876516a073}{oomph\+::\+Refineable\+Element}.
+
+
+
+Definition at line 827 of file generalised\+\_\+newtonian\+\_\+refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Refineable\+Element\+::rebuild\+\_\+from\+\_\+sons().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement_a6a5c45a61f21c73dd72bce3adf0ebd07}\label{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement_a6a5c45a61f21c73dd72bce3adf0ebd07}} 
+\index{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element}!nrecovery\+\_\+order@{nrecovery\+\_\+order}}
+\index{nrecovery\+\_\+order@{nrecovery\+\_\+order}!oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element}}
+\subsubsection{\texorpdfstring{nrecovery\+\_\+order()}{nrecovery\_order()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+unsigned \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element}$<$ D\+IM $>$\+::nrecovery\+\_\+order (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Order of recovery shape functions for Z2 error estimation\+: Same order as shape functions. 
+
+
+
+Implements \hyperlink{classoomph_1_1ElementWithZ2ErrorEstimator_af39480835bd3e0f6b2f4f7a9a4044798}{oomph\+::\+Element\+With\+Z2\+Error\+Estimator}.
+
+
+
+Definition at line 835 of file generalised\+\_\+newtonian\+\_\+refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement_ac4a1100a3a8dc6f4994b622e50a76166}\label{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement_ac4a1100a3a8dc6f4994b622e50a76166}} 
+\index{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element}!nvertex\+\_\+node@{nvertex\+\_\+node}}
+\index{nvertex\+\_\+node@{nvertex\+\_\+node}!oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element}}
+\subsubsection{\texorpdfstring{nvertex\+\_\+node()}{nvertex\_node()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+unsigned \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element}$<$ D\+IM $>$\+::nvertex\+\_\+node (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Number of vertex nodes in the element. 
+
+
+
+Implements \hyperlink{classoomph_1_1ElementWithZ2ErrorEstimator_a19495a0e77ef4ff35f15fdf7913b4077}{oomph\+::\+Element\+With\+Z2\+Error\+Estimator}.
+
+
+
+Definition at line 838 of file generalised\+\_\+newtonian\+\_\+refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Finite\+Element\+::nvertex\+\_\+node().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement_a2615c4081c54f78cd9a76e1f8a233c29}\label{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement_a2615c4081c54f78cd9a76e1f8a233c29}} 
+\index{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element}!rebuild\+\_\+from\+\_\+sons@{rebuild\+\_\+from\+\_\+sons}}
+\index{rebuild\+\_\+from\+\_\+sons@{rebuild\+\_\+from\+\_\+sons}!oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element}}
+\subsubsection{\texorpdfstring{rebuild\+\_\+from\+\_\+sons()}{rebuild\_from\_sons()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element}$<$ D\+IM $>$\+::rebuild\+\_\+from\+\_\+sons (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$\&}]{mesh\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Rebuild from sons\+: Reconstruct pressure from the (merged) sons This must be specialised for each dimension. 
+
+
+
+Implements \hyperlink{classoomph_1_1RefineableElement_a33324be27833fa4b78279d17158215fa}{oomph\+::\+Refineable\+Element}.
+
+
+
+Referenced by oomph\+::\+Face\+Geometry$<$ Face\+Geometry$<$ Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element$<$ D\+I\+M $>$ $>$ $>$\+::\+Face\+Geometry(), and oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element$<$ D\+I\+M $>$\+::rebuild\+\_\+from\+\_\+sons().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement_a526ff9b95eb0f7628e00cc72f901c32e}\label{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement_a526ff9b95eb0f7628e00cc72f901c32e}} 
+\index{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element}!rebuild\+\_\+from\+\_\+sons@{rebuild\+\_\+from\+\_\+sons}}
+\index{rebuild\+\_\+from\+\_\+sons@{rebuild\+\_\+from\+\_\+sons}!oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element}}
+\subsubsection{\texorpdfstring{rebuild\+\_\+from\+\_\+sons()}{rebuild\_from\_sons()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$$>$ \\
+void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element}$<$ 2 $>$\+::rebuild\+\_\+from\+\_\+sons (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$\&}]{mesh\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+2D Rebuild from sons\+: Reconstruct pressure from the (merged) sons 
+
+
+
+Implements \hyperlink{classoomph_1_1RefineableElement_a33324be27833fa4b78279d17158215fa}{oomph\+::\+Refineable\+Element}.
+
+
+
+Definition at line 1244 of file generalised\+\_\+newtonian\+\_\+refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Generalised\+Element\+::internal\+\_\+data\+\_\+pt(), oomph\+::\+Quad\+Tree\+Names\+::\+NE, oomph\+::\+Quad\+Tree\+Names\+::\+NW, oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element$<$ D\+I\+M $>$\+::rebuild\+\_\+from\+\_\+sons(), oomph\+::\+Quad\+Tree\+Names\+::\+SE, oomph\+::\+Data\+::set\+\_\+value(), oomph\+::\+Quad\+Tree\+Names\+::\+SW, and oomph\+::\+Data\+::value().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement_ab52f6e7dbb9ddcd739af537607ef1d1a}\label{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement_ab52f6e7dbb9ddcd739af537607ef1d1a}} 
+\index{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element}!rebuild\+\_\+from\+\_\+sons@{rebuild\+\_\+from\+\_\+sons}}
+\index{rebuild\+\_\+from\+\_\+sons@{rebuild\+\_\+from\+\_\+sons}!oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element}}
+\subsubsection{\texorpdfstring{rebuild\+\_\+from\+\_\+sons()}{rebuild\_from\_sons()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$$>$ \\
+void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element}$<$ 3 $>$\+::rebuild\+\_\+from\+\_\+sons (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$\&}]{mesh\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+3D Rebuild from sons\+: Reconstruct pressure from the (merged) sons 
+
+
+
+Implements \hyperlink{classoomph_1_1RefineableElement_a33324be27833fa4b78279d17158215fa}{oomph\+::\+Refineable\+Element}.
+
+
+
+Definition at line 1331 of file generalised\+\_\+newtonian\+\_\+refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element$<$ D\+I\+M $>$\+::further\+\_\+build(), oomph\+::\+Generalised\+Element\+::internal\+\_\+data\+\_\+pt(), oomph\+::\+Oc\+Tree\+Names\+::\+L\+DB, oomph\+::\+Oc\+Tree\+Names\+::\+L\+DF, oomph\+::\+Oc\+Tree\+Names\+::\+L\+UB, oomph\+::\+Oc\+Tree\+Names\+::\+L\+UF, oomph\+::\+Oc\+Tree\+Names\+::\+R\+DB, oomph\+::\+Oc\+Tree\+Names\+::\+R\+DF, oomph\+::\+Oc\+Tree\+Names\+::\+R\+UB, oomph\+::\+Oc\+Tree\+Names\+::\+R\+UF, and oomph\+::\+Data\+::value().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement_a5f0ca1585eef5cae43ea9eafde474991}\label{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement_a5f0ca1585eef5cae43ea9eafde474991}} 
+\index{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element}!unpin\+\_\+elemental\+\_\+pressure\+\_\+dofs@{unpin\+\_\+elemental\+\_\+pressure\+\_\+dofs}}
+\index{unpin\+\_\+elemental\+\_\+pressure\+\_\+dofs@{unpin\+\_\+elemental\+\_\+pressure\+\_\+dofs}!oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element}}
+\subsubsection{\texorpdfstring{unpin\+\_\+elemental\+\_\+pressure\+\_\+dofs()}{unpin\_elemental\_pressure\_dofs()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element}$<$ D\+IM $>$\+::unpin\+\_\+elemental\+\_\+pressure\+\_\+dofs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Unpin all internal pressure dofs. 
+
+
+
+Implements \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations_a5e80fae3c3c4373e082867a49cc78ad0}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$}.
+
+
+
+Definition at line 788 of file generalised\+\_\+newtonian\+\_\+refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Generalised\+Element\+::internal\+\_\+data\+\_\+pt(), oomph\+::\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::npres\+\_\+nst(), and oomph\+::\+Data\+::unpin().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement_a5c5acb0207b889707b138eec04b2b94d}\label{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement_a5c5acb0207b889707b138eec04b2b94d}} 
+\index{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element}!vertex\+\_\+node\+\_\+pt@{vertex\+\_\+node\+\_\+pt}}
+\index{vertex\+\_\+node\+\_\+pt@{vertex\+\_\+node\+\_\+pt}!oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element}}
+\subsubsection{\texorpdfstring{vertex\+\_\+node\+\_\+pt()}{vertex\_node\_pt()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+\hyperlink{classoomph_1_1Node}{Node}$\ast$ \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element}$<$ D\+IM $>$\+::vertex\+\_\+node\+\_\+pt (\begin{DoxyParamCaption}\item[{const unsigned \&}]{j }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Pointer to the j-\/th vertex node in the element. 
+
+
+
+Implements \hyperlink{classoomph_1_1ElementWithZ2ErrorEstimator_a0eedccc33519f852c5dc2055ddf2774b}{oomph\+::\+Element\+With\+Z2\+Error\+Estimator}.
+
+
+
+Definition at line 842 of file generalised\+\_\+newtonian\+\_\+refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Finite\+Element\+::vertex\+\_\+node\+\_\+pt().
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{generalised__newtonian__refineable__navier__stokes__elements_8h}{generalised\+\_\+newtonian\+\_\+refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h}\end{DoxyCompactItemize}

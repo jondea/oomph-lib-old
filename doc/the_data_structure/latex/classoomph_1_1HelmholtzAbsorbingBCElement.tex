@@ -1,0 +1,198 @@
+\hypertarget{classoomph_1_1HelmholtzAbsorbingBCElement}{}\section{oomph\+:\+:Helmholtz\+Absorbing\+B\+C\+Element$<$ E\+L\+E\+M\+E\+NT $>$ Class Template Reference}
+\label{classoomph_1_1HelmholtzAbsorbingBCElement}\index{oomph\+::\+Helmholtz\+Absorbing\+B\+C\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$@{oomph\+::\+Helmholtz\+Absorbing\+B\+C\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$}}
+
+
+{\ttfamily \#include $<$helmholtz\+\_\+bc\+\_\+elements.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Helmholtz\+Absorbing\+B\+C\+Element$<$ E\+L\+E\+M\+E\+NT $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.935010cm]{classoomph_1_1HelmholtzAbsorbingBCElement}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1HelmholtzAbsorbingBCElement_a97854c784c46cae588db1d608f9ac445}{Helmholtz\+Absorbing\+B\+C\+Element} (\hyperlink{classoomph_1_1FiniteElement}{Finite\+Element} $\ast$const \&bulk\+\_\+el\+\_\+pt, const int \&\hyperlink{classoomph_1_1FaceElement_a478d577ac6db67ecc80f1f02ae3ab170}{face\+\_\+index})
+\begin{DoxyCompactList}\small\item\em Construct element from specification of bulk element and face index. \end{DoxyCompactList}\item 
+unsigned $\ast$\& \hyperlink{classoomph_1_1HelmholtzAbsorbingBCElement_aa6e53edbfec802b112527fbb5ee06754}{abc\+\_\+order\+\_\+pt} ()
+\begin{DoxyCompactList}\small\item\em Pointer to order of absorbing boundary condition. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1HelmholtzAbsorbingBCElement_a4835fe36ebcb4d9a9e6845fb5a75224b}{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&residuals)
+\begin{DoxyCompactList}\small\item\em Add the element\textquotesingle{}s contribution to its residual vector. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1HelmholtzAbsorbingBCElement_a2ddc7be679d396847964aed6d545e168}{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&residuals, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&jacobian)
+\begin{DoxyCompactList}\small\item\em Add the element\textquotesingle{}s contribution to its residual vector and its Jacobian matrix. \end{DoxyCompactList}\item 
+double $\ast$\& \hyperlink{classoomph_1_1HelmholtzAbsorbingBCElement_a97ebf5721fa9f8928739b15781cfa296}{outer\+\_\+radius\+\_\+pt} ()
+\begin{DoxyCompactList}\small\item\em Get pointer to radius of outer boundary (must be a cirle) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classoomph_1_1HelmholtzAbsorbingBCElement_a25fb70fd99fc41f78f9afe6a3d8a445e}{fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+helmholtz\+\_\+abc} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&residuals, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&jacobian, const unsigned \&flag)
+\begin{DoxyCompactList}\small\item\em Compute the element\textquotesingle{}s residual vector and the ( Jacobian matrix. Overloaded version, using the abc approximation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double $\ast$ \hyperlink{classoomph_1_1HelmholtzAbsorbingBCElement_a45e39fb94adc88e2c92c0fb1ed27592e}{Outer\+\_\+radius\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to radius of outer boundary (must be a circle!) \end{DoxyCompactList}\item 
+unsigned $\ast$ \hyperlink{classoomph_1_1HelmholtzAbsorbingBCElement_a36408a03895d4d23d3e1441f270fe96d}{A\+B\+C\+\_\+order\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to order of absorbing boundary condition. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class E\+L\+E\+M\+E\+NT$>$\newline
+class oomph\+::\+Helmholtz\+Absorbing\+B\+C\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$}
+
+Absorbing BC element for approximation imposition of Sommerfeld radiation condition 
+
+Definition at line 650 of file helmholtz\+\_\+bc\+\_\+elements.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1HelmholtzAbsorbingBCElement_a97854c784c46cae588db1d608f9ac445}\label{classoomph_1_1HelmholtzAbsorbingBCElement_a97854c784c46cae588db1d608f9ac445}} 
+\index{oomph\+::\+Helmholtz\+Absorbing\+B\+C\+Element@{oomph\+::\+Helmholtz\+Absorbing\+B\+C\+Element}!Helmholtz\+Absorbing\+B\+C\+Element@{Helmholtz\+Absorbing\+B\+C\+Element}}
+\index{Helmholtz\+Absorbing\+B\+C\+Element@{Helmholtz\+Absorbing\+B\+C\+Element}!oomph\+::\+Helmholtz\+Absorbing\+B\+C\+Element@{oomph\+::\+Helmholtz\+Absorbing\+B\+C\+Element}}
+\subsubsection{\texorpdfstring{Helmholtz\+Absorbing\+B\+C\+Element()}{HelmholtzAbsorbingBCElement()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classoomph_1_1HelmholtzAbsorbingBCElement}{oomph\+::\+Helmholtz\+Absorbing\+B\+C\+Element}$<$ E\+L\+E\+M\+E\+NT $>$\+::\hyperlink{classoomph_1_1HelmholtzAbsorbingBCElement}{Helmholtz\+Absorbing\+B\+C\+Element} (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1FiniteElement}{Finite\+Element} $\ast$const \&}]{bulk\+\_\+el\+\_\+pt,  }\item[{const int \&}]{face\+\_\+index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct element from specification of bulk element and face index. 
+
+
+
+Definition at line 658 of file helmholtz\+\_\+bc\+\_\+elements.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1HelmholtzAbsorbingBCElement_aa6e53edbfec802b112527fbb5ee06754}\label{classoomph_1_1HelmholtzAbsorbingBCElement_aa6e53edbfec802b112527fbb5ee06754}} 
+\index{oomph\+::\+Helmholtz\+Absorbing\+B\+C\+Element@{oomph\+::\+Helmholtz\+Absorbing\+B\+C\+Element}!abc\+\_\+order\+\_\+pt@{abc\+\_\+order\+\_\+pt}}
+\index{abc\+\_\+order\+\_\+pt@{abc\+\_\+order\+\_\+pt}!oomph\+::\+Helmholtz\+Absorbing\+B\+C\+Element@{oomph\+::\+Helmholtz\+Absorbing\+B\+C\+Element}}
+\subsubsection{\texorpdfstring{abc\+\_\+order\+\_\+pt()}{abc\_order\_pt()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+unsigned$\ast$\& \hyperlink{classoomph_1_1HelmholtzAbsorbingBCElement}{oomph\+::\+Helmholtz\+Absorbing\+B\+C\+Element}$<$ E\+L\+E\+M\+E\+NT $>$\+::abc\+\_\+order\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Pointer to order of absorbing boundary condition. 
+
+
+
+Definition at line 670 of file helmholtz\+\_\+bc\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1HelmholtzAbsorbingBCElement_a2ddc7be679d396847964aed6d545e168}\label{classoomph_1_1HelmholtzAbsorbingBCElement_a2ddc7be679d396847964aed6d545e168}} 
+\index{oomph\+::\+Helmholtz\+Absorbing\+B\+C\+Element@{oomph\+::\+Helmholtz\+Absorbing\+B\+C\+Element}!fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian}}
+\index{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian}!oomph\+::\+Helmholtz\+Absorbing\+B\+C\+Element@{oomph\+::\+Helmholtz\+Absorbing\+B\+C\+Element}}
+\subsubsection{\texorpdfstring{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian()}{fill\_in\_contribution\_to\_jacobian()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classoomph_1_1HelmholtzAbsorbingBCElement}{oomph\+::\+Helmholtz\+Absorbing\+B\+C\+Element}$<$ E\+L\+E\+M\+E\+NT $>$\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{residuals,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{jacobian }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Add the element\textquotesingle{}s contribution to its residual vector and its Jacobian matrix. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a0ae7af222af38a0d53bf283dc85bdfea}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 687 of file helmholtz\+\_\+bc\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1HelmholtzAbsorbingBCElement_a4835fe36ebcb4d9a9e6845fb5a75224b}\label{classoomph_1_1HelmholtzAbsorbingBCElement_a4835fe36ebcb4d9a9e6845fb5a75224b}} 
+\index{oomph\+::\+Helmholtz\+Absorbing\+B\+C\+Element@{oomph\+::\+Helmholtz\+Absorbing\+B\+C\+Element}!fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals}}
+\index{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals}!oomph\+::\+Helmholtz\+Absorbing\+B\+C\+Element@{oomph\+::\+Helmholtz\+Absorbing\+B\+C\+Element}}
+\subsubsection{\texorpdfstring{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals()}{fill\_in\_contribution\_to\_residuals()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classoomph_1_1HelmholtzAbsorbingBCElement}{oomph\+::\+Helmholtz\+Absorbing\+B\+C\+Element}$<$ E\+L\+E\+M\+E\+NT $>$\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{residuals }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Add the element\textquotesingle{}s contribution to its residual vector. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1GeneralisedElement_a310c97f515e8504a48179c0e72c550d7}{oomph\+::\+Generalised\+Element}.
+
+
+
+Definition at line 677 of file helmholtz\+\_\+bc\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Generalised\+Element\+::\+Dummy\+\_\+matrix.
+
+\mbox{\Hypertarget{classoomph_1_1HelmholtzAbsorbingBCElement_a25fb70fd99fc41f78f9afe6a3d8a445e}\label{classoomph_1_1HelmholtzAbsorbingBCElement_a25fb70fd99fc41f78f9afe6a3d8a445e}} 
+\index{oomph\+::\+Helmholtz\+Absorbing\+B\+C\+Element@{oomph\+::\+Helmholtz\+Absorbing\+B\+C\+Element}!fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+helmholtz\+\_\+abc@{fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+helmholtz\+\_\+abc}}
+\index{fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+helmholtz\+\_\+abc@{fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+helmholtz\+\_\+abc}!oomph\+::\+Helmholtz\+Absorbing\+B\+C\+Element@{oomph\+::\+Helmholtz\+Absorbing\+B\+C\+Element}}
+\subsubsection{\texorpdfstring{fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+helmholtz\+\_\+abc()}{fill\_in\_generic\_residual\_contribution\_helmholtz\_abc()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classoomph_1_1HelmholtzAbsorbingBCElement}{oomph\+::\+Helmholtz\+Absorbing\+B\+C\+Element}$<$ E\+L\+E\+M\+E\+NT $>$\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+helmholtz\+\_\+abc (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{residuals,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{jacobian,  }\item[{const unsigned \&}]{flag }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Compute the element\textquotesingle{}s residual vector and the ( Jacobian matrix. Overloaded version, using the abc approximation. 
+
+
+
+Definition at line 706 of file helmholtz\+\_\+bc\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Multi\+\_\+domain\+\_\+functions\+::\+Dim, i, oomph\+::\+Binary\+Tree\+Names\+::R, s, and oomph\+::\+Quad\+Tree\+Names\+::W.
+
+\mbox{\Hypertarget{classoomph_1_1HelmholtzAbsorbingBCElement_a97ebf5721fa9f8928739b15781cfa296}\label{classoomph_1_1HelmholtzAbsorbingBCElement_a97ebf5721fa9f8928739b15781cfa296}} 
+\index{oomph\+::\+Helmholtz\+Absorbing\+B\+C\+Element@{oomph\+::\+Helmholtz\+Absorbing\+B\+C\+Element}!outer\+\_\+radius\+\_\+pt@{outer\+\_\+radius\+\_\+pt}}
+\index{outer\+\_\+radius\+\_\+pt@{outer\+\_\+radius\+\_\+pt}!oomph\+::\+Helmholtz\+Absorbing\+B\+C\+Element@{oomph\+::\+Helmholtz\+Absorbing\+B\+C\+Element}}
+\subsubsection{\texorpdfstring{outer\+\_\+radius\+\_\+pt()}{outer\_radius\_pt()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+double$\ast$\& \hyperlink{classoomph_1_1HelmholtzAbsorbingBCElement}{oomph\+::\+Helmholtz\+Absorbing\+B\+C\+Element}$<$ E\+L\+E\+M\+E\+NT $>$\+::outer\+\_\+radius\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get pointer to radius of outer boundary (must be a cirle) 
+
+
+
+Definition at line 696 of file helmholtz\+\_\+bc\+\_\+elements.\+h.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1HelmholtzAbsorbingBCElement_a36408a03895d4d23d3e1441f270fe96d}\label{classoomph_1_1HelmholtzAbsorbingBCElement_a36408a03895d4d23d3e1441f270fe96d}} 
+\index{oomph\+::\+Helmholtz\+Absorbing\+B\+C\+Element@{oomph\+::\+Helmholtz\+Absorbing\+B\+C\+Element}!A\+B\+C\+\_\+order\+\_\+pt@{A\+B\+C\+\_\+order\+\_\+pt}}
+\index{A\+B\+C\+\_\+order\+\_\+pt@{A\+B\+C\+\_\+order\+\_\+pt}!oomph\+::\+Helmholtz\+Absorbing\+B\+C\+Element@{oomph\+::\+Helmholtz\+Absorbing\+B\+C\+Element}}
+\subsubsection{\texorpdfstring{A\+B\+C\+\_\+order\+\_\+pt}{ABC\_order\_pt}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+unsigned$\ast$ \hyperlink{classoomph_1_1HelmholtzAbsorbingBCElement}{oomph\+::\+Helmholtz\+Absorbing\+B\+C\+Element}$<$ E\+L\+E\+M\+E\+NT $>$\+::A\+B\+C\+\_\+order\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pointer to order of absorbing boundary condition. 
+
+
+
+Definition at line 1121 of file helmholtz\+\_\+bc\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1HelmholtzAbsorbingBCElement_a45e39fb94adc88e2c92c0fb1ed27592e}\label{classoomph_1_1HelmholtzAbsorbingBCElement_a45e39fb94adc88e2c92c0fb1ed27592e}} 
+\index{oomph\+::\+Helmholtz\+Absorbing\+B\+C\+Element@{oomph\+::\+Helmholtz\+Absorbing\+B\+C\+Element}!Outer\+\_\+radius\+\_\+pt@{Outer\+\_\+radius\+\_\+pt}}
+\index{Outer\+\_\+radius\+\_\+pt@{Outer\+\_\+radius\+\_\+pt}!oomph\+::\+Helmholtz\+Absorbing\+B\+C\+Element@{oomph\+::\+Helmholtz\+Absorbing\+B\+C\+Element}}
+\subsubsection{\texorpdfstring{Outer\+\_\+radius\+\_\+pt}{Outer\_radius\_pt}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+double$\ast$ \hyperlink{classoomph_1_1HelmholtzAbsorbingBCElement}{oomph\+::\+Helmholtz\+Absorbing\+B\+C\+Element}$<$ E\+L\+E\+M\+E\+NT $>$\+::Outer\+\_\+radius\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pointer to radius of outer boundary (must be a circle!) 
+
+
+
+Definition at line 1118 of file helmholtz\+\_\+bc\+\_\+elements.\+h.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{helmholtz__bc__elements_8h}{helmholtz\+\_\+bc\+\_\+elements.\+h}\end{DoxyCompactItemize}

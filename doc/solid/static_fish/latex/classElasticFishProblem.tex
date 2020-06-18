@@ -1,0 +1,187 @@
+\hypertarget{classElasticFishProblem}{}\section{Elastic\+Fish\+Problem$<$ E\+L\+E\+M\+E\+NT $>$ Class Template Reference}
+\label{classElasticFishProblem}\index{Elastic\+Fish\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$@{Elastic\+Fish\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$}}
+
+
+Boundary-\/driven elastic deformation of fish-\/shaped domain.  
+
+
+Inheritance diagram for Elastic\+Fish\+Problem$<$ E\+L\+E\+M\+E\+NT $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classElasticFishProblem}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classElasticFishProblem_adf9fdb0b94ac76b7fdb34bc7fa809a41}{Elastic\+Fish\+Problem} ()
+\begin{DoxyCompactList}\small\item\em Constructor\+: \end{DoxyCompactList}\item 
+void \hyperlink{classElasticFishProblem_aaaf23036d8f282cff88e497ad214237f}{run} ()
+\begin{DoxyCompactList}\small\item\em Run simulation. \end{DoxyCompactList}\item 
+\hyperlink{classElasticFishMesh}{Elastic\+Fish\+Mesh}$<$ E\+L\+E\+M\+E\+NT $>$ $\ast$ \hyperlink{classElasticFishProblem_a616c07228c52c594f90dfb1333015712}{mesh\+\_\+pt} ()
+\begin{DoxyCompactList}\small\item\em Access function for the mesh. \end{DoxyCompactList}\item 
+void \hyperlink{classElasticFishProblem_a5cd7dbd2bc99ccf850c1a58d0b401979}{doc\+\_\+solution} (Doc\+Info \&doc\+\_\+info)
+\begin{DoxyCompactList}\small\item\em Doc the solution. \end{DoxyCompactList}\item 
+void \hyperlink{classElasticFishProblem_a41badf8aa60bf52d888338039168fcb3}{actions\+\_\+after\+\_\+newton\+\_\+solve} ()
+\begin{DoxyCompactList}\small\item\em Update function (empty) \end{DoxyCompactList}\item 
+void \hyperlink{classElasticFishProblem_a7c22fcff8d94166797e87d70017540d6}{actions\+\_\+before\+\_\+newton\+\_\+solve} ()
+\begin{DoxyCompactList}\small\item\em Update before solve\+: We\textquotesingle{}re dealing with a static problem so the nodal positions before the next solve merely serve as initial conditions. For meshes that are very strongly refined near the boundary, the update of the displacement boundary conditions (which only moves the Solid\+Nodes {\itshape on} the boundary), can lead to strongly distorted meshes. This can cause the Newton method to fail --$>$ the overall method is actually more robust if we use the nodal positions as determined by the Domain/\+Macro\+Element-\/ based mesh update as initial guesses. \end{DoxyCompactList}\item 
+void \hyperlink{classElasticFishProblem_ae54b974caafe717309ce7abc5e7f824d}{actions\+\_\+after\+\_\+adapt} ()
+\begin{DoxyCompactList}\small\item\em Update after adapt\+: Pin all redundant pressure nodes (if required) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Circle $\ast$ \hyperlink{classElasticFishProblem_a1a026c063e41c004f656988d6bfd541b}{Fish\+\_\+back\+\_\+pt}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class E\+L\+E\+M\+E\+NT$>$\newline
+class Elastic\+Fish\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$}
+
+Boundary-\/driven elastic deformation of fish-\/shaped domain. 
+
+Definition at line 185 of file static\+\_\+fish.\+cc.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classElasticFishProblem_adf9fdb0b94ac76b7fdb34bc7fa809a41}\label{classElasticFishProblem_adf9fdb0b94ac76b7fdb34bc7fa809a41}} 
+\index{Elastic\+Fish\+Problem@{Elastic\+Fish\+Problem}!Elastic\+Fish\+Problem@{Elastic\+Fish\+Problem}}
+\index{Elastic\+Fish\+Problem@{Elastic\+Fish\+Problem}!Elastic\+Fish\+Problem@{Elastic\+Fish\+Problem}}
+\subsubsection{\texorpdfstring{Elastic\+Fish\+Problem()}{ElasticFishProblem()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classElasticFishProblem}{Elastic\+Fish\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::\hyperlink{classElasticFishProblem}{Elastic\+Fish\+Problem} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor\+: 
+
+
+
+Definition at line 241 of file static\+\_\+fish.\+cc.
+
+
+
+References Global\+\_\+\+Physical\+\_\+\+Variables\+::body\+\_\+force(), and Global\+\_\+\+Physical\+\_\+\+Variables\+::\+Constitutive\+\_\+law\+\_\+pt.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classElasticFishProblem_ae54b974caafe717309ce7abc5e7f824d}\label{classElasticFishProblem_ae54b974caafe717309ce7abc5e7f824d}} 
+\index{Elastic\+Fish\+Problem@{Elastic\+Fish\+Problem}!actions\+\_\+after\+\_\+adapt@{actions\+\_\+after\+\_\+adapt}}
+\index{actions\+\_\+after\+\_\+adapt@{actions\+\_\+after\+\_\+adapt}!Elastic\+Fish\+Problem@{Elastic\+Fish\+Problem}}
+\subsubsection{\texorpdfstring{actions\+\_\+after\+\_\+adapt()}{actions\_after\_adapt()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+void \hyperlink{classElasticFishProblem}{Elastic\+Fish\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::actions\+\_\+after\+\_\+adapt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Update after adapt\+: Pin all redundant pressure nodes (if required) 
+
+
+
+Definition at line 222 of file static\+\_\+fish.\+cc.
+
+\mbox{\Hypertarget{classElasticFishProblem_a41badf8aa60bf52d888338039168fcb3}\label{classElasticFishProblem_a41badf8aa60bf52d888338039168fcb3}} 
+\index{Elastic\+Fish\+Problem@{Elastic\+Fish\+Problem}!actions\+\_\+after\+\_\+newton\+\_\+solve@{actions\+\_\+after\+\_\+newton\+\_\+solve}}
+\index{actions\+\_\+after\+\_\+newton\+\_\+solve@{actions\+\_\+after\+\_\+newton\+\_\+solve}!Elastic\+Fish\+Problem@{Elastic\+Fish\+Problem}}
+\subsubsection{\texorpdfstring{actions\+\_\+after\+\_\+newton\+\_\+solve()}{actions\_after\_newton\_solve()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+void \hyperlink{classElasticFishProblem}{Elastic\+Fish\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::actions\+\_\+after\+\_\+newton\+\_\+solve (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Update function (empty) 
+
+
+
+Definition at line 204 of file static\+\_\+fish.\+cc.
+
+\mbox{\Hypertarget{classElasticFishProblem_a7c22fcff8d94166797e87d70017540d6}\label{classElasticFishProblem_a7c22fcff8d94166797e87d70017540d6}} 
+\index{Elastic\+Fish\+Problem@{Elastic\+Fish\+Problem}!actions\+\_\+before\+\_\+newton\+\_\+solve@{actions\+\_\+before\+\_\+newton\+\_\+solve}}
+\index{actions\+\_\+before\+\_\+newton\+\_\+solve@{actions\+\_\+before\+\_\+newton\+\_\+solve}!Elastic\+Fish\+Problem@{Elastic\+Fish\+Problem}}
+\subsubsection{\texorpdfstring{actions\+\_\+before\+\_\+newton\+\_\+solve()}{actions\_before\_newton\_solve()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+void \hyperlink{classElasticFishProblem}{Elastic\+Fish\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::actions\+\_\+before\+\_\+newton\+\_\+solve (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Update before solve\+: We\textquotesingle{}re dealing with a static problem so the nodal positions before the next solve merely serve as initial conditions. For meshes that are very strongly refined near the boundary, the update of the displacement boundary conditions (which only moves the Solid\+Nodes {\itshape on} the boundary), can lead to strongly distorted meshes. This can cause the Newton method to fail --$>$ the overall method is actually more robust if we use the nodal positions as determined by the Domain/\+Macro\+Element-\/ based mesh update as initial guesses. 
+
+
+
+Definition at line 215 of file static\+\_\+fish.\+cc.
+
+\mbox{\Hypertarget{classElasticFishProblem_a5cd7dbd2bc99ccf850c1a58d0b401979}\label{classElasticFishProblem_a5cd7dbd2bc99ccf850c1a58d0b401979}} 
+\index{Elastic\+Fish\+Problem@{Elastic\+Fish\+Problem}!doc\+\_\+solution@{doc\+\_\+solution}}
+\index{doc\+\_\+solution@{doc\+\_\+solution}!Elastic\+Fish\+Problem@{Elastic\+Fish\+Problem}}
+\subsubsection{\texorpdfstring{doc\+\_\+solution()}{doc\_solution()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classElasticFishProblem}{Elastic\+Fish\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::doc\+\_\+solution (\begin{DoxyParamCaption}\item[{Doc\+Info \&}]{doc\+\_\+info }\end{DoxyParamCaption})}
+
+
+
+Doc the solution. 
+
+
+
+Definition at line 331 of file static\+\_\+fish.\+cc.
+
+\mbox{\Hypertarget{classElasticFishProblem_a616c07228c52c594f90dfb1333015712}\label{classElasticFishProblem_a616c07228c52c594f90dfb1333015712}} 
+\index{Elastic\+Fish\+Problem@{Elastic\+Fish\+Problem}!mesh\+\_\+pt@{mesh\+\_\+pt}}
+\index{mesh\+\_\+pt@{mesh\+\_\+pt}!Elastic\+Fish\+Problem@{Elastic\+Fish\+Problem}}
+\subsubsection{\texorpdfstring{mesh\+\_\+pt()}{mesh\_pt()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+\hyperlink{classElasticFishMesh}{Elastic\+Fish\+Mesh}$<$E\+L\+E\+M\+E\+NT$>$$\ast$ \hyperlink{classElasticFishProblem}{Elastic\+Fish\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::mesh\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Access function for the mesh. 
+
+
+
+Definition at line 197 of file static\+\_\+fish.\+cc.
+
+\mbox{\Hypertarget{classElasticFishProblem_aaaf23036d8f282cff88e497ad214237f}\label{classElasticFishProblem_aaaf23036d8f282cff88e497ad214237f}} 
+\index{Elastic\+Fish\+Problem@{Elastic\+Fish\+Problem}!run@{run}}
+\index{run@{run}!Elastic\+Fish\+Problem@{Elastic\+Fish\+Problem}}
+\subsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classElasticFishProblem}{Elastic\+Fish\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Run simulation. 
+
+Run the problem. 
+
+Definition at line 358 of file static\+\_\+fish.\+cc.
+
+
+
+References Global\+\_\+\+Physical\+\_\+\+Variables\+::\+Gravity.
+
+
+
+Referenced by main().
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classElasticFishProblem_a1a026c063e41c004f656988d6bfd541b}\label{classElasticFishProblem_a1a026c063e41c004f656988d6bfd541b}} 
+\index{Elastic\+Fish\+Problem@{Elastic\+Fish\+Problem}!Fish\+\_\+back\+\_\+pt@{Fish\+\_\+back\+\_\+pt}}
+\index{Fish\+\_\+back\+\_\+pt@{Fish\+\_\+back\+\_\+pt}!Elastic\+Fish\+Problem@{Elastic\+Fish\+Problem}}
+\subsubsection{\texorpdfstring{Fish\+\_\+back\+\_\+pt}{Fish\_back\_pt}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+Circle$\ast$ \hyperlink{classElasticFishProblem}{Elastic\+Fish\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::Fish\+\_\+back\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 233 of file static\+\_\+fish.\+cc.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{static__fish_8cc}{static\+\_\+fish.\+cc}\end{DoxyCompactItemize}

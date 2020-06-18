@@ -1,0 +1,522 @@
+Detailed documentation to be written. Here\textquotesingle{}s the already fairly well documented driver code...
+
+
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//LIC// ====================================================================}
+\textcolor{comment}{//LIC// This file forms part of oomph-lib, the object-oriented, }
+\textcolor{comment}{//LIC// multi-physics finite-element library, available }
+\textcolor{comment}{//LIC// at http://www.oomph-lib.org.}
+\textcolor{comment}{//LIC// }
+\textcolor{comment}{//LIC//    Version 1.0; svn revision $LastChangedRevision$}
+\textcolor{comment}{//LIC//}
+\textcolor{comment}{//LIC// $LastChangedDate$}
+\textcolor{comment}{//LIC// }
+\textcolor{comment}{//LIC// Copyright (C) 2006-2016 Matthias Heil and Andrew Hazel}
+\textcolor{comment}{//LIC// }
+\textcolor{comment}{//LIC// This library is free software; you can redistribute it and/or}
+\textcolor{comment}{//LIC// modify it under the terms of the GNU Lesser General Public}
+\textcolor{comment}{//LIC// License as published by the Free Software Foundation; either}
+\textcolor{comment}{//LIC// version 2.1 of the License, or (at your option) any later version.}
+\textcolor{comment}{//LIC// }
+\textcolor{comment}{//LIC// This library is distributed in the hope that it will be useful,}
+\textcolor{comment}{//LIC// but WITHOUT ANY WARRANTY; without even the implied warranty of}
+\textcolor{comment}{//LIC// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU}
+\textcolor{comment}{//LIC// Lesser General Public License for more details.}
+\textcolor{comment}{//LIC// }
+\textcolor{comment}{//LIC// You should have received a copy of the GNU Lesser General Public}
+\textcolor{comment}{//LIC// License along with this library; if not, write to the Free Software}
+\textcolor{comment}{//LIC// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA}
+\textcolor{comment}{//LIC// 02110-1301  USA.}
+\textcolor{comment}{//LIC// }
+\textcolor{comment}{//LIC// The authors may be contacted at oomph-lib@maths.man.ac.uk.}
+\textcolor{comment}{//LIC// }
+\textcolor{comment}{//LIC//====================================================================}
+\textcolor{comment}{//Driver for small amplitude ring oscillations}
+
+\textcolor{comment}{//OOMPH-LIB includes}
+\textcolor{preprocessor}{#include "generic.h"}
+\textcolor{preprocessor}{#include "beam.h"}
+\textcolor{preprocessor}{#include "meshes/one\_d\_lagrangian\_mesh.h"}
+
+\textcolor{keyword}{using namespace }\hyperlink{namespacestd}{std};
+
+\textcolor{keyword}{using namespace }\hyperlink{namespaceoomph}{oomph};
+\textcolor{comment}{}
+\textcolor{comment}{////////////////////////////////////////////////////////////////////////}
+\textcolor{comment}{////////////////////////////////////////////////////////////////////////}
+\textcolor{comment}{////////////////////////////////////////////////////////////////////////}
+\textcolor{comment}{}
+
+\textcolor{comment}{//====start\_of\_namespace============================}\textcolor{comment}{}
+\textcolor{comment}{/// Namespace for physical parameters}
+\textcolor{comment}{}\textcolor{comment}{//==================================================}
+\textcolor{keyword}{namespace }\hyperlink{namespaceGlobal__Physical__Variables}{Global\_Physical\_Variables}
+\{
+\textcolor{comment}{}
+\textcolor{comment}{ /// Flag for long/short run: Default =  perform long run}
+\textcolor{comment}{} \textcolor{keywordtype}{unsigned} \hyperlink{namespaceGlobal__Physical__Variables_acb18f0e4952b6a1b0840ca94828ace3b}{Long\_run\_flag}=1;
+\textcolor{comment}{}
+\textcolor{comment}{ /// \(\backslash\)short Flag for fixed timestep: Default = fixed timestep}
+\textcolor{comment}{} \textcolor{keywordtype}{unsigned} \hyperlink{namespaceGlobal__Physical__Variables_aae2e69454e5e73519e13dd3424d41a2c}{Fixed\_timestep\_flag}=1;
+\textcolor{comment}{}
+\textcolor{comment}{ /// \(\backslash\)short Boolean flag to decide if to set IC for Newmark}
+\textcolor{comment}{ /// directly or consistently : No Default}
+\textcolor{comment}{} \textcolor{keywordtype}{bool} \hyperlink{namespaceGlobal__Physical__Variables_affe3ddb0b7c1d7dbf3955738edbda1af}{Consistent\_newmark\_ic};
+
+\} \textcolor{comment}{// end of namespace}
+\textcolor{comment}{}
+\textcolor{comment}{/////////////////////////////////////////////////////////////////////}
+\textcolor{comment}{/////////////////////////////////////////////////////////////////////}
+\textcolor{comment}{/////////////////////////////////////////////////////////////////////}
+\textcolor{comment}{}
+
+
+\textcolor{comment}{//==start\_of\_problem\_class==============================================}\textcolor{comment}{}
+\textcolor{comment}{/// Oscillating ring problem: Compare small-amplitude oscillations}
+\textcolor{comment}{/// against analytical solution of the linearised equations.}
+\textcolor{comment}{}\textcolor{comment}{//======================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT, \textcolor{keyword}{class} TIMESTEPPER>
+\textcolor{keyword}{class }\hyperlink{classElasticRingProblem}{ElasticRingProblem} : \textcolor{keyword}{public} Problem
+\{
+
+\textcolor{keyword}{public}:
+\textcolor{comment}{}
+\textcolor{comment}{ /// \(\backslash\)short Constructor: Number of elements, length of domain, flag for}
+\textcolor{comment}{ /// setting Newmark IC directly or consistently}
+\textcolor{comment}{} \hyperlink{classElasticRingProblem}{ElasticRingProblem}(\textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} &N, \textcolor{keyword}{const} \textcolor{keywordtype}{double} &L);
+                    \textcolor{comment}{}
+\textcolor{comment}{ /// Access function for the mesh}
+\textcolor{comment}{} OneDLagrangianMesh<ELEMENT>* mesh\_pt() 
+  \{
+   \textcolor{keywordflow}{return} \textcolor{keyword}{dynamic\_cast<}OneDLagrangianMesh<ELEMENT>*\textcolor{keyword}{>}(Problem::mesh\_pt());
+  \}
+\textcolor{comment}{}
+\textcolor{comment}{ /// Update function is empty }
+\textcolor{comment}{} \textcolor{keywordtype}{void} actions\_after\_newton\_solve() \{\}
+\textcolor{comment}{}
+\textcolor{comment}{ /// Update function is empty }
+\textcolor{comment}{} \textcolor{keywordtype}{void} actions\_before\_newton\_solve() \{\}
+\textcolor{comment}{}
+\textcolor{comment}{ /// Doc solution}
+\textcolor{comment}{} \textcolor{keywordtype}{void} doc\_solution(DocInfo& doc\_info);
+\textcolor{comment}{}
+\textcolor{comment}{ /// Do unsteady run}
+\textcolor{comment}{} \textcolor{keywordtype}{void} unsteady\_run();
+
+\textcolor{keyword}{private}:
+\textcolor{comment}{}
+\textcolor{comment}{ /// Length of domain (in terms of the Lagrangian coordinates)}
+\textcolor{comment}{} \textcolor{keywordtype}{double} Length;
+\textcolor{comment}{}
+\textcolor{comment}{ /// \(\backslash\)short In which element are we applying displacement control?}
+\textcolor{comment}{ /// (here only used for doc of radius)}
+\textcolor{comment}{} ELEMENT* Displ\_control\_elem\_pt;
+\textcolor{comment}{}
+\textcolor{comment}{ /// At what local coordinate are we applying displacement control?}
+\textcolor{comment}{} Vector<double> S\_displ\_control;
+\textcolor{comment}{}
+\textcolor{comment}{ /// Pointer to geometric object that represents the undeformed shape}
+\textcolor{comment}{} GeomObject* Undef\_geom\_pt;
+\textcolor{comment}{}
+\textcolor{comment}{ /// \(\backslash\)short Pointer to object that specifies the initial condition}
+\textcolor{comment}{} SolidInitialCondition* IC\_pt;
+\textcolor{comment}{}
+\textcolor{comment}{ /// Trace file for recording control data}
+\textcolor{comment}{} ofstream Trace\_file;
+\}; \textcolor{comment}{// end of problem class}
+
+
+
+
+\textcolor{comment}{//===start\_of\_constructor===============================================}\textcolor{comment}{}
+\textcolor{comment}{/// Constructor for elastic ring problem}
+\textcolor{comment}{}\textcolor{comment}{//======================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT,\textcolor{keyword}{class} TIMESTEPPER>
+\hyperlink{classElasticRingProblem_a57be33a379c1ec4418a7fb3e8db8ef2b}{ElasticRingProblem<ELEMENT,TIMESTEPPER>::ElasticRingProblem}
+(\textcolor{keyword}{const} \textcolor{keywordtype}{unsigned}& N, \textcolor{keyword}{const} \textcolor{keywordtype}{double}& L) 
+ : Length(L)
+\{
+
+ \textcolor{comment}{//Allocate the timestepper -- This constructs the time object as well}
+ add\_time\_stepper\_pt(\textcolor{keyword}{new} TIMESTEPPER());
+
+ \textcolor{comment}{// Undeformed beam is an elliptical ring }
+ Undef\_geom\_pt=\textcolor{keyword}{new} Ellipse(1.0,1.0); 
+
+ \textcolor{comment}{//Now create the (Lagrangian!) mesh}
+ Problem::mesh\_pt() = \textcolor{keyword}{new} OneDLagrangianMesh<ELEMENT>(
+  N,L,Undef\_geom\_pt,Problem::time\_stepper\_pt()); 
+
+ \textcolor{comment}{// Boundary condition: }
+
+ \textcolor{comment}{// Bottom: }
+ \textcolor{keywordtype}{unsigned} ibound=0;
+ \textcolor{comment}{// No vertical displacement}
+ mesh\_pt()->boundary\_node\_pt(ibound,0)->pin\_position(1); 
+ \textcolor{comment}{// Zero slope: Pin type 1 dof for displacement direction 0 }
+ mesh\_pt()->boundary\_node\_pt(ibound,0)->pin\_position(1,0);
+
+ \textcolor{comment}{// Top: }
+ ibound=1;
+ \textcolor{comment}{// No horizontal displacement}
+ mesh\_pt()->boundary\_node\_pt(ibound,0)->pin\_position(0); 
+ \textcolor{comment}{// Zero slope: Pin type 1 dof for displacement direction 1}
+ mesh\_pt()->boundary\_node\_pt(ibound,0)->pin\_position(1,1); 
+
+ 
+ \textcolor{comment}{// Resize vector of local coordinates for control displacement}
+ \textcolor{comment}{// (here only used to identify the point whose displacement we're}
+ \textcolor{comment}{// tracing)}
+ S\_displ\_control.resize(1);
+
+ \textcolor{comment}{// Complete build of all elements so they are fully functional}
+ \textcolor{comment}{// -----------------------------------------------------------}
+
+ \textcolor{comment}{// Find number of elements in mesh}
+ \textcolor{keywordtype}{unsigned} Nelement = mesh\_pt()->nelement();
+
+ \textcolor{comment}{// Loop over the elements to set pointer to undeformed wall shape}
+ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} i=0;i<Nelement;i++)
+  \{
+   \textcolor{comment}{// Cast to proper element type}
+   ELEMENT *elem\_pt = \textcolor{keyword}{dynamic\_cast<}ELEMENT*\textcolor{keyword}{>}(mesh\_pt()->element\_pt(i));
+
+   \textcolor{comment}{// Assign the undeformed surface}
+   elem\_pt->undeformed\_beam\_pt() = Undef\_geom\_pt;
+  \}
+
+ \textcolor{comment}{// Establish control displacment: (even though no displacement }
+ \textcolor{comment}{// control is applied we still want to doc the displacement at the same point)}
+
+ \textcolor{comment}{// Choose element: (This is the last one)}
+ Displ\_control\_elem\_pt=\textcolor{keyword}{dynamic\_cast<}ELEMENT*\textcolor{keyword}{>}(
+  mesh\_pt()->element\_pt(Nelement-1));
+ 
+ \textcolor{comment}{// Fix/doc the displacement in the vertical (1) direction at right end of}
+ \textcolor{comment}{// the control element}
+ S\_displ\_control[0]=1.0;
+ 
+ \textcolor{comment}{// Do equation numbering}
+ cout << \textcolor{stringliteral}{"# of dofs "} << assign\_eqn\_numbers() << std::endl;
+
+ \textcolor{comment}{// Geometric object that specifies the initial conditions}
+ \textcolor{keywordtype}{double} eps\_buckl=1.0e-2;
+ \textcolor{keywordtype}{double} HoR=\textcolor{keyword}{dynamic\_cast<}ELEMENT*\textcolor{keyword}{>}(mesh\_pt()->element\_pt(0))->h();
+ \textcolor{keywordtype}{unsigned} n\_buckl=2;
+ \textcolor{keywordtype}{unsigned} imode=2;
+ GeomObject* ic\_geom\_object\_pt=
+  \textcolor{keyword}{new} PseudoBucklingRing(eps\_buckl,HoR,n\_buckl,imode,
+                         Problem::time\_stepper\_pt()); 
+ 
+ \textcolor{comment}{// Setup object that specifies the initial conditions:}
+ IC\_pt = \textcolor{keyword}{new} SolidInitialCondition(ic\_geom\_object\_pt);
+ 
+\} \textcolor{comment}{// end of constructor}
+
+
+\textcolor{comment}{//===start\_of\_doc\_solution================================================}\textcolor{comment}{}
+\textcolor{comment}{/// Document solution}
+\textcolor{comment}{}\textcolor{comment}{//========================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT, \textcolor{keyword}{class} TIMESTEPPER>
+\textcolor{keywordtype}{void} \hyperlink{classElasticRingProblem_a9aa904e4cf82d45711f890cd8440ced9}{ElasticRingProblem<ELEMENT, TIMESTEPPER>::doc\_solution}
+      (
+ DocInfo& doc\_info)
+\{ 
+
+ cout << \textcolor{stringliteral}{"Doc-ing step "} <<  doc\_info.number()
+      << \textcolor{stringliteral}{" for time "} << time\_stepper\_pt()->time\_pt()->time() << std::endl;
+  
+  
+ \textcolor{comment}{// Loop over all elements to get global kinetic and potential energy}
+ \textcolor{keywordtype}{unsigned} Nelem=mesh\_pt()->nelement();
+ \textcolor{keywordtype}{double} global\_kin=0;
+ \textcolor{keywordtype}{double} global\_pot=0;
+ \textcolor{keywordtype}{double} pot,kin;
+ \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} ielem=0;ielem<Nelem;ielem++)
+  \{
+   \textcolor{keyword}{dynamic\_cast<}ELEMENT*\textcolor{keyword}{>}(mesh\_pt()->element\_pt(ielem))->get\_energy(pot,kin);
+   global\_kin+=kin;
+   global\_pot+=pot;
+  \}
+  
+
+ \textcolor{comment}{// Control displacement for initial condition object}
+ Vector<double> xi\_ctrl(1);
+ Vector<double> posn\_ctrl(2);
+  
+ \textcolor{comment}{// Lagrangian coordinate of control point}
+ xi\_ctrl[0]=Displ\_control\_elem\_pt->interpolated\_xi(S\_displ\_control,0);
+  
+ \textcolor{comment}{// Get position}
+ IC\_pt->geom\_object\_pt()->position(xi\_ctrl,posn\_ctrl);
+ 
+ \textcolor{comment}{// Write trace file: Time, control position, energies}
+ Trace\_file << time\_pt()->time()  << \textcolor{stringliteral}{" "} 
+            << Displ\_control\_elem\_pt->interpolated\_x(S\_displ\_control,1) 
+            << \textcolor{stringliteral}{" "} << global\_pot  << \textcolor{stringliteral}{" "} << global\_kin
+            << \textcolor{stringliteral}{" "} << global\_pot + global\_kin 
+            << \textcolor{stringliteral}{" "} << posn\_ctrl[1]
+            << std::endl; 
+  
+  
+ ofstream some\_file;
+ \textcolor{keywordtype}{char} filename[100];
+  
+ \textcolor{comment}{// Number of plot points}
+ \textcolor{keywordtype}{unsigned} npts=5;
+
+ \textcolor{comment}{// Output solution }
+ sprintf(filename,\textcolor{stringliteral}{"%s/ring%i.dat"},doc\_info.directory().c\_str(),
+         doc\_info.number());
+ some\_file.open(filename);
+ mesh\_pt()->output(some\_file,npts);
+ some\_file.close();
+
+ \textcolor{comment}{// Loop over all elements do dump out previous solutions}
+ \textcolor{keywordtype}{unsigned} nsteps=time\_stepper\_pt()->nprev\_values();
+ \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} t=0;t<=nsteps;t++)
+  \{     
+   sprintf(filename,\textcolor{stringliteral}{"%s/ring%i-%i.dat"},doc\_info.directory().c\_str(),
+           doc\_info.number(),t);
+   some\_file.open(filename);
+   \textcolor{keywordtype}{unsigned} Nelem=mesh\_pt()->nelement();
+   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} ielem=0;ielem<Nelem;ielem++)
+    \{
+     \textcolor{keyword}{dynamic\_cast<}ELEMENT*\textcolor{keyword}{>}(mesh\_pt()->element\_pt(ielem))->
+      output(t,some\_file,npts);
+    \}
+   some\_file.close();
+  \}
+  
+ \textcolor{comment}{// Output for initial condition object}
+ sprintf(filename,\textcolor{stringliteral}{"%s/ic\_ring%i.dat"},doc\_info.directory().c\_str(),
+         doc\_info.number());
+ some\_file.open(filename);
+  
+ \textcolor{keywordtype}{unsigned} nplot=1+(npts-1)*mesh\_pt()->nelement();
+ Vector<double> xi(1);
+ Vector<double> posn(2);
+ Vector<double> veloc(2);
+ Vector<double> accel(2);
+  
+ \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} iplot=0;iplot<nplot;iplot++)
+  \{
+   xi[0]=Length/double(nplot-1)*double(iplot);
+    
+   IC\_pt->geom\_object\_pt()->position(xi,posn);
+   IC\_pt->geom\_object\_pt()->dposition\_dt(xi,1,veloc);
+   IC\_pt->geom\_object\_pt()->dposition\_dt(xi,2,accel);
+    
+   some\_file << posn[0] << \textcolor{stringliteral}{" "} << posn[1] << \textcolor{stringliteral}{" "}
+             << xi[0] << \textcolor{stringliteral}{" "}
+             << veloc[0] << \textcolor{stringliteral}{" "} << veloc[1] << \textcolor{stringliteral}{" "}
+             << accel[0] << \textcolor{stringliteral}{" "} << accel[1] << \textcolor{stringliteral}{" "}
+             << sqrt(pow(posn[0],2)+pow(posn[1],2)) << \textcolor{stringliteral}{" "}
+             << sqrt(pow(veloc[0],2)+pow(veloc[1],2)) << \textcolor{stringliteral}{" "}
+             << sqrt(pow(accel[0],2)+pow(accel[1],2)) << \textcolor{stringliteral}{" "}
+             << std::endl;
+  \}
+  
+ some\_file.close();
+\} \textcolor{comment}{// end of doc solution}
+
+
+
+\textcolor{comment}{//===start\_of\_unsteady\_run=================================================}\textcolor{comment}{}
+\textcolor{comment}{/// Solver loop to perform unsteady run}
+\textcolor{comment}{}\textcolor{comment}{//=========================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT,\textcolor{keyword}{class} TIMESTEPPER>
+\textcolor{keywordtype}{void} \hyperlink{classElasticRingProblem_acd30c4363ffedbaadc1523aa8b85523b}{ElasticRingProblem<ELEMENT,TIMESTEPPER>::unsteady\_run}
+      ()
+\{
+\textcolor{comment}{}
+\textcolor{comment}{ /// Label for output}
+\textcolor{comment}{} DocInfo doc\_info;
+
+ \textcolor{comment}{// Output directory}
+ doc\_info.set\_directory(\textcolor{stringliteral}{"RESLT"});
+
+ \textcolor{comment}{// Step number}
+ doc\_info.number()=0;
+
+ \textcolor{comment}{// Set up trace file}
+ \textcolor{keywordtype}{char} filename[100];
+ sprintf(filename,\textcolor{stringliteral}{"%s/trace\_ring.dat"},doc\_info.directory().c\_str());
+ Trace\_file.open(filename);
+
+ Trace\_file <<  \textcolor{stringliteral}{"VARIABLES=\(\backslash\)"time\(\backslash\)",\(\backslash\)"R<sub>ctrl</sub>\(\backslash\)",\(\backslash\)"E<sub>pot</sub>\(\backslash\)""};
+ Trace\_file << \textcolor{stringliteral}{",\(\backslash\)"E<sub>kin</sub>\(\backslash\)",\(\backslash\)"E<sub>kin</sub>+E<sub>pot</sub>\(\backslash\)""};
+ Trace\_file << \textcolor{stringliteral}{",\(\backslash\)"<sub>exact</sub>R<sub>ctrl</sub>\(\backslash\)""} 
+            << std::endl;
+ 
+ \textcolor{comment}{// Number of steps}
+ \textcolor{keywordtype}{unsigned} nstep=600; 
+ \textcolor{keywordflow}{if} (\hyperlink{namespaceGlobal__Physical__Variables_acb18f0e4952b6a1b0840ca94828ace3b}{Global\_Physical\_Variables::Long\_run\_flag}==0) \{nstep=10;\}
+
+ \textcolor{comment}{// Initial timestep}
+ \textcolor{keywordtype}{double} dt=1.0;
+
+ \textcolor{comment}{// Ratio for timestep reduction}
+ \textcolor{keywordtype}{double} timestep\_ratio=1.0;
+ \textcolor{keywordflow}{if} (\hyperlink{namespaceGlobal__Physical__Variables_aae2e69454e5e73519e13dd3424d41a2c}{Global\_Physical\_Variables::Fixed\_timestep\_flag}==0) \{
+      timestep\_ratio=0.995;\}
+
+ \textcolor{comment}{// Number of previous timesteps stored}
+ \textcolor{keywordtype}{unsigned} ndt=time\_stepper\_pt()->time\_pt()->ndt();
+
+ \textcolor{comment}{// Setup vector of "previous" timesteps}
+ Vector<double> dt\_prev(ndt);
+ dt\_prev[0]=dt; 
+ \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} i=1;i<ndt;i++)
+  \{
+   dt\_prev[i]=dt\_prev[i-1]/timestep\_ratio;
+  \}
+
+ \textcolor{comment}{// Initialise the history of previous timesteps}
+ time\_pt()->initialise\_dt(dt\_prev);
+
+ \textcolor{comment}{// Initialise time}
+ \textcolor{keywordtype}{double} time0=10.0;
+ time\_pt()->time()=time0;
+
+ \textcolor{comment}{// Setup analytical initial condition?}
+ \textcolor{keywordflow}{if} (\hyperlink{namespaceGlobal__Physical__Variables_affe3ddb0b7c1d7dbf3955738edbda1af}{Global\_Physical\_Variables::Consistent\_newmark\_ic})
+  \{
+   \textcolor{comment}{// Note: Time has been scaled on intrinsic timescale so}
+   \textcolor{comment}{// we don't need to specify a multiplier for the inertia}
+   \textcolor{comment}{// terms (the default assignment of 1.0 is OK)}
+   SolidMesh::Solid\_IC\_problem.
+    set\_newmark\_initial\_condition\_consistently(
+     \textcolor{keyword}{this},mesh\_pt(),static\_cast<TIMESTEPPER*>(time\_stepper\_pt()),IC\_pt,dt);
+  \}
+ \textcolor{keywordflow}{else}
+  \{
+   SolidMesh::Solid\_IC\_problem.
+    set\_newmark\_initial\_condition\_directly(
+     \textcolor{keyword}{this},mesh\_pt(),static\_cast<TIMESTEPPER*>(time\_stepper\_pt()),IC\_pt,dt);
+  \}
+
+ \textcolor{comment}{//Output initial data}
+ doc\_solution(doc\_info);
+
+ \textcolor{comment}{// Time integration loop}
+ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} i=1;i<=nstep;i++)
+  \{
+   \textcolor{comment}{// Solve}
+   unsteady\_newton\_solve(dt); 
+   
+   \textcolor{comment}{// Doc solution}
+   doc\_info.number()++;
+   doc\_solution(doc\_info);
+   
+   \textcolor{comment}{// Reduce timestep}
+   \textcolor{keywordflow}{if} (time\_pt()->time()<100.0) \{dt=timestep\_ratio*dt;\}
+  \}
+
+\} \textcolor{comment}{// end of unsteady run}
+
+
+
+\textcolor{comment}{//===start\_of\_main=====================================================}\textcolor{comment}{}
+\textcolor{comment}{/// Driver for ring that performs small-amplitude oscillations}
+\textcolor{comment}{}\textcolor{comment}{//=====================================================================}
+\textcolor{keywordtype}{int} \hyperlink{lin__unsteady__ring_8cc_a0ddf1224851353fc92bfbff6f499fa97}{main}(\textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char}* argv[])
+\{
+
+ \textcolor{comment}{// Store command line arguments}
+ CommandLineArgs::setup(argc,argv);
+\textcolor{comment}{}
+\textcolor{comment}{ /// Convert command line arguments (if any) into flags:}
+\textcolor{comment}{} \textcolor{keywordflow}{if} (argc==2)
+  \{
+   \textcolor{comment}{// Nontrivial command line input: Setup Newmark IC directly}
+   \textcolor{comment}{// (rather than consistently with PVD)}
+   \textcolor{keywordflow}{if} (atoi(argv[1])==1) 
+    \{
+     \hyperlink{namespaceGlobal__Physical__Variables_affe3ddb0b7c1d7dbf3955738edbda1af}{Global\_Physical\_Variables::Consistent\_newmark\_ic}=\textcolor{keyword}{true};
+     cout << \textcolor{stringliteral}{"Setting Newmark IC consistently"} << std::endl;
+    \}
+   \textcolor{keywordflow}{else}
+    \{
+     \hyperlink{namespaceGlobal__Physical__Variables_affe3ddb0b7c1d7dbf3955738edbda1af}{Global\_Physical\_Variables::Consistent\_newmark\_ic}=\textcolor{keyword}{false}
+      ;
+     cout << \textcolor{stringliteral}{"Setting Newmark IC directly"} << std::endl;
+    \}
+   
+   cout << \textcolor{stringliteral}{"Not enough command line arguments specified -- using defaults."} 
+        << std::endl;
+  \} \textcolor{comment}{// end of 1 argument}
+ \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (argc==4)
+  \{
+   cout << \textcolor{stringliteral}{"Three command line arguments specified:"} << std::endl;
+   \textcolor{comment}{// Nontrivial command line input: Setup Newmark IC directly}
+   \textcolor{comment}{// (rather than consistently with PVD)}
+   \textcolor{keywordflow}{if} (atoi(argv[1])==1) 
+    \{
+     \hyperlink{namespaceGlobal__Physical__Variables_affe3ddb0b7c1d7dbf3955738edbda1af}{Global\_Physical\_Variables::Consistent\_newmark\_ic}=\textcolor{keyword}{true};
+     cout << \textcolor{stringliteral}{"Setting Newmark IC consistently"} << std::endl;
+    \}
+   \textcolor{keywordflow}{else}
+    \{
+     \hyperlink{namespaceGlobal__Physical__Variables_affe3ddb0b7c1d7dbf3955738edbda1af}{Global\_Physical\_Variables::Consistent\_newmark\_ic}=\textcolor{keyword}{false}
+      ;
+     cout << \textcolor{stringliteral}{"Setting Newmark IC directly"} << std::endl;
+    \}
+   \textcolor{comment}{// Flag for long run}
+   \hyperlink{namespaceGlobal__Physical__Variables_acb18f0e4952b6a1b0840ca94828ace3b}{Global\_Physical\_Variables::Long\_run\_flag}=atoi(argv[2]);
+   \textcolor{comment}{// Flag for fixed timestep}
+   \hyperlink{namespaceGlobal__Physical__Variables_aae2e69454e5e73519e13dd3424d41a2c}{Global\_Physical\_Variables::Fixed\_timestep\_flag}=atoi(argv[3
+      ]);
+  \} \textcolor{comment}{// end of 3 arguments}
+ \textcolor{keywordflow}{else}
+  \{
+   std::string error\_message =
+    \textcolor{stringliteral}{"Wrong number of command line arguments. Specify one or three.\(\backslash\)n"};
+   error\_message += \textcolor{stringliteral}{"Arg1: Long\_run\_flag [0/1]\(\backslash\)n"};
+   error\_message += \textcolor{stringliteral}{"Arg2: Impulsive\_start\_flag [0/1]\(\backslash\)n"};
+   error\_message += \textcolor{stringliteral}{"Arg3: Restart\_flag [restart\_file] (optional)\(\backslash\)n"};
+
+   \textcolor{keywordflow}{throw} OomphLibError(error\_message,
+                       OOMPH\_CURRENT\_FUNCTION,
+                       OOMPH\_EXCEPTION\_LOCATION);
+  \} \textcolor{comment}{// too many arguments}
+ cout << \textcolor{stringliteral}{"Setting Newmark IC consistently: "}
+      <<  \hyperlink{namespaceGlobal__Physical__Variables_affe3ddb0b7c1d7dbf3955738edbda1af}{Global\_Physical\_Variables::Consistent\_newmark\_ic} 
+      << std::endl;
+ cout << \textcolor{stringliteral}{"Long run flag: "} 
+      <<  \hyperlink{namespaceGlobal__Physical__Variables_acb18f0e4952b6a1b0840ca94828ace3b}{Global\_Physical\_Variables::Long\_run\_flag} << std::endl;
+ cout << \textcolor{stringliteral}{"Fixed timestep flag: "} 
+      <<  \hyperlink{namespaceGlobal__Physical__Variables_aae2e69454e5e73519e13dd3424d41a2c}{Global\_Physical\_Variables::Fixed\_timestep\_flag} << 
+      std::endl;
+
+ \textcolor{comment}{//Length of domain}
+ \textcolor{keywordtype}{double} L = MathematicalConstants::Pi/2.0;
+  
+ \textcolor{comment}{// Number of elements}
+ \textcolor{keywordtype}{unsigned} nelem = 13;
+
+ \textcolor{comment}{//Set up the problem}
+ \hyperlink{classElasticRingProblem}{ElasticRingProblem<HermiteBeamElement,Newmark<3>} > 
+  problem(nelem,L);
+
+ \textcolor{comment}{// Do unsteady run}
+ problem.unsteady\_run();
+
+\} \textcolor{comment}{// end of main}
+
+
+
+
+
+
+
+
+\end{DoxyCodeInclude}
+
+
+
+
+ 
+
+ \hypertarget{index_pdf}{}\section{P\+D\+F file}\label{index_pdf}
+A \href{../latex/refman.pdf}{\tt pdf version} of this document is available. \end{document}

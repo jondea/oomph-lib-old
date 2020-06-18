@@ -1,0 +1,2047 @@
+\hypertarget{classoomph_1_1SphericalNavierStokesEquations}{}\section{oomph\+:\+:Spherical\+Navier\+Stokes\+Equations Class Reference}
+\label{classoomph_1_1SphericalNavierStokesEquations}\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+
+
+{\ttfamily \#include $<$spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Spherical\+Navier\+Stokes\+Equations\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.507463cm]{classoomph_1_1SphericalNavierStokesEquations}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef void($\ast$ \hyperlink{classoomph_1_1SphericalNavierStokesEquations_aee36bea87063e9648a488de9e21f551d}{Spherical\+Navier\+Stokes\+Body\+Force\+Fct\+Pt}) (const double \&time, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&x, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&body\+\_\+force)
+\begin{DoxyCompactList}\small\item\em Function pointer to body force function fct(t,x,f(x)) x is a Vector! \end{DoxyCompactList}\item 
+typedef double($\ast$ \hyperlink{classoomph_1_1SphericalNavierStokesEquations_abd522fea532c3de15dbe80205e53bdf8}{Spherical\+Navier\+Stokes\+Source\+Fct\+Pt}) (const double \&time, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&x)
+\begin{DoxyCompactList}\small\item\em Function pointer to source function fct(t,x) x is a Vector! \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \hyperlink{classoomph_1_1SphericalNavierStokesEquations_a8a160b5a04c9ba5bab06f3b2b184499f}{cot} (const double \&th) const
+\item 
+\hyperlink{classoomph_1_1SphericalNavierStokesEquations_adb7856b86fa6d5d35b03596649c86a70}{Spherical\+Navier\+Stokes\+Equations} ()
+\begin{DoxyCompactList}\small\item\em Constructor\+: N\+U\+LL the body force and source function and make sure the A\+LE terms are included by default. \end{DoxyCompactList}\item 
+const double \& \hyperlink{classoomph_1_1SphericalNavierStokesEquations_a339dc121adc8a2eb62805ac63171fd6c}{re} () const
+\begin{DoxyCompactList}\small\item\em Reynolds number. \end{DoxyCompactList}\item 
+const double \& \hyperlink{classoomph_1_1SphericalNavierStokesEquations_af3627c5846c81dacdfb150576a28db61}{re\+\_\+st} () const
+\begin{DoxyCompactList}\small\item\em Product of Reynolds and Strouhal number (=Womersley number) \end{DoxyCompactList}\item 
+double $\ast$\& \hyperlink{classoomph_1_1SphericalNavierStokesEquations_a2ee12f1bb031d2bc22db89daa341ffb9}{re\+\_\+pt} ()
+\begin{DoxyCompactList}\small\item\em Pointer to Reynolds number. \end{DoxyCompactList}\item 
+double $\ast$\& \hyperlink{classoomph_1_1SphericalNavierStokesEquations_ac626bfa171be369005086f0d398d4053}{re\+\_\+st\+\_\+pt} ()
+\begin{DoxyCompactList}\small\item\em Pointer to product of Reynolds and Strouhal number (=Womersley number) \end{DoxyCompactList}\item 
+const double \& \hyperlink{classoomph_1_1SphericalNavierStokesEquations_afe25a15c1ed202d735ca335b80b1202a}{viscosity\+\_\+ratio} () const
+\begin{DoxyCompactList}\small\item\em Viscosity ratio for element\+: Element\textquotesingle{}s viscosity relative to the viscosity used in the definition of the Reynolds number. \end{DoxyCompactList}\item 
+double $\ast$\& \hyperlink{classoomph_1_1SphericalNavierStokesEquations_af3550eb18343f67f126305c14491a5b8}{viscosity\+\_\+ratio\+\_\+pt} ()
+\begin{DoxyCompactList}\small\item\em Pointer to Viscosity Ratio. \end{DoxyCompactList}\item 
+const double \& \hyperlink{classoomph_1_1SphericalNavierStokesEquations_a64fc30a2f613c7d0bbd5db7ad8bd27c8}{density\+\_\+ratio} () const
+\begin{DoxyCompactList}\small\item\em Density ratio for element\+: Element\textquotesingle{}s density relative to the viscosity used in the definition of the Reynolds number. \end{DoxyCompactList}\item 
+double $\ast$\& \hyperlink{classoomph_1_1SphericalNavierStokesEquations_a6128ac34480c1d31531ef4010f755ace}{density\+\_\+ratio\+\_\+pt} ()
+\begin{DoxyCompactList}\small\item\em Pointer to Density ratio. \end{DoxyCompactList}\item 
+const double \& \hyperlink{classoomph_1_1SphericalNavierStokesEquations_a80f09fb11edfdaa7bb1b262cd6dc9399}{re\+\_\+invfr} () const
+\begin{DoxyCompactList}\small\item\em Global inverse Froude number. \end{DoxyCompactList}\item 
+double $\ast$\& \hyperlink{classoomph_1_1SphericalNavierStokesEquations_a8b6d0d4b20bc0f62bac8476b6967cd9f}{re\+\_\+invfr\+\_\+pt} ()
+\begin{DoxyCompactList}\small\item\em Pointer to global inverse Froude number. \end{DoxyCompactList}\item 
+const double \& \hyperlink{classoomph_1_1SphericalNavierStokesEquations_a4a9bb055e3ea5f00d1edee5efcad4937}{re\+\_\+invro} () const
+\begin{DoxyCompactList}\small\item\em Global Reynolds number multiplied by inverse Rossby number. \end{DoxyCompactList}\item 
+double $\ast$\& \hyperlink{classoomph_1_1SphericalNavierStokesEquations_a90f9fc0e4ed20ad28395e838106dc97d}{re\+\_\+invro\+\_\+pt} ()
+\begin{DoxyCompactList}\small\item\em Pointer to global inverse Froude number. \end{DoxyCompactList}\item 
+const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \& \hyperlink{classoomph_1_1SphericalNavierStokesEquations_ac580f29734c9595980428b8324099d7d}{g} () const
+\begin{DoxyCompactList}\small\item\em \hyperlink{classoomph_1_1Vector}{Vector} of gravitational components. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ $\ast$\& \hyperlink{classoomph_1_1SphericalNavierStokesEquations_abf7999df2161b8a7b14ca10352b27468}{g\+\_\+pt} ()
+\begin{DoxyCompactList}\small\item\em Pointer to \hyperlink{classoomph_1_1Vector}{Vector} of gravitational components. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1SphericalNavierStokesEquations_aee36bea87063e9648a488de9e21f551d}{Spherical\+Navier\+Stokes\+Body\+Force\+Fct\+Pt} \& \hyperlink{classoomph_1_1SphericalNavierStokesEquations_af8453d00310f9e090ad466fe1b93ca36}{body\+\_\+force\+\_\+fct\+\_\+pt} ()
+\begin{DoxyCompactList}\small\item\em Access function for the body-\/force pointer. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1SphericalNavierStokesEquations_aee36bea87063e9648a488de9e21f551d}{Spherical\+Navier\+Stokes\+Body\+Force\+Fct\+Pt} \hyperlink{classoomph_1_1SphericalNavierStokesEquations_a8a0362d47e0d6b757b21520b8d2026c6}{body\+\_\+force\+\_\+fct\+\_\+pt} () const
+\begin{DoxyCompactList}\small\item\em Access function for the body-\/force pointer. Const version. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1SphericalNavierStokesEquations_abd522fea532c3de15dbe80205e53bdf8}{Spherical\+Navier\+Stokes\+Source\+Fct\+Pt} \& \hyperlink{classoomph_1_1SphericalNavierStokesEquations_a043b034d3113a7e7aabb058fd950f90c}{source\+\_\+fct\+\_\+pt} ()
+\begin{DoxyCompactList}\small\item\em Access function for the source-\/function pointer. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1SphericalNavierStokesEquations_abd522fea532c3de15dbe80205e53bdf8}{Spherical\+Navier\+Stokes\+Source\+Fct\+Pt} \hyperlink{classoomph_1_1SphericalNavierStokesEquations_a380e3b8db32dbafbdd0a7a798b234be6}{source\+\_\+fct\+\_\+pt} () const
+\begin{DoxyCompactList}\small\item\em Access function for the source-\/function pointer. Const version. \end{DoxyCompactList}\item 
+virtual unsigned \hyperlink{classoomph_1_1SphericalNavierStokesEquations_ae01203564bc66dacf84c1ed65e4b7930}{npres\+\_\+spherical\+\_\+nst} () const =0
+\begin{DoxyCompactList}\small\item\em Function to return number of pressure degrees of freedom. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1SphericalNavierStokesEquations_a51514fae13c21583c958157a75a943bc}{u\+\_\+spherical\+\_\+nst} (const unsigned \&n, const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}) const
+\begin{DoxyCompactList}\small\item\em Velocity i at local node n. Uses suitably interpolated value for hanging nodes. The use of \hyperlink{classoomph_1_1SphericalNavierStokesEquations_a2f269e20874a87df919cc4ece4b05fe5}{u\+\_\+index\+\_\+spherical\+\_\+nst()} permits the use of this element as the basis for multi-\/physics elements. The default is to assume that the i-\/th velocity component is stored at the i-\/th location of the node. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1SphericalNavierStokesEquations_ad51d5e5080680802ad1ee5daab91765d}{u\+\_\+spherical\+\_\+nst} (const unsigned \&\hyperlink{cfortran_8h_af6f0bd3dc13317f895c91323c25c2b8f}{t}, const unsigned \&n, const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}) const
+\begin{DoxyCompactList}\small\item\em Velocity i at local node n at timestep t (t=0\+: present; t$>$0\+: previous). Uses suitably interpolated value for hanging nodes. \end{DoxyCompactList}\item 
+virtual unsigned \hyperlink{classoomph_1_1SphericalNavierStokesEquations_a2f269e20874a87df919cc4ece4b05fe5}{u\+\_\+index\+\_\+spherical\+\_\+nst} (const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}) const
+\begin{DoxyCompactList}\small\item\em Return the index at which the i-\/th unknown velocity component. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1SphericalNavierStokesEquations_a6f9ce7398b2f2a767fddc7473046c674}{du\+\_\+dt\+\_\+spherical\+\_\+nst} (const unsigned \&n, const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}) const
+\begin{DoxyCompactList}\small\item\em i-\/th component of du/dt at local node n. Uses suitably interpolated value for hanging nodes. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1SphericalNavierStokesEquations_a88010a11c69e6d5f189f5ce24e6c70da}{disable\+\_\+\+A\+LE} ()
+\begin{DoxyCompactList}\small\item\em Disable A\+LE, i.\+e. assert the mesh is not moving -- you do this at your own risk! \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1SphericalNavierStokesEquations_af0dcacf87c6c58d640a280603a992bd6}{enable\+\_\+\+A\+LE} ()
+\begin{DoxyCompactList}\small\item\em (Re-\/)enable A\+LE, i.\+e. take possible mesh motion into account when evaluating the time-\/derivative. Note\+: By default, A\+LE is enabled, at the expense of possibly creating unnecessary work in problems where the mesh is, in fact, stationary. \end{DoxyCompactList}\item 
+virtual double \hyperlink{classoomph_1_1SphericalNavierStokesEquations_a5b50d547e5a2ad5896dc9612e2bb4176}{p\+\_\+spherical\+\_\+nst} (const unsigned \&n\+\_\+p) const =0
+\begin{DoxyCompactList}\small\item\em Pressure at local pressure \char`\"{}node\char`\"{} n\+\_\+p Uses suitably interpolated value for hanging nodes. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1SphericalNavierStokesEquations_ae4dc4c80f271ed2b31296f01862dc536}{fix\+\_\+pressure} (const unsigned \&p\+\_\+dof, const double \&p\+\_\+value)=0
+\begin{DoxyCompactList}\small\item\em Pin p\+\_\+dof-\/th pressure dof and set it to value specified by p\+\_\+value. \end{DoxyCompactList}\item 
+virtual int \hyperlink{classoomph_1_1SphericalNavierStokesEquations_a7b0edc8eedacaef9e55f3551a7cb5400}{p\+\_\+nodal\+\_\+index\+\_\+spherical\+\_\+nst} () const
+\begin{DoxyCompactList}\small\item\em Return the index at which the pressure is stored if it is stored at the nodes. If not stored at the nodes this will return a negative number. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1SphericalNavierStokesEquations_a1776fe3c26e4ee175a0c71a2db66a78d}{pressure\+\_\+integral} () const
+\begin{DoxyCompactList}\small\item\em \hyperlink{classoomph_1_1Integral}{Integral} of pressure over element. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1SphericalNavierStokesEquations_aa9939f3a44b64430e10e28657d70634c}{dissipation} () const
+\begin{DoxyCompactList}\small\item\em Return integral of dissipation over element. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1SphericalNavierStokesEquations_aa1eb7bc1fb7513faafeda35e948c64b8}{dissipation} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}) const
+\begin{DoxyCompactList}\small\item\em Return dissipation at local coordinate s. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1SphericalNavierStokesEquations_a0ef3334439b336f5ec21c7cd223e05f9}{get\+\_\+vorticity} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&vorticity) const
+\begin{DoxyCompactList}\small\item\em Compute the vorticity vector at local coordinate s. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1SphericalNavierStokesEquations_aa374af3cc246ada66f17b19a9564a6d3}{kin\+\_\+energy} () const
+\begin{DoxyCompactList}\small\item\em Get integral of kinetic energy over element. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1SphericalNavierStokesEquations_a0c6aba8fc927c3e40e9abb362dc8797f}{d\+\_\+kin\+\_\+energy\+\_\+dt} () const
+\begin{DoxyCompactList}\small\item\em Get integral of time derivative of kinetic energy over element. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1SphericalNavierStokesEquations_a4688b8021ff388a878ac9edbb218ef56}{strain\+\_\+rate} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&strain\+\_\+rate) const
+\begin{DoxyCompactList}\small\item\em Strain-\/rate tensor\+: 1/2 (du\+\_\+i/dx\+\_\+j + du\+\_\+j/dx\+\_\+i) \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1SphericalNavierStokesEquations_aaf2cd60aa4dc7524aab4cf2ace49805c}{get\+\_\+traction} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&N, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&traction)
+\begin{DoxyCompactList}\small\item\em Compute traction (on the viscous scale) exerted onto the fluid at local coordinate s. N has to be outer unit normal to the fluid. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1SphericalNavierStokesEquations_aedb2bcbc50b05bf623ef544e5ed3bbbf}{get\+\_\+load} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&N, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&load)
+\begin{DoxyCompactList}\small\item\em This implements a pure virtual function defined in the \hyperlink{classoomph_1_1FSIFluidElement}{F\+S\+I\+Fluid\+Element} class. The function computes the traction (on the viscous scale), at the element\textquotesingle{}s local coordinate s, that the fluid element exerts onto an adjacent solid element. The number of arguments is imposed by the interface defined in the \hyperlink{classoomph_1_1FSIFluidElement}{F\+S\+I\+Fluid\+Element} -- only the unit normal N (pointing into the fluid!) is actually used in the computation. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1SphericalNavierStokesEquations_a3cb7aec8278bb92aa731a19777608cac}{get\+\_\+pressure\+\_\+and\+\_\+velocity\+\_\+mass\+\_\+matrix\+\_\+diagonal} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&press\+\_\+mass\+\_\+diag, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&veloc\+\_\+mass\+\_\+diag, const unsigned \&which\+\_\+one=0)
+\begin{DoxyCompactList}\small\item\em Compute the diagonal of the velocity/pressure mass matrices. If which one=0, both are computed, otherwise only the pressure (which\+\_\+one=1) or the velocity mass matrix (which\+\_\+one=2 -- the L\+SC version of the preconditioner only needs that one) N\+O\+TE\+: pressure versions isn\textquotesingle{}t implemented yet because this element has never been tried with Fp preconditoner. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1SphericalNavierStokesEquations_a1d08588d3d9462de04d447506af5cdd5}{output} (std\+::ostream \&outfile)
+\begin{DoxyCompactList}\small\item\em Output function\+: x,y,\mbox{[}z\mbox{]},u,v,\mbox{[}w\mbox{]},p in tecplot format. Default number of plot points. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1SphericalNavierStokesEquations_a5506adeb5ecb11e16254b5ee48049c5d}{output} (std\+::ostream \&outfile, const unsigned \&nplot)
+\begin{DoxyCompactList}\small\item\em Output function\+: x,y,\mbox{[}z\mbox{]},u,v,\mbox{[}w\mbox{]},p in tecplot format. nplot points in each coordinate direction. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1SphericalNavierStokesEquations_a76ad2e32bc8d2efa6242e78ea66076ed}{output} (F\+I\+LE $\ast$file\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em C-\/style output function\+: x,y,\mbox{[}z\mbox{]},u,v,\mbox{[}w\mbox{]},p in tecplot format. Default number of plot points. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1SphericalNavierStokesEquations_afd0fd2912515b6c23142046c5c200640}{output} (F\+I\+LE $\ast$file\+\_\+pt, const unsigned \&nplot)
+\begin{DoxyCompactList}\small\item\em C-\/style output function\+: x,y,\mbox{[}z\mbox{]},u,v,\mbox{[}w\mbox{]},p in tecplot format. nplot points in each coordinate direction. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1SphericalNavierStokesEquations_a2dfa5e66ae9d2e0b2464e18cd9b55beb}{full\+\_\+output} (std\+::ostream \&outfile)
+\begin{DoxyCompactList}\small\item\em Full output function\+: x,y,\mbox{[}z\mbox{]},u,v,\mbox{[}w\mbox{]},p,du/dt,dv/dt,\mbox{[}dw/dt\mbox{]},dissipation in tecplot format. Default number of plot points. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1SphericalNavierStokesEquations_a444d7347a79629db8e59c1267b97f201}{full\+\_\+output} (std\+::ostream \&outfile, const unsigned \&nplot)
+\begin{DoxyCompactList}\small\item\em Full output function\+: x,y,\mbox{[}z\mbox{]},u,v,\mbox{[}w\mbox{]},p,du/dt,dv/dt,\mbox{[}dw/dt\mbox{]},dissipation in tecplot format. nplot points in each coordinate direction. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1SphericalNavierStokesEquations_ae9b06a27652654ad42dc9882399e9374}{output\+\_\+veloc} (std\+::ostream \&outfile, const unsigned \&nplot, const unsigned \&\hyperlink{cfortran_8h_af6f0bd3dc13317f895c91323c25c2b8f}{t})
+\begin{DoxyCompactList}\small\item\em Output function\+: x,y,\mbox{[}z\mbox{]},u,v,\mbox{[}w\mbox{]} in tecplot format. nplot points in each coordinate direction at timestep t (t=0\+: present; t$>$0\+: previous timestep) \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1SphericalNavierStokesEquations_aa3c32bb2312a5bc8be5b164fb1631dac}{output\+\_\+vorticity} (std\+::ostream \&outfile, const unsigned \&nplot)
+\begin{DoxyCompactList}\small\item\em Output function\+: x,y,\mbox{[}z\mbox{]}, \mbox{[}omega\+\_\+x,omega\+\_\+y,\mbox{[}and/or omega\+\_\+z\mbox{]}\mbox{]} in tecplot format. nplot points in each coordinate direction. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1SphericalNavierStokesEquations_aa273df1ad9fe7cebb284bdae8b7e1a21}{output\+\_\+fct} (std\+::ostream \&outfile, const unsigned \&nplot, \hyperlink{classoomph_1_1FiniteElement_a690fd33af26cc3e84f39bba6d5a85202}{Finite\+Element\+::\+Steady\+Exact\+Solution\+Fct\+Pt} exact\+\_\+soln\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Output exact solution specified via function pointer at a given number of plot points. Function prints as many components as are returned in solution \hyperlink{classoomph_1_1Vector}{Vector}. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1SphericalNavierStokesEquations_ad7e8436cec2be7afaa2f0a3ad0a38ec9}{output\+\_\+fct} (std\+::ostream \&outfile, const unsigned \&nplot, const double \&time, \hyperlink{classoomph_1_1FiniteElement_ad4ecf2b61b158a4b4d351a60d23c633e}{Finite\+Element\+::\+Unsteady\+Exact\+Solution\+Fct\+Pt} exact\+\_\+soln\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Output exact solution specified via function pointer at a given time and at a given number of plot points. Function prints as many components as are returned in solution \hyperlink{classoomph_1_1Vector}{Vector}. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1SphericalNavierStokesEquations_a0d404ca488e2d464e1b21269431e6dad}{compute\+\_\+error} (std\+::ostream \&outfile, \hyperlink{classoomph_1_1FiniteElement_ad4ecf2b61b158a4b4d351a60d23c633e}{Finite\+Element\+::\+Unsteady\+Exact\+Solution\+Fct\+Pt} exact\+\_\+soln\+\_\+pt, const double \&time, double \&error, double \&norm)
+\begin{DoxyCompactList}\small\item\em Validate against exact solution at given time Solution is provided via function pointer. Plot at a given number of plot points and compute L2 error and L2 norm of velocity solution over element. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1SphericalNavierStokesEquations_a8904427521c872ffb9ce8109044ba7ff}{compute\+\_\+error} (std\+::ostream \&outfile, \hyperlink{classoomph_1_1FiniteElement_a690fd33af26cc3e84f39bba6d5a85202}{Finite\+Element\+::\+Steady\+Exact\+Solution\+Fct\+Pt} exact\+\_\+soln\+\_\+pt, double \&error, double \&norm)
+\begin{DoxyCompactList}\small\item\em Validate against exact solution. Solution is provided via function pointer. Plot at a given number of plot points and compute L2 error and L2 norm of velocity solution over element. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1SphericalNavierStokesEquations_a18ac628bb3e32faa0a24182159fd7cea}{compute\+\_\+error\+\_\+e} (std\+::ostream \&outfile, \hyperlink{classoomph_1_1FiniteElement_a690fd33af26cc3e84f39bba6d5a85202}{Finite\+Element\+::\+Steady\+Exact\+Solution\+Fct\+Pt} exact\+\_\+soln\+\_\+pt, \hyperlink{classoomph_1_1FiniteElement_a690fd33af26cc3e84f39bba6d5a85202}{Finite\+Element\+::\+Steady\+Exact\+Solution\+Fct\+Pt} exact\+\_\+soln\+\_\+dr\+\_\+pt, \hyperlink{classoomph_1_1FiniteElement_a690fd33af26cc3e84f39bba6d5a85202}{Finite\+Element\+::\+Steady\+Exact\+Solution\+Fct\+Pt} exact\+\_\+soln\+\_\+dtheta\+\_\+pt, double \&u\+\_\+error, double \&u\+\_\+norm, double \&p\+\_\+error, double \&p\+\_\+norm)
+\item 
+void \hyperlink{classoomph_1_1SphericalNavierStokesEquations_a9a3bcc802ec26bc110d1f16d4f88d966}{compute\+\_\+shear\+\_\+stress} (std\+::ostream \&outfile)
+\item 
+void \hyperlink{classoomph_1_1SphericalNavierStokesEquations_ae0e2fd028424f6d2c86a903ddc852485}{extract\+\_\+velocity} (std\+::ostream \&outfile)
+\item 
+\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \hyperlink{classoomph_1_1SphericalNavierStokesEquations_afefe6d1cb0f2c3790b4189ef6743486c}{actual} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&x)
+\item 
+\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \hyperlink{classoomph_1_1SphericalNavierStokesEquations_a7e45e6a6b85ad039a022c369363c4b70}{actual\+\_\+dr} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&x)
+\item 
+\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \hyperlink{classoomph_1_1SphericalNavierStokesEquations_ac4b121994e36314a10bafa55eb61fc09}{actual\+\_\+dth} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&x)
+\item 
+void \hyperlink{classoomph_1_1SphericalNavierStokesEquations_a579d10e44c68adb34f72ca8ec89b7b1a}{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&residuals)
+\begin{DoxyCompactList}\small\item\em Compute the element\textquotesingle{}s residual \hyperlink{classoomph_1_1Vector}{Vector}. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1SphericalNavierStokesEquations_a518de36d4b06dcd38ab7e18a89f40e9f}{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&residuals, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&jacobian)
+\begin{DoxyCompactList}\small\item\em Add the elemental contribution to the jacobian matrix. and the residuals vector. Note that this function will N\+OT initialise the residuals vector or the jacobian matrix. It must be called after the residuals vector and jacobian matrix have been initialised to zero. The default is to use finite differences to calculate the jacobian. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1SphericalNavierStokesEquations_acc7eab4a9151a3bda8ca0056c5a38137}{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian\+\_\+and\+\_\+mass\+\_\+matrix} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&residuals, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&jacobian, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&mass\+\_\+matrix)
+\begin{DoxyCompactList}\small\item\em jacobian matrix and mass matrix \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1SphericalNavierStokesEquations_af59a7941f1ac3c2b3bc9a8aacbfa4625}{interpolated\+\_\+u\+\_\+spherical\+\_\+nst} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&veloc) const
+\begin{DoxyCompactList}\small\item\em Compute vector of FE interpolated velocity u at local coordinate s. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1SphericalNavierStokesEquations_ae728a60ea2c5af4e3578e0fe9f010aff}{interpolated\+\_\+u\+\_\+spherical\+\_\+nst} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}) const
+\begin{DoxyCompactList}\small\item\em Return FE interpolated velocity u\mbox{[}i\mbox{]} at local coordinate s. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1SphericalNavierStokesEquations_a103fc06bfd3cad9f5511686e5e5d1ce9}{interpolated\+\_\+dudx\+\_\+spherical\+\_\+nst} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}, const unsigned \&j) const
+\begin{DoxyCompactList}\small\item\em Return matrix entry dudx(i,j) of the FE interpolated velocity derivative at local coordinate s. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1SphericalNavierStokesEquations_a93c638dbbf7fdcb0202514766e71bc73}{interpolated\+\_\+p\+\_\+spherical\+\_\+nst} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}) const
+\begin{DoxyCompactList}\small\item\em Return FE interpolated pressure at local coordinate s. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \hyperlink{classoomph_1_1SphericalNavierStokesEquations_a46db5472cddbf25175670ef6298cbe51}{Gamma}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classoomph_1_1Vector}{Vector} to decide whether the stress-\/divergence form is used or not. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual int \hyperlink{classoomph_1_1SphericalNavierStokesEquations_ad8d9a0edbe3793a008a6bff670c26643}{p\+\_\+local\+\_\+eqn} (const unsigned \&n) const =0
+\begin{DoxyCompactList}\small\item\em Access function for the local equation number information for the pressure. p\+\_\+local\+\_\+eqn\mbox{[}n\mbox{]} = local equation number or $<$ 0 if pinned. \end{DoxyCompactList}\item 
+virtual double \hyperlink{classoomph_1_1SphericalNavierStokesEquations_a3b9e9cf2d59dffcf278b4c9f73be6d62}{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+spherical\+\_\+nst} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Shape}{Shape} \&psi, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dpsidx, \hyperlink{classoomph_1_1Shape}{Shape} \&test, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dtestdx) const =0
+\begin{DoxyCompactList}\small\item\em Compute the shape functions and derivatives w.\+r.\+t. global coords at local coordinate s. Return Jacobian of mapping between local and global coordinates. \end{DoxyCompactList}\item 
+virtual double \hyperlink{classoomph_1_1SphericalNavierStokesEquations_a10ed6f34245f5b31095ae636fc08749a}{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+spherical\+\_\+nst} (const unsigned \&ipt, \hyperlink{classoomph_1_1Shape}{Shape} \&psi, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dpsidx, \hyperlink{classoomph_1_1Shape}{Shape} \&test, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dtestdx) const =0
+\begin{DoxyCompactList}\small\item\em Compute the shape functions and derivatives w.\+r.\+t. global coords at ipt-\/th integration point Return Jacobian of mapping between local and global coordinates. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1SphericalNavierStokesEquations_a17799ec1f3a1d8bbeee1d357bba0a249}{pshape\+\_\+spherical\+\_\+nst} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Shape}{Shape} \&psi) const =0
+\begin{DoxyCompactList}\small\item\em Compute the pressure shape functions at local coordinate s. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1SphericalNavierStokesEquations_a862f1da9ef70c289f4220391443b7d09}{pshape\+\_\+spherical\+\_\+nst} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Shape}{Shape} \&psi, \hyperlink{classoomph_1_1Shape}{Shape} \&test) const =0
+\begin{DoxyCompactList}\small\item\em Compute the pressure shape and test functions at local coordinate s. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1SphericalNavierStokesEquations_a6dbdc5a0b33a0f36494ffefed1a938ac}{get\+\_\+body\+\_\+force\+\_\+spherical\+\_\+nst} (const double \&time, const unsigned \&ipt, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&x, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&result)
+\begin{DoxyCompactList}\small\item\em Calculate the body force at a given time and local and/or Eulerian position. This function is virtual so that it can be overloaded in multi-\/physics elements where the body force might depend on another variable. \end{DoxyCompactList}\item 
+virtual double \hyperlink{classoomph_1_1SphericalNavierStokesEquations_afac2bf109a54ca1753b3e9eb5b5859ff}{get\+\_\+source\+\_\+spherical\+\_\+nst} (double time, const unsigned \&ipt, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&x)
+\begin{DoxyCompactList}\small\item\em Calculate the source fct at given time and Eulerian position. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1SphericalNavierStokesEquations_acd48b82c748de406c94f8d8eabdfa8f5}{fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+spherical\+\_\+nst} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&residuals, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&jacobian, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&mass\+\_\+matrix, unsigned flag)
+\begin{DoxyCompactList}\small\item\em Compute the residuals for the Navier--Stokes equations; flag=1(or 0)\+: do (or don\textquotesingle{}t) compute the Jacobian as well. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double $\ast$ \hyperlink{classoomph_1_1SphericalNavierStokesEquations_a7c52a5669ff71d86186bd88149df9b33}{Viscosity\+\_\+\+Ratio\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to the viscosity ratio (relative to the viscosity used in the definition of the Reynolds number) \end{DoxyCompactList}\item 
+double $\ast$ \hyperlink{classoomph_1_1SphericalNavierStokesEquations_a330d4410267b95650489d41dec74a3fd}{Density\+\_\+\+Ratio\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to the density ratio (relative to the density used in the definition of the Reynolds number) \end{DoxyCompactList}\item 
+double $\ast$ \hyperlink{classoomph_1_1SphericalNavierStokesEquations_a7bfc381e0cf6c141834168341f8a5128}{Re\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to global Reynolds number. \end{DoxyCompactList}\item 
+double $\ast$ \hyperlink{classoomph_1_1SphericalNavierStokesEquations_a4312d4d7e7e51c89dea51c21acb6a89d}{Re\+St\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to global Reynolds number x Strouhal number (=Womersley) \end{DoxyCompactList}\item 
+double $\ast$ \hyperlink{classoomph_1_1SphericalNavierStokesEquations_ac85eb74fde9c8c5b31cdf2ae80f1f9bc}{Re\+Inv\+Fr\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to global Reynolds number x inverse Froude number (= Bond number / Capillary number) \end{DoxyCompactList}\item 
+double $\ast$ \hyperlink{classoomph_1_1SphericalNavierStokesEquations_a71e5db6ef157796354a86a91694203cf}{Re\+Inv\+Ro\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to global Reynolds number x inverse Rossby number (used when in a rotating frame) \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ $\ast$ \hyperlink{classoomph_1_1SphericalNavierStokesEquations_a658fccedce092b905f74278e882e34f1}{G\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to global gravity \hyperlink{classoomph_1_1Vector}{Vector}. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1SphericalNavierStokesEquations_aee36bea87063e9648a488de9e21f551d}{Spherical\+Navier\+Stokes\+Body\+Force\+Fct\+Pt} \hyperlink{classoomph_1_1SphericalNavierStokesEquations_ad1847f826dc0e33cb793319bfa41d985}{Body\+\_\+force\+\_\+fct\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to body force function. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1SphericalNavierStokesEquations_abd522fea532c3de15dbe80205e53bdf8}{Spherical\+Navier\+Stokes\+Source\+Fct\+Pt} \hyperlink{classoomph_1_1SphericalNavierStokesEquations_a0f8bbc9d353784821db5781ebedeece5}{Source\+\_\+fct\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to volumetric source function. \end{DoxyCompactList}\item 
+bool \hyperlink{classoomph_1_1SphericalNavierStokesEquations_ae99a23d65958a96ae2d90151b86d30ab}{A\+L\+E\+\_\+is\+\_\+disabled}
+\begin{DoxyCompactList}\small\item\em Boolean flag to indicate if A\+LE formulation is disabled when time-\/derivatives are computed. Only set to true if you\textquotesingle{}re sure that the mesh is stationary. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static int \hyperlink{classoomph_1_1SphericalNavierStokesEquations_a6e9d12a0f822100dea121402eabcab1d}{Pressure\+\_\+not\+\_\+stored\+\_\+at\+\_\+node} = -\/100
+\begin{DoxyCompactList}\small\item\em Static \char`\"{}magic\char`\"{} number that indicates that the pressure is not stored at a node. \end{DoxyCompactList}\item 
+static double \hyperlink{classoomph_1_1SphericalNavierStokesEquations_aabcb425c7d08743c687838dc0c87a689}{Default\+\_\+\+Physical\+\_\+\+Constant\+\_\+\+Value} = 0.\+0
+\begin{DoxyCompactList}\small\item\em Static default value for the physical constants (all initialised to zero) \end{DoxyCompactList}\item 
+static double \hyperlink{classoomph_1_1SphericalNavierStokesEquations_a3c7f1bfc912796a13db1fe49536ef369}{Default\+\_\+\+Physical\+\_\+\+Ratio\+\_\+\+Value} = 1.\+0
+\begin{DoxyCompactList}\small\item\em Static default value for the physical ratios (all are initialised to one) \end{DoxyCompactList}\item 
+static \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \hyperlink{classoomph_1_1SphericalNavierStokesEquations_aceb58ae2aadd0d0f301f5728e767d0b9}{Default\+\_\+\+Gravity\+\_\+vector}
+\begin{DoxyCompactList}\small\item\em Static default value for the gravity vector. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+A class for elements that solve the Navier--Stokes equations, in axisymmetric spherical polar coordinates. This contains the generic maths -- any concrete implementation must be derived from this.
+
+We also provide all functions required to use this element in F\+SI problems, by deriving it from the \hyperlink{classoomph_1_1FSIFluidElement}{F\+S\+I\+Fluid\+Element} base class. 
+
+Definition at line 60 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+\subsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_aee36bea87063e9648a488de9e21f551d}\label{classoomph_1_1SphericalNavierStokesEquations_aee36bea87063e9648a488de9e21f551d}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!Spherical\+Navier\+Stokes\+Body\+Force\+Fct\+Pt@{Spherical\+Navier\+Stokes\+Body\+Force\+Fct\+Pt}}
+\index{Spherical\+Navier\+Stokes\+Body\+Force\+Fct\+Pt@{Spherical\+Navier\+Stokes\+Body\+Force\+Fct\+Pt}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{Spherical\+Navier\+Stokes\+Body\+Force\+Fct\+Pt}{SphericalNavierStokesBodyForceFctPt}}
+{\footnotesize\ttfamily typedef void($\ast$ oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::\+Spherical\+Navier\+Stokes\+Body\+Force\+Fct\+Pt) (const double \&time, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&x, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&body\+\_\+force)}
+
+
+
+Function pointer to body force function fct(t,x,f(x)) x is a Vector! 
+
+
+
+Definition at line 68 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_abd522fea532c3de15dbe80205e53bdf8}\label{classoomph_1_1SphericalNavierStokesEquations_abd522fea532c3de15dbe80205e53bdf8}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!Spherical\+Navier\+Stokes\+Source\+Fct\+Pt@{Spherical\+Navier\+Stokes\+Source\+Fct\+Pt}}
+\index{Spherical\+Navier\+Stokes\+Source\+Fct\+Pt@{Spherical\+Navier\+Stokes\+Source\+Fct\+Pt}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{Spherical\+Navier\+Stokes\+Source\+Fct\+Pt}{SphericalNavierStokesSourceFctPt}}
+{\footnotesize\ttfamily typedef double($\ast$ oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::\+Spherical\+Navier\+Stokes\+Source\+Fct\+Pt) (const double \&time, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&x)}
+
+
+
+Function pointer to source function fct(t,x) x is a Vector! 
+
+
+
+Definition at line 73 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_adb7856b86fa6d5d35b03596649c86a70}\label{classoomph_1_1SphericalNavierStokesEquations_adb7856b86fa6d5d35b03596649c86a70}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!Spherical\+Navier\+Stokes\+Equations@{Spherical\+Navier\+Stokes\+Equations}}
+\index{Spherical\+Navier\+Stokes\+Equations@{Spherical\+Navier\+Stokes\+Equations}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{Spherical\+Navier\+Stokes\+Equations()}{SphericalNavierStokesEquations()}}
+{\footnotesize\ttfamily oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::\+Spherical\+Navier\+Stokes\+Equations (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor\+: N\+U\+LL the body force and source function and make sure the A\+LE terms are included by default. 
+
+
+
+Definition at line 217 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References Default\+\_\+\+Gravity\+\_\+vector, Default\+\_\+\+Physical\+\_\+\+Constant\+\_\+\+Value, and Default\+\_\+\+Physical\+\_\+\+Ratio\+\_\+\+Value.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_afefe6d1cb0f2c3790b4189ef6743486c}\label{classoomph_1_1SphericalNavierStokesEquations_afefe6d1cb0f2c3790b4189ef6743486c}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!actual@{actual}}
+\index{actual@{actual}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{actual()}{actual()}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1Vector}{Vector}$<$double$>$ oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::actual (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 541 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References re().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_a7e45e6a6b85ad039a022c369363c4b70}\label{classoomph_1_1SphericalNavierStokesEquations_a7e45e6a6b85ad039a022c369363c4b70}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!actual\+\_\+dr@{actual\+\_\+dr}}
+\index{actual\+\_\+dr@{actual\+\_\+dr}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{actual\+\_\+dr()}{actual\_dr()}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1Vector}{Vector}$<$double$>$ oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::actual\+\_\+dr (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 556 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References re().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_ac4b121994e36314a10bafa55eb61fc09}\label{classoomph_1_1SphericalNavierStokesEquations_ac4b121994e36314a10bafa55eb61fc09}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!actual\+\_\+dth@{actual\+\_\+dth}}
+\index{actual\+\_\+dth@{actual\+\_\+dth}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{actual\+\_\+dth()}{actual\_dth()}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1Vector}{Vector}$<$double$>$ oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::actual\+\_\+dth (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 571 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References re().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_af8453d00310f9e090ad466fe1b93ca36}\label{classoomph_1_1SphericalNavierStokesEquations_af8453d00310f9e090ad466fe1b93ca36}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!body\+\_\+force\+\_\+fct\+\_\+pt@{body\+\_\+force\+\_\+fct\+\_\+pt}}
+\index{body\+\_\+force\+\_\+fct\+\_\+pt@{body\+\_\+force\+\_\+fct\+\_\+pt}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{body\+\_\+force\+\_\+fct\+\_\+pt()}{body\_force\_fct\_pt()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1SphericalNavierStokesEquations_aee36bea87063e9648a488de9e21f551d}{Spherical\+Navier\+Stokes\+Body\+Force\+Fct\+Pt}\& oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::body\+\_\+force\+\_\+fct\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Access function for the body-\/force pointer. 
+
+
+
+Definition at line 284 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References Body\+\_\+force\+\_\+fct\+\_\+pt.
+
+
+
+Referenced by oomph\+::\+Refineable\+Spherical\+Navier\+Stokes\+Equations\+::further\+\_\+build().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_a8a0362d47e0d6b757b21520b8d2026c6}\label{classoomph_1_1SphericalNavierStokesEquations_a8a0362d47e0d6b757b21520b8d2026c6}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!body\+\_\+force\+\_\+fct\+\_\+pt@{body\+\_\+force\+\_\+fct\+\_\+pt}}
+\index{body\+\_\+force\+\_\+fct\+\_\+pt@{body\+\_\+force\+\_\+fct\+\_\+pt}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{body\+\_\+force\+\_\+fct\+\_\+pt()}{body\_force\_fct\_pt()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1SphericalNavierStokesEquations_aee36bea87063e9648a488de9e21f551d}{Spherical\+Navier\+Stokes\+Body\+Force\+Fct\+Pt} oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::body\+\_\+force\+\_\+fct\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Access function for the body-\/force pointer. Const version. 
+
+
+
+Definition at line 288 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References Body\+\_\+force\+\_\+fct\+\_\+pt.
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_a0d404ca488e2d464e1b21269431e6dad}\label{classoomph_1_1SphericalNavierStokesEquations_a0d404ca488e2d464e1b21269431e6dad}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!compute\+\_\+error@{compute\+\_\+error}}
+\index{compute\+\_\+error@{compute\+\_\+error}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{compute\+\_\+error()}{compute\_error()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::compute\+\_\+error (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile,  }\item[{\hyperlink{classoomph_1_1FiniteElement_ad4ecf2b61b158a4b4d351a60d23c633e}{Finite\+Element\+::\+Unsteady\+Exact\+Solution\+Fct\+Pt}}]{exact\+\_\+soln\+\_\+pt,  }\item[{const double \&}]{time,  }\item[{double \&}]{error,  }\item[{double \&}]{norm }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Validate against exact solution at given time Solution is provided via function pointer. Plot at a given number of plot points and compute L2 error and L2 norm of velocity solution over element. 
+
+Validate against exact velocity solution at given time. Solution is provided via function pointer. Plot at a given number of plot points and compute L2 error and L2 norm of velocity solution over element. 
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a7f67853506dc73fa6b7505108de22d1f}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 166 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+cc.
+
+
+
+References i, oomph\+::\+Finite\+Element\+::integral\+\_\+pt(), interpolated\+\_\+u\+\_\+spherical\+\_\+nst(), oomph\+::\+Finite\+Element\+::interpolated\+\_\+x(), oomph\+::\+Finite\+Element\+::\+J\+\_\+eulerian(), oomph\+::\+Integral\+::knot(), oomph\+::\+Integral\+::nweight(), s, oomph\+::\+Quad\+Tree\+Names\+::W, and oomph\+::\+Integral\+::weight().
+
+
+
+Referenced by full\+\_\+output(), and get\+\_\+pressure\+\_\+and\+\_\+velocity\+\_\+mass\+\_\+matrix\+\_\+diagonal().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_a8904427521c872ffb9ce8109044ba7ff}\label{classoomph_1_1SphericalNavierStokesEquations_a8904427521c872ffb9ce8109044ba7ff}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!compute\+\_\+error@{compute\+\_\+error}}
+\index{compute\+\_\+error@{compute\+\_\+error}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{compute\+\_\+error()}{compute\_error()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::compute\+\_\+error (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile,  }\item[{\hyperlink{classoomph_1_1FiniteElement_a690fd33af26cc3e84f39bba6d5a85202}{Finite\+Element\+::\+Steady\+Exact\+Solution\+Fct\+Pt}}]{exact\+\_\+soln\+\_\+pt,  }\item[{double \&}]{error,  }\item[{double \&}]{norm }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Validate against exact solution. Solution is provided via function pointer. Plot at a given number of plot points and compute L2 error and L2 norm of velocity solution over element. 
+
+Validate against exact velocity solution Solution is provided via function pointer. Plot at a given number of plot points and compute L2 error and L2 norm of velocity solution over element. 
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a73c79a1f1e5b1d334757812a6bbd58ff}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 245 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+cc.
+
+
+
+References i, oomph\+::\+Finite\+Element\+::integral\+\_\+pt(), interpolated\+\_\+u\+\_\+spherical\+\_\+nst(), oomph\+::\+Finite\+Element\+::interpolated\+\_\+x(), oomph\+::\+Finite\+Element\+::\+J\+\_\+eulerian(), oomph\+::\+Integral\+::knot(), oomph\+::\+Integral\+::nweight(), s, oomph\+::\+Quad\+Tree\+Names\+::W, and oomph\+::\+Integral\+::weight().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_a18ac628bb3e32faa0a24182159fd7cea}\label{classoomph_1_1SphericalNavierStokesEquations_a18ac628bb3e32faa0a24182159fd7cea}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!compute\+\_\+error\+\_\+e@{compute\+\_\+error\+\_\+e}}
+\index{compute\+\_\+error\+\_\+e@{compute\+\_\+error\+\_\+e}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{compute\+\_\+error\+\_\+e()}{compute\_error\_e()}}
+{\footnotesize\ttfamily void oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::compute\+\_\+error\+\_\+e (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile,  }\item[{\hyperlink{classoomph_1_1FiniteElement_a690fd33af26cc3e84f39bba6d5a85202}{Finite\+Element\+::\+Steady\+Exact\+Solution\+Fct\+Pt}}]{exact\+\_\+soln\+\_\+pt,  }\item[{\hyperlink{classoomph_1_1FiniteElement_a690fd33af26cc3e84f39bba6d5a85202}{Finite\+Element\+::\+Steady\+Exact\+Solution\+Fct\+Pt}}]{exact\+\_\+soln\+\_\+dr\+\_\+pt,  }\item[{\hyperlink{classoomph_1_1FiniteElement_a690fd33af26cc3e84f39bba6d5a85202}{Finite\+Element\+::\+Steady\+Exact\+Solution\+Fct\+Pt}}]{exact\+\_\+soln\+\_\+dtheta\+\_\+pt,  }\item[{double \&}]{u\+\_\+error,  }\item[{double \&}]{u\+\_\+norm,  }\item[{double \&}]{p\+\_\+error,  }\item[{double \&}]{p\+\_\+norm }\end{DoxyParamCaption})}
+
+Validate against exact solution. Solution is provided direct from exact\+\_\+soln function. Plot at a given number of plot points and compute the energy error and energy norm of the velocity solution over the element.
+
+Validate against exact velocity solution Solution is provided via direct coding. Plot at a given number of plot points and compute energy error and energy norm of velocity solution over element. Exact solution Vectors (u,v,\mbox{[}w\mbox{]},p) -\/
+\begin{DoxyItemize}
+\item need two extras to deal with the derivatives in the energy norm 
+\end{DoxyItemize}
+
+Definition at line 323 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+cc.
+
+
+
+References compute\+\_\+shear\+\_\+stress(), cot(), i, oomph\+::\+Finite\+Element\+::integral\+\_\+pt(), interpolated\+\_\+dudx\+\_\+spherical\+\_\+nst(), interpolated\+\_\+p\+\_\+spherical\+\_\+nst(), interpolated\+\_\+u\+\_\+spherical\+\_\+nst(), oomph\+::\+Finite\+Element\+::interpolated\+\_\+x(), oomph\+::\+Finite\+Element\+::\+J\+\_\+eulerian(), oomph\+::\+Integral\+::knot(), oomph\+::\+Integral\+::nweight(), s, oomph\+::\+Quad\+Tree\+Names\+::W, and oomph\+::\+Integral\+::weight().
+
+
+
+Referenced by full\+\_\+output().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_a9a3bcc802ec26bc110d1f16d4f88d966}\label{classoomph_1_1SphericalNavierStokesEquations_a9a3bcc802ec26bc110d1f16d4f88d966}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!compute\+\_\+shear\+\_\+stress@{compute\+\_\+shear\+\_\+stress}}
+\index{compute\+\_\+shear\+\_\+stress@{compute\+\_\+shear\+\_\+stress}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{compute\+\_\+shear\+\_\+stress()}{compute\_shear\_stress()}}
+{\footnotesize\ttfamily void oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::compute\+\_\+shear\+\_\+stress (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile }\end{DoxyParamCaption})}
+
+
+
+Definition at line 481 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+cc.
+
+
+
+References i, interpolated\+\_\+dudx\+\_\+spherical\+\_\+nst(), interpolated\+\_\+u\+\_\+spherical\+\_\+nst(), oomph\+::\+Finite\+Element\+::interpolated\+\_\+x(), and s.
+
+
+
+Referenced by compute\+\_\+error\+\_\+e(), and full\+\_\+output().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_a8a160b5a04c9ba5bab06f3b2b184499f}\label{classoomph_1_1SphericalNavierStokesEquations_a8a160b5a04c9ba5bab06f3b2b184499f}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!cot@{cot}}
+\index{cot@{cot}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{cot()}{cot()}}
+{\footnotesize\ttfamily double oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::cot (\begin{DoxyParamCaption}\item[{const double \&}]{th }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Include a cot function to simplify the NS momentum and jacobian expressions 
+
+Definition at line 212 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+Referenced by compute\+\_\+error\+\_\+e(), and strain\+\_\+rate().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_a0c6aba8fc927c3e40e9abb362dc8797f}\label{classoomph_1_1SphericalNavierStokesEquations_a0c6aba8fc927c3e40e9abb362dc8797f}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!d\+\_\+kin\+\_\+energy\+\_\+dt@{d\+\_\+kin\+\_\+energy\+\_\+dt}}
+\index{d\+\_\+kin\+\_\+energy\+\_\+dt@{d\+\_\+kin\+\_\+energy\+\_\+dt}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{d\+\_\+kin\+\_\+energy\+\_\+dt()}{d\_kin\_energy\_dt()}}
+{\footnotesize\ttfamily double oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::d\+\_\+kin\+\_\+energy\+\_\+dt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get integral of time derivative of kinetic energy over element. 
+
+Get integral of time derivative of kinetic energy over element\+: 
+
+Definition at line 1419 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+cc.
+
+
+
+References A\+L\+E\+\_\+is\+\_\+disabled, oomph\+::\+Finite\+Element\+::dnodal\+\_\+position\+\_\+dt(), oomph\+::\+Finite\+Element\+::dshape\+\_\+eulerian\+\_\+at\+\_\+knot(), du\+\_\+dt\+\_\+spherical\+\_\+nst(), i, oomph\+::\+Finite\+Element\+::integral\+\_\+pt(), oomph\+::\+Finite\+Element\+::nnode(), oomph\+::\+Finite\+Element\+::nodal\+\_\+value(), oomph\+::\+Integral\+::nweight(), s, u\+\_\+index\+\_\+spherical\+\_\+nst(), and oomph\+::\+Integral\+::weight().
+
+
+
+Referenced by p\+\_\+nodal\+\_\+index\+\_\+spherical\+\_\+nst().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_a64fc30a2f613c7d0bbd5db7ad8bd27c8}\label{classoomph_1_1SphericalNavierStokesEquations_a64fc30a2f613c7d0bbd5db7ad8bd27c8}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!density\+\_\+ratio@{density\+\_\+ratio}}
+\index{density\+\_\+ratio@{density\+\_\+ratio}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{density\+\_\+ratio()}{density\_ratio()}}
+{\footnotesize\ttfamily const double\& oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::density\+\_\+ratio (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Density ratio for element\+: Element\textquotesingle{}s density relative to the viscosity used in the definition of the Reynolds number. 
+
+
+
+Definition at line 260 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References Density\+\_\+\+Ratio\+\_\+pt.
+
+
+
+Referenced by fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+spherical\+\_\+nst(), and oomph\+::\+Refineable\+Spherical\+Navier\+Stokes\+Equations\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+spherical\+\_\+nst().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_a6128ac34480c1d31531ef4010f755ace}\label{classoomph_1_1SphericalNavierStokesEquations_a6128ac34480c1d31531ef4010f755ace}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!density\+\_\+ratio\+\_\+pt@{density\+\_\+ratio\+\_\+pt}}
+\index{density\+\_\+ratio\+\_\+pt@{density\+\_\+ratio\+\_\+pt}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{density\+\_\+ratio\+\_\+pt()}{density\_ratio\_pt()}}
+{\footnotesize\ttfamily double$\ast$ \& oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::density\+\_\+ratio\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Pointer to Density ratio. 
+
+
+
+Definition at line 263 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References Density\+\_\+\+Ratio\+\_\+pt.
+
+
+
+Referenced by oomph\+::\+Refineable\+Spherical\+Navier\+Stokes\+Equations\+::further\+\_\+build().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_a88010a11c69e6d5f189f5ce24e6c70da}\label{classoomph_1_1SphericalNavierStokesEquations_a88010a11c69e6d5f189f5ce24e6c70da}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!disable\+\_\+\+A\+LE@{disable\+\_\+\+A\+LE}}
+\index{disable\+\_\+\+A\+LE@{disable\+\_\+\+A\+LE}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{disable\+\_\+\+A\+L\+E()}{disable\_ALE()}}
+{\footnotesize\ttfamily void oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::disable\+\_\+\+A\+LE (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Disable A\+LE, i.\+e. assert the mesh is not moving -- you do this at your own risk! 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a625ea6d3f9baccfbdd1323315fb3ec71}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 355 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_aa9939f3a44b64430e10e28657d70634c}\label{classoomph_1_1SphericalNavierStokesEquations_aa9939f3a44b64430e10e28657d70634c}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!dissipation@{dissipation}}
+\index{dissipation@{dissipation}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{dissipation()}{dissipation()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily double oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::dissipation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Return integral of dissipation over element. 
+
+
+
+Definition at line 1089 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+cc.
+
+
+
+References i, oomph\+::\+Finite\+Element\+::integral\+\_\+pt(), oomph\+::\+Finite\+Element\+::\+J\+\_\+eulerian(), oomph\+::\+Integral\+::knot(), oomph\+::\+Integral\+::nweight(), s, strain\+\_\+rate(), and oomph\+::\+Integral\+::weight().
+
+
+
+Referenced by full\+\_\+output(), get\+\_\+traction(), output(), and p\+\_\+nodal\+\_\+index\+\_\+spherical\+\_\+nst().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_aa1eb7bc1fb7513faafeda35e948c64b8}\label{classoomph_1_1SphericalNavierStokesEquations_aa1eb7bc1fb7513faafeda35e948c64b8}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!dissipation@{dissipation}}
+\index{dissipation@{dissipation}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{dissipation()}{dissipation()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily double oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::dissipation (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s }\end{DoxyParamCaption}) const}
+
+
+
+Return dissipation at local coordinate s. 
+
+
+
+Definition at line 1176 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+cc.
+
+
+
+References i, and strain\+\_\+rate().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_a10ed6f34245f5b31095ae636fc08749a}\label{classoomph_1_1SphericalNavierStokesEquations_a10ed6f34245f5b31095ae636fc08749a}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+spherical\+\_\+nst@{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+spherical\+\_\+nst}}
+\index{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+spherical\+\_\+nst@{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+spherical\+\_\+nst}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+spherical\+\_\+nst()}{dshape\_and\_dtest\_eulerian\_at\_knot\_spherical\_nst()}}
+{\footnotesize\ttfamily virtual double oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+spherical\+\_\+nst (\begin{DoxyParamCaption}\item[{const unsigned \&}]{ipt,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dpsidx,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{test,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dtestdx }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Compute the shape functions and derivatives w.\+r.\+t. global coords at ipt-\/th integration point Return Jacobian of mapping between local and global coordinates. 
+
+
+
+Implemented in \hyperlink{classoomph_1_1QSphericalTaylorHoodElement_accf74eeba4a63dff1ca12048b751fed2}{oomph\+::\+Q\+Spherical\+Taylor\+Hood\+Element}, and \hyperlink{classoomph_1_1QSphericalCrouzeixRaviartElement_a75cdf25c724edcd05b37f5bc2c29e903}{oomph\+::\+Q\+Spherical\+Crouzeix\+Raviart\+Element}.
+
+
+
+Referenced by fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+spherical\+\_\+nst(), and oomph\+::\+Refineable\+Spherical\+Navier\+Stokes\+Equations\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+spherical\+\_\+nst().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_a3b9e9cf2d59dffcf278b4c9f73be6d62}\label{classoomph_1_1SphericalNavierStokesEquations_a3b9e9cf2d59dffcf278b4c9f73be6d62}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+spherical\+\_\+nst@{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+spherical\+\_\+nst}}
+\index{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+spherical\+\_\+nst@{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+spherical\+\_\+nst}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+spherical\+\_\+nst()}{dshape\_and\_dtest\_eulerian\_spherical\_nst()}}
+{\footnotesize\ttfamily virtual double oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+spherical\+\_\+nst (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dpsidx,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{test,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dtestdx }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Compute the shape functions and derivatives w.\+r.\+t. global coords at local coordinate s. Return Jacobian of mapping between local and global coordinates. 
+
+
+
+Implemented in \hyperlink{classoomph_1_1QSphericalTaylorHoodElement_ad6ac4efe30e2d18801f17f000db47a25}{oomph\+::\+Q\+Spherical\+Taylor\+Hood\+Element}, and \hyperlink{classoomph_1_1QSphericalCrouzeixRaviartElement_afee40460a2cfad52d95fc9681c8d6a12}{oomph\+::\+Q\+Spherical\+Crouzeix\+Raviart\+Element}.
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_a6f9ce7398b2f2a767fddc7473046c674}\label{classoomph_1_1SphericalNavierStokesEquations_a6f9ce7398b2f2a767fddc7473046c674}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!du\+\_\+dt\+\_\+spherical\+\_\+nst@{du\+\_\+dt\+\_\+spherical\+\_\+nst}}
+\index{du\+\_\+dt\+\_\+spherical\+\_\+nst@{du\+\_\+dt\+\_\+spherical\+\_\+nst}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{du\+\_\+dt\+\_\+spherical\+\_\+nst()}{du\_dt\_spherical\_nst()}}
+{\footnotesize\ttfamily double oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::du\+\_\+dt\+\_\+spherical\+\_\+nst (\begin{DoxyParamCaption}\item[{const unsigned \&}]{n,  }\item[{const unsigned \&}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+i-\/th component of du/dt at local node n. Uses suitably interpolated value for hanging nodes. 
+
+
+
+Definition at line 327 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Finite\+Element\+::nodal\+\_\+value(), oomph\+::\+Finite\+Element\+::node\+\_\+pt(), oomph\+::\+Time\+Stepper\+::ntstorage(), t, oomph\+::\+Geom\+Object\+::time\+\_\+stepper\+\_\+pt(), oomph\+::\+Data\+::time\+\_\+stepper\+\_\+pt(), oomph\+::\+Time\+Stepper\+::type(), u\+\_\+index\+\_\+spherical\+\_\+nst(), and oomph\+::\+Time\+Stepper\+::weight().
+
+
+
+Referenced by d\+\_\+kin\+\_\+energy\+\_\+dt(), fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+spherical\+\_\+nst(), oomph\+::\+Refineable\+Spherical\+Navier\+Stokes\+Equations\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+spherical\+\_\+nst(), and full\+\_\+output().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_af0dcacf87c6c58d640a280603a992bd6}\label{classoomph_1_1SphericalNavierStokesEquations_af0dcacf87c6c58d640a280603a992bd6}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!enable\+\_\+\+A\+LE@{enable\+\_\+\+A\+LE}}
+\index{enable\+\_\+\+A\+LE@{enable\+\_\+\+A\+LE}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{enable\+\_\+\+A\+L\+E()}{enable\_ALE()}}
+{\footnotesize\ttfamily void oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::enable\+\_\+\+A\+LE (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+(Re-\/)enable A\+LE, i.\+e. take possible mesh motion into account when evaluating the time-\/derivative. Note\+: By default, A\+LE is enabled, at the expense of possibly creating unnecessary work in problems where the mesh is, in fact, stationary. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a92ef8967fa4e2d6c33c51ea3efa3aa82}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 364 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References fix\+\_\+pressure(), and p\+\_\+spherical\+\_\+nst().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_ae0e2fd028424f6d2c86a903ddc852485}\label{classoomph_1_1SphericalNavierStokesEquations_ae0e2fd028424f6d2c86a903ddc852485}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!extract\+\_\+velocity@{extract\+\_\+velocity}}
+\index{extract\+\_\+velocity@{extract\+\_\+velocity}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{extract\+\_\+velocity()}{extract\_velocity()}}
+{\footnotesize\ttfamily void oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::extract\+\_\+velocity (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile }\end{DoxyParamCaption})}
+
+
+
+Definition at line 525 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+cc.
+
+
+
+References i, oomph\+::\+Finite\+Element\+::integral\+\_\+pt(), interpolated\+\_\+dudx\+\_\+spherical\+\_\+nst(), interpolated\+\_\+p\+\_\+spherical\+\_\+nst(), interpolated\+\_\+u\+\_\+spherical\+\_\+nst(), oomph\+::\+Finite\+Element\+::interpolated\+\_\+x(), oomph\+::\+Finite\+Element\+::\+J\+\_\+eulerian(), output\+\_\+fct(), s, oomph\+::\+Quad\+Tree\+Names\+::W, and oomph\+::\+Integral\+::weight().
+
+
+
+Referenced by full\+\_\+output().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_a518de36d4b06dcd38ab7e18a89f40e9f}\label{classoomph_1_1SphericalNavierStokesEquations_a518de36d4b06dcd38ab7e18a89f40e9f}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian}}
+\index{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian()}{fill\_in\_contribution\_to\_jacobian()}}
+{\footnotesize\ttfamily void oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{residuals,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{jacobian }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Add the elemental contribution to the jacobian matrix. and the residuals vector. Note that this function will N\+OT initialise the residuals vector or the jacobian matrix. It must be called after the residuals vector and jacobian matrix have been initialised to zero. The default is to use finite differences to calculate the jacobian. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a0ae7af222af38a0d53bf283dc85bdfea}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 597 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Generalised\+Element\+::\+Dummy\+\_\+matrix, and fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+spherical\+\_\+nst().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_acc7eab4a9151a3bda8ca0056c5a38137}\label{classoomph_1_1SphericalNavierStokesEquations_acc7eab4a9151a3bda8ca0056c5a38137}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian\+\_\+and\+\_\+mass\+\_\+matrix@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian\+\_\+and\+\_\+mass\+\_\+matrix}}
+\index{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian\+\_\+and\+\_\+mass\+\_\+matrix@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian\+\_\+and\+\_\+mass\+\_\+matrix}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian\+\_\+and\+\_\+mass\+\_\+matrix()}{fill\_in\_contribution\_to\_jacobian\_and\_mass\_matrix()}}
+{\footnotesize\ttfamily void oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian\+\_\+and\+\_\+mass\+\_\+matrix (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{residuals,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{jacobian,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{mass\+\_\+matrix }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+jacobian matrix and mass matrix 
+
+Add the element\textquotesingle{}s contribution to its residuals vector, 
+
+Reimplemented from \hyperlink{classoomph_1_1GeneralisedElement_a2b6294a730647cf865da94f2531466f8}{oomph\+::\+Generalised\+Element}.
+
+
+
+Definition at line 608 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+spherical\+\_\+nst().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_a579d10e44c68adb34f72ca8ec89b7b1a}\label{classoomph_1_1SphericalNavierStokesEquations_a579d10e44c68adb34f72ca8ec89b7b1a}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals}}
+\index{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals()}{fill\_in\_contribution\_to\_residuals()}}
+{\footnotesize\ttfamily void oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{residuals }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Compute the element\textquotesingle{}s residual \hyperlink{classoomph_1_1Vector}{Vector}. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1GeneralisedElement_a310c97f515e8504a48179c0e72c550d7}{oomph\+::\+Generalised\+Element}.
+
+
+
+Definition at line 586 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Generalised\+Element\+::\+Dummy\+\_\+matrix, and fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+spherical\+\_\+nst().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_acd48b82c748de406c94f8d8eabdfa8f5}\label{classoomph_1_1SphericalNavierStokesEquations_acd48b82c748de406c94f8d8eabdfa8f5}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+spherical\+\_\+nst@{fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+spherical\+\_\+nst}}
+\index{fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+spherical\+\_\+nst@{fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+spherical\+\_\+nst}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+spherical\+\_\+nst()}{fill\_in\_generic\_residual\_contribution\_spherical\_nst()}}
+{\footnotesize\ttfamily void oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+spherical\+\_\+nst (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{residuals,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{jacobian,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{mass\+\_\+matrix,  }\item[{unsigned}]{flag }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Compute the residuals for the Navier--Stokes equations; flag=1(or 0)\+: do (or don\textquotesingle{}t) compute the Jacobian as well. 
+
+Compute the residuals for the Navier--Stokes equations; flag=1(or 0)\+: do (or don\textquotesingle{}t) compute the Jacobian as well. 
+
+Reimplemented in \hyperlink{classoomph_1_1RefineableSphericalNavierStokesEquations_aaadda4a5dbffc1e23db2ac8b3dd86d4a}{oomph\+::\+Refineable\+Spherical\+Navier\+Stokes\+Equations}.
+
+
+
+Definition at line 1572 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+cc.
+
+
+
+References A\+L\+E\+\_\+is\+\_\+disabled, density\+\_\+ratio(), dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+spherical\+\_\+nst(), du\+\_\+dt\+\_\+spherical\+\_\+nst(), g(), get\+\_\+body\+\_\+force\+\_\+spherical\+\_\+nst(), i, oomph\+::\+Q\+Spherical\+Crouzeix\+Raviart\+Element\+::identify\+\_\+load\+\_\+data(), oomph\+::\+Finite\+Element\+::integral\+\_\+pt(), oomph\+::\+Finite\+Element\+::interpolated\+\_\+x(), oomph\+::\+Integral\+::knot(), oomph\+::\+Generalised\+Element\+::ndof(), oomph\+::\+Finite\+Element\+::nnode(), oomph\+::\+Finite\+Element\+::nodal\+\_\+local\+\_\+eqn(), oomph\+::\+Finite\+Element\+::node\+\_\+pt(), npres\+\_\+spherical\+\_\+nst(), oomph\+::\+Integral\+::nweight(), p\+\_\+local\+\_\+eqn(), p\+\_\+spherical\+\_\+nst(), pshape\+\_\+spherical\+\_\+nst(), oomph\+::\+Finite\+Element\+::raw\+\_\+dnodal\+\_\+position\+\_\+dt(), oomph\+::\+Finite\+Element\+::raw\+\_\+nodal\+\_\+position(), oomph\+::\+Finite\+Element\+::raw\+\_\+nodal\+\_\+value(), re(), re\+\_\+invro(), re\+\_\+st(), s, oomph\+::\+Time\+::time(), oomph\+::\+Time\+Stepper\+::time\+\_\+pt(), oomph\+::\+Data\+::time\+\_\+stepper\+\_\+pt(), u\+\_\+index\+\_\+spherical\+\_\+nst(), oomph\+::\+Quad\+Tree\+Names\+::W, oomph\+::\+Integral\+::weight(), and oomph\+::\+Time\+Stepper\+::weight().
+
+
+
+Referenced by fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian(), fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian\+\_\+and\+\_\+mass\+\_\+matrix(), fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals(), get\+\_\+source\+\_\+spherical\+\_\+nst(), and pressure\+\_\+integral().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_ae4dc4c80f271ed2b31296f01862dc536}\label{classoomph_1_1SphericalNavierStokesEquations_ae4dc4c80f271ed2b31296f01862dc536}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!fix\+\_\+pressure@{fix\+\_\+pressure}}
+\index{fix\+\_\+pressure@{fix\+\_\+pressure}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{fix\+\_\+pressure()}{fix\_pressure()}}
+{\footnotesize\ttfamily virtual void oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::fix\+\_\+pressure (\begin{DoxyParamCaption}\item[{const unsigned \&}]{p\+\_\+dof,  }\item[{const double \&}]{p\+\_\+value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Pin p\+\_\+dof-\/th pressure dof and set it to value specified by p\+\_\+value. 
+
+
+
+Implemented in \hyperlink{classoomph_1_1QSphericalTaylorHoodElement_acc320cd97d3adae63e1775f24f63efe7}{oomph\+::\+Q\+Spherical\+Taylor\+Hood\+Element}, and \hyperlink{classoomph_1_1QSphericalCrouzeixRaviartElement_a61feca031056f09a70e1d9901d20b58b}{oomph\+::\+Q\+Spherical\+Crouzeix\+Raviart\+Element}.
+
+
+
+Referenced by enable\+\_\+\+A\+L\+E().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_a2dfa5e66ae9d2e0b2464e18cd9b55beb}\label{classoomph_1_1SphericalNavierStokesEquations_a2dfa5e66ae9d2e0b2464e18cd9b55beb}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!full\+\_\+output@{full\+\_\+output}}
+\index{full\+\_\+output@{full\+\_\+output}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{full\+\_\+output()}{full\_output()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::full\+\_\+output (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Full output function\+: x,y,\mbox{[}z\mbox{]},u,v,\mbox{[}w\mbox{]},p,du/dt,dv/dt,\mbox{[}dw/dt\mbox{]},dissipation in tecplot format. Default number of plot points. 
+
+
+
+Definition at line 468 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References compute\+\_\+error(), compute\+\_\+error\+\_\+e(), compute\+\_\+shear\+\_\+stress(), extract\+\_\+velocity(), output\+\_\+fct(), output\+\_\+veloc(), output\+\_\+vorticity(), and t.
+
+
+
+Referenced by oomph\+::\+Q\+Spherical\+Crouzeix\+Raviart\+Element\+::full\+\_\+output().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_a444d7347a79629db8e59c1267b97f201}\label{classoomph_1_1SphericalNavierStokesEquations_a444d7347a79629db8e59c1267b97f201}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!full\+\_\+output@{full\+\_\+output}}
+\index{full\+\_\+output@{full\+\_\+output}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{full\+\_\+output()}{full\_output()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::full\+\_\+output (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile,  }\item[{const unsigned \&}]{nplot }\end{DoxyParamCaption})}
+
+
+
+Full output function\+: x,y,\mbox{[}z\mbox{]},u,v,\mbox{[}w\mbox{]},p,du/dt,dv/dt,\mbox{[}dw/dt\mbox{]},dissipation in tecplot format. nplot points in each coordinate direction. 
+
+Full output function\+: x,y,\mbox{[}z\mbox{]},u,v,\mbox{[}w\mbox{]},p,du/dt,dv/dt,\mbox{[}dw/dt\mbox{]},dissipation in tecplot format. Specified number of plot points in each coordinate direction 
+
+Definition at line 915 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+cc.
+
+
+
+References dissipation(), oomph\+::\+Finite\+Element\+::dnodal\+\_\+position\+\_\+dt(), oomph\+::\+Finite\+Element\+::dshape\+\_\+eulerian(), du\+\_\+dt\+\_\+spherical\+\_\+nst(), oomph\+::\+Finite\+Element\+::get\+\_\+s\+\_\+plot(), i, interpolated\+\_\+p\+\_\+spherical\+\_\+nst(), interpolated\+\_\+u\+\_\+spherical\+\_\+nst(), oomph\+::\+Finite\+Element\+::interpolated\+\_\+x(), oomph\+::\+Finite\+Element\+::nnode(), oomph\+::\+Finite\+Element\+::nodal\+\_\+value(), oomph\+::\+Finite\+Element\+::nplot\+\_\+points(), output\+\_\+vorticity(), s, oomph\+::\+Finite\+Element\+::tecplot\+\_\+zone\+\_\+string(), u\+\_\+index\+\_\+spherical\+\_\+nst(), and oomph\+::\+Finite\+Element\+::write\+\_\+tecplot\+\_\+zone\+\_\+footer().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_ac580f29734c9595980428b8324099d7d}\label{classoomph_1_1SphericalNavierStokesEquations_ac580f29734c9595980428b8324099d7d}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!g@{g}}
+\index{g@{g}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{g()}{g()}}
+{\footnotesize\ttfamily const \hyperlink{classoomph_1_1Vector}{Vector}$<$double$>$\& oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::g (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\hyperlink{classoomph_1_1Vector}{Vector} of gravitational components. 
+
+
+
+Definition at line 278 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References G\+\_\+pt.
+
+
+
+Referenced by fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+spherical\+\_\+nst(), and oomph\+::\+Refineable\+Spherical\+Navier\+Stokes\+Equations\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+spherical\+\_\+nst().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_abf7999df2161b8a7b14ca10352b27468}\label{classoomph_1_1SphericalNavierStokesEquations_abf7999df2161b8a7b14ca10352b27468}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!g\+\_\+pt@{g\+\_\+pt}}
+\index{g\+\_\+pt@{g\+\_\+pt}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{g\+\_\+pt()}{g\_pt()}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1Vector}{Vector}$<$double$>$$\ast$ \& oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::g\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Pointer to \hyperlink{classoomph_1_1Vector}{Vector} of gravitational components. 
+
+
+
+Definition at line 281 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References G\+\_\+pt.
+
+
+
+Referenced by oomph\+::\+Refineable\+Spherical\+Navier\+Stokes\+Equations\+::further\+\_\+build().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_a6dbdc5a0b33a0f36494ffefed1a938ac}\label{classoomph_1_1SphericalNavierStokesEquations_a6dbdc5a0b33a0f36494ffefed1a938ac}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!get\+\_\+body\+\_\+force\+\_\+spherical\+\_\+nst@{get\+\_\+body\+\_\+force\+\_\+spherical\+\_\+nst}}
+\index{get\+\_\+body\+\_\+force\+\_\+spherical\+\_\+nst@{get\+\_\+body\+\_\+force\+\_\+spherical\+\_\+nst}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{get\+\_\+body\+\_\+force\+\_\+spherical\+\_\+nst()}{get\_body\_force\_spherical\_nst()}}
+{\footnotesize\ttfamily virtual void oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::get\+\_\+body\+\_\+force\+\_\+spherical\+\_\+nst (\begin{DoxyParamCaption}\item[{const double \&}]{time,  }\item[{const unsigned \&}]{ipt,  }\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{x,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{result }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Calculate the body force at a given time and local and/or Eulerian position. This function is virtual so that it can be overloaded in multi-\/physics elements where the body force might depend on another variable. 
+
+
+
+Definition at line 171 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References i.
+
+
+
+Referenced by fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+spherical\+\_\+nst(), and oomph\+::\+Refineable\+Spherical\+Navier\+Stokes\+Equations\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+spherical\+\_\+nst().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_aedb2bcbc50b05bf623ef544e5ed3bbbf}\label{classoomph_1_1SphericalNavierStokesEquations_aedb2bcbc50b05bf623ef544e5ed3bbbf}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!get\+\_\+load@{get\+\_\+load}}
+\index{get\+\_\+load@{get\+\_\+load}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{get\+\_\+load()}{get\_load()}}
+{\footnotesize\ttfamily void oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::get\+\_\+load (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{N,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{load }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+This implements a pure virtual function defined in the \hyperlink{classoomph_1_1FSIFluidElement}{F\+S\+I\+Fluid\+Element} class. The function computes the traction (on the viscous scale), at the element\textquotesingle{}s local coordinate s, that the fluid element exerts onto an adjacent solid element. The number of arguments is imposed by the interface defined in the \hyperlink{classoomph_1_1FSIFluidElement}{F\+S\+I\+Fluid\+Element} -- only the unit normal N (pointing into the fluid!) is actually used in the computation. 
+
+
+
+Implements \hyperlink{classoomph_1_1FSIFluidElement_acf10e6a716b5e0f743579dfce32e9294}{oomph\+::\+F\+S\+I\+Fluid\+Element}.
+
+
+
+Definition at line 419 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References get\+\_\+pressure\+\_\+and\+\_\+velocity\+\_\+mass\+\_\+matrix\+\_\+diagonal(), and get\+\_\+traction().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_a3cb7aec8278bb92aa731a19777608cac}\label{classoomph_1_1SphericalNavierStokesEquations_a3cb7aec8278bb92aa731a19777608cac}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!get\+\_\+pressure\+\_\+and\+\_\+velocity\+\_\+mass\+\_\+matrix\+\_\+diagonal@{get\+\_\+pressure\+\_\+and\+\_\+velocity\+\_\+mass\+\_\+matrix\+\_\+diagonal}}
+\index{get\+\_\+pressure\+\_\+and\+\_\+velocity\+\_\+mass\+\_\+matrix\+\_\+diagonal@{get\+\_\+pressure\+\_\+and\+\_\+velocity\+\_\+mass\+\_\+matrix\+\_\+diagonal}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{get\+\_\+pressure\+\_\+and\+\_\+velocity\+\_\+mass\+\_\+matrix\+\_\+diagonal()}{get\_pressure\_and\_velocity\_mass\_matrix\_diagonal()}}
+{\footnotesize\ttfamily void oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::get\+\_\+pressure\+\_\+and\+\_\+velocity\+\_\+mass\+\_\+matrix\+\_\+diagonal (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{press\+\_\+mass\+\_\+diag,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{veloc\+\_\+mass\+\_\+diag,  }\item[{const unsigned \&}]{which\+\_\+one = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Compute the diagonal of the velocity/pressure mass matrices. If which one=0, both are computed, otherwise only the pressure (which\+\_\+one=1) or the velocity mass matrix (which\+\_\+one=2 -- the L\+SC version of the preconditioner only needs that one) N\+O\+TE\+: pressure versions isn\textquotesingle{}t implemented yet because this element has never been tried with Fp preconditoner. 
+
+Compute the diagonal of the velocity/pressure mass matrices. If which one=0, both are computed, otherwise only the pressure (which\+\_\+one=1) or the velocity mass matrix (which\+\_\+one=2 -- the L\+SC version of the preconditioner only needs that one) N\+O\+TE\+: pressure versions isn\textquotesingle{}t implemented yet because this element has never been tried with Fp preconditoner. 
+
+Implements \hyperlink{classoomph_1_1NavierStokesElementWithDiagonalMassMatrices_a4d491d10823eee10381a9b14bce6c244}{oomph\+::\+Navier\+Stokes\+Element\+With\+Diagonal\+Mass\+Matrices}.
+
+
+
+Definition at line 67 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+cc.
+
+
+
+References compute\+\_\+error(), i, oomph\+::\+Finite\+Element\+::integral\+\_\+pt(), oomph\+::\+Finite\+Element\+::\+J\+\_\+eulerian\+\_\+at\+\_\+knot(), oomph\+::\+Generalised\+Element\+::ndof(), oomph\+::\+Finite\+Element\+::nnode(), oomph\+::\+Finite\+Element\+::nodal\+\_\+local\+\_\+eqn(), oomph\+::\+Finite\+Element\+::nodal\+\_\+position(), oomph\+::\+Integral\+::nweight(), oomph\+::\+Finite\+Element\+::shape\+\_\+at\+\_\+knot(), u\+\_\+index\+\_\+spherical\+\_\+nst(), oomph\+::\+Quad\+Tree\+Names\+::W, and oomph\+::\+Integral\+::weight().
+
+
+
+Referenced by get\+\_\+load().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_afac2bf109a54ca1753b3e9eb5b5859ff}\label{classoomph_1_1SphericalNavierStokesEquations_afac2bf109a54ca1753b3e9eb5b5859ff}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!get\+\_\+source\+\_\+spherical\+\_\+nst@{get\+\_\+source\+\_\+spherical\+\_\+nst}}
+\index{get\+\_\+source\+\_\+spherical\+\_\+nst@{get\+\_\+source\+\_\+spherical\+\_\+nst}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{get\+\_\+source\+\_\+spherical\+\_\+nst()}{get\_source\_spherical\_nst()}}
+{\footnotesize\ttfamily virtual double oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::get\+\_\+source\+\_\+spherical\+\_\+nst (\begin{DoxyParamCaption}\item[{double}]{time,  }\item[{const unsigned \&}]{ipt,  }\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Calculate the source fct at given time and Eulerian position. 
+
+
+
+Definition at line 192 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+spherical\+\_\+nst().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_aaf2cd60aa4dc7524aab4cf2ace49805c}\label{classoomph_1_1SphericalNavierStokesEquations_aaf2cd60aa4dc7524aab4cf2ace49805c}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!get\+\_\+traction@{get\+\_\+traction}}
+\index{get\+\_\+traction@{get\+\_\+traction}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{get\+\_\+traction()}{get\_traction()}}
+{\footnotesize\ttfamily void oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::get\+\_\+traction (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{N,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{traction }\end{DoxyParamCaption})}
+
+
+
+Compute traction (on the viscous scale) exerted onto the fluid at local coordinate s. N has to be outer unit normal to the fluid. 
+
+Compute traction (on the viscous scale) exerted onto the fluid at local coordinate s. N has to be outer unit normal to the fluid. 
+
+Definition at line 1143 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+cc.
+
+
+
+References dissipation(), i, interpolated\+\_\+p\+\_\+spherical\+\_\+nst(), and strain\+\_\+rate().
+
+
+
+Referenced by get\+\_\+load(), and p\+\_\+nodal\+\_\+index\+\_\+spherical\+\_\+nst().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_a0ef3334439b336f5ec21c7cd223e05f9}\label{classoomph_1_1SphericalNavierStokesEquations_a0ef3334439b336f5ec21c7cd223e05f9}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!get\+\_\+vorticity@{get\+\_\+vorticity}}
+\index{get\+\_\+vorticity@{get\+\_\+vorticity}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{get\+\_\+vorticity()}{get\_vorticity()}}
+{\footnotesize\ttfamily void oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::get\+\_\+vorticity (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{vorticity }\end{DoxyParamCaption}) const}
+
+
+
+Compute the vorticity vector at local coordinate s. 
+
+Compute 2D vorticity vector at local coordinate s (return in one and only component of vorticity vector 
+
+Definition at line 1302 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+cc.
+
+
+
+References oomph\+::\+Finite\+Element\+::dshape\+\_\+eulerian(), i, oomph\+::\+Finite\+Element\+::nnode(), oomph\+::\+Finite\+Element\+::nodal\+\_\+value(), and u\+\_\+index\+\_\+spherical\+\_\+nst().
+
+
+
+Referenced by output\+\_\+vorticity(), p\+\_\+nodal\+\_\+index\+\_\+spherical\+\_\+nst(), and strain\+\_\+rate().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_a103fc06bfd3cad9f5511686e5e5d1ce9}\label{classoomph_1_1SphericalNavierStokesEquations_a103fc06bfd3cad9f5511686e5e5d1ce9}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!interpolated\+\_\+dudx\+\_\+spherical\+\_\+nst@{interpolated\+\_\+dudx\+\_\+spherical\+\_\+nst}}
+\index{interpolated\+\_\+dudx\+\_\+spherical\+\_\+nst@{interpolated\+\_\+dudx\+\_\+spherical\+\_\+nst}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{interpolated\+\_\+dudx\+\_\+spherical\+\_\+nst()}{interpolated\_dudx\_spherical\_nst()}}
+{\footnotesize\ttfamily double oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::interpolated\+\_\+dudx\+\_\+spherical\+\_\+nst (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{const unsigned \&}]{i,  }\item[{const unsigned \&}]{j }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return matrix entry dudx(i,j) of the FE interpolated velocity derivative at local coordinate s. 
+
+
+
+Definition at line 666 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Finite\+Element\+::dshape\+\_\+eulerian(), oomph\+::\+Finite\+Element\+::nnode(), oomph\+::\+Finite\+Element\+::nodal\+\_\+value(), and u\+\_\+index\+\_\+spherical\+\_\+nst().
+
+
+
+Referenced by compute\+\_\+error\+\_\+e(), compute\+\_\+shear\+\_\+stress(), and extract\+\_\+velocity().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_a93c638dbbf7fdcb0202514766e71bc73}\label{classoomph_1_1SphericalNavierStokesEquations_a93c638dbbf7fdcb0202514766e71bc73}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!interpolated\+\_\+p\+\_\+spherical\+\_\+nst@{interpolated\+\_\+p\+\_\+spherical\+\_\+nst}}
+\index{interpolated\+\_\+p\+\_\+spherical\+\_\+nst@{interpolated\+\_\+p\+\_\+spherical\+\_\+nst}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{interpolated\+\_\+p\+\_\+spherical\+\_\+nst()}{interpolated\_p\_spherical\_nst()}}
+{\footnotesize\ttfamily double oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::interpolated\+\_\+p\+\_\+spherical\+\_\+nst (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return FE interpolated pressure at local coordinate s. 
+
+
+
+Definition at line 692 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References npres\+\_\+spherical\+\_\+nst(), p\+\_\+spherical\+\_\+nst(), and pshape\+\_\+spherical\+\_\+nst().
+
+
+
+Referenced by compute\+\_\+error\+\_\+e(), extract\+\_\+velocity(), full\+\_\+output(), oomph\+::\+Refineable\+Q\+Spherical\+Crouzeix\+Raviart\+Element\+::further\+\_\+build(), oomph\+::\+Refineable\+Q\+Spherical\+Taylor\+Hood\+Element\+::get\+\_\+interpolated\+\_\+values(), get\+\_\+traction(), output(), and pressure\+\_\+integral().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_af59a7941f1ac3c2b3bc9a8aacbfa4625}\label{classoomph_1_1SphericalNavierStokesEquations_af59a7941f1ac3c2b3bc9a8aacbfa4625}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!interpolated\+\_\+u\+\_\+spherical\+\_\+nst@{interpolated\+\_\+u\+\_\+spherical\+\_\+nst}}
+\index{interpolated\+\_\+u\+\_\+spherical\+\_\+nst@{interpolated\+\_\+u\+\_\+spherical\+\_\+nst}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{interpolated\+\_\+u\+\_\+spherical\+\_\+nst()}{interpolated\_u\_spherical\_nst()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::interpolated\+\_\+u\+\_\+spherical\+\_\+nst (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{veloc }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Compute vector of FE interpolated velocity u at local coordinate s. 
+
+
+
+Definition at line 618 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References i, oomph\+::\+Finite\+Element\+::nnode(), oomph\+::\+Finite\+Element\+::nodal\+\_\+value(), oomph\+::\+Finite\+Element\+::shape(), and u\+\_\+index\+\_\+spherical\+\_\+nst().
+
+
+
+Referenced by compute\+\_\+error(), compute\+\_\+error\+\_\+e(), compute\+\_\+shear\+\_\+stress(), extract\+\_\+velocity(), full\+\_\+output(), oomph\+::\+Refineable\+Q\+Spherical\+Taylor\+Hood\+Element\+::get\+\_\+interpolated\+\_\+values(), oomph\+::\+Refineable\+Q\+Spherical\+Crouzeix\+Raviart\+Element\+::get\+\_\+interpolated\+\_\+values(), kin\+\_\+energy(), and output().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_ae728a60ea2c5af4e3578e0fe9f010aff}\label{classoomph_1_1SphericalNavierStokesEquations_ae728a60ea2c5af4e3578e0fe9f010aff}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!interpolated\+\_\+u\+\_\+spherical\+\_\+nst@{interpolated\+\_\+u\+\_\+spherical\+\_\+nst}}
+\index{interpolated\+\_\+u\+\_\+spherical\+\_\+nst@{interpolated\+\_\+u\+\_\+spherical\+\_\+nst}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{interpolated\+\_\+u\+\_\+spherical\+\_\+nst()}{interpolated\_u\_spherical\_nst()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily double oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::interpolated\+\_\+u\+\_\+spherical\+\_\+nst (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{const unsigned \&}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return FE interpolated velocity u\mbox{[}i\mbox{]} at local coordinate s. 
+
+
+
+Definition at line 642 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Finite\+Element\+::nnode(), oomph\+::\+Finite\+Element\+::nodal\+\_\+value(), oomph\+::\+Finite\+Element\+::shape(), and u\+\_\+index\+\_\+spherical\+\_\+nst().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_aa374af3cc246ada66f17b19a9564a6d3}\label{classoomph_1_1SphericalNavierStokesEquations_aa374af3cc246ada66f17b19a9564a6d3}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!kin\+\_\+energy@{kin\+\_\+energy}}
+\index{kin\+\_\+energy@{kin\+\_\+energy}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{kin\+\_\+energy()}{kin\_energy()}}
+{\footnotesize\ttfamily double oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::kin\+\_\+energy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get integral of kinetic energy over element. 
+
+Get integral of kinetic energy over element\+: 
+
+Definition at line 1375 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+cc.
+
+
+
+References i, oomph\+::\+Finite\+Element\+::integral\+\_\+pt(), interpolated\+\_\+u\+\_\+spherical\+\_\+nst(), oomph\+::\+Finite\+Element\+::\+J\+\_\+eulerian(), oomph\+::\+Integral\+::knot(), oomph\+::\+Integral\+::nweight(), s, and oomph\+::\+Integral\+::weight().
+
+
+
+Referenced by p\+\_\+nodal\+\_\+index\+\_\+spherical\+\_\+nst().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_ae01203564bc66dacf84c1ed65e4b7930}\label{classoomph_1_1SphericalNavierStokesEquations_ae01203564bc66dacf84c1ed65e4b7930}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!npres\+\_\+spherical\+\_\+nst@{npres\+\_\+spherical\+\_\+nst}}
+\index{npres\+\_\+spherical\+\_\+nst@{npres\+\_\+spherical\+\_\+nst}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{npres\+\_\+spherical\+\_\+nst()}{npres\_spherical\_nst()}}
+{\footnotesize\ttfamily virtual unsigned oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::npres\+\_\+spherical\+\_\+nst (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Function to return number of pressure degrees of freedom. 
+
+
+
+Implemented in \hyperlink{classoomph_1_1QSphericalTaylorHoodElement_af923b447673c5a89772989e91d8f6603}{oomph\+::\+Q\+Spherical\+Taylor\+Hood\+Element}, and \hyperlink{classoomph_1_1QSphericalCrouzeixRaviartElement_adefc160b9cedb7638a265e4c37f2e237}{oomph\+::\+Q\+Spherical\+Crouzeix\+Raviart\+Element}.
+
+
+
+Referenced by fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+spherical\+\_\+nst(), oomph\+::\+Refineable\+Spherical\+Navier\+Stokes\+Equations\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+spherical\+\_\+nst(), oomph\+::\+Q\+Spherical\+Crouzeix\+Raviart\+Element\+::get\+\_\+dof\+\_\+numbers\+\_\+for\+\_\+unknowns(), oomph\+::\+Q\+Spherical\+Taylor\+Hood\+Element\+::identify\+\_\+pressure\+\_\+data(), interpolated\+\_\+p\+\_\+spherical\+\_\+nst(), oomph\+::\+Refineable\+Q\+Spherical\+Taylor\+Hood\+Element\+::pin\+\_\+elemental\+\_\+redundant\+\_\+nodal\+\_\+pressure\+\_\+dofs(), source\+\_\+fct\+\_\+pt(), and oomph\+::\+Refineable\+Q\+Spherical\+Crouzeix\+Raviart\+Element\+::unpin\+\_\+elemental\+\_\+pressure\+\_\+dofs().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_a1d08588d3d9462de04d447506af5cdd5}\label{classoomph_1_1SphericalNavierStokesEquations_a1d08588d3d9462de04d447506af5cdd5}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!output@{output}}
+\index{output@{output}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily void oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::output (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Output function\+: x,y,\mbox{[}z\mbox{]},u,v,\mbox{[}w\mbox{]},p in tecplot format. Default number of plot points. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a2ad98a3d2ef4999f1bef62c0ff13f2a7}{oomph\+::\+Finite\+Element}.
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1QSphericalTaylorHoodElement_af3864809dfd77246f0ec052480ac397f}{oomph\+::\+Q\+Spherical\+Taylor\+Hood\+Element}, and \hyperlink{classoomph_1_1QSphericalCrouzeixRaviartElement_a2e829acc8cb74c743a661b63fb1aa618}{oomph\+::\+Q\+Spherical\+Crouzeix\+Raviart\+Element}.
+
+
+
+Definition at line 443 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+Referenced by output(), oomph\+::\+Q\+Spherical\+Crouzeix\+Raviart\+Element\+::output(), and oomph\+::\+Q\+Spherical\+Taylor\+Hood\+Element\+::output().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_a5506adeb5ecb11e16254b5ee48049c5d}\label{classoomph_1_1SphericalNavierStokesEquations_a5506adeb5ecb11e16254b5ee48049c5d}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!output@{output}}
+\index{output@{output}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily void oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::output (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile,  }\item[{const unsigned \&}]{nplot }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Output function\+: x,y,\mbox{[}z\mbox{]},u,v,\mbox{[}w\mbox{]},p in tecplot format. nplot points in each coordinate direction. 
+
+Output function\+: x,y,\mbox{[}z\mbox{]},u,v,\mbox{[}w\mbox{]},p in tecplot format. Specified number of plot points in each coordinate direction. 
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_afa9d9b2670f999b43e6679c9dd28c457}{oomph\+::\+Finite\+Element}.
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1QSphericalTaylorHoodElement_ac4e26ba768ccacbcd5144d34219690b0}{oomph\+::\+Q\+Spherical\+Taylor\+Hood\+Element}, and \hyperlink{classoomph_1_1QSphericalCrouzeixRaviartElement_a23d3c82c7dbb8c220b433d2836707136}{oomph\+::\+Q\+Spherical\+Crouzeix\+Raviart\+Element}.
+
+
+
+Definition at line 801 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+cc.
+
+
+
+References dissipation(), oomph\+::\+Finite\+Element\+::get\+\_\+s\+\_\+plot(), i, interpolated\+\_\+p\+\_\+spherical\+\_\+nst(), interpolated\+\_\+u\+\_\+spherical\+\_\+nst(), oomph\+::\+Finite\+Element\+::interpolated\+\_\+x(), oomph\+::\+Finite\+Element\+::nplot\+\_\+points(), s, oomph\+::\+Finite\+Element\+::tecplot\+\_\+zone\+\_\+string(), and oomph\+::\+Finite\+Element\+::write\+\_\+tecplot\+\_\+zone\+\_\+footer().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_a76ad2e32bc8d2efa6242e78ea66076ed}\label{classoomph_1_1SphericalNavierStokesEquations_a76ad2e32bc8d2efa6242e78ea66076ed}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!output@{output}}
+\index{output@{output}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily void oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::output (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{file\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+C-\/style output function\+: x,y,\mbox{[}z\mbox{]},u,v,\mbox{[}w\mbox{]},p in tecplot format. Default number of plot points. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a72cddd09f8ddbee1a20a1ff404c6943e}{oomph\+::\+Finite\+Element}.
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1QSphericalTaylorHoodElement_aa45522c214c7cb5ff01724ebafe988c6}{oomph\+::\+Q\+Spherical\+Taylor\+Hood\+Element}, and \hyperlink{classoomph_1_1QSphericalCrouzeixRaviartElement_a885098531e6431711647b581817af3c5}{oomph\+::\+Q\+Spherical\+Crouzeix\+Raviart\+Element}.
+
+
+
+Definition at line 455 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References output().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_afd0fd2912515b6c23142046c5c200640}\label{classoomph_1_1SphericalNavierStokesEquations_afd0fd2912515b6c23142046c5c200640}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!output@{output}}
+\index{output@{output}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily void oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::output (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{file\+\_\+pt,  }\item[{const unsigned \&}]{nplot }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+C-\/style output function\+: x,y,\mbox{[}z\mbox{]},u,v,\mbox{[}w\mbox{]},p in tecplot format. nplot points in each coordinate direction. 
+
+C-\/style output function\+: x,y,\mbox{[}z\mbox{]},u,v,\mbox{[}w\mbox{]},p in tecplot format. Specified number of plot points in each coordinate direction. 
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_adfaee690bb0608f03320eeb9d110d48c}{oomph\+::\+Finite\+Element}.
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1QSphericalTaylorHoodElement_ad8e462b97fd0aa1d0000e3440259ef61}{oomph\+::\+Q\+Spherical\+Taylor\+Hood\+Element}, and \hyperlink{classoomph_1_1QSphericalCrouzeixRaviartElement_a46b94f33217c9d82921055347255b4b5}{oomph\+::\+Q\+Spherical\+Crouzeix\+Raviart\+Element}.
+
+
+
+Definition at line 868 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+cc.
+
+
+
+References oomph\+::\+Finite\+Element\+::get\+\_\+s\+\_\+plot(), i, interpolated\+\_\+p\+\_\+spherical\+\_\+nst(), interpolated\+\_\+u\+\_\+spherical\+\_\+nst(), oomph\+::\+Finite\+Element\+::interpolated\+\_\+x(), oomph\+::\+Finite\+Element\+::nplot\+\_\+points(), s, oomph\+::\+Finite\+Element\+::tecplot\+\_\+zone\+\_\+string(), and oomph\+::\+Finite\+Element\+::write\+\_\+tecplot\+\_\+zone\+\_\+footer().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_aa273df1ad9fe7cebb284bdae8b7e1a21}\label{classoomph_1_1SphericalNavierStokesEquations_aa273df1ad9fe7cebb284bdae8b7e1a21}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!output\+\_\+fct@{output\+\_\+fct}}
+\index{output\+\_\+fct@{output\+\_\+fct}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{output\+\_\+fct()}{output\_fct()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::output\+\_\+fct (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile,  }\item[{const unsigned \&}]{nplot,  }\item[{\hyperlink{classoomph_1_1FiniteElement_a690fd33af26cc3e84f39bba6d5a85202}{Finite\+Element\+::\+Steady\+Exact\+Solution\+Fct\+Pt}}]{exact\+\_\+soln\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Output exact solution specified via function pointer at a given number of plot points. Function prints as many components as are returned in solution \hyperlink{classoomph_1_1Vector}{Vector}. 
+
+Output \char`\"{}exact\char`\"{} solution Solution is provided via function pointer. Plot at a given number of plot points. Function prints as many components as are returned in solution \hyperlink{classoomph_1_1Vector}{Vector}. 
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a22b695c714f60ee6cd145be348042035}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 611 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+cc.
+
+
+
+References oomph\+::\+Finite\+Element\+::get\+\_\+s\+\_\+plot(), i, oomph\+::\+Finite\+Element\+::interpolated\+\_\+x(), oomph\+::\+Finite\+Element\+::nplot\+\_\+points(), s, oomph\+::\+Finite\+Element\+::tecplot\+\_\+zone\+\_\+string(), and oomph\+::\+Finite\+Element\+::write\+\_\+tecplot\+\_\+zone\+\_\+footer().
+
+
+
+Referenced by extract\+\_\+velocity(), and full\+\_\+output().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_ad7e8436cec2be7afaa2f0a3ad0a38ec9}\label{classoomph_1_1SphericalNavierStokesEquations_ad7e8436cec2be7afaa2f0a3ad0a38ec9}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!output\+\_\+fct@{output\+\_\+fct}}
+\index{output\+\_\+fct@{output\+\_\+fct}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{output\+\_\+fct()}{output\_fct()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::output\+\_\+fct (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile,  }\item[{const unsigned \&}]{nplot,  }\item[{const double \&}]{time,  }\item[{\hyperlink{classoomph_1_1FiniteElement_ad4ecf2b61b158a4b4d351a60d23c633e}{Finite\+Element\+::\+Unsteady\+Exact\+Solution\+Fct\+Pt}}]{exact\+\_\+soln\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Output exact solution specified via function pointer at a given time and at a given number of plot points. Function prints as many components as are returned in solution \hyperlink{classoomph_1_1Vector}{Vector}. 
+
+Output \char`\"{}exact\char`\"{} solution at a given time Solution is provided via function pointer. Plot at a given number of plot points. Function prints as many components as are returned in solution \hyperlink{classoomph_1_1Vector}{Vector}. 
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a2a8426dccd57b927be0ae0eec00d0479}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 671 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+cc.
+
+
+
+References oomph\+::\+Finite\+Element\+::get\+\_\+s\+\_\+plot(), i, oomph\+::\+Finite\+Element\+::interpolated\+\_\+x(), oomph\+::\+Finite\+Element\+::nplot\+\_\+points(), s, oomph\+::\+Finite\+Element\+::tecplot\+\_\+zone\+\_\+string(), and oomph\+::\+Finite\+Element\+::write\+\_\+tecplot\+\_\+zone\+\_\+footer().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_ae9b06a27652654ad42dc9882399e9374}\label{classoomph_1_1SphericalNavierStokesEquations_ae9b06a27652654ad42dc9882399e9374}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!output\+\_\+veloc@{output\+\_\+veloc}}
+\index{output\+\_\+veloc@{output\+\_\+veloc}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{output\+\_\+veloc()}{output\_veloc()}}
+{\footnotesize\ttfamily void oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::output\+\_\+veloc (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile,  }\item[{const unsigned \&}]{nplot,  }\item[{const unsigned \&}]{t }\end{DoxyParamCaption})}
+
+
+
+Output function\+: x,y,\mbox{[}z\mbox{]},u,v,\mbox{[}w\mbox{]} in tecplot format. nplot points in each coordinate direction at timestep t (t=0\+: present; t$>$0\+: previous timestep) 
+
+Output function\+: Velocities only x,y,\mbox{[}z\mbox{]},u,v,\mbox{[}w\mbox{]} in tecplot format at specified previous timestep (t=0\+: present; t$>$0\+: previous timestep). Specified number of plot points in each coordinate direction. 
+
+Definition at line 730 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+cc.
+
+
+
+References oomph\+::\+Finite\+Element\+::get\+\_\+s\+\_\+plot(), i, oomph\+::\+Finite\+Element\+::interpolated\+\_\+x(), oomph\+::\+Finite\+Element\+::nnode(), oomph\+::\+Finite\+Element\+::nodal\+\_\+position(), oomph\+::\+Finite\+Element\+::nodal\+\_\+value(), oomph\+::\+Finite\+Element\+::nplot\+\_\+points(), s, oomph\+::\+Finite\+Element\+::shape(), oomph\+::\+Finite\+Element\+::tecplot\+\_\+zone\+\_\+string(), u\+\_\+index\+\_\+spherical\+\_\+nst(), and oomph\+::\+Finite\+Element\+::write\+\_\+tecplot\+\_\+zone\+\_\+footer().
+
+
+
+Referenced by full\+\_\+output().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_aa3c32bb2312a5bc8be5b164fb1631dac}\label{classoomph_1_1SphericalNavierStokesEquations_aa3c32bb2312a5bc8be5b164fb1631dac}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!output\+\_\+vorticity@{output\+\_\+vorticity}}
+\index{output\+\_\+vorticity@{output\+\_\+vorticity}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{output\+\_\+vorticity()}{output\_vorticity()}}
+{\footnotesize\ttfamily void oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::output\+\_\+vorticity (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile,  }\item[{const unsigned \&}]{nplot }\end{DoxyParamCaption})}
+
+
+
+Output function\+: x,y,\mbox{[}z\mbox{]}, \mbox{[}omega\+\_\+x,omega\+\_\+y,\mbox{[}and/or omega\+\_\+z\mbox{]}\mbox{]} in tecplot format. nplot points in each coordinate direction. 
+
+Output function for vorticity. x,y,\mbox{[}z\mbox{]},\mbox{[}omega\+\_\+x,omega\+\_\+y,\mbox{[}and/or omega\+\_\+z\mbox{]}\mbox{]} in tecplot format. Specified number of plot points in each coordinate direction. 
+
+Definition at line 1046 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+cc.
+
+
+
+References oomph\+::\+Finite\+Element\+::get\+\_\+s\+\_\+plot(), get\+\_\+vorticity(), i, oomph\+::\+Finite\+Element\+::interpolated\+\_\+x(), oomph\+::\+Finite\+Element\+::nplot\+\_\+points(), s, oomph\+::\+Finite\+Element\+::tecplot\+\_\+zone\+\_\+string(), and oomph\+::\+Finite\+Element\+::write\+\_\+tecplot\+\_\+zone\+\_\+footer().
+
+
+
+Referenced by full\+\_\+output().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_ad8d9a0edbe3793a008a6bff670c26643}\label{classoomph_1_1SphericalNavierStokesEquations_ad8d9a0edbe3793a008a6bff670c26643}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!p\+\_\+local\+\_\+eqn@{p\+\_\+local\+\_\+eqn}}
+\index{p\+\_\+local\+\_\+eqn@{p\+\_\+local\+\_\+eqn}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{p\+\_\+local\+\_\+eqn()}{p\_local\_eqn()}}
+{\footnotesize\ttfamily virtual int oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::p\+\_\+local\+\_\+eqn (\begin{DoxyParamCaption}\item[{const unsigned \&}]{n }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Access function for the local equation number information for the pressure. p\+\_\+local\+\_\+eqn\mbox{[}n\mbox{]} = local equation number or $<$ 0 if pinned. 
+
+
+
+Implemented in \hyperlink{classoomph_1_1QSphericalTaylorHoodElement_a758be6fc4cc9d5e1191134412a43b83d}{oomph\+::\+Q\+Spherical\+Taylor\+Hood\+Element}, and \hyperlink{classoomph_1_1QSphericalCrouzeixRaviartElement_a5a4508bfabe7a630fd6c685ccc59870b}{oomph\+::\+Q\+Spherical\+Crouzeix\+Raviart\+Element}.
+
+
+
+Referenced by fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+spherical\+\_\+nst(), oomph\+::\+Refineable\+Spherical\+Navier\+Stokes\+Equations\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+spherical\+\_\+nst(), and oomph\+::\+Q\+Spherical\+Crouzeix\+Raviart\+Element\+::get\+\_\+dof\+\_\+numbers\+\_\+for\+\_\+unknowns().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_a7b0edc8eedacaef9e55f3551a7cb5400}\label{classoomph_1_1SphericalNavierStokesEquations_a7b0edc8eedacaef9e55f3551a7cb5400}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!p\+\_\+nodal\+\_\+index\+\_\+spherical\+\_\+nst@{p\+\_\+nodal\+\_\+index\+\_\+spherical\+\_\+nst}}
+\index{p\+\_\+nodal\+\_\+index\+\_\+spherical\+\_\+nst@{p\+\_\+nodal\+\_\+index\+\_\+spherical\+\_\+nst}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{p\+\_\+nodal\+\_\+index\+\_\+spherical\+\_\+nst()}{p\_nodal\_index\_spherical\_nst()}}
+{\footnotesize\ttfamily virtual int oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::p\+\_\+nodal\+\_\+index\+\_\+spherical\+\_\+nst (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Return the index at which the pressure is stored if it is stored at the nodes. If not stored at the nodes this will return a negative number. 
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1QSphericalTaylorHoodElement_a8d7e127d0989233ad2bcd417536b54c0}{oomph\+::\+Q\+Spherical\+Taylor\+Hood\+Element}.
+
+
+
+Definition at line 379 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References d\+\_\+kin\+\_\+energy\+\_\+dt(), dissipation(), get\+\_\+traction(), get\+\_\+vorticity(), kin\+\_\+energy(), oomph\+::\+Quad\+Tree\+Names\+::N, pressure\+\_\+integral(), Pressure\+\_\+not\+\_\+stored\+\_\+at\+\_\+node, s, and strain\+\_\+rate().
+
+
+
+Referenced by oomph\+::\+Refineable\+Spherical\+Navier\+Stokes\+Equations\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+spherical\+\_\+nst(), oomph\+::\+Q\+Spherical\+Taylor\+Hood\+Element\+::fix\+\_\+pressure(), oomph\+::\+Q\+Spherical\+Taylor\+Hood\+Element\+::identify\+\_\+pressure\+\_\+data(), oomph\+::\+Q\+Spherical\+Taylor\+Hood\+Element\+::p\+\_\+local\+\_\+eqn(), oomph\+::\+Q\+Spherical\+Taylor\+Hood\+Element\+::p\+\_\+spherical\+\_\+nst(), oomph\+::\+Refineable\+Q\+Spherical\+Taylor\+Hood\+Element\+::pin\+\_\+elemental\+\_\+redundant\+\_\+nodal\+\_\+pressure\+\_\+dofs(), and oomph\+::\+Refineable\+Q\+Spherical\+Taylor\+Hood\+Element\+::unpin\+\_\+elemental\+\_\+pressure\+\_\+dofs().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_a5b50d547e5a2ad5896dc9612e2bb4176}\label{classoomph_1_1SphericalNavierStokesEquations_a5b50d547e5a2ad5896dc9612e2bb4176}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!p\+\_\+spherical\+\_\+nst@{p\+\_\+spherical\+\_\+nst}}
+\index{p\+\_\+spherical\+\_\+nst@{p\+\_\+spherical\+\_\+nst}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{p\+\_\+spherical\+\_\+nst()}{p\_spherical\_nst()}}
+{\footnotesize\ttfamily virtual double oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::p\+\_\+spherical\+\_\+nst (\begin{DoxyParamCaption}\item[{const unsigned \&}]{n\+\_\+p }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Pressure at local pressure \char`\"{}node\char`\"{} n\+\_\+p Uses suitably interpolated value for hanging nodes. 
+
+
+
+Implemented in \hyperlink{classoomph_1_1QSphericalTaylorHoodElement_a0baaa4667b08a35ccb6f655fc55e63ac}{oomph\+::\+Q\+Spherical\+Taylor\+Hood\+Element}, and \hyperlink{classoomph_1_1QSphericalCrouzeixRaviartElement_a793d90652542ffffade39aaf25f9cc4c}{oomph\+::\+Q\+Spherical\+Crouzeix\+Raviart\+Element}.
+
+
+
+Referenced by enable\+\_\+\+A\+L\+E(), fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+spherical\+\_\+nst(), oomph\+::\+Refineable\+Spherical\+Navier\+Stokes\+Equations\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+spherical\+\_\+nst(), and interpolated\+\_\+p\+\_\+spherical\+\_\+nst().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_a1776fe3c26e4ee175a0c71a2db66a78d}\label{classoomph_1_1SphericalNavierStokesEquations_a1776fe3c26e4ee175a0c71a2db66a78d}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!pressure\+\_\+integral@{pressure\+\_\+integral}}
+\index{pressure\+\_\+integral@{pressure\+\_\+integral}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{pressure\+\_\+integral()}{pressure\_integral()}}
+{\footnotesize\ttfamily double oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::pressure\+\_\+integral (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+\hyperlink{classoomph_1_1Integral}{Integral} of pressure over element. 
+
+Return pressure integrated over the element. 
+
+Definition at line 1523 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+cc.
+
+
+
+References fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+spherical\+\_\+nst(), i, oomph\+::\+Finite\+Element\+::integral\+\_\+pt(), interpolated\+\_\+p\+\_\+spherical\+\_\+nst(), oomph\+::\+Finite\+Element\+::\+J\+\_\+eulerian(), oomph\+::\+Integral\+::knot(), oomph\+::\+Integral\+::nweight(), s, oomph\+::\+Quad\+Tree\+Names\+::W, and oomph\+::\+Integral\+::weight().
+
+
+
+Referenced by p\+\_\+nodal\+\_\+index\+\_\+spherical\+\_\+nst().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_a17799ec1f3a1d8bbeee1d357bba0a249}\label{classoomph_1_1SphericalNavierStokesEquations_a17799ec1f3a1d8bbeee1d357bba0a249}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!pshape\+\_\+spherical\+\_\+nst@{pshape\+\_\+spherical\+\_\+nst}}
+\index{pshape\+\_\+spherical\+\_\+nst@{pshape\+\_\+spherical\+\_\+nst}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{pshape\+\_\+spherical\+\_\+nst()}{pshape\_spherical\_nst()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily virtual void oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::pshape\+\_\+spherical\+\_\+nst (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Compute the pressure shape functions at local coordinate s. 
+
+
+
+Implemented in \hyperlink{classoomph_1_1QSphericalTaylorHoodElement_acc55b6f8430df47195e31d8e8e6b68c0}{oomph\+::\+Q\+Spherical\+Taylor\+Hood\+Element}, and \hyperlink{classoomph_1_1QSphericalCrouzeixRaviartElement_ae5be79781d11702c84d9493646153e36}{oomph\+::\+Q\+Spherical\+Crouzeix\+Raviart\+Element}.
+
+
+
+Referenced by fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+spherical\+\_\+nst(), oomph\+::\+Refineable\+Spherical\+Navier\+Stokes\+Equations\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+spherical\+\_\+nst(), interpolated\+\_\+p\+\_\+spherical\+\_\+nst(), oomph\+::\+Refineable\+Q\+Spherical\+Taylor\+Hood\+Element\+::interpolating\+\_\+basis(), oomph\+::\+Q\+Spherical\+Crouzeix\+Raviart\+Element\+::pshape\+\_\+spherical\+\_\+nst(), and oomph\+::\+Q\+Spherical\+Taylor\+Hood\+Element\+::pshape\+\_\+spherical\+\_\+nst().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_a862f1da9ef70c289f4220391443b7d09}\label{classoomph_1_1SphericalNavierStokesEquations_a862f1da9ef70c289f4220391443b7d09}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!pshape\+\_\+spherical\+\_\+nst@{pshape\+\_\+spherical\+\_\+nst}}
+\index{pshape\+\_\+spherical\+\_\+nst@{pshape\+\_\+spherical\+\_\+nst}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{pshape\+\_\+spherical\+\_\+nst()}{pshape\_spherical\_nst()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily virtual void oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::pshape\+\_\+spherical\+\_\+nst (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{test }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Compute the pressure shape and test functions at local coordinate s. 
+
+
+
+Implemented in \hyperlink{classoomph_1_1QSphericalTaylorHoodElement_afa1ec3d14dbdee7581260678f6790fe7}{oomph\+::\+Q\+Spherical\+Taylor\+Hood\+Element}, and \hyperlink{classoomph_1_1QSphericalCrouzeixRaviartElement_a25604ebbfd2720a969f2c3b6670d0d9c}{oomph\+::\+Q\+Spherical\+Crouzeix\+Raviart\+Element}.
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_a339dc121adc8a2eb62805ac63171fd6c}\label{classoomph_1_1SphericalNavierStokesEquations_a339dc121adc8a2eb62805ac63171fd6c}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!re@{re}}
+\index{re@{re}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{re()}{re()}}
+{\footnotesize\ttfamily const double\& oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::re (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Reynolds number. 
+
+
+
+Definition at line 240 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References Re\+\_\+pt.
+
+
+
+Referenced by actual(), actual\+\_\+dr(), actual\+\_\+dth(), fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+spherical\+\_\+nst(), and oomph\+::\+Refineable\+Spherical\+Navier\+Stokes\+Equations\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+spherical\+\_\+nst().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_a80f09fb11edfdaa7bb1b262cd6dc9399}\label{classoomph_1_1SphericalNavierStokesEquations_a80f09fb11edfdaa7bb1b262cd6dc9399}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!re\+\_\+invfr@{re\+\_\+invfr}}
+\index{re\+\_\+invfr@{re\+\_\+invfr}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{re\+\_\+invfr()}{re\_invfr()}}
+{\footnotesize\ttfamily const double\& oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::re\+\_\+invfr (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Global inverse Froude number. 
+
+
+
+Definition at line 266 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References Re\+Inv\+Fr\+\_\+pt.
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_a8b6d0d4b20bc0f62bac8476b6967cd9f}\label{classoomph_1_1SphericalNavierStokesEquations_a8b6d0d4b20bc0f62bac8476b6967cd9f}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!re\+\_\+invfr\+\_\+pt@{re\+\_\+invfr\+\_\+pt}}
+\index{re\+\_\+invfr\+\_\+pt@{re\+\_\+invfr\+\_\+pt}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{re\+\_\+invfr\+\_\+pt()}{re\_invfr\_pt()}}
+{\footnotesize\ttfamily double$\ast$ \& oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::re\+\_\+invfr\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Pointer to global inverse Froude number. 
+
+
+
+Definition at line 269 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References Re\+Inv\+Fr\+\_\+pt.
+
+
+
+Referenced by oomph\+::\+Refineable\+Spherical\+Navier\+Stokes\+Equations\+::further\+\_\+build().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_a4a9bb055e3ea5f00d1edee5efcad4937}\label{classoomph_1_1SphericalNavierStokesEquations_a4a9bb055e3ea5f00d1edee5efcad4937}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!re\+\_\+invro@{re\+\_\+invro}}
+\index{re\+\_\+invro@{re\+\_\+invro}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{re\+\_\+invro()}{re\_invro()}}
+{\footnotesize\ttfamily const double\& oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::re\+\_\+invro (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Global Reynolds number multiplied by inverse Rossby number. 
+
+
+
+Definition at line 272 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References Re\+Inv\+Ro\+\_\+pt.
+
+
+
+Referenced by fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+spherical\+\_\+nst(), and oomph\+::\+Refineable\+Spherical\+Navier\+Stokes\+Equations\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+spherical\+\_\+nst().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_a90f9fc0e4ed20ad28395e838106dc97d}\label{classoomph_1_1SphericalNavierStokesEquations_a90f9fc0e4ed20ad28395e838106dc97d}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!re\+\_\+invro\+\_\+pt@{re\+\_\+invro\+\_\+pt}}
+\index{re\+\_\+invro\+\_\+pt@{re\+\_\+invro\+\_\+pt}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{re\+\_\+invro\+\_\+pt()}{re\_invro\_pt()}}
+{\footnotesize\ttfamily double$\ast$ \& oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::re\+\_\+invro\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Pointer to global inverse Froude number. 
+
+
+
+Definition at line 275 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References Re\+Inv\+Ro\+\_\+pt.
+
+
+
+Referenced by oomph\+::\+Refineable\+Spherical\+Navier\+Stokes\+Equations\+::further\+\_\+build().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_a2ee12f1bb031d2bc22db89daa341ffb9}\label{classoomph_1_1SphericalNavierStokesEquations_a2ee12f1bb031d2bc22db89daa341ffb9}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!re\+\_\+pt@{re\+\_\+pt}}
+\index{re\+\_\+pt@{re\+\_\+pt}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{re\+\_\+pt()}{re\_pt()}}
+{\footnotesize\ttfamily double$\ast$ \& oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::re\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Pointer to Reynolds number. 
+
+
+
+Definition at line 246 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References Re\+\_\+pt.
+
+
+
+Referenced by oomph\+::\+Refineable\+Spherical\+Navier\+Stokes\+Equations\+::further\+\_\+build().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_af3627c5846c81dacdfb150576a28db61}\label{classoomph_1_1SphericalNavierStokesEquations_af3627c5846c81dacdfb150576a28db61}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!re\+\_\+st@{re\+\_\+st}}
+\index{re\+\_\+st@{re\+\_\+st}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{re\+\_\+st()}{re\_st()}}
+{\footnotesize\ttfamily const double\& oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::re\+\_\+st (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Product of Reynolds and Strouhal number (=Womersley number) 
+
+
+
+Definition at line 243 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References Re\+St\+\_\+pt.
+
+
+
+Referenced by fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+spherical\+\_\+nst(), and oomph\+::\+Refineable\+Spherical\+Navier\+Stokes\+Equations\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+spherical\+\_\+nst().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_ac626bfa171be369005086f0d398d4053}\label{classoomph_1_1SphericalNavierStokesEquations_ac626bfa171be369005086f0d398d4053}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!re\+\_\+st\+\_\+pt@{re\+\_\+st\+\_\+pt}}
+\index{re\+\_\+st\+\_\+pt@{re\+\_\+st\+\_\+pt}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{re\+\_\+st\+\_\+pt()}{re\_st\_pt()}}
+{\footnotesize\ttfamily double$\ast$ \& oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::re\+\_\+st\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Pointer to product of Reynolds and Strouhal number (=Womersley number) 
+
+
+
+Definition at line 249 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References Re\+St\+\_\+pt.
+
+
+
+Referenced by oomph\+::\+Refineable\+Spherical\+Navier\+Stokes\+Equations\+::further\+\_\+build().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_a043b034d3113a7e7aabb058fd950f90c}\label{classoomph_1_1SphericalNavierStokesEquations_a043b034d3113a7e7aabb058fd950f90c}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!source\+\_\+fct\+\_\+pt@{source\+\_\+fct\+\_\+pt}}
+\index{source\+\_\+fct\+\_\+pt@{source\+\_\+fct\+\_\+pt}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{source\+\_\+fct\+\_\+pt()}{source\_fct\_pt()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1SphericalNavierStokesEquations_abd522fea532c3de15dbe80205e53bdf8}{Spherical\+Navier\+Stokes\+Source\+Fct\+Pt}\& oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::source\+\_\+fct\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Access function for the source-\/function pointer. 
+
+
+
+Definition at line 292 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References Source\+\_\+fct\+\_\+pt.
+
+
+
+Referenced by oomph\+::\+Refineable\+Spherical\+Navier\+Stokes\+Equations\+::further\+\_\+build().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_a380e3b8db32dbafbdd0a7a798b234be6}\label{classoomph_1_1SphericalNavierStokesEquations_a380e3b8db32dbafbdd0a7a798b234be6}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!source\+\_\+fct\+\_\+pt@{source\+\_\+fct\+\_\+pt}}
+\index{source\+\_\+fct\+\_\+pt@{source\+\_\+fct\+\_\+pt}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{source\+\_\+fct\+\_\+pt()}{source\_fct\_pt()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1SphericalNavierStokesEquations_abd522fea532c3de15dbe80205e53bdf8}{Spherical\+Navier\+Stokes\+Source\+Fct\+Pt} oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::source\+\_\+fct\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Access function for the source-\/function pointer. Const version. 
+
+
+
+Definition at line 295 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References npres\+\_\+spherical\+\_\+nst(), and Source\+\_\+fct\+\_\+pt.
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_a4688b8021ff388a878ac9edbb218ef56}\label{classoomph_1_1SphericalNavierStokesEquations_a4688b8021ff388a878ac9edbb218ef56}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!strain\+\_\+rate@{strain\+\_\+rate}}
+\index{strain\+\_\+rate@{strain\+\_\+rate}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{strain\+\_\+rate()}{strain\_rate()}}
+{\footnotesize\ttfamily void oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::strain\+\_\+rate (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{strain\+\_\+rate }\end{DoxyParamCaption}) const}
+
+
+
+Strain-\/rate tensor\+: 1/2 (du\+\_\+i/dx\+\_\+j + du\+\_\+j/dx\+\_\+i) 
+
+Get strain-\/rate tensor\+: 1/2 (du\+\_\+i/dx\+\_\+j + du\+\_\+j/dx\+\_\+i) 
+
+Definition at line 1199 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+cc.
+
+
+
+References cot(), oomph\+::\+Finite\+Element\+::dshape\+\_\+eulerian(), e, get\+\_\+vorticity(), i, oomph\+::\+Finite\+Element\+::nnode(), oomph\+::\+Finite\+Element\+::nodal\+\_\+position(), oomph\+::\+Finite\+Element\+::nodal\+\_\+value(), oomph\+::\+Mathematical\+Constants\+::\+Pi, and u\+\_\+index\+\_\+spherical\+\_\+nst().
+
+
+
+Referenced by dissipation(), get\+\_\+traction(), oomph\+::\+Refineable\+Spherical\+Navier\+Stokes\+Equations\+::get\+\_\+\+Z2\+\_\+flux(), and p\+\_\+nodal\+\_\+index\+\_\+spherical\+\_\+nst().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_a2f269e20874a87df919cc4ece4b05fe5}\label{classoomph_1_1SphericalNavierStokesEquations_a2f269e20874a87df919cc4ece4b05fe5}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!u\+\_\+index\+\_\+spherical\+\_\+nst@{u\+\_\+index\+\_\+spherical\+\_\+nst}}
+\index{u\+\_\+index\+\_\+spherical\+\_\+nst@{u\+\_\+index\+\_\+spherical\+\_\+nst}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{u\+\_\+index\+\_\+spherical\+\_\+nst()}{u\_index\_spherical\_nst()}}
+{\footnotesize\ttfamily virtual unsigned oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::u\+\_\+index\+\_\+spherical\+\_\+nst (\begin{DoxyParamCaption}\item[{const unsigned \&}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Return the index at which the i-\/th unknown velocity component. 
+
+is stored. The default value, i, is appropriate for single-\/physics problems. In derived multi-\/physics elements, this function should be overloaded to reflect the chosen storage scheme. Note that these equations require that the unknowns are always stored at the same indices at each node. 
+
+Definition at line 321 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References i.
+
+
+
+Referenced by d\+\_\+kin\+\_\+energy\+\_\+dt(), du\+\_\+dt\+\_\+spherical\+\_\+nst(), fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+spherical\+\_\+nst(), oomph\+::\+Refineable\+Spherical\+Navier\+Stokes\+Equations\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+spherical\+\_\+nst(), full\+\_\+output(), oomph\+::\+Refineable\+Q\+Spherical\+Taylor\+Hood\+Element\+::get\+\_\+interpolated\+\_\+values(), oomph\+::\+Refineable\+Q\+Spherical\+Crouzeix\+Raviart\+Element\+::get\+\_\+interpolated\+\_\+values(), get\+\_\+pressure\+\_\+and\+\_\+velocity\+\_\+mass\+\_\+matrix\+\_\+diagonal(), get\+\_\+vorticity(), oomph\+::\+Q\+Spherical\+Crouzeix\+Raviart\+Element\+::identify\+\_\+load\+\_\+data(), oomph\+::\+Q\+Spherical\+Taylor\+Hood\+Element\+::identify\+\_\+load\+\_\+data(), interpolated\+\_\+dudx\+\_\+spherical\+\_\+nst(), interpolated\+\_\+u\+\_\+spherical\+\_\+nst(), output\+\_\+veloc(), strain\+\_\+rate(), and u\+\_\+spherical\+\_\+nst().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_a51514fae13c21583c958157a75a943bc}\label{classoomph_1_1SphericalNavierStokesEquations_a51514fae13c21583c958157a75a943bc}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!u\+\_\+spherical\+\_\+nst@{u\+\_\+spherical\+\_\+nst}}
+\index{u\+\_\+spherical\+\_\+nst@{u\+\_\+spherical\+\_\+nst}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{u\+\_\+spherical\+\_\+nst()}{u\_spherical\_nst()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily double oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::u\+\_\+spherical\+\_\+nst (\begin{DoxyParamCaption}\item[{const unsigned \&}]{n,  }\item[{const unsigned \&}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Velocity i at local node n. Uses suitably interpolated value for hanging nodes. The use of \hyperlink{classoomph_1_1SphericalNavierStokesEquations_a2f269e20874a87df919cc4ece4b05fe5}{u\+\_\+index\+\_\+spherical\+\_\+nst()} permits the use of this element as the basis for multi-\/physics elements. The default is to assume that the i-\/th velocity component is stored at the i-\/th location of the node. 
+
+
+
+Definition at line 306 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Finite\+Element\+::nodal\+\_\+value(), and u\+\_\+index\+\_\+spherical\+\_\+nst().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_ad51d5e5080680802ad1ee5daab91765d}\label{classoomph_1_1SphericalNavierStokesEquations_ad51d5e5080680802ad1ee5daab91765d}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!u\+\_\+spherical\+\_\+nst@{u\+\_\+spherical\+\_\+nst}}
+\index{u\+\_\+spherical\+\_\+nst@{u\+\_\+spherical\+\_\+nst}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{u\+\_\+spherical\+\_\+nst()}{u\_spherical\_nst()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily double oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::u\+\_\+spherical\+\_\+nst (\begin{DoxyParamCaption}\item[{const unsigned \&}]{t,  }\item[{const unsigned \&}]{n,  }\item[{const unsigned \&}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Velocity i at local node n at timestep t (t=0\+: present; t$>$0\+: previous). Uses suitably interpolated value for hanging nodes. 
+
+
+
+Definition at line 311 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Finite\+Element\+::nodal\+\_\+value(), and u\+\_\+index\+\_\+spherical\+\_\+nst().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_afe25a15c1ed202d735ca335b80b1202a}\label{classoomph_1_1SphericalNavierStokesEquations_afe25a15c1ed202d735ca335b80b1202a}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!viscosity\+\_\+ratio@{viscosity\+\_\+ratio}}
+\index{viscosity\+\_\+ratio@{viscosity\+\_\+ratio}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{viscosity\+\_\+ratio()}{viscosity\_ratio()}}
+{\footnotesize\ttfamily const double\& oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::viscosity\+\_\+ratio (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Viscosity ratio for element\+: Element\textquotesingle{}s viscosity relative to the viscosity used in the definition of the Reynolds number. 
+
+
+
+Definition at line 253 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References Viscosity\+\_\+\+Ratio\+\_\+pt.
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_af3550eb18343f67f126305c14491a5b8}\label{classoomph_1_1SphericalNavierStokesEquations_af3550eb18343f67f126305c14491a5b8}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!viscosity\+\_\+ratio\+\_\+pt@{viscosity\+\_\+ratio\+\_\+pt}}
+\index{viscosity\+\_\+ratio\+\_\+pt@{viscosity\+\_\+ratio\+\_\+pt}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{viscosity\+\_\+ratio\+\_\+pt()}{viscosity\_ratio\_pt()}}
+{\footnotesize\ttfamily double$\ast$ \& oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::viscosity\+\_\+ratio\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Pointer to Viscosity Ratio. 
+
+
+
+Definition at line 256 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References Viscosity\+\_\+\+Ratio\+\_\+pt.
+
+
+
+Referenced by oomph\+::\+Refineable\+Spherical\+Navier\+Stokes\+Equations\+::further\+\_\+build().
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_ae99a23d65958a96ae2d90151b86d30ab}\label{classoomph_1_1SphericalNavierStokesEquations_ae99a23d65958a96ae2d90151b86d30ab}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!A\+L\+E\+\_\+is\+\_\+disabled@{A\+L\+E\+\_\+is\+\_\+disabled}}
+\index{A\+L\+E\+\_\+is\+\_\+disabled@{A\+L\+E\+\_\+is\+\_\+disabled}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{A\+L\+E\+\_\+is\+\_\+disabled}{ALE\_is\_disabled}}
+{\footnotesize\ttfamily bool oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::\+A\+L\+E\+\_\+is\+\_\+disabled\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Boolean flag to indicate if A\+LE formulation is disabled when time-\/derivatives are computed. Only set to true if you\textquotesingle{}re sure that the mesh is stationary. 
+
+
+
+Definition at line 131 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+Referenced by d\+\_\+kin\+\_\+energy\+\_\+dt(), fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+spherical\+\_\+nst(), oomph\+::\+Refineable\+Spherical\+Navier\+Stokes\+Equations\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+spherical\+\_\+nst(), and oomph\+::\+Refineable\+Spherical\+Navier\+Stokes\+Equations\+::further\+\_\+build().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_ad1847f826dc0e33cb793319bfa41d985}\label{classoomph_1_1SphericalNavierStokesEquations_ad1847f826dc0e33cb793319bfa41d985}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!Body\+\_\+force\+\_\+fct\+\_\+pt@{Body\+\_\+force\+\_\+fct\+\_\+pt}}
+\index{Body\+\_\+force\+\_\+fct\+\_\+pt@{Body\+\_\+force\+\_\+fct\+\_\+pt}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{Body\+\_\+force\+\_\+fct\+\_\+pt}{Body\_force\_fct\_pt}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1SphericalNavierStokesEquations_aee36bea87063e9648a488de9e21f551d}{Spherical\+Navier\+Stokes\+Body\+Force\+Fct\+Pt} oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::\+Body\+\_\+force\+\_\+fct\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Pointer to body force function. 
+
+
+
+Definition at line 123 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+Referenced by body\+\_\+force\+\_\+fct\+\_\+pt(), and oomph\+::\+Refineable\+Spherical\+Navier\+Stokes\+Equations\+::further\+\_\+build().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_aceb58ae2aadd0d0f301f5728e767d0b9}\label{classoomph_1_1SphericalNavierStokesEquations_aceb58ae2aadd0d0f301f5728e767d0b9}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!Default\+\_\+\+Gravity\+\_\+vector@{Default\+\_\+\+Gravity\+\_\+vector}}
+\index{Default\+\_\+\+Gravity\+\_\+vector@{Default\+\_\+\+Gravity\+\_\+vector}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{Default\+\_\+\+Gravity\+\_\+vector}{Default\_Gravity\_vector}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::\+Default\+\_\+\+Gravity\+\_\+vector\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Static default value for the gravity vector. 
+
+Navier-\/\+Stokes equations default gravity vector. 
+
+Definition at line 89 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+Referenced by Spherical\+Navier\+Stokes\+Equations().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_aabcb425c7d08743c687838dc0c87a689}\label{classoomph_1_1SphericalNavierStokesEquations_aabcb425c7d08743c687838dc0c87a689}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!Default\+\_\+\+Physical\+\_\+\+Constant\+\_\+\+Value@{Default\+\_\+\+Physical\+\_\+\+Constant\+\_\+\+Value}}
+\index{Default\+\_\+\+Physical\+\_\+\+Constant\+\_\+\+Value@{Default\+\_\+\+Physical\+\_\+\+Constant\+\_\+\+Value}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{Default\+\_\+\+Physical\+\_\+\+Constant\+\_\+\+Value}{Default\_Physical\_Constant\_Value}}
+{\footnotesize\ttfamily double oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::\+Default\+\_\+\+Physical\+\_\+\+Constant\+\_\+\+Value = 0.\+0\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Static default value for the physical constants (all initialised to zero) 
+
+Navier--Stokes equations static data. 
+
+Definition at line 83 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+Referenced by Spherical\+Navier\+Stokes\+Equations().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_a3c7f1bfc912796a13db1fe49536ef369}\label{classoomph_1_1SphericalNavierStokesEquations_a3c7f1bfc912796a13db1fe49536ef369}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!Default\+\_\+\+Physical\+\_\+\+Ratio\+\_\+\+Value@{Default\+\_\+\+Physical\+\_\+\+Ratio\+\_\+\+Value}}
+\index{Default\+\_\+\+Physical\+\_\+\+Ratio\+\_\+\+Value@{Default\+\_\+\+Physical\+\_\+\+Ratio\+\_\+\+Value}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{Default\+\_\+\+Physical\+\_\+\+Ratio\+\_\+\+Value}{Default\_Physical\_Ratio\_Value}}
+{\footnotesize\ttfamily double oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::\+Default\+\_\+\+Physical\+\_\+\+Ratio\+\_\+\+Value = 1.\+0\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Static default value for the physical ratios (all are initialised to one) 
+
+Navier--Stokes equations static data. 
+
+Definition at line 86 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+Referenced by Spherical\+Navier\+Stokes\+Equations().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_a330d4410267b95650489d41dec74a3fd}\label{classoomph_1_1SphericalNavierStokesEquations_a330d4410267b95650489d41dec74a3fd}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!Density\+\_\+\+Ratio\+\_\+pt@{Density\+\_\+\+Ratio\+\_\+pt}}
+\index{Density\+\_\+\+Ratio\+\_\+pt@{Density\+\_\+\+Ratio\+\_\+pt}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{Density\+\_\+\+Ratio\+\_\+pt}{Density\_Ratio\_pt}}
+{\footnotesize\ttfamily double$\ast$ oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::\+Density\+\_\+\+Ratio\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Pointer to the density ratio (relative to the density used in the definition of the Reynolds number) 
+
+
+
+Definition at line 101 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+Referenced by density\+\_\+ratio(), density\+\_\+ratio\+\_\+pt(), and oomph\+::\+Refineable\+Spherical\+Navier\+Stokes\+Equations\+::further\+\_\+build().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_a658fccedce092b905f74278e882e34f1}\label{classoomph_1_1SphericalNavierStokesEquations_a658fccedce092b905f74278e882e34f1}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!G\+\_\+pt@{G\+\_\+pt}}
+\index{G\+\_\+pt@{G\+\_\+pt}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{G\+\_\+pt}{G\_pt}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1Vector}{Vector}$<$double$>$$\ast$ oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::\+G\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Pointer to global gravity \hyperlink{classoomph_1_1Vector}{Vector}. 
+
+
+
+Definition at line 120 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+Referenced by oomph\+::\+Refineable\+Spherical\+Navier\+Stokes\+Equations\+::further\+\_\+build(), g(), and g\+\_\+pt().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_a46db5472cddbf25175670ef6298cbe51}\label{classoomph_1_1SphericalNavierStokesEquations_a46db5472cddbf25175670ef6298cbe51}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!Gamma@{Gamma}}
+\index{Gamma@{Gamma}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{Gamma}{Gamma}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::\+Gamma\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+\hyperlink{classoomph_1_1Vector}{Vector} to decide whether the stress-\/divergence form is used or not. 
+
+Navier--Stokes equations static data. 
+
+Definition at line 235 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_a6e9d12a0f822100dea121402eabcab1d}\label{classoomph_1_1SphericalNavierStokesEquations_a6e9d12a0f822100dea121402eabcab1d}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!Pressure\+\_\+not\+\_\+stored\+\_\+at\+\_\+node@{Pressure\+\_\+not\+\_\+stored\+\_\+at\+\_\+node}}
+\index{Pressure\+\_\+not\+\_\+stored\+\_\+at\+\_\+node@{Pressure\+\_\+not\+\_\+stored\+\_\+at\+\_\+node}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{Pressure\+\_\+not\+\_\+stored\+\_\+at\+\_\+node}{Pressure\_not\_stored\_at\_node}}
+{\footnotesize\ttfamily int oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::\+Pressure\+\_\+not\+\_\+stored\+\_\+at\+\_\+node = -\/100\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Static \char`\"{}magic\char`\"{} number that indicates that the pressure is not stored at a node. 
+
+\char`\"{}\+Magic\char`\"{} negative number that indicates that the pressure is not stored at a node. This cannot be -\/1 because that represents the positional hanging scheme in the hanging\+\_\+pt object of nodes 
+
+Definition at line 80 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+Referenced by p\+\_\+nodal\+\_\+index\+\_\+spherical\+\_\+nst().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_a7bfc381e0cf6c141834168341f8a5128}\label{classoomph_1_1SphericalNavierStokesEquations_a7bfc381e0cf6c141834168341f8a5128}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!Re\+\_\+pt@{Re\+\_\+pt}}
+\index{Re\+\_\+pt@{Re\+\_\+pt}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{Re\+\_\+pt}{Re\_pt}}
+{\footnotesize\ttfamily double$\ast$ oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::\+Re\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Pointer to global Reynolds number. 
+
+
+
+Definition at line 106 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+Referenced by oomph\+::\+Refineable\+Spherical\+Navier\+Stokes\+Equations\+::further\+\_\+build(), re(), and re\+\_\+pt().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_ac85eb74fde9c8c5b31cdf2ae80f1f9bc}\label{classoomph_1_1SphericalNavierStokesEquations_ac85eb74fde9c8c5b31cdf2ae80f1f9bc}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!Re\+Inv\+Fr\+\_\+pt@{Re\+Inv\+Fr\+\_\+pt}}
+\index{Re\+Inv\+Fr\+\_\+pt@{Re\+Inv\+Fr\+\_\+pt}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{Re\+Inv\+Fr\+\_\+pt}{ReInvFr\_pt}}
+{\footnotesize\ttfamily double$\ast$ oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::\+Re\+Inv\+Fr\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Pointer to global Reynolds number x inverse Froude number (= Bond number / Capillary number) 
+
+
+
+Definition at line 113 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+Referenced by oomph\+::\+Refineable\+Spherical\+Navier\+Stokes\+Equations\+::further\+\_\+build(), re\+\_\+invfr(), and re\+\_\+invfr\+\_\+pt().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_a71e5db6ef157796354a86a91694203cf}\label{classoomph_1_1SphericalNavierStokesEquations_a71e5db6ef157796354a86a91694203cf}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!Re\+Inv\+Ro\+\_\+pt@{Re\+Inv\+Ro\+\_\+pt}}
+\index{Re\+Inv\+Ro\+\_\+pt@{Re\+Inv\+Ro\+\_\+pt}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{Re\+Inv\+Ro\+\_\+pt}{ReInvRo\_pt}}
+{\footnotesize\ttfamily double$\ast$ oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::\+Re\+Inv\+Ro\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Pointer to global Reynolds number x inverse Rossby number (used when in a rotating frame) 
+
+
+
+Definition at line 117 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+Referenced by oomph\+::\+Refineable\+Spherical\+Navier\+Stokes\+Equations\+::further\+\_\+build(), re\+\_\+invro(), and re\+\_\+invro\+\_\+pt().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_a4312d4d7e7e51c89dea51c21acb6a89d}\label{classoomph_1_1SphericalNavierStokesEquations_a4312d4d7e7e51c89dea51c21acb6a89d}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!Re\+St\+\_\+pt@{Re\+St\+\_\+pt}}
+\index{Re\+St\+\_\+pt@{Re\+St\+\_\+pt}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{Re\+St\+\_\+pt}{ReSt\_pt}}
+{\footnotesize\ttfamily double$\ast$ oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::\+Re\+St\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Pointer to global Reynolds number x Strouhal number (=Womersley) 
+
+
+
+Definition at line 109 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+Referenced by oomph\+::\+Refineable\+Spherical\+Navier\+Stokes\+Equations\+::further\+\_\+build(), re\+\_\+st(), and re\+\_\+st\+\_\+pt().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_a0f8bbc9d353784821db5781ebedeece5}\label{classoomph_1_1SphericalNavierStokesEquations_a0f8bbc9d353784821db5781ebedeece5}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!Source\+\_\+fct\+\_\+pt@{Source\+\_\+fct\+\_\+pt}}
+\index{Source\+\_\+fct\+\_\+pt@{Source\+\_\+fct\+\_\+pt}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{Source\+\_\+fct\+\_\+pt}{Source\_fct\_pt}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1SphericalNavierStokesEquations_abd522fea532c3de15dbe80205e53bdf8}{Spherical\+Navier\+Stokes\+Source\+Fct\+Pt} oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::\+Source\+\_\+fct\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Pointer to volumetric source function. 
+
+
+
+Definition at line 126 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+Referenced by oomph\+::\+Refineable\+Spherical\+Navier\+Stokes\+Equations\+::further\+\_\+build(), and source\+\_\+fct\+\_\+pt().
+
+\mbox{\Hypertarget{classoomph_1_1SphericalNavierStokesEquations_a7c52a5669ff71d86186bd88149df9b33}\label{classoomph_1_1SphericalNavierStokesEquations_a7c52a5669ff71d86186bd88149df9b33}} 
+\index{oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}!Viscosity\+\_\+\+Ratio\+\_\+pt@{Viscosity\+\_\+\+Ratio\+\_\+pt}}
+\index{Viscosity\+\_\+\+Ratio\+\_\+pt@{Viscosity\+\_\+\+Ratio\+\_\+pt}!oomph\+::\+Spherical\+Navier\+Stokes\+Equations@{oomph\+::\+Spherical\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{Viscosity\+\_\+\+Ratio\+\_\+pt}{Viscosity\_Ratio\_pt}}
+{\footnotesize\ttfamily double$\ast$ oomph\+::\+Spherical\+Navier\+Stokes\+Equations\+::\+Viscosity\+\_\+\+Ratio\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Pointer to the viscosity ratio (relative to the viscosity used in the definition of the Reynolds number) 
+
+
+
+Definition at line 97 of file spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+Referenced by oomph\+::\+Refineable\+Spherical\+Navier\+Stokes\+Equations\+::further\+\_\+build(), viscosity\+\_\+ratio(), and viscosity\+\_\+ratio\+\_\+pt().
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{spherical__navier__stokes__elements_8h}{spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+h}\item 
+\hyperlink{spherical__navier__stokes__elements_8cc}{spherical\+\_\+navier\+\_\+stokes\+\_\+elements.\+cc}\end{DoxyCompactItemize}

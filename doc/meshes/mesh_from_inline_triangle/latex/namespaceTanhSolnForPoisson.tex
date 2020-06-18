@@ -1,0 +1,118 @@
+\hypertarget{namespaceTanhSolnForPoisson}{}\section{Tanh\+Soln\+For\+Poisson Namespace Reference}
+\label{namespaceTanhSolnForPoisson}\index{Tanh\+Soln\+For\+Poisson@{Tanh\+Soln\+For\+Poisson}}
+
+
+Namespace for exact solution for Poisson equation with \char`\"{}sharp step\char`\"{}.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{namespaceTanhSolnForPoisson_af7896e9c18ce6438c73ae2a875e8b7de}{get\+\_\+exact\+\_\+u} (const Vector$<$ double $>$ \&x, Vector$<$ double $>$ \&u)
+\begin{DoxyCompactList}\small\item\em Exact solution as a Vector. \end{DoxyCompactList}\item 
+void \hyperlink{namespaceTanhSolnForPoisson_ae1b9d6789ff301e3d63a4e292213036c}{get\+\_\+source} (const Vector$<$ double $>$ \&x, double \&source)
+\begin{DoxyCompactList}\small\item\em Source function required to make the solution above an exact solution. \end{DoxyCompactList}\item 
+void \hyperlink{namespaceTanhSolnForPoisson_a5cd8441c6e87d4bc153697eff13513dd}{zero} (const Vector$<$ double $>$ \&x, Vector$<$ double $>$ \&u)
+\begin{DoxyCompactList}\small\item\em Zero function -- used to compute norm of the computed solution by computing the norm of the error when compared against this. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+double \hyperlink{namespaceTanhSolnForPoisson_ae676ccd186d5df119cce811596d949c1}{Alpha} =5.\+0
+\begin{DoxyCompactList}\small\item\em Parameter for steepness of \char`\"{}step\char`\"{}. \end{DoxyCompactList}\item 
+double \hyperlink{namespaceTanhSolnForPoisson_a785ccd00a727125a5138fbbcac173294}{Tan\+Phi} =0.\+0
+\begin{DoxyCompactList}\small\item\em Parameter for angle Phi of \char`\"{}step\char`\"{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Namespace for exact solution for Poisson equation with \char`\"{}sharp step\char`\"{}. 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceTanhSolnForPoisson_af7896e9c18ce6438c73ae2a875e8b7de}\label{namespaceTanhSolnForPoisson_af7896e9c18ce6438c73ae2a875e8b7de}} 
+\index{Tanh\+Soln\+For\+Poisson@{Tanh\+Soln\+For\+Poisson}!get\+\_\+exact\+\_\+u@{get\+\_\+exact\+\_\+u}}
+\index{get\+\_\+exact\+\_\+u@{get\+\_\+exact\+\_\+u}!Tanh\+Soln\+For\+Poisson@{Tanh\+Soln\+For\+Poisson}}
+\subsubsection{\texorpdfstring{get\+\_\+exact\+\_\+u()}{get\_exact\_u()}}
+{\footnotesize\ttfamily void Tanh\+Soln\+For\+Poisson\+::get\+\_\+exact\+\_\+u (\begin{DoxyParamCaption}\item[{const Vector$<$ double $>$ \&}]{x,  }\item[{Vector$<$ double $>$ \&}]{u }\end{DoxyParamCaption})}
+
+
+
+Exact solution as a Vector. 
+
+
+
+Definition at line 59 of file mesh\+\_\+from\+\_\+inline\+\_\+triangle.\+cc.
+
+
+
+Referenced by Unstructured\+Poisson\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::apply\+\_\+boundary\+\_\+conditions(), and Unstructured\+Poisson\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::doc\+\_\+solution().
+
+\mbox{\Hypertarget{namespaceTanhSolnForPoisson_ae1b9d6789ff301e3d63a4e292213036c}\label{namespaceTanhSolnForPoisson_ae1b9d6789ff301e3d63a4e292213036c}} 
+\index{Tanh\+Soln\+For\+Poisson@{Tanh\+Soln\+For\+Poisson}!get\+\_\+source@{get\+\_\+source}}
+\index{get\+\_\+source@{get\+\_\+source}!Tanh\+Soln\+For\+Poisson@{Tanh\+Soln\+For\+Poisson}}
+\subsubsection{\texorpdfstring{get\+\_\+source()}{get\_source()}}
+{\footnotesize\ttfamily void Tanh\+Soln\+For\+Poisson\+::get\+\_\+source (\begin{DoxyParamCaption}\item[{const Vector$<$ double $>$ \&}]{x,  }\item[{double \&}]{source }\end{DoxyParamCaption})}
+
+
+
+Source function required to make the solution above an exact solution. 
+
+
+
+Definition at line 65 of file mesh\+\_\+from\+\_\+inline\+\_\+triangle.\+cc.
+
+
+
+Referenced by Unstructured\+Poisson\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::complete\+\_\+problem\+\_\+setup().
+
+\mbox{\Hypertarget{namespaceTanhSolnForPoisson_a5cd8441c6e87d4bc153697eff13513dd}\label{namespaceTanhSolnForPoisson_a5cd8441c6e87d4bc153697eff13513dd}} 
+\index{Tanh\+Soln\+For\+Poisson@{Tanh\+Soln\+For\+Poisson}!zero@{zero}}
+\index{zero@{zero}!Tanh\+Soln\+For\+Poisson@{Tanh\+Soln\+For\+Poisson}}
+\subsubsection{\texorpdfstring{zero()}{zero()}}
+{\footnotesize\ttfamily void Tanh\+Soln\+For\+Poisson\+::zero (\begin{DoxyParamCaption}\item[{const Vector$<$ double $>$ \&}]{x,  }\item[{Vector$<$ double $>$ \&}]{u }\end{DoxyParamCaption})}
+
+
+
+Zero function -- used to compute norm of the computed solution by computing the norm of the error when compared against this. 
+
+
+
+Definition at line 76 of file mesh\+\_\+from\+\_\+inline\+\_\+triangle.\+cc.
+
+
+
+Referenced by Unstructured\+Poisson\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::doc\+\_\+solution().
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceTanhSolnForPoisson_ae676ccd186d5df119cce811596d949c1}\label{namespaceTanhSolnForPoisson_ae676ccd186d5df119cce811596d949c1}} 
+\index{Tanh\+Soln\+For\+Poisson@{Tanh\+Soln\+For\+Poisson}!Alpha@{Alpha}}
+\index{Alpha@{Alpha}!Tanh\+Soln\+For\+Poisson@{Tanh\+Soln\+For\+Poisson}}
+\subsubsection{\texorpdfstring{Alpha}{Alpha}}
+{\footnotesize\ttfamily double Tanh\+Soln\+For\+Poisson\+::\+Alpha =5.\+0}
+
+
+
+Parameter for steepness of \char`\"{}step\char`\"{}. 
+
+
+
+Definition at line 53 of file mesh\+\_\+from\+\_\+inline\+\_\+triangle.\+cc.
+
+\mbox{\Hypertarget{namespaceTanhSolnForPoisson_a785ccd00a727125a5138fbbcac173294}\label{namespaceTanhSolnForPoisson_a785ccd00a727125a5138fbbcac173294}} 
+\index{Tanh\+Soln\+For\+Poisson@{Tanh\+Soln\+For\+Poisson}!Tan\+Phi@{Tan\+Phi}}
+\index{Tan\+Phi@{Tan\+Phi}!Tanh\+Soln\+For\+Poisson@{Tanh\+Soln\+For\+Poisson}}
+\subsubsection{\texorpdfstring{Tan\+Phi}{TanPhi}}
+{\footnotesize\ttfamily double Tanh\+Soln\+For\+Poisson\+::\+Tan\+Phi =0.\+0}
+
+
+
+Parameter for angle Phi of \char`\"{}step\char`\"{}. 
+
+
+
+Definition at line 56 of file mesh\+\_\+from\+\_\+inline\+\_\+triangle.\+cc.
+
+
+
+Referenced by main().
+

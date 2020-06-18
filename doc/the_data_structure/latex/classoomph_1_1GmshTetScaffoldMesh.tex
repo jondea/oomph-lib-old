@@ -1,0 +1,142 @@
+\hypertarget{classoomph_1_1GmshTetScaffoldMesh}{}\section{oomph\+:\+:Gmsh\+Tet\+Scaffold\+Mesh Class Reference}
+\label{classoomph_1_1GmshTetScaffoldMesh}\index{oomph\+::\+Gmsh\+Tet\+Scaffold\+Mesh@{oomph\+::\+Gmsh\+Tet\+Scaffold\+Mesh}}
+
+
+{\ttfamily \#include $<$gmsh\+\_\+tet\+\_\+mesh.\+template.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Gmsh\+Tet\+Scaffold\+Mesh\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classoomph_1_1GmshTetScaffoldMesh}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1GmshTetScaffoldMesh_a16430cc97edb1f4ec0eab6cfa5b94563}{Gmsh\+Tet\+Scaffold\+Mesh} (\hyperlink{classoomph_1_1GmshParameters}{Gmsh\+Parameters} $\ast$gmsh\+\_\+parameters\+\_\+pt, const bool \&use\+\_\+mesh\+\_\+grading\+\_\+from\+\_\+file)
+\begin{DoxyCompactList}\small\item\em Build mesh, based on specified parameters. If boolean is set to true, the target element sizes are read from file (used during adaptation; otherwise uniform target size is used). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classoomph_1_1GmshTetScaffoldMesh_a13c5fa9a126fc1707534031826d8f43f}{create\+\_\+mesh\+\_\+from\+\_\+msh\+\_\+file} ()
+\begin{DoxyCompactList}\small\item\em Create mesh from msh file (created internally via disk-\/based operations) \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1GmshTetScaffoldMesh_a20ba8fb06fe0264c4ba0b586b104f969}{write\+\_\+geo\+\_\+file} (const bool \&use\+\_\+mesh\+\_\+grading\+\_\+from\+\_\+file)
+\begin{DoxyCompactList}\small\item\em Write geo file for gmsh. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1GmshParameters}{Gmsh\+Parameters} $\ast$ \hyperlink{classoomph_1_1GmshTetScaffoldMesh_afce3676b4f42501024ba1a933f04600d}{Gmsh\+\_\+parameters\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Parameters. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class E\+L\+E\+M\+E\+NT $>$ }\\class \hyperlink{classoomph_1_1GmshTetScaffoldMesh_a542660fc34eb890a935f0d42a3b4eb8a}{Gmsh\+Tet\+Mesh}
+\begin{DoxyCompactList}\small\item\em We\textquotesingle{}re friends with the actual mesh. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 377 of file gmsh\+\_\+tet\+\_\+mesh.\+template.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1GmshTetScaffoldMesh_a16430cc97edb1f4ec0eab6cfa5b94563}\label{classoomph_1_1GmshTetScaffoldMesh_a16430cc97edb1f4ec0eab6cfa5b94563}} 
+\index{oomph\+::\+Gmsh\+Tet\+Scaffold\+Mesh@{oomph\+::\+Gmsh\+Tet\+Scaffold\+Mesh}!Gmsh\+Tet\+Scaffold\+Mesh@{Gmsh\+Tet\+Scaffold\+Mesh}}
+\index{Gmsh\+Tet\+Scaffold\+Mesh@{Gmsh\+Tet\+Scaffold\+Mesh}!oomph\+::\+Gmsh\+Tet\+Scaffold\+Mesh@{oomph\+::\+Gmsh\+Tet\+Scaffold\+Mesh}}
+\subsubsection{\texorpdfstring{Gmsh\+Tet\+Scaffold\+Mesh()}{GmshTetScaffoldMesh()}}
+{\footnotesize\ttfamily oomph\+::\+Gmsh\+Tet\+Scaffold\+Mesh\+::\+Gmsh\+Tet\+Scaffold\+Mesh (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1GmshParameters}{Gmsh\+Parameters} $\ast$}]{gmsh\+\_\+parameters\+\_\+pt,  }\item[{const bool \&}]{use\+\_\+mesh\+\_\+grading\+\_\+from\+\_\+file }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Build mesh, based on specified parameters. If boolean is set to true, the target element sizes are read from file (used during adaptation; otherwise uniform target size is used). 
+
+
+
+Definition at line 390 of file gmsh\+\_\+tet\+\_\+mesh.\+template.\+h.
+
+
+
+References oomph\+::\+Gmsh\+Parameters\+::gmsh\+\_\+onscreen\+\_\+output\+\_\+counter(), oomph\+::\+Gmsh\+Parameters\+::gmsh\+\_\+onscreen\+\_\+output\+\_\+file\+\_\+name(), oomph\+::oomph\+\_\+info, oomph\+::\+Global\+\_\+string\+\_\+for\+\_\+annotation\+::string(), and oomph\+::\+Timing\+Helpers\+::timer().
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1GmshTetScaffoldMesh_a13c5fa9a126fc1707534031826d8f43f}\label{classoomph_1_1GmshTetScaffoldMesh_a13c5fa9a126fc1707534031826d8f43f}} 
+\index{oomph\+::\+Gmsh\+Tet\+Scaffold\+Mesh@{oomph\+::\+Gmsh\+Tet\+Scaffold\+Mesh}!create\+\_\+mesh\+\_\+from\+\_\+msh\+\_\+file@{create\+\_\+mesh\+\_\+from\+\_\+msh\+\_\+file}}
+\index{create\+\_\+mesh\+\_\+from\+\_\+msh\+\_\+file@{create\+\_\+mesh\+\_\+from\+\_\+msh\+\_\+file}!oomph\+::\+Gmsh\+Tet\+Scaffold\+Mesh@{oomph\+::\+Gmsh\+Tet\+Scaffold\+Mesh}}
+\subsubsection{\texorpdfstring{create\+\_\+mesh\+\_\+from\+\_\+msh\+\_\+file()}{create\_mesh\_from\_msh\_file()}}
+{\footnotesize\ttfamily void oomph\+::\+Gmsh\+Tet\+Scaffold\+Mesh\+::create\+\_\+mesh\+\_\+from\+\_\+msh\+\_\+file (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Create mesh from msh file (created internally via disk-\/based operations) 
+
+
+
+Definition at line 460 of file gmsh\+\_\+tet\+\_\+mesh.\+template.\+h.
+
+
+
+References e, oomph\+::\+Gmsh\+Parameters\+::geo\+\_\+and\+\_\+msh\+\_\+file\+\_\+stem(), i, oomph\+::oomph\+\_\+info, s, oomph\+::\+Global\+\_\+string\+\_\+for\+\_\+annotation\+::string(), oomph\+::\+String\+Conversion\+::to\+\_\+string(), and oomph\+::\+Node\+::x().
+
+\mbox{\Hypertarget{classoomph_1_1GmshTetScaffoldMesh_a20ba8fb06fe0264c4ba0b586b104f969}\label{classoomph_1_1GmshTetScaffoldMesh_a20ba8fb06fe0264c4ba0b586b104f969}} 
+\index{oomph\+::\+Gmsh\+Tet\+Scaffold\+Mesh@{oomph\+::\+Gmsh\+Tet\+Scaffold\+Mesh}!write\+\_\+geo\+\_\+file@{write\+\_\+geo\+\_\+file}}
+\index{write\+\_\+geo\+\_\+file@{write\+\_\+geo\+\_\+file}!oomph\+::\+Gmsh\+Tet\+Scaffold\+Mesh@{oomph\+::\+Gmsh\+Tet\+Scaffold\+Mesh}}
+\subsubsection{\texorpdfstring{write\+\_\+geo\+\_\+file()}{write\_geo\_file()}}
+{\footnotesize\ttfamily void oomph\+::\+Gmsh\+Tet\+Scaffold\+Mesh\+::write\+\_\+geo\+\_\+file (\begin{DoxyParamCaption}\item[{const bool \&}]{use\+\_\+mesh\+\_\+grading\+\_\+from\+\_\+file }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Write geo file for gmsh. 
+
+
+
+Definition at line 1034 of file gmsh\+\_\+tet\+\_\+mesh.\+template.\+h.
+
+
+
+References oomph\+::\+Gmsh\+Parameters\+::element\+\_\+volume(), oomph\+::\+Tet\+Mesh\+Faceted\+Surface\+::facet\+\_\+pt(), oomph\+::\+Tet\+Mesh\+Faceted\+Closed\+Surface\+::faceted\+\_\+volume\+\_\+represents\+\_\+hole\+\_\+for\+\_\+gmsh(), i, oomph\+::\+Gmsh\+Parameters\+::internal\+\_\+surface\+\_\+pt(), oomph\+::\+Tet\+Edge\+::is\+\_\+reversed(), oomph\+::\+Tet\+Mesh\+Faceted\+Surface\+::nfacet(), oomph\+::\+Tet\+Mesh\+Facet\+::nvertex(), oomph\+::\+Tet\+Mesh\+Faceted\+Surface\+::nvertex(), oomph\+::\+Tet\+Mesh\+Facet\+::one\+\_\+based\+\_\+adjacent\+\_\+region\+\_\+id(), oomph\+::\+Tet\+Mesh\+Faceted\+Surface\+::one\+\_\+based\+\_\+facet\+\_\+boundary\+\_\+id(), oomph\+::\+Tet\+Mesh\+Facet\+::one\+\_\+based\+\_\+region\+\_\+that\+\_\+facet\+\_\+is\+\_\+embedded\+\_\+in(), oomph\+::\+Gmsh\+Parameters\+::outer\+\_\+boundary\+\_\+pt(), s, oomph\+::\+Global\+\_\+string\+\_\+for\+\_\+annotation\+::string(), oomph\+::\+Gmsh\+Parameters\+::target\+\_\+size\+\_\+file\+\_\+name(), oomph\+::\+Tet\+Mesh\+Facet\+::vertex\+\_\+pt(), oomph\+::\+Tet\+Mesh\+Faceted\+Surface\+::vertex\+\_\+pt(), and oomph\+::\+Tet\+Mesh\+Vertex\+::x().
+
+
+
+\subsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1GmshTetScaffoldMesh_a542660fc34eb890a935f0d42a3b4eb8a}\label{classoomph_1_1GmshTetScaffoldMesh_a542660fc34eb890a935f0d42a3b4eb8a}} 
+\index{oomph\+::\+Gmsh\+Tet\+Scaffold\+Mesh@{oomph\+::\+Gmsh\+Tet\+Scaffold\+Mesh}!Gmsh\+Tet\+Mesh@{Gmsh\+Tet\+Mesh}}
+\index{Gmsh\+Tet\+Mesh@{Gmsh\+Tet\+Mesh}!oomph\+::\+Gmsh\+Tet\+Scaffold\+Mesh@{oomph\+::\+Gmsh\+Tet\+Scaffold\+Mesh}}
+\subsubsection{\texorpdfstring{Gmsh\+Tet\+Mesh}{GmshTetMesh}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+friend class \hyperlink{classoomph_1_1GmshTetMesh}{Gmsh\+Tet\+Mesh}\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+We\textquotesingle{}re friends with the actual mesh. 
+
+
+
+Definition at line 385 of file gmsh\+\_\+tet\+\_\+mesh.\+template.\+h.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1GmshTetScaffoldMesh_afce3676b4f42501024ba1a933f04600d}\label{classoomph_1_1GmshTetScaffoldMesh_afce3676b4f42501024ba1a933f04600d}} 
+\index{oomph\+::\+Gmsh\+Tet\+Scaffold\+Mesh@{oomph\+::\+Gmsh\+Tet\+Scaffold\+Mesh}!Gmsh\+\_\+parameters\+\_\+pt@{Gmsh\+\_\+parameters\+\_\+pt}}
+\index{Gmsh\+\_\+parameters\+\_\+pt@{Gmsh\+\_\+parameters\+\_\+pt}!oomph\+::\+Gmsh\+Tet\+Scaffold\+Mesh@{oomph\+::\+Gmsh\+Tet\+Scaffold\+Mesh}}
+\subsubsection{\texorpdfstring{Gmsh\+\_\+parameters\+\_\+pt}{Gmsh\_parameters\_pt}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1GmshParameters}{Gmsh\+Parameters}$\ast$ oomph\+::\+Gmsh\+Tet\+Scaffold\+Mesh\+::\+Gmsh\+\_\+parameters\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Parameters. 
+
+
+
+Definition at line 1674 of file gmsh\+\_\+tet\+\_\+mesh.\+template.\+h.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{gmsh__tet__mesh_8template_8h}{gmsh\+\_\+tet\+\_\+mesh.\+template.\+h}\end{DoxyCompactItemize}

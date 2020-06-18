@@ -1,0 +1,749 @@
+\hypertarget{classoomph_1_1PRefineableQCrouzeixRaviartElement}{}\section{oomph\+:\+:P\+Refineable\+Q\+Crouzeix\+Raviart\+Element$<$ D\+IM $>$ Class Template Reference}
+\label{classoomph_1_1PRefineableQCrouzeixRaviartElement}\index{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element$<$ D\+I\+M $>$@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element$<$ D\+I\+M $>$}}
+
+
+{\ttfamily \#include $<$refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:P\+Refineable\+Q\+Crouzeix\+Raviart\+Element$<$ D\+IM $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=0.911805cm]{classoomph_1_1PRefineableQCrouzeixRaviartElement}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement_a969688cb60fec675bb619d09456149e0}{P\+Refineable\+Q\+Crouzeix\+Raviart\+Element} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement_a1cf44559e861aa992849c7466d2123e2}{$\sim$\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement_a4b777fda0ed91d4ca0181fb3705b2af3}{P\+Refineable\+Q\+Crouzeix\+Raviart\+Element} (const \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement}{P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}$<$ D\+IM $>$ \&dummy)
+\begin{DoxyCompactList}\small\item\em Broken copy constructor. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement_a2a9613cf21e1d115893491423ca5394a}{p\+\_\+nst} (const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}) const
+\begin{DoxyCompactList}\small\item\em Broken assignment operator. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement_a1a70b2251c5150e4719db4e26bbde7f0}{p\+\_\+nst} (const unsigned \&\hyperlink{cfortran_8h_af6f0bd3dc13317f895c91323c25c2b8f}{t}, const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}) const
+\begin{DoxyCompactList}\small\item\em Return the i-\/th pressure value (Discontinous pressure interpolation -- no need to cater for hanging nodes). \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement_a6431bb5f74022a94d074d04ba2f4c7a1}{npres\+\_\+nst} () const
+\begin{DoxyCompactList}\small\item\em Return number of pressure values. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement_a31a014a5e5d549d793968245d56d5d69}{fix\+\_\+pressure} (const unsigned \&p\+\_\+dof, const double \&p\+\_\+value)
+\begin{DoxyCompactList}\small\item\em Pin p\+\_\+dof-\/th pressure dof and set it to value specified by p\+\_\+value. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement_a5789a5ace7a5d633dec82c775ac890bf}{required\+\_\+nvalue} (const unsigned \&n) const
+\begin{DoxyCompactList}\small\item\em Number of values (pinned or dofs) required at local node n. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement_a8fc2388f81c74e6c9dc32058592ed7d2}{ncont\+\_\+interpolated\+\_\+values} () const
+\begin{DoxyCompactList}\small\item\em Number of continuously interpolated values\+: D\+IM (velocities) \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement_a0511e9fbba31ef30acd3cf7987d1f4a5}{rebuild\+\_\+from\+\_\+sons} (\hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$\&mesh\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Rebuild from sons\+: Reconstruct pressure from the (merged) sons This must be specialised for each dimension. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement_a8a4bf8ba2d89273431c78ea5e09e0947}{nrecovery\+\_\+order} ()
+\begin{DoxyCompactList}\small\item\em Order of recovery shape functions for Z2 error estimation\+: \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement_a4f29431659c8fb00cd2b56b21bcb722c}{nvertex\+\_\+node} () const
+\begin{DoxyCompactList}\small\item\em Number of vertex nodes in the element. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Node}{Node} $\ast$ \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement_a0a0d25592c0b9b04505fbd0b3bb4fb22}{vertex\+\_\+node\+\_\+pt} (const unsigned \&j) const
+\begin{DoxyCompactList}\small\item\em Pointer to the j-\/th vertex node in the element. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement_a72a81749bb4c7f43462324935e1617a7}{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+nst} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Shape}{Shape} \&psi, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dpsidx, \hyperlink{classoomph_1_1Shape}{Shape} \&test, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dtestdx) const
+\begin{DoxyCompactList}\small\item\em Velocity shape and test functions and their derivs w.\+r.\+t. to global coords at local coordinate s (taken from geometry) Return Jacobian of mapping between local and global coordinates. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement_ab11329961821573134dcc4d97b0b61f0}{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+nst} (const unsigned \&ipt, \hyperlink{classoomph_1_1Shape}{Shape} \&psi, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dpsidx, \hyperlink{classoomph_1_1Shape}{Shape} \&test, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dtestdx) const
+\begin{DoxyCompactList}\small\item\em Velocity shape and test functions and their derivs w.\+r.\+t. to global coords at ipt-\/th integation point (taken from geometry) Return Jacobian of mapping between local and global coordinates. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement_a19222e5c997c7ce4a30452d9aab12ad0}{pshape\+\_\+nst} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Shape}{Shape} \&psi) const
+\begin{DoxyCompactList}\small\item\em Pressure shape functions at local coordinate s. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement_a5891e3675a411f77fca204fa567c71da}{pshape\+\_\+nst} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Shape}{Shape} \&psi, \hyperlink{classoomph_1_1Shape}{Shape} \&test) const
+\begin{DoxyCompactList}\small\item\em Pressure shape and test functions at local coordinte s. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement_ac9cfbe5c8df894511fd03d49b4015d19}{get\+\_\+interpolated\+\_\+values} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&values)
+\begin{DoxyCompactList}\small\item\em Get the function value u in \hyperlink{classoomph_1_1Vector}{Vector}. Note\+: Given the generality of the interface (this function is usually called from black-\/box documentation or interpolation routines), the values \hyperlink{classoomph_1_1Vector}{Vector} sets its own size in here. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement_af7337a2ad744a06a2e5c3590dcd07dfb}{get\+\_\+interpolated\+\_\+values} (const unsigned \&\hyperlink{cfortran_8h_af6f0bd3dc13317f895c91323c25c2b8f}{t}, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&values)
+\begin{DoxyCompactList}\small\item\em Get all function values \mbox{[}u,v..,p\mbox{]} at previous timestep t (t=0\+: present; t$>$0\+: previous timestep). \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement_a782e45a47d5e1df77bcbc6480f90c24d}{further\+\_\+setup\+\_\+hanging\+\_\+nodes} ()
+\begin{DoxyCompactList}\small\item\em Perform additional hanging node procedures for variables that are not interpolated by all nodes. Empty. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement_a3129fe3450caf60d2f678024d7bf7f08}{further\+\_\+build} ()
+\item 
+{\footnotesize template$<$$>$ }\\void \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement_a98e341f00435e0c9b81c0615412bd734}{further\+\_\+build} ()
+\item 
+{\footnotesize template$<$$>$ }\\void \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement_a4d5c10a7a11d43c4af08196b95e4803e}{further\+\_\+build} ()
+\item 
+{\footnotesize template$<$$>$ }\\double \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement_a8ded9a5c48d5112468313b1354ad5b44}{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+nst} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Shape}{Shape} \&psi, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dpsidx, \hyperlink{classoomph_1_1Shape}{Shape} \&test, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dtestdx) const
+\item 
+{\footnotesize template$<$$>$ }\\double \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement_a1537fd64ea853532de2f09b48b0d1db8}{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+nst} (const unsigned \&ipt, \hyperlink{classoomph_1_1Shape}{Shape} \&psi, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dpsidx, \hyperlink{classoomph_1_1Shape}{Shape} \&test, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dtestdx) const
+\item 
+{\footnotesize template$<$$>$ }\\double \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement_adb1580b8713df0efdda70ddf47afda20}{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+nst} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Shape}{Shape} \&psi, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dpsidx, \hyperlink{classoomph_1_1Shape}{Shape} \&test, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dtestdx) const
+\item 
+{\footnotesize template$<$$>$ }\\double \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement_a1694309d7e0bc7ddd2691784c37cc2f0}{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+nst} (const unsigned \&ipt, \hyperlink{classoomph_1_1Shape}{Shape} \&psi, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dpsidx, \hyperlink{classoomph_1_1Shape}{Shape} \&test, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dtestdx) const
+\item 
+{\footnotesize template$<$$>$ }\\void \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement_a87afeb50892736eace1e3d68d6c53172}{pshape\+\_\+nst} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Shape}{Shape} \&psi) const
+\item 
+{\footnotesize template$<$$>$ }\\void \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement_aa3cf8c270ec40c6d7c507b71dd6676d3}{pshape\+\_\+nst} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Shape}{Shape} \&psi, \hyperlink{classoomph_1_1Shape}{Shape} \&test) const
+\begin{DoxyCompactList}\small\item\em Define the pressure shape and test functions. \end{DoxyCompactList}\item 
+{\footnotesize template$<$$>$ }\\void \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement_a556b7533944abd5eedce664d708b4eae}{pshape\+\_\+nst} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Shape}{Shape} \&psi) const
+\item 
+{\footnotesize template$<$$>$ }\\void \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement_acf1d5e8b3dc66e12bff22d73d06ea4d6}{pshape\+\_\+nst} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Shape}{Shape} \&psi, \hyperlink{classoomph_1_1Shape}{Shape} \&test) const
+\begin{DoxyCompactList}\small\item\em Define the pressure shape and test functions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement_a686b52095b423b9d7173aa338e8a7d33}{unpin\+\_\+elemental\+\_\+pressure\+\_\+dofs} ()
+\begin{DoxyCompactList}\small\item\em Unpin all internal pressure dofs. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$unsigned D\+IM$>$\newline
+class oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element$<$ D\+I\+M $>$}
+
+p-\/refineable version of Crouzeix Raviart elements. Generic class definitions 
+
+Definition at line 1283 of file refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1PRefineableQCrouzeixRaviartElement_a969688cb60fec675bb619d09456149e0}\label{classoomph_1_1PRefineableQCrouzeixRaviartElement_a969688cb60fec675bb619d09456149e0}} 
+\index{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}!P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}}
+\index{P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}!oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}}
+\subsubsection{\texorpdfstring{P\+Refineable\+Q\+Crouzeix\+Raviart\+Element()}{PRefineableQCrouzeixRaviartElement()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+\hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement}{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}$<$ D\+IM $>$\+::\hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement}{P\+Refineable\+Q\+Crouzeix\+Raviart\+Element} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor. 
+
+
+
+Definition at line 1303 of file refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Generalised\+Element\+::internal\+\_\+data\+\_\+pt(), oomph\+::\+Data\+::resize(), and oomph\+::\+Finite\+Element\+::set\+\_\+integration\+\_\+scheme().
+
+\mbox{\Hypertarget{classoomph_1_1PRefineableQCrouzeixRaviartElement_a1cf44559e861aa992849c7466d2123e2}\label{classoomph_1_1PRefineableQCrouzeixRaviartElement_a1cf44559e861aa992849c7466d2123e2}} 
+\index{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}!````~P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{$\sim$\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}}
+\index{````~P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{$\sim$\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}!oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}}
+\subsubsection{\texorpdfstring{$\sim$\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element()}{~PRefineableQCrouzeixRaviartElement()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+\hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement}{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}$<$ D\+IM $>$\+::$\sim$\hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement}{P\+Refineable\+Q\+Crouzeix\+Raviart\+Element} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Destructor. 
+
+
+
+Definition at line 1334 of file refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Finite\+Element\+::integral\+\_\+pt().
+
+\mbox{\Hypertarget{classoomph_1_1PRefineableQCrouzeixRaviartElement_a4b777fda0ed91d4ca0181fb3705b2af3}\label{classoomph_1_1PRefineableQCrouzeixRaviartElement_a4b777fda0ed91d4ca0181fb3705b2af3}} 
+\index{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}!P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}}
+\index{P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}!oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}}
+\subsubsection{\texorpdfstring{P\+Refineable\+Q\+Crouzeix\+Raviart\+Element()}{PRefineableQCrouzeixRaviartElement()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+\hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement}{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}$<$ D\+IM $>$\+::\hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement}{P\+Refineable\+Q\+Crouzeix\+Raviart\+Element} (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement}{P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}$<$ D\+IM $>$ \&}]{dummy }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Broken copy constructor. 
+
+
+
+Definition at line 1342 of file refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Broken\+Copy\+::broken\+\_\+copy().
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1PRefineableQCrouzeixRaviartElement_ab11329961821573134dcc4d97b0b61f0}\label{classoomph_1_1PRefineableQCrouzeixRaviartElement_ab11329961821573134dcc4d97b0b61f0}} 
+\index{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}!dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+nst@{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+nst}}
+\index{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+nst@{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+nst}!oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}}
+\subsubsection{\texorpdfstring{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+nst()}{dshape\_and\_dtest\_eulerian\_at\_knot\_nst()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+double \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement}{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}$<$ D\+IM $>$\+::dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+nst (\begin{DoxyParamCaption}\item[{const unsigned \&}]{ipt,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dpsidx,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{test,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dtestdx }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Velocity shape and test functions and their derivs w.\+r.\+t. to global coords at ipt-\/th integation point (taken from geometry) Return Jacobian of mapping between local and global coordinates. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1QCrouzeixRaviartElement_a3c4261300b81aae3ac358198b3e11906}{oomph\+::\+Q\+Crouzeix\+Raviart\+Element$<$ D\+I\+M $>$}.
+
+
+
+Referenced by oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element$<$ D\+I\+M $>$\+::dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+nst().
+
+\mbox{\Hypertarget{classoomph_1_1PRefineableQCrouzeixRaviartElement_a1537fd64ea853532de2f09b48b0d1db8}\label{classoomph_1_1PRefineableQCrouzeixRaviartElement_a1537fd64ea853532de2f09b48b0d1db8}} 
+\index{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}!dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+nst@{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+nst}}
+\index{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+nst@{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+nst}!oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}}
+\subsubsection{\texorpdfstring{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+nst()}{dshape\_and\_dtest\_eulerian\_at\_knot\_nst()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$$>$ \\
+double \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement}{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}$<$ 2 $>$\+::dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+nst (\begin{DoxyParamCaption}\item[{const unsigned \&}]{ipt,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dpsidx,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{test,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dtestdx }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+2D Derivatives of the shape functions and test functions w.\+r.\+t. to global (Eulerian) coordinates. Return Jacobian of mapping between local and global coordinates. 
+
+Reimplemented from \hyperlink{classoomph_1_1QCrouzeixRaviartElement_a3c4261300b81aae3ac358198b3e11906}{oomph\+::\+Q\+Crouzeix\+Raviart\+Element$<$ D\+I\+M $>$}.
+
+
+
+Definition at line 1920 of file refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element$<$ D\+I\+M $>$\+::dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+nst(), oomph\+::\+Finite\+Element\+::dshape\+\_\+eulerian\+\_\+at\+\_\+knot(), i, and oomph\+::\+Finite\+Element\+::nnode\+\_\+1d().
+
+\mbox{\Hypertarget{classoomph_1_1PRefineableQCrouzeixRaviartElement_a1694309d7e0bc7ddd2691784c37cc2f0}\label{classoomph_1_1PRefineableQCrouzeixRaviartElement_a1694309d7e0bc7ddd2691784c37cc2f0}} 
+\index{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}!dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+nst@{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+nst}}
+\index{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+nst@{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+nst}!oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}}
+\subsubsection{\texorpdfstring{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+nst()}{dshape\_and\_dtest\_eulerian\_at\_knot\_nst()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$$>$ \\
+double \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement}{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}$<$ 3 $>$\+::dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+nst (\begin{DoxyParamCaption}\item[{const unsigned \&}]{ipt,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dpsidx,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{test,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dtestdx }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+3D Derivatives of the shape functions and test functions w.\+r.\+t. to global (Eulerian) coordinates. Return Jacobian of mapping between local and global coordinates. 
+
+Reimplemented from \hyperlink{classoomph_1_1QCrouzeixRaviartElement_a3c4261300b81aae3ac358198b3e11906}{oomph\+::\+Q\+Crouzeix\+Raviart\+Element$<$ D\+I\+M $>$}.
+
+
+
+Definition at line 1977 of file refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Finite\+Element\+::dshape\+\_\+eulerian\+\_\+at\+\_\+knot(), i, oomph\+::\+Finite\+Element\+::nnode\+\_\+1d(), and oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element$<$ D\+I\+M $>$\+::pshape\+\_\+nst().
+
+\mbox{\Hypertarget{classoomph_1_1PRefineableQCrouzeixRaviartElement_a72a81749bb4c7f43462324935e1617a7}\label{classoomph_1_1PRefineableQCrouzeixRaviartElement_a72a81749bb4c7f43462324935e1617a7}} 
+\index{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}!dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+nst@{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+nst}}
+\index{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+nst@{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+nst}!oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}}
+\subsubsection{\texorpdfstring{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+nst()}{dshape\_and\_dtest\_eulerian\_nst()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+double \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement}{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}$<$ D\+IM $>$\+::dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+nst (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dpsidx,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{test,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dtestdx }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Velocity shape and test functions and their derivs w.\+r.\+t. to global coords at local coordinate s (taken from geometry) Return Jacobian of mapping between local and global coordinates. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1QCrouzeixRaviartElement_af1553d79bb5f49fd21f695d468ea59d4}{oomph\+::\+Q\+Crouzeix\+Raviart\+Element$<$ D\+I\+M $>$}.
+
+
+
+Referenced by oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element$<$ D\+I\+M $>$\+::dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+nst(), and oomph\+::\+Refineable\+Q\+Crouzeix\+Raviart\+Element$<$ D\+I\+M $>$\+::further\+\_\+build().
+
+\mbox{\Hypertarget{classoomph_1_1PRefineableQCrouzeixRaviartElement_a8ded9a5c48d5112468313b1354ad5b44}\label{classoomph_1_1PRefineableQCrouzeixRaviartElement_a8ded9a5c48d5112468313b1354ad5b44}} 
+\index{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}!dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+nst@{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+nst}}
+\index{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+nst@{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+nst}!oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}}
+\subsubsection{\texorpdfstring{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+nst()}{dshape\_and\_dtest\_eulerian\_nst()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$$>$ \\
+double \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement}{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}$<$ 2 $>$\+::dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+nst (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dpsidx,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{test,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dtestdx }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+2D Derivatives of the shape functions and test functions w.\+r.\+t. to global (Eulerian) coordinates. Return Jacobian of mapping between local and global coordinates. 
+
+Reimplemented from \hyperlink{classoomph_1_1QCrouzeixRaviartElement_af1553d79bb5f49fd21f695d468ea59d4}{oomph\+::\+Q\+Crouzeix\+Raviart\+Element$<$ D\+I\+M $>$}.
+
+
+
+Definition at line 1892 of file refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element$<$ D\+I\+M $>$\+::dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+nst(), oomph\+::\+Finite\+Element\+::dshape\+\_\+eulerian(), i, and oomph\+::\+Finite\+Element\+::nnode\+\_\+1d().
+
+\mbox{\Hypertarget{classoomph_1_1PRefineableQCrouzeixRaviartElement_adb1580b8713df0efdda70ddf47afda20}\label{classoomph_1_1PRefineableQCrouzeixRaviartElement_adb1580b8713df0efdda70ddf47afda20}} 
+\index{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}!dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+nst@{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+nst}}
+\index{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+nst@{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+nst}!oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}}
+\subsubsection{\texorpdfstring{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+nst()}{dshape\_and\_dtest\_eulerian\_nst()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$$>$ \\
+double \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement}{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}$<$ 3 $>$\+::dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+nst (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dpsidx,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{test,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dtestdx }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+3D Derivatives of the shape functions and test functions w.\+r.\+t. to global (Eulerian) coordinates. Return Jacobian of mapping between local and global coordinates. 
+
+Reimplemented from \hyperlink{classoomph_1_1QCrouzeixRaviartElement_af1553d79bb5f49fd21f695d468ea59d4}{oomph\+::\+Q\+Crouzeix\+Raviart\+Element$<$ D\+I\+M $>$}.
+
+
+
+Definition at line 1948 of file refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element$<$ D\+I\+M $>$\+::dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+nst(), oomph\+::\+Finite\+Element\+::dshape\+\_\+eulerian(), i, and oomph\+::\+Finite\+Element\+::nnode\+\_\+1d().
+
+\mbox{\Hypertarget{classoomph_1_1PRefineableQCrouzeixRaviartElement_a31a014a5e5d549d793968245d56d5d69}\label{classoomph_1_1PRefineableQCrouzeixRaviartElement_a31a014a5e5d549d793968245d56d5d69}} 
+\index{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}!fix\+\_\+pressure@{fix\+\_\+pressure}}
+\index{fix\+\_\+pressure@{fix\+\_\+pressure}!oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}}
+\subsubsection{\texorpdfstring{fix\+\_\+pressure()}{fix\_pressure()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement}{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}$<$ D\+IM $>$\+::fix\+\_\+pressure (\begin{DoxyParamCaption}\item[{const unsigned \&}]{p\+\_\+dof,  }\item[{const double \&}]{p\+\_\+value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Pin p\+\_\+dof-\/th pressure dof and set it to value specified by p\+\_\+value. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1QCrouzeixRaviartElement_ae885b689682846f17db8d2e07f711838}{oomph\+::\+Q\+Crouzeix\+Raviart\+Element$<$ D\+I\+M $>$}.
+
+
+
+Definition at line 1366 of file refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Generalised\+Element\+::internal\+\_\+data\+\_\+pt(), oomph\+::\+Data\+::pin(), and oomph\+::\+Data\+::set\+\_\+value().
+
+\mbox{\Hypertarget{classoomph_1_1PRefineableQCrouzeixRaviartElement_a3129fe3450caf60d2f678024d7bf7f08}\label{classoomph_1_1PRefineableQCrouzeixRaviartElement_a3129fe3450caf60d2f678024d7bf7f08}} 
+\index{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}!further\+\_\+build@{further\+\_\+build}}
+\index{further\+\_\+build@{further\+\_\+build}!oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}}
+\subsubsection{\texorpdfstring{further\+\_\+build()}{further\_build()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement}{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}$<$ D\+IM $>$\+::further\+\_\+build (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Further build for Crouzeix\+\_\+\+Raviart interpolates the internal pressure dofs from father element\+: Make sure pressure values and dp/ds agree between fathers and sons at the midpoints of the son elements. This must be specialised for each dimension. 
+
+Reimplemented from \hyperlink{classoomph_1_1RefineableNavierStokesEquations_a7afd6250585ea597c3df65b8c7744da4}{oomph\+::\+Refineable\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$}.
+
+\mbox{\Hypertarget{classoomph_1_1PRefineableQCrouzeixRaviartElement_a98e341f00435e0c9b81c0615412bd734}\label{classoomph_1_1PRefineableQCrouzeixRaviartElement_a98e341f00435e0c9b81c0615412bd734}} 
+\index{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}!further\+\_\+build@{further\+\_\+build}}
+\index{further\+\_\+build@{further\+\_\+build}!oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}}
+\subsubsection{\texorpdfstring{further\+\_\+build()}{further\_build()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$$>$ \\
+void \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement}{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}$<$ 2 $>$\+::further\+\_\+build (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+2D Further build for Crouzeix\+\_\+\+Raviart interpolates the internal pressure dofs from father element\+: Make sure pressure values and dp/ds agree between fathers and sons at the midpoints of the son elements. 
+
+Reimplemented from \hyperlink{classoomph_1_1RefineableNavierStokesEquations_a7afd6250585ea597c3df65b8c7744da4}{oomph\+::\+Refineable\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$}.
+
+
+
+Definition at line 1779 of file refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+cc.
+
+
+
+References oomph\+::\+Refineable\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::further\+\_\+build(), oomph\+::\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::interpolated\+\_\+p\+\_\+nst(), oomph\+::\+Quad\+Tree\+Names\+::\+NE, oomph\+::\+Quad\+Tree\+Names\+::\+NW, oomph\+::\+Quad\+Tree\+Names\+::\+SE, and oomph\+::\+Quad\+Tree\+Names\+::\+SW.
+
+\mbox{\Hypertarget{classoomph_1_1PRefineableQCrouzeixRaviartElement_a4d5c10a7a11d43c4af08196b95e4803e}\label{classoomph_1_1PRefineableQCrouzeixRaviartElement_a4d5c10a7a11d43c4af08196b95e4803e}} 
+\index{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}!further\+\_\+build@{further\+\_\+build}}
+\index{further\+\_\+build@{further\+\_\+build}!oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}}
+\subsubsection{\texorpdfstring{further\+\_\+build()}{further\_build()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$$>$ \\
+void \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement}{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}$<$ 3 $>$\+::further\+\_\+build (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+2D Further build for Crouzeix\+\_\+\+Raviart interpolates the internal pressure dofs from father element\+: Make sure pressure values and dp/ds agree between fathers and sons at the midpoints of the son elements. 
+
+Reimplemented from \hyperlink{classoomph_1_1RefineableNavierStokesEquations_a7afd6250585ea597c3df65b8c7744da4}{oomph\+::\+Refineable\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$}.
+
+
+
+Definition at line 1890 of file refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+cc.
+
+
+
+References oomph\+::\+Oc\+Tree\+::\+Direction\+\_\+to\+\_\+vector, oomph\+::\+Refineable\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::further\+\_\+build(), i, and oomph\+::\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::interpolated\+\_\+p\+\_\+nst().
+
+\mbox{\Hypertarget{classoomph_1_1PRefineableQCrouzeixRaviartElement_a782e45a47d5e1df77bcbc6480f90c24d}\label{classoomph_1_1PRefineableQCrouzeixRaviartElement_a782e45a47d5e1df77bcbc6480f90c24d}} 
+\index{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}!further\+\_\+setup\+\_\+hanging\+\_\+nodes@{further\+\_\+setup\+\_\+hanging\+\_\+nodes}}
+\index{further\+\_\+setup\+\_\+hanging\+\_\+nodes@{further\+\_\+setup\+\_\+hanging\+\_\+nodes}!oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}}
+\subsubsection{\texorpdfstring{further\+\_\+setup\+\_\+hanging\+\_\+nodes()}{further\_setup\_hanging\_nodes()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement}{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}$<$ D\+IM $>$\+::further\+\_\+setup\+\_\+hanging\+\_\+nodes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Perform additional hanging node procedures for variables that are not interpolated by all nodes. Empty. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1RefineableElement_a86ea01c485f7ff822dce74b884312ccb}{oomph\+::\+Refineable\+Element}.
+
+
+
+Definition at line 1490 of file refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1PRefineableQCrouzeixRaviartElement_ac9cfbe5c8df894511fd03d49b4015d19}\label{classoomph_1_1PRefineableQCrouzeixRaviartElement_ac9cfbe5c8df894511fd03d49b4015d19}} 
+\index{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}!get\+\_\+interpolated\+\_\+values@{get\+\_\+interpolated\+\_\+values}}
+\index{get\+\_\+interpolated\+\_\+values@{get\+\_\+interpolated\+\_\+values}!oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}}
+\subsubsection{\texorpdfstring{get\+\_\+interpolated\+\_\+values()}{get\_interpolated\_values()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement}{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}$<$ D\+IM $>$\+::get\+\_\+interpolated\+\_\+values (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{values }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get the function value u in \hyperlink{classoomph_1_1Vector}{Vector}. Note\+: Given the generality of the interface (this function is usually called from black-\/box documentation or interpolation routines), the values \hyperlink{classoomph_1_1Vector}{Vector} sets its own size in here. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1RefineableElement_ad9a4f92880668a2373326d8306365c43}{oomph\+::\+Refineable\+Element}.
+
+
+
+Definition at line 1442 of file refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References i.
+
+\mbox{\Hypertarget{classoomph_1_1PRefineableQCrouzeixRaviartElement_af7337a2ad744a06a2e5c3590dcd07dfb}\label{classoomph_1_1PRefineableQCrouzeixRaviartElement_af7337a2ad744a06a2e5c3590dcd07dfb}} 
+\index{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}!get\+\_\+interpolated\+\_\+values@{get\+\_\+interpolated\+\_\+values}}
+\index{get\+\_\+interpolated\+\_\+values@{get\+\_\+interpolated\+\_\+values}!oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}}
+\subsubsection{\texorpdfstring{get\+\_\+interpolated\+\_\+values()}{get\_interpolated\_values()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement}{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}$<$ D\+IM $>$\+::get\+\_\+interpolated\+\_\+values (\begin{DoxyParamCaption}\item[{const unsigned \&}]{t,  }\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{values }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get all function values \mbox{[}u,v..,p\mbox{]} at previous timestep t (t=0\+: present; t$>$0\+: previous timestep). 
+
+Note\+: Given the generality of the interface (this function is usually called from black-\/box documentation or interpolation routines), the values \hyperlink{classoomph_1_1Vector}{Vector} sets its own size in here.
+
+Note\+: No pressure history is kept, so pressure is always the current value. 
+
+Implements \hyperlink{classoomph_1_1RefineableElement_ada6f0efe831ffefb1d2829ce01d45bfc}{oomph\+::\+Refineable\+Element}.
+
+
+
+Definition at line 1460 of file refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References i, oomph\+::\+Finite\+Element\+::nnode(), oomph\+::\+Finite\+Element\+::nodal\+\_\+value(), and oomph\+::\+Finite\+Element\+::shape().
+
+\mbox{\Hypertarget{classoomph_1_1PRefineableQCrouzeixRaviartElement_a8fc2388f81c74e6c9dc32058592ed7d2}\label{classoomph_1_1PRefineableQCrouzeixRaviartElement_a8fc2388f81c74e6c9dc32058592ed7d2}} 
+\index{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}!ncont\+\_\+interpolated\+\_\+values@{ncont\+\_\+interpolated\+\_\+values}}
+\index{ncont\+\_\+interpolated\+\_\+values@{ncont\+\_\+interpolated\+\_\+values}!oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}}
+\subsubsection{\texorpdfstring{ncont\+\_\+interpolated\+\_\+values()}{ncont\_interpolated\_values()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+unsigned \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement}{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}$<$ D\+IM $>$\+::ncont\+\_\+interpolated\+\_\+values (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Number of continuously interpolated values\+: D\+IM (velocities) 
+
+
+
+Implements \hyperlink{classoomph_1_1RefineableElement_a53e171a18c9f43f1db90a6876516a073}{oomph\+::\+Refineable\+Element}.
+
+
+
+Definition at line 1376 of file refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1PRefineableQCrouzeixRaviartElement_a6431bb5f74022a94d074d04ba2f4c7a1}\label{classoomph_1_1PRefineableQCrouzeixRaviartElement_a6431bb5f74022a94d074d04ba2f4c7a1}} 
+\index{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}!npres\+\_\+nst@{npres\+\_\+nst}}
+\index{npres\+\_\+nst@{npres\+\_\+nst}!oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}}
+\subsubsection{\texorpdfstring{npres\+\_\+nst()}{npres\_nst()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+unsigned \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement}{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}$<$ D\+IM $>$\+::npres\+\_\+nst (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Return number of pressure values. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1QCrouzeixRaviartElement_a0cbd8f1a5e0814abdbfd34ae7c58b018}{oomph\+::\+Q\+Crouzeix\+Raviart\+Element$<$ D\+I\+M $>$}.
+
+
+
+Definition at line 1363 of file refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1PRefineableQCrouzeixRaviartElement_a8a4bf8ba2d89273431c78ea5e09e0947}\label{classoomph_1_1PRefineableQCrouzeixRaviartElement_a8a4bf8ba2d89273431c78ea5e09e0947}} 
+\index{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}!nrecovery\+\_\+order@{nrecovery\+\_\+order}}
+\index{nrecovery\+\_\+order@{nrecovery\+\_\+order}!oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}}
+\subsubsection{\texorpdfstring{nrecovery\+\_\+order()}{nrecovery\_order()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+unsigned \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement}{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}$<$ D\+IM $>$\+::nrecovery\+\_\+order (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Order of recovery shape functions for Z2 error estimation\+: 
+
+
+\begin{DoxyItemize}
+\item Same order as shape functions. -\/ Constant recovery order, since recovery order of the first element is used for the whole mesh. 
+\end{DoxyItemize}
+
+Implements \hyperlink{classoomph_1_1ElementWithZ2ErrorEstimator_af39480835bd3e0f6b2f4f7a9a4044798}{oomph\+::\+Element\+With\+Z2\+Error\+Estimator}.
+
+
+
+Definition at line 1403 of file refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1PRefineableQCrouzeixRaviartElement_a4f29431659c8fb00cd2b56b21bcb722c}\label{classoomph_1_1PRefineableQCrouzeixRaviartElement_a4f29431659c8fb00cd2b56b21bcb722c}} 
+\index{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}!nvertex\+\_\+node@{nvertex\+\_\+node}}
+\index{nvertex\+\_\+node@{nvertex\+\_\+node}!oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}}
+\subsubsection{\texorpdfstring{nvertex\+\_\+node()}{nvertex\_node()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+unsigned \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement}{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}$<$ D\+IM $>$\+::nvertex\+\_\+node (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Number of vertex nodes in the element. 
+
+
+
+Implements \hyperlink{classoomph_1_1ElementWithZ2ErrorEstimator_a19495a0e77ef4ff35f15fdf7913b4077}{oomph\+::\+Element\+With\+Z2\+Error\+Estimator}.
+
+
+
+Definition at line 1406 of file refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Finite\+Element\+::nvertex\+\_\+node().
+
+\mbox{\Hypertarget{classoomph_1_1PRefineableQCrouzeixRaviartElement_a2a9613cf21e1d115893491423ca5394a}\label{classoomph_1_1PRefineableQCrouzeixRaviartElement_a2a9613cf21e1d115893491423ca5394a}} 
+\index{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}!p\+\_\+nst@{p\+\_\+nst}}
+\index{p\+\_\+nst@{p\+\_\+nst}!oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}}
+\subsubsection{\texorpdfstring{p\+\_\+nst()}{p\_nst()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+double \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement}{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}$<$ D\+IM $>$\+::p\+\_\+nst (\begin{DoxyParamCaption}\item[{const unsigned \&}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Broken assignment operator. 
+
+Return the i-\/th pressure value (Discontinous pressure interpolation -- no need to cater for hanging nodes). 
+
+Reimplemented from \hyperlink{classoomph_1_1QCrouzeixRaviartElement_a3d3b2f685b66899fa0d56745bf5043d9}{oomph\+::\+Q\+Crouzeix\+Raviart\+Element$<$ D\+I\+M $>$}.
+
+
+
+Definition at line 1356 of file refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Generalised\+Element\+::internal\+\_\+data\+\_\+pt(), and oomph\+::\+Data\+::value().
+
+\mbox{\Hypertarget{classoomph_1_1PRefineableQCrouzeixRaviartElement_a1a70b2251c5150e4719db4e26bbde7f0}\label{classoomph_1_1PRefineableQCrouzeixRaviartElement_a1a70b2251c5150e4719db4e26bbde7f0}} 
+\index{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}!p\+\_\+nst@{p\+\_\+nst}}
+\index{p\+\_\+nst@{p\+\_\+nst}!oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}}
+\subsubsection{\texorpdfstring{p\+\_\+nst()}{p\_nst()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+double \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement}{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}$<$ D\+IM $>$\+::p\+\_\+nst (\begin{DoxyParamCaption}\item[{const unsigned \&}]{t,  }\item[{const unsigned \&}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Return the i-\/th pressure value (Discontinous pressure interpolation -- no need to cater for hanging nodes). 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1QCrouzeixRaviartElement_ab7e5c4345c95002750592f7dcaa7a1c5}{oomph\+::\+Q\+Crouzeix\+Raviart\+Element$<$ D\+I\+M $>$}.
+
+
+
+Definition at line 1359 of file refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Generalised\+Element\+::internal\+\_\+data\+\_\+pt(), and oomph\+::\+Data\+::value().
+
+\mbox{\Hypertarget{classoomph_1_1PRefineableQCrouzeixRaviartElement_a19222e5c997c7ce4a30452d9aab12ad0}\label{classoomph_1_1PRefineableQCrouzeixRaviartElement_a19222e5c997c7ce4a30452d9aab12ad0}} 
+\index{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}!pshape\+\_\+nst@{pshape\+\_\+nst}}
+\index{pshape\+\_\+nst@{pshape\+\_\+nst}!oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}}
+\subsubsection{\texorpdfstring{pshape\+\_\+nst()}{pshape\_nst()}\hspace{0.1cm}{\footnotesize\ttfamily [1/6]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement}{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}$<$ D\+IM $>$\+::pshape\+\_\+nst (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Pressure shape functions at local coordinate s. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1QCrouzeixRaviartElement_a122c4b7ae47df08a07acd2f1ed6f61b0}{oomph\+::\+Q\+Crouzeix\+Raviart\+Element$<$ D\+I\+M $>$}.
+
+
+
+Referenced by oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element$<$ D\+I\+M $>$\+::dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+nst(), and oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element$<$ D\+I\+M $>$\+::pshape\+\_\+nst().
+
+\mbox{\Hypertarget{classoomph_1_1PRefineableQCrouzeixRaviartElement_a5891e3675a411f77fca204fa567c71da}\label{classoomph_1_1PRefineableQCrouzeixRaviartElement_a5891e3675a411f77fca204fa567c71da}} 
+\index{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}!pshape\+\_\+nst@{pshape\+\_\+nst}}
+\index{pshape\+\_\+nst@{pshape\+\_\+nst}!oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}}
+\subsubsection{\texorpdfstring{pshape\+\_\+nst()}{pshape\_nst()}\hspace{0.1cm}{\footnotesize\ttfamily [2/6]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement}{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}$<$ D\+IM $>$\+::pshape\+\_\+nst (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{test }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Pressure shape and test functions at local coordinte s. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1QCrouzeixRaviartElement_a662b9593c9ca0b4589d5498812f1fb91}{oomph\+::\+Q\+Crouzeix\+Raviart\+Element$<$ D\+I\+M $>$}.
+
+\mbox{\Hypertarget{classoomph_1_1PRefineableQCrouzeixRaviartElement_a87afeb50892736eace1e3d68d6c53172}\label{classoomph_1_1PRefineableQCrouzeixRaviartElement_a87afeb50892736eace1e3d68d6c53172}} 
+\index{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}!pshape\+\_\+nst@{pshape\+\_\+nst}}
+\index{pshape\+\_\+nst@{pshape\+\_\+nst}!oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}}
+\subsubsection{\texorpdfstring{pshape\+\_\+nst()}{pshape\_nst()}\hspace{0.1cm}{\footnotesize\ttfamily [3/6]}}
+{\footnotesize\ttfamily template$<$$>$ \\
+void \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement}{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}$<$ 2 $>$\+::pshape\+\_\+nst (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+2D \+: Pressure shape functions 
+
+Reimplemented from \hyperlink{classoomph_1_1QCrouzeixRaviartElement_a122c4b7ae47df08a07acd2f1ed6f61b0}{oomph\+::\+Q\+Crouzeix\+Raviart\+Element$<$ D\+I\+M $>$}.
+
+
+
+Definition at line 2004 of file refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References i, and oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element$<$ D\+I\+M $>$\+::pshape\+\_\+nst().
+
+\mbox{\Hypertarget{classoomph_1_1PRefineableQCrouzeixRaviartElement_aa3cf8c270ec40c6d7c507b71dd6676d3}\label{classoomph_1_1PRefineableQCrouzeixRaviartElement_aa3cf8c270ec40c6d7c507b71dd6676d3}} 
+\index{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}!pshape\+\_\+nst@{pshape\+\_\+nst}}
+\index{pshape\+\_\+nst@{pshape\+\_\+nst}!oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}}
+\subsubsection{\texorpdfstring{pshape\+\_\+nst()}{pshape\_nst()}\hspace{0.1cm}{\footnotesize\ttfamily [4/6]}}
+{\footnotesize\ttfamily template$<$$>$ \\
+void \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement}{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}$<$ 2 $>$\+::pshape\+\_\+nst (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{test }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Define the pressure shape and test functions. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1QCrouzeixRaviartElement_a662b9593c9ca0b4589d5498812f1fb91}{oomph\+::\+Q\+Crouzeix\+Raviart\+Element$<$ D\+I\+M $>$}.
+
+
+
+Definition at line 2037 of file refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References i, and oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element$<$ D\+I\+M $>$\+::pshape\+\_\+nst().
+
+\mbox{\Hypertarget{classoomph_1_1PRefineableQCrouzeixRaviartElement_a556b7533944abd5eedce664d708b4eae}\label{classoomph_1_1PRefineableQCrouzeixRaviartElement_a556b7533944abd5eedce664d708b4eae}} 
+\index{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}!pshape\+\_\+nst@{pshape\+\_\+nst}}
+\index{pshape\+\_\+nst@{pshape\+\_\+nst}!oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}}
+\subsubsection{\texorpdfstring{pshape\+\_\+nst()}{pshape\_nst()}\hspace{0.1cm}{\footnotesize\ttfamily [5/6]}}
+{\footnotesize\ttfamily template$<$$>$ \\
+void \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement}{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}$<$ 3 $>$\+::pshape\+\_\+nst (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+3D \+: Pressure shape functions 
+
+Reimplemented from \hyperlink{classoomph_1_1QCrouzeixRaviartElement_a122c4b7ae47df08a07acd2f1ed6f61b0}{oomph\+::\+Q\+Crouzeix\+Raviart\+Element$<$ D\+I\+M $>$}.
+
+
+
+Definition at line 2059 of file refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References i, and oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element$<$ D\+I\+M $>$\+::pshape\+\_\+nst().
+
+\mbox{\Hypertarget{classoomph_1_1PRefineableQCrouzeixRaviartElement_acf1d5e8b3dc66e12bff22d73d06ea4d6}\label{classoomph_1_1PRefineableQCrouzeixRaviartElement_acf1d5e8b3dc66e12bff22d73d06ea4d6}} 
+\index{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}!pshape\+\_\+nst@{pshape\+\_\+nst}}
+\index{pshape\+\_\+nst@{pshape\+\_\+nst}!oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}}
+\subsubsection{\texorpdfstring{pshape\+\_\+nst()}{pshape\_nst()}\hspace{0.1cm}{\footnotesize\ttfamily [6/6]}}
+{\footnotesize\ttfamily template$<$$>$ \\
+void \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement}{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}$<$ 3 $>$\+::pshape\+\_\+nst (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{test }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Define the pressure shape and test functions. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1QCrouzeixRaviartElement_a662b9593c9ca0b4589d5498812f1fb91}{oomph\+::\+Q\+Crouzeix\+Raviart\+Element$<$ D\+I\+M $>$}.
+
+
+
+Definition at line 2096 of file refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References i.
+
+\mbox{\Hypertarget{classoomph_1_1PRefineableQCrouzeixRaviartElement_a0511e9fbba31ef30acd3cf7987d1f4a5}\label{classoomph_1_1PRefineableQCrouzeixRaviartElement_a0511e9fbba31ef30acd3cf7987d1f4a5}} 
+\index{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}!rebuild\+\_\+from\+\_\+sons@{rebuild\+\_\+from\+\_\+sons}}
+\index{rebuild\+\_\+from\+\_\+sons@{rebuild\+\_\+from\+\_\+sons}!oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}}
+\subsubsection{\texorpdfstring{rebuild\+\_\+from\+\_\+sons()}{rebuild\_from\_sons()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement}{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}$<$ D\+IM $>$\+::rebuild\+\_\+from\+\_\+sons (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$\&}]{mesh\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Rebuild from sons\+: Reconstruct pressure from the (merged) sons This must be specialised for each dimension. 
+
+
+
+Implements \hyperlink{classoomph_1_1RefineableElement_a33324be27833fa4b78279d17158215fa}{oomph\+::\+Refineable\+Element}.
+
+
+
+Definition at line 1380 of file refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Generalised\+Element\+::internal\+\_\+data\+\_\+pt(), and oomph\+::\+Data\+::set\+\_\+value().
+
+\mbox{\Hypertarget{classoomph_1_1PRefineableQCrouzeixRaviartElement_a5789a5ace7a5d633dec82c775ac890bf}\label{classoomph_1_1PRefineableQCrouzeixRaviartElement_a5789a5ace7a5d633dec82c775ac890bf}} 
+\index{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}!required\+\_\+nvalue@{required\+\_\+nvalue}}
+\index{required\+\_\+nvalue@{required\+\_\+nvalue}!oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}}
+\subsubsection{\texorpdfstring{required\+\_\+nvalue()}{required\_nvalue()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+unsigned \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement}{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}$<$ D\+IM $>$\+::required\+\_\+nvalue (\begin{DoxyParamCaption}\item[{const unsigned \&}]{n }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Number of values (pinned or dofs) required at local node n. 
+
+Number of values (pinned or dofs) required at node n. 
+
+Reimplemented from \hyperlink{classoomph_1_1QCrouzeixRaviartElement_a025946afee7e1ff977fb24569c438fd0}{oomph\+::\+Q\+Crouzeix\+Raviart\+Element$<$ D\+I\+M $>$}.
+
+
+
+Definition at line 1372 of file refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1PRefineableQCrouzeixRaviartElement_a686b52095b423b9d7173aa338e8a7d33}\label{classoomph_1_1PRefineableQCrouzeixRaviartElement_a686b52095b423b9d7173aa338e8a7d33}} 
+\index{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}!unpin\+\_\+elemental\+\_\+pressure\+\_\+dofs@{unpin\+\_\+elemental\+\_\+pressure\+\_\+dofs}}
+\index{unpin\+\_\+elemental\+\_\+pressure\+\_\+dofs@{unpin\+\_\+elemental\+\_\+pressure\+\_\+dofs}!oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}}
+\subsubsection{\texorpdfstring{unpin\+\_\+elemental\+\_\+pressure\+\_\+dofs()}{unpin\_elemental\_pressure\_dofs()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement}{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}$<$ D\+IM $>$\+::unpin\+\_\+elemental\+\_\+pressure\+\_\+dofs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Unpin all internal pressure dofs. 
+
+
+
+Implements \hyperlink{classoomph_1_1RefineableNavierStokesEquations_acd0b56b66d250625401a9f6578f8bebc}{oomph\+::\+Refineable\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$}.
+
+
+
+Definition at line 1291 of file refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Generalised\+Element\+::internal\+\_\+data\+\_\+pt(), oomph\+::\+Data\+::nvalue(), and oomph\+::\+Data\+::unpin().
+
+\mbox{\Hypertarget{classoomph_1_1PRefineableQCrouzeixRaviartElement_a0a0d25592c0b9b04505fbd0b3bb4fb22}\label{classoomph_1_1PRefineableQCrouzeixRaviartElement_a0a0d25592c0b9b04505fbd0b3bb4fb22}} 
+\index{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}!vertex\+\_\+node\+\_\+pt@{vertex\+\_\+node\+\_\+pt}}
+\index{vertex\+\_\+node\+\_\+pt@{vertex\+\_\+node\+\_\+pt}!oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element@{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}}
+\subsubsection{\texorpdfstring{vertex\+\_\+node\+\_\+pt()}{vertex\_node\_pt()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+\hyperlink{classoomph_1_1Node}{Node}$\ast$ \hyperlink{classoomph_1_1PRefineableQCrouzeixRaviartElement}{oomph\+::\+P\+Refineable\+Q\+Crouzeix\+Raviart\+Element}$<$ D\+IM $>$\+::vertex\+\_\+node\+\_\+pt (\begin{DoxyParamCaption}\item[{const unsigned \&}]{j }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Pointer to the j-\/th vertex node in the element. 
+
+
+
+Implements \hyperlink{classoomph_1_1ElementWithZ2ErrorEstimator_a0eedccc33519f852c5dc2055ddf2774b}{oomph\+::\+Element\+With\+Z2\+Error\+Estimator}.
+
+
+
+Definition at line 1410 of file refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References s, and oomph\+::\+Finite\+Element\+::vertex\+\_\+node\+\_\+pt().
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{refineable__navier__stokes__elements_8h}{refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h}\end{DoxyCompactItemize}

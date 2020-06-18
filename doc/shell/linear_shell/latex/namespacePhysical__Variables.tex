@@ -1,0 +1,90 @@
+\hypertarget{namespacePhysical__Variables}{}\section{Physical\+\_\+\+Variables Namespace Reference}
+\label{namespacePhysical__Variables}\index{Physical\+\_\+\+Variables@{Physical\+\_\+\+Variables}}
+
+
+Namespace for the solution of 2D linear shell equation.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{namespacePhysical__Variables_af90d0c580c57b1152fd1cc7046055031}{get\+\_\+exact\+\_\+u} (const Vector$<$ double $>$ \&x, Vector$<$ double $>$ \&u)
+\item 
+void \hyperlink{namespacePhysical__Variables_a36f0d0dc5f8aa4eafd7c4d6fe943c4e8}{source\+\_\+function} (const Vector$<$ double $>$ \&x, const Vector$<$ double $>$ \&unit\+\_\+n, Vector$<$ double $>$ \&source)
+\begin{DoxyCompactList}\small\item\em Source function applied in the normal vector. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+double \hyperlink{namespacePhysical__Variables_a58adc76bae4751599143c613f9100904}{P\+\_\+ext}
+\begin{DoxyCompactList}\small\item\em Pressure load. \end{DoxyCompactList}\item 
+double \hyperlink{namespacePhysical__Variables_ac374cc60da0f1e5df3fc48a3c9ce1d74}{epsilon} = 1.\+0e-\/8
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Namespace for the solution of 2D linear shell equation. 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespacePhysical__Variables_af90d0c580c57b1152fd1cc7046055031}\label{namespacePhysical__Variables_af90d0c580c57b1152fd1cc7046055031}} 
+\index{Physical\+\_\+\+Variables@{Physical\+\_\+\+Variables}!get\+\_\+exact\+\_\+u@{get\+\_\+exact\+\_\+u}}
+\index{get\+\_\+exact\+\_\+u@{get\+\_\+exact\+\_\+u}!Physical\+\_\+\+Variables@{Physical\+\_\+\+Variables}}
+\subsubsection{\texorpdfstring{get\+\_\+exact\+\_\+u()}{get\_exact\_u()}}
+{\footnotesize\ttfamily void Physical\+\_\+\+Variables\+::get\+\_\+exact\+\_\+u (\begin{DoxyParamCaption}\item[{const Vector$<$ double $>$ \&}]{x,  }\item[{Vector$<$ double $>$ \&}]{u }\end{DoxyParamCaption})}
+
+Exact solution as a vector differentiate u with respect to global coordinates 
+
+Definition at line 1615 of file unstructured\+\_\+clamped\+\_\+square\+\_\+plate.\+cc.
+
+
+
+Referenced by My\+Linearised\+Shell\+Problem$<$ E\+L\+E\+M\+E\+N\+T, D\+I\+M, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::actions\+\_\+before\+\_\+newton\+\_\+solve().
+
+\mbox{\Hypertarget{namespacePhysical__Variables_a36f0d0dc5f8aa4eafd7c4d6fe943c4e8}\label{namespacePhysical__Variables_a36f0d0dc5f8aa4eafd7c4d6fe943c4e8}} 
+\index{Physical\+\_\+\+Variables@{Physical\+\_\+\+Variables}!source\+\_\+function@{source\+\_\+function}}
+\index{source\+\_\+function@{source\+\_\+function}!Physical\+\_\+\+Variables@{Physical\+\_\+\+Variables}}
+\subsubsection{\texorpdfstring{source\+\_\+function()}{source\_function()}}
+{\footnotesize\ttfamily void Physical\+\_\+\+Variables\+::source\+\_\+function (\begin{DoxyParamCaption}\item[{const Vector$<$ double $>$ \&}]{x,  }\item[{const Vector$<$ double $>$ \&}]{unit\+\_\+n,  }\item[{Vector$<$ double $>$ \&}]{source }\end{DoxyParamCaption})}
+
+
+
+Source function applied in the normal vector. 
+
+
+
+Definition at line 1628 of file unstructured\+\_\+clamped\+\_\+square\+\_\+plate.\+cc.
+
+
+
+Referenced by main().
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespacePhysical__Variables_ac374cc60da0f1e5df3fc48a3c9ce1d74}\label{namespacePhysical__Variables_ac374cc60da0f1e5df3fc48a3c9ce1d74}} 
+\index{Physical\+\_\+\+Variables@{Physical\+\_\+\+Variables}!epsilon@{epsilon}}
+\index{epsilon@{epsilon}!Physical\+\_\+\+Variables@{Physical\+\_\+\+Variables}}
+\subsubsection{\texorpdfstring{epsilon}{epsilon}}
+{\footnotesize\ttfamily double Physical\+\_\+\+Variables\+::epsilon = 1.\+0e-\/8}
+
+
+
+Definition at line 1611 of file unstructured\+\_\+clamped\+\_\+square\+\_\+plate.\+cc.
+
+\mbox{\Hypertarget{namespacePhysical__Variables_a58adc76bae4751599143c613f9100904}\label{namespacePhysical__Variables_a58adc76bae4751599143c613f9100904}} 
+\index{Physical\+\_\+\+Variables@{Physical\+\_\+\+Variables}!P\+\_\+ext@{P\+\_\+ext}}
+\index{P\+\_\+ext@{P\+\_\+ext}!Physical\+\_\+\+Variables@{Physical\+\_\+\+Variables}}
+\subsubsection{\texorpdfstring{P\+\_\+ext}{P\_ext}}
+{\footnotesize\ttfamily double Physical\+\_\+\+Variables\+::\+P\+\_\+ext}
+
+
+
+Pressure load. 
+
+
+
+Definition at line 1609 of file unstructured\+\_\+clamped\+\_\+square\+\_\+plate.\+cc.
+
+
+
+Referenced by My\+Linearised\+Shell\+Problem$<$ E\+L\+E\+M\+E\+N\+T, D\+I\+M, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::parameter\+\_\+study().
+

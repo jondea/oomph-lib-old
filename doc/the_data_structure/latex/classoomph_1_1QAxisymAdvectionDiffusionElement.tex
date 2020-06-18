@@ -1,0 +1,315 @@
+\hypertarget{classoomph_1_1QAxisymAdvectionDiffusionElement}{}\section{oomph\+:\+:Q\+Axisym\+Advection\+Diffusion\+Element$<$ N\+N\+O\+D\+E\+\_\+1D $>$ Class Template Reference}
+\label{classoomph_1_1QAxisymAdvectionDiffusionElement}\index{oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element$<$ N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element$<$ N\+N\+O\+D\+E\+\_\+1\+D $>$}}
+
+
+\hyperlink{classoomph_1_1QAxisymAdvectionDiffusionElement}{Q\+Axisym\+Advection\+Diffusion\+Element} elements are linear/quadrilateral/brick-\/shaped Axisymmetric Advection Diffusion elements with isoparametric interpolation for the function.  
+
+
+
+
+{\ttfamily \#include $<$axisym\+\_\+advection\+\_\+diffusion\+\_\+elements.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Q\+Axisym\+Advection\+Diffusion\+Element$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.692308cm]{classoomph_1_1QAxisymAdvectionDiffusionElement}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1QAxisymAdvectionDiffusionElement_a183735ff0dce27e2bc0343f8cb3bbea0}{Q\+Axisym\+Advection\+Diffusion\+Element} ()
+\begin{DoxyCompactList}\small\item\em Constructor\+: Call constructors for \hyperlink{classoomph_1_1QElement}{Q\+Element} and Advection Diffusion equations. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1QAxisymAdvectionDiffusionElement_ae4e969a1020ebfd6922029a63a14a08e}{Q\+Axisym\+Advection\+Diffusion\+Element} (const \hyperlink{classoomph_1_1QAxisymAdvectionDiffusionElement}{Q\+Axisym\+Advection\+Diffusion\+Element}$<$ N\+N\+O\+D\+E\+\_\+1D $>$ \&dummy)
+\begin{DoxyCompactList}\small\item\em Broken copy constructor. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1QAxisymAdvectionDiffusionElement_ae0c6b6099761b998688e2c22f2280a21}{required\+\_\+nvalue} (const unsigned \&n) const
+\begin{DoxyCompactList}\small\item\em Broken assignment operator. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1QAxisymAdvectionDiffusionElement_a398cd25b07bc4709163369e2db6e8202}{output} (std\+::ostream \&outfile)
+\begin{DoxyCompactList}\small\item\em Output function\+: r,z,u. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1QAxisymAdvectionDiffusionElement_a20cbe0ae52a064c6c5f6a065596beea5}{output} (std\+::ostream \&outfile, const unsigned \&n\+\_\+plot)
+\begin{DoxyCompactList}\small\item\em Output function\+: r,z,u at n\+\_\+plot$^\wedge$2 plot points. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1QAxisymAdvectionDiffusionElement_ac095435d0ae6a5f3d74fa474d93906f8}{output} (F\+I\+LE $\ast$file\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em C-\/style output function\+: r,z,u. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1QAxisymAdvectionDiffusionElement_a636e99ae2ec6ac0c5e691acb89c3f5ef}{output} (F\+I\+LE $\ast$file\+\_\+pt, const unsigned \&n\+\_\+plot)
+\begin{DoxyCompactList}\small\item\em C-\/style output function\+: r,z,u at n\+\_\+plot$^\wedge$2 plot points. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1QAxisymAdvectionDiffusionElement_a07a6680226c412753604695d77b19467}{output\+\_\+fct} (std\+::ostream \&outfile, const unsigned \&n\+\_\+plot, \hyperlink{classoomph_1_1FiniteElement_a690fd33af26cc3e84f39bba6d5a85202}{Finite\+Element\+::\+Steady\+Exact\+Solution\+Fct\+Pt} exact\+\_\+soln\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Output function for an exact solution\+: r,z,u\+\_\+exact at n\+\_\+plot$^\wedge$2 plot points. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \hyperlink{classoomph_1_1QAxisymAdvectionDiffusionElement_aa940ad09f185dfde0eaeff61bc9c0a31}{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+axi\+\_\+adv\+\_\+diff} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Shape}{Shape} \&psi, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dpsidx, \hyperlink{classoomph_1_1Shape}{Shape} \&test, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dtestdx) const
+\begin{DoxyCompactList}\small\item\em \hyperlink{classoomph_1_1Shape}{Shape}, test functions \& derivs. w.\+r.\+t. to global coords. Return Jacobian. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1QAxisymAdvectionDiffusionElement_a4bb026009c2c69e6870ff45450382418}{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+axi\+\_\+adv\+\_\+diff} (const unsigned \&ipt, \hyperlink{classoomph_1_1Shape}{Shape} \&psi, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dpsidx, \hyperlink{classoomph_1_1Shape}{Shape} \&test, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dtestdx) const
+\begin{DoxyCompactList}\small\item\em \hyperlink{classoomph_1_1Shape}{Shape}, test functions \& derivs. w.\+r.\+t. to global coords. at integration point ipt. Return Jacobian. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const unsigned \hyperlink{classoomph_1_1QAxisymAdvectionDiffusionElement_a2d3204e595a313a63345986196137aac}{Initial\+\_\+\+Nvalue} = 1
+\begin{DoxyCompactList}\small\item\em Static array of ints to hold number of variables at nodes\+: Initial\+\_\+\+Nvalue\mbox{[}n\mbox{]}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$\newline
+class oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element$<$ N\+N\+O\+D\+E\+\_\+1\+D $>$}
+
+\hyperlink{classoomph_1_1QAxisymAdvectionDiffusionElement}{Q\+Axisym\+Advection\+Diffusion\+Element} elements are linear/quadrilateral/brick-\/shaped Axisymmetric Advection Diffusion elements with isoparametric interpolation for the function. 
+
+Definition at line 592 of file axisym\+\_\+advection\+\_\+diffusion\+\_\+elements.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1QAxisymAdvectionDiffusionElement_a183735ff0dce27e2bc0343f8cb3bbea0}\label{classoomph_1_1QAxisymAdvectionDiffusionElement_a183735ff0dce27e2bc0343f8cb3bbea0}} 
+\index{oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element@{oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element}!Q\+Axisym\+Advection\+Diffusion\+Element@{Q\+Axisym\+Advection\+Diffusion\+Element}}
+\index{Q\+Axisym\+Advection\+Diffusion\+Element@{Q\+Axisym\+Advection\+Diffusion\+Element}!oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element@{oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element}}
+\subsubsection{\texorpdfstring{Q\+Axisym\+Advection\+Diffusion\+Element()}{QAxisymAdvectionDiffusionElement()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+\hyperlink{classoomph_1_1QAxisymAdvectionDiffusionElement}{oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::\hyperlink{classoomph_1_1QAxisymAdvectionDiffusionElement}{Q\+Axisym\+Advection\+Diffusion\+Element} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor\+: Call constructors for \hyperlink{classoomph_1_1QElement}{Q\+Element} and Advection Diffusion equations. 
+
+
+
+Definition at line 607 of file axisym\+\_\+advection\+\_\+diffusion\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1QAxisymAdvectionDiffusionElement_ae4e969a1020ebfd6922029a63a14a08e}\label{classoomph_1_1QAxisymAdvectionDiffusionElement_ae4e969a1020ebfd6922029a63a14a08e}} 
+\index{oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element@{oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element}!Q\+Axisym\+Advection\+Diffusion\+Element@{Q\+Axisym\+Advection\+Diffusion\+Element}}
+\index{Q\+Axisym\+Advection\+Diffusion\+Element@{Q\+Axisym\+Advection\+Diffusion\+Element}!oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element@{oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element}}
+\subsubsection{\texorpdfstring{Q\+Axisym\+Advection\+Diffusion\+Element()}{QAxisymAdvectionDiffusionElement()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+\hyperlink{classoomph_1_1QAxisymAdvectionDiffusionElement}{oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::\hyperlink{classoomph_1_1QAxisymAdvectionDiffusionElement}{Q\+Axisym\+Advection\+Diffusion\+Element} (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1QAxisymAdvectionDiffusionElement}{Q\+Axisym\+Advection\+Diffusion\+Element}$<$ N\+N\+O\+D\+E\+\_\+1D $>$ \&}]{dummy }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Broken copy constructor. 
+
+
+
+Definition at line 612 of file axisym\+\_\+advection\+\_\+diffusion\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Broken\+Copy\+::broken\+\_\+copy().
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1QAxisymAdvectionDiffusionElement_a4bb026009c2c69e6870ff45450382418}\label{classoomph_1_1QAxisymAdvectionDiffusionElement_a4bb026009c2c69e6870ff45450382418}} 
+\index{oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element@{oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element}!dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+axi\+\_\+adv\+\_\+diff@{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+axi\+\_\+adv\+\_\+diff}}
+\index{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+axi\+\_\+adv\+\_\+diff@{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+axi\+\_\+adv\+\_\+diff}!oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element@{oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element}}
+\subsubsection{\texorpdfstring{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+axi\+\_\+adv\+\_\+diff()}{dshape\_and\_dtest\_eulerian\_at\_knot\_axi\_adv\_diff()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+double \hyperlink{classoomph_1_1QAxisymAdvectionDiffusionElement}{oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+axi\+\_\+adv\+\_\+diff (\begin{DoxyParamCaption}\item[{const unsigned \&}]{ipt,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dpsidx,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{test,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dtestdx }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+\hyperlink{classoomph_1_1Shape}{Shape}, test functions \& derivs. w.\+r.\+t. to global coords. at integration point ipt. Return Jacobian. 
+
+Define the shape functions and test functions and derivatives w.\+r.\+t. global coordinates and return Jacobian of mapping.
+
+Galerkin\+: Test functions = shape functions 
+
+Implements \hyperlink{classoomph_1_1AxisymAdvectionDiffusionEquations_a6d844cf194aa8fa462bbfcda811b24ca}{oomph\+::\+Axisym\+Advection\+Diffusion\+Equations}.
+
+
+
+Definition at line 737 of file axisym\+\_\+advection\+\_\+diffusion\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Finite\+Element\+::dshape\+\_\+eulerian\+\_\+at\+\_\+knot().
+
+
+
+Referenced by oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element$<$ N\+N\+O\+D\+E\+\_\+1\+D $>$\+::dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+axi\+\_\+adv\+\_\+diff().
+
+\mbox{\Hypertarget{classoomph_1_1QAxisymAdvectionDiffusionElement_aa940ad09f185dfde0eaeff61bc9c0a31}\label{classoomph_1_1QAxisymAdvectionDiffusionElement_aa940ad09f185dfde0eaeff61bc9c0a31}} 
+\index{oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element@{oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element}!dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+axi\+\_\+adv\+\_\+diff@{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+axi\+\_\+adv\+\_\+diff}}
+\index{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+axi\+\_\+adv\+\_\+diff@{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+axi\+\_\+adv\+\_\+diff}!oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element@{oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element}}
+\subsubsection{\texorpdfstring{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+axi\+\_\+adv\+\_\+diff()}{dshape\_and\_dtest\_eulerian\_axi\_adv\_diff()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+double \hyperlink{classoomph_1_1QAxisymAdvectionDiffusionElement}{oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+axi\+\_\+adv\+\_\+diff (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dpsidx,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{test,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dtestdx }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+\hyperlink{classoomph_1_1Shape}{Shape}, test functions \& derivs. w.\+r.\+t. to global coords. Return Jacobian. 
+
+Define the shape functions and test functions and derivatives w.\+r.\+t. global coordinates and return Jacobian of mapping.
+
+Galerkin\+: Test functions = shape functions 
+
+Implements \hyperlink{classoomph_1_1AxisymAdvectionDiffusionEquations_a92b918f392733e6128e192c2fbdb478c}{oomph\+::\+Axisym\+Advection\+Diffusion\+Equations}.
+
+
+
+Definition at line 702 of file axisym\+\_\+advection\+\_\+diffusion\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element$<$ N\+N\+O\+D\+E\+\_\+1\+D $>$\+::dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+axi\+\_\+adv\+\_\+diff(), oomph\+::\+Finite\+Element\+::dshape\+\_\+eulerian(), and i.
+
+
+
+Referenced by oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element$<$ N\+N\+O\+D\+E\+\_\+1\+D $>$\+::output\+\_\+fct().
+
+\mbox{\Hypertarget{classoomph_1_1QAxisymAdvectionDiffusionElement_a398cd25b07bc4709163369e2db6e8202}\label{classoomph_1_1QAxisymAdvectionDiffusionElement_a398cd25b07bc4709163369e2db6e8202}} 
+\index{oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element@{oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element}!output@{output}}
+\index{output@{output}!oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element@{oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+void \hyperlink{classoomph_1_1QAxisymAdvectionDiffusionElement}{oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::output (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Output function\+: r,z,u. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1AxisymAdvectionDiffusionEquations_ae8cc538907edda147270ae26696919bd}{oomph\+::\+Axisym\+Advection\+Diffusion\+Equations}.
+
+
+
+Definition at line 633 of file axisym\+\_\+advection\+\_\+diffusion\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Axisym\+Advection\+Diffusion\+Equations\+::output().
+
+\mbox{\Hypertarget{classoomph_1_1QAxisymAdvectionDiffusionElement_a20cbe0ae52a064c6c5f6a065596beea5}\label{classoomph_1_1QAxisymAdvectionDiffusionElement_a20cbe0ae52a064c6c5f6a065596beea5}} 
+\index{oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element@{oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element}!output@{output}}
+\index{output@{output}!oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element@{oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+void \hyperlink{classoomph_1_1QAxisymAdvectionDiffusionElement}{oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::output (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile,  }\item[{const unsigned \&}]{n\+\_\+plot }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Output function\+: r,z,u at n\+\_\+plot$^\wedge$2 plot points. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1AxisymAdvectionDiffusionEquations_a37f231fce2fd5b8bbe51899469b2896b}{oomph\+::\+Axisym\+Advection\+Diffusion\+Equations}.
+
+
+
+Definition at line 640 of file axisym\+\_\+advection\+\_\+diffusion\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Axisym\+Advection\+Diffusion\+Equations\+::output().
+
+\mbox{\Hypertarget{classoomph_1_1QAxisymAdvectionDiffusionElement_ac095435d0ae6a5f3d74fa474d93906f8}\label{classoomph_1_1QAxisymAdvectionDiffusionElement_ac095435d0ae6a5f3d74fa474d93906f8}} 
+\index{oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element@{oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element}!output@{output}}
+\index{output@{output}!oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element@{oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+void \hyperlink{classoomph_1_1QAxisymAdvectionDiffusionElement}{oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::output (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{file\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+C-\/style output function\+: r,z,u. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1AxisymAdvectionDiffusionEquations_a79345d7ee2f42aa679538839b5128a58}{oomph\+::\+Axisym\+Advection\+Diffusion\+Equations}.
+
+
+
+Definition at line 648 of file axisym\+\_\+advection\+\_\+diffusion\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Axisym\+Advection\+Diffusion\+Equations\+::output().
+
+\mbox{\Hypertarget{classoomph_1_1QAxisymAdvectionDiffusionElement_a636e99ae2ec6ac0c5e691acb89c3f5ef}\label{classoomph_1_1QAxisymAdvectionDiffusionElement_a636e99ae2ec6ac0c5e691acb89c3f5ef}} 
+\index{oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element@{oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element}!output@{output}}
+\index{output@{output}!oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element@{oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+void \hyperlink{classoomph_1_1QAxisymAdvectionDiffusionElement}{oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::output (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{file\+\_\+pt,  }\item[{const unsigned \&}]{n\+\_\+plot }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+C-\/style output function\+: r,z,u at n\+\_\+plot$^\wedge$2 plot points. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1AxisymAdvectionDiffusionEquations_ae8f5071aa83c8b71e3d455ae56a25214}{oomph\+::\+Axisym\+Advection\+Diffusion\+Equations}.
+
+
+
+Definition at line 655 of file axisym\+\_\+advection\+\_\+diffusion\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Axisym\+Advection\+Diffusion\+Equations\+::output().
+
+\mbox{\Hypertarget{classoomph_1_1QAxisymAdvectionDiffusionElement_a07a6680226c412753604695d77b19467}\label{classoomph_1_1QAxisymAdvectionDiffusionElement_a07a6680226c412753604695d77b19467}} 
+\index{oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element@{oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element}!output\+\_\+fct@{output\+\_\+fct}}
+\index{output\+\_\+fct@{output\+\_\+fct}!oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element@{oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element}}
+\subsubsection{\texorpdfstring{output\+\_\+fct()}{output\_fct()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+void \hyperlink{classoomph_1_1QAxisymAdvectionDiffusionElement}{oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::output\+\_\+fct (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile,  }\item[{const unsigned \&}]{n\+\_\+plot,  }\item[{\hyperlink{classoomph_1_1FiniteElement_a690fd33af26cc3e84f39bba6d5a85202}{Finite\+Element\+::\+Steady\+Exact\+Solution\+Fct\+Pt}}]{exact\+\_\+soln\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Output function for an exact solution\+: r,z,u\+\_\+exact at n\+\_\+plot$^\wedge$2 plot points. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1AxisymAdvectionDiffusionEquations_a7e09458177108a164dbc0dbf45179d0e}{oomph\+::\+Axisym\+Advection\+Diffusion\+Equations}.
+
+
+
+Definition at line 662 of file axisym\+\_\+advection\+\_\+diffusion\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Axisym\+Advection\+Diffusion\+Equations\+::dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+axi\+\_\+adv\+\_\+diff(), oomph\+::\+Axisym\+Advection\+Diffusion\+Equations\+::dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+axi\+\_\+adv\+\_\+diff(), oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element$<$ N\+N\+O\+D\+E\+\_\+1\+D $>$\+::dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+axi\+\_\+adv\+\_\+diff(), oomph\+::\+Axisym\+Advection\+Diffusion\+Equations\+::output\+\_\+fct(), and s.
+
+\mbox{\Hypertarget{classoomph_1_1QAxisymAdvectionDiffusionElement_ae0c6b6099761b998688e2c22f2280a21}\label{classoomph_1_1QAxisymAdvectionDiffusionElement_ae0c6b6099761b998688e2c22f2280a21}} 
+\index{oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element@{oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element}!required\+\_\+nvalue@{required\+\_\+nvalue}}
+\index{required\+\_\+nvalue@{required\+\_\+nvalue}!oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element@{oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element}}
+\subsubsection{\texorpdfstring{required\+\_\+nvalue()}{required\_nvalue()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+unsigned \hyperlink{classoomph_1_1QAxisymAdvectionDiffusionElement}{oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::required\+\_\+nvalue (\begin{DoxyParamCaption}\item[{const unsigned \&}]{n }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Broken assignment operator. 
+
+Required \# of `values\textquotesingle{} (pinned or dofs) at node n 
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a56610c60d5bc2d7c27407a1455471b1a}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 626 of file axisym\+\_\+advection\+\_\+diffusion\+\_\+elements.\+h.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1QAxisymAdvectionDiffusionElement_a2d3204e595a313a63345986196137aac}\label{classoomph_1_1QAxisymAdvectionDiffusionElement_a2d3204e595a313a63345986196137aac}} 
+\index{oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element@{oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element}!Initial\+\_\+\+Nvalue@{Initial\+\_\+\+Nvalue}}
+\index{Initial\+\_\+\+Nvalue@{Initial\+\_\+\+Nvalue}!oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element@{oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element}}
+\subsubsection{\texorpdfstring{Initial\+\_\+\+Nvalue}{Initial\_Nvalue}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+const unsigned \hyperlink{classoomph_1_1QAxisymAdvectionDiffusionElement}{oomph\+::\+Q\+Axisym\+Advection\+Diffusion\+Element}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::Initial\+\_\+\+Nvalue = 1\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Static array of ints to hold number of variables at nodes\+: Initial\+\_\+\+Nvalue\mbox{[}n\mbox{]}. 
+
+
+
+Definition at line 600 of file axisym\+\_\+advection\+\_\+diffusion\+\_\+elements.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{axisym__advection__diffusion__elements_8h}{axisym\+\_\+advection\+\_\+diffusion\+\_\+elements.\+h}\item 
+\hyperlink{axisym__advection__diffusion__elements_8cc}{axisym\+\_\+advection\+\_\+diffusion\+\_\+elements.\+cc}\end{DoxyCompactItemize}

@@ -1,0 +1,266 @@
+\hypertarget{classoomph_1_1ElasticLineFluidInterfaceBoundingElement}{}\section{oomph\+:\+:Elastic\+Line\+Fluid\+Interface\+Bounding\+Element$<$ E\+L\+E\+M\+E\+NT $>$ Class Template Reference}
+\label{classoomph_1_1ElasticLineFluidInterfaceBoundingElement}\index{oomph\+::\+Elastic\+Line\+Fluid\+Interface\+Bounding\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$@{oomph\+::\+Elastic\+Line\+Fluid\+Interface\+Bounding\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$}}
+
+
+Pseudo-\/elasticity version of the \hyperlink{classoomph_1_1LineFluidInterfaceBoundingElement}{Line\+Fluid\+Interface\+Bounding\+Element}.  
+
+
+
+
+{\ttfamily \#include $<$specific\+\_\+node\+\_\+update\+\_\+interface\+\_\+elements.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Elastic\+Line\+Fluid\+Interface\+Bounding\+Element$<$ E\+L\+E\+M\+E\+NT $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.322537cm]{classoomph_1_1ElasticLineFluidInterfaceBoundingElement}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classoomph_1_1ElasticLineFluidInterfaceBoundingElement_a524b359509676cd429729e0dde59da92}{set\+\_\+lagrange\+\_\+index} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ unsigned $>$ \&lagrange\+\_\+index)
+\begin{DoxyCompactList}\small\item\em Set the Id. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1ElasticLineFluidInterfaceBoundingElement_ad531b7e5debaecc74d64755c82bbc17d}{Elastic\+Line\+Fluid\+Interface\+Bounding\+Element} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1ElasticLineFluidInterfaceBoundingElement_a1d8a7213d7bd2826bc59af770f66f402}{zeta\+\_\+nodal} (const unsigned \&n, const unsigned \&k, const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}) const
+\begin{DoxyCompactList}\small\item\em Specify the value of nodal zeta from the face geometry The \char`\"{}global\char`\"{} intrinsic coordinate of the element when viewed as part of a geometric object should be given by the \hyperlink{classoomph_1_1FaceElement}{Face\+Element} representation, by default. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1ElasticLineFluidInterfaceBoundingElement_a50444fef924185e8d462238045e24543}{output} (std\+::ostream \&outfile)
+\begin{DoxyCompactList}\small\item\em Overload the output function. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1ElasticLineFluidInterfaceBoundingElement_a7a0df1419f28df0351ed1c5e05f8f751}{output} (std\+::ostream \&outfile, const unsigned \&n\+\_\+plot)
+\begin{DoxyCompactList}\small\item\em Output the element. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1ElasticLineFluidInterfaceBoundingElement_a0979784b94ab8285a964ab14077b8320}{output} (F\+I\+LE $\ast$file\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Overload the C-\/style output function. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1ElasticLineFluidInterfaceBoundingElement_a6e4c4d356c7d66f6b5ec4c7a375ecc91}{output} (F\+I\+LE $\ast$file\+\_\+pt, const unsigned \&n\+\_\+plot)
+\begin{DoxyCompactList}\small\item\em C-\/style Output function. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1ElasticLineFluidInterfaceBoundingElement_a71b23e3ad49d5137ca4a7f654f828077}{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&residuals, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&jacobian)
+\begin{DoxyCompactList}\small\item\em Calculate the elemental residual vector and Jacobian. \end{DoxyCompactList}\item 
+int \hyperlink{classoomph_1_1ElasticLineFluidInterfaceBoundingElement_a0f3d4bdd756165d6a2225f5b13eac005}{kinematic\+\_\+local\+\_\+eqn} (const unsigned \&n)
+\begin{DoxyCompactList}\small\item\em Local eqn number of kinematic bc associated with local node n. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1Vector}{Vector}$<$ unsigned $>$ \hyperlink{classoomph_1_1ElasticLineFluidInterfaceBoundingElement_ab60624e63f1ef1b59d191a83b16eb1de}{Lagrange\+\_\+index}
+\begin{DoxyCompactList}\small\item\em Short Storage for the index of Lagrange multiplier. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class E\+L\+E\+M\+E\+NT$>$\newline
+class oomph\+::\+Elastic\+Line\+Fluid\+Interface\+Bounding\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$}
+
+Pseudo-\/elasticity version of the \hyperlink{classoomph_1_1LineFluidInterfaceBoundingElement}{Line\+Fluid\+Interface\+Bounding\+Element}. 
+
+Definition at line 991 of file specific\+\_\+node\+\_\+update\+\_\+interface\+\_\+elements.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1ElasticLineFluidInterfaceBoundingElement_ad531b7e5debaecc74d64755c82bbc17d}\label{classoomph_1_1ElasticLineFluidInterfaceBoundingElement_ad531b7e5debaecc74d64755c82bbc17d}} 
+\index{oomph\+::\+Elastic\+Line\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Elastic\+Line\+Fluid\+Interface\+Bounding\+Element}!Elastic\+Line\+Fluid\+Interface\+Bounding\+Element@{Elastic\+Line\+Fluid\+Interface\+Bounding\+Element}}
+\index{Elastic\+Line\+Fluid\+Interface\+Bounding\+Element@{Elastic\+Line\+Fluid\+Interface\+Bounding\+Element}!oomph\+::\+Elastic\+Line\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Elastic\+Line\+Fluid\+Interface\+Bounding\+Element}}
+\subsubsection{\texorpdfstring{Elastic\+Line\+Fluid\+Interface\+Bounding\+Element()}{ElasticLineFluidInterfaceBoundingElement()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classoomph_1_1ElasticLineFluidInterfaceBoundingElement}{oomph\+::\+Elastic\+Line\+Fluid\+Interface\+Bounding\+Element}$<$ E\+L\+E\+M\+E\+NT $>$\+::\hyperlink{classoomph_1_1ElasticLineFluidInterfaceBoundingElement}{Elastic\+Line\+Fluid\+Interface\+Bounding\+Element} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor. 
+
+
+
+Definition at line 1007 of file specific\+\_\+node\+\_\+update\+\_\+interface\+\_\+elements.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1ElasticLineFluidInterfaceBoundingElement_a71b23e3ad49d5137ca4a7f654f828077}\label{classoomph_1_1ElasticLineFluidInterfaceBoundingElement_a71b23e3ad49d5137ca4a7f654f828077}} 
+\index{oomph\+::\+Elastic\+Line\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Elastic\+Line\+Fluid\+Interface\+Bounding\+Element}!fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian}}
+\index{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian}!oomph\+::\+Elastic\+Line\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Elastic\+Line\+Fluid\+Interface\+Bounding\+Element}}
+\subsubsection{\texorpdfstring{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian()}{fill\_in\_contribution\_to\_jacobian()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classoomph_1_1ElasticLineFluidInterfaceBoundingElement}{oomph\+::\+Elastic\+Line\+Fluid\+Interface\+Bounding\+Element}$<$ E\+L\+E\+M\+E\+NT $>$\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{residuals,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{jacobian }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Calculate the elemental residual vector and Jacobian. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1GeneralisedElement_a6ae09fc0d68e4309ac1b03583d252845}{oomph\+::\+Generalised\+Element}.
+
+
+
+Definition at line 1037 of file specific\+\_\+node\+\_\+update\+\_\+interface\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1ElasticLineFluidInterfaceBoundingElement_a0f3d4bdd756165d6a2225f5b13eac005}\label{classoomph_1_1ElasticLineFluidInterfaceBoundingElement_a0f3d4bdd756165d6a2225f5b13eac005}} 
+\index{oomph\+::\+Elastic\+Line\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Elastic\+Line\+Fluid\+Interface\+Bounding\+Element}!kinematic\+\_\+local\+\_\+eqn@{kinematic\+\_\+local\+\_\+eqn}}
+\index{kinematic\+\_\+local\+\_\+eqn@{kinematic\+\_\+local\+\_\+eqn}!oomph\+::\+Elastic\+Line\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Elastic\+Line\+Fluid\+Interface\+Bounding\+Element}}
+\subsubsection{\texorpdfstring{kinematic\+\_\+local\+\_\+eqn()}{kinematic\_local\_eqn()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+int \hyperlink{classoomph_1_1ElasticLineFluidInterfaceBoundingElement}{oomph\+::\+Elastic\+Line\+Fluid\+Interface\+Bounding\+Element}$<$ E\+L\+E\+M\+E\+NT $>$\+::kinematic\+\_\+local\+\_\+eqn (\begin{DoxyParamCaption}\item[{const unsigned \&}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Local eqn number of kinematic bc associated with local node n. 
+
+
+
+Implements \hyperlink{classoomph_1_1FluidInterfaceBoundingElement_a12a0a6d7c3c1c1a5a0f42a57e60eab34}{oomph\+::\+Fluid\+Interface\+Bounding\+Element}.
+
+
+
+Definition at line 1051 of file specific\+\_\+node\+\_\+update\+\_\+interface\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1ElasticLineFluidInterfaceBoundingElement_a50444fef924185e8d462238045e24543}\label{classoomph_1_1ElasticLineFluidInterfaceBoundingElement_a50444fef924185e8d462238045e24543}} 
+\index{oomph\+::\+Elastic\+Line\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Elastic\+Line\+Fluid\+Interface\+Bounding\+Element}!output@{output}}
+\index{output@{output}!oomph\+::\+Elastic\+Line\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Elastic\+Line\+Fluid\+Interface\+Bounding\+Element}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classoomph_1_1ElasticLineFluidInterfaceBoundingElement}{oomph\+::\+Elastic\+Line\+Fluid\+Interface\+Bounding\+Element}$<$ E\+L\+E\+M\+E\+NT $>$\+::output (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Overload the output function. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FluidInterfaceBoundingElement_a81adc5ae89ddfa120f587c61b972622f}{oomph\+::\+Fluid\+Interface\+Bounding\+Element}.
+
+
+
+Definition at line 1021 of file specific\+\_\+node\+\_\+update\+\_\+interface\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Finite\+Element\+::output().
+
+\mbox{\Hypertarget{classoomph_1_1ElasticLineFluidInterfaceBoundingElement_a7a0df1419f28df0351ed1c5e05f8f751}\label{classoomph_1_1ElasticLineFluidInterfaceBoundingElement_a7a0df1419f28df0351ed1c5e05f8f751}} 
+\index{oomph\+::\+Elastic\+Line\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Elastic\+Line\+Fluid\+Interface\+Bounding\+Element}!output@{output}}
+\index{output@{output}!oomph\+::\+Elastic\+Line\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Elastic\+Line\+Fluid\+Interface\+Bounding\+Element}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classoomph_1_1ElasticLineFluidInterfaceBoundingElement}{oomph\+::\+Elastic\+Line\+Fluid\+Interface\+Bounding\+Element}$<$ E\+L\+E\+M\+E\+NT $>$\+::output (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile,  }\item[{const unsigned \&}]{n\+\_\+plot }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Output the element. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FluidInterfaceBoundingElement_af2c821d51d506221976a0c17e1615ac3}{oomph\+::\+Fluid\+Interface\+Bounding\+Element}.
+
+
+
+Definition at line 1024 of file specific\+\_\+node\+\_\+update\+\_\+interface\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Fluid\+Interface\+Bounding\+Element\+::output().
+
+\mbox{\Hypertarget{classoomph_1_1ElasticLineFluidInterfaceBoundingElement_a0979784b94ab8285a964ab14077b8320}\label{classoomph_1_1ElasticLineFluidInterfaceBoundingElement_a0979784b94ab8285a964ab14077b8320}} 
+\index{oomph\+::\+Elastic\+Line\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Elastic\+Line\+Fluid\+Interface\+Bounding\+Element}!output@{output}}
+\index{output@{output}!oomph\+::\+Elastic\+Line\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Elastic\+Line\+Fluid\+Interface\+Bounding\+Element}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classoomph_1_1ElasticLineFluidInterfaceBoundingElement}{oomph\+::\+Elastic\+Line\+Fluid\+Interface\+Bounding\+Element}$<$ E\+L\+E\+M\+E\+NT $>$\+::output (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{file\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Overload the C-\/style output function. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FluidInterfaceBoundingElement_a85cc62405429744e3e3585894315cb9e}{oomph\+::\+Fluid\+Interface\+Bounding\+Element}.
+
+
+
+Definition at line 1030 of file specific\+\_\+node\+\_\+update\+\_\+interface\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Finite\+Element\+::output().
+
+\mbox{\Hypertarget{classoomph_1_1ElasticLineFluidInterfaceBoundingElement_a6e4c4d356c7d66f6b5ec4c7a375ecc91}\label{classoomph_1_1ElasticLineFluidInterfaceBoundingElement_a6e4c4d356c7d66f6b5ec4c7a375ecc91}} 
+\index{oomph\+::\+Elastic\+Line\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Elastic\+Line\+Fluid\+Interface\+Bounding\+Element}!output@{output}}
+\index{output@{output}!oomph\+::\+Elastic\+Line\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Elastic\+Line\+Fluid\+Interface\+Bounding\+Element}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classoomph_1_1ElasticLineFluidInterfaceBoundingElement}{oomph\+::\+Elastic\+Line\+Fluid\+Interface\+Bounding\+Element}$<$ E\+L\+E\+M\+E\+NT $>$\+::output (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{file\+\_\+pt,  }\item[{const unsigned \&}]{n\+\_\+plot }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+C-\/style Output function. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FluidInterfaceBoundingElement_ae85ea987a06275a03ad6d0e3710871da}{oomph\+::\+Fluid\+Interface\+Bounding\+Element}.
+
+
+
+Definition at line 1033 of file specific\+\_\+node\+\_\+update\+\_\+interface\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Fluid\+Interface\+Bounding\+Element\+::output().
+
+\mbox{\Hypertarget{classoomph_1_1ElasticLineFluidInterfaceBoundingElement_a524b359509676cd429729e0dde59da92}\label{classoomph_1_1ElasticLineFluidInterfaceBoundingElement_a524b359509676cd429729e0dde59da92}} 
+\index{oomph\+::\+Elastic\+Line\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Elastic\+Line\+Fluid\+Interface\+Bounding\+Element}!set\+\_\+lagrange\+\_\+index@{set\+\_\+lagrange\+\_\+index}}
+\index{set\+\_\+lagrange\+\_\+index@{set\+\_\+lagrange\+\_\+index}!oomph\+::\+Elastic\+Line\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Elastic\+Line\+Fluid\+Interface\+Bounding\+Element}}
+\subsubsection{\texorpdfstring{set\+\_\+lagrange\+\_\+index()}{set\_lagrange\_index()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classoomph_1_1ElasticLineFluidInterfaceBoundingElement}{oomph\+::\+Elastic\+Line\+Fluid\+Interface\+Bounding\+Element}$<$ E\+L\+E\+M\+E\+NT $>$\+::set\+\_\+lagrange\+\_\+index (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ unsigned $>$ \&}]{lagrange\+\_\+index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the Id. 
+
+
+
+Definition at line 1003 of file specific\+\_\+node\+\_\+update\+\_\+interface\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1ElasticLineFluidInterfaceBoundingElement_a1d8a7213d7bd2826bc59af770f66f402}\label{classoomph_1_1ElasticLineFluidInterfaceBoundingElement_a1d8a7213d7bd2826bc59af770f66f402}} 
+\index{oomph\+::\+Elastic\+Line\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Elastic\+Line\+Fluid\+Interface\+Bounding\+Element}!zeta\+\_\+nodal@{zeta\+\_\+nodal}}
+\index{zeta\+\_\+nodal@{zeta\+\_\+nodal}!oomph\+::\+Elastic\+Line\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Elastic\+Line\+Fluid\+Interface\+Bounding\+Element}}
+\subsubsection{\texorpdfstring{zeta\+\_\+nodal()}{zeta\_nodal()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+double \hyperlink{classoomph_1_1ElasticLineFluidInterfaceBoundingElement}{oomph\+::\+Elastic\+Line\+Fluid\+Interface\+Bounding\+Element}$<$ E\+L\+E\+M\+E\+NT $>$\+::zeta\+\_\+nodal (\begin{DoxyParamCaption}\item[{const unsigned \&}]{n,  }\item[{const unsigned \&}]{k,  }\item[{const unsigned \&}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Specify the value of nodal zeta from the face geometry The \char`\"{}global\char`\"{} intrinsic coordinate of the element when viewed as part of a geometric object should be given by the \hyperlink{classoomph_1_1FaceElement}{Face\+Element} representation, by default. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a849561c5fbcbc07dc49d2dc6cca68559}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 1015 of file specific\+\_\+node\+\_\+update\+\_\+interface\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Face\+Element\+::zeta\+\_\+nodal().
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1ElasticLineFluidInterfaceBoundingElement_ab60624e63f1ef1b59d191a83b16eb1de}\label{classoomph_1_1ElasticLineFluidInterfaceBoundingElement_ab60624e63f1ef1b59d191a83b16eb1de}} 
+\index{oomph\+::\+Elastic\+Line\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Elastic\+Line\+Fluid\+Interface\+Bounding\+Element}!Lagrange\+\_\+index@{Lagrange\+\_\+index}}
+\index{Lagrange\+\_\+index@{Lagrange\+\_\+index}!oomph\+::\+Elastic\+Line\+Fluid\+Interface\+Bounding\+Element@{oomph\+::\+Elastic\+Line\+Fluid\+Interface\+Bounding\+Element}}
+\subsubsection{\texorpdfstring{Lagrange\+\_\+index}{Lagrange\_index}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classoomph_1_1Vector}{Vector}$<$unsigned$>$ \hyperlink{classoomph_1_1ElasticLineFluidInterfaceBoundingElement}{oomph\+::\+Elastic\+Line\+Fluid\+Interface\+Bounding\+Element}$<$ E\+L\+E\+M\+E\+NT $>$\+::Lagrange\+\_\+index\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Short Storage for the index of Lagrange multiplier. 
+
+
+
+Definition at line 998 of file specific\+\_\+node\+\_\+update\+\_\+interface\+\_\+elements.\+h.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{specific__node__update__interface__elements_8h}{specific\+\_\+node\+\_\+update\+\_\+interface\+\_\+elements.\+h}\end{DoxyCompactItemize}

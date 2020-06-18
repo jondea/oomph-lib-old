@@ -1,0 +1,304 @@
+\hypertarget{classUnsteadyHeatProblem}{}\section{Unsteady\+Heat\+Problem$<$ E\+L\+E\+M\+E\+NT $>$ Class Template Reference}
+\label{classUnsteadyHeatProblem}\index{Unsteady\+Heat\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$@{Unsteady\+Heat\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$}}
+
+
+Unsteady\+Heat problem.  
+
+
+Inheritance diagram for Unsteady\+Heat\+Problem$<$ E\+L\+E\+M\+E\+NT $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classUnsteadyHeatProblem}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classUnsteadyHeatProblem_abd3a46eea132b1e5872be6a6309a51b2}{Unsteady\+Heat\+Problem} (Unsteady\+Heat\+Equations$<$ 2 $>$\+::Unsteady\+Heat\+Source\+Fct\+Pt source\+\_\+fct\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\hyperlink{classUnsteadyHeatProblem_acd342b40828d9e18b3571e00b3d34add}{$\sim$\+Unsteady\+Heat\+Problem} ()
+\begin{DoxyCompactList}\small\item\em Destructor (empty) \end{DoxyCompactList}\item 
+void \hyperlink{classUnsteadyHeatProblem_a88e3d534b5904f7c10ce6a8fbd6df0ea}{actions\+\_\+after\+\_\+newton\+\_\+solve} ()
+\begin{DoxyCompactList}\small\item\em Update the problem specs after solve (empty) \end{DoxyCompactList}\item 
+void \hyperlink{classUnsteadyHeatProblem_aa1ee8fbe2a5439d1cacb37131e0f81c6}{actions\+\_\+before\+\_\+newton\+\_\+solve} ()
+\begin{DoxyCompactList}\small\item\em Update the problem specs before solve (empty) \end{DoxyCompactList}\item 
+void \hyperlink{classUnsteadyHeatProblem_afd14cbe343adfa39e3b8b2ca681c5020}{actions\+\_\+after\+\_\+implicit\+\_\+timestep} ()
+\begin{DoxyCompactList}\small\item\em Update the problem specs after solve (empty) \end{DoxyCompactList}\item 
+void \hyperlink{classUnsteadyHeatProblem_a7074e52f6a3a791549687e1b4ddd059a}{actions\+\_\+before\+\_\+implicit\+\_\+timestep} ()
+\begin{DoxyCompactList}\small\item\em Update the problem specs before next timestep\+: Set Dirchlet boundary conditions from exact solution. \end{DoxyCompactList}\item 
+void \hyperlink{classUnsteadyHeatProblem_a98de3ed2d9cf5409323121bbb482bc1b}{set\+\_\+initial\+\_\+condition} ()
+\begin{DoxyCompactList}\small\item\em Set initial condition (incl previous timesteps) according to specified function. \end{DoxyCompactList}\item 
+void \hyperlink{classUnsteadyHeatProblem_a2c0c4b762d2dbde7396dca2a6750f433}{doc\+\_\+solution} (Doc\+Info \&doc\+\_\+info, ofstream \&trace\+\_\+file)
+\begin{DoxyCompactList}\small\item\em Doc the solution. \end{DoxyCompactList}\item 
+void \hyperlink{classUnsteadyHeatProblem_a9a60874a6471414819301705f1a2afd1}{dump\+\_\+it} (ofstream \&dump\+\_\+file)
+\begin{DoxyCompactList}\small\item\em Dump problem to disk to allow for restart. \end{DoxyCompactList}\item 
+void \hyperlink{classUnsteadyHeatProblem_ad0a4a1c1da24f6d62f64b0d40be31709}{restart} (ifstream \&restart\+\_\+file)
+\begin{DoxyCompactList}\small\item\em Read problem for restart from specified restart file. \end{DoxyCompactList}\item 
+double \hyperlink{classUnsteadyHeatProblem_a888e25dd97e89d31e485cb188721dbe1}{global\+\_\+temporal\+\_\+error\+\_\+norm} ()
+\begin{DoxyCompactList}\small\item\em Global error norm for adaptive time-\/stepping. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Unsteady\+Heat\+Equations$<$ 2 $>$\+::Unsteady\+Heat\+Source\+Fct\+Pt \hyperlink{classUnsteadyHeatProblem_a09c5c208069fcf5f36d54f994bd54e93}{Source\+\_\+fct\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to source function. \end{DoxyCompactList}\item 
+Node $\ast$ \hyperlink{classUnsteadyHeatProblem_a33f2d1de7d1fa651df34bc0e4e747c67}{Control\+\_\+node\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to control node at which the solution is documented. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class E\+L\+E\+M\+E\+NT$>$\newline
+class Unsteady\+Heat\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$}
+
+Unsteady\+Heat problem. 
+
+Definition at line 108 of file two\+\_\+d\+\_\+unsteady\+\_\+heat\+\_\+t\+\_\+adapt.\+cc.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classUnsteadyHeatProblem_abd3a46eea132b1e5872be6a6309a51b2}\label{classUnsteadyHeatProblem_abd3a46eea132b1e5872be6a6309a51b2}} 
+\index{Unsteady\+Heat\+Problem@{Unsteady\+Heat\+Problem}!Unsteady\+Heat\+Problem@{Unsteady\+Heat\+Problem}}
+\index{Unsteady\+Heat\+Problem@{Unsteady\+Heat\+Problem}!Unsteady\+Heat\+Problem@{Unsteady\+Heat\+Problem}}
+\subsubsection{\texorpdfstring{Unsteady\+Heat\+Problem()}{UnsteadyHeatProblem()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classUnsteadyHeatProblem}{Unsteady\+Heat\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::\hyperlink{classUnsteadyHeatProblem}{Unsteady\+Heat\+Problem} (\begin{DoxyParamCaption}\item[{Unsteady\+Heat\+Equations$<$ 2 $>$\+::Unsteady\+Heat\+Source\+Fct\+Pt}]{source\+\_\+fct\+\_\+pt }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+Constructor for Unsteady\+Heat problem in square domain. 
+
+Definition at line 166 of file two\+\_\+d\+\_\+unsteady\+\_\+heat\+\_\+t\+\_\+adapt.\+cc.
+
+
+
+References Unsteady\+Heat\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Control\+\_\+node\+\_\+pt, Exact\+Soln\+For\+Unsteady\+Heat\+::\+Gamma, Exact\+Soln\+For\+Unsteady\+Heat\+::K, and Unsteady\+Heat\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Source\+\_\+fct\+\_\+pt.
+
+\mbox{\Hypertarget{classUnsteadyHeatProblem_acd342b40828d9e18b3571e00b3d34add}\label{classUnsteadyHeatProblem_acd342b40828d9e18b3571e00b3d34add}} 
+\index{Unsteady\+Heat\+Problem@{Unsteady\+Heat\+Problem}!````~Unsteady\+Heat\+Problem@{$\sim$\+Unsteady\+Heat\+Problem}}
+\index{````~Unsteady\+Heat\+Problem@{$\sim$\+Unsteady\+Heat\+Problem}!Unsteady\+Heat\+Problem@{Unsteady\+Heat\+Problem}}
+\subsubsection{\texorpdfstring{$\sim$\+Unsteady\+Heat\+Problem()}{~UnsteadyHeatProblem()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+\hyperlink{classUnsteadyHeatProblem}{Unsteady\+Heat\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::$\sim$\hyperlink{classUnsteadyHeatProblem}{Unsteady\+Heat\+Problem} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Destructor (empty) 
+
+
+
+Definition at line 118 of file two\+\_\+d\+\_\+unsteady\+\_\+heat\+\_\+t\+\_\+adapt.\+cc.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classUnsteadyHeatProblem_afd14cbe343adfa39e3b8b2ca681c5020}\label{classUnsteadyHeatProblem_afd14cbe343adfa39e3b8b2ca681c5020}} 
+\index{Unsteady\+Heat\+Problem@{Unsteady\+Heat\+Problem}!actions\+\_\+after\+\_\+implicit\+\_\+timestep@{actions\+\_\+after\+\_\+implicit\+\_\+timestep}}
+\index{actions\+\_\+after\+\_\+implicit\+\_\+timestep@{actions\+\_\+after\+\_\+implicit\+\_\+timestep}!Unsteady\+Heat\+Problem@{Unsteady\+Heat\+Problem}}
+\subsubsection{\texorpdfstring{actions\+\_\+after\+\_\+implicit\+\_\+timestep()}{actions\_after\_implicit\_timestep()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+void \hyperlink{classUnsteadyHeatProblem}{Unsteady\+Heat\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::actions\+\_\+after\+\_\+implicit\+\_\+timestep (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Update the problem specs after solve (empty) 
+
+
+
+Definition at line 127 of file two\+\_\+d\+\_\+unsteady\+\_\+heat\+\_\+t\+\_\+adapt.\+cc.
+
+\mbox{\Hypertarget{classUnsteadyHeatProblem_a88e3d534b5904f7c10ce6a8fbd6df0ea}\label{classUnsteadyHeatProblem_a88e3d534b5904f7c10ce6a8fbd6df0ea}} 
+\index{Unsteady\+Heat\+Problem@{Unsteady\+Heat\+Problem}!actions\+\_\+after\+\_\+newton\+\_\+solve@{actions\+\_\+after\+\_\+newton\+\_\+solve}}
+\index{actions\+\_\+after\+\_\+newton\+\_\+solve@{actions\+\_\+after\+\_\+newton\+\_\+solve}!Unsteady\+Heat\+Problem@{Unsteady\+Heat\+Problem}}
+\subsubsection{\texorpdfstring{actions\+\_\+after\+\_\+newton\+\_\+solve()}{actions\_after\_newton\_solve()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+void \hyperlink{classUnsteadyHeatProblem}{Unsteady\+Heat\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::actions\+\_\+after\+\_\+newton\+\_\+solve (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Update the problem specs after solve (empty) 
+
+
+
+Definition at line 121 of file two\+\_\+d\+\_\+unsteady\+\_\+heat\+\_\+t\+\_\+adapt.\+cc.
+
+\mbox{\Hypertarget{classUnsteadyHeatProblem_a7074e52f6a3a791549687e1b4ddd059a}\label{classUnsteadyHeatProblem_a7074e52f6a3a791549687e1b4ddd059a}} 
+\index{Unsteady\+Heat\+Problem@{Unsteady\+Heat\+Problem}!actions\+\_\+before\+\_\+implicit\+\_\+timestep@{actions\+\_\+before\+\_\+implicit\+\_\+timestep}}
+\index{actions\+\_\+before\+\_\+implicit\+\_\+timestep@{actions\+\_\+before\+\_\+implicit\+\_\+timestep}!Unsteady\+Heat\+Problem@{Unsteady\+Heat\+Problem}}
+\subsubsection{\texorpdfstring{actions\+\_\+before\+\_\+implicit\+\_\+timestep()}{actions\_before\_implicit\_timestep()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classUnsteadyHeatProblem}{Unsteady\+Heat\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::actions\+\_\+before\+\_\+implicit\+\_\+timestep (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Update the problem specs before next timestep\+: Set Dirchlet boundary conditions from exact solution. 
+
+Actions before timestep\+: update the domain, then reset the boundary conditions for the current time. 
+
+Definition at line 259 of file two\+\_\+d\+\_\+unsteady\+\_\+heat\+\_\+t\+\_\+adapt.\+cc.
+
+
+
+References Exact\+Soln\+For\+Unsteady\+Heat\+::get\+\_\+exact\+\_\+u().
+
+\mbox{\Hypertarget{classUnsteadyHeatProblem_aa1ee8fbe2a5439d1cacb37131e0f81c6}\label{classUnsteadyHeatProblem_aa1ee8fbe2a5439d1cacb37131e0f81c6}} 
+\index{Unsteady\+Heat\+Problem@{Unsteady\+Heat\+Problem}!actions\+\_\+before\+\_\+newton\+\_\+solve@{actions\+\_\+before\+\_\+newton\+\_\+solve}}
+\index{actions\+\_\+before\+\_\+newton\+\_\+solve@{actions\+\_\+before\+\_\+newton\+\_\+solve}!Unsteady\+Heat\+Problem@{Unsteady\+Heat\+Problem}}
+\subsubsection{\texorpdfstring{actions\+\_\+before\+\_\+newton\+\_\+solve()}{actions\_before\_newton\_solve()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+void \hyperlink{classUnsteadyHeatProblem}{Unsteady\+Heat\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::actions\+\_\+before\+\_\+newton\+\_\+solve (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Update the problem specs before solve (empty) 
+
+
+
+Definition at line 124 of file two\+\_\+d\+\_\+unsteady\+\_\+heat\+\_\+t\+\_\+adapt.\+cc.
+
+\mbox{\Hypertarget{classUnsteadyHeatProblem_a2c0c4b762d2dbde7396dca2a6750f433}\label{classUnsteadyHeatProblem_a2c0c4b762d2dbde7396dca2a6750f433}} 
+\index{Unsteady\+Heat\+Problem@{Unsteady\+Heat\+Problem}!doc\+\_\+solution@{doc\+\_\+solution}}
+\index{doc\+\_\+solution@{doc\+\_\+solution}!Unsteady\+Heat\+Problem@{Unsteady\+Heat\+Problem}}
+\subsubsection{\texorpdfstring{doc\+\_\+solution()}{doc\_solution()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classUnsteadyHeatProblem}{Unsteady\+Heat\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::doc\+\_\+solution (\begin{DoxyParamCaption}\item[{Doc\+Info \&}]{doc\+\_\+info,  }\item[{ofstream \&}]{trace\+\_\+file }\end{DoxyParamCaption})}
+
+
+
+Doc the solution. 
+
+
+
+Definition at line 430 of file two\+\_\+d\+\_\+unsteady\+\_\+heat\+\_\+t\+\_\+adapt.\+cc.
+
+
+
+References Unsteady\+Heat\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Control\+\_\+node\+\_\+pt, Unsteady\+Heat\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::dump\+\_\+it(), and Exact\+Soln\+For\+Unsteady\+Heat\+::get\+\_\+exact\+\_\+u().
+
+
+
+Referenced by main(), and Unsteady\+Heat\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::set\+\_\+initial\+\_\+condition().
+
+\mbox{\Hypertarget{classUnsteadyHeatProblem_a9a60874a6471414819301705f1a2afd1}\label{classUnsteadyHeatProblem_a9a60874a6471414819301705f1a2afd1}} 
+\index{Unsteady\+Heat\+Problem@{Unsteady\+Heat\+Problem}!dump\+\_\+it@{dump\+\_\+it}}
+\index{dump\+\_\+it@{dump\+\_\+it}!Unsteady\+Heat\+Problem@{Unsteady\+Heat\+Problem}}
+\subsubsection{\texorpdfstring{dump\+\_\+it()}{dump\_it()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classUnsteadyHeatProblem}{Unsteady\+Heat\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::dump\+\_\+it (\begin{DoxyParamCaption}\item[{ofstream \&}]{dump\+\_\+file }\end{DoxyParamCaption})}
+
+
+
+Dump problem to disk to allow for restart. 
+
+Dump the solution to disk to allow for restart. 
+
+Definition at line 547 of file two\+\_\+d\+\_\+unsteady\+\_\+heat\+\_\+t\+\_\+adapt.\+cc.
+
+
+
+Referenced by Unsteady\+Heat\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::doc\+\_\+solution().
+
+\mbox{\Hypertarget{classUnsteadyHeatProblem_a888e25dd97e89d31e485cb188721dbe1}\label{classUnsteadyHeatProblem_a888e25dd97e89d31e485cb188721dbe1}} 
+\index{Unsteady\+Heat\+Problem@{Unsteady\+Heat\+Problem}!global\+\_\+temporal\+\_\+error\+\_\+norm@{global\+\_\+temporal\+\_\+error\+\_\+norm}}
+\index{global\+\_\+temporal\+\_\+error\+\_\+norm@{global\+\_\+temporal\+\_\+error\+\_\+norm}!Unsteady\+Heat\+Problem@{Unsteady\+Heat\+Problem}}
+\subsubsection{\texorpdfstring{global\+\_\+temporal\+\_\+error\+\_\+norm()}{global\_temporal\_error\_norm()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+double \hyperlink{classUnsteadyHeatProblem}{Unsteady\+Heat\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::global\+\_\+temporal\+\_\+error\+\_\+norm (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Global error norm for adaptive time-\/stepping. 
+
+Global error norm for adaptive timestepping\+: R\+MS error, based on difference between predicted and actual value at all nodes. 
+
+Definition at line 577 of file two\+\_\+d\+\_\+unsteady\+\_\+heat\+\_\+t\+\_\+adapt.\+cc.
+
+\mbox{\Hypertarget{classUnsteadyHeatProblem_ad0a4a1c1da24f6d62f64b0d40be31709}\label{classUnsteadyHeatProblem_ad0a4a1c1da24f6d62f64b0d40be31709}} 
+\index{Unsteady\+Heat\+Problem@{Unsteady\+Heat\+Problem}!restart@{restart}}
+\index{restart@{restart}!Unsteady\+Heat\+Problem@{Unsteady\+Heat\+Problem}}
+\subsubsection{\texorpdfstring{restart()}{restart()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classUnsteadyHeatProblem}{Unsteady\+Heat\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::restart (\begin{DoxyParamCaption}\item[{ifstream \&}]{restart\+\_\+file }\end{DoxyParamCaption})}
+
+
+
+Read problem for restart from specified restart file. 
+
+Read solution from disk for restart. 
+
+Definition at line 561 of file two\+\_\+d\+\_\+unsteady\+\_\+heat\+\_\+t\+\_\+adapt.\+cc.
+
+
+
+Referenced by Unsteady\+Heat\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::set\+\_\+initial\+\_\+condition().
+
+\mbox{\Hypertarget{classUnsteadyHeatProblem_a98de3ed2d9cf5409323121bbb482bc1b}\label{classUnsteadyHeatProblem_a98de3ed2d9cf5409323121bbb482bc1b}} 
+\index{Unsteady\+Heat\+Problem@{Unsteady\+Heat\+Problem}!set\+\_\+initial\+\_\+condition@{set\+\_\+initial\+\_\+condition}}
+\index{set\+\_\+initial\+\_\+condition@{set\+\_\+initial\+\_\+condition}!Unsteady\+Heat\+Problem@{Unsteady\+Heat\+Problem}}
+\subsubsection{\texorpdfstring{set\+\_\+initial\+\_\+condition()}{set\_initial\_condition()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classUnsteadyHeatProblem}{Unsteady\+Heat\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::set\+\_\+initial\+\_\+condition (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Set initial condition (incl previous timesteps) according to specified function. 
+
+Set initial condition\+: Assign previous and current values from exact solution or from restart file. 
+
+Definition at line 292 of file two\+\_\+d\+\_\+unsteady\+\_\+heat\+\_\+t\+\_\+adapt.\+cc.
+
+
+
+References Unsteady\+Heat\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::doc\+\_\+solution(), Exact\+Soln\+For\+Unsteady\+Heat\+::get\+\_\+exact\+\_\+u(), and Unsteady\+Heat\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::restart().
+
+
+
+Referenced by main().
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classUnsteadyHeatProblem_a33f2d1de7d1fa651df34bc0e4e747c67}\label{classUnsteadyHeatProblem_a33f2d1de7d1fa651df34bc0e4e747c67}} 
+\index{Unsteady\+Heat\+Problem@{Unsteady\+Heat\+Problem}!Control\+\_\+node\+\_\+pt@{Control\+\_\+node\+\_\+pt}}
+\index{Control\+\_\+node\+\_\+pt@{Control\+\_\+node\+\_\+pt}!Unsteady\+Heat\+Problem@{Unsteady\+Heat\+Problem}}
+\subsubsection{\texorpdfstring{Control\+\_\+node\+\_\+pt}{Control\_node\_pt}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+Node$\ast$ \hyperlink{classUnsteadyHeatProblem}{Unsteady\+Heat\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::Control\+\_\+node\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pointer to control node at which the solution is documented. 
+
+
+
+Definition at line 155 of file two\+\_\+d\+\_\+unsteady\+\_\+heat\+\_\+t\+\_\+adapt.\+cc.
+
+
+
+Referenced by Unsteady\+Heat\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::doc\+\_\+solution(), and Unsteady\+Heat\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Unsteady\+Heat\+Problem().
+
+\mbox{\Hypertarget{classUnsteadyHeatProblem_a09c5c208069fcf5f36d54f994bd54e93}\label{classUnsteadyHeatProblem_a09c5c208069fcf5f36d54f994bd54e93}} 
+\index{Unsteady\+Heat\+Problem@{Unsteady\+Heat\+Problem}!Source\+\_\+fct\+\_\+pt@{Source\+\_\+fct\+\_\+pt}}
+\index{Source\+\_\+fct\+\_\+pt@{Source\+\_\+fct\+\_\+pt}!Unsteady\+Heat\+Problem@{Unsteady\+Heat\+Problem}}
+\subsubsection{\texorpdfstring{Source\+\_\+fct\+\_\+pt}{Source\_fct\_pt}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+Unsteady\+Heat\+Equations$<$2$>$\+::Unsteady\+Heat\+Source\+Fct\+Pt \hyperlink{classUnsteadyHeatProblem}{Unsteady\+Heat\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::Source\+\_\+fct\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pointer to source function. 
+
+
+
+Definition at line 152 of file two\+\_\+d\+\_\+unsteady\+\_\+heat\+\_\+t\+\_\+adapt.\+cc.
+
+
+
+Referenced by Unsteady\+Heat\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Unsteady\+Heat\+Problem().
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{two__d__unsteady__heat__t__adapt_8cc}{two\+\_\+d\+\_\+unsteady\+\_\+heat\+\_\+t\+\_\+adapt.\+cc}\end{DoxyCompactItemize}

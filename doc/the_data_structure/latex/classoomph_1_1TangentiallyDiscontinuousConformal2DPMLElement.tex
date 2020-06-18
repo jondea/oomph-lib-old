@@ -1,0 +1,289 @@
+\hypertarget{classoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement}{}\section{oomph\+:\+:Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element Class Reference}
+\label{classoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement}\index{oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element}}
+
+
+{\ttfamily \#include $<$pml\+\_\+elements.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.745763cm]{classoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement_1_1TwoDimRip}{Two\+Dim\+Rip}
+\begin{DoxyCompactList}\small\item\em Information about a rip in two dimensions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement_a172381a66f0efa02d3827d8c1a50ac80}{Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement_a207d8cad6fb66361a2235b2386aab814}{Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element} (const unsigned \hyperlink{classoomph_1_1Conformal2DPMLElement_ac0fae35f94a70e615a8bbd47716a32d3}{nu\+\_\+s\+\_\+index}, const double nu\+\_\+at\+\_\+s\+\_\+min, const double nu\+\_\+at\+\_\+s\+\_\+max)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement_a656d6b337a04f9b889637f0cbbcf209b}{enable\+\_\+pml} (\hyperlink{classoomph_1_1TangentiallyDiscontinuousConformalPMLMapping}{Tangentially\+Discontinuous\+Conformal\+P\+M\+L\+Mapping} $\ast$pml\+\_\+mapping\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Enable pml. Set the pointer to a P\+ML mapping function. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement_a906b78ba975b45dd3702ee8b42dc68cd}{pml\+\_\+transformation\+\_\+jacobian} (const unsigned \&ipt, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&x, \hyperlink{classoomph_1_1DenseComplexMatrix}{Dense\+Complex\+Matrix} \&jacobian)
+\item 
+virtual void \hyperlink{classoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement_a2436ebd949ec246a11a7b617a890443e}{pml\+\_\+transformation\+\_\+jacobian} (const unsigned \&ipt, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&x, \hyperlink{classoomph_1_1DenseComplexMatrix}{Dense\+Complex\+Matrix} \&jacobian\+\_\+matrix, \hyperlink{classoomph_1_1Vector}{Vector}$<$ std\+::complex$<$ double $>$ $>$ \&transformed\+\_\+x)
+\item 
+void \hyperlink{classoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement_a91cfa85707803db13028425ccd876638}{find\+\_\+rips} ()
+\begin{DoxyCompactList}\small\item\em Look for rips in the transformation and store in rips vector. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement_a9a2bcca5fb44204c9bc7cb7b2312a4de}{distance\+\_\+from\+\_\+element\+\_\+edge} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&x\+\_\+inner, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&x\+\_\+outer, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&p, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&r)
+\begin{DoxyCompactList}\small\item\em Compute distance from rip to P\+ML element edge. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement_a273b4f1a24d0d60374e01b5dc668e272}{compute\+\_\+transformed\+\_\+normal\+\_\+derivative} (const \hyperlink{classoomph_1_1DenseComplexMatrix}{Dense\+Complex\+Matrix} \&J, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&n, \hyperlink{classoomph_1_1Vector}{Vector}$<$ std\+::complex$<$ double $>$ $>$ \&result)
+\begin{DoxyCompactList}\small\item\em Compute n\textquotesingle{}J$^\wedge$\{-\/1\}, which when applied to the untransformed grad operator gives us the transformed normal derivative. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement_abacdee81b2f5c6194570068cf97e71f0}{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian\+\_\+no\+\_\+rips} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&residuals, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&jacobian, bool flag)=0
+\item 
+virtual void \hyperlink{classoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement_a10c553cfd2310a23e4e5616f6ffb2c90}{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian\+\_\+with\+\_\+rips} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&residuals, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&jacobian, bool flag)=0
+\item 
+void \hyperlink{classoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement_a9f5ccd0826199bd3161c5d67c14344b3}{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&residuals)
+\begin{DoxyCompactList}\small\item\em Add the element\textquotesingle{}s contribution to its residual vector (wrapper) \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement_a0ed7e453ed779544372498057d197e6a}{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&residuals, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&jacobian)
+\begin{DoxyCompactList}\small\item\em Add the element\textquotesingle{}s contribution to its residual vector and element Jacobian matrix (wrapper) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static bool \hyperlink{classoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement_a3a613124c2aa4fded1f74658dcc523c9}{Find\+\_\+rips\+\_\+mode}
+\item 
+static \hyperlink{classoomph_1_1Vector}{Vector}$<$ \hyperlink{structoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement_1_1TwoDimRip}{Two\+Dim\+Rip} $>$ \hyperlink{classoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement_a07ddc8f71f75a3418fb36917f61d604f}{rips}
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{classoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement_a41eb2a90f1cb709fcdfb9a9ab3e3a101}{Force\+\_\+rip\+\_\+integration}
+\item 
+bool \hyperlink{classoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement_a9dea74889c96ed8eb7c494e93afc6093}{Disable\+\_\+rip\+\_\+integration}
+\item 
+\hyperlink{classoomph_1_1TangentiallyDiscontinuousConformalPMLMapping}{Tangentially\+Discontinuous\+Conformal\+P\+M\+L\+Mapping} $\ast$ \hyperlink{classoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement_a1f0b38329426028a291d84464e24ef44}{Tangentially\+\_\+discontinuous\+\_\+pml\+\_\+mapping\+\_\+pt}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 727 of file pml\+\_\+elements.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement_a172381a66f0efa02d3827d8c1a50ac80}\label{classoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement_a172381a66f0efa02d3827d8c1a50ac80}} 
+\index{oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element}!Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element@{Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element}}
+\index{Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element@{Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element}!oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element}}
+\subsubsection{\texorpdfstring{Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element()}{TangentiallyDiscontinuousConformal2DPMLElement()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor. 
+
+
+
+Definition at line 733 of file pml\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement_a207d8cad6fb66361a2235b2386aab814}\label{classoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement_a207d8cad6fb66361a2235b2386aab814}} 
+\index{oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element}!Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element@{Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element}}
+\index{Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element@{Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element}!oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element}}
+\subsubsection{\texorpdfstring{Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element()}{TangentiallyDiscontinuousConformal2DPMLElement()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element (\begin{DoxyParamCaption}\item[{const unsigned}]{nu\+\_\+s\+\_\+index,  }\item[{const double}]{nu\+\_\+at\+\_\+s\+\_\+min,  }\item[{const double}]{nu\+\_\+at\+\_\+s\+\_\+max }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor. 
+
+
+
+Definition at line 738 of file pml\+\_\+elements.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement_a273b4f1a24d0d60374e01b5dc668e272}\label{classoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement_a273b4f1a24d0d60374e01b5dc668e272}} 
+\index{oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element}!compute\+\_\+transformed\+\_\+normal\+\_\+derivative@{compute\+\_\+transformed\+\_\+normal\+\_\+derivative}}
+\index{compute\+\_\+transformed\+\_\+normal\+\_\+derivative@{compute\+\_\+transformed\+\_\+normal\+\_\+derivative}!oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element}}
+\subsubsection{\texorpdfstring{compute\+\_\+transformed\+\_\+normal\+\_\+derivative()}{compute\_transformed\_normal\_derivative()}}
+{\footnotesize\ttfamily void oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element\+::compute\+\_\+transformed\+\_\+normal\+\_\+derivative (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1DenseComplexMatrix}{Dense\+Complex\+Matrix} \&}]{J,  }\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{n,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ std\+::complex$<$ double $>$ $>$ \&}]{result }\end{DoxyParamCaption})}
+
+
+
+Compute n\textquotesingle{}J$^\wedge$\{-\/1\}, which when applied to the untransformed grad operator gives us the transformed normal derivative. 
+
+
+
+Definition at line 265 of file pml\+\_\+elements.\+cc.
+
+
+
+References oomph\+::\+Quad\+Tree\+Names\+::N, oomph\+::\+Dense\+Complex\+Matrix\+::ncol(), and oomph\+::\+Dense\+Complex\+Matrix\+::nrow().
+
+\mbox{\Hypertarget{classoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement_a9a2bcca5fb44204c9bc7cb7b2312a4de}\label{classoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement_a9a2bcca5fb44204c9bc7cb7b2312a4de}} 
+\index{oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element}!distance\+\_\+from\+\_\+element\+\_\+edge@{distance\+\_\+from\+\_\+element\+\_\+edge}}
+\index{distance\+\_\+from\+\_\+element\+\_\+edge@{distance\+\_\+from\+\_\+element\+\_\+edge}!oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element}}
+\subsubsection{\texorpdfstring{distance\+\_\+from\+\_\+element\+\_\+edge()}{distance\_from\_element\_edge()}}
+{\footnotesize\ttfamily double oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element\+::distance\+\_\+from\+\_\+element\+\_\+edge (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{x\+\_\+inner,  }\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{x\+\_\+outer,  }\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{p,  }\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{r }\end{DoxyParamCaption})}
+
+
+
+Compute distance from rip to P\+ML element edge. 
+
+\mbox{\Hypertarget{classoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement_a656d6b337a04f9b889637f0cbbcf209b}\label{classoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement_a656d6b337a04f9b889637f0cbbcf209b}} 
+\index{oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element}!enable\+\_\+pml@{enable\+\_\+pml}}
+\index{enable\+\_\+pml@{enable\+\_\+pml}!oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element}}
+\subsubsection{\texorpdfstring{enable\+\_\+pml()}{enable\_pml()}}
+{\footnotesize\ttfamily virtual void oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element\+::enable\+\_\+pml (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1TangentiallyDiscontinuousConformalPMLMapping}{Tangentially\+Discontinuous\+Conformal\+P\+M\+L\+Mapping} $\ast$}]{pml\+\_\+mapping\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Enable pml. Set the pointer to a P\+ML mapping function. 
+
+
+
+Definition at line 747 of file pml\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+P\+M\+L\+Element\+Base$<$ D\+I\+M $>$\+::enable\+\_\+pml(), and s.
+
+\mbox{\Hypertarget{classoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement_a0ed7e453ed779544372498057d197e6a}\label{classoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement_a0ed7e453ed779544372498057d197e6a}} 
+\index{oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element}!fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian}}
+\index{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian}!oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element}}
+\subsubsection{\texorpdfstring{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian()}{fill\_in\_contribution\_to\_jacobian()}}
+{\footnotesize\ttfamily void oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{residuals,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{jacobian }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Add the element\textquotesingle{}s contribution to its residual vector and element Jacobian matrix (wrapper) 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a0ae7af222af38a0d53bf283dc85bdfea}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 855 of file pml\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement_abacdee81b2f5c6194570068cf97e71f0}\label{classoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement_abacdee81b2f5c6194570068cf97e71f0}} 
+\index{oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element}!fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian\+\_\+no\+\_\+rips@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian\+\_\+no\+\_\+rips}}
+\index{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian\+\_\+no\+\_\+rips@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian\+\_\+no\+\_\+rips}!oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element}}
+\subsubsection{\texorpdfstring{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian\+\_\+no\+\_\+rips()}{fill\_in\_contribution\_to\_jacobian\_no\_rips()}}
+{\footnotesize\ttfamily virtual void oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian\+\_\+no\+\_\+rips (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{residuals,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{jacobian,  }\item[{bool}]{flag }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+\mbox{\Hypertarget{classoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement_a10c553cfd2310a23e4e5616f6ffb2c90}\label{classoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement_a10c553cfd2310a23e4e5616f6ffb2c90}} 
+\index{oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element}!fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian\+\_\+with\+\_\+rips@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian\+\_\+with\+\_\+rips}}
+\index{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian\+\_\+with\+\_\+rips@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian\+\_\+with\+\_\+rips}!oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element}}
+\subsubsection{\texorpdfstring{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian\+\_\+with\+\_\+rips()}{fill\_in\_contribution\_to\_jacobian\_with\_rips()}}
+{\footnotesize\ttfamily virtual void oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian\+\_\+with\+\_\+rips (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{residuals,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{jacobian,  }\item[{bool}]{flag }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+\mbox{\Hypertarget{classoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement_a9f5ccd0826199bd3161c5d67c14344b3}\label{classoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement_a9f5ccd0826199bd3161c5d67c14344b3}} 
+\index{oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element}!fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals}}
+\index{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals}!oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element}}
+\subsubsection{\texorpdfstring{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals()}{fill\_in\_contribution\_to\_residuals()}}
+{\footnotesize\ttfamily void oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{residuals }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Add the element\textquotesingle{}s contribution to its residual vector (wrapper) 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1GeneralisedElement_a310c97f515e8504a48179c0e72c550d7}{oomph\+::\+Generalised\+Element}.
+
+
+
+Definition at line 828 of file pml\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Generalised\+Element\+::\+Dummy\+\_\+matrix.
+
+\mbox{\Hypertarget{classoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement_a91cfa85707803db13028425ccd876638}\label{classoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement_a91cfa85707803db13028425ccd876638}} 
+\index{oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element}!find\+\_\+rips@{find\+\_\+rips}}
+\index{find\+\_\+rips@{find\+\_\+rips}!oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element}}
+\subsubsection{\texorpdfstring{find\+\_\+rips()}{find\_rips()}}
+{\footnotesize\ttfamily void oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element\+::find\+\_\+rips (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Look for rips in the transformation and store in rips vector. 
+
+\mbox{\Hypertarget{classoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement_a906b78ba975b45dd3702ee8b42dc68cd}\label{classoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement_a906b78ba975b45dd3702ee8b42dc68cd}} 
+\index{oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element}!pml\+\_\+transformation\+\_\+jacobian@{pml\+\_\+transformation\+\_\+jacobian}}
+\index{pml\+\_\+transformation\+\_\+jacobian@{pml\+\_\+transformation\+\_\+jacobian}!oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element}}
+\subsubsection{\texorpdfstring{pml\+\_\+transformation\+\_\+jacobian()}{pml\_transformation\_jacobian()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily virtual void oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element\+::pml\+\_\+transformation\+\_\+jacobian (\begin{DoxyParamCaption}\item[{const unsigned \&}]{ipt,  }\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{x,  }\item[{\hyperlink{classoomph_1_1DenseComplexMatrix}{Dense\+Complex\+Matrix} \&}]{jacobian }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1TangentiallyVaryingConformal2DPMLElement_adcd024767abae57059b87fa19b1d489c}{oomph\+::\+Tangentially\+Varying\+Conformal2\+D\+P\+M\+L\+Element}.
+
+\mbox{\Hypertarget{classoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement_a2436ebd949ec246a11a7b617a890443e}\label{classoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement_a2436ebd949ec246a11a7b617a890443e}} 
+\index{oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element}!pml\+\_\+transformation\+\_\+jacobian@{pml\+\_\+transformation\+\_\+jacobian}}
+\index{pml\+\_\+transformation\+\_\+jacobian@{pml\+\_\+transformation\+\_\+jacobian}!oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element}}
+\subsubsection{\texorpdfstring{pml\+\_\+transformation\+\_\+jacobian()}{pml\_transformation\_jacobian()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily virtual void oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element\+::pml\+\_\+transformation\+\_\+jacobian (\begin{DoxyParamCaption}\item[{const unsigned \&}]{ipt,  }\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{x,  }\item[{\hyperlink{classoomph_1_1DenseComplexMatrix}{Dense\+Complex\+Matrix} \&}]{jacobian\+\_\+matrix,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ std\+::complex$<$ double $>$ $>$ \&}]{transformed\+\_\+x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1TangentiallyVaryingConformal2DPMLElement_a56a6af4af3774579d49d9dcc8c7e9bea}{oomph\+::\+Tangentially\+Varying\+Conformal2\+D\+P\+M\+L\+Element}.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement_a9dea74889c96ed8eb7c494e93afc6093}\label{classoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement_a9dea74889c96ed8eb7c494e93afc6093}} 
+\index{oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element}!Disable\+\_\+rip\+\_\+integration@{Disable\+\_\+rip\+\_\+integration}}
+\index{Disable\+\_\+rip\+\_\+integration@{Disable\+\_\+rip\+\_\+integration}!oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element}}
+\subsubsection{\texorpdfstring{Disable\+\_\+rip\+\_\+integration}{Disable\_rip\_integration}}
+{\footnotesize\ttfamily bool oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element\+::\+Disable\+\_\+rip\+\_\+integration\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 883 of file pml\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement_a3a613124c2aa4fded1f74658dcc523c9}\label{classoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement_a3a613124c2aa4fded1f74658dcc523c9}} 
+\index{oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element}!Find\+\_\+rips\+\_\+mode@{Find\+\_\+rips\+\_\+mode}}
+\index{Find\+\_\+rips\+\_\+mode@{Find\+\_\+rips\+\_\+mode}!oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element}}
+\subsubsection{\texorpdfstring{Find\+\_\+rips\+\_\+mode}{Find\_rips\_mode}}
+{\footnotesize\ttfamily bool oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element\+::\+Find\+\_\+rips\+\_\+mode\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 769 of file pml\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement_a41eb2a90f1cb709fcdfb9a9ab3e3a101}\label{classoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement_a41eb2a90f1cb709fcdfb9a9ab3e3a101}} 
+\index{oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element}!Force\+\_\+rip\+\_\+integration@{Force\+\_\+rip\+\_\+integration}}
+\index{Force\+\_\+rip\+\_\+integration@{Force\+\_\+rip\+\_\+integration}!oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element}}
+\subsubsection{\texorpdfstring{Force\+\_\+rip\+\_\+integration}{Force\_rip\_integration}}
+{\footnotesize\ttfamily bool oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element\+::\+Force\+\_\+rip\+\_\+integration\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 880 of file pml\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement_a07ddc8f71f75a3418fb36917f61d604f}\label{classoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement_a07ddc8f71f75a3418fb36917f61d604f}} 
+\index{oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element}!rips@{rips}}
+\index{rips@{rips}!oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element}}
+\subsubsection{\texorpdfstring{rips}{rips}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1Vector}{Vector}$<$\hyperlink{structoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement_1_1TwoDimRip}{Two\+Dim\+Rip}$>$ oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element\+::rips\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 800 of file pml\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement_a1f0b38329426028a291d84464e24ef44}\label{classoomph_1_1TangentiallyDiscontinuousConformal2DPMLElement_a1f0b38329426028a291d84464e24ef44}} 
+\index{oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element}!Tangentially\+\_\+discontinuous\+\_\+pml\+\_\+mapping\+\_\+pt@{Tangentially\+\_\+discontinuous\+\_\+pml\+\_\+mapping\+\_\+pt}}
+\index{Tangentially\+\_\+discontinuous\+\_\+pml\+\_\+mapping\+\_\+pt@{Tangentially\+\_\+discontinuous\+\_\+pml\+\_\+mapping\+\_\+pt}!oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element@{oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element}}
+\subsubsection{\texorpdfstring{Tangentially\+\_\+discontinuous\+\_\+pml\+\_\+mapping\+\_\+pt}{Tangentially\_discontinuous\_pml\_mapping\_pt}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1TangentiallyDiscontinuousConformalPMLMapping}{Tangentially\+Discontinuous\+Conformal\+P\+M\+L\+Mapping}$\ast$ oomph\+::\+Tangentially\+Discontinuous\+Conformal2\+D\+P\+M\+L\+Element\+::\+Tangentially\+\_\+discontinuous\+\_\+pml\+\_\+mapping\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 885 of file pml\+\_\+elements.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{pml__elements_8h}{pml\+\_\+elements.\+h}\item 
+\hyperlink{pml__elements_8cc}{pml\+\_\+elements.\+cc}\end{DoxyCompactItemize}

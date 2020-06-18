@@ -1,0 +1,371 @@
+\hypertarget{classoomph_1_1QFourierDecomposedHelmholtzElement}{}\section{oomph\+:\+:Q\+Fourier\+Decomposed\+Helmholtz\+Element$<$ N\+N\+O\+D\+E\+\_\+1D $>$ Class Template Reference}
+\label{classoomph_1_1QFourierDecomposedHelmholtzElement}\index{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element$<$ N\+N\+O\+D\+E\+\_\+1\+D $>$@{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element$<$ N\+N\+O\+D\+E\+\_\+1\+D $>$}}
+
+
+{\ttfamily \#include $<$fourier\+\_\+decomposed\+\_\+helmholtz\+\_\+elements.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Q\+Fourier\+Decomposed\+Helmholtz\+Element$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.592593cm]{classoomph_1_1QFourierDecomposedHelmholtzElement}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1QFourierDecomposedHelmholtzElement_a715abcf373a32565a87d70a09d5ed314}{Q\+Fourier\+Decomposed\+Helmholtz\+Element} ()
+\begin{DoxyCompactList}\small\item\em Constructor\+: Call constructors for \hyperlink{classoomph_1_1QElement}{Q\+Element} and Fourier\+Decomposed\+Helmholtz equations. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1QFourierDecomposedHelmholtzElement_afd2e6b4d996cfb4f33ac91bcd5e603c3}{Q\+Fourier\+Decomposed\+Helmholtz\+Element} (const \hyperlink{classoomph_1_1QFourierDecomposedHelmholtzElement}{Q\+Fourier\+Decomposed\+Helmholtz\+Element}$<$ N\+N\+O\+D\+E\+\_\+1D $>$ \&dummy)
+\begin{DoxyCompactList}\small\item\em Broken copy constructor. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1QFourierDecomposedHelmholtzElement_a9eaf94d6f205d8a38e3e703999524eb1}{required\+\_\+nvalue} (const unsigned \&n) const
+\begin{DoxyCompactList}\small\item\em Broken assignment operator. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1QFourierDecomposedHelmholtzElement_a5182e60d2d855fc2724dabae242157aa}{output} (std\+::ostream \&outfile)
+\begin{DoxyCompactList}\small\item\em Output function\+: r,z,u. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1QFourierDecomposedHelmholtzElement_aa14e9dc5f9773a5b043ea7873a7b9790}{output} (std\+::ostream \&outfile, const unsigned \&n\+\_\+plot)
+\begin{DoxyCompactList}\small\item\em Output function\+: r,z,u at n\+\_\+plot$^\wedge$2 plot points. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1QFourierDecomposedHelmholtzElement_a0feea9801280dce3e0a73bd5d370431f}{output\+\_\+real} (std\+::ostream \&outfile, const double \&phi, const unsigned \&n\+\_\+plot)
+\begin{DoxyCompactList}\small\item\em Output function for real part of full time-\/dependent solution u = Re( (u\+\_\+r +i u\+\_\+i) exp(-\/i omega t) at phase angle omega t = phi. r,z,u at n\+\_\+plot plot points in each coordinate direction. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1QFourierDecomposedHelmholtzElement_a36f0992d35d4f19d2d9cf3070b49bba1}{output} (F\+I\+LE $\ast$file\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em C-\/style output function\+: r,z,u. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1QFourierDecomposedHelmholtzElement_a846e28bf8f1bae1ace68b0b291688841}{output} (F\+I\+LE $\ast$file\+\_\+pt, const unsigned \&n\+\_\+plot)
+\begin{DoxyCompactList}\small\item\em C-\/style output function\+: r,z,u at n\+\_\+plot$^\wedge$2 plot points. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1QFourierDecomposedHelmholtzElement_a4ad5327722a3094908a1141e640a4c1e}{output\+\_\+fct} (std\+::ostream \&outfile, const unsigned \&n\+\_\+plot, \hyperlink{classoomph_1_1FiniteElement_a690fd33af26cc3e84f39bba6d5a85202}{Finite\+Element\+::\+Steady\+Exact\+Solution\+Fct\+Pt} exact\+\_\+soln\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Output function for an exact solution\+: r,z,u\+\_\+exact at n\+\_\+plot$^\wedge$2 plot points. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1QFourierDecomposedHelmholtzElement_a528a56fd0948252c8886e7d559cb134f}{output\+\_\+real\+\_\+fct} (std\+::ostream \&outfile, const double \&phi, const unsigned \&n\+\_\+plot, \hyperlink{classoomph_1_1FiniteElement_a690fd33af26cc3e84f39bba6d5a85202}{Finite\+Element\+::\+Steady\+Exact\+Solution\+Fct\+Pt} exact\+\_\+soln\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Output function for real part of full time-\/dependent fct u = Re( (u\+\_\+r +i u\+\_\+i) exp(-\/i omega t) at phase angle omega t = phi. r,z,u at n\+\_\+plot plot points in each coordinate direction. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1QFourierDecomposedHelmholtzElement_a3552971f652e8b07888071fd8ada95cc}{output\+\_\+fct} (std\+::ostream \&outfile, const unsigned \&n\+\_\+plot, const double \&time, \hyperlink{classoomph_1_1FiniteElement_ad4ecf2b61b158a4b4d351a60d23c633e}{Finite\+Element\+::\+Unsteady\+Exact\+Solution\+Fct\+Pt} exact\+\_\+soln\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Output function for a time-\/dependent exact solution. r,z,u\+\_\+exact at n\+\_\+plot$^\wedge$2 plot points (Calls the steady version) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \hyperlink{classoomph_1_1QFourierDecomposedHelmholtzElement_aa1d0a5bb5a90ffa76df0bb054ffb00db}{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+fourier\+\_\+decomposed\+\_\+helmholtz} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Shape}{Shape} \&psi, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dpsidx, \hyperlink{classoomph_1_1Shape}{Shape} \&test, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dtestdx) const
+\item 
+double \hyperlink{classoomph_1_1QFourierDecomposedHelmholtzElement_a93414259c6dac210e2dc3064bf67c1e4}{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+fourier\+\_\+decomposed\+\_\+helmholtz} (const unsigned \&ipt, \hyperlink{classoomph_1_1Shape}{Shape} \&psi, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dpsidx, \hyperlink{classoomph_1_1Shape}{Shape} \&test, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dtestdx) const
+\begin{DoxyCompactList}\small\item\em \hyperlink{classoomph_1_1Shape}{Shape}, test functions \& derivs. w.\+r.\+t. to global coords. at integration point ipt. Return Jacobian. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const unsigned \hyperlink{classoomph_1_1QFourierDecomposedHelmholtzElement_a58d9cdd8eb3163b440a8c727f4d071e3}{Initial\+\_\+\+Nvalue} =2
+\begin{DoxyCompactList}\small\item\em Static int that holds the number of variables at nodes\+: always the same. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$\newline
+class oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element$<$ N\+N\+O\+D\+E\+\_\+1\+D $>$}
+
+\hyperlink{classoomph_1_1QFourierDecomposedHelmholtzElement}{Q\+Fourier\+Decomposed\+Helmholtz\+Element} elements are linear/quadrilateral/brick-\/shaped Fourier\+Decomposed\+Helmholtz elements with isoparametric interpolation for the function. 
+
+Definition at line 437 of file fourier\+\_\+decomposed\+\_\+helmholtz\+\_\+elements.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1QFourierDecomposedHelmholtzElement_a715abcf373a32565a87d70a09d5ed314}\label{classoomph_1_1QFourierDecomposedHelmholtzElement_a715abcf373a32565a87d70a09d5ed314}} 
+\index{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element@{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element}!Q\+Fourier\+Decomposed\+Helmholtz\+Element@{Q\+Fourier\+Decomposed\+Helmholtz\+Element}}
+\index{Q\+Fourier\+Decomposed\+Helmholtz\+Element@{Q\+Fourier\+Decomposed\+Helmholtz\+Element}!oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element@{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element}}
+\subsubsection{\texorpdfstring{Q\+Fourier\+Decomposed\+Helmholtz\+Element()}{QFourierDecomposedHelmholtzElement()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+\hyperlink{classoomph_1_1QFourierDecomposedHelmholtzElement}{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::\hyperlink{classoomph_1_1QFourierDecomposedHelmholtzElement}{Q\+Fourier\+Decomposed\+Helmholtz\+Element} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor\+: Call constructors for \hyperlink{classoomph_1_1QElement}{Q\+Element} and Fourier\+Decomposed\+Helmholtz equations. 
+
+
+
+Definition at line 453 of file fourier\+\_\+decomposed\+\_\+helmholtz\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1QFourierDecomposedHelmholtzElement_afd2e6b4d996cfb4f33ac91bcd5e603c3}\label{classoomph_1_1QFourierDecomposedHelmholtzElement_afd2e6b4d996cfb4f33ac91bcd5e603c3}} 
+\index{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element@{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element}!Q\+Fourier\+Decomposed\+Helmholtz\+Element@{Q\+Fourier\+Decomposed\+Helmholtz\+Element}}
+\index{Q\+Fourier\+Decomposed\+Helmholtz\+Element@{Q\+Fourier\+Decomposed\+Helmholtz\+Element}!oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element@{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element}}
+\subsubsection{\texorpdfstring{Q\+Fourier\+Decomposed\+Helmholtz\+Element()}{QFourierDecomposedHelmholtzElement()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+\hyperlink{classoomph_1_1QFourierDecomposedHelmholtzElement}{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::\hyperlink{classoomph_1_1QFourierDecomposedHelmholtzElement}{Q\+Fourier\+Decomposed\+Helmholtz\+Element} (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1QFourierDecomposedHelmholtzElement}{Q\+Fourier\+Decomposed\+Helmholtz\+Element}$<$ N\+N\+O\+D\+E\+\_\+1D $>$ \&}]{dummy }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Broken copy constructor. 
+
+
+
+Definition at line 458 of file fourier\+\_\+decomposed\+\_\+helmholtz\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Broken\+Copy\+::broken\+\_\+copy().
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1QFourierDecomposedHelmholtzElement_a93414259c6dac210e2dc3064bf67c1e4}\label{classoomph_1_1QFourierDecomposedHelmholtzElement_a93414259c6dac210e2dc3064bf67c1e4}} 
+\index{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element@{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element}!dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+fourier\+\_\+decomposed\+\_\+helmholtz@{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+fourier\+\_\+decomposed\+\_\+helmholtz}}
+\index{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+fourier\+\_\+decomposed\+\_\+helmholtz@{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+fourier\+\_\+decomposed\+\_\+helmholtz}!oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element@{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element}}
+\subsubsection{\texorpdfstring{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+fourier\+\_\+decomposed\+\_\+helmholtz()}{dshape\_and\_dtest\_eulerian\_at\_knot\_fourier\_decomposed\_helmholtz()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+double \hyperlink{classoomph_1_1QFourierDecomposedHelmholtzElement}{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+fourier\+\_\+decomposed\+\_\+helmholtz (\begin{DoxyParamCaption}\item[{const unsigned \&}]{ipt,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dpsidx,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{test,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dtestdx }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+\hyperlink{classoomph_1_1Shape}{Shape}, test functions \& derivs. w.\+r.\+t. to global coords. at integration point ipt. Return Jacobian. 
+
+Define the shape functions and test functions and derivatives w.\+r.\+t. global coordinates and return Jacobian of mapping.
+
+Galerkin\+: Test functions = shape functions 
+
+Implements \hyperlink{classoomph_1_1FourierDecomposedHelmholtzEquations_aa19bdb12fe50805a9ad1f75912c85678}{oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Equations}.
+
+
+
+Definition at line 602 of file fourier\+\_\+decomposed\+\_\+helmholtz\+\_\+elements.\+h.
+
+
+
+Referenced by oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element$<$ N\+N\+O\+D\+E\+\_\+1\+D $>$\+::dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+fourier\+\_\+decomposed\+\_\+helmholtz().
+
+\mbox{\Hypertarget{classoomph_1_1QFourierDecomposedHelmholtzElement_aa1d0a5bb5a90ffa76df0bb054ffb00db}\label{classoomph_1_1QFourierDecomposedHelmholtzElement_aa1d0a5bb5a90ffa76df0bb054ffb00db}} 
+\index{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element@{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element}!dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+fourier\+\_\+decomposed\+\_\+helmholtz@{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+fourier\+\_\+decomposed\+\_\+helmholtz}}
+\index{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+fourier\+\_\+decomposed\+\_\+helmholtz@{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+fourier\+\_\+decomposed\+\_\+helmholtz}!oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element@{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element}}
+\subsubsection{\texorpdfstring{dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+fourier\+\_\+decomposed\+\_\+helmholtz()}{dshape\_and\_dtest\_eulerian\_fourier\_decomposed\_helmholtz()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+double \hyperlink{classoomph_1_1QFourierDecomposedHelmholtzElement}{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+fourier\+\_\+decomposed\+\_\+helmholtz (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dpsidx,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{test,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dtestdx }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+\hyperlink{classoomph_1_1Shape}{Shape}, test functions \& derivs. w.\+r.\+t. to global coords. Return Jacobian.
+
+Define the shape functions and test functions and derivatives w.\+r.\+t. global coordinates and return Jacobian of mapping.
+
+Galerkin\+: Test functions = shape functions 
+
+Implements \hyperlink{classoomph_1_1FourierDecomposedHelmholtzEquations_a9a0a3a0452e40681fbe610bb7a797252}{oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Equations}.
+
+
+
+Definition at line 573 of file fourier\+\_\+decomposed\+\_\+helmholtz\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element$<$ N\+N\+O\+D\+E\+\_\+1\+D $>$\+::dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+at\+\_\+knot\+\_\+fourier\+\_\+decomposed\+\_\+helmholtz().
+
+
+
+Referenced by oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element$<$ N\+N\+O\+D\+E\+\_\+1\+D $>$\+::output\+\_\+fct().
+
+\mbox{\Hypertarget{classoomph_1_1QFourierDecomposedHelmholtzElement_a5182e60d2d855fc2724dabae242157aa}\label{classoomph_1_1QFourierDecomposedHelmholtzElement_a5182e60d2d855fc2724dabae242157aa}} 
+\index{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element@{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element}!output@{output}}
+\index{output@{output}!oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element@{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+void \hyperlink{classoomph_1_1QFourierDecomposedHelmholtzElement}{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::output (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Output function\+: r,z,u. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FourierDecomposedHelmholtzEquations_aaa7d646147698753b363fe2f5adadeb1}{oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Equations}.
+
+
+
+Definition at line 477 of file fourier\+\_\+decomposed\+\_\+helmholtz\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Equations\+::output().
+
+\mbox{\Hypertarget{classoomph_1_1QFourierDecomposedHelmholtzElement_aa14e9dc5f9773a5b043ea7873a7b9790}\label{classoomph_1_1QFourierDecomposedHelmholtzElement_aa14e9dc5f9773a5b043ea7873a7b9790}} 
+\index{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element@{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element}!output@{output}}
+\index{output@{output}!oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element@{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+void \hyperlink{classoomph_1_1QFourierDecomposedHelmholtzElement}{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::output (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile,  }\item[{const unsigned \&}]{n\+\_\+plot }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Output function\+: r,z,u at n\+\_\+plot$^\wedge$2 plot points. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FourierDecomposedHelmholtzEquations_a19e2628564b587b97db37c9a4820be60}{oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Equations}.
+
+
+
+Definition at line 482 of file fourier\+\_\+decomposed\+\_\+helmholtz\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Equations\+::output().
+
+\mbox{\Hypertarget{classoomph_1_1QFourierDecomposedHelmholtzElement_a36f0992d35d4f19d2d9cf3070b49bba1}\label{classoomph_1_1QFourierDecomposedHelmholtzElement_a36f0992d35d4f19d2d9cf3070b49bba1}} 
+\index{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element@{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element}!output@{output}}
+\index{output@{output}!oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element@{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+void \hyperlink{classoomph_1_1QFourierDecomposedHelmholtzElement}{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::output (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{file\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+C-\/style output function\+: r,z,u. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FourierDecomposedHelmholtzEquations_af4d25af42bb3ccacd49e12b93bb38953}{oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Equations}.
+
+
+
+Definition at line 495 of file fourier\+\_\+decomposed\+\_\+helmholtz\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Equations\+::output().
+
+\mbox{\Hypertarget{classoomph_1_1QFourierDecomposedHelmholtzElement_a846e28bf8f1bae1ace68b0b291688841}\label{classoomph_1_1QFourierDecomposedHelmholtzElement_a846e28bf8f1bae1ace68b0b291688841}} 
+\index{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element@{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element}!output@{output}}
+\index{output@{output}!oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element@{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+void \hyperlink{classoomph_1_1QFourierDecomposedHelmholtzElement}{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::output (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{file\+\_\+pt,  }\item[{const unsigned \&}]{n\+\_\+plot }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+C-\/style output function\+: r,z,u at n\+\_\+plot$^\wedge$2 plot points. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FourierDecomposedHelmholtzEquations_a1cd04195d40d3d411cda8f0323fc2e7b}{oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Equations}.
+
+
+
+Definition at line 500 of file fourier\+\_\+decomposed\+\_\+helmholtz\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Equations\+::output().
+
+\mbox{\Hypertarget{classoomph_1_1QFourierDecomposedHelmholtzElement_a4ad5327722a3094908a1141e640a4c1e}\label{classoomph_1_1QFourierDecomposedHelmholtzElement_a4ad5327722a3094908a1141e640a4c1e}} 
+\index{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element@{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element}!output\+\_\+fct@{output\+\_\+fct}}
+\index{output\+\_\+fct@{output\+\_\+fct}!oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element@{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element}}
+\subsubsection{\texorpdfstring{output\+\_\+fct()}{output\_fct()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+void \hyperlink{classoomph_1_1QFourierDecomposedHelmholtzElement}{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::output\+\_\+fct (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile,  }\item[{const unsigned \&}]{n\+\_\+plot,  }\item[{\hyperlink{classoomph_1_1FiniteElement_a690fd33af26cc3e84f39bba6d5a85202}{Finite\+Element\+::\+Steady\+Exact\+Solution\+Fct\+Pt}}]{exact\+\_\+soln\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Output function for an exact solution\+: r,z,u\+\_\+exact at n\+\_\+plot$^\wedge$2 plot points. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FourierDecomposedHelmholtzEquations_a9024cd81a80a4709b127560b6f15cd43}{oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Equations}.
+
+
+
+Definition at line 505 of file fourier\+\_\+decomposed\+\_\+helmholtz\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Equations\+::output\+\_\+fct().
+
+\mbox{\Hypertarget{classoomph_1_1QFourierDecomposedHelmholtzElement_a3552971f652e8b07888071fd8ada95cc}\label{classoomph_1_1QFourierDecomposedHelmholtzElement_a3552971f652e8b07888071fd8ada95cc}} 
+\index{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element@{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element}!output\+\_\+fct@{output\+\_\+fct}}
+\index{output\+\_\+fct@{output\+\_\+fct}!oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element@{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element}}
+\subsubsection{\texorpdfstring{output\+\_\+fct()}{output\_fct()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+void \hyperlink{classoomph_1_1QFourierDecomposedHelmholtzElement}{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::output\+\_\+fct (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile,  }\item[{const unsigned \&}]{n\+\_\+plot,  }\item[{const double \&}]{time,  }\item[{\hyperlink{classoomph_1_1FiniteElement_ad4ecf2b61b158a4b4d351a60d23c633e}{Finite\+Element\+::\+Unsteady\+Exact\+Solution\+Fct\+Pt}}]{exact\+\_\+soln\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Output function for a time-\/dependent exact solution. r,z,u\+\_\+exact at n\+\_\+plot$^\wedge$2 plot points (Calls the steady version) 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FourierDecomposedHelmholtzEquations_a4a094945d74be0e025895f240d4b0072}{oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Equations}.
+
+
+
+Definition at line 530 of file fourier\+\_\+decomposed\+\_\+helmholtz\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element$<$ N\+N\+O\+D\+E\+\_\+1\+D $>$\+::dshape\+\_\+and\+\_\+dtest\+\_\+eulerian\+\_\+fourier\+\_\+decomposed\+\_\+helmholtz(), oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Equations\+::output\+\_\+fct(), and s.
+
+\mbox{\Hypertarget{classoomph_1_1QFourierDecomposedHelmholtzElement_a0feea9801280dce3e0a73bd5d370431f}\label{classoomph_1_1QFourierDecomposedHelmholtzElement_a0feea9801280dce3e0a73bd5d370431f}} 
+\index{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element@{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element}!output\+\_\+real@{output\+\_\+real}}
+\index{output\+\_\+real@{output\+\_\+real}!oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element@{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element}}
+\subsubsection{\texorpdfstring{output\+\_\+real()}{output\_real()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+void \hyperlink{classoomph_1_1QFourierDecomposedHelmholtzElement}{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::output\+\_\+real (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile,  }\item[{const double \&}]{phi,  }\item[{const unsigned \&}]{n\+\_\+plot }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Output function for real part of full time-\/dependent solution u = Re( (u\+\_\+r +i u\+\_\+i) exp(-\/i omega t) at phase angle omega t = phi. r,z,u at n\+\_\+plot plot points in each coordinate direction. 
+
+
+
+Definition at line 490 of file fourier\+\_\+decomposed\+\_\+helmholtz\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Equations\+::output\+\_\+real().
+
+\mbox{\Hypertarget{classoomph_1_1QFourierDecomposedHelmholtzElement_a528a56fd0948252c8886e7d559cb134f}\label{classoomph_1_1QFourierDecomposedHelmholtzElement_a528a56fd0948252c8886e7d559cb134f}} 
+\index{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element@{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element}!output\+\_\+real\+\_\+fct@{output\+\_\+real\+\_\+fct}}
+\index{output\+\_\+real\+\_\+fct@{output\+\_\+real\+\_\+fct}!oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element@{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element}}
+\subsubsection{\texorpdfstring{output\+\_\+real\+\_\+fct()}{output\_real\_fct()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+void \hyperlink{classoomph_1_1QFourierDecomposedHelmholtzElement}{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::output\+\_\+real\+\_\+fct (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile,  }\item[{const double \&}]{phi,  }\item[{const unsigned \&}]{n\+\_\+plot,  }\item[{\hyperlink{classoomph_1_1FiniteElement_a690fd33af26cc3e84f39bba6d5a85202}{Finite\+Element\+::\+Steady\+Exact\+Solution\+Fct\+Pt}}]{exact\+\_\+soln\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Output function for real part of full time-\/dependent fct u = Re( (u\+\_\+r +i u\+\_\+i) exp(-\/i omega t) at phase angle omega t = phi. r,z,u at n\+\_\+plot plot points in each coordinate direction. 
+
+
+
+Definition at line 517 of file fourier\+\_\+decomposed\+\_\+helmholtz\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Equations\+::output\+\_\+real\+\_\+fct().
+
+\mbox{\Hypertarget{classoomph_1_1QFourierDecomposedHelmholtzElement_a9eaf94d6f205d8a38e3e703999524eb1}\label{classoomph_1_1QFourierDecomposedHelmholtzElement_a9eaf94d6f205d8a38e3e703999524eb1}} 
+\index{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element@{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element}!required\+\_\+nvalue@{required\+\_\+nvalue}}
+\index{required\+\_\+nvalue@{required\+\_\+nvalue}!oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element@{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element}}
+\subsubsection{\texorpdfstring{required\+\_\+nvalue()}{required\_nvalue()}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+unsigned \hyperlink{classoomph_1_1QFourierDecomposedHelmholtzElement}{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::required\+\_\+nvalue (\begin{DoxyParamCaption}\item[{const unsigned \&}]{n }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Broken assignment operator. 
+
+Required \# of `values\textquotesingle{} (pinned or dofs) at node n 
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a56610c60d5bc2d7c27407a1455471b1a}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 473 of file fourier\+\_\+decomposed\+\_\+helmholtz\+\_\+elements.\+h.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1QFourierDecomposedHelmholtzElement_a58d9cdd8eb3163b440a8c727f4d071e3}\label{classoomph_1_1QFourierDecomposedHelmholtzElement_a58d9cdd8eb3163b440a8c727f4d071e3}} 
+\index{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element@{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element}!Initial\+\_\+\+Nvalue@{Initial\+\_\+\+Nvalue}}
+\index{Initial\+\_\+\+Nvalue@{Initial\+\_\+\+Nvalue}!oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element@{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element}}
+\subsubsection{\texorpdfstring{Initial\+\_\+\+Nvalue}{Initial\_Nvalue}}
+{\footnotesize\ttfamily template$<$unsigned N\+N\+O\+D\+E\+\_\+1D$>$ \\
+const unsigned \hyperlink{classoomph_1_1QFourierDecomposedHelmholtzElement}{oomph\+::\+Q\+Fourier\+Decomposed\+Helmholtz\+Element}$<$ N\+N\+O\+D\+E\+\_\+1D $>$\+::Initial\+\_\+\+Nvalue =2\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Static int that holds the number of variables at nodes\+: always the same. 
+
+Set the data for the number of Variables at each node, always two (real and imag part) in every case 
+
+Definition at line 446 of file fourier\+\_\+decomposed\+\_\+helmholtz\+\_\+elements.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{fourier__decomposed__helmholtz__elements_8h}{fourier\+\_\+decomposed\+\_\+helmholtz\+\_\+elements.\+h}\item 
+\hyperlink{fourier__decomposed__helmholtz__elements_8cc}{fourier\+\_\+decomposed\+\_\+helmholtz\+\_\+elements.\+cc}\end{DoxyCompactItemize}

@@ -1,0 +1,176 @@
+\hypertarget{classoomph_1_1RefineableSolidTractionElement}{}\section{oomph\+:\+:Refineable\+Solid\+Traction\+Element$<$ E\+L\+E\+M\+E\+NT $>$ Class Template Reference}
+\label{classoomph_1_1RefineableSolidTractionElement}\index{oomph\+::\+Refineable\+Solid\+Traction\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$@{oomph\+::\+Refineable\+Solid\+Traction\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$}}
+
+
+{\ttfamily \#include $<$solid\+\_\+traction\+\_\+elements.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Refineable\+Solid\+Traction\+Element$<$ E\+L\+E\+M\+E\+NT $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.088965cm]{classoomph_1_1RefineableSolidTractionElement}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1RefineableSolidTractionElement_a46b3cbd28e9a4eb8cc24e000250e3639}{Refineable\+Solid\+Traction\+Element} (\hyperlink{classoomph_1_1FiniteElement}{Finite\+Element} $\ast$const \&element\+\_\+pt, const int \&\hyperlink{classoomph_1_1FaceElement_a478d577ac6db67ecc80f1f02ae3ab170}{face\+\_\+index})
+\begin{DoxyCompactList}\small\item\em Constructor, which takes a \char`\"{}bulk\char`\"{} element and the face index. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1RefineableSolidTractionElement_a29953035bc2d3e0f0c5ca276c57a9fba}{$\sim$\+Refineable\+Solid\+Traction\+Element} ()
+\begin{DoxyCompactList}\small\item\em Destructor should not delete anything. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1RefineableSolidTractionElement_a9119a5b387cf3e5c3e3dee4dcabb08a3}{ncont\+\_\+interpolated\+\_\+values} () const
+\begin{DoxyCompactList}\small\item\em Number of continuously interpolated values are the same as those in the bulk element. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1RefineableSolidTractionElement_a43a01cb9d3cb2bed34bc0fb811e5f830}{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&residuals)
+\begin{DoxyCompactList}\small\item\em This function returns just the residuals. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1RefineableSolidTractionElement_ad1921c9d88c2d71c0f3735259faaef35}{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&residuals, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&jacobian)
+\begin{DoxyCompactList}\small\item\em This function returns the residuals and the Jacobian. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classoomph_1_1RefineableSolidTractionElement_aa94332df93ad6d4aea402d35af4da121}{refineable\+\_\+fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+solid\+\_\+traction} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&residuals)
+\begin{DoxyCompactList}\small\item\em This function returns the residuals for the traction function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class E\+L\+E\+M\+E\+NT$>$\newline
+class oomph\+::\+Refineable\+Solid\+Traction\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$}
+
+A class for elements that allow the imposition of an applied traction in the principle of virtual displacements. The geometrical information can be read from the Face\+Geometry$<$\+E\+L\+E\+M\+E\+N\+T$>$ class and and thus, we can be generic enough without the need to have a separate equations class.
+
+T\+H\+IS IS T\+HE R\+E\+F\+I\+N\+E\+A\+B\+LE V\+E\+R\+S\+I\+ON. 
+
+Definition at line 476 of file solid\+\_\+traction\+\_\+elements.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1RefineableSolidTractionElement_a46b3cbd28e9a4eb8cc24e000250e3639}\label{classoomph_1_1RefineableSolidTractionElement_a46b3cbd28e9a4eb8cc24e000250e3639}} 
+\index{oomph\+::\+Refineable\+Solid\+Traction\+Element@{oomph\+::\+Refineable\+Solid\+Traction\+Element}!Refineable\+Solid\+Traction\+Element@{Refineable\+Solid\+Traction\+Element}}
+\index{Refineable\+Solid\+Traction\+Element@{Refineable\+Solid\+Traction\+Element}!oomph\+::\+Refineable\+Solid\+Traction\+Element@{oomph\+::\+Refineable\+Solid\+Traction\+Element}}
+\subsubsection{\texorpdfstring{Refineable\+Solid\+Traction\+Element()}{RefineableSolidTractionElement()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classoomph_1_1RefineableSolidTractionElement}{oomph\+::\+Refineable\+Solid\+Traction\+Element}$<$ E\+L\+E\+M\+E\+NT $>$\+::\hyperlink{classoomph_1_1RefineableSolidTractionElement}{Refineable\+Solid\+Traction\+Element} (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1FiniteElement}{Finite\+Element} $\ast$const \&}]{element\+\_\+pt,  }\item[{const int \&}]{face\+\_\+index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor, which takes a \char`\"{}bulk\char`\"{} element and the face index. 
+
+
+
+Definition at line 483 of file solid\+\_\+traction\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableSolidTractionElement_a29953035bc2d3e0f0c5ca276c57a9fba}\label{classoomph_1_1RefineableSolidTractionElement_a29953035bc2d3e0f0c5ca276c57a9fba}} 
+\index{oomph\+::\+Refineable\+Solid\+Traction\+Element@{oomph\+::\+Refineable\+Solid\+Traction\+Element}!````~Refineable\+Solid\+Traction\+Element@{$\sim$\+Refineable\+Solid\+Traction\+Element}}
+\index{````~Refineable\+Solid\+Traction\+Element@{$\sim$\+Refineable\+Solid\+Traction\+Element}!oomph\+::\+Refineable\+Solid\+Traction\+Element@{oomph\+::\+Refineable\+Solid\+Traction\+Element}}
+\subsubsection{\texorpdfstring{$\sim$\+Refineable\+Solid\+Traction\+Element()}{~RefineableSolidTractionElement()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classoomph_1_1RefineableSolidTractionElement}{oomph\+::\+Refineable\+Solid\+Traction\+Element}$<$ E\+L\+E\+M\+E\+NT $>$\+::$\sim$\hyperlink{classoomph_1_1RefineableSolidTractionElement}{Refineable\+Solid\+Traction\+Element} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Destructor should not delete anything. 
+
+
+
+Definition at line 490 of file solid\+\_\+traction\+\_\+elements.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1RefineableSolidTractionElement_ad1921c9d88c2d71c0f3735259faaef35}\label{classoomph_1_1RefineableSolidTractionElement_ad1921c9d88c2d71c0f3735259faaef35}} 
+\index{oomph\+::\+Refineable\+Solid\+Traction\+Element@{oomph\+::\+Refineable\+Solid\+Traction\+Element}!fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian}}
+\index{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian}!oomph\+::\+Refineable\+Solid\+Traction\+Element@{oomph\+::\+Refineable\+Solid\+Traction\+Element}}
+\subsubsection{\texorpdfstring{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian()}{fill\_in\_contribution\_to\_jacobian()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classoomph_1_1RefineableSolidTractionElement}{oomph\+::\+Refineable\+Solid\+Traction\+Element}$<$ E\+L\+E\+M\+E\+NT $>$\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{residuals,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{jacobian }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+This function returns the residuals and the Jacobian. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1SolidTractionElement_a7f6315287b8d863631a06b75e0cc7daf}{oomph\+::\+Solid\+Traction\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$}.
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1RefineableFSISolidTractionElement_a886a6bcb5722c9535f6f78ccefdc0646}{oomph\+::\+Refineable\+F\+S\+I\+Solid\+Traction\+Element$<$ E\+L\+E\+M\+E\+N\+T, D\+I\+M $>$}.
+
+
+
+Definition at line 509 of file solid\+\_\+traction\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Refineable\+Solid\+Traction\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::refineable\+\_\+fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+solid\+\_\+traction().
+
+
+
+Referenced by oomph\+::\+Refineable\+F\+S\+I\+Solid\+Traction\+Element$<$ E\+L\+E\+M\+E\+N\+T, D\+I\+M $>$\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableSolidTractionElement_a43a01cb9d3cb2bed34bc0fb811e5f830}\label{classoomph_1_1RefineableSolidTractionElement_a43a01cb9d3cb2bed34bc0fb811e5f830}} 
+\index{oomph\+::\+Refineable\+Solid\+Traction\+Element@{oomph\+::\+Refineable\+Solid\+Traction\+Element}!fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals}}
+\index{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals}!oomph\+::\+Refineable\+Solid\+Traction\+Element@{oomph\+::\+Refineable\+Solid\+Traction\+Element}}
+\subsubsection{\texorpdfstring{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals()}{fill\_in\_contribution\_to\_residuals()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classoomph_1_1RefineableSolidTractionElement}{oomph\+::\+Refineable\+Solid\+Traction\+Element}$<$ E\+L\+E\+M\+E\+NT $>$\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{residuals }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+This function returns just the residuals. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1SolidTractionElement_aaa22a21aa54edecac7052f6bcf0867a4}{oomph\+::\+Solid\+Traction\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$}.
+
+
+
+Definition at line 501 of file solid\+\_\+traction\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableSolidTractionElement_a9119a5b387cf3e5c3e3dee4dcabb08a3}\label{classoomph_1_1RefineableSolidTractionElement_a9119a5b387cf3e5c3e3dee4dcabb08a3}} 
+\index{oomph\+::\+Refineable\+Solid\+Traction\+Element@{oomph\+::\+Refineable\+Solid\+Traction\+Element}!ncont\+\_\+interpolated\+\_\+values@{ncont\+\_\+interpolated\+\_\+values}}
+\index{ncont\+\_\+interpolated\+\_\+values@{ncont\+\_\+interpolated\+\_\+values}!oomph\+::\+Refineable\+Solid\+Traction\+Element@{oomph\+::\+Refineable\+Solid\+Traction\+Element}}
+\subsubsection{\texorpdfstring{ncont\+\_\+interpolated\+\_\+values()}{ncont\_interpolated\_values()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+unsigned \hyperlink{classoomph_1_1RefineableSolidTractionElement}{oomph\+::\+Refineable\+Solid\+Traction\+Element}$<$ E\+L\+E\+M\+E\+NT $>$\+::ncont\+\_\+interpolated\+\_\+values (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Number of continuously interpolated values are the same as those in the bulk element. 
+
+
+
+Implements \hyperlink{classoomph_1_1RefineableElement_a53e171a18c9f43f1db90a6876516a073}{oomph\+::\+Refineable\+Element}.
+
+
+
+Definition at line 494 of file solid\+\_\+traction\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableSolidTractionElement_aa94332df93ad6d4aea402d35af4da121}\label{classoomph_1_1RefineableSolidTractionElement_aa94332df93ad6d4aea402d35af4da121}} 
+\index{oomph\+::\+Refineable\+Solid\+Traction\+Element@{oomph\+::\+Refineable\+Solid\+Traction\+Element}!refineable\+\_\+fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+solid\+\_\+traction@{refineable\+\_\+fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+solid\+\_\+traction}}
+\index{refineable\+\_\+fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+solid\+\_\+traction@{refineable\+\_\+fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+solid\+\_\+traction}!oomph\+::\+Refineable\+Solid\+Traction\+Element@{oomph\+::\+Refineable\+Solid\+Traction\+Element}}
+\subsubsection{\texorpdfstring{refineable\+\_\+fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+solid\+\_\+traction()}{refineable\_fill\_in\_contribution\_to\_residuals\_solid\_traction()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classoomph_1_1RefineableSolidTractionElement}{oomph\+::\+Refineable\+Solid\+Traction\+Element}$<$ E\+L\+E\+M\+E\+NT $>$\+::refineable\+\_\+fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+solid\+\_\+traction (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{residuals }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+This function returns the residuals for the traction function. 
+
+Function that returns the residuals for the imposed traction solid equations 
+
+Definition at line 546 of file solid\+\_\+traction\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Node\+::hanging\+\_\+pt(), i, oomph\+::\+Node\+::is\+\_\+hanging(), oomph\+::\+Hang\+Info\+::master\+\_\+weight(), oomph\+::\+Hang\+Info\+::nmaster(), and oomph\+::\+Quad\+Tree\+Names\+::W.
+
+
+
+Referenced by oomph\+::\+Refineable\+Solid\+Traction\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian().
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{solid__traction__elements_8h}{solid\+\_\+traction\+\_\+elements.\+h}\end{DoxyCompactItemize}

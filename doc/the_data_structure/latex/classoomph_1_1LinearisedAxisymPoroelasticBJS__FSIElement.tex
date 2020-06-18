@@ -1,0 +1,553 @@
+\hypertarget{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement}{}\section{oomph\+:\+:Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$ Class Template Reference}
+\label{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement}\index{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$@{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$}}
+
+
+A class for elements that allow the imposition of the linearised poroelastic F\+SI slip condition (according to the Beavers-\/\+Joseph-\/\+Saffman condition) from an adjacent poroelastic axisymmetric medium. The element geometry is obtained from the Face\+Geometry$<$\+E\+L\+E\+M\+E\+N\+T$>$ policy class.  
+
+
+
+
+{\ttfamily \#include $<$axisym\+\_\+poroelastic\+\_\+fsi\+\_\+face\+\_\+elements.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=0.641834cm]{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_af786a8812e9a940b2de1684156961114}{Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element} (\hyperlink{classoomph_1_1FiniteElement}{Finite\+Element} $\ast$const \&bulk\+\_\+el\+\_\+pt, const int \&\hyperlink{classoomph_1_1FaceElement_a478d577ac6db67ecc80f1f02ae3ab170}{face\+\_\+index}, const unsigned \&id=0)
+\begin{DoxyCompactList}\small\item\em Constructor, takes the pointer to the \char`\"{}bulk\char`\"{} element and the face index identifying the face to which the element is attached. The optional identifier can be used to distinguish the additional nodal values created by this element from thos created by other Face\+Elements. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_a17f409456685d395cabb151b547bd821}{Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_a4b975e17c3a6085387b519e0c1820426}{Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element} (const \hyperlink{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement}{Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element} \&dummy)
+\begin{DoxyCompactList}\small\item\em Broken copy constructor. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_a75df9eb4df42e96214d48a721d3eea90}{operator=} (const \hyperlink{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement}{Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element} \&)
+\begin{DoxyCompactList}\small\item\em Broken assignment operator. \end{DoxyCompactList}\item 
+double $\ast$\& \hyperlink{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_a9b7727eac2aa2258eeebe923642dde68}{st\+\_\+pt} ()
+\begin{DoxyCompactList}\small\item\em Access function for the pointer to the fluid Strouhal number (if not set, St defaults to 1) \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_a5dfd37623c3ea756028040a42db79b49}{st} () const
+\begin{DoxyCompactList}\small\item\em Access function for the fluid Strouhal number. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_a0ec031247ada81e71ba0173e33d98063}{inverse\+\_\+slip\+\_\+rate\+\_\+coefficient} () const
+\begin{DoxyCompactList}\small\item\em Inverse slip rate coefficient. \end{DoxyCompactList}\item 
+double $\ast$\& \hyperlink{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_a8c13b99a9fb29ce9dcd9e03ca1fe393b}{inverse\+\_\+slip\+\_\+rate\+\_\+coefficient\+\_\+pt} ()
+\begin{DoxyCompactList}\small\item\em Pointer to inverse slip rate coefficient. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_ade3350a09dce17dfb6443d40455fe763}{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&residuals)
+\begin{DoxyCompactList}\small\item\em Add the element\textquotesingle{}s contribution to its residual vector. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_a698c4c54f4e7419a3562792c0d935c55}{contribution\+\_\+to\+\_\+enclosed\+\_\+volume} ()
+\begin{DoxyCompactList}\small\item\em Return this element\textquotesingle{}s contribution to the total volume enclosed by collection of these elements. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_a995babfb257bffea27ce2c3476b9e642}{output} (std\+::ostream \&outfile)
+\begin{DoxyCompactList}\small\item\em Output function. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_a22f814c3e375302e323fdd3b021c10f8}{output} (std\+::ostream \&outfile, const unsigned \&n\+\_\+plot)
+\begin{DoxyCompactList}\small\item\em Output function\+: Output at \hyperlink{classoomph_1_1Gauss}{Gauss} points; n\+\_\+plot is ignored. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_afab87c435ee121a692dc0f051f2252ab}{contribution\+\_\+to\+\_\+total\+\_\+porous\+\_\+flux} (double \&skeleton\+\_\+flux\+\_\+contrib, double \&seepage\+\_\+flux\+\_\+contrib, double \&nst\+\_\+flux\+\_\+contrib)
+\begin{DoxyCompactList}\small\item\em Compute contributions to integrated porous flux over boundary\+: q\+\_\+skeleton =   u\+\_\+displ /  t  n ds q\+\_\+seepage =  k q  n ds q\+\_\+nst =  u  n ds. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_a91ca551e9f88bd3aeaff35aa338e2ca2}{output} (F\+I\+LE $\ast$file\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em C-\/style output function. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_a9a4a6cf7877a1d7cadff50b800adb848}{output} (F\+I\+LE $\ast$file\+\_\+pt, const unsigned \&n\+\_\+plot)
+\begin{DoxyCompactList}\small\item\em C-\/style output function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \hyperlink{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_a7b0a7d3c7c5e8f98741ae725b4a03f04}{shape\+\_\+and\+\_\+test} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Shape}{Shape} \&psi, \hyperlink{classoomph_1_1Shape}{Shape} \&test) const
+\begin{DoxyCompactList}\small\item\em Function to compute the shape and test functions and to return the Jacobian of mapping between local and global (Eulerian) coordinates. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_a9d3bcc9afdc79f09987164694d933b75}{shape\+\_\+and\+\_\+test\+\_\+at\+\_\+knot} (const unsigned \&ipt, \hyperlink{classoomph_1_1Shape}{Shape} \&psi, \hyperlink{classoomph_1_1Shape}{Shape} \&test) const
+\begin{DoxyCompactList}\small\item\em Function to compute the shape and test functions and to return the Jacobian of mapping between local and global (Eulerian) coordinates. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_a68c8de96b9f3034c9437e80036b2df1a}{fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+axisym\+\_\+poroelastic\+\_\+fsi} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&residuals, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&jacobian, const unsigned \&flag)
+\begin{DoxyCompactList}\small\item\em Add the element\textquotesingle{}s contribution to its residual vector. flag=1(or 0)\+: do (or don\textquotesingle{}t) compute the contribution to the Jacobian as well. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+unsigned \hyperlink{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_aedc72faae236c037c4bf80efb8899a78}{Dim}
+\begin{DoxyCompactList}\small\item\em The spatial dimension of the problem. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Vector}{Vector}$<$ unsigned $>$ \hyperlink{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_a98bb2834379b10c46d90d66537cee1d7}{U\+\_\+index\+\_\+axisym\+\_\+poroelastic\+\_\+fsi}
+\begin{DoxyCompactList}\small\item\em The index at which the velocity unknowns are stored at the nodes. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_a50d6dc255c2c8275dda14fd1883af355}{Id}
+\begin{DoxyCompactList}\small\item\em Lagrange Id. \end{DoxyCompactList}\item 
+double $\ast$ \hyperlink{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_a3a754eeab45d9d14b81173fb33a57ec4}{St\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to fluid Strouhal number. \end{DoxyCompactList}\item 
+double $\ast$ \hyperlink{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_a64848a4d49c1824b990abf592b5ec78b}{Inverse\+\_\+slip\+\_\+rate\+\_\+coeff\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to inverse slip rate coefficient. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT, class P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT$>$\newline
+class oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$}
+
+A class for elements that allow the imposition of the linearised poroelastic F\+SI slip condition (according to the Beavers-\/\+Joseph-\/\+Saffman condition) from an adjacent poroelastic axisymmetric medium. The element geometry is obtained from the Face\+Geometry$<$\+E\+L\+E\+M\+E\+N\+T$>$ policy class. 
+
+Definition at line 75 of file axisym\+\_\+poroelastic\+\_\+fsi\+\_\+face\+\_\+elements.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_af786a8812e9a940b2de1684156961114}\label{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_af786a8812e9a940b2de1684156961114}} 
+\index{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element@{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}!Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element@{Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}}
+\index{Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element@{Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}!oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element@{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}}
+\subsubsection{\texorpdfstring{Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element()}{LinearisedAxisymPoroelasticBJS\_FSIElement()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT , class P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement}{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::\hyperlink{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement}{Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element} (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1FiniteElement}{Finite\+Element} $\ast$const \&}]{bulk\+\_\+el\+\_\+pt,  }\item[{const int \&}]{face\+\_\+index,  }\item[{const unsigned \&}]{id = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+Constructor, takes the pointer to the \char`\"{}bulk\char`\"{} element and the face index identifying the face to which the element is attached. The optional identifier can be used to distinguish the additional nodal values created by this element from thos created by other Face\+Elements. 
+
+Constructor, takes the pointer to the \char`\"{}bulk\char`\"{} element, and the face index that identifies the face of the bulk element to which this face element is to be attached. The optional identifier can be used to distinguish the additional nodal values created by this element from thos created by other Face\+Elements. 
+
+Definition at line 741 of file axisym\+\_\+poroelastic\+\_\+fsi\+\_\+face\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Face\+Element\+::add\+\_\+additional\+\_\+values(), oomph\+::\+Generalised\+Element\+::add\+\_\+external\+\_\+data(), oomph\+::\+Finite\+Element\+::build\+\_\+face\+\_\+element(), oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Helper\+::\+Default\+\_\+inverse\+\_\+slip\+\_\+rate\+\_\+coefficient, oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Helper\+::\+Default\+\_\+strouhal\+\_\+number, oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::\+Dim, oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+axisym\+\_\+poroelastic\+\_\+fsi(), i, oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::\+Id, oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::\+Inverse\+\_\+slip\+\_\+rate\+\_\+coeff\+\_\+pt, oomph\+::\+Node\+::ndim(), oomph\+::\+Finite\+Element\+::nnode(), oomph\+::\+Finite\+Element\+::node\+\_\+pt(), oomph\+::\+Element\+With\+External\+Element\+::set\+\_\+ninteraction(), oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::\+St\+\_\+pt, and oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::\+U\+\_\+index\+\_\+axisym\+\_\+poroelastic\+\_\+fsi.
+
+\mbox{\Hypertarget{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_a17f409456685d395cabb151b547bd821}\label{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_a17f409456685d395cabb151b547bd821}} 
+\index{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element@{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}!Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element@{Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}}
+\index{Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element@{Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}!oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element@{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}}
+\subsubsection{\texorpdfstring{Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element()}{LinearisedAxisymPoroelasticBJS\_FSIElement()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT , class P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement}{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::\hyperlink{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement}{Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Default constructor. 
+
+
+
+Definition at line 93 of file axisym\+\_\+poroelastic\+\_\+fsi\+\_\+face\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_a4b975e17c3a6085387b519e0c1820426}\label{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_a4b975e17c3a6085387b519e0c1820426}} 
+\index{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element@{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}!Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element@{Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}}
+\index{Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element@{Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}!oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element@{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}}
+\subsubsection{\texorpdfstring{Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element()}{LinearisedAxisymPoroelasticBJS\_FSIElement()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT , class P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement}{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::\hyperlink{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement}{Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element} (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement}{Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \&}]{dummy }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Broken copy constructor. 
+
+
+
+Definition at line 96 of file axisym\+\_\+poroelastic\+\_\+fsi\+\_\+face\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Broken\+Copy\+::broken\+\_\+copy().
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_a698c4c54f4e7419a3562792c0d935c55}\label{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_a698c4c54f4e7419a3562792c0d935c55}} 
+\index{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element@{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}!contribution\+\_\+to\+\_\+enclosed\+\_\+volume@{contribution\+\_\+to\+\_\+enclosed\+\_\+volume}}
+\index{contribution\+\_\+to\+\_\+enclosed\+\_\+volume@{contribution\+\_\+to\+\_\+enclosed\+\_\+volume}!oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element@{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}}
+\subsubsection{\texorpdfstring{contribution\+\_\+to\+\_\+enclosed\+\_\+volume()}{contribution\_to\_enclosed\_volume()}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT , class P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+double \hyperlink{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement}{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::contribution\+\_\+to\+\_\+enclosed\+\_\+volume (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return this element\textquotesingle{}s contribution to the total volume enclosed by collection of these elements. 
+
+
+
+Definition at line 164 of file axisym\+\_\+poroelastic\+\_\+fsi\+\_\+face\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Vector\+Helpers\+::dot(), i, oomph\+::\+Mathematical\+Constants\+::\+Pi, s, and oomph\+::\+Quad\+Tree\+Names\+::W.
+
+\mbox{\Hypertarget{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_afab87c435ee121a692dc0f051f2252ab}\label{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_afab87c435ee121a692dc0f051f2252ab}} 
+\index{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element@{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}!contribution\+\_\+to\+\_\+total\+\_\+porous\+\_\+flux@{contribution\+\_\+to\+\_\+total\+\_\+porous\+\_\+flux}}
+\index{contribution\+\_\+to\+\_\+total\+\_\+porous\+\_\+flux@{contribution\+\_\+to\+\_\+total\+\_\+porous\+\_\+flux}!oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element@{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}}
+\subsubsection{\texorpdfstring{contribution\+\_\+to\+\_\+total\+\_\+porous\+\_\+flux()}{contribution\_to\_total\_porous\_flux()}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT , class P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement}{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::contribution\+\_\+to\+\_\+total\+\_\+porous\+\_\+flux (\begin{DoxyParamCaption}\item[{double \&}]{skeleton\+\_\+flux\+\_\+contrib,  }\item[{double \&}]{seepage\+\_\+flux\+\_\+contrib,  }\item[{double \&}]{nst\+\_\+flux\+\_\+contrib }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Compute contributions to integrated porous flux over boundary\+: q\+\_\+skeleton =   u\+\_\+displ /  t  n ds q\+\_\+seepage =  k q  n ds q\+\_\+nst =  u  n ds. 
+
+
+
+Definition at line 458 of file axisym\+\_\+poroelastic\+\_\+fsi\+\_\+face\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Axisymmetric\+Poroelasticity\+Traction\+Element\+Helper\+::\+Allow\+\_\+gap\+\_\+in\+\_\+\+F\+SI, oomph\+::\+Multi\+\_\+domain\+\_\+functions\+::\+Dim, i, oomph\+::\+Mathematical\+Constants\+::\+Pi, s, and oomph\+::\+Quad\+Tree\+Names\+::W.
+
+\mbox{\Hypertarget{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_ade3350a09dce17dfb6443d40455fe763}\label{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_ade3350a09dce17dfb6443d40455fe763}} 
+\index{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element@{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}!fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals}}
+\index{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals}!oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element@{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}}
+\subsubsection{\texorpdfstring{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals()}{fill\_in\_contribution\_to\_residuals()}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT , class P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement}{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{residuals }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Add the element\textquotesingle{}s contribution to its residual vector. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1GeneralisedElement_a310c97f515e8504a48179c0e72c550d7}{oomph\+::\+Generalised\+Element}.
+
+
+
+Definition at line 135 of file axisym\+\_\+poroelastic\+\_\+fsi\+\_\+face\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Generalised\+Element\+::\+Dummy\+\_\+matrix.
+
+\mbox{\Hypertarget{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_a68c8de96b9f3034c9437e80036b2df1a}\label{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_a68c8de96b9f3034c9437e80036b2df1a}} 
+\index{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element@{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}!fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+axisym\+\_\+poroelastic\+\_\+fsi@{fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+axisym\+\_\+poroelastic\+\_\+fsi}}
+\index{fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+axisym\+\_\+poroelastic\+\_\+fsi@{fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+axisym\+\_\+poroelastic\+\_\+fsi}!oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element@{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}}
+\subsubsection{\texorpdfstring{fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+axisym\+\_\+poroelastic\+\_\+fsi()}{fill\_in\_generic\_residual\_contribution\_axisym\_poroelastic\_fsi()}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT , class P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement}{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+axisym\+\_\+poroelastic\+\_\+fsi (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{residuals,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{jacobian,  }\item[{const unsigned \&}]{flag }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Add the element\textquotesingle{}s contribution to its residual vector. flag=1(or 0)\+: do (or don\textquotesingle{}t) compute the contribution to the Jacobian as well. 
+
+Helper function to compute the element\textquotesingle{}s residual vector and the Jacobian matrix. 
+
+Definition at line 820 of file axisym\+\_\+poroelastic\+\_\+fsi\+\_\+face\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Face\+Element\+::bulk\+\_\+element\+\_\+pt(), oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::\+Dim, oomph\+::\+Element\+With\+External\+Element\+::external\+\_\+element\+\_\+local\+\_\+coord(), oomph\+::\+Element\+With\+External\+Element\+::external\+\_\+element\+\_\+pt(), i, oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::\+Id, oomph\+::\+Boundary\+Node\+Base\+::index\+\_\+of\+\_\+first\+\_\+value\+\_\+assigned\+\_\+by\+\_\+face\+\_\+element(), oomph\+::\+Finite\+Element\+::integral\+\_\+pt(), oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::inverse\+\_\+slip\+\_\+rate\+\_\+coefficient(), oomph\+::\+Integral\+::knot(), oomph\+::\+Face\+Element\+::local\+\_\+coordinate\+\_\+in\+\_\+bulk(), oomph\+::\+Finite\+Element\+::nnode(), oomph\+::\+Finite\+Element\+::nodal\+\_\+local\+\_\+eqn(), oomph\+::\+Finite\+Element\+::nodal\+\_\+position(), oomph\+::\+Finite\+Element\+::node\+\_\+pt(), oomph\+::\+Integral\+::nweight(), oomph\+::\+Face\+Element\+::outer\+\_\+unit\+\_\+normal(), s, oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::shape\+\_\+and\+\_\+test(), oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::st(), oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::\+U\+\_\+index\+\_\+axisym\+\_\+poroelastic\+\_\+fsi, oomph\+::\+Node\+::value(), oomph\+::\+Quad\+Tree\+Names\+::W, and oomph\+::\+Integral\+::weight().
+
+
+
+Referenced by oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element().
+
+\mbox{\Hypertarget{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_a0ec031247ada81e71ba0173e33d98063}\label{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_a0ec031247ada81e71ba0173e33d98063}} 
+\index{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element@{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}!inverse\+\_\+slip\+\_\+rate\+\_\+coefficient@{inverse\+\_\+slip\+\_\+rate\+\_\+coefficient}}
+\index{inverse\+\_\+slip\+\_\+rate\+\_\+coefficient@{inverse\+\_\+slip\+\_\+rate\+\_\+coefficient}!oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element@{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}}
+\subsubsection{\texorpdfstring{inverse\+\_\+slip\+\_\+rate\+\_\+coefficient()}{inverse\_slip\_rate\_coefficient()}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT , class P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+double \hyperlink{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement}{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::inverse\+\_\+slip\+\_\+rate\+\_\+coefficient (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Inverse slip rate coefficient. 
+
+
+
+Definition at line 121 of file axisym\+\_\+poroelastic\+\_\+fsi\+\_\+face\+\_\+elements.\+h.
+
+
+
+Referenced by oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+axisym\+\_\+poroelastic\+\_\+fsi().
+
+\mbox{\Hypertarget{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_a8c13b99a9fb29ce9dcd9e03ca1fe393b}\label{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_a8c13b99a9fb29ce9dcd9e03ca1fe393b}} 
+\index{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element@{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}!inverse\+\_\+slip\+\_\+rate\+\_\+coefficient\+\_\+pt@{inverse\+\_\+slip\+\_\+rate\+\_\+coefficient\+\_\+pt}}
+\index{inverse\+\_\+slip\+\_\+rate\+\_\+coefficient\+\_\+pt@{inverse\+\_\+slip\+\_\+rate\+\_\+coefficient\+\_\+pt}!oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element@{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}}
+\subsubsection{\texorpdfstring{inverse\+\_\+slip\+\_\+rate\+\_\+coefficient\+\_\+pt()}{inverse\_slip\_rate\_coefficient\_pt()}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT , class P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+double$\ast$\& \hyperlink{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement}{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::inverse\+\_\+slip\+\_\+rate\+\_\+coefficient\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Pointer to inverse slip rate coefficient. 
+
+
+
+Definition at line 128 of file axisym\+\_\+poroelastic\+\_\+fsi\+\_\+face\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_a75df9eb4df42e96214d48a721d3eea90}\label{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_a75df9eb4df42e96214d48a721d3eea90}} 
+\index{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element@{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}!operator=@{operator=}}
+\index{operator=@{operator=}!oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element@{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT , class P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement}{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::operator= (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement}{Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Broken assignment operator. 
+
+
+
+Definition at line 104 of file axisym\+\_\+poroelastic\+\_\+fsi\+\_\+face\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Broken\+Copy\+::broken\+\_\+assign().
+
+\mbox{\Hypertarget{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_a995babfb257bffea27ce2c3476b9e642}\label{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_a995babfb257bffea27ce2c3476b9e642}} 
+\index{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element@{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}!output@{output}}
+\index{output@{output}!oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element@{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT , class P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement}{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::output (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Output function. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a2ad98a3d2ef4999f1bef62c0ff13f2a7}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 237 of file axisym\+\_\+poroelastic\+\_\+fsi\+\_\+face\+\_\+elements.\+h.
+
+
+
+References oomph\+::output().
+
+\mbox{\Hypertarget{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_a22f814c3e375302e323fdd3b021c10f8}\label{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_a22f814c3e375302e323fdd3b021c10f8}} 
+\index{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element@{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}!output@{output}}
+\index{output@{output}!oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element@{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT , class P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement}{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::output (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile,  }\item[{const unsigned \&}]{n\+\_\+plot }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Output function\+: Output at \hyperlink{classoomph_1_1Gauss}{Gauss} points; n\+\_\+plot is ignored. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_afa9d9b2670f999b43e6679c9dd28c457}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 245 of file axisym\+\_\+poroelastic\+\_\+fsi\+\_\+face\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Axisymmetric\+Poroelasticity\+Traction\+Element\+Helper\+::\+Allow\+\_\+gap\+\_\+in\+\_\+\+F\+SI, oomph\+::\+Multi\+\_\+domain\+\_\+functions\+::\+Dim, i, and s.
+
+\mbox{\Hypertarget{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_a91ca551e9f88bd3aeaff35aa338e2ca2}\label{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_a91ca551e9f88bd3aeaff35aa338e2ca2}} 
+\index{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element@{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}!output@{output}}
+\index{output@{output}!oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element@{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT , class P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement}{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::output (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{file\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+C-\/style output function. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a72cddd09f8ddbee1a20a1ff404c6943e}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 645 of file axisym\+\_\+poroelastic\+\_\+fsi\+\_\+face\+\_\+elements.\+h.
+
+
+
+References oomph\+::output().
+
+\mbox{\Hypertarget{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_a9a4a6cf7877a1d7cadff50b800adb848}\label{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_a9a4a6cf7877a1d7cadff50b800adb848}} 
+\index{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element@{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}!output@{output}}
+\index{output@{output}!oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element@{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT , class P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement}{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::output (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{file\+\_\+pt,  }\item[{const unsigned \&}]{n\+\_\+plot }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+C-\/style output function. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_adfaee690bb0608f03320eeb9d110d48c}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 649 of file axisym\+\_\+poroelastic\+\_\+fsi\+\_\+face\+\_\+elements.\+h.
+
+
+
+References oomph\+::output().
+
+\mbox{\Hypertarget{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_a7b0a7d3c7c5e8f98741ae725b4a03f04}\label{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_a7b0a7d3c7c5e8f98741ae725b4a03f04}} 
+\index{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element@{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}!shape\+\_\+and\+\_\+test@{shape\+\_\+and\+\_\+test}}
+\index{shape\+\_\+and\+\_\+test@{shape\+\_\+and\+\_\+test}!oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element@{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}}
+\subsubsection{\texorpdfstring{shape\+\_\+and\+\_\+test()}{shape\_and\_test()}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT , class P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+double \hyperlink{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement}{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::shape\+\_\+and\+\_\+test (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{test }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Function to compute the shape and test functions and to return the Jacobian of mapping between local and global (Eulerian) coordinates. 
+
+
+
+Definition at line 658 of file axisym\+\_\+poroelastic\+\_\+fsi\+\_\+face\+\_\+elements.\+h.
+
+
+
+References i, and oomph\+::\+One\+Dim\+Lagrange\+::shape().
+
+
+
+Referenced by oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+axisym\+\_\+poroelastic\+\_\+fsi().
+
+\mbox{\Hypertarget{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_a9d3bcc9afdc79f09987164694d933b75}\label{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_a9d3bcc9afdc79f09987164694d933b75}} 
+\index{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element@{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}!shape\+\_\+and\+\_\+test\+\_\+at\+\_\+knot@{shape\+\_\+and\+\_\+test\+\_\+at\+\_\+knot}}
+\index{shape\+\_\+and\+\_\+test\+\_\+at\+\_\+knot@{shape\+\_\+and\+\_\+test\+\_\+at\+\_\+knot}!oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element@{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}}
+\subsubsection{\texorpdfstring{shape\+\_\+and\+\_\+test\+\_\+at\+\_\+knot()}{shape\_and\_test\_at\_knot()}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT , class P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+double \hyperlink{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement}{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::shape\+\_\+and\+\_\+test\+\_\+at\+\_\+knot (\begin{DoxyParamCaption}\item[{const unsigned \&}]{ipt,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{test }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Function to compute the shape and test functions and to return the Jacobian of mapping between local and global (Eulerian) coordinates. 
+
+
+
+Definition at line 680 of file axisym\+\_\+poroelastic\+\_\+fsi\+\_\+face\+\_\+elements.\+h.
+
+
+
+References i.
+
+\mbox{\Hypertarget{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_a5dfd37623c3ea756028040a42db79b49}\label{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_a5dfd37623c3ea756028040a42db79b49}} 
+\index{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element@{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}!st@{st}}
+\index{st@{st}!oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element@{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}}
+\subsubsection{\texorpdfstring{st()}{st()}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT , class P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+double \hyperlink{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement}{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::st (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Access function for the fluid Strouhal number. 
+
+
+
+Definition at line 115 of file axisym\+\_\+poroelastic\+\_\+fsi\+\_\+face\+\_\+elements.\+h.
+
+
+
+Referenced by oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+axisym\+\_\+poroelastic\+\_\+fsi().
+
+\mbox{\Hypertarget{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_a9b7727eac2aa2258eeebe923642dde68}\label{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_a9b7727eac2aa2258eeebe923642dde68}} 
+\index{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element@{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}!st\+\_\+pt@{st\+\_\+pt}}
+\index{st\+\_\+pt@{st\+\_\+pt}!oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element@{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}}
+\subsubsection{\texorpdfstring{st\+\_\+pt()}{st\_pt()}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT , class P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+double$\ast$ \& \hyperlink{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement}{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::st\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Access function for the pointer to the fluid Strouhal number (if not set, St defaults to 1) 
+
+
+
+Definition at line 112 of file axisym\+\_\+poroelastic\+\_\+fsi\+\_\+face\+\_\+elements.\+h.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_aedc72faae236c037c4bf80efb8899a78}\label{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_aedc72faae236c037c4bf80efb8899a78}} 
+\index{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element@{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}!Dim@{Dim}}
+\index{Dim@{Dim}!oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element@{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}}
+\subsubsection{\texorpdfstring{Dim}{Dim}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT , class P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+unsigned \hyperlink{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement}{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::Dim\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The spatial dimension of the problem. 
+
+
+
+Definition at line 708 of file axisym\+\_\+poroelastic\+\_\+fsi\+\_\+face\+\_\+elements.\+h.
+
+
+
+Referenced by oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+axisym\+\_\+poroelastic\+\_\+fsi(), and oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element().
+
+\mbox{\Hypertarget{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_a50d6dc255c2c8275dda14fd1883af355}\label{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_a50d6dc255c2c8275dda14fd1883af355}} 
+\index{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element@{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}!Id@{Id}}
+\index{Id@{Id}!oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element@{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}}
+\subsubsection{\texorpdfstring{Id}{Id}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT , class P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+unsigned \hyperlink{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement}{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::Id\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Lagrange Id. 
+
+
+
+Definition at line 714 of file axisym\+\_\+poroelastic\+\_\+fsi\+\_\+face\+\_\+elements.\+h.
+
+
+
+Referenced by oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+axisym\+\_\+poroelastic\+\_\+fsi(), and oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element().
+
+\mbox{\Hypertarget{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_a64848a4d49c1824b990abf592b5ec78b}\label{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_a64848a4d49c1824b990abf592b5ec78b}} 
+\index{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element@{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}!Inverse\+\_\+slip\+\_\+rate\+\_\+coeff\+\_\+pt@{Inverse\+\_\+slip\+\_\+rate\+\_\+coeff\+\_\+pt}}
+\index{Inverse\+\_\+slip\+\_\+rate\+\_\+coeff\+\_\+pt@{Inverse\+\_\+slip\+\_\+rate\+\_\+coeff\+\_\+pt}!oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element@{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}}
+\subsubsection{\texorpdfstring{Inverse\+\_\+slip\+\_\+rate\+\_\+coeff\+\_\+pt}{Inverse\_slip\_rate\_coeff\_pt}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT , class P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+double$\ast$ \hyperlink{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement}{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::Inverse\+\_\+slip\+\_\+rate\+\_\+coeff\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pointer to inverse slip rate coefficient. 
+
+
+
+Definition at line 720 of file axisym\+\_\+poroelastic\+\_\+fsi\+\_\+face\+\_\+elements.\+h.
+
+
+
+Referenced by oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element().
+
+\mbox{\Hypertarget{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_a3a754eeab45d9d14b81173fb33a57ec4}\label{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_a3a754eeab45d9d14b81173fb33a57ec4}} 
+\index{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element@{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}!St\+\_\+pt@{St\+\_\+pt}}
+\index{St\+\_\+pt@{St\+\_\+pt}!oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element@{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}}
+\subsubsection{\texorpdfstring{St\+\_\+pt}{St\_pt}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT , class P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+double$\ast$ \hyperlink{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement}{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::St\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pointer to fluid Strouhal number. 
+
+
+
+Definition at line 717 of file axisym\+\_\+poroelastic\+\_\+fsi\+\_\+face\+\_\+elements.\+h.
+
+
+
+Referenced by oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element().
+
+\mbox{\Hypertarget{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_a98bb2834379b10c46d90d66537cee1d7}\label{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement_a98bb2834379b10c46d90d66537cee1d7}} 
+\index{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element@{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}!U\+\_\+index\+\_\+axisym\+\_\+poroelastic\+\_\+fsi@{U\+\_\+index\+\_\+axisym\+\_\+poroelastic\+\_\+fsi}}
+\index{U\+\_\+index\+\_\+axisym\+\_\+poroelastic\+\_\+fsi@{U\+\_\+index\+\_\+axisym\+\_\+poroelastic\+\_\+fsi}!oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element@{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}}
+\subsubsection{\texorpdfstring{U\+\_\+index\+\_\+axisym\+\_\+poroelastic\+\_\+fsi}{U\_index\_axisym\_poroelastic\_fsi}}
+{\footnotesize\ttfamily template$<$class F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT , class P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classoomph_1_1Vector}{Vector}$<$unsigned$>$ \hyperlink{classoomph_1_1LinearisedAxisymPoroelasticBJS__FSIElement}{oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element}$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+NT $>$\+::U\+\_\+index\+\_\+axisym\+\_\+poroelastic\+\_\+fsi\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The index at which the velocity unknowns are stored at the nodes. 
+
+
+
+Definition at line 711 of file axisym\+\_\+poroelastic\+\_\+fsi\+\_\+face\+\_\+elements.\+h.
+
+
+
+Referenced by oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+axisym\+\_\+poroelastic\+\_\+fsi(), and oomph\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element$<$ F\+L\+U\+I\+D\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T, P\+O\+R\+O\+E\+L\+A\+S\+T\+I\+C\+I\+T\+Y\+\_\+\+B\+U\+L\+K\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::\+Linearised\+Axisym\+Poroelastic\+B\+J\+S\+\_\+\+F\+S\+I\+Element().
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{axisym__poroelastic__fsi__face__elements_8h}{axisym\+\_\+poroelastic\+\_\+fsi\+\_\+face\+\_\+elements.\+h}\end{DoxyCompactItemize}

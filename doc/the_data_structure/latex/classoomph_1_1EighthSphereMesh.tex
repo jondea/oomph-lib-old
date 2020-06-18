@@ -1,0 +1,131 @@
+\hypertarget{classoomph_1_1EighthSphereMesh}{}\section{oomph\+:\+:Eighth\+Sphere\+Mesh$<$ E\+L\+E\+M\+E\+NT $>$ Class Template Reference}
+\label{classoomph_1_1EighthSphereMesh}\index{oomph\+::\+Eighth\+Sphere\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$@{oomph\+::\+Eighth\+Sphere\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$}}
+
+
+{\ttfamily \#include $<$eighth\+\_\+sphere\+\_\+mesh.\+template.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Eighth\+Sphere\+Mesh$<$ E\+L\+E\+M\+E\+NT $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{classoomph_1_1EighthSphereMesh}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1EighthSphereMesh_a0457fc188d930a1e8853a3f0e1effbb3}{Eighth\+Sphere\+Mesh} (const double \&radius, \hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper} $\ast$time\+\_\+stepper\+\_\+pt=\&\hyperlink{classoomph_1_1Mesh_a12243d0fee2b1fcee729ee5a4777ea10}{Mesh\+::\+Default\+\_\+\+Time\+Stepper})
+\begin{DoxyCompactList}\small\item\em Constructor\+: Pass radius and timestepper; defaults to static default timestepper. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1EighthSphereMesh_a425c3de92974d00dbb126f4cbbaf8e3b}{$\sim$\+Eighth\+Sphere\+Mesh} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1Domain}{Domain} $\ast$ \hyperlink{classoomph_1_1EighthSphereMesh_a4b08d71a9da8cbd278cc51919cbb1a17}{Domain\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to the domain. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1EighthSphereMesh_a6dbcd3a6d27416a0d9ef25cc631f6043}{Radius}
+\begin{DoxyCompactList}\small\item\em Radius of the sphere. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class E\+L\+E\+M\+E\+NT$>$\newline
+class oomph\+::\+Eighth\+Sphere\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$}
+
+Eight of a sphere brick mesh, based on the Eight\+Sphere\+Domain Non-\/refineable version with four brick elements. The eighth-\/sphere is located in the positive octant, centred at the origin. The mesh boundaries are numbered as follows\+:
+\begin{DoxyItemize}
+\item Boundary 0\+: Plane x=0
+\item Boundary 1\+: Plane y=0
+\item Boundary 2\+: Plane z=0
+\item Boundary 3\+: The surface of the sphere. 
+\end{DoxyItemize}
+
+Definition at line 59 of file eighth\+\_\+sphere\+\_\+mesh.\+template.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1EighthSphereMesh_a0457fc188d930a1e8853a3f0e1effbb3}\label{classoomph_1_1EighthSphereMesh_a0457fc188d930a1e8853a3f0e1effbb3}} 
+\index{oomph\+::\+Eighth\+Sphere\+Mesh@{oomph\+::\+Eighth\+Sphere\+Mesh}!Eighth\+Sphere\+Mesh@{Eighth\+Sphere\+Mesh}}
+\index{Eighth\+Sphere\+Mesh@{Eighth\+Sphere\+Mesh}!oomph\+::\+Eighth\+Sphere\+Mesh@{oomph\+::\+Eighth\+Sphere\+Mesh}}
+\subsubsection{\texorpdfstring{Eighth\+Sphere\+Mesh()}{EighthSphereMesh()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classoomph_1_1EighthSphereMesh}{oomph\+::\+Eighth\+Sphere\+Mesh}$<$ E\+L\+E\+M\+E\+NT $>$\+::\hyperlink{classoomph_1_1EighthSphereMesh}{Eighth\+Sphere\+Mesh} (\begin{DoxyParamCaption}\item[{const double \&}]{radius,  }\item[{\hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper} $\ast$}]{time\+\_\+stepper\+\_\+pt = {\ttfamily \&\hyperlink{classoomph_1_1Mesh_a12243d0fee2b1fcee729ee5a4777ea10}{Mesh\+::\+Default\+\_\+\+Time\+Stepper}} }\end{DoxyParamCaption})}
+
+
+
+Constructor\+: Pass radius and timestepper; defaults to static default timestepper. 
+
+Constructor for the eighth of a sphere mesh\+: Pass timestepper; defaults to static default timestepper. 
+
+Definition at line 44 of file eighth\+\_\+sphere\+\_\+mesh.\+template.\+cc.
+
+
+
+References oomph\+::\+Mesh\+::add\+\_\+boundary\+\_\+node(), oomph\+::\+Eighth\+Sphere\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Domain\+\_\+pt, oomph\+::\+Mesh\+::\+Element\+\_\+pt, oomph\+::\+Mesh\+::finite\+\_\+element\+\_\+pt(), i, oomph\+::\+Finite\+Element\+::local\+\_\+fraction\+\_\+of\+\_\+node(), oomph\+::\+Domain\+::macro\+\_\+element\+\_\+pt(), oomph\+::\+Macro\+Element\+::macro\+\_\+map(), oomph\+::\+Finite\+Element\+::nnode\+\_\+1d(), oomph\+::\+Mesh\+::\+Node\+\_\+pt, oomph\+::\+Mesh\+::node\+\_\+pt(), oomph\+::\+Finite\+Element\+::node\+\_\+pt(), oomph\+::\+Eighth\+Sphere\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Radius, s, oomph\+::\+Mesh\+::set\+\_\+nboundary(), oomph\+::\+Brick\+Mesh\+Base\+::setup\+\_\+boundary\+\_\+element\+\_\+info(), and oomph\+::\+Node\+::x().
+
+\mbox{\Hypertarget{classoomph_1_1EighthSphereMesh_a425c3de92974d00dbb126f4cbbaf8e3b}\label{classoomph_1_1EighthSphereMesh_a425c3de92974d00dbb126f4cbbaf8e3b}} 
+\index{oomph\+::\+Eighth\+Sphere\+Mesh@{oomph\+::\+Eighth\+Sphere\+Mesh}!````~Eighth\+Sphere\+Mesh@{$\sim$\+Eighth\+Sphere\+Mesh}}
+\index{````~Eighth\+Sphere\+Mesh@{$\sim$\+Eighth\+Sphere\+Mesh}!oomph\+::\+Eighth\+Sphere\+Mesh@{oomph\+::\+Eighth\+Sphere\+Mesh}}
+\subsubsection{\texorpdfstring{$\sim$\+Eighth\+Sphere\+Mesh()}{~EighthSphereMesh()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classoomph_1_1EighthSphereMesh}{oomph\+::\+Eighth\+Sphere\+Mesh}$<$ E\+L\+E\+M\+E\+NT $>$\+::$\sim$\hyperlink{classoomph_1_1EighthSphereMesh}{Eighth\+Sphere\+Mesh} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Destructor. 
+
+
+
+Definition at line 71 of file eighth\+\_\+sphere\+\_\+mesh.\+template.\+h.
+
+
+
+References oomph\+::\+Eighth\+Sphere\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Domain\+\_\+pt.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1EighthSphereMesh_a4b08d71a9da8cbd278cc51919cbb1a17}\label{classoomph_1_1EighthSphereMesh_a4b08d71a9da8cbd278cc51919cbb1a17}} 
+\index{oomph\+::\+Eighth\+Sphere\+Mesh@{oomph\+::\+Eighth\+Sphere\+Mesh}!Domain\+\_\+pt@{Domain\+\_\+pt}}
+\index{Domain\+\_\+pt@{Domain\+\_\+pt}!oomph\+::\+Eighth\+Sphere\+Mesh@{oomph\+::\+Eighth\+Sphere\+Mesh}}
+\subsubsection{\texorpdfstring{Domain\+\_\+pt}{Domain\_pt}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classoomph_1_1Domain}{Domain}$\ast$ \hyperlink{classoomph_1_1EighthSphereMesh}{oomph\+::\+Eighth\+Sphere\+Mesh}$<$ E\+L\+E\+M\+E\+NT $>$\+::Domain\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Pointer to the domain. 
+
+
+
+Definition at line 80 of file eighth\+\_\+sphere\+\_\+mesh.\+template.\+h.
+
+
+
+Referenced by oomph\+::\+Eighth\+Sphere\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Eighth\+Sphere\+Mesh(), oomph\+::\+Refineable\+Eighth\+Sphere\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Refineable\+Eighth\+Sphere\+Mesh(), and oomph\+::\+Eighth\+Sphere\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::$\sim$\+Eighth\+Sphere\+Mesh().
+
+\mbox{\Hypertarget{classoomph_1_1EighthSphereMesh_a6dbcd3a6d27416a0d9ef25cc631f6043}\label{classoomph_1_1EighthSphereMesh_a6dbcd3a6d27416a0d9ef25cc631f6043}} 
+\index{oomph\+::\+Eighth\+Sphere\+Mesh@{oomph\+::\+Eighth\+Sphere\+Mesh}!Radius@{Radius}}
+\index{Radius@{Radius}!oomph\+::\+Eighth\+Sphere\+Mesh@{oomph\+::\+Eighth\+Sphere\+Mesh}}
+\subsubsection{\texorpdfstring{Radius}{Radius}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+double \hyperlink{classoomph_1_1EighthSphereMesh}{oomph\+::\+Eighth\+Sphere\+Mesh}$<$ E\+L\+E\+M\+E\+NT $>$\+::Radius\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Radius of the sphere. 
+
+
+
+Definition at line 83 of file eighth\+\_\+sphere\+\_\+mesh.\+template.\+h.
+
+
+
+Referenced by oomph\+::\+Eighth\+Sphere\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Eighth\+Sphere\+Mesh().
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{eighth__sphere__mesh_8template_8h}{eighth\+\_\+sphere\+\_\+mesh.\+template.\+h}\item 
+\hyperlink{eighth__sphere__mesh_8template_8cc}{eighth\+\_\+sphere\+\_\+mesh.\+template.\+cc}\end{DoxyCompactItemize}

@@ -1,0 +1,93 @@
+\hypertarget{classoomph_1_1ScaleFreeBermudezPMLMapping}{}\section{oomph\+:\+:Scale\+Free\+Bermudez\+P\+M\+L\+Mapping Class Reference}
+\label{classoomph_1_1ScaleFreeBermudezPMLMapping}\index{oomph\+::\+Scale\+Free\+Bermudez\+P\+M\+L\+Mapping@{oomph\+::\+Scale\+Free\+Bermudez\+P\+M\+L\+Mapping}}
+
+
+{\ttfamily \#include $<$pml\+\_\+mapping\+\_\+functions.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Scale\+Free\+Bermudez\+P\+M\+L\+Mapping\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classoomph_1_1ScaleFreeBermudezPMLMapping}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1ScaleFreeBermudezPMLMapping_a3d1003ec3f68660846773ea1dfa2c19c}{Scale\+Free\+Bermudez\+P\+M\+L\+Mapping} ()
+\begin{DoxyCompactList}\small\item\em Default constructor (empty) \end{DoxyCompactList}\item 
+std\+::complex$<$ double $>$ \hyperlink{classoomph_1_1ScaleFreeBermudezPMLMapping_acb846023cc8a5c95b5ff807dfa404414}{dtransformed\+\_\+nu\+\_\+dnu} (const double \&nu, const double \&delta, const double \&k, const double \&alpha\+\_\+shift=0.\+0)
+\begin{DoxyCompactList}\small\item\em Overwrite the pure Pml mapping coefficient function to return the coeffcients proposed by Bermudez et al. \end{DoxyCompactList}\item 
+std\+::complex$<$ double $>$ \hyperlink{classoomph_1_1ScaleFreeBermudezPMLMapping_a65112b463d5b7d5728fb5325ea09791a}{transformed\+\_\+nu} (const double \&nu, const double \&delta, const double \&k, const double \&alpha\+\_\+shift=0.\+0)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A slight modification to the mapping function propsed by Bermudez et al. The transformation is independent of the scale (thickness) of the P\+ML. See Jonathan Deakin\textquotesingle{}s PhD thesis (University of Manchester) for more information. 
+
+Definition at line 151 of file pml\+\_\+mapping\+\_\+functions.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1ScaleFreeBermudezPMLMapping_a3d1003ec3f68660846773ea1dfa2c19c}\label{classoomph_1_1ScaleFreeBermudezPMLMapping_a3d1003ec3f68660846773ea1dfa2c19c}} 
+\index{oomph\+::\+Scale\+Free\+Bermudez\+P\+M\+L\+Mapping@{oomph\+::\+Scale\+Free\+Bermudez\+P\+M\+L\+Mapping}!Scale\+Free\+Bermudez\+P\+M\+L\+Mapping@{Scale\+Free\+Bermudez\+P\+M\+L\+Mapping}}
+\index{Scale\+Free\+Bermudez\+P\+M\+L\+Mapping@{Scale\+Free\+Bermudez\+P\+M\+L\+Mapping}!oomph\+::\+Scale\+Free\+Bermudez\+P\+M\+L\+Mapping@{oomph\+::\+Scale\+Free\+Bermudez\+P\+M\+L\+Mapping}}
+\subsubsection{\texorpdfstring{Scale\+Free\+Bermudez\+P\+M\+L\+Mapping()}{ScaleFreeBermudezPMLMapping()}}
+{\footnotesize\ttfamily oomph\+::\+Scale\+Free\+Bermudez\+P\+M\+L\+Mapping\+::\+Scale\+Free\+Bermudez\+P\+M\+L\+Mapping (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Default constructor (empty) 
+
+
+
+Definition at line 157 of file pml\+\_\+mapping\+\_\+functions.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1ScaleFreeBermudezPMLMapping_acb846023cc8a5c95b5ff807dfa404414}\label{classoomph_1_1ScaleFreeBermudezPMLMapping_acb846023cc8a5c95b5ff807dfa404414}} 
+\index{oomph\+::\+Scale\+Free\+Bermudez\+P\+M\+L\+Mapping@{oomph\+::\+Scale\+Free\+Bermudez\+P\+M\+L\+Mapping}!dtransformed\+\_\+nu\+\_\+dnu@{dtransformed\+\_\+nu\+\_\+dnu}}
+\index{dtransformed\+\_\+nu\+\_\+dnu@{dtransformed\+\_\+nu\+\_\+dnu}!oomph\+::\+Scale\+Free\+Bermudez\+P\+M\+L\+Mapping@{oomph\+::\+Scale\+Free\+Bermudez\+P\+M\+L\+Mapping}}
+\subsubsection{\texorpdfstring{dtransformed\+\_\+nu\+\_\+dnu()}{dtransformed\_nu\_dnu()}}
+{\footnotesize\ttfamily std\+::complex$<$double$>$ oomph\+::\+Scale\+Free\+Bermudez\+P\+M\+L\+Mapping\+::dtransformed\+\_\+nu\+\_\+dnu (\begin{DoxyParamCaption}\item[{const double \&}]{nu,  }\item[{const double \&}]{delta,  }\item[{const double \&}]{k,  }\item[{const double \&}]{alpha\+\_\+shift = {\ttfamily 0.0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Overwrite the pure Pml mapping coefficient function to return the coeffcients proposed by Bermudez et al. 
+
+
+
+Implements \hyperlink{classoomph_1_1UniaxialPMLMapping_a2062b54207f13512fd3d9b901c882d44}{oomph\+::\+Uniaxial\+P\+M\+L\+Mapping}.
+
+
+
+Definition at line 161 of file pml\+\_\+mapping\+\_\+functions.\+h.
+
+
+
+References oomph\+::\+Mathematical\+Constants\+::\+I().
+
+\mbox{\Hypertarget{classoomph_1_1ScaleFreeBermudezPMLMapping_a65112b463d5b7d5728fb5325ea09791a}\label{classoomph_1_1ScaleFreeBermudezPMLMapping_a65112b463d5b7d5728fb5325ea09791a}} 
+\index{oomph\+::\+Scale\+Free\+Bermudez\+P\+M\+L\+Mapping@{oomph\+::\+Scale\+Free\+Bermudez\+P\+M\+L\+Mapping}!transformed\+\_\+nu@{transformed\+\_\+nu}}
+\index{transformed\+\_\+nu@{transformed\+\_\+nu}!oomph\+::\+Scale\+Free\+Bermudez\+P\+M\+L\+Mapping@{oomph\+::\+Scale\+Free\+Bermudez\+P\+M\+L\+Mapping}}
+\subsubsection{\texorpdfstring{transformed\+\_\+nu()}{transformed\_nu()}}
+{\footnotesize\ttfamily std\+::complex$<$double$>$ oomph\+::\+Scale\+Free\+Bermudez\+P\+M\+L\+Mapping\+::transformed\+\_\+nu (\begin{DoxyParamCaption}\item[{const double \&}]{nu,  }\item[{const double \&}]{delta,  }\item[{const double \&}]{k,  }\item[{const double \&}]{alpha\+\_\+shift = {\ttfamily 0.0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \hyperlink{classoomph_1_1UniaxialPMLMapping_ae4a0c65e90fe4b90d2ff00b193798588}{oomph\+::\+Uniaxial\+P\+M\+L\+Mapping}.
+
+
+
+Definition at line 170 of file pml\+\_\+mapping\+\_\+functions.\+h.
+
+
+
+References oomph\+::\+Mathematical\+Constants\+::\+I().
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{pml__mapping__functions_8h}{pml\+\_\+mapping\+\_\+functions.\+h}\end{DoxyCompactItemize}

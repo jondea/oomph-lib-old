@@ -1,0 +1,166 @@
+\hypertarget{classoomph_1_1RefineableNavierStokesFluxControlElement}{}\section{oomph\+:\+:Refineable\+Navier\+Stokes\+Flux\+Control\+Element$<$ E\+L\+E\+M\+E\+NT $>$ Class Template Reference}
+\label{classoomph_1_1RefineableNavierStokesFluxControlElement}\index{oomph\+::\+Refineable\+Navier\+Stokes\+Flux\+Control\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$@{oomph\+::\+Refineable\+Navier\+Stokes\+Flux\+Control\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$}}
+
+
+{\ttfamily \#include $<$navier\+\_\+stokes\+\_\+flux\+\_\+control\+\_\+elements.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Refineable\+Navier\+Stokes\+Flux\+Control\+Element$<$ E\+L\+E\+M\+E\+NT $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.727506cm]{classoomph_1_1RefineableNavierStokesFluxControlElement}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1RefineableNavierStokesFluxControlElement_aef769904942c35ba967e427d02e540e5}{Refineable\+Navier\+Stokes\+Flux\+Control\+Element} (\hyperlink{classoomph_1_1FiniteElement}{Finite\+Element} $\ast$const \&element\+\_\+pt, const int \&\hyperlink{classoomph_1_1FaceElement_a478d577ac6db67ecc80f1f02ae3ab170}{face\+\_\+index})
+\begin{DoxyCompactList}\small\item\em Constructor, which takes a \char`\"{}bulk\char`\"{} element and the face index. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1RefineableNavierStokesFluxControlElement_aa45fbbe095fe8bad7b97bd59b8242e56}{$\sim$\+Refineable\+Navier\+Stokes\+Flux\+Control\+Element} ()
+\begin{DoxyCompactList}\small\item\em Destructor should not delete anything. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1RefineableNavierStokesFluxControlElement_a047277ea9c38d3d411b3734c59b64435}{ncont\+\_\+interpolated\+\_\+values} () const
+\begin{DoxyCompactList}\small\item\em Number of continuously interpolated values are the same as those in the bulk element. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1RefineableNavierStokesFluxControlElement_ad1b969e5a71a212e297ece3a07b9f5cb}{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&residuals)
+\begin{DoxyCompactList}\small\item\em This function returns just the residuals. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1RefineableNavierStokesFluxControlElement_a46659967091dc0f672d91f2ac339c304}{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&residuals, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&jacobian)
+\begin{DoxyCompactList}\small\item\em This function returns the residuals and the Jacobian including the Jacobian contribution from the flux control master element with respect to dof in this element. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classoomph_1_1RefineableNavierStokesFluxControlElement_a74cf9a3dc75276ce2eaefe6b8255811f}{refineable\+\_\+fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+fluid\+\_\+traction} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&residuals, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&jacobian, unsigned flag)
+\begin{DoxyCompactList}\small\item\em This function returns the residuals for the traction function flag=1(or 0)\+: do (or don\textquotesingle{}t) compute the Jacobian as well. This function also calculates the Jacobian contribution for the \hyperlink{classoomph_1_1NetFluxControlElement}{Net\+Flux\+Control\+Element}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class E\+L\+E\+M\+E\+NT$>$\newline
+class oomph\+::\+Refineable\+Navier\+Stokes\+Flux\+Control\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$}
+
+A class of element to impose an applied boundary pressure to Navier-\/\+Stokes elements to control to control a volume flux. A mesh of these elements are used in conjunction with a \hyperlink{classoomph_1_1NetFluxControlElement}{Net\+Flux\+Control\+Element}. The template arguement E\+L\+E\+M\+E\+NT is a Navier-\/\+Stokes \char`\"{}bulk\char`\"{} element.
+
+Note\+: This element calculates Jacobian contributions for both itself and also for the \hyperlink{classoomph_1_1NetFluxControlElement}{Net\+Flux\+Control\+Element} with respect to its unknowns.
+
+T\+H\+IS IS T\+HE R\+E\+F\+I\+N\+E\+A\+B\+LE V\+E\+R\+S\+I\+ON. 
+
+Definition at line 580 of file navier\+\_\+stokes\+\_\+flux\+\_\+control\+\_\+elements.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1RefineableNavierStokesFluxControlElement_aef769904942c35ba967e427d02e540e5}\label{classoomph_1_1RefineableNavierStokesFluxControlElement_aef769904942c35ba967e427d02e540e5}} 
+\index{oomph\+::\+Refineable\+Navier\+Stokes\+Flux\+Control\+Element@{oomph\+::\+Refineable\+Navier\+Stokes\+Flux\+Control\+Element}!Refineable\+Navier\+Stokes\+Flux\+Control\+Element@{Refineable\+Navier\+Stokes\+Flux\+Control\+Element}}
+\index{Refineable\+Navier\+Stokes\+Flux\+Control\+Element@{Refineable\+Navier\+Stokes\+Flux\+Control\+Element}!oomph\+::\+Refineable\+Navier\+Stokes\+Flux\+Control\+Element@{oomph\+::\+Refineable\+Navier\+Stokes\+Flux\+Control\+Element}}
+\subsubsection{\texorpdfstring{Refineable\+Navier\+Stokes\+Flux\+Control\+Element()}{RefineableNavierStokesFluxControlElement()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classoomph_1_1RefineableNavierStokesFluxControlElement}{oomph\+::\+Refineable\+Navier\+Stokes\+Flux\+Control\+Element}$<$ E\+L\+E\+M\+E\+NT $>$\+::\hyperlink{classoomph_1_1RefineableNavierStokesFluxControlElement}{Refineable\+Navier\+Stokes\+Flux\+Control\+Element} (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1FiniteElement}{Finite\+Element} $\ast$const \&}]{element\+\_\+pt,  }\item[{const int \&}]{face\+\_\+index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor, which takes a \char`\"{}bulk\char`\"{} element and the face index. 
+
+
+
+Definition at line 587 of file navier\+\_\+stokes\+\_\+flux\+\_\+control\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableNavierStokesFluxControlElement_aa45fbbe095fe8bad7b97bd59b8242e56}\label{classoomph_1_1RefineableNavierStokesFluxControlElement_aa45fbbe095fe8bad7b97bd59b8242e56}} 
+\index{oomph\+::\+Refineable\+Navier\+Stokes\+Flux\+Control\+Element@{oomph\+::\+Refineable\+Navier\+Stokes\+Flux\+Control\+Element}!````~Refineable\+Navier\+Stokes\+Flux\+Control\+Element@{$\sim$\+Refineable\+Navier\+Stokes\+Flux\+Control\+Element}}
+\index{````~Refineable\+Navier\+Stokes\+Flux\+Control\+Element@{$\sim$\+Refineable\+Navier\+Stokes\+Flux\+Control\+Element}!oomph\+::\+Refineable\+Navier\+Stokes\+Flux\+Control\+Element@{oomph\+::\+Refineable\+Navier\+Stokes\+Flux\+Control\+Element}}
+\subsubsection{\texorpdfstring{$\sim$\+Refineable\+Navier\+Stokes\+Flux\+Control\+Element()}{~RefineableNavierStokesFluxControlElement()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classoomph_1_1RefineableNavierStokesFluxControlElement}{oomph\+::\+Refineable\+Navier\+Stokes\+Flux\+Control\+Element}$<$ E\+L\+E\+M\+E\+NT $>$\+::$\sim$\hyperlink{classoomph_1_1RefineableNavierStokesFluxControlElement}{Refineable\+Navier\+Stokes\+Flux\+Control\+Element} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Destructor should not delete anything. 
+
+
+
+Definition at line 595 of file navier\+\_\+stokes\+\_\+flux\+\_\+control\+\_\+elements.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1RefineableNavierStokesFluxControlElement_a46659967091dc0f672d91f2ac339c304}\label{classoomph_1_1RefineableNavierStokesFluxControlElement_a46659967091dc0f672d91f2ac339c304}} 
+\index{oomph\+::\+Refineable\+Navier\+Stokes\+Flux\+Control\+Element@{oomph\+::\+Refineable\+Navier\+Stokes\+Flux\+Control\+Element}!fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian}}
+\index{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian}!oomph\+::\+Refineable\+Navier\+Stokes\+Flux\+Control\+Element@{oomph\+::\+Refineable\+Navier\+Stokes\+Flux\+Control\+Element}}
+\subsubsection{\texorpdfstring{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian()}{fill\_in\_contribution\_to\_jacobian()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classoomph_1_1RefineableNavierStokesFluxControlElement}{oomph\+::\+Refineable\+Navier\+Stokes\+Flux\+Control\+Element}$<$ E\+L\+E\+M\+E\+NT $>$\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{residuals,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{jacobian }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+This function returns the residuals and the Jacobian including the Jacobian contribution from the flux control master element with respect to dof in this element. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1NavierStokesFluxControlElement_a6a745b0b8b1417b7f61782e959c31f69}{oomph\+::\+Navier\+Stokes\+Flux\+Control\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$}.
+
+
+
+Definition at line 618 of file navier\+\_\+stokes\+\_\+flux\+\_\+control\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableNavierStokesFluxControlElement_ad1b969e5a71a212e297ece3a07b9f5cb}\label{classoomph_1_1RefineableNavierStokesFluxControlElement_ad1b969e5a71a212e297ece3a07b9f5cb}} 
+\index{oomph\+::\+Refineable\+Navier\+Stokes\+Flux\+Control\+Element@{oomph\+::\+Refineable\+Navier\+Stokes\+Flux\+Control\+Element}!fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals}}
+\index{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals}!oomph\+::\+Refineable\+Navier\+Stokes\+Flux\+Control\+Element@{oomph\+::\+Refineable\+Navier\+Stokes\+Flux\+Control\+Element}}
+\subsubsection{\texorpdfstring{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals()}{fill\_in\_contribution\_to\_residuals()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classoomph_1_1RefineableNavierStokesFluxControlElement}{oomph\+::\+Refineable\+Navier\+Stokes\+Flux\+Control\+Element}$<$ E\+L\+E\+M\+E\+NT $>$\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{residuals }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+This function returns just the residuals. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1NavierStokesFluxControlElement_ad612e8f706ba627f11dd380cc20bfab2}{oomph\+::\+Navier\+Stokes\+Flux\+Control\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$}.
+
+
+
+Definition at line 607 of file navier\+\_\+stokes\+\_\+flux\+\_\+control\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Generalised\+Element\+::\+Dummy\+\_\+matrix.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableNavierStokesFluxControlElement_a047277ea9c38d3d411b3734c59b64435}\label{classoomph_1_1RefineableNavierStokesFluxControlElement_a047277ea9c38d3d411b3734c59b64435}} 
+\index{oomph\+::\+Refineable\+Navier\+Stokes\+Flux\+Control\+Element@{oomph\+::\+Refineable\+Navier\+Stokes\+Flux\+Control\+Element}!ncont\+\_\+interpolated\+\_\+values@{ncont\+\_\+interpolated\+\_\+values}}
+\index{ncont\+\_\+interpolated\+\_\+values@{ncont\+\_\+interpolated\+\_\+values}!oomph\+::\+Refineable\+Navier\+Stokes\+Flux\+Control\+Element@{oomph\+::\+Refineable\+Navier\+Stokes\+Flux\+Control\+Element}}
+\subsubsection{\texorpdfstring{ncont\+\_\+interpolated\+\_\+values()}{ncont\_interpolated\_values()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+unsigned \hyperlink{classoomph_1_1RefineableNavierStokesFluxControlElement}{oomph\+::\+Refineable\+Navier\+Stokes\+Flux\+Control\+Element}$<$ E\+L\+E\+M\+E\+NT $>$\+::ncont\+\_\+interpolated\+\_\+values (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Number of continuously interpolated values are the same as those in the bulk element. 
+
+
+
+Implements \hyperlink{classoomph_1_1RefineableElement_a53e171a18c9f43f1db90a6876516a073}{oomph\+::\+Refineable\+Element}.
+
+
+
+Definition at line 600 of file navier\+\_\+stokes\+\_\+flux\+\_\+control\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableNavierStokesFluxControlElement_a74cf9a3dc75276ce2eaefe6b8255811f}\label{classoomph_1_1RefineableNavierStokesFluxControlElement_a74cf9a3dc75276ce2eaefe6b8255811f}} 
+\index{oomph\+::\+Refineable\+Navier\+Stokes\+Flux\+Control\+Element@{oomph\+::\+Refineable\+Navier\+Stokes\+Flux\+Control\+Element}!refineable\+\_\+fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+fluid\+\_\+traction@{refineable\+\_\+fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+fluid\+\_\+traction}}
+\index{refineable\+\_\+fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+fluid\+\_\+traction@{refineable\+\_\+fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+fluid\+\_\+traction}!oomph\+::\+Refineable\+Navier\+Stokes\+Flux\+Control\+Element@{oomph\+::\+Refineable\+Navier\+Stokes\+Flux\+Control\+Element}}
+\subsubsection{\texorpdfstring{refineable\+\_\+fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+fluid\+\_\+traction()}{refineable\_fill\_in\_generic\_residual\_contribution\_fluid\_traction()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classoomph_1_1RefineableNavierStokesFluxControlElement}{oomph\+::\+Refineable\+Navier\+Stokes\+Flux\+Control\+Element}$<$ E\+L\+E\+M\+E\+NT $>$\+::refineable\+\_\+fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+fluid\+\_\+traction (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{residuals,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{jacobian,  }\item[{unsigned}]{flag }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+This function returns the residuals for the traction function flag=1(or 0)\+: do (or don\textquotesingle{}t) compute the Jacobian as well. This function also calculates the Jacobian contribution for the \hyperlink{classoomph_1_1NetFluxControlElement}{Net\+Flux\+Control\+Element}. 
+
+
+
+Definition at line 633 of file navier\+\_\+stokes\+\_\+flux\+\_\+control\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Multi\+\_\+domain\+\_\+functions\+::\+Dim, oomph\+::\+Generalised\+Element\+::external\+\_\+data\+\_\+pt(), oomph\+::\+Generalised\+Element\+::external\+\_\+local\+\_\+eqn(), i, oomph\+::\+Hang\+Info\+::master\+\_\+node\+\_\+pt(), oomph\+::\+Hang\+Info\+::master\+\_\+weight(), oomph\+::\+Hang\+Info\+::nmaster(), oomph\+::\+Template\+Free\+Navier\+Stokes\+Flux\+Control\+Element\+Base\+::pressure\+\_\+data\+\_\+id(), oomph\+::\+Data\+::value(), and oomph\+::\+Quad\+Tree\+Names\+::W.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{navier__stokes__flux__control__elements_8h}{navier\+\_\+stokes\+\_\+flux\+\_\+control\+\_\+elements.\+h}\end{DoxyCompactItemize}

@@ -1,0 +1,322 @@
+\hypertarget{classDiskShockWaveProblem}{}\section{Disk\+Shock\+Wave\+Problem$<$ E\+L\+E\+M\+E\+NT, T\+I\+M\+E\+S\+T\+E\+P\+P\+ER $>$ Class Template Reference}
+\label{classDiskShockWaveProblem}\index{Disk\+Shock\+Wave\+Problem$<$ E\+L\+E\+M\+E\+N\+T, T\+I\+M\+E\+S\+T\+E\+P\+P\+E\+R $>$@{Disk\+Shock\+Wave\+Problem$<$ E\+L\+E\+M\+E\+N\+T, T\+I\+M\+E\+S\+T\+E\+P\+P\+E\+R $>$}}
+Inheritance diagram for Disk\+Shock\+Wave\+Problem$<$ E\+L\+E\+M\+E\+NT, T\+I\+M\+E\+S\+T\+E\+P\+P\+ER $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classDiskShockWaveProblem}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classDiskShockWaveProblem_ae670d0120936f410134ba3e3b61aa880}{Disk\+Shock\+Wave\+Problem} ()
+\begin{DoxyCompactList}\small\item\em Constructor\+: \end{DoxyCompactList}\item 
+void \hyperlink{classDiskShockWaveProblem_af8dc3befd3eba59b008c315bfe077340}{run} (const unsigned \&case\+\_\+number)
+\begin{DoxyCompactList}\small\item\em Run the problem; specify case\+\_\+number to label output directory. \end{DoxyCompactList}\item 
+\hyperlink{classElasticRefineableQuarterCircleSectorMesh}{Elastic\+Refineable\+Quarter\+Circle\+Sector\+Mesh}$<$ E\+L\+E\+M\+E\+NT $>$ $\ast$\& \hyperlink{classDiskShockWaveProblem_a558dc0ca72e4e1974c98cdf5203d015b}{solid\+\_\+mesh\+\_\+pt} ()
+\begin{DoxyCompactList}\small\item\em Access function for the solid mesh. \end{DoxyCompactList}\item 
+Solid\+Mesh $\ast$\& \hyperlink{classDiskShockWaveProblem_aade14ed9df7e698c3e90abea96090ab5}{traction\+\_\+mesh\+\_\+pt} ()
+\begin{DoxyCompactList}\small\item\em Access function for the mesh of surface traction elements. \end{DoxyCompactList}\item 
+void \hyperlink{classDiskShockWaveProblem_a7685309caac199d18f3f81468d9fcb23}{doc\+\_\+solution} ()
+\begin{DoxyCompactList}\small\item\em Doc the solution. \end{DoxyCompactList}\item 
+void \hyperlink{classDiskShockWaveProblem_a46f6a25da58128f6abfdbbe92ea49d11}{actions\+\_\+after\+\_\+newton\+\_\+solve} ()
+\begin{DoxyCompactList}\small\item\em Update function (empty) \end{DoxyCompactList}\item 
+void \hyperlink{classDiskShockWaveProblem_a50ba8e9b29ff7796fa9cb7ede8598376}{actions\+\_\+before\+\_\+newton\+\_\+solve} ()
+\begin{DoxyCompactList}\small\item\em Update function (empty) \end{DoxyCompactList}\item 
+void \hyperlink{classDiskShockWaveProblem_ac2a22a8399355e461d1a9ad1e5425c9a}{actions\+\_\+after\+\_\+adapt} ()
+\begin{DoxyCompactList}\small\item\em Actions after adaption\+: Kill and then re-\/build the traction elements on boundary 1 and re-\/assign the equation numbers. \end{DoxyCompactList}\item 
+void \hyperlink{classDiskShockWaveProblem_a75403423b0a031adabb5b487fa88373f}{doc\+\_\+displ\+\_\+and\+\_\+veloc} (const int \&stage=0)
+\begin{DoxyCompactList}\small\item\em Doc displacement and velocity\+: label file with before and after. \end{DoxyCompactList}\item 
+void \hyperlink{classDiskShockWaveProblem_a2eaf91d3e0eb5f37b9920fc3d9d54cb9}{dump\+\_\+it} (ofstream \&dump\+\_\+file)
+\begin{DoxyCompactList}\small\item\em Dump problem-\/specific parameters values, then dump generic problem data. \end{DoxyCompactList}\item 
+void \hyperlink{classDiskShockWaveProblem_ae883625e9bbe6ea442413f7c970d3fb1}{restart} (ifstream \&restart\+\_\+file)
+\begin{DoxyCompactList}\small\item\em Read problem-\/specific parameter values, then recover generic problem data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Doc\+Info \hyperlink{classDiskShockWaveProblem_a8e445e31a1067ebbd3bd667cc02e8662}{Doc\+\_\+info}
+\item 
+ofstream \hyperlink{classDiskShockWaveProblem_a8ec35b07dc6870e4d5b729288053c4fe}{Trace\+\_\+file}
+\begin{DoxyCompactList}\small\item\em Trace file. \end{DoxyCompactList}\item 
+Vector$<$ Node $\ast$ $>$ \hyperlink{classDiskShockWaveProblem_a7ab6db65bbf28185b238e84bbc16c1b8}{Trace\+\_\+node\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Vector of pointers to nodes whose position we\textquotesingle{}re tracing. \end{DoxyCompactList}\item 
+\hyperlink{classElasticRefineableQuarterCircleSectorMesh}{Elastic\+Refineable\+Quarter\+Circle\+Sector\+Mesh}$<$ E\+L\+E\+M\+E\+NT $>$ $\ast$ \hyperlink{classDiskShockWaveProblem_a6efbcb695e829d63f810a7a9bb5a81a4}{Solid\+\_\+mesh\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to solid mesh. \end{DoxyCompactList}\item 
+Solid\+Mesh $\ast$ \hyperlink{classDiskShockWaveProblem_a286fe7d51aa16f07f0444ae7c553f140}{Traction\+\_\+mesh\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to mesh of traction elements. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class E\+L\+E\+M\+E\+NT, class T\+I\+M\+E\+S\+T\+E\+P\+P\+ER$>$\newline
+class Disk\+Shock\+Wave\+Problem$<$ E\+L\+E\+M\+E\+N\+T, T\+I\+M\+E\+S\+T\+E\+P\+P\+E\+R $>$}
+
+\char`\"{}\+Shock\char`\"{} wave propagates through an impulsively loaded circular disk. 
+
+Definition at line 211 of file shock\+\_\+disk.\+cc.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classDiskShockWaveProblem_ae670d0120936f410134ba3e3b61aa880}\label{classDiskShockWaveProblem_ae670d0120936f410134ba3e3b61aa880}} 
+\index{Disk\+Shock\+Wave\+Problem@{Disk\+Shock\+Wave\+Problem}!Disk\+Shock\+Wave\+Problem@{Disk\+Shock\+Wave\+Problem}}
+\index{Disk\+Shock\+Wave\+Problem@{Disk\+Shock\+Wave\+Problem}!Disk\+Shock\+Wave\+Problem@{Disk\+Shock\+Wave\+Problem}}
+\subsubsection{\texorpdfstring{Disk\+Shock\+Wave\+Problem()}{DiskShockWaveProblem()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT , class T\+I\+M\+E\+S\+T\+E\+P\+P\+ER $>$ \\
+\hyperlink{classDiskShockWaveProblem}{Disk\+Shock\+Wave\+Problem}$<$ E\+L\+E\+M\+E\+NT, T\+I\+M\+E\+S\+T\+E\+P\+P\+ER $>$\+::\hyperlink{classDiskShockWaveProblem}{Disk\+Shock\+Wave\+Problem} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor\+: 
+
+Constructor. 
+
+Definition at line 286 of file shock\+\_\+disk.\+cc.
+
+
+
+References Global\+\_\+\+Physical\+\_\+\+Variables\+::constant\+\_\+pressure(), Global\+\_\+\+Physical\+\_\+\+Variables\+::\+Constitutive\+\_\+law\+\_\+pt, and Elastic\+Refineable\+Quarter\+Circle\+Sector\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$\+::make\+\_\+traction\+\_\+element\+\_\+mesh().
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classDiskShockWaveProblem_ac2a22a8399355e461d1a9ad1e5425c9a}\label{classDiskShockWaveProblem_ac2a22a8399355e461d1a9ad1e5425c9a}} 
+\index{Disk\+Shock\+Wave\+Problem@{Disk\+Shock\+Wave\+Problem}!actions\+\_\+after\+\_\+adapt@{actions\+\_\+after\+\_\+adapt}}
+\index{actions\+\_\+after\+\_\+adapt@{actions\+\_\+after\+\_\+adapt}!Disk\+Shock\+Wave\+Problem@{Disk\+Shock\+Wave\+Problem}}
+\subsubsection{\texorpdfstring{actions\+\_\+after\+\_\+adapt()}{actions\_after\_adapt()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT , class T\+I\+M\+E\+S\+T\+E\+P\+P\+ER $>$ \\
+void \hyperlink{classDiskShockWaveProblem}{Disk\+Shock\+Wave\+Problem}$<$ E\+L\+E\+M\+E\+NT, T\+I\+M\+E\+S\+T\+E\+P\+P\+ER $>$\+::actions\+\_\+after\+\_\+adapt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Actions after adaption\+: Kill and then re-\/build the traction elements on boundary 1 and re-\/assign the equation numbers. 
+
+Kill and then re-\/build the traction elements on boundary 1, pin redundant pressure dofs and re-\/assign the equation numbers. 
+
+Definition at line 440 of file shock\+\_\+disk.\+cc.
+
+
+
+References Global\+\_\+\+Physical\+\_\+\+Variables\+::constant\+\_\+pressure().
+
+\mbox{\Hypertarget{classDiskShockWaveProblem_a46f6a25da58128f6abfdbbe92ea49d11}\label{classDiskShockWaveProblem_a46f6a25da58128f6abfdbbe92ea49d11}} 
+\index{Disk\+Shock\+Wave\+Problem@{Disk\+Shock\+Wave\+Problem}!actions\+\_\+after\+\_\+newton\+\_\+solve@{actions\+\_\+after\+\_\+newton\+\_\+solve}}
+\index{actions\+\_\+after\+\_\+newton\+\_\+solve@{actions\+\_\+after\+\_\+newton\+\_\+solve}!Disk\+Shock\+Wave\+Problem@{Disk\+Shock\+Wave\+Problem}}
+\subsubsection{\texorpdfstring{actions\+\_\+after\+\_\+newton\+\_\+solve()}{actions\_after\_newton\_solve()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT, class T\+I\+M\+E\+S\+T\+E\+P\+P\+ER$>$ \\
+void \hyperlink{classDiskShockWaveProblem}{Disk\+Shock\+Wave\+Problem}$<$ E\+L\+E\+M\+E\+NT, T\+I\+M\+E\+S\+T\+E\+P\+P\+ER $>$\+::actions\+\_\+after\+\_\+newton\+\_\+solve (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Update function (empty) 
+
+
+
+Definition at line 239 of file shock\+\_\+disk.\+cc.
+
+\mbox{\Hypertarget{classDiskShockWaveProblem_a50ba8e9b29ff7796fa9cb7ede8598376}\label{classDiskShockWaveProblem_a50ba8e9b29ff7796fa9cb7ede8598376}} 
+\index{Disk\+Shock\+Wave\+Problem@{Disk\+Shock\+Wave\+Problem}!actions\+\_\+before\+\_\+newton\+\_\+solve@{actions\+\_\+before\+\_\+newton\+\_\+solve}}
+\index{actions\+\_\+before\+\_\+newton\+\_\+solve@{actions\+\_\+before\+\_\+newton\+\_\+solve}!Disk\+Shock\+Wave\+Problem@{Disk\+Shock\+Wave\+Problem}}
+\subsubsection{\texorpdfstring{actions\+\_\+before\+\_\+newton\+\_\+solve()}{actions\_before\_newton\_solve()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT, class T\+I\+M\+E\+S\+T\+E\+P\+P\+ER$>$ \\
+void \hyperlink{classDiskShockWaveProblem}{Disk\+Shock\+Wave\+Problem}$<$ E\+L\+E\+M\+E\+NT, T\+I\+M\+E\+S\+T\+E\+P\+P\+ER $>$\+::actions\+\_\+before\+\_\+newton\+\_\+solve (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Update function (empty) 
+
+
+
+Definition at line 242 of file shock\+\_\+disk.\+cc.
+
+\mbox{\Hypertarget{classDiskShockWaveProblem_a75403423b0a031adabb5b487fa88373f}\label{classDiskShockWaveProblem_a75403423b0a031adabb5b487fa88373f}} 
+\index{Disk\+Shock\+Wave\+Problem@{Disk\+Shock\+Wave\+Problem}!doc\+\_\+displ\+\_\+and\+\_\+veloc@{doc\+\_\+displ\+\_\+and\+\_\+veloc}}
+\index{doc\+\_\+displ\+\_\+and\+\_\+veloc@{doc\+\_\+displ\+\_\+and\+\_\+veloc}!Disk\+Shock\+Wave\+Problem@{Disk\+Shock\+Wave\+Problem}}
+\subsubsection{\texorpdfstring{doc\+\_\+displ\+\_\+and\+\_\+veloc()}{doc\_displ\_and\_veloc()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT , class T\+I\+M\+E\+S\+T\+E\+P\+P\+ER $>$ \\
+void \hyperlink{classDiskShockWaveProblem}{Disk\+Shock\+Wave\+Problem}$<$ E\+L\+E\+M\+E\+NT, T\+I\+M\+E\+S\+T\+E\+P\+P\+ER $>$\+::doc\+\_\+displ\+\_\+and\+\_\+veloc (\begin{DoxyParamCaption}\item[{const int \&}]{stage = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+Doc displacement and velocity\+: label file with before and after. 
+
+Doc displacement and veloc in displ\+\_\+and\+\_\+veloc$\ast$.dat. The int stage defaults to 0, in which case the \textquotesingle{}$\ast$\textquotesingle{} in the filename is simply the step number specified by the Problem\textquotesingle{}s Doc\+Info object. If it\textquotesingle{}s +/-\/1, the word \char`\"{}before\char`\"{} and \char`\"{}after\char`\"{} get inserted. This allows checking of the veloc/displacment interpolation during adaptive mesh refinement. 
+
+Definition at line 617 of file shock\+\_\+disk.\+cc.
+
+\mbox{\Hypertarget{classDiskShockWaveProblem_a7685309caac199d18f3f81468d9fcb23}\label{classDiskShockWaveProblem_a7685309caac199d18f3f81468d9fcb23}} 
+\index{Disk\+Shock\+Wave\+Problem@{Disk\+Shock\+Wave\+Problem}!doc\+\_\+solution@{doc\+\_\+solution}}
+\index{doc\+\_\+solution@{doc\+\_\+solution}!Disk\+Shock\+Wave\+Problem@{Disk\+Shock\+Wave\+Problem}}
+\subsubsection{\texorpdfstring{doc\+\_\+solution()}{doc\_solution()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT , class T\+I\+M\+E\+S\+T\+E\+P\+P\+ER $>$ \\
+void \hyperlink{classDiskShockWaveProblem}{Disk\+Shock\+Wave\+Problem}$<$ E\+L\+E\+M\+E\+NT, T\+I\+M\+E\+S\+T\+E\+P\+P\+ER $>$\+::doc\+\_\+solution (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Doc the solution. 
+
+
+
+Definition at line 478 of file shock\+\_\+disk.\+cc.
+
+\mbox{\Hypertarget{classDiskShockWaveProblem_a2eaf91d3e0eb5f37b9920fc3d9d54cb9}\label{classDiskShockWaveProblem_a2eaf91d3e0eb5f37b9920fc3d9d54cb9}} 
+\index{Disk\+Shock\+Wave\+Problem@{Disk\+Shock\+Wave\+Problem}!dump\+\_\+it@{dump\+\_\+it}}
+\index{dump\+\_\+it@{dump\+\_\+it}!Disk\+Shock\+Wave\+Problem@{Disk\+Shock\+Wave\+Problem}}
+\subsubsection{\texorpdfstring{dump\+\_\+it()}{dump\_it()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT , class T\+I\+M\+E\+S\+T\+E\+P\+P\+ER $>$ \\
+void \hyperlink{classDiskShockWaveProblem}{Disk\+Shock\+Wave\+Problem}$<$ E\+L\+E\+M\+E\+NT, T\+I\+M\+E\+S\+T\+E\+P\+P\+ER $>$\+::dump\+\_\+it (\begin{DoxyParamCaption}\item[{ofstream \&}]{dump\+\_\+file }\end{DoxyParamCaption})}
+
+
+
+Dump problem-\/specific parameters values, then dump generic problem data. 
+
+Dump the solution. 
+
+Definition at line 694 of file shock\+\_\+disk.\+cc.
+
+\mbox{\Hypertarget{classDiskShockWaveProblem_ae883625e9bbe6ea442413f7c970d3fb1}\label{classDiskShockWaveProblem_ae883625e9bbe6ea442413f7c970d3fb1}} 
+\index{Disk\+Shock\+Wave\+Problem@{Disk\+Shock\+Wave\+Problem}!restart@{restart}}
+\index{restart@{restart}!Disk\+Shock\+Wave\+Problem@{Disk\+Shock\+Wave\+Problem}}
+\subsubsection{\texorpdfstring{restart()}{restart()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT , class T\+I\+M\+E\+S\+T\+E\+P\+P\+ER $>$ \\
+void \hyperlink{classDiskShockWaveProblem}{Disk\+Shock\+Wave\+Problem}$<$ E\+L\+E\+M\+E\+NT, T\+I\+M\+E\+S\+T\+E\+P\+P\+ER $>$\+::restart (\begin{DoxyParamCaption}\item[{ifstream \&}]{restart\+\_\+file }\end{DoxyParamCaption})}
+
+
+
+Read problem-\/specific parameter values, then recover generic problem data. 
+
+Read solution from disk. 
+
+Definition at line 706 of file shock\+\_\+disk.\+cc.
+
+\mbox{\Hypertarget{classDiskShockWaveProblem_af8dc3befd3eba59b008c315bfe077340}\label{classDiskShockWaveProblem_af8dc3befd3eba59b008c315bfe077340}} 
+\index{Disk\+Shock\+Wave\+Problem@{Disk\+Shock\+Wave\+Problem}!run@{run}}
+\index{run@{run}!Disk\+Shock\+Wave\+Problem@{Disk\+Shock\+Wave\+Problem}}
+\subsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT , class T\+I\+M\+E\+S\+T\+E\+P\+P\+ER $>$ \\
+void \hyperlink{classDiskShockWaveProblem}{Disk\+Shock\+Wave\+Problem}$<$ E\+L\+E\+M\+E\+NT, T\+I\+M\+E\+S\+T\+E\+P\+P\+ER $>$\+::run (\begin{DoxyParamCaption}\item[{const unsigned \&}]{case\+\_\+number }\end{DoxyParamCaption})}
+
+
+
+Run the problem; specify case\+\_\+number to label output directory. 
+
+
+
+Definition at line 718 of file shock\+\_\+disk.\+cc.
+
+
+
+References Global\+\_\+\+Physical\+\_\+\+Variables\+::P.
+
+
+
+Referenced by main().
+
+\mbox{\Hypertarget{classDiskShockWaveProblem_a558dc0ca72e4e1974c98cdf5203d015b}\label{classDiskShockWaveProblem_a558dc0ca72e4e1974c98cdf5203d015b}} 
+\index{Disk\+Shock\+Wave\+Problem@{Disk\+Shock\+Wave\+Problem}!solid\+\_\+mesh\+\_\+pt@{solid\+\_\+mesh\+\_\+pt}}
+\index{solid\+\_\+mesh\+\_\+pt@{solid\+\_\+mesh\+\_\+pt}!Disk\+Shock\+Wave\+Problem@{Disk\+Shock\+Wave\+Problem}}
+\subsubsection{\texorpdfstring{solid\+\_\+mesh\+\_\+pt()}{solid\_mesh\_pt()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT, class T\+I\+M\+E\+S\+T\+E\+P\+P\+ER$>$ \\
+\hyperlink{classElasticRefineableQuarterCircleSectorMesh}{Elastic\+Refineable\+Quarter\+Circle\+Sector\+Mesh}$<$E\+L\+E\+M\+E\+NT$>$$\ast$\& \hyperlink{classDiskShockWaveProblem}{Disk\+Shock\+Wave\+Problem}$<$ E\+L\+E\+M\+E\+NT, T\+I\+M\+E\+S\+T\+E\+P\+P\+ER $>$\+::solid\+\_\+mesh\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Access function for the solid mesh. 
+
+
+
+Definition at line 224 of file shock\+\_\+disk.\+cc.
+
+\mbox{\Hypertarget{classDiskShockWaveProblem_aade14ed9df7e698c3e90abea96090ab5}\label{classDiskShockWaveProblem_aade14ed9df7e698c3e90abea96090ab5}} 
+\index{Disk\+Shock\+Wave\+Problem@{Disk\+Shock\+Wave\+Problem}!traction\+\_\+mesh\+\_\+pt@{traction\+\_\+mesh\+\_\+pt}}
+\index{traction\+\_\+mesh\+\_\+pt@{traction\+\_\+mesh\+\_\+pt}!Disk\+Shock\+Wave\+Problem@{Disk\+Shock\+Wave\+Problem}}
+\subsubsection{\texorpdfstring{traction\+\_\+mesh\+\_\+pt()}{traction\_mesh\_pt()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT, class T\+I\+M\+E\+S\+T\+E\+P\+P\+ER$>$ \\
+Solid\+Mesh$\ast$\& \hyperlink{classDiskShockWaveProblem}{Disk\+Shock\+Wave\+Problem}$<$ E\+L\+E\+M\+E\+NT, T\+I\+M\+E\+S\+T\+E\+P\+P\+ER $>$\+::traction\+\_\+mesh\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Access function for the mesh of surface traction elements. 
+
+
+
+Definition at line 230 of file shock\+\_\+disk.\+cc.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classDiskShockWaveProblem_a8e445e31a1067ebbd3bd667cc02e8662}\label{classDiskShockWaveProblem_a8e445e31a1067ebbd3bd667cc02e8662}} 
+\index{Disk\+Shock\+Wave\+Problem@{Disk\+Shock\+Wave\+Problem}!Doc\+\_\+info@{Doc\+\_\+info}}
+\index{Doc\+\_\+info@{Doc\+\_\+info}!Disk\+Shock\+Wave\+Problem@{Disk\+Shock\+Wave\+Problem}}
+\subsubsection{\texorpdfstring{Doc\+\_\+info}{Doc\_info}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT, class T\+I\+M\+E\+S\+T\+E\+P\+P\+ER$>$ \\
+Doc\+Info \hyperlink{classDiskShockWaveProblem}{Disk\+Shock\+Wave\+Problem}$<$ E\+L\+E\+M\+E\+NT, T\+I\+M\+E\+S\+T\+E\+P\+P\+ER $>$\+::Doc\+\_\+info\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 262 of file shock\+\_\+disk.\+cc.
+
+\mbox{\Hypertarget{classDiskShockWaveProblem_a6efbcb695e829d63f810a7a9bb5a81a4}\label{classDiskShockWaveProblem_a6efbcb695e829d63f810a7a9bb5a81a4}} 
+\index{Disk\+Shock\+Wave\+Problem@{Disk\+Shock\+Wave\+Problem}!Solid\+\_\+mesh\+\_\+pt@{Solid\+\_\+mesh\+\_\+pt}}
+\index{Solid\+\_\+mesh\+\_\+pt@{Solid\+\_\+mesh\+\_\+pt}!Disk\+Shock\+Wave\+Problem@{Disk\+Shock\+Wave\+Problem}}
+\subsubsection{\texorpdfstring{Solid\+\_\+mesh\+\_\+pt}{Solid\_mesh\_pt}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT, class T\+I\+M\+E\+S\+T\+E\+P\+P\+ER$>$ \\
+\hyperlink{classElasticRefineableQuarterCircleSectorMesh}{Elastic\+Refineable\+Quarter\+Circle\+Sector\+Mesh}$<$E\+L\+E\+M\+E\+NT$>$$\ast$ \hyperlink{classDiskShockWaveProblem}{Disk\+Shock\+Wave\+Problem}$<$ E\+L\+E\+M\+E\+NT, T\+I\+M\+E\+S\+T\+E\+P\+P\+ER $>$\+::Solid\+\_\+mesh\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pointer to solid mesh. 
+
+
+
+Definition at line 271 of file shock\+\_\+disk.\+cc.
+
+\mbox{\Hypertarget{classDiskShockWaveProblem_a8ec35b07dc6870e4d5b729288053c4fe}\label{classDiskShockWaveProblem_a8ec35b07dc6870e4d5b729288053c4fe}} 
+\index{Disk\+Shock\+Wave\+Problem@{Disk\+Shock\+Wave\+Problem}!Trace\+\_\+file@{Trace\+\_\+file}}
+\index{Trace\+\_\+file@{Trace\+\_\+file}!Disk\+Shock\+Wave\+Problem@{Disk\+Shock\+Wave\+Problem}}
+\subsubsection{\texorpdfstring{Trace\+\_\+file}{Trace\_file}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT, class T\+I\+M\+E\+S\+T\+E\+P\+P\+ER$>$ \\
+ofstream \hyperlink{classDiskShockWaveProblem}{Disk\+Shock\+Wave\+Problem}$<$ E\+L\+E\+M\+E\+NT, T\+I\+M\+E\+S\+T\+E\+P\+P\+ER $>$\+::Trace\+\_\+file\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Trace file. 
+
+
+
+Definition at line 265 of file shock\+\_\+disk.\+cc.
+
+\mbox{\Hypertarget{classDiskShockWaveProblem_a7ab6db65bbf28185b238e84bbc16c1b8}\label{classDiskShockWaveProblem_a7ab6db65bbf28185b238e84bbc16c1b8}} 
+\index{Disk\+Shock\+Wave\+Problem@{Disk\+Shock\+Wave\+Problem}!Trace\+\_\+node\+\_\+pt@{Trace\+\_\+node\+\_\+pt}}
+\index{Trace\+\_\+node\+\_\+pt@{Trace\+\_\+node\+\_\+pt}!Disk\+Shock\+Wave\+Problem@{Disk\+Shock\+Wave\+Problem}}
+\subsubsection{\texorpdfstring{Trace\+\_\+node\+\_\+pt}{Trace\_node\_pt}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT, class T\+I\+M\+E\+S\+T\+E\+P\+P\+ER$>$ \\
+Vector$<$Node$\ast$$>$ \hyperlink{classDiskShockWaveProblem}{Disk\+Shock\+Wave\+Problem}$<$ E\+L\+E\+M\+E\+NT, T\+I\+M\+E\+S\+T\+E\+P\+P\+ER $>$\+::Trace\+\_\+node\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Vector of pointers to nodes whose position we\textquotesingle{}re tracing. 
+
+
+
+Definition at line 268 of file shock\+\_\+disk.\+cc.
+
+\mbox{\Hypertarget{classDiskShockWaveProblem_a286fe7d51aa16f07f0444ae7c553f140}\label{classDiskShockWaveProblem_a286fe7d51aa16f07f0444ae7c553f140}} 
+\index{Disk\+Shock\+Wave\+Problem@{Disk\+Shock\+Wave\+Problem}!Traction\+\_\+mesh\+\_\+pt@{Traction\+\_\+mesh\+\_\+pt}}
+\index{Traction\+\_\+mesh\+\_\+pt@{Traction\+\_\+mesh\+\_\+pt}!Disk\+Shock\+Wave\+Problem@{Disk\+Shock\+Wave\+Problem}}
+\subsubsection{\texorpdfstring{Traction\+\_\+mesh\+\_\+pt}{Traction\_mesh\_pt}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT, class T\+I\+M\+E\+S\+T\+E\+P\+P\+ER$>$ \\
+Solid\+Mesh$\ast$ \hyperlink{classDiskShockWaveProblem}{Disk\+Shock\+Wave\+Problem}$<$ E\+L\+E\+M\+E\+NT, T\+I\+M\+E\+S\+T\+E\+P\+P\+ER $>$\+::Traction\+\_\+mesh\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pointer to mesh of traction elements. 
+
+
+
+Definition at line 274 of file shock\+\_\+disk.\+cc.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{shock__disk_8cc}{shock\+\_\+disk.\+cc}\end{DoxyCompactItemize}

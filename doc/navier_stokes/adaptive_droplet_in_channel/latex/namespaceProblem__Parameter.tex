@@ -1,0 +1,256 @@
+\hypertarget{namespaceProblem__Parameter}{}\section{Problem\+\_\+\+Parameter Namespace Reference}
+\label{namespaceProblem__Parameter}\index{Problem\+\_\+\+Parameter@{Problem\+\_\+\+Parameter}}
+
+
+Namespace for Problem Parameter.  
+
+
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+Doc\+Info \hyperlink{namespaceProblem__Parameter_a1dd3c6bcf97360c8fe0d288ca7610351}{Doc\+\_\+info}
+\begin{DoxyCompactList}\small\item\em Doc info object. \end{DoxyCompactList}\item 
+double \hyperlink{namespaceProblem__Parameter_acc656299287d4d9a8374c2c501750b4f}{Re} =0.\+0
+\begin{DoxyCompactList}\small\item\em Reynolds number. \end{DoxyCompactList}\item 
+double \hyperlink{namespaceProblem__Parameter_af6194d2571881779c678fbabc1503d47}{Ca} = 10.\+0
+\begin{DoxyCompactList}\small\item\em Capillary number. \end{DoxyCompactList}\item 
+double \hyperlink{namespaceProblem__Parameter_abec2e733c8f2d3c18ebc702b3f80cc17}{Nu} =0.\+3
+\begin{DoxyCompactList}\small\item\em Pseudo-\/solid Poisson ratio. \end{DoxyCompactList}\item 
+double \hyperlink{namespaceProblem__Parameter_a903237528f0e9bb92debcc8842576cca}{Radius} = 0.\+25
+\begin{DoxyCompactList}\small\item\em Initial radius of bubble. \end{DoxyCompactList}\item 
+double \hyperlink{namespaceProblem__Parameter_aad8e0a2d1ec39a8dd7357a43bcc5f20e}{Volume} = -\/Mathematical\+Constants\+::\+Pi$\ast$\hyperlink{namespaceProblem__Parameter_a903237528f0e9bb92debcc8842576cca}{Radius}$\ast$\hyperlink{namespaceProblem__Parameter_a903237528f0e9bb92debcc8842576cca}{Radius}
+\begin{DoxyCompactList}\small\item\em Volume of the bubble (negative because it\textquotesingle{}s outside the fluid!) \end{DoxyCompactList}\item 
+double \hyperlink{namespaceProblem__Parameter_a7792613e563a733ad88b8e15d126fc3a}{Inflow\+\_\+veloc\+\_\+magnitude} = 0.\+0
+\begin{DoxyCompactList}\small\item\em Scaling factor for inflow velocity (allows it to be switched off to do hydrostatics) \end{DoxyCompactList}\item 
+double \hyperlink{namespaceProblem__Parameter_a7b67840fea463f29b53d12f7bd7cb34b}{Length} = 3.\+0
+\begin{DoxyCompactList}\small\item\em Length of the channel. \end{DoxyCompactList}\item 
+Constitutive\+Law $\ast$ \hyperlink{namespaceProblem__Parameter_a810f05c8d3e3331aed75643557d1057c}{Constitutive\+\_\+law\+\_\+pt} =0
+\begin{DoxyCompactList}\small\item\em Constitutive law used to determine the mesh deformation. \end{DoxyCompactList}\item 
+ofstream \hyperlink{namespaceProblem__Parameter_a55310be5f2dfcb5fcfe35d71f9c16e06}{Trace\+\_\+file}
+\begin{DoxyCompactList}\small\item\em Trace file. \end{DoxyCompactList}\item 
+ofstream \hyperlink{namespaceProblem__Parameter_a388e06a5e637b21378ab1832e5564bec}{Norm\+\_\+file}
+\begin{DoxyCompactList}\small\item\em File to document the norm of the solution (for validation purposes -- triangle doesn\textquotesingle{}t give fully reproducible results so mesh generation/adaptation may generate slightly different numbers of elements on different machines!) \end{DoxyCompactList}\item 
+double \hyperlink{namespaceProblem__Parameter_afdb95f68bd3c77e4c12001a29bd26e31}{Viscosity\+\_\+ratio} = 10.\+0
+\begin{DoxyCompactList}\small\item\em Viscosity ratio of the droplet to the surrounding fluid. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Namespace for Problem Parameter. 
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceProblem__Parameter_af6194d2571881779c678fbabc1503d47}\label{namespaceProblem__Parameter_af6194d2571881779c678fbabc1503d47}} 
+\index{Problem\+\_\+\+Parameter@{Problem\+\_\+\+Parameter}!Ca@{Ca}}
+\index{Ca@{Ca}!Problem\+\_\+\+Parameter@{Problem\+\_\+\+Parameter}}
+\subsubsection{\texorpdfstring{Ca}{Ca}}
+{\footnotesize\ttfamily double Problem\+\_\+\+Parameter\+::\+Ca = 10.\+0}
+
+
+
+Capillary number. 
+
+
+
+Definition at line 382 of file adaptive\+\_\+bubble\+\_\+in\+\_\+channel.\+cc.
+
+
+
+Referenced by Bubble\+In\+Channel\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Bubble\+In\+Channel\+Problem(), Bubble\+In\+Channel\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::create\+\_\+free\+\_\+surface\+\_\+elements(), Drop\+In\+Channel\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::create\+\_\+free\+\_\+surface\+\_\+elements(), Drop\+In\+Channel\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Drop\+In\+Channel\+Problem(), oomph\+::\+Face\+Geometry$<$ Face\+Geometry$<$ My\+Crouzeix\+Raviart\+Element $>$ $>$\+::\+Face\+Geometry(), and main().
+
+\mbox{\Hypertarget{namespaceProblem__Parameter_a810f05c8d3e3331aed75643557d1057c}\label{namespaceProblem__Parameter_a810f05c8d3e3331aed75643557d1057c}} 
+\index{Problem\+\_\+\+Parameter@{Problem\+\_\+\+Parameter}!Constitutive\+\_\+law\+\_\+pt@{Constitutive\+\_\+law\+\_\+pt}}
+\index{Constitutive\+\_\+law\+\_\+pt@{Constitutive\+\_\+law\+\_\+pt}!Problem\+\_\+\+Parameter@{Problem\+\_\+\+Parameter}}
+\subsubsection{\texorpdfstring{Constitutive\+\_\+law\+\_\+pt}{Constitutive\_law\_pt}}
+{\footnotesize\ttfamily Constitutive\+Law $\ast$ Problem\+\_\+\+Parameter\+::\+Constitutive\+\_\+law\+\_\+pt =0}
+
+
+
+Constitutive law used to determine the mesh deformation. 
+
+
+
+Definition at line 402 of file adaptive\+\_\+bubble\+\_\+in\+\_\+channel.\+cc.
+
+
+
+Referenced by Drop\+In\+Channel\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::complete\+\_\+problem\+\_\+setup(), Bubble\+In\+Channel\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::complete\+\_\+problem\+\_\+setup(), main(), Bubble\+In\+Channel\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::$\sim$\+Bubble\+In\+Channel\+Problem(), and Drop\+In\+Channel\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::$\sim$\+Drop\+In\+Channel\+Problem().
+
+\mbox{\Hypertarget{namespaceProblem__Parameter_a1dd3c6bcf97360c8fe0d288ca7610351}\label{namespaceProblem__Parameter_a1dd3c6bcf97360c8fe0d288ca7610351}} 
+\index{Problem\+\_\+\+Parameter@{Problem\+\_\+\+Parameter}!Doc\+\_\+info@{Doc\+\_\+info}}
+\index{Doc\+\_\+info@{Doc\+\_\+info}!Problem\+\_\+\+Parameter@{Problem\+\_\+\+Parameter}}
+\subsubsection{\texorpdfstring{Doc\+\_\+info}{Doc\_info}}
+{\footnotesize\ttfamily Doc\+Info Problem\+\_\+\+Parameter\+::\+Doc\+\_\+info}
+
+
+
+Doc info object. 
+
+Doc info. 
+
+Definition at line 376 of file adaptive\+\_\+bubble\+\_\+in\+\_\+channel.\+cc.
+
+
+
+Referenced by Bubble\+In\+Channel\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Bubble\+In\+Channel\+Problem(), Drop\+In\+Channel\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::doc\+\_\+solution(), Bubble\+In\+Channel\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::doc\+\_\+solution(), Drop\+In\+Channel\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Drop\+In\+Channel\+Problem(), and oomph\+::\+Face\+Geometry$<$ Face\+Geometry$<$ My\+Crouzeix\+Raviart\+Element $>$ $>$\+::\+Face\+Geometry().
+
+\mbox{\Hypertarget{namespaceProblem__Parameter_a7792613e563a733ad88b8e15d126fc3a}\label{namespaceProblem__Parameter_a7792613e563a733ad88b8e15d126fc3a}} 
+\index{Problem\+\_\+\+Parameter@{Problem\+\_\+\+Parameter}!Inflow\+\_\+veloc\+\_\+magnitude@{Inflow\+\_\+veloc\+\_\+magnitude}}
+\index{Inflow\+\_\+veloc\+\_\+magnitude@{Inflow\+\_\+veloc\+\_\+magnitude}!Problem\+\_\+\+Parameter@{Problem\+\_\+\+Parameter}}
+\subsubsection{\texorpdfstring{Inflow\+\_\+veloc\+\_\+magnitude}{Inflow\_veloc\_magnitude}}
+{\footnotesize\ttfamily double Problem\+\_\+\+Parameter\+::\+Inflow\+\_\+veloc\+\_\+magnitude = 0.\+0}
+
+
+
+Scaling factor for inflow velocity (allows it to be switched off to do hydrostatics) 
+
+
+
+Definition at line 396 of file adaptive\+\_\+bubble\+\_\+in\+\_\+channel.\+cc.
+
+
+
+Referenced by Drop\+In\+Channel\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::complete\+\_\+problem\+\_\+setup(), Bubble\+In\+Channel\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::complete\+\_\+problem\+\_\+setup(), and main().
+
+\mbox{\Hypertarget{namespaceProblem__Parameter_a7b67840fea463f29b53d12f7bd7cb34b}\label{namespaceProblem__Parameter_a7b67840fea463f29b53d12f7bd7cb34b}} 
+\index{Problem\+\_\+\+Parameter@{Problem\+\_\+\+Parameter}!Length@{Length}}
+\index{Length@{Length}!Problem\+\_\+\+Parameter@{Problem\+\_\+\+Parameter}}
+\subsubsection{\texorpdfstring{Length}{Length}}
+{\footnotesize\ttfamily double Problem\+\_\+\+Parameter\+::\+Length = 3.\+0}
+
+
+
+Length of the channel. 
+
+
+
+Definition at line 399 of file adaptive\+\_\+bubble\+\_\+in\+\_\+channel.\+cc.
+
+
+
+Referenced by Bubble\+In\+Channel\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Bubble\+In\+Channel\+Problem(), and Drop\+In\+Channel\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Drop\+In\+Channel\+Problem().
+
+\mbox{\Hypertarget{namespaceProblem__Parameter_a388e06a5e637b21378ab1832e5564bec}\label{namespaceProblem__Parameter_a388e06a5e637b21378ab1832e5564bec}} 
+\index{Problem\+\_\+\+Parameter@{Problem\+\_\+\+Parameter}!Norm\+\_\+file@{Norm\+\_\+file}}
+\index{Norm\+\_\+file@{Norm\+\_\+file}!Problem\+\_\+\+Parameter@{Problem\+\_\+\+Parameter}}
+\subsubsection{\texorpdfstring{Norm\+\_\+file}{Norm\_file}}
+{\footnotesize\ttfamily ofstream Problem\+\_\+\+Parameter\+::\+Norm\+\_\+file}
+
+
+
+File to document the norm of the solution (for validation purposes -- triangle doesn\textquotesingle{}t give fully reproducible results so mesh generation/adaptation may generate slightly different numbers of elements on different machines!) 
+
+
+
+Definition at line 411 of file adaptive\+\_\+bubble\+\_\+in\+\_\+channel.\+cc.
+
+
+
+Referenced by Drop\+In\+Channel\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::doc\+\_\+solution(), Bubble\+In\+Channel\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::doc\+\_\+solution(), and main().
+
+\mbox{\Hypertarget{namespaceProblem__Parameter_abec2e733c8f2d3c18ebc702b3f80cc17}\label{namespaceProblem__Parameter_abec2e733c8f2d3c18ebc702b3f80cc17}} 
+\index{Problem\+\_\+\+Parameter@{Problem\+\_\+\+Parameter}!Nu@{Nu}}
+\index{Nu@{Nu}!Problem\+\_\+\+Parameter@{Problem\+\_\+\+Parameter}}
+\subsubsection{\texorpdfstring{Nu}{Nu}}
+{\footnotesize\ttfamily double Problem\+\_\+\+Parameter\+::\+Nu =0.\+3}
+
+
+
+Pseudo-\/solid Poisson ratio. 
+
+
+
+Definition at line 385 of file adaptive\+\_\+bubble\+\_\+in\+\_\+channel.\+cc.
+
+
+
+Referenced by oomph\+::\+Face\+Geometry$<$ Face\+Geometry$<$ My\+Crouzeix\+Raviart\+Element $>$ $>$\+::\+Face\+Geometry(), and main().
+
+\mbox{\Hypertarget{namespaceProblem__Parameter_a903237528f0e9bb92debcc8842576cca}\label{namespaceProblem__Parameter_a903237528f0e9bb92debcc8842576cca}} 
+\index{Problem\+\_\+\+Parameter@{Problem\+\_\+\+Parameter}!Radius@{Radius}}
+\index{Radius@{Radius}!Problem\+\_\+\+Parameter@{Problem\+\_\+\+Parameter}}
+\subsubsection{\texorpdfstring{Radius}{Radius}}
+{\footnotesize\ttfamily double Problem\+\_\+\+Parameter\+::\+Radius = 0.\+25}
+
+
+
+Initial radius of bubble. 
+
+Initial radius of drop. 
+
+Definition at line 388 of file adaptive\+\_\+bubble\+\_\+in\+\_\+channel.\+cc.
+
+
+
+Referenced by Bubble\+In\+Channel\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Bubble\+In\+Channel\+Problem(), Drop\+In\+Channel\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Drop\+In\+Channel\+Problem(), and oomph\+::\+Face\+Geometry$<$ Face\+Geometry$<$ My\+Crouzeix\+Raviart\+Element $>$ $>$\+::\+Face\+Geometry().
+
+\mbox{\Hypertarget{namespaceProblem__Parameter_acc656299287d4d9a8374c2c501750b4f}\label{namespaceProblem__Parameter_acc656299287d4d9a8374c2c501750b4f}} 
+\index{Problem\+\_\+\+Parameter@{Problem\+\_\+\+Parameter}!Re@{Re}}
+\index{Re@{Re}!Problem\+\_\+\+Parameter@{Problem\+\_\+\+Parameter}}
+\subsubsection{\texorpdfstring{Re}{Re}}
+{\footnotesize\ttfamily double Problem\+\_\+\+Parameter\+::\+Re =0.\+0}
+
+
+
+Reynolds number. 
+
+
+
+Definition at line 379 of file adaptive\+\_\+bubble\+\_\+in\+\_\+channel.\+cc.
+
+
+
+Referenced by Drop\+In\+Channel\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::complete\+\_\+problem\+\_\+setup(), Bubble\+In\+Channel\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::complete\+\_\+problem\+\_\+setup(), and oomph\+::\+Face\+Geometry$<$ Face\+Geometry$<$ My\+Crouzeix\+Raviart\+Element $>$ $>$\+::\+Face\+Geometry().
+
+\mbox{\Hypertarget{namespaceProblem__Parameter_a55310be5f2dfcb5fcfe35d71f9c16e06}\label{namespaceProblem__Parameter_a55310be5f2dfcb5fcfe35d71f9c16e06}} 
+\index{Problem\+\_\+\+Parameter@{Problem\+\_\+\+Parameter}!Trace\+\_\+file@{Trace\+\_\+file}}
+\index{Trace\+\_\+file@{Trace\+\_\+file}!Problem\+\_\+\+Parameter@{Problem\+\_\+\+Parameter}}
+\subsubsection{\texorpdfstring{Trace\+\_\+file}{Trace\_file}}
+{\footnotesize\ttfamily ofstream Problem\+\_\+\+Parameter\+::\+Trace\+\_\+file}
+
+
+
+Trace file. 
+
+
+
+Definition at line 405 of file adaptive\+\_\+bubble\+\_\+in\+\_\+channel.\+cc.
+
+
+
+Referenced by Drop\+In\+Channel\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::doc\+\_\+solution(), Bubble\+In\+Channel\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::doc\+\_\+solution(), and main().
+
+\mbox{\Hypertarget{namespaceProblem__Parameter_afdb95f68bd3c77e4c12001a29bd26e31}\label{namespaceProblem__Parameter_afdb95f68bd3c77e4c12001a29bd26e31}} 
+\index{Problem\+\_\+\+Parameter@{Problem\+\_\+\+Parameter}!Viscosity\+\_\+ratio@{Viscosity\+\_\+ratio}}
+\index{Viscosity\+\_\+ratio@{Viscosity\+\_\+ratio}!Problem\+\_\+\+Parameter@{Problem\+\_\+\+Parameter}}
+\subsubsection{\texorpdfstring{Viscosity\+\_\+ratio}{Viscosity\_ratio}}
+{\footnotesize\ttfamily double Problem\+\_\+\+Parameter\+::\+Viscosity\+\_\+ratio = 10.\+0}
+
+
+
+Viscosity ratio of the droplet to the surrounding fluid. 
+
+
+
+Definition at line 379 of file adaptive\+\_\+drop\+\_\+in\+\_\+channel.\+cc.
+
+
+
+Referenced by Drop\+In\+Channel\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::complete\+\_\+problem\+\_\+setup().
+
+\mbox{\Hypertarget{namespaceProblem__Parameter_aad8e0a2d1ec39a8dd7357a43bcc5f20e}\label{namespaceProblem__Parameter_aad8e0a2d1ec39a8dd7357a43bcc5f20e}} 
+\index{Problem\+\_\+\+Parameter@{Problem\+\_\+\+Parameter}!Volume@{Volume}}
+\index{Volume@{Volume}!Problem\+\_\+\+Parameter@{Problem\+\_\+\+Parameter}}
+\subsubsection{\texorpdfstring{Volume}{Volume}}
+{\footnotesize\ttfamily double Problem\+\_\+\+Parameter\+::\+Volume = -\/Mathematical\+Constants\+::\+Pi$\ast$\hyperlink{namespaceProblem__Parameter_a903237528f0e9bb92debcc8842576cca}{Radius}$\ast$\hyperlink{namespaceProblem__Parameter_a903237528f0e9bb92debcc8842576cca}{Radius}}
+
+
+
+Volume of the bubble (negative because it\textquotesingle{}s outside the fluid!) 
+
+Volume of the interface (Negative because the constraint is computed from the bulk side) 
+
+Definition at line 392 of file adaptive\+\_\+bubble\+\_\+in\+\_\+channel.\+cc.
+
+
+
+Referenced by Bubble\+In\+Channel\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Bubble\+In\+Channel\+Problem(), Drop\+In\+Channel\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::create\+\_\+volume\+\_\+constraint\+\_\+elements(), and Bubble\+In\+Channel\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::doc\+\_\+solution().
+

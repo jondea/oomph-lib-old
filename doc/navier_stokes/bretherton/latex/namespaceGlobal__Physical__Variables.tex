@@ -1,0 +1,218 @@
+\hypertarget{namespaceGlobal__Physical__Variables}{}\section{Global\+\_\+\+Physical\+\_\+\+Variables Namespace Reference}
+\label{namespaceGlobal__Physical__Variables}\index{Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}}
+
+
+Namepspace for global parameters.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+Vector$<$ double $>$ \hyperlink{namespaceGlobal__Physical__Variables_a18fe245262ec8beec764c805bb93e73c}{G} (2)
+\begin{DoxyCompactList}\small\item\em Direction of gravity. \end{DoxyCompactList}\item 
+void \hyperlink{namespaceGlobal__Physical__Variables_a08e9835d71b7f7194ec5475f139211be}{inflow} (const Vector$<$ double $>$ \&x, Vector$<$ double $>$ \&veloc)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+double \hyperlink{namespaceGlobal__Physical__Variables_ab814e627d2eb5bc50318879d19ab16b9}{Re}
+\begin{DoxyCompactList}\small\item\em Reynolds number. \end{DoxyCompactList}\item 
+double \hyperlink{namespaceGlobal__Physical__Variables_a085ee4bf968ffdd01a41b8c41864f907}{Re\+St}
+\begin{DoxyCompactList}\small\item\em Womersley = Reynolds times Strouhal. \end{DoxyCompactList}\item 
+double \hyperlink{namespaceGlobal__Physical__Variables_aa6286f02b476912dd7550eced538331a}{Re\+Inv\+Fr}
+\begin{DoxyCompactList}\small\item\em Product of Reynolds and Froude number. \end{DoxyCompactList}\item 
+double \hyperlink{namespaceGlobal__Physical__Variables_a8b32b93d2e546f9375ec418474107838}{Ca}
+\begin{DoxyCompactList}\small\item\em Capillary number. \end{DoxyCompactList}\item 
+double $\ast$ \hyperlink{namespaceGlobal__Physical__Variables_a137bdac2ad4b72a03ec9916e8ee7395b}{H\+\_\+lo\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to film thickness at outflow on the lower wall. \end{DoxyCompactList}\item 
+double $\ast$ \hyperlink{namespaceGlobal__Physical__Variables_a83a3a82f89784013805bd23d63faa7e3}{H\+\_\+up\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to film thickness at outflow on the upper wall. \end{DoxyCompactList}\item 
+double $\ast$ \hyperlink{namespaceGlobal__Physical__Variables_a84caa2a64e50ba5b390a3cd100f0f835}{Y\+\_\+lo\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to y-\/position at inflow on the lower wall. \end{DoxyCompactList}\item 
+double $\ast$ \hyperlink{namespaceGlobal__Physical__Variables_a75878a0c79c88065fd9031f273b62698}{Y\+\_\+up\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to y-\/position at inflow on the upper wall. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Namepspace for global parameters. 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceGlobal__Physical__Variables_a18fe245262ec8beec764c805bb93e73c}\label{namespaceGlobal__Physical__Variables_a18fe245262ec8beec764c805bb93e73c}} 
+\index{Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}!G@{G}}
+\index{G@{G}!Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}}
+\subsubsection{\texorpdfstring{G()}{G()}}
+{\footnotesize\ttfamily Vector$<$double$>$ Global\+\_\+\+Physical\+\_\+\+Variables\+::G (\begin{DoxyParamCaption}\item[{2}]{ }\end{DoxyParamCaption})}
+
+
+
+Direction of gravity. 
+
+
+
+Referenced by Bretherton\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Bretherton\+Problem(), and main().
+
+\mbox{\Hypertarget{namespaceGlobal__Physical__Variables_a08e9835d71b7f7194ec5475f139211be}\label{namespaceGlobal__Physical__Variables_a08e9835d71b7f7194ec5475f139211be}} 
+\index{Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}!inflow@{inflow}}
+\index{inflow@{inflow}!Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}}
+\subsubsection{\texorpdfstring{inflow()}{inflow()}}
+{\footnotesize\ttfamily void Global\+\_\+\+Physical\+\_\+\+Variables\+::inflow (\begin{DoxyParamCaption}\item[{const Vector$<$ double $>$ \&}]{x,  }\item[{Vector$<$ double $>$ \&}]{veloc }\end{DoxyParamCaption})}
+
+Set inflow velocity, based on spine heights at outflow and channel width at inflow 
+
+Definition at line 80 of file bretherton.\+cc.
+
+
+
+References H\+\_\+up\+\_\+pt, Y\+\_\+lo\+\_\+pt, and Y\+\_\+up\+\_\+pt.
+
+
+
+Referenced by Bretherton\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::actions\+\_\+before\+\_\+newton\+\_\+convergence\+\_\+check(), and Bretherton\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::activate\+\_\+inflow\+\_\+dependency().
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceGlobal__Physical__Variables_a8b32b93d2e546f9375ec418474107838}\label{namespaceGlobal__Physical__Variables_a8b32b93d2e546f9375ec418474107838}} 
+\index{Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}!Ca@{Ca}}
+\index{Ca@{Ca}!Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}}
+\subsubsection{\texorpdfstring{Ca}{Ca}}
+{\footnotesize\ttfamily double Global\+\_\+\+Physical\+\_\+\+Variables\+::\+Ca}
+
+
+
+Capillary number. 
+
+
+
+Definition at line 61 of file bretherton.\+cc.
+
+
+
+Referenced by Bretherton\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Bretherton\+Problem(), Bretherton\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::doc\+\_\+solution(), main(), and Bretherton\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::parameter\+\_\+study().
+
+\mbox{\Hypertarget{namespaceGlobal__Physical__Variables_a137bdac2ad4b72a03ec9916e8ee7395b}\label{namespaceGlobal__Physical__Variables_a137bdac2ad4b72a03ec9916e8ee7395b}} 
+\index{Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}!H\+\_\+lo\+\_\+pt@{H\+\_\+lo\+\_\+pt}}
+\index{H\+\_\+lo\+\_\+pt@{H\+\_\+lo\+\_\+pt}!Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}}
+\subsubsection{\texorpdfstring{H\+\_\+lo\+\_\+pt}{H\_lo\_pt}}
+{\footnotesize\ttfamily double$\ast$ Global\+\_\+\+Physical\+\_\+\+Variables\+::\+H\+\_\+lo\+\_\+pt}
+
+
+
+Pointer to film thickness at outflow on the lower wall. 
+
+
+
+Definition at line 67 of file bretherton.\+cc.
+
+
+
+Referenced by Bretherton\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Bretherton\+Problem().
+
+\mbox{\Hypertarget{namespaceGlobal__Physical__Variables_a83a3a82f89784013805bd23d63faa7e3}\label{namespaceGlobal__Physical__Variables_a83a3a82f89784013805bd23d63faa7e3}} 
+\index{Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}!H\+\_\+up\+\_\+pt@{H\+\_\+up\+\_\+pt}}
+\index{H\+\_\+up\+\_\+pt@{H\+\_\+up\+\_\+pt}!Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}}
+\subsubsection{\texorpdfstring{H\+\_\+up\+\_\+pt}{H\_up\_pt}}
+{\footnotesize\ttfamily double$\ast$ Global\+\_\+\+Physical\+\_\+\+Variables\+::\+H\+\_\+up\+\_\+pt}
+
+
+
+Pointer to film thickness at outflow on the upper wall. 
+
+
+
+Definition at line 70 of file bretherton.\+cc.
+
+
+
+Referenced by Bretherton\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Bretherton\+Problem(), and inflow().
+
+\mbox{\Hypertarget{namespaceGlobal__Physical__Variables_ab814e627d2eb5bc50318879d19ab16b9}\label{namespaceGlobal__Physical__Variables_ab814e627d2eb5bc50318879d19ab16b9}} 
+\index{Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}!Re@{Re}}
+\index{Re@{Re}!Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}}
+\subsubsection{\texorpdfstring{Re}{Re}}
+{\footnotesize\ttfamily double Global\+\_\+\+Physical\+\_\+\+Variables\+::\+Re}
+
+
+
+Reynolds number. 
+
+
+
+Definition at line 52 of file bretherton.\+cc.
+
+
+
+Referenced by Bretherton\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Bretherton\+Problem(), and main().
+
+\mbox{\Hypertarget{namespaceGlobal__Physical__Variables_aa6286f02b476912dd7550eced538331a}\label{namespaceGlobal__Physical__Variables_aa6286f02b476912dd7550eced538331a}} 
+\index{Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}!Re\+Inv\+Fr@{Re\+Inv\+Fr}}
+\index{Re\+Inv\+Fr@{Re\+Inv\+Fr}!Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}}
+\subsubsection{\texorpdfstring{Re\+Inv\+Fr}{ReInvFr}}
+{\footnotesize\ttfamily double Global\+\_\+\+Physical\+\_\+\+Variables\+::\+Re\+Inv\+Fr}
+
+
+
+Product of Reynolds and Froude number. 
+
+
+
+Definition at line 58 of file bretherton.\+cc.
+
+
+
+Referenced by Bretherton\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Bretherton\+Problem(), and main().
+
+\mbox{\Hypertarget{namespaceGlobal__Physical__Variables_a085ee4bf968ffdd01a41b8c41864f907}\label{namespaceGlobal__Physical__Variables_a085ee4bf968ffdd01a41b8c41864f907}} 
+\index{Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}!Re\+St@{Re\+St}}
+\index{Re\+St@{Re\+St}!Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}}
+\subsubsection{\texorpdfstring{Re\+St}{ReSt}}
+{\footnotesize\ttfamily double Global\+\_\+\+Physical\+\_\+\+Variables\+::\+Re\+St}
+
+
+
+Womersley = Reynolds times Strouhal. 
+
+
+
+Definition at line 55 of file bretherton.\+cc.
+
+
+
+Referenced by Bretherton\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Bretherton\+Problem(), and main().
+
+\mbox{\Hypertarget{namespaceGlobal__Physical__Variables_a84caa2a64e50ba5b390a3cd100f0f835}\label{namespaceGlobal__Physical__Variables_a84caa2a64e50ba5b390a3cd100f0f835}} 
+\index{Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}!Y\+\_\+lo\+\_\+pt@{Y\+\_\+lo\+\_\+pt}}
+\index{Y\+\_\+lo\+\_\+pt@{Y\+\_\+lo\+\_\+pt}!Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}}
+\subsubsection{\texorpdfstring{Y\+\_\+lo\+\_\+pt}{Y\_lo\_pt}}
+{\footnotesize\ttfamily double$\ast$ Global\+\_\+\+Physical\+\_\+\+Variables\+::\+Y\+\_\+lo\+\_\+pt}
+
+
+
+Pointer to y-\/position at inflow on the lower wall. 
+
+
+
+Definition at line 73 of file bretherton.\+cc.
+
+
+
+Referenced by Bretherton\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Bretherton\+Problem(), and inflow().
+
+\mbox{\Hypertarget{namespaceGlobal__Physical__Variables_a75878a0c79c88065fd9031f273b62698}\label{namespaceGlobal__Physical__Variables_a75878a0c79c88065fd9031f273b62698}} 
+\index{Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}!Y\+\_\+up\+\_\+pt@{Y\+\_\+up\+\_\+pt}}
+\index{Y\+\_\+up\+\_\+pt@{Y\+\_\+up\+\_\+pt}!Global\+\_\+\+Physical\+\_\+\+Variables@{Global\+\_\+\+Physical\+\_\+\+Variables}}
+\subsubsection{\texorpdfstring{Y\+\_\+up\+\_\+pt}{Y\_up\_pt}}
+{\footnotesize\ttfamily double$\ast$ Global\+\_\+\+Physical\+\_\+\+Variables\+::\+Y\+\_\+up\+\_\+pt}
+
+
+
+Pointer to y-\/position at inflow on the upper wall. 
+
+
+
+Definition at line 76 of file bretherton.\+cc.
+
+
+
+Referenced by Bretherton\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Bretherton\+Problem(), and inflow().
+

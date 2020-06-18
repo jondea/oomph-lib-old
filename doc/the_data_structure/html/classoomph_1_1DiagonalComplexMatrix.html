@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<title>oomph-lib: oomph::DiagonalComplexMatrix Class Reference</title>
+<link rel="apple-touch-icon" sizes="57x57" href="../../figures/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="../../figures/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../../figures/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="../../figures/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../../figures/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="../../figures/apple-touch-icon-120x120.png">
+<link rel="icon" type="image/png" href="../../figures/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../figures/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../figures/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="../../figures/manifest.json">
+<link rel="mask-icon" href="../../figures/safari-pinned-tab.svg" color="#008000">
+<link rel="shortcut icon" href="../../figures/favicon.ico">
+<meta name="msapplication-TileColor" content="#00a300">
+<meta name="msapplication-config" content="../../figures/browserconfig.xml">
+<meta name="theme-color" content="#008000">
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600" rel="stylesheet" type="text/css">
+<!-- Doxygen css-->
+<!-- <link rel="stylesheet" type="text/css" href="doxygen.css"> -->
+<!-- Bootstrap -->
+<link href="../../css/bootstrap.css" rel="stylesheet">
+<!-- oomph-lib specific overrides -->
+<link rel="stylesheet" type="text/css" href="../../css/oomph_header.css">
+</head>
+<body>
+<nav class="navbar navbar-default">
+<div class="container">
+<div class="container-fluid">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="../../html/index.html"><img alt="oomph-lib" src="../../figures/oomph_logo.png"></a>
+  </div>
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">          
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Documentation <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li class="dropdown-header">Big picture</li>
+          <li><a href="../../../doc/intro/html/index.html">The finite element method</a></li>
+          <li><a href="../../../doc/the_data_structure/html/index.html">The data structure</a></li>
+          <li><a href="../../../doc/quick_guide/html/index.html">Not-so-quick guide</a></li>
+          <li><a href="../../../doc/optimisation/html/index.html">Optimisation</a></li>
+          <li><a href="../../../doc/order_of_action_functions/html/index.html">Order of action functions</a></li>
+          <li role="separator" class="divider"></li>
+          <li class="dropdown-header">Example codes and tutorials</li>
+          <li><a href="../../../doc/example_code_list/html/index.html">List of example codes and tutorials</a></li>
+          <li><a href="../../../doc/example_code_list/html/index.html#meshes">Meshing</a></li>
+          <li><a href="../../../doc/example_code_list/html/index.html#solvers">Solvers</a></li>
+          <li><a href="../../../doc/example_code_list/html/index.html#parallel">MPI parallel processing</a></li>
+          <li><a href="../../../doc/example_code_list/html/index.html#visualisation">Post-processing/visualisation</a></li>
+          <li role="separator" class="divider"></li>
+          <li class="dropdown-header">Other</li>
+          <li><a href="../../../doc/change_log/html/index.html">Change log</a></li>
+          <li><a href="../../../doc/creating_doc/html/index.html">Creating documentation</a></li>
+          <li><a href="../../../doc/coding_conventions/html/index.html">Coding conventions</a></li>
+          <li><a href="../../../doc/index/html/index.html">Index</a></li>
+          <li><a href="../../../doc/FAQ/html/index.html">FAQ</a></li>
+        </ul>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Get it <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../../../doc/the_distribution/html/index.html">Installation guide</a></li>
+            <li><a href="../../../doc/subversion/html/index.html">Get code from subversion repository</a></li>
+            <li><a href="../../../doc/download/html/index.html">Get code as tar file</a></li>
+            <li><a href="../../../doc/copyright/html/index.html">Copyright</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../../../doc/people/html/index.html">People</a></li>            
+            <li><a href="../../../doc/contact/html/index.html">Contact/Get involved</a></li>
+            <li><a href="../../../doc/publications/html/index.html">Publications</a></li>
+            <li><a href="../../../doc/acknowledgements/html/index.html">Acknowledgements</a></li>
+            <li><a href="../../../doc/picture_show/index.html">Picture show</a></li>
+          </ul>
+        </li>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right navbar-search">
+      <form class="navbar-form" role="search" action="../../../doc/search_results/html/index.html">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search" name="q">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="submit">Go</button>
+          </span>
+        </div><!-- /input-group -->
+       <!--<div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>-->
+      </form>
+    </ul>
+  </div><!-- /.navbar-collapse -->
+</div><!-- /.container-fluid -->
+</div>
+</nav>
+<!-- Generated by Doxygen 1.8.13 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','Search');
+});
+</script>
+<div id="main-nav"></div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceoomph.html">oomph</a></li><li class="navelem"><a class="el" href="classoomph_1_1DiagonalComplexMatrix.html">DiagonalComplexMatrix</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="classoomph_1_1DiagonalComplexMatrix-members.html">List of all members</a>  </div>
+  <div class="headertitle">
+<div class="title">oomph::DiagonalComplexMatrix Class Reference</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="complex__matrices_8h_source.html">complex_matrices.h</a>&gt;</code></p>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for oomph::DiagonalComplexMatrix:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+ <div class="center">
+  <img src="classoomph_1_1DiagonalComplexMatrix.png" usemap="#oomph::DiagonalComplexMatrix_map" alt=""/>
+  <map id="oomph::DiagonalComplexMatrix_map" name="oomph::DiagonalComplexMatrix_map">
+<area href="classoomph_1_1ComplexMatrixBase.html" title="Abstract base class for matrices of complex doubles – adds abstract interfaces for solving..." alt="oomph::ComplexMatrixBase" shape="rect" coords="0,0,188,24"/>
+</map>
+ </div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a0d81ded85014d5a703c3a44522bef081"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1DiagonalComplexMatrix.html#a0d81ded85014d5a703c3a44522bef081">DiagonalComplexMatrix</a> (const unsigned long n)</td></tr>
+<tr class="separator:a0d81ded85014d5a703c3a44522bef081"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a896c2b0bdf1488b09b6552bb624c5408"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1DiagonalComplexMatrix.html#a896c2b0bdf1488b09b6552bb624c5408">DiagonalComplexMatrix</a> (const unsigned long n, std::complex&lt; double &gt; &amp;z)</td></tr>
+<tr class="separator:a896c2b0bdf1488b09b6552bb624c5408"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8f257263497d498f52881a19281ce63"><td class="memItemLeft" align="right" valign="top">virtual std::complex&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1DiagonalComplexMatrix.html#aa8f257263497d498f52881a19281ce63">operator()</a> (const unsigned long &amp;<a class="el" href="cfortran_8h.html#adb50e893b86b3e55e751a42eab3cba82">i</a>, const unsigned long &amp;j) const</td></tr>
+<tr class="memdesc:aa8f257263497d498f52881a19281ce63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Round brackets to give access as a(i,j) for read only (we're not providing a general interface for component-wise write access since not all matrix formats allow efficient direct access!)  <a href="#aa8f257263497d498f52881a19281ce63">More...</a><br /></td></tr>
+<tr class="separator:aa8f257263497d498f52881a19281ce63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27f2ff667b59a6a115d04a6c40df82a1"><td class="memItemLeft" align="right" valign="top">virtual std::complex&lt; double &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1DiagonalComplexMatrix.html#a27f2ff667b59a6a115d04a6c40df82a1">operator()</a> (const unsigned long &amp;<a class="el" href="cfortran_8h.html#adb50e893b86b3e55e751a42eab3cba82">i</a>, const unsigned long &amp;j)</td></tr>
+<tr class="separator:a27f2ff667b59a6a115d04a6c40df82a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e7b0ca4ea51eb40fa9fe4fd8e9ba99c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1DiagonalComplexMatrix.html#a8e7b0ca4ea51eb40fa9fe4fd8e9ba99c">multiply</a> (const <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; std::complex&lt; double &gt; &gt; &amp;x, <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; std::complex&lt; double &gt; &gt; &amp;result)</td></tr>
+<tr class="memdesc:a8e7b0ca4ea51eb40fa9fe4fd8e9ba99c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiply the matrix by the vector x: soln=Ax.  <a href="#a8e7b0ca4ea51eb40fa9fe4fd8e9ba99c">More...</a><br /></td></tr>
+<tr class="separator:a8e7b0ca4ea51eb40fa9fe4fd8e9ba99c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1de87dc3b52ecb737d15893860c5844b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1DiagonalComplexMatrix.html#a1de87dc3b52ecb737d15893860c5844b">multiply_transpose</a> (const <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; std::complex&lt; double &gt; &gt; &amp;x, <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; std::complex&lt; double &gt; &gt; &amp;result)</td></tr>
+<tr class="memdesc:a1de87dc3b52ecb737d15893860c5844b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiply the transposed matrix by the vector x: soln=A^T x.  <a href="#a1de87dc3b52ecb737d15893860c5844b">More...</a><br /></td></tr>
+<tr class="separator:a1de87dc3b52ecb737d15893860c5844b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a320b1114e1be99d82694793b30ce9251"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1DiagonalComplexMatrix.html#a320b1114e1be99d82694793b30ce9251">residual</a> (const <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; std::complex&lt; double &gt; &gt; &amp;x, const <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; std::complex&lt; double &gt; &gt; &amp;b, <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; std::complex&lt; double &gt; &gt; &amp;residual)</td></tr>
+<tr class="memdesc:a320b1114e1be99d82694793b30ce9251"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find the residual, i.e. r=b-Ax the residual.  <a href="#a320b1114e1be99d82694793b30ce9251">More...</a><br /></td></tr>
+<tr class="separator:a320b1114e1be99d82694793b30ce9251"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35121313d09b76ef286893a7ce006b2e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1DiagonalComplexMatrix.html#a35121313d09b76ef286893a7ce006b2e">resize</a> (const unsigned &amp;N, const unsigned &amp;M)</td></tr>
+<tr class="separator:a35121313d09b76ef286893a7ce006b2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a587ae9dc56b4e338f027dd29c241b197"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1DiagonalComplexMatrix.html#a587ae9dc56b4e338f027dd29c241b197">resize</a> (const unsigned &amp;N, const unsigned &amp;M, std::complex&lt; double &gt; z)</td></tr>
+<tr class="separator:a587ae9dc56b4e338f027dd29c241b197"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a58381c1aa8d680373305a27bc88c25"><td class="memItemLeft" align="right" valign="top">unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1DiagonalComplexMatrix.html#a9a58381c1aa8d680373305a27bc88c25">nrow</a> () const</td></tr>
+<tr class="memdesc:a9a58381c1aa8d680373305a27bc88c25"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the number of rows of the matrix.  <a href="#a9a58381c1aa8d680373305a27bc88c25">More...</a><br /></td></tr>
+<tr class="separator:a9a58381c1aa8d680373305a27bc88c25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab56dee3ac2b928655382ad6697edd318"><td class="memItemLeft" align="right" valign="top">unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1DiagonalComplexMatrix.html#ab56dee3ac2b928655382ad6697edd318">ncol</a> () const</td></tr>
+<tr class="memdesc:ab56dee3ac2b928655382ad6697edd318"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the number of columns of the matrix.  <a href="#ab56dee3ac2b928655382ad6697edd318">More...</a><br /></td></tr>
+<tr class="separator:ab56dee3ac2b928655382ad6697edd318"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classoomph_1_1ComplexMatrixBase"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classoomph_1_1ComplexMatrixBase')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classoomph_1_1ComplexMatrixBase.html">oomph::ComplexMatrixBase</a></td></tr>
+<tr class="memitem:aecfeaf77e3e03743b0b87f677470c56d inherit pub_methods_classoomph_1_1ComplexMatrixBase"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1ComplexMatrixBase.html#aecfeaf77e3e03743b0b87f677470c56d">ComplexMatrixBase</a> ()</td></tr>
+<tr class="memdesc:aecfeaf77e3e03743b0b87f677470c56d inherit pub_methods_classoomph_1_1ComplexMatrixBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">(Empty) constructor.  <a href="classoomph_1_1ComplexMatrixBase.html#aecfeaf77e3e03743b0b87f677470c56d">More...</a><br /></td></tr>
+<tr class="separator:aecfeaf77e3e03743b0b87f677470c56d inherit pub_methods_classoomph_1_1ComplexMatrixBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a000722ba16915a4b9770238997b43d19 inherit pub_methods_classoomph_1_1ComplexMatrixBase"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1ComplexMatrixBase.html#a000722ba16915a4b9770238997b43d19">ComplexMatrixBase</a> (const <a class="el" href="classoomph_1_1ComplexMatrixBase.html">ComplexMatrixBase</a> &amp;matrix)</td></tr>
+<tr class="memdesc:a000722ba16915a4b9770238997b43d19 inherit pub_methods_classoomph_1_1ComplexMatrixBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Broken copy constructor.  <a href="classoomph_1_1ComplexMatrixBase.html#a000722ba16915a4b9770238997b43d19">More...</a><br /></td></tr>
+<tr class="separator:a000722ba16915a4b9770238997b43d19 inherit pub_methods_classoomph_1_1ComplexMatrixBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1c04df6907d8f8b6517ede080b86705 inherit pub_methods_classoomph_1_1ComplexMatrixBase"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1ComplexMatrixBase.html#aa1c04df6907d8f8b6517ede080b86705">operator=</a> (const <a class="el" href="classoomph_1_1ComplexMatrixBase.html">ComplexMatrixBase</a> &amp;)</td></tr>
+<tr class="memdesc:aa1c04df6907d8f8b6517ede080b86705 inherit pub_methods_classoomph_1_1ComplexMatrixBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Broken assignment operator.  <a href="classoomph_1_1ComplexMatrixBase.html#aa1c04df6907d8f8b6517ede080b86705">More...</a><br /></td></tr>
+<tr class="separator:aa1c04df6907d8f8b6517ede080b86705 inherit pub_methods_classoomph_1_1ComplexMatrixBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b6bb3011ea7b08dead73e943fd74b15 inherit pub_methods_classoomph_1_1ComplexMatrixBase"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1ComplexMatrixBase.html#a5b6bb3011ea7b08dead73e943fd74b15">~ComplexMatrixBase</a> ()</td></tr>
+<tr class="memdesc:a5b6bb3011ea7b08dead73e943fd74b15 inherit pub_methods_classoomph_1_1ComplexMatrixBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">virtual (empty) destructor  <a href="classoomph_1_1ComplexMatrixBase.html#a5b6bb3011ea7b08dead73e943fd74b15">More...</a><br /></td></tr>
+<tr class="separator:a5b6bb3011ea7b08dead73e943fd74b15 inherit pub_methods_classoomph_1_1ComplexMatrixBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11e1beeb7767e9bc5e511c17f80f097f inherit pub_methods_classoomph_1_1ComplexMatrixBase"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1ComplexMatrixBase.html#a11e1beeb7767e9bc5e511c17f80f097f">ludecompose</a> ()</td></tr>
+<tr class="memdesc:a11e1beeb7767e9bc5e511c17f80f097f inherit pub_methods_classoomph_1_1ComplexMatrixBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">LU decomposition of the matrix using the appropriate linear solver. Return the sign of the determinant.  <a href="classoomph_1_1ComplexMatrixBase.html#a11e1beeb7767e9bc5e511c17f80f097f">More...</a><br /></td></tr>
+<tr class="separator:a11e1beeb7767e9bc5e511c17f80f097f inherit pub_methods_classoomph_1_1ComplexMatrixBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0e444d60d4ec9e35a6903ab88baaf62 inherit pub_methods_classoomph_1_1ComplexMatrixBase"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1ComplexMatrixBase.html#aa0e444d60d4ec9e35a6903ab88baaf62">lubksub</a> (<a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; std::complex&lt; double &gt; &gt; &amp;rhs)</td></tr>
+<tr class="memdesc:aa0e444d60d4ec9e35a6903ab88baaf62 inherit pub_methods_classoomph_1_1ComplexMatrixBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">LU backsubstitue a previously LU-decomposed matrix; The passed rhs will be over-written with the solution vector.  <a href="classoomph_1_1ComplexMatrixBase.html#aa0e444d60d4ec9e35a6903ab88baaf62">More...</a><br /></td></tr>
+<tr class="separator:aa0e444d60d4ec9e35a6903ab88baaf62 inherit pub_methods_classoomph_1_1ComplexMatrixBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a131e601fd0e82e811b26a3c11a455d0e inherit pub_methods_classoomph_1_1ComplexMatrixBase"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1ComplexMatrixBase.html#a131e601fd0e82e811b26a3c11a455d0e">solve</a> (<a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; std::complex&lt; double &gt; &gt; &amp;rhs)</td></tr>
+<tr class="memdesc:a131e601fd0e82e811b26a3c11a455d0e inherit pub_methods_classoomph_1_1ComplexMatrixBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Complete LU solve (replaces matrix by its LU decomposition and overwrites RHS with solution). The default should not need to be over-written.  <a href="classoomph_1_1ComplexMatrixBase.html#a131e601fd0e82e811b26a3c11a455d0e">More...</a><br /></td></tr>
+<tr class="separator:a131e601fd0e82e811b26a3c11a455d0e inherit pub_methods_classoomph_1_1ComplexMatrixBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a223cef84c48a2aa9fb387ed4ffaaf48a inherit pub_methods_classoomph_1_1ComplexMatrixBase"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1ComplexMatrixBase.html#a223cef84c48a2aa9fb387ed4ffaaf48a">solve</a> (const <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; std::complex&lt; double &gt; &gt; &amp;rhs, <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; std::complex&lt; double &gt; &gt; &amp;soln)</td></tr>
+<tr class="memdesc:a223cef84c48a2aa9fb387ed4ffaaf48a inherit pub_methods_classoomph_1_1ComplexMatrixBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Complete LU solve (Nothing gets overwritten!). The default should not need to be overwritten.  <a href="classoomph_1_1ComplexMatrixBase.html#a223cef84c48a2aa9fb387ed4ffaaf48a">More...</a><br /></td></tr>
+<tr class="separator:a223cef84c48a2aa9fb387ed4ffaaf48a inherit pub_methods_classoomph_1_1ComplexMatrixBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5ad285a4cb503c9c962ff7e8d89857f inherit pub_methods_classoomph_1_1ComplexMatrixBase"><td class="memItemLeft" align="right" valign="top">virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1ComplexMatrixBase.html#ab5ad285a4cb503c9c962ff7e8d89857f">max_residual</a> (const <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; std::complex&lt; double &gt; &gt; &amp;x, const <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; std::complex&lt; double &gt; &gt; &amp;rhs)</td></tr>
+<tr class="memdesc:ab5ad285a4cb503c9c962ff7e8d89857f inherit pub_methods_classoomph_1_1ComplexMatrixBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find the maximum residual r=b-Ax &ndash; generic version, can be overloaded for specific derived classes where the max. can be determined "on the fly".  <a href="classoomph_1_1ComplexMatrixBase.html#ab5ad285a4cb503c9c962ff7e8d89857f">More...</a><br /></td></tr>
+<tr class="separator:ab5ad285a4cb503c9c962ff7e8d89857f inherit pub_methods_classoomph_1_1ComplexMatrixBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:aee732a6697a2217457763c5c14a6fb26"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; std::complex&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1DiagonalComplexMatrix.html#aee732a6697a2217457763c5c14a6fb26">Matrixdata</a></td></tr>
+<tr class="separator:aee732a6697a2217457763c5c14a6fb26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock">
+<p class="definition">Definition at line <a class="el" href="complex__matrices_8h_source.html#l00161">161</a> of file <a class="el" href="complex__matrices_8h_source.html">complex_matrices.h</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a0d81ded85014d5a703c3a44522bef081"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d81ded85014d5a703c3a44522bef081">&#9670;&nbsp;</a></span>DiagonalComplexMatrix() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">oomph::DiagonalComplexMatrix::DiagonalComplexMatrix </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned long&#160;</td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="complex__matrices_8h_source.html#l00165">165</a> of file <a class="el" href="complex__matrices_8h_source.html">complex_matrices.h</a>.</p>
+
+</div>
+</div>
+<a id="a896c2b0bdf1488b09b6552bb624c5408"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a896c2b0bdf1488b09b6552bb624c5408">&#9670;&nbsp;</a></span>DiagonalComplexMatrix() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">oomph::DiagonalComplexMatrix::DiagonalComplexMatrix </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned long&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::complex&lt; double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>z</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="complex__matrices_8h_source.html#l00167">167</a> of file <a class="el" href="complex__matrices_8h_source.html">complex_matrices.h</a>.</p>
+
+<p class="reference">References <a class="el" href="cfortran_8h_source.html#l00607">i</a>, <a class="el" href="classoomph_1_1ComplexMatrixBase.html#a730c106643464a29ebf0660a6921ebaa">oomph::ComplexMatrixBase::multiply()</a>, and <a class="el" href="classoomph_1_1ComplexMatrixBase.html#a78d1185ec8249fec5855d01129a1c870">oomph::ComplexMatrixBase::operator()()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a8e7b0ca4ea51eb40fa9fe4fd8e9ba99c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e7b0ca4ea51eb40fa9fe4fd8e9ba99c">&#9670;&nbsp;</a></span>multiply()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void oomph::DiagonalComplexMatrix::multiply </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; std::complex&lt; double &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; std::complex&lt; double &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>soln</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Multiply the matrix by the vector x: soln=Ax. </p>
+
+<p>Implements <a class="el" href="classoomph_1_1ComplexMatrixBase.html#a730c106643464a29ebf0660a6921ebaa">oomph::ComplexMatrixBase</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="complex__matrices_8cc_source.html#l00144">144</a> of file <a class="el" href="complex__matrices_8cc_source.html">complex_matrices.cc</a>.</p>
+
+<p class="reference">References <a class="el" href="cfortran_8h_source.html#l00607">i</a>, <a class="el" href="quadtree_8h_source.html#l00060">oomph::QuadTreeNames::N</a>, and <a class="el" href="classoomph_1_1ComplexMatrixBase.html#a849b63e50dad36ca8b20b7bdefd34b8d">oomph::ComplexMatrixBase::ncol()</a>.</p>
+
+</div>
+</div>
+<a id="a1de87dc3b52ecb737d15893860c5844b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1de87dc3b52ecb737d15893860c5844b">&#9670;&nbsp;</a></span>multiply_transpose()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void oomph::DiagonalComplexMatrix::multiply_transpose </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; std::complex&lt; double &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; std::complex&lt; double &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>soln</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Multiply the transposed matrix by the vector x: soln=A^T x. </p>
+
+<p>Implements <a class="el" href="classoomph_1_1ComplexMatrixBase.html#a90c7832bad84aad3d0f437925efb089a">oomph::ComplexMatrixBase</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="complex__matrices_8h_source.html#l00182">182</a> of file <a class="el" href="complex__matrices_8h_source.html">complex_matrices.h</a>.</p>
+
+<p class="reference">References <a class="el" href="classoomph_1_1ComplexMatrixBase.html#a730c106643464a29ebf0660a6921ebaa">oomph::ComplexMatrixBase::multiply()</a>.</p>
+
+</div>
+</div>
+<a id="ab56dee3ac2b928655382ad6697edd318"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab56dee3ac2b928655382ad6697edd318">&#9670;&nbsp;</a></span>ncol()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned long oomph::DiagonalComplexMatrix::ncol </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Return the number of columns of the matrix. </p>
+
+<p>Implements <a class="el" href="classoomph_1_1ComplexMatrixBase.html#a849b63e50dad36ca8b20b7bdefd34b8d">oomph::ComplexMatrixBase</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="complex__matrices_8h_source.html#l00200">200</a> of file <a class="el" href="complex__matrices_8h_source.html">complex_matrices.h</a>.</p>
+
+</div>
+</div>
+<a id="a9a58381c1aa8d680373305a27bc88c25"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a58381c1aa8d680373305a27bc88c25">&#9670;&nbsp;</a></span>nrow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned long oomph::DiagonalComplexMatrix::nrow </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Return the number of rows of the matrix. </p>
+
+<p>Implements <a class="el" href="classoomph_1_1ComplexMatrixBase.html#adcbdf19bc82c61c0a4fbfd8c8de97b3b">oomph::ComplexMatrixBase</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="complex__matrices_8h_source.html#l00198">198</a> of file <a class="el" href="complex__matrices_8h_source.html">complex_matrices.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="complex__matrices_8h_source.html#l00258">oomph::DenseComplexMatrix::DenseComplexMatrix()</a>.</p>
+
+</div>
+</div>
+<a id="aa8f257263497d498f52881a19281ce63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8f257263497d498f52881a19281ce63">&#9670;&nbsp;</a></span>operator()() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::complex&lt; double &gt; oomph::DiagonalComplexMatrix::operator() </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned long &amp;&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned long &amp;&#160;</td>
+          <td class="paramname"><em>j</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Round brackets to give access as a(i,j) for read only (we're not providing a general interface for component-wise write access since not all matrix formats allow efficient direct access!) </p>
+
+<p>Implements <a class="el" href="classoomph_1_1ComplexMatrixBase.html#a78d1185ec8249fec5855d01129a1c870">oomph::ComplexMatrixBase</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="complex__matrices_8cc_source.html#l00087">87</a> of file <a class="el" href="complex__matrices_8cc_source.html">complex_matrices.cc</a>.</p>
+
+<p class="reference">References <a class="el" href="cfortran_8h_source.html#l00607">i</a>.</p>
+
+</div>
+</div>
+<a id="a27f2ff667b59a6a115d04a6c40df82a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27f2ff667b59a6a115d04a6c40df82a1">&#9670;&nbsp;</a></span>operator()() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::complex&lt; double &gt; &amp; oomph::DiagonalComplexMatrix::operator() </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned long &amp;&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned long &amp;&#160;</td>
+          <td class="paramname"><em>j</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="complex__matrices_8cc_source.html#l00100">100</a> of file <a class="el" href="complex__matrices_8cc_source.html">complex_matrices.cc</a>.</p>
+
+<p class="reference">References <a class="el" href="cfortran_8h_source.html#l00607">i</a>.</p>
+
+</div>
+</div>
+<a id="a320b1114e1be99d82694793b30ce9251"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a320b1114e1be99d82694793b30ce9251">&#9670;&nbsp;</a></span>residual()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void oomph::DiagonalComplexMatrix::residual </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; std::complex&lt; double &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; std::complex&lt; double &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>b</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; std::complex&lt; double &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>residual</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Find the residual, i.e. r=b-Ax the residual. </p>
+
+<p>Implements <a class="el" href="classoomph_1_1ComplexMatrixBase.html#aec72875402b9ba387e0724d6c2597430">oomph::ComplexMatrixBase</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="complex__matrices_8h_source.html#l00189">189</a> of file <a class="el" href="complex__matrices_8h_source.html">complex_matrices.h</a>.</p>
+
+<p class="reference">References <a class="el" href="quadtree_8h_source.html#l00060">oomph::QuadTreeNames::N</a>.</p>
+
+</div>
+</div>
+<a id="a35121313d09b76ef286893a7ce006b2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35121313d09b76ef286893a7ce006b2e">&#9670;&nbsp;</a></span>resize() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void oomph::DiagonalComplexMatrix::resize </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>N</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>M</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="complex__matrices_8cc_source.html#l00116">116</a> of file <a class="el" href="complex__matrices_8cc_source.html">complex_matrices.cc</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="pml__elements_8cc_source.html#l00094">oomph::PMLElementBase&lt; 2 &gt;::compute_jacobian_inverse_and_det()</a>, and <a class="el" href="pml__elements_8cc_source.html#l00062">oomph::PMLElementBase&lt; 2 &gt;::compute_laplace_matrix_and_det()</a>.</p>
+
+</div>
+</div>
+<a id="a587ae9dc56b4e338f027dd29c241b197"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a587ae9dc56b4e338f027dd29c241b197">&#9670;&nbsp;</a></span>resize() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void oomph::DiagonalComplexMatrix::resize </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>N</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>M</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::complex&lt; double &gt;&#160;</td>
+          <td class="paramname"><em>z</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="complex__matrices_8cc_source.html#l00129">129</a> of file <a class="el" href="complex__matrices_8cc_source.html">complex_matrices.cc</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="aee732a6697a2217457763c5c14a6fb26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee732a6697a2217457763c5c14a6fb26">&#9670;&nbsp;</a></span>Matrixdata</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt;std::complex&lt;double&gt; &gt; oomph::DiagonalComplexMatrix::Matrixdata</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="complex__matrices_8h_source.html#l00204">204</a> of file <a class="el" href="complex__matrices_8h_source.html">complex_matrices.h</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li><a class="el" href="complex__matrices_8h_source.html">complex_matrices.h</a></li>
+<li><a class="el" href="complex__matrices_8cc_source.html">complex_matrices.cc</a></li>
+</ul>
+</div><!-- contents -->
+
+    <!-- jQuery for Bootstrap and Doxygen -->
+    <script src="../../js/jquery-1.12.0.min.js"></script>
+    <!-- Minified boostrap plugins-->
+    <script src="../../js/bootstrap.js"></script>
+    <!-- Doxygen dependency to add powertips to source code-->
+    <script src="../../js/jquery.powertip.min.js"></script>
+    <!-- The  following script is generated by doxygen and hides/shows levels in 
+         the data structure lists and adds powertips to source code-->
+    <script src="../../js/dynsections.js" ></script>
+    <!-- add to Doxygen's class names so bootstrap css and js recognises them-->
+    <script type="text/javascript">
+    $(".contents").addClass("container");
+    $(".header").addClass("container");
+    $(".navpath").addClass("container");
+    $("#navrow3").addClass("container");
+    $("#navrow4").addClass("container");
+    $(".mlabel").addClass("label");
+    $(".mlabel").addClass("label-default");
+    $(".memitem").addClass("panel");
+    $(".memitem").addClass("panel-info");
+    $(".memproto").addClass("panel-heading");
+    $(".memdoc").addClass("panel-body");
+    </script>
+    <footer>
+      <div class="container">
+        <div class="text-muted" style="float:right;">Generated by <a href="http://www.doxygen.org/index.html">
+          <img style="height:18px;" class="footer-img" src="doxygen.png" alt="doxygen"></a> on Thu Jun 18 2020 09:55:25
+        </div>
+      </div>
+    </footer>
+</body>
+</html>

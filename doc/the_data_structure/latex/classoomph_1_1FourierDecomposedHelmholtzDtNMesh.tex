@@ -1,0 +1,215 @@
+\hypertarget{classoomph_1_1FourierDecomposedHelmholtzDtNMesh}{}\section{oomph\+:\+:Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh$<$ E\+L\+E\+M\+E\+NT $>$ Class Template Reference}
+\label{classoomph_1_1FourierDecomposedHelmholtzDtNMesh}\index{oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$@{oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$}}
+
+
+{\ttfamily \#include $<$fourier\+\_\+decomposed\+\_\+helmholtz\+\_\+bc\+\_\+elements.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh$<$ E\+L\+E\+M\+E\+NT $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classoomph_1_1FourierDecomposedHelmholtzDtNMesh}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1FourierDecomposedHelmholtzDtNMesh_a572d987fdb38434f87aac2e049e905bb}{Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh} (const double \&\hyperlink{classoomph_1_1FourierDecomposedHelmholtzDtNMesh_a6aff7dd5330464d53d9d71d0f6a02dde}{outer\+\_\+radius}, const unsigned \&\hyperlink{classoomph_1_1FourierDecomposedHelmholtzDtNMesh_aef11b1201fcfcc7e1bc868920d803a56}{n\+\_\+terms})
+\item 
+void \hyperlink{classoomph_1_1FourierDecomposedHelmholtzDtNMesh_a6edd6895062bd0d756f7c4dfc585b284}{setup\+\_\+gamma} ()
+\begin{DoxyCompactList}\small\item\em Compute and store the gamma integral at all integration points of the constituent elements. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Vector}{Vector}$<$ std\+::complex$<$ double $>$ $>$ \& \hyperlink{classoomph_1_1FourierDecomposedHelmholtzDtNMesh_a1620b1c9ce32a360c6b6ad89bdaef354}{gamma\+\_\+at\+\_\+gauss\+\_\+point} (\hyperlink{classoomph_1_1FiniteElement}{Finite\+Element} $\ast$el\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Gamma integral evaluated at \hyperlink{classoomph_1_1Gauss}{Gauss} points for specified element. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Vector}{Vector}$<$ std\+::map$<$ unsigned, std\+::complex$<$ double $>$ $>$ $>$ \& \hyperlink{classoomph_1_1FourierDecomposedHelmholtzDtNMesh_a67dab999800a4d2a797d7d146ccbcfca}{d\+\_\+gamma\+\_\+at\+\_\+gauss\+\_\+point} (\hyperlink{classoomph_1_1FiniteElement}{Finite\+Element} $\ast$el\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Derivative of Gamma integral w.\+r.\+t global unknown, evaluated at \hyperlink{classoomph_1_1Gauss}{Gauss} points for specified element. \end{DoxyCompactList}\item 
+double \& \hyperlink{classoomph_1_1FourierDecomposedHelmholtzDtNMesh_a6aff7dd5330464d53d9d71d0f6a02dde}{outer\+\_\+radius} ()
+\begin{DoxyCompactList}\small\item\em The outer radius. \end{DoxyCompactList}\item 
+unsigned \& \hyperlink{classoomph_1_1FourierDecomposedHelmholtzDtNMesh_aef11b1201fcfcc7e1bc868920d803a56}{n\+\_\+terms} ()
+\begin{DoxyCompactList}\small\item\em Number of terms used in the computation of the gamma integral. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double \hyperlink{classoomph_1_1FourierDecomposedHelmholtzDtNMesh_aafc92f60b7a64d97fd04e88e57889226}{Outer\+\_\+radius}
+\begin{DoxyCompactList}\small\item\em Outer radius. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1FourierDecomposedHelmholtzDtNMesh_a79e18c0ebbb532a4d95dfb2f1f3570ba}{N\+\_\+terms}
+\begin{DoxyCompactList}\small\item\em Number of terms used in the Gamma computation. \end{DoxyCompactList}\item 
+std\+::map$<$ \hyperlink{classoomph_1_1FiniteElement}{Finite\+Element} $\ast$, \hyperlink{classoomph_1_1Vector}{Vector}$<$ std\+::complex$<$ double $>$ $>$ $>$ \hyperlink{classoomph_1_1FourierDecomposedHelmholtzDtNMesh_a956867cfdb35fc5a714193bee55a54c4}{Gamma\+\_\+at\+\_\+gauss\+\_\+point}
+\begin{DoxyCompactList}\small\item\em Container to store the gamma integral for given \hyperlink{classoomph_1_1Gauss}{Gauss} point and element. \end{DoxyCompactList}\item 
+std\+::map$<$ \hyperlink{classoomph_1_1FiniteElement}{Finite\+Element} $\ast$, \hyperlink{classoomph_1_1Vector}{Vector}$<$ std\+::map$<$ unsigned, std\+::complex$<$ double $>$ $>$ $>$ $>$ \hyperlink{classoomph_1_1FourierDecomposedHelmholtzDtNMesh_a8a58410244815336ffacc1e33cbc0565}{D\+\_\+\+Gamma\+\_\+at\+\_\+gauss\+\_\+point}
+\begin{DoxyCompactList}\small\item\em Container to store the derivate of Gamma integral w.\+r.\+t global unknown evaluated at \hyperlink{classoomph_1_1Gauss}{Gauss} points for specified element. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class E\+L\+E\+M\+E\+NT$>$\newline
+class oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh$<$ E\+L\+E\+M\+E\+N\+T $>$}
+
+================================================================= \hyperlink{classoomph_1_1Mesh}{Mesh} for DtN boundary condition elements -- provides functionality to apply Sommerfeld radiation condtion \subsection*{via DtN BC. }
+
+Definition at line 353 of file fourier\+\_\+decomposed\+\_\+helmholtz\+\_\+bc\+\_\+elements.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1FourierDecomposedHelmholtzDtNMesh_a572d987fdb38434f87aac2e049e905bb}\label{classoomph_1_1FourierDecomposedHelmholtzDtNMesh_a572d987fdb38434f87aac2e049e905bb}} 
+\index{oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh@{oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh}!Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh@{Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh}}
+\index{Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh@{Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh}!oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh@{oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh}}
+\subsubsection{\texorpdfstring{Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh()}{FourierDecomposedHelmholtzDtNMesh()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+\hyperlink{classoomph_1_1FourierDecomposedHelmholtzDtNMesh}{oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh}$<$ E\+L\+E\+M\+E\+NT $>$\+::\hyperlink{classoomph_1_1FourierDecomposedHelmholtzDtNMesh}{Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh} (\begin{DoxyParamCaption}\item[{const double \&}]{outer\+\_\+radius,  }\item[{const unsigned \&}]{n\+\_\+terms }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Constructor\+: Specify radius of outer boundary and number of terms used in the computation of the gamma integral 
+
+Definition at line 359 of file fourier\+\_\+decomposed\+\_\+helmholtz\+\_\+bc\+\_\+elements.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1FourierDecomposedHelmholtzDtNMesh_a67dab999800a4d2a797d7d146ccbcfca}\label{classoomph_1_1FourierDecomposedHelmholtzDtNMesh_a67dab999800a4d2a797d7d146ccbcfca}} 
+\index{oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh@{oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh}!d\+\_\+gamma\+\_\+at\+\_\+gauss\+\_\+point@{d\+\_\+gamma\+\_\+at\+\_\+gauss\+\_\+point}}
+\index{d\+\_\+gamma\+\_\+at\+\_\+gauss\+\_\+point@{d\+\_\+gamma\+\_\+at\+\_\+gauss\+\_\+point}!oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh@{oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh}}
+\subsubsection{\texorpdfstring{d\+\_\+gamma\+\_\+at\+\_\+gauss\+\_\+point()}{d\_gamma\_at\_gauss\_point()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+\hyperlink{classoomph_1_1Vector}{Vector}$<$std\+::map$<$unsigned,std\+::complex$<$double$>$ $>$ $>$\& \hyperlink{classoomph_1_1FourierDecomposedHelmholtzDtNMesh}{oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh}$<$ E\+L\+E\+M\+E\+NT $>$\+::d\+\_\+gamma\+\_\+at\+\_\+gauss\+\_\+point (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1FiniteElement}{Finite\+Element} $\ast$}]{el\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Derivative of Gamma integral w.\+r.\+t global unknown, evaluated at \hyperlink{classoomph_1_1Gauss}{Gauss} points for specified element. 
+
+
+
+Definition at line 378 of file fourier\+\_\+decomposed\+\_\+helmholtz\+\_\+bc\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1FourierDecomposedHelmholtzDtNMesh_a1620b1c9ce32a360c6b6ad89bdaef354}\label{classoomph_1_1FourierDecomposedHelmholtzDtNMesh_a1620b1c9ce32a360c6b6ad89bdaef354}} 
+\index{oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh@{oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh}!gamma\+\_\+at\+\_\+gauss\+\_\+point@{gamma\+\_\+at\+\_\+gauss\+\_\+point}}
+\index{gamma\+\_\+at\+\_\+gauss\+\_\+point@{gamma\+\_\+at\+\_\+gauss\+\_\+point}!oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh@{oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh}}
+\subsubsection{\texorpdfstring{gamma\+\_\+at\+\_\+gauss\+\_\+point()}{gamma\_at\_gauss\_point()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+\hyperlink{classoomph_1_1Vector}{Vector}$<$std\+::complex$<$double$>$ $>$\& \hyperlink{classoomph_1_1FourierDecomposedHelmholtzDtNMesh}{oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh}$<$ E\+L\+E\+M\+E\+NT $>$\+::gamma\+\_\+at\+\_\+gauss\+\_\+point (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1FiniteElement}{Finite\+Element} $\ast$}]{el\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gamma integral evaluated at \hyperlink{classoomph_1_1Gauss}{Gauss} points for specified element. 
+
+
+
+Definition at line 370 of file fourier\+\_\+decomposed\+\_\+helmholtz\+\_\+bc\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1FourierDecomposedHelmholtzDtNMesh_aef11b1201fcfcc7e1bc868920d803a56}\label{classoomph_1_1FourierDecomposedHelmholtzDtNMesh_aef11b1201fcfcc7e1bc868920d803a56}} 
+\index{oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh@{oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh}!n\+\_\+terms@{n\+\_\+terms}}
+\index{n\+\_\+terms@{n\+\_\+terms}!oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh@{oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh}}
+\subsubsection{\texorpdfstring{n\+\_\+terms()}{n\_terms()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+unsigned\& \hyperlink{classoomph_1_1FourierDecomposedHelmholtzDtNMesh}{oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh}$<$ E\+L\+E\+M\+E\+NT $>$\+::n\+\_\+terms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Number of terms used in the computation of the gamma integral. 
+
+
+
+Definition at line 391 of file fourier\+\_\+decomposed\+\_\+helmholtz\+\_\+bc\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1FourierDecomposedHelmholtzDtNMesh_a6aff7dd5330464d53d9d71d0f6a02dde}\label{classoomph_1_1FourierDecomposedHelmholtzDtNMesh_a6aff7dd5330464d53d9d71d0f6a02dde}} 
+\index{oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh@{oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh}!outer\+\_\+radius@{outer\+\_\+radius}}
+\index{outer\+\_\+radius@{outer\+\_\+radius}!oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh@{oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh}}
+\subsubsection{\texorpdfstring{outer\+\_\+radius()}{outer\_radius()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+double\& \hyperlink{classoomph_1_1FourierDecomposedHelmholtzDtNMesh}{oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh}$<$ E\+L\+E\+M\+E\+NT $>$\+::outer\+\_\+radius (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+The outer radius. 
+
+
+
+Definition at line 384 of file fourier\+\_\+decomposed\+\_\+helmholtz\+\_\+bc\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1FourierDecomposedHelmholtzDtNMesh_a6edd6895062bd0d756f7c4dfc585b284}\label{classoomph_1_1FourierDecomposedHelmholtzDtNMesh_a6edd6895062bd0d756f7c4dfc585b284}} 
+\index{oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh@{oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh}!setup\+\_\+gamma@{setup\+\_\+gamma}}
+\index{setup\+\_\+gamma@{setup\+\_\+gamma}!oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh@{oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh}}
+\subsubsection{\texorpdfstring{setup\+\_\+gamma()}{setup\_gamma()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classoomph_1_1FourierDecomposedHelmholtzDtNMesh}{oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh}$<$ E\+L\+E\+M\+E\+NT $>$\+::setup\+\_\+gamma (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Compute and store the gamma integral at all integration points of the constituent elements. 
+
+of the mesh\textquotesingle{}s constituent elements
+
+================================================================ Compute and store the gamma integral and derivates Imaginary unit 
+
+Definition at line 937 of file fourier\+\_\+decomposed\+\_\+helmholtz\+\_\+bc\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Boundary\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::compute\+\_\+gamma\+\_\+contribution(), oomph\+::\+Finite\+Element\+::dim(), e, oomph\+::\+Generalised\+Element\+::eqn\+\_\+number(), oomph\+::\+Legendre\+\_\+functions\+\_\+helper\+::factorial(), oomph\+::\+Fourier\+Decomposed\+Helmholtz\+B\+C\+Element\+Base$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+Fourier\+Decomposed\+Helmholtz\+B\+C\+Element\+Base(), oomph\+::\+Mathematical\+Constants\+::\+I(), i, oomph\+::\+Finite\+Element\+::integral\+\_\+pt(), oomph\+::\+Face\+Element\+::interpolated\+\_\+x(), oomph\+::\+Finite\+Element\+::nnode(), oomph\+::\+Finite\+Element\+::nodal\+\_\+local\+\_\+eqn(), oomph\+::\+Finite\+Element\+::node\+\_\+pt(), oomph\+::\+Mathematical\+Constants\+::\+Pi, s, oomph\+::\+Tolerance\+For\+Fourier\+Decomposed\+Helmholtz\+Outer\+Boundary\+::\+Tol, oomph\+::\+Fourier\+Decomposed\+Helmholtz\+B\+C\+Element\+Base$<$ E\+L\+E\+M\+E\+N\+T $>$\+::u\+\_\+index\+\_\+fourier\+\_\+decomposed\+\_\+helmholtz(), and oomph\+::\+Node\+::x().
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1FourierDecomposedHelmholtzDtNMesh_a8a58410244815336ffacc1e33cbc0565}\label{classoomph_1_1FourierDecomposedHelmholtzDtNMesh_a8a58410244815336ffacc1e33cbc0565}} 
+\index{oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh@{oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh}!D\+\_\+\+Gamma\+\_\+at\+\_\+gauss\+\_\+point@{D\+\_\+\+Gamma\+\_\+at\+\_\+gauss\+\_\+point}}
+\index{D\+\_\+\+Gamma\+\_\+at\+\_\+gauss\+\_\+point@{D\+\_\+\+Gamma\+\_\+at\+\_\+gauss\+\_\+point}!oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh@{oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh}}
+\subsubsection{\texorpdfstring{D\+\_\+\+Gamma\+\_\+at\+\_\+gauss\+\_\+point}{D\_Gamma\_at\_gauss\_point}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+std\+::map$<$\hyperlink{classoomph_1_1FiniteElement}{Finite\+Element}$\ast$,\hyperlink{classoomph_1_1Vector}{Vector}$<$std\+::map$<$unsigned,std\+::complex$<$double$>$ $>$ $>$ $>$ \hyperlink{classoomph_1_1FourierDecomposedHelmholtzDtNMesh}{oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh}$<$ E\+L\+E\+M\+E\+NT $>$\+::D\+\_\+\+Gamma\+\_\+at\+\_\+gauss\+\_\+point\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Container to store the derivate of Gamma integral w.\+r.\+t global unknown evaluated at \hyperlink{classoomph_1_1Gauss}{Gauss} points for specified element. 
+
+
+
+Definition at line 413 of file fourier\+\_\+decomposed\+\_\+helmholtz\+\_\+bc\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1FourierDecomposedHelmholtzDtNMesh_a956867cfdb35fc5a714193bee55a54c4}\label{classoomph_1_1FourierDecomposedHelmholtzDtNMesh_a956867cfdb35fc5a714193bee55a54c4}} 
+\index{oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh@{oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh}!Gamma\+\_\+at\+\_\+gauss\+\_\+point@{Gamma\+\_\+at\+\_\+gauss\+\_\+point}}
+\index{Gamma\+\_\+at\+\_\+gauss\+\_\+point@{Gamma\+\_\+at\+\_\+gauss\+\_\+point}!oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh@{oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh}}
+\subsubsection{\texorpdfstring{Gamma\+\_\+at\+\_\+gauss\+\_\+point}{Gamma\_at\_gauss\_point}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+std\+::map$<$\hyperlink{classoomph_1_1FiniteElement}{Finite\+Element}$\ast$,\hyperlink{classoomph_1_1Vector}{Vector}$<$std\+::complex$<$double$>$ $>$ $>$ \hyperlink{classoomph_1_1FourierDecomposedHelmholtzDtNMesh}{oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh}$<$ E\+L\+E\+M\+E\+NT $>$\+::Gamma\+\_\+at\+\_\+gauss\+\_\+point\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Container to store the gamma integral for given \hyperlink{classoomph_1_1Gauss}{Gauss} point and element. 
+
+
+
+Definition at line 407 of file fourier\+\_\+decomposed\+\_\+helmholtz\+\_\+bc\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1FourierDecomposedHelmholtzDtNMesh_a79e18c0ebbb532a4d95dfb2f1f3570ba}\label{classoomph_1_1FourierDecomposedHelmholtzDtNMesh_a79e18c0ebbb532a4d95dfb2f1f3570ba}} 
+\index{oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh@{oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh}!N\+\_\+terms@{N\+\_\+terms}}
+\index{N\+\_\+terms@{N\+\_\+terms}!oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh@{oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh}}
+\subsubsection{\texorpdfstring{N\+\_\+terms}{N\_terms}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+unsigned \hyperlink{classoomph_1_1FourierDecomposedHelmholtzDtNMesh}{oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh}$<$ E\+L\+E\+M\+E\+NT $>$\+::N\+\_\+terms\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Number of terms used in the Gamma computation. 
+
+
+
+Definition at line 402 of file fourier\+\_\+decomposed\+\_\+helmholtz\+\_\+bc\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1FourierDecomposedHelmholtzDtNMesh_aafc92f60b7a64d97fd04e88e57889226}\label{classoomph_1_1FourierDecomposedHelmholtzDtNMesh_aafc92f60b7a64d97fd04e88e57889226}} 
+\index{oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh@{oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh}!Outer\+\_\+radius@{Outer\+\_\+radius}}
+\index{Outer\+\_\+radius@{Outer\+\_\+radius}!oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh@{oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh}}
+\subsubsection{\texorpdfstring{Outer\+\_\+radius}{Outer\_radius}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT$>$ \\
+double \hyperlink{classoomph_1_1FourierDecomposedHelmholtzDtNMesh}{oomph\+::\+Fourier\+Decomposed\+Helmholtz\+Dt\+N\+Mesh}$<$ E\+L\+E\+M\+E\+NT $>$\+::Outer\+\_\+radius\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Outer radius. 
+
+
+
+Definition at line 399 of file fourier\+\_\+decomposed\+\_\+helmholtz\+\_\+bc\+\_\+elements.\+h.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{fourier__decomposed__helmholtz__bc__elements_8h}{fourier\+\_\+decomposed\+\_\+helmholtz\+\_\+bc\+\_\+elements.\+h}\end{DoxyCompactItemize}

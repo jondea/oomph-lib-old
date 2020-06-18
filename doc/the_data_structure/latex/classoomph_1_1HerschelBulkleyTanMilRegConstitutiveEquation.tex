@@ -1,0 +1,190 @@
+\hypertarget{classoomph_1_1HerschelBulkleyTanMilRegConstitutiveEquation}{}\section{oomph\+:\+:Herschel\+Bulkley\+Tan\+Mil\+Reg\+Constitutive\+Equation$<$ D\+IM $>$ Class Template Reference}
+\label{classoomph_1_1HerschelBulkleyTanMilRegConstitutiveEquation}\index{oomph\+::\+Herschel\+Bulkley\+Tan\+Mil\+Reg\+Constitutive\+Equation$<$ D\+I\+M $>$@{oomph\+::\+Herschel\+Bulkley\+Tan\+Mil\+Reg\+Constitutive\+Equation$<$ D\+I\+M $>$}}
+
+
+{\ttfamily \#include $<$generalised\+\_\+newtonian\+\_\+constitutive\+\_\+models.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Herschel\+Bulkley\+Tan\+Mil\+Reg\+Constitutive\+Equation$<$ D\+IM $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classoomph_1_1HerschelBulkleyTanMilRegConstitutiveEquation}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1HerschelBulkleyTanMilRegConstitutiveEquation_a9d29fd9b5b414a0bb8bebd521ea48ea0}{Herschel\+Bulkley\+Tan\+Mil\+Reg\+Constitutive\+Equation} (double $\ast$yield\+\_\+stress\+\_\+pt, double $\ast$flow\+\_\+index\+\_\+pt, double $\ast$critical\+\_\+second\+\_\+invariant\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em \char`\"{}\+Cutoff regularised\char`\"{} Herschel Bulkley constitutive equation \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1HerschelBulkleyTanMilRegConstitutiveEquation_a691613fc3cfa4bb2234dbc7eed260efc}{calculate\+\_\+cut\+\_\+off\+\_\+viscosity} ()
+\begin{DoxyCompactList}\small\item\em Function that calculates the cut off viscosity. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1HerschelBulkleyTanMilRegConstitutiveEquation_a29fd020fb6b5120369d18d4d02daea81}{report\+\_\+cut\+\_\+off\+\_\+values} (double \&cut\+\_\+off\+\_\+invariant, double \&cut\+\_\+off\+\_\+viscosity)
+\begin{DoxyCompactList}\small\item\em Report cutoff values. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1HerschelBulkleyTanMilRegConstitutiveEquation_af34701ebef214fb30dbc2813e66173b5}{viscosity} (const double \&second\+\_\+invariant\+\_\+of\+\_\+rate\+\_\+of\+\_\+strain\+\_\+tensor)
+\begin{DoxyCompactList}\small\item\em Viscosity ratio as a fct of strain rate invariant. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1HerschelBulkleyTanMilRegConstitutiveEquation_a7b54c8c6374ba0bd80f5d51768701dc0}{dviscosity\+\_\+dinvariant} (const double \&second\+\_\+invariant\+\_\+of\+\_\+rate\+\_\+of\+\_\+strain\+\_\+tensor)
+\begin{DoxyCompactList}\small\item\em Deriv of viscosity w.\+r.\+t. strain rate invariant. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double $\ast$ \hyperlink{classoomph_1_1HerschelBulkleyTanMilRegConstitutiveEquation_ab82870d38f24c2fa57bda8b0e2757e88}{Yield\+\_\+stress\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em yield stress tau\+\_\+y \end{DoxyCompactList}\item 
+double $\ast$ \hyperlink{classoomph_1_1HerschelBulkleyTanMilRegConstitutiveEquation_adb6717490ace6db7300c049c1df2c8fa}{Flow\+\_\+index\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em power law index n \end{DoxyCompactList}\item 
+double $\ast$ \hyperlink{classoomph_1_1HerschelBulkleyTanMilRegConstitutiveEquation_ad77e04bccbd2e7eb24fc8965e68007b9}{Critical\+\_\+second\+\_\+invariant\+\_\+pt}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$unsigned D\+IM$>$\newline
+class oomph\+::\+Herschel\+Bulkley\+Tan\+Mil\+Reg\+Constitutive\+Equation$<$ D\+I\+M $>$}
+
+A \hyperlink{classoomph_1_1GeneralisedNewtonianConstitutiveEquation}{Generalised\+Newtonian\+Constitutive\+Equation} class defining a Herschel-\/\+Bulkley fluid using Tanner and Milthorpe\textquotesingle{}s (1983) regularisation 
+
+Definition at line 244 of file generalised\+\_\+newtonian\+\_\+constitutive\+\_\+models.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1HerschelBulkleyTanMilRegConstitutiveEquation_a9d29fd9b5b414a0bb8bebd521ea48ea0}\label{classoomph_1_1HerschelBulkleyTanMilRegConstitutiveEquation_a9d29fd9b5b414a0bb8bebd521ea48ea0}} 
+\index{oomph\+::\+Herschel\+Bulkley\+Tan\+Mil\+Reg\+Constitutive\+Equation@{oomph\+::\+Herschel\+Bulkley\+Tan\+Mil\+Reg\+Constitutive\+Equation}!Herschel\+Bulkley\+Tan\+Mil\+Reg\+Constitutive\+Equation@{Herschel\+Bulkley\+Tan\+Mil\+Reg\+Constitutive\+Equation}}
+\index{Herschel\+Bulkley\+Tan\+Mil\+Reg\+Constitutive\+Equation@{Herschel\+Bulkley\+Tan\+Mil\+Reg\+Constitutive\+Equation}!oomph\+::\+Herschel\+Bulkley\+Tan\+Mil\+Reg\+Constitutive\+Equation@{oomph\+::\+Herschel\+Bulkley\+Tan\+Mil\+Reg\+Constitutive\+Equation}}
+\subsubsection{\texorpdfstring{Herschel\+Bulkley\+Tan\+Mil\+Reg\+Constitutive\+Equation()}{HerschelBulkleyTanMilRegConstitutiveEquation()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+\hyperlink{classoomph_1_1HerschelBulkleyTanMilRegConstitutiveEquation}{oomph\+::\+Herschel\+Bulkley\+Tan\+Mil\+Reg\+Constitutive\+Equation}$<$ D\+IM $>$\+::\hyperlink{classoomph_1_1HerschelBulkleyTanMilRegConstitutiveEquation}{Herschel\+Bulkley\+Tan\+Mil\+Reg\+Constitutive\+Equation} (\begin{DoxyParamCaption}\item[{double $\ast$}]{yield\+\_\+stress\+\_\+pt,  }\item[{double $\ast$}]{flow\+\_\+index\+\_\+pt,  }\item[{double $\ast$}]{critical\+\_\+second\+\_\+invariant\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\char`\"{}\+Cutoff regularised\char`\"{} Herschel Bulkley constitutive equation 
+
+
+
+Definition at line 264 of file generalised\+\_\+newtonian\+\_\+constitutive\+\_\+models.\+h.
+
+
+
+References oomph\+::oomph\+\_\+info.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1HerschelBulkleyTanMilRegConstitutiveEquation_a691613fc3cfa4bb2234dbc7eed260efc}\label{classoomph_1_1HerschelBulkleyTanMilRegConstitutiveEquation_a691613fc3cfa4bb2234dbc7eed260efc}} 
+\index{oomph\+::\+Herschel\+Bulkley\+Tan\+Mil\+Reg\+Constitutive\+Equation@{oomph\+::\+Herschel\+Bulkley\+Tan\+Mil\+Reg\+Constitutive\+Equation}!calculate\+\_\+cut\+\_\+off\+\_\+viscosity@{calculate\+\_\+cut\+\_\+off\+\_\+viscosity}}
+\index{calculate\+\_\+cut\+\_\+off\+\_\+viscosity@{calculate\+\_\+cut\+\_\+off\+\_\+viscosity}!oomph\+::\+Herschel\+Bulkley\+Tan\+Mil\+Reg\+Constitutive\+Equation@{oomph\+::\+Herschel\+Bulkley\+Tan\+Mil\+Reg\+Constitutive\+Equation}}
+\subsubsection{\texorpdfstring{calculate\+\_\+cut\+\_\+off\+\_\+viscosity()}{calculate\_cut\_off\_viscosity()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+double \hyperlink{classoomph_1_1HerschelBulkleyTanMilRegConstitutiveEquation}{oomph\+::\+Herschel\+Bulkley\+Tan\+Mil\+Reg\+Constitutive\+Equation}$<$ D\+IM $>$\+::calculate\+\_\+cut\+\_\+off\+\_\+viscosity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function that calculates the cut off viscosity. 
+
+
+
+Definition at line 286 of file generalised\+\_\+newtonian\+\_\+constitutive\+\_\+models.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1HerschelBulkleyTanMilRegConstitutiveEquation_a7b54c8c6374ba0bd80f5d51768701dc0}\label{classoomph_1_1HerschelBulkleyTanMilRegConstitutiveEquation_a7b54c8c6374ba0bd80f5d51768701dc0}} 
+\index{oomph\+::\+Herschel\+Bulkley\+Tan\+Mil\+Reg\+Constitutive\+Equation@{oomph\+::\+Herschel\+Bulkley\+Tan\+Mil\+Reg\+Constitutive\+Equation}!dviscosity\+\_\+dinvariant@{dviscosity\+\_\+dinvariant}}
+\index{dviscosity\+\_\+dinvariant@{dviscosity\+\_\+dinvariant}!oomph\+::\+Herschel\+Bulkley\+Tan\+Mil\+Reg\+Constitutive\+Equation@{oomph\+::\+Herschel\+Bulkley\+Tan\+Mil\+Reg\+Constitutive\+Equation}}
+\subsubsection{\texorpdfstring{dviscosity\+\_\+dinvariant()}{dviscosity\_dinvariant()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+double \hyperlink{classoomph_1_1HerschelBulkleyTanMilRegConstitutiveEquation}{oomph\+::\+Herschel\+Bulkley\+Tan\+Mil\+Reg\+Constitutive\+Equation}$<$ D\+IM $>$\+::dviscosity\+\_\+dinvariant (\begin{DoxyParamCaption}\item[{const double \&}]{second\+\_\+invariant\+\_\+of\+\_\+rate\+\_\+of\+\_\+strain\+\_\+tensor }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Deriv of viscosity w.\+r.\+t. strain rate invariant. 
+
+
+
+Implements \hyperlink{classoomph_1_1GeneralisedNewtonianConstitutiveEquation_ad0164e6ca57cc986048346e12c4d353a}{oomph\+::\+Generalised\+Newtonian\+Constitutive\+Equation$<$ D\+I\+M $>$}.
+
+
+
+Definition at line 338 of file generalised\+\_\+newtonian\+\_\+constitutive\+\_\+models.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1HerschelBulkleyTanMilRegConstitutiveEquation_a29fd020fb6b5120369d18d4d02daea81}\label{classoomph_1_1HerschelBulkleyTanMilRegConstitutiveEquation_a29fd020fb6b5120369d18d4d02daea81}} 
+\index{oomph\+::\+Herschel\+Bulkley\+Tan\+Mil\+Reg\+Constitutive\+Equation@{oomph\+::\+Herschel\+Bulkley\+Tan\+Mil\+Reg\+Constitutive\+Equation}!report\+\_\+cut\+\_\+off\+\_\+values@{report\+\_\+cut\+\_\+off\+\_\+values}}
+\index{report\+\_\+cut\+\_\+off\+\_\+values@{report\+\_\+cut\+\_\+off\+\_\+values}!oomph\+::\+Herschel\+Bulkley\+Tan\+Mil\+Reg\+Constitutive\+Equation@{oomph\+::\+Herschel\+Bulkley\+Tan\+Mil\+Reg\+Constitutive\+Equation}}
+\subsubsection{\texorpdfstring{report\+\_\+cut\+\_\+off\+\_\+values()}{report\_cut\_off\_values()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1HerschelBulkleyTanMilRegConstitutiveEquation}{oomph\+::\+Herschel\+Bulkley\+Tan\+Mil\+Reg\+Constitutive\+Equation}$<$ D\+IM $>$\+::report\+\_\+cut\+\_\+off\+\_\+values (\begin{DoxyParamCaption}\item[{double \&}]{cut\+\_\+off\+\_\+invariant,  }\item[{double \&}]{cut\+\_\+off\+\_\+viscosity }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Report cutoff values. 
+
+
+
+Definition at line 295 of file generalised\+\_\+newtonian\+\_\+constitutive\+\_\+models.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1HerschelBulkleyTanMilRegConstitutiveEquation_af34701ebef214fb30dbc2813e66173b5}\label{classoomph_1_1HerschelBulkleyTanMilRegConstitutiveEquation_af34701ebef214fb30dbc2813e66173b5}} 
+\index{oomph\+::\+Herschel\+Bulkley\+Tan\+Mil\+Reg\+Constitutive\+Equation@{oomph\+::\+Herschel\+Bulkley\+Tan\+Mil\+Reg\+Constitutive\+Equation}!viscosity@{viscosity}}
+\index{viscosity@{viscosity}!oomph\+::\+Herschel\+Bulkley\+Tan\+Mil\+Reg\+Constitutive\+Equation@{oomph\+::\+Herschel\+Bulkley\+Tan\+Mil\+Reg\+Constitutive\+Equation}}
+\subsubsection{\texorpdfstring{viscosity()}{viscosity()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+double \hyperlink{classoomph_1_1HerschelBulkleyTanMilRegConstitutiveEquation}{oomph\+::\+Herschel\+Bulkley\+Tan\+Mil\+Reg\+Constitutive\+Equation}$<$ D\+IM $>$\+::viscosity (\begin{DoxyParamCaption}\item[{const double \&}]{second\+\_\+invariant\+\_\+of\+\_\+rate\+\_\+of\+\_\+strain\+\_\+tensor }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Viscosity ratio as a fct of strain rate invariant. 
+
+
+
+Implements \hyperlink{classoomph_1_1GeneralisedNewtonianConstitutiveEquation_a3e6d811786e39ca3c3a9b1c46249442f}{oomph\+::\+Generalised\+Newtonian\+Constitutive\+Equation$<$ D\+I\+M $>$}.
+
+
+
+Definition at line 304 of file generalised\+\_\+newtonian\+\_\+constitutive\+\_\+models.\+h.
+
+
+
+References oomph\+::\+Generalised\+Newtonian\+Constitutive\+Equation$<$ D\+I\+M $>$\+::dviscosity\+\_\+dinvariant().
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1HerschelBulkleyTanMilRegConstitutiveEquation_ad77e04bccbd2e7eb24fc8965e68007b9}\label{classoomph_1_1HerschelBulkleyTanMilRegConstitutiveEquation_ad77e04bccbd2e7eb24fc8965e68007b9}} 
+\index{oomph\+::\+Herschel\+Bulkley\+Tan\+Mil\+Reg\+Constitutive\+Equation@{oomph\+::\+Herschel\+Bulkley\+Tan\+Mil\+Reg\+Constitutive\+Equation}!Critical\+\_\+second\+\_\+invariant\+\_\+pt@{Critical\+\_\+second\+\_\+invariant\+\_\+pt}}
+\index{Critical\+\_\+second\+\_\+invariant\+\_\+pt@{Critical\+\_\+second\+\_\+invariant\+\_\+pt}!oomph\+::\+Herschel\+Bulkley\+Tan\+Mil\+Reg\+Constitutive\+Equation@{oomph\+::\+Herschel\+Bulkley\+Tan\+Mil\+Reg\+Constitutive\+Equation}}
+\subsubsection{\texorpdfstring{Critical\+\_\+second\+\_\+invariant\+\_\+pt}{Critical\_second\_invariant\_pt}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+double$\ast$ \hyperlink{classoomph_1_1HerschelBulkleyTanMilRegConstitutiveEquation}{oomph\+::\+Herschel\+Bulkley\+Tan\+Mil\+Reg\+Constitutive\+Equation}$<$ D\+IM $>$\+::Critical\+\_\+second\+\_\+invariant\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+value of the second invariant below which we have constant (Newtonian) viscosity -- assumed to be always positive 
+
+Definition at line 257 of file generalised\+\_\+newtonian\+\_\+constitutive\+\_\+models.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1HerschelBulkleyTanMilRegConstitutiveEquation_adb6717490ace6db7300c049c1df2c8fa}\label{classoomph_1_1HerschelBulkleyTanMilRegConstitutiveEquation_adb6717490ace6db7300c049c1df2c8fa}} 
+\index{oomph\+::\+Herschel\+Bulkley\+Tan\+Mil\+Reg\+Constitutive\+Equation@{oomph\+::\+Herschel\+Bulkley\+Tan\+Mil\+Reg\+Constitutive\+Equation}!Flow\+\_\+index\+\_\+pt@{Flow\+\_\+index\+\_\+pt}}
+\index{Flow\+\_\+index\+\_\+pt@{Flow\+\_\+index\+\_\+pt}!oomph\+::\+Herschel\+Bulkley\+Tan\+Mil\+Reg\+Constitutive\+Equation@{oomph\+::\+Herschel\+Bulkley\+Tan\+Mil\+Reg\+Constitutive\+Equation}}
+\subsubsection{\texorpdfstring{Flow\+\_\+index\+\_\+pt}{Flow\_index\_pt}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+double$\ast$ \hyperlink{classoomph_1_1HerschelBulkleyTanMilRegConstitutiveEquation}{oomph\+::\+Herschel\+Bulkley\+Tan\+Mil\+Reg\+Constitutive\+Equation}$<$ D\+IM $>$\+::Flow\+\_\+index\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+power law index n 
+
+
+
+Definition at line 253 of file generalised\+\_\+newtonian\+\_\+constitutive\+\_\+models.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1HerschelBulkleyTanMilRegConstitutiveEquation_ab82870d38f24c2fa57bda8b0e2757e88}\label{classoomph_1_1HerschelBulkleyTanMilRegConstitutiveEquation_ab82870d38f24c2fa57bda8b0e2757e88}} 
+\index{oomph\+::\+Herschel\+Bulkley\+Tan\+Mil\+Reg\+Constitutive\+Equation@{oomph\+::\+Herschel\+Bulkley\+Tan\+Mil\+Reg\+Constitutive\+Equation}!Yield\+\_\+stress\+\_\+pt@{Yield\+\_\+stress\+\_\+pt}}
+\index{Yield\+\_\+stress\+\_\+pt@{Yield\+\_\+stress\+\_\+pt}!oomph\+::\+Herschel\+Bulkley\+Tan\+Mil\+Reg\+Constitutive\+Equation@{oomph\+::\+Herschel\+Bulkley\+Tan\+Mil\+Reg\+Constitutive\+Equation}}
+\subsubsection{\texorpdfstring{Yield\+\_\+stress\+\_\+pt}{Yield\_stress\_pt}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+double$\ast$ \hyperlink{classoomph_1_1HerschelBulkleyTanMilRegConstitutiveEquation}{oomph\+::\+Herschel\+Bulkley\+Tan\+Mil\+Reg\+Constitutive\+Equation}$<$ D\+IM $>$\+::Yield\+\_\+stress\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+yield stress tau\+\_\+y 
+
+
+
+Definition at line 250 of file generalised\+\_\+newtonian\+\_\+constitutive\+\_\+models.\+h.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{generalised__newtonian__constitutive__models_8h}{generalised\+\_\+newtonian\+\_\+constitutive\+\_\+models.\+h}\end{DoxyCompactItemize}

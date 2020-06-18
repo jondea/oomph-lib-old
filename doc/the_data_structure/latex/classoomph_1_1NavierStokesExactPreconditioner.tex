@@ -1,0 +1,150 @@
+\hypertarget{classoomph_1_1NavierStokesExactPreconditioner}{}\section{oomph\+:\+:Navier\+Stokes\+Exact\+Preconditioner$<$ M\+A\+T\+R\+IX $>$ Class Template Reference}
+\label{classoomph_1_1NavierStokesExactPreconditioner}\index{oomph\+::\+Navier\+Stokes\+Exact\+Preconditioner$<$ M\+A\+T\+R\+I\+X $>$@{oomph\+::\+Navier\+Stokes\+Exact\+Preconditioner$<$ M\+A\+T\+R\+I\+X $>$}}
+
+
+The exact Navier Stokes preconditioner. This extracts 2x2 blocks (corresponding to the velocity and pressure unknowns) and uses these to build a single preconditioner matrix for testing purposes. Iterative solvers should converge in a single step if this is used. If it doesn\textquotesingle{}t something is wrong in the setup of the block matrices.  
+
+
+
+
+{\ttfamily \#include $<$navier\+\_\+stokes\+\_\+preconditioners.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Navier\+Stokes\+Exact\+Preconditioner$<$ M\+A\+T\+R\+IX $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{classoomph_1_1NavierStokesExactPreconditioner}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1NavierStokesExactPreconditioner_ad94bf61083255a8a9304a6dfb88a2ca2}{Navier\+Stokes\+Exact\+Preconditioner} ()
+\begin{DoxyCompactList}\small\item\em Constructor -\/ do nothing. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1NavierStokesExactPreconditioner_a8d47c42999aa6d0e2e01e8397f380ad5}{$\sim$\+Navier\+Stokes\+Exact\+Preconditioner} ()
+\begin{DoxyCompactList}\small\item\em Destructor -\/ do nothing. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1NavierStokesExactPreconditioner_ad7975a821efddb4cd6566f0c990142e3}{Navier\+Stokes\+Exact\+Preconditioner} (const \hyperlink{classoomph_1_1NavierStokesExactPreconditioner}{Navier\+Stokes\+Exact\+Preconditioner} \&)
+\begin{DoxyCompactList}\small\item\em Broken copy constructor. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1NavierStokesExactPreconditioner_a2879372ba29ceaf57e68f711cd4113aa}{setup} ()
+\begin{DoxyCompactList}\small\item\em Broken assignment operator. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1NavierStokesExactPreconditioner_a6694cc09bcdaefcb55de5700e39164ff}{preconditioner\+\_\+solve} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&r, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&z)
+\begin{DoxyCompactList}\small\item\em Apply preconditioner to r. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+M\+A\+T\+R\+IX \hyperlink{classoomph_1_1NavierStokesExactPreconditioner_ace31a9a18f713467aba137d64dbf764a}{P\+\_\+matrix}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classoomph_1_1Preconditioner}{Preconditioner} matrix. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename M\+A\+T\+R\+IX$>$\newline
+class oomph\+::\+Navier\+Stokes\+Exact\+Preconditioner$<$ M\+A\+T\+R\+I\+X $>$}
+
+The exact Navier Stokes preconditioner. This extracts 2x2 blocks (corresponding to the velocity and pressure unknowns) and uses these to build a single preconditioner matrix for testing purposes. Iterative solvers should converge in a single step if this is used. If it doesn\textquotesingle{}t something is wrong in the setup of the block matrices. 
+
+Definition at line 1281 of file navier\+\_\+stokes\+\_\+preconditioners.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1NavierStokesExactPreconditioner_ad94bf61083255a8a9304a6dfb88a2ca2}\label{classoomph_1_1NavierStokesExactPreconditioner_ad94bf61083255a8a9304a6dfb88a2ca2}} 
+\index{oomph\+::\+Navier\+Stokes\+Exact\+Preconditioner@{oomph\+::\+Navier\+Stokes\+Exact\+Preconditioner}!Navier\+Stokes\+Exact\+Preconditioner@{Navier\+Stokes\+Exact\+Preconditioner}}
+\index{Navier\+Stokes\+Exact\+Preconditioner@{Navier\+Stokes\+Exact\+Preconditioner}!oomph\+::\+Navier\+Stokes\+Exact\+Preconditioner@{oomph\+::\+Navier\+Stokes\+Exact\+Preconditioner}}
+\subsubsection{\texorpdfstring{Navier\+Stokes\+Exact\+Preconditioner()}{NavierStokesExactPreconditioner()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename M\+A\+T\+R\+IX $>$ \\
+\hyperlink{classoomph_1_1NavierStokesExactPreconditioner}{oomph\+::\+Navier\+Stokes\+Exact\+Preconditioner}$<$ M\+A\+T\+R\+IX $>$\+::\hyperlink{classoomph_1_1NavierStokesExactPreconditioner}{Navier\+Stokes\+Exact\+Preconditioner} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor -\/ do nothing. 
+
+
+
+Definition at line 1287 of file navier\+\_\+stokes\+\_\+preconditioners.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1NavierStokesExactPreconditioner_a8d47c42999aa6d0e2e01e8397f380ad5}\label{classoomph_1_1NavierStokesExactPreconditioner_a8d47c42999aa6d0e2e01e8397f380ad5}} 
+\index{oomph\+::\+Navier\+Stokes\+Exact\+Preconditioner@{oomph\+::\+Navier\+Stokes\+Exact\+Preconditioner}!````~Navier\+Stokes\+Exact\+Preconditioner@{$\sim$\+Navier\+Stokes\+Exact\+Preconditioner}}
+\index{````~Navier\+Stokes\+Exact\+Preconditioner@{$\sim$\+Navier\+Stokes\+Exact\+Preconditioner}!oomph\+::\+Navier\+Stokes\+Exact\+Preconditioner@{oomph\+::\+Navier\+Stokes\+Exact\+Preconditioner}}
+\subsubsection{\texorpdfstring{$\sim$\+Navier\+Stokes\+Exact\+Preconditioner()}{~NavierStokesExactPreconditioner()}}
+{\footnotesize\ttfamily template$<$typename M\+A\+T\+R\+IX $>$ \\
+\hyperlink{classoomph_1_1NavierStokesExactPreconditioner}{oomph\+::\+Navier\+Stokes\+Exact\+Preconditioner}$<$ M\+A\+T\+R\+IX $>$\+::$\sim$\hyperlink{classoomph_1_1NavierStokesExactPreconditioner}{Navier\+Stokes\+Exact\+Preconditioner} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Destructor -\/ do nothing. 
+
+
+
+Definition at line 1291 of file navier\+\_\+stokes\+\_\+preconditioners.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1NavierStokesExactPreconditioner_ad7975a821efddb4cd6566f0c990142e3}\label{classoomph_1_1NavierStokesExactPreconditioner_ad7975a821efddb4cd6566f0c990142e3}} 
+\index{oomph\+::\+Navier\+Stokes\+Exact\+Preconditioner@{oomph\+::\+Navier\+Stokes\+Exact\+Preconditioner}!Navier\+Stokes\+Exact\+Preconditioner@{Navier\+Stokes\+Exact\+Preconditioner}}
+\index{Navier\+Stokes\+Exact\+Preconditioner@{Navier\+Stokes\+Exact\+Preconditioner}!oomph\+::\+Navier\+Stokes\+Exact\+Preconditioner@{oomph\+::\+Navier\+Stokes\+Exact\+Preconditioner}}
+\subsubsection{\texorpdfstring{Navier\+Stokes\+Exact\+Preconditioner()}{NavierStokesExactPreconditioner()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename M\+A\+T\+R\+IX $>$ \\
+\hyperlink{classoomph_1_1NavierStokesExactPreconditioner}{oomph\+::\+Navier\+Stokes\+Exact\+Preconditioner}$<$ M\+A\+T\+R\+IX $>$\+::\hyperlink{classoomph_1_1NavierStokesExactPreconditioner}{Navier\+Stokes\+Exact\+Preconditioner} (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1NavierStokesExactPreconditioner}{Navier\+Stokes\+Exact\+Preconditioner}$<$ M\+A\+T\+R\+IX $>$ \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Broken copy constructor. 
+
+
+
+Definition at line 1295 of file navier\+\_\+stokes\+\_\+preconditioners.\+h.
+
+
+
+References oomph\+::\+Broken\+Copy\+::broken\+\_\+copy(), and oomph\+::\+Terminate\+Helper\+::setup().
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1NavierStokesExactPreconditioner_a6694cc09bcdaefcb55de5700e39164ff}\label{classoomph_1_1NavierStokesExactPreconditioner_a6694cc09bcdaefcb55de5700e39164ff}} 
+\index{oomph\+::\+Navier\+Stokes\+Exact\+Preconditioner@{oomph\+::\+Navier\+Stokes\+Exact\+Preconditioner}!preconditioner\+\_\+solve@{preconditioner\+\_\+solve}}
+\index{preconditioner\+\_\+solve@{preconditioner\+\_\+solve}!oomph\+::\+Navier\+Stokes\+Exact\+Preconditioner@{oomph\+::\+Navier\+Stokes\+Exact\+Preconditioner}}
+\subsubsection{\texorpdfstring{preconditioner\+\_\+solve()}{preconditioner\_solve()}}
+{\footnotesize\ttfamily template$<$typename M\+A\+T\+R\+IX $>$ \\
+void \hyperlink{classoomph_1_1NavierStokesExactPreconditioner}{oomph\+::\+Navier\+Stokes\+Exact\+Preconditioner}$<$ M\+A\+T\+R\+IX $>$\+::preconditioner\+\_\+solve (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{r,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{z }\end{DoxyParamCaption})}
+
+
+
+Apply preconditioner to r. 
+
+\mbox{\Hypertarget{classoomph_1_1NavierStokesExactPreconditioner_a2879372ba29ceaf57e68f711cd4113aa}\label{classoomph_1_1NavierStokesExactPreconditioner_a2879372ba29ceaf57e68f711cd4113aa}} 
+\index{oomph\+::\+Navier\+Stokes\+Exact\+Preconditioner@{oomph\+::\+Navier\+Stokes\+Exact\+Preconditioner}!setup@{setup}}
+\index{setup@{setup}!oomph\+::\+Navier\+Stokes\+Exact\+Preconditioner@{oomph\+::\+Navier\+Stokes\+Exact\+Preconditioner}}
+\subsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily template$<$typename M\+A\+T\+R\+IX $>$ \\
+void \hyperlink{classoomph_1_1NavierStokesExactPreconditioner}{oomph\+::\+Navier\+Stokes\+Exact\+Preconditioner}$<$ M\+A\+T\+R\+IX $>$\+::setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Broken assignment operator. 
+
+Setup the preconditioner 
+
+Implements \hyperlink{classoomph_1_1Preconditioner_af4886f4efe510e5c9b0eb19422943588}{oomph\+::\+Preconditioner}.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1NavierStokesExactPreconditioner_ace31a9a18f713467aba137d64dbf764a}\label{classoomph_1_1NavierStokesExactPreconditioner_ace31a9a18f713467aba137d64dbf764a}} 
+\index{oomph\+::\+Navier\+Stokes\+Exact\+Preconditioner@{oomph\+::\+Navier\+Stokes\+Exact\+Preconditioner}!P\+\_\+matrix@{P\+\_\+matrix}}
+\index{P\+\_\+matrix@{P\+\_\+matrix}!oomph\+::\+Navier\+Stokes\+Exact\+Preconditioner@{oomph\+::\+Navier\+Stokes\+Exact\+Preconditioner}}
+\subsubsection{\texorpdfstring{P\+\_\+matrix}{P\_matrix}}
+{\footnotesize\ttfamily template$<$typename M\+A\+T\+R\+IX $>$ \\
+M\+A\+T\+R\+IX \hyperlink{classoomph_1_1NavierStokesExactPreconditioner}{oomph\+::\+Navier\+Stokes\+Exact\+Preconditioner}$<$ M\+A\+T\+R\+IX $>$\+::P\+\_\+matrix\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+\hyperlink{classoomph_1_1Preconditioner}{Preconditioner} matrix. 
+
+
+
+Definition at line 1319 of file navier\+\_\+stokes\+\_\+preconditioners.\+h.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{navier__stokes__preconditioners_8h}{navier\+\_\+stokes\+\_\+preconditioners.\+h}\end{DoxyCompactItemize}

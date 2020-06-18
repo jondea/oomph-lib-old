@@ -1,0 +1,372 @@
+\hypertarget{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations}{}\section{oomph\+:\+:Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+IM $>$ Class Template Reference}
+\label{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations}\index{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$}}
+
+
+{\ttfamily \#include $<$generalised\+\_\+newtonian\+\_\+refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+IM $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=0.935412cm]{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations_a90b768448667ce9aa7932c76f9d4bc88}{Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+virtual \hyperlink{classoomph_1_1Node}{Node} $\ast$ \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations_a7192c00c8efe7f1bc48d28122f120899}{pressure\+\_\+node\+\_\+pt} (const unsigned \&n\+\_\+p)
+\begin{DoxyCompactList}\small\item\em Pointer to n\+\_\+p-\/th pressure node (Default\+: N\+U\+LL, indicating that pressure is not based on nodal interpolation). \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations_af66689b596908f67bf4af1ad9d6c11eb}{get\+\_\+pressure\+\_\+and\+\_\+velocity\+\_\+mass\+\_\+matrix\+\_\+diagonal} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&press\+\_\+mass\+\_\+diag, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&veloc\+\_\+mass\+\_\+diag, const unsigned \&which\+\_\+one=0)
+\begin{DoxyCompactList}\small\item\em Compute the diagonal of the velocity/pressure mass matrices. If which one=0, both are computed, otherwise only the pressure (which\+\_\+one=1) or the velocity mass matrix (which\+\_\+one=2 -- the L\+SC version of the preconditioner only needs that one) \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations_afed7aa29e3771db16a3f57a1eae2dbb2}{num\+\_\+\+Z2\+\_\+flux\+\_\+terms} ()
+\begin{DoxyCompactList}\small\item\em Number of \textquotesingle{}flux\textquotesingle{} terms for Z2 error estimation. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations_a6b9bbaa731432a9a9fe13e53095a78d8}{get\+\_\+\+Z2\+\_\+flux} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&flux)
+\begin{DoxyCompactList}\small\item\em Get \textquotesingle{}flux\textquotesingle{} for Z2 error recovery\+: Upper triangular entries in strain rate tensor. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations_a53a4c5277d517f5df48df7c1953b2b02}{further\+\_\+build} ()
+\begin{DoxyCompactList}\small\item\em Further build, pass the pointers down to the sons. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations_a00a1486786f3b1782fd7fb19cddf5cf4}{dinterpolated\+\_\+u\+\_\+nst\+\_\+ddata} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&du\+\_\+ddata, \hyperlink{classoomph_1_1Vector}{Vector}$<$ unsigned $>$ \&global\+\_\+eqn\+\_\+number)
+\begin{DoxyCompactList}\small\item\em Compute the derivatives of the i-\/th component of velocity at point s with respect to all data that can affect its value. In addition, return the global equation numbers corresponding to the data. Overload the non-\/refineable version to take account of hanging node information. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations_ae5a277a23c6df037288f5099b8253794}{pin\+\_\+redundant\+\_\+nodal\+\_\+pressures} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ \hyperlink{classoomph_1_1GeneralisedElement}{Generalised\+Element} $\ast$$>$ \&element\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Loop over all elements in \hyperlink{classoomph_1_1Vector}{Vector} (which typically contains all the elements in a fluid mesh) and pin the nodal pressure degrees of freedom that are not being used. Function uses the member function. \end{DoxyCompactList}\item 
+static void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations_a14f60d97099b74ad44fba69722f2e59a}{unpin\+\_\+all\+\_\+pressure\+\_\+dofs} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ \hyperlink{classoomph_1_1GeneralisedElement}{Generalised\+Element} $\ast$$>$ \&element\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Unpin all pressure dofs in elements listed in vector. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations_a5e80fae3c3c4373e082867a49cc78ad0}{unpin\+\_\+elemental\+\_\+pressure\+\_\+dofs} ()=0
+\begin{DoxyCompactList}\small\item\em Unpin all pressure dofs in the element. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations_a9a4ca54f9b1f7d1b783b5ee0c561a236}{pin\+\_\+elemental\+\_\+redundant\+\_\+nodal\+\_\+pressure\+\_\+dofs} ()
+\begin{DoxyCompactList}\small\item\em Pin unused nodal pressure dofs (empty by default, because by default pressure dofs are not associated with nodes) \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations_abb7fde3310709225b8f9fbedfb7eca58}{fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+nst} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&residuals, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&jacobian, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&mass\+\_\+matrix, unsigned flag)
+\begin{DoxyCompactList}\small\item\em Add element\textquotesingle{}s contribution to elemental residual vector and/or Jacobian matrix flag=1\+: compute both flag=0\+: compute only residual vector. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations_a0f5691d4db49d42d411a6ec08d29c45e}{get\+\_\+dresidual\+\_\+dnodal\+\_\+coordinates} (\hyperlink{classoomph_1_1RankThreeTensor}{Rank\+Three\+Tensor}$<$ double $>$ \&dresidual\+\_\+dnodal\+\_\+coordinates)
+\begin{DoxyCompactList}\small\item\em Compute derivatives of elemental residual vector with respect to nodal coordinates. Overwrites default implementation in \hyperlink{classoomph_1_1FiniteElement}{Finite\+Element} base class. dresidual\+\_\+dnodal\+\_\+coordinates(l,i,j) = d res(l) / d\+X\+\_\+\{ij\}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$unsigned D\+IM$>$\newline
+class oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$}
+
+Refineable version of the Navier--Stokes equations 
+
+Definition at line 64 of file generalised\+\_\+newtonian\+\_\+refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations_a90b768448667ce9aa7932c76f9d4bc88}\label{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations_a90b768448667ce9aa7932c76f9d4bc88}} 
+\index{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations}!Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations@{Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations}}
+\index{Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations@{Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations}!oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations()}{RefineableGeneralisedNewtonianNavierStokesEquations()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+\hyperlink{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations}$<$ D\+IM $>$\+::\hyperlink{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations}{Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor. 
+
+
+
+Definition at line 81 of file generalised\+\_\+newtonian\+\_\+refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations_a00a1486786f3b1782fd7fb19cddf5cf4}\label{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations_a00a1486786f3b1782fd7fb19cddf5cf4}} 
+\index{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations}!dinterpolated\+\_\+u\+\_\+nst\+\_\+ddata@{dinterpolated\+\_\+u\+\_\+nst\+\_\+ddata}}
+\index{dinterpolated\+\_\+u\+\_\+nst\+\_\+ddata@{dinterpolated\+\_\+u\+\_\+nst\+\_\+ddata}!oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{dinterpolated\+\_\+u\+\_\+nst\+\_\+ddata()}{dinterpolated\_u\_nst\_ddata()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations}$<$ D\+IM $>$\+::dinterpolated\+\_\+u\+\_\+nst\+\_\+ddata (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{const unsigned \&}]{i,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{du\+\_\+ddata,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ unsigned $>$ \&}]{global\+\_\+eqn\+\_\+number }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Compute the derivatives of the i-\/th component of velocity at point s with respect to all data that can affect its value. In addition, return the global equation numbers corresponding to the data. Overload the non-\/refineable version to take account of hanging node information. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1GeneralisedNewtonianNavierStokesEquations_a063505006e63d4a65f90f7a6409a9401}{oomph\+::\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$}.
+
+
+
+Definition at line 227 of file generalised\+\_\+newtonian\+\_\+refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Data\+::eqn\+\_\+number(), oomph\+::\+Generalised\+Element\+::eqn\+\_\+number(), oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+nst(), oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::get\+\_\+dresidual\+\_\+dnodal\+\_\+coordinates(), oomph\+::\+Node\+::hanging\+\_\+pt(), oomph\+::\+Node\+::is\+\_\+hanging(), oomph\+::\+Hang\+Info\+::master\+\_\+node\+\_\+pt(), oomph\+::\+Hang\+Info\+::master\+\_\+weight(), oomph\+::\+Hang\+Info\+::nmaster(), oomph\+::\+Finite\+Element\+::nnode(), oomph\+::\+Finite\+Element\+::node\+\_\+pt(), oomph\+::\+Finite\+Element\+::shape(), and oomph\+::\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::u\+\_\+index\+\_\+nst().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations_abb7fde3310709225b8f9fbedfb7eca58}\label{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations_abb7fde3310709225b8f9fbedfb7eca58}} 
+\index{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations}!fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+nst@{fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+nst}}
+\index{fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+nst@{fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+nst}!oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+nst()}{fill\_in\_generic\_residual\_contribution\_nst()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations}$<$ D\+IM $>$\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+nst (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{residuals,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{jacobian,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{mass\+\_\+matrix,  }\item[{unsigned}]{flag }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Add element\textquotesingle{}s contribution to elemental residual vector and/or Jacobian matrix flag=1\+: compute both flag=0\+: compute only residual vector. 
+
+Add element\textquotesingle{}s contribution to the elemental residual vector and/or Jacobian matrix. flag=1\+: compute both flag=0\+: compute only residual vector 
+
+Reimplemented from \hyperlink{classoomph_1_1GeneralisedNewtonianNavierStokesEquations_a1f89df32ac0963374166d401a7de7b8f}{oomph\+::\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$}.
+
+
+
+Definition at line 307 of file generalised\+\_\+newtonian\+\_\+refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+cc.
+
+
+
+References oomph\+::\+A\+L\+E\+\_\+is\+\_\+disabled, oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::get\+\_\+dresidual\+\_\+dnodal\+\_\+coordinates(), i, oomph\+::\+Hang\+Info\+::master\+\_\+node\+\_\+pt(), oomph\+::\+Hang\+Info\+::master\+\_\+weight(), oomph\+::\+Hang\+Info\+::nmaster(), s, oomph\+::\+Second\+Invariant\+Helper\+::second\+\_\+invariant(), and oomph\+::\+Quad\+Tree\+Names\+::W.
+
+
+
+Referenced by oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::dinterpolated\+\_\+u\+\_\+nst\+\_\+ddata(), and oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::get\+\_\+pressure\+\_\+and\+\_\+velocity\+\_\+mass\+\_\+matrix\+\_\+diagonal().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations_a53a4c5277d517f5df48df7c1953b2b02}\label{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations_a53a4c5277d517f5df48df7c1953b2b02}} 
+\index{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations}!further\+\_\+build@{further\+\_\+build}}
+\index{further\+\_\+build@{further\+\_\+build}!oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{further\+\_\+build()}{further\_build()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations}$<$ D\+IM $>$\+::further\+\_\+build (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Further build, pass the pointers down to the sons. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1RefineableElement_a26628ce36dfad028686adeb4694a9ef3}{oomph\+::\+Refineable\+Element}.
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1PRefineableGeneralisedNewtonianQCrouzeixRaviartElement_a5c0f444f1be1636d9cb67c754bbf76ac}{oomph\+::\+P\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element$<$ D\+I\+M $>$}, \hyperlink{classoomph_1_1PRefineableGeneralisedNewtonianQCrouzeixRaviartElement_a081745337b1a25f560af7199dfa75ce3}{oomph\+::\+P\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element$<$ D\+I\+M $>$}, \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement_ab6ba5ac30da8e91baa12c59d7805f6e5}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element$<$ D\+I\+M $>$}, \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement_a4e9f97f8423604d44da0843a46bb797d}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element$<$ D\+I\+M $>$}, \hyperlink{classoomph_1_1PRefineableGeneralisedNewtonianQCrouzeixRaviartElement_a4036689a0d7a43ab7f3bbb18204ec404}{oomph\+::\+P\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element$<$ D\+I\+M $>$}, and \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement_ab98f5825068568b99dd2f744a3e2afb3}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element$<$ D\+I\+M $>$}.
+
+
+
+Definition at line 189 of file generalised\+\_\+newtonian\+\_\+refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::\+A\+L\+E\+\_\+is\+\_\+disabled, oomph\+::\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::\+Body\+\_\+force\+\_\+fct\+\_\+pt, oomph\+::\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::body\+\_\+force\+\_\+fct\+\_\+pt(), oomph\+::\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::\+Density\+\_\+\+Ratio\+\_\+pt, oomph\+::\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::density\+\_\+ratio\+\_\+pt(), oomph\+::\+Refineable\+Element\+::father\+\_\+element\+\_\+pt(), oomph\+::\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::\+G\+\_\+pt, oomph\+::\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::g\+\_\+pt(), oomph\+::\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::re\+\_\+invfr\+\_\+pt(), oomph\+::\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::\+Re\+\_\+pt, oomph\+::\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::re\+\_\+pt(), oomph\+::\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::re\+\_\+st\+\_\+pt(), oomph\+::\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::\+Re\+Inv\+Fr\+\_\+pt, oomph\+::\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::\+Re\+St\+\_\+pt, oomph\+::\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::\+Source\+\_\+fct\+\_\+pt, oomph\+::\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::source\+\_\+fct\+\_\+pt(), oomph\+::\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::\+Viscosity\+\_\+\+Ratio\+\_\+pt, and oomph\+::\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::viscosity\+\_\+ratio\+\_\+pt().
+
+
+
+Referenced by oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element$<$ D\+I\+M $>$\+::further\+\_\+build(), oomph\+::\+P\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element$<$ D\+I\+M $>$\+::further\+\_\+build(), oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element$<$ D\+I\+M $>$\+::further\+\_\+setup\+\_\+hanging\+\_\+nodes(), and oomph\+::\+P\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element$<$ D\+I\+M $>$\+::further\+\_\+setup\+\_\+hanging\+\_\+nodes().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations_a0f5691d4db49d42d411a6ec08d29c45e}\label{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations_a0f5691d4db49d42d411a6ec08d29c45e}} 
+\index{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations}!get\+\_\+dresidual\+\_\+dnodal\+\_\+coordinates@{get\+\_\+dresidual\+\_\+dnodal\+\_\+coordinates}}
+\index{get\+\_\+dresidual\+\_\+dnodal\+\_\+coordinates@{get\+\_\+dresidual\+\_\+dnodal\+\_\+coordinates}!oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{get\+\_\+dresidual\+\_\+dnodal\+\_\+coordinates()}{get\_dresidual\_dnodal\_coordinates()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations}$<$ D\+IM $>$\+::get\+\_\+dresidual\+\_\+dnodal\+\_\+coordinates (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1RankThreeTensor}{Rank\+Three\+Tensor}$<$ double $>$ \&}]{dresidual\+\_\+dnodal\+\_\+coordinates }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Compute derivatives of elemental residual vector with respect to nodal coordinates. Overwrites default implementation in \hyperlink{classoomph_1_1FiniteElement}{Finite\+Element} base class. dresidual\+\_\+dnodal\+\_\+coordinates(l,i,j) = d res(l) / d\+X\+\_\+\{ij\}. 
+
+Compute derivatives of elemental residual vector with respect to nodal coordinates. dresidual\+\_\+dnodal\+\_\+coordinates(l,i,j) = d res(l) / d\+X\+\_\+\{ij\} Overloads the F\+D-\/based version in the FE base class. 
+
+Reimplemented from \hyperlink{classoomph_1_1GeneralisedNewtonianNavierStokesEquations_a2c26367aca1f2c400f69d63786474eb8}{oomph\+::\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$}.
+
+
+
+Definition at line 1016 of file generalised\+\_\+newtonian\+\_\+refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+cc.
+
+
+
+References oomph\+::\+A\+L\+E\+\_\+is\+\_\+disabled, oomph\+::\+Generalised\+Element\+::\+Default\+\_\+fd\+\_\+jacobian\+\_\+step, oomph\+::\+Node\+::has\+\_\+auxiliary\+\_\+node\+\_\+update\+\_\+fct\+\_\+pt(), i, oomph\+::\+Hang\+Info\+::master\+\_\+node\+\_\+pt(), oomph\+::\+Hang\+Info\+::master\+\_\+weight(), oomph\+::\+Hang\+Info\+::nmaster(), oomph\+::\+Node\+::perform\+\_\+auxiliary\+\_\+node\+\_\+update\+\_\+fct(), s, oomph\+::\+Data\+::value\+\_\+pt(), and oomph\+::\+Node\+::x().
+
+
+
+Referenced by oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::dinterpolated\+\_\+u\+\_\+nst\+\_\+ddata(), and oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+nst().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations_af66689b596908f67bf4af1ad9d6c11eb}\label{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations_af66689b596908f67bf4af1ad9d6c11eb}} 
+\index{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations}!get\+\_\+pressure\+\_\+and\+\_\+velocity\+\_\+mass\+\_\+matrix\+\_\+diagonal@{get\+\_\+pressure\+\_\+and\+\_\+velocity\+\_\+mass\+\_\+matrix\+\_\+diagonal}}
+\index{get\+\_\+pressure\+\_\+and\+\_\+velocity\+\_\+mass\+\_\+matrix\+\_\+diagonal@{get\+\_\+pressure\+\_\+and\+\_\+velocity\+\_\+mass\+\_\+matrix\+\_\+diagonal}!oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{get\+\_\+pressure\+\_\+and\+\_\+velocity\+\_\+mass\+\_\+matrix\+\_\+diagonal()}{get\_pressure\_and\_velocity\_mass\_matrix\_diagonal()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations}$<$ D\+IM $>$\+::get\+\_\+pressure\+\_\+and\+\_\+velocity\+\_\+mass\+\_\+matrix\+\_\+diagonal (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{press\+\_\+mass\+\_\+diag,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{veloc\+\_\+mass\+\_\+diag,  }\item[{const unsigned \&}]{which\+\_\+one = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Compute the diagonal of the velocity/pressure mass matrices. If which one=0, both are computed, otherwise only the pressure (which\+\_\+one=1) or the velocity mass matrix (which\+\_\+one=2 -- the L\+SC version of the preconditioner only needs that one) 
+
+Compute the diagonal of the velocity/pressure mass matrices. If which one=0, both are computed, otherwise only the pressure (which\+\_\+one=1) or the velocity mass matrix (which\+\_\+one=2 -- the L\+SC version of the preconditioner only needs that one) 
+
+Reimplemented from \hyperlink{classoomph_1_1GeneralisedNewtonianNavierStokesEquations_a6a7432333fec18d7e68efc3f99a02f16}{oomph\+::\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$}.
+
+
+
+Definition at line 51 of file generalised\+\_\+newtonian\+\_\+refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+cc.
+
+
+
+References oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+nst(), i, oomph\+::\+Hang\+Info\+::master\+\_\+node\+\_\+pt(), oomph\+::\+Hang\+Info\+::master\+\_\+weight(), oomph\+::\+Hang\+Info\+::nmaster(), s, and oomph\+::\+Quad\+Tree\+Names\+::W.
+
+
+
+Referenced by oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::pressure\+\_\+node\+\_\+pt().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations_a6b9bbaa731432a9a9fe13e53095a78d8}\label{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations_a6b9bbaa731432a9a9fe13e53095a78d8}} 
+\index{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations}!get\+\_\+\+Z2\+\_\+flux@{get\+\_\+\+Z2\+\_\+flux}}
+\index{get\+\_\+\+Z2\+\_\+flux@{get\+\_\+\+Z2\+\_\+flux}!oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{get\+\_\+\+Z2\+\_\+flux()}{get\_Z2\_flux()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations}$<$ D\+IM $>$\+::get\+\_\+\+Z2\+\_\+flux (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{flux }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get \textquotesingle{}flux\textquotesingle{} for Z2 error recovery\+: Upper triangular entries in strain rate tensor. 
+
+
+
+Implements \hyperlink{classoomph_1_1ElementWithZ2ErrorEstimator_a5688ff5f546d81771cabad82ca5a7556}{oomph\+::\+Element\+With\+Z2\+Error\+Estimator}.
+
+
+
+Definition at line 147 of file generalised\+\_\+newtonian\+\_\+refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References i, and oomph\+::\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::strain\+\_\+rate().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations_afed7aa29e3771db16a3f57a1eae2dbb2}\label{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations_afed7aa29e3771db16a3f57a1eae2dbb2}} 
+\index{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations}!num\+\_\+\+Z2\+\_\+flux\+\_\+terms@{num\+\_\+\+Z2\+\_\+flux\+\_\+terms}}
+\index{num\+\_\+\+Z2\+\_\+flux\+\_\+terms@{num\+\_\+\+Z2\+\_\+flux\+\_\+terms}!oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{num\+\_\+\+Z2\+\_\+flux\+\_\+terms()}{num\_Z2\_flux\_terms()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+unsigned \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations}$<$ D\+IM $>$\+::num\+\_\+\+Z2\+\_\+flux\+\_\+terms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Number of \textquotesingle{}flux\textquotesingle{} terms for Z2 error estimation. 
+
+
+
+Implements \hyperlink{classoomph_1_1ElementWithZ2ErrorEstimator_ae82c5728902e13da31be19c390fc28e3}{oomph\+::\+Element\+With\+Z2\+Error\+Estimator}.
+
+
+
+Definition at line 139 of file generalised\+\_\+newtonian\+\_\+refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations_a9a4ca54f9b1f7d1b783b5ee0c561a236}\label{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations_a9a4ca54f9b1f7d1b783b5ee0c561a236}} 
+\index{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations}!pin\+\_\+elemental\+\_\+redundant\+\_\+nodal\+\_\+pressure\+\_\+dofs@{pin\+\_\+elemental\+\_\+redundant\+\_\+nodal\+\_\+pressure\+\_\+dofs}}
+\index{pin\+\_\+elemental\+\_\+redundant\+\_\+nodal\+\_\+pressure\+\_\+dofs@{pin\+\_\+elemental\+\_\+redundant\+\_\+nodal\+\_\+pressure\+\_\+dofs}!oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{pin\+\_\+elemental\+\_\+redundant\+\_\+nodal\+\_\+pressure\+\_\+dofs()}{pin\_elemental\_redundant\_nodal\_pressure\_dofs()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+virtual void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations}$<$ D\+IM $>$\+::pin\+\_\+elemental\+\_\+redundant\+\_\+nodal\+\_\+pressure\+\_\+dofs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Pin unused nodal pressure dofs (empty by default, because by default pressure dofs are not associated with nodes) 
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_a809f295d07ea41ff6a71cf15ffb82692}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element$<$ D\+I\+M $>$}.
+
+
+
+Definition at line 76 of file generalised\+\_\+newtonian\+\_\+refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+Referenced by oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::pin\+\_\+redundant\+\_\+nodal\+\_\+pressures().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations_ae5a277a23c6df037288f5099b8253794}\label{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations_ae5a277a23c6df037288f5099b8253794}} 
+\index{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations}!pin\+\_\+redundant\+\_\+nodal\+\_\+pressures@{pin\+\_\+redundant\+\_\+nodal\+\_\+pressures}}
+\index{pin\+\_\+redundant\+\_\+nodal\+\_\+pressures@{pin\+\_\+redundant\+\_\+nodal\+\_\+pressures}!oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{pin\+\_\+redundant\+\_\+nodal\+\_\+pressures()}{pin\_redundant\_nodal\_pressures()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+static void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations}$<$ D\+IM $>$\+::pin\+\_\+redundant\+\_\+nodal\+\_\+pressures (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ \hyperlink{classoomph_1_1GeneralisedElement}{Generalised\+Element} $\ast$$>$ \&}]{element\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Loop over all elements in \hyperlink{classoomph_1_1Vector}{Vector} (which typically contains all the elements in a fluid mesh) and pin the nodal pressure degrees of freedom that are not being used. Function uses the member function. 
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \hyperlink{classoomph_1_1RefineableNavierStokesEquations}{Refineable\+Navier\+Stokes\+Equations}\+:}\+: \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations_a9a4ca54f9b1f7d1b783b5ee0c561a236}{pin\+\_\+elemental\+\_\+redundant\+\_\+nodal\+\_\+pressure\+\_\+dofs()}
+\end{DoxyItemize}which is empty by default and should be implemented for elements with nodal pressure degrees of freedom (e.\+g. for refineable Taylor-\/\+Hood.) 
+
+Definition at line 97 of file generalised\+\_\+newtonian\+\_\+refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References e, and oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::pin\+\_\+elemental\+\_\+redundant\+\_\+nodal\+\_\+pressure\+\_\+dofs().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations_a7192c00c8efe7f1bc48d28122f120899}\label{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations_a7192c00c8efe7f1bc48d28122f120899}} 
+\index{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations}!pressure\+\_\+node\+\_\+pt@{pressure\+\_\+node\+\_\+pt}}
+\index{pressure\+\_\+node\+\_\+pt@{pressure\+\_\+node\+\_\+pt}!oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{pressure\+\_\+node\+\_\+pt()}{pressure\_node\_pt()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+virtual \hyperlink{classoomph_1_1Node}{Node}$\ast$ \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations}$<$ D\+IM $>$\+::pressure\+\_\+node\+\_\+pt (\begin{DoxyParamCaption}\item[{const unsigned \&}]{n\+\_\+p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Pointer to n\+\_\+p-\/th pressure node (Default\+: N\+U\+LL, indicating that pressure is not based on nodal interpolation). 
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_a464263e4f629fd72b8b97329eb0a2194}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element$<$ D\+I\+M $>$}.
+
+
+
+Definition at line 127 of file generalised\+\_\+newtonian\+\_\+refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::get\+\_\+pressure\+\_\+and\+\_\+velocity\+\_\+mass\+\_\+matrix\+\_\+diagonal().
+
+
+
+Referenced by oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element$<$ D\+I\+M $>$\+::get\+\_\+interpolating\+\_\+node\+\_\+at\+\_\+local\+\_\+coordinate(), oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element$<$ D\+I\+M $>$\+::identify\+\_\+load\+\_\+data(), oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element$<$ D\+I\+M $>$\+::interpolating\+\_\+node\+\_\+pt(), and oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element$<$ D\+I\+M $>$\+::pin\+\_\+elemental\+\_\+redundant\+\_\+nodal\+\_\+pressure\+\_\+dofs().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations_a14f60d97099b74ad44fba69722f2e59a}\label{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations_a14f60d97099b74ad44fba69722f2e59a}} 
+\index{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations}!unpin\+\_\+all\+\_\+pressure\+\_\+dofs@{unpin\+\_\+all\+\_\+pressure\+\_\+dofs}}
+\index{unpin\+\_\+all\+\_\+pressure\+\_\+dofs@{unpin\+\_\+all\+\_\+pressure\+\_\+dofs}!oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{unpin\+\_\+all\+\_\+pressure\+\_\+dofs()}{unpin\_all\_pressure\_dofs()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+static void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations}$<$ D\+IM $>$\+::unpin\+\_\+all\+\_\+pressure\+\_\+dofs (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ \hyperlink{classoomph_1_1GeneralisedElement}{Generalised\+Element} $\ast$$>$ \&}]{element\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Unpin all pressure dofs in elements listed in vector. 
+
+
+
+Definition at line 112 of file generalised\+\_\+newtonian\+\_\+refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h.
+
+
+
+References e, and oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::unpin\+\_\+elemental\+\_\+pressure\+\_\+dofs().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations_a5e80fae3c3c4373e082867a49cc78ad0}\label{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations_a5e80fae3c3c4373e082867a49cc78ad0}} 
+\index{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations}!unpin\+\_\+elemental\+\_\+pressure\+\_\+dofs@{unpin\+\_\+elemental\+\_\+pressure\+\_\+dofs}}
+\index{unpin\+\_\+elemental\+\_\+pressure\+\_\+dofs@{unpin\+\_\+elemental\+\_\+pressure\+\_\+dofs}!oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations@{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations}}
+\subsubsection{\texorpdfstring{unpin\+\_\+elemental\+\_\+pressure\+\_\+dofs()}{unpin\_elemental\_pressure\_dofs()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+virtual void \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianNavierStokesEquations}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations}$<$ D\+IM $>$\+::unpin\+\_\+elemental\+\_\+pressure\+\_\+dofs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Unpin all pressure dofs in the element. 
+
+
+
+Implemented in \hyperlink{classoomph_1_1PRefineableGeneralisedNewtonianQCrouzeixRaviartElement_a2e603c22bdef7f5a9ebf82dd46a3fae2}{oomph\+::\+P\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element$<$ D\+I\+M $>$}, \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQCrouzeixRaviartElement_a5f0ca1585eef5cae43ea9eafde474991}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Crouzeix\+Raviart\+Element$<$ D\+I\+M $>$}, and \hyperlink{classoomph_1_1RefineableGeneralisedNewtonianQTaylorHoodElement_aab4ac8ef8f49d09cd1a32e292e0ca621}{oomph\+::\+Refineable\+Generalised\+Newtonian\+Q\+Taylor\+Hood\+Element$<$ D\+I\+M $>$}.
+
+
+
+Referenced by oomph\+::\+Refineable\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::unpin\+\_\+all\+\_\+pressure\+\_\+dofs().
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{generalised__newtonian__refineable__navier__stokes__elements_8h}{generalised\+\_\+newtonian\+\_\+refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+h}\item 
+\hyperlink{generalised__newtonian__refineable__navier__stokes__elements_8cc}{generalised\+\_\+newtonian\+\_\+refineable\+\_\+navier\+\_\+stokes\+\_\+elements.\+cc}\end{DoxyCompactItemize}

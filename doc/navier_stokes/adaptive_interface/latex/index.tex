@@ -1,0 +1,1314 @@
+Detailed documentation to be written. Here\textquotesingle{}s the driver code...
+
+(This problem is solved using spatially adaptive elements with a pseudo-\/elastic remesh strategy)
+
+
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//LIC// ====================================================================}
+\textcolor{comment}{//LIC// This file forms part of oomph-lib, the object-oriented, }
+\textcolor{comment}{//LIC// multi-physics finite-element library, available }
+\textcolor{comment}{//LIC// at http://www.oomph-lib.org.}
+\textcolor{comment}{//LIC// }
+\textcolor{comment}{//LIC//    Version 1.0; svn revision $LastChangedRevision$}
+\textcolor{comment}{//LIC//}
+\textcolor{comment}{//LIC// $LastChangedDate$}
+\textcolor{comment}{//LIC// }
+\textcolor{comment}{//LIC// Copyright (C) 2006-2016 Matthias Heil and Andrew Hazel}
+\textcolor{comment}{//LIC// }
+\textcolor{comment}{//LIC// This library is free software; you can redistribute it and/or}
+\textcolor{comment}{//LIC// modify it under the terms of the GNU Lesser General Public}
+\textcolor{comment}{//LIC// License as published by the Free Software Foundation; either}
+\textcolor{comment}{//LIC// version 2.1 of the License, or (at your option) any later version.}
+\textcolor{comment}{//LIC// }
+\textcolor{comment}{//LIC// This library is distributed in the hope that it will be useful,}
+\textcolor{comment}{//LIC// but WITHOUT ANY WARRANTY; without even the implied warranty of}
+\textcolor{comment}{//LIC// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU}
+\textcolor{comment}{//LIC// Lesser General Public License for more details.}
+\textcolor{comment}{//LIC// }
+\textcolor{comment}{//LIC// You should have received a copy of the GNU Lesser General Public}
+\textcolor{comment}{//LIC// License along with this library; if not, write to the Free Software}
+\textcolor{comment}{//LIC// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA}
+\textcolor{comment}{//LIC// 02110-1301  USA.}
+\textcolor{comment}{//LIC// }
+\textcolor{comment}{//LIC// The authors may be contacted at oomph-lib@maths.man.ac.uk.}
+\textcolor{comment}{//LIC// }
+\textcolor{comment}{//LIC//====================================================================}
+\textcolor{comment}{//A driver program to solve the problem of a cylinder rotating near a free}
+\textcolor{comment}{//surface}
+
+\textcolor{preprocessor}{#include "generic.h"}
+\textcolor{preprocessor}{#include "navier\_stokes.h"}
+\textcolor{preprocessor}{#include "solid.h"}
+\textcolor{preprocessor}{#include "fluid\_interface.h"}
+
+\textcolor{keyword}{using namespace }\hyperlink{namespaceoomph}{oomph};
+
+
+\textcolor{comment}{//=start\_of\_namespace================================================}\textcolor{comment}{}
+\textcolor{comment}{/// Namespace for physical parameters}
+\textcolor{comment}{}\textcolor{comment}{//===================================================================}
+\textcolor{keyword}{namespace }\hyperlink{namespaceGlobal__Physical__Variables}{Global\_Physical\_Variables}
+\{
+\textcolor{comment}{}
+\textcolor{comment}{ /// Pseudo-solid Poisson ratio}
+\textcolor{comment}{} \textcolor{keywordtype}{double} \hyperlink{namespaceGlobal__Physical__Variables_a3962c36313826b19f216f6bbbdd6a477}{Nu}=0.1;
+\textcolor{comment}{}
+\textcolor{comment}{ ///Direction of the wall normal vector}
+\textcolor{comment}{} Vector<double> \hyperlink{namespaceGlobal__Physical__Variables_a5feb3df21fc4a0adefadecb8a8ed98d7}{Wall\_normal};
+\textcolor{comment}{}
+\textcolor{comment}{ /// \(\backslash\)short Function that specifies the wall unit normal}
+\textcolor{comment}{} \textcolor{keywordtype}{void} \hyperlink{namespaceGlobal__Physical__Variables_a0d48e8726fa485de2b2df2d5031ec41b}{wall\_unit\_normal\_fct}(\textcolor{keyword}{const} Vector<double> &x, 
+                      Vector<double> &normal)
+ \{
+  normal=\hyperlink{namespaceGlobal__Physical__Variables_a5feb3df21fc4a0adefadecb8a8ed98d7}{Wall\_normal};
+ \}
+
+\} \textcolor{comment}{// end\_of\_namespace}
+
+
+\textcolor{comment}{//My own Ellipse class}
+\textcolor{keyword}{class }\hyperlink{classGeneralEllipse}{GeneralEllipse} : \textcolor{keyword}{public} GeomObject
+\{
+\textcolor{keyword}{private}:
+ \textcolor{comment}{//Internal data to store the centre and semi-axes}
+ \textcolor{keywordtype}{double} *centre\_x\_pt, *centre\_y\_pt, *a\_pt, *b\_pt;
+
+\textcolor{keyword}{public}:
+ 
+ \textcolor{comment}{//Constructor}
+ \hyperlink{classGeneralEllipse}{GeneralEllipse}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} &centre\_x, \textcolor{keyword}{const} \textcolor{keywordtype}{double} &centre\_y,
+                \textcolor{keyword}{const} \textcolor{keywordtype}{double} &a, \textcolor{keyword}{const} \textcolor{keywordtype}{double} &b)
+  : GeomObject(1,2), centre\_x\_pt(0), centre\_y\_pt(0), a\_pt(0), b\_pt(0)
+  \{
+   centre\_x\_pt = \textcolor{keyword}{new} double(centre\_x);
+   centre\_y\_pt = \textcolor{keyword}{new} double(centre\_y);
+   a\_pt = \textcolor{keyword}{new} double(a);
+   b\_pt = \textcolor{keyword}{new} double(b);
+  \}
+
+ \textcolor{comment}{//Destructor}
+ ~\hyperlink{classGeneralEllipse}{GeneralEllipse}()
+  \{
+   \textcolor{keyword}{delete} centre\_x\_pt;
+   \textcolor{keyword}{delete} centre\_y\_pt;
+   \textcolor{keyword}{delete} a\_pt;
+   \textcolor{keyword}{delete} b\_pt;
+  \}
+
+ \textcolor{comment}{//Return the position}
+ \textcolor{keywordtype}{void} position(\textcolor{keyword}{const} Vector<double> &xi, Vector<double> &r)\textcolor{keyword}{ const}
+\textcolor{keyword}{  }\{
+   r[0] = *centre\_x\_pt + *a\_pt*cos(xi[0]);
+   r[1] = *centre\_y\_pt + *b\_pt*sin(xi[0]);
+  \}
+\};
+
+
+\textcolor{comment}{//A Domain}
+\textcolor{keyword}{class }\hyperlink{classCylinderAndInterfaceDomain}{CylinderAndInterfaceDomain} : \textcolor{keyword}{public} Domain
+\{
+\textcolor{keyword}{public}:
+ \textcolor{keywordtype}{double} centre\_x, centre\_y;
+
+\textcolor{keyword}{private}:
+ 
+ \textcolor{keywordtype}{double} Lower\_left[2], Lower\_right[2], Lower\_mid\_left[2], Lower\_mid\_right[2];
+ \textcolor{keywordtype}{double} Upper\_left[2], Upper\_right[2], Upper\_mid\_left[2], Upper\_mid\_right[2];
+ \textcolor{keywordtype}{double} Lower\_centre\_left[2], Lower\_centre\_right[2];
+ \textcolor{keywordtype}{double} Upper\_centre\_left[2], Upper\_centre\_right[2];
+
+\textcolor{comment}{}
+\textcolor{comment}{ /// Geometric object that represents the rotating cylinder}
+\textcolor{comment}{} GeomObject* Cylinder\_pt;
+
+\textcolor{keyword}{public}:
+
+ \textcolor{comment}{//Constructor, pass the length and height of the domain}
+ \hyperlink{classCylinderAndInterfaceDomain}{CylinderAndInterfaceDomain}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} &Length, \textcolor{keyword}{const} \textcolor{keywordtype}{double} &Height)
+  \{   
+
+   centre\_x = Length/2.0;
+   centre\_y = Height/2.0; \textcolor{comment}{//3.0*Height/4.0;}
+  \textcolor{comment}{//Create a new ellipse object to represent the rotating cylinder}
+   Cylinder\_pt = \textcolor{keyword}{new} \hyperlink{classGeneralEllipse}{GeneralEllipse}(centre\_x,centre\_y,0.2*Height,0.2*Height);
+
+   \textcolor{comment}{//Set some basic coordinates}
+
+   Lower\_left[0] = 0.0;
+   Lower\_left[1] = 0.0;
+   
+   Upper\_left[0] = 0.0;
+   Upper\_left[1] = Height;
+
+   Lower\_right[0] = Length;
+   Lower\_right[1] = 0.0;
+   
+   Upper\_right[0] = Length;
+   Upper\_right[1] = Height;
+
+
+   \textcolor{comment}{//Let's just do some mid coordinates}
+   Lower\_mid\_left[0] = Length/10.0;
+   Lower\_mid\_left[1] = 0.0;
+
+   Upper\_mid\_left[0] = Length/10.0;
+   Upper\_mid\_left[1] = Height;
+
+   Vector<double> xi(1), f(2);
+   xi[0] = -3.0*atan(1.0);
+   Cylinder\_pt->position(xi,f);
+
+   Lower\_centre\_left[0] = f[0];
+   Lower\_centre\_left[1] = f[1];
+   
+   xi[0] = 3.0*atan(1.0);
+   Cylinder\_pt->position(xi,f);
+
+   Upper\_centre\_left[0] = f[0];
+   Upper\_centre\_left[1] = f[1];
+
+
+   Lower\_mid\_right[0] = 9.0*Length/10.0;
+   Lower\_mid\_right[1] = 0.0;
+
+   Upper\_mid\_right[0] = 9.0*Length/10.0;
+   Upper\_mid\_right[1] = Height;
+
+
+   xi[0] = -1.0*atan(1.0);
+   Cylinder\_pt->position(xi,f);
+
+   Lower\_centre\_right[0] = f[0];
+   Lower\_centre\_right[1] = f[1];
+   
+   xi[0] = 1.0*atan(1.0);
+   Cylinder\_pt->position(xi,f);
+
+   Upper\_centre\_right[0] = f[0];
+   Upper\_centre\_right[1] = f[1];
+   
+   \textcolor{comment}{//There are six macro elements}
+   Macro\_element\_pt.resize(6); 
+
+   \textcolor{comment}{// Build the macro elements}
+   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} i=0;i<6;i++)
+    \{Macro\_element\_pt[i]= \textcolor{keyword}{new} QMacroElement<2>(\textcolor{keyword}{this},i);\}
+  \}
+
+ \textcolor{comment}{// Destructor: Kill macro elements, why isn't this generic?}
+ ~\hyperlink{classCylinderAndInterfaceDomain}{CylinderAndInterfaceDomain}()
+ \{
+  \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} i=0;i<6;i++) \{\textcolor{keyword}{delete} Macro\_element\_pt[i];\}
+ \}
+
+
+ \textcolor{comment}{//Private little interpolation problem}
+ \textcolor{keywordtype}{void} linear\_interpolate(\textcolor{keywordtype}{double} Left[2], \textcolor{keywordtype}{double} Right[2],
+                         \textcolor{keyword}{const} \textcolor{keywordtype}{double} &s, Vector<double> &f)
+  \{
+   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} i=0;i<2;i++)
+    \{
+     f[i] = Left[i] + (Right[i] - Left[i])*0.5*(s+1.0);
+    \}
+  \}
+
+   
+
+ \textcolor{comment}{// Sort out the vector representation of the i-th macro element}
+ \textcolor{keywordtype}{void} macro\_element\_boundary(\textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} &time,
+                             \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} &m,
+                             \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} &direction,
+                             \textcolor{keyword}{const} Vector<double> &s,
+                             Vector<double>& f)
+ \{
+ 
+  \textcolor{keyword}{using namespace }QuadTreeNames;
+
+\textcolor{preprocessor}{#ifdef WARN\_ABOUT\_SUBTLY\_CHANGED\_OOMPH\_INTERFACES}
+   \textcolor{comment}{// Warn about time argument being moved to the front}
+   OomphLibWarning(
+    \textcolor{stringliteral}{"Order of function arguments has changed between versions 0.8 and 0.85"},
+    \textcolor{stringliteral}{"CylinderAndInterfaceDomain::macro\_element\_boundary(...)"},
+    OOMPH\_EXCEPTION\_LOCATION);
+\textcolor{preprocessor}{#endif}
+
+  Vector<double> xi(1);  
+
+  \textcolor{comment}{//Switch on the macro element}
+  \textcolor{keywordflow}{switch}(m)
+   \{
+    \textcolor{comment}{//Macro element 0, is the left-hand film}
+   \textcolor{keywordflow}{case} 0:
+    
+    \textcolor{keywordflow}{switch}(direction)
+     \{
+     \textcolor{keywordflow}{case} N:
+      linear\_interpolate(Upper\_left,Upper\_mid\_left,s[0],f);
+      \textcolor{keywordflow}{break};
+
+     \textcolor{keywordflow}{case} S:  
+       linear\_interpolate(Lower\_left,Lower\_mid\_left,s[0],f);
+      \textcolor{keywordflow}{break};
+
+     \textcolor{keywordflow}{case} W:
+       linear\_interpolate(Lower\_left,Upper\_left,s[0],f);
+      \textcolor{keywordflow}{break};
+
+     \textcolor{keywordflow}{case} E:
+       linear\_interpolate(Lower\_mid\_left,Upper\_mid\_left,s[0],f);
+      \textcolor{keywordflow}{break};
+
+     \textcolor{keywordflow}{default}:
+      std::ostringstream error\_stream;
+      error\_stream << \textcolor{stringliteral}{"Direction is incorrect: "} << direction << std::endl;
+
+      \textcolor{keywordflow}{throw} OomphLibError(error\_stream.str(),
+                          OOMPH\_CURRENT\_FUNCTION,
+                          OOMPH\_EXCEPTION\_LOCATION);
+     \}
+    
+    \textcolor{keywordflow}{break};
+    
+    \textcolor{comment}{//Macro element 1, is immediately left of the cylinder}
+   \textcolor{keywordflow}{case} 1:
+    
+    \textcolor{keywordflow}{switch}(direction)
+     \{
+     \textcolor{keywordflow}{case} N:
+       linear\_interpolate(Upper\_mid\_left,Upper\_centre\_left,s[0],f);
+      \textcolor{keywordflow}{break};
+
+     \textcolor{keywordflow}{case} S:  
+       linear\_interpolate(Lower\_mid\_left,Lower\_centre\_left,s[0],f);
+      \textcolor{keywordflow}{break};
+
+     \textcolor{keywordflow}{case} W:
+       linear\_interpolate(Lower\_mid\_left,Upper\_mid\_left,s[0],f);
+      \textcolor{keywordflow}{break};
+
+     \textcolor{keywordflow}{case} E:
+      xi[0] = 5.0*atan(1.0) - 2.0*atan(1.0)*0.5*(1.0+s[0]);
+      Cylinder\_pt->position(xi,f);
+      \textcolor{keywordflow}{break};
+
+     \textcolor{keywordflow}{default}:
+      std::ostringstream error\_stream;
+      error\_stream << \textcolor{stringliteral}{"Direction is incorrect: "} << direction << std::endl;
+      
+      \textcolor{keywordflow}{throw} OomphLibError(error\_stream.str(),
+                          OOMPH\_CURRENT\_FUNCTION,
+                          OOMPH\_EXCEPTION\_LOCATION);
+     \}
+    
+    \textcolor{keywordflow}{break};
+
+   \textcolor{comment}{//Macro element 2, is immediately above the cylinder}
+   \textcolor{keywordflow}{case} 2:
+    
+    \textcolor{keywordflow}{switch}(direction)
+     \{
+     \textcolor{keywordflow}{case} N:
+       linear\_interpolate(Upper\_mid\_left,Upper\_mid\_right,s[0],f);
+      \textcolor{keywordflow}{break};
+      
+     \textcolor{keywordflow}{case} S:  
+      xi[0] = 3.0*atan(1.0) - 2.0*atan(1.0)*0.5*(1.0+s[0]);
+      Cylinder\_pt->position(xi,f);
+      \textcolor{keywordflow}{break};
+
+     \textcolor{keywordflow}{case} W:
+       linear\_interpolate(Upper\_centre\_left,Upper\_mid\_left,s[0],f);
+      \textcolor{keywordflow}{break};
+
+     \textcolor{keywordflow}{case} E:
+       linear\_interpolate(Upper\_centre\_right,Upper\_mid\_right,s[0],f);
+      \textcolor{keywordflow}{break};
+
+     \textcolor{keywordflow}{default}:
+      std::ostringstream error\_stream;
+      error\_stream << \textcolor{stringliteral}{"Direction is incorrect: "} << direction << std::endl;
+      
+      \textcolor{keywordflow}{throw} OomphLibError(error\_stream.str(),
+                          OOMPH\_CURRENT\_FUNCTION,
+                          OOMPH\_EXCEPTION\_LOCATION);
+     \}
+    
+    \textcolor{keywordflow}{break};
+
+    \textcolor{comment}{//Macro element 3, is immediately right of the cylinder}
+   \textcolor{keywordflow}{case} 3:
+
+    \textcolor{keywordflow}{switch}(direction)
+     \{
+     \textcolor{keywordflow}{case} N:
+       linear\_interpolate(Upper\_centre\_right,Upper\_mid\_right,s[0],f);
+      \textcolor{keywordflow}{break};
+      
+     \textcolor{keywordflow}{case} S:  
+       linear\_interpolate(Lower\_centre\_right,Lower\_mid\_right,s[0],f);
+      \textcolor{keywordflow}{break};
+
+     \textcolor{keywordflow}{case} W:
+      xi[0] = -atan(1.0) + 2.0*atan(1.0)*0.5*(1.0+s[0]);
+      Cylinder\_pt->position(xi,f);
+      \textcolor{keywordflow}{break};
+
+     \textcolor{keywordflow}{case} E:
+       linear\_interpolate(Lower\_mid\_right,Upper\_mid\_right,s[0],f);
+      \textcolor{keywordflow}{break};
+
+     \textcolor{keywordflow}{default}:
+      std::ostringstream error\_stream;
+      error\_stream << \textcolor{stringliteral}{"Direction is incorrect: "} << direction << std::endl;
+
+      \textcolor{keywordflow}{throw} OomphLibError(error\_stream.str(),
+                          OOMPH\_CURRENT\_FUNCTION,
+                          OOMPH\_EXCEPTION\_LOCATION);
+     \}
+
+    \textcolor{keywordflow}{break};
+    
+    \textcolor{comment}{//Macro element 4, is immediately below cylinder}
+   \textcolor{keywordflow}{case} 4:
+    
+    \textcolor{keywordflow}{switch}(direction)
+     \{
+     \textcolor{keywordflow}{case} N:
+      \textcolor{comment}{//linear\_interpolate(Lower\_centre\_left,Lower\_centre\_right,s[0],f);}
+      xi[0] = -3.0*atan(1.0) + 2.0*atan(1.0)*0.5*(1.0+s[0]);
+      Cylinder\_pt->position(xi,f);
+      \textcolor{keywordflow}{break};
+      
+     \textcolor{keywordflow}{case} S:  
+       linear\_interpolate(Lower\_mid\_left,Lower\_mid\_right,s[0],f);
+      \textcolor{keywordflow}{break};
+
+     \textcolor{keywordflow}{case} W:
+       linear\_interpolate(Lower\_mid\_left,Lower\_centre\_left,s[0],f);
+      \textcolor{keywordflow}{break};
+
+     \textcolor{keywordflow}{case} E:
+       linear\_interpolate(Lower\_mid\_right,Lower\_centre\_right,s[0],f);
+      \textcolor{keywordflow}{break};
+
+     \textcolor{keywordflow}{default}:
+      std::ostringstream error\_stream;
+      error\_stream << \textcolor{stringliteral}{"Direction is incorrect: "} << direction << std::endl;
+
+      \textcolor{keywordflow}{throw} OomphLibError(error\_stream.str(),
+                          OOMPH\_CURRENT\_FUNCTION,
+                          OOMPH\_EXCEPTION\_LOCATION);
+     \}  
+
+    \textcolor{keywordflow}{break};
+
+    \textcolor{comment}{//Macro element 5, is right film}
+   \textcolor{keywordflow}{case} 5:
+    
+    \textcolor{keywordflow}{switch}(direction)
+     \{
+     \textcolor{keywordflow}{case} N:
+       linear\_interpolate(Upper\_mid\_right,Upper\_right,s[0],f);
+      \textcolor{keywordflow}{break};
+      
+     \textcolor{keywordflow}{case} S:  
+       linear\_interpolate(Lower\_mid\_right,Lower\_right,s[0],f);
+      \textcolor{keywordflow}{break};
+
+     \textcolor{keywordflow}{case} W:
+       linear\_interpolate(Lower\_mid\_right,Upper\_mid\_right,s[0],f);
+      \textcolor{keywordflow}{break};
+
+     \textcolor{keywordflow}{case} E:
+       linear\_interpolate(Lower\_right,Upper\_right,s[0],f);
+      \textcolor{keywordflow}{break};
+
+     \textcolor{keywordflow}{default}:
+      std::ostringstream error\_stream;
+      error\_stream << \textcolor{stringliteral}{"Direction is incorrect: "} << direction << std::endl;
+
+      \textcolor{keywordflow}{throw} OomphLibError(error\_stream.str(),
+                          OOMPH\_CURRENT\_FUNCTION,
+                          OOMPH\_EXCEPTION\_LOCATION);
+     \}
+
+    \textcolor{keywordflow}{break};
+    
+   \textcolor{keywordflow}{default}:
+    std::ostringstream error\_stream;
+      error\_stream << \textcolor{stringliteral}{"Wrong domain number: "} << m<< std::endl;
+
+      \textcolor{keywordflow}{throw} OomphLibError(error\_stream.str(),
+                          OOMPH\_CURRENT\_FUNCTION,
+                          OOMPH\_EXCEPTION\_LOCATION);
+   \}
+
+ \}
+
+\};
+
+\textcolor{comment}{//Now I need to actually create a Mesh}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>
+\textcolor{keyword}{class }\hyperlink{classCylinderAndInterfaceMesh}{CylinderAndInterfaceMesh} : \textcolor{keyword}{public} \textcolor{keyword}{virtual} SolidMesh
+\{
+ \textcolor{keywordtype}{double} Height;
+
+\textcolor{keyword}{protected}:
+ \textcolor{comment}{//Pointer to the domain}
+ \hyperlink{classCylinderAndInterfaceDomain}{CylinderAndInterfaceDomain}* Domain\_pt;
+
+\textcolor{keyword}{public}:
+
+ \textcolor{comment}{//Access function to the domain}
+ \hyperlink{classCylinderAndInterfaceDomain}{CylinderAndInterfaceDomain}* domain\_pt() \{\textcolor{keywordflow}{return} Domain\_pt;\}
+
+ \textcolor{comment}{//Constructor, }
+ \hyperlink{classCylinderAndInterfaceMesh}{CylinderAndInterfaceMesh}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} &length, \textcolor{keyword}{const} \textcolor{keywordtype}{double} &height,
+                            TimeStepper* time\_stepper\_pt) : Height(height)
+  \{
+   \textcolor{comment}{//Create the domain}
+   Domain\_pt = \textcolor{keyword}{new} \hyperlink{classCylinderAndInterfaceDomain}{CylinderAndInterfaceDomain}(length,height);
+
+   \textcolor{comment}{//Initialise the node counter}
+   \textcolor{keywordtype}{unsigned} node\_count=0;
+   \textcolor{comment}{//Vectors Used to get data from domains}
+   Vector<double> s(2), r(2);
+   
+   \textcolor{comment}{//Setup temporary storage for the Node}
+   Vector<Node *> Tmp\_node\_pt;
+
+   \textcolor{comment}{//Now blindly loop over the macro elements and associate and finite}
+   \textcolor{comment}{//element with each}
+   \textcolor{keywordtype}{unsigned} Nmacro\_element = Domain\_pt->nmacro\_element();
+   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} e=0;e<Nmacro\_element;e++)
+    \{
+     \textcolor{comment}{//Create the FiniteElement and add to the Element\_pt Vector}
+     Element\_pt.push\_back(\textcolor{keyword}{new} ELEMENT);
+
+     \textcolor{comment}{//Read out the number of linear points in the element}
+     \textcolor{keywordtype}{unsigned} Np = 
+      \textcolor{keyword}{dynamic\_cast<}ELEMENT*\textcolor{keyword}{>}(finite\_element\_pt(e))->nnode\_1d();
+     
+     \textcolor{comment}{//Loop over nodes in the column}
+     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} l1=0;l1<Np;l1++)
+      \{
+       \textcolor{comment}{//Loop over the nodes in the row}
+       \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} l2=0;l2<Np;l2++)
+        \{
+         \textcolor{comment}{//Allocate the memory for the node}
+         Tmp\_node\_pt.push\_back(finite\_element\_pt(e)->
+                           construct\_node(l1*Np+l2,time\_stepper\_pt));
+         
+         \textcolor{comment}{//Read out the position of the node from the macro element}
+         s[0] = -1.0 + 2.0*(double)l2/(\textcolor{keywordtype}{double})(Np-1);
+         s[1] = -1.0 + 2.0*(double)l1/(\textcolor{keywordtype}{double})(Np-1);
+         Domain\_pt->macro\_element\_pt(e)->macro\_map(s,r);
+         
+         \textcolor{comment}{//Set the position of the node}
+         Tmp\_node\_pt[node\_count]->x(0) = r[0];
+         Tmp\_node\_pt[node\_count]->x(1) = r[1];
+         
+         \textcolor{comment}{//Increment the node number}
+         node\_count++;
+        \}
+      \}
+    \} \textcolor{comment}{//End of loop over macro elements}
+ 
+   \textcolor{comment}{//Now the elements have been created, but there will be nodes in }
+   \textcolor{comment}{//common, need to loop over the common edges and sort it, by reassigning}
+   \textcolor{comment}{//pointers and the deleting excess nodes}
+   
+   \textcolor{comment}{//Read out the number of linear points in the element}
+   \textcolor{keywordtype}{unsigned} Np = 
+    \textcolor{keyword}{dynamic\_cast<}ELEMENT*\textcolor{keyword}{>}(finite\_element\_pt(0))->nnode\_1d();
+
+   \textcolor{comment}{//DelaunayEdge between Elements 0 and 1}
+   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} n=0;n<Np;n++)
+    \{
+     \textcolor{comment}{//Set the nodes in element 1 to be the same as in element 0}
+     finite\_element\_pt(1)->node\_pt(Np*n)
+      = finite\_element\_pt(0)->node\_pt(n*Np+Np-1);
+
+     \textcolor{comment}{//Remove the nodes in element 1 from the temporaray node list}
+     \textcolor{keyword}{delete} Tmp\_node\_pt[Np*Np + Np*n];
+     Tmp\_node\_pt[Np*Np + Np*n] = 0;
+    \}
+
+   \textcolor{comment}{//DelaunayEdge between Elements 1 and 2}
+   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} n=0;n<Np;n++)
+    \{
+     \textcolor{comment}{//Set the nodes in element 2 to be the same as in element 1}
+     finite\_element\_pt(2)->node\_pt(n*Np)
+      = finite\_element\_pt(1)->node\_pt((Np-1)*Np+Np-1-n);
+
+     \textcolor{comment}{//Remove the nodes in element 2 from the temporaray node list}
+     \textcolor{keyword}{delete} Tmp\_node\_pt[2*Np*Np + n*Np];
+     Tmp\_node\_pt[2*Np*Np + n*Np] = 0;
+    \}
+   
+   \textcolor{comment}{//DelaunayEdge between Elements 1 and 4}
+   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} n=0;n<Np;n++)
+    \{
+     \textcolor{comment}{//Set the nodes in element 4 to be the same as in element 1}
+     finite\_element\_pt(4)->node\_pt(n*Np)
+      = finite\_element\_pt(1)->node\_pt(n);
+
+     \textcolor{comment}{//Remove the nodes in element 2 from the temporaray node list}
+     \textcolor{keyword}{delete} Tmp\_node\_pt[4*Np*Np + n*Np];
+     Tmp\_node\_pt[4*Np*Np + n*Np] = 0;
+    \}
+
+   \textcolor{comment}{//DelaunayEdge between Element 2 and 3}
+   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} n=0;n<Np;n++)
+    \{
+     \textcolor{comment}{//Set the nodes in element 3 to be the same as in element 2}
+     finite\_element\_pt(3)->node\_pt(Np*(Np-1)+n)
+      = finite\_element\_pt(2)->node\_pt(Np*n+Np-1);
+
+     \textcolor{comment}{//Remove the nodes in element 3 from the temporaray node list}
+     \textcolor{keyword}{delete} Tmp\_node\_pt[3*Np*Np + Np*(Np-1)+n];
+     Tmp\_node\_pt[3*Np*Np + Np*(Np-1)+n] = 0;
+    \}
+
+
+   \textcolor{comment}{//DelaunayEdge between Element 4 and 3}
+   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} n=0;n<Np;n++)
+    \{
+     \textcolor{comment}{//Set the nodes in element 3 to be the same as in element 4}
+     finite\_element\_pt(3)->node\_pt(n)
+      = finite\_element\_pt(4)->node\_pt(Np*(Np-n-1)+Np-1);
+
+     \textcolor{comment}{//Remove the nodes in element 3 from the temporaray node list}
+     \textcolor{keyword}{delete} Tmp\_node\_pt[3*Np*Np + n];
+     Tmp\_node\_pt[3*Np*Np + n] = 0;
+    \}
+
+
+   \textcolor{comment}{//DelaunayEdge between Element 3 and 5}
+   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} n=0;n<Np;n++)
+    \{
+     \textcolor{comment}{//Set the nodes in element 5 to be the same as in element 3}
+     finite\_element\_pt(5)->node\_pt(n*Np)
+      = finite\_element\_pt(3)->node\_pt(Np*n+Np-1);
+
+     \textcolor{comment}{//Remove the nodes in element 5 from the temporaray node list}
+     \textcolor{keyword}{delete} Tmp\_node\_pt[5*Np*Np + n*Np];
+     Tmp\_node\_pt[5*Np*Np + n*Np] = 0;
+    \}
+
+   \textcolor{comment}{//Now set the actual true nodes}
+   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} n=0;n<node\_count;n++)
+    \{
+     \textcolor{keywordflow}{if}(Tmp\_node\_pt[n]!=0) \{Node\_pt.push\_back(Tmp\_node\_pt[n]);\}
+    \}
+
+ 
+
+   \textcolor{comment}{//Finally set the nodes on the boundaries}
+   set\_nboundary(5);
+   
+   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} n=0;n<Np;n++)
+    \{
+     \textcolor{comment}{//Left hand side}
+     Node* temp\_node\_pt = finite\_element\_pt(0)->node\_pt(n*Np);
+     this->convert\_to\_boundary\_node(temp\_node\_pt);
+     add\_boundary\_node(3,temp\_node\_pt);
+     
+
+     \textcolor{comment}{//Right hand side}
+     temp\_node\_pt = finite\_element\_pt(5)->node\_pt(n*Np+Np-1);
+     this->convert\_to\_boundary\_node(temp\_node\_pt);
+     add\_boundary\_node(1,temp\_node\_pt);
+     
+     \textcolor{comment}{//LH part of lower boundary}
+     temp\_node\_pt = finite\_element\_pt(0)->node\_pt(n);
+     this->convert\_to\_boundary\_node(temp\_node\_pt);
+     add\_boundary\_node(0,temp\_node\_pt);
+
+     \textcolor{comment}{//First part of upper boundary}
+     temp\_node\_pt = finite\_element\_pt(0)->node\_pt(Np*(Np-1)+n);
+     this->convert\_to\_boundary\_node(temp\_node\_pt);
+     add\_boundary\_node(2,temp\_node\_pt);
+     
+     \textcolor{comment}{//First part of hole boundary}
+     temp\_node\_pt = finite\_element\_pt(4)->node\_pt(Np*(Np-1)+n);
+     this->convert\_to\_boundary\_node(temp\_node\_pt);
+     add\_boundary\_node(4,temp\_node\_pt);
+    \}
+
+   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} n=1;n<Np;n++)
+    \{
+     \textcolor{comment}{//Middle of lower boundary}
+     Node* temp\_node\_pt = finite\_element\_pt(4)->node\_pt(n);
+     this->convert\_to\_boundary\_node(temp\_node\_pt);
+     add\_boundary\_node(0,temp\_node\_pt);
+     
+     \textcolor{comment}{//Middle of upper boundary                                }
+     temp\_node\_pt = finite\_element\_pt(2)->node\_pt(Np*(Np-1)+n);
+     this->convert\_to\_boundary\_node(temp\_node\_pt);
+     add\_boundary\_node(2,temp\_node\_pt);
+
+     \textcolor{comment}{//Next part of hole}
+     temp\_node\_pt = finite\_element\_pt(3)->node\_pt(n*Np);
+     this->convert\_to\_boundary\_node(temp\_node\_pt);
+     add\_boundary\_node(4,temp\_node\_pt);
+    \}
+
+   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} n=1;n<Np;n++)
+    \{
+     \textcolor{comment}{//Final part of lower boundary}
+     Node* temp\_node\_pt = finite\_element\_pt(5)->node\_pt(n);
+     this->convert\_to\_boundary\_node(temp\_node\_pt);
+     add\_boundary\_node(0,temp\_node\_pt);
+     
+     \textcolor{comment}{//Middle of upper boundary                                }
+     temp\_node\_pt = finite\_element\_pt(5)->node\_pt(Np*(Np-1)+n);
+     this->convert\_to\_boundary\_node(temp\_node\_pt);
+     add\_boundary\_node(2,temp\_node\_pt);
+     
+     \textcolor{comment}{//Next part of hole}
+     temp\_node\_pt = finite\_element\_pt(2)->node\_pt(Np-n-1);
+     this->convert\_to\_boundary\_node(temp\_node\_pt);
+     add\_boundary\_node(4,temp\_node\_pt);
+    \}
+
+   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} n=1;n<Np-1;n++)
+    \{
+     \textcolor{comment}{//Final part of hole}
+     Node* temp\_node\_pt = finite\_element\_pt(1)->node\_pt(Np*(Np-n-1)+Np-1);
+     this->convert\_to\_boundary\_node(temp\_node\_pt);
+     add\_boundary\_node(4,temp\_node\_pt);
+    \}
+   
+   \textcolor{comment}{//Now loop over all the nodes and set their Lagrangian coordinates}
+   \textcolor{keywordtype}{unsigned} Nnode = nnode();
+   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} n=0;n<Nnode;n++)
+   \{
+    \textcolor{comment}{//Cast node to an elastic node}
+    SolidNode* temp\_pt = \textcolor{keyword}{static\_cast<}SolidNode*\textcolor{keyword}{>}(Node\_pt[n]);
+    \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} i=0;i<2;i++)
+     \{temp\_pt->xi(i) = temp\_pt->x(i);\}
+   \}
+ \}
+
+ 
+\};
+
+\textcolor{comment}{//Now let's do the adaptive mesh}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>
+\textcolor{keyword}{class }\hyperlink{classRefineableCylinderAndInterfaceMesh}{RefineableCylinderAndInterfaceMesh} :
+ \textcolor{keyword}{public} \hyperlink{classCylinderAndInterfaceMesh}{CylinderAndInterfaceMesh}<ELEMENT>, \textcolor{keyword}{public} RefineableQuadMesh<ELEMENT>
+\{
+\textcolor{keyword}{public}: 
+
+ \textcolor{comment}{// Constructor}
+ \hyperlink{classRefineableCylinderAndInterfaceMesh}{RefineableCylinderAndInterfaceMesh}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} &length, \textcolor{keyword}{const} \textcolor{keywordtype}{double} &
+      height,
+                                    TimeStepper* time\_stepper\_pt) :
+  \hyperlink{classCylinderAndInterfaceMesh}{CylinderAndInterfaceMesh}<ELEMENT>(length,height,time\_stepper\_pt) 
+  \{
+
+   \textcolor{comment}{// Nodal positions etc. were created in constructor for}
+   \textcolor{comment}{// Cylinder...<...>. Need to setup adaptive information.}
+
+   \textcolor{comment}{// Loop over all elements and set macro element pointer}
+   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} e=0;e<6;e++)
+    \{
+     \textcolor{keyword}{dynamic\_cast<}ELEMENT*\textcolor{keyword}{>}(this->element\_pt(e))->
+      set\_macro\_elem\_pt(this->Domain\_pt->macro\_element\_pt(e));
+    \}
+
+   \textcolor{comment}{// Setup quadtree forest for mesh refinement}
+   this->setup\_quadtree\_forest();
+   
+   \textcolor{comment}{// Setup the boundary element info}
+   this->setup\_boundary\_element\_info();
+
+  \}
+
+ \textcolor{comment}{}
+\textcolor{comment}{ /// \(\backslash\)short Destructor: Empty}
+\textcolor{comment}{} \textcolor{keyword}{virtual} ~\hyperlink{classRefineableCylinderAndInterfaceMesh}{RefineableCylinderAndInterfaceMesh}() \{\}
+
+
+\};
+
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>
+\textcolor{keyword}{class }\hyperlink{classRefineableRotatingCylinderProblem}{RefineableRotatingCylinderProblem} : \textcolor{keyword}{public} Problem
+\{
+\textcolor{keyword}{private}:
+ \textcolor{keywordtype}{double} Length, Height;
+ 
+ \textcolor{comment}{//Constitutive law used to determine the mesh deformation}
+ ConstitutiveLaw *Constitutive\_law\_pt;
+
+ Data* Traded\_pressure\_data\_pt;
+
+\textcolor{keyword}{public}:
+
+ \textcolor{keywordtype}{double} Re, Ca, ReInvFr, Bo;
+
+ \textcolor{keywordtype}{double} Omega;
+ 
+ \textcolor{keywordtype}{double} Volume;
+
+ \textcolor{keywordtype}{double} Angle;
+
+ Vector<double> G;
+\textcolor{comment}{}
+\textcolor{comment}{ /// Constructor: Pass flag to indicate if you want}
+\textcolor{comment}{ /// a constant source function or the tanh profile.}
+\textcolor{comment}{} \hyperlink{classRefineableRotatingCylinderProblem}{RefineableRotatingCylinderProblem}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} &length, \textcolor{keyword}{const} \textcolor{keywordtype}{double} &
+      height);
+\textcolor{comment}{}
+\textcolor{comment}{ /// Update the problem specs after solve (empty)}
+\textcolor{comment}{} \textcolor{keywordtype}{void} actions\_after\_newton\_solve() \{\}
+\textcolor{comment}{}
+\textcolor{comment}{ /// \(\backslash\)short Update the problem specs before solve: }
+\textcolor{comment}{} \textcolor{keywordtype}{void} actions\_before\_newton\_solve() \{set\_boundary\_conditions();\}
+\textcolor{comment}{}
+\textcolor{comment}{ /// Strip off the interface before adaptation}
+\textcolor{comment}{} \textcolor{keywordtype}{void} actions\_before\_adapt() 
+  \{
+   this->delete\_volume\_constraint\_elements();
+   this->delete\_free\_surface\_elements();
+  \}
+
+ \textcolor{keywordtype}{void} actions\_after\_adapt() \{finish\_problem\_setup(); this->rebuild\_global\_mesh();\}
+\textcolor{comment}{}
+\textcolor{comment}{ /// \(\backslash\)short Complete problem setup: Setup element-specific things }
+\textcolor{comment}{ /// (source fct pointers etc.)}
+\textcolor{comment}{} \textcolor{keywordtype}{void} finish\_problem\_setup();
+
+ \textcolor{comment}{//Access function for the mesh}
+ \hyperlink{classRefineableCylinderAndInterfaceMesh}{RefineableCylinderAndInterfaceMesh<ELEMENT>}* Bulk\_mesh\_pt;
+
+ \textcolor{comment}{//Access function for surface mesh}
+ Mesh* Surface\_mesh\_pt;
+
+ \textcolor{comment}{//Access function for point mesh}
+ Mesh* Point\_mesh\_pt;
+\textcolor{comment}{}
+\textcolor{comment}{ /// The volume constraint mesh }
+\textcolor{comment}{} Mesh* Volume\_constraint\_mesh\_pt;
+
+ \textcolor{keywordtype}{void} set\_boundary\_conditions();
+
+ \textcolor{keywordtype}{void} solve();
+\textcolor{comment}{}
+\textcolor{comment}{ /// Create the volume constraint elements}
+\textcolor{comment}{} \textcolor{keywordtype}{void} create\_volume\_constraint\_elements()
+  \{
+   \textcolor{comment}{//The single volume constraint element}
+   VolumeConstraintElement* vol\_constraint\_element = 
+    \textcolor{keyword}{new} VolumeConstraintElement(&Volume,Traded\_pressure\_data\_pt,0);
+   Volume\_constraint\_mesh\_pt->add\_element\_pt(vol\_constraint\_element);
+   
+   \textcolor{comment}{//Loop over all boundaries (or just 1 and 2 why?)}
+   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} b=0;b<4;b++)
+    \{
+     \textcolor{comment}{// How many bulk fluid elements are adjacent to boundary b?}
+     \textcolor{keywordtype}{unsigned} n\_element = Bulk\_mesh\_pt->nboundary\_element(b);
+     
+     \textcolor{comment}{// Loop over the bulk fluid elements adjacent to boundary b?}
+     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} e=0;e<n\_element;e++)
+      \{
+       \textcolor{comment}{// Get pointer to the bulk fluid element that is }
+       \textcolor{comment}{// adjacent to boundary b}
+       ELEMENT* bulk\_elem\_pt = \textcolor{keyword}{dynamic\_cast<}ELEMENT*\textcolor{keyword}{>}(
+        Bulk\_mesh\_pt->boundary\_element\_pt(b,e));
+       
+       \textcolor{comment}{//Find the index of the face of element e along boundary b}
+       \textcolor{keywordtype}{int} face\_index = Bulk\_mesh\_pt->face\_index\_at\_boundary(b,e);
+       
+       \textcolor{comment}{// Create new element}
+       ElasticLineVolumeConstraintBoundingElement<ELEMENT>* el\_pt =
+        \textcolor{keyword}{new} ElasticLineVolumeConstraintBoundingElement<ELEMENT>(
+         bulk\_elem\_pt,face\_index);   
+       
+       \textcolor{comment}{//Set the "master" volume control element}
+       el\_pt->set\_volume\_constraint\_element(vol\_constraint\_element);
+       
+       \textcolor{comment}{// Add it to the mesh}
+       Volume\_constraint\_mesh\_pt->add\_element\_pt(el\_pt);     
+      \}
+    \}
+  \}
+
+ \textcolor{keywordtype}{void} delete\_volume\_constraint\_elements()
+  \{
+   \textcolor{keywordtype}{unsigned} n\_element = Volume\_constraint\_mesh\_pt->nelement();
+   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} e=0;e<n\_element;e++)
+    \{
+     \textcolor{keyword}{delete} Volume\_constraint\_mesh\_pt->element\_pt(e);
+    \}
+   Volume\_constraint\_mesh\_pt->flush\_element\_and\_node\_storage();
+  \}
+ 
+ \textcolor{keywordtype}{void} create\_free\_surface\_elements()
+  \{
+   \textcolor{comment}{//Find number of elements adjacent to upper boundary}
+   \textcolor{keywordtype}{unsigned} n\_boundary\_element = Bulk\_mesh\_pt->nboundary\_element(2);
+   \textcolor{comment}{//The boundary elements do no necessarily come in order, so we will}
+   \textcolor{comment}{//need to detect the element adjacent to boundary 1.}
+   \textcolor{comment}{//The index of that element in our array will be stored in this variable}
+   \textcolor{comment}{//(initialised to a negative and therefore invalid number)}
+   \textcolor{keywordtype}{int} final\_element\_index=-1;
+   \textcolor{comment}{//Loop over the elements adjacent to the boundary}
+   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} e=0;e<n\_boundary\_element;e++)
+    \{
+     \textcolor{comment}{//Create the free surface element (on face 2)}
+     FiniteElement *free\_surface\_element\_pt 
+      = \textcolor{keyword}{new} ElasticLineFluidInterfaceElement<ELEMENT>
+      (Bulk\_mesh\_pt->boundary\_element\_pt(2,e),
+       Bulk\_mesh\_pt->face\_index\_at\_boundary(2,e));
+     \textcolor{comment}{//Push it back onto the stack}
+     Surface\_mesh\_pt->add\_element\_pt(free\_surface\_element\_pt);       
+
+      \textcolor{comment}{//Check whether the element is on the boundary 1}
+      \textcolor{keywordtype}{unsigned} n\_node = free\_surface\_element\_pt->nnode();
+      \textcolor{comment}{//Only need to check the end nodes}
+      \textcolor{keywordflow}{if}((free\_surface\_element\_pt->node\_pt(0)->is\_on\_boundary(1)) ||
+         (free\_surface\_element\_pt->node\_pt(n\_node-1)->is\_on\_boundary(1)))
+       \{
+          final\_element\_index=e;
+       \}
+    \}
+
+   \textcolor{keywordtype}{unsigned} Nfree = Surface\_mesh\_pt->nelement();
+   oomph\_info << Nfree << \textcolor{stringliteral}{" free surface elements assigned"} << std::endl;
+
+    \textcolor{keywordflow}{if}(final\_element\_index == -1)
+     \{
+      \textcolor{keywordflow}{throw} OomphLibError(\textcolor{stringliteral}{"No Surface Element adjacent to boundary 1\(\backslash\)n"},
+                          OOMPH\_CURRENT\_FUNCTION,
+                          OOMPH\_EXCEPTION\_LOCATION);
+     \}
+   
+    \textcolor{comment}{//Make the edge point}
+    FiniteElement* point\_element\_pt= 
+     \textcolor{keyword}{dynamic\_cast<}ElasticLineFluidInterfaceElement<ELEMENT>*\textcolor{keyword}{>}
+     (Surface\_mesh\_pt->element\_pt(final\_element\_index))
+     ->make\_bounding\_element(1);
+    
+    \textcolor{comment}{//Add it to the stack}
+    Point\_mesh\_pt->add\_element\_pt(point\_element\_pt);
+  \}
+
+ \textcolor{comment}{//Function to delete the free surface elements}
+ \textcolor{keywordtype}{void} delete\_free\_surface\_elements()
+  \{
+   \textcolor{comment}{//Find the number of traction elements}
+   \textcolor{keywordtype}{unsigned} Nfree\_surface = Surface\_mesh\_pt->nelement();
+   
+   \textcolor{comment}{//The traction elements are ALWAYS? stored at the end}
+   \textcolor{comment}{//So delete and remove them, add one to get rid of the constraint}
+   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} e=0;e<Nfree\_surface;e++)
+    \{
+     \textcolor{keyword}{delete} Surface\_mesh\_pt->element\_pt(e);
+    \}
+   Surface\_mesh\_pt->flush\_element\_and\_node\_storage();
+
+   \textcolor{keyword}{delete} Point\_mesh\_pt->element\_pt(0);
+   Point\_mesh\_pt->flush\_element\_and\_node\_storage();
+  \}
+
+
+\};
+
+
+\textcolor{comment}{//========================================================================}\textcolor{comment}{}
+\textcolor{comment}{/// Constructor for adaptive Poisson problem in deformable fish-shaped}
+\textcolor{comment}{/// domain. Pass bool to indicate if we want a constant source}
+\textcolor{comment}{/// function or the one that produces a tanh step.}
+\textcolor{comment}{}\textcolor{comment}{//========================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>
+\hyperlink{classRefineableRotatingCylinderProblem_aa597c4240ce9affbd7540998167c8f21}{RefineableRotatingCylinderProblem<ELEMENT>::RefineableRotatingCylinderProblem}
+      (
+ \textcolor{keyword}{const} \textcolor{keywordtype}{double} &length, \textcolor{keyword}{const} \textcolor{keywordtype}{double} &height) : Length(length), Height(height),
+                                               Re(0.0), Ca(0.001), 
+                                               ReInvFr(0.0),
+                                               Bo(0.0), Omega(1.0), 
+                                               Volume(12.0),
+                                               Angle(1.57)
+\{ 
+ \hyperlink{namespaceGlobal__Physical__Variables_a5feb3df21fc4a0adefadecb8a8ed98d7}{Global\_Physical\_Variables::Wall\_normal}.resize(2);
+ \hyperlink{namespaceGlobal__Physical__Variables_a5feb3df21fc4a0adefadecb8a8ed98d7}{Global\_Physical\_Variables::Wall\_normal}[0] = 1.0; 
+ \hyperlink{namespaceGlobal__Physical__Variables_a5feb3df21fc4a0adefadecb8a8ed98d7}{Global\_Physical\_Variables::Wall\_normal}[1] = 0.0;
+
+ G.resize(2);
+ G[0] = 0.0; G[1] = -1.0;
+\textcolor{comment}{}
+\textcolor{comment}{ ///Set the initial value of the ReInvFr = Bo/Ca}
+\textcolor{comment}{} ReInvFr = Bo/Ca;
+\textcolor{comment}{}
+\textcolor{comment}{ /// Build a linear solver: Use HSL's MA42 frontal solver}
+\textcolor{comment}{} \textcolor{comment}{//linear\_solver\_pt() = new HSL\_MA42;}
+
+ \textcolor{comment}{//Set the constituive law}
+ Constitutive\_law\_pt = \textcolor{keyword}{new} GeneralisedHookean(&\hyperlink{namespaceGlobal__Physical__Variables_a3962c36313826b19f216f6bbbdd6a477}{Global\_Physical\_Variables::Nu});
+
+ \textcolor{comment}{}
+\textcolor{comment}{ /// Switch off full doc for frontal solver}
+\textcolor{comment}{} \textcolor{comment}{//static\_cast<HSL\_MA42*>(linear\_solver\_pt())->disable\_doc\_stats();}
+
+ \textcolor{comment}{//Allocate the timestepper (no timedependence)}
+ add\_time\_stepper\_pt(\textcolor{keyword}{new} Steady<0>);
+   
+ \textcolor{comment}{// Build mesh}
+ Bulk\_mesh\_pt= 
+  \textcolor{keyword}{new} \hyperlink{classRefineableCylinderAndInterfaceMesh}{RefineableCylinderAndInterfaceMesh<ELEMENT>}(length,height,
+                                                  Problem::time\_stepper\_pt());
+ 
+ \textcolor{comment}{// Set error estimator}
+ Z2ErrorEstimator* error\_estimator\_pt=\textcolor{keyword}{new} Z2ErrorEstimator;
+ Bulk\_mesh\_pt->spatial\_error\_estimator\_pt()=error\_estimator\_pt;
+  
+
+ \textcolor{comment}{//Refine the problem a couple of times}
+ \textcolor{keywordtype}{bool} update\_all\_solid\_nodes=\textcolor{keyword}{true};
+ Bulk\_mesh\_pt->refine\_uniformly();
+ Bulk\_mesh\_pt->node\_update(update\_all\_solid\_nodes);
+ Bulk\_mesh\_pt->refine\_uniformly();
+ Bulk\_mesh\_pt->node\_update(update\_all\_solid\_nodes);
+ \textcolor{comment}{//Bulk\_mesh\_pt->refine\_uniformly();}
+ \textcolor{comment}{//refine\_uniformly();}
+ \textcolor{comment}{//refine\_uniformly();}
+  
+ \textcolor{comment}{// Loop over all elements and unset macro element pointer}
+ \textcolor{keywordtype}{unsigned} Nelement = Bulk\_mesh\_pt->nelement();
+ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} e=0;e<Nelement;e++)
+  \{
+   \textcolor{keyword}{dynamic\_cast<}ELEMENT*\textcolor{keyword}{>}(Bulk\_mesh\_pt->element\_pt(e))->
+    set\_macro\_elem\_pt(0);
+  \}
+
+
+ \textcolor{comment}{//The external pressure is a piece of global data}
+ Traded\_pressure\_data\_pt = \textcolor{keyword}{new} Data(1);
+ this->add\_global\_data(Traded\_pressure\_data\_pt);
+
+ \textcolor{comment}{// Complete the build of all elements so they are fully functional}
+
+ Surface\_mesh\_pt = \textcolor{keyword}{new} Mesh;
+ Point\_mesh\_pt = \textcolor{keyword}{new} Mesh;
+ Volume\_constraint\_mesh\_pt = \textcolor{keyword}{new} Mesh;
+
+ finish\_problem\_setup();
+  
+ this->add\_sub\_mesh(Bulk\_mesh\_pt);
+ this->add\_sub\_mesh(Surface\_mesh\_pt);
+ this->add\_sub\_mesh(Point\_mesh\_pt);
+ this->add\_sub\_mesh(Volume\_constraint\_mesh\_pt);
+
+ this->build\_global\_mesh();
+
+ \textcolor{comment}{//Attach the boundary conditions to the mesh}
+ oomph\_info <<\textcolor{stringliteral}{"Number of equations: "} << assign\_eqn\_numbers() << std::endl; 
+
+\}
+
+
+\textcolor{comment}{//========================================================================}\textcolor{comment}{}
+\textcolor{comment}{/// \(\backslash\)short Complete build of Poisson problem:}
+\textcolor{comment}{/// Loop over elements and setup pointers to source function}
+\textcolor{comment}{///}
+\textcolor{comment}{}\textcolor{comment}{//========================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>
+\textcolor{keywordtype}{void} \hyperlink{classRefineableRotatingCylinderProblem_a417d18c2584ed1ea38daefe5dd68b4a4}{RefineableRotatingCylinderProblem<ELEMENT>::finish\_problem\_setup}
+      ()
+\{ 
+ \textcolor{comment}{//Now sort out the free surface}
+ this->create\_free\_surface\_elements();
+ \textcolor{comment}{//Create the volume constraint elements}
+ this->create\_volume\_constraint\_elements();
+ 
+ \textcolor{comment}{// Set the boundary conditions for this problem: All nodes are}
+ \textcolor{comment}{// free by default -- just pin the ones that have Dirichlet conditions}
+ \textcolor{comment}{// here. }
+
+ \textcolor{comment}{//Pin bottom and cylinder}
+  \textcolor{keywordtype}{unsigned} num\_bound = Bulk\_mesh\_pt->nboundary();
+  \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} ibound=0;ibound<num\_bound;ibound+=4)
+   \{
+    \textcolor{keywordtype}{unsigned} num\_nod= Bulk\_mesh\_pt->nboundary\_node(ibound);
+    \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} inod=0;inod<num\_nod;inod++)
+     \{
+      Bulk\_mesh\_pt->boundary\_node\_pt(ibound,inod)->pin(0);
+      Bulk\_mesh\_pt->boundary\_node\_pt(ibound,inod)->pin(1);
+     \}
+   \}
+  
+  \textcolor{comment}{//Pin u and v on LHS}
+  \{
+   \textcolor{keywordtype}{unsigned} num\_nod= Bulk\_mesh\_pt->nboundary\_node(3);
+   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} inod=0;inod<num\_nod;inod++)
+    \{
+     Bulk\_mesh\_pt->boundary\_node\_pt(3,inod)->pin(0);
+     \textcolor{comment}{//Bulk\_mesh\_pt->boundary\_node\_pt(3,inod)->pin(1);}
+    \}
+  \}
+  
+  \textcolor{comment}{//Pin u and v on RHS}
+  \{
+   \textcolor{keywordtype}{unsigned} num\_nod= Bulk\_mesh\_pt->nboundary\_node(1);
+   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} inod=0;inod<num\_nod;inod++)
+    \{
+     Bulk\_mesh\_pt->boundary\_node\_pt(1,inod)->pin(0);
+     Bulk\_mesh\_pt->boundary\_node\_pt(1,inod)->pin(1);
+    \}
+  \}
+
+  
+  \textcolor{keyword}{dynamic\_cast<}FluidInterfaceBoundingElement*\textcolor{keyword}{>}
+   (Point\_mesh\_pt->element\_pt(0))->set\_contact\_angle(&Angle);
+
+  \textcolor{keyword}{dynamic\_cast<}FluidInterfaceBoundingElement*\textcolor{keyword}{>}
+   (Point\_mesh\_pt->element\_pt(0))->ca\_pt() = &Ca;
+
+  
+  \textcolor{keyword}{dynamic\_cast<}FluidInterfaceBoundingElement*\textcolor{keyword}{>}
+   (Point\_mesh\_pt->element\_pt(0))->
+   wall\_unit\_normal\_fct\_pt() = &\hyperlink{namespaceGlobal__Physical__Variables_a0d48e8726fa485de2b2df2d5031ec41b}{Global\_Physical\_Variables::wall\_unit\_normal\_fct}
+      ;
+
+  \textcolor{comment}{//Pin one pressure}
+  \textcolor{keyword}{dynamic\_cast<}ELEMENT*\textcolor{keyword}{>}(Bulk\_mesh\_pt->element\_pt(0))->fix\_pressure(0,0.0);
+
+  \textcolor{comment}{//Loop over the lower boundary and pin nodal positions in both directions}
+  \textcolor{keywordtype}{unsigned} num\_nod= Bulk\_mesh\_pt->nboundary\_node(0);
+  \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} inod=0;inod<num\_nod;inod++)
+   \{
+    Bulk\_mesh\_pt->boundary\_node\_pt(0,inod)->pin\_position(0);
+    Bulk\_mesh\_pt->boundary\_node\_pt(0,inod)->pin\_position(1);
+   \}
+  
+  \textcolor{comment}{//Loop over the RHS side and pin in x and y}
+  num\_nod= Bulk\_mesh\_pt->nboundary\_node(1);
+  \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} inod=0;inod<num\_nod;inod++)
+   \{
+    Bulk\_mesh\_pt->boundary\_node\_pt(1,inod)->pin\_position(0);
+    \textcolor{comment}{//Bulk\_mesh\_pt->boundary\_node\_pt(1,inod)->pin\_position(1);}
+  \}
+  
+  
+ \textcolor{comment}{//Loop over the LHS side and pin in x}
+  num\_nod= Bulk\_mesh\_pt->nboundary\_node(3);
+ \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} inod=0;inod<num\_nod;inod++)
+  \{
+   Bulk\_mesh\_pt->boundary\_node\_pt(3,inod)->pin\_position(0);
+   \textcolor{comment}{//Bulk\_mesh\_pt->boundary\_node\_pt(3,inod)->pin\_position(1);}
+  \}
+ 
+ \textcolor{comment}{//Loop over the cylinder and pin nodal positions in both directions}
+ num\_nod= Bulk\_mesh\_pt->nboundary\_node(4);
+ \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} inod=0;inod<num\_nod;inod++)
+  \{
+   Bulk\_mesh\_pt->boundary\_node\_pt(4,inod)->pin\_position(0);
+   Bulk\_mesh\_pt->boundary\_node\_pt(4,inod)->pin\_position(1);
+  \}
+
+
+ \textcolor{comment}{//Find number of elements in mesh}
+ \textcolor{keywordtype}{unsigned} Nfluid = Bulk\_mesh\_pt->nelement();
+ \textcolor{comment}{//Find the number of free surface elements}
+ \textcolor{keywordtype}{unsigned} Nfree = Surface\_mesh\_pt->nelement();
+
+    \textcolor{comment}{// Loop over the elements to set up element-specific }
+    \textcolor{comment}{// things that cannot be handled by constructor}
+    \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} i=0;i<Nfluid;i++)
+     \{
+      \textcolor{comment}{// Upcast from FiniteElement to the present element}
+      ELEMENT *temp\_pt = \textcolor{keyword}{dynamic\_cast<}ELEMENT*\textcolor{keyword}{>}(Bulk\_mesh\_pt->element\_pt(i));
+      
+      \textcolor{comment}{//Set the source function pointer}
+      temp\_pt->re\_pt() = &Re;
+      temp\_pt->re\_invfr\_pt() = &ReInvFr;
+      temp\_pt->g\_pt() = &G;
+      
+      \textcolor{comment}{//Assign the mesh deformation constitutive law}
+      temp\_pt->constitutive\_law\_pt() = Constitutive\_law\_pt;
+      
+     \}
+    
+    
+    \textcolor{comment}{// Pin the redundant solid pressures (if any)}
+    PVDEquationsBase<2>::pin\_redundant\_nodal\_solid\_pressures(
+     Bulk\_mesh\_pt->element\_pt());
+    
+    \textcolor{comment}{//Loop over the free surface elements}
+    \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} i=0;i<Nfree;i++)
+     \{
+      \textcolor{comment}{// Upcast from FiniteElement to the present element}
+      ElasticLineFluidInterfaceElement<ELEMENT> *temp\_pt = 
+       \textcolor{keyword}{dynamic\_cast<}ElasticLineFluidInterfaceElement<ELEMENT>*\textcolor{keyword}{>}
+       (Surface\_mesh\_pt->element\_pt(i));
+      \textcolor{comment}{//Set the Capillary number}
+      temp\_pt->ca\_pt() = &Ca;
+      
+      \textcolor{comment}{//Pass the Data item that contains the external pressure}
+      temp\_pt->set\_external\_pressure\_data(this->global\_data\_pt(0));
+     \}
+   
+\}
+
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>
+\textcolor{keywordtype}{void} \hyperlink{classRefineableRotatingCylinderProblem_acd510f2c06fa3f38d2911781656dbf20}{RefineableRotatingCylinderProblem<ELEMENT>::set\_boundary\_conditions}
+      ()
+\{ 
+ \textcolor{comment}{//Only bother to set non-zero velocity on the cylinder}
+ \textcolor{keywordtype}{unsigned} Nnode = Bulk\_mesh\_pt->nboundary\_node(4);
+ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} n=0;n<Nnode;n++)
+  \{
+   \textcolor{comment}{//Get x and y}
+   \textcolor{keywordtype}{double} x = Bulk\_mesh\_pt->boundary\_node\_pt(4,n)->x(0);
+   \textcolor{keywordtype}{double} y = Bulk\_mesh\_pt->boundary\_node\_pt(4,n)->x(1);
+
+   \textcolor{comment}{//Now find the vector distance to the centre}
+   \textcolor{keywordtype}{double} len\_x = x - Bulk\_mesh\_pt->\hyperlink{classCylinderAndInterfaceMesh_a924b3538d9f6c8b8524c317c5e2aa380}{domain\_pt}()->\hyperlink{classCylinderAndInterfaceDomain_a0b5aefe768267a1dff936ab491bee938}{centre\_x};
+   \textcolor{keywordtype}{double} len\_y = y - Bulk\_mesh\_pt->\hyperlink{classCylinderAndInterfaceMesh_a924b3538d9f6c8b8524c317c5e2aa380}{domain\_pt}()->\hyperlink{classCylinderAndInterfaceDomain_ac461297e0b08287a1909f245569c77f0}{centre\_y};
+
+   \textcolor{comment}{//Calculate the angle and radius}
+   \textcolor{keywordtype}{double} r = sqrt(len\_x*len\_x + len\_y*len\_y);
+   \textcolor{keywordtype}{double} theta = atan2(len\_y,len\_x);
+   
+   \textcolor{comment}{//Now set the velocities}
+   Bulk\_mesh\_pt->boundary\_node\_pt(4,n)->set\_value(0,-Omega*r*sin(theta));
+   Bulk\_mesh\_pt->boundary\_node\_pt(4,n)->set\_value(1, Omega*r*cos(theta));
+  \}
+\}
+
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>
+\textcolor{keywordtype}{void} \hyperlink{classRefineableRotatingCylinderProblem_a664bfd373351a401619b06c3494fdcdc}{RefineableRotatingCylinderProblem<ELEMENT>::solve}()
+\{ 
+ Newton\_solver\_tolerance = 1.0e-8;
+ \textcolor{comment}{//Document the solution}
+ std::ofstream filenamee(\textcolor{stringliteral}{"input.dat"});
+ Bulk\_mesh\_pt->output(filenamee,5);
+ Surface\_mesh\_pt->output(filenamee,5);
+ \textcolor{comment}{//Point\_mesh\_pt->output(filenamee,5);}
+ filenamee.close();
+
+ \textcolor{comment}{//Solve the initial value problem}
+ newton\_solve();
+
+ std::ofstream filename(\textcolor{stringliteral}{"first.dat"}); 
+ Bulk\_mesh\_pt->output(filename,5); 
+ Surface\_mesh\_pt->output(filename,5); 
+ \textcolor{comment}{//Point\_mesh\_pt->output(filename,5);}
+ filename.close();
+
+ \textcolor{comment}{//Initialise the value of the arc-length}
+ \textcolor{keywordtype}{double} ds=0.001;
+ 
+ std::ofstream trace(\textcolor{stringliteral}{"trace.dat"});
+
+ trace << Ca << \textcolor{stringliteral}{" "} << ReInvFr << \textcolor{stringliteral}{" "}
+       << Bulk\_mesh\_pt->boundary\_node\_pt(2,0)->x(1) << std::endl;
+
+\textcolor{comment}{// bool flag=true, fflag=true;}
+
+ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} i=0;i<2;i++)
+  \{
+   \textcolor{keywordflow}{if}(i<5)
+    \{
+     \textcolor{comment}{//Decrease the contact angle}
+     Angle -= 0.1;
+     newton\_solve(2);
+     \textcolor{comment}{//newton\_solve();}
+    \}
+   \textcolor{keywordflow}{else}
+    \{
+     \textcolor{comment}{//do an arc-length continuation step in Ca}
+     ds = arc\_length\_step\_solve(&Ca,ds);
+    \}
+
+  \textcolor{comment}{//  if(flag)}
+\textcolor{comment}{//     \{}
+\textcolor{comment}{//      //Do an arc-length continuation step in ReInvFr}
+\textcolor{comment}{//      ds = arc\_length\_step\_solve(&ReInvFr,ds);}
+\textcolor{comment}{//     \}}
+\textcolor{comment}{//    else}
+\textcolor{comment}{//     \{}
+\textcolor{comment}{//      //Reset arc-length parameters}
+\textcolor{comment}{//      if(fflag) \{reset\_arc\_length\_parameters(); fflag=false;\}}
+\textcolor{comment}{//      ds = 0.001;}
+\textcolor{comment}{//      //Now do it in Ca}
+\textcolor{comment}{//      ds = arc\_length\_step\_solve(&Ca,ds);}
+\textcolor{comment}{//     \}}
+
+\textcolor{comment}{//    if(Bulk\_mesh\_pt->boundary\_node\_pt(2,0)->x(1) < 4.0)}
+\textcolor{comment}{//     \{flag=false;\}}
+
+   trace << Ca << \textcolor{stringliteral}{" "} << ReInvFr << \textcolor{stringliteral}{" "} << Angle << \textcolor{stringliteral}{" "}
+         << Bulk\_mesh\_pt->boundary\_node\_pt(2,0)->x(1) << std::endl;   
+   
+   \textcolor{keywordtype}{char} file[100];
+   sprintf(file,\textcolor{stringliteral}{"step%i.dat"},i);
+   filename.open(file);
+   Bulk\_mesh\_pt->output(filename,5);
+   Surface\_mesh\_pt->output(filename,5);
+   \textcolor{comment}{//Point\_mesh\_pt->output(filename,5);}
+   filename.close();
+
+   \textcolor{comment}{//Now reset the values of the lagrange multipliers and the xi's}
+   \textcolor{comment}{//An updated lagrangian approach}
+   
+   \textcolor{comment}{//Now loop over all the nodes and set their Lagrangian coordinates}
+   \textcolor{keywordtype}{unsigned} Nnode = Bulk\_mesh\_pt->nnode();
+   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} n=0;n<Nnode;n++)
+    \{
+     \textcolor{comment}{//Cast node to an elastic node}
+     SolidNode* temp\_pt = \textcolor{keyword}{static\_cast<}SolidNode*\textcolor{keyword}{>}(Bulk\_mesh\_pt->node\_pt(n));
+     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} j=0;j<2;j++) \{temp\_pt->xi(j) = temp\_pt->x(j);\}
+    \}
+
+   \textcolor{comment}{//Find the number of free surface elements}
+   \textcolor{keywordtype}{unsigned} Nfree = Surface\_mesh\_pt->nelement();
+   \textcolor{comment}{//Loop over the free surface elements}
+   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} n=0;n<Nfree;n++)
+    \{
+     \textcolor{comment}{// Upcast from FiniteElement to the present element}
+     ElasticLineFluidInterfaceElement<ELEMENT> *temp\_pt = 
+      \textcolor{keyword}{dynamic\_cast<}ElasticLineFluidInterfaceElement<ELEMENT>*\textcolor{keyword}{>}
+      (Surface\_mesh\_pt->element\_pt(n));
+     \textcolor{keywordtype}{unsigned} Nnode = temp\_pt->nnode();
+     \textcolor{comment}{//Reset the lagrange multipliers}
+     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} j=0;j<Nnode;j++) \{temp\_pt->lagrange(j) = 0.0;\}
+    \}
+  \}
+ 
+ \textcolor{comment}{//Document the solution}
+ \textcolor{comment}{//filename.open("output.dat");}
+ \textcolor{comment}{//Bulk\_mesh\_pt->output(filename,5);}
+ \textcolor{comment}{//filename.close();}
+ trace.close();
+\}
+
+\textcolor{comment}{}
+\textcolor{comment}{///////////////////////////////////////////////////////////////////////}
+\textcolor{comment}{///////////////////////////////////////////////////////////////////////}
+\textcolor{comment}{///////////////////////////////////////////////////////////////////////}
+\textcolor{comment}{}
+
+ \textcolor{keywordtype}{int} \hyperlink{adaptive__interface_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}()
+  \{
+
+   \hyperlink{classRefineableRotatingCylinderProblem}{RefineableRotatingCylinderProblem}
+    <RefineablePseudoSolidNodeUpdateElement<RefineableQCrouzeixRaviartElement<2>,
+    RefineableQPVDElementWithContinuousPressure<2> > > problem(3.0,4.0);
+   
+   \textcolor{comment}{//ofstream filename("mesh.dat");}
+   \textcolor{comment}{//problem.Bulk\_mesh\_pt->output(filename,5);}
+
+   problem.solve();
+  \}
+\end{DoxyCodeInclude}
+
+
+
+
+ 
+
+ \hypertarget{index_pdf}{}\section{P\+D\+F file}\label{index_pdf}
+A \href{../latex/refman.pdf}{\tt pdf version} of this document is available. \end{document}

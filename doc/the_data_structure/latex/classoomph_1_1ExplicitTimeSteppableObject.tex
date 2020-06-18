@@ -1,0 +1,399 @@
+\hypertarget{classoomph_1_1ExplicitTimeSteppableObject}{}\section{oomph\+:\+:Explicit\+Time\+Steppable\+Object Class Reference}
+\label{classoomph_1_1ExplicitTimeSteppableObject}\index{oomph\+::\+Explicit\+Time\+Steppable\+Object@{oomph\+::\+Explicit\+Time\+Steppable\+Object}}
+
+
+{\ttfamily \#include $<$explicit\+\_\+timesteppers.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Explicit\+Time\+Steppable\+Object\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=9.744780cm]{classoomph_1_1ExplicitTimeSteppableObject}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1ExplicitTimeSteppableObject_a07e82e7df9f289fc59fbf5ac438ad068}{Explicit\+Time\+Steppable\+Object} ()
+\begin{DoxyCompactList}\small\item\em Empty constructor. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1ExplicitTimeSteppableObject_a84b73e9c12b420621c0017b989839ae5}{Explicit\+Time\+Steppable\+Object} (const \hyperlink{classoomph_1_1ExplicitTimeSteppableObject}{Explicit\+Time\+Steppable\+Object} \&)
+\begin{DoxyCompactList}\small\item\em Broken copy constructor. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1ExplicitTimeSteppableObject_a10d44a6010c7ee70b7d1fd14fad864dc}{operator=} (const \hyperlink{classoomph_1_1ExplicitTimeSteppableObject}{Explicit\+Time\+Steppable\+Object} \&)
+\begin{DoxyCompactList}\small\item\em Broken assignment operator. \end{DoxyCompactList}\item 
+virtual \hyperlink{classoomph_1_1ExplicitTimeSteppableObject_a0ed68ad4da79ddfdc5b545fa62292304}{$\sim$\+Explicit\+Time\+Steppable\+Object} ()
+\begin{DoxyCompactList}\small\item\em Empty destructor. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1ExplicitTimeSteppableObject_ab1e7d8d7ec548b26ed039b61a9eba9c4}{get\+\_\+dvaluesdt} (\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} \&minv\+\_\+res)
+\begin{DoxyCompactList}\small\item\em A single virtual function that returns the residuals vector multiplied by the inverse mass matrix. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1ExplicitTimeSteppableObject_a0fcf43487590dd723f25184067f26219}{get\+\_\+dofs} (\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} \&dofs) const
+\begin{DoxyCompactList}\small\item\em Function that gets the values of the dofs in the object. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1ExplicitTimeSteppableObject_a370d8d077bb5e07290f4c2f31183d8d2}{get\+\_\+dofs} (const unsigned \&\hyperlink{cfortran_8h_af6f0bd3dc13317f895c91323c25c2b8f}{t}, \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} \&dofs) const
+\begin{DoxyCompactList}\small\item\em Function that gets the history values of the dofs in the object. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1ExplicitTimeSteppableObject_a76a8d64f2d6aa8de955b44c86e9b3ecb}{set\+\_\+dofs} (const \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} \&dofs)
+\begin{DoxyCompactList}\small\item\em Function that sets the values of the dofs in the object. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1ExplicitTimeSteppableObject_a00f10d9ad6de867dd72ba175a5f0ec89}{add\+\_\+to\+\_\+dofs} (const double \&lambda, const \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} \&increment\+\_\+dofs)
+\begin{DoxyCompactList}\small\item\em Function that adds the values to the dofs. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1ExplicitTimeSteppableObject_a74eb2ebff3fc3066edccdfe4d3b6bc07}{actions\+\_\+before\+\_\+explicit\+\_\+stage} ()
+\begin{DoxyCompactList}\small\item\em Empty virtual function to do anything needed before a stage of an explicit time step (Runge-\/\+Kutta steps contain multiple stages per time step, most others only contain one). \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1ExplicitTimeSteppableObject_ad1eb700abad36e868a84c475f9866b7d}{actions\+\_\+after\+\_\+explicit\+\_\+stage} ()
+\begin{DoxyCompactList}\small\item\em Empty virtual function that should be overloaded to update and slaved data or boundary conditions that should be advanced after each stage of an explicit time step (Runge-\/\+Kutta steps contain multiple stages per time step, most others only contain one). \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1ExplicitTimeSteppableObject_ae169b713aa971921bfd1269de898b934}{actions\+\_\+before\+\_\+explicit\+\_\+timestep} ()
+\begin{DoxyCompactList}\small\item\em Empty virtual function that can be overloaded to do anything needed before an explicit step. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1ExplicitTimeSteppableObject_a22371b17397f74660c8e9d54ed50ccea}{actions\+\_\+after\+\_\+explicit\+\_\+timestep} ()
+\begin{DoxyCompactList}\small\item\em Empty virtual function that can be overloaded to do anything needed after an explicit step. \end{DoxyCompactList}\item 
+virtual double \& \hyperlink{classoomph_1_1ExplicitTimeSteppableObject_a42fde674301963f01b8e41b3f333cc65}{time} ()
+\begin{DoxyCompactList}\small\item\em Broken virtual function that should be overloaded to return access to the local time in the object. \end{DoxyCompactList}\item 
+virtual \hyperlink{classoomph_1_1Time}{Time} $\ast$ \hyperlink{classoomph_1_1ExplicitTimeSteppableObject_a49ecd5e667dc16d4f2b991598d311b36}{time\+\_\+pt} () const
+\begin{DoxyCompactList}\small\item\em Virtual function that should be overloaded to return a pointer to a \hyperlink{classoomph_1_1Time}{Time} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static double \hyperlink{classoomph_1_1ExplicitTimeSteppableObject_ae16e2f717ed0e72c2c543745f8716252}{Dummy\+\_\+time\+\_\+value} = 0.\+0
+\begin{DoxyCompactList}\small\item\em Dummy value of time always set to zero. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class for objects than can be advanced in time by an Explicit Timestepper. W\+A\+R\+N\+I\+NG\+: For explicit time stepping to work the object\textquotesingle{}s residual function (as used by get\+\_\+inverse\+\_\+mass\+\_\+matrix\+\_\+times\+\_\+residuals(..)) M\+U\+ST be in the form r = f(t, u) -\/ \mbox{[}timestepper approximation to dudt\mbox{]}! Standard implicit time stepping will work with plenty of residuals that don\textquotesingle{}t fit into this form. Some examples where implicit time stepping will work fine but explicit will fail\+: 1) The negation of the above formula, this implementation will end up using dudt = -\/ f(u,t). 2) A residual which is implicit or non-\/linear in dudt, such as r = dudt
+\begin{DoxyItemize}
+\item u x dudt. 
+\end{DoxyItemize}
+
+Definition at line 69 of file explicit\+\_\+timesteppers.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1ExplicitTimeSteppableObject_a07e82e7df9f289fc59fbf5ac438ad068}\label{classoomph_1_1ExplicitTimeSteppableObject_a07e82e7df9f289fc59fbf5ac438ad068}} 
+\index{oomph\+::\+Explicit\+Time\+Steppable\+Object@{oomph\+::\+Explicit\+Time\+Steppable\+Object}!Explicit\+Time\+Steppable\+Object@{Explicit\+Time\+Steppable\+Object}}
+\index{Explicit\+Time\+Steppable\+Object@{Explicit\+Time\+Steppable\+Object}!oomph\+::\+Explicit\+Time\+Steppable\+Object@{oomph\+::\+Explicit\+Time\+Steppable\+Object}}
+\subsubsection{\texorpdfstring{Explicit\+Time\+Steppable\+Object()}{ExplicitTimeSteppableObject()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily oomph\+::\+Explicit\+Time\+Steppable\+Object\+::\+Explicit\+Time\+Steppable\+Object (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Empty constructor. 
+
+
+
+Definition at line 76 of file explicit\+\_\+timesteppers.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1ExplicitTimeSteppableObject_a84b73e9c12b420621c0017b989839ae5}\label{classoomph_1_1ExplicitTimeSteppableObject_a84b73e9c12b420621c0017b989839ae5}} 
+\index{oomph\+::\+Explicit\+Time\+Steppable\+Object@{oomph\+::\+Explicit\+Time\+Steppable\+Object}!Explicit\+Time\+Steppable\+Object@{Explicit\+Time\+Steppable\+Object}}
+\index{Explicit\+Time\+Steppable\+Object@{Explicit\+Time\+Steppable\+Object}!oomph\+::\+Explicit\+Time\+Steppable\+Object@{oomph\+::\+Explicit\+Time\+Steppable\+Object}}
+\subsubsection{\texorpdfstring{Explicit\+Time\+Steppable\+Object()}{ExplicitTimeSteppableObject()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily oomph\+::\+Explicit\+Time\+Steppable\+Object\+::\+Explicit\+Time\+Steppable\+Object (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1ExplicitTimeSteppableObject}{Explicit\+Time\+Steppable\+Object} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Broken copy constructor. 
+
+
+
+Definition at line 79 of file explicit\+\_\+timesteppers.\+h.
+
+
+
+References oomph\+::\+Broken\+Copy\+::broken\+\_\+copy().
+
+\mbox{\Hypertarget{classoomph_1_1ExplicitTimeSteppableObject_a0ed68ad4da79ddfdc5b545fa62292304}\label{classoomph_1_1ExplicitTimeSteppableObject_a0ed68ad4da79ddfdc5b545fa62292304}} 
+\index{oomph\+::\+Explicit\+Time\+Steppable\+Object@{oomph\+::\+Explicit\+Time\+Steppable\+Object}!````~Explicit\+Time\+Steppable\+Object@{$\sim$\+Explicit\+Time\+Steppable\+Object}}
+\index{````~Explicit\+Time\+Steppable\+Object@{$\sim$\+Explicit\+Time\+Steppable\+Object}!oomph\+::\+Explicit\+Time\+Steppable\+Object@{oomph\+::\+Explicit\+Time\+Steppable\+Object}}
+\subsubsection{\texorpdfstring{$\sim$\+Explicit\+Time\+Steppable\+Object()}{~ExplicitTimeSteppableObject()}}
+{\footnotesize\ttfamily virtual oomph\+::\+Explicit\+Time\+Steppable\+Object\+::$\sim$\+Explicit\+Time\+Steppable\+Object (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Empty destructor. 
+
+
+
+Definition at line 91 of file explicit\+\_\+timesteppers.\+h.
+
+
+
+References add\+\_\+to\+\_\+dofs(), get\+\_\+dofs(), get\+\_\+dvaluesdt(), set\+\_\+dofs(), and t.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1ExplicitTimeSteppableObject_ad1eb700abad36e868a84c475f9866b7d}\label{classoomph_1_1ExplicitTimeSteppableObject_ad1eb700abad36e868a84c475f9866b7d}} 
+\index{oomph\+::\+Explicit\+Time\+Steppable\+Object@{oomph\+::\+Explicit\+Time\+Steppable\+Object}!actions\+\_\+after\+\_\+explicit\+\_\+stage@{actions\+\_\+after\+\_\+explicit\+\_\+stage}}
+\index{actions\+\_\+after\+\_\+explicit\+\_\+stage@{actions\+\_\+after\+\_\+explicit\+\_\+stage}!oomph\+::\+Explicit\+Time\+Steppable\+Object@{oomph\+::\+Explicit\+Time\+Steppable\+Object}}
+\subsubsection{\texorpdfstring{actions\+\_\+after\+\_\+explicit\+\_\+stage()}{actions\_after\_explicit\_stage()}}
+{\footnotesize\ttfamily virtual void oomph\+::\+Explicit\+Time\+Steppable\+Object\+::actions\+\_\+after\+\_\+explicit\+\_\+stage (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Empty virtual function that should be overloaded to update and slaved data or boundary conditions that should be advanced after each stage of an explicit time step (Runge-\/\+Kutta steps contain multiple stages per time step, most others only contain one). 
+
+
+
+Definition at line 119 of file explicit\+\_\+timesteppers.\+h.
+
+
+
+Referenced by oomph\+::\+Euler\+::timestep(), oomph\+::\+Runge\+Kutta$<$ O\+R\+D\+E\+R $>$\+::timestep(), oomph\+::\+E\+B\+D\+F3\+::timestep(), and oomph\+::\+Low\+Storage\+Runge\+Kutta$<$ O\+R\+D\+E\+R $>$\+::timestep().
+
+\mbox{\Hypertarget{classoomph_1_1ExplicitTimeSteppableObject_a22371b17397f74660c8e9d54ed50ccea}\label{classoomph_1_1ExplicitTimeSteppableObject_a22371b17397f74660c8e9d54ed50ccea}} 
+\index{oomph\+::\+Explicit\+Time\+Steppable\+Object@{oomph\+::\+Explicit\+Time\+Steppable\+Object}!actions\+\_\+after\+\_\+explicit\+\_\+timestep@{actions\+\_\+after\+\_\+explicit\+\_\+timestep}}
+\index{actions\+\_\+after\+\_\+explicit\+\_\+timestep@{actions\+\_\+after\+\_\+explicit\+\_\+timestep}!oomph\+::\+Explicit\+Time\+Steppable\+Object@{oomph\+::\+Explicit\+Time\+Steppable\+Object}}
+\subsubsection{\texorpdfstring{actions\+\_\+after\+\_\+explicit\+\_\+timestep()}{actions\_after\_explicit\_timestep()}}
+{\footnotesize\ttfamily virtual void oomph\+::\+Explicit\+Time\+Steppable\+Object\+::actions\+\_\+after\+\_\+explicit\+\_\+timestep (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Empty virtual function that can be overloaded to do anything needed after an explicit step. 
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1Problem_a51bfd872c45467a65ce977f3753a6d1d}{oomph\+::\+Problem}.
+
+
+
+Definition at line 127 of file explicit\+\_\+timesteppers.\+h.
+
+
+
+References time(), and time\+\_\+pt().
+
+
+
+Referenced by oomph\+::\+Euler\+::timestep(), oomph\+::\+Runge\+Kutta$<$ O\+R\+D\+E\+R $>$\+::timestep(), oomph\+::\+E\+B\+D\+F3\+::timestep(), and oomph\+::\+Low\+Storage\+Runge\+Kutta$<$ O\+R\+D\+E\+R $>$\+::timestep().
+
+\mbox{\Hypertarget{classoomph_1_1ExplicitTimeSteppableObject_a74eb2ebff3fc3066edccdfe4d3b6bc07}\label{classoomph_1_1ExplicitTimeSteppableObject_a74eb2ebff3fc3066edccdfe4d3b6bc07}} 
+\index{oomph\+::\+Explicit\+Time\+Steppable\+Object@{oomph\+::\+Explicit\+Time\+Steppable\+Object}!actions\+\_\+before\+\_\+explicit\+\_\+stage@{actions\+\_\+before\+\_\+explicit\+\_\+stage}}
+\index{actions\+\_\+before\+\_\+explicit\+\_\+stage@{actions\+\_\+before\+\_\+explicit\+\_\+stage}!oomph\+::\+Explicit\+Time\+Steppable\+Object@{oomph\+::\+Explicit\+Time\+Steppable\+Object}}
+\subsubsection{\texorpdfstring{actions\+\_\+before\+\_\+explicit\+\_\+stage()}{actions\_before\_explicit\_stage()}}
+{\footnotesize\ttfamily virtual void oomph\+::\+Explicit\+Time\+Steppable\+Object\+::actions\+\_\+before\+\_\+explicit\+\_\+stage (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Empty virtual function to do anything needed before a stage of an explicit time step (Runge-\/\+Kutta steps contain multiple stages per time step, most others only contain one). 
+
+
+
+Definition at line 113 of file explicit\+\_\+timesteppers.\+h.
+
+
+
+Referenced by oomph\+::\+Euler\+::timestep(), oomph\+::\+Runge\+Kutta$<$ O\+R\+D\+E\+R $>$\+::timestep(), oomph\+::\+E\+B\+D\+F3\+::timestep(), and oomph\+::\+Low\+Storage\+Runge\+Kutta$<$ O\+R\+D\+E\+R $>$\+::timestep().
+
+\mbox{\Hypertarget{classoomph_1_1ExplicitTimeSteppableObject_ae169b713aa971921bfd1269de898b934}\label{classoomph_1_1ExplicitTimeSteppableObject_ae169b713aa971921bfd1269de898b934}} 
+\index{oomph\+::\+Explicit\+Time\+Steppable\+Object@{oomph\+::\+Explicit\+Time\+Steppable\+Object}!actions\+\_\+before\+\_\+explicit\+\_\+timestep@{actions\+\_\+before\+\_\+explicit\+\_\+timestep}}
+\index{actions\+\_\+before\+\_\+explicit\+\_\+timestep@{actions\+\_\+before\+\_\+explicit\+\_\+timestep}!oomph\+::\+Explicit\+Time\+Steppable\+Object@{oomph\+::\+Explicit\+Time\+Steppable\+Object}}
+\subsubsection{\texorpdfstring{actions\+\_\+before\+\_\+explicit\+\_\+timestep()}{actions\_before\_explicit\_timestep()}}
+{\footnotesize\ttfamily virtual void oomph\+::\+Explicit\+Time\+Steppable\+Object\+::actions\+\_\+before\+\_\+explicit\+\_\+timestep (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Empty virtual function that can be overloaded to do anything needed before an explicit step. 
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1Problem_a6ae06bc0ecba349ebdf76220c1a17546}{oomph\+::\+Problem}.
+
+
+
+Definition at line 123 of file explicit\+\_\+timesteppers.\+h.
+
+
+
+Referenced by oomph\+::\+Euler\+::timestep(), oomph\+::\+Runge\+Kutta$<$ O\+R\+D\+E\+R $>$\+::timestep(), oomph\+::\+E\+B\+D\+F3\+::timestep(), and oomph\+::\+Low\+Storage\+Runge\+Kutta$<$ O\+R\+D\+E\+R $>$\+::timestep().
+
+\mbox{\Hypertarget{classoomph_1_1ExplicitTimeSteppableObject_a00f10d9ad6de867dd72ba175a5f0ec89}\label{classoomph_1_1ExplicitTimeSteppableObject_a00f10d9ad6de867dd72ba175a5f0ec89}} 
+\index{oomph\+::\+Explicit\+Time\+Steppable\+Object@{oomph\+::\+Explicit\+Time\+Steppable\+Object}!add\+\_\+to\+\_\+dofs@{add\+\_\+to\+\_\+dofs}}
+\index{add\+\_\+to\+\_\+dofs@{add\+\_\+to\+\_\+dofs}!oomph\+::\+Explicit\+Time\+Steppable\+Object@{oomph\+::\+Explicit\+Time\+Steppable\+Object}}
+\subsubsection{\texorpdfstring{add\+\_\+to\+\_\+dofs()}{add\_to\_dofs()}}
+{\footnotesize\ttfamily void oomph\+::\+Explicit\+Time\+Steppable\+Object\+::add\+\_\+to\+\_\+dofs (\begin{DoxyParamCaption}\item[{const double \&}]{lambda,  }\item[{const \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} \&}]{increment\+\_\+dofs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Function that adds the values to the dofs. 
+
+Function that adds the lambda multiplied by the increment\+\_\+dofs vector to the dofs in the object 
+
+Reimplemented in \hyperlink{classoomph_1_1Problem_a352210408b3eed3e7a834b8b9a33a99a}{oomph\+::\+Problem}.
+
+
+
+Definition at line 124 of file explicit\+\_\+timesteppers.\+cc.
+
+
+
+Referenced by oomph\+::\+Euler\+::timestep(), oomph\+::\+Runge\+Kutta$<$ O\+R\+D\+E\+R $>$\+::timestep(), oomph\+::\+Low\+Storage\+Runge\+Kutta$<$ O\+R\+D\+E\+R $>$\+::timestep(), and $\sim$\+Explicit\+Time\+Steppable\+Object().
+
+\mbox{\Hypertarget{classoomph_1_1ExplicitTimeSteppableObject_a0fcf43487590dd723f25184067f26219}\label{classoomph_1_1ExplicitTimeSteppableObject_a0fcf43487590dd723f25184067f26219}} 
+\index{oomph\+::\+Explicit\+Time\+Steppable\+Object@{oomph\+::\+Explicit\+Time\+Steppable\+Object}!get\+\_\+dofs@{get\+\_\+dofs}}
+\index{get\+\_\+dofs@{get\+\_\+dofs}!oomph\+::\+Explicit\+Time\+Steppable\+Object@{oomph\+::\+Explicit\+Time\+Steppable\+Object}}
+\subsubsection{\texorpdfstring{get\+\_\+dofs()}{get\_dofs()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void oomph\+::\+Explicit\+Time\+Steppable\+Object\+::get\+\_\+dofs (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} \&}]{dofs }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Function that gets the values of the dofs in the object. 
+
+Function that should get the values of the dofs in the object. 
+
+Reimplemented in \hyperlink{classoomph_1_1Problem_ae2ef66732d76053dba15001818c0605c}{oomph\+::\+Problem}.
+
+
+
+Definition at line 66 of file explicit\+\_\+timesteppers.\+cc.
+
+
+
+Referenced by oomph\+::\+Runge\+Kutta$<$ O\+R\+D\+E\+R $>$\+::timestep(), oomph\+::\+E\+B\+D\+F3\+::timestep(), and $\sim$\+Explicit\+Time\+Steppable\+Object().
+
+\mbox{\Hypertarget{classoomph_1_1ExplicitTimeSteppableObject_a370d8d077bb5e07290f4c2f31183d8d2}\label{classoomph_1_1ExplicitTimeSteppableObject_a370d8d077bb5e07290f4c2f31183d8d2}} 
+\index{oomph\+::\+Explicit\+Time\+Steppable\+Object@{oomph\+::\+Explicit\+Time\+Steppable\+Object}!get\+\_\+dofs@{get\+\_\+dofs}}
+\index{get\+\_\+dofs@{get\+\_\+dofs}!oomph\+::\+Explicit\+Time\+Steppable\+Object@{oomph\+::\+Explicit\+Time\+Steppable\+Object}}
+\subsubsection{\texorpdfstring{get\+\_\+dofs()}{get\_dofs()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void oomph\+::\+Explicit\+Time\+Steppable\+Object\+::get\+\_\+dofs (\begin{DoxyParamCaption}\item[{const unsigned \&}]{t,  }\item[{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} \&}]{dofs }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Function that gets the history values of the dofs in the object. 
+
+Function that should get the values of the dofs in the object. 
+
+Reimplemented in \hyperlink{classoomph_1_1Problem_abb56c404b0dd6df75bcadab797d9a24e}{oomph\+::\+Problem}.
+
+
+
+Definition at line 85 of file explicit\+\_\+timesteppers.\+cc.
+
+\mbox{\Hypertarget{classoomph_1_1ExplicitTimeSteppableObject_ab1e7d8d7ec548b26ed039b61a9eba9c4}\label{classoomph_1_1ExplicitTimeSteppableObject_ab1e7d8d7ec548b26ed039b61a9eba9c4}} 
+\index{oomph\+::\+Explicit\+Time\+Steppable\+Object@{oomph\+::\+Explicit\+Time\+Steppable\+Object}!get\+\_\+dvaluesdt@{get\+\_\+dvaluesdt}}
+\index{get\+\_\+dvaluesdt@{get\+\_\+dvaluesdt}!oomph\+::\+Explicit\+Time\+Steppable\+Object@{oomph\+::\+Explicit\+Time\+Steppable\+Object}}
+\subsubsection{\texorpdfstring{get\+\_\+dvaluesdt()}{get\_dvaluesdt()}}
+{\footnotesize\ttfamily void oomph\+::\+Explicit\+Time\+Steppable\+Object\+::get\+\_\+dvaluesdt (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} \&}]{minv\+\_\+res }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+A single virtual function that returns the residuals vector multiplied by the inverse mass matrix. 
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1Problem_a2d456362f4408556e879871ae34e57f1}{oomph\+::\+Problem}.
+
+
+
+Definition at line 46 of file explicit\+\_\+timesteppers.\+cc.
+
+
+
+Referenced by oomph\+::\+Euler\+::timestep(), oomph\+::\+Runge\+Kutta$<$ O\+R\+D\+E\+R $>$\+::timestep(), oomph\+::\+E\+B\+D\+F3\+::timestep(), oomph\+::\+Low\+Storage\+Runge\+Kutta$<$ O\+R\+D\+E\+R $>$\+::timestep(), and $\sim$\+Explicit\+Time\+Steppable\+Object().
+
+\mbox{\Hypertarget{classoomph_1_1ExplicitTimeSteppableObject_a10d44a6010c7ee70b7d1fd14fad864dc}\label{classoomph_1_1ExplicitTimeSteppableObject_a10d44a6010c7ee70b7d1fd14fad864dc}} 
+\index{oomph\+::\+Explicit\+Time\+Steppable\+Object@{oomph\+::\+Explicit\+Time\+Steppable\+Object}!operator=@{operator=}}
+\index{operator=@{operator=}!oomph\+::\+Explicit\+Time\+Steppable\+Object@{oomph\+::\+Explicit\+Time\+Steppable\+Object}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily void oomph\+::\+Explicit\+Time\+Steppable\+Object\+::operator= (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1ExplicitTimeSteppableObject}{Explicit\+Time\+Steppable\+Object} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Broken assignment operator. 
+
+
+
+Definition at line 85 of file explicit\+\_\+timesteppers.\+h.
+
+
+
+References oomph\+::\+Broken\+Copy\+::broken\+\_\+assign().
+
+\mbox{\Hypertarget{classoomph_1_1ExplicitTimeSteppableObject_a76a8d64f2d6aa8de955b44c86e9b3ecb}\label{classoomph_1_1ExplicitTimeSteppableObject_a76a8d64f2d6aa8de955b44c86e9b3ecb}} 
+\index{oomph\+::\+Explicit\+Time\+Steppable\+Object@{oomph\+::\+Explicit\+Time\+Steppable\+Object}!set\+\_\+dofs@{set\+\_\+dofs}}
+\index{set\+\_\+dofs@{set\+\_\+dofs}!oomph\+::\+Explicit\+Time\+Steppable\+Object@{oomph\+::\+Explicit\+Time\+Steppable\+Object}}
+\subsubsection{\texorpdfstring{set\+\_\+dofs()}{set\_dofs()}}
+{\footnotesize\ttfamily void oomph\+::\+Explicit\+Time\+Steppable\+Object\+::set\+\_\+dofs (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} \&}]{dofs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Function that sets the values of the dofs in the object. 
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1Problem_ab51480d18550c107c9f13629102f6b08}{oomph\+::\+Problem}.
+
+
+
+Definition at line 105 of file explicit\+\_\+timesteppers.\+cc.
+
+
+
+Referenced by oomph\+::\+Runge\+Kutta$<$ O\+R\+D\+E\+R $>$\+::timestep(), oomph\+::\+E\+B\+D\+F3\+::timestep(), and $\sim$\+Explicit\+Time\+Steppable\+Object().
+
+\mbox{\Hypertarget{classoomph_1_1ExplicitTimeSteppableObject_a42fde674301963f01b8e41b3f333cc65}\label{classoomph_1_1ExplicitTimeSteppableObject_a42fde674301963f01b8e41b3f333cc65}} 
+\index{oomph\+::\+Explicit\+Time\+Steppable\+Object@{oomph\+::\+Explicit\+Time\+Steppable\+Object}!time@{time}}
+\index{time@{time}!oomph\+::\+Explicit\+Time\+Steppable\+Object@{oomph\+::\+Explicit\+Time\+Steppable\+Object}}
+\subsubsection{\texorpdfstring{time()}{time()}}
+{\footnotesize\ttfamily double \& oomph\+::\+Explicit\+Time\+Steppable\+Object\+::time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Broken virtual function that should be overloaded to return access to the local time in the object. 
+
+Virtual function that should be overloaded to return access to the local time in the object. 
+
+Reimplemented in \hyperlink{classoomph_1_1Problem_acd8c357349d20a28af70b2b7ea7f488d}{oomph\+::\+Problem}.
+
+
+
+Definition at line 147 of file explicit\+\_\+timesteppers.\+cc.
+
+
+
+References Dummy\+\_\+time\+\_\+value.
+
+
+
+Referenced by actions\+\_\+after\+\_\+explicit\+\_\+timestep(), oomph\+::\+Euler\+::timestep(), oomph\+::\+Runge\+Kutta$<$ O\+R\+D\+E\+R $>$\+::timestep(), oomph\+::\+E\+B\+D\+F3\+::timestep(), and oomph\+::\+Low\+Storage\+Runge\+Kutta$<$ O\+R\+D\+E\+R $>$\+::timestep().
+
+\mbox{\Hypertarget{classoomph_1_1ExplicitTimeSteppableObject_a49ecd5e667dc16d4f2b991598d311b36}\label{classoomph_1_1ExplicitTimeSteppableObject_a49ecd5e667dc16d4f2b991598d311b36}} 
+\index{oomph\+::\+Explicit\+Time\+Steppable\+Object@{oomph\+::\+Explicit\+Time\+Steppable\+Object}!time\+\_\+pt@{time\+\_\+pt}}
+\index{time\+\_\+pt@{time\+\_\+pt}!oomph\+::\+Explicit\+Time\+Steppable\+Object@{oomph\+::\+Explicit\+Time\+Steppable\+Object}}
+\subsubsection{\texorpdfstring{time\+\_\+pt()}{time\_pt()}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1Time}{Time} $\ast$ oomph\+::\+Explicit\+Time\+Steppable\+Object\+::time\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Virtual function that should be overloaded to return a pointer to a \hyperlink{classoomph_1_1Time}{Time} object. 
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1Problem_aa86b09eac493cfa9fcbe57734985ba19}{oomph\+::\+Problem}.
+
+
+
+Definition at line 163 of file explicit\+\_\+timesteppers.\+cc.
+
+
+
+Referenced by actions\+\_\+after\+\_\+explicit\+\_\+timestep(), and oomph\+::\+E\+B\+D\+F3\+::timestep().
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1ExplicitTimeSteppableObject_ae16e2f717ed0e72c2c543745f8716252}\label{classoomph_1_1ExplicitTimeSteppableObject_ae16e2f717ed0e72c2c543745f8716252}} 
+\index{oomph\+::\+Explicit\+Time\+Steppable\+Object@{oomph\+::\+Explicit\+Time\+Steppable\+Object}!Dummy\+\_\+time\+\_\+value@{Dummy\+\_\+time\+\_\+value}}
+\index{Dummy\+\_\+time\+\_\+value@{Dummy\+\_\+time\+\_\+value}!oomph\+::\+Explicit\+Time\+Steppable\+Object@{oomph\+::\+Explicit\+Time\+Steppable\+Object}}
+\subsubsection{\texorpdfstring{Dummy\+\_\+time\+\_\+value}{Dummy\_time\_value}}
+{\footnotesize\ttfamily double oomph\+::\+Explicit\+Time\+Steppable\+Object\+::\+Dummy\+\_\+time\+\_\+value = 0.\+0\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Dummy value of time always set to zero. 
+
+
+
+Definition at line 72 of file explicit\+\_\+timesteppers.\+h.
+
+
+
+Referenced by time().
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{explicit__timesteppers_8h}{explicit\+\_\+timesteppers.\+h}\item 
+\hyperlink{explicit__timesteppers_8cc}{explicit\+\_\+timesteppers.\+cc}\end{DoxyCompactItemize}

@@ -1,0 +1,107 @@
+\hypertarget{classoomph_1_1HelmholtzMGProblem}{}\section{oomph\+:\+:Helmholtz\+M\+G\+Problem Class Reference}
+\label{classoomph_1_1HelmholtzMGProblem}\index{oomph\+::\+Helmholtz\+M\+G\+Problem@{oomph\+::\+Helmholtz\+M\+G\+Problem}}
+
+
+\hyperlink{classoomph_1_1HelmholtzMGProblem}{Helmholtz\+M\+G\+Problem} class; subclass of \hyperlink{classoomph_1_1Problem}{Problem}.  
+
+
+
+
+{\ttfamily \#include $<$helmholtz\+\_\+geometric\+\_\+multigrid.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Helmholtz\+M\+G\+Problem\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classoomph_1_1HelmholtzMGProblem}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1HelmholtzMGProblem_ab74fba72dcdfc8f448a992944764cd4c}{Helmholtz\+M\+G\+Problem} ()
+\begin{DoxyCompactList}\small\item\em Constructor. Initialise pointers to coarser and finer levels. \end{DoxyCompactList}\item 
+virtual \hyperlink{classoomph_1_1HelmholtzMGProblem_a0cc940bfc51d6e95e420b60938640e54}{$\sim$\+Helmholtz\+M\+G\+Problem} ()
+\begin{DoxyCompactList}\small\item\em Destructor (empty) \end{DoxyCompactList}\item 
+virtual \hyperlink{classoomph_1_1HelmholtzMGProblem}{Helmholtz\+M\+G\+Problem} $\ast$ \hyperlink{classoomph_1_1HelmholtzMGProblem_aba0155964004b8fea5975957e0892863}{make\+\_\+new\+\_\+problem} ()=0
+\begin{DoxyCompactList}\small\item\em This function needs to be implemented in the derived problem\+: Returns a pointer to a new object of the same type as the derived problem. \end{DoxyCompactList}\item 
+virtual \hyperlink{classoomph_1_1TreeBasedRefineableMeshBase}{Tree\+Based\+Refineable\+Mesh\+Base} $\ast$ \hyperlink{classoomph_1_1HelmholtzMGProblem_aeae03594fd61961d0f62aef58ae97a92}{mg\+\_\+bulk\+\_\+mesh\+\_\+pt} ()=0
+\begin{DoxyCompactList}\small\item\em Function to get a pointer to the mesh we will be working with. If there are flux elements present in the mesh this will be overloaded to return a pointer to the bulk mesh otherwise it can be overloaded to point to the global mesh but it must be of type \hyperlink{classoomph_1_1RefineableMeshBase}{Refineable\+Mesh\+Base}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\hyperlink{classoomph_1_1HelmholtzMGProblem}{Helmholtz\+M\+G\+Problem} class; subclass of \hyperlink{classoomph_1_1Problem}{Problem}. 
+
+Definition at line 25 of file helmholtz\+\_\+geometric\+\_\+multigrid.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1HelmholtzMGProblem_ab74fba72dcdfc8f448a992944764cd4c}\label{classoomph_1_1HelmholtzMGProblem_ab74fba72dcdfc8f448a992944764cd4c}} 
+\index{oomph\+::\+Helmholtz\+M\+G\+Problem@{oomph\+::\+Helmholtz\+M\+G\+Problem}!Helmholtz\+M\+G\+Problem@{Helmholtz\+M\+G\+Problem}}
+\index{Helmholtz\+M\+G\+Problem@{Helmholtz\+M\+G\+Problem}!oomph\+::\+Helmholtz\+M\+G\+Problem@{oomph\+::\+Helmholtz\+M\+G\+Problem}}
+\subsubsection{\texorpdfstring{Helmholtz\+M\+G\+Problem()}{HelmholtzMGProblem()}}
+{\footnotesize\ttfamily oomph\+::\+Helmholtz\+M\+G\+Problem\+::\+Helmholtz\+M\+G\+Problem (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor. Initialise pointers to coarser and finer levels. 
+
+
+
+Definition at line 31 of file helmholtz\+\_\+geometric\+\_\+multigrid.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1HelmholtzMGProblem_a0cc940bfc51d6e95e420b60938640e54}\label{classoomph_1_1HelmholtzMGProblem_a0cc940bfc51d6e95e420b60938640e54}} 
+\index{oomph\+::\+Helmholtz\+M\+G\+Problem@{oomph\+::\+Helmholtz\+M\+G\+Problem}!````~Helmholtz\+M\+G\+Problem@{$\sim$\+Helmholtz\+M\+G\+Problem}}
+\index{````~Helmholtz\+M\+G\+Problem@{$\sim$\+Helmholtz\+M\+G\+Problem}!oomph\+::\+Helmholtz\+M\+G\+Problem@{oomph\+::\+Helmholtz\+M\+G\+Problem}}
+\subsubsection{\texorpdfstring{$\sim$\+Helmholtz\+M\+G\+Problem()}{~HelmholtzMGProblem()}}
+{\footnotesize\ttfamily virtual oomph\+::\+Helmholtz\+M\+G\+Problem\+::$\sim$\+Helmholtz\+M\+G\+Problem (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Destructor (empty) 
+
+
+
+Definition at line 35 of file helmholtz\+\_\+geometric\+\_\+multigrid.\+h.
+
+
+
+References make\+\_\+new\+\_\+problem(), and mg\+\_\+bulk\+\_\+mesh\+\_\+pt().
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1HelmholtzMGProblem_aba0155964004b8fea5975957e0892863}\label{classoomph_1_1HelmholtzMGProblem_aba0155964004b8fea5975957e0892863}} 
+\index{oomph\+::\+Helmholtz\+M\+G\+Problem@{oomph\+::\+Helmholtz\+M\+G\+Problem}!make\+\_\+new\+\_\+problem@{make\+\_\+new\+\_\+problem}}
+\index{make\+\_\+new\+\_\+problem@{make\+\_\+new\+\_\+problem}!oomph\+::\+Helmholtz\+M\+G\+Problem@{oomph\+::\+Helmholtz\+M\+G\+Problem}}
+\subsubsection{\texorpdfstring{make\+\_\+new\+\_\+problem()}{make\_new\_problem()}}
+{\footnotesize\ttfamily virtual \hyperlink{classoomph_1_1HelmholtzMGProblem}{Helmholtz\+M\+G\+Problem}$\ast$ oomph\+::\+Helmholtz\+M\+G\+Problem\+::make\+\_\+new\+\_\+problem (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+This function needs to be implemented in the derived problem\+: Returns a pointer to a new object of the same type as the derived problem. 
+
+
+
+Referenced by oomph\+::\+Helmholtz\+M\+G\+Preconditioner$<$ D\+I\+M $>$\+::setup\+\_\+mg\+\_\+hierarchy(), and $\sim$\+Helmholtz\+M\+G\+Problem().
+
+\mbox{\Hypertarget{classoomph_1_1HelmholtzMGProblem_aeae03594fd61961d0f62aef58ae97a92}\label{classoomph_1_1HelmholtzMGProblem_aeae03594fd61961d0f62aef58ae97a92}} 
+\index{oomph\+::\+Helmholtz\+M\+G\+Problem@{oomph\+::\+Helmholtz\+M\+G\+Problem}!mg\+\_\+bulk\+\_\+mesh\+\_\+pt@{mg\+\_\+bulk\+\_\+mesh\+\_\+pt}}
+\index{mg\+\_\+bulk\+\_\+mesh\+\_\+pt@{mg\+\_\+bulk\+\_\+mesh\+\_\+pt}!oomph\+::\+Helmholtz\+M\+G\+Problem@{oomph\+::\+Helmholtz\+M\+G\+Problem}}
+\subsubsection{\texorpdfstring{mg\+\_\+bulk\+\_\+mesh\+\_\+pt()}{mg\_bulk\_mesh\_pt()}}
+{\footnotesize\ttfamily virtual \hyperlink{classoomph_1_1TreeBasedRefineableMeshBase}{Tree\+Based\+Refineable\+Mesh\+Base}$\ast$ oomph\+::\+Helmholtz\+M\+G\+Problem\+::mg\+\_\+bulk\+\_\+mesh\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Function to get a pointer to the mesh we will be working with. If there are flux elements present in the mesh this will be overloaded to return a pointer to the bulk mesh otherwise it can be overloaded to point to the global mesh but it must be of type \hyperlink{classoomph_1_1RefineableMeshBase}{Refineable\+Mesh\+Base}. 
+
+
+
+Referenced by oomph\+::\+Helmholtz\+M\+G\+Preconditioner$<$ D\+I\+M $>$\+::setup\+\_\+interpolation\+\_\+matrices\+\_\+unstructured(), oomph\+::\+Helmholtz\+M\+G\+Preconditioner$<$ D\+I\+M $>$\+::setup\+\_\+mg\+\_\+hierarchy(), and $\sim$\+Helmholtz\+M\+G\+Problem().
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{helmholtz__geometric__multigrid_8h}{helmholtz\+\_\+geometric\+\_\+multigrid.\+h}\end{DoxyCompactItemize}

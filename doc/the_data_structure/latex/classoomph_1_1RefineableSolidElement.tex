@@ -1,0 +1,442 @@
+\hypertarget{classoomph_1_1RefineableSolidElement}{}\section{oomph\+:\+:Refineable\+Solid\+Element Class Reference}
+\label{classoomph_1_1RefineableSolidElement}\index{oomph\+::\+Refineable\+Solid\+Element@{oomph\+::\+Refineable\+Solid\+Element}}
+
+
+{\ttfamily \#include $<$refineable\+\_\+elements.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Refineable\+Solid\+Element\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=0.865916cm]{classoomph_1_1RefineableSolidElement}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1RefineableSolidElement_a7e30a2a6c56a69a37ce327a2cfb69e40}{Refineable\+Solid\+Element} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+virtual \hyperlink{classoomph_1_1RefineableSolidElement_a7bb075ed922e71ed102a02adfe2d24e7}{$\sim$\+Refineable\+Solid\+Element} ()
+\begin{DoxyCompactList}\small\item\em Virtual Destructor, delete any allocated storage. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1RefineableSolidElement_a7718105cbc38cff969a246b093b6ecee}{assign\+\_\+solid\+\_\+local\+\_\+eqn\+\_\+numbers} (const bool \&store\+\_\+local\+\_\+dof\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Overload the local equation numbers for \hyperlink{classoomph_1_1Data}{Data} stored as part of solid nodes to include hanging node data. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1RefineableSolidElement_a690e24cdbd9308da1b9e705fd0340de8}{ngeom\+\_\+data} () const
+\begin{DoxyCompactList}\small\item\em The number of geometric data affecting a Refineable\+Solid\+Finite\+Element is the positional \hyperlink{classoomph_1_1Data}{Data} of all non-\/hanging nodes plus the geometric \hyperlink{classoomph_1_1Data}{Data} of all distinct master nodes. Recomputed on the fly. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Data}{Data} $\ast$ \hyperlink{classoomph_1_1RefineableSolidElement_a3f20de56e3a920644b01dac184f67ef1}{geom\+\_\+data\+\_\+pt} (const unsigned \&j)
+\begin{DoxyCompactList}\small\item\em Return pointer to the j-\/th \hyperlink{classoomph_1_1Data}{Data} item that the object\textquotesingle{}s shape depends on\+: Positional data of non-\/hanging nodes and positional data of master nodes. Recomputed on the fly. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1RefineableSolidElement_a48623914f87556be55fb97cf68f0ee93}{identify\+\_\+geometric\+\_\+data} (std\+::set$<$ \hyperlink{classoomph_1_1Data}{Data} $\ast$$>$ \&geometric\+\_\+data\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Specify \hyperlink{classoomph_1_1Data}{Data} that affects the geometry of the element by adding the position \hyperlink{classoomph_1_1Data}{Data} to the set that\textquotesingle{}s passed in. (This functionality is required in F\+SI problems; set is used to avoid double counting). Refineable version includes hanging nodes. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1RefineableSolidElement_a97f911c422af3e4fbd078b58cfe3e207}{fill\+\_\+in\+\_\+jacobian\+\_\+from\+\_\+solid\+\_\+position\+\_\+by\+\_\+fd} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&residuals, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&jacobian)
+\begin{DoxyCompactList}\small\item\em Compute element residual \hyperlink{classoomph_1_1Vector}{Vector} and element Jacobian matrix corresponding to the solid positions. Overloaded version to take the hanging nodes into account. \end{DoxyCompactList}\item 
+bool \hyperlink{classoomph_1_1RefineableSolidElement_a23a8382cc9da7809752851db65e20241}{is\+\_\+undeformed\+\_\+macro\+\_\+element\+\_\+used\+\_\+for\+\_\+new\+\_\+lagrangian\+\_\+coords} () const
+\begin{DoxyCompactList}\small\item\em Return the flag deciding if the Lagrangian coordinates of newly-\/created interior Solid\+Nodes are to be determined by the father element\textquotesingle{}s undeformed \hyperlink{classoomph_1_1MacroElement}{Macro\+Element} representation (if it has one). Default\+: False as it means that, following a refinement an element is no longer in equilbrium (as the Lagrangian coordinate is determined differently from the Eulerian one). However, basing the Lagrangian coordinates on the undeformed \hyperlink{classoomph_1_1MacroElement}{Macro\+Element} can be more stable numerically and for steady problems it\textquotesingle{}s not a big deal either way as the difference between the two formulations only matters at finite resolution so we have no right to say that one is \char`\"{}more correct\char`\"{} than the other... \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1RefineableSolidElement_a65b054a8a113f03e2a11647faa104b6f}{enable\+\_\+use\+\_\+of\+\_\+undeformed\+\_\+macro\+\_\+element\+\_\+for\+\_\+new\+\_\+lagrangian\+\_\+coords} ()
+\begin{DoxyCompactList}\small\item\em Set the flag deciding if the Lagrangian coordinates of newly-\/created interior Solid\+Nodes are to be determined by the father element\textquotesingle{}s undeformed \hyperlink{classoomph_1_1MacroElement}{Macro\+Element} representation (if it has one). \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1RefineableSolidElement_a1d85edf9f84720ac0de66427d75a5871}{disable\+\_\+use\+\_\+of\+\_\+undeformed\+\_\+macro\+\_\+element\+\_\+for\+\_\+new\+\_\+lagrangian\+\_\+coords} ()
+\begin{DoxyCompactList}\small\item\em Unset the flag deciding if the Lagrangian coordinates of newly-\/created interior Solid\+Nodes are to be determined by the father element\textquotesingle{}s undeformed \hyperlink{classoomph_1_1MacroElement}{Macro\+Element} representation (if it has one). \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ int $>$ \& \hyperlink{classoomph_1_1RefineableSolidElement_ac939940d4412c76913afd16cf752cacf}{local\+\_\+position\+\_\+hang\+\_\+eqn} (\hyperlink{classoomph_1_1Node}{Node} $\ast$const \&\hyperlink{classoomph_1_1FiniteElement_ace0e7fb72a805b5c2c600347bfae7a9b}{node\+\_\+pt})
+\begin{DoxyCompactList}\small\item\em Access the local equation number of of hanging node variables associated with nodal positions. The function returns a dense matrix that contains all the local equation numbers corresponding to the positional degrees of freedom. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1RefineableSolidElement_a159967ccbb5327b2ee04154a11b1b51c}{further\+\_\+build} ()
+\begin{DoxyCompactList}\small\item\em Further build\+: Pass the father\textquotesingle{}s Use\+\_\+undeformed\+\_\+macro\+\_\+element\+\_\+for\+\_\+new\+\_\+lagrangian\+\_\+coords flag down, then call the underlying \hyperlink{classoomph_1_1RefineableElement}{Refineable\+Element}\textquotesingle{}s version. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classoomph_1_1RefineableSolidElement_ae0d5a2fc617a11036a80d0d016292d7a}{assemble\+\_\+local\+\_\+to\+\_\+lagrangian\+\_\+jacobian} (const \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dpsids, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&jacobian) const
+\begin{DoxyCompactList}\small\item\em Assemble the jacobian matrix for the mapping from local to lagrangian coordinates, given the derivatives of the shape function Overload the standard version to use the hanging information for the lagrangian coordinates. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1RefineableSolidElement_a5843ecc4836508342150862e11af99f4}{assemble\+\_\+local\+\_\+to\+\_\+lagrangian\+\_\+jacobian2} (const \hyperlink{classoomph_1_1DShape}{D\+Shape} \&d2psids, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&jacobian2) const
+\begin{DoxyCompactList}\small\item\em Assemble the the \char`\"{}jacobian\char`\"{} matrix of second derivatives, given the second derivatives of the shape functions w.\+r.\+t. local coordinates Overload the standard version to use the hanging information for the lagrangian coordinates. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1RefineableSolidElement_a492846d9f2c5d5235f9f3ff1001d4ec8}{local\+\_\+to\+\_\+lagrangian\+\_\+mapping\+\_\+diagonal} (const \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dpsids, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&jacobian, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&inverse\+\_\+jacobian) const
+\begin{DoxyCompactList}\small\item\em Calculate the mapping from local to Lagrangian coordinates given the derivatives of the shape functions w.\+r.\+t the local coorindates. assuming that the coordinates are aligned in the direction of the local coordinates, i.\+e. there are no cross terms and the jacobian is diagonal. This function returns the determinant of the jacobian, the jacobian and the inverse jacobian. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{classoomph_1_1RefineableSolidElement_a7a398d47d3eaf9af809821d806b65973}{Use\+\_\+undeformed\+\_\+macro\+\_\+element\+\_\+for\+\_\+new\+\_\+lagrangian\+\_\+coords}
+\begin{DoxyCompactList}\small\item\em Flag deciding if the Lagrangian coordinates of newly-\/created interior Solid\+Nodes are to be determined by the father element\textquotesingle{}s undeformed \hyperlink{classoomph_1_1MacroElement}{Macro\+Element} representation (if it has one). Default\+: False as it means that, following a refinement an element is no longer in equilbrium (as the Lagrangian coordinate is determined differently from the Eulerian one). However, basing the Lagrangian coordinates on the undeformed \hyperlink{classoomph_1_1MacroElement}{Macro\+Element} can be more stable numerically and for steady problems it\textquotesingle{}s not a big deal either way as the difference between the two formulations only matters at finite resolution so we have no right to say that one is \char`\"{}more correct\char`\"{} than the other... \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classoomph_1_1RefineableSolidElement_a973020f4458c30aa458468b7f757ba7c}{assign\+\_\+solid\+\_\+hanging\+\_\+local\+\_\+eqn\+\_\+numbers} (const bool \&store\+\_\+local\+\_\+dof\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Assign local equation numbers to the hanging values associated with positions or additional solid values. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::map$<$ \hyperlink{classoomph_1_1Node}{Node} $\ast$, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ int $>$ $>$ \hyperlink{classoomph_1_1RefineableSolidElement_ac12e9c9ea5a0f1f87cadaaec9d7d8fe9}{Local\+\_\+position\+\_\+hang\+\_\+eqn}
+\begin{DoxyCompactList}\small\item\em Storage for local equation numbers of hanging node variables associated with nodal positions. local position equation number = Local\+\_\+position\+\_\+hang\+\_\+eqn(master\+\_\+node\+\_\+pt,ival) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Refineable\+Solid\+Elements are Solid\+Finite\+Elements that may be subdivided into children to provide a better local approximation to the solution. The distinction is required to keep a clean separation between problems that alter nodal positions and others. A number of procedures are generic and are included in this class. 
+
+Definition at line 785 of file refineable\+\_\+elements.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1RefineableSolidElement_a7e30a2a6c56a69a37ce327a2cfb69e40}\label{classoomph_1_1RefineableSolidElement_a7e30a2a6c56a69a37ce327a2cfb69e40}} 
+\index{oomph\+::\+Refineable\+Solid\+Element@{oomph\+::\+Refineable\+Solid\+Element}!Refineable\+Solid\+Element@{Refineable\+Solid\+Element}}
+\index{Refineable\+Solid\+Element@{Refineable\+Solid\+Element}!oomph\+::\+Refineable\+Solid\+Element@{oomph\+::\+Refineable\+Solid\+Element}}
+\subsubsection{\texorpdfstring{Refineable\+Solid\+Element()}{RefineableSolidElement()}}
+{\footnotesize\ttfamily oomph\+::\+Refineable\+Solid\+Element\+::\+Refineable\+Solid\+Element (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor. 
+
+
+
+Definition at line 844 of file refineable\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableSolidElement_a7bb075ed922e71ed102a02adfe2d24e7}\label{classoomph_1_1RefineableSolidElement_a7bb075ed922e71ed102a02adfe2d24e7}} 
+\index{oomph\+::\+Refineable\+Solid\+Element@{oomph\+::\+Refineable\+Solid\+Element}!````~Refineable\+Solid\+Element@{$\sim$\+Refineable\+Solid\+Element}}
+\index{````~Refineable\+Solid\+Element@{$\sim$\+Refineable\+Solid\+Element}!oomph\+::\+Refineable\+Solid\+Element@{oomph\+::\+Refineable\+Solid\+Element}}
+\subsubsection{\texorpdfstring{$\sim$\+Refineable\+Solid\+Element()}{~RefineableSolidElement()}}
+{\footnotesize\ttfamily virtual oomph\+::\+Refineable\+Solid\+Element\+::$\sim$\+Refineable\+Solid\+Element (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Virtual Destructor, delete any allocated storage. 
+
+
+
+Definition at line 848 of file refineable\+\_\+elements.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1RefineableSolidElement_ae0d5a2fc617a11036a80d0d016292d7a}\label{classoomph_1_1RefineableSolidElement_ae0d5a2fc617a11036a80d0d016292d7a}} 
+\index{oomph\+::\+Refineable\+Solid\+Element@{oomph\+::\+Refineable\+Solid\+Element}!assemble\+\_\+local\+\_\+to\+\_\+lagrangian\+\_\+jacobian@{assemble\+\_\+local\+\_\+to\+\_\+lagrangian\+\_\+jacobian}}
+\index{assemble\+\_\+local\+\_\+to\+\_\+lagrangian\+\_\+jacobian@{assemble\+\_\+local\+\_\+to\+\_\+lagrangian\+\_\+jacobian}!oomph\+::\+Refineable\+Solid\+Element@{oomph\+::\+Refineable\+Solid\+Element}}
+\subsubsection{\texorpdfstring{assemble\+\_\+local\+\_\+to\+\_\+lagrangian\+\_\+jacobian()}{assemble\_local\_to\_lagrangian\_jacobian()}}
+{\footnotesize\ttfamily void oomph\+::\+Refineable\+Solid\+Element\+::assemble\+\_\+local\+\_\+to\+\_\+lagrangian\+\_\+jacobian (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dpsids,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{jacobian }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Assemble the jacobian matrix for the mapping from local to lagrangian coordinates, given the derivatives of the shape function Overload the standard version to use the hanging information for the lagrangian coordinates. 
+
+Internal function that is used to assemble the jacobian of the mapping from local coordinates (s) to the lagrangian coordinates (xi), given the derivatives of the shape functions. 
+
+Reimplemented from \hyperlink{classoomph_1_1SolidFiniteElement_a91f14d25d145e7ef47d55cabfd332f5c}{oomph\+::\+Solid\+Finite\+Element}.
+
+
+
+Definition at line 855 of file refineable\+\_\+elements.\+cc.
+
+
+
+References assemble\+\_\+local\+\_\+to\+\_\+lagrangian\+\_\+jacobian2(), oomph\+::\+Finite\+Element\+::dim(), i, and oomph\+::\+Finite\+Element\+::nnode().
+
+
+
+Referenced by oomph\+::\+Refineable\+Element\+::fill\+\_\+in\+\_\+jacobian\+\_\+from\+\_\+nodal\+\_\+by\+\_\+fd().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableSolidElement_a5843ecc4836508342150862e11af99f4}\label{classoomph_1_1RefineableSolidElement_a5843ecc4836508342150862e11af99f4}} 
+\index{oomph\+::\+Refineable\+Solid\+Element@{oomph\+::\+Refineable\+Solid\+Element}!assemble\+\_\+local\+\_\+to\+\_\+lagrangian\+\_\+jacobian2@{assemble\+\_\+local\+\_\+to\+\_\+lagrangian\+\_\+jacobian2}}
+\index{assemble\+\_\+local\+\_\+to\+\_\+lagrangian\+\_\+jacobian2@{assemble\+\_\+local\+\_\+to\+\_\+lagrangian\+\_\+jacobian2}!oomph\+::\+Refineable\+Solid\+Element@{oomph\+::\+Refineable\+Solid\+Element}}
+\subsubsection{\texorpdfstring{assemble\+\_\+local\+\_\+to\+\_\+lagrangian\+\_\+jacobian2()}{assemble\_local\_to\_lagrangian\_jacobian2()}}
+{\footnotesize\ttfamily void oomph\+::\+Refineable\+Solid\+Element\+::assemble\+\_\+local\+\_\+to\+\_\+lagrangian\+\_\+jacobian2 (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{d2psids,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{jacobian2 }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Assemble the the \char`\"{}jacobian\char`\"{} matrix of second derivatives, given the second derivatives of the shape functions w.\+r.\+t. local coordinates Overload the standard version to use the hanging information for the lagrangian coordinates. 
+
+Internal function that is used to assemble the jacobian of second derivatives of the the mapping from local coordinates (s) to the lagrangian coordinates (xi), given the second derivatives of the shape functions. 
+
+Reimplemented from \hyperlink{classoomph_1_1SolidFiniteElement_a33ab1427cebdc36ff77d897f5db9f3a6}{oomph\+::\+Solid\+Finite\+Element}.
+
+
+
+Definition at line 894 of file refineable\+\_\+elements.\+cc.
+
+
+
+References oomph\+::\+Finite\+Element\+::dim(), i, local\+\_\+to\+\_\+lagrangian\+\_\+mapping\+\_\+diagonal(), oomph\+::\+Finite\+Element\+::\+N2deriv, and oomph\+::\+Finite\+Element\+::nnode().
+
+
+
+Referenced by assemble\+\_\+local\+\_\+to\+\_\+lagrangian\+\_\+jacobian().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableSolidElement_a973020f4458c30aa458468b7f757ba7c}\label{classoomph_1_1RefineableSolidElement_a973020f4458c30aa458468b7f757ba7c}} 
+\index{oomph\+::\+Refineable\+Solid\+Element@{oomph\+::\+Refineable\+Solid\+Element}!assign\+\_\+solid\+\_\+hanging\+\_\+local\+\_\+eqn\+\_\+numbers@{assign\+\_\+solid\+\_\+hanging\+\_\+local\+\_\+eqn\+\_\+numbers}}
+\index{assign\+\_\+solid\+\_\+hanging\+\_\+local\+\_\+eqn\+\_\+numbers@{assign\+\_\+solid\+\_\+hanging\+\_\+local\+\_\+eqn\+\_\+numbers}!oomph\+::\+Refineable\+Solid\+Element@{oomph\+::\+Refineable\+Solid\+Element}}
+\subsubsection{\texorpdfstring{assign\+\_\+solid\+\_\+hanging\+\_\+local\+\_\+eqn\+\_\+numbers()}{assign\_solid\_hanging\_local\_eqn\_numbers()}}
+{\footnotesize\ttfamily void oomph\+::\+Refineable\+Solid\+Element\+::assign\+\_\+solid\+\_\+hanging\+\_\+local\+\_\+eqn\+\_\+numbers (\begin{DoxyParamCaption}\item[{const bool \&}]{store\+\_\+local\+\_\+dof\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Assign local equation numbers to the hanging values associated with positions or additional solid values. 
+
+The standard equation numbering scheme for solid positions, so that hanging \hyperlink{classoomph_1_1Node}{Node} information is included. 
+
+Definition at line 1178 of file refineable\+\_\+elements.\+cc.
+
+
+
+References oomph\+::\+Generalised\+Element\+::add\+\_\+global\+\_\+eqn\+\_\+numbers(), oomph\+::\+Generalised\+Element\+::\+Dof\+\_\+pt\+\_\+deque, oomph\+::\+Generalised\+Element\+::eqn\+\_\+number(), fill\+\_\+in\+\_\+jacobian\+\_\+from\+\_\+solid\+\_\+position\+\_\+by\+\_\+fd(), oomph\+::\+Node\+::hanging\+\_\+pt(), oomph\+::\+Data\+::\+Is\+\_\+pinned, oomph\+::\+Generalised\+Element\+::local\+\_\+eqn\+\_\+number(), oomph\+::\+Hang\+Info\+::master\+\_\+node\+\_\+pt(), oomph\+::\+Generalised\+Element\+::ndof(), oomph\+::\+Hang\+Info\+::nmaster(), oomph\+::\+Finite\+Element\+::nnodal\+\_\+position\+\_\+type(), oomph\+::\+Finite\+Element\+::nnode(), oomph\+::\+Finite\+Element\+::nodal\+\_\+dimension(), oomph\+::\+Finite\+Element\+::node\+\_\+pt(), and oomph\+::\+Node\+::x\+\_\+gen().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableSolidElement_a7718105cbc38cff969a246b093b6ecee}\label{classoomph_1_1RefineableSolidElement_a7718105cbc38cff969a246b093b6ecee}} 
+\index{oomph\+::\+Refineable\+Solid\+Element@{oomph\+::\+Refineable\+Solid\+Element}!assign\+\_\+solid\+\_\+local\+\_\+eqn\+\_\+numbers@{assign\+\_\+solid\+\_\+local\+\_\+eqn\+\_\+numbers}}
+\index{assign\+\_\+solid\+\_\+local\+\_\+eqn\+\_\+numbers@{assign\+\_\+solid\+\_\+local\+\_\+eqn\+\_\+numbers}!oomph\+::\+Refineable\+Solid\+Element@{oomph\+::\+Refineable\+Solid\+Element}}
+\subsubsection{\texorpdfstring{assign\+\_\+solid\+\_\+local\+\_\+eqn\+\_\+numbers()}{assign\_solid\_local\_eqn\_numbers()}}
+{\footnotesize\ttfamily void oomph\+::\+Refineable\+Solid\+Element\+::assign\+\_\+solid\+\_\+local\+\_\+eqn\+\_\+numbers (\begin{DoxyParamCaption}\item[{const bool \&}]{store\+\_\+local\+\_\+dof\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Overload the local equation numbers for \hyperlink{classoomph_1_1Data}{Data} stored as part of solid nodes to include hanging node data. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1SolidFiniteElement_a3c7ad30f234e87649ed34cea94f65ea3}{oomph\+::\+Solid\+Finite\+Element}.
+
+
+
+Definition at line 852 of file refineable\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Solid\+Finite\+Element\+::assign\+\_\+solid\+\_\+local\+\_\+eqn\+\_\+numbers(), oomph\+::\+Finite\+Element\+::geom\+\_\+data\+\_\+pt(), oomph\+::\+Finite\+Element\+::identify\+\_\+geometric\+\_\+data(), and oomph\+::\+Finite\+Element\+::ngeom\+\_\+data().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableSolidElement_a1d85edf9f84720ac0de66427d75a5871}\label{classoomph_1_1RefineableSolidElement_a1d85edf9f84720ac0de66427d75a5871}} 
+\index{oomph\+::\+Refineable\+Solid\+Element@{oomph\+::\+Refineable\+Solid\+Element}!disable\+\_\+use\+\_\+of\+\_\+undeformed\+\_\+macro\+\_\+element\+\_\+for\+\_\+new\+\_\+lagrangian\+\_\+coords@{disable\+\_\+use\+\_\+of\+\_\+undeformed\+\_\+macro\+\_\+element\+\_\+for\+\_\+new\+\_\+lagrangian\+\_\+coords}}
+\index{disable\+\_\+use\+\_\+of\+\_\+undeformed\+\_\+macro\+\_\+element\+\_\+for\+\_\+new\+\_\+lagrangian\+\_\+coords@{disable\+\_\+use\+\_\+of\+\_\+undeformed\+\_\+macro\+\_\+element\+\_\+for\+\_\+new\+\_\+lagrangian\+\_\+coords}!oomph\+::\+Refineable\+Solid\+Element@{oomph\+::\+Refineable\+Solid\+Element}}
+\subsubsection{\texorpdfstring{disable\+\_\+use\+\_\+of\+\_\+undeformed\+\_\+macro\+\_\+element\+\_\+for\+\_\+new\+\_\+lagrangian\+\_\+coords()}{disable\_use\_of\_undeformed\_macro\_element\_for\_new\_lagrangian\_coords()}}
+{\footnotesize\ttfamily void oomph\+::\+Refineable\+Solid\+Element\+::disable\+\_\+use\+\_\+of\+\_\+undeformed\+\_\+macro\+\_\+element\+\_\+for\+\_\+new\+\_\+lagrangian\+\_\+coords (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Unset the flag deciding if the Lagrangian coordinates of newly-\/created interior Solid\+Nodes are to be determined by the father element\textquotesingle{}s undeformed \hyperlink{classoomph_1_1MacroElement}{Macro\+Element} representation (if it has one). 
+
+
+
+Definition at line 904 of file refineable\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableSolidElement_a65b054a8a113f03e2a11647faa104b6f}\label{classoomph_1_1RefineableSolidElement_a65b054a8a113f03e2a11647faa104b6f}} 
+\index{oomph\+::\+Refineable\+Solid\+Element@{oomph\+::\+Refineable\+Solid\+Element}!enable\+\_\+use\+\_\+of\+\_\+undeformed\+\_\+macro\+\_\+element\+\_\+for\+\_\+new\+\_\+lagrangian\+\_\+coords@{enable\+\_\+use\+\_\+of\+\_\+undeformed\+\_\+macro\+\_\+element\+\_\+for\+\_\+new\+\_\+lagrangian\+\_\+coords}}
+\index{enable\+\_\+use\+\_\+of\+\_\+undeformed\+\_\+macro\+\_\+element\+\_\+for\+\_\+new\+\_\+lagrangian\+\_\+coords@{enable\+\_\+use\+\_\+of\+\_\+undeformed\+\_\+macro\+\_\+element\+\_\+for\+\_\+new\+\_\+lagrangian\+\_\+coords}!oomph\+::\+Refineable\+Solid\+Element@{oomph\+::\+Refineable\+Solid\+Element}}
+\subsubsection{\texorpdfstring{enable\+\_\+use\+\_\+of\+\_\+undeformed\+\_\+macro\+\_\+element\+\_\+for\+\_\+new\+\_\+lagrangian\+\_\+coords()}{enable\_use\_of\_undeformed\_macro\_element\_for\_new\_lagrangian\_coords()}}
+{\footnotesize\ttfamily void oomph\+::\+Refineable\+Solid\+Element\+::enable\+\_\+use\+\_\+of\+\_\+undeformed\+\_\+macro\+\_\+element\+\_\+for\+\_\+new\+\_\+lagrangian\+\_\+coords (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the flag deciding if the Lagrangian coordinates of newly-\/created interior Solid\+Nodes are to be determined by the father element\textquotesingle{}s undeformed \hyperlink{classoomph_1_1MacroElement}{Macro\+Element} representation (if it has one). 
+
+
+
+Definition at line 898 of file refineable\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableSolidElement_a97f911c422af3e4fbd078b58cfe3e207}\label{classoomph_1_1RefineableSolidElement_a97f911c422af3e4fbd078b58cfe3e207}} 
+\index{oomph\+::\+Refineable\+Solid\+Element@{oomph\+::\+Refineable\+Solid\+Element}!fill\+\_\+in\+\_\+jacobian\+\_\+from\+\_\+solid\+\_\+position\+\_\+by\+\_\+fd@{fill\+\_\+in\+\_\+jacobian\+\_\+from\+\_\+solid\+\_\+position\+\_\+by\+\_\+fd}}
+\index{fill\+\_\+in\+\_\+jacobian\+\_\+from\+\_\+solid\+\_\+position\+\_\+by\+\_\+fd@{fill\+\_\+in\+\_\+jacobian\+\_\+from\+\_\+solid\+\_\+position\+\_\+by\+\_\+fd}!oomph\+::\+Refineable\+Solid\+Element@{oomph\+::\+Refineable\+Solid\+Element}}
+\subsubsection{\texorpdfstring{fill\+\_\+in\+\_\+jacobian\+\_\+from\+\_\+solid\+\_\+position\+\_\+by\+\_\+fd()}{fill\_in\_jacobian\_from\_solid\_position\_by\_fd()}}
+{\footnotesize\ttfamily void oomph\+::\+Refineable\+Solid\+Element\+::fill\+\_\+in\+\_\+jacobian\+\_\+from\+\_\+solid\+\_\+position\+\_\+by\+\_\+fd (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{residuals,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{jacobian }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Compute element residual \hyperlink{classoomph_1_1Vector}{Vector} and element Jacobian matrix corresponding to the solid positions. Overloaded version to take the hanging nodes into account. 
+
+This function calculates the entries of Jacobian matrix, used in the Newton method, associated with the elastic problem in which the nodal position is a variable. It does this using finite differences, rather than an analytical formulation, so can be done in total generality. Overload the standard case to include hanging node case 
+
+Reimplemented from \hyperlink{classoomph_1_1SolidFiniteElement_aa4d7dab326ceb0167da34ad4c535fa0d}{oomph\+::\+Solid\+Finite\+Element}.
+
+
+
+Definition at line 1337 of file refineable\+\_\+elements.\+cc.
+
+
+
+References oomph\+::\+Generalised\+Element\+::\+Default\+\_\+fd\+\_\+jacobian\+\_\+step, oomph\+::\+Generalised\+Element\+::get\+\_\+residuals(), oomph\+::\+Node\+::hanging\+\_\+pt(), i, oomph\+::\+Node\+::is\+\_\+hanging(), oomph\+::\+Hang\+Info\+::master\+\_\+node\+\_\+pt(), oomph\+::\+Generalised\+Element\+::ndof(), oomph\+::\+Hang\+Info\+::nmaster(), oomph\+::\+Finite\+Element\+::nnodal\+\_\+position\+\_\+type(), oomph\+::\+Finite\+Element\+::nnode(), oomph\+::\+Finite\+Element\+::nodal\+\_\+dimension(), oomph\+::\+Finite\+Element\+::node\+\_\+pt(), oomph\+::\+Node\+::perform\+\_\+auxiliary\+\_\+node\+\_\+update\+\_\+fct(), and oomph\+::\+Node\+::x\+\_\+gen().
+
+
+
+Referenced by assign\+\_\+solid\+\_\+hanging\+\_\+local\+\_\+eqn\+\_\+numbers().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableSolidElement_a159967ccbb5327b2ee04154a11b1b51c}\label{classoomph_1_1RefineableSolidElement_a159967ccbb5327b2ee04154a11b1b51c}} 
+\index{oomph\+::\+Refineable\+Solid\+Element@{oomph\+::\+Refineable\+Solid\+Element}!further\+\_\+build@{further\+\_\+build}}
+\index{further\+\_\+build@{further\+\_\+build}!oomph\+::\+Refineable\+Solid\+Element@{oomph\+::\+Refineable\+Solid\+Element}}
+\subsubsection{\texorpdfstring{further\+\_\+build()}{further\_build()}}
+{\footnotesize\ttfamily virtual void oomph\+::\+Refineable\+Solid\+Element\+::further\+\_\+build (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Further build\+: Pass the father\textquotesingle{}s Use\+\_\+undeformed\+\_\+macro\+\_\+element\+\_\+for\+\_\+new\+\_\+lagrangian\+\_\+coords flag down, then call the underlying \hyperlink{classoomph_1_1RefineableElement}{Refineable\+Element}\textquotesingle{}s version. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1RefineableElement_a26628ce36dfad028686adeb4694a9ef3}{oomph\+::\+Refineable\+Element}.
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1RefineableQPVDElementWithPressure_ab1e141199db731d930fd5b0a70b994b3}{oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure$<$ D\+I\+M $>$}, \hyperlink{classoomph_1_1RefineableQPVDElementWithPressure_ab4406f1c6de1e8e2e704bd55a9409c87}{oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure$<$ D\+I\+M $>$}, \hyperlink{classoomph_1_1RefineableQPVDElementWithPressure_af2981a672382c6db25389aa7c82a6b30}{oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure$<$ D\+I\+M $>$}, \hyperlink{classoomph_1_1RefineablePVDEquationsWithPressure_aad92965f2aec749e75580d003eebdc91}{oomph\+::\+Refineable\+P\+V\+D\+Equations\+With\+Pressure$<$ D\+I\+M $>$}, and \hyperlink{classoomph_1_1RefineablePVDEquations_a936bab952ddbad5093cb7ee80d0019b5}{oomph\+::\+Refineable\+P\+V\+D\+Equations$<$ D\+I\+M $>$}.
+
+
+
+Definition at line 918 of file refineable\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Refineable\+Element\+::father\+\_\+element\+\_\+pt(), and oomph\+::\+Refineable\+Element\+::further\+\_\+build().
+
+
+
+Referenced by oomph\+::\+Refineable\+P\+V\+D\+Equations$<$ D\+I\+M $>$\+::further\+\_\+build(), and oomph\+::\+Refineable\+P\+V\+D\+Equations\+With\+Pressure$<$ D\+I\+M $>$\+::further\+\_\+build().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableSolidElement_a3f20de56e3a920644b01dac184f67ef1}\label{classoomph_1_1RefineableSolidElement_a3f20de56e3a920644b01dac184f67ef1}} 
+\index{oomph\+::\+Refineable\+Solid\+Element@{oomph\+::\+Refineable\+Solid\+Element}!geom\+\_\+data\+\_\+pt@{geom\+\_\+data\+\_\+pt}}
+\index{geom\+\_\+data\+\_\+pt@{geom\+\_\+data\+\_\+pt}!oomph\+::\+Refineable\+Solid\+Element@{oomph\+::\+Refineable\+Solid\+Element}}
+\subsubsection{\texorpdfstring{geom\+\_\+data\+\_\+pt()}{geom\_data\_pt()}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1Data}{Data} $\ast$ oomph\+::\+Refineable\+Solid\+Element\+::geom\+\_\+data\+\_\+pt (\begin{DoxyParamCaption}\item[{const unsigned \&}]{j }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Return pointer to the j-\/th \hyperlink{classoomph_1_1Data}{Data} item that the object\textquotesingle{}s shape depends on\+: Positional data of non-\/hanging nodes and positional data of master nodes. Recomputed on the fly. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1SolidFiniteElement_a2457ad75b45257b536090d9b1a6f1331}{oomph\+::\+Solid\+Finite\+Element}.
+
+
+
+Definition at line 1052 of file refineable\+\_\+elements.\+cc.
+
+
+
+References oomph\+::\+Node\+::hanging\+\_\+pt(), oomph\+::\+Hang\+Info\+::master\+\_\+node\+\_\+pt(), oomph\+::\+Hang\+Info\+::nmaster(), oomph\+::\+Finite\+Element\+::nnode(), and oomph\+::\+Finite\+Element\+::node\+\_\+pt().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableSolidElement_a48623914f87556be55fb97cf68f0ee93}\label{classoomph_1_1RefineableSolidElement_a48623914f87556be55fb97cf68f0ee93}} 
+\index{oomph\+::\+Refineable\+Solid\+Element@{oomph\+::\+Refineable\+Solid\+Element}!identify\+\_\+geometric\+\_\+data@{identify\+\_\+geometric\+\_\+data}}
+\index{identify\+\_\+geometric\+\_\+data@{identify\+\_\+geometric\+\_\+data}!oomph\+::\+Refineable\+Solid\+Element@{oomph\+::\+Refineable\+Solid\+Element}}
+\subsubsection{\texorpdfstring{identify\+\_\+geometric\+\_\+data()}{identify\_geometric\_data()}}
+{\footnotesize\ttfamily void oomph\+::\+Refineable\+Solid\+Element\+::identify\+\_\+geometric\+\_\+data (\begin{DoxyParamCaption}\item[{std\+::set$<$ \hyperlink{classoomph_1_1Data}{Data} $\ast$$>$ \&}]{geometric\+\_\+data\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Specify \hyperlink{classoomph_1_1Data}{Data} that affects the geometry of the element by adding the position \hyperlink{classoomph_1_1Data}{Data} to the set that\textquotesingle{}s passed in. (This functionality is required in F\+SI problems; set is used to avoid double counting). Refineable version includes hanging nodes. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1SolidFiniteElement_a389e4773864d19ac82337ffc24e4dfa6}{oomph\+::\+Solid\+Finite\+Element}.
+
+
+
+Definition at line 1136 of file refineable\+\_\+elements.\+cc.
+
+
+
+References oomph\+::\+Node\+::hanging\+\_\+pt(), oomph\+::\+Hang\+Info\+::master\+\_\+node\+\_\+pt(), oomph\+::\+Hang\+Info\+::nmaster(), oomph\+::\+Finite\+Element\+::nnode(), and oomph\+::\+Finite\+Element\+::node\+\_\+pt().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableSolidElement_a23a8382cc9da7809752851db65e20241}\label{classoomph_1_1RefineableSolidElement_a23a8382cc9da7809752851db65e20241}} 
+\index{oomph\+::\+Refineable\+Solid\+Element@{oomph\+::\+Refineable\+Solid\+Element}!is\+\_\+undeformed\+\_\+macro\+\_\+element\+\_\+used\+\_\+for\+\_\+new\+\_\+lagrangian\+\_\+coords@{is\+\_\+undeformed\+\_\+macro\+\_\+element\+\_\+used\+\_\+for\+\_\+new\+\_\+lagrangian\+\_\+coords}}
+\index{is\+\_\+undeformed\+\_\+macro\+\_\+element\+\_\+used\+\_\+for\+\_\+new\+\_\+lagrangian\+\_\+coords@{is\+\_\+undeformed\+\_\+macro\+\_\+element\+\_\+used\+\_\+for\+\_\+new\+\_\+lagrangian\+\_\+coords}!oomph\+::\+Refineable\+Solid\+Element@{oomph\+::\+Refineable\+Solid\+Element}}
+\subsubsection{\texorpdfstring{is\+\_\+undeformed\+\_\+macro\+\_\+element\+\_\+used\+\_\+for\+\_\+new\+\_\+lagrangian\+\_\+coords()}{is\_undeformed\_macro\_element\_used\_for\_new\_lagrangian\_coords()}}
+{\footnotesize\ttfamily bool oomph\+::\+Refineable\+Solid\+Element\+::is\+\_\+undeformed\+\_\+macro\+\_\+element\+\_\+used\+\_\+for\+\_\+new\+\_\+lagrangian\+\_\+coords (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the flag deciding if the Lagrangian coordinates of newly-\/created interior Solid\+Nodes are to be determined by the father element\textquotesingle{}s undeformed \hyperlink{classoomph_1_1MacroElement}{Macro\+Element} representation (if it has one). Default\+: False as it means that, following a refinement an element is no longer in equilbrium (as the Lagrangian coordinate is determined differently from the Eulerian one). However, basing the Lagrangian coordinates on the undeformed \hyperlink{classoomph_1_1MacroElement}{Macro\+Element} can be more stable numerically and for steady problems it\textquotesingle{}s not a big deal either way as the difference between the two formulations only matters at finite resolution so we have no right to say that one is \char`\"{}more correct\char`\"{} than the other... 
+
+
+
+Definition at line 892 of file refineable\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableSolidElement_ac939940d4412c76913afd16cf752cacf}\label{classoomph_1_1RefineableSolidElement_ac939940d4412c76913afd16cf752cacf}} 
+\index{oomph\+::\+Refineable\+Solid\+Element@{oomph\+::\+Refineable\+Solid\+Element}!local\+\_\+position\+\_\+hang\+\_\+eqn@{local\+\_\+position\+\_\+hang\+\_\+eqn}}
+\index{local\+\_\+position\+\_\+hang\+\_\+eqn@{local\+\_\+position\+\_\+hang\+\_\+eqn}!oomph\+::\+Refineable\+Solid\+Element@{oomph\+::\+Refineable\+Solid\+Element}}
+\subsubsection{\texorpdfstring{local\+\_\+position\+\_\+hang\+\_\+eqn()}{local\_position\_hang\_eqn()}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$int$>$\& oomph\+::\+Refineable\+Solid\+Element\+::local\+\_\+position\+\_\+hang\+\_\+eqn (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Node}{Node} $\ast$const \&}]{node\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Access the local equation number of of hanging node variables associated with nodal positions. The function returns a dense matrix that contains all the local equation numbers corresponding to the positional degrees of freedom. 
+
+
+
+Definition at line 911 of file refineable\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Finite\+Element\+::node\+\_\+pt().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableSolidElement_a492846d9f2c5d5235f9f3ff1001d4ec8}\label{classoomph_1_1RefineableSolidElement_a492846d9f2c5d5235f9f3ff1001d4ec8}} 
+\index{oomph\+::\+Refineable\+Solid\+Element@{oomph\+::\+Refineable\+Solid\+Element}!local\+\_\+to\+\_\+lagrangian\+\_\+mapping\+\_\+diagonal@{local\+\_\+to\+\_\+lagrangian\+\_\+mapping\+\_\+diagonal}}
+\index{local\+\_\+to\+\_\+lagrangian\+\_\+mapping\+\_\+diagonal@{local\+\_\+to\+\_\+lagrangian\+\_\+mapping\+\_\+diagonal}!oomph\+::\+Refineable\+Solid\+Element@{oomph\+::\+Refineable\+Solid\+Element}}
+\subsubsection{\texorpdfstring{local\+\_\+to\+\_\+lagrangian\+\_\+mapping\+\_\+diagonal()}{local\_to\_lagrangian\_mapping\_diagonal()}}
+{\footnotesize\ttfamily double oomph\+::\+Refineable\+Solid\+Element\+::local\+\_\+to\+\_\+lagrangian\+\_\+mapping\+\_\+diagonal (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dpsids,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{jacobian,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{inverse\+\_\+jacobian }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Calculate the mapping from local to Lagrangian coordinates given the derivatives of the shape functions w.\+r.\+t the local coorindates. assuming that the coordinates are aligned in the direction of the local coordinates, i.\+e. there are no cross terms and the jacobian is diagonal. This function returns the determinant of the jacobian, the jacobian and the inverse jacobian. 
+
+Calculate the mapping from local to lagrangian coordinates assuming that the coordinates are aligned in the direction of the local coordinates, i.\+e. there are no cross terms and the jacobian is diagonal. The local derivatives are passed as dpsids and the jacobian and inverse jacobian are returned. 
+
+Reimplemented from \hyperlink{classoomph_1_1SolidFiniteElement_a811c926ab4ec81ecb374030302ef28ca}{oomph\+::\+Solid\+Finite\+Element}.
+
+
+
+Definition at line 938 of file refineable\+\_\+elements.\+cc.
+
+
+
+References oomph\+::\+Finite\+Element\+::check\+\_\+jacobian(), oomph\+::\+Finite\+Element\+::dim(), i, and oomph\+::\+Finite\+Element\+::nnode().
+
+
+
+Referenced by assemble\+\_\+local\+\_\+to\+\_\+lagrangian\+\_\+jacobian2().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableSolidElement_a690e24cdbd9308da1b9e705fd0340de8}\label{classoomph_1_1RefineableSolidElement_a690e24cdbd9308da1b9e705fd0340de8}} 
+\index{oomph\+::\+Refineable\+Solid\+Element@{oomph\+::\+Refineable\+Solid\+Element}!ngeom\+\_\+data@{ngeom\+\_\+data}}
+\index{ngeom\+\_\+data@{ngeom\+\_\+data}!oomph\+::\+Refineable\+Solid\+Element@{oomph\+::\+Refineable\+Solid\+Element}}
+\subsubsection{\texorpdfstring{ngeom\+\_\+data()}{ngeom\_data()}}
+{\footnotesize\ttfamily unsigned oomph\+::\+Refineable\+Solid\+Element\+::ngeom\+\_\+data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+The number of geometric data affecting a Refineable\+Solid\+Finite\+Element is the positional \hyperlink{classoomph_1_1Data}{Data} of all non-\/hanging nodes plus the geometric \hyperlink{classoomph_1_1Data}{Data} of all distinct master nodes. Recomputed on the fly. 
+
+The number of geometric data affecting a Refineable\+Solid\+Finite\+Element is the positional \hyperlink{classoomph_1_1Data}{Data} of all non-\/hanging nodes plus the geometric \hyperlink{classoomph_1_1Data}{Data} of all distinct master nodes. Recomputed on the fly. 
+
+Reimplemented from \hyperlink{classoomph_1_1SolidFiniteElement_a73f387da7f31f233b79c2526e8cbc896}{oomph\+::\+Solid\+Finite\+Element}.
+
+
+
+Definition at line 996 of file refineable\+\_\+elements.\+cc.
+
+
+
+References oomph\+::\+Node\+::hanging\+\_\+pt(), oomph\+::\+Hang\+Info\+::master\+\_\+node\+\_\+pt(), oomph\+::\+Hang\+Info\+::nmaster(), oomph\+::\+Finite\+Element\+::nnode(), and oomph\+::\+Finite\+Element\+::node\+\_\+pt().
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1RefineableSolidElement_ac12e9c9ea5a0f1f87cadaaec9d7d8fe9}\label{classoomph_1_1RefineableSolidElement_ac12e9c9ea5a0f1f87cadaaec9d7d8fe9}} 
+\index{oomph\+::\+Refineable\+Solid\+Element@{oomph\+::\+Refineable\+Solid\+Element}!Local\+\_\+position\+\_\+hang\+\_\+eqn@{Local\+\_\+position\+\_\+hang\+\_\+eqn}}
+\index{Local\+\_\+position\+\_\+hang\+\_\+eqn@{Local\+\_\+position\+\_\+hang\+\_\+eqn}!oomph\+::\+Refineable\+Solid\+Element@{oomph\+::\+Refineable\+Solid\+Element}}
+\subsubsection{\texorpdfstring{Local\+\_\+position\+\_\+hang\+\_\+eqn}{Local\_position\_hang\_eqn}}
+{\footnotesize\ttfamily std\+::map$<$\hyperlink{classoomph_1_1Node}{Node}$\ast$,\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$int$>$ $>$ oomph\+::\+Refineable\+Solid\+Element\+::\+Local\+\_\+position\+\_\+hang\+\_\+eqn\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Storage for local equation numbers of hanging node variables associated with nodal positions. local position equation number = Local\+\_\+position\+\_\+hang\+\_\+eqn(master\+\_\+node\+\_\+pt,ival) 
+
+
+
+Definition at line 795 of file refineable\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableSolidElement_a7a398d47d3eaf9af809821d806b65973}\label{classoomph_1_1RefineableSolidElement_a7a398d47d3eaf9af809821d806b65973}} 
+\index{oomph\+::\+Refineable\+Solid\+Element@{oomph\+::\+Refineable\+Solid\+Element}!Use\+\_\+undeformed\+\_\+macro\+\_\+element\+\_\+for\+\_\+new\+\_\+lagrangian\+\_\+coords@{Use\+\_\+undeformed\+\_\+macro\+\_\+element\+\_\+for\+\_\+new\+\_\+lagrangian\+\_\+coords}}
+\index{Use\+\_\+undeformed\+\_\+macro\+\_\+element\+\_\+for\+\_\+new\+\_\+lagrangian\+\_\+coords@{Use\+\_\+undeformed\+\_\+macro\+\_\+element\+\_\+for\+\_\+new\+\_\+lagrangian\+\_\+coords}!oomph\+::\+Refineable\+Solid\+Element@{oomph\+::\+Refineable\+Solid\+Element}}
+\subsubsection{\texorpdfstring{Use\+\_\+undeformed\+\_\+macro\+\_\+element\+\_\+for\+\_\+new\+\_\+lagrangian\+\_\+coords}{Use\_undeformed\_macro\_element\_for\_new\_lagrangian\_coords}}
+{\footnotesize\ttfamily bool oomph\+::\+Refineable\+Solid\+Element\+::\+Use\+\_\+undeformed\+\_\+macro\+\_\+element\+\_\+for\+\_\+new\+\_\+lagrangian\+\_\+coords\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Flag deciding if the Lagrangian coordinates of newly-\/created interior Solid\+Nodes are to be determined by the father element\textquotesingle{}s undeformed \hyperlink{classoomph_1_1MacroElement}{Macro\+Element} representation (if it has one). Default\+: False as it means that, following a refinement an element is no longer in equilbrium (as the Lagrangian coordinate is determined differently from the Eulerian one). However, basing the Lagrangian coordinates on the undeformed \hyperlink{classoomph_1_1MacroElement}{Macro\+Element} can be more stable numerically and for steady problems it\textquotesingle{}s not a big deal either way as the difference between the two formulations only matters at finite resolution so we have no right to say that one is \char`\"{}more correct\char`\"{} than the other... 
+
+
+
+Definition at line 815 of file refineable\+\_\+elements.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{refineable__elements_8h}{refineable\+\_\+elements.\+h}\item 
+\hyperlink{refineable__elements_8cc}{refineable\+\_\+elements.\+cc}\end{DoxyCompactItemize}

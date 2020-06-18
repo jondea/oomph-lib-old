@@ -1,0 +1,517 @@
+In this document we re-\/visit the collapsible channel problem yet again -- this time to demonstrate the use of spatial adaptivity in fluid-\/structure interaction problems. In such problems, two additional issues have to be addressed\+:
+\begin{DoxyEnumerate}
+\item \hyperlink{index_history}{The assignment of positional history values for newly-\/created nodes}
+\item \hyperlink{index_update_node_update}{Updating the node-\/update data in refineable Algebraic\+Meshes}
+\end{DoxyEnumerate}We start with a brief reminder of {\ttfamily oomph-\/lib\textquotesingle{}s} mesh adaptation procedures to highlight what additional complications arise in fluid-\/structure interaction problems, and then explain how these problems are addressed.
+
+
+
+ 
+
+\hypertarget{index_history}{}\section{The assignment of positional history values for newly-\/created nodes}\label{index_history}
+\hypertarget{index_what}{}\subsection{What is the problem?}\label{index_what}
+We first discussed the use of spatial adaptivity for time-\/dependent problems in the context of \href{../../../unsteady_heat/two_d_unsteady_heat_adapt/html/index.html#spatial_adapt}{\tt the unsteady heat equation}. We showed that whenever a new node is created, {\ttfamily oomph-\/lib\textquotesingle{}s} mesh adaptation procedures automatically assign the nodal values and \char`\"{}history values\char`\"{} (the auxiliary values that are used by the {\ttfamily Node\textquotesingle{}s} {\ttfamily Time\+Stepper} to approximate time-\/derivatives of the nodal values) for the newly-\/created {\ttfamily Node} by interpolating between the corresponding values in the new {\ttfamily Node\textquotesingle{}s} father element.
+
+Similarly, an initial assignment for the newly-\/created {\ttfamily Node\textquotesingle{}s} current and previous positions (required for the evaluation of the mesh-\/velocities in the A\+LE formulation of the time-\/derivatives) is made by interpolating between the current and previous nodal positions of the new {\ttfamily Node\textquotesingle{}s} father element. This default assignment is subsequently overwritten if the father element is associated with a {\ttfamily Macro\+Element}, in which case the newly-\/created {\ttfamily Node\textquotesingle{}s} current position is determined by the father element\textquotesingle{}s {\ttfamily Macro\+Element} representation. This ensures that the mesh refinement process respects curvilinear domain boundaries, as discussed \href{../../../poisson/fish_poisson2/html/index.html}{\tt elsewhere.} The same strategy is used to over-\/write the default assignment for a new {\ttfamily Node\textquotesingle{}s} previous positions\+: They are re-\/assigned, based on the father element\textquotesingle{}s {\ttfamily Macro\+Element} -\/ representation, evaluated at the relevant previous timesteps.
+
+To illustrate the process, consider the sketch below and assume that the time-\/integration of the Navier-\/\+Stokes equations is performed with a {\ttfamily B\+D\+F$<$2$>$} timestepper -- a timestepper that requires two history values (the solution and the nodal positions at two previous timesteps) to evaluate the time-\/derivative $ \partial u_i/\partial t $ in the momentum equations. The position of the nodes in the collapsible part of the channel is determined by the {\ttfamily Macro\+Element} -\/ based representation of the {\ttfamily Collapsible\+Channel\+Domain}, using the wall shape obtained from the compound {\ttfamily Mesh\+As\+Geom\+Object} that we created from the discretisation of the elastic wall, shown in green.
+
+Assume that the initial mesh is sufficiently fine to resolve the solution at $ t=t_0 $ and $ t=t_0 + \Delta t $. At $ t=t_0 + 2 \Delta t $, the automatic mesh adaptation splits one of the fluid elements, creating the five new {\ttfamily Nodes}, shown in red (for simplicity we only show the fluid elements\textquotesingle{} vertex nodes). Their position is determined by the father element\textquotesingle{}s {\ttfamily Macro\+Element} mapping, using the current position of the {\ttfamily Mesh\+As\+Geom\+Object}, obtained from the interpolation between the nodal positions of its {\ttfamily Solid\+Nodes} (shown as green circles).
+
+ 
+\begin{DoxyImage}
+\includegraphics[width=0.75\textwidth]{history_values}
+\doxyfigcaption{Sketch illustrating the assignment of positional history values for newly-\/created nodes in F\+SI problems. The positional history values of the newly-\/created Nodes (shown in red) are given by the positions they would have had if they had already existed at previous timesteps. }
+\end{DoxyImage}
+
+
+So far, so good! A subtle problem arises when we try to assign the positional history values for the newly-\/created {\ttfamily Nodes}. The evaluation of the {\ttfamily Macro\+Element} mapping at the previous timesteps (required to determine the positions the newly-\/created {\ttfamily Nodes} would have had, if they had already existed at previous timesteps) requires access to the previous wall shapes. In \href{../../../navier_stokes/collapsible_channel/html/index.html}{\tt the non-\/\+F\+SI problem discussed earlier}, the wall shape was given analytically and could therefore be evaluated at arbitrary times. In the F\+SI problem considered here, the previous wall shape is not available as the previous positions of the {\ttfamily Solid\+Nodes} are not required (and are therefore not stored) for the solution of the (steady!) wall equations.
+
+
+
+\hypertarget{index_soln}{}\subsection{The solution\+: The Steady$<$\+N\+S\+T\+E\+P\+S$>$ timestepper}\label{index_soln}
+The solution to the problem is simple\+: Recall that the final entry in the argument list of {\ttfamily oomph-\/lib\textquotesingle{}s} mesh constructors specifies the {\ttfamily Time\+Stepper} to be used for the evaluation of any time-\/derivatives. The {\ttfamily Time\+Stepper\textquotesingle{}s} member function {\ttfamily Time\+Stepper\+::ntstorage()} specifies the total number of values (the current value plus the number of history values) required to evaluate the time-\/derivatives; it is used by the {\ttfamily Finite\+Element\+::construct\+\_\+node}(...) function to create the required amount of storage at the elements\textquotesingle{} {\ttfamily Nodes} when the {\ttfamily Nodes} are created in the mesh constructor. To maximise the potential for code-\/reuse, we always provide a default argument for the pointer to the {\ttfamily Time\+Stepper} -- a pointer to a static instantiation of {\ttfamily oomph-\/lib\textquotesingle{}s} dummy {\ttfamily Time\+Stepper}, {\ttfamily Steady$<$0$>$}. This ensures that the \char`\"{}user\char`\"{} can use the mesh for steady problems without having to artificially create a dummy {\ttfamily Time\+Stepper} that would be completely irrelevant for his/her problem.
+
+For instance, the full interface to the constructor of the {\ttfamily One\+D\+Lagrangian\+Mesh}, defined in \href{../../../../src/meshes/one_d_lagrangian_mesh.template.h}{\tt one\+\_\+d\+\_\+lagrangian\+\_\+mesh.\+template.\+h} is given by
+
+ 
+\begin{DoxyCodeInclude}
+ \textcolor{comment}{/// \(\backslash\)short Constructor: Pass number of elements, length,}
+\textcolor{comment}{ /// pointer to GeomObject that defines the undeformed Eulerian position,}
+\textcolor{comment}{}\textcolor{comment}{ /// and the timestepper -- defaults to (Steady) default timestepper defined}
+\textcolor{comment}{}\textcolor{comment}{ /// in the Mesh base class}
+\textcolor{comment}{} OneDLagrangianMesh(\textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} &n\_element, 
+                    \textcolor{keyword}{const} \textcolor{keywordtype}{double} &length,
+                    GeomObject* undef\_eulerian\_posn\_pt, 
+                    TimeStepper* time\_stepper\_pt=
+                    &Mesh::Default\_TimeStepper);
+
+\end{DoxyCodeInclude}
+
+
+Thus, when we constructed the wall mesh in the non-\/adaptive version of the driver code \href{../../../../demo_drivers/interaction/fsi_collapsible_channel/fsi_collapsible_channel.cc}{\tt fsi\+\_\+collapsible\+\_\+channel.\+cc,} using the statements
+
+
+\begin{DoxyCode}
+\textcolor{comment}{//Create the "wall" mesh with FSI Hermite beam elements}
+Wall\_mesh\_pt = \textcolor{keyword}{new} OneDLagrangianMesh<FSIHermiteBeamElement>
+ (Ncollapsible,Lcollapsible,undeformed\_wall\_pt);
+\end{DoxyCode}
+
+
+the use of the dummy {\ttfamily Time\+Stepper}, {\ttfamily Steady$<$0$>$} was implied. All time-\/derivatives computed by this {\ttfamily Time\+Stepper} evaluate to zero, and the {\ttfamily Time\+Stepper} does not require (or request) any storage for history values. This is a sensible default for problems that are either inherently steady (such as problems involving the Poisson equations, say) or for steady versions of time-\/dependent P\+D\+Es (such as the steady Navier-\/\+Stokes equations). In the present problem, we wish to retain the dummy character of the {\ttfamily Time\+Stepper} so that all time-\/derivatives in the {\ttfamily F\+S\+I\+Hermite\+Beam\+Elements} are set to zero, while retaining a limited history of the {\ttfamily Solid\+Node\textquotesingle{}s} previous positions so that the wall shape at previous timesteps can be evaluated. This is possible by creating a {\ttfamily Steady} timestepper with a non-\/zero template argument\+: The class
+
+
+\begin{DoxyCode}
+\textcolor{keyword}{template}<\textcolor{keywordtype}{unsigned} NSTEPS>
+\textcolor{keyword}{class }Steady : \textcolor{keyword}{public} TimeStepper
+\end{DoxyCode}
+
+
+provides a dummy {\ttfamily Time\+Stepper} that requires (and maintains) {\ttfamily N\+S\+T\+E\+PS} history values that represent the nodal positions (or nodal values) at {\ttfamily N\+S\+T\+E\+PS} previous timesteps. However, these history values are not used to evaluate any time-\/derivatives -- all time-\/derivatives computed by this {\ttfamily Time\+Stepper} are zero.
+
+If the Navier-\/\+Stokes equations are discretised with a {\ttfamily B\+D\+F$<$2$>$} timestepper, the evaluation of the mesh velocity in the A\+LE representation of the time-\/derivatives $ \partial u_i/\partial t $ requires the nodal position at the two previous timesteps. This is achieved by passing a pointer to a specifically-\/constructed {\ttfamily Steady$<$2$>$} timestepper to the wall mesh. Here is the relevant code fragment from the Problem constructor in the driver code \href{../../../../demo_drivers/interaction/fsi_collapsible_channel/fsi_collapsible_channel_adapt.cc}{\tt fsi\+\_\+collapsible\+\_\+channel\+\_\+adapt.\+cc}\+:
+
+ 
+\begin{DoxyCodeInclude}
+ \textcolor{comment}{// Allocate the timestepper for the Navier-Stokes equations}
+ BDF<2>* fluid\_time\_stepper\_pt=\textcolor{keyword}{new} BDF<2>;
+
+ \textcolor{comment}{// Add the fluid timestepper to the Problem's collection of timesteppers.}
+ add\_time\_stepper\_pt(fluid\_time\_stepper\_pt);
+
+ \textcolor{comment}{// Create a dummy Steady timestepper that stores two history values}
+ Steady<2>* wall\_time\_stepper\_pt = \textcolor{keyword}{new} Steady<2>;
+
+ \textcolor{comment}{// Add the wall timestepper to the Problem's collection of timesteppers.}
+ add\_time\_stepper\_pt(wall\_time\_stepper\_pt);
+
+ \textcolor{comment}{// Geometric object that represents the undeformed wall: }
+ \textcolor{comment}{// A straight line at height y=ly; starting at x=lup.}
+ \hyperlink{classUndeformedWall}{UndeformedWall}* undeformed\_wall\_pt=\textcolor{keyword}{new} \hyperlink{classUndeformedWall}{UndeformedWall}(lup,ly);
+
+ \textcolor{comment}{//Create the "wall" mesh with FSI Hermite beam elements, passing the}
+ \textcolor{comment}{//dummy wall timestepper to the constructor}
+ Wall\_mesh\_pt = \textcolor{keyword}{new} OneDLagrangianMesh<FSIHermiteBeamElement>
+  (Ncollapsible,Lcollapsible,undeformed\_wall\_pt,wall\_time\_stepper\_pt);
+
+\end{DoxyCodeInclude}
+
+
+
+
+ 
+
+\hypertarget{index_update_node_update}{}\section{Updating the node-\/update data in refineable Algebraic\+Meshes}\label{index_update_node_update}
+When discussing \href{../../../navier_stokes/algebraic_collapsible_channel/html/index.html}{\tt the non-\/\+F\+SI version of the collapsible channel problem} we explained how {\ttfamily oomph-\/lib\textquotesingle{}s} mesh adaptation procedures assign the node-\/update data for newly-\/created {\ttfamily Algebraic\+Nodes}. Recall that the node-\/update data comprises\+:
+\begin{DoxyItemize}
+\item A pointer to the {\ttfamily Algebraic\+Mesh} that implements the node-\/update function. ~\newline
+~\newline
+
+\item An ID for the node-\/update function. This is used in cases in which different regions of the {\ttfamily Algebraic\+Mesh} are updated by different node-\/update functions. The ID has a default value of 0; this is used if there is only a single node-\/update function, as in the {\ttfamily Algebraic\+Collapsible\+Channel\+Mesh}. ~\newline
+~\newline
+
+\item A vector of (pointers to) {\ttfamily Geom\+Objects} that are involved in the node update. ~\newline
+~\newline
+
+\item A vector of reference values, such as the intrinsic coordinates of reference points on the {\ttfamily Geom\+Objects}. ~\newline
+~\newline
+
+\end{DoxyItemize}By default, we assume that a newly-\/created {\ttfamily Algebraic\+Node} is updated by the same node-\/update function as the {\ttfamily Algebraic\+Nodes} in its father element. Therefore we pass the pointer to the {\ttfamily Algebraic\+Mesh}, the node-\/update function ID, and the vector of pointers to {\ttfamily Geom\+Objects} to the newly-\/created {\ttfamily Algebraic\+Nodes}, and interpolate the reference values between those stored at the {\ttfamily Algebraic\+Nodes} in the father elements.
+
+In most cases this provides a sensible default. For instance, it is hard to imagine a situation in which it would be sensible to update the position of newly-\/created {\ttfamily Algebraic\+Nodes} by a procedure that differs from that used for the surrounding {\ttfamily Algebraic\+Nodes} that already existed in the father element. Similarly, since the reference values vary from node to node (if they were constant we would not store them in the {\ttfamily Algebraic\+Nodes\textquotesingle{}} node-\/update data but in the {\ttfamily Algebraic\+Mesh} that implements the node update!) it makes sense to assign the values at newly-\/created {\ttfamily Algebraic\+Nodes} by interpolation. For instance, in the {\ttfamily Algebraic\+Collapsible\+Channel\+Mesh} one of the reference values is the $ x_1 $ -\/ coordinate of the reference point on the fixed lower wall. For the {\ttfamily Algebraic\+Nodes} that already existed in the coarse base mesh, this value is given by the the {\ttfamily Algebraic\+Nodes\textquotesingle{}} $ x_1 $ -\/ coordinate in the undeformed mesh. Interpolation of this value for the newly-\/created {\ttfamily Algebraic\+Nodes} results in an axially uniform subdivision of the refined elements.
+
+The same procedure may be used to assign the reference value that represents the intrinsic coordinate of the reference point on the upper wall -- at least as long as the upper wall is only ever addressed as a compound {\ttfamily Geom\+Object}, as in our original (slow!) code that employed a {\ttfamily Macro\+Element} -\/ based node update. The procedure is illustrated in the sketch below\+: The upper wall is parametrised by a compound {\ttfamily Geom\+Object} in which the beam\textquotesingle{}s Lagrangian coordinate $ \xi $ doubles as the {\ttfamily Geom\+Object\textquotesingle{}s} intrinsic coordinate $ \zeta. $ The green arrows indicate the reference points for nodes I, II, I\+II, IV and V in the coarse initial mesh. The reference values $ \zeta_{I}^{[ref]}, ... , \zeta_{V}^{[ref]} $ are stored in the node-\/update data of nodes I,...,V, respectively. The red arrow identifies the reference point for the newly-\/created node VI whose reference coordinate $ \zeta_{IV}^{[ref]} $ is created by interpolation between the reference values of nodes II, I\+II, IV and V, i.\+e. the nodes in its father element.
+
+ 
+\begin{DoxyImage}
+\includegraphics[width=0.75\textwidth]{update_single}
+\doxyfigcaption{Illustration of the default update procedure for the node-\/update data\+: The reference value for newly created node VI is created by interpolation from the reference values for nodes II, I\+II, IV and V in its father element. }
+\end{DoxyImage}
+
+
+Unfortunately, the default assignment is not appropriate for nodes that are updated by the (much faster) algebraic node update procedure implemented in the {\ttfamily Algebraic\+Collapsible\+Channel\+Mesh}. Its {\ttfamily Algebraic\+Nodes} store pointers to the sub-\/{\ttfamily Geom\+Objects} (i.\+e. the {\ttfamily F\+S\+I\+Hermite\+Beam\+Elements} in the wall mesh) that contain their reference points, and the values of the local coordinate at which the reference points are located. This is illustrated in the sketch below in which the sub-\/ {\ttfamily Geom\+Objects}, parametrised by their local coordinates $ s = \zeta, $ are shown in magenta. Note that the reference points for nodes II and IV are located in one sub-\/ {\ttfamily Geom\+Object}, those for nodes I\+II and V are located in another.
+
+ 
+\begin{DoxyImage}
+\includegraphics[width=0.75\textwidth]{update_compound}
+\doxyfigcaption{Illustration of the revised update procedure for the node-\/update data\+: The intrinsic coordinate within the compound Geom\+Object can be created by interpolation. The coordinate within the sub-\/\+Geom\+Object has to be determined via the Geom\+Object\+:\+:locate\+\_\+zeta(...) function. }
+\end{DoxyImage}
+
+
+It obviously does not make sense to create the reference value for the newly-\/created node VI by interpolation. The node update data must be created from scratch in two steps\+:
+\begin{DoxyEnumerate}
+\item Determine the newly-\/created Node\textquotesingle{}s intrinsic reference coordinate within the compound {\ttfamily Mesh\+As\+Geom\+Object} (i.\+e. the continuous beam\textquotesingle{}s Lagrangian coordinate), $ \xi_{VI}^{[ref]}$ by interpolation. (\href{../../fsi_collapsible_channel_algebraic/html/index.html}{\tt Recall } that the {\ttfamily Algebraic\+Nodes} in the non-\/refineable {\ttfamily Algebraic\+Collapsible\+Channel\+Mesh} already stored this coordinate, even though it was not used during the node-\/update itself). ~\newline
+~\newline
+
+\item Use the {\ttfamily Geom\+Object\+::locate\+\_\+zeta}(...) function to determine sub-\/{\ttfamily Geom\+Object} and the local coordinate within it, at which the reference point with Lagrangian coordinate $ \xi_{VI}^{[ref]}$ is located.
+\end{DoxyEnumerate}To ensure that this procedure is performed automatically after every mesh adaptation, it should be implemented in the function {\ttfamily Algebraic\+Mesh\+::update\+\_\+node\+\_\+update}(...). This function is defined as a pure virtual function in the {\ttfamily Algebraic\+Mesh} base class in order to force the mesh writer to assess if the default procedure for the assignment of the node-\/update data for newly-\/created {\ttfamily Algebraic\+Nodes}, described above, is appropriate. If it is, the function may, of course, be implemented as an empty function. We note that the function {\ttfamily Algebraic\+Mesh\+::update\+\_\+node\+\_\+update}(...) is called {\bfseries after} the default values for the node-\/update data have been assigned. It is therefore only necessary to correct those values for which the default procedure is inappropriate.
+
+To illustrate the procedure, here is the class definition for the {\ttfamily Refineable\+Algebraic\+Collapsible\+Channel\+Mesh}. The mesh is derived by multiple inheritance from the non-\/refineable {\ttfamily Algebraic\+Collapsible\+Channel\+Mesh} and the {\ttfamily Refineable\+Quad\+Mesh} base class. The constructor calls the constructors of both underlying meshes and then sets up the {\ttfamily Quad\+Tree\+Forest\+:} 
+
+ 
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//=====start\_of\_refineable\_algebraic\_collapsible\_channel\_mesh=====}
+\textcolor{comment}{/// Refineable version of the CollapsibleChannel mesh with}
+\textcolor{comment}{}\textcolor{comment}{/// algebraic node update.}
+\textcolor{comment}{}\textcolor{comment}{//=================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>
+\textcolor{keyword}{class }RefineableAlgebraicCollapsibleChannelMesh : 
+  \textcolor{keyword}{public} RefineableQuadMesh<ELEMENT>,
+  \textcolor{keyword}{public} \textcolor{keyword}{virtual} AlgebraicCollapsibleChannelMesh<ELEMENT>
+\{ 
+
+\textcolor{keyword}{public}: 
+
+\textcolor{comment}{}
+\textcolor{comment}{ /// \(\backslash\)short Constructor: Pass number of elements in upstream/collapsible/}
+\textcolor{comment}{ /// downstream segment and across the channel; lengths of upstream/}
+\textcolor{comment}{ /// collapsible/downstream segments and width of channel, pointer to }
+\textcolor{comment}{ /// GeomObject that defines the collapsible segment and pointer to }
+\textcolor{comment}{ /// TimeStepper (defaults to the default timestepper, Steady). }
+\textcolor{comment}{} RefineableAlgebraicCollapsibleChannelMesh(\textcolor{keyword}{const} \textcolor{keywordtype}{unsigned}& nup, 
+                                           \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned}& ncollapsible, 
+                                           \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned}& ndown, 
+                                           \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned}& ny, 
+                                           \textcolor{keyword}{const} \textcolor{keywordtype}{double}& lup, 
+                                           \textcolor{keyword}{const} \textcolor{keywordtype}{double}& lcollapsible, 
+                                           \textcolor{keyword}{const} \textcolor{keywordtype}{double}& ldown, 
+                                           \textcolor{keyword}{const} \textcolor{keywordtype}{double}& ly,
+                                           GeomObject* wall\_pt,
+                                           TimeStepper* time\_stepper\_pt=
+                                           &Mesh::Default\_TimeStepper) :
+  CollapsibleChannelMesh<ELEMENT>(nup, ncollapsible, ndown, ny,
+                                  lup, lcollapsible, ldown, ly,
+                                  wall\_pt,
+                                  time\_stepper\_pt),
+  AlgebraicCollapsibleChannelMesh<ELEMENT>(nup, ncollapsible, ndown, ny,
+                                           lup, lcollapsible, ldown, ly,
+                                           wall\_pt,
+                                           time\_stepper\_pt)
+  \{
+   \textcolor{comment}{// Build quadtree forest}
+   this->setup\_quadtree\_forest();
+  \}
+
+\end{DoxyCodeInclude}
+
+
+We overload the (empty) previous implementations of {\ttfamily Algebraic\+Mesh\+::update\+\_\+node\+\_\+update}(...) with our own function\+:
+
+
+\begin{DoxyCodeInclude}
+ \textcolor{comment}{/// \(\backslash\)short Update the node update data for specified node following }
+\textcolor{comment}{ /// any mesh adapation}
+\textcolor{comment}{} \textcolor{keywordtype}{void} update\_node\_update(AlgebraicNode*& node\_pt);
+
+\}; 
+
+\end{DoxyCodeInclude}
+
+
+Here is the actual implementation of this function. We start by extracting the reference values that were already assigned by the default procedure\+:
+
+ 
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//========start\_update\_node\_update=================================}
+\textcolor{comment}{/// Update the geometric references that are used }
+\textcolor{comment}{}\textcolor{comment}{/// to update node after mesh adaptation.}
+\textcolor{comment}{}\textcolor{comment}{//=================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>
+\textcolor{keywordtype}{void} RefineableAlgebraicCollapsibleChannelMesh<ELEMENT>::update\_node\_update(
+ AlgebraicNode*& node\_pt)
+\{
+ \textcolor{comment}{// Extract reference values for node update by copy construction}
+ Vector<double> ref\_value(node\_pt->vector\_ref\_value());
+
+\end{DoxyCodeInclude}
+
+
+Recall from the discussion of the algebraic node-\/update strategy \href{../../fsi_collapsible_channel_algebraic/html/index.html#mesh}{\tt for the non-\/refineable version of the problem} that reference values 0 and 1 store the $ x_1 $ -\/ coordinate along the fixed bottom wall, and the fractional height of the node in the cross-\/channel direction, respectively. These values are interpolated correctly and do not have to be corrected. The third reference value is the intrinsic coordinate of the reference point in its sub-\/{\ttfamily Geom\+Object}. This needs to be re-\/computed and we will assign the corrected value below. The fourth reference value is the intrinsic coordinate of the reference point within the compound {\ttfamily Mesh\+As\+Geom\+Object}. We store this in a temporary variable\+:
+
+
+\begin{DoxyCodeInclude}
+ \textcolor{comment}{// Fourth reference value: intrinsic coordinate on the (possibly }
+ \textcolor{comment}{// compound) wall.}
+ \textcolor{keywordtype}{double} zeta=ref\_value[3]; 
+
+\end{DoxyCodeInclude}
+
+
+Next, we extract vector of (pointers to the) {\ttfamily Geom\+Objects} involved in this node\textquotesingle{}s node-\/update from the node.
+
+
+\begin{DoxyCodeInclude}
+ \textcolor{comment}{// Extract geometric objects for update by copy construction}
+ Vector<GeomObject*> geom\_object\_pt(node\_pt->vector\_geom\_object\_pt());
+
+\end{DoxyCodeInclude}
+
+
+Now we use the {\ttfamily Geom\+Object\+::locate\+\_\+zeta}(...) function to obtain the pointer to the (sub-\/){\ttfamily Geom\+Object} and the intrinsic coordinate within it, at which the reference point (identified by its intrinsic coordinate {\ttfamily zeta} in the compound {\ttfamily Geom\+Object}) is located\+:
+
+
+\begin{DoxyCodeInclude}
+ \textcolor{comment}{// Get pointer to geometric (sub-)object and Lagrangian coordinate}
+ \textcolor{comment}{// on that sub-object. For a wall that is represented by }
+ \textcolor{comment}{// a single geom object, this simply returns the input.}
+ \textcolor{comment}{// If the geom object consists of sub-objects (e.g. }
+ \textcolor{comment}{// if it is a finite element mesh representing a wall,}
+ \textcolor{comment}{// then we'll obtain the pointer to the finite element}
+ \textcolor{comment}{// (in its incarnation as a GeomObject) and the}
+ \textcolor{comment}{// local coordinate in that element.}
+ Vector<double> s(1);
+ GeomObject* geom\_obj\_pt;
+ this->Wall\_pt->locate\_zeta(zeta\_wall,geom\_obj\_pt,s);
+
+\end{DoxyCodeInclude}
+
+
+We over-\/write the first (and, in fact, only) entry in the vector of {\ttfamily Geom\+Objects} that are involved in this node\textquotesingle{}s node-\/update with the pointer to the (sub-\/){\ttfamily Geom\+Object} just located\+:
+
+
+\begin{DoxyCodeInclude}
+ \textcolor{comment}{// Update the pointer to the (sub-)GeomObject within which the}
+ \textcolor{comment}{// reference point is located. (If the wall is simple GeomObject}
+ \textcolor{comment}{// this is the same as Wall\_pt; if it's a compound GeomObject}
+ \textcolor{comment}{// this points to the sub-object)}
+ geom\_object\_pt[0]=geom\_obj\_pt; 
+
+\end{DoxyCodeInclude}
+
+
+Similarly, we over-\/write the third reference value with the local coordinate of the reference point within its (sub-\/){\ttfamily Geom\+Object}.
+
+
+\begin{DoxyCodeInclude}
+ \textcolor{comment}{// Update third reference value: Reference local coordinate}
+ \textcolor{comment}{// in wall element (local coordinate in FE if we're dealing}
+ \textcolor{comment}{// with a wall mesh)}
+ ref\_value[2]=s[0];
+
+\end{DoxyCodeInclude}
+
+
+The incorrect entries in the two vectors {\ttfamily geom\+\_\+object\+\_\+pt} and {\ttfamily ref\+\_\+value} have now been corrected. We can wipe the node\textquotesingle{}s node-\/update data and re-\/assign it\+:
+
+
+\begin{DoxyCodeInclude}
+ \textcolor{comment}{// Kill the existing node update info}
+ node\_pt->kill\_node\_update\_info(); 
+ 
+ \textcolor{comment}{// Setup algebraic update for node: Pass update information}
+ node\_pt->add\_node\_update\_info(
+  \textcolor{keyword}{this},               \textcolor{comment}{// mesh}
+  geom\_object\_pt,     \textcolor{comment}{// vector of geom objects}
+  ref\_value);         \textcolor{comment}{// vector of ref. values}
+ 
+\}
+
+\end{DoxyCodeInclude}
+
+
+That\textquotesingle{}s it!
+
+
+
+ 
+
+\hypertarget{index_results}{}\section{Results}\label{index_results}
+The figure below shows a snapshot of the flow field during the early stages of the oscillation. The computation was performed with refineable Crouzeix-\/\+Raviart elements, using the {\ttfamily Refineable\+Algebraic\+Collapsible\+Channel\+Mesh}. Note how the automatic mesh adaptation has refined the mesh in the regions in which the Stokes layers create steep velocity gradients.
+
+ 
+\begin{DoxyImage}
+\includegraphics[width=0.8\textwidth]{fsi_CR_algebraic_adapt}
+\doxyfigcaption{Snapshot from the animation of the flow field. }
+\end{DoxyImage}
+
+
+
+
+ 
+
+\hypertarget{index_driver}{}\section{The driver code}\label{index_driver}
+The driver code \href{../../../../demo_drivers/interaction/fsi_collapsible_channel/fsi_collapsible_channel_adapt.cc}{\tt fsi\+\_\+collapsible\+\_\+channel\+\_\+adapt.\+cc} for the spatially adaptive problem is a trivial extension of the non-\/adaptive code \href{../../../../demo_drivers/interaction/fsi_collapsible_channel/fsi_collapsible_channel.cc}{\tt fsi\+\_\+collapsible\+\_\+channel.\+cc,} therefore we will not provide a detailed listing here. Comparing the two source codes (e.\+g. with {\ttfamily sdiff}) shows that spatial adaptivity may be enabled with a few straightforward changes\+:
+\begin{DoxyItemize}
+\item Change the fluid mesh from the {\ttfamily Macro\+Element\+Node\+Update\+Collapsible\+Channel\+Mesh} to the {\ttfamily Macro\+Element\+Node\+Update\+Refineable\+Collapsible\+Channel\+Mesh} (or from the {\ttfamily Algebraic\+Collapsible\+Channel\+Mesh} to the {\ttfamily Refineable\+Algebraic\+Collapsible\+Channel\+Mesh}). ~\newline
+~\newline
+
+\item Change the element type from {\ttfamily Taylor\+Hood\+Element$<$2$>$} to {\ttfamily Refineable\+Q\+Taylor\+Hood\+Element$<$2$>$} (or {\ttfamily Q\+Crouzeix\+Raviart\+Element$<$2$>$} to {\ttfamily Refineable\+Q\+Crouzeix\+Raviart\+Element$<$2$>$}). ~\newline
+~\newline
+
+\item Add the functions {\ttfamily Problem\+::actions\+\_\+before\+\_\+adapt()} and {\ttfamily Problem\+::actions\+\_\+after\+\_\+adapt()}; see below. ~\newline
+~\newline
+
+\item Explicitly specify the {\ttfamily Steady$<$2$>$} timestepper for the wall mesh, as discussed above. ~\newline
+~\newline
+
+\item Create an error estimator, specify the target errors for the adaptation, and call the spatially adaptive Newton solver.
+\end{DoxyItemize}
+
+\hypertarget{index_before_and_after}{}\subsection{Actions before and after solve}\label{index_before_and_after}
+As in the \href{../../../navier_stokes/collapsible_channel/html/index.html}{\tt non-\/\+F\+SI problem}, we use the function {\ttfamily Problem\+::actions\+\_\+before\+\_\+adapt()} to delete the applied traction elements before the mesh adaptation\+:
+
+ 
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//=========start\_of\_actions\_before\_adapt==================================}
+\textcolor{comment}{/// Actions before adapt: Wipe the mesh of prescribed traction elements}
+\textcolor{comment}{}\textcolor{comment}{//========================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>
+\textcolor{keywordtype}{void} \hyperlink{classFSICollapsibleChannelProblem_a91b30b3d0369c178d3a79f5658644f1b}{FSICollapsibleChannelProblem<ELEMENT>::actions\_before\_adapt}
+      ()
+\{
+ \textcolor{comment}{// Kill the traction elements and wipe surface mesh}
+ delete\_traction\_elements(Applied\_fluid\_traction\_mesh\_pt);
+ 
+ \textcolor{comment}{// Rebuild the global mesh. }
+ rebuild\_global\_mesh();
+
+\} \textcolor{comment}{// end of actions\_before\_adapt}
+
+\end{DoxyCodeInclude}
+
+
+As usual, we then employ the function {\ttfamily Problem\+::actions\+\_\+after\+\_\+adapt()} to re-\/attach traction elements to the fluid elements that are located at the mesh\textquotesingle{}s inflow boundary (mesh boundary 5) when the mesh adaptation is complete.
+
+ 
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//==========start\_of\_actions\_after\_adapt==================================}
+\textcolor{comment}{/// Actions after adapt: Rebuild the mesh of prescribed traction elements}
+\textcolor{comment}{}\textcolor{comment}{//========================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>
+\textcolor{keywordtype}{void} \hyperlink{classFSICollapsibleChannelProblem_ae20eb7ed895e0063ade5a6d0c6f9af2f}{FSICollapsibleChannelProblem<ELEMENT>::actions\_after\_adapt}
+      ()
+\{
+ \textcolor{comment}{// Create prescribed-flux elements from all elements that are }
+ \textcolor{comment}{// adjacent to boundary 5 and add them to surface mesh}
+ create\_traction\_elements(5,Bulk\_mesh\_pt,Applied\_fluid\_traction\_mesh\_pt);
+
+ \textcolor{comment}{// Rebuild the global mesh}
+ rebuild\_global\_mesh();
+
+\end{DoxyCodeInclude}
+
+
+Next, we pin the redundant pressure degrees of freedom (see \href{../../../navier_stokes/adaptive_driven_cavity/html/index.html}{\tt another tutorial} for details) and pass the function pointer to the function that defines the prescribed traction to the applied traction elements\+:
+
+
+\begin{DoxyCodeInclude}
+ 
+ \textcolor{comment}{// Unpin all pressure dofs}
+ RefineableNavierStokesEquations<2>::
+  unpin\_all\_pressure\_dofs(Bulk\_mesh\_pt->element\_pt());
+ 
+ \textcolor{comment}{// Pin redundant pressure dofs}
+ RefineableNavierStokesEquations<2>::
+  pin\_redundant\_nodal\_pressures(Bulk\_mesh\_pt->element\_pt());
+   
+ \textcolor{comment}{// Loop over the traction elements to pass pointer to prescribed }
+ \textcolor{comment}{// traction function}
+ \textcolor{keywordtype}{unsigned} n\_element=Applied\_fluid\_traction\_mesh\_pt->nelement();
+ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} e=0;e<n\_element;e++)
+  \{
+   \textcolor{comment}{// Upcast from GeneralisedElement to NavierStokesTractionElement element}
+   NavierStokesTractionElement<ELEMENT> *el\_pt = 
+    \textcolor{keyword}{dynamic\_cast<}NavierStokesTractionElement<ELEMENT>*\textcolor{keyword}{>}(
+     Applied\_fluid\_traction\_mesh\_pt->element\_pt(e));
+   
+   \textcolor{comment}{// Set the pointer to the prescribed traction function}
+   el\_pt->traction\_fct\_pt() = &\hyperlink{namespaceGlobal__Physical__Variables_a0de42ee6d39e85c77c16a04c3a05f7a2}{Global\_Physical\_Variables::prescribed\_traction}
+      ;
+  \}
+
+\end{DoxyCodeInclude}
+
+
+We specify the function {\ttfamily F\+S\+I\+\_\+functions\+::apply\+\_\+no\+\_\+slip\+\_\+on\+\_\+moving\+\_\+wall()} as the auxiliary node-\/update function for all fluid nodes that are located on the F\+SI boundary (mesh boundary 3) -- this ensures that the fluid velocity is updated (via the no-\/slip condition) whenever the position of a fluid node on this boundary is updated. For fluid nodes that already existed before the mesh adaptation this statement over-\/writes the function pointers already stored at those nodes. Note the use of compiler flags to distinguish between the two node-\/update strategies.
+
+
+\begin{DoxyCodeInclude}
+
+ \textcolor{comment}{// The functions used to update the no slip boundary conditions }
+ \textcolor{comment}{// must be set on any new nodes that have been created during the }
+ \textcolor{comment}{// mesh adaptation process. }
+ \textcolor{comment}{// There is no mechanism by which auxiliary update functions }
+ \textcolor{comment}{// are copied to newly created nodes.}
+ \textcolor{comment}{// (because, unlike boundary conditions, they don't occur exclusively }
+ \textcolor{comment}{// at boundaries)}
+ 
+ \textcolor{comment}{// The velocity of the fluid nodes on the wall (fluid mesh boundary 3)}
+ \textcolor{comment}{// is set by the wall motion -- hence the no-slip condition needs to be}
+ \textcolor{comment}{// re-applied whenever a node update is performed for these nodes. }
+ \textcolor{comment}{// Such tasks may be performed automatically by the auxiliary node update }
+ \textcolor{comment}{// function specified by a function pointer:}
+ \textcolor{keywordtype}{unsigned} ibound=3; 
+ \textcolor{keywordtype}{unsigned} num\_nod= bulk\_mesh\_pt()->nboundary\_node(ibound);
+ \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} inod=0;inod<num\_nod;inod++)
+  \{
+   bulk\_mesh\_pt()->boundary\_node\_pt(ibound, inod)->
+    set\_auxiliary\_node\_update\_fct\_pt(
+     FSI\_functions::apply\_no\_slip\_on\_moving\_wall);
+  \}
+
+\end{DoxyCodeInclude}
+
+
+Finally, we re-\/generate the F\+SI lookup scheme that establishes which fluid elements are located next to the Gauss points in the beam elements. This is necessary because the previous lookup scheme, set up in the problem constructor, becomes invalid if any of the fluid elements next the wall are split during the refinement process.
+
+
+\begin{DoxyCodeInclude}
+
+ \textcolor{comment}{// (Re-)setup fsi: Work out which fluid dofs affect wall elements}
+ \textcolor{comment}{// the correspondance between wall dofs and fluid elements is handled}
+ \textcolor{comment}{// during the remeshing, but the "reverse" association must be done}
+ \textcolor{comment}{// separately. We need to set up the interaction every time because the fluid}
+ \textcolor{comment}{// element adjacent to a given solid element's integration point may have }
+ \textcolor{comment}{// changed.We pass the boundary between the fluid and solid meshes and }
+ \textcolor{comment}{// pointers to the meshes. The interaction boundary is boundary 3 of }
+ \textcolor{comment}{// the Fluid mesh.}
+ FSI\_functions::setup\_fluid\_load\_info\_for\_solid\_elements<ELEMENT,2>
+  (\textcolor{keyword}{this},3,Bulk\_mesh\_pt,Wall\_mesh\_pt);
+
+
+\} \textcolor{comment}{// end of actions\_after\_adapt}
+
+\end{DoxyCodeInclude}
+
+
+
+
+ 
+
+\hypertarget{index_comments}{}\section{Comments and Exercises}\label{index_comments}
+\hypertarget{index_ex}{}\subsection{Exercises}\label{index_ex}
+
+\begin{DoxyEnumerate}
+\item The post-\/processing function {\ttfamily doc\+\_\+solution}(...) outputs the wall shape at the present and the two previous timesteps\+: The output file {\ttfamily wall{\itshape i-\/{\itshape j}.{\ttfamily dat} is} created} at the {\itshape i} -\/ th timestep and contains the wall shape at the {\itshape j} -\/ th previous timestep. To check that the {\ttfamily Steady$<$2$>$} timestepper correctly maintains the time-\/history of the wall displacement field, confirm that {\ttfamily wall3-\/2.\+dat} is identical to {\ttfamily wall2-\/0.\+dat}, say. ~\newline
+~\newline
+
+\item Explore what happens if the {\ttfamily Steady$<$2$>$} timestepper is not specified explicitly. \mbox{[}Hint\+: Unless you have compiled the library with {\ttfamily -\/\+D\+R\+A\+N\+G\+E\+\_\+\+C\+H\+E\+C\+K\+I\+NG}, the code will die with a segmentation fault -- use the debugger to determine where the segmentation fault occurs and explain what goes wrong.\mbox{]} ~\newline
+~\newline
+
+\item Explain why refineable {\ttfamily Macro\+Element\+Node\+Update\+Meshes} do not require a {\ttfamily update\+\_\+node\+\_\+update()} function. ~\newline
+~\newline
+
+\item Explore what happens if the empty function {\ttfamily Algebraic\+Collapsible\+Channel\+Mesh\+::update\+\_\+node\+\_\+update}(...) is not overloaded in the derived refineable mesh {\ttfamily Refineable\+Algebraic\+Collapsible\+Channel\+Mesh}. \mbox{[}Hint\+: Inspect the plot of the initial conditions in the output file {\ttfamily soln0.\+dat} to see how the uniform refinement performed in the problem constructor fails if the function {\ttfamily Refineable\+Algebraic\+Collapsible\+Channel\+Mesh\+::update\+\_\+node\+\_\+update}(...) is not executed.\mbox{]}
+\end{DoxyEnumerate}
+
+
+
+ 
+
+\hypertarget{index_sources}{}\section{Source files for this tutorial}\label{index_sources}
+
+\begin{DoxyItemize}
+\item The source files for this tutorial are located in the directory\+:~\newline
+~\newline
+\begin{center} \href{../../../../demo_drivers/interaction/fsi_collapsible_channel/}{\tt demo\+\_\+drivers/interaction/fsi\+\_\+collapsible\+\_\+channel/ } \end{center} ~\newline
+
+\item The driver code is\+: ~\newline
+~\newline
+\begin{center} \href{../../../../demo_drivers/interaction/fsi_collapsible_channel/fsi_collapsible_channel_adapt.cc}{\tt demo\+\_\+drivers/interaction/fsi\+\_\+collapsible\+\_\+channel/fsi\+\_\+collapsible\+\_\+channel\+\_\+adapt.\+cc } \end{center} 
+\end{DoxyItemize}
+
+ 
+
+ \hypertarget{index_pdf}{}\section{P\+D\+F file}\label{index_pdf}
+A \href{../latex/refman.pdf}{\tt pdf version} of this document is available. \end{document}

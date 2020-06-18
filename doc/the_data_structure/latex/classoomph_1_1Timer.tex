@@ -1,0 +1,210 @@
+\hypertarget{classoomph_1_1Timer}{}\section{oomph\+:\+:Timer Class Reference}
+\label{classoomph_1_1Timer}\index{oomph\+::\+Timer@{oomph\+::\+Timer}}
+
+
+\hyperlink{classoomph_1_1Timer}{Timer}.  
+
+
+
+
+{\ttfamily \#include $<$oomph\+\_\+utilities.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1Timer_a8abb0baeaa25a08ac1b31c1147aac92e}{Timer} (const unsigned \&n\+\_\+timer)
+\begin{DoxyCompactList}\small\item\em Constructor\+: Specify number of timers. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1Timer_aee7db2917caed661ba067c8d10b7e033}{start} (const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i})
+\begin{DoxyCompactList}\small\item\em (Re-\/)start i-\/th timer \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1Timer_afa34218cf8b9badba4f3c59ce004962b}{halt} (const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i})
+\begin{DoxyCompactList}\small\item\em Halt i-\/th timer. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1Timer_a77dfee0aa6e15ec95095f76a1f1b91c0}{cumulative\+\_\+time} (const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i})
+\begin{DoxyCompactList}\small\item\em Report time accumulated by i-\/th timer. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1Timer_ad2980c89ce68bb41d42328e72ce96db4}{reset} (const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i})
+\begin{DoxyCompactList}\small\item\em Reset i-\/th timer. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1Timer_aed19397ab3c3d4449cbc3119b854fbda}{reset} ()
+\begin{DoxyCompactList}\small\item\em Reset all timers. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1Timer_a8233e0edd4c33fece829f33aff6c8e5c}{set\+\_\+ntimers} (const unsigned \&ntimers)
+\begin{DoxyCompactList}\small\item\em Set number of timings that can be recorded in parallel. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1Vector}{Vector}$<$ clock\+\_\+t $>$ \hyperlink{classoomph_1_1Timer_a66035221f55db1dc65b8fb89ed0c831d}{Timing}
+\begin{DoxyCompactList}\small\item\em Cumulative timings. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Vector}{Vector}$<$ clock\+\_\+t $>$ \hyperlink{classoomph_1_1Timer_ab3e1287373e9c5ae81731dd57c5db66f}{Start\+\_\+time}
+\begin{DoxyCompactList}\small\item\em Start times of active timers. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classoomph_1_1Timer}{Timer}. 
+
+Definition at line 311 of file oomph\+\_\+utilities.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1Timer_a8abb0baeaa25a08ac1b31c1147aac92e}\label{classoomph_1_1Timer_a8abb0baeaa25a08ac1b31c1147aac92e}} 
+\index{oomph\+::\+Timer@{oomph\+::\+Timer}!Timer@{Timer}}
+\index{Timer@{Timer}!oomph\+::\+Timer@{oomph\+::\+Timer}}
+\subsubsection{\texorpdfstring{Timer()}{Timer()}}
+{\footnotesize\ttfamily oomph\+::\+Timer\+::\+Timer (\begin{DoxyParamCaption}\item[{const unsigned \&}]{n\+\_\+timer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor\+: Specify number of timers. 
+
+
+
+Definition at line 317 of file oomph\+\_\+utilities.\+h.
+
+
+
+References oomph\+::\+Cumulative\+Timings\+::set\+\_\+ntimers().
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1Timer_a77dfee0aa6e15ec95095f76a1f1b91c0}\label{classoomph_1_1Timer_a77dfee0aa6e15ec95095f76a1f1b91c0}} 
+\index{oomph\+::\+Timer@{oomph\+::\+Timer}!cumulative\+\_\+time@{cumulative\+\_\+time}}
+\index{cumulative\+\_\+time@{cumulative\+\_\+time}!oomph\+::\+Timer@{oomph\+::\+Timer}}
+\subsubsection{\texorpdfstring{cumulative\+\_\+time()}{cumulative\_time()}}
+{\footnotesize\ttfamily double oomph\+::\+Timer\+::cumulative\+\_\+time (\begin{DoxyParamCaption}\item[{const unsigned \&}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Report time accumulated by i-\/th timer. 
+
+
+
+Definition at line 335 of file oomph\+\_\+utilities.\+h.
+
+
+
+References oomph\+::\+Cumulative\+Timings\+::\+Timing.
+
+\mbox{\Hypertarget{classoomph_1_1Timer_afa34218cf8b9badba4f3c59ce004962b}\label{classoomph_1_1Timer_afa34218cf8b9badba4f3c59ce004962b}} 
+\index{oomph\+::\+Timer@{oomph\+::\+Timer}!halt@{halt}}
+\index{halt@{halt}!oomph\+::\+Timer@{oomph\+::\+Timer}}
+\subsubsection{\texorpdfstring{halt()}{halt()}}
+{\footnotesize\ttfamily void oomph\+::\+Timer\+::halt (\begin{DoxyParamCaption}\item[{const unsigned \&}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Halt i-\/th timer. 
+
+
+
+Definition at line 329 of file oomph\+\_\+utilities.\+h.
+
+
+
+References i, oomph\+::\+Cumulative\+Timings\+::\+Start\+\_\+time, and oomph\+::\+Cumulative\+Timings\+::\+Timing.
+
+\mbox{\Hypertarget{classoomph_1_1Timer_ad2980c89ce68bb41d42328e72ce96db4}\label{classoomph_1_1Timer_ad2980c89ce68bb41d42328e72ce96db4}} 
+\index{oomph\+::\+Timer@{oomph\+::\+Timer}!reset@{reset}}
+\index{reset@{reset}!oomph\+::\+Timer@{oomph\+::\+Timer}}
+\subsubsection{\texorpdfstring{reset()}{reset()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void oomph\+::\+Timer\+::reset (\begin{DoxyParamCaption}\item[{const unsigned \&}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Reset i-\/th timer. 
+
+
+
+Definition at line 341 of file oomph\+\_\+utilities.\+h.
+
+
+
+References i, and oomph\+::\+Cumulative\+Timings\+::\+Timing.
+
+\mbox{\Hypertarget{classoomph_1_1Timer_aed19397ab3c3d4449cbc3119b854fbda}\label{classoomph_1_1Timer_aed19397ab3c3d4449cbc3119b854fbda}} 
+\index{oomph\+::\+Timer@{oomph\+::\+Timer}!reset@{reset}}
+\index{reset@{reset}!oomph\+::\+Timer@{oomph\+::\+Timer}}
+\subsubsection{\texorpdfstring{reset()}{reset()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void oomph\+::\+Timer\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Reset all timers. 
+
+
+
+Definition at line 347 of file oomph\+\_\+utilities.\+h.
+
+
+
+References i, and oomph\+::\+Cumulative\+Timings\+::\+Timing.
+
+\mbox{\Hypertarget{classoomph_1_1Timer_a8233e0edd4c33fece829f33aff6c8e5c}\label{classoomph_1_1Timer_a8233e0edd4c33fece829f33aff6c8e5c}} 
+\index{oomph\+::\+Timer@{oomph\+::\+Timer}!set\+\_\+ntimers@{set\+\_\+ntimers}}
+\index{set\+\_\+ntimers@{set\+\_\+ntimers}!oomph\+::\+Timer@{oomph\+::\+Timer}}
+\subsubsection{\texorpdfstring{set\+\_\+ntimers()}{set\_ntimers()}}
+{\footnotesize\ttfamily void oomph\+::\+Timer\+::set\+\_\+ntimers (\begin{DoxyParamCaption}\item[{const unsigned \&}]{ntimers }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set number of timings that can be recorded in parallel. 
+
+
+
+Definition at line 357 of file oomph\+\_\+utilities.\+h.
+
+
+
+References oomph\+::\+Cumulative\+Timings\+::\+Start\+\_\+time, and oomph\+::\+Cumulative\+Timings\+::\+Timing.
+
+\mbox{\Hypertarget{classoomph_1_1Timer_aee7db2917caed661ba067c8d10b7e033}\label{classoomph_1_1Timer_aee7db2917caed661ba067c8d10b7e033}} 
+\index{oomph\+::\+Timer@{oomph\+::\+Timer}!start@{start}}
+\index{start@{start}!oomph\+::\+Timer@{oomph\+::\+Timer}}
+\subsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily void oomph\+::\+Timer\+::start (\begin{DoxyParamCaption}\item[{const unsigned \&}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+(Re-\/)start i-\/th timer 
+
+
+
+Definition at line 323 of file oomph\+\_\+utilities.\+h.
+
+
+
+References i, and oomph\+::\+Cumulative\+Timings\+::\+Start\+\_\+time.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1Timer_ab3e1287373e9c5ae81731dd57c5db66f}\label{classoomph_1_1Timer_ab3e1287373e9c5ae81731dd57c5db66f}} 
+\index{oomph\+::\+Timer@{oomph\+::\+Timer}!Start\+\_\+time@{Start\+\_\+time}}
+\index{Start\+\_\+time@{Start\+\_\+time}!oomph\+::\+Timer@{oomph\+::\+Timer}}
+\subsubsection{\texorpdfstring{Start\+\_\+time}{Start\_time}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1Vector}{Vector}$<$clock\+\_\+t$>$ oomph\+::\+Timer\+::\+Start\+\_\+time\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Start times of active timers. 
+
+
+
+Definition at line 369 of file oomph\+\_\+utilities.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1Timer_a66035221f55db1dc65b8fb89ed0c831d}\label{classoomph_1_1Timer_a66035221f55db1dc65b8fb89ed0c831d}} 
+\index{oomph\+::\+Timer@{oomph\+::\+Timer}!Timing@{Timing}}
+\index{Timing@{Timing}!oomph\+::\+Timer@{oomph\+::\+Timer}}
+\subsubsection{\texorpdfstring{Timing}{Timing}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1Vector}{Vector}$<$clock\+\_\+t$>$ oomph\+::\+Timer\+::\+Timing\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Cumulative timings. 
+
+
+
+Definition at line 366 of file oomph\+\_\+utilities.\+h.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{oomph__utilities_8h}{oomph\+\_\+utilities.\+h}\end{DoxyCompactItemize}

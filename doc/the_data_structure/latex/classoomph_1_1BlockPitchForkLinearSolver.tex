@@ -1,0 +1,273 @@
+\hypertarget{classoomph_1_1BlockPitchForkLinearSolver}{}\section{oomph\+:\+:Block\+Pitch\+Fork\+Linear\+Solver Class Reference}
+\label{classoomph_1_1BlockPitchForkLinearSolver}\index{oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver@{oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver}}
+
+
+{\ttfamily \#include $<$assembly\+\_\+handler.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Block\+Pitch\+Fork\+Linear\+Solver\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classoomph_1_1BlockPitchForkLinearSolver}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1BlockPitchForkLinearSolver_a9820033e85fed1a01a48ac09f27e574f}{Block\+Pitch\+Fork\+Linear\+Solver} (\hyperlink{classoomph_1_1LinearSolver}{Linear\+Solver} $\ast$const \hyperlink{classoomph_1_1BlockPitchForkLinearSolver_a38efead8e84202a3232b4a3624a2986c}{linear\+\_\+solver\+\_\+pt})
+\begin{DoxyCompactList}\small\item\em Constructor, inherits the original linear solver. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1BlockPitchForkLinearSolver_a3fa97815fefc83c678341222847797ea}{$\sim$\+Block\+Pitch\+Fork\+Linear\+Solver} ()
+\begin{DoxyCompactList}\small\item\em Destructor\+: clean up the allocated memory. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1BlockPitchForkLinearSolver_ad196867613954a8fabd318b50e2aadc6}{solve} (\hyperlink{classoomph_1_1Problem}{Problem} $\ast$const \&problem\+\_\+pt, \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} \&result)
+\begin{DoxyCompactList}\small\item\em The solve function uses the block factorisation. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1BlockPitchForkLinearSolver_aaa6dbd59c0f6db8e5a19689888b17eac}{solve} (\hyperlink{classoomph_1_1DoubleMatrixBase}{Double\+Matrix\+Base} $\ast$const \&matrix\+\_\+pt, const \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} \&rhs, \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} \&result)
+\begin{DoxyCompactList}\small\item\em The linear-\/algebra-\/type solver does not make sense. The interface is deliberately broken. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1BlockPitchForkLinearSolver_a45c8a56bd1942374756feb9edcfb6151}{solve} (\hyperlink{classoomph_1_1DoubleMatrixBase}{Double\+Matrix\+Base} $\ast$const \&matrix\+\_\+pt, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&rhs, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&result)
+\begin{DoxyCompactList}\small\item\em The linear-\/algebra-\/type solver does not make sense. The interface is deliberately broken. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1BlockPitchForkLinearSolver_a9a424fd2ae0b67ef8c3ff59f16030786}{resolve} (const \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} \&rhs, \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} \&result)
+\begin{DoxyCompactList}\small\item\em The resolve function also uses the block factorisation. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1LinearSolver}{Linear\+Solver} $\ast$ \hyperlink{classoomph_1_1BlockPitchForkLinearSolver_a38efead8e84202a3232b4a3624a2986c}{linear\+\_\+solver\+\_\+pt} () const
+\begin{DoxyCompactList}\small\item\em Access function to the original linear solver. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1LinearSolver}{Linear\+Solver} $\ast$ \hyperlink{classoomph_1_1BlockPitchForkLinearSolver_afcf84124d724d6bd961870fbcdc7b9e4}{Linear\+\_\+solver\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to the original linear solver. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Problem}{Problem} $\ast$ \hyperlink{classoomph_1_1BlockPitchForkLinearSolver_a5819a48984aa1a9a68c28e106bc22f90}{Problem\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to the problem, used in the resolve. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} $\ast$ \hyperlink{classoomph_1_1BlockPitchForkLinearSolver_a4e88432fbf8e7cdefbfbd2c67860505e}{B\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to the storage for the vector b. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} $\ast$ \hyperlink{classoomph_1_1BlockPitchForkLinearSolver_ac9f8e9f84f79437b43e35ae2850ec335}{C\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to the storage for the vector c. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} $\ast$ \hyperlink{classoomph_1_1BlockPitchForkLinearSolver_a3178ff5ce055b76423b30357022f9e58}{D\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to the storage for the vector d. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} $\ast$ \hyperlink{classoomph_1_1BlockPitchForkLinearSolver_a3ceff96adc374fb588f106cc3cc9b435}{d\+Jy\+\_\+dparam\+\_\+pt}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+A custom linear solver class that is used to solve a block-\/factorised version of the Pitch\+Fork bifurcation detection problem. 
+
+Definition at line 591 of file assembly\+\_\+handler.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1BlockPitchForkLinearSolver_a9820033e85fed1a01a48ac09f27e574f}\label{classoomph_1_1BlockPitchForkLinearSolver_a9820033e85fed1a01a48ac09f27e574f}} 
+\index{oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver@{oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver}!Block\+Pitch\+Fork\+Linear\+Solver@{Block\+Pitch\+Fork\+Linear\+Solver}}
+\index{Block\+Pitch\+Fork\+Linear\+Solver@{Block\+Pitch\+Fork\+Linear\+Solver}!oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver@{oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver}}
+\subsubsection{\texorpdfstring{Block\+Pitch\+Fork\+Linear\+Solver()}{BlockPitchForkLinearSolver()}}
+{\footnotesize\ttfamily oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver\+::\+Block\+Pitch\+Fork\+Linear\+Solver (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1LinearSolver}{Linear\+Solver} $\ast$const}]{linear\+\_\+solver\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor, inherits the original linear solver. 
+
+
+
+Definition at line 615 of file assembly\+\_\+handler.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1BlockPitchForkLinearSolver_a3fa97815fefc83c678341222847797ea}\label{classoomph_1_1BlockPitchForkLinearSolver_a3fa97815fefc83c678341222847797ea}} 
+\index{oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver@{oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver}!````~Block\+Pitch\+Fork\+Linear\+Solver@{$\sim$\+Block\+Pitch\+Fork\+Linear\+Solver}}
+\index{````~Block\+Pitch\+Fork\+Linear\+Solver@{$\sim$\+Block\+Pitch\+Fork\+Linear\+Solver}!oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver@{oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver}}
+\subsubsection{\texorpdfstring{$\sim$\+Block\+Pitch\+Fork\+Linear\+Solver()}{~BlockPitchForkLinearSolver()}}
+{\footnotesize\ttfamily oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver\+::$\sim$\+Block\+Pitch\+Fork\+Linear\+Solver (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destructor\+: clean up the allocated memory. 
+
+Clean up the memory that may have been allocated by the solver. 
+
+Definition at line 1632 of file assembly\+\_\+handler.\+cc.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1BlockPitchForkLinearSolver_a38efead8e84202a3232b4a3624a2986c}\label{classoomph_1_1BlockPitchForkLinearSolver_a38efead8e84202a3232b4a3624a2986c}} 
+\index{oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver@{oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver}!linear\+\_\+solver\+\_\+pt@{linear\+\_\+solver\+\_\+pt}}
+\index{linear\+\_\+solver\+\_\+pt@{linear\+\_\+solver\+\_\+pt}!oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver@{oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver}}
+\subsubsection{\texorpdfstring{linear\+\_\+solver\+\_\+pt()}{linear\_solver\_pt()}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1LinearSolver}{Linear\+Solver}$\ast$ oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver\+::linear\+\_\+solver\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Access function to the original linear solver. 
+
+
+
+Definition at line 654 of file assembly\+\_\+handler.\+h.
+
+
+
+Referenced by oomph\+::\+Pitch\+Fork\+Handler\+::$\sim$\+Pitch\+Fork\+Handler().
+
+\mbox{\Hypertarget{classoomph_1_1BlockPitchForkLinearSolver_a9a424fd2ae0b67ef8c3ff59f16030786}\label{classoomph_1_1BlockPitchForkLinearSolver_a9a424fd2ae0b67ef8c3ff59f16030786}} 
+\index{oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver@{oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver}!resolve@{resolve}}
+\index{resolve@{resolve}!oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver@{oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver}}
+\subsubsection{\texorpdfstring{resolve()}{resolve()}}
+{\footnotesize\ttfamily void oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver\+::resolve (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} \&}]{rhs,  }\item[{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} \&}]{result }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+The resolve function also uses the block factorisation. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1LinearSolver_a3b310d08333033edc119b2a5bd7dcbfb}{oomph\+::\+Linear\+Solver}.
+
+
+
+Definition at line 1917 of file assembly\+\_\+handler.\+cc.
+
+
+
+References oomph\+::\+Problem\+::assembly\+\_\+handler\+\_\+pt(), oomph\+::\+Pitch\+Fork\+Handler\+::\+Augmented\+\_\+dof\+\_\+distribution\+\_\+pt, oomph\+::\+Double\+Vector\+::build(), oomph\+::\+Linear\+Algebra\+Distribution\+::build(), oomph\+::\+Double\+Vector\+::built(), oomph\+::\+Linear\+Algebra\+Distribution\+::built(), oomph\+::\+Problem\+::communicator\+\_\+pt(), oomph\+::\+Problem\+::distributed(), oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::distribution\+\_\+pt(), oomph\+::\+Pitch\+Fork\+Handler\+::\+Dof\+\_\+distribution\+\_\+pt, oomph\+::\+Double\+Vector\+::dot(), oomph\+::\+Problem\+::get\+\_\+hessian\+\_\+vector\+\_\+products(), oomph\+::\+Problem\+::\+Halo\+\_\+scheme\+\_\+pt, oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::nrow\+\_\+local(), oomph\+::\+Fold\+Handler\+::\+Problem\+\_\+pt, oomph\+::\+Pitch\+Fork\+Handler\+::\+Psi, oomph\+::\+Double\+Vector\+::redistribute(), oomph\+::\+Pitch\+Fork\+Handler\+::solve\+\_\+block\+\_\+system(), oomph\+::\+Pitch\+Fork\+Handler\+::solve\+\_\+full\+\_\+system(), and oomph\+::\+Pitch\+Fork\+Handler\+::Y.
+
+\mbox{\Hypertarget{classoomph_1_1BlockPitchForkLinearSolver_ad196867613954a8fabd318b50e2aadc6}\label{classoomph_1_1BlockPitchForkLinearSolver_ad196867613954a8fabd318b50e2aadc6}} 
+\index{oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver@{oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver}!solve@{solve}}
+\index{solve@{solve}!oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver@{oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver}}
+\subsubsection{\texorpdfstring{solve()}{solve()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily void oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver\+::solve (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Problem}{Problem} $\ast$const \&}]{problem\+\_\+pt,  }\item[{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} \&}]{result }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+The solve function uses the block factorisation. 
+
+Use a block factorisation to solve the augmented system associated with a Pitch\+Fork bifurcation. 
+
+Implements \hyperlink{classoomph_1_1LinearSolver_a15ce22542b74ed1826ea485edacbeb6e}{oomph\+::\+Linear\+Solver}.
+
+
+
+Definition at line 1644 of file assembly\+\_\+handler.\+cc.
+
+
+
+References oomph\+::\+Problem\+::assembly\+\_\+handler\+\_\+pt(), oomph\+::\+Pitch\+Fork\+Handler\+::\+Augmented\+\_\+dof\+\_\+distribution\+\_\+pt, oomph\+::\+Double\+Vector\+::built(), oomph\+::\+Problem\+::communicator\+\_\+pt(), oomph\+::\+Problem\+::distributed(), oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::distribution\+\_\+pt(), oomph\+::\+Pitch\+Fork\+Handler\+::\+Dof\+\_\+distribution\+\_\+pt, oomph\+::\+Double\+Vector\+::dot(), oomph\+::\+Oc\+Tree\+Names\+::F, oomph\+::\+Problem\+::get\+\_\+derivative\+\_\+wrt\+\_\+global\+\_\+parameter(), oomph\+::\+Problem\+::get\+\_\+hessian\+\_\+vector\+\_\+products(), oomph\+::\+Problem\+::\+Halo\+\_\+scheme\+\_\+pt, oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::nrow\+\_\+local(), oomph\+::\+Pitch\+Fork\+Handler\+::\+Parameter\+\_\+pt, oomph\+::\+Fold\+Handler\+::\+Problem\+\_\+pt, oomph\+::\+Pitch\+Fork\+Handler\+::\+Psi, oomph\+::\+Double\+Vector\+::redistribute(), oomph\+::\+Problem\+::sign\+\_\+of\+\_\+jacobian(), oomph\+::\+Pitch\+Fork\+Handler\+::solve\+\_\+block\+\_\+system(), oomph\+::\+Pitch\+Fork\+Handler\+::solve\+\_\+full\+\_\+system(), and oomph\+::\+Pitch\+Fork\+Handler\+::Y.
+
+\mbox{\Hypertarget{classoomph_1_1BlockPitchForkLinearSolver_aaa6dbd59c0f6db8e5a19689888b17eac}\label{classoomph_1_1BlockPitchForkLinearSolver_aaa6dbd59c0f6db8e5a19689888b17eac}} 
+\index{oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver@{oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver}!solve@{solve}}
+\index{solve@{solve}!oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver@{oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver}}
+\subsubsection{\texorpdfstring{solve()}{solve()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily void oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver\+::solve (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1DoubleMatrixBase}{Double\+Matrix\+Base} $\ast$const \&}]{matrix\+\_\+pt,  }\item[{const \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} \&}]{rhs,  }\item[{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} \&}]{result }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+The linear-\/algebra-\/type solver does not make sense. The interface is deliberately broken. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1LinearSolver_a546c09822d18191df14caed864c04c09}{oomph\+::\+Linear\+Solver}.
+
+
+
+Definition at line 627 of file assembly\+\_\+handler.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1BlockPitchForkLinearSolver_a45c8a56bd1942374756feb9edcfb6151}\label{classoomph_1_1BlockPitchForkLinearSolver_a45c8a56bd1942374756feb9edcfb6151}} 
+\index{oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver@{oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver}!solve@{solve}}
+\index{solve@{solve}!oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver@{oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver}}
+\subsubsection{\texorpdfstring{solve()}{solve()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily void oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver\+::solve (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1DoubleMatrixBase}{Double\+Matrix\+Base} $\ast$const \&}]{matrix\+\_\+pt,  }\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{rhs,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{result }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+The linear-\/algebra-\/type solver does not make sense. The interface is deliberately broken. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1LinearSolver_a1f7a2ee2cd18d3dafc20a61ca2f52dbb}{oomph\+::\+Linear\+Solver}.
+
+
+
+Definition at line 639 of file assembly\+\_\+handler.\+h.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1BlockPitchForkLinearSolver_a4e88432fbf8e7cdefbfbd2c67860505e}\label{classoomph_1_1BlockPitchForkLinearSolver_a4e88432fbf8e7cdefbfbd2c67860505e}} 
+\index{oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver@{oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver}!B\+\_\+pt@{B\+\_\+pt}}
+\index{B\+\_\+pt@{B\+\_\+pt}!oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver@{oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver}}
+\subsubsection{\texorpdfstring{B\+\_\+pt}{B\_pt}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}$\ast$ oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver\+::\+B\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pointer to the storage for the vector b. 
+
+
+
+Definition at line 600 of file assembly\+\_\+handler.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1BlockPitchForkLinearSolver_ac9f8e9f84f79437b43e35ae2850ec335}\label{classoomph_1_1BlockPitchForkLinearSolver_ac9f8e9f84f79437b43e35ae2850ec335}} 
+\index{oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver@{oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver}!C\+\_\+pt@{C\+\_\+pt}}
+\index{C\+\_\+pt@{C\+\_\+pt}!oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver@{oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver}}
+\subsubsection{\texorpdfstring{C\+\_\+pt}{C\_pt}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}$\ast$ oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver\+::\+C\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pointer to the storage for the vector c. 
+
+
+
+Definition at line 603 of file assembly\+\_\+handler.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1BlockPitchForkLinearSolver_a3178ff5ce055b76423b30357022f9e58}\label{classoomph_1_1BlockPitchForkLinearSolver_a3178ff5ce055b76423b30357022f9e58}} 
+\index{oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver@{oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver}!D\+\_\+pt@{D\+\_\+pt}}
+\index{D\+\_\+pt@{D\+\_\+pt}!oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver@{oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver}}
+\subsubsection{\texorpdfstring{D\+\_\+pt}{D\_pt}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}$\ast$ oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver\+::\+D\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pointer to the storage for the vector d. 
+
+
+
+Definition at line 606 of file assembly\+\_\+handler.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1BlockPitchForkLinearSolver_a3ceff96adc374fb588f106cc3cc9b435}\label{classoomph_1_1BlockPitchForkLinearSolver_a3ceff96adc374fb588f106cc3cc9b435}} 
+\index{oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver@{oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver}!d\+Jy\+\_\+dparam\+\_\+pt@{d\+Jy\+\_\+dparam\+\_\+pt}}
+\index{d\+Jy\+\_\+dparam\+\_\+pt@{d\+Jy\+\_\+dparam\+\_\+pt}!oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver@{oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver}}
+\subsubsection{\texorpdfstring{d\+Jy\+\_\+dparam\+\_\+pt}{dJy\_dparam\_pt}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}$\ast$ oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver\+::d\+Jy\+\_\+dparam\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+Pointer to the storage for the vector of derivatives with respect to the bifurcation parameter 
+
+Definition at line 610 of file assembly\+\_\+handler.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1BlockPitchForkLinearSolver_afcf84124d724d6bd961870fbcdc7b9e4}\label{classoomph_1_1BlockPitchForkLinearSolver_afcf84124d724d6bd961870fbcdc7b9e4}} 
+\index{oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver@{oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver}!Linear\+\_\+solver\+\_\+pt@{Linear\+\_\+solver\+\_\+pt}}
+\index{Linear\+\_\+solver\+\_\+pt@{Linear\+\_\+solver\+\_\+pt}!oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver@{oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver}}
+\subsubsection{\texorpdfstring{Linear\+\_\+solver\+\_\+pt}{Linear\_solver\_pt}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1LinearSolver}{Linear\+Solver}$\ast$ oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver\+::\+Linear\+\_\+solver\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pointer to the original linear solver. 
+
+
+
+Definition at line 594 of file assembly\+\_\+handler.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1BlockPitchForkLinearSolver_a5819a48984aa1a9a68c28e106bc22f90}\label{classoomph_1_1BlockPitchForkLinearSolver_a5819a48984aa1a9a68c28e106bc22f90}} 
+\index{oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver@{oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver}!Problem\+\_\+pt@{Problem\+\_\+pt}}
+\index{Problem\+\_\+pt@{Problem\+\_\+pt}!oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver@{oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver}}
+\subsubsection{\texorpdfstring{Problem\+\_\+pt}{Problem\_pt}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1Problem}{Problem}$\ast$ oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver\+::\+Problem\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pointer to the problem, used in the resolve. 
+
+
+
+Definition at line 597 of file assembly\+\_\+handler.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{assembly__handler_8h}{assembly\+\_\+handler.\+h}\item 
+\hyperlink{assembly__handler_8cc}{assembly\+\_\+handler.\+cc}\end{DoxyCompactItemize}

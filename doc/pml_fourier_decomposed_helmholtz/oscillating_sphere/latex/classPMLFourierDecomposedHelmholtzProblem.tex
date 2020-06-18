@@ -1,0 +1,535 @@
+\hypertarget{classPMLFourierDecomposedHelmholtzProblem}{}\section{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem$<$ E\+L\+E\+M\+E\+NT $>$ Class Template Reference}
+\label{classPMLFourierDecomposedHelmholtzProblem}\index{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$@{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$}}
+
+
+Problem class.  
+
+
+Inheritance diagram for P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem$<$ E\+L\+E\+M\+E\+NT $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classPMLFourierDecomposedHelmholtzProblem}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classPMLFourierDecomposedHelmholtzProblem_a5764db8312a28a3e1eaac2cc61813f83}{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\hyperlink{classPMLFourierDecomposedHelmholtzProblem_abc35779657bcdd622d09464c225b079a}{$\sim$\+P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem} ()
+\begin{DoxyCompactList}\small\item\em Destructor (empty) \end{DoxyCompactList}\item 
+void \hyperlink{classPMLFourierDecomposedHelmholtzProblem_af87810cbe164981cc14ee779793a69fb}{actions\+\_\+before\+\_\+newton\+\_\+solve} ()
+\begin{DoxyCompactList}\small\item\em Update the problem specs before solve (empty) \end{DoxyCompactList}\item 
+void \hyperlink{classPMLFourierDecomposedHelmholtzProblem_a013d95d489b85e326a71bb744af4a40f}{actions\+\_\+after\+\_\+newton\+\_\+solve} ()
+\begin{DoxyCompactList}\small\item\em Update the problem after solve (empty) \end{DoxyCompactList}\item 
+void \hyperlink{classPMLFourierDecomposedHelmholtzProblem_afcdfaf86efc75fbea14f6ade9eeb7f9c}{doc\+\_\+solution} (Doc\+Info \&doc\+\_\+info)
+\begin{DoxyCompactList}\small\item\em Doc the solution. Doc\+Info object stores flags/labels for where the output gets written to. \end{DoxyCompactList}\item 
+void \hyperlink{classPMLFourierDecomposedHelmholtzProblem_ae562dddf5c60793371b594bff5047f91}{create\+\_\+pml\+\_\+meshes} ()
+\begin{DoxyCompactList}\small\item\em Create P\+ML meshes. \end{DoxyCompactList}\item 
+void \hyperlink{classPMLFourierDecomposedHelmholtzProblem_a83e0aa333ec3b25f1afccc3bc0a529ad}{create\+\_\+power\+\_\+monitor\+\_\+mesh} ()
+\begin{DoxyCompactList}\small\item\em Create mesh of face elements that monitor the radiated power. \end{DoxyCompactList}\item 
+void \hyperlink{classPMLFourierDecomposedHelmholtzProblem_ae4b1cacec10553bdb6781b65ed73abce}{actions\+\_\+before\+\_\+adapt} ()
+\begin{DoxyCompactList}\small\item\em Actions before adapt\+: Wipe the mesh of prescribed flux elements. \end{DoxyCompactList}\item 
+void \hyperlink{classPMLFourierDecomposedHelmholtzProblem_ad19bce2b8cb30bdeffd656fdc4014c0c}{actions\+\_\+after\+\_\+adapt} ()
+\begin{DoxyCompactList}\small\item\em Actions after adapt\+: Rebuild the mesh of prescribed flux elements. \end{DoxyCompactList}\item 
+void \hyperlink{classPMLFourierDecomposedHelmholtzProblem_aca49343d9672607fdc3ab5f6ed4e9d24}{complete\+\_\+problem\+\_\+setup} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classPMLFourierDecomposedHelmholtzProblem_afd6e3401bdbd1d3deb3271553fbe1d3a}{create\+\_\+flux\+\_\+elements\+\_\+on\+\_\+inner\+\_\+boundary} ()
+\begin{DoxyCompactList}\small\item\em Create flux elements on inner boundary. \end{DoxyCompactList}\item 
+void \hyperlink{classPMLFourierDecomposedHelmholtzProblem_a4a9b767ba4beb7ab5db9c98fc46c49b2}{delete\+\_\+face\+\_\+elements} (Mesh $\ast$const \&boundary\+\_\+mesh\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Delete boundary face elements and wipe the surface mesh. \end{DoxyCompactList}\item 
+void \hyperlink{classPMLFourierDecomposedHelmholtzProblem_ad7680c25a32087cb6da96d4bcedf1b23}{apply\+\_\+zero\+\_\+dirichlet\+\_\+boundary\+\_\+conditions} ()
+\item 
+void \hyperlink{classPMLFourierDecomposedHelmholtzProblem_a7d416452acc602776de2072a7c0e1249}{setup\+\_\+point\+\_\+source} ()
+\begin{DoxyCompactList}\small\item\em Set point source. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Mesh $\ast$ \hyperlink{classPMLFourierDecomposedHelmholtzProblem_a9ffebfa69944e405eb28a4b2bd03336e}{Power\+\_\+monitor\+\_\+mesh\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to mesh that stores the power monitor elements. \end{DoxyCompactList}\item 
+Refineable\+Triangle\+Mesh$<$ E\+L\+E\+M\+E\+NT $>$ $\ast$ \hyperlink{classPMLFourierDecomposedHelmholtzProblem_ad20477e869fb9ce66891389c0d501449}{Bulk\+\_\+mesh\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to the refineable \char`\"{}bulk\char`\"{} mesh. \end{DoxyCompactList}\item 
+Mesh\+As\+Geom\+Object $\ast$ \hyperlink{classPMLFourierDecomposedHelmholtzProblem_a32f6694310ffd9c0962a7ee8c114dbf5}{Mesh\+\_\+as\+\_\+geom\+\_\+obj\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Mesh as geometric object representation of bulk mesh. \end{DoxyCompactList}\item 
+Triangle\+Mesh$<$ E\+L\+E\+M\+E\+NT $>$ $\ast$ \hyperlink{classPMLFourierDecomposedHelmholtzProblem_a583fb8d30b3a225fe77f684532efd66f}{Bulk\+\_\+mesh\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to the \char`\"{}bulk\char`\"{} mesh. \end{DoxyCompactList}\item 
+Mesh $\ast$ \hyperlink{classPMLFourierDecomposedHelmholtzProblem_a7d3c418942daf7ba2363b8a91172512e}{Helmholtz\+\_\+inner\+\_\+boundary\+\_\+mesh\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Mesh of Face\+Elements that apply the flux bc on the inner boundary. \end{DoxyCompactList}\item 
+Mesh $\ast$ \hyperlink{classPMLFourierDecomposedHelmholtzProblem_a2bde26fe496f63d29e48e9b5dffc8757}{P\+M\+L\+\_\+right\+\_\+mesh\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to the right P\+ML mesh. \end{DoxyCompactList}\item 
+Mesh $\ast$ \hyperlink{classPMLFourierDecomposedHelmholtzProblem_a4fe4cd439faae2086ab1ed786cbc610a}{P\+M\+L\+\_\+top\+\_\+mesh\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to the top P\+ML mesh. \end{DoxyCompactList}\item 
+Mesh $\ast$ \hyperlink{classPMLFourierDecomposedHelmholtzProblem_ad7611d07d182b33a5e2f848bc4ff5572}{P\+M\+L\+\_\+bottom\+\_\+mesh\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to the bottom P\+ML mesh. \end{DoxyCompactList}\item 
+Mesh $\ast$ \hyperlink{classPMLFourierDecomposedHelmholtzProblem_af0787c8610bbae59be3d061e57072c11}{P\+M\+L\+\_\+top\+\_\+right\+\_\+mesh\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to the top right corner P\+ML mesh. \end{DoxyCompactList}\item 
+Mesh $\ast$ \hyperlink{classPMLFourierDecomposedHelmholtzProblem_a8c3d30400cb9e4a709e1f8f8ee66785a}{P\+M\+L\+\_\+bottom\+\_\+right\+\_\+mesh\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to the bottom right corner P\+ML mesh. \end{DoxyCompactList}\item 
+ofstream \hyperlink{classPMLFourierDecomposedHelmholtzProblem_a9810d1dd58cec1f8b1cfc54ea37a7efd}{Trace\+\_\+file}
+\begin{DoxyCompactList}\small\item\em Trace file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class E\+L\+E\+M\+E\+NT$>$\newline
+class P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$}
+
+Problem class. 
+
+Definition at line 433 of file oscillating\+\_\+sphere.\+cc.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classPMLFourierDecomposedHelmholtzProblem_a5764db8312a28a3e1eaac2cc61813f83}\label{classPMLFourierDecomposedHelmholtzProblem_a5764db8312a28a3e1eaac2cc61813f83}} 
+\index{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem@{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}!P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem@{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}}
+\index{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem@{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}!P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem@{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}}
+\subsubsection{\texorpdfstring{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem()}{PMLFourierDecomposedHelmholtzProblem()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classPMLFourierDecomposedHelmholtzProblem}{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::\hyperlink{classPMLFourierDecomposedHelmholtzProblem}{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+Constructor for Pml Fourier-\/decomposed Helmholtz problem. Setup \char`\"{}bulk\char`\"{} mesh 
+
+Definition at line 794 of file oscillating\+\_\+sphere.\+cc.
+
+
+
+References Problem\+Parameters\+::\+Directory, P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::doc\+\_\+solution(), Problem\+Parameters\+::\+Element\+\_\+area, and Problem\+Parameters\+::\+K\+\_\+squared.
+
+
+
+Referenced by P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::apply\+\_\+zero\+\_\+dirichlet\+\_\+boundary\+\_\+conditions().
+
+\mbox{\Hypertarget{classPMLFourierDecomposedHelmholtzProblem_abc35779657bcdd622d09464c225b079a}\label{classPMLFourierDecomposedHelmholtzProblem_abc35779657bcdd622d09464c225b079a}} 
+\index{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem@{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}!````~P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem@{$\sim$\+P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}}
+\index{````~P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem@{$\sim$\+P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}!P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem@{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}}
+\subsubsection{\texorpdfstring{$\sim$\+P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem()}{~PMLFourierDecomposedHelmholtzProblem()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+\hyperlink{classPMLFourierDecomposedHelmholtzProblem}{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::$\sim$\hyperlink{classPMLFourierDecomposedHelmholtzProblem}{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Destructor (empty) 
+
+
+
+Definition at line 442 of file oscillating\+\_\+sphere.\+cc.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classPMLFourierDecomposedHelmholtzProblem_ad19bce2b8cb30bdeffd656fdc4014c0c}\label{classPMLFourierDecomposedHelmholtzProblem_ad19bce2b8cb30bdeffd656fdc4014c0c}} 
+\index{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem@{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}!actions\+\_\+after\+\_\+adapt@{actions\+\_\+after\+\_\+adapt}}
+\index{actions\+\_\+after\+\_\+adapt@{actions\+\_\+after\+\_\+adapt}!P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem@{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}}
+\subsubsection{\texorpdfstring{actions\+\_\+after\+\_\+adapt()}{actions\_after\_adapt()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classPMLFourierDecomposedHelmholtzProblem}{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::actions\+\_\+after\+\_\+adapt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Actions after adapt\+: Rebuild the mesh of prescribed flux elements. 
+
+Actions after adapt\+: Rebuild the face element meshes. 
+
+Definition at line 623 of file oscillating\+\_\+sphere.\+cc.
+
+
+
+References P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::complete\+\_\+problem\+\_\+setup().
+
+
+
+Referenced by P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::actions\+\_\+before\+\_\+adapt().
+
+\mbox{\Hypertarget{classPMLFourierDecomposedHelmholtzProblem_a013d95d489b85e326a71bb744af4a40f}\label{classPMLFourierDecomposedHelmholtzProblem_a013d95d489b85e326a71bb744af4a40f}} 
+\index{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem@{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}!actions\+\_\+after\+\_\+newton\+\_\+solve@{actions\+\_\+after\+\_\+newton\+\_\+solve}}
+\index{actions\+\_\+after\+\_\+newton\+\_\+solve@{actions\+\_\+after\+\_\+newton\+\_\+solve}!P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem@{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}}
+\subsubsection{\texorpdfstring{actions\+\_\+after\+\_\+newton\+\_\+solve()}{actions\_after\_newton\_solve()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classPMLFourierDecomposedHelmholtzProblem}{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::actions\+\_\+after\+\_\+newton\+\_\+solve (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Update the problem after solve (empty) 
+
+
+
+Definition at line 448 of file oscillating\+\_\+sphere.\+cc.
+
+\mbox{\Hypertarget{classPMLFourierDecomposedHelmholtzProblem_ae4b1cacec10553bdb6781b65ed73abce}\label{classPMLFourierDecomposedHelmholtzProblem_ae4b1cacec10553bdb6781b65ed73abce}} 
+\index{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem@{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}!actions\+\_\+before\+\_\+adapt@{actions\+\_\+before\+\_\+adapt}}
+\index{actions\+\_\+before\+\_\+adapt@{actions\+\_\+before\+\_\+adapt}!P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem@{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}}
+\subsubsection{\texorpdfstring{actions\+\_\+before\+\_\+adapt()}{actions\_before\_adapt()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classPMLFourierDecomposedHelmholtzProblem}{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::actions\+\_\+before\+\_\+adapt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Actions before adapt\+: Wipe the mesh of prescribed flux elements. 
+
+Actions before adapt\+: Wipe the mesh of face elements. 
+
+Definition at line 585 of file oscillating\+\_\+sphere.\+cc.
+
+
+
+References P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::actions\+\_\+after\+\_\+adapt().
+
+
+
+Referenced by P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::create\+\_\+power\+\_\+monitor\+\_\+mesh().
+
+\mbox{\Hypertarget{classPMLFourierDecomposedHelmholtzProblem_af87810cbe164981cc14ee779793a69fb}\label{classPMLFourierDecomposedHelmholtzProblem_af87810cbe164981cc14ee779793a69fb}} 
+\index{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem@{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}!actions\+\_\+before\+\_\+newton\+\_\+solve@{actions\+\_\+before\+\_\+newton\+\_\+solve}}
+\index{actions\+\_\+before\+\_\+newton\+\_\+solve@{actions\+\_\+before\+\_\+newton\+\_\+solve}!P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem@{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}}
+\subsubsection{\texorpdfstring{actions\+\_\+before\+\_\+newton\+\_\+solve()}{actions\_before\_newton\_solve()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classPMLFourierDecomposedHelmholtzProblem}{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::actions\+\_\+before\+\_\+newton\+\_\+solve (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Update the problem specs before solve (empty) 
+
+
+
+Definition at line 445 of file oscillating\+\_\+sphere.\+cc.
+
+\mbox{\Hypertarget{classPMLFourierDecomposedHelmholtzProblem_ad7680c25a32087cb6da96d4bcedf1b23}\label{classPMLFourierDecomposedHelmholtzProblem_ad7680c25a32087cb6da96d4bcedf1b23}} 
+\index{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem@{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}!apply\+\_\+zero\+\_\+dirichlet\+\_\+boundary\+\_\+conditions@{apply\+\_\+zero\+\_\+dirichlet\+\_\+boundary\+\_\+conditions}}
+\index{apply\+\_\+zero\+\_\+dirichlet\+\_\+boundary\+\_\+conditions@{apply\+\_\+zero\+\_\+dirichlet\+\_\+boundary\+\_\+conditions}!P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem@{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}}
+\subsubsection{\texorpdfstring{apply\+\_\+zero\+\_\+dirichlet\+\_\+boundary\+\_\+conditions()}{apply\_zero\_dirichlet\_boundary\_conditions()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classPMLFourierDecomposedHelmholtzProblem}{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::apply\+\_\+zero\+\_\+dirichlet\+\_\+boundary\+\_\+conditions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 736 of file oscillating\+\_\+sphere.\+cc.
+
+
+
+References P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem().
+
+
+
+Referenced by P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::setup\+\_\+point\+\_\+source().
+
+\mbox{\Hypertarget{classPMLFourierDecomposedHelmholtzProblem_aca49343d9672607fdc3ab5f6ed4e9d24}\label{classPMLFourierDecomposedHelmholtzProblem_aca49343d9672607fdc3ab5f6ed4e9d24}} 
+\index{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem@{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}!complete\+\_\+problem\+\_\+setup@{complete\+\_\+problem\+\_\+setup}}
+\index{complete\+\_\+problem\+\_\+setup@{complete\+\_\+problem\+\_\+setup}!P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem@{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}}
+\subsubsection{\texorpdfstring{complete\+\_\+problem\+\_\+setup()}{complete\_problem\_setup()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classPMLFourierDecomposedHelmholtzProblem}{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::complete\+\_\+problem\+\_\+setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 653 of file oscillating\+\_\+sphere.\+cc.
+
+
+
+References Problem\+Parameters\+::\+K\+\_\+squared, Problem\+Parameters\+::\+N\+\_\+fourier, and P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::setup\+\_\+point\+\_\+source().
+
+
+
+Referenced by P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::actions\+\_\+after\+\_\+adapt().
+
+\mbox{\Hypertarget{classPMLFourierDecomposedHelmholtzProblem_afd6e3401bdbd1d3deb3271553fbe1d3a}\label{classPMLFourierDecomposedHelmholtzProblem_afd6e3401bdbd1d3deb3271553fbe1d3a}} 
+\index{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem@{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}!create\+\_\+flux\+\_\+elements\+\_\+on\+\_\+inner\+\_\+boundary@{create\+\_\+flux\+\_\+elements\+\_\+on\+\_\+inner\+\_\+boundary}}
+\index{create\+\_\+flux\+\_\+elements\+\_\+on\+\_\+inner\+\_\+boundary@{create\+\_\+flux\+\_\+elements\+\_\+on\+\_\+inner\+\_\+boundary}!P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem@{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}}
+\subsubsection{\texorpdfstring{create\+\_\+flux\+\_\+elements\+\_\+on\+\_\+inner\+\_\+boundary()}{create\_flux\_elements\_on\_inner\_boundary()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classPMLFourierDecomposedHelmholtzProblem}{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::create\+\_\+flux\+\_\+elements\+\_\+on\+\_\+inner\+\_\+boundary (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Create flux elements on inner boundary. 
+
+
+
+Definition at line 1076 of file oscillating\+\_\+sphere.\+cc.
+
+
+
+References Problem\+Parameters\+::exact\+\_\+minus\+\_\+dudr().
+
+
+
+Referenced by P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::doc\+\_\+solution().
+
+\mbox{\Hypertarget{classPMLFourierDecomposedHelmholtzProblem_ae562dddf5c60793371b594bff5047f91}\label{classPMLFourierDecomposedHelmholtzProblem_ae562dddf5c60793371b594bff5047f91}} 
+\index{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem@{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}!create\+\_\+pml\+\_\+meshes@{create\+\_\+pml\+\_\+meshes}}
+\index{create\+\_\+pml\+\_\+meshes@{create\+\_\+pml\+\_\+meshes}!P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem@{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}}
+\subsubsection{\texorpdfstring{create\+\_\+pml\+\_\+meshes()}{create\_pml\_meshes()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classPMLFourierDecomposedHelmholtzProblem}{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::create\+\_\+pml\+\_\+meshes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Create P\+ML meshes. 
+
+Create P\+ML meshes and add them to the problem\textquotesingle{}s sub-\/meshes. 
+
+Definition at line 1114 of file oscillating\+\_\+sphere.\+cc.
+
+
+
+References Problem\+Parameters\+::\+Nel\+\_\+pml, and Problem\+Parameters\+::\+P\+M\+L\+\_\+thickness.
+
+\mbox{\Hypertarget{classPMLFourierDecomposedHelmholtzProblem_a83e0aa333ec3b25f1afccc3bc0a529ad}\label{classPMLFourierDecomposedHelmholtzProblem_a83e0aa333ec3b25f1afccc3bc0a529ad}} 
+\index{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem@{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}!create\+\_\+power\+\_\+monitor\+\_\+mesh@{create\+\_\+power\+\_\+monitor\+\_\+mesh}}
+\index{create\+\_\+power\+\_\+monitor\+\_\+mesh@{create\+\_\+power\+\_\+monitor\+\_\+mesh}!P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem@{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}}
+\subsubsection{\texorpdfstring{create\+\_\+power\+\_\+monitor\+\_\+mesh()}{create\_power\_monitor\_mesh()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classPMLFourierDecomposedHelmholtzProblem}{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::create\+\_\+power\+\_\+monitor\+\_\+mesh (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Create mesh of face elements that monitor the radiated power. 
+
+Create BC elements on outer boundary. 
+
+Definition at line 548 of file oscillating\+\_\+sphere.\+cc.
+
+
+
+References P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::actions\+\_\+before\+\_\+adapt().
+
+\mbox{\Hypertarget{classPMLFourierDecomposedHelmholtzProblem_a4a9b767ba4beb7ab5db9c98fc46c49b2}\label{classPMLFourierDecomposedHelmholtzProblem_a4a9b767ba4beb7ab5db9c98fc46c49b2}} 
+\index{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem@{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}!delete\+\_\+face\+\_\+elements@{delete\+\_\+face\+\_\+elements}}
+\index{delete\+\_\+face\+\_\+elements@{delete\+\_\+face\+\_\+elements}!P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem@{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}}
+\subsubsection{\texorpdfstring{delete\+\_\+face\+\_\+elements()}{delete\_face\_elements()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classPMLFourierDecomposedHelmholtzProblem}{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::delete\+\_\+face\+\_\+elements (\begin{DoxyParamCaption}\item[{Mesh $\ast$const \&}]{boundary\+\_\+mesh\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Delete boundary face elements and wipe the surface mesh. 
+
+
+
+Definition at line 480 of file oscillating\+\_\+sphere.\+cc.
+
+\mbox{\Hypertarget{classPMLFourierDecomposedHelmholtzProblem_afcdfaf86efc75fbea14f6ade9eeb7f9c}\label{classPMLFourierDecomposedHelmholtzProblem_afcdfaf86efc75fbea14f6ade9eeb7f9c}} 
+\index{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem@{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}!doc\+\_\+solution@{doc\+\_\+solution}}
+\index{doc\+\_\+solution@{doc\+\_\+solution}!P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem@{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}}
+\subsubsection{\texorpdfstring{doc\+\_\+solution()}{doc\_solution()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classPMLFourierDecomposedHelmholtzProblem}{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::doc\+\_\+solution (\begin{DoxyParamCaption}\item[{Doc\+Info \&}]{doc\+\_\+info }\end{DoxyParamCaption})}
+
+
+
+Doc the solution. Doc\+Info object stores flags/labels for where the output gets written to. 
+
+Doc the solution\+: doc\+\_\+info contains labels/output directory etc. 
+
+Definition at line 979 of file oscillating\+\_\+sphere.\+cc.
+
+
+
+References P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::create\+\_\+flux\+\_\+elements\+\_\+on\+\_\+inner\+\_\+boundary(), and Problem\+Parameters\+::get\+\_\+exact\+\_\+u().
+
+
+
+Referenced by P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::\+P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem().
+
+\mbox{\Hypertarget{classPMLFourierDecomposedHelmholtzProblem_a7d416452acc602776de2072a7c0e1249}\label{classPMLFourierDecomposedHelmholtzProblem_a7d416452acc602776de2072a7c0e1249}} 
+\index{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem@{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}!setup\+\_\+point\+\_\+source@{setup\+\_\+point\+\_\+source}}
+\index{setup\+\_\+point\+\_\+source@{setup\+\_\+point\+\_\+source}!P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem@{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}}
+\subsubsection{\texorpdfstring{setup\+\_\+point\+\_\+source()}{setup\_point\_source()}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+void \hyperlink{classPMLFourierDecomposedHelmholtzProblem}{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::setup\+\_\+point\+\_\+source (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Set point source. 
+
+
+
+Definition at line 694 of file oscillating\+\_\+sphere.\+cc.
+
+
+
+References P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::apply\+\_\+zero\+\_\+dirichlet\+\_\+boundary\+\_\+conditions(), Problem\+Parameters\+::\+Magnitude(), Problem\+Parameters\+::\+N\+\_\+fourier, Problem\+Parameters\+::\+R\+\_\+source, and Problem\+Parameters\+::\+Z\+\_\+source.
+
+
+
+Referenced by P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem$<$ E\+L\+E\+M\+E\+N\+T $>$\+::complete\+\_\+problem\+\_\+setup().
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classPMLFourierDecomposedHelmholtzProblem_ad20477e869fb9ce66891389c0d501449}\label{classPMLFourierDecomposedHelmholtzProblem_ad20477e869fb9ce66891389c0d501449}} 
+\index{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem@{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}!Bulk\+\_\+mesh\+\_\+pt@{Bulk\+\_\+mesh\+\_\+pt}}
+\index{Bulk\+\_\+mesh\+\_\+pt@{Bulk\+\_\+mesh\+\_\+pt}!P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem@{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}}
+\subsubsection{\texorpdfstring{Bulk\+\_\+mesh\+\_\+pt}{Bulk\_mesh\_pt}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+Refineable\+Triangle\+Mesh$<$E\+L\+E\+M\+E\+NT$>$$\ast$ \hyperlink{classPMLFourierDecomposedHelmholtzProblem}{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::Bulk\+\_\+mesh\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pointer to the refineable \char`\"{}bulk\char`\"{} mesh. 
+
+
+
+Definition at line 507 of file oscillating\+\_\+sphere.\+cc.
+
+\mbox{\Hypertarget{classPMLFourierDecomposedHelmholtzProblem_a583fb8d30b3a225fe77f684532efd66f}\label{classPMLFourierDecomposedHelmholtzProblem_a583fb8d30b3a225fe77f684532efd66f}} 
+\index{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem@{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}!Bulk\+\_\+mesh\+\_\+pt@{Bulk\+\_\+mesh\+\_\+pt}}
+\index{Bulk\+\_\+mesh\+\_\+pt@{Bulk\+\_\+mesh\+\_\+pt}!P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem@{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}}
+\subsubsection{\texorpdfstring{Bulk\+\_\+mesh\+\_\+pt}{Bulk\_mesh\_pt}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+Triangle\+Mesh$<$E\+L\+E\+M\+E\+NT$>$$\ast$ \hyperlink{classPMLFourierDecomposedHelmholtzProblem}{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::Bulk\+\_\+mesh\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pointer to the \char`\"{}bulk\char`\"{} mesh. 
+
+
+
+Definition at line 515 of file oscillating\+\_\+sphere.\+cc.
+
+\mbox{\Hypertarget{classPMLFourierDecomposedHelmholtzProblem_a7d3c418942daf7ba2363b8a91172512e}\label{classPMLFourierDecomposedHelmholtzProblem_a7d3c418942daf7ba2363b8a91172512e}} 
+\index{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem@{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}!Helmholtz\+\_\+inner\+\_\+boundary\+\_\+mesh\+\_\+pt@{Helmholtz\+\_\+inner\+\_\+boundary\+\_\+mesh\+\_\+pt}}
+\index{Helmholtz\+\_\+inner\+\_\+boundary\+\_\+mesh\+\_\+pt@{Helmholtz\+\_\+inner\+\_\+boundary\+\_\+mesh\+\_\+pt}!P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem@{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}}
+\subsubsection{\texorpdfstring{Helmholtz\+\_\+inner\+\_\+boundary\+\_\+mesh\+\_\+pt}{Helmholtz\_inner\_boundary\_mesh\_pt}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+Mesh$\ast$ \hyperlink{classPMLFourierDecomposedHelmholtzProblem}{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::Helmholtz\+\_\+inner\+\_\+boundary\+\_\+mesh\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mesh of Face\+Elements that apply the flux bc on the inner boundary. 
+
+
+
+Definition at line 520 of file oscillating\+\_\+sphere.\+cc.
+
+\mbox{\Hypertarget{classPMLFourierDecomposedHelmholtzProblem_a32f6694310ffd9c0962a7ee8c114dbf5}\label{classPMLFourierDecomposedHelmholtzProblem_a32f6694310ffd9c0962a7ee8c114dbf5}} 
+\index{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem@{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}!Mesh\+\_\+as\+\_\+geom\+\_\+obj\+\_\+pt@{Mesh\+\_\+as\+\_\+geom\+\_\+obj\+\_\+pt}}
+\index{Mesh\+\_\+as\+\_\+geom\+\_\+obj\+\_\+pt@{Mesh\+\_\+as\+\_\+geom\+\_\+obj\+\_\+pt}!P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem@{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}}
+\subsubsection{\texorpdfstring{Mesh\+\_\+as\+\_\+geom\+\_\+obj\+\_\+pt}{Mesh\_as\_geom\_obj\_pt}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+Mesh\+As\+Geom\+Object$\ast$ \hyperlink{classPMLFourierDecomposedHelmholtzProblem}{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::Mesh\+\_\+as\+\_\+geom\+\_\+obj\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mesh as geometric object representation of bulk mesh. 
+
+
+
+Definition at line 510 of file oscillating\+\_\+sphere.\+cc.
+
+\mbox{\Hypertarget{classPMLFourierDecomposedHelmholtzProblem_ad7611d07d182b33a5e2f848bc4ff5572}\label{classPMLFourierDecomposedHelmholtzProblem_ad7611d07d182b33a5e2f848bc4ff5572}} 
+\index{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem@{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}!P\+M\+L\+\_\+bottom\+\_\+mesh\+\_\+pt@{P\+M\+L\+\_\+bottom\+\_\+mesh\+\_\+pt}}
+\index{P\+M\+L\+\_\+bottom\+\_\+mesh\+\_\+pt@{P\+M\+L\+\_\+bottom\+\_\+mesh\+\_\+pt}!P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem@{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}}
+\subsubsection{\texorpdfstring{P\+M\+L\+\_\+bottom\+\_\+mesh\+\_\+pt}{PML\_bottom\_mesh\_pt}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+Mesh$\ast$ \hyperlink{classPMLFourierDecomposedHelmholtzProblem}{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::P\+M\+L\+\_\+bottom\+\_\+mesh\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pointer to the bottom P\+ML mesh. 
+
+
+
+Definition at line 529 of file oscillating\+\_\+sphere.\+cc.
+
+\mbox{\Hypertarget{classPMLFourierDecomposedHelmholtzProblem_a8c3d30400cb9e4a709e1f8f8ee66785a}\label{classPMLFourierDecomposedHelmholtzProblem_a8c3d30400cb9e4a709e1f8f8ee66785a}} 
+\index{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem@{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}!P\+M\+L\+\_\+bottom\+\_\+right\+\_\+mesh\+\_\+pt@{P\+M\+L\+\_\+bottom\+\_\+right\+\_\+mesh\+\_\+pt}}
+\index{P\+M\+L\+\_\+bottom\+\_\+right\+\_\+mesh\+\_\+pt@{P\+M\+L\+\_\+bottom\+\_\+right\+\_\+mesh\+\_\+pt}!P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem@{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}}
+\subsubsection{\texorpdfstring{P\+M\+L\+\_\+bottom\+\_\+right\+\_\+mesh\+\_\+pt}{PML\_bottom\_right\_mesh\_pt}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+Mesh$\ast$ \hyperlink{classPMLFourierDecomposedHelmholtzProblem}{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::P\+M\+L\+\_\+bottom\+\_\+right\+\_\+mesh\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pointer to the bottom right corner P\+ML mesh. 
+
+
+
+Definition at line 535 of file oscillating\+\_\+sphere.\+cc.
+
+\mbox{\Hypertarget{classPMLFourierDecomposedHelmholtzProblem_a2bde26fe496f63d29e48e9b5dffc8757}\label{classPMLFourierDecomposedHelmholtzProblem_a2bde26fe496f63d29e48e9b5dffc8757}} 
+\index{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem@{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}!P\+M\+L\+\_\+right\+\_\+mesh\+\_\+pt@{P\+M\+L\+\_\+right\+\_\+mesh\+\_\+pt}}
+\index{P\+M\+L\+\_\+right\+\_\+mesh\+\_\+pt@{P\+M\+L\+\_\+right\+\_\+mesh\+\_\+pt}!P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem@{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}}
+\subsubsection{\texorpdfstring{P\+M\+L\+\_\+right\+\_\+mesh\+\_\+pt}{PML\_right\_mesh\_pt}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+Mesh$\ast$ \hyperlink{classPMLFourierDecomposedHelmholtzProblem}{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::P\+M\+L\+\_\+right\+\_\+mesh\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pointer to the right P\+ML mesh. 
+
+
+
+Definition at line 523 of file oscillating\+\_\+sphere.\+cc.
+
+\mbox{\Hypertarget{classPMLFourierDecomposedHelmholtzProblem_a4fe4cd439faae2086ab1ed786cbc610a}\label{classPMLFourierDecomposedHelmholtzProblem_a4fe4cd439faae2086ab1ed786cbc610a}} 
+\index{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem@{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}!P\+M\+L\+\_\+top\+\_\+mesh\+\_\+pt@{P\+M\+L\+\_\+top\+\_\+mesh\+\_\+pt}}
+\index{P\+M\+L\+\_\+top\+\_\+mesh\+\_\+pt@{P\+M\+L\+\_\+top\+\_\+mesh\+\_\+pt}!P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem@{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}}
+\subsubsection{\texorpdfstring{P\+M\+L\+\_\+top\+\_\+mesh\+\_\+pt}{PML\_top\_mesh\_pt}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+Mesh$\ast$ \hyperlink{classPMLFourierDecomposedHelmholtzProblem}{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::P\+M\+L\+\_\+top\+\_\+mesh\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pointer to the top P\+ML mesh. 
+
+
+
+Definition at line 526 of file oscillating\+\_\+sphere.\+cc.
+
+\mbox{\Hypertarget{classPMLFourierDecomposedHelmholtzProblem_af0787c8610bbae59be3d061e57072c11}\label{classPMLFourierDecomposedHelmholtzProblem_af0787c8610bbae59be3d061e57072c11}} 
+\index{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem@{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}!P\+M\+L\+\_\+top\+\_\+right\+\_\+mesh\+\_\+pt@{P\+M\+L\+\_\+top\+\_\+right\+\_\+mesh\+\_\+pt}}
+\index{P\+M\+L\+\_\+top\+\_\+right\+\_\+mesh\+\_\+pt@{P\+M\+L\+\_\+top\+\_\+right\+\_\+mesh\+\_\+pt}!P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem@{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}}
+\subsubsection{\texorpdfstring{P\+M\+L\+\_\+top\+\_\+right\+\_\+mesh\+\_\+pt}{PML\_top\_right\_mesh\_pt}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+Mesh$\ast$ \hyperlink{classPMLFourierDecomposedHelmholtzProblem}{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::P\+M\+L\+\_\+top\+\_\+right\+\_\+mesh\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pointer to the top right corner P\+ML mesh. 
+
+
+
+Definition at line 532 of file oscillating\+\_\+sphere.\+cc.
+
+\mbox{\Hypertarget{classPMLFourierDecomposedHelmholtzProblem_a9ffebfa69944e405eb28a4b2bd03336e}\label{classPMLFourierDecomposedHelmholtzProblem_a9ffebfa69944e405eb28a4b2bd03336e}} 
+\index{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem@{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}!Power\+\_\+monitor\+\_\+mesh\+\_\+pt@{Power\+\_\+monitor\+\_\+mesh\+\_\+pt}}
+\index{Power\+\_\+monitor\+\_\+mesh\+\_\+pt@{Power\+\_\+monitor\+\_\+mesh\+\_\+pt}!P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem@{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}}
+\subsubsection{\texorpdfstring{Power\+\_\+monitor\+\_\+mesh\+\_\+pt}{Power\_monitor\_mesh\_pt}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+Mesh$\ast$ \hyperlink{classPMLFourierDecomposedHelmholtzProblem}{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::Power\+\_\+monitor\+\_\+mesh\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pointer to mesh that stores the power monitor elements. 
+
+
+
+Definition at line 498 of file oscillating\+\_\+sphere.\+cc.
+
+\mbox{\Hypertarget{classPMLFourierDecomposedHelmholtzProblem_a9810d1dd58cec1f8b1cfc54ea37a7efd}\label{classPMLFourierDecomposedHelmholtzProblem_a9810d1dd58cec1f8b1cfc54ea37a7efd}} 
+\index{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem@{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}!Trace\+\_\+file@{Trace\+\_\+file}}
+\index{Trace\+\_\+file@{Trace\+\_\+file}!P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem@{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}}
+\subsubsection{\texorpdfstring{Trace\+\_\+file}{Trace\_file}}
+{\footnotesize\ttfamily template$<$class E\+L\+E\+M\+E\+NT $>$ \\
+ofstream \hyperlink{classPMLFourierDecomposedHelmholtzProblem}{P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Problem}$<$ E\+L\+E\+M\+E\+NT $>$\+::Trace\+\_\+file\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Trace file. 
+
+
+
+Definition at line 538 of file oscillating\+\_\+sphere.\+cc.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{oscillating__sphere_8cc}{oscillating\+\_\+sphere.\+cc}\end{DoxyCompactItemize}

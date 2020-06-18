@@ -1,0 +1,337 @@
+\hypertarget{classoomph_1_1RefineableQPVDElementWithPressure}{}\section{oomph\+:\+:Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure$<$ D\+IM $>$ Class Template Reference}
+\label{classoomph_1_1RefineableQPVDElementWithPressure}\index{oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure$<$ D\+I\+M $>$@{oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure$<$ D\+I\+M $>$}}
+
+
+{\ttfamily \#include $<$refineable\+\_\+solid\+\_\+elements.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure$<$ D\+IM $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.206154cm]{classoomph_1_1RefineableQPVDElementWithPressure}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1RefineableQPVDElementWithPressure_a7d1562f43683b3375c5fe0c4983b6db7}{Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure} ()
+\begin{DoxyCompactList}\small\item\em Constructor\+: \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1RefineableQPVDElementWithPressure_ad3d90fabb0a853d969b8b3a0115bcabc}{rebuild\+\_\+from\+\_\+sons} (\hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$\&mesh\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Reconstruct the pressure from the sons Must be specialized for each dimension. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1RefineableQPVDElementWithPressure_a89f62fc2fdb02ee78f36eef6b7d2f434}{nvertex\+\_\+node} () const
+\begin{DoxyCompactList}\small\item\em Number of vertex nodes in the element. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Node}{Node} $\ast$ \hyperlink{classoomph_1_1RefineableQPVDElementWithPressure_a9b151e6bb69794a4837306b7f7f92a86}{vertex\+\_\+node\+\_\+pt} (const unsigned \&j) const
+\begin{DoxyCompactList}\small\item\em Pointer to the j-\/th vertex node in the element. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1RefineableQPVDElementWithPressure_a84afe8c95d37e68a32d7379700f838af}{nrecovery\+\_\+order} ()
+\begin{DoxyCompactList}\small\item\em Order of recovery shape functions for Z2 error estimation\+: Same order as shape functions. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1RefineableQPVDElementWithPressure_a649a8dd890c32322ad55c70100f02883}{further\+\_\+setup\+\_\+hanging\+\_\+nodes} ()
+\begin{DoxyCompactList}\small\item\em No additional hanging node procedures are required for discontinuous solid pressures. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1RefineableQPVDElementWithPressure_af2981a672382c6db25389aa7c82a6b30}{further\+\_\+build} ()
+\begin{DoxyCompactList}\small\item\em Further build\+: Interpolate the solid pressure values Again this must be specialised for each dimension. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1RefineableQPVDElementWithPressure_aa73ec04c55ee434543ee171bdd1da914}{ncont\+\_\+interpolated\+\_\+values} () const
+\begin{DoxyCompactList}\small\item\em Number of continuously interpolated values\+: 0 (pure solid problem) \end{DoxyCompactList}\item 
+{\footnotesize template$<$$>$ }\\void \hyperlink{classoomph_1_1RefineableQPVDElementWithPressure_ad001c7401c2f62c377926870eb01f3e3}{rebuild\+\_\+from\+\_\+sons} (\hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$\&mesh\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em 2D rebuild from sons\+: reconstruct the solid pressure \end{DoxyCompactList}\item 
+{\footnotesize template$<$$>$ }\\void \hyperlink{classoomph_1_1RefineableQPVDElementWithPressure_ab4406f1c6de1e8e2e704bd55a9409c87}{further\+\_\+build} ()
+\item 
+{\footnotesize template$<$$>$ }\\void \hyperlink{classoomph_1_1RefineableQPVDElementWithPressure_a11e3bc01af8930b5669bbaf27ab16a5c}{rebuild\+\_\+from\+\_\+sons} (\hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$\&mesh\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em 3D rebuild from sons\+: reconstruct the pressure \end{DoxyCompactList}\item 
+{\footnotesize template$<$$>$ }\\void \hyperlink{classoomph_1_1RefineableQPVDElementWithPressure_ab1e141199db731d930fd5b0a70b994b3}{further\+\_\+build} ()
+\begin{DoxyCompactList}\small\item\em 3D Further build\+: Interpolate the solid pressure values \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classoomph_1_1RefineableQPVDElementWithPressure_adaf40f1a0ccadd63499e6c555f6b23ee}{unpin\+\_\+elemental\+\_\+solid\+\_\+pressure\+\_\+dofs} ()
+\begin{DoxyCompactList}\small\item\em Unpin all solid pressure dofs. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$unsigned D\+IM$>$\newline
+class oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure$<$ D\+I\+M $>$}
+
+Class for refineable solid mechanics elements in near-\/incompressible/ incompressible formulation, so a pressure is included! In this case, the pressure interpolation is discontinuous, a la Crouzeix Raviart, and the displacement is always quadratic. 
+
+Definition at line 407 of file refineable\+\_\+solid\+\_\+elements.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1RefineableQPVDElementWithPressure_a7d1562f43683b3375c5fe0c4983b6db7}\label{classoomph_1_1RefineableQPVDElementWithPressure_a7d1562f43683b3375c5fe0c4983b6db7}} 
+\index{oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure@{oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure}!Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure@{Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure}}
+\index{Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure@{Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure}!oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure@{oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure}}
+\subsubsection{\texorpdfstring{Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure()}{RefineableQPVDElementWithPressure()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+\hyperlink{classoomph_1_1RefineableQPVDElementWithPressure}{oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure}$<$ D\+IM $>$\+::\hyperlink{classoomph_1_1RefineableQPVDElementWithPressure}{Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor\+: 
+
+
+
+Definition at line 427 of file refineable\+\_\+solid\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Refineable\+Element\+::rebuild\+\_\+from\+\_\+sons().
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1RefineableQPVDElementWithPressure_af2981a672382c6db25389aa7c82a6b30}\label{classoomph_1_1RefineableQPVDElementWithPressure_af2981a672382c6db25389aa7c82a6b30}} 
+\index{oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure@{oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure}!further\+\_\+build@{further\+\_\+build}}
+\index{further\+\_\+build@{further\+\_\+build}!oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure@{oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure}}
+\subsubsection{\texorpdfstring{further\+\_\+build()}{further\_build()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1RefineableQPVDElementWithPressure}{oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure}$<$ D\+IM $>$\+::further\+\_\+build (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Further build\+: Interpolate the solid pressure values Again this must be specialised for each dimension. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1RefineablePVDEquationsWithPressure_aad92965f2aec749e75580d003eebdc91}{oomph\+::\+Refineable\+P\+V\+D\+Equations\+With\+Pressure$<$ D\+I\+M $>$}.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableQPVDElementWithPressure_ab4406f1c6de1e8e2e704bd55a9409c87}\label{classoomph_1_1RefineableQPVDElementWithPressure_ab4406f1c6de1e8e2e704bd55a9409c87}} 
+\index{oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure@{oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure}!further\+\_\+build@{further\+\_\+build}}
+\index{further\+\_\+build@{further\+\_\+build}!oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure@{oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure}}
+\subsubsection{\texorpdfstring{further\+\_\+build()}{further\_build()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$$>$ \\
+void \hyperlink{classoomph_1_1RefineableQPVDElementWithPressure}{oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure}$<$ 2 $>$\+::further\+\_\+build (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+2D further build interpolates the internal solid pressure from the father. 
+
+Reimplemented from \hyperlink{classoomph_1_1RefineablePVDEquationsWithPressure_aad92965f2aec749e75580d003eebdc91}{oomph\+::\+Refineable\+P\+V\+D\+Equations\+With\+Pressure$<$ D\+I\+M $>$}.
+
+
+
+Definition at line 557 of file refineable\+\_\+solid\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Refineable\+P\+V\+D\+Equations\+With\+Pressure$<$ D\+I\+M $>$\+::further\+\_\+build(), oomph\+::\+P\+V\+D\+Equations\+With\+Pressure$<$ D\+I\+M $>$\+::interpolated\+\_\+solid\+\_\+p(), oomph\+::\+Quad\+Tree\+Names\+::\+NE, oomph\+::\+Quad\+Tree\+Names\+::\+NW, oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure$<$ D\+I\+M $>$\+::rebuild\+\_\+from\+\_\+sons(), oomph\+::\+Quad\+Tree\+Names\+::\+SE, oomph\+::\+Q\+P\+V\+D\+Element\+With\+Pressure$<$ D\+I\+M $>$\+::solid\+\_\+p(), and oomph\+::\+Quad\+Tree\+Names\+::\+SW.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableQPVDElementWithPressure_ab1e141199db731d930fd5b0a70b994b3}\label{classoomph_1_1RefineableQPVDElementWithPressure_ab1e141199db731d930fd5b0a70b994b3}} 
+\index{oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure@{oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure}!further\+\_\+build@{further\+\_\+build}}
+\index{further\+\_\+build@{further\+\_\+build}!oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure@{oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure}}
+\subsubsection{\texorpdfstring{further\+\_\+build()}{further\_build()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$$>$ \\
+void \hyperlink{classoomph_1_1RefineableQPVDElementWithPressure}{oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure}$<$ 3 $>$\+::further\+\_\+build (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+3D Further build\+: Interpolate the solid pressure values 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1RefineablePVDEquationsWithPressure_aad92965f2aec749e75580d003eebdc91}{oomph\+::\+Refineable\+P\+V\+D\+Equations\+With\+Pressure$<$ D\+I\+M $>$}.
+
+
+
+Definition at line 710 of file refineable\+\_\+solid\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Oc\+Tree\+::\+Direction\+\_\+to\+\_\+vector, oomph\+::\+Refineable\+P\+V\+D\+Equations\+With\+Pressure$<$ D\+I\+M $>$\+::further\+\_\+build(), i, oomph\+::\+P\+V\+D\+Equations\+With\+Pressure$<$ D\+I\+M $>$\+::interpolated\+\_\+solid\+\_\+p(), and oomph\+::\+Q\+P\+V\+D\+Element\+With\+Pressure$<$ D\+I\+M $>$\+::solid\+\_\+p().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableQPVDElementWithPressure_a649a8dd890c32322ad55c70100f02883}\label{classoomph_1_1RefineableQPVDElementWithPressure_a649a8dd890c32322ad55c70100f02883}} 
+\index{oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure@{oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure}!further\+\_\+setup\+\_\+hanging\+\_\+nodes@{further\+\_\+setup\+\_\+hanging\+\_\+nodes}}
+\index{further\+\_\+setup\+\_\+hanging\+\_\+nodes@{further\+\_\+setup\+\_\+hanging\+\_\+nodes}!oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure@{oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure}}
+\subsubsection{\texorpdfstring{further\+\_\+setup\+\_\+hanging\+\_\+nodes()}{further\_setup\_hanging\_nodes()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1RefineableQPVDElementWithPressure}{oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure}$<$ D\+IM $>$\+::further\+\_\+setup\+\_\+hanging\+\_\+nodes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+No additional hanging node procedures are required for discontinuous solid pressures. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1RefineableElement_a86ea01c485f7ff822dce74b884312ccb}{oomph\+::\+Refineable\+Element}.
+
+
+
+Definition at line 453 of file refineable\+\_\+solid\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Refineable\+P\+V\+D\+Equations$<$ D\+I\+M $>$\+::further\+\_\+build().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableQPVDElementWithPressure_aa73ec04c55ee434543ee171bdd1da914}\label{classoomph_1_1RefineableQPVDElementWithPressure_aa73ec04c55ee434543ee171bdd1da914}} 
+\index{oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure@{oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure}!ncont\+\_\+interpolated\+\_\+values@{ncont\+\_\+interpolated\+\_\+values}}
+\index{ncont\+\_\+interpolated\+\_\+values@{ncont\+\_\+interpolated\+\_\+values}!oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure@{oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure}}
+\subsubsection{\texorpdfstring{ncont\+\_\+interpolated\+\_\+values()}{ncont\_interpolated\_values()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+unsigned \hyperlink{classoomph_1_1RefineableQPVDElementWithPressure}{oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure}$<$ D\+IM $>$\+::ncont\+\_\+interpolated\+\_\+values (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Number of continuously interpolated values\+: 0 (pure solid problem) 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1RefineablePVDEquationsWithPressure_a16bc4f58cc9a079c8db705306a23b41b}{oomph\+::\+Refineable\+P\+V\+D\+Equations\+With\+Pressure$<$ D\+I\+M $>$}.
+
+
+
+Definition at line 461 of file refineable\+\_\+solid\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableQPVDElementWithPressure_a84afe8c95d37e68a32d7379700f838af}\label{classoomph_1_1RefineableQPVDElementWithPressure_a84afe8c95d37e68a32d7379700f838af}} 
+\index{oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure@{oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure}!nrecovery\+\_\+order@{nrecovery\+\_\+order}}
+\index{nrecovery\+\_\+order@{nrecovery\+\_\+order}!oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure@{oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure}}
+\subsubsection{\texorpdfstring{nrecovery\+\_\+order()}{nrecovery\_order()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+unsigned \hyperlink{classoomph_1_1RefineableQPVDElementWithPressure}{oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure}$<$ D\+IM $>$\+::nrecovery\+\_\+order (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Order of recovery shape functions for Z2 error estimation\+: Same order as shape functions. 
+
+
+
+Implements \hyperlink{classoomph_1_1ElementWithZ2ErrorEstimator_af39480835bd3e0f6b2f4f7a9a4044798}{oomph\+::\+Element\+With\+Z2\+Error\+Estimator}.
+
+
+
+Definition at line 449 of file refineable\+\_\+solid\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableQPVDElementWithPressure_a89f62fc2fdb02ee78f36eef6b7d2f434}\label{classoomph_1_1RefineableQPVDElementWithPressure_a89f62fc2fdb02ee78f36eef6b7d2f434}} 
+\index{oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure@{oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure}!nvertex\+\_\+node@{nvertex\+\_\+node}}
+\index{nvertex\+\_\+node@{nvertex\+\_\+node}!oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure@{oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure}}
+\subsubsection{\texorpdfstring{nvertex\+\_\+node()}{nvertex\_node()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+unsigned \hyperlink{classoomph_1_1RefineableQPVDElementWithPressure}{oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure}$<$ D\+IM $>$\+::nvertex\+\_\+node (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Number of vertex nodes in the element. 
+
+
+
+Implements \hyperlink{classoomph_1_1ElementWithZ2ErrorEstimator_a19495a0e77ef4ff35f15fdf7913b4077}{oomph\+::\+Element\+With\+Z2\+Error\+Estimator}.
+
+
+
+Definition at line 440 of file refineable\+\_\+solid\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Finite\+Element\+::nvertex\+\_\+node().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableQPVDElementWithPressure_ad3d90fabb0a853d969b8b3a0115bcabc}\label{classoomph_1_1RefineableQPVDElementWithPressure_ad3d90fabb0a853d969b8b3a0115bcabc}} 
+\index{oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure@{oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure}!rebuild\+\_\+from\+\_\+sons@{rebuild\+\_\+from\+\_\+sons}}
+\index{rebuild\+\_\+from\+\_\+sons@{rebuild\+\_\+from\+\_\+sons}!oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure@{oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure}}
+\subsubsection{\texorpdfstring{rebuild\+\_\+from\+\_\+sons()}{rebuild\_from\_sons()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1RefineableQPVDElementWithPressure}{oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure}$<$ D\+IM $>$\+::rebuild\+\_\+from\+\_\+sons (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$\&}]{mesh\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reconstruct the pressure from the sons Must be specialized for each dimension. 
+
+
+
+Implements \hyperlink{classoomph_1_1RefineableElement_a33324be27833fa4b78279d17158215fa}{oomph\+::\+Refineable\+Element}.
+
+
+
+Referenced by oomph\+::\+Face\+Geometry$<$ Face\+Geometry$<$ Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure$<$ 2 $>$ $>$ $>$\+::\+Face\+Geometry(), and oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure$<$ D\+I\+M $>$\+::further\+\_\+build().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableQPVDElementWithPressure_ad001c7401c2f62c377926870eb01f3e3}\label{classoomph_1_1RefineableQPVDElementWithPressure_ad001c7401c2f62c377926870eb01f3e3}} 
+\index{oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure@{oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure}!rebuild\+\_\+from\+\_\+sons@{rebuild\+\_\+from\+\_\+sons}}
+\index{rebuild\+\_\+from\+\_\+sons@{rebuild\+\_\+from\+\_\+sons}!oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure@{oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure}}
+\subsubsection{\texorpdfstring{rebuild\+\_\+from\+\_\+sons()}{rebuild\_from\_sons()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$$>$ \\
+void \hyperlink{classoomph_1_1RefineableQPVDElementWithPressure}{oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure}$<$ 2 $>$\+::rebuild\+\_\+from\+\_\+sons (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$\&}]{mesh\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+2D rebuild from sons\+: reconstruct the solid pressure 
+
+
+
+Implements \hyperlink{classoomph_1_1RefineableElement_a33324be27833fa4b78279d17158215fa}{oomph\+::\+Refineable\+Element}.
+
+
+
+Definition at line 497 of file refineable\+\_\+solid\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Quad\+Tree\+Names\+::\+NE, oomph\+::\+Quad\+Tree\+Names\+::\+NW, oomph\+::\+Quad\+Tree\+Names\+::\+SE, and oomph\+::\+Quad\+Tree\+Names\+::\+SW.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableQPVDElementWithPressure_a11e3bc01af8930b5669bbaf27ab16a5c}\label{classoomph_1_1RefineableQPVDElementWithPressure_a11e3bc01af8930b5669bbaf27ab16a5c}} 
+\index{oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure@{oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure}!rebuild\+\_\+from\+\_\+sons@{rebuild\+\_\+from\+\_\+sons}}
+\index{rebuild\+\_\+from\+\_\+sons@{rebuild\+\_\+from\+\_\+sons}!oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure@{oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure}}
+\subsubsection{\texorpdfstring{rebuild\+\_\+from\+\_\+sons()}{rebuild\_from\_sons()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$$>$ \\
+void \hyperlink{classoomph_1_1RefineableQPVDElementWithPressure}{oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure}$<$ 3 $>$\+::rebuild\+\_\+from\+\_\+sons (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Mesh}{Mesh} $\ast$\&}]{mesh\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+3D rebuild from sons\+: reconstruct the pressure 
+
+
+
+Implements \hyperlink{classoomph_1_1RefineableElement_a33324be27833fa4b78279d17158215fa}{oomph\+::\+Refineable\+Element}.
+
+
+
+Definition at line 619 of file refineable\+\_\+solid\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Generalised\+Element\+::internal\+\_\+data\+\_\+pt(), oomph\+::\+Oc\+Tree\+Names\+::\+L\+DB, oomph\+::\+Oc\+Tree\+Names\+::\+L\+DF, oomph\+::\+Oc\+Tree\+Names\+::\+L\+UB, oomph\+::\+Oc\+Tree\+Names\+::\+L\+UF, oomph\+::\+Oc\+Tree\+Names\+::\+R\+DB, oomph\+::\+Oc\+Tree\+Names\+::\+R\+DF, oomph\+::\+Oc\+Tree\+Names\+::\+R\+UB, oomph\+::\+Oc\+Tree\+Names\+::\+R\+UF, and oomph\+::\+Data\+::value().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableQPVDElementWithPressure_adaf40f1a0ccadd63499e6c555f6b23ee}\label{classoomph_1_1RefineableQPVDElementWithPressure_adaf40f1a0ccadd63499e6c555f6b23ee}} 
+\index{oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure@{oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure}!unpin\+\_\+elemental\+\_\+solid\+\_\+pressure\+\_\+dofs@{unpin\+\_\+elemental\+\_\+solid\+\_\+pressure\+\_\+dofs}}
+\index{unpin\+\_\+elemental\+\_\+solid\+\_\+pressure\+\_\+dofs@{unpin\+\_\+elemental\+\_\+solid\+\_\+pressure\+\_\+dofs}!oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure@{oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure}}
+\subsubsection{\texorpdfstring{unpin\+\_\+elemental\+\_\+solid\+\_\+pressure\+\_\+dofs()}{unpin\_elemental\_solid\_pressure\_dofs()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1RefineableQPVDElementWithPressure}{oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure}$<$ D\+IM $>$\+::unpin\+\_\+elemental\+\_\+solid\+\_\+pressure\+\_\+dofs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Unpin all solid pressure dofs. 
+
+
+
+Implements \hyperlink{classoomph_1_1PVDEquationsBase_abd9064a8651728806dda27636b1e5b50}{oomph\+::\+P\+V\+D\+Equations\+Base$<$ D\+I\+M $>$}.
+
+
+
+Definition at line 416 of file refineable\+\_\+solid\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Generalised\+Element\+::internal\+\_\+data\+\_\+pt(), oomph\+::\+P\+V\+D\+Equations\+Base$<$ D\+I\+M $>$\+::npres\+\_\+solid(), and oomph\+::\+Data\+::unpin().
+
+\mbox{\Hypertarget{classoomph_1_1RefineableQPVDElementWithPressure_a9b151e6bb69794a4837306b7f7f92a86}\label{classoomph_1_1RefineableQPVDElementWithPressure_a9b151e6bb69794a4837306b7f7f92a86}} 
+\index{oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure@{oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure}!vertex\+\_\+node\+\_\+pt@{vertex\+\_\+node\+\_\+pt}}
+\index{vertex\+\_\+node\+\_\+pt@{vertex\+\_\+node\+\_\+pt}!oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure@{oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure}}
+\subsubsection{\texorpdfstring{vertex\+\_\+node\+\_\+pt()}{vertex\_node\_pt()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+\hyperlink{classoomph_1_1Node}{Node}$\ast$ \hyperlink{classoomph_1_1RefineableQPVDElementWithPressure}{oomph\+::\+Refineable\+Q\+P\+V\+D\+Element\+With\+Pressure}$<$ D\+IM $>$\+::vertex\+\_\+node\+\_\+pt (\begin{DoxyParamCaption}\item[{const unsigned \&}]{j }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Pointer to the j-\/th vertex node in the element. 
+
+
+
+Implements \hyperlink{classoomph_1_1ElementWithZ2ErrorEstimator_a0eedccc33519f852c5dc2055ddf2774b}{oomph\+::\+Element\+With\+Z2\+Error\+Estimator}.
+
+
+
+Definition at line 444 of file refineable\+\_\+solid\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Finite\+Element\+::vertex\+\_\+node\+\_\+pt().
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{refineable__solid__elements_8h}{refineable\+\_\+solid\+\_\+elements.\+h}\end{DoxyCompactItemize}

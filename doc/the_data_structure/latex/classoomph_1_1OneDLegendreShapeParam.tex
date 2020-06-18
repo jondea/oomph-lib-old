@@ -1,0 +1,117 @@
+\hypertarget{classoomph_1_1OneDLegendreShapeParam}{}\section{oomph\+:\+:One\+D\+Legendre\+Shape\+Param Class Reference}
+\label{classoomph_1_1OneDLegendreShapeParam}\index{oomph\+::\+One\+D\+Legendre\+Shape\+Param@{oomph\+::\+One\+D\+Legendre\+Shape\+Param}}
+
+
+Class that returns the shape functions associated with legendre.  
+
+
+
+
+{\ttfamily \#include $<$Qspectral\+\_\+elements.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:One\+D\+Legendre\+Shape\+Param\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classoomph_1_1OneDLegendreShapeParam}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1OneDLegendreShapeParam_adb7ae440a08c6d7815eb52250a5564fe}{One\+D\+Legendre\+Shape\+Param} (const unsigned \&order, const double \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s})
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{classoomph_1_1OneDLegendreShapeParam_a3bebbcc4e518f0d1053635096b821d10}{calculate\+\_\+nodal\+\_\+positions} (const unsigned \&order)
+\begin{DoxyCompactList}\small\item\em Static function used to populate the stored positions. \end{DoxyCompactList}\item 
+static double \hyperlink{classoomph_1_1OneDLegendreShapeParam_aadd14533bf38cb1645961e95b2fcd93c}{nodal\+\_\+position} (const unsigned \&order, const unsigned \&n)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::map$<$ unsigned, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ $>$ \hyperlink{classoomph_1_1OneDLegendreShapeParam_a74cb7131a47cc15dc79d25af12a13950}{z}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Class that returns the shape functions associated with legendre. 
+
+Definition at line 50 of file Qspectral\+\_\+elements.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1OneDLegendreShapeParam_adb7ae440a08c6d7815eb52250a5564fe}\label{classoomph_1_1OneDLegendreShapeParam_adb7ae440a08c6d7815eb52250a5564fe}} 
+\index{oomph\+::\+One\+D\+Legendre\+Shape\+Param@{oomph\+::\+One\+D\+Legendre\+Shape\+Param}!One\+D\+Legendre\+Shape\+Param@{One\+D\+Legendre\+Shape\+Param}}
+\index{One\+D\+Legendre\+Shape\+Param@{One\+D\+Legendre\+Shape\+Param}!oomph\+::\+One\+D\+Legendre\+Shape\+Param@{oomph\+::\+One\+D\+Legendre\+Shape\+Param}}
+\subsubsection{\texorpdfstring{One\+D\+Legendre\+Shape\+Param()}{OneDLegendreShapeParam()}}
+{\footnotesize\ttfamily oomph\+::\+One\+D\+Legendre\+Shape\+Param\+::\+One\+D\+Legendre\+Shape\+Param (\begin{DoxyParamCaption}\item[{const unsigned \&}]{order,  }\item[{const double \&}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor. 
+
+
+
+Definition at line 69 of file Qspectral\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Orthpoly\+::dlegendre(), oomph\+::\+Orthpoly\+::eps, i, oomph\+::\+Orthpoly\+::legendre(), and s.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1OneDLegendreShapeParam_a3bebbcc4e518f0d1053635096b821d10}\label{classoomph_1_1OneDLegendreShapeParam_a3bebbcc4e518f0d1053635096b821d10}} 
+\index{oomph\+::\+One\+D\+Legendre\+Shape\+Param@{oomph\+::\+One\+D\+Legendre\+Shape\+Param}!calculate\+\_\+nodal\+\_\+positions@{calculate\+\_\+nodal\+\_\+positions}}
+\index{calculate\+\_\+nodal\+\_\+positions@{calculate\+\_\+nodal\+\_\+positions}!oomph\+::\+One\+D\+Legendre\+Shape\+Param@{oomph\+::\+One\+D\+Legendre\+Shape\+Param}}
+\subsubsection{\texorpdfstring{calculate\+\_\+nodal\+\_\+positions()}{calculate\_nodal\_positions()}}
+{\footnotesize\ttfamily static void oomph\+::\+One\+D\+Legendre\+Shape\+Param\+::calculate\+\_\+nodal\+\_\+positions (\begin{DoxyParamCaption}\item[{const unsigned \&}]{order }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Static function used to populate the stored positions. 
+
+
+
+Definition at line 56 of file Qspectral\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Orthpoly\+::gll\+\_\+nodes().
+
+\mbox{\Hypertarget{classoomph_1_1OneDLegendreShapeParam_aadd14533bf38cb1645961e95b2fcd93c}\label{classoomph_1_1OneDLegendreShapeParam_aadd14533bf38cb1645961e95b2fcd93c}} 
+\index{oomph\+::\+One\+D\+Legendre\+Shape\+Param@{oomph\+::\+One\+D\+Legendre\+Shape\+Param}!nodal\+\_\+position@{nodal\+\_\+position}}
+\index{nodal\+\_\+position@{nodal\+\_\+position}!oomph\+::\+One\+D\+Legendre\+Shape\+Param@{oomph\+::\+One\+D\+Legendre\+Shape\+Param}}
+\subsubsection{\texorpdfstring{nodal\+\_\+position()}{nodal\_position()}}
+{\footnotesize\ttfamily static double oomph\+::\+One\+D\+Legendre\+Shape\+Param\+::nodal\+\_\+position (\begin{DoxyParamCaption}\item[{const unsigned \&}]{order,  }\item[{const unsigned \&}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Definition at line 65 of file Qspectral\+\_\+elements.\+h.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1OneDLegendreShapeParam_a74cb7131a47cc15dc79d25af12a13950}\label{classoomph_1_1OneDLegendreShapeParam_a74cb7131a47cc15dc79d25af12a13950}} 
+\index{oomph\+::\+One\+D\+Legendre\+Shape\+Param@{oomph\+::\+One\+D\+Legendre\+Shape\+Param}!z@{z}}
+\index{z@{z}!oomph\+::\+One\+D\+Legendre\+Shape\+Param@{oomph\+::\+One\+D\+Legendre\+Shape\+Param}}
+\subsubsection{\texorpdfstring{z}{z}}
+{\footnotesize\ttfamily std\+::map$<$ unsigned, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ $>$ oomph\+::\+One\+D\+Legendre\+Shape\+Param\+::z\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 53 of file Qspectral\+\_\+elements.\+h.
+
+
+
+Referenced by oomph\+::\+One\+D\+Legendre\+D\+Shape\+Param\+::\+One\+D\+Legendre\+D\+Shape\+Param().
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{Qspectral__elements_8h}{Qspectral\+\_\+elements.\+h}\item 
+\hyperlink{Qspectral__elements_8cc}{Qspectral\+\_\+elements.\+cc}\end{DoxyCompactItemize}

@@ -1,0 +1,407 @@
+\hypertarget{classoomph_1_1LinearElasticityEquations}{}\section{oomph\+:\+:Linear\+Elasticity\+Equations$<$ D\+IM $>$ Class Template Reference}
+\label{classoomph_1_1LinearElasticityEquations}\index{oomph\+::\+Linear\+Elasticity\+Equations$<$ D\+I\+M $>$@{oomph\+::\+Linear\+Elasticity\+Equations$<$ D\+I\+M $>$}}
+
+
+{\ttfamily \#include $<$linear\+\_\+elasticity\+\_\+elements.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Linear\+Elasticity\+Equations$<$ D\+IM $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.736434cm]{classoomph_1_1LinearElasticityEquations}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1LinearElasticityEquations_adba9f0b6b22592ff24cdefc02bb57c7f}{Linear\+Elasticity\+Equations} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1LinearElasticityEquations_a1a7c0ad418431d47239c933fbdeb0c4b}{required\+\_\+nvalue} (const unsigned \&n) const
+\begin{DoxyCompactList}\small\item\em Number of values required at node n. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1LinearElasticityEquations_aeab94f9942f6f8002b49ee3859733a91}{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&residuals)
+\begin{DoxyCompactList}\small\item\em Return the residuals for the solid equations (the discretised principle of virtual displacements) \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1LinearElasticityEquations_ad09269e02262abfaae2176048066365b}{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&residuals, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&jacobian)
+\item 
+void \hyperlink{classoomph_1_1LinearElasticityEquations_a9d3ccf59b001a53e53e74a1ae429d6b7}{get\+\_\+stress} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&sigma) const
+\begin{DoxyCompactList}\small\item\em Return the Cauchy stress tensor, as calculated from the elasticity tensor at specified local coordinate. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1LinearElasticityEquations_a039f66979684d41503f45cdbf87cfc3b}{output\+\_\+fct} (std\+::ostream \&outfile, const unsigned \&nplot, \hyperlink{classoomph_1_1FiniteElement_a690fd33af26cc3e84f39bba6d5a85202}{Finite\+Element\+::\+Steady\+Exact\+Solution\+Fct\+Pt} exact\+\_\+soln\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Output exact solution x,y,\mbox{[}z\mbox{]},u,v,\mbox{[}w\mbox{]}. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1LinearElasticityEquations_af11315d53dcb1e8fe39aef29ccab504a}{output\+\_\+fct} (std\+::ostream \&outfile, const unsigned \&nplot, const double \&time, \hyperlink{classoomph_1_1FiniteElement_ad4ecf2b61b158a4b4d351a60d23c633e}{Finite\+Element\+::\+Unsteady\+Exact\+Solution\+Fct\+Pt} exact\+\_\+soln\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Output exact solution x,y,\mbox{[}z\mbox{]},u,v,\mbox{[}w\mbox{]} (unsteady version) \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1LinearElasticityEquations_a43d6b5b646f798329c1d77f64d26cdeb}{output} (std\+::ostream \&outfile)
+\begin{DoxyCompactList}\small\item\em Output\+: x,y,\mbox{[}z\mbox{]},u,v,\mbox{[}w\mbox{]}. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1LinearElasticityEquations_ad651870ca4e0f45f7023407656d034ee}{output} (std\+::ostream \&outfile, const unsigned \&n\+\_\+plot)
+\begin{DoxyCompactList}\small\item\em Output\+: x,y,\mbox{[}z\mbox{]},u,v,\mbox{[}w\mbox{]}. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1LinearElasticityEquations_a5ece3b89bf886d39782820e449a4edaa}{output} (F\+I\+LE $\ast$file\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em C-\/style output\+: x,y,\mbox{[}z\mbox{]},u,v,\mbox{[}w\mbox{]}. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1LinearElasticityEquations_ae48d7ecffb8e3c914a51947b5f79466c}{output} (F\+I\+LE $\ast$file\+\_\+pt, const unsigned \&n\+\_\+plot)
+\begin{DoxyCompactList}\small\item\em Output\+: x,y,\mbox{[}z\mbox{]},u,v,\mbox{[}w\mbox{]}. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1LinearElasticityEquations_a225d149a4b093cd4688fa644c29b75c8}{compute\+\_\+error} (std\+::ostream \&outfile, \hyperlink{classoomph_1_1FiniteElement_a690fd33af26cc3e84f39bba6d5a85202}{Finite\+Element\+::\+Steady\+Exact\+Solution\+Fct\+Pt} exact\+\_\+soln\+\_\+pt, double \&error, double \&norm)
+\begin{DoxyCompactList}\small\item\em Validate against exact solution. Solution is provided via function pointer. Plot at a given number of plot points and compute L2 error and L2 norm of displacement solution over element. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1LinearElasticityEquations_a8970a7a9633571974d8769717a3acc19}{compute\+\_\+error} (std\+::ostream \&outfile, \hyperlink{classoomph_1_1FiniteElement_ad4ecf2b61b158a4b4d351a60d23c633e}{Finite\+Element\+::\+Unsteady\+Exact\+Solution\+Fct\+Pt} exact\+\_\+soln\+\_\+pt, const double \&time, double \&error, double \&norm)
+\begin{DoxyCompactList}\small\item\em Validate against exact solution. Solution is provided via function pointer. Plot at a given number of plot points and compute L2 error and L2 norm of displacement solution over element (unsteady version) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{classoomph_1_1LinearElasticityEquations_aac93dfe3be4fd6debf914a787e87727d}{fill\+\_\+in\+\_\+generic\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+linear\+\_\+elasticity} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&residuals, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&jacobian, unsigned flag)
+\begin{DoxyCompactList}\small\item\em Private helper function to compute residuals and (if requested via flag) also the Jacobian matrix. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$unsigned D\+IM$>$\newline
+class oomph\+::\+Linear\+Elasticity\+Equations$<$ D\+I\+M $>$}
+
+A class for elements that solve the equations of linear elasticity in cartesian coordinates. 
+
+Definition at line 358 of file linear\+\_\+elasticity\+\_\+elements.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1LinearElasticityEquations_adba9f0b6b22592ff24cdefc02bb57c7f}\label{classoomph_1_1LinearElasticityEquations_adba9f0b6b22592ff24cdefc02bb57c7f}} 
+\index{oomph\+::\+Linear\+Elasticity\+Equations@{oomph\+::\+Linear\+Elasticity\+Equations}!Linear\+Elasticity\+Equations@{Linear\+Elasticity\+Equations}}
+\index{Linear\+Elasticity\+Equations@{Linear\+Elasticity\+Equations}!oomph\+::\+Linear\+Elasticity\+Equations@{oomph\+::\+Linear\+Elasticity\+Equations}}
+\subsubsection{\texorpdfstring{Linear\+Elasticity\+Equations()}{LinearElasticityEquations()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+\hyperlink{classoomph_1_1LinearElasticityEquations}{oomph\+::\+Linear\+Elasticity\+Equations}$<$ D\+IM $>$\+::\hyperlink{classoomph_1_1LinearElasticityEquations}{Linear\+Elasticity\+Equations} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor. 
+
+
+
+Definition at line 363 of file linear\+\_\+elasticity\+\_\+elements.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1LinearElasticityEquations_a225d149a4b093cd4688fa644c29b75c8}\label{classoomph_1_1LinearElasticityEquations_a225d149a4b093cd4688fa644c29b75c8}} 
+\index{oomph\+::\+Linear\+Elasticity\+Equations@{oomph\+::\+Linear\+Elasticity\+Equations}!compute\+\_\+error@{compute\+\_\+error}}
+\index{compute\+\_\+error@{compute\+\_\+error}!oomph\+::\+Linear\+Elasticity\+Equations@{oomph\+::\+Linear\+Elasticity\+Equations}}
+\subsubsection{\texorpdfstring{compute\+\_\+error()}{compute\_error()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1LinearElasticityEquations}{oomph\+::\+Linear\+Elasticity\+Equations}$<$ D\+IM $>$\+::compute\+\_\+error (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile,  }\item[{\hyperlink{classoomph_1_1FiniteElement_a690fd33af26cc3e84f39bba6d5a85202}{Finite\+Element\+::\+Steady\+Exact\+Solution\+Fct\+Pt}}]{exact\+\_\+soln\+\_\+pt,  }\item[{double \&}]{error,  }\item[{double \&}]{norm }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Validate against exact solution. Solution is provided via function pointer. Plot at a given number of plot points and compute L2 error and L2 norm of displacement solution over element. 
+
+Validate against exact velocity solution Solution is provided via function pointer. Plot at a given number of plot points and compute L2 error and L2 norm of velocity solution over element. 
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a73c79a1f1e5b1d334757812a6bbd58ff}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 582 of file linear\+\_\+elasticity\+\_\+elements.\+cc.
+
+
+
+References i, s, and oomph\+::\+Quad\+Tree\+Names\+::W.
+
+\mbox{\Hypertarget{classoomph_1_1LinearElasticityEquations_a8970a7a9633571974d8769717a3acc19}\label{classoomph_1_1LinearElasticityEquations_a8970a7a9633571974d8769717a3acc19}} 
+\index{oomph\+::\+Linear\+Elasticity\+Equations@{oomph\+::\+Linear\+Elasticity\+Equations}!compute\+\_\+error@{compute\+\_\+error}}
+\index{compute\+\_\+error@{compute\+\_\+error}!oomph\+::\+Linear\+Elasticity\+Equations@{oomph\+::\+Linear\+Elasticity\+Equations}}
+\subsubsection{\texorpdfstring{compute\+\_\+error()}{compute\_error()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1LinearElasticityEquations}{oomph\+::\+Linear\+Elasticity\+Equations}$<$ D\+IM $>$\+::compute\+\_\+error (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile,  }\item[{\hyperlink{classoomph_1_1FiniteElement_ad4ecf2b61b158a4b4d351a60d23c633e}{Finite\+Element\+::\+Unsteady\+Exact\+Solution\+Fct\+Pt}}]{exact\+\_\+soln\+\_\+pt,  }\item[{const double \&}]{time,  }\item[{double \&}]{error,  }\item[{double \&}]{norm }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Validate against exact solution. Solution is provided via function pointer. Plot at a given number of plot points and compute L2 error and L2 norm of displacement solution over element (unsteady version) 
+
+Validate against exact velocity solution Solution is provided via function pointer. Plot at a given number of plot points and compute L2 error and L2 norm of velocity solution over element. Unsteady version 
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a7f67853506dc73fa6b7505108de22d1f}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 661 of file linear\+\_\+elasticity\+\_\+elements.\+cc.
+
+
+
+References i, s, and oomph\+::\+Quad\+Tree\+Names\+::W.
+
+\mbox{\Hypertarget{classoomph_1_1LinearElasticityEquations_ad09269e02262abfaae2176048066365b}\label{classoomph_1_1LinearElasticityEquations_ad09269e02262abfaae2176048066365b}} 
+\index{oomph\+::\+Linear\+Elasticity\+Equations@{oomph\+::\+Linear\+Elasticity\+Equations}!fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian}}
+\index{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian}!oomph\+::\+Linear\+Elasticity\+Equations@{oomph\+::\+Linear\+Elasticity\+Equations}}
+\subsubsection{\texorpdfstring{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian()}{fill\_in\_contribution\_to\_jacobian()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1LinearElasticityEquations}{oomph\+::\+Linear\+Elasticity\+Equations}$<$ D\+IM $>$\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{residuals,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{jacobian }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+The jacobian is calculated by finite differences by default, We need only to take finite differences w.\+r.\+t. positional variables For this element 
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a0ae7af222af38a0d53bf283dc85bdfea}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 379 of file linear\+\_\+elasticity\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Linear\+Elasticity\+Equations\+Base$<$ D\+I\+M $>$\+::get\+\_\+stress(), oomph\+::\+Finite\+Element\+::output\+\_\+fct(), and s.
+
+\mbox{\Hypertarget{classoomph_1_1LinearElasticityEquations_aeab94f9942f6f8002b49ee3859733a91}\label{classoomph_1_1LinearElasticityEquations_aeab94f9942f6f8002b49ee3859733a91}} 
+\index{oomph\+::\+Linear\+Elasticity\+Equations@{oomph\+::\+Linear\+Elasticity\+Equations}!fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals}}
+\index{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals}!oomph\+::\+Linear\+Elasticity\+Equations@{oomph\+::\+Linear\+Elasticity\+Equations}}
+\subsubsection{\texorpdfstring{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals()}{fill\_in\_contribution\_to\_residuals()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1LinearElasticityEquations}{oomph\+::\+Linear\+Elasticity\+Equations}$<$ D\+IM $>$\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{residuals }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Return the residuals for the solid equations (the discretised principle of virtual displacements) 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1GeneralisedElement_a310c97f515e8504a48179c0e72c550d7}{oomph\+::\+Generalised\+Element}.
+
+
+
+Definition at line 370 of file linear\+\_\+elasticity\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Generalised\+Element\+::\+Dummy\+\_\+matrix.
+
+\mbox{\Hypertarget{classoomph_1_1LinearElasticityEquations_aac93dfe3be4fd6debf914a787e87727d}\label{classoomph_1_1LinearElasticityEquations_aac93dfe3be4fd6debf914a787e87727d}} 
+\index{oomph\+::\+Linear\+Elasticity\+Equations@{oomph\+::\+Linear\+Elasticity\+Equations}!fill\+\_\+in\+\_\+generic\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+linear\+\_\+elasticity@{fill\+\_\+in\+\_\+generic\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+linear\+\_\+elasticity}}
+\index{fill\+\_\+in\+\_\+generic\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+linear\+\_\+elasticity@{fill\+\_\+in\+\_\+generic\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+linear\+\_\+elasticity}!oomph\+::\+Linear\+Elasticity\+Equations@{oomph\+::\+Linear\+Elasticity\+Equations}}
+\subsubsection{\texorpdfstring{fill\+\_\+in\+\_\+generic\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+linear\+\_\+elasticity()}{fill\_in\_generic\_contribution\_to\_residuals\_linear\_elasticity()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1LinearElasticityEquations}{oomph\+::\+Linear\+Elasticity\+Equations}$<$ D\+IM $>$\+::fill\+\_\+in\+\_\+generic\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+linear\+\_\+elasticity (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{residuals,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{jacobian,  }\item[{unsigned}]{flag }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Private helper function to compute residuals and (if requested via flag) also the Jacobian matrix. 
+
+Compute the residuals for the linear elasticity equations in cartesian coordinates. Flag indicates if we want Jacobian too. 
+
+Reimplemented in \hyperlink{classoomph_1_1RefineableLinearElasticityEquations_ae2f77382b9fdb12eb7b4ba0dc6c239ef}{oomph\+::\+Refineable\+Linear\+Elasticity\+Equations$<$ D\+I\+M $>$}.
+
+
+
+Definition at line 200 of file linear\+\_\+elasticity\+\_\+elements.\+cc.
+
+
+
+References oomph\+::\+Quad\+Tree\+Names\+::E, i, s, and oomph\+::\+Quad\+Tree\+Names\+::W.
+
+
+
+Referenced by oomph\+::\+Linear\+Elasticity\+Equations$<$ D\+I\+M $>$\+::get\+\_\+stress().
+
+\mbox{\Hypertarget{classoomph_1_1LinearElasticityEquations_a9d3ccf59b001a53e53e74a1ae429d6b7}\label{classoomph_1_1LinearElasticityEquations_a9d3ccf59b001a53e53e74a1ae429d6b7}} 
+\index{oomph\+::\+Linear\+Elasticity\+Equations@{oomph\+::\+Linear\+Elasticity\+Equations}!get\+\_\+stress@{get\+\_\+stress}}
+\index{get\+\_\+stress@{get\+\_\+stress}!oomph\+::\+Linear\+Elasticity\+Equations@{oomph\+::\+Linear\+Elasticity\+Equations}}
+\subsubsection{\texorpdfstring{get\+\_\+stress()}{get\_stress()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1LinearElasticityEquations}{oomph\+::\+Linear\+Elasticity\+Equations}$<$ D\+IM $>$\+::get\+\_\+stress (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{stress }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Return the Cauchy stress tensor, as calculated from the elasticity tensor at specified local coordinate. 
+
+Compute the Cauchy stress tensor at local coordinate s for displacement formulation. 
+
+Implements \hyperlink{classoomph_1_1LinearElasticityEquationsBase_a2a68942bbdbe42a95e8c221fc5b1a322}{oomph\+::\+Linear\+Elasticity\+Equations\+Base$<$ D\+I\+M $>$}.
+
+
+
+Definition at line 153 of file linear\+\_\+elasticity\+\_\+elements.\+cc.
+
+
+
+References oomph\+::\+Quad\+Tree\+Names\+::E, oomph\+::\+Linear\+Elasticity\+Equations$<$ D\+I\+M $>$\+::fill\+\_\+in\+\_\+generic\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+linear\+\_\+elasticity(), i, oomph\+::\+Dense\+Matrix$<$ T $>$\+::ncol(), and oomph\+::\+Dense\+Matrix$<$ T $>$\+::nrow().
+
+\mbox{\Hypertarget{classoomph_1_1LinearElasticityEquations_a43d6b5b646f798329c1d77f64d26cdeb}\label{classoomph_1_1LinearElasticityEquations_a43d6b5b646f798329c1d77f64d26cdeb}} 
+\index{oomph\+::\+Linear\+Elasticity\+Equations@{oomph\+::\+Linear\+Elasticity\+Equations}!output@{output}}
+\index{output@{output}!oomph\+::\+Linear\+Elasticity\+Equations@{oomph\+::\+Linear\+Elasticity\+Equations}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1LinearElasticityEquations}{oomph\+::\+Linear\+Elasticity\+Equations}$<$ D\+IM $>$\+::output (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Output\+: x,y,\mbox{[}z\mbox{]},u,v,\mbox{[}w\mbox{]}. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a2ad98a3d2ef4999f1bef62c0ff13f2a7}{oomph\+::\+Finite\+Element}.
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1QLinearElasticityElement_ab5746a722f2c015ceaace3afce89d797}{oomph\+::\+Q\+Linear\+Elasticity\+Element$<$ D\+I\+M, N\+N\+O\+D\+E\+\_\+1\+D $>$}, \hyperlink{classoomph_1_1QLinearElasticityElement_ab5746a722f2c015ceaace3afce89d797}{oomph\+::\+Q\+Linear\+Elasticity\+Element$<$ D\+I\+M, 2 $>$}, and \hyperlink{classoomph_1_1TLinearElasticityElement_a76af9620bf824adfd6bef204af7a8f81}{oomph\+::\+T\+Linear\+Elasticity\+Element$<$ D\+I\+M, N\+N\+O\+D\+E\+\_\+1\+D $>$}.
+
+
+
+Definition at line 405 of file linear\+\_\+elasticity\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Finite\+Element\+::output().
+
+
+
+Referenced by oomph\+::\+T\+Linear\+Elasticity\+Element$<$ D\+I\+M, N\+N\+O\+D\+E\+\_\+1\+D $>$\+::output(), and oomph\+::\+Q\+Linear\+Elasticity\+Element$<$ D\+I\+M, 2 $>$\+::output().
+
+\mbox{\Hypertarget{classoomph_1_1LinearElasticityEquations_ad651870ca4e0f45f7023407656d034ee}\label{classoomph_1_1LinearElasticityEquations_ad651870ca4e0f45f7023407656d034ee}} 
+\index{oomph\+::\+Linear\+Elasticity\+Equations@{oomph\+::\+Linear\+Elasticity\+Equations}!output@{output}}
+\index{output@{output}!oomph\+::\+Linear\+Elasticity\+Equations@{oomph\+::\+Linear\+Elasticity\+Equations}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1LinearElasticityEquations}{oomph\+::\+Linear\+Elasticity\+Equations}$<$ D\+IM $>$\+::output (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile,  }\item[{const unsigned \&}]{n\+\_\+plot }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Output\+: x,y,\mbox{[}z\mbox{]},u,v,\mbox{[}w\mbox{]}. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_afa9d9b2670f999b43e6679c9dd28c457}{oomph\+::\+Finite\+Element}.
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1QLinearElasticityElement_a60eeaa0b23deb65a39b2d5bd41540963}{oomph\+::\+Q\+Linear\+Elasticity\+Element$<$ D\+I\+M, N\+N\+O\+D\+E\+\_\+1\+D $>$}, \hyperlink{classoomph_1_1QLinearElasticityElement_a60eeaa0b23deb65a39b2d5bd41540963}{oomph\+::\+Q\+Linear\+Elasticity\+Element$<$ D\+I\+M, 2 $>$}, and \hyperlink{classoomph_1_1TLinearElasticityElement_acb51af6914538bf87852b892dc516ec0}{oomph\+::\+T\+Linear\+Elasticity\+Element$<$ D\+I\+M, N\+N\+O\+D\+E\+\_\+1\+D $>$}.
+
+
+
+Definition at line 494 of file linear\+\_\+elasticity\+\_\+elements.\+cc.
+
+
+
+References i, and s.
+
+\mbox{\Hypertarget{classoomph_1_1LinearElasticityEquations_a5ece3b89bf886d39782820e449a4edaa}\label{classoomph_1_1LinearElasticityEquations_a5ece3b89bf886d39782820e449a4edaa}} 
+\index{oomph\+::\+Linear\+Elasticity\+Equations@{oomph\+::\+Linear\+Elasticity\+Equations}!output@{output}}
+\index{output@{output}!oomph\+::\+Linear\+Elasticity\+Equations@{oomph\+::\+Linear\+Elasticity\+Equations}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1LinearElasticityEquations}{oomph\+::\+Linear\+Elasticity\+Equations}$<$ D\+IM $>$\+::output (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{file\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+C-\/style output\+: x,y,\mbox{[}z\mbox{]},u,v,\mbox{[}w\mbox{]}. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a72cddd09f8ddbee1a20a1ff404c6943e}{oomph\+::\+Finite\+Element}.
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1QLinearElasticityElement_a16db5e5ba60abbb8b79e1fce0ebd892e}{oomph\+::\+Q\+Linear\+Elasticity\+Element$<$ D\+I\+M, N\+N\+O\+D\+E\+\_\+1\+D $>$}, \hyperlink{classoomph_1_1QLinearElasticityElement_a16db5e5ba60abbb8b79e1fce0ebd892e}{oomph\+::\+Q\+Linear\+Elasticity\+Element$<$ D\+I\+M, 2 $>$}, and \hyperlink{classoomph_1_1TLinearElasticityElement_adc8c188c039e833bfab31aa3b127b3f7}{oomph\+::\+T\+Linear\+Elasticity\+Element$<$ D\+I\+M, N\+N\+O\+D\+E\+\_\+1\+D $>$}.
+
+
+
+Definition at line 416 of file linear\+\_\+elasticity\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Finite\+Element\+::compute\+\_\+error(), and oomph\+::\+Finite\+Element\+::output().
+
+\mbox{\Hypertarget{classoomph_1_1LinearElasticityEquations_ae48d7ecffb8e3c914a51947b5f79466c}\label{classoomph_1_1LinearElasticityEquations_ae48d7ecffb8e3c914a51947b5f79466c}} 
+\index{oomph\+::\+Linear\+Elasticity\+Equations@{oomph\+::\+Linear\+Elasticity\+Equations}!output@{output}}
+\index{output@{output}!oomph\+::\+Linear\+Elasticity\+Equations@{oomph\+::\+Linear\+Elasticity\+Equations}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1LinearElasticityEquations}{oomph\+::\+Linear\+Elasticity\+Equations}$<$ D\+IM $>$\+::output (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{file\+\_\+pt,  }\item[{const unsigned \&}]{n\+\_\+plot }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Output\+: x,y,\mbox{[}z\mbox{]},u,v,\mbox{[}w\mbox{]}. 
+
+C-\/style output\+: x,y,\mbox{[}z\mbox{]},u,v,\mbox{[}w\mbox{]}. 
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_adfaee690bb0608f03320eeb9d110d48c}{oomph\+::\+Finite\+Element}.
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1QLinearElasticityElement_a0463c6394c7ef11cef70e036e8845743}{oomph\+::\+Q\+Linear\+Elasticity\+Element$<$ D\+I\+M, N\+N\+O\+D\+E\+\_\+1\+D $>$}, \hyperlink{classoomph_1_1QLinearElasticityElement_a0463c6394c7ef11cef70e036e8845743}{oomph\+::\+Q\+Linear\+Elasticity\+Element$<$ D\+I\+M, 2 $>$}, and \hyperlink{classoomph_1_1TLinearElasticityElement_ab819534efce64389b6e06bc90acefc86}{oomph\+::\+T\+Linear\+Elasticity\+Element$<$ D\+I\+M, N\+N\+O\+D\+E\+\_\+1\+D $>$}.
+
+
+
+Definition at line 539 of file linear\+\_\+elasticity\+\_\+elements.\+cc.
+
+
+
+References i, and s.
+
+\mbox{\Hypertarget{classoomph_1_1LinearElasticityEquations_a039f66979684d41503f45cdbf87cfc3b}\label{classoomph_1_1LinearElasticityEquations_a039f66979684d41503f45cdbf87cfc3b}} 
+\index{oomph\+::\+Linear\+Elasticity\+Equations@{oomph\+::\+Linear\+Elasticity\+Equations}!output\+\_\+fct@{output\+\_\+fct}}
+\index{output\+\_\+fct@{output\+\_\+fct}!oomph\+::\+Linear\+Elasticity\+Equations@{oomph\+::\+Linear\+Elasticity\+Equations}}
+\subsubsection{\texorpdfstring{output\+\_\+fct()}{output\_fct()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1LinearElasticityEquations}{oomph\+::\+Linear\+Elasticity\+Equations}$<$ D\+IM $>$\+::output\+\_\+fct (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile,  }\item[{const unsigned \&}]{nplot,  }\item[{\hyperlink{classoomph_1_1FiniteElement_a690fd33af26cc3e84f39bba6d5a85202}{Finite\+Element\+::\+Steady\+Exact\+Solution\+Fct\+Pt}}]{exact\+\_\+soln\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Output exact solution x,y,\mbox{[}z\mbox{]},u,v,\mbox{[}w\mbox{]}. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a22b695c714f60ee6cd145be348042035}{oomph\+::\+Finite\+Element}.
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1QLinearElasticityElement_a6f391511c442ee1ead6260df2e559c7e}{oomph\+::\+Q\+Linear\+Elasticity\+Element$<$ D\+I\+M, N\+N\+O\+D\+E\+\_\+1\+D $>$}, and \hyperlink{classoomph_1_1QLinearElasticityElement_a6f391511c442ee1ead6260df2e559c7e}{oomph\+::\+Q\+Linear\+Elasticity\+Element$<$ D\+I\+M, 2 $>$}.
+
+
+
+Definition at line 387 of file linear\+\_\+elasticity\+\_\+elements.\+cc.
+
+
+
+References i, and s.
+
+
+
+Referenced by oomph\+::\+Q\+Linear\+Elasticity\+Element$<$ D\+I\+M, 2 $>$\+::output\+\_\+fct().
+
+\mbox{\Hypertarget{classoomph_1_1LinearElasticityEquations_af11315d53dcb1e8fe39aef29ccab504a}\label{classoomph_1_1LinearElasticityEquations_af11315d53dcb1e8fe39aef29ccab504a}} 
+\index{oomph\+::\+Linear\+Elasticity\+Equations@{oomph\+::\+Linear\+Elasticity\+Equations}!output\+\_\+fct@{output\+\_\+fct}}
+\index{output\+\_\+fct@{output\+\_\+fct}!oomph\+::\+Linear\+Elasticity\+Equations@{oomph\+::\+Linear\+Elasticity\+Equations}}
+\subsubsection{\texorpdfstring{output\+\_\+fct()}{output\_fct()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1LinearElasticityEquations}{oomph\+::\+Linear\+Elasticity\+Equations}$<$ D\+IM $>$\+::output\+\_\+fct (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile,  }\item[{const unsigned \&}]{nplot,  }\item[{const double \&}]{time,  }\item[{\hyperlink{classoomph_1_1FiniteElement_ad4ecf2b61b158a4b4d351a60d23c633e}{Finite\+Element\+::\+Unsteady\+Exact\+Solution\+Fct\+Pt}}]{exact\+\_\+soln\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Output exact solution x,y,\mbox{[}z\mbox{]},u,v,\mbox{[}w\mbox{]} (unsteady version) 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a2a8426dccd57b927be0ae0eec00d0479}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 440 of file linear\+\_\+elasticity\+\_\+elements.\+cc.
+
+
+
+References i, and s.
+
+\mbox{\Hypertarget{classoomph_1_1LinearElasticityEquations_a1a7c0ad418431d47239c933fbdeb0c4b}\label{classoomph_1_1LinearElasticityEquations_a1a7c0ad418431d47239c933fbdeb0c4b}} 
+\index{oomph\+::\+Linear\+Elasticity\+Equations@{oomph\+::\+Linear\+Elasticity\+Equations}!required\+\_\+nvalue@{required\+\_\+nvalue}}
+\index{required\+\_\+nvalue@{required\+\_\+nvalue}!oomph\+::\+Linear\+Elasticity\+Equations@{oomph\+::\+Linear\+Elasticity\+Equations}}
+\subsubsection{\texorpdfstring{required\+\_\+nvalue()}{required\_nvalue()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+unsigned \hyperlink{classoomph_1_1LinearElasticityEquations}{oomph\+::\+Linear\+Elasticity\+Equations}$<$ D\+IM $>$\+::required\+\_\+nvalue (\begin{DoxyParamCaption}\item[{const unsigned \&}]{n }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Number of values required at node n. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a56610c60d5bc2d7c27407a1455471b1a}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 366 of file linear\+\_\+elasticity\+\_\+elements.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{linear__elasticity__elements_8h}{linear\+\_\+elasticity\+\_\+elements.\+h}\item 
+\hyperlink{linear__elasticity__elements_8cc}{linear\+\_\+elasticity\+\_\+elements.\+cc}\end{DoxyCompactItemize}

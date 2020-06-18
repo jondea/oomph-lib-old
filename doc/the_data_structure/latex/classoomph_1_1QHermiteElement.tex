@@ -1,0 +1,1015 @@
+\hypertarget{classoomph_1_1QHermiteElement}{}\section{oomph\+:\+:Q\+Hermite\+Element$<$ D\+IM $>$ Class Template Reference}
+\label{classoomph_1_1QHermiteElement}\index{oomph\+::\+Q\+Hermite\+Element$<$ D\+I\+M $>$@{oomph\+::\+Q\+Hermite\+Element$<$ D\+I\+M $>$}}
+
+
+{\ttfamily \#include $<$hermite\+\_\+elements.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Q\+Hermite\+Element$<$ D\+IM $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.456140cm]{classoomph_1_1QHermiteElement}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1QHermiteElement_a226d0763bce1e477ee64254398a2c677}{Q\+Hermite\+Element} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1QHermiteElement_a6dce1c70656dfcd8da365462b959e709}{Q\+Hermite\+Element} (const \hyperlink{classoomph_1_1QHermiteElement}{Q\+Hermite\+Element} \&dummy)
+\begin{DoxyCompactList}\small\item\em Broken copy constructor. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1QHermiteElement_a2c631218863046da393b0a137ccecee9}{operator=} (const \hyperlink{classoomph_1_1QHermiteElement}{Q\+Hermite\+Element} \&)
+\begin{DoxyCompactList}\small\item\em Broken assignment operator. \end{DoxyCompactList}\item 
+bool \hyperlink{classoomph_1_1QHermiteElement_a29a36f3b1e8f07d4d7b5e14aeb79c422}{local\+\_\+coord\+\_\+is\+\_\+valid} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s})
+\begin{DoxyCompactList}\small\item\em Check whether the local coordinate are valid or not. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1QHermiteElement_a2c0eb92b2d66f0c67abebf96bb7922fc}{move\+\_\+local\+\_\+coord\+\_\+back\+\_\+into\+\_\+element} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}) const
+\begin{DoxyCompactList}\small\item\em Adjust local coordinates so that they\textquotesingle{}re located inside the element. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1QHermiteElement_a0e5d50fb86a7eb4c8a30ca8392d5a216}{shape} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Shape}{Shape} \&psi) const
+\begin{DoxyCompactList}\small\item\em Function to calculate the geometric shape functions at local coordinate s. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1QHermiteElement_a8b44fee3bf2a9d1b7587b56e434b594e}{dshape\+\_\+local} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Shape}{Shape} \&psi, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dpsids) const
+\begin{DoxyCompactList}\small\item\em Function to compute the geometric shape functions and derivatives w.\+r.\+t. local coordinates at local coordinate s. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1QHermiteElement_aef2bb1abc43f207edd57f6e38cbbe297}{d2shape\+\_\+local} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Shape}{Shape} \&psi, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dpsids, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&d2psids) const
+\begin{DoxyCompactList}\small\item\em Function to compute the geometric shape functions and also first and second derivatives wrt local coordinates at local coordinate s. Numbering\+: {\bfseries 1D}\+: d2psids(i,0) = $ d^2 \psi_j / d s^2 $ {\bfseries 2D}\+: d2psids(i,0) = $ \partial^2 \psi_j / \partial s_0^2 $ d2psids(i,1) = $ \partial^2 \psi_j / \partial s_1^2 $ d2psids(i,2) = $ \partial^2 \psi_j / \partial s_0 \partial s_1 $ {\bfseries 3D}\+: d2psids(i,0) = $ \partial^2 \psi_j / \partial s_0^2 $ d2psids(i,1) = $ \partial^2 \psi_j / \partial s_1^2 $ d2psids(i,2) = $ \partial^2 \psi_j / \partial s_2^2 $ d2psids(i,3) = $ \partial^2 \psi_j / \partial s_0 \partial s_1 $ d2psids(i,4) = $ \partial^2 \psi_j / \partial s_0 \partial s_2 $ d2psids(i,5) = $ \partial^2 \psi_j / \partial s_1 \partial s_2 $. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1QHermiteElement_a1b5cb1c9b780010ae16a5107d811ce03}{invert\+\_\+jacobian\+\_\+mapping} (const \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&jacobian, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&inverse\+\_\+jacobian) const
+\begin{DoxyCompactList}\small\item\em Overload the template-\/free interface for the calculation of the inverse jacobian. The element dimension must be passed to the function. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1QHermiteElement_a0f000889085286deef3b273043522834}{transform\+\_\+second\+\_\+derivatives} (const \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&jacobian, const \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&inverse\+\_\+jacobian, const \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&jacobian2, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dbasis, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&d2basis) const
+\begin{DoxyCompactList}\small\item\em Overload the template-\/free interface for the calculation of transformation of second derivatives. The element dimension should be passed as a template paremeter, for \char`\"{}optimum\char`\"{} efficiency. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1QHermiteElement_a913af787533d6c0fae4269c601ac62af}{s\+\_\+min} () const
+\begin{DoxyCompactList}\small\item\em Min. value of local coordinate. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1QHermiteElement_a9f603f92a0aae12188dcb6bcf105b8b9}{s\+\_\+max} () const
+\begin{DoxyCompactList}\small\item\em Max. value of local coordinate. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1QHermiteElement_a40d6a579987b39c4427f88745de83c89}{local\+\_\+coordinate\+\_\+of\+\_\+node} (const unsigned \&j, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}) const
+\begin{DoxyCompactList}\small\item\em Get local coordinates of node j in the element; vector sets its own size. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1QHermiteElement_a7265d98ba824ff594c7eae3b14ebcf46}{local\+\_\+fraction\+\_\+of\+\_\+node} (const unsigned \&j, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&s\+\_\+fraction)
+\begin{DoxyCompactList}\small\item\em Get local fraction of node j in the element; vector sets its own size. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1QHermiteElement_a08477703be4ee27e1883f320c098298c}{local\+\_\+one\+\_\+d\+\_\+fraction\+\_\+of\+\_\+node} (const unsigned \&n1d, const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i})
+\begin{DoxyCompactList}\small\item\em Get the local fraction of any node in the n-\/th position in a one dimensional expansion along the i-\/th local coordinate. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1QHermiteElement_a30b57c285bdbe9687cb5cc4771393363}{nnode\+\_\+1d} () const
+\begin{DoxyCompactList}\small\item\em Return number of nodes along each element edge. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1QHermiteElement_aed2b691a0b8effb35840561b5112a3af}{output} (std\+::ostream \&outfile)
+\begin{DoxyCompactList}\small\item\em Output. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1QHermiteElement_a8053b3b58ea769a5e7be72982d594c0d}{output} (std\+::ostream \&outfile, const unsigned \&n\+\_\+plot)
+\begin{DoxyCompactList}\small\item\em Output at n\+\_\+plot points. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1QHermiteElement_ae69bd9e9d2e2e90ff3116995483b87dd}{output} (F\+I\+LE $\ast$file\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em C-\/style output. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1QHermiteElement_a12a4346480e45d82cbfca1f324cd4878}{output} (F\+I\+LE $\ast$file\+\_\+pt, const unsigned \&n\+\_\+plot)
+\begin{DoxyCompactList}\small\item\em C\+\_\+style output at n\+\_\+plot points. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1QHermiteElement_a2b275f67da74572fb761d067bfaa71d1}{get\+\_\+s\+\_\+plot} (const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}, const unsigned \&nplot, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, const bool \&use\+\_\+equally\+\_\+spaced\+\_\+interior\+\_\+sample\+\_\+points=false) const
+\begin{DoxyCompactList}\small\item\em Get cector of local coordinates of plot point i (when plotting nplot points in each "coordinate direction). \end{DoxyCompactList}\item 
+std\+::string \hyperlink{classoomph_1_1QHermiteElement_a29a26af721af282e5c03f93a0005ce5f}{tecplot\+\_\+zone\+\_\+string} (const unsigned \&nplot) const
+\begin{DoxyCompactList}\small\item\em Return string for tecplot zone header (when plotting nplot points in each "coordinate direction) \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1QHermiteElement_a4afca94e16e9a63c4e2a0fa4ee2853db}{nplot\+\_\+points} (const unsigned \&nplot) const
+\item 
+void \hyperlink{classoomph_1_1QHermiteElement_a796c8d180b039c5e753b373ba7aa720a}{build\+\_\+face\+\_\+element} (const int \&face\+\_\+index, \hyperlink{classoomph_1_1FaceElement}{Face\+Element} $\ast$face\+\_\+element\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Build the lower-\/dimensional \hyperlink{classoomph_1_1FaceElement}{Face\+Element} of the type \hyperlink{classoomph_1_1QHermiteElement}{Q\+Hermite\+Element}$<$D\+I\+M-\/1$>$. The face index takes a value that correponds to the possible faces\+: \end{DoxyCompactList}\item 
+{\footnotesize template$<$$>$ }\\void \hyperlink{classoomph_1_1QHermiteElement_a8c5693519e823d93b38c120e47e82330}{shape} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Shape}{Shape} \&psi) const
+\begin{DoxyCompactList}\small\item\em \hyperlink{classoomph_1_1Shape}{Shape} function for specific Q\+Hermite\+Element$<$1$>$ \end{DoxyCompactList}\item 
+{\footnotesize template$<$$>$ }\\void \hyperlink{classoomph_1_1QHermiteElement_a4b734edf4d55bc795fca98845609fa55}{dshape\+\_\+local} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Shape}{Shape} \&psi, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dpsids) const
+\begin{DoxyCompactList}\small\item\em Derivatives of shape functions for specific Q\+Hermite\+Element$<$1$>$ \end{DoxyCompactList}\item 
+{\footnotesize template$<$$>$ }\\void \hyperlink{classoomph_1_1QHermiteElement_aaaaf8865ec4b0982be8520508d92f5be}{d2shape\+\_\+local} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Shape}{Shape} \&psi, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dpsids, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&d2psids) const
+\item 
+{\footnotesize template$<$$>$ }\\void \hyperlink{classoomph_1_1QHermiteElement_a07dd8f6d5fbb05e8b910b0d2e52a38aa}{output} (std\+::ostream \&outfile)
+\begin{DoxyCompactList}\small\item\em The output function for general 1D Q\+Hermite\+Elements. \end{DoxyCompactList}\item 
+{\footnotesize template$<$$>$ }\\void \hyperlink{classoomph_1_1QHermiteElement_a1b31b1c4c9ebff1debdf069dc8fa976d}{output} (std\+::ostream \&outfile, const unsigned \&n\+\_\+plot)
+\begin{DoxyCompactList}\small\item\em The output function for n\+\_\+plot points in each coordinate direction. \end{DoxyCompactList}\item 
+{\footnotesize template$<$$>$ }\\void \hyperlink{classoomph_1_1QHermiteElement_ad46a3ab51b36d24c7bf101f52722bf4f}{output} (F\+I\+LE $\ast$file\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em The C-\/style output function for general 1D Q\+Hermite\+Elements. \end{DoxyCompactList}\item 
+{\footnotesize template$<$$>$ }\\void \hyperlink{classoomph_1_1QHermiteElement_a06e716f7fa8ed3e595089b88c68b1026}{output} (F\+I\+LE $\ast$file\+\_\+pt, const unsigned \&n\+\_\+plot)
+\begin{DoxyCompactList}\small\item\em The C-\/style output function for n\+\_\+plot points in each coordinate direction. \end{DoxyCompactList}\item 
+{\footnotesize template$<$$>$ }\\void \hyperlink{classoomph_1_1QHermiteElement_a221b1fae4565b47b34786cb0579000b3}{build\+\_\+face\+\_\+element} (const int \&face\+\_\+index, \hyperlink{classoomph_1_1FaceElement}{Face\+Element} $\ast$face\+\_\+element\+\_\+pt)
+\item 
+{\footnotesize template$<$$>$ }\\void \hyperlink{classoomph_1_1QHermiteElement_a46e93a6e3daf826f6d734e450da38899}{shape} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Shape}{Shape} \&psi) const
+\begin{DoxyCompactList}\small\item\em \hyperlink{classoomph_1_1Shape}{Shape} function for specific Q\+Hermite\+Element$<$2$>$ \end{DoxyCompactList}\item 
+{\footnotesize template$<$$>$ }\\void \hyperlink{classoomph_1_1QHermiteElement_a0e7afb0634304e077928276302888d28}{dshape\+\_\+local} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Shape}{Shape} \&psi, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dpsids) const
+\begin{DoxyCompactList}\small\item\em Derivatives of shape functions for specific Q\+Hermite\+Element$<$2$>$ \end{DoxyCompactList}\item 
+{\footnotesize template$<$$>$ }\\void \hyperlink{classoomph_1_1QHermiteElement_afc15c72626666d41a190ab183573354d}{d2shape\+\_\+local} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1Shape}{Shape} \&psi, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&dpsids, \hyperlink{classoomph_1_1DShape}{D\+Shape} \&d2psids) const
+\item 
+{\footnotesize template$<$$>$ }\\void \hyperlink{classoomph_1_1QHermiteElement_ad324f863cc0ff28f4c1a6688e606a0bd}{output} (std\+::ostream \&outfile)
+\begin{DoxyCompactList}\small\item\em The output function for Q\+Hermite\+Element$<$2,\+O\+R\+D\+E\+R$>$ \end{DoxyCompactList}\item 
+{\footnotesize template$<$$>$ }\\void \hyperlink{classoomph_1_1QHermiteElement_a056485ca6e8d810dc64f871fc84dbde6}{output} (std\+::ostream \&outfile, const unsigned \&n\+\_\+plot)
+\begin{DoxyCompactList}\small\item\em The output function for n\+\_\+plot points in each coordinate direction. \end{DoxyCompactList}\item 
+{\footnotesize template$<$$>$ }\\void \hyperlink{classoomph_1_1QHermiteElement_a38db955b7d2f3fddf170db5af57cb714}{output} (F\+I\+LE $\ast$file\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em The C-\/style output function for Q\+Hermite\+Element$<$2,\+O\+R\+D\+E\+R$>$ \end{DoxyCompactList}\item 
+{\footnotesize template$<$$>$ }\\void \hyperlink{classoomph_1_1QHermiteElement_a901e801649625708086312f1cba77147}{output} (F\+I\+LE $\ast$file\+\_\+pt, const unsigned \&n\+\_\+plot)
+\begin{DoxyCompactList}\small\item\em The C-\/style output function for n\+\_\+plot points in each coordinate direction. \end{DoxyCompactList}\item 
+{\footnotesize template$<$$>$ }\\void \hyperlink{classoomph_1_1QHermiteElement_a7e81604ac70e3adf1b82496fdbbc4348}{build\+\_\+face\+\_\+element} (const int \&face\+\_\+index, \hyperlink{classoomph_1_1FaceElement}{Face\+Element} $\ast$face\+\_\+element\+\_\+pt)
+\item 
+{\footnotesize template$<$$>$ }\\void \hyperlink{classoomph_1_1QHermiteElement_a5715822b33881a8d0cba7e6253624c97}{get\+\_\+s\+\_\+plot} (const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}, const unsigned \&nplot, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, const bool \&use\+\_\+equally\+\_\+spaced\+\_\+interior\+\_\+sample\+\_\+points) const
+\item 
+{\footnotesize template$<$$>$ }\\std\+::string \hyperlink{classoomph_1_1QHermiteElement_a0aeaeaf09670be9db120e578527a003e}{tecplot\+\_\+zone\+\_\+string} (const unsigned \&nplot) const
+\item 
+{\footnotesize template$<$$>$ }\\unsigned \hyperlink{classoomph_1_1QHermiteElement_a97a492c5be028112ec449d5a973a4fe7}{nplot\+\_\+points} (const unsigned \&nplot) const
+\item 
+{\footnotesize template$<$$>$ }\\void \hyperlink{classoomph_1_1QHermiteElement_ad02d9dfe6e50410f5fac2804dcad9f76}{get\+\_\+s\+\_\+plot} (const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}, const unsigned \&nplot, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, const bool \&use\+\_\+equally\+\_\+spaced\+\_\+interior\+\_\+sample\+\_\+points) const
+\item 
+{\footnotesize template$<$$>$ }\\std\+::string \hyperlink{classoomph_1_1QHermiteElement_a1de256ecd9b74e749ee298f64c096557}{tecplot\+\_\+zone\+\_\+string} (const unsigned \&nplot) const
+\item 
+{\footnotesize template$<$$>$ }\\unsigned \hyperlink{classoomph_1_1QHermiteElement_a3c5d93116e819f41baf0f90c03e13bbd}{nplot\+\_\+points} (const unsigned \&nplot) const
+\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classoomph_1_1Gauss}{Gauss}$<$ D\+IM, 3 $>$ \hyperlink{classoomph_1_1QHermiteElement_a51a474fe0cd5c8986bd68a94a0e369b7}{Default\+\_\+integration\+\_\+scheme}
+\begin{DoxyCompactList}\small\item\em Default integration rule\+: Gaussian integration of same \textquotesingle{}order\textquotesingle{} as the element. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$unsigned D\+IM$>$\newline
+class oomph\+::\+Q\+Hermite\+Element$<$ D\+I\+M $>$}
+
+General \hyperlink{classoomph_1_1QHermiteElement}{Q\+Hermite\+Element} class. Local coordinates are not assumed to be aligned with the global coordinates so the Jacobian of the mapping between local and global coordinates is a full matrix. For cases where the coordinates are aligned, you should use the derived class, \hyperlink{classoomph_1_1DiagQHermiteElement}{Diag\+Q\+Hermite\+Element}, which uses a simplified mapping that makes the evaluation of derivatives of the shape functions much cheaper. 
+
+Definition at line 98 of file hermite\+\_\+elements.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1QHermiteElement_a226d0763bce1e477ee64254398a2c677}\label{classoomph_1_1QHermiteElement_a226d0763bce1e477ee64254398a2c677}} 
+\index{oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}!Q\+Hermite\+Element@{Q\+Hermite\+Element}}
+\index{Q\+Hermite\+Element@{Q\+Hermite\+Element}!oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{Q\+Hermite\+Element()}{QHermiteElement()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+\hyperlink{classoomph_1_1QHermiteElement}{oomph\+::\+Q\+Hermite\+Element}$<$ D\+IM $>$\+::\hyperlink{classoomph_1_1QHermiteElement}{Q\+Hermite\+Element} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor. 
+
+
+
+Definition at line 112 of file hermite\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1QHermiteElement_a6dce1c70656dfcd8da365462b959e709}\label{classoomph_1_1QHermiteElement_a6dce1c70656dfcd8da365462b959e709}} 
+\index{oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}!Q\+Hermite\+Element@{Q\+Hermite\+Element}}
+\index{Q\+Hermite\+Element@{Q\+Hermite\+Element}!oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{Q\+Hermite\+Element()}{QHermiteElement()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+\hyperlink{classoomph_1_1QHermiteElement}{oomph\+::\+Q\+Hermite\+Element}$<$ D\+IM $>$\+::\hyperlink{classoomph_1_1QHermiteElement}{Q\+Hermite\+Element} (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1QHermiteElement}{Q\+Hermite\+Element}$<$ D\+IM $>$ \&}]{dummy }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Broken copy constructor. 
+
+
+
+Definition at line 129 of file hermite\+\_\+elements.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1QHermiteElement_a221b1fae4565b47b34786cb0579000b3}\label{classoomph_1_1QHermiteElement_a221b1fae4565b47b34786cb0579000b3}} 
+\index{oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}!build\+\_\+face\+\_\+element@{build\+\_\+face\+\_\+element}}
+\index{build\+\_\+face\+\_\+element@{build\+\_\+face\+\_\+element}!oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{build\+\_\+face\+\_\+element()}{build\_face\_element()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$$>$ \\
+void \hyperlink{classoomph_1_1QHermiteElement}{oomph\+::\+Q\+Hermite\+Element}$<$ 1 $>$\+::build\+\_\+face\+\_\+element (\begin{DoxyParamCaption}\item[{const int \&}]{face\+\_\+index,  }\item[{\hyperlink{classoomph_1_1FaceElement}{Face\+Element} $\ast$}]{face\+\_\+element\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Function to setup geometrical information for lower-\/dimensional Face\+Elements (single node elements) 
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_aaf7bead5b462cfd5401d97b3dbdc7af7}{oomph\+::\+Finite\+Element}.
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1SolidQHermiteElement_a4e81780865998f59277d7424217ec7c1}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ 1 $>$}, and \hyperlink{classoomph_1_1SolidQHermiteElement_a4e81780865998f59277d7424217ec7c1}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ 2 $>$}.
+
+
+
+Definition at line 289 of file hermite\+\_\+elements.\+cc.
+
+\mbox{\Hypertarget{classoomph_1_1QHermiteElement_a796c8d180b039c5e753b373ba7aa720a}\label{classoomph_1_1QHermiteElement_a796c8d180b039c5e753b373ba7aa720a}} 
+\index{oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}!build\+\_\+face\+\_\+element@{build\+\_\+face\+\_\+element}}
+\index{build\+\_\+face\+\_\+element@{build\+\_\+face\+\_\+element}!oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{build\+\_\+face\+\_\+element()}{build\_face\_element()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1QHermiteElement}{oomph\+::\+Q\+Hermite\+Element}$<$ D\+IM $>$\+::build\+\_\+face\+\_\+element (\begin{DoxyParamCaption}\item[{const int \&}]{face\+\_\+index,  }\item[{\hyperlink{classoomph_1_1FaceElement}{Face\+Element} $\ast$}]{face\+\_\+element\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Build the lower-\/dimensional \hyperlink{classoomph_1_1FaceElement}{Face\+Element} of the type \hyperlink{classoomph_1_1QHermiteElement}{Q\+Hermite\+Element}$<$D\+I\+M-\/1$>$. The face index takes a value that correponds to the possible faces\+: 
+
+In 1D\+: -\/1 (Left) s\mbox{[}0\mbox{]} = -\/1.\+0 +1 (Right) s\mbox{[}0\mbox{]} = 1.\+0
+
+In 2D\+: -\/1 (West) s\mbox{[}0\mbox{]} = -\/1.\+0 +1 (East) s\mbox{[}0\mbox{]} = 1.\+0 -\/2 (South) s\mbox{[}1\mbox{]} = -\/1.\+0 +2 (North) s\mbox{[}1\mbox{]} = 1.\+0
+
+In 3D\+: -\/1 (Left) s\mbox{[}0\mbox{]} = -\/1.\+0 +1 (Right) s\mbox{[}0\mbox{]} = 1.\+0 -\/2 (Down) s\mbox{[}1\mbox{]} = -\/1.\+0 +2 (Up) s\mbox{[}1\mbox{]} = 1.\+0 -\/3 (Back) s\mbox{[}2\mbox{]} = -\/1.\+0 +3 (Front) s\mbox{[}2\mbox{]} = 1.\+0 
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_aaf7bead5b462cfd5401d97b3dbdc7af7}{oomph\+::\+Finite\+Element}.
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1SolidQHermiteElement_a4e81780865998f59277d7424217ec7c1}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ D\+I\+M $>$}, \hyperlink{classoomph_1_1SolidQHermiteElement_a4e81780865998f59277d7424217ec7c1}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ 1 $>$}, and \hyperlink{classoomph_1_1SolidQHermiteElement_a4e81780865998f59277d7424217ec7c1}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ 2 $>$}.
+
+\mbox{\Hypertarget{classoomph_1_1QHermiteElement_a7e81604ac70e3adf1b82496fdbbc4348}\label{classoomph_1_1QHermiteElement_a7e81604ac70e3adf1b82496fdbbc4348}} 
+\index{oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}!build\+\_\+face\+\_\+element@{build\+\_\+face\+\_\+element}}
+\index{build\+\_\+face\+\_\+element@{build\+\_\+face\+\_\+element}!oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{build\+\_\+face\+\_\+element()}{build\_face\_element()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$$>$ \\
+void \hyperlink{classoomph_1_1QHermiteElement}{oomph\+::\+Q\+Hermite\+Element}$<$ 2 $>$\+::build\+\_\+face\+\_\+element (\begin{DoxyParamCaption}\item[{const int \&}]{face\+\_\+index,  }\item[{\hyperlink{classoomph_1_1FaceElement}{Face\+Element} $\ast$}]{face\+\_\+element\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Function to setup geometrical information for lower-\/dimensional Face\+Elements (of type Q\+Hermite\+Element$<$1$>$). 
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_aaf7bead5b462cfd5401d97b3dbdc7af7}{oomph\+::\+Finite\+Element}.
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1SolidQHermiteElement_a4e81780865998f59277d7424217ec7c1}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ 1 $>$}, and \hyperlink{classoomph_1_1SolidQHermiteElement_a4e81780865998f59277d7424217ec7c1}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ 2 $>$}.
+
+
+
+Definition at line 942 of file hermite\+\_\+elements.\+cc.
+
+\mbox{\Hypertarget{classoomph_1_1QHermiteElement_aaaaf8865ec4b0982be8520508d92f5be}\label{classoomph_1_1QHermiteElement_aaaaf8865ec4b0982be8520508d92f5be}} 
+\index{oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}!d2shape\+\_\+local@{d2shape\+\_\+local}}
+\index{d2shape\+\_\+local@{d2shape\+\_\+local}!oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{d2shape\+\_\+local()}{d2shape\_local()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$$>$ \\
+void \hyperlink{classoomph_1_1QHermiteElement}{oomph\+::\+Q\+Hermite\+Element}$<$ 1 $>$\+::d2shape\+\_\+local (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dpsids,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{d2psids }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Derivatives and second derivatives of shape functions for specific Q\+Hermite\+Element$<$1$>$ d2psids(i,0) = $ d^2 \psi_j / d s^2 $ 
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a53e5051582d9da07b9d35da9debd0cd7}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 105 of file hermite\+\_\+elements.\+cc.
+
+\mbox{\Hypertarget{classoomph_1_1QHermiteElement_aef2bb1abc43f207edd57f6e38cbbe297}\label{classoomph_1_1QHermiteElement_aef2bb1abc43f207edd57f6e38cbbe297}} 
+\index{oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}!d2shape\+\_\+local@{d2shape\+\_\+local}}
+\index{d2shape\+\_\+local@{d2shape\+\_\+local}!oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{d2shape\+\_\+local()}{d2shape\_local()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1QHermiteElement}{oomph\+::\+Q\+Hermite\+Element}$<$ D\+IM $>$\+::d2shape\+\_\+local (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dpsids,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{d2psids }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Function to compute the geometric shape functions and also first and second derivatives wrt local coordinates at local coordinate s. Numbering\+: {\bfseries 1D}\+: d2psids(i,0) = $ d^2 \psi_j / d s^2 $ {\bfseries 2D}\+: d2psids(i,0) = $ \partial^2 \psi_j / \partial s_0^2 $ d2psids(i,1) = $ \partial^2 \psi_j / \partial s_1^2 $ d2psids(i,2) = $ \partial^2 \psi_j / \partial s_0 \partial s_1 $ {\bfseries 3D}\+: d2psids(i,0) = $ \partial^2 \psi_j / \partial s_0^2 $ d2psids(i,1) = $ \partial^2 \psi_j / \partial s_1^2 $ d2psids(i,2) = $ \partial^2 \psi_j / \partial s_2^2 $ d2psids(i,3) = $ \partial^2 \psi_j / \partial s_0 \partial s_1 $ d2psids(i,4) = $ \partial^2 \psi_j / \partial s_0 \partial s_2 $ d2psids(i,5) = $ \partial^2 \psi_j / \partial s_1 \partial s_2 $. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a53e5051582d9da07b9d35da9debd0cd7}{oomph\+::\+Finite\+Element}.
+
+\mbox{\Hypertarget{classoomph_1_1QHermiteElement_afc15c72626666d41a190ab183573354d}\label{classoomph_1_1QHermiteElement_afc15c72626666d41a190ab183573354d}} 
+\index{oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}!d2shape\+\_\+local@{d2shape\+\_\+local}}
+\index{d2shape\+\_\+local@{d2shape\+\_\+local}!oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{d2shape\+\_\+local()}{d2shape\_local()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$$>$ \\
+void \hyperlink{classoomph_1_1QHermiteElement}{oomph\+::\+Q\+Hermite\+Element}$<$ 2 $>$\+::d2shape\+\_\+local (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dpsids,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{d2psids }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Second derivatives of the shape functions wrt local coordinates. d2psids(i,0) = $ \partial^2 \psi_j / \partial s_0^2 $ d2psids(i,1) = $ \partial^2 \psi_j / \partial s_1^2 $ d2psids(i,2) = $ \partial^2 \psi_j / \partial s_0 \partial s_1 $ 
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a53e5051582d9da07b9d35da9debd0cd7}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 556 of file hermite\+\_\+elements.\+cc.
+
+\mbox{\Hypertarget{classoomph_1_1QHermiteElement_a4b734edf4d55bc795fca98845609fa55}\label{classoomph_1_1QHermiteElement_a4b734edf4d55bc795fca98845609fa55}} 
+\index{oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}!dshape\+\_\+local@{dshape\+\_\+local}}
+\index{dshape\+\_\+local@{dshape\+\_\+local}!oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{dshape\+\_\+local()}{dshape\_local()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$$>$ \\
+void \hyperlink{classoomph_1_1QHermiteElement}{oomph\+::\+Q\+Hermite\+Element}$<$ 1 $>$\+::dshape\+\_\+local (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dpsids }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Derivatives of shape functions for specific Q\+Hermite\+Element$<$1$>$ 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a9db1456b827131c21a991ac9fedf4b0c}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 77 of file hermite\+\_\+elements.\+cc.
+
+\mbox{\Hypertarget{classoomph_1_1QHermiteElement_a8b44fee3bf2a9d1b7587b56e434b594e}\label{classoomph_1_1QHermiteElement_a8b44fee3bf2a9d1b7587b56e434b594e}} 
+\index{oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}!dshape\+\_\+local@{dshape\+\_\+local}}
+\index{dshape\+\_\+local@{dshape\+\_\+local}!oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{dshape\+\_\+local()}{dshape\_local()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1QHermiteElement}{oomph\+::\+Q\+Hermite\+Element}$<$ D\+IM $>$\+::dshape\+\_\+local (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dpsids }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Function to compute the geometric shape functions and derivatives w.\+r.\+t. local coordinates at local coordinate s. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a9db1456b827131c21a991ac9fedf4b0c}{oomph\+::\+Finite\+Element}.
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1ClampedHermiteShellBoundaryConditionElement_aa7324ef347e70cfa0828fa7c82074398}{oomph\+::\+Clamped\+Hermite\+Shell\+Boundary\+Condition\+Element}.
+
+\mbox{\Hypertarget{classoomph_1_1QHermiteElement_a0e7afb0634304e077928276302888d28}\label{classoomph_1_1QHermiteElement_a0e7afb0634304e077928276302888d28}} 
+\index{oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}!dshape\+\_\+local@{dshape\+\_\+local}}
+\index{dshape\+\_\+local@{dshape\+\_\+local}!oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{dshape\+\_\+local()}{dshape\_local()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$$>$ \\
+void \hyperlink{classoomph_1_1QHermiteElement}{oomph\+::\+Q\+Hermite\+Element}$<$ 2 $>$\+::dshape\+\_\+local (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dpsids }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Derivatives of shape functions for specific Q\+Hermite\+Element$<$2$>$ 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a9db1456b827131c21a991ac9fedf4b0c}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 438 of file hermite\+\_\+elements.\+cc.
+
+\mbox{\Hypertarget{classoomph_1_1QHermiteElement_a2b275f67da74572fb761d067bfaa71d1}\label{classoomph_1_1QHermiteElement_a2b275f67da74572fb761d067bfaa71d1}} 
+\index{oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}!get\+\_\+s\+\_\+plot@{get\+\_\+s\+\_\+plot}}
+\index{get\+\_\+s\+\_\+plot@{get\+\_\+s\+\_\+plot}!oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{get\+\_\+s\+\_\+plot()}{get\_s\_plot()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1QHermiteElement}{oomph\+::\+Q\+Hermite\+Element}$<$ D\+IM $>$\+::get\+\_\+s\+\_\+plot (\begin{DoxyParamCaption}\item[{const unsigned \&}]{i,  }\item[{const unsigned \&}]{nplot,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{const bool \&}]{use\+\_\+equally\+\_\+spaced\+\_\+interior\+\_\+sample\+\_\+points = {\ttfamily false} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get cector of local coordinates of plot point i (when plotting nplot points in each "coordinate direction). 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a82da844fd3ebb2005842464cdc148a03}{oomph\+::\+Finite\+Element}.
+
+\mbox{\Hypertarget{classoomph_1_1QHermiteElement_a5715822b33881a8d0cba7e6253624c97}\label{classoomph_1_1QHermiteElement_a5715822b33881a8d0cba7e6253624c97}} 
+\index{oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}!get\+\_\+s\+\_\+plot@{get\+\_\+s\+\_\+plot}}
+\index{get\+\_\+s\+\_\+plot@{get\+\_\+s\+\_\+plot}!oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{get\+\_\+s\+\_\+plot()}{get\_s\_plot()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$$>$ \\
+void \hyperlink{classoomph_1_1QHermiteElement}{oomph\+::\+Q\+Hermite\+Element}$<$ 1 $>$\+::get\+\_\+s\+\_\+plot (\begin{DoxyParamCaption}\item[{const unsigned \&}]{i,  }\item[{const unsigned \&}]{nplot,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{const bool \&}]{use\+\_\+equally\+\_\+spaced\+\_\+interior\+\_\+sample\+\_\+points }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Get cector of local coordinates of plot point i (when plotting nplot points in each coordinate direction). 
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a82da844fd3ebb2005842464cdc148a03}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 333 of file hermite\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1QHermiteElement_ad02d9dfe6e50410f5fac2804dcad9f76}\label{classoomph_1_1QHermiteElement_ad02d9dfe6e50410f5fac2804dcad9f76}} 
+\index{oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}!get\+\_\+s\+\_\+plot@{get\+\_\+s\+\_\+plot}}
+\index{get\+\_\+s\+\_\+plot@{get\+\_\+s\+\_\+plot}!oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{get\+\_\+s\+\_\+plot()}{get\_s\_plot()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$$>$ \\
+void \hyperlink{classoomph_1_1QHermiteElement}{oomph\+::\+Q\+Hermite\+Element}$<$ 2 $>$\+::get\+\_\+s\+\_\+plot (\begin{DoxyParamCaption}\item[{const unsigned \&}]{i,  }\item[{const unsigned \&}]{nplot,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{const bool \&}]{use\+\_\+equally\+\_\+spaced\+\_\+interior\+\_\+sample\+\_\+points }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Get cector of local coordinates of plot point i (when plotting nplot points in each "coordinate direction). 
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a82da844fd3ebb2005842464cdc148a03}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 383 of file hermite\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1QHermiteElement_a1b5cb1c9b780010ae16a5107d811ce03}\label{classoomph_1_1QHermiteElement_a1b5cb1c9b780010ae16a5107d811ce03}} 
+\index{oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}!invert\+\_\+jacobian\+\_\+mapping@{invert\+\_\+jacobian\+\_\+mapping}}
+\index{invert\+\_\+jacobian\+\_\+mapping@{invert\+\_\+jacobian\+\_\+mapping}!oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{invert\+\_\+jacobian\+\_\+mapping()}{invert\_jacobian\_mapping()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+double \hyperlink{classoomph_1_1QHermiteElement}{oomph\+::\+Q\+Hermite\+Element}$<$ D\+IM $>$\+::invert\+\_\+jacobian\+\_\+mapping (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{jacobian,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{inverse\+\_\+jacobian }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Overload the template-\/free interface for the calculation of the inverse jacobian. The element dimension must be passed to the function. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a42c86a7628fee00d3a9d35b935b29e48}{oomph\+::\+Finite\+Element}.
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1DiagQHermiteElement_a07bdc47a91aba325c148acae357b9365}{oomph\+::\+Diag\+Q\+Hermite\+Element$<$ D\+I\+M $>$}.
+
+
+
+Definition at line 202 of file hermite\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1QHermiteElement_a29a36f3b1e8f07d4d7b5e14aeb79c422}\label{classoomph_1_1QHermiteElement_a29a36f3b1e8f07d4d7b5e14aeb79c422}} 
+\index{oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}!local\+\_\+coord\+\_\+is\+\_\+valid@{local\+\_\+coord\+\_\+is\+\_\+valid}}
+\index{local\+\_\+coord\+\_\+is\+\_\+valid@{local\+\_\+coord\+\_\+is\+\_\+valid}!oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{local\+\_\+coord\+\_\+is\+\_\+valid()}{local\_coord\_is\_valid()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+bool \hyperlink{classoomph_1_1QHermiteElement}{oomph\+::\+Q\+Hermite\+Element}$<$ D\+IM $>$\+::local\+\_\+coord\+\_\+is\+\_\+valid (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Check whether the local coordinate are valid or not. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a9ae98c5b577d83303849ff57a9ae81f8}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 142 of file hermite\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1QHermiteElement_a40d6a579987b39c4427f88745de83c89}\label{classoomph_1_1QHermiteElement_a40d6a579987b39c4427f88745de83c89}} 
+\index{oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}!local\+\_\+coordinate\+\_\+of\+\_\+node@{local\+\_\+coordinate\+\_\+of\+\_\+node}}
+\index{local\+\_\+coordinate\+\_\+of\+\_\+node@{local\+\_\+coordinate\+\_\+of\+\_\+node}!oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{local\+\_\+coordinate\+\_\+of\+\_\+node()}{local\_coordinate\_of\_node()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1QHermiteElement}{oomph\+::\+Q\+Hermite\+Element}$<$ D\+IM $>$\+::local\+\_\+coordinate\+\_\+of\+\_\+node (\begin{DoxyParamCaption}\item[{const unsigned \&}]{j,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get local coordinates of node j in the element; vector sets its own size. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a22bc4ee35e4f948d8d7fba18c7b4f4c4}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 230 of file hermite\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1QHermiteElement_a7265d98ba824ff594c7eae3b14ebcf46}\label{classoomph_1_1QHermiteElement_a7265d98ba824ff594c7eae3b14ebcf46}} 
+\index{oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}!local\+\_\+fraction\+\_\+of\+\_\+node@{local\+\_\+fraction\+\_\+of\+\_\+node}}
+\index{local\+\_\+fraction\+\_\+of\+\_\+node@{local\+\_\+fraction\+\_\+of\+\_\+node}!oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{local\+\_\+fraction\+\_\+of\+\_\+node()}{local\_fraction\_of\_node()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1QHermiteElement}{oomph\+::\+Q\+Hermite\+Element}$<$ D\+IM $>$\+::local\+\_\+fraction\+\_\+of\+\_\+node (\begin{DoxyParamCaption}\item[{const unsigned \&}]{j,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s\+\_\+fraction }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get local fraction of node j in the element; vector sets its own size. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a41640b9a9e5f6461cd8ebb8218502b07}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 247 of file hermite\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1QHermiteElement_a08477703be4ee27e1883f320c098298c}\label{classoomph_1_1QHermiteElement_a08477703be4ee27e1883f320c098298c}} 
+\index{oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}!local\+\_\+one\+\_\+d\+\_\+fraction\+\_\+of\+\_\+node@{local\+\_\+one\+\_\+d\+\_\+fraction\+\_\+of\+\_\+node}}
+\index{local\+\_\+one\+\_\+d\+\_\+fraction\+\_\+of\+\_\+node@{local\+\_\+one\+\_\+d\+\_\+fraction\+\_\+of\+\_\+node}!oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{local\+\_\+one\+\_\+d\+\_\+fraction\+\_\+of\+\_\+node()}{local\_one\_d\_fraction\_of\_node()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+double \hyperlink{classoomph_1_1QHermiteElement}{oomph\+::\+Q\+Hermite\+Element}$<$ D\+IM $>$\+::local\+\_\+one\+\_\+d\+\_\+fraction\+\_\+of\+\_\+node (\begin{DoxyParamCaption}\item[{const unsigned \&}]{n1d,  }\item[{const unsigned \&}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get the local fraction of any node in the n-\/th position in a one dimensional expansion along the i-\/th local coordinate. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_adb8ec7d2ceda37528c2d4542d572edf4}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 263 of file hermite\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1QHermiteElement_a2c0eb92b2d66f0c67abebf96bb7922fc}\label{classoomph_1_1QHermiteElement_a2c0eb92b2d66f0c67abebf96bb7922fc}} 
+\index{oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}!move\+\_\+local\+\_\+coord\+\_\+back\+\_\+into\+\_\+element@{move\+\_\+local\+\_\+coord\+\_\+back\+\_\+into\+\_\+element}}
+\index{move\+\_\+local\+\_\+coord\+\_\+back\+\_\+into\+\_\+element@{move\+\_\+local\+\_\+coord\+\_\+back\+\_\+into\+\_\+element}!oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{move\+\_\+local\+\_\+coord\+\_\+back\+\_\+into\+\_\+element()}{move\_local\_coord\_back\_into\_element()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1QHermiteElement}{oomph\+::\+Q\+Hermite\+Element}$<$ D\+IM $>$\+::move\+\_\+local\+\_\+coord\+\_\+back\+\_\+into\+\_\+element (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Adjust local coordinates so that they\textquotesingle{}re located inside the element. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_aa042b56813a8dd8ac0e1b19ae2bbe9d1}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 159 of file hermite\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1QHermiteElement_a30b57c285bdbe9687cb5cc4771393363}\label{classoomph_1_1QHermiteElement_a30b57c285bdbe9687cb5cc4771393363}} 
+\index{oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}!nnode\+\_\+1d@{nnode\+\_\+1d}}
+\index{nnode\+\_\+1d@{nnode\+\_\+1d}!oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{nnode\+\_\+1d()}{nnode\_1d()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+unsigned \hyperlink{classoomph_1_1QHermiteElement}{oomph\+::\+Q\+Hermite\+Element}$<$ D\+IM $>$\+::nnode\+\_\+1d (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Return number of nodes along each element edge. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_ab65c7a94dda80c1876a09ac12be4e39c}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 272 of file hermite\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1QHermiteElement_a4afca94e16e9a63c4e2a0fa4ee2853db}\label{classoomph_1_1QHermiteElement_a4afca94e16e9a63c4e2a0fa4ee2853db}} 
+\index{oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}!nplot\+\_\+points@{nplot\+\_\+points}}
+\index{nplot\+\_\+points@{nplot\+\_\+points}!oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{nplot\+\_\+points()}{nplot\_points()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+unsigned \hyperlink{classoomph_1_1QHermiteElement}{oomph\+::\+Q\+Hermite\+Element}$<$ D\+IM $>$\+::nplot\+\_\+points (\begin{DoxyParamCaption}\item[{const unsigned \&}]{nplot }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Return total number of plot points (when plotting nplot points in each "coordinate direction) 
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a8ed563c7ff0cfd8bafdbb0132b388106}{oomph\+::\+Finite\+Element}.
+
+\mbox{\Hypertarget{classoomph_1_1QHermiteElement_a97a492c5be028112ec449d5a973a4fe7}\label{classoomph_1_1QHermiteElement_a97a492c5be028112ec449d5a973a4fe7}} 
+\index{oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}!nplot\+\_\+points@{nplot\+\_\+points}}
+\index{nplot\+\_\+points@{nplot\+\_\+points}!oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{nplot\+\_\+points()}{nplot\_points()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$$>$ \\
+unsigned \hyperlink{classoomph_1_1QHermiteElement}{oomph\+::\+Q\+Hermite\+Element}$<$ 1 $>$\+::nplot\+\_\+points (\begin{DoxyParamCaption}\item[{const unsigned \&}]{nplot }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Return total number of plot points (when plotting nplot points in each coordinate direction) 
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a8ed563c7ff0cfd8bafdbb0132b388106}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 374 of file hermite\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1QHermiteElement_a3c5d93116e819f41baf0f90c03e13bbd}\label{classoomph_1_1QHermiteElement_a3c5d93116e819f41baf0f90c03e13bbd}} 
+\index{oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}!nplot\+\_\+points@{nplot\+\_\+points}}
+\index{nplot\+\_\+points@{nplot\+\_\+points}!oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{nplot\+\_\+points()}{nplot\_points()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$$>$ \\
+unsigned \hyperlink{classoomph_1_1QHermiteElement}{oomph\+::\+Q\+Hermite\+Element}$<$ 2 $>$\+::nplot\+\_\+points (\begin{DoxyParamCaption}\item[{const unsigned \&}]{nplot }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Return total number of plot points (when plotting nplot points in each coordinate direction) 
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a8ed563c7ff0cfd8bafdbb0132b388106}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 433 of file hermite\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1QHermiteElement_a2c631218863046da393b0a137ccecee9}\label{classoomph_1_1QHermiteElement_a2c631218863046da393b0a137ccecee9}} 
+\index{oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}!operator=@{operator=}}
+\index{operator=@{operator=}!oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1QHermiteElement}{oomph\+::\+Q\+Hermite\+Element}$<$ D\+IM $>$\+::operator= (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1QHermiteElement}{Q\+Hermite\+Element}$<$ D\+IM $>$ \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Broken assignment operator. 
+
+
+
+Definition at line 135 of file hermite\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1QHermiteElement_a07dd8f6d5fbb05e8b910b0d2e52a38aa}\label{classoomph_1_1QHermiteElement_a07dd8f6d5fbb05e8b910b0d2e52a38aa}} 
+\index{oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}!output@{output}}
+\index{output@{output}!oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [1/12]}}
+{\footnotesize\ttfamily template$<$$>$ \\
+void \hyperlink{classoomph_1_1QHermiteElement}{oomph\+::\+Q\+Hermite\+Element}$<$ 1 $>$\+::output (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+The output function for general 1D Q\+Hermite\+Elements. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a2ad98a3d2ef4999f1bef62c0ff13f2a7}{oomph\+::\+Finite\+Element}.
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1SolidQHermiteElement_a6459f239b585ae575d779f58f70bae46}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ 1 $>$}, and \hyperlink{classoomph_1_1SolidQHermiteElement_a6459f239b585ae575d779f58f70bae46}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ 2 $>$}.
+
+
+
+Definition at line 136 of file hermite\+\_\+elements.\+cc.
+
+\mbox{\Hypertarget{classoomph_1_1QHermiteElement_a1b31b1c4c9ebff1debdf069dc8fa976d}\label{classoomph_1_1QHermiteElement_a1b31b1c4c9ebff1debdf069dc8fa976d}} 
+\index{oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}!output@{output}}
+\index{output@{output}!oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [2/12]}}
+{\footnotesize\ttfamily template$<$$>$ \\
+void \hyperlink{classoomph_1_1QHermiteElement}{oomph\+::\+Q\+Hermite\+Element}$<$ 1 $>$\+::output (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile,  }\item[{const unsigned \&}]{n\+\_\+plot }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+The output function for n\+\_\+plot points in each coordinate direction. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_afa9d9b2670f999b43e6679c9dd28c457}{oomph\+::\+Finite\+Element}.
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1SolidQHermiteElement_ade1e06d5bf37699c512cd91c013dd1e9}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ D\+I\+M $>$}, \hyperlink{classoomph_1_1SolidQHermiteElement_ade1e06d5bf37699c512cd91c013dd1e9}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ 1 $>$}, \hyperlink{classoomph_1_1SolidQHermiteElement_ade1e06d5bf37699c512cd91c013dd1e9}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ 2 $>$}, \hyperlink{classoomph_1_1SolidQHermiteElement_adef773329622efbbe113755da62a9cae}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ D\+I\+M $>$}, \hyperlink{classoomph_1_1SolidQHermiteElement_adef773329622efbbe113755da62a9cae}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ 1 $>$}, \hyperlink{classoomph_1_1SolidQHermiteElement_adef773329622efbbe113755da62a9cae}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ 2 $>$}, \hyperlink{classoomph_1_1SolidQHermiteElement_ab86bacc26f319f3266e6de9cfc5b82af}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ 1 $>$}, and \hyperlink{classoomph_1_1SolidQHermiteElement_ab86bacc26f319f3266e6de9cfc5b82af}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ 2 $>$}.
+
+
+
+Definition at line 180 of file hermite\+\_\+elements.\+cc.
+
+\mbox{\Hypertarget{classoomph_1_1QHermiteElement_ad46a3ab51b36d24c7bf101f52722bf4f}\label{classoomph_1_1QHermiteElement_ad46a3ab51b36d24c7bf101f52722bf4f}} 
+\index{oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}!output@{output}}
+\index{output@{output}!oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [3/12]}}
+{\footnotesize\ttfamily template$<$$>$ \\
+void \hyperlink{classoomph_1_1QHermiteElement}{oomph\+::\+Q\+Hermite\+Element}$<$ 1 $>$\+::output (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{file\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+The C-\/style output function for general 1D Q\+Hermite\+Elements. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a72cddd09f8ddbee1a20a1ff404c6943e}{oomph\+::\+Finite\+Element}.
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1SolidQHermiteElement_ae4f251ca932301e92e1b897cec6f0459}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ 1 $>$}, and \hyperlink{classoomph_1_1SolidQHermiteElement_ae4f251ca932301e92e1b897cec6f0459}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ 2 $>$}.
+
+
+
+Definition at line 213 of file hermite\+\_\+elements.\+cc.
+
+\mbox{\Hypertarget{classoomph_1_1QHermiteElement_a06e716f7fa8ed3e595089b88c68b1026}\label{classoomph_1_1QHermiteElement_a06e716f7fa8ed3e595089b88c68b1026}} 
+\index{oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}!output@{output}}
+\index{output@{output}!oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [4/12]}}
+{\footnotesize\ttfamily template$<$$>$ \\
+void \hyperlink{classoomph_1_1QHermiteElement}{oomph\+::\+Q\+Hermite\+Element}$<$ 1 $>$\+::output (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{file\+\_\+pt,  }\item[{const unsigned \&}]{n\+\_\+plot }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+The C-\/style output function for n\+\_\+plot points in each coordinate direction. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_adfaee690bb0608f03320eeb9d110d48c}{oomph\+::\+Finite\+Element}.
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1SolidQHermiteElement_aabd23592071d29249154d7cde20f2d88}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ D\+I\+M $>$}, \hyperlink{classoomph_1_1SolidQHermiteElement_aabd23592071d29249154d7cde20f2d88}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ 1 $>$}, \hyperlink{classoomph_1_1SolidQHermiteElement_aabd23592071d29249154d7cde20f2d88}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ 2 $>$}, \hyperlink{classoomph_1_1SolidQHermiteElement_adb8a603a0f50a7944be7af4a1cd0abc5}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ D\+I\+M $>$}, \hyperlink{classoomph_1_1SolidQHermiteElement_adb8a603a0f50a7944be7af4a1cd0abc5}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ 1 $>$}, \hyperlink{classoomph_1_1SolidQHermiteElement_adb8a603a0f50a7944be7af4a1cd0abc5}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ 2 $>$}, \hyperlink{classoomph_1_1SolidQHermiteElement_a29b211e63df67028435a71ac732d47ad}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ 1 $>$}, and \hyperlink{classoomph_1_1SolidQHermiteElement_a29b211e63df67028435a71ac732d47ad}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ 2 $>$}.
+
+
+
+Definition at line 258 of file hermite\+\_\+elements.\+cc.
+
+\mbox{\Hypertarget{classoomph_1_1QHermiteElement_aed2b691a0b8effb35840561b5112a3af}\label{classoomph_1_1QHermiteElement_aed2b691a0b8effb35840561b5112a3af}} 
+\index{oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}!output@{output}}
+\index{output@{output}!oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [5/12]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1QHermiteElement}{oomph\+::\+Q\+Hermite\+Element}$<$ D\+IM $>$\+::output (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Output. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a2ad98a3d2ef4999f1bef62c0ff13f2a7}{oomph\+::\+Finite\+Element}.
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1ClampedHermiteShellBoundaryConditionElement_a1595e604991ff18f4d907da5a8fdf40b}{oomph\+::\+Clamped\+Hermite\+Shell\+Boundary\+Condition\+Element}, \hyperlink{classoomph_1_1HermitePVDElement_aa0e10a14a3b005e07d74c9fa99e47d48}{oomph\+::\+Hermite\+P\+V\+D\+Element$<$ D\+I\+M $>$}, \hyperlink{classoomph_1_1SolidQHermiteElement_a6459f239b585ae575d779f58f70bae46}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ D\+I\+M $>$}, \hyperlink{classoomph_1_1SolidQHermiteElement_a6459f239b585ae575d779f58f70bae46}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ 1 $>$}, \hyperlink{classoomph_1_1SolidQHermiteElement_a6459f239b585ae575d779f58f70bae46}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ 2 $>$}, and \hyperlink{classoomph_1_1HermiteShellElement_af2313040b66727088dc044738b652677}{oomph\+::\+Hermite\+Shell\+Element}.
+
+
+
+Referenced by oomph\+::\+Solid\+Q\+Hermite\+Element$<$ 2 $>$\+::output().
+
+\mbox{\Hypertarget{classoomph_1_1QHermiteElement_a8053b3b58ea769a5e7be72982d594c0d}\label{classoomph_1_1QHermiteElement_a8053b3b58ea769a5e7be72982d594c0d}} 
+\index{oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}!output@{output}}
+\index{output@{output}!oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [6/12]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1QHermiteElement}{oomph\+::\+Q\+Hermite\+Element}$<$ D\+IM $>$\+::output (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile,  }\item[{const unsigned \&}]{n\+\_\+plot }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Output at n\+\_\+plot points. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_afa9d9b2670f999b43e6679c9dd28c457}{oomph\+::\+Finite\+Element}.
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1SolidQHermiteElement_ade1e06d5bf37699c512cd91c013dd1e9}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ D\+I\+M $>$}, \hyperlink{classoomph_1_1SolidQHermiteElement_ade1e06d5bf37699c512cd91c013dd1e9}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ 1 $>$}, \hyperlink{classoomph_1_1SolidQHermiteElement_ade1e06d5bf37699c512cd91c013dd1e9}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ 2 $>$}, \hyperlink{classoomph_1_1SolidQHermiteElement_adef773329622efbbe113755da62a9cae}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ D\+I\+M $>$}, \hyperlink{classoomph_1_1SolidQHermiteElement_adef773329622efbbe113755da62a9cae}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ 1 $>$}, \hyperlink{classoomph_1_1SolidQHermiteElement_adef773329622efbbe113755da62a9cae}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ 2 $>$}, \hyperlink{classoomph_1_1ClampedHermiteShellBoundaryConditionElement_a099a046661da996bac32617c0479b220}{oomph\+::\+Clamped\+Hermite\+Shell\+Boundary\+Condition\+Element}, \hyperlink{classoomph_1_1HermitePVDElement_a9de8d6a3b4e844189a97eb19e7b034c1}{oomph\+::\+Hermite\+P\+V\+D\+Element$<$ D\+I\+M $>$}, \hyperlink{classoomph_1_1SolidQHermiteElement_ab86bacc26f319f3266e6de9cfc5b82af}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ D\+I\+M $>$}, \hyperlink{classoomph_1_1SolidQHermiteElement_ab86bacc26f319f3266e6de9cfc5b82af}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ 1 $>$}, \hyperlink{classoomph_1_1SolidQHermiteElement_ab86bacc26f319f3266e6de9cfc5b82af}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ 2 $>$}, and \hyperlink{classoomph_1_1HermiteShellElement_a2f76280c3af060304800b5bc0aeb02d8}{oomph\+::\+Hermite\+Shell\+Element}.
+
+\mbox{\Hypertarget{classoomph_1_1QHermiteElement_ae69bd9e9d2e2e90ff3116995483b87dd}\label{classoomph_1_1QHermiteElement_ae69bd9e9d2e2e90ff3116995483b87dd}} 
+\index{oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}!output@{output}}
+\index{output@{output}!oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [7/12]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1QHermiteElement}{oomph\+::\+Q\+Hermite\+Element}$<$ D\+IM $>$\+::output (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{file\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+C-\/style output. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a72cddd09f8ddbee1a20a1ff404c6943e}{oomph\+::\+Finite\+Element}.
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1ClampedHermiteShellBoundaryConditionElement_af1b8f1785d656386e36a01336611a22d}{oomph\+::\+Clamped\+Hermite\+Shell\+Boundary\+Condition\+Element}, \hyperlink{classoomph_1_1HermitePVDElement_a5567656681b134890e6940972a2461d5}{oomph\+::\+Hermite\+P\+V\+D\+Element$<$ D\+I\+M $>$}, \hyperlink{classoomph_1_1SolidQHermiteElement_ae4f251ca932301e92e1b897cec6f0459}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ D\+I\+M $>$}, \hyperlink{classoomph_1_1SolidQHermiteElement_ae4f251ca932301e92e1b897cec6f0459}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ 1 $>$}, \hyperlink{classoomph_1_1SolidQHermiteElement_ae4f251ca932301e92e1b897cec6f0459}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ 2 $>$}, and \hyperlink{classoomph_1_1HermiteShellElement_a126ebcc503395e036c6bfaf8fabbc800}{oomph\+::\+Hermite\+Shell\+Element}.
+
+\mbox{\Hypertarget{classoomph_1_1QHermiteElement_a12a4346480e45d82cbfca1f324cd4878}\label{classoomph_1_1QHermiteElement_a12a4346480e45d82cbfca1f324cd4878}} 
+\index{oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}!output@{output}}
+\index{output@{output}!oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [8/12]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1QHermiteElement}{oomph\+::\+Q\+Hermite\+Element}$<$ D\+IM $>$\+::output (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{file\+\_\+pt,  }\item[{const unsigned \&}]{n\+\_\+plot }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+C\+\_\+style output at n\+\_\+plot points. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_adfaee690bb0608f03320eeb9d110d48c}{oomph\+::\+Finite\+Element}.
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1SolidQHermiteElement_aabd23592071d29249154d7cde20f2d88}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ D\+I\+M $>$}, \hyperlink{classoomph_1_1SolidQHermiteElement_aabd23592071d29249154d7cde20f2d88}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ 1 $>$}, \hyperlink{classoomph_1_1SolidQHermiteElement_aabd23592071d29249154d7cde20f2d88}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ 2 $>$}, \hyperlink{classoomph_1_1SolidQHermiteElement_adb8a603a0f50a7944be7af4a1cd0abc5}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ D\+I\+M $>$}, \hyperlink{classoomph_1_1SolidQHermiteElement_adb8a603a0f50a7944be7af4a1cd0abc5}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ 1 $>$}, \hyperlink{classoomph_1_1SolidQHermiteElement_adb8a603a0f50a7944be7af4a1cd0abc5}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ 2 $>$}, \hyperlink{classoomph_1_1ClampedHermiteShellBoundaryConditionElement_ade7c773aa9f4587d25945b4f4860a690}{oomph\+::\+Clamped\+Hermite\+Shell\+Boundary\+Condition\+Element}, \hyperlink{classoomph_1_1HermitePVDElement_a4a8edf00d8c8b4fe61676fead8413ab9}{oomph\+::\+Hermite\+P\+V\+D\+Element$<$ D\+I\+M $>$}, \hyperlink{classoomph_1_1SolidQHermiteElement_a29b211e63df67028435a71ac732d47ad}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ D\+I\+M $>$}, \hyperlink{classoomph_1_1SolidQHermiteElement_a29b211e63df67028435a71ac732d47ad}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ 1 $>$}, \hyperlink{classoomph_1_1SolidQHermiteElement_a29b211e63df67028435a71ac732d47ad}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ 2 $>$}, and \hyperlink{classoomph_1_1HermiteShellElement_a805a6e65b4dbb7bcffab6180ff9686ba}{oomph\+::\+Hermite\+Shell\+Element}.
+
+\mbox{\Hypertarget{classoomph_1_1QHermiteElement_ad324f863cc0ff28f4c1a6688e606a0bd}\label{classoomph_1_1QHermiteElement_ad324f863cc0ff28f4c1a6688e606a0bd}} 
+\index{oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}!output@{output}}
+\index{output@{output}!oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [9/12]}}
+{\footnotesize\ttfamily template$<$$>$ \\
+void \hyperlink{classoomph_1_1QHermiteElement}{oomph\+::\+Q\+Hermite\+Element}$<$ 2 $>$\+::output (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+The output function for Q\+Hermite\+Element$<$2,\+O\+R\+D\+E\+R$>$ 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a2ad98a3d2ef4999f1bef62c0ff13f2a7}{oomph\+::\+Finite\+Element}.
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1SolidQHermiteElement_a6459f239b585ae575d779f58f70bae46}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ 1 $>$}, and \hyperlink{classoomph_1_1SolidQHermiteElement_a6459f239b585ae575d779f58f70bae46}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ 2 $>$}.
+
+
+
+Definition at line 759 of file hermite\+\_\+elements.\+cc.
+
+\mbox{\Hypertarget{classoomph_1_1QHermiteElement_a056485ca6e8d810dc64f871fc84dbde6}\label{classoomph_1_1QHermiteElement_a056485ca6e8d810dc64f871fc84dbde6}} 
+\index{oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}!output@{output}}
+\index{output@{output}!oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [10/12]}}
+{\footnotesize\ttfamily template$<$$>$ \\
+void \hyperlink{classoomph_1_1QHermiteElement}{oomph\+::\+Q\+Hermite\+Element}$<$ 2 $>$\+::output (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile,  }\item[{const unsigned \&}]{n\+\_\+plot }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+The output function for n\+\_\+plot points in each coordinate direction. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_afa9d9b2670f999b43e6679c9dd28c457}{oomph\+::\+Finite\+Element}.
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1SolidQHermiteElement_ade1e06d5bf37699c512cd91c013dd1e9}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ D\+I\+M $>$}, \hyperlink{classoomph_1_1SolidQHermiteElement_ade1e06d5bf37699c512cd91c013dd1e9}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ 1 $>$}, \hyperlink{classoomph_1_1SolidQHermiteElement_ade1e06d5bf37699c512cd91c013dd1e9}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ 2 $>$}, \hyperlink{classoomph_1_1SolidQHermiteElement_adef773329622efbbe113755da62a9cae}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ D\+I\+M $>$}, \hyperlink{classoomph_1_1SolidQHermiteElement_adef773329622efbbe113755da62a9cae}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ 1 $>$}, \hyperlink{classoomph_1_1SolidQHermiteElement_adef773329622efbbe113755da62a9cae}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ 2 $>$}, \hyperlink{classoomph_1_1SolidQHermiteElement_ab86bacc26f319f3266e6de9cfc5b82af}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ 1 $>$}, and \hyperlink{classoomph_1_1SolidQHermiteElement_ab86bacc26f319f3266e6de9cfc5b82af}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ 2 $>$}.
+
+
+
+Definition at line 808 of file hermite\+\_\+elements.\+cc.
+
+\mbox{\Hypertarget{classoomph_1_1QHermiteElement_a38db955b7d2f3fddf170db5af57cb714}\label{classoomph_1_1QHermiteElement_a38db955b7d2f3fddf170db5af57cb714}} 
+\index{oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}!output@{output}}
+\index{output@{output}!oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [11/12]}}
+{\footnotesize\ttfamily template$<$$>$ \\
+void \hyperlink{classoomph_1_1QHermiteElement}{oomph\+::\+Q\+Hermite\+Element}$<$ 2 $>$\+::output (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{file\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+The C-\/style output function for Q\+Hermite\+Element$<$2,\+O\+R\+D\+E\+R$>$ 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a72cddd09f8ddbee1a20a1ff404c6943e}{oomph\+::\+Finite\+Element}.
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1SolidQHermiteElement_ae4f251ca932301e92e1b897cec6f0459}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ 1 $>$}, and \hyperlink{classoomph_1_1SolidQHermiteElement_ae4f251ca932301e92e1b897cec6f0459}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ 2 $>$}.
+
+
+
+Definition at line 850 of file hermite\+\_\+elements.\+cc.
+
+\mbox{\Hypertarget{classoomph_1_1QHermiteElement_a901e801649625708086312f1cba77147}\label{classoomph_1_1QHermiteElement_a901e801649625708086312f1cba77147}} 
+\index{oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}!output@{output}}
+\index{output@{output}!oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [12/12]}}
+{\footnotesize\ttfamily template$<$$>$ \\
+void \hyperlink{classoomph_1_1QHermiteElement}{oomph\+::\+Q\+Hermite\+Element}$<$ 2 $>$\+::output (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{file\+\_\+pt,  }\item[{const unsigned \&}]{n\+\_\+plot }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+The C-\/style output function for n\+\_\+plot points in each coordinate direction. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_adfaee690bb0608f03320eeb9d110d48c}{oomph\+::\+Finite\+Element}.
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1SolidQHermiteElement_aabd23592071d29249154d7cde20f2d88}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ D\+I\+M $>$}, \hyperlink{classoomph_1_1SolidQHermiteElement_aabd23592071d29249154d7cde20f2d88}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ 1 $>$}, \hyperlink{classoomph_1_1SolidQHermiteElement_aabd23592071d29249154d7cde20f2d88}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ 2 $>$}, \hyperlink{classoomph_1_1SolidQHermiteElement_adb8a603a0f50a7944be7af4a1cd0abc5}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ D\+I\+M $>$}, \hyperlink{classoomph_1_1SolidQHermiteElement_adb8a603a0f50a7944be7af4a1cd0abc5}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ 1 $>$}, \hyperlink{classoomph_1_1SolidQHermiteElement_adb8a603a0f50a7944be7af4a1cd0abc5}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ 2 $>$}, \hyperlink{classoomph_1_1SolidQHermiteElement_a29b211e63df67028435a71ac732d47ad}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ 1 $>$}, and \hyperlink{classoomph_1_1SolidQHermiteElement_a29b211e63df67028435a71ac732d47ad}{oomph\+::\+Solid\+Q\+Hermite\+Element$<$ 2 $>$}.
+
+
+
+Definition at line 899 of file hermite\+\_\+elements.\+cc.
+
+\mbox{\Hypertarget{classoomph_1_1QHermiteElement_a9f603f92a0aae12188dcb6bcf105b8b9}\label{classoomph_1_1QHermiteElement_a9f603f92a0aae12188dcb6bcf105b8b9}} 
+\index{oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}!s\+\_\+max@{s\+\_\+max}}
+\index{s\+\_\+max@{s\+\_\+max}!oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{s\+\_\+max()}{s\_max()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+double \hyperlink{classoomph_1_1QHermiteElement}{oomph\+::\+Q\+Hermite\+Element}$<$ D\+IM $>$\+::s\+\_\+max (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Max. value of local coordinate. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a64adbe9356927133686ab53f00341ea8}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 226 of file hermite\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1QHermiteElement_a913af787533d6c0fae4269c601ac62af}\label{classoomph_1_1QHermiteElement_a913af787533d6c0fae4269c601ac62af}} 
+\index{oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}!s\+\_\+min@{s\+\_\+min}}
+\index{s\+\_\+min@{s\+\_\+min}!oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{s\+\_\+min()}{s\_min()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+double \hyperlink{classoomph_1_1QHermiteElement}{oomph\+::\+Q\+Hermite\+Element}$<$ D\+IM $>$\+::s\+\_\+min (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Min. value of local coordinate. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a35f0803115b68bd162c07de04eeb6c5c}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 223 of file hermite\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1QHermiteElement_a8c5693519e823d93b38c120e47e82330}\label{classoomph_1_1QHermiteElement_a8c5693519e823d93b38c120e47e82330}} 
+\index{oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}!shape@{shape}}
+\index{shape@{shape}!oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{shape()}{shape()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$$>$ \\
+void \hyperlink{classoomph_1_1QHermiteElement}{oomph\+::\+Q\+Hermite\+Element}$<$ 1 $>$\+::shape (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\hyperlink{classoomph_1_1Shape}{Shape} function for specific Q\+Hermite\+Element$<$1$>$ 
+
+
+
+Implements \hyperlink{classoomph_1_1FiniteElement_a58a25b6859ddd43b7bfe64a19fee5023}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 54 of file hermite\+\_\+elements.\+cc.
+
+\mbox{\Hypertarget{classoomph_1_1QHermiteElement_a0e5d50fb86a7eb4c8a30ca8392d5a216}\label{classoomph_1_1QHermiteElement_a0e5d50fb86a7eb4c8a30ca8392d5a216}} 
+\index{oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}!shape@{shape}}
+\index{shape@{shape}!oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{shape()}{shape()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1QHermiteElement}{oomph\+::\+Q\+Hermite\+Element}$<$ D\+IM $>$\+::shape (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Function to calculate the geometric shape functions at local coordinate s. 
+
+
+
+Implements \hyperlink{classoomph_1_1FiniteElement_a58a25b6859ddd43b7bfe64a19fee5023}{oomph\+::\+Finite\+Element}.
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1ClampedHermiteShellBoundaryConditionElement_ae9a3033b7bcba34dafcb7154be331b7f}{oomph\+::\+Clamped\+Hermite\+Shell\+Boundary\+Condition\+Element}.
+
+\mbox{\Hypertarget{classoomph_1_1QHermiteElement_a46e93a6e3daf826f6d734e450da38899}\label{classoomph_1_1QHermiteElement_a46e93a6e3daf826f6d734e450da38899}} 
+\index{oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}!shape@{shape}}
+\index{shape@{shape}!oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{shape()}{shape()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$$>$ \\
+void \hyperlink{classoomph_1_1QHermiteElement}{oomph\+::\+Q\+Hermite\+Element}$<$ 2 $>$\+::shape (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1Shape}{Shape} \&}]{psi }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\hyperlink{classoomph_1_1Shape}{Shape} function for specific Q\+Hermite\+Element$<$2$>$ 
+
+
+
+Implements \hyperlink{classoomph_1_1FiniteElement_a58a25b6859ddd43b7bfe64a19fee5023}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 382 of file hermite\+\_\+elements.\+cc.
+
+\mbox{\Hypertarget{classoomph_1_1QHermiteElement_a29a26af721af282e5c03f93a0005ce5f}\label{classoomph_1_1QHermiteElement_a29a26af721af282e5c03f93a0005ce5f}} 
+\index{oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}!tecplot\+\_\+zone\+\_\+string@{tecplot\+\_\+zone\+\_\+string}}
+\index{tecplot\+\_\+zone\+\_\+string@{tecplot\+\_\+zone\+\_\+string}!oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{tecplot\+\_\+zone\+\_\+string()}{tecplot\_zone\_string()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+std\+::string \hyperlink{classoomph_1_1QHermiteElement}{oomph\+::\+Q\+Hermite\+Element}$<$ D\+IM $>$\+::tecplot\+\_\+zone\+\_\+string (\begin{DoxyParamCaption}\item[{const unsigned \&}]{nplot }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Return string for tecplot zone header (when plotting nplot points in each "coordinate direction) 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a3193df31f9ce38e0609d17a8ffb386c6}{oomph\+::\+Finite\+Element}.
+
+
+
+Referenced by oomph\+::\+Q\+Hermite\+Element$<$ D\+I\+M-\/1 $>$\+::get\+\_\+s\+\_\+plot().
+
+\mbox{\Hypertarget{classoomph_1_1QHermiteElement_a0aeaeaf09670be9db120e578527a003e}\label{classoomph_1_1QHermiteElement_a0aeaeaf09670be9db120e578527a003e}} 
+\index{oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}!tecplot\+\_\+zone\+\_\+string@{tecplot\+\_\+zone\+\_\+string}}
+\index{tecplot\+\_\+zone\+\_\+string@{tecplot\+\_\+zone\+\_\+string}!oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{tecplot\+\_\+zone\+\_\+string()}{tecplot\_zone\_string()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$$>$ \\
+std\+::string \hyperlink{classoomph_1_1QHermiteElement}{oomph\+::\+Q\+Hermite\+Element}$<$ 1 $>$\+::tecplot\+\_\+zone\+\_\+string (\begin{DoxyParamCaption}\item[{const unsigned \&}]{nplot }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Return string for tecplot zone header (when plotting nplot points in each coordinate direction) 
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a3193df31f9ce38e0609d17a8ffb386c6}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 362 of file hermite\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1QHermiteElement_a1de256ecd9b74e749ee298f64c096557}\label{classoomph_1_1QHermiteElement_a1de256ecd9b74e749ee298f64c096557}} 
+\index{oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}!tecplot\+\_\+zone\+\_\+string@{tecplot\+\_\+zone\+\_\+string}}
+\index{tecplot\+\_\+zone\+\_\+string@{tecplot\+\_\+zone\+\_\+string}!oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{tecplot\+\_\+zone\+\_\+string()}{tecplot\_zone\_string()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$$>$ \\
+std\+::string \hyperlink{classoomph_1_1QHermiteElement}{oomph\+::\+Q\+Hermite\+Element}$<$ 2 $>$\+::tecplot\+\_\+zone\+\_\+string (\begin{DoxyParamCaption}\item[{const unsigned \&}]{nplot }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Return string for tecplot zone header (when plotting nplot points in each coordinate direction) 
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_a3193df31f9ce38e0609d17a8ffb386c6}{oomph\+::\+Finite\+Element}.
+
+
+
+Definition at line 420 of file hermite\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1QHermiteElement_a0f000889085286deef3b273043522834}\label{classoomph_1_1QHermiteElement_a0f000889085286deef3b273043522834}} 
+\index{oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}!transform\+\_\+second\+\_\+derivatives@{transform\+\_\+second\+\_\+derivatives}}
+\index{transform\+\_\+second\+\_\+derivatives@{transform\+\_\+second\+\_\+derivatives}!oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{transform\+\_\+second\+\_\+derivatives()}{transform\_second\_derivatives()}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+void \hyperlink{classoomph_1_1QHermiteElement}{oomph\+::\+Q\+Hermite\+Element}$<$ D\+IM $>$\+::transform\+\_\+second\+\_\+derivatives (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{jacobian,  }\item[{const \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{inverse\+\_\+jacobian,  }\item[{const \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{jacobian2,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{dbasis,  }\item[{\hyperlink{classoomph_1_1DShape}{D\+Shape} \&}]{d2basis }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Overload the template-\/free interface for the calculation of transformation of second derivatives. The element dimension should be passed as a template paremeter, for \char`\"{}optimum\char`\"{} efficiency. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1FiniteElement_ab2c61e830b834bbd1159c679b1c093ba}{oomph\+::\+Finite\+Element}.
+
+
+
+Reimplemented in \hyperlink{classoomph_1_1DiagQHermiteElement_a6d6dbf192bc9284a87608e2699f8ebb1}{oomph\+::\+Diag\+Q\+Hermite\+Element$<$ D\+I\+M $>$}.
+
+
+
+Definition at line 209 of file hermite\+\_\+elements.\+h.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1QHermiteElement_a51a474fe0cd5c8986bd68a94a0e369b7}\label{classoomph_1_1QHermiteElement_a51a474fe0cd5c8986bd68a94a0e369b7}} 
+\index{oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}!Default\+\_\+integration\+\_\+scheme@{Default\+\_\+integration\+\_\+scheme}}
+\index{Default\+\_\+integration\+\_\+scheme@{Default\+\_\+integration\+\_\+scheme}!oomph\+::\+Q\+Hermite\+Element@{oomph\+::\+Q\+Hermite\+Element}}
+\subsubsection{\texorpdfstring{Default\+\_\+integration\+\_\+scheme}{Default\_integration\_scheme}}
+{\footnotesize\ttfamily template$<$unsigned D\+IM$>$ \\
+\hyperlink{classoomph_1_1Gauss}{Gauss}$<$ D\+IM, 3 $>$ \hyperlink{classoomph_1_1QHermiteElement}{oomph\+::\+Q\+Hermite\+Element}$<$ D\+IM $>$\+::Default\+\_\+integration\+\_\+scheme\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Default integration rule\+: Gaussian integration of same \textquotesingle{}order\textquotesingle{} as the element. 
+
+Assign the static Default\+\_\+integration\+\_\+scheme. 
+
+Definition at line 107 of file hermite\+\_\+elements.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{hermite__elements_8h}{hermite\+\_\+elements.\+h}\item 
+\hyperlink{hermite__elements_8cc}{hermite\+\_\+elements.\+cc}\end{DoxyCompactItemize}

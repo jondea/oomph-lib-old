@@ -1,0 +1,374 @@
+In this document we discuss the adaptive solution of a 2D Poisson problem with Neumann boundary conditions. \begin{center} \tabulinesep=1mm
+\begin{longtabu} spread 0pt [c]{*{1}{|X[-1]}|}
+\hline
+\begin{center} {\bfseries Two-\/dimensional model Poisson problem with Neumann boundary conditions} \end{center}  Solve \[ \sum_{i=1}^2 \frac{\partial^2u}{\partial x_i^2} = f(x_1,x_2), \ \ \ \ \ \ \ \ \ \ (1) \] in the rectangular domain $D = \left\{ (x_1,x_2) \in [0,1] \times [0,2]\right\} $. The domain boundary $ \partial D = \partial D_{Neumann} \cup \partial D_{Dirichlet} $, where $ \partial D_{Neumann} = \left\{ (x_1,x_2) | x_1=1, \ x_2\in [0,2] \right\} $. On $ \partial D_{Dirichlet}$ we apply the Dirichlet boundary conditions \[ \left. u\right|_{\partial D_{Dirichlet}}=u_0, \ \ \ \ \ \ \ \ \ \ (2) \] where the function $ u_0 $ is given. On $ \partial D_{Neumann}$ we apply the Neumann conditions \[ \left. \frac{\partial u}{\partial n}\right|_{\partial D_{Neumann}} = \left. \frac{\partial u}{\partial x_1}\right|_{\partial D_{Neumann}} =g_0, \ \ \ \ \ \ \ \ \ \ (3) \] where the function $ g_0 $ is given.   \\\cline{1-1}
+\end{longtabu}
+\end{center} 
+
+In two previous examples we demonstrated two approaches for the {\itshape non-\/adaptive} solution of this problem. In both cases we created a \char`\"{}bulk\char`\"{} mesh of {\ttfamily Q\+Poisson\+Elements} and applied the flux boundary conditions by \char`\"{}attaching\char`\"{} {\ttfamily Poisson\+Flux\+Elements} to the appropriate boundaries of the \char`\"{}bulk\char`\"{} Poisson elements. In the \href{../../two_d_poisson_flux_bc/html/index.html}{\tt first implementation} we simply added the pointers to the flux elements to the bulk mesh; in the \href{../../two_d_poisson_flux_bc2/html/index.html}{\tt second implementation} we stored the surface and bulk elements in separate meshes and combined them to a single global mesh. We will now demonstrate that the second approach greatly facilitates the automatic problem adaptation. We use the mesh adaptation procedures of the {\ttfamily Refineable\+Quad\+Mesh} class to adapt the bulk mesh, driven by the spatial error estimates in that mesh. The flux elements are neither involved in nor adapted by the refinement process of the bulk mesh. We therefore use the function {\ttfamily Problem\+::actions\+\_\+before\+\_\+adapt()} to delete the flux elements before the adaptation, and {\ttfamily Problem\+::actions\+\_\+after\+\_\+adapt()} to re-\/attach them once the bulk mesh has been adapted.
+
+As in the \href{../../two_d_poisson_flux_bc2/html/index.html}{\tt previous example} we choose a source function and boundary conditions for which the function \[ u_0(x_1,x_2) = \tanh(1-\alpha(x_1 \tan\Phi - x_2)), \ \ \ \ \ \ \ \ \ (4) \] is the exact solution of the problem.
+
+ 
+\begin{DoxyImage}
+\includegraphics[width=0.75\textwidth]{rotate}
+\doxyfigcaption{Plot of the solution obtained with automatic mesh adaptation }
+\end{DoxyImage}
+
+
+Since many functions in the driver code are identical to that in the non-\/adaptive version, discussed in the \href{../../two_d_poisson_flux_bc2/html/index.html}{\tt previous example}, we only list those functions that differ. Please consult the source code \href{../../../../demo_drivers/poisson/two_d_poisson_flux_bc_adapt/two_d_poisson_flux_bc_adapt.cc}{\tt two\+\_\+d\+\_\+poisson\+\_\+flux\+\_\+bc\+\_\+adapt.\+cc } for full details of the implementation.
+
+
+
+ 
+
+\hypertarget{index_global}{}\section{Global parameters and functions}\label{index_global}
+The specification of the source function and the exact solution in the namespace {\ttfamily \hyperlink{namespaceTanhSolnForPoisson}{Tanh\+Soln\+For\+Poisson}} is identical to that in the single-\/mesh version discussed in the \href{../../two_d_poisson_flux_bc/html/index.html}{\tt previous example}.
+
+
+
+ 
+
+\hypertarget{index_main}{}\section{The driver code}\label{index_main}
+The main code is virtually identical to that in the \href{../../two_d_poisson_flux_bc2/html/index.html}{\tt previous non-\/adaptive example }. The only change is the provision of an argument to the Newton solver
+
+ 
+\begin{DoxyCodeInclude}
+   \textcolor{comment}{// Solve the problem}
+   problem.newton\_solve(3);
+
+\end{DoxyCodeInclude}
+
+
+which indicates that the problem should be adapted up to three times.
+
+
+
+ 
+
+\hypertarget{index_problem}{}\section{The problem class}\label{index_problem}
+The problem class is very similar to that in the \href{../../two_d_poisson_flux_bc2/html/index.html#problem}{\tt non-\/adaptive implementation}\+: The only difference is the provision of the functions {\ttfamily actions\+\_\+before\+\_\+adapt()}, {\ttfamily actions\+\_\+after\+\_\+adapt()}, {\ttfamily set\+\_\+prescribed\+\_\+flux\+\_\+pt()}, and {\ttfamily delete\+\_\+flux\+\_\+elements}(...) which we discuss in more detail below.
+
+ 
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//========= start\_of\_problem\_class=====================================}
+\textcolor{comment}{/// 2D Poisson problem on rectangular domain, discretised with}
+\textcolor{comment}{}\textcolor{comment}{/// 2D QPoisson elements. Flux boundary conditions are applied}
+\textcolor{comment}{}\textcolor{comment}{/// along boundary 1 (the boundary where x=L). The specific type of }
+\textcolor{comment}{}\textcolor{comment}{/// element is specified via the template parameter.}
+\textcolor{comment}{}\textcolor{comment}{//====================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT> 
+\textcolor{keyword}{class }\hyperlink{classRefineableTwoMeshFluxPoissonProblem}{RefineableTwoMeshFluxPoissonProblem} : \textcolor{keyword}{public} Problem
+\{
+
+\textcolor{keyword}{public}:
+\textcolor{comment}{}
+\textcolor{comment}{ /// Constructor: Pass pointer to source function}
+\textcolor{comment}{} \hyperlink{classRefineableTwoMeshFluxPoissonProblem_a6568980564c4e39544b1c2bcb71cf3b6}{RefineableTwoMeshFluxPoissonProblem}(
+      PoissonEquations<2>::PoissonSourceFctPt source\_fct\_pt);
+\textcolor{comment}{}
+\textcolor{comment}{ /// Destructor (empty)}
+\textcolor{comment}{} \hyperlink{classRefineableTwoMeshFluxPoissonProblem_a6b1f154c77ea0c415bf171764d34302f}{~RefineableTwoMeshFluxPoissonProblem}()\{\}
+\textcolor{comment}{}
+\textcolor{comment}{ /// Doc the solution. DocInfo object stores flags/labels for where the}
+\textcolor{comment}{ /// output gets written to}
+\textcolor{comment}{} \textcolor{keywordtype}{void} \hyperlink{classRefineableTwoMeshFluxPoissonProblem_ad9d4a3b5856839fa95f60968fabe3493}{doc\_solution}(DocInfo& doc\_info);
+
+
+\textcolor{keyword}{private}:
+\textcolor{comment}{}
+\textcolor{comment}{ /// \(\backslash\)short Update the problem specs before solve: Reset boundary conditions}
+\textcolor{comment}{ /// to the values from the exact solution.}
+\textcolor{comment}{} \textcolor{keywordtype}{void} \hyperlink{classRefineableTwoMeshFluxPoissonProblem_a209506229c491a8cec4e1dce387e18c3}{actions\_before\_newton\_solve}();
+\textcolor{comment}{}
+\textcolor{comment}{ /// Update the problem specs after solve (empty)}
+\textcolor{comment}{} \textcolor{keywordtype}{void} \hyperlink{classRefineableTwoMeshFluxPoissonProblem_ab8b04db3dab6297f609a9a028b1c4473}{actions\_after\_newton\_solve}()\{\}
+\textcolor{comment}{}
+\textcolor{comment}{ /// Actions before adapt: Wipe the mesh of prescribed flux elements}
+\textcolor{comment}{} \textcolor{keywordtype}{void} \hyperlink{classRefineableTwoMeshFluxPoissonProblem_a10d2a67a5ac599161ddcf876b31334f6}{actions\_before\_adapt}();
+\textcolor{comment}{}
+\textcolor{comment}{ /// Actions after adapt: Rebuild the mesh of prescribed flux elements}
+\textcolor{comment}{} \textcolor{keywordtype}{void} \hyperlink{classRefineableTwoMeshFluxPoissonProblem_a0140155529861f5e63ab32feece3c9b6}{actions\_after\_adapt}();
+\textcolor{comment}{}
+\textcolor{comment}{ /// \(\backslash\)short Create Poisson flux elements on boundary b of the Mesh pointed}
+\textcolor{comment}{ /// to by bulk\_mesh\_pt and add them to the Mesh object pointed to by }
+\textcolor{comment}{ /// surface\_mesh\_pt}
+\textcolor{comment}{} \textcolor{keywordtype}{void} \hyperlink{classRefineableTwoMeshFluxPoissonProblem_ac2eaf11cfc4dda41f97cacc2a1a1f86e}{create\_flux\_elements}(\textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} &b, Mesh* \textcolor{keyword}{const} &bulk\_mesh\_pt,
+                           Mesh* \textcolor{keyword}{const} &surface\_mesh\_pt);
+\textcolor{comment}{}
+\textcolor{comment}{ /// \(\backslash\)short Delete Poisson flux elements and wipe the surface mesh}
+\textcolor{comment}{} \textcolor{keywordtype}{void} \hyperlink{classRefineableTwoMeshFluxPoissonProblem_ab35087cadc6dbc7a602441b9a986d650}{delete\_flux\_elements}(Mesh* \textcolor{keyword}{const} &surface\_mesh\_pt);
+\textcolor{comment}{}
+\textcolor{comment}{ /// \(\backslash\)short Set pointer to prescribed-flux function for all}
+\textcolor{comment}{ /// elements in the surface mesh}
+\textcolor{comment}{} \textcolor{keywordtype}{void} \hyperlink{classRefineableTwoMeshFluxPoissonProblem_aa0aeec40bbdb0649e309e51ad96e5da7}{set\_prescribed\_flux\_pt}();
+\textcolor{comment}{}
+\textcolor{comment}{ /// Pointer to the "bulk" mesh}
+\textcolor{comment}{} \hyperlink{classSimpleRefineableRectangularQuadMesh}{SimpleRefineableRectangularQuadMesh<ELEMENT>}* 
+      \hyperlink{classRefineableTwoMeshFluxPoissonProblem_a35746600caac7fd5b1a2ccec6beff8d6}{Bulk\_mesh\_pt};
+\textcolor{comment}{}
+\textcolor{comment}{ /// Pointer to the "surface" mesh}
+\textcolor{comment}{} Mesh* \hyperlink{classRefineableTwoMeshFluxPoissonProblem_a1ad7c5a406b267f2d79c52b3d347971d}{Surface\_mesh\_pt};
+\textcolor{comment}{}
+\textcolor{comment}{ /// Pointer to source function}
+\textcolor{comment}{} PoissonEquations<2>::PoissonSourceFctPt \hyperlink{classRefineableTwoMeshFluxPoissonProblem_a0f3434b437ca4b5e6a97ecae9e826477}{Source\_fct\_pt};
+
+\}; \textcolor{comment}{// end of problem class}
+
+\end{DoxyCodeInclude}
+
+
+\mbox{[}See the discussion of the \href{../../one_d_poisson/html/index.html}{\tt 1D Poisson problem} for a more detailed discussion of the function type Poisson\+Equations$<$2$>$\+::\+Poisson\+Source\+Fct\+Pt.\mbox{]}
+
+
+
+ 
+
+\hypertarget{index_constructor}{}\section{The Problem constructor}\label{index_constructor}
+We create the bulk mesh and surface mesh as \href{../../two_d_poisson_flux_bc2/html/index.html#constructor}{\tt before}. Next we create the spatial error estimator and pass it to the bulk mesh.
+
+
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//=======start\_of\_constructor=============================================}
+\textcolor{comment}{/// Constructor for Poisson problem: Pass pointer to source function.}
+\textcolor{comment}{}\textcolor{comment}{//========================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>
+\hyperlink{classRefineableTwoMeshFluxPoissonProblem_a6568980564c4e39544b1c2bcb71cf3b6}{RefineableTwoMeshFluxPoissonProblem<ELEMENT>::}
+\hyperlink{classRefineableTwoMeshFluxPoissonProblem_a6568980564c4e39544b1c2bcb71cf3b6}{RefineableTwoMeshFluxPoissonProblem}(
+      PoissonEquations<2>::PoissonSourceFctPt source\_fct\_pt)
+ :  Source\_fct\_pt(source\_fct\_pt)
+\{ 
+
+ \textcolor{comment}{// Setup "bulk" mesh}
+
+ \textcolor{comment}{// # of elements in x-direction}
+ \textcolor{keywordtype}{unsigned} n\_x=4;
+
+ \textcolor{comment}{// # of elements in y-direction}
+ \textcolor{keywordtype}{unsigned} n\_y=4;
+
+ \textcolor{comment}{// Domain length in x-direction}
+ \textcolor{keywordtype}{double} l\_x=1.0;
+
+ \textcolor{comment}{// Domain length in y-direction}
+ \textcolor{keywordtype}{double} l\_y=2.0;
+
+ \textcolor{comment}{// Build "bulk" mesh}
+ Bulk\_mesh\_pt=\textcolor{keyword}{new} 
+  \hyperlink{classSimpleRefineableRectangularQuadMesh}{SimpleRefineableRectangularQuadMesh<ELEMENT>}(n\_x,n\_y,l\_x,l\_y)
+      ;
+
+ \textcolor{comment}{// Create/set error estimator}
+ Bulk\_mesh\_pt->spatial\_error\_estimator\_pt()=\textcolor{keyword}{new} Z2ErrorEstimator;
+
+\end{DoxyCodeInclude}
+
+
+Apart from this, the problem is constructed as in the \href{../../two_d_poisson_flux_bc2/html/index.html#constructor}{\tt non-\/adaptive previous example.}
+
+
+\begin{DoxyCodeInclude}
+  
+ \textcolor{comment}{// Create "surface mesh" that will contain only the prescribed-flux }
+ \textcolor{comment}{// elements. The constructor just creates the mesh without}
+ \textcolor{comment}{// giving it any elements, nodes, etc.}
+ Surface\_mesh\_pt = \textcolor{keyword}{new} Mesh;
+
+ \textcolor{comment}{// Create prescribed-flux elements from all elements that are }
+ \textcolor{comment}{// adjacent to boundary 1, but add them to a separate mesh.}
+ \textcolor{comment}{// Note that this is exactly the same function as used in the }
+ \textcolor{comment}{// single mesh version of the problem, we merely pass different Mesh pointers.}
+ create\_flux\_elements(1,Bulk\_mesh\_pt,Surface\_mesh\_pt);
+
+ \textcolor{comment}{// Add the two sub meshes to the problem}
+ add\_sub\_mesh(Bulk\_mesh\_pt);
+ add\_sub\_mesh(Surface\_mesh\_pt);
+
+ \textcolor{comment}{// Rebuild the Problem's global mesh from its various sub-meshes}
+ build\_global\_mesh();
+
+
+ \textcolor{comment}{// Set the boundary conditions for this problem: All nodes are}
+ \textcolor{comment}{// free by default -- just pin the ones that have Dirichlet conditions}
+ \textcolor{comment}{// here. }
+ \textcolor{keywordtype}{unsigned} n\_bound = Bulk\_mesh\_pt->nboundary();
+ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} b=0;b<n\_bound;b++)
+  \{
+   \textcolor{comment}{//Leave nodes on boundary 1 free}
+   \textcolor{keywordflow}{if} (b!=1)
+    \{
+     \textcolor{keywordtype}{unsigned} n\_node = Bulk\_mesh\_pt->nboundary\_node(b);
+     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} n=0;n<n\_node;n++)
+      \{
+       Bulk\_mesh\_pt->boundary\_node\_pt(b,n)->pin(0); 
+      \}
+    \}
+  \}
+
+ \textcolor{comment}{// Complete the build of all elements so they are fully functional}
+
+ \textcolor{comment}{// Loop over the Poisson bulk elements to set up element-specific }
+ \textcolor{comment}{// things that cannot be handled by constructor: Pass pointer to }
+ \textcolor{comment}{// source function}
+ \textcolor{keywordtype}{unsigned} n\_element = Bulk\_mesh\_pt->nelement();
+ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} e=0;e<n\_element;e++)
+  \{
+   \textcolor{comment}{// Upcast from GeneralisedElement to Poisson bulk element}
+   ELEMENT *el\_pt = \textcolor{keyword}{dynamic\_cast<}ELEMENT*\textcolor{keyword}{>}(Bulk\_mesh\_pt->element\_pt(e));
+
+   \textcolor{comment}{//Set the source function pointer}
+   el\_pt->source\_fct\_pt() = Source\_fct\_pt;
+  \}
+
+ \textcolor{comment}{// Set pointer to prescribed flux function for flux elements}
+ set\_prescribed\_flux\_pt();
+
+ \textcolor{comment}{// Setup equation numbering scheme}
+ cout <<\textcolor{stringliteral}{"Number of equations: "} << assign\_eqn\_numbers() << std::endl; 
+
+\} \textcolor{comment}{// end of constructor}
+
+\end{DoxyCodeInclude}
+
+
+
+
+ 
+
+\hypertarget{index_before_adapt}{}\section{Actions before adaptation}\label{index_before_adapt}
+The mesh adaptation is driven by the error estimates in the bulk elements and only performed for that mesh. The flux elements must therefore be removed before adaptation. We do this by calling the function {\ttfamily delete\+\_\+flux\+\_\+elements}(...), and then rebuilding the {\ttfamily Problem\textquotesingle{}s} global mesh.
+
+ 
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//=====================start\_of\_actions\_before\_adapt======================}
+\textcolor{comment}{/// Actions before adapt: Wipe the mesh of prescribed flux elements}
+\textcolor{comment}{}\textcolor{comment}{//========================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>
+\textcolor{keywordtype}{void} \hyperlink{classRefineableTwoMeshFluxPoissonProblem_a10d2a67a5ac599161ddcf876b31334f6}{RefineableTwoMeshFluxPoissonProblem<ELEMENT>::actions\_before\_adapt}
+      ()
+\{
+ \textcolor{comment}{// Kill the flux elements and wipe surface mesh}
+ delete\_flux\_elements(Surface\_mesh\_pt);
+ 
+ \textcolor{comment}{// Rebuild the Problem's global mesh from its various sub-meshes}
+ rebuild\_global\_mesh();
+
+\}\textcolor{comment}{// end of actions\_before\_adapt}
+
+\end{DoxyCodeInclude}
+
+
+
+
+ 
+
+\hypertarget{index_after_adapt}{}\section{Actions after adapt}\label{index_after_adapt}
+After the (bulk-\/)mesh has been adapted, the flux elements must be re-\/attached. This is done by calling the function {\ttfamily create\+\_\+flux\+\_\+elements}(...), followed by a rebuild of the {\ttfamily Problem\textquotesingle{}s} global mesh. Finally, we set the function pointer to the prescribed flux function for each flux element.
+
+
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//=====================start\_of\_actions\_after\_adapt=======================}
+\textcolor{comment}{///  Actions after adapt: Rebuild the mesh of prescribed flux elements}
+\textcolor{comment}{}\textcolor{comment}{//========================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>
+\textcolor{keywordtype}{void} \hyperlink{classRefineableTwoMeshFluxPoissonProblem_a0140155529861f5e63ab32feece3c9b6}{RefineableTwoMeshFluxPoissonProblem<ELEMENT>::actions\_after\_adapt}
+      ()
+\{
+ \textcolor{comment}{// Create prescribed-flux elements from all elements that are }
+ \textcolor{comment}{// adjacent to boundary 1 and add them to surfac mesh}
+ create\_flux\_elements(1,Bulk\_mesh\_pt,Surface\_mesh\_pt);
+ 
+ \textcolor{comment}{// Rebuild the Problem's global mesh from its various sub-meshes}
+ rebuild\_global\_mesh();
+ 
+ \textcolor{comment}{// Set pointer to prescribed flux function for flux elements}
+ set\_prescribed\_flux\_pt();
+ 
+ \textcolor{comment}{// Doc refinement levels in bulk mesh}
+ \textcolor{keywordtype}{unsigned} min\_refinement\_level;
+ \textcolor{keywordtype}{unsigned} max\_refinement\_level;
+ Bulk\_mesh\_pt->get\_refinement\_levels(min\_refinement\_level,
+                                     max\_refinement\_level); 
+ cout << \textcolor{stringliteral}{"Min/max. refinement levels in bulk mesh: "} 
+      << min\_refinement\_level << \textcolor{stringliteral}{" "} 
+      << max\_refinement\_level << std::endl;
+ 
+\}\textcolor{comment}{// end of actions\_after\_adapt}
+
+\end{DoxyCodeInclude}
+
+
+
+
+ 
+
+\hypertarget{index_delete_flux}{}\section{Delete flux elements}\label{index_delete_flux}
+This function loops over all the flux elements (i.\+e. those in the surface mesh) and deletes them and their storage.
+
+ 
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//============start\_of\_delete\_flux\_elements==============================}
+\textcolor{comment}{/// Delete Poisson Flux Elements and wipe the surface mesh}
+\textcolor{comment}{}\textcolor{comment}{//=======================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>
+\textcolor{keywordtype}{void} \hyperlink{classRefineableTwoMeshFluxPoissonProblem_ab35087cadc6dbc7a602441b9a986d650}{RefineableTwoMeshFluxPoissonProblem<ELEMENT>::}
+\hyperlink{classRefineableTwoMeshFluxPoissonProblem_ab35087cadc6dbc7a602441b9a986d650}{delete\_flux\_elements}(Mesh* \textcolor{keyword}{const} &surface\_mesh\_pt)
+\{
+ \textcolor{comment}{// How many surface elements are in the surface mesh}
+ \textcolor{keywordtype}{unsigned} n\_element = surface\_mesh\_pt->nelement();
+
+ \textcolor{comment}{// Loop over the surface elements}
+ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} e=0;e<n\_element;e++)
+  \{
+   \textcolor{comment}{// Kill surface element}
+   \textcolor{keyword}{delete} surface\_mesh\_pt->element\_pt(e);
+  \}
+
+ \textcolor{comment}{// Wipe the mesh}
+ surface\_mesh\_pt->flush\_element\_and\_node\_storage();
+
+\} \textcolor{comment}{// end of delete\_flux\_elements}
+
+\end{DoxyCodeInclude}
+
+
+{\bfseries I\+M\+P\+O\+R\+T\+A\+NT\+:} Note how the elements are first deleted \char`\"{}manually\char`\"{} and then \char`\"{}flushed\char`\"{} from the surface mesh, using the function {\ttfamily Mesh\+::flush\+\_\+element\+\_\+and\+\_\+node\+\_\+storage()}. This is necessary because deleting the surface mesh directly (by {\ttfamily delete} {\ttfamily surface\+\_\+mesh\+\_\+pt};) would also delete its constituent {\ttfamily Nodes} which are shared with the bulk mesh and must therefore be retained!
+
+
+
+ 
+
+\hypertarget{index_actions_before}{}\section{Actions before solve}\label{index_actions_before}
+This remains as \href{../../two_d_poisson_flux_bc2/html/index.html#actions_before}{\tt before. }
+
+
+
+ 
+
+\hypertarget{index_doc}{}\section{Post-\/processing}\label{index_doc}
+This remains as \href{../../two_d_poisson_flux_bc2/html/index.html#doc}{\tt before. }
+
+
+
+ 
+
+\hypertarget{index_create_flux}{}\section{Create flux elements}\label{index_create_flux}
+This remains as \href{../../two_d_poisson_flux_bc2/html/index.html}{\tt before. }
+
+
+
+ 
+
+\hypertarget{index_sources}{}\section{Source files for this tutorial}\label{index_sources}
+
+\begin{DoxyItemize}
+\item The source files for this tutorial are located in the directory\+: \begin{center} \href{../../../../demo_drivers/poisson/two_d_poisson_flux_bc_adapt/}{\tt demo\+\_\+drivers/poisson/two\+\_\+d\+\_\+poisson\+\_\+flux\+\_\+bc\+\_\+adapt/ } \end{center} 
+\item The driver code is\+: \begin{center} \href{../../../../demo_drivers/poisson/two_d_poisson_flux_bc_adapt/two_d_poisson_flux_bc_adapt.cc}{\tt demo\+\_\+drivers/poisson/two\+\_\+d\+\_\+poisson\+\_\+flux\+\_\+bc\+\_\+adapt/two\+\_\+d\+\_\+poisson\+\_\+flux\+\_\+bc\+\_\+adapt.\+cc } \end{center} 
+\end{DoxyItemize}
+
+
+
+ 
+
+ \hypertarget{index_pdf}{}\section{P\+D\+F file}\label{index_pdf}
+A \href{../latex/refman.pdf}{\tt pdf version} of this document is available. \end{document}

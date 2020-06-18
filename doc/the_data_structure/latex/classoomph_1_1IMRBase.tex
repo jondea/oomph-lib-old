@@ -1,0 +1,436 @@
+\hypertarget{classoomph_1_1IMRBase}{}\section{oomph\+:\+:I\+M\+R\+Base Class Reference}
+\label{classoomph_1_1IMRBase}\index{oomph\+::\+I\+M\+R\+Base@{oomph\+::\+I\+M\+R\+Base}}
+
+
+Implicit midpoint rule base class for the two implementations.  
+
+
+
+
+{\ttfamily \#include $<$implicit\+\_\+midpoint\+\_\+rule.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:I\+M\+R\+Base\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classoomph_1_1IMRBase}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1IMRBase_af0cee00bd97a2f6d8bafdb9f965a9982}{I\+M\+R\+Base} (const bool \&adaptive=false)
+\begin{DoxyCompactList}\small\item\em Constructor with initialisation. \end{DoxyCompactList}\item 
+virtual \hyperlink{classoomph_1_1IMRBase_a0d42ce83608fef0367c421b7c4cfeadf}{$\sim$\+I\+M\+R\+Base} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1IMRBase_a36b8a37b4c0bb9e8cca821bfb74fd373}{set\+\_\+weights} ()=0
+\begin{DoxyCompactList}\small\item\em Setup weights for time derivative calculations. \end{DoxyCompactList}\item 
+virtual unsigned \hyperlink{classoomph_1_1IMRBase_a93df756c834f8ba27956b8efb2af3636}{nprev\+\_\+values\+\_\+for\+\_\+value\+\_\+at\+\_\+evaluation\+\_\+time} () const =0
+\item 
+unsigned \hyperlink{classoomph_1_1IMRBase_a8e556df579d73b46214f8993b2ff12d1}{order} () const
+\begin{DoxyCompactList}\small\item\em Actual order (accuracy) of the scheme. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1IMRBase_a7d7c5c2dedead518b9b0882e74914f54}{ndt} () const
+\begin{DoxyCompactList}\small\item\em Number of timestep increments that are required by the scheme. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1IMRBase_a973faf88d44644bde495ffd6b9acbef1}{nprev\+\_\+values} () const
+\begin{DoxyCompactList}\small\item\em ??ds \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1IMRBase_a34c72011189de014a69288fbcfac54f4}{shift\+\_\+time\+\_\+values} (\hyperlink{classoomph_1_1Data}{Data} $\ast$const \&data\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em This function advances the \hyperlink{classoomph_1_1Data}{Data}\textquotesingle{}s time history so that we can move on to the next timestep. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1IMRBase_a61d4487fcf0a9eb7a829b08027a9500f}{shift\+\_\+time\+\_\+positions} (\hyperlink{classoomph_1_1Node}{Node} $\ast$const \&node\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em This function advances the time history of the positions at a node. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1IMRBase_a8122f3fa05e8622db6a98072d88685e2}{set\+\_\+error\+\_\+weights} ()
+\begin{DoxyCompactList}\small\item\em Set the weights for the error computation. This is not used by midpoint rule. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1IMRBase_a68771c915a13f5a3e3655fff12cb73a3}{set\+\_\+predictor\+\_\+weights} ()
+\begin{DoxyCompactList}\small\item\em Set the weights for the predictor previous timestep. This is not used by midpint rule. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1IMRBase_a2de3063187cd9d18db4cd36c36806f2f}{assign\+\_\+initial\+\_\+values\+\_\+impulsive} (\hyperlink{classoomph_1_1Data}{Data} $\ast$const \&data\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em not implemented (??ds T\+O\+DO) \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1IMRBase_ae9c3433ed870a32d2f94f7aa7b39104e}{assign\+\_\+initial\+\_\+positions\+\_\+impulsive} (\hyperlink{classoomph_1_1Node}{Node} $\ast$const \&node\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Initialiset the positions for the node corresponding to an impulsive start. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1IMRBase_ac206f72b8054828b715756417dcd230a}{calculate\+\_\+predicted\+\_\+positions} (\hyperlink{classoomph_1_1Node}{Node} $\ast$const \&node\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Do the predictor step for the positions at a node (currently empty --- overwrite for a specific scheme) \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1IMRBase_a6e57fd5364c261cd7c1bd49688899a13}{temporal\+\_\+error\+\_\+in\+\_\+position} (\hyperlink{classoomph_1_1Node}{Node} $\ast$const \&node\+\_\+pt, const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i})
+\item 
+void \hyperlink{classoomph_1_1IMRBase_a1512b1a47e5b6dc6c8540fd024c44d1d}{calculate\+\_\+predicted\+\_\+values} (\hyperlink{classoomph_1_1Data}{Data} $\ast$const \&data\+\_\+pt)
+\item 
+double \hyperlink{classoomph_1_1IMRBase_aa51711d15be423119178f2b0c5ec8097}{temporal\+\_\+error\+\_\+in\+\_\+value} (\hyperlink{classoomph_1_1Data}{Data} $\ast$const \&data\+\_\+pt, const unsigned \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i})
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Implicit midpoint rule base class for the two implementations. 
+
+Definition at line 48 of file implicit\+\_\+midpoint\+\_\+rule.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1IMRBase_af0cee00bd97a2f6d8bafdb9f965a9982}\label{classoomph_1_1IMRBase_af0cee00bd97a2f6d8bafdb9f965a9982}} 
+\index{oomph\+::\+I\+M\+R\+Base@{oomph\+::\+I\+M\+R\+Base}!I\+M\+R\+Base@{I\+M\+R\+Base}}
+\index{I\+M\+R\+Base@{I\+M\+R\+Base}!oomph\+::\+I\+M\+R\+Base@{oomph\+::\+I\+M\+R\+Base}}
+\subsubsection{\texorpdfstring{I\+M\+R\+Base()}{IMRBase()}}
+{\footnotesize\ttfamily oomph\+::\+I\+M\+R\+Base\+::\+I\+M\+R\+Base (\begin{DoxyParamCaption}\item[{const bool \&}]{adaptive = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor with initialisation. 
+
+
+
+Definition at line 53 of file implicit\+\_\+midpoint\+\_\+rule.\+h.
+
+
+
+References oomph\+::\+Time\+Stepper\+::\+Adaptive\+\_\+\+Flag, oomph\+::\+Time\+Stepper\+::\+Is\+\_\+steady, oomph\+::\+Time\+Stepper\+::\+Predict\+\_\+by\+\_\+explicit\+\_\+step, oomph\+::\+Time\+Stepper\+::\+Predictor\+\_\+storage\+\_\+index, oomph\+::\+Dense\+Matrix$<$ T $>$\+::resize(), oomph\+::\+Time\+Stepper\+::\+Type, and oomph\+::\+Time\+Stepper\+::\+Weight.
+
+\mbox{\Hypertarget{classoomph_1_1IMRBase_a0d42ce83608fef0367c421b7c4cfeadf}\label{classoomph_1_1IMRBase_a0d42ce83608fef0367c421b7c4cfeadf}} 
+\index{oomph\+::\+I\+M\+R\+Base@{oomph\+::\+I\+M\+R\+Base}!````~I\+M\+R\+Base@{$\sim$\+I\+M\+R\+Base}}
+\index{````~I\+M\+R\+Base@{$\sim$\+I\+M\+R\+Base}!oomph\+::\+I\+M\+R\+Base@{oomph\+::\+I\+M\+R\+Base}}
+\subsubsection{\texorpdfstring{$\sim$\+I\+M\+R\+Base()}{~IMRBase()}}
+{\footnotesize\ttfamily virtual oomph\+::\+I\+M\+R\+Base\+::$\sim$\+I\+M\+R\+Base (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Destructor. 
+
+
+
+Definition at line 87 of file implicit\+\_\+midpoint\+\_\+rule.\+h.
+
+
+
+References nprev\+\_\+values\+\_\+for\+\_\+value\+\_\+at\+\_\+evaluation\+\_\+time(), and set\+\_\+weights().
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1IMRBase_ae9c3433ed870a32d2f94f7aa7b39104e}\label{classoomph_1_1IMRBase_ae9c3433ed870a32d2f94f7aa7b39104e}} 
+\index{oomph\+::\+I\+M\+R\+Base@{oomph\+::\+I\+M\+R\+Base}!assign\+\_\+initial\+\_\+positions\+\_\+impulsive@{assign\+\_\+initial\+\_\+positions\+\_\+impulsive}}
+\index{assign\+\_\+initial\+\_\+positions\+\_\+impulsive@{assign\+\_\+initial\+\_\+positions\+\_\+impulsive}!oomph\+::\+I\+M\+R\+Base@{oomph\+::\+I\+M\+R\+Base}}
+\subsubsection{\texorpdfstring{assign\+\_\+initial\+\_\+positions\+\_\+impulsive()}{assign\_initial\_positions\_impulsive()}}
+{\footnotesize\ttfamily void oomph\+::\+I\+M\+R\+Base\+::assign\+\_\+initial\+\_\+positions\+\_\+impulsive (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Node}{Node} $\ast$const \&}]{node\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Initialiset the positions for the node corresponding to an impulsive start. 
+
+
+
+Implements \hyperlink{classoomph_1_1TimeStepper_ab66972f0eaf3ba34645793e23e46afd5}{oomph\+::\+Time\+Stepper}.
+
+
+
+Definition at line 128 of file implicit\+\_\+midpoint\+\_\+rule.\+h.
+
+
+
+References oomph\+::\+Global\+\_\+string\+\_\+for\+\_\+annotation\+::string().
+
+\mbox{\Hypertarget{classoomph_1_1IMRBase_a2de3063187cd9d18db4cd36c36806f2f}\label{classoomph_1_1IMRBase_a2de3063187cd9d18db4cd36c36806f2f}} 
+\index{oomph\+::\+I\+M\+R\+Base@{oomph\+::\+I\+M\+R\+Base}!assign\+\_\+initial\+\_\+values\+\_\+impulsive@{assign\+\_\+initial\+\_\+values\+\_\+impulsive}}
+\index{assign\+\_\+initial\+\_\+values\+\_\+impulsive@{assign\+\_\+initial\+\_\+values\+\_\+impulsive}!oomph\+::\+I\+M\+R\+Base@{oomph\+::\+I\+M\+R\+Base}}
+\subsubsection{\texorpdfstring{assign\+\_\+initial\+\_\+values\+\_\+impulsive()}{assign\_initial\_values\_impulsive()}}
+{\footnotesize\ttfamily void oomph\+::\+I\+M\+R\+Base\+::assign\+\_\+initial\+\_\+values\+\_\+impulsive (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Data}{Data} $\ast$const \&}]{data\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+not implemented (??ds T\+O\+DO) 
+
+
+
+Implements \hyperlink{classoomph_1_1TimeStepper_a7e894df13c88c96dd8eced2700228225}{oomph\+::\+Time\+Stepper}.
+
+
+
+Definition at line 122 of file implicit\+\_\+midpoint\+\_\+rule.\+h.
+
+
+
+References oomph\+::\+Global\+\_\+string\+\_\+for\+\_\+annotation\+::string().
+
+\mbox{\Hypertarget{classoomph_1_1IMRBase_ac206f72b8054828b715756417dcd230a}\label{classoomph_1_1IMRBase_ac206f72b8054828b715756417dcd230a}} 
+\index{oomph\+::\+I\+M\+R\+Base@{oomph\+::\+I\+M\+R\+Base}!calculate\+\_\+predicted\+\_\+positions@{calculate\+\_\+predicted\+\_\+positions}}
+\index{calculate\+\_\+predicted\+\_\+positions@{calculate\+\_\+predicted\+\_\+positions}!oomph\+::\+I\+M\+R\+Base@{oomph\+::\+I\+M\+R\+Base}}
+\subsubsection{\texorpdfstring{calculate\+\_\+predicted\+\_\+positions()}{calculate\_predicted\_positions()}}
+{\footnotesize\ttfamily void oomph\+::\+I\+M\+R\+Base\+::calculate\+\_\+predicted\+\_\+positions (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Node}{Node} $\ast$const \&}]{node\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Do the predictor step for the positions at a node (currently empty --- overwrite for a specific scheme) 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1TimeStepper_a2e7fafceb9330ac971078cf9dc248701}{oomph\+::\+Time\+Stepper}.
+
+
+
+Definition at line 136 of file implicit\+\_\+midpoint\+\_\+rule.\+h.
+
+
+
+References oomph\+::\+Global\+\_\+string\+\_\+for\+\_\+annotation\+::string().
+
+\mbox{\Hypertarget{classoomph_1_1IMRBase_a1512b1a47e5b6dc6c8540fd024c44d1d}\label{classoomph_1_1IMRBase_a1512b1a47e5b6dc6c8540fd024c44d1d}} 
+\index{oomph\+::\+I\+M\+R\+Base@{oomph\+::\+I\+M\+R\+Base}!calculate\+\_\+predicted\+\_\+values@{calculate\+\_\+predicted\+\_\+values}}
+\index{calculate\+\_\+predicted\+\_\+values@{calculate\+\_\+predicted\+\_\+values}!oomph\+::\+I\+M\+R\+Base@{oomph\+::\+I\+M\+R\+Base}}
+\subsubsection{\texorpdfstring{calculate\+\_\+predicted\+\_\+values()}{calculate\_predicted\_values()}}
+{\footnotesize\ttfamily void oomph\+::\+I\+M\+R\+Base\+::calculate\+\_\+predicted\+\_\+values (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Data}{Data} $\ast$const \&}]{data\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Dummy -\/ just check that the values that problem\+::calculate\+\_\+predicted\+\_\+values() has been called right. 
+
+Reimplemented from \hyperlink{classoomph_1_1TimeStepper_a159d508b1ae643fe31b55da9ee789dbf}{oomph\+::\+Time\+Stepper}.
+
+
+
+Definition at line 116 of file implicit\+\_\+midpoint\+\_\+rule.\+cc.
+
+
+
+References oomph\+::\+Time\+Stepper\+::adaptive\+\_\+flag(), and oomph\+::\+Time\+Stepper\+::check\+\_\+predicted\+\_\+values\+\_\+up\+\_\+to\+\_\+date().
+
+
+
+Referenced by temporal\+\_\+error\+\_\+in\+\_\+position().
+
+\mbox{\Hypertarget{classoomph_1_1IMRBase_a7d7c5c2dedead518b9b0882e74914f54}\label{classoomph_1_1IMRBase_a7d7c5c2dedead518b9b0882e74914f54}} 
+\index{oomph\+::\+I\+M\+R\+Base@{oomph\+::\+I\+M\+R\+Base}!ndt@{ndt}}
+\index{ndt@{ndt}!oomph\+::\+I\+M\+R\+Base@{oomph\+::\+I\+M\+R\+Base}}
+\subsubsection{\texorpdfstring{ndt()}{ndt()}}
+{\footnotesize\ttfamily unsigned oomph\+::\+I\+M\+R\+Base\+::ndt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Number of timestep increments that are required by the scheme. 
+
+
+
+Implements \hyperlink{classoomph_1_1TimeStepper_a00e57b6436cff4fc82af481b81a78a1a}{oomph\+::\+Time\+Stepper}.
+
+
+
+Definition at line 100 of file implicit\+\_\+midpoint\+\_\+rule.\+h.
+
+
+
+References nprev\+\_\+values().
+
+
+
+Referenced by shift\+\_\+time\+\_\+positions(), and shift\+\_\+time\+\_\+values().
+
+\mbox{\Hypertarget{classoomph_1_1IMRBase_a973faf88d44644bde495ffd6b9acbef1}\label{classoomph_1_1IMRBase_a973faf88d44644bde495ffd6b9acbef1}} 
+\index{oomph\+::\+I\+M\+R\+Base@{oomph\+::\+I\+M\+R\+Base}!nprev\+\_\+values@{nprev\+\_\+values}}
+\index{nprev\+\_\+values@{nprev\+\_\+values}!oomph\+::\+I\+M\+R\+Base@{oomph\+::\+I\+M\+R\+Base}}
+\subsubsection{\texorpdfstring{nprev\+\_\+values()}{nprev\_values()}}
+{\footnotesize\ttfamily unsigned oomph\+::\+I\+M\+R\+Base\+::nprev\+\_\+values (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+??ds 
+
+
+
+Implements \hyperlink{classoomph_1_1TimeStepper_a0f38713ed304c18d9f7b5cf8131664c1}{oomph\+::\+Time\+Stepper}.
+
+
+
+Definition at line 103 of file implicit\+\_\+midpoint\+\_\+rule.\+h.
+
+
+
+References shift\+\_\+time\+\_\+positions(), and shift\+\_\+time\+\_\+values().
+
+
+
+Referenced by ndt().
+
+\mbox{\Hypertarget{classoomph_1_1IMRBase_a93df756c834f8ba27956b8efb2af3636}\label{classoomph_1_1IMRBase_a93df756c834f8ba27956b8efb2af3636}} 
+\index{oomph\+::\+I\+M\+R\+Base@{oomph\+::\+I\+M\+R\+Base}!nprev\+\_\+values\+\_\+for\+\_\+value\+\_\+at\+\_\+evaluation\+\_\+time@{nprev\+\_\+values\+\_\+for\+\_\+value\+\_\+at\+\_\+evaluation\+\_\+time}}
+\index{nprev\+\_\+values\+\_\+for\+\_\+value\+\_\+at\+\_\+evaluation\+\_\+time@{nprev\+\_\+values\+\_\+for\+\_\+value\+\_\+at\+\_\+evaluation\+\_\+time}!oomph\+::\+I\+M\+R\+Base@{oomph\+::\+I\+M\+R\+Base}}
+\subsubsection{\texorpdfstring{nprev\+\_\+values\+\_\+for\+\_\+value\+\_\+at\+\_\+evaluation\+\_\+time()}{nprev\_values\_for\_value\_at\_evaluation\_time()}}
+{\footnotesize\ttfamily virtual unsigned oomph\+::\+I\+M\+R\+Base\+::nprev\+\_\+values\+\_\+for\+\_\+value\+\_\+at\+\_\+evaluation\+\_\+time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Number of history values to interpolate over to get the \char`\"{}current\char`\"{} value. 
+
+Reimplemented from \hyperlink{classoomph_1_1TimeStepper_a5fcbef20161383c516ecdba4cf782106}{oomph\+::\+Time\+Stepper}.
+
+
+
+Implemented in \hyperlink{classoomph_1_1IMRByBDF_a4fb7f902b1a266b19cfdfe640d4c78d5}{oomph\+::\+I\+M\+R\+By\+B\+DF}, and \hyperlink{classoomph_1_1IMR_a7cfe8ba542880aa524bcb837c1bc86e4}{oomph\+::\+I\+MR}.
+
+
+
+Referenced by $\sim$\+I\+M\+R\+Base().
+
+\mbox{\Hypertarget{classoomph_1_1IMRBase_a8e556df579d73b46214f8993b2ff12d1}\label{classoomph_1_1IMRBase_a8e556df579d73b46214f8993b2ff12d1}} 
+\index{oomph\+::\+I\+M\+R\+Base@{oomph\+::\+I\+M\+R\+Base}!order@{order}}
+\index{order@{order}!oomph\+::\+I\+M\+R\+Base@{oomph\+::\+I\+M\+R\+Base}}
+\subsubsection{\texorpdfstring{order()}{order()}}
+{\footnotesize\ttfamily unsigned oomph\+::\+I\+M\+R\+Base\+::order (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Actual order (accuracy) of the scheme. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1TimeStepper_a251e5d4b37381e582b7cf4c554e2e724}{oomph\+::\+Time\+Stepper}.
+
+
+
+Definition at line 97 of file implicit\+\_\+midpoint\+\_\+rule.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1IMRBase_a8122f3fa05e8622db6a98072d88685e2}\label{classoomph_1_1IMRBase_a8122f3fa05e8622db6a98072d88685e2}} 
+\index{oomph\+::\+I\+M\+R\+Base@{oomph\+::\+I\+M\+R\+Base}!set\+\_\+error\+\_\+weights@{set\+\_\+error\+\_\+weights}}
+\index{set\+\_\+error\+\_\+weights@{set\+\_\+error\+\_\+weights}!oomph\+::\+I\+M\+R\+Base@{oomph\+::\+I\+M\+R\+Base}}
+\subsubsection{\texorpdfstring{set\+\_\+error\+\_\+weights()}{set\_error\_weights()}}
+{\footnotesize\ttfamily void oomph\+::\+I\+M\+R\+Base\+::set\+\_\+error\+\_\+weights (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Set the weights for the error computation. This is not used by midpoint rule. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1TimeStepper_aee0c1da870a603e64efebb51dfc96a3d}{oomph\+::\+Time\+Stepper}.
+
+
+
+Definition at line 115 of file implicit\+\_\+midpoint\+\_\+rule.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1IMRBase_a68771c915a13f5a3e3655fff12cb73a3}\label{classoomph_1_1IMRBase_a68771c915a13f5a3e3655fff12cb73a3}} 
+\index{oomph\+::\+I\+M\+R\+Base@{oomph\+::\+I\+M\+R\+Base}!set\+\_\+predictor\+\_\+weights@{set\+\_\+predictor\+\_\+weights}}
+\index{set\+\_\+predictor\+\_\+weights@{set\+\_\+predictor\+\_\+weights}!oomph\+::\+I\+M\+R\+Base@{oomph\+::\+I\+M\+R\+Base}}
+\subsubsection{\texorpdfstring{set\+\_\+predictor\+\_\+weights()}{set\_predictor\_weights()}}
+{\footnotesize\ttfamily void oomph\+::\+I\+M\+R\+Base\+::set\+\_\+predictor\+\_\+weights (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Set the weights for the predictor previous timestep. This is not used by midpint rule. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1TimeStepper_a2dfb949155ba433066fd69dc427ba1ce}{oomph\+::\+Time\+Stepper}.
+
+
+
+Definition at line 119 of file implicit\+\_\+midpoint\+\_\+rule.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1IMRBase_a36b8a37b4c0bb9e8cca821bfb74fd373}\label{classoomph_1_1IMRBase_a36b8a37b4c0bb9e8cca821bfb74fd373}} 
+\index{oomph\+::\+I\+M\+R\+Base@{oomph\+::\+I\+M\+R\+Base}!set\+\_\+weights@{set\+\_\+weights}}
+\index{set\+\_\+weights@{set\+\_\+weights}!oomph\+::\+I\+M\+R\+Base@{oomph\+::\+I\+M\+R\+Base}}
+\subsubsection{\texorpdfstring{set\+\_\+weights()}{set\_weights()}}
+{\footnotesize\ttfamily virtual void oomph\+::\+I\+M\+R\+Base\+::set\+\_\+weights (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Setup weights for time derivative calculations. 
+
+
+
+Implements \hyperlink{classoomph_1_1TimeStepper_a028fa3a8d3c6db6b0ddf580cb0468d55}{oomph\+::\+Time\+Stepper}.
+
+
+
+Implemented in \hyperlink{classoomph_1_1IMRByBDF_a6060b6098113085753083a2dc53723ee}{oomph\+::\+I\+M\+R\+By\+B\+DF}, and \hyperlink{classoomph_1_1IMR_aecea8cd9ec75a6e3efde89e451d714c4}{oomph\+::\+I\+MR}.
+
+
+
+Referenced by oomph\+::\+I\+M\+R\+By\+B\+D\+F\+::actions\+\_\+before\+\_\+timestep(), and $\sim$\+I\+M\+R\+Base().
+
+\mbox{\Hypertarget{classoomph_1_1IMRBase_a61d4487fcf0a9eb7a829b08027a9500f}\label{classoomph_1_1IMRBase_a61d4487fcf0a9eb7a829b08027a9500f}} 
+\index{oomph\+::\+I\+M\+R\+Base@{oomph\+::\+I\+M\+R\+Base}!shift\+\_\+time\+\_\+positions@{shift\+\_\+time\+\_\+positions}}
+\index{shift\+\_\+time\+\_\+positions@{shift\+\_\+time\+\_\+positions}!oomph\+::\+I\+M\+R\+Base@{oomph\+::\+I\+M\+R\+Base}}
+\subsubsection{\texorpdfstring{shift\+\_\+time\+\_\+positions()}{shift\_time\_positions()}}
+{\footnotesize\ttfamily void oomph\+::\+I\+M\+R\+Base\+::shift\+\_\+time\+\_\+positions (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Node}{Node} $\ast$const \&}]{node\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+This function advances the time history of the positions at a node. 
+
+This function advances the time history of the positions at a node. ??ds Untested\+: I have no problems with moving nodes. 
+
+Implements \hyperlink{classoomph_1_1TimeStepper_a518b1bee5dc3aae8c5ef13560d1954ac}{oomph\+::\+Time\+Stepper}.
+
+
+
+Definition at line 62 of file implicit\+\_\+midpoint\+\_\+rule.\+cc.
+
+
+
+References oomph\+::\+Time\+Stepper\+::adaptive\+\_\+flag(), i, oomph\+::\+Node\+::ndim(), ndt(), oomph\+::\+Node\+::nposition\+\_\+type(), oomph\+::\+Time\+Stepper\+::ntstorage(), oomph\+::\+Node\+::position\+\_\+is\+\_\+a\+\_\+copy(), t, oomph\+::\+Time\+Stepper\+::\+Weight, and oomph\+::\+Node\+::x\+\_\+gen().
+
+
+
+Referenced by nprev\+\_\+values().
+
+\mbox{\Hypertarget{classoomph_1_1IMRBase_a34c72011189de014a69288fbcfac54f4}\label{classoomph_1_1IMRBase_a34c72011189de014a69288fbcfac54f4}} 
+\index{oomph\+::\+I\+M\+R\+Base@{oomph\+::\+I\+M\+R\+Base}!shift\+\_\+time\+\_\+values@{shift\+\_\+time\+\_\+values}}
+\index{shift\+\_\+time\+\_\+values@{shift\+\_\+time\+\_\+values}!oomph\+::\+I\+M\+R\+Base@{oomph\+::\+I\+M\+R\+Base}}
+\subsubsection{\texorpdfstring{shift\+\_\+time\+\_\+values()}{shift\_time\_values()}}
+{\footnotesize\ttfamily void oomph\+::\+I\+M\+R\+Base\+::shift\+\_\+time\+\_\+values (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Data}{Data} $\ast$const \&}]{data\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+This function advances the \hyperlink{classoomph_1_1Data}{Data}\textquotesingle{}s time history so that we can move on to the next timestep. 
+
+
+
+Implements \hyperlink{classoomph_1_1TimeStepper_a010a3b03a23a1c48dd8ca10641427255}{oomph\+::\+Time\+Stepper}.
+
+
+
+Definition at line 44 of file implicit\+\_\+midpoint\+\_\+rule.\+cc.
+
+
+
+References oomph\+::\+Data\+::is\+\_\+a\+\_\+copy(), ndt(), oomph\+::\+Data\+::nvalue(), oomph\+::\+Data\+::set\+\_\+value(), t, and oomph\+::\+Data\+::value().
+
+
+
+Referenced by nprev\+\_\+values().
+
+\mbox{\Hypertarget{classoomph_1_1IMRBase_a6e57fd5364c261cd7c1bd49688899a13}\label{classoomph_1_1IMRBase_a6e57fd5364c261cd7c1bd49688899a13}} 
+\index{oomph\+::\+I\+M\+R\+Base@{oomph\+::\+I\+M\+R\+Base}!temporal\+\_\+error\+\_\+in\+\_\+position@{temporal\+\_\+error\+\_\+in\+\_\+position}}
+\index{temporal\+\_\+error\+\_\+in\+\_\+position@{temporal\+\_\+error\+\_\+in\+\_\+position}!oomph\+::\+I\+M\+R\+Base@{oomph\+::\+I\+M\+R\+Base}}
+\subsubsection{\texorpdfstring{temporal\+\_\+error\+\_\+in\+\_\+position()}{temporal\_error\_in\_position()}}
+{\footnotesize\ttfamily double oomph\+::\+I\+M\+R\+Base\+::temporal\+\_\+error\+\_\+in\+\_\+position (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Node}{Node} $\ast$const \&}]{node\+\_\+pt,  }\item[{const unsigned \&}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Compute the error in the position i at a node zero here -- overwrite for specific scheme. 
+
+Reimplemented from \hyperlink{classoomph_1_1TimeStepper_ac463807aff4bcbedd6e8a463c7390536}{oomph\+::\+Time\+Stepper}.
+
+
+
+Definition at line 143 of file implicit\+\_\+midpoint\+\_\+rule.\+h.
+
+
+
+References calculate\+\_\+predicted\+\_\+values(), i, oomph\+::\+Global\+\_\+string\+\_\+for\+\_\+annotation\+::string(), and temporal\+\_\+error\+\_\+in\+\_\+value().
+
+\mbox{\Hypertarget{classoomph_1_1IMRBase_aa51711d15be423119178f2b0c5ec8097}\label{classoomph_1_1IMRBase_aa51711d15be423119178f2b0c5ec8097}} 
+\index{oomph\+::\+I\+M\+R\+Base@{oomph\+::\+I\+M\+R\+Base}!temporal\+\_\+error\+\_\+in\+\_\+value@{temporal\+\_\+error\+\_\+in\+\_\+value}}
+\index{temporal\+\_\+error\+\_\+in\+\_\+value@{temporal\+\_\+error\+\_\+in\+\_\+value}!oomph\+::\+I\+M\+R\+Base@{oomph\+::\+I\+M\+R\+Base}}
+\subsubsection{\texorpdfstring{temporal\+\_\+error\+\_\+in\+\_\+value()}{temporal\_error\_in\_value()}}
+{\footnotesize\ttfamily double oomph\+::\+I\+M\+R\+Base\+::temporal\+\_\+error\+\_\+in\+\_\+value (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Data}{Data} $\ast$const \&}]{data\+\_\+pt,  }\item[{const unsigned \&}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Compute the error in the value i in a \hyperlink{classoomph_1_1Data}{Data} structure zero here -- overwrite for specific scheme. 
+
+Reimplemented from \hyperlink{classoomph_1_1TimeStepper_a27f66759f6d9b2040d26918adb998c78}{oomph\+::\+Time\+Stepper}.
+
+
+
+Definition at line 127 of file implicit\+\_\+midpoint\+\_\+rule.\+cc.
+
+
+
+References oomph\+::\+Time\+Stepper\+::adaptive\+\_\+flag(), oomph\+::\+Time\+Stepper\+::\+Predictor\+\_\+storage\+\_\+index, oomph\+::\+Global\+\_\+string\+\_\+for\+\_\+annotation\+::string(), and oomph\+::\+Data\+::value().
+
+
+
+Referenced by temporal\+\_\+error\+\_\+in\+\_\+position().
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{implicit__midpoint__rule_8h}{implicit\+\_\+midpoint\+\_\+rule.\+h}\item 
+\hyperlink{implicit__midpoint__rule_8cc}{implicit\+\_\+midpoint\+\_\+rule.\+cc}\end{DoxyCompactItemize}

@@ -1,0 +1,497 @@
+\hypertarget{classoomph_1_1DenseMatrix}{}\section{oomph\+:\+:Dense\+Matrix$<$ T $>$ Class Template Reference}
+\label{classoomph_1_1DenseMatrix}\index{oomph\+::\+Dense\+Matrix$<$ T $>$@{oomph\+::\+Dense\+Matrix$<$ T $>$}}
+
+
+Class for dense matrices, storing all the values of the matrix as a pointer to a pointer with assorted output functions inherited from Matrix$<$\+T$>$. The curious recursive template pattern is used here to pass the specific class to the base class so that round bracket access can be inlined.  
+
+
+
+
+{\ttfamily \#include $<$communicator.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Dense\+Matrix$<$ T $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classoomph_1_1DenseMatrix}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1DenseMatrix_aecfca835918b50b607e080fc706b6fcf}{Dense\+Matrix} ()
+\begin{DoxyCompactList}\small\item\em Empty constructor, simply assign the lengths N and M to 0. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1DenseMatrix_a1d8bf7ffb6cc91b882be17b25ff6d452}{Dense\+Matrix} (const \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix} \&source\+\_\+matrix)
+\begin{DoxyCompactList}\small\item\em Copy constructor\+: Deep copy! \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix} \& \hyperlink{classoomph_1_1DenseMatrix_a01cb48599a5ecdfca9fd02bcdd43bf88}{operator=} (const \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix} \&source\+\_\+matrix)
+\begin{DoxyCompactList}\small\item\em Copy assignment. \end{DoxyCompactList}\item 
+T \& \hyperlink{classoomph_1_1DenseMatrix_a0260bf942b1ca7d05515bda03acfe8ec}{entry} (const unsigned long \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}, const unsigned long \&j)
+\begin{DoxyCompactList}\small\item\em The access function that will be called by the read-\/write round-\/bracket operator. \end{DoxyCompactList}\item 
+T \hyperlink{classoomph_1_1DenseMatrix_a0b03682b4c7d8f820599bd2681a01ee0}{get\+\_\+entry} (const unsigned long \&\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}, const unsigned long \&j) const
+\begin{DoxyCompactList}\small\item\em The access function the will be called by the read-\/only (const version) round-\/bracket operator. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1DenseMatrix_a2291404def276dcee1a6099d054d44d6}{Dense\+Matrix} (const unsigned long \&n)
+\begin{DoxyCompactList}\small\item\em Constructor to build a square n by n matrix. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1DenseMatrix_a5afcfd56a9720541e67a6e8d002016d4}{Dense\+Matrix} (const unsigned long \&n, const unsigned long \&m)
+\begin{DoxyCompactList}\small\item\em Constructor to build a matrix with n rows and m columns. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1DenseMatrix_a7b599610bd78a7818b2e4d0835b27e3a}{Dense\+Matrix} (const unsigned long \&n, const unsigned long \&m, const T \&initial\+\_\+val)
+\begin{DoxyCompactList}\small\item\em Constructor to build a matrix with n rows and m columns, with initial value initial\+\_\+val. \end{DoxyCompactList}\item 
+virtual \hyperlink{classoomph_1_1DenseMatrix_a673e04c72174ec084e56ad5f53ba51da}{$\sim$\+Dense\+Matrix} ()
+\begin{DoxyCompactList}\small\item\em Destructor, clean up the matrix data. \end{DoxyCompactList}\item 
+unsigned long \hyperlink{classoomph_1_1DenseMatrix_a1b425094510d833ffe91920747a0a962}{nrow} () const
+\begin{DoxyCompactList}\small\item\em Return the number of rows of the matrix. \end{DoxyCompactList}\item 
+unsigned long \hyperlink{classoomph_1_1DenseMatrix_a9937181f1cb4cfaed7aaf3b483c42456}{ncol} () const
+\begin{DoxyCompactList}\small\item\em Return the number of columns of the matrix. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1DenseMatrix_adec1ef741b1c5048a12ba9a540c2719c}{resize} (const unsigned long \&n)
+\item 
+void \hyperlink{classoomph_1_1DenseMatrix_a0f01dd97b1c71868371f93259efc26b0}{resize} (const unsigned long \&n, const unsigned long \&m)
+\begin{DoxyCompactList}\small\item\em Resize to a non-\/square n x m matrix; any values already present will be transfered. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1DenseMatrix_aeb6daf6539fee8d3d6f7a81306798b10}{resize} (const unsigned long \&n, const unsigned long \&m, const T \&initial\+\_\+value)
+\begin{DoxyCompactList}\small\item\em Resize to a non-\/square n x m matrix and initialize the new values to initial\+\_\+value. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1DenseMatrix_aafcfbb0309fdcbd84f8654fe1b5601fd}{initialise} (const T \&val)
+\begin{DoxyCompactList}\small\item\em Initialize all values in the matrix to val. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1DenseMatrix_a03e20626e889a1ab4582614f55784165}{output} (std\+::ostream \&outfile) const
+\begin{DoxyCompactList}\small\item\em Output function to print a matrix row-\/by-\/row to the stream outfile. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1DenseMatrix_a4ab60b1e7db98bcb5b75b080266e452e}{output} (std\+::string filename) const
+\begin{DoxyCompactList}\small\item\em Output function to print a matrix row-\/by-\/row to a file. Specify filename. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1DenseMatrix_a440b549690cfc07c85f395eb06951321}{indexed\+\_\+output} (std\+::ostream \&outfile) const
+\begin{DoxyCompactList}\small\item\em Indexed output function to print a matrix to the stream outfile as i,j,a(i,j) \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1DenseMatrix_a5730d359fa98ea501ab7115147a4bd87}{indexed\+\_\+output} (std\+::string filename) const
+\begin{DoxyCompactList}\small\item\em Indexed output function to print a matrix to a file as i,j,a(i,j). Specify filename. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1DenseMatrix_aa02dc7c9b2f4e1cc1204cc8281f030f9}{output\+\_\+bottom\+\_\+right\+\_\+zero\+\_\+helper} (std\+::ostream \&outfile) const
+\begin{DoxyCompactList}\small\item\em Output the \char`\"{}bottom right\char`\"{} entry regardless of it being zero or not (this allows automatic detection of matrix size in e.\+g. matlab, python). \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1DenseMatrix_a6e9084acc11e036d4c5f7e5322d12034}{sparse\+\_\+indexed\+\_\+output\+\_\+helper} (std\+::ostream \&outfile) const
+\begin{DoxyCompactList}\small\item\em Indexed output function to print a matrix to the stream outfile as i,j,a(i,j) for a(i,j)!=0 only. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+T $\ast$ \hyperlink{classoomph_1_1DenseMatrix_a92a2eea603a42e22fd4d3ea0a258e6f8}{Matrixdata}
+\begin{DoxyCompactList}\small\item\em Internal representation of matrix as a pointer to data. \end{DoxyCompactList}\item 
+unsigned long \hyperlink{classoomph_1_1DenseMatrix_a23cb539be0b4ef0381b9f18e8e50f75e}{N}
+\begin{DoxyCompactList}\small\item\em Number of rows. \end{DoxyCompactList}\item 
+unsigned long \hyperlink{classoomph_1_1DenseMatrix_aa36631ee95fe55afe697377b03d05d6a}{M}
+\begin{DoxyCompactList}\small\item\em Number of columns. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T$>$\newline
+class oomph\+::\+Dense\+Matrix$<$ T $>$}
+
+Class for dense matrices, storing all the values of the matrix as a pointer to a pointer with assorted output functions inherited from Matrix$<$\+T$>$. The curious recursive template pattern is used here to pass the specific class to the base class so that round bracket access can be inlined. 
+
+Definition at line 50 of file communicator.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1DenseMatrix_aecfca835918b50b607e080fc706b6fcf}\label{classoomph_1_1DenseMatrix_aecfca835918b50b607e080fc706b6fcf}} 
+\index{oomph\+::\+Dense\+Matrix@{oomph\+::\+Dense\+Matrix}!Dense\+Matrix@{Dense\+Matrix}}
+\index{Dense\+Matrix@{Dense\+Matrix}!oomph\+::\+Dense\+Matrix@{oomph\+::\+Dense\+Matrix}}
+\subsubsection{\texorpdfstring{Dense\+Matrix()}{DenseMatrix()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+\hyperlink{classoomph_1_1DenseMatrix}{oomph\+::\+Dense\+Matrix}$<$ T $>$\+::\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Empty constructor, simply assign the lengths N and M to 0. 
+
+
+
+Definition at line 422 of file matrices.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1DenseMatrix_a1d8bf7ffb6cc91b882be17b25ff6d452}\label{classoomph_1_1DenseMatrix_a1d8bf7ffb6cc91b882be17b25ff6d452}} 
+\index{oomph\+::\+Dense\+Matrix@{oomph\+::\+Dense\+Matrix}!Dense\+Matrix@{Dense\+Matrix}}
+\index{Dense\+Matrix@{Dense\+Matrix}!oomph\+::\+Dense\+Matrix@{oomph\+::\+Dense\+Matrix}}
+\subsubsection{\texorpdfstring{Dense\+Matrix()}{DenseMatrix()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+\hyperlink{classoomph_1_1DenseMatrix}{oomph\+::\+Dense\+Matrix}$<$ T $>$\+::\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix} (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ T $>$ \&}]{source\+\_\+matrix }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Copy constructor\+: Deep copy! 
+
+
+
+Definition at line 425 of file matrices.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1DenseMatrix_a2291404def276dcee1a6099d054d44d6}\label{classoomph_1_1DenseMatrix_a2291404def276dcee1a6099d054d44d6}} 
+\index{oomph\+::\+Dense\+Matrix@{oomph\+::\+Dense\+Matrix}!Dense\+Matrix@{Dense\+Matrix}}
+\index{Dense\+Matrix@{Dense\+Matrix}!oomph\+::\+Dense\+Matrix@{oomph\+::\+Dense\+Matrix}}
+\subsubsection{\texorpdfstring{Dense\+Matrix()}{DenseMatrix()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\hyperlink{classoomph_1_1DenseMatrix}{oomph\+::\+Dense\+Matrix}$<$ T $>$\+::\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix} (\begin{DoxyParamCaption}\item[{const unsigned long \&}]{n }\end{DoxyParamCaption})}
+
+
+
+Constructor to build a square n by n matrix. 
+
+
+
+Definition at line 2693 of file matrices.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1DenseMatrix_a5afcfd56a9720541e67a6e8d002016d4}\label{classoomph_1_1DenseMatrix_a5afcfd56a9720541e67a6e8d002016d4}} 
+\index{oomph\+::\+Dense\+Matrix@{oomph\+::\+Dense\+Matrix}!Dense\+Matrix@{Dense\+Matrix}}
+\index{Dense\+Matrix@{Dense\+Matrix}!oomph\+::\+Dense\+Matrix@{oomph\+::\+Dense\+Matrix}}
+\subsubsection{\texorpdfstring{Dense\+Matrix()}{DenseMatrix()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\hyperlink{classoomph_1_1DenseMatrix}{oomph\+::\+Dense\+Matrix}$<$ T $>$\+::\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix} (\begin{DoxyParamCaption}\item[{const unsigned long \&}]{n,  }\item[{const unsigned long \&}]{m }\end{DoxyParamCaption})}
+
+
+
+Constructor to build a matrix with n rows and m columns. 
+
+
+
+Definition at line 2710 of file matrices.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1DenseMatrix_a7b599610bd78a7818b2e4d0835b27e3a}\label{classoomph_1_1DenseMatrix_a7b599610bd78a7818b2e4d0835b27e3a}} 
+\index{oomph\+::\+Dense\+Matrix@{oomph\+::\+Dense\+Matrix}!Dense\+Matrix@{Dense\+Matrix}}
+\index{Dense\+Matrix@{Dense\+Matrix}!oomph\+::\+Dense\+Matrix@{oomph\+::\+Dense\+Matrix}}
+\subsubsection{\texorpdfstring{Dense\+Matrix()}{DenseMatrix()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+\hyperlink{classoomph_1_1DenseMatrix}{oomph\+::\+Dense\+Matrix}$<$ T $>$\+::\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix} (\begin{DoxyParamCaption}\item[{const unsigned long \&}]{n,  }\item[{const unsigned long \&}]{m,  }\item[{const T \&}]{initial\+\_\+val }\end{DoxyParamCaption})}
+
+
+
+Constructor to build a matrix with n rows and m columns, with initial value initial\+\_\+val. 
+
+
+
+Definition at line 2727 of file matrices.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1DenseMatrix_a673e04c72174ec084e56ad5f53ba51da}\label{classoomph_1_1DenseMatrix_a673e04c72174ec084e56ad5f53ba51da}} 
+\index{oomph\+::\+Dense\+Matrix@{oomph\+::\+Dense\+Matrix}!````~Dense\+Matrix@{$\sim$\+Dense\+Matrix}}
+\index{````~Dense\+Matrix@{$\sim$\+Dense\+Matrix}!oomph\+::\+Dense\+Matrix@{oomph\+::\+Dense\+Matrix}}
+\subsubsection{\texorpdfstring{$\sim$\+Dense\+Matrix()}{~DenseMatrix()}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+virtual \hyperlink{classoomph_1_1DenseMatrix}{oomph\+::\+Dense\+Matrix}$<$ T $>$\+::$\sim$\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Destructor, clean up the matrix data. 
+
+
+
+Definition at line 501 of file matrices.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1DenseMatrix_a0260bf942b1ca7d05515bda03acfe8ec}\label{classoomph_1_1DenseMatrix_a0260bf942b1ca7d05515bda03acfe8ec}} 
+\index{oomph\+::\+Dense\+Matrix@{oomph\+::\+Dense\+Matrix}!entry@{entry}}
+\index{entry@{entry}!oomph\+::\+Dense\+Matrix@{oomph\+::\+Dense\+Matrix}}
+\subsubsection{\texorpdfstring{entry()}{entry()}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+T\& \hyperlink{classoomph_1_1DenseMatrix}{oomph\+::\+Dense\+Matrix}$<$ T $>$\+::entry (\begin{DoxyParamCaption}\item[{const unsigned long \&}]{i,  }\item[{const unsigned long \&}]{j }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+The access function that will be called by the read-\/write round-\/bracket operator. 
+
+
+
+Definition at line 470 of file matrices.\+h.
+
+
+
+Referenced by oomph\+::\+Dense\+Double\+Matrix\+::operator()().
+
+\mbox{\Hypertarget{classoomph_1_1DenseMatrix_a0b03682b4c7d8f820599bd2681a01ee0}\label{classoomph_1_1DenseMatrix_a0b03682b4c7d8f820599bd2681a01ee0}} 
+\index{oomph\+::\+Dense\+Matrix@{oomph\+::\+Dense\+Matrix}!get\+\_\+entry@{get\+\_\+entry}}
+\index{get\+\_\+entry@{get\+\_\+entry}!oomph\+::\+Dense\+Matrix@{oomph\+::\+Dense\+Matrix}}
+\subsubsection{\texorpdfstring{get\+\_\+entry()}{get\_entry()}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+T \hyperlink{classoomph_1_1DenseMatrix}{oomph\+::\+Dense\+Matrix}$<$ T $>$\+::get\+\_\+entry (\begin{DoxyParamCaption}\item[{const unsigned long \&}]{i,  }\item[{const unsigned long \&}]{j }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+The access function the will be called by the read-\/only (const version) round-\/bracket operator. 
+
+
+
+Definition at line 480 of file matrices.\+h.
+
+
+
+Referenced by oomph\+::\+Dense\+Double\+Matrix\+::operator()().
+
+\mbox{\Hypertarget{classoomph_1_1DenseMatrix_a440b549690cfc07c85f395eb06951321}\label{classoomph_1_1DenseMatrix_a440b549690cfc07c85f395eb06951321}} 
+\index{oomph\+::\+Dense\+Matrix@{oomph\+::\+Dense\+Matrix}!indexed\+\_\+output@{indexed\+\_\+output}}
+\index{indexed\+\_\+output@{indexed\+\_\+output}!oomph\+::\+Dense\+Matrix@{oomph\+::\+Dense\+Matrix}}
+\subsubsection{\texorpdfstring{indexed\+\_\+output()}{indexed\_output()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \hyperlink{classoomph_1_1DenseMatrix}{oomph\+::\+Dense\+Matrix}$<$ T $>$\+::indexed\+\_\+output (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile }\end{DoxyParamCaption}) const}
+
+
+
+Indexed output function to print a matrix to the stream outfile as i,j,a(i,j) 
+
+Indexed output as i,j,a(i,j) 
+
+Definition at line 2868 of file matrices.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1DenseMatrix_a5730d359fa98ea501ab7115147a4bd87}\label{classoomph_1_1DenseMatrix_a5730d359fa98ea501ab7115147a4bd87}} 
+\index{oomph\+::\+Dense\+Matrix@{oomph\+::\+Dense\+Matrix}!indexed\+\_\+output@{indexed\+\_\+output}}
+\index{indexed\+\_\+output@{indexed\+\_\+output}!oomph\+::\+Dense\+Matrix@{oomph\+::\+Dense\+Matrix}}
+\subsubsection{\texorpdfstring{indexed\+\_\+output()}{indexed\_output()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \hyperlink{classoomph_1_1DenseMatrix}{oomph\+::\+Dense\+Matrix}$<$ T $>$\+::indexed\+\_\+output (\begin{DoxyParamCaption}\item[{std\+::string}]{filename }\end{DoxyParamCaption}) const}
+
+
+
+Indexed output function to print a matrix to a file as i,j,a(i,j). Specify filename. 
+
+
+
+Definition at line 2888 of file matrices.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1DenseMatrix_aafcfbb0309fdcbd84f8654fe1b5601fd}\label{classoomph_1_1DenseMatrix_aafcfbb0309fdcbd84f8654fe1b5601fd}} 
+\index{oomph\+::\+Dense\+Matrix@{oomph\+::\+Dense\+Matrix}!initialise@{initialise}}
+\index{initialise@{initialise}!oomph\+::\+Dense\+Matrix@{oomph\+::\+Dense\+Matrix}}
+\subsubsection{\texorpdfstring{initialise()}{initialise()}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+void \hyperlink{classoomph_1_1DenseMatrix}{oomph\+::\+Dense\+Matrix}$<$ T $>$\+::initialise (\begin{DoxyParamCaption}\item[{const T \&}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Initialize all values in the matrix to val. 
+
+
+
+Definition at line 523 of file matrices.\+h.
+
+
+
+Referenced by oomph\+::\+Periodic\+Orbit\+Temporal\+Mesh$<$ oomph\+::\+Spectral\+Periodic\+Orbit\+Element$<$ N\+N\+O\+D\+E\+\_\+1\+D $>$ $>$\+::assemble\+\_\+residuals\+\_\+and\+\_\+jacobian(), oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element\+::dposition\+\_\+dlagrangian\+\_\+at\+\_\+local\+\_\+coordinate(), oomph\+::\+F\+S\+I\+Diag\+Hermite\+Shell\+Element\+::dposition\+\_\+dlagrangian\+\_\+at\+\_\+local\+\_\+coordinate(), oomph\+::\+Generalised\+Element\+::get\+\_\+djacobian\+\_\+and\+\_\+dmass\+\_\+matrix\+\_\+dparameter(), oomph\+::\+Generalised\+Element\+::get\+\_\+djacobian\+\_\+dparameter(), oomph\+::\+Generalised\+Element\+::get\+\_\+hessian\+\_\+vector\+\_\+products(), oomph\+::\+Periodic\+Orbit\+Base\+Element\+::get\+\_\+inner\+\_\+product\+\_\+matrix(), oomph\+::\+Generalised\+Element\+::get\+\_\+jacobian(), oomph\+::\+Problem\+::get\+\_\+jacobian(), oomph\+::\+Generalised\+Element\+::get\+\_\+jacobian\+\_\+and\+\_\+mass\+\_\+matrix(), oomph\+::\+Generalised\+Element\+::get\+\_\+mass\+\_\+matrix(), oomph\+::\+Pseudo\+Buckling\+Ring\+Element\+::get\+\_\+residuals\+\_\+generic(), and oomph\+::\+Time\+Stepper\+::make\+\_\+steady().
+
+\mbox{\Hypertarget{classoomph_1_1DenseMatrix_a9937181f1cb4cfaed7aaf3b483c42456}\label{classoomph_1_1DenseMatrix_a9937181f1cb4cfaed7aaf3b483c42456}} 
+\index{oomph\+::\+Dense\+Matrix@{oomph\+::\+Dense\+Matrix}!ncol@{ncol}}
+\index{ncol@{ncol}!oomph\+::\+Dense\+Matrix@{oomph\+::\+Dense\+Matrix}}
+\subsubsection{\texorpdfstring{ncol()}{ncol()}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+unsigned long \hyperlink{classoomph_1_1DenseMatrix}{oomph\+::\+Dense\+Matrix}$<$ T $>$\+::ncol (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Return the number of columns of the matrix. 
+
+
+
+Implements \hyperlink{classoomph_1_1Matrix_ad1af46b34096c348272b0dfacb5ce6a9}{oomph\+::\+Matrix$<$ T, Dense\+Matrix$<$ T $>$ $>$}.
+
+
+
+Definition at line 507 of file matrices.\+h.
+
+
+
+Referenced by oomph\+::\+Constitutive\+Law\+::are\+\_\+matrices\+\_\+of\+\_\+equal\+\_\+dimensions(), oomph\+::\+Constitutive\+Law\+::calculate\+\_\+contravariant(), oomph\+::\+Constitutive\+Law\+::calculate\+\_\+d\+\_\+contravariant\+\_\+d\+G(), oomph\+::\+Constitutive\+Law\+::calculate\+\_\+d\+\_\+second\+\_\+piola\+\_\+kirchhoff\+\_\+stress\+\_\+d\+G(), oomph\+::\+C\+R\+Double\+Matrix\+Helpers\+::concatenate(), oomph\+::\+C\+R\+Double\+Matrix\+Helpers\+::concatenate\+\_\+without\+\_\+communication(), oomph\+::\+Dense\+Matrix$<$ bool $>$\+::\+Dense\+Matrix(), oomph\+::\+Finite\+Element\+::d\+J\+\_\+eulerian\+\_\+dnodal\+\_\+coordinates(), oomph\+::\+Dense\+Double\+Matrix\+::eigenvalues\+\_\+by\+\_\+jacobi(), oomph\+::\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::extrapolated\+\_\+strain\+\_\+rate(), oomph\+::\+Generalised\+Newtonian\+Axisymmetric\+Navier\+Stokes\+Equations\+::extrapolated\+\_\+strain\+\_\+rate(), oomph\+::\+C\+R\+Double\+Matrix\+Helpers\+::gershgorin\+\_\+eigenvalue\+\_\+estimate(), oomph\+::\+Block\+Preconditioner$<$ C\+R\+Double\+Matrix $>$\+::get\+\_\+blocks(), oomph\+::\+Poroelasticity\+Equations$<$ 2 $>$\+::get\+\_\+strain(), oomph\+::\+P\+V\+D\+Equations\+Base$<$ D\+I\+M $>$\+::get\+\_\+strain(), oomph\+::\+Linear\+Elasticity\+Equations\+Base$<$ D\+I\+M $>$\+::get\+\_\+strain(), oomph\+::\+Poroelasticity\+Equations$<$ 2 $>$\+::get\+\_\+stress(), oomph\+::\+Linear\+Elasticity\+Equations$<$ D\+I\+M $>$\+::get\+\_\+stress(), oomph\+::\+C\+R\+Double\+Matrix\+Helpers\+::inf\+\_\+norm(), oomph\+::\+Constitutive\+Law\+::is\+\_\+matrix\+\_\+square(), oomph\+::\+Dense\+Double\+Matrix\+::ncol(), oomph\+::\+Time\+Stepper\+::ntstorage(), oomph\+::\+Dense\+Matrix$<$ bool $>$\+::operator=(), oomph\+::\+Boundary\+Node\+Base\+::set\+\_\+coordinates\+\_\+on\+\_\+boundary(), oomph\+::\+Newmark\+B\+D\+F$<$ N\+S\+T\+E\+P\+S $>$\+::set\+\_\+weights(), oomph\+::\+Lagrange\+Enforced\+Flow\+Preconditioner\+::setup(), oomph\+::\+Linearised\+Axisymmetric\+Navier\+Stokes\+Equations\+::strain\+\_\+rate(), oomph\+::\+Polar\+Navier\+Stokes\+Equations\+::strain\+\_\+rate(), oomph\+::\+Linearised\+Navier\+Stokes\+Equations\+::strain\+\_\+rate(), oomph\+::\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::strain\+\_\+rate(), oomph\+::\+Axisymmetric\+Navier\+Stokes\+Equations\+::strain\+\_\+rate(), oomph\+::\+Generalised\+Newtonian\+Axisymmetric\+Navier\+Stokes\+Equations\+::strain\+\_\+rate(), oomph\+::\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::strain\+\_\+rate(), and oomph\+::\+Polar\+Navier\+Stokes\+Equations\+::strain\+\_\+rate\+\_\+by\+\_\+r().
+
+\mbox{\Hypertarget{classoomph_1_1DenseMatrix_a1b425094510d833ffe91920747a0a962}\label{classoomph_1_1DenseMatrix_a1b425094510d833ffe91920747a0a962}} 
+\index{oomph\+::\+Dense\+Matrix@{oomph\+::\+Dense\+Matrix}!nrow@{nrow}}
+\index{nrow@{nrow}!oomph\+::\+Dense\+Matrix@{oomph\+::\+Dense\+Matrix}}
+\subsubsection{\texorpdfstring{nrow()}{nrow()}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+unsigned long \hyperlink{classoomph_1_1DenseMatrix}{oomph\+::\+Dense\+Matrix}$<$ T $>$\+::nrow (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Return the number of rows of the matrix. 
+
+
+
+Implements \hyperlink{classoomph_1_1Matrix_ac366ca5324d3e00e23d9800f3d5f4d5f}{oomph\+::\+Matrix$<$ T, Dense\+Matrix$<$ T $>$ $>$}.
+
+
+
+Definition at line 504 of file matrices.\+h.
+
+
+
+Referenced by oomph\+::\+Constitutive\+Law\+::are\+\_\+matrices\+\_\+of\+\_\+equal\+\_\+dimensions(), oomph\+::\+Generalised\+Hookean\+::calculate\+\_\+second\+\_\+piola\+\_\+kirchhoff\+\_\+stress(), oomph\+::\+Isotropic\+Strain\+Energy\+Function\+Constitutive\+Law\+::calculate\+\_\+second\+\_\+piola\+\_\+kirchhoff\+\_\+stress(), oomph\+::\+C\+R\+Double\+Matrix\+Helpers\+::concatenate(), oomph\+::\+C\+R\+Double\+Matrix\+Helpers\+::concatenate\+\_\+without\+\_\+communication(), oomph\+::\+Dense\+Matrix$<$ bool $>$\+::\+Dense\+Matrix(), oomph\+::\+Finite\+Element\+::d\+J\+\_\+eulerian\+\_\+dnodal\+\_\+coordinates(), oomph\+::\+Dense\+Double\+Matrix\+::eigenvalues\+\_\+by\+\_\+jacobi(), oomph\+::\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::extrapolated\+\_\+strain\+\_\+rate(), oomph\+::\+Generalised\+Newtonian\+Axisymmetric\+Navier\+Stokes\+Equations\+::extrapolated\+\_\+strain\+\_\+rate(), oomph\+::\+Axisymmetric\+Navier\+Stokes\+Equations\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+hessian\+\_\+vector\+\_\+products(), oomph\+::\+Generalised\+Newtonian\+Axisymmetric\+Navier\+Stokes\+Equations\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+hessian\+\_\+vector\+\_\+products(), oomph\+::\+Displacement\+Based\+Foepplvon\+Karman\+Equations\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian\+\_\+and\+\_\+mass\+\_\+matrix(), oomph\+::\+C\+R\+Double\+Matrix\+Helpers\+::gershgorin\+\_\+eigenvalue\+\_\+estimate(), oomph\+::\+Block\+Preconditioner$<$ C\+R\+Double\+Matrix $>$\+::get\+\_\+blocks(), oomph\+::\+Poroelasticity\+Equations$<$ 2 $>$\+::get\+\_\+strain(), oomph\+::\+P\+V\+D\+Equations\+Base$<$ D\+I\+M $>$\+::get\+\_\+strain(), oomph\+::\+Linear\+Elasticity\+Equations\+Base$<$ D\+I\+M $>$\+::get\+\_\+strain(), oomph\+::\+Poroelasticity\+Equations$<$ 2 $>$\+::get\+\_\+stress(), oomph\+::\+Linear\+Elasticity\+Equations$<$ D\+I\+M $>$\+::get\+\_\+stress(), oomph\+::\+Time\+Stepper\+::highest\+\_\+derivative(), oomph\+::\+C\+R\+Double\+Matrix\+Helpers\+::inf\+\_\+norm(), oomph\+::\+Constitutive\+Law\+::is\+\_\+matrix\+\_\+square(), oomph\+::\+Dense\+Double\+Matrix\+::nrow(), oomph\+::\+Dense\+Matrix$<$ bool $>$\+::operator=(), oomph\+::\+Second\+Invariant\+Helper\+::second\+\_\+invariant(), oomph\+::\+Lagrange\+Enforced\+Flow\+Preconditioner\+::setup(), oomph\+::\+Linearised\+Axisymmetric\+Navier\+Stokes\+Equations\+::strain\+\_\+rate(), oomph\+::\+Polar\+Navier\+Stokes\+Equations\+::strain\+\_\+rate(), oomph\+::\+Linearised\+Navier\+Stokes\+Equations\+::strain\+\_\+rate(), oomph\+::\+Generalised\+Newtonian\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::strain\+\_\+rate(), oomph\+::\+Axisymmetric\+Navier\+Stokes\+Equations\+::strain\+\_\+rate(), oomph\+::\+Generalised\+Newtonian\+Axisymmetric\+Navier\+Stokes\+Equations\+::strain\+\_\+rate(), oomph\+::\+Navier\+Stokes\+Equations$<$ D\+I\+M $>$\+::strain\+\_\+rate(), and oomph\+::\+Polar\+Navier\+Stokes\+Equations\+::strain\+\_\+rate\+\_\+by\+\_\+r().
+
+\mbox{\Hypertarget{classoomph_1_1DenseMatrix_a01cb48599a5ecdfca9fd02bcdd43bf88}\label{classoomph_1_1DenseMatrix_a01cb48599a5ecdfca9fd02bcdd43bf88}} 
+\index{oomph\+::\+Dense\+Matrix@{oomph\+::\+Dense\+Matrix}!operator=@{operator=}}
+\index{operator=@{operator=}!oomph\+::\+Dense\+Matrix@{oomph\+::\+Dense\+Matrix}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}\& \hyperlink{classoomph_1_1DenseMatrix}{oomph\+::\+Dense\+Matrix}$<$ T $>$\+::operator= (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ T $>$ \&}]{source\+\_\+matrix }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Copy assignment. 
+
+
+
+Definition at line 443 of file matrices.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1DenseMatrix_a03e20626e889a1ab4582614f55784165}\label{classoomph_1_1DenseMatrix_a03e20626e889a1ab4582614f55784165}} 
+\index{oomph\+::\+Dense\+Matrix@{oomph\+::\+Dense\+Matrix}!output@{output}}
+\index{output@{output}!oomph\+::\+Dense\+Matrix@{oomph\+::\+Dense\+Matrix}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \hyperlink{classoomph_1_1DenseMatrix}{oomph\+::\+Dense\+Matrix}$<$ T $>$\+::output (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Output function to print a matrix row-\/by-\/row to the stream outfile. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1Matrix_ace9b59cbe514c77f0b3816b144c740f6}{oomph\+::\+Matrix$<$ T, Dense\+Matrix$<$ T $>$ $>$}.
+
+
+
+Definition at line 2831 of file matrices.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1DenseMatrix_a4ab60b1e7db98bcb5b75b080266e452e}\label{classoomph_1_1DenseMatrix_a4ab60b1e7db98bcb5b75b080266e452e}} 
+\index{oomph\+::\+Dense\+Matrix@{oomph\+::\+Dense\+Matrix}!output@{output}}
+\index{output@{output}!oomph\+::\+Dense\+Matrix@{oomph\+::\+Dense\+Matrix}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \hyperlink{classoomph_1_1DenseMatrix}{oomph\+::\+Dense\+Matrix}$<$ T $>$\+::output (\begin{DoxyParamCaption}\item[{std\+::string}]{filename }\end{DoxyParamCaption}) const}
+
+
+
+Output function to print a matrix row-\/by-\/row to a file. Specify filename. 
+
+
+
+Definition at line 2852 of file matrices.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1DenseMatrix_aa02dc7c9b2f4e1cc1204cc8281f030f9}\label{classoomph_1_1DenseMatrix_aa02dc7c9b2f4e1cc1204cc8281f030f9}} 
+\index{oomph\+::\+Dense\+Matrix@{oomph\+::\+Dense\+Matrix}!output\+\_\+bottom\+\_\+right\+\_\+zero\+\_\+helper@{output\+\_\+bottom\+\_\+right\+\_\+zero\+\_\+helper}}
+\index{output\+\_\+bottom\+\_\+right\+\_\+zero\+\_\+helper@{output\+\_\+bottom\+\_\+right\+\_\+zero\+\_\+helper}!oomph\+::\+Dense\+Matrix@{oomph\+::\+Dense\+Matrix}}
+\subsubsection{\texorpdfstring{output\+\_\+bottom\+\_\+right\+\_\+zero\+\_\+helper()}{output\_bottom\_right\_zero\_helper()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \hyperlink{classoomph_1_1DenseMatrix}{oomph\+::\+Dense\+Matrix}$<$ T $>$\+::output\+\_\+bottom\+\_\+right\+\_\+zero\+\_\+helper (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Output the \char`\"{}bottom right\char`\"{} entry regardless of it being zero or not (this allows automatic detection of matrix size in e.\+g. matlab, python). 
+
+Output the \char`\"{}bottom right\char`\"{} entry regardless of it being zero or not (this allows automatic detection of matrix size in e.\+g. matlab, python). 
+
+Implements \hyperlink{classoomph_1_1Matrix_a10ee338f4d3893010291a692aea04248}{oomph\+::\+Matrix$<$ T, Dense\+Matrix$<$ T $>$ $>$}.
+
+
+
+Definition at line 2904 of file matrices.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1DenseMatrix_adec1ef741b1c5048a12ba9a540c2719c}\label{classoomph_1_1DenseMatrix_adec1ef741b1c5048a12ba9a540c2719c}} 
+\index{oomph\+::\+Dense\+Matrix@{oomph\+::\+Dense\+Matrix}!resize@{resize}}
+\index{resize@{resize}!oomph\+::\+Dense\+Matrix@{oomph\+::\+Dense\+Matrix}}
+\subsubsection{\texorpdfstring{resize()}{resize()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+void \hyperlink{classoomph_1_1DenseMatrix}{oomph\+::\+Dense\+Matrix}$<$ T $>$\+::resize (\begin{DoxyParamCaption}\item[{const unsigned long \&}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Resize to a square nxn matrix; any values already present will be transfered 
+
+Definition at line 511 of file matrices.\+h.
+
+
+
+Referenced by oomph\+::\+Spectral\+Element\+::assign\+\_\+all\+\_\+generic\+\_\+local\+\_\+eqn\+\_\+numbers(), oomph\+::\+P\+M\+L\+Element\+Base$<$ 2 $>$\+::compute\+\_\+laplace\+\_\+matrix\+\_\+and\+\_\+det(), oomph\+::\+Dense\+Double\+Matrix\+::eigenvalues\+\_\+by\+\_\+jacobi(), oomph\+::\+Periodic\+Orbit\+Equations\+::fill\+\_\+in\+\_\+generic\+\_\+residual\+\_\+contribution\+\_\+orbit(), oomph\+::\+Refineable\+Navier\+Stokes\+Boussinesq\+Element$<$ N\+S\+T\+\_\+\+E\+L\+E\+M\+E\+N\+T, A\+D\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::get\+\_\+dbody\+\_\+force\+\_\+nst\+\_\+dexternal\+\_\+element\+\_\+data(), oomph\+::\+Navier\+Stokes\+Boussinesq\+Element$<$ N\+S\+T\+\_\+\+E\+L\+E\+M\+E\+N\+T, A\+D\+\_\+\+E\+L\+E\+M\+E\+N\+T $>$\+::get\+\_\+dbody\+\_\+force\+\_\+nst\+\_\+dexternal\+\_\+element\+\_\+data(), oomph\+::\+Problem\+::get\+\_\+fd\+\_\+jacobian(), oomph\+::\+Problem\+::get\+\_\+jacobian(), oomph\+::\+I\+M\+R\+Base\+::\+I\+M\+R\+Base(), oomph\+::\+Kirchhoff\+Love\+Shell\+Equations\+::\+Kirchhoff\+Love\+Shell\+Equations(), oomph\+::\+Dense\+Double\+Matrix\+::matrix\+\_\+reduction(), oomph\+::\+Continuation\+Storage\+Scheme\+::modify\+\_\+storage(), oomph\+::\+Dense\+Complex\+Matrix\+::multiply(), oomph\+::\+Dense\+Double\+Matrix\+::multiply(), oomph\+::\+Dense\+Matrix$<$ bool $>$\+::resize(), oomph\+::\+Pseudo\+Elastic\+Preconditioner\+::setup(), oomph\+::\+Binary\+Tree\+::setup\+\_\+static\+\_\+data(), oomph\+::\+Quad\+Tree\+::setup\+\_\+static\+\_\+data(), oomph\+::\+Oc\+Tree\+::setup\+\_\+static\+\_\+data(), oomph\+::\+H\+S\+L\+\_\+\+M\+A42\+::solve(), and oomph\+::\+Time\+Stepper\+::\+Time\+Stepper().
+
+\mbox{\Hypertarget{classoomph_1_1DenseMatrix_a0f01dd97b1c71868371f93259efc26b0}\label{classoomph_1_1DenseMatrix_a0f01dd97b1c71868371f93259efc26b0}} 
+\index{oomph\+::\+Dense\+Matrix@{oomph\+::\+Dense\+Matrix}!resize@{resize}}
+\index{resize@{resize}!oomph\+::\+Dense\+Matrix@{oomph\+::\+Dense\+Matrix}}
+\subsubsection{\texorpdfstring{resize()}{resize()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \hyperlink{classoomph_1_1DenseMatrix}{oomph\+::\+Dense\+Matrix}$<$ T $>$\+::resize (\begin{DoxyParamCaption}\item[{const unsigned long \&}]{n,  }\item[{const unsigned long \&}]{m }\end{DoxyParamCaption})}
+
+
+
+Resize to a non-\/square n x m matrix; any values already present will be transfered. 
+
+Resize to a non-\/square n\+\_\+row x m\+\_\+col matrix, where any values already present will be transfered. 
+
+Definition at line 2743 of file matrices.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1DenseMatrix_aeb6daf6539fee8d3d6f7a81306798b10}\label{classoomph_1_1DenseMatrix_aeb6daf6539fee8d3d6f7a81306798b10}} 
+\index{oomph\+::\+Dense\+Matrix@{oomph\+::\+Dense\+Matrix}!resize@{resize}}
+\index{resize@{resize}!oomph\+::\+Dense\+Matrix@{oomph\+::\+Dense\+Matrix}}
+\subsubsection{\texorpdfstring{resize()}{resize()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+void \hyperlink{classoomph_1_1DenseMatrix}{oomph\+::\+Dense\+Matrix}$<$ T $>$\+::resize (\begin{DoxyParamCaption}\item[{const unsigned long \&}]{n,  }\item[{const unsigned long \&}]{m,  }\item[{const T \&}]{initial\+\_\+value }\end{DoxyParamCaption})}
+
+
+
+Resize to a non-\/square n x m matrix and initialize the new values to initial\+\_\+value. 
+
+Resize to a non-\/square n\+\_\+row x m\+\_\+col matrix and initialize the new entries to specified value. 
+
+Definition at line 2789 of file matrices.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1DenseMatrix_a6e9084acc11e036d4c5f7e5322d12034}\label{classoomph_1_1DenseMatrix_a6e9084acc11e036d4c5f7e5322d12034}} 
+\index{oomph\+::\+Dense\+Matrix@{oomph\+::\+Dense\+Matrix}!sparse\+\_\+indexed\+\_\+output\+\_\+helper@{sparse\+\_\+indexed\+\_\+output\+\_\+helper}}
+\index{sparse\+\_\+indexed\+\_\+output\+\_\+helper@{sparse\+\_\+indexed\+\_\+output\+\_\+helper}!oomph\+::\+Dense\+Matrix@{oomph\+::\+Dense\+Matrix}}
+\subsubsection{\texorpdfstring{sparse\+\_\+indexed\+\_\+output\+\_\+helper()}{sparse\_indexed\_output\_helper()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \hyperlink{classoomph_1_1DenseMatrix}{oomph\+::\+Dense\+Matrix}$<$ T $>$\+::sparse\+\_\+indexed\+\_\+output\+\_\+helper (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Indexed output function to print a matrix to the stream outfile as i,j,a(i,j) for a(i,j)!=0 only. 
+
+Sparse indexed output as i,j,a(i,j) for a(i,j)!=0 only. 
+
+Implements \hyperlink{classoomph_1_1Matrix_a7a5b44e7688ce2c2f7552da104e615c8}{oomph\+::\+Matrix$<$ T, Dense\+Matrix$<$ T $>$ $>$}.
+
+
+
+Definition at line 2923 of file matrices.\+h.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1DenseMatrix_aa36631ee95fe55afe697377b03d05d6a}\label{classoomph_1_1DenseMatrix_aa36631ee95fe55afe697377b03d05d6a}} 
+\index{oomph\+::\+Dense\+Matrix@{oomph\+::\+Dense\+Matrix}!M@{M}}
+\index{M@{M}!oomph\+::\+Dense\+Matrix@{oomph\+::\+Dense\+Matrix}}
+\subsubsection{\texorpdfstring{M}{M}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+unsigned long \hyperlink{classoomph_1_1DenseMatrix}{oomph\+::\+Dense\+Matrix}$<$ T $>$\+::M\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Number of columns. 
+
+
+
+Definition at line 417 of file matrices.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1DenseMatrix_a92a2eea603a42e22fd4d3ea0a258e6f8}\label{classoomph_1_1DenseMatrix_a92a2eea603a42e22fd4d3ea0a258e6f8}} 
+\index{oomph\+::\+Dense\+Matrix@{oomph\+::\+Dense\+Matrix}!Matrixdata@{Matrixdata}}
+\index{Matrixdata@{Matrixdata}!oomph\+::\+Dense\+Matrix@{oomph\+::\+Dense\+Matrix}}
+\subsubsection{\texorpdfstring{Matrixdata}{Matrixdata}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+T$\ast$ \hyperlink{classoomph_1_1DenseMatrix}{oomph\+::\+Dense\+Matrix}$<$ T $>$\+::Matrixdata\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Internal representation of matrix as a pointer to data. 
+
+
+
+Definition at line 411 of file matrices.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1DenseMatrix_a23cb539be0b4ef0381b9f18e8e50f75e}\label{classoomph_1_1DenseMatrix_a23cb539be0b4ef0381b9f18e8e50f75e}} 
+\index{oomph\+::\+Dense\+Matrix@{oomph\+::\+Dense\+Matrix}!N@{N}}
+\index{N@{N}!oomph\+::\+Dense\+Matrix@{oomph\+::\+Dense\+Matrix}}
+\subsubsection{\texorpdfstring{N}{N}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+unsigned long \hyperlink{classoomph_1_1DenseMatrix}{oomph\+::\+Dense\+Matrix}$<$ T $>$\+::N\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Number of rows. 
+
+
+
+Definition at line 414 of file matrices.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{communicator_8h}{communicator.\+h}\item 
+\hyperlink{matrices_8h}{matrices.\+h}\end{DoxyCompactItemize}

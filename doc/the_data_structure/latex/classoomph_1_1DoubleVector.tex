@@ -1,0 +1,950 @@
+\hypertarget{classoomph_1_1DoubleVector}{}\section{oomph\+:\+:Double\+Vector Class Reference}
+\label{classoomph_1_1DoubleVector}\index{oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}}
+
+
+A vector in the mathematical sense, initially developed for linear algebra type applications. If M\+PI then this vector can be distributed -\/ its distribution is described by the \hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution} object at Distribution\+\_\+pt. \hyperlink{classoomph_1_1Data}{Data} is stored in a C-\/style pointer vector (double$\ast$)  
+
+
+
+
+{\ttfamily \#include $<$double\+\_\+vector.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Double\+Vector\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classoomph_1_1DoubleVector}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1DoubleVector_a786d26f4034f2ae10c9d26542642661f}{Double\+Vector} ()
+\begin{DoxyCompactList}\small\item\em Constructor for an uninitialized \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1DoubleVector_a21f824524cd7bc779af3cbdbfe1d3ef8}{Double\+Vector} (const \hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution} $\ast$const \&dist\+\_\+pt, const double \&v=0.\+0)
+\begin{DoxyCompactList}\small\item\em Constructor. Assembles a \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} with a prescribed distribution. Additionally every entry can be set (with argument v -\/ defaults to 0). \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1DoubleVector_a29d22a13eeaa61d5467d5cfa37e1f38f}{Double\+Vector} (const \hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution} \&dist, const double \&v=0.\+0)
+\begin{DoxyCompactList}\small\item\em Constructor. Assembles a \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} with a prescribed distribution. Additionally every entry can be set (with argument v -\/ defaults to 0). \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1DoubleVector_a53441aa63f3acfa65dc4556ffa0b5573}{$\sim$\+Double\+Vector} ()
+\begin{DoxyCompactList}\small\item\em Destructor -\/ just calls this-\/$>$\hyperlink{classoomph_1_1DoubleVector_af1677445056759263b1b076966e7bfae}{clear()} to delete the distribution and data. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1DoubleVector_af547ee3b90c4a5598b655ed57ed78b2f}{Double\+Vector} (const \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} \&new\+\_\+vector)
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1DoubleVector_ab5f56f41d86a18bba358912b1c4f2dac}{operator=} (const \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} \&old\+\_\+vector)
+\begin{DoxyCompactList}\small\item\em assignment operator \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1DoubleVector_a7bcc94c157d6853a0f0502e8a76ed380}{build} (const \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} \&old\+\_\+vector)
+\begin{DoxyCompactList}\small\item\em Just copys the argument \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1DoubleVector_ad22d075ba35995e26f40209de1b25746}{build} (const \hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution} \&dist, const double \&v)
+\begin{DoxyCompactList}\small\item\em Assembles a \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} with distribution dist, if v is specified each element is set to v, otherwise each element is set to 0.\+0. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1DoubleVector_a84d5a0b2335fb1af865c84f8f25421e9}{build} (const \hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution} $\ast$const \&dist\+\_\+pt, const double \&v)
+\begin{DoxyCompactList}\small\item\em Assembles a \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} with distribution dist, if v is specified each element is set to v, otherwise each element is set to 0.\+0. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1DoubleVector_a73332fc4a200a32d7281ceb548375d8a}{build} (const \hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution} \&dist, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&v)
+\begin{DoxyCompactList}\small\item\em Assembles a \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} with a distribution dist and coefficients taken from the vector v. Note. The vector v M\+U\+ST be of length \hyperlink{classoomph_1_1DistributableLinearAlgebraObject_a7569556f14fd68b28508920e89bd5eee}{nrow()} \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1DoubleVector_a4e6219936d6b23265b46dd3a25acb7c8}{build} (const \hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution} $\ast$const \&dist\+\_\+pt, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&v)
+\begin{DoxyCompactList}\small\item\em Assembles a \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} with a distribution dist and coefficients taken from the vector v. Note. The vector v M\+U\+ST be of length \hyperlink{classoomph_1_1DistributableLinearAlgebraObject_a7569556f14fd68b28508920e89bd5eee}{nrow()} \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1DoubleVector_a180c1057a29f4ed721da46040a619ecd}{initialise} (const double \&v)
+\begin{DoxyCompactList}\small\item\em initialise the whole vector with value v \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1DoubleVector_ae3ce2b88e72d8b084e9be8e9af10c487}{initialise} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ v)
+\begin{DoxyCompactList}\small\item\em initialise the vector with coefficient from the vector v. Note\+: The vector v must be of length \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1DoubleVector_af1677445056759263b1b076966e7bfae}{clear} ()
+\begin{DoxyCompactList}\small\item\em wipes the \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} \end{DoxyCompactList}\item 
+bool \hyperlink{classoomph_1_1DoubleVector_aae402d422ec4344a4a45cdb7659b7161}{built} () const
+\item 
+void \hyperlink{classoomph_1_1DoubleVector_a4715c8cf47f9fc56d95889343d1a3b82}{set\+\_\+external\+\_\+values} (const \hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution} $\ast$const \&dist\+\_\+pt, double $\ast$external\+\_\+values, bool delete\+\_\+external\+\_\+values)
+\begin{DoxyCompactList}\small\item\em Allows are external data to be used by this vector. W\+A\+R\+N\+I\+NG\+: The size of the external data must correspond to the \hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution} dist\+\_\+pt argument. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1DoubleVector_a0626a448c259a12bd2b7d50f92da91e3}{set\+\_\+external\+\_\+values} (double $\ast$external\+\_\+values, bool delete\+\_\+external\+\_\+values)
+\begin{DoxyCompactList}\small\item\em Allows are external data to be used by this vector. W\+A\+R\+N\+I\+NG\+: The size of the external data must correspond to the distribution of this vector. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1DoubleVector_a9396b861977c16606d8eca39056976c8}{redistribute} (const \hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution} $\ast$const \&dist\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em The contents of the vector are redistributed to match the new distribution. In a non-\/\+M\+PI rebuild this method works, but does nothing. {\bfseries N\+O\+TE} 1\+: The current distribution and the new distribution must have the same number of global rows. {\bfseries N\+O\+TE} 2\+: The current distribution and the new distribution must have the same Communicator. \end{DoxyCompactList}\item 
+double \& \hyperlink{classoomph_1_1DoubleVector_acea3779324129da50076341bf6644d25}{operator\mbox{[}$\,$\mbox{]}} (int \hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i})
+\begin{DoxyCompactList}\small\item\em \mbox{[}\mbox{]} access function to the (local) values of this vector \end{DoxyCompactList}\item 
+bool \hyperlink{classoomph_1_1DoubleVector_a4da2f710fccabe5a5349d8a5238b36cc}{operator==} (const \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} \&v)
+\begin{DoxyCompactList}\small\item\em == operator \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1DoubleVector_a2724cce5d107b7e6535d9ae071d6d603}{operator+=} (const \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} \&v)
+\begin{DoxyCompactList}\small\item\em += operator with another vector \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1DoubleVector_aaeb013d502cff3ee0b7e036945ece1ea}{operator-\/=} (const \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} \&v)
+\begin{DoxyCompactList}\small\item\em -\/= operator with another vector \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1DoubleVector_a691d884622e4221e61436f2bc457c6e2}{operator$\ast$=} (const double \&d)
+\begin{DoxyCompactList}\small\item\em multiply by a double \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1DoubleVector_ab3cb62619709401a0e8f4bc4bee9dff3}{operator/=} (const double \&d)
+\begin{DoxyCompactList}\small\item\em divide by a double \end{DoxyCompactList}\item 
+const double \& \hyperlink{classoomph_1_1DoubleVector_a54cec3cc3e28f6781c28c0dbcfcffa3e}{operator\mbox{[}$\,$\mbox{]}} (int \hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}) const
+\begin{DoxyCompactList}\small\item\em \mbox{[}\mbox{]} access function to the (local) values of this vector \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1DoubleVector_a4c176b562f503701d65882a930d5b8f5}{max} () const
+\begin{DoxyCompactList}\small\item\em returns the maximum coefficient \end{DoxyCompactList}\item 
+double $\ast$ \hyperlink{classoomph_1_1DoubleVector_a8c3dcdf8a602a1f266bbe72d98fde2e7}{values\+\_\+pt} ()
+\begin{DoxyCompactList}\small\item\em access function to the underlying values \end{DoxyCompactList}\item 
+double $\ast$ \hyperlink{classoomph_1_1DoubleVector_ab88fb798be9cc01d3f3fb64db2c8c9f6}{values\+\_\+pt} () const
+\begin{DoxyCompactList}\small\item\em access function to the underlying values (const version) \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1DoubleVector_aa258eab026007d7f02847b6e5ef3d1dc}{output} (std\+::ostream \&outfile, const int \&output\+\_\+precision=-\/1) const
+\begin{DoxyCompactList}\small\item\em output the global contents of the vector \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1DoubleVector_ab236e5a906d16e8c7edc6b9acafa23e4}{output} (std\+::string filename, const int \&output\+\_\+precision=-\/1) const
+\begin{DoxyCompactList}\small\item\em output the global contents of the vector \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1DoubleVector_a2cdcd660a9a90868ba1f837095403649}{output\+\_\+local\+\_\+values} (std\+::ostream \&outfile, const int \&output\+\_\+precision=-\/1) const
+\begin{DoxyCompactList}\small\item\em output the local contents of the vector \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1DoubleVector_a1cbc454999c271e7cb476f7c5c76ce72}{output\+\_\+local\+\_\+values} (std\+::string filename, const int \&output\+\_\+precision=-\/1) const
+\begin{DoxyCompactList}\small\item\em output the local contents of the vector \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1DoubleVector_afc5d6ab2c9ba7a0f307cc419a331df70}{output\+\_\+local\+\_\+values\+\_\+with\+\_\+offset} (std\+::ostream \&outfile, const int \&output\+\_\+precision=-\/1) const
+\begin{DoxyCompactList}\small\item\em output the local contents of the vector \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1DoubleVector_aa9f03b47d00fe70e4f5e4f2474b48bf4}{output\+\_\+local\+\_\+values\+\_\+with\+\_\+offset} (std\+::string filename, const int \&output\+\_\+precision=-\/1) const
+\begin{DoxyCompactList}\small\item\em output the local contents of the vector \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1DoubleVector_abd20e2e394c8e08749ed34c7228c8506}{dot} (const \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} \&vec) const
+\begin{DoxyCompactList}\small\item\em compute the dot product of this vector with the vector vec. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1DoubleVector_a9ac9245cac87ddcdb70cfcd697553a55}{norm} () const
+\begin{DoxyCompactList}\small\item\em compute the 2 norm of this vector \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1DoubleVector_abe25ba0bd83ba1e963103c4ad95328cc}{norm} (const \hyperlink{classoomph_1_1CRDoubleMatrix}{C\+R\+Double\+Matrix} $\ast$matrix\+\_\+pt) const
+\begin{DoxyCompactList}\small\item\em compute the A-\/norm using the matrix at matrix\+\_\+pt \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double $\ast$ \hyperlink{classoomph_1_1DoubleVector_abbb699b9364ece68a4cb483291c04c25}{Values\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em the local vector \end{DoxyCompactList}\item 
+bool \hyperlink{classoomph_1_1DoubleVector_a9b205077360d67c9de07e538199f335f}{Internal\+\_\+values}
+\begin{DoxyCompactList}\small\item\em Boolean flag to indicate whether the vector\textquotesingle{}s data (values\+\_\+pt) is owned by this vector. \end{DoxyCompactList}\item 
+bool \hyperlink{classoomph_1_1DoubleVector_ab72c78c801b28fdd00391a9c266413ea}{Built}
+\begin{DoxyCompactList}\small\item\em indicates that the vector has been built and is usable \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \hyperlink{classoomph_1_1DoubleVector_a738e90fa5474b2ab868b50d76347a20d}{operator$<$$<$} (std\+::ostream \&out, const \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} \&v)
+\begin{DoxyCompactList}\small\item\em Ouput operator for \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+A vector in the mathematical sense, initially developed for linear algebra type applications. If M\+PI then this vector can be distributed -\/ its distribution is described by the \hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution} object at Distribution\+\_\+pt. \hyperlink{classoomph_1_1Data}{Data} is stored in a C-\/style pointer vector (double$\ast$) 
+
+Definition at line 61 of file double\+\_\+vector.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1DoubleVector_a786d26f4034f2ae10c9d26542642661f}\label{classoomph_1_1DoubleVector_a786d26f4034f2ae10c9d26542642661f}} 
+\index{oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}!Double\+Vector@{Double\+Vector}}
+\index{Double\+Vector@{Double\+Vector}!oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}}
+\subsubsection{\texorpdfstring{Double\+Vector()}{DoubleVector()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily oomph\+::\+Double\+Vector\+::\+Double\+Vector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor for an uninitialized \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}. 
+
+
+
+Definition at line 67 of file double\+\_\+vector.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1DoubleVector_a21f824524cd7bc779af3cbdbfe1d3ef8}\label{classoomph_1_1DoubleVector_a21f824524cd7bc779af3cbdbfe1d3ef8}} 
+\index{oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}!Double\+Vector@{Double\+Vector}}
+\index{Double\+Vector@{Double\+Vector}!oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}}
+\subsubsection{\texorpdfstring{Double\+Vector()}{DoubleVector()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily oomph\+::\+Double\+Vector\+::\+Double\+Vector (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution} $\ast$const \&}]{dist\+\_\+pt,  }\item[{const double \&}]{v = {\ttfamily 0.0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor. Assembles a \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} with a prescribed distribution. Additionally every entry can be set (with argument v -\/ defaults to 0). 
+
+
+
+Definition at line 74 of file double\+\_\+vector.\+h.
+
+
+
+References build().
+
+\mbox{\Hypertarget{classoomph_1_1DoubleVector_a29d22a13eeaa61d5467d5cfa37e1f38f}\label{classoomph_1_1DoubleVector_a29d22a13eeaa61d5467d5cfa37e1f38f}} 
+\index{oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}!Double\+Vector@{Double\+Vector}}
+\index{Double\+Vector@{Double\+Vector}!oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}}
+\subsubsection{\texorpdfstring{Double\+Vector()}{DoubleVector()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily oomph\+::\+Double\+Vector\+::\+Double\+Vector (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution} \&}]{dist,  }\item[{const double \&}]{v = {\ttfamily 0.0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor. Assembles a \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} with a prescribed distribution. Additionally every entry can be set (with argument v -\/ defaults to 0). 
+
+
+
+Definition at line 84 of file double\+\_\+vector.\+h.
+
+
+
+References build().
+
+\mbox{\Hypertarget{classoomph_1_1DoubleVector_a53441aa63f3acfa65dc4556ffa0b5573}\label{classoomph_1_1DoubleVector_a53441aa63f3acfa65dc4556ffa0b5573}} 
+\index{oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}!````~Double\+Vector@{$\sim$\+Double\+Vector}}
+\index{````~Double\+Vector@{$\sim$\+Double\+Vector}!oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}}
+\subsubsection{\texorpdfstring{$\sim$\+Double\+Vector()}{~DoubleVector()}}
+{\footnotesize\ttfamily oomph\+::\+Double\+Vector\+::$\sim$\+Double\+Vector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Destructor -\/ just calls this-\/$>$\hyperlink{classoomph_1_1DoubleVector_af1677445056759263b1b076966e7bfae}{clear()} to delete the distribution and data. 
+
+
+
+Definition at line 92 of file double\+\_\+vector.\+h.
+
+
+
+References clear().
+
+\mbox{\Hypertarget{classoomph_1_1DoubleVector_af547ee3b90c4a5598b655ed57ed78b2f}\label{classoomph_1_1DoubleVector_af547ee3b90c4a5598b655ed57ed78b2f}} 
+\index{oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}!Double\+Vector@{Double\+Vector}}
+\index{Double\+Vector@{Double\+Vector}!oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}}
+\subsubsection{\texorpdfstring{Double\+Vector()}{DoubleVector()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily oomph\+::\+Double\+Vector\+::\+Double\+Vector (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} \&}]{new\+\_\+vector }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Copy constructor. 
+
+
+
+Definition at line 98 of file double\+\_\+vector.\+h.
+
+
+
+References build().
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1DoubleVector_a7bcc94c157d6853a0f0502e8a76ed380}\label{classoomph_1_1DoubleVector_a7bcc94c157d6853a0f0502e8a76ed380}} 
+\index{oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}!build@{build}}
+\index{build@{build}!oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}}
+\subsubsection{\texorpdfstring{build()}{build()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
+{\footnotesize\ttfamily void oomph\+::\+Double\+Vector\+::build (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} \&}]{old\+\_\+vector }\end{DoxyParamCaption})}
+
+
+
+Just copys the argument \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}. 
+
+
+
+Definition at line 40 of file double\+\_\+vector.\+cc.
+
+
+
+References oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::distribution\+\_\+built(), oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::distribution\+\_\+pt(), Internal\+\_\+values, oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::nrow\+\_\+local(), values\+\_\+pt(), and Values\+\_\+pt.
+
+
+
+Referenced by oomph\+::\+Oomph\+Lib\+Preconditioner\+Epetra\+Operator\+::\+Apply\+Inverse(), build(), oomph\+::\+Complex\+Damped\+Jacobi$<$ M\+A\+T\+R\+I\+X $>$\+::complex\+\_\+solve\+\_\+helper(), oomph\+::\+Double\+Vector\+Helpers\+::concatenate(), oomph\+::\+Double\+Vector\+Helpers\+::concatenate\+\_\+without\+\_\+communication(), Double\+Vector(), oomph\+::\+Block\+Preconditioner$<$ C\+R\+Double\+Matrix $>$\+::get\+\_\+block\+\_\+vector(), oomph\+::\+Block\+Preconditioner$<$ C\+R\+Double\+Matrix $>$\+::get\+\_\+concatenated\+\_\+block\+\_\+vector(), oomph\+::\+Problem\+::get\+\_\+dofs(), oomph\+::\+Problem\+::get\+\_\+inverse\+\_\+mass\+\_\+matrix\+\_\+times\+\_\+residuals(), oomph\+::\+Problem\+::get\+\_\+jacobian(), oomph\+::\+Problem\+::get\+\_\+residuals(), oomph\+::\+Hypre\+Interface\+::hypre\+\_\+solve(), oomph\+::\+Block\+Preconditioner$<$ C\+R\+Double\+Matrix $>$\+::internal\+\_\+get\+\_\+block\+\_\+ordered\+\_\+preconditioner\+\_\+vector(), oomph\+::\+Block\+Preconditioner$<$ C\+R\+Double\+Matrix $>$\+::internal\+\_\+get\+\_\+block\+\_\+vector(), oomph\+::\+Matrix\+Vector\+Product\+::multiply(), oomph\+::\+Trilinos\+Epetra\+Helpers\+::multiply(), oomph\+::\+C\+R\+Double\+Matrix\+::multiply(), oomph\+::\+Dense\+Double\+Matrix\+::multiply(), oomph\+::\+C\+C\+Double\+Matrix\+::multiply(), oomph\+::\+Matrix\+Vector\+Product\+::multiply\+\_\+transpose(), oomph\+::\+C\+R\+Double\+Matrix\+::multiply\+\_\+transpose(), oomph\+::\+Dense\+Double\+Matrix\+::multiply\+\_\+transpose(), oomph\+::\+C\+C\+Double\+Matrix\+::multiply\+\_\+transpose(), operator=(), oomph\+::\+Pitch\+Fork\+Handler\+::\+Pitch\+Fork\+Handler(), oomph\+::\+Matrix\+Based\+Diag\+Preconditioner\+::preconditioner\+\_\+solve(), oomph\+::\+Trilinos\+Preconditioner\+Base\+::preconditioner\+\_\+solve(), oomph\+::\+Matrix\+Based\+Lumped\+Preconditioner$<$ oomph\+::\+C\+R\+Double\+Matrix $>$\+::preconditioner\+\_\+solve(), oomph\+::\+Pseudo\+Elastic\+F\+S\+I\+Preconditioner\+::preconditioner\+\_\+solve(), oomph\+::\+F\+S\+I\+Preconditioner\+::preconditioner\+\_\+solve(), oomph\+::\+Lagrange\+Enforced\+Flow\+Preconditioner\+::preconditioner\+\_\+solve(), oomph\+::\+Pressure\+Based\+Solid\+L\+S\+C\+Preconditioner\+::preconditioner\+\_\+solve(), oomph\+::\+Block\+Diagonal\+Preconditioner$<$ M\+A\+T\+R\+I\+X $>$\+::preconditioner\+\_\+solve(), oomph\+::\+Dummy\+Block\+Preconditioner$<$ M\+A\+T\+R\+I\+X $>$\+::preconditioner\+\_\+solve(), oomph\+::\+Navier\+Stokes\+Schur\+Complement\+Preconditioner\+::preconditioner\+\_\+solve(), oomph\+::\+H\+S\+L\+\_\+\+M\+A42\+::resolve(), oomph\+::\+Trilinos\+Aztec\+O\+O\+Solver\+::resolve(), oomph\+::\+Augmented\+Block\+Fold\+Linear\+Solver\+::resolve(), oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver\+::resolve(), oomph\+::\+Augmented\+Block\+Pitch\+Fork\+Linear\+Solver\+::resolve(), oomph\+::\+Problem\+::setup\+\_\+element\+\_\+count\+\_\+per\+\_\+dof(), oomph\+::\+Mumps\+Solver\+::solve(), oomph\+::\+H\+S\+L\+\_\+\+M\+A42\+::solve(), oomph\+::\+Dense\+L\+U\+::solve(), oomph\+::\+C\+G$<$ M\+A\+T\+R\+I\+X $>$\+::solve(), oomph\+::\+Augmented\+Block\+Fold\+Linear\+Solver\+::solve(), oomph\+::\+Trilinos\+Aztec\+O\+O\+Solver\+::solve(), oomph\+::\+Bi\+C\+G\+Stab$<$ M\+A\+T\+R\+I\+X $>$\+::solve(), oomph\+::\+Super\+L\+U\+Solver\+::solve(), oomph\+::\+Augmented\+Block\+Pitch\+Fork\+Linear\+Solver\+::solve(), oomph\+::\+G\+S$<$ C\+R\+Double\+Matrix $>$\+::solve(), oomph\+::\+G\+M\+R\+E\+S$<$ M\+A\+T\+R\+I\+X $>$\+::solve(), oomph\+::\+Helmholtz\+G\+M\+R\+E\+S\+M\+G$<$ M\+A\+T\+R\+I\+X $>$\+::solve(), oomph\+::\+Helmholtz\+F\+G\+M\+R\+E\+S\+M\+G$<$ M\+A\+T\+R\+I\+X $>$\+::solve(), oomph\+::\+Block\+Hopf\+Linear\+Solver\+::solve\+\_\+for\+\_\+two\+\_\+rhs(), oomph\+::\+C\+G$<$ M\+A\+T\+R\+I\+X $>$\+::solve\+\_\+helper(), oomph\+::\+Bi\+C\+G\+Stab$<$ M\+A\+T\+R\+I\+X $>$\+::solve\+\_\+helper(), oomph\+::\+G\+S$<$ M\+A\+T\+R\+I\+X $>$\+::solve\+\_\+helper(), oomph\+::\+G\+S$<$ C\+R\+Double\+Matrix $>$\+::solve\+\_\+helper(), oomph\+::\+Damped\+Jacobi$<$ M\+A\+T\+R\+I\+X $>$\+::solve\+\_\+helper(), oomph\+::\+G\+M\+R\+E\+S$<$ M\+A\+T\+R\+I\+X $>$\+::solve\+\_\+helper(), oomph\+::\+Helmholtz\+G\+M\+R\+E\+S\+M\+G$<$ M\+A\+T\+R\+I\+X $>$\+::solve\+\_\+helper(), oomph\+::\+Helmholtz\+F\+G\+M\+R\+E\+S\+M\+G$<$ M\+A\+T\+R\+I\+X $>$\+::solve\+\_\+helper(), and oomph\+::\+Low\+Storage\+Runge\+Kutta$<$ O\+R\+D\+E\+R $>$\+::timestep().
+
+\mbox{\Hypertarget{classoomph_1_1DoubleVector_ad22d075ba35995e26f40209de1b25746}\label{classoomph_1_1DoubleVector_ad22d075ba35995e26f40209de1b25746}} 
+\index{oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}!build@{build}}
+\index{build@{build}!oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}}
+\subsubsection{\texorpdfstring{build()}{build()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
+{\footnotesize\ttfamily void oomph\+::\+Double\+Vector\+::build (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution} \&}]{dist,  }\item[{const double \&}]{v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Assembles a \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} with distribution dist, if v is specified each element is set to v, otherwise each element is set to 0.\+0. 
+
+
+
+Definition at line 116 of file double\+\_\+vector.\+h.
+
+
+
+References build().
+
+\mbox{\Hypertarget{classoomph_1_1DoubleVector_a84d5a0b2335fb1af865c84f8f25421e9}\label{classoomph_1_1DoubleVector_a84d5a0b2335fb1af865c84f8f25421e9}} 
+\index{oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}!build@{build}}
+\index{build@{build}!oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}}
+\subsubsection{\texorpdfstring{build()}{build()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
+{\footnotesize\ttfamily void oomph\+::\+Double\+Vector\+::build (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution} $\ast$const \&}]{dist\+\_\+pt,  }\item[{const double \&}]{v }\end{DoxyParamCaption})}
+
+
+
+Assembles a \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} with distribution dist, if v is specified each element is set to v, otherwise each element is set to 0.\+0. 
+
+Assembles a \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} with distribution dist, if v is specified each row is set to v 
+
+Definition at line 66 of file double\+\_\+vector.\+cc.
+
+
+
+References oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::build\+\_\+distribution(), Built, oomph\+::\+Linear\+Algebra\+Distribution\+::built(), clear(), Internal\+\_\+values, oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::nrow\+\_\+local(), and Values\+\_\+pt.
+
+\mbox{\Hypertarget{classoomph_1_1DoubleVector_a73332fc4a200a32d7281ceb548375d8a}\label{classoomph_1_1DoubleVector_a73332fc4a200a32d7281ceb548375d8a}} 
+\index{oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}!build@{build}}
+\index{build@{build}!oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}}
+\subsubsection{\texorpdfstring{build()}{build()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
+{\footnotesize\ttfamily void oomph\+::\+Double\+Vector\+::build (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution} \&}]{dist,  }\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Assembles a \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} with a distribution dist and coefficients taken from the vector v. Note. The vector v M\+U\+ST be of length \hyperlink{classoomph_1_1DistributableLinearAlgebraObject_a7569556f14fd68b28508920e89bd5eee}{nrow()} 
+
+
+
+Definition at line 130 of file double\+\_\+vector.\+h.
+
+
+
+References build(), and initialise().
+
+\mbox{\Hypertarget{classoomph_1_1DoubleVector_a4e6219936d6b23265b46dd3a25acb7c8}\label{classoomph_1_1DoubleVector_a4e6219936d6b23265b46dd3a25acb7c8}} 
+\index{oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}!build@{build}}
+\index{build@{build}!oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}}
+\subsubsection{\texorpdfstring{build()}{build()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
+{\footnotesize\ttfamily void oomph\+::\+Double\+Vector\+::build (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution} $\ast$const \&}]{dist\+\_\+pt,  }\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{v }\end{DoxyParamCaption})}
+
+
+
+Assembles a \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} with a distribution dist and coefficients taken from the vector v. Note. The vector v M\+U\+ST be of length \hyperlink{classoomph_1_1DistributableLinearAlgebraObject_a7569556f14fd68b28508920e89bd5eee}{nrow()} 
+
+
+
+Definition at line 98 of file double\+\_\+vector.\+cc.
+
+
+
+References oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::build\+\_\+distribution(), Built, clear(), initialise(), and Internal\+\_\+values.
+
+\mbox{\Hypertarget{classoomph_1_1DoubleVector_aae402d422ec4344a4a45cdb7659b7161}\label{classoomph_1_1DoubleVector_aae402d422ec4344a4a45cdb7659b7161}} 
+\index{oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}!built@{built}}
+\index{built@{built}!oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}}
+\subsubsection{\texorpdfstring{built()}{built()}}
+{\footnotesize\ttfamily bool oomph\+::\+Double\+Vector\+::built (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 162 of file double\+\_\+vector.\+h.
+
+
+
+References Built.
+
+
+
+Referenced by oomph\+::\+Mumps\+Solver\+::backsub(), oomph\+::\+Super\+L\+U\+Solver\+::backsub\+\_\+serial(), oomph\+::\+Smoother\+::check\+\_\+validity\+\_\+of\+\_\+solve\+\_\+helper\+\_\+inputs(), oomph\+::\+Double\+Vector\+Helpers\+::concatenate(), oomph\+::\+Double\+Vector\+Helpers\+::concatenate\+\_\+without\+\_\+communication(), oomph\+::\+Trilinos\+Epetra\+Helpers\+::copy\+\_\+to\+\_\+oomphlib\+\_\+vector(), oomph\+::\+Trilinos\+Epetra\+Helpers\+::create\+\_\+distributed\+\_\+epetra\+\_\+vector(), oomph\+::\+Trilinos\+Epetra\+Helpers\+::create\+\_\+epetra\+\_\+vector\+\_\+view\+\_\+data(), dot(), oomph\+::\+Block\+Preconditioner$<$ C\+R\+Double\+Matrix $>$\+::get\+\_\+block\+\_\+ordered\+\_\+preconditioner\+\_\+vector(), oomph\+::\+Block\+Preconditioner$<$ C\+R\+Double\+Matrix $>$\+::get\+\_\+block\+\_\+vector(), oomph\+::\+Block\+Preconditioner$<$ C\+R\+Double\+Matrix $>$\+::get\+\_\+block\+\_\+vectors(), oomph\+::\+Block\+Preconditioner$<$ C\+R\+Double\+Matrix $>$\+::get\+\_\+concatenated\+\_\+block\+\_\+vector(), oomph\+::\+Problem\+::get\+\_\+jacobian(), oomph\+::\+Problem\+::get\+\_\+residuals(), oomph\+::\+Hypre\+Interface\+::hypre\+\_\+solve(), oomph\+::\+Block\+Preconditioner$<$ C\+R\+Double\+Matrix $>$\+::internal\+\_\+get\+\_\+block\+\_\+ordered\+\_\+preconditioner\+\_\+vector(), oomph\+::\+Block\+Preconditioner$<$ C\+R\+Double\+Matrix $>$\+::internal\+\_\+get\+\_\+block\+\_\+vector(), oomph\+::\+Block\+Preconditioner$<$ C\+R\+Double\+Matrix $>$\+::internal\+\_\+get\+\_\+block\+\_\+vectors(), oomph\+::\+Block\+Preconditioner$<$ C\+R\+Double\+Matrix $>$\+::internal\+\_\+return\+\_\+block\+\_\+ordered\+\_\+preconditioner\+\_\+vector(), oomph\+::\+Block\+Preconditioner$<$ C\+R\+Double\+Matrix $>$\+::internal\+\_\+return\+\_\+block\+\_\+vector(), oomph\+::\+Block\+Preconditioner$<$ C\+R\+Double\+Matrix $>$\+::internal\+\_\+return\+\_\+block\+\_\+vectors(), oomph\+::\+C\+R\+Double\+Matrix\+::lubksub(), oomph\+::\+Matrix\+Vector\+Product\+::multiply(), oomph\+::\+Trilinos\+Epetra\+Helpers\+::multiply(), oomph\+::\+C\+R\+Double\+Matrix\+::multiply(), oomph\+::\+Dense\+Double\+Matrix\+::multiply(), oomph\+::\+C\+C\+Double\+Matrix\+::multiply(), oomph\+::\+Matrix\+Vector\+Product\+::multiply\+\_\+transpose(), oomph\+::\+C\+R\+Double\+Matrix\+::multiply\+\_\+transpose(), oomph\+::\+Dense\+Double\+Matrix\+::multiply\+\_\+transpose(), oomph\+::\+C\+C\+Double\+Matrix\+::multiply\+\_\+transpose(), norm(), operator+=(), operator-\/=(), operator==(), oomph\+::\+Matrix\+Based\+Diag\+Preconditioner\+::preconditioner\+\_\+solve(), oomph\+::\+Matrix\+Based\+Lumped\+Preconditioner$<$ oomph\+::\+C\+R\+Double\+Matrix $>$\+::preconditioner\+\_\+solve(), oomph\+::\+F\+S\+I\+Preconditioner\+::preconditioner\+\_\+solve(), oomph\+::\+Lagrange\+Enforced\+Flow\+Preconditioner\+::preconditioner\+\_\+solve(), oomph\+::\+Pressure\+Based\+Solid\+L\+S\+C\+Preconditioner\+::preconditioner\+\_\+solve(), oomph\+::\+Identity\+Preconditioner\+::preconditioner\+\_\+solve(), oomph\+::\+I\+L\+U\+Zero\+Preconditioner$<$ C\+C\+Double\+Matrix $>$\+::preconditioner\+\_\+solve(), oomph\+::\+I\+L\+U\+Zero\+Preconditioner$<$ C\+R\+Double\+Matrix $>$\+::preconditioner\+\_\+solve(), oomph\+::\+Block\+Diagonal\+Preconditioner$<$ M\+A\+T\+R\+I\+X $>$\+::preconditioner\+\_\+solve(), oomph\+::\+Navier\+Stokes\+Schur\+Complement\+Preconditioner\+::preconditioner\+\_\+solve(), oomph\+::\+Hypre\+Preconditioner\+::preconditioner\+\_\+solve(), oomph\+::\+Trilinos\+Aztec\+O\+O\+Solver\+::resolve(), oomph\+::\+Augmented\+Block\+Fold\+Linear\+Solver\+::resolve(), oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver\+::resolve(), oomph\+::\+Hypre\+Solver\+::resolve(), oomph\+::\+Augmented\+Block\+Pitch\+Fork\+Linear\+Solver\+::resolve(), oomph\+::\+Block\+Preconditioner$<$ C\+R\+Double\+Matrix $>$\+::return\+\_\+block\+\_\+ordered\+\_\+preconditioner\+\_\+vector(), oomph\+::\+Block\+Preconditioner$<$ C\+R\+Double\+Matrix $>$\+::return\+\_\+block\+\_\+vector(), oomph\+::\+Block\+Preconditioner$<$ C\+R\+Double\+Matrix $>$\+::return\+\_\+block\+\_\+vectors(), oomph\+::\+Block\+Preconditioner$<$ C\+R\+Double\+Matrix $>$\+::return\+\_\+concatenated\+\_\+block\+\_\+vector(), oomph\+::\+Mumps\+Solver\+::solve(), oomph\+::\+F\+D\+\_\+\+L\+U\+::solve(), oomph\+::\+Augmented\+Block\+Fold\+Linear\+Solver\+::solve(), oomph\+::\+Trilinos\+Aztec\+O\+O\+Solver\+::solve(), oomph\+::\+Bi\+C\+G\+Stab$<$ M\+A\+T\+R\+I\+X $>$\+::solve(), oomph\+::\+Super\+L\+U\+Solver\+::solve(), oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver\+::solve(), oomph\+::\+Augmented\+Block\+Pitch\+Fork\+Linear\+Solver\+::solve(), oomph\+::\+Hypre\+Solver\+::solve(), oomph\+::\+Block\+Hopf\+Linear\+Solver\+::solve(), oomph\+::\+G\+M\+R\+E\+S$<$ M\+A\+T\+R\+I\+X $>$\+::solve(), oomph\+::\+Helmholtz\+G\+M\+R\+E\+S\+M\+G$<$ M\+A\+T\+R\+I\+X $>$\+::solve(), oomph\+::\+Helmholtz\+F\+G\+M\+R\+E\+S\+M\+G$<$ M\+A\+T\+R\+I\+X $>$\+::solve(), oomph\+::\+Block\+Hopf\+Linear\+Solver\+::solve\+\_\+for\+\_\+two\+\_\+rhs(), oomph\+::\+C\+G$<$ M\+A\+T\+R\+I\+X $>$\+::solve\+\_\+helper(), oomph\+::\+Bi\+C\+G\+Stab$<$ M\+A\+T\+R\+I\+X $>$\+::solve\+\_\+helper(), oomph\+::\+G\+M\+R\+E\+S$<$ M\+A\+T\+R\+I\+X $>$\+::solve\+\_\+helper(), oomph\+::\+Helmholtz\+G\+M\+R\+E\+S\+M\+G$<$ M\+A\+T\+R\+I\+X $>$\+::solve\+\_\+helper(), oomph\+::\+Helmholtz\+F\+G\+M\+R\+E\+S\+M\+G$<$ M\+A\+T\+R\+I\+X $>$\+::solve\+\_\+helper(), oomph\+::\+Double\+Vector\+Helpers\+::split(), and oomph\+::\+Double\+Vector\+Helpers\+::split\+\_\+without\+\_\+communication().
+
+\mbox{\Hypertarget{classoomph_1_1DoubleVector_af1677445056759263b1b076966e7bfae}\label{classoomph_1_1DoubleVector_af1677445056759263b1b076966e7bfae}} 
+\index{oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}!clear@{clear}}
+\index{clear@{clear}!oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}}
+\subsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void oomph\+::\+Double\+Vector\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+wipes the \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} 
+
+
+
+Definition at line 150 of file double\+\_\+vector.\+h.
+
+
+
+References Built, oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::clear\+\_\+distribution(), Internal\+\_\+values, and Values\+\_\+pt.
+
+
+
+Referenced by build(), oomph\+::\+Problem\+::newton\+\_\+solve(), oomph\+::\+Problem\+::newton\+\_\+solve\+\_\+continuation(), oomph\+::\+Biharmonic\+Preconditioner\+::preconditioner\+\_\+solve(), oomph\+::\+Pseudo\+Elastic\+F\+S\+I\+Preconditioner\+::preconditioner\+\_\+solve(), oomph\+::\+F\+S\+I\+Preconditioner\+::preconditioner\+\_\+solve(), oomph\+::\+Lagrange\+Enforced\+Flow\+Preconditioner\+::preconditioner\+\_\+solve(), oomph\+::\+Pressure\+Based\+Solid\+L\+S\+C\+Preconditioner\+::preconditioner\+\_\+solve(), oomph\+::\+Inexact\+Sub\+Biharmonic\+Preconditioner\+::preconditioner\+\_\+solve(), oomph\+::\+Pseudo\+Elastic\+Preconditioner\+Subsidiary\+Block\+Preconditioner\+Old\+::preconditioner\+\_\+solve(), oomph\+::\+Navier\+Stokes\+Schur\+Complement\+Preconditioner\+::preconditioner\+\_\+solve(), oomph\+::\+Linear\+Solver\+::reset\+\_\+gradient(), set\+\_\+external\+\_\+values(), oomph\+::\+A\+R\+P\+A\+C\+K\+::solve\+\_\+eigenproblem(), and $\sim$\+Double\+Vector().
+
+\mbox{\Hypertarget{classoomph_1_1DoubleVector_abd20e2e394c8e08749ed34c7228c8506}\label{classoomph_1_1DoubleVector_abd20e2e394c8e08749ed34c7228c8506}} 
+\index{oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}!dot@{dot}}
+\index{dot@{dot}!oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}}
+\subsubsection{\texorpdfstring{dot()}{dot()}}
+{\footnotesize\ttfamily double oomph\+::\+Double\+Vector\+::dot (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} \&}]{vec }\end{DoxyParamCaption}) const}
+
+
+
+compute the dot product of this vector with the vector vec. 
+
+compute the dot product of this vector with the vector vec 
+
+Definition at line 806 of file double\+\_\+vector.\+cc.
+
+
+
+References built(), oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::distributed(), oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::distribution\+\_\+pt(), i, oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::nrow\+\_\+local(), values\+\_\+pt(), and Values\+\_\+pt.
+
+
+
+Referenced by oomph\+::\+Problem\+::calculate\+\_\+continuation\+\_\+derivatives\+\_\+helper(), norm(), output\+\_\+local\+\_\+values\+\_\+with\+\_\+offset(), oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver\+::resolve(), oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver\+::solve(), oomph\+::\+C\+G$<$ M\+A\+T\+R\+I\+X $>$\+::solve\+\_\+helper(), and oomph\+::\+Bi\+C\+G\+Stab$<$ M\+A\+T\+R\+I\+X $>$\+::solve\+\_\+helper().
+
+\mbox{\Hypertarget{classoomph_1_1DoubleVector_a180c1057a29f4ed721da46040a619ecd}\label{classoomph_1_1DoubleVector_a180c1057a29f4ed721da46040a619ecd}} 
+\index{oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}!initialise@{initialise}}
+\index{initialise@{initialise}!oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}}
+\subsubsection{\texorpdfstring{initialise()}{initialise()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void oomph\+::\+Double\+Vector\+::initialise (\begin{DoxyParamCaption}\item[{const double \&}]{v }\end{DoxyParamCaption})}
+
+
+
+initialise the whole vector with value v 
+
+
+
+Definition at line 120 of file double\+\_\+vector.\+cc.
+
+
+
+References Built, oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::nrow\+\_\+local(), and Values\+\_\+pt.
+
+
+
+Referenced by build(), oomph\+::\+Problem\+::get\+\_\+jacobian(), oomph\+::\+C\+R\+Double\+Matrix\+::multiply(), oomph\+::\+Dense\+Double\+Matrix\+::multiply(), oomph\+::\+C\+C\+Double\+Matrix\+::multiply(), oomph\+::\+C\+R\+Double\+Matrix\+::multiply\+\_\+transpose(), oomph\+::\+Dense\+Double\+Matrix\+::multiply\+\_\+transpose(), oomph\+::\+C\+C\+Double\+Matrix\+::multiply\+\_\+transpose(), oomph\+::\+Biharmonic\+Preconditioner\+::preconditioner\+\_\+solve(), oomph\+::\+C\+G$<$ M\+A\+T\+R\+I\+X $>$\+::solve\+\_\+helper(), oomph\+::\+Bi\+C\+G\+Stab$<$ M\+A\+T\+R\+I\+X $>$\+::solve\+\_\+helper(), oomph\+::\+G\+S$<$ C\+R\+Double\+Matrix $>$\+::solve\+\_\+helper(), oomph\+::\+G\+M\+R\+E\+S$<$ M\+A\+T\+R\+I\+X $>$\+::solve\+\_\+helper(), oomph\+::\+Helmholtz\+G\+M\+R\+E\+S\+M\+G$<$ M\+A\+T\+R\+I\+X $>$\+::solve\+\_\+helper(), and oomph\+::\+Helmholtz\+F\+G\+M\+R\+E\+S\+M\+G$<$ M\+A\+T\+R\+I\+X $>$\+::solve\+\_\+helper().
+
+\mbox{\Hypertarget{classoomph_1_1DoubleVector_ae3ce2b88e72d8b084e9be8e9af10c487}\label{classoomph_1_1DoubleVector_ae3ce2b88e72d8b084e9be8e9af10c487}} 
+\index{oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}!initialise@{initialise}}
+\index{initialise@{initialise}!oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}}
+\subsubsection{\texorpdfstring{initialise()}{initialise()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void oomph\+::\+Double\+Vector\+::initialise (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$}]{v }\end{DoxyParamCaption})}
+
+
+
+initialise the vector with coefficient from the vector v. Note\+: The vector v must be of length 
+
+
+
+Definition at line 135 of file double\+\_\+vector.\+cc.
+
+
+
+References oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::first\+\_\+row(), oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::nrow(), oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::nrow\+\_\+local(), and Values\+\_\+pt.
+
+\mbox{\Hypertarget{classoomph_1_1DoubleVector_a4c176b562f503701d65882a930d5b8f5}\label{classoomph_1_1DoubleVector_a4c176b562f503701d65882a930d5b8f5}} 
+\index{oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}!max@{max}}
+\index{max@{max}!oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}}
+\subsubsection{\texorpdfstring{max()}{max()}}
+{\footnotesize\ttfamily double oomph\+::\+Double\+Vector\+::max (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+returns the maximum coefficient 
+
+
+
+Definition at line 614 of file double\+\_\+vector.\+cc.
+
+
+
+References oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::distributed(), oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::distribution\+\_\+pt(), i, oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::nrow(), oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::nrow\+\_\+local(), and Values\+\_\+pt.
+
+
+
+Referenced by oomph\+::\+Double\+Matrix\+Base\+::max\+\_\+residual(), oomph\+::\+Problem\+::newton\+\_\+solve(), oomph\+::\+Problem\+::newton\+\_\+solve\+\_\+continuation(), oomph\+::\+Segregatable\+F\+S\+I\+Problem\+::segregated\+\_\+solve(), set\+\_\+external\+\_\+values(), and oomph\+::\+Solid\+I\+C\+Problem\+::set\+\_\+newmark\+\_\+initial\+\_\+condition\+\_\+consistently().
+
+\mbox{\Hypertarget{classoomph_1_1DoubleVector_a9ac9245cac87ddcdb70cfcd697553a55}\label{classoomph_1_1DoubleVector_a9ac9245cac87ddcdb70cfcd697553a55}} 
+\index{oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}!norm@{norm}}
+\index{norm@{norm}!oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}}
+\subsubsection{\texorpdfstring{norm()}{norm()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily double oomph\+::\+Double\+Vector\+::norm (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+compute the 2 norm of this vector 
+
+
+
+Definition at line 867 of file double\+\_\+vector.\+cc.
+
+
+
+References built(), oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::distributed(), oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::distribution\+\_\+pt(), i, oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::nrow\+\_\+local(), and Values\+\_\+pt.
+
+
+
+Referenced by oomph\+::\+Complex\+Damped\+Jacobi$<$ M\+A\+T\+R\+I\+X $>$\+::complex\+\_\+solve\+\_\+helper(), oomph\+::\+Hypre\+Interface\+::hypre\+\_\+solve(), output\+\_\+local\+\_\+values\+\_\+with\+\_\+offset(), oomph\+::\+Pitch\+Fork\+Handler\+::\+Pitch\+Fork\+Handler(), oomph\+::\+C\+G$<$ M\+A\+T\+R\+I\+X $>$\+::solve\+\_\+helper(), oomph\+::\+Bi\+C\+G\+Stab$<$ M\+A\+T\+R\+I\+X $>$\+::solve\+\_\+helper(), oomph\+::\+G\+S$<$ M\+A\+T\+R\+I\+X $>$\+::solve\+\_\+helper(), oomph\+::\+G\+S$<$ C\+R\+Double\+Matrix $>$\+::solve\+\_\+helper(), and oomph\+::\+Damped\+Jacobi$<$ M\+A\+T\+R\+I\+X $>$\+::solve\+\_\+helper().
+
+\mbox{\Hypertarget{classoomph_1_1DoubleVector_abe25ba0bd83ba1e963103c4ad95328cc}\label{classoomph_1_1DoubleVector_abe25ba0bd83ba1e963103c4ad95328cc}} 
+\index{oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}!norm@{norm}}
+\index{norm@{norm}!oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}}
+\subsubsection{\texorpdfstring{norm()}{norm()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily double oomph\+::\+Double\+Vector\+::norm (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1CRDoubleMatrix}{C\+R\+Double\+Matrix} $\ast$}]{matrix\+\_\+pt }\end{DoxyParamCaption}) const}
+
+
+
+compute the A-\/norm using the matrix at matrix\+\_\+pt 
+
+
+
+Definition at line 911 of file double\+\_\+vector.\+cc.
+
+
+
+References built(), oomph\+::\+C\+R\+Double\+Matrix\+::built(), oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::distribution\+\_\+pt(), dot(), and oomph\+::\+C\+R\+Double\+Matrix\+::multiply().
+
+\mbox{\Hypertarget{classoomph_1_1DoubleVector_a691d884622e4221e61436f2bc457c6e2}\label{classoomph_1_1DoubleVector_a691d884622e4221e61436f2bc457c6e2}} 
+\index{oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}!operator$\ast$=@{operator$\ast$=}}
+\index{operator$\ast$=@{operator$\ast$=}!oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}}
+\subsubsection{\texorpdfstring{operator$\ast$=()}{operator*=()}}
+{\footnotesize\ttfamily void oomph\+::\+Double\+Vector\+::operator$\ast$= (\begin{DoxyParamCaption}\item[{const double \&}]{d }\end{DoxyParamCaption})}
+
+
+
+multiply by a double 
+
+Multiply by double. 
+
+Definition at line 557 of file double\+\_\+vector.\+cc.
+
+
+
+References oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::distribution\+\_\+built(), i, oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::nrow\+\_\+local(), and Values\+\_\+pt.
+
+
+
+Referenced by operator/=(), and set\+\_\+external\+\_\+values().
+
+\mbox{\Hypertarget{classoomph_1_1DoubleVector_a2724cce5d107b7e6535d9ae071d6d603}\label{classoomph_1_1DoubleVector_a2724cce5d107b7e6535d9ae071d6d603}} 
+\index{oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}!operator+=@{operator+=}}
+\index{operator+=@{operator+=}!oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}}
+\subsubsection{\texorpdfstring{operator+=()}{operator+=()}}
+{\footnotesize\ttfamily void oomph\+::\+Double\+Vector\+::operator+= (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} \&}]{v }\end{DoxyParamCaption})}
+
+
+
++= operator with another vector 
+
++= operator 
+
+Definition at line 460 of file double\+\_\+vector.\+cc.
+
+
+
+References built(), oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::distribution\+\_\+pt(), i, oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::nrow\+\_\+local(), values\+\_\+pt(), and Values\+\_\+pt.
+
+
+
+Referenced by set\+\_\+external\+\_\+values().
+
+\mbox{\Hypertarget{classoomph_1_1DoubleVector_aaeb013d502cff3ee0b7e036945ece1ea}\label{classoomph_1_1DoubleVector_aaeb013d502cff3ee0b7e036945ece1ea}} 
+\index{oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}!operator-\/=@{operator-\/=}}
+\index{operator-\/=@{operator-\/=}!oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}}
+\subsubsection{\texorpdfstring{operator-\/=()}{operator-=()}}
+{\footnotesize\ttfamily void oomph\+::\+Double\+Vector\+::operator-\/= (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} \&}]{v }\end{DoxyParamCaption})}
+
+
+
+-\/= operator with another vector 
+
+-\/= operator 
+
+Definition at line 508 of file double\+\_\+vector.\+cc.
+
+
+
+References built(), oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::distribution\+\_\+built(), oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::distribution\+\_\+pt(), i, oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::nrow\+\_\+local(), values\+\_\+pt(), and Values\+\_\+pt.
+
+
+
+Referenced by set\+\_\+external\+\_\+values().
+
+\mbox{\Hypertarget{classoomph_1_1DoubleVector_ab3cb62619709401a0e8f4bc4bee9dff3}\label{classoomph_1_1DoubleVector_ab3cb62619709401a0e8f4bc4bee9dff3}} 
+\index{oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}!operator/=@{operator/=}}
+\index{operator/=@{operator/=}!oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}}
+\subsubsection{\texorpdfstring{operator/=()}{operator/=()}}
+{\footnotesize\ttfamily void oomph\+::\+Double\+Vector\+::operator/= (\begin{DoxyParamCaption}\item[{const double \&}]{d }\end{DoxyParamCaption})}
+
+
+
+divide by a double 
+
+Divide by double. 
+
+Definition at line 581 of file double\+\_\+vector.\+cc.
+
+
+
+References operator$\ast$=().
+
+
+
+Referenced by set\+\_\+external\+\_\+values().
+
+\mbox{\Hypertarget{classoomph_1_1DoubleVector_ab5f56f41d86a18bba358912b1c4f2dac}\label{classoomph_1_1DoubleVector_ab5f56f41d86a18bba358912b1c4f2dac}} 
+\index{oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}!operator=@{operator=}}
+\index{operator=@{operator=}!oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily void oomph\+::\+Double\+Vector\+::operator= (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} \&}]{old\+\_\+vector }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+assignment operator 
+
+
+
+Definition at line 106 of file double\+\_\+vector.\+h.
+
+
+
+References build().
+
+\mbox{\Hypertarget{classoomph_1_1DoubleVector_a4da2f710fccabe5a5349d8a5238b36cc}\label{classoomph_1_1DoubleVector_a4da2f710fccabe5a5349d8a5238b36cc}} 
+\index{oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}!operator==@{operator==}}
+\index{operator==@{operator==}!oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}}
+\subsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool oomph\+::\+Double\+Vector\+::operator== (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} \&}]{v }\end{DoxyParamCaption})}
+
+
+
+== operator 
+
+
+
+Definition at line 427 of file double\+\_\+vector.\+cc.
+
+
+
+References built(), i, oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::nrow\+\_\+local(), values\+\_\+pt(), and Values\+\_\+pt.
+
+
+
+Referenced by set\+\_\+external\+\_\+values().
+
+\mbox{\Hypertarget{classoomph_1_1DoubleVector_acea3779324129da50076341bf6644d25}\label{classoomph_1_1DoubleVector_acea3779324129da50076341bf6644d25}} 
+\index{oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}}
+\subsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily double \& oomph\+::\+Double\+Vector\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{int}]{i }\end{DoxyParamCaption})}
+
+
+
+\mbox{[}\mbox{]} access function to the (local) values of this vector 
+
+
+
+Definition at line 407 of file double\+\_\+vector.\+cc.
+
+
+
+References i, oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::nrow\+\_\+local(), and Values\+\_\+pt.
+
+
+
+Referenced by set\+\_\+external\+\_\+values().
+
+\mbox{\Hypertarget{classoomph_1_1DoubleVector_a54cec3cc3e28f6781c28c0dbcfcffa3e}\label{classoomph_1_1DoubleVector_a54cec3cc3e28f6781c28c0dbcfcffa3e}} 
+\index{oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}}
+\subsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily const double \& oomph\+::\+Double\+Vector\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{int}]{i }\end{DoxyParamCaption}) const}
+
+
+
+\mbox{[}\mbox{]} access function to the (local) values of this vector 
+
+
+
+Definition at line 594 of file double\+\_\+vector.\+cc.
+
+
+
+References i, oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::nrow\+\_\+local(), and Values\+\_\+pt.
+
+\mbox{\Hypertarget{classoomph_1_1DoubleVector_aa258eab026007d7f02847b6e5ef3d1dc}\label{classoomph_1_1DoubleVector_aa258eab026007d7f02847b6e5ef3d1dc}} 
+\index{oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}!output@{output}}
+\index{output@{output}!oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void oomph\+::\+Double\+Vector\+::output (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile,  }\item[{const int \&}]{output\+\_\+precision = {\ttfamily -\/1} }\end{DoxyParamCaption}) const}
+
+
+
+output the global contents of the vector 
+
+output the contents of the vector 
+
+Definition at line 659 of file double\+\_\+vector.\+cc.
+
+
+
+References oomph\+::\+Linear\+Algebra\+Distribution\+::communicator\+\_\+pt(), oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::distributed(), oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::distribution\+\_\+pt(), oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::first\+\_\+row(), i, oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::nrow(), oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::nrow\+\_\+local(), and Values\+\_\+pt.
+
+
+
+Referenced by output(), and values\+\_\+pt().
+
+\mbox{\Hypertarget{classoomph_1_1DoubleVector_ab236e5a906d16e8c7edc6b9acafa23e4}\label{classoomph_1_1DoubleVector_ab236e5a906d16e8c7edc6b9acafa23e4}} 
+\index{oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}!output@{output}}
+\index{output@{output}!oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}}
+\subsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void oomph\+::\+Double\+Vector\+::output (\begin{DoxyParamCaption}\item[{std\+::string}]{filename,  }\item[{const int \&}]{output\+\_\+precision = {\ttfamily -\/1} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+output the global contents of the vector 
+
+
+
+Definition at line 268 of file double\+\_\+vector.\+h.
+
+
+
+References output(), and output\+\_\+local\+\_\+values().
+
+\mbox{\Hypertarget{classoomph_1_1DoubleVector_a2cdcd660a9a90868ba1f837095403649}\label{classoomph_1_1DoubleVector_a2cdcd660a9a90868ba1f837095403649}} 
+\index{oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}!output\+\_\+local\+\_\+values@{output\+\_\+local\+\_\+values}}
+\index{output\+\_\+local\+\_\+values@{output\+\_\+local\+\_\+values}!oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}}
+\subsubsection{\texorpdfstring{output\+\_\+local\+\_\+values()}{output\_local\_values()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void oomph\+::\+Double\+Vector\+::output\+\_\+local\+\_\+values (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile,  }\item[{const int \&}]{output\+\_\+precision = {\ttfamily -\/1} }\end{DoxyParamCaption}) const}
+
+
+
+output the local contents of the vector 
+
+
+
+Definition at line 743 of file double\+\_\+vector.\+cc.
+
+
+
+References i, oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::nrow\+\_\+local(), and Values\+\_\+pt.
+
+
+
+Referenced by output(), and output\+\_\+local\+\_\+values().
+
+\mbox{\Hypertarget{classoomph_1_1DoubleVector_a1cbc454999c271e7cb476f7c5c76ce72}\label{classoomph_1_1DoubleVector_a1cbc454999c271e7cb476f7c5c76ce72}} 
+\index{oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}!output\+\_\+local\+\_\+values@{output\+\_\+local\+\_\+values}}
+\index{output\+\_\+local\+\_\+values@{output\+\_\+local\+\_\+values}!oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}}
+\subsubsection{\texorpdfstring{output\+\_\+local\+\_\+values()}{output\_local\_values()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void oomph\+::\+Double\+Vector\+::output\+\_\+local\+\_\+values (\begin{DoxyParamCaption}\item[{std\+::string}]{filename,  }\item[{const int \&}]{output\+\_\+precision = {\ttfamily -\/1} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+output the local contents of the vector 
+
+
+
+Definition at line 282 of file double\+\_\+vector.\+h.
+
+
+
+References output\+\_\+local\+\_\+values(), and output\+\_\+local\+\_\+values\+\_\+with\+\_\+offset().
+
+\mbox{\Hypertarget{classoomph_1_1DoubleVector_afc5d6ab2c9ba7a0f307cc419a331df70}\label{classoomph_1_1DoubleVector_afc5d6ab2c9ba7a0f307cc419a331df70}} 
+\index{oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}!output\+\_\+local\+\_\+values\+\_\+with\+\_\+offset@{output\+\_\+local\+\_\+values\+\_\+with\+\_\+offset}}
+\index{output\+\_\+local\+\_\+values\+\_\+with\+\_\+offset@{output\+\_\+local\+\_\+values\+\_\+with\+\_\+offset}!oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}}
+\subsubsection{\texorpdfstring{output\+\_\+local\+\_\+values\+\_\+with\+\_\+offset()}{output\_local\_values\_with\_offset()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void oomph\+::\+Double\+Vector\+::output\+\_\+local\+\_\+values\+\_\+with\+\_\+offset (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile,  }\item[{const int \&}]{output\+\_\+precision = {\ttfamily -\/1} }\end{DoxyParamCaption}) const}
+
+
+
+output the local contents of the vector 
+
+output the local contents of the vector with the first row offset. 
+
+Definition at line 773 of file double\+\_\+vector.\+cc.
+
+
+
+References oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::first\+\_\+row(), i, oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::nrow\+\_\+local(), and Values\+\_\+pt.
+
+
+
+Referenced by output\+\_\+local\+\_\+values(), and output\+\_\+local\+\_\+values\+\_\+with\+\_\+offset().
+
+\mbox{\Hypertarget{classoomph_1_1DoubleVector_aa9f03b47d00fe70e4f5e4f2474b48bf4}\label{classoomph_1_1DoubleVector_aa9f03b47d00fe70e4f5e4f2474b48bf4}} 
+\index{oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}!output\+\_\+local\+\_\+values\+\_\+with\+\_\+offset@{output\+\_\+local\+\_\+values\+\_\+with\+\_\+offset}}
+\index{output\+\_\+local\+\_\+values\+\_\+with\+\_\+offset@{output\+\_\+local\+\_\+values\+\_\+with\+\_\+offset}!oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}}
+\subsubsection{\texorpdfstring{output\+\_\+local\+\_\+values\+\_\+with\+\_\+offset()}{output\_local\_values\_with\_offset()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void oomph\+::\+Double\+Vector\+::output\+\_\+local\+\_\+values\+\_\+with\+\_\+offset (\begin{DoxyParamCaption}\item[{std\+::string}]{filename,  }\item[{const int \&}]{output\+\_\+precision = {\ttfamily -\/1} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+output the local contents of the vector 
+
+
+
+Definition at line 297 of file double\+\_\+vector.\+h.
+
+
+
+References dot(), norm(), and output\+\_\+local\+\_\+values\+\_\+with\+\_\+offset().
+
+\mbox{\Hypertarget{classoomph_1_1DoubleVector_a9396b861977c16606d8eca39056976c8}\label{classoomph_1_1DoubleVector_a9396b861977c16606d8eca39056976c8}} 
+\index{oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}!redistribute@{redistribute}}
+\index{redistribute@{redistribute}!oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}}
+\subsubsection{\texorpdfstring{redistribute()}{redistribute()}}
+{\footnotesize\ttfamily void oomph\+::\+Double\+Vector\+::redistribute (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution} $\ast$const \&}]{dist\+\_\+pt }\end{DoxyParamCaption})}
+
+
+
+The contents of the vector are redistributed to match the new distribution. In a non-\/\+M\+PI rebuild this method works, but does nothing. {\bfseries N\+O\+TE} 1\+: The current distribution and the new distribution must have the same number of global rows. {\bfseries N\+O\+TE} 2\+: The current distribution and the new distribution must have the same Communicator. 
+
+The contents of the vector are redistributed to match the new distribution. In a non-\/\+M\+PI build this method works, but does nothing. {\bfseries N\+O\+TE} 1\+: The current distribution and the new distribution must have the same number of global rows. {\bfseries N\+O\+TE} 2\+: The current distribution and the new distribution must have the same Communicator. 
+
+Definition at line 164 of file double\+\_\+vector.\+cc.
+
+
+
+References oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::build\+\_\+distribution(), oomph\+::\+Linear\+Algebra\+Distribution\+::communicator\+\_\+pt(), oomph\+::\+Linear\+Algebra\+Distribution\+::distributed(), oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::distributed(), oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::distribution\+\_\+pt(), oomph\+::\+Linear\+Algebra\+Distribution\+::first\+\_\+row(), oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::first\+\_\+row(), i, Internal\+\_\+values, oomph\+::\+Linear\+Algebra\+Distribution\+::nrow(), oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::nrow(), oomph\+::\+Linear\+Algebra\+Distribution\+::nrow\+\_\+local(), oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::nrow\+\_\+local(), and Values\+\_\+pt.
+
+
+
+Referenced by oomph\+::\+Mumps\+Solver\+::backsub(), oomph\+::\+Problem\+::calculate\+\_\+continuation\+\_\+derivatives\+\_\+helper(), oomph\+::\+Problem\+::get\+\_\+jacobian(), oomph\+::\+Hypre\+Interface\+::hypre\+\_\+solve(), oomph\+::\+Problem\+::newton\+\_\+solve(), oomph\+::\+Problem\+::newton\+\_\+solve\+\_\+continuation(), oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver\+::resolve(), set\+\_\+external\+\_\+values(), oomph\+::\+Mumps\+Solver\+::solve(), oomph\+::\+C\+G$<$ M\+A\+T\+R\+I\+X $>$\+::solve(), oomph\+::\+Trilinos\+Aztec\+O\+O\+Solver\+::solve(), oomph\+::\+Bi\+C\+G\+Stab$<$ M\+A\+T\+R\+I\+X $>$\+::solve(), oomph\+::\+Super\+L\+U\+Solver\+::solve(), oomph\+::\+Block\+Pitch\+Fork\+Linear\+Solver\+::solve(), oomph\+::\+G\+M\+R\+E\+S$<$ M\+A\+T\+R\+I\+X $>$\+::solve(), oomph\+::\+Helmholtz\+G\+M\+R\+E\+S\+M\+G$<$ M\+A\+T\+R\+I\+X $>$\+::solve(), and oomph\+::\+Helmholtz\+F\+G\+M\+R\+E\+S\+M\+G$<$ M\+A\+T\+R\+I\+X $>$\+::solve().
+
+\mbox{\Hypertarget{classoomph_1_1DoubleVector_a4715c8cf47f9fc56d95889343d1a3b82}\label{classoomph_1_1DoubleVector_a4715c8cf47f9fc56d95889343d1a3b82}} 
+\index{oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}!set\+\_\+external\+\_\+values@{set\+\_\+external\+\_\+values}}
+\index{set\+\_\+external\+\_\+values@{set\+\_\+external\+\_\+values}!oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}}
+\subsubsection{\texorpdfstring{set\+\_\+external\+\_\+values()}{set\_external\_values()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void oomph\+::\+Double\+Vector\+::set\+\_\+external\+\_\+values (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution} $\ast$const \&}]{dist\+\_\+pt,  }\item[{double $\ast$}]{external\+\_\+values,  }\item[{bool}]{delete\+\_\+external\+\_\+values }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Allows are external data to be used by this vector. W\+A\+R\+N\+I\+NG\+: The size of the external data must correspond to the \hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution} dist\+\_\+pt argument. 
+
+
+\begin{DoxyEnumerate}
+\item When a rebuild method is called new internal values are created.
+\item It is not possible to redistribute(...) a vector with external values .
+\item External values are only deleted by this vector if delete\+\_\+external\+\_\+values = true. 
+\end{DoxyEnumerate}
+
+Definition at line 172 of file double\+\_\+vector.\+h.
+
+
+
+References oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::build\+\_\+distribution(), Built, and clear().
+
+
+
+Referenced by oomph\+::\+Oomph\+Lib\+Preconditioner\+Epetra\+Operator\+::\+Apply\+Inverse(), oomph\+::\+Problem\+::get\+\_\+jacobian(), and oomph\+::\+Problem\+::get\+\_\+residuals().
+
+\mbox{\Hypertarget{classoomph_1_1DoubleVector_a0626a448c259a12bd2b7d50f92da91e3}\label{classoomph_1_1DoubleVector_a0626a448c259a12bd2b7d50f92da91e3}} 
+\index{oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}!set\+\_\+external\+\_\+values@{set\+\_\+external\+\_\+values}}
+\index{set\+\_\+external\+\_\+values@{set\+\_\+external\+\_\+values}!oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}}
+\subsubsection{\texorpdfstring{set\+\_\+external\+\_\+values()}{set\_external\_values()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void oomph\+::\+Double\+Vector\+::set\+\_\+external\+\_\+values (\begin{DoxyParamCaption}\item[{double $\ast$}]{external\+\_\+values,  }\item[{bool}]{delete\+\_\+external\+\_\+values }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Allows are external data to be used by this vector. W\+A\+R\+N\+I\+NG\+: The size of the external data must correspond to the distribution of this vector. 
+
+
+\begin{DoxyEnumerate}
+\item When a rebuild method is called new internal values are created.
+\item It is not possible to redistribute(...) a vector with external values .
+\item External values are only deleted by this vector if delete\+\_\+external\+\_\+values = true. 
+\end{DoxyEnumerate}
+
+Definition at line 196 of file double\+\_\+vector.\+h.
+
+
+
+References oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::distribution\+\_\+built(), i, Internal\+\_\+values, max(), operator$\ast$=(), operator+=(), operator-\/=(), operator/=(), operator$<$$<$, operator==(), operator\mbox{[}$\,$\mbox{]}(), redistribute(), and Values\+\_\+pt.
+
+\mbox{\Hypertarget{classoomph_1_1DoubleVector_a8c3dcdf8a602a1f266bbe72d98fde2e7}\label{classoomph_1_1DoubleVector_a8c3dcdf8a602a1f266bbe72d98fde2e7}} 
+\index{oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}!values\+\_\+pt@{values\+\_\+pt}}
+\index{values\+\_\+pt@{values\+\_\+pt}!oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}}
+\subsubsection{\texorpdfstring{values\+\_\+pt()}{values\_pt()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily double$\ast$ oomph\+::\+Double\+Vector\+::values\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+access function to the underlying values 
+
+
+
+Definition at line 259 of file double\+\_\+vector.\+h.
+
+
+
+References Values\+\_\+pt.
+
+
+
+Referenced by oomph\+::\+Dense\+L\+U\+::backsub(), oomph\+::\+Super\+L\+U\+Solver\+::backsub\+\_\+distributed(), build(), oomph\+::\+Problem\+::calculate\+\_\+continuation\+\_\+derivatives\+\_\+helper(), oomph\+::\+Double\+Vector\+Helpers\+::concatenate(), oomph\+::\+Double\+Vector\+Helpers\+::concatenate\+\_\+without\+\_\+communication(), oomph\+::\+Trilinos\+Epetra\+Helpers\+::copy\+\_\+to\+\_\+oomphlib\+\_\+vector(), oomph\+::\+Trilinos\+Epetra\+Helpers\+::create\+\_\+distributed\+\_\+epetra\+\_\+vector(), oomph\+::\+Trilinos\+Epetra\+Helpers\+::create\+\_\+epetra\+\_\+vector\+\_\+view\+\_\+data(), oomph\+::\+Hypre\+Helpers\+::create\+\_\+\+H\+Y\+P\+R\+E\+\_\+\+Vector(), dot(), oomph\+::\+Hypre\+Interface\+::hypre\+\_\+solve(), oomph\+::\+Block\+Preconditioner$<$ C\+R\+Double\+Matrix $>$\+::internal\+\_\+get\+\_\+block\+\_\+ordered\+\_\+preconditioner\+\_\+vector(), oomph\+::\+Block\+Preconditioner$<$ C\+R\+Double\+Matrix $>$\+::internal\+\_\+get\+\_\+block\+\_\+vector(), oomph\+::\+Block\+Preconditioner$<$ C\+R\+Double\+Matrix $>$\+::internal\+\_\+get\+\_\+block\+\_\+vectors(), oomph\+::\+Block\+Preconditioner$<$ C\+R\+Double\+Matrix $>$\+::internal\+\_\+return\+\_\+block\+\_\+ordered\+\_\+preconditioner\+\_\+vector(), oomph\+::\+Block\+Preconditioner$<$ C\+R\+Double\+Matrix $>$\+::internal\+\_\+return\+\_\+block\+\_\+vector(), oomph\+::\+Block\+Preconditioner$<$ C\+R\+Double\+Matrix $>$\+::internal\+\_\+return\+\_\+block\+\_\+vectors(), oomph\+::\+Pseudo\+Elastic\+Preconditioner\+::lagrange\+\_\+multiplier\+\_\+preconditioner\+\_\+solve(), oomph\+::\+Pseudo\+Elastic\+Preconditioner\+Old\+::lagrange\+\_\+multiplier\+\_\+preconditioner\+\_\+solve(), oomph\+::\+C\+R\+Double\+Matrix\+::multiply(), oomph\+::\+Dense\+Double\+Matrix\+::multiply(), oomph\+::\+C\+C\+Double\+Matrix\+::multiply(), oomph\+::\+C\+R\+Double\+Matrix\+::multiply\+\_\+transpose(), oomph\+::\+Dense\+Double\+Matrix\+::multiply\+\_\+transpose(), oomph\+::\+C\+C\+Double\+Matrix\+::multiply\+\_\+transpose(), oomph\+::\+Problem\+::newton\+\_\+solve(), oomph\+::\+Problem\+::newton\+\_\+solve\+\_\+continuation(), operator+=(), operator-\/=(), operator==(), oomph\+::\+Matrix\+Based\+Diag\+Preconditioner\+::preconditioner\+\_\+solve(), oomph\+::\+Lagrange\+Enforced\+Flow\+Preconditioner\+::preconditioner\+\_\+solve(), oomph\+::\+Double\+Matrix\+Base\+::residual(), oomph\+::\+G\+M\+R\+E\+S$<$ M\+A\+T\+R\+I\+X $>$\+::solve\+\_\+helper(), oomph\+::\+Double\+Vector\+Helpers\+::split(), oomph\+::\+Double\+Vector\+Helpers\+::split\+\_\+without\+\_\+communication(), and oomph\+::\+G\+M\+R\+E\+S$<$ M\+A\+T\+R\+I\+X $>$\+::update().
+
+\mbox{\Hypertarget{classoomph_1_1DoubleVector_ab88fb798be9cc01d3f3fb64db2c8c9f6}\label{classoomph_1_1DoubleVector_ab88fb798be9cc01d3f3fb64db2c8c9f6}} 
+\index{oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}!values\+\_\+pt@{values\+\_\+pt}}
+\index{values\+\_\+pt@{values\+\_\+pt}!oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}}
+\subsubsection{\texorpdfstring{values\+\_\+pt()}{values\_pt()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily double$\ast$ oomph\+::\+Double\+Vector\+::values\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+access function to the underlying values (const version) 
+
+
+
+Definition at line 262 of file double\+\_\+vector.\+h.
+
+
+
+References output(), and Values\+\_\+pt.
+
+
+
+\subsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1DoubleVector_a738e90fa5474b2ab868b50d76347a20d}\label{classoomph_1_1DoubleVector_a738e90fa5474b2ab868b50d76347a20d}} 
+\index{oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}}
+\subsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily std\+::ostream\& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{out,  }\item[{const \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector} \&}]{v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Ouput operator for \hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}. 
+
+
+
+Definition at line 949 of file double\+\_\+vector.\+cc.
+
+
+
+Referenced by set\+\_\+external\+\_\+values().
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1DoubleVector_ab72c78c801b28fdd00391a9c266413ea}\label{classoomph_1_1DoubleVector_ab72c78c801b28fdd00391a9c266413ea}} 
+\index{oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}!Built@{Built}}
+\index{Built@{Built}!oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}}
+\subsubsection{\texorpdfstring{Built}{Built}}
+{\footnotesize\ttfamily bool oomph\+::\+Double\+Vector\+::\+Built\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+indicates that the vector has been built and is usable 
+
+
+
+Definition at line 326 of file double\+\_\+vector.\+h.
+
+
+
+Referenced by build(), built(), clear(), initialise(), and set\+\_\+external\+\_\+values().
+
+\mbox{\Hypertarget{classoomph_1_1DoubleVector_a9b205077360d67c9de07e538199f335f}\label{classoomph_1_1DoubleVector_a9b205077360d67c9de07e538199f335f}} 
+\index{oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}!Internal\+\_\+values@{Internal\+\_\+values}}
+\index{Internal\+\_\+values@{Internal\+\_\+values}!oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}}
+\subsubsection{\texorpdfstring{Internal\+\_\+values}{Internal\_values}}
+{\footnotesize\ttfamily bool oomph\+::\+Double\+Vector\+::\+Internal\+\_\+values\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Boolean flag to indicate whether the vector\textquotesingle{}s data (values\+\_\+pt) is owned by this vector. 
+
+
+
+Definition at line 323 of file double\+\_\+vector.\+h.
+
+
+
+Referenced by build(), clear(), redistribute(), and set\+\_\+external\+\_\+values().
+
+\mbox{\Hypertarget{classoomph_1_1DoubleVector_abbb699b9364ece68a4cb483291c04c25}\label{classoomph_1_1DoubleVector_abbb699b9364ece68a4cb483291c04c25}} 
+\index{oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}!Values\+\_\+pt@{Values\+\_\+pt}}
+\index{Values\+\_\+pt@{Values\+\_\+pt}!oomph\+::\+Double\+Vector@{oomph\+::\+Double\+Vector}}
+\subsubsection{\texorpdfstring{Values\+\_\+pt}{Values\_pt}}
+{\footnotesize\ttfamily double$\ast$ oomph\+::\+Double\+Vector\+::\+Values\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+the local vector 
+
+
+
+Definition at line 319 of file double\+\_\+vector.\+h.
+
+
+
+Referenced by build(), clear(), dot(), initialise(), max(), norm(), operator$\ast$=(), operator+=(), operator-\/=(), operator==(), operator\mbox{[}$\,$\mbox{]}(), output(), output\+\_\+local\+\_\+values(), output\+\_\+local\+\_\+values\+\_\+with\+\_\+offset(), redistribute(), set\+\_\+external\+\_\+values(), and values\+\_\+pt().
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{double__vector_8h}{double\+\_\+vector.\+h}\item 
+\hyperlink{double__vector_8cc}{double\+\_\+vector.\+cc}\end{DoxyCompactItemize}

@@ -1,0 +1,1022 @@
+The aim of this tutorial is to demonstrate the adaptive solution of the time-\/harmonic equations of linear elasticity in cartesian coordinates on unstructured meshes.
+
+The driver code is very similar to the one presented in \href{../../elastic_annulus/html/index.html}{\tt another tutorial} and we only discuss the changes necessary to deal with the generation of the unstructured mesh and the assignment of different material properties to different parts of the domain.
+
+
+
+ 
+
+\hypertarget{index_test}{}\section{A test problem\+: Time-\/harmonic oscillations of an elastic annulus reinforced by a T-\/rib}\label{index_test}
+The sketch below shows the problem setup\+: A 2D elastic annulus which is reinforced with two T-\/ribs is subjected to a time-\/periodic pressure load of magnitude \[ {\bf t} = P ( \exp(\alpha(\varphi-\pi/4)^2) + \exp(\alpha(\varphi-3\pi/4)^2) ) \] (where $ \varphi $ is the polar angle) along its outer edge. The parameter $ \alpha $ controls the \char`\"{}sharpness\char`\"{} of the pressure load. For $ \alpha=0 $ we obtain a uniform, axisymmetric load; the sketch below shows the pressure distribution (red vectors indicating the traction) for $ \alpha = 1. $
+
+ 
+\begin{DoxyImage}
+\includegraphics[width=0.8\textwidth]{setup}
+\doxyfigcaption{Sketch of the problem setup. }
+\end{DoxyImage}
+
+
+The structure is symmetric and we only discretise the right half ( $ x_1 > 0 $) of the domain and apply symmetry conditions (zero horizontal displacement) on the $ x_2-$ axis.
+
+
+
+ 
+
+\hypertarget{index_results}{}\section{Results}\label{index_results}
+The figure below shows an animation of the structure\textquotesingle{}s time-\/harmonic oscillation. The blue shaded region shows the shape of the oscillating structure while the pink region shows its initial configuration. The left half of the plot is used to show the (mirror image of the) adaptive unstructured mesh on which the solution was computed\+:
+
+ 
+\begin{DoxyImage}
+\includegraphics[width=0.8\textwidth]{all}
+\doxyfigcaption{Animation of the time-\/harmonic deformation. }
+\end{DoxyImage}
+
+
+This looks very pretty and shows that we can compute in non-\/trivial geometries but should you believe the results? Here\textquotesingle{}s an attempt to convince you\+: If we make the rib much softer than the annulus, the rib will not offer much structural resistance and the annular region will deform as if the rib was not present. If we then set $ \alpha = 0 $ we apply an axisymmetric forcing onto the structure and would expect the resulting displacement field (at least in the annular region) to be axisymmetric. For this case it is easy to find an analytical solution to the problem. The next two figures show a comparison between the analytical (green spheres) and computed solutions (shaded) for the real part of the horizontal and vertical displacements, respectively.
+
+ 
+\begin{DoxyImage}
+\includegraphics[width=0.8\textwidth]{validate_real}
+\doxyfigcaption{Real part of the horizontal displacement, computed (shaded) and exact (spheres). }
+\end{DoxyImage}
+
+
+ 
+\begin{DoxyImage}
+\includegraphics[width=0.8\textwidth]{validate_imag}
+\doxyfigcaption{Real part of the vertical displacement, computed (shaded) and exact (spheres). }
+\end{DoxyImage}
+
+
+Convinced?
+
+
+
+ 
+
+\hypertarget{index_num}{}\section{The numerical solution}\label{index_num}
+The driver code for this problem is very similar to the one discussed in \href{../../elastic_annulus/html/index.html}{\tt another tutorial}. Running {\ttfamily sdiff} on the two driver codes \begin{center} \href{../../../../demo_drivers/time_harmonic_linear_elasticity/elastic_annulus/time_harmonic_elastic_annulus.cc}{\tt demo\+\_\+drivers/time\+\_\+harmonic\+\_\+linear\+\_\+elasticity/elastic\+\_\+annulus/time\+\_\+harmonic\+\_\+elastic\+\_\+annulus.\+cc } \end{center}  and \begin{center} \href{../../../../demo_drivers/time_harmonic_linear_elasticity/elastic_annulus/unstructured_time_harmonic_elastic_annulus.cc}{\tt demo\+\_\+drivers/time\+\_\+harmonic\+\_\+linear\+\_\+elasticity/elastic\+\_\+annulus/unstructured\+\_\+time\+\_\+harmonic\+\_\+elastic\+\_\+annulus.\+cc } \end{center}  shows you the differences, the most important of which are\+:
+\begin{DoxyItemize}
+\item The provision of multiple elasticity tensors and frequency parameters for the two different regions (the rib and the annulus). ~\newline
+~\newline
+
+\item The provision of a helper function {\ttfamily complete\+\_\+problem\+\_\+setup()} which rebuilds the elements (by passing the problem parameters to the elements) following the unstructured mesh adaptation. (The need/rationale for such a function is discussed in \href{../../../meshes/mesh_from_inline_triangle/html/index.html}{\tt another tutorial.}) ~\newline
+~\newline
+
+\item The mesh generation -- the specification of the curvilinear boundaries and the geometry of the rib is somewhat tedious. We refer to \href{../../../meshes/mesh_from_inline_triangle_internal_boundaries/html/index.html}{\tt another tutorial} for a discussion of how to define the internal mesh boundary that separates the two regions (the rib and the annular region) so that we can assign different material properties to them. ~\newline
+~\newline
+
+\end{DoxyItemize}All of this is reasonably straightforward and provides a powerful code that automatically adapts the mesh while respecting the curvilinear boundaries of the domain. Have a look through the driver code and play with it.
+
+
+
+ 
+
+\hypertarget{index_code}{}\section{Code listing}\label{index_code}
+Here\textquotesingle{}s a listing of the complete driver code\+:
+
+
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//LIC// ====================================================================}
+\textcolor{comment}{//LIC// This file forms part of oomph-lib, the object-oriented, }
+\textcolor{comment}{//LIC// multi-physics finite-element library, available }
+\textcolor{comment}{//LIC// at http://www.oomph-lib.org.}
+\textcolor{comment}{//LIC// }
+\textcolor{comment}{//LIC//    Version 1.0; svn revision $LastChangedRevision$}
+\textcolor{comment}{//LIC//}
+\textcolor{comment}{//LIC// $LastChangedDate$}
+\textcolor{comment}{//LIC// }
+\textcolor{comment}{//LIC// Copyright (C) 2006-2016 Matthias Heil and Andrew Hazel}
+\textcolor{comment}{//LIC// }
+\textcolor{comment}{//LIC// This library is free software; you can redistribute it and/or}
+\textcolor{comment}{//LIC// modify it under the terms of the GNU Lesser General Public}
+\textcolor{comment}{//LIC// License as published by the Free Software Foundation; either}
+\textcolor{comment}{//LIC// version 2.1 of the License, or (at your option) any later version.}
+\textcolor{comment}{//LIC// }
+\textcolor{comment}{//LIC// This library is distributed in the hope that it will be useful,}
+\textcolor{comment}{//LIC// but WITHOUT ANY WARRANTY; without even the implied warranty of}
+\textcolor{comment}{//LIC// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU}
+\textcolor{comment}{//LIC// Lesser General Public License for more details.}
+\textcolor{comment}{//LIC// }
+\textcolor{comment}{//LIC// You should have received a copy of the GNU Lesser General Public}
+\textcolor{comment}{//LIC// License along with this library; if not, write to the Free Software}
+\textcolor{comment}{//LIC// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA}
+\textcolor{comment}{//LIC// 02110-1301  USA.}
+\textcolor{comment}{//LIC// }
+\textcolor{comment}{//LIC// The authors may be contacted at oomph-lib@maths.man.ac.uk.}
+\textcolor{comment}{//LIC// }
+\textcolor{comment}{//LIC//====================================================================}
+\textcolor{comment}{// Time-harmonic deformation of an T-rib reinforced elastic annulus subject to }
+\textcolor{comment}{// a nonuniform pressure load.}
+
+\textcolor{comment}{//Oomph-lib includes}
+\textcolor{preprocessor}{#include "generic.h"}
+\textcolor{preprocessor}{#include "time\_harmonic\_linear\_elasticity.h"}
+
+\textcolor{comment}{//The meshes}
+\textcolor{preprocessor}{#include "meshes/triangle\_mesh.h"}
+
+\textcolor{keyword}{using namespace }\hyperlink{namespacestd}{std};
+\textcolor{keyword}{using namespace }\hyperlink{namespaceoomph}{oomph};
+\textcolor{comment}{}
+\textcolor{comment}{///////////////////////////////////////////////////////////////////////}
+\textcolor{comment}{///////////////////////////////////////////////////////////////////////}
+\textcolor{comment}{}\textcolor{comment}{// Straight line as geometric object}\textcolor{comment}{}
+\textcolor{comment}{///////////////////////////////////////////////////////////////////////}
+\textcolor{comment}{///////////////////////////////////////////////////////////////////////}
+\textcolor{comment}{}
+
+
+\textcolor{comment}{//=========================================================================}\textcolor{comment}{}
+\textcolor{comment}{/// Straight 1D line in 2D space }
+\textcolor{comment}{}\textcolor{comment}{//=========================================================================}
+\textcolor{keyword}{class }\hyperlink{classMyStraightLine}{MyStraightLine} : \textcolor{keyword}{public} GeomObject
+\{
+
+\textcolor{keyword}{public}:
+\textcolor{comment}{}
+\textcolor{comment}{ /// Constructor:  Pass start and end points}
+\textcolor{comment}{} \hyperlink{classMyStraightLine}{MyStraightLine}(\textcolor{keyword}{const} Vector<double>& r\_start, \textcolor{keyword}{const} Vector<double>& r\_end) 
+  :  GeomObject(1,2), R\_start(r\_start), R\_end(r\_end)
+  \{ \}
+
+\textcolor{comment}{}
+\textcolor{comment}{ /// Broken copy constructor}
+\textcolor{comment}{} \hyperlink{classMyStraightLine}{MyStraightLine}(\textcolor{keyword}{const} \hyperlink{classMyStraightLine}{MyStraightLine}& dummy) 
+  \{ 
+   BrokenCopy::broken\_copy(\textcolor{stringliteral}{"MyStraightLine"});
+  \} 
+ \textcolor{comment}{}
+\textcolor{comment}{ /// Broken assignment operator}
+\textcolor{comment}{} \textcolor{keywordtype}{void} operator=(\textcolor{keyword}{const} \hyperlink{classMyStraightLine}{MyStraightLine}&) 
+  \{
+   BrokenCopy::broken\_assign(\textcolor{stringliteral}{"MyStraightLine"});
+  \}
+
+\textcolor{comment}{}
+\textcolor{comment}{ /// Destructor:  Empty}
+\textcolor{comment}{} ~\hyperlink{classMyStraightLine}{MyStraightLine}()\{\}
+ \textcolor{comment}{}
+\textcolor{comment}{ /// \(\backslash\)short Position Vector at Lagrangian coordinate zeta }
+\textcolor{comment}{} \textcolor{keywordtype}{void} position(\textcolor{keyword}{const} Vector<double>& zeta, Vector<double>& r)\textcolor{keyword}{ const}
+\textcolor{keyword}{  }\{
+   \textcolor{comment}{// Position Vector}
+   r[0] = R\_start[0]+(R\_end[0]-R\_start[0])*zeta[0];
+   r[1] = R\_start[1]+(R\_end[1]-R\_start[1])*zeta[0];
+  \}
+ 
+\textcolor{keyword}{private}:
+ \textcolor{comment}{}
+\textcolor{comment}{ /// Start point of line}
+\textcolor{comment}{} Vector<double> R\_start;
+ \textcolor{comment}{}
+\textcolor{comment}{ /// End point of line}
+\textcolor{comment}{} Vector<double> R\_end;
+
+\};
+
+
+\textcolor{comment}{}
+\textcolor{comment}{//////////////////////////////////////////////////////////////////////}
+\textcolor{comment}{//////////////////////////////////////////////////////////////////////}
+\textcolor{comment}{//////////////////////////////////////////////////////////////////////}
+\textcolor{comment}{}
+
+\textcolor{comment}{//=======start\_namespace==========================================}\textcolor{comment}{}
+\textcolor{comment}{/// Global variables}
+\textcolor{comment}{}\textcolor{comment}{//================================================================}
+\textcolor{keyword}{namespace }\hyperlink{namespaceGlobal__Parameters}{Global\_Parameters}
+\{
+\textcolor{comment}{}
+\textcolor{comment}{ /// Poisson's ratio}
+\textcolor{comment}{} \textcolor{keywordtype}{double} Nu=0.3;
+\textcolor{comment}{}
+\textcolor{comment}{ /// Square of non-dim frequency }
+\textcolor{comment}{} \textcolor{keywordtype}{double} Omega\_sq=10.0; 
+\textcolor{comment}{}
+\textcolor{comment}{ /// Square of non-dim frequency for the two regions}
+\textcolor{comment}{} Vector<double> \hyperlink{namespaceGlobal__Parameters_a58a76124a7c047adf58388cc12e84f23}{Omega\_sq\_region}(2,Omega\_sq);
+  \textcolor{comment}{}
+\textcolor{comment}{ /// The elasticity tensors for the two regions}
+\textcolor{comment}{} Vector<TimeHarmonicIsotropicElasticityTensor*> \hyperlink{namespaceGlobal__Parameters_a73c731fa617a9d92851e4195493262e7}{E\_pt};
+ \textcolor{comment}{}
+\textcolor{comment}{ /// Thickness of annulus}
+\textcolor{comment}{} \textcolor{keywordtype}{double} H\_annulus=0.1;
+\textcolor{comment}{}
+\textcolor{comment}{ /// Uniform pressure}
+\textcolor{comment}{} \textcolor{keywordtype}{double} P = 0.1;
+\textcolor{comment}{}
+\textcolor{comment}{ /// Peakiness parameter for pressure load}
+\textcolor{comment}{} \textcolor{keywordtype}{double} Alpha=200.0;
+\textcolor{comment}{}
+\textcolor{comment}{ /// Constant pressure load (real and imag part)}
+\textcolor{comment}{} \textcolor{keywordtype}{void} \hyperlink{namespaceGlobal__Parameters_a0ddb3a77481b907fbb34f2e8d0a6eb9f}{pressure\_load}(\textcolor{keyword}{const} Vector<double> &x,
+                        \textcolor{keyword}{const} Vector<double> &n, 
+                        Vector<std::complex<double> >&traction)
+ \{
+  \textcolor{keywordtype}{double} phi=atan2(x[1],x[0]);
+  \textcolor{keywordtype}{double} magnitude=exp(-Alpha*pow(phi-0.25*MathematicalConstants::Pi,2));
+
+  \textcolor{keywordtype}{unsigned} dim = traction.size();
+  \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} i=0;i<dim;i++)
+   \{
+    traction[i] = complex<double>(-magnitude*P*n[i],magnitude*P*n[i]);
+   \}
+ \} \textcolor{comment}{// end\_of\_pressure\_load}
+\textcolor{comment}{}
+\textcolor{comment}{ /// Output directory}
+\textcolor{comment}{} \textcolor{keywordtype}{string} \hyperlink{namespaceGlobal__Parameters_a301ab922df72030c660b21328d6caf76}{Directory}=\textcolor{stringliteral}{"RESLT"};
+ 
+\} \textcolor{comment}{//end namespace}
+
+
+
+\textcolor{comment}{//=============begin\_problem============================================ }\textcolor{comment}{}
+\textcolor{comment}{/// Annular disk}
+\textcolor{comment}{}\textcolor{comment}{//====================================================================== }
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELASTICITY\_ELEMENT>
+\textcolor{keyword}{class }\hyperlink{classRingWithTRibProblem}{RingWithTRibProblem} : \textcolor{keyword}{public} Problem
+\{
+
+\textcolor{keyword}{public}:
+\textcolor{comment}{}
+\textcolor{comment}{ /// Constructor:}
+\textcolor{comment}{} \hyperlink{classRingWithTRibProblem}{RingWithTRibProblem}();
+ \textcolor{comment}{}
+\textcolor{comment}{ /// Update function (empty)}
+\textcolor{comment}{} \textcolor{keywordtype}{void} actions\_after\_newton\_solve() \{\}
+\textcolor{comment}{}
+\textcolor{comment}{ /// Update function (empty)}
+\textcolor{comment}{} \textcolor{keywordtype}{void} actions\_before\_newton\_solve() \{\}
+\textcolor{comment}{}
+\textcolor{comment}{ /// Actions before adapt: Wipe the mesh of traction elements}
+\textcolor{comment}{} \textcolor{keywordtype}{void} actions\_before\_adapt();
+\textcolor{comment}{}
+\textcolor{comment}{ /// Actions after adapt: Rebuild the mesh of traction elements}
+\textcolor{comment}{} \textcolor{keywordtype}{void} actions\_after\_adapt();
+\textcolor{comment}{}
+\textcolor{comment}{ /// Doc the solution}
+\textcolor{comment}{} \textcolor{keywordtype}{void} doc\_solution();
+
+\textcolor{keyword}{private}:
+\textcolor{comment}{}
+\textcolor{comment}{ /// \(\backslash\)short Create traction elements}
+\textcolor{comment}{} \textcolor{keywordtype}{void} create\_traction\_elements();
+\textcolor{comment}{}
+\textcolor{comment}{ /// Delete traction elements}
+\textcolor{comment}{} \textcolor{keywordtype}{void} delete\_traction\_elements();
+\textcolor{comment}{}
+\textcolor{comment}{ /// Helper function to complete problem setup}
+\textcolor{comment}{} \textcolor{keywordtype}{void} complete\_problem\_setup();
+
+\textcolor{preprocessor}{#ifdef ADAPTIVE}
+\textcolor{comment}{}
+\textcolor{comment}{ /// Pointer to refineable solid mesh}
+\textcolor{comment}{} RefineableTriangleMesh<ELASTICITY\_ELEMENT>* Solid\_mesh\_pt;
+
+\textcolor{preprocessor}{#else}
+\textcolor{comment}{}
+\textcolor{comment}{ /// Pointer to solid mesh}
+\textcolor{comment}{} TriangleMesh<ELASTICITY\_ELEMENT>* Solid\_mesh\_pt;
+
+\textcolor{preprocessor}{#endif}
+\textcolor{comment}{}
+\textcolor{comment}{ /// Pointer to mesh of traction elements}
+\textcolor{comment}{} Mesh* Traction\_mesh\_pt;
+\textcolor{comment}{}
+\textcolor{comment}{ /// DocInfo object for output}
+\textcolor{comment}{} DocInfo Doc\_info;
+\textcolor{comment}{}
+\textcolor{comment}{ /// Boundary ID of upper symmetry boundary}
+\textcolor{comment}{} \textcolor{keywordtype}{unsigned} Upper\_symmetry\_boundary\_id;
+\textcolor{comment}{}
+\textcolor{comment}{ /// Boundary ID of lower symmetry boundary}
+\textcolor{comment}{} \textcolor{keywordtype}{unsigned} Lower\_symmetry\_boundary\_id;
+\textcolor{comment}{}
+\textcolor{comment}{ /// Boundary ID of outer boundary}
+\textcolor{comment}{} \textcolor{keywordtype}{unsigned} Outer\_boundary\_id;
+ 
+\};
+
+
+\textcolor{comment}{//===========start\_of\_constructor======================================= }\textcolor{comment}{}
+\textcolor{comment}{/// Constructor: }
+\textcolor{comment}{}\textcolor{comment}{//====================================================================== }
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELASTICITY\_ELEMENT>
+\hyperlink{classRingWithTRibProblem_ad0313aac3c0cdb87e753ba474a4e334f}{RingWithTRibProblem<ELASTICITY\_ELEMENT>::RingWithTRibProblem}
+      () 
+\{
+ 
+ \textcolor{comment}{// Solid mesh}
+ \textcolor{comment}{//-----------}
+
+ \textcolor{comment}{// Start and end coordinates}
+ Vector<double> r\_start(2);
+ Vector<double> r\_end(2);
+ 
+ \textcolor{comment}{// Outer radius of hull}
+ \textcolor{keywordtype}{double} r\_outer = 1.0;
+
+ \textcolor{comment}{// Inner radius of hull}
+ \textcolor{keywordtype}{double} r\_inner = r\_outer-\hyperlink{namespaceGlobal__Parameters_a0b73c5ead1114ae88bbd4cb0eb54f078}{Global\_Parameters::H\_annulus};
+
+ \textcolor{comment}{// Thickness of rib}
+ \textcolor{keywordtype}{double} rib\_thick=0.05;
+ 
+ \textcolor{comment}{// Depth of rib}
+ \textcolor{keywordtype}{double} rib\_depth=0.2;
+
+ \textcolor{comment}{// Total width of T}
+ \textcolor{keywordtype}{double} t\_width=0.2;
+
+ \textcolor{comment}{// Thickness of T}
+ \textcolor{keywordtype}{double} t\_thick=0.05;
+
+ \textcolor{comment}{// Half-opening angle of rib}
+ \textcolor{keywordtype}{double} half\_phi\_rib=asin(0.5*rib\_thick/r\_inner);
+
+ \textcolor{comment}{// Pointer to the closed curve that defines the outer boundary}
+ TriangleMeshClosedCurve* closed\_curve\_pt=0;
+ 
+ \textcolor{comment}{// Provide storage for pointers to the parts of the curvilinear boundary}
+ Vector<TriangleMeshCurveSection*> curvilinear\_boundary\_pt;
+
+ \textcolor{comment}{// Outer boundary}
+ \textcolor{comment}{//---------------}
+ Ellipse* outer\_boundary\_circle\_pt = \textcolor{keyword}{new} Ellipse(r\_outer,r\_outer);
+ \textcolor{keywordtype}{double} zeta\_start=-0.5*MathematicalConstants::Pi;
+ \textcolor{keywordtype}{double} zeta\_end=0.5*MathematicalConstants::Pi;
+ \textcolor{keywordtype}{unsigned} nsegment=50;
+ \textcolor{keywordtype}{unsigned} boundary\_id=curvilinear\_boundary\_pt.size();
+ curvilinear\_boundary\_pt.push\_back(
+  \textcolor{keyword}{new} TriangleMeshCurviLine(
+   outer\_boundary\_circle\_pt,zeta\_start,zeta\_end,nsegment,boundary\_id));
+
+ \textcolor{comment}{// Remember it}
+ Outer\_boundary\_id=boundary\_id;
+ 
+
+ \textcolor{comment}{// Upper straight line segment on symmetry axis}
+ \textcolor{comment}{//---------------------------------------------}
+ r\_start[0]=0.0;
+ r\_start[1]=r\_outer;
+ r\_end[0]=0.0;
+ r\_end[1]=r\_inner;
+ \hyperlink{classMyStraightLine}{MyStraightLine}* upper\_sym\_pt = \textcolor{keyword}{new} \hyperlink{classMyStraightLine}{MyStraightLine}(r\_start,r\_end);
+ zeta\_start=0.0;
+ zeta\_end=1.0;
+ nsegment=1;
+ boundary\_id=curvilinear\_boundary\_pt.size();
+ curvilinear\_boundary\_pt.push\_back(
+  \textcolor{keyword}{new} TriangleMeshCurviLine(
+   upper\_sym\_pt,zeta\_start,zeta\_end,nsegment,boundary\_id));
+                                                        
+ \textcolor{comment}{// Remember it}
+ Upper\_symmetry\_boundary\_id=boundary\_id;
+ 
+ \textcolor{comment}{// Upper part of inner boundary}
+ \textcolor{comment}{//-----------------------------}
+ Ellipse* upper\_inner\_boundary\_pt = 
+  \textcolor{keyword}{new} Ellipse(r\_inner,r\_inner);
+ zeta\_start=0.5*MathematicalConstants::Pi;
+ zeta\_end=half\_phi\_rib;
+ nsegment=20;
+ boundary\_id=curvilinear\_boundary\_pt.size();
+ curvilinear\_boundary\_pt.push\_back(
+  \textcolor{keyword}{new} TriangleMeshCurviLine(
+   upper\_inner\_boundary\_pt,
+   zeta\_start,zeta\_end,nsegment,boundary\_id));
+
+ \textcolor{comment}{// Upper half of inward rib}
+ \textcolor{comment}{//-------------------------}
+ r\_start[0]=r\_inner*cos(half\_phi\_rib);
+ r\_start[1]=r\_inner*sin(half\_phi\_rib);
+ r\_end[0]=r\_start[0]-rib\_depth;
+ r\_end[1]=r\_start[1];
+ \hyperlink{classMyStraightLine}{MyStraightLine}* upper\_inward\_rib\_pt = \textcolor{keyword}{new} \hyperlink{classMyStraightLine}{MyStraightLine}(r\_start,r\_end);
+ zeta\_start=0.0;
+ zeta\_end=1.0;
+ nsegment=1;
+ boundary\_id=curvilinear\_boundary\_pt.size();
+ TriangleMeshCurviLine* upper\_inward\_rib\_curviline\_pt=
+  \textcolor{keyword}{new} TriangleMeshCurviLine(
+   upper\_inward\_rib\_pt,zeta\_start,zeta\_end,nsegment,boundary\_id);
+ curvilinear\_boundary\_pt.push\_back(upper\_inward\_rib\_curviline\_pt);
+
+ \textcolor{comment}{// Vertical upper bit of T}
+ \textcolor{comment}{//------------------------}
+ r\_start[0]=r\_end[0];
+ r\_start[1]=r\_end[1];
+ r\_end[0]=r\_start[0];
+ r\_end[1]=r\_start[1]+0.5*(t\_width-rib\_thick);
+ \hyperlink{classMyStraightLine}{MyStraightLine}* vertical\_upper\_t\_rib\_pt = \textcolor{keyword}{new} \hyperlink{classMyStraightLine}{MyStraightLine}(r\_start,r\_end);
+ zeta\_start=0.0;
+ zeta\_end=1.0;
+ nsegment=1;
+ boundary\_id=curvilinear\_boundary\_pt.size();
+ curvilinear\_boundary\_pt.push\_back(
+  \textcolor{keyword}{new} TriangleMeshCurviLine(
+   vertical\_upper\_t\_rib\_pt,zeta\_start,zeta\_end,nsegment,boundary\_id));
+
+
+ \textcolor{comment}{// Horizontal upper bit of T}
+ \textcolor{comment}{//-----------==-------------}
+ r\_start[0]=r\_end[0];
+ r\_start[1]=r\_end[1];
+ r\_end[0]=r\_start[0]-t\_thick;
+ r\_end[1]=r\_start[1];
+ \hyperlink{classMyStraightLine}{MyStraightLine}* horizontal\_upper\_t\_rib\_pt = \textcolor{keyword}{new} \hyperlink{classMyStraightLine}{MyStraightLine}(r\_start,r\_end);
+ zeta\_start=0.0;
+ zeta\_end=1.0;
+ nsegment=1;
+ boundary\_id=curvilinear\_boundary\_pt.size();
+ curvilinear\_boundary\_pt.push\_back(
+  \textcolor{keyword}{new} TriangleMeshCurviLine(
+   horizontal\_upper\_t\_rib\_pt,zeta\_start,zeta\_end,nsegment,boundary\_id));
+
+ \textcolor{comment}{// Vertical end of rib end}
+ \textcolor{comment}{//------------------------}
+ r\_start[0]=r\_end[0];
+ r\_start[1]=r\_end[1];
+ r\_end[0]=r\_start[0];
+ r\_end[1]=-r\_start[1];
+ \hyperlink{classMyStraightLine}{MyStraightLine}* inner\_vertical\_rib\_pt = \textcolor{keyword}{new} \hyperlink{classMyStraightLine}{MyStraightLine}(r\_start,r\_end);
+ zeta\_start=0.0;
+ zeta\_end=1.0;
+ nsegment=1;
+ boundary\_id=curvilinear\_boundary\_pt.size();
+ curvilinear\_boundary\_pt.push\_back(
+  \textcolor{keyword}{new} TriangleMeshCurviLine(
+   inner\_vertical\_rib\_pt,zeta\_start,zeta\_end,nsegment,boundary\_id));
+ 
+
+ \textcolor{comment}{// Horizontal lower bit of T}
+ \textcolor{comment}{//-----------==-------------}
+ r\_start[0]=r\_end[0];
+ r\_start[1]=r\_end[1];
+ r\_end[0]=r\_start[0]+t\_thick;
+ r\_end[1]=r\_start[1];
+ \hyperlink{classMyStraightLine}{MyStraightLine}* horizontal\_lower\_t\_rib\_pt = \textcolor{keyword}{new} \hyperlink{classMyStraightLine}{MyStraightLine}(r\_start,r\_end);
+ zeta\_start=0.0;
+ zeta\_end=1.0;
+ nsegment=1;
+ boundary\_id=curvilinear\_boundary\_pt.size();
+ curvilinear\_boundary\_pt.push\_back(
+  \textcolor{keyword}{new} TriangleMeshCurviLine(
+   horizontal\_lower\_t\_rib\_pt,zeta\_start,zeta\_end,nsegment,boundary\_id));
+
+
+ \textcolor{comment}{// Vertical lower bit of T}
+ \textcolor{comment}{//------------------------}
+ r\_start[0]=r\_end[0];
+ r\_start[1]=r\_end[1];
+ r\_end[0]=r\_start[0];
+ r\_end[1]=r\_start[1]+0.5*(t\_width-rib\_thick);
+ \hyperlink{classMyStraightLine}{MyStraightLine}* vertical\_lower\_t\_rib\_pt = \textcolor{keyword}{new} \hyperlink{classMyStraightLine}{MyStraightLine}(r\_start,r\_end);
+ zeta\_start=0.0;
+ zeta\_end=1.0;
+ nsegment=1;
+ boundary\_id=curvilinear\_boundary\_pt.size();
+ curvilinear\_boundary\_pt.push\_back(
+  \textcolor{keyword}{new} TriangleMeshCurviLine(
+   vertical\_lower\_t\_rib\_pt,zeta\_start,zeta\_end,nsegment,boundary\_id));
+
+
+ \textcolor{comment}{// Lower half of inward rib}
+ \textcolor{comment}{//-------------------------}
+ r\_end[0]=r\_inner*cos(half\_phi\_rib);
+ r\_end[1]=-r\_inner*sin(half\_phi\_rib);
+ r\_start[0]=r\_end[0]-rib\_depth;
+ r\_start[1]=r\_end[1];
+ \hyperlink{classMyStraightLine}{MyStraightLine}* lower\_inward\_rib\_pt = \textcolor{keyword}{new} \hyperlink{classMyStraightLine}{MyStraightLine}(r\_start,r\_end);
+ zeta\_start=0.0;
+ zeta\_end=1.0;
+ nsegment=1;
+ boundary\_id=curvilinear\_boundary\_pt.size();
+ TriangleMeshCurviLine* lower\_inward\_rib\_curviline\_pt=
+  \textcolor{keyword}{new} TriangleMeshCurviLine(
+   lower\_inward\_rib\_pt,zeta\_start,zeta\_end,nsegment,boundary\_id);
+ curvilinear\_boundary\_pt.push\_back(lower\_inward\_rib\_curviline\_pt);
+
+
+ \textcolor{comment}{// Lower part of inner boundary}
+ \textcolor{comment}{//-----------------------------}
+ Ellipse* lower\_inner\_boundary\_circle\_pt = \textcolor{keyword}{new} Ellipse(r\_inner,r\_inner);
+ zeta\_start=-half\_phi\_rib;
+ zeta\_end=-0.5*MathematicalConstants::Pi;
+ nsegment=20;
+ boundary\_id=curvilinear\_boundary\_pt.size();
+ curvilinear\_boundary\_pt.push\_back(
+  \textcolor{keyword}{new} TriangleMeshCurviLine(
+   lower\_inner\_boundary\_circle\_pt,zeta\_start,zeta\_end,nsegment,boundary\_id));
+ 
+ 
+ \textcolor{comment}{// Lower straight line segment on symmetry axis}
+ \textcolor{comment}{//---------------------------------------------}
+ r\_start[0]=0.0;
+ r\_start[1]=-r\_inner;
+ r\_end[0]=0.0;
+ r\_end[1]=-r\_outer;
+ \hyperlink{classMyStraightLine}{MyStraightLine}* lower\_sym\_pt = \textcolor{keyword}{new} \hyperlink{classMyStraightLine}{MyStraightLine}(r\_start,r\_end);
+ zeta\_start=0.0;
+ zeta\_end=1.0;
+ nsegment=1;
+ boundary\_id=curvilinear\_boundary\_pt.size();
+ curvilinear\_boundary\_pt.push\_back(
+  \textcolor{keyword}{new} TriangleMeshCurviLine(
+   lower\_sym\_pt,zeta\_start,zeta\_end,nsegment,boundary\_id));
+      
+ \textcolor{comment}{// Remember it}
+ Lower\_symmetry\_boundary\_id=boundary\_id;
+
+ \textcolor{comment}{// Combine to curvilinear boundary}
+ \textcolor{comment}{//--------------------------------}
+ closed\_curve\_pt=
+  \textcolor{keyword}{new} TriangleMeshClosedCurve(curvilinear\_boundary\_pt); 
+ 
+  \textcolor{comment}{// Vertical dividing line across base of T-rib}
+ \textcolor{comment}{//--------------------------------------------}
+ Vector<TriangleMeshCurveSection*> internal\_polyline\_pt(1);
+ r\_start[0]=r\_inner*cos(half\_phi\_rib);
+ r\_start[1]=r\_inner*sin(half\_phi\_rib);
+ r\_end[0]=r\_inner*cos(half\_phi\_rib);
+ r\_end[1]=-r\_inner*sin(half\_phi\_rib);
+
+ Vector<Vector<double> > boundary\_vertices(2);
+ boundary\_vertices[0]=r\_start;
+ boundary\_vertices[1]=r\_end;
+ boundary\_id=100;
+ TriangleMeshPolyLine* rib\_divider\_pt=
+  \textcolor{keyword}{new} TriangleMeshPolyLine(boundary\_vertices,boundary\_id); 
+ internal\_polyline\_pt[0]=rib\_divider\_pt;
+
+ \textcolor{comment}{// Make connection}
+ \textcolor{keywordtype}{double} s\_connect=0.0;
+ internal\_polyline\_pt[0]->connect\_initial\_vertex\_to\_curviline(
+  upper\_inward\_rib\_curviline\_pt,s\_connect);
+
+ \textcolor{comment}{// Make connection}
+ s\_connect=1.0;
+ internal\_polyline\_pt[0]->connect\_final\_vertex\_to\_curviline(
+  lower\_inward\_rib\_curviline\_pt,s\_connect);
+
+ \textcolor{comment}{// Create open curve that defines internal bondary}
+ Vector<TriangleMeshOpenCurve*> inner\_boundary\_pt;
+ inner\_boundary\_pt.push\_back(\textcolor{keyword}{new} TriangleMeshOpenCurve(internal\_polyline\_pt));
+ 
+ \textcolor{comment}{// Define coordinates of a point inside the rib}
+ Vector<double> rib\_center(2);
+ rib\_center[0]=r\_inner-rib\_depth;
+ rib\_center[1]=0.0;
+
+ \textcolor{comment}{// Now build the mesh}
+ \textcolor{comment}{//===================}
+
+
+ \textcolor{comment}{// Use the TriangleMeshParameters object for helping on the manage of the}
+ \textcolor{comment}{// TriangleMesh parameters. The only parameter that needs to take is the}
+ \textcolor{comment}{// outer boundary.}
+ TriangleMeshParameters triangle\_mesh\_parameters(closed\_curve\_pt);
+
+ \textcolor{comment}{// Target area}
+ triangle\_mesh\_parameters.element\_area()=0.2;
+
+ \textcolor{comment}{// Specify the internal open boundary}
+ triangle\_mesh\_parameters.internal\_open\_curves\_pt()=inner\_boundary\_pt;
+
+ \textcolor{comment}{// Define the region}
+ triangle\_mesh\_parameters.add\_region\_coordinates(1,rib\_center);
+ 
+\textcolor{preprocessor}{#ifdef ADAPTIVE}
+
+ \textcolor{comment}{// Build the mesh}
+ Solid\_mesh\_pt=\textcolor{keyword}{new} 
+  RefineableTriangleMesh<ELASTICITY\_ELEMENT>(triangle\_mesh\_parameters);
+
+ \textcolor{comment}{// Set error estimator}
+ Solid\_mesh\_pt->spatial\_error\_estimator\_pt()=\textcolor{keyword}{new} Z2ErrorEstimator;
+
+\textcolor{preprocessor}{#else}
+
+ \textcolor{comment}{// Build the mesh}
+ Solid\_mesh\_pt=\textcolor{keyword}{new} 
+  TriangleMesh<ELASTICITY\_ELEMENT>(triangle\_mesh\_parameters);
+
+\textcolor{preprocessor}{#endif}
+
+
+ \textcolor{comment}{// Let's have a look where the boundaries are}
+ Solid\_mesh\_pt->output(\textcolor{stringliteral}{"solid\_mesh.dat"});
+ Solid\_mesh\_pt->output\_boundaries(\textcolor{stringliteral}{"solid\_mesh\_boundary.dat"});
+ 
+ \textcolor{comment}{// Construct the traction element mesh}
+ Traction\_mesh\_pt=\textcolor{keyword}{new} Mesh;
+ create\_traction\_elements(); 
+ 
+ \textcolor{comment}{// Solid mesh is first sub-mesh}
+ add\_sub\_mesh(Solid\_mesh\_pt);
+
+ \textcolor{comment}{// Add traction sub-mesh}
+ add\_sub\_mesh(Traction\_mesh\_pt);
+
+ \textcolor{comment}{// Build combined "global" mesh}
+ build\_global\_mesh();
+ 
+ \textcolor{comment}{// Create elasticity tensors}
+ \hyperlink{namespaceGlobal__Parameters_a73c731fa617a9d92851e4195493262e7}{Global\_Parameters::E\_pt}.resize(2);
+ \hyperlink{namespaceGlobal__Parameters_a73c731fa617a9d92851e4195493262e7}{Global\_Parameters::E\_pt}[0]=\textcolor{keyword}{new} TimeHarmonicIsotropicElasticityTensor(
+    \hyperlink{namespaceGlobal__Parameters_a20fccdcfa2c15ad8b951b9ada3bb1661}{Global\_Parameters::Nu});
+ \hyperlink{namespaceGlobal__Parameters_a73c731fa617a9d92851e4195493262e7}{Global\_Parameters::E\_pt}[1]=\textcolor{keyword}{new} TimeHarmonicIsotropicElasticityTensor(
+  \hyperlink{namespaceGlobal__Parameters_a20fccdcfa2c15ad8b951b9ada3bb1661}{Global\_Parameters::Nu});
+
+ \textcolor{comment}{// Complete problem setup}
+ complete\_problem\_setup();
+
+ \textcolor{comment}{//Assign equation numbers}
+ cout << assign\_eqn\_numbers() << std::endl; 
+
+ \textcolor{comment}{// Set output directory}
+ Doc\_info.set\_directory(\hyperlink{namespaceGlobal__Parameters_a301ab922df72030c660b21328d6caf76}{Global\_Parameters::Directory});
+
+\} \textcolor{comment}{//end\_of\_constructor}
+
+
+
+
+\textcolor{comment}{//=====================start\_of\_complete\_problem\_setup====================}\textcolor{comment}{}
+\textcolor{comment}{/// Complete problem setup}
+\textcolor{comment}{}\textcolor{comment}{//========================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELASTICITY\_ELEMENT>
+\textcolor{keywordtype}{void} \hyperlink{classRingWithTRibProblem_a7aa8c978ec6ff0a9823ef895b263fb41}{RingWithTRibProblem<ELASTICITY\_ELEMENT>::complete\_problem\_setup}
+      ()
+\{
+
+\textcolor{preprocessor}{#ifdef ADAPTIVE}
+
+ \textcolor{comment}{// Min element size allowed during adaptation}
+ \textcolor{keywordflow}{if} (!CommandLineArgs::command\_line\_flag\_has\_been\_set(\textcolor{stringliteral}{"--validation"}))
+  \{   
+   Solid\_mesh\_pt->min\_element\_size()=1.0e-5;
+  \}
+
+\textcolor{preprocessor}{#endif}
+
+ \textcolor{comment}{//Assign the physical properties to the elements}
+ \textcolor{comment}{//----------------------------------------------}
+ \textcolor{keywordtype}{unsigned} nreg=Solid\_mesh\_pt->nregion();
+ \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} r=0;r<nreg;r++)
+  \{
+   \textcolor{keywordtype}{unsigned} nel=Solid\_mesh\_pt->nregion\_element(r);
+   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} e=0;e<nel;e++)
+    \{     
+     \textcolor{comment}{//Cast to a solid element}
+     ELASTICITY\_ELEMENT *el\_pt = 
+      \textcolor{keyword}{dynamic\_cast<}ELASTICITY\_ELEMENT*\textcolor{keyword}{>}(Solid\_mesh\_pt->region\_element\_pt(r,e));
+
+     \textcolor{comment}{// Set the constitutive law}
+     el\_pt->elasticity\_tensor\_pt() = \hyperlink{namespaceGlobal__Parameters_a73c731fa617a9d92851e4195493262e7}{Global\_Parameters::E\_pt}[r];
+
+     \textcolor{comment}{// Square of non-dim frequency}
+     el\_pt->omega\_sq\_pt()= &\hyperlink{namespaceGlobal__Parameters_a58a76124a7c047adf58388cc12e84f23}{Global\_Parameters::Omega\_sq\_region}[r];
+    \}
+  \}                         
+
+
+ \textcolor{comment}{// Solid boundary conditions:}
+ \textcolor{comment}{//---------------------------}
+ \textcolor{comment}{// Pin real and imag part of horizontal displacement components }
+ \textcolor{comment}{//-------------------------------------------------------------}
+ \textcolor{comment}{// on vertical boundaries}
+ \textcolor{comment}{//-----------------------}
+ \{  
+  \textcolor{comment}{//Loop over the nodes to pin and assign boundary displacements on }
+  \textcolor{comment}{//solid boundary}
+  \textcolor{keywordtype}{unsigned} n\_node = Solid\_mesh\_pt->nboundary\_node(Upper\_symmetry\_boundary\_id);
+  \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} i=0;i<n\_node;i++)
+   \{
+    Node* nod\_pt=Solid\_mesh\_pt->boundary\_node\_pt(Upper\_symmetry\_boundary\_id,i);
+    
+    \textcolor{comment}{// Real part of x-displacement }
+    nod\_pt->pin(0);
+    nod\_pt->set\_value(0,0.0);
+    
+    \textcolor{comment}{// Imag part of x-displacement}
+    nod\_pt->pin(2);
+    nod\_pt->set\_value(2,0.0);
+   \}
+ \}
+ \{
+  \textcolor{comment}{//Loop over the nodes to pin and assign boundary displacements on }
+  \textcolor{comment}{//solid boundary}
+  \textcolor{keywordtype}{unsigned} n\_node = Solid\_mesh\_pt->nboundary\_node(Lower\_symmetry\_boundary\_id);
+  \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} i=0;i<n\_node;i++)
+   \{
+    Node* nod\_pt=Solid\_mesh\_pt->boundary\_node\_pt(Lower\_symmetry\_boundary\_id,i);
+
+    \textcolor{comment}{// Real part of x-displacement }
+    nod\_pt->pin(0);
+    nod\_pt->set\_value(0,0.0);
+    
+    \textcolor{comment}{// Imag part of x-displacement}
+    nod\_pt->pin(2);
+    nod\_pt->set\_value(2,0.0);
+   \}
+ \}
+\}
+
+
+
+\textcolor{comment}{//=====================start\_of\_actions\_before\_adapt======================}\textcolor{comment}{}
+\textcolor{comment}{/// Actions before adapt: Wipe the mesh of traction elements}
+\textcolor{comment}{}\textcolor{comment}{//========================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELASTICITY\_ELEMENT>
+\textcolor{keywordtype}{void} \hyperlink{classRingWithTRibProblem_a7a170199d58390ae43a044294bfc7ac5}{RingWithTRibProblem<ELASTICITY\_ELEMENT>::actions\_before\_adapt}
+      ()
+\{
+ \textcolor{comment}{// Kill the traction elements and wipe surface mesh}
+ delete\_traction\_elements();
+ 
+ \textcolor{comment}{// Rebuild the Problem's global mesh from its various sub-meshes}
+ rebuild\_global\_mesh();
+
+\}\textcolor{comment}{// end of actions\_before\_adapt}
+
+
+
+\textcolor{comment}{//=====================start\_of\_actions\_after\_adapt=======================}\textcolor{comment}{}
+\textcolor{comment}{///  Actions after adapt: Rebuild the mesh of traction elements}
+\textcolor{comment}{}\textcolor{comment}{//========================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELASTICITY\_ELEMENT>
+\textcolor{keywordtype}{void} \hyperlink{classRingWithTRibProblem_a8749aaf1e46d802c210b51e07093505b}{RingWithTRibProblem<ELASTICITY\_ELEMENT>::actions\_after\_adapt}
+      ()
+\{
+ \textcolor{comment}{// Create traction elements from all elements that are }
+ \textcolor{comment}{// adjacent to FSI boundaries and add them to surface meshes}
+ create\_traction\_elements();
+ 
+ \textcolor{comment}{// Rebuild the Problem's global mesh from its various sub-meshes}
+ rebuild\_global\_mesh();
+ 
+ \textcolor{comment}{// Complete problem setup}
+ complete\_problem\_setup();   
+ 
+\}\textcolor{comment}{// end of actions\_after\_adapt}
+
+
+\textcolor{comment}{//============start\_of\_create\_traction\_elements==============================}\textcolor{comment}{}
+\textcolor{comment}{/// Create traction elements }
+\textcolor{comment}{}\textcolor{comment}{//=======================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELASTICITY\_ELEMENT>
+\textcolor{keywordtype}{void} \hyperlink{classRingWithTRibProblem_ac4445c7a9fbfdcb69063d36fe0fe08c3}{RingWithTRibProblem<ELASTICITY\_ELEMENT>::create\_traction\_elements}
+      ()
+\{
+
+ \textcolor{keywordtype}{unsigned} b=Outer\_boundary\_id;
+ \{
+  \textcolor{comment}{// How many bulk elements are adjacent to boundary b?}
+  \textcolor{keywordtype}{unsigned} n\_element = Solid\_mesh\_pt->nboundary\_element(b);
+   
+  \textcolor{comment}{// Loop over the bulk elements adjacent to boundary b}
+  \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} e=0;e<n\_element;e++)
+   \{
+    \textcolor{comment}{// Get pointer to the bulk element that is adjacent to boundary b}
+    ELASTICITY\_ELEMENT* bulk\_elem\_pt = \textcolor{keyword}{dynamic\_cast<}ELASTICITY\_ELEMENT*\textcolor{keyword}{>}(
+     Solid\_mesh\_pt->boundary\_element\_pt(b,e));
+    
+    \textcolor{comment}{//Find the index of the face of element e along boundary b}
+    \textcolor{keywordtype}{int} face\_index = Solid\_mesh\_pt->face\_index\_at\_boundary(b,e);
+    
+    \textcolor{comment}{// Create element}
+    TimeHarmonicLinearElasticityTractionElement<ELASTICITY\_ELEMENT>* el\_pt=
+     \textcolor{keyword}{new} TimeHarmonicLinearElasticityTractionElement<ELASTICITY\_ELEMENT>
+     (bulk\_elem\_pt,face\_index);   
+    
+    \textcolor{comment}{// Add to mesh}
+    Traction\_mesh\_pt->add\_element\_pt(el\_pt);
+    
+    \textcolor{comment}{// Associate element with bulk boundary (to allow it to access}
+    \textcolor{comment}{// the boundary coordinates in the bulk mesh)}
+    el\_pt->set\_boundary\_number\_in\_bulk\_mesh(b); 
+    
+    \textcolor{comment}{//Set the traction function}
+    el\_pt->traction\_fct\_pt() = \hyperlink{namespaceGlobal__Parameters_a0ddb3a77481b907fbb34f2e8d0a6eb9f}{Global\_Parameters::pressure\_load};
+    
+   \}
+ \}
+ 
+\} \textcolor{comment}{// end\_of\_create\_traction\_elements}
+
+
+
+
+\textcolor{comment}{//============start\_of\_delete\_traction\_elements==============================}\textcolor{comment}{}
+\textcolor{comment}{/// Delete traction elements and wipe the  traction meshes}
+\textcolor{comment}{}\textcolor{comment}{//=======================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELASTICITY\_ELEMENT>
+\textcolor{keywordtype}{void} \hyperlink{classRingWithTRibProblem_aa85169a96623cb39f18111ee436f5b9d}{RingWithTRibProblem<ELASTICITY\_ELEMENT>::delete\_traction\_elements}
+      ()
+\{
+ \textcolor{comment}{// How many surface elements are in the surface mesh}
+ \textcolor{keywordtype}{unsigned} n\_element = Traction\_mesh\_pt->nelement();
+ 
+ \textcolor{comment}{// Loop over the surface elements}
+ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} e=0;e<n\_element;e++)
+  \{
+   \textcolor{comment}{// Kill surface element}
+   \textcolor{keyword}{delete} Traction\_mesh\_pt->element\_pt(e);
+  \}
+ 
+ \textcolor{comment}{// Wipe the mesh}
+ Traction\_mesh\_pt->flush\_element\_and\_node\_storage();
+
+\} \textcolor{comment}{// end of delete\_traction\_elements}
+
+
+
+
+
+\textcolor{comment}{//==============start\_doc===========================================}\textcolor{comment}{}
+\textcolor{comment}{/// Doc the solution}
+\textcolor{comment}{}\textcolor{comment}{//==================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELASTICITY\_ELEMENT>
+\textcolor{keywordtype}{void} \hyperlink{classRingWithTRibProblem_a43b70b125f467aa5bb9c74d08f193aa5}{RingWithTRibProblem<ELASTICITY\_ELEMENT>::doc\_solution}
+      ()
+\{
+
+ ofstream some\_file;
+ \textcolor{keywordtype}{char} filename[100];
+
+ \textcolor{comment}{// Number of plot points}
+ \textcolor{keywordtype}{unsigned} n\_plot=5; 
+
+ \textcolor{comment}{// Output displacement field}
+ \textcolor{comment}{//--------------------------}
+ sprintf(filename,\textcolor{stringliteral}{"%s/elast\_soln%i.dat"},Doc\_info.directory().c\_str(),
+         Doc\_info.number());
+ some\_file.open(filename);
+ Solid\_mesh\_pt->output(some\_file,n\_plot);
+ some\_file.close();
+
+ \textcolor{comment}{// Output traction elements}
+ \textcolor{comment}{//-------------------------}
+ sprintf(filename,\textcolor{stringliteral}{"%s/traction\_soln%i.dat"},Doc\_info.directory().c\_str(),
+         Doc\_info.number());
+ some\_file.open(filename);
+ Traction\_mesh\_pt->output(some\_file,n\_plot);
+ some\_file.close();
+
+ \textcolor{comment}{// Output regions}
+ \textcolor{comment}{//---------------}
+ \textcolor{keywordtype}{unsigned} nreg=Solid\_mesh\_pt->nregion();
+ \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} r=0;r<nreg;r++)
+  \{
+   sprintf(filename,\textcolor{stringliteral}{"%s/region%i\_%i.dat"},Doc\_info.directory().c\_str(),
+           r,Doc\_info.number());   
+   some\_file.open(filename);   
+   \textcolor{keywordtype}{unsigned} nel=Solid\_mesh\_pt->nregion\_element(r);
+   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} e=0;e<nel;e++)
+    \{     
+     FiniteElement* el\_pt=Solid\_mesh\_pt->region\_element\_pt(r,e);
+     el\_pt->output(some\_file,n\_plot);
+    \}
+   some\_file.close();
+  \}
+
+ \textcolor{comment}{// Output norm of solution (to allow validation of solution even}
+ \textcolor{comment}{// if triangle generates a slightly different mesh)}
+ sprintf(filename,\textcolor{stringliteral}{"%s/norm%i.dat"},Doc\_info.directory().c\_str(),
+         Doc\_info.number());   
+ some\_file.open(filename);   
+ \textcolor{keywordtype}{double} norm=0.0;
+ \textcolor{keywordtype}{unsigned} nel=Solid\_mesh\_pt->nelement();
+ \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} e=0;e<nel;e++)
+  \{
+   \textcolor{keywordtype}{double} el\_norm=0.0;
+   Solid\_mesh\_pt->compute\_norm(el\_norm);
+   norm+=el\_norm;
+  \}
+ some\_file << norm << std::endl;
+
+ \textcolor{comment}{// Increment label for output files}
+ Doc\_info.number()++;
+
+\} \textcolor{comment}{//end doc}
+
+
+
+\textcolor{comment}{//=======start\_of\_main==================================================}\textcolor{comment}{}
+\textcolor{comment}{/// Driver for annular disk loaded by pressure}
+\textcolor{comment}{}\textcolor{comment}{//======================================================================}
+\textcolor{keywordtype}{int} \hyperlink{time__harmonic__elastic__annulus_8cc_a3c04138a5bfe5d72780bb7e82a18e627}{main}(\textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} **argv)
+\{
+
+ \textcolor{comment}{// Store command line arguments}
+ CommandLineArgs::setup(argc,argv);
+
+ \textcolor{comment}{// Define possible command line arguments and parse the ones that}
+ \textcolor{comment}{// were actually specified }
+  
+\textcolor{preprocessor}{#ifdef ADAPTIVE}
+
+ \textcolor{comment}{// Max. number of adaptations}
+ \textcolor{keywordtype}{unsigned} max\_adapt=3;
+ CommandLineArgs::specify\_command\_line\_flag(\textcolor{stringliteral}{"--max\_adapt"},&max\_adapt);
+
+\textcolor{preprocessor}{#endif}
+
+ \textcolor{comment}{// Peakiness parameter for loading}
+ CommandLineArgs::specify\_command\_line\_flag(\textcolor{stringliteral}{"--alpha"},
+                                            &\hyperlink{namespaceGlobal__Parameters_afbe27ad463a1fb23cb99d029a9fac731}{Global\_Parameters::Alpha});
+
+ \textcolor{comment}{// Validation run?}
+ CommandLineArgs::specify\_command\_line\_flag(\textcolor{stringliteral}{"--validation"});
+
+ \textcolor{comment}{// Parse command line}
+ CommandLineArgs::parse\_and\_assign(); 
+ 
+ \textcolor{comment}{// Doc what has actually been specified on the command line}
+ CommandLineArgs::doc\_specified\_flags();
+
+\textcolor{preprocessor}{#ifdef ADAPTIVE}
+
+ \textcolor{comment}{//Set up the problem}
+ \hyperlink{classRingWithTRibProblem}{RingWithTRibProblem}<ProjectableTimeHarmonicLinearElasticityElement
+                    <TTimeHarmonicLinearElasticityElement<2,3> > >
+  problem;
+
+\textcolor{preprocessor}{#else}
+
+ \textcolor{comment}{//Set up the problem}
+ \hyperlink{classRingWithTRibProblem}{RingWithTRibProblem<TTimeHarmonicLinearElasticityElement<2,3>}
+       > problem;
+
+\textcolor{preprocessor}{#endif}
+
+
+ \textcolor{comment}{// Initial values for parameter values}
+ \hyperlink{namespaceGlobal__Parameters_a31fb55c20db4aa0127aafa20f0d76731}{Global\_Parameters::P}=0.1; 
+
+ \textcolor{comment}{//Parameter incrementation}
+ \textcolor{keywordtype}{unsigned} nstep=2;
+ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} i=0;i<nstep;i++)
+  \{
+
+\textcolor{preprocessor}{#ifdef ADAPTIVE}
+
+   \textcolor{comment}{// Solve the problem with Newton's method, allowing}
+   \textcolor{comment}{// up to max\_adapt mesh adaptations after every solve.}
+   problem.newton\_solve(max\_adapt);
+
+\textcolor{preprocessor}{#else}
+
+   \textcolor{comment}{// Solve the problem using Newton's method}
+   problem.newton\_solve();
+
+\textcolor{preprocessor}{#endif}
+   
+   \textcolor{comment}{// Doc solution}
+   problem.\hyperlink{classRingWithTRibProblem_a43b70b125f467aa5bb9c74d08f193aa5}{doc\_solution}();
+   
+   \textcolor{comment}{// Now reduce the stiffness of the rib and set its inertia to}
+   \textcolor{comment}{// zero, then re-solve. Resulting displacement field should}
+   \textcolor{comment}{// be approximately axisymmetric in the annular region.}
+   \hyperlink{namespaceGlobal__Parameters_a73c731fa617a9d92851e4195493262e7}{Global\_Parameters::E\_pt}[1]->update\_constitutive\_parameters(
+    \hyperlink{namespaceGlobal__Parameters_a20fccdcfa2c15ad8b951b9ada3bb1661}{Global\_Parameters::Nu},1.0e-10);
+   \hyperlink{namespaceGlobal__Parameters_a58a76124a7c047adf58388cc12e84f23}{Global\_Parameters::Omega\_sq\_region}[1]=0.0;
+
+  \}
+ 
+\} \textcolor{comment}{//end of main}
+
+
+
+
+
+
+
+
+\end{DoxyCodeInclude}
+
+
+
+
+ 
+
+\hypertarget{index_sources}{}\section{Source files for this tutorial}\label{index_sources}
+
+\begin{DoxyItemize}
+\item The source files for this tutorial are located in the directory\+:~\newline
+~\newline
+\begin{center} \href{../../../../demo_drivers/time_harmonic_linear_elasticity/elastic_annulus/}{\tt demo\+\_\+drivers/time\+\_\+harmonic\+\_\+linear\+\_\+elasticity/elastic\+\_\+annulus } \end{center} ~\newline
+
+\item The driver code is\+: ~\newline
+~\newline
+\begin{center} \href{../../../../demo_drivers/time_harmonic_linear_elasticity/elastic_annulus/unstructured_time_harmonic_elastic_annulus.cc}{\tt demo\+\_\+drivers/time\+\_\+harmonic\+\_\+linear\+\_\+elasticity/elastic\+\_\+annulus/unstructured\+\_\+time\+\_\+harmonic\+\_\+elastic\+\_\+annulus.\+cc } \end{center} 
+\end{DoxyItemize}
+
+
+
+ 
+
+ \hypertarget{index_pdf}{}\section{P\+D\+F file}\label{index_pdf}
+A \href{../latex/refman.pdf}{\tt pdf version} of this document is available. \end{document}

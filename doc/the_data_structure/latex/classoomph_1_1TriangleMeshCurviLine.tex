@@ -1,0 +1,500 @@
+\hypertarget{classoomph_1_1TriangleMeshCurviLine}{}\section{oomph\+:\+:Triangle\+Mesh\+Curvi\+Line Class Reference}
+\label{classoomph_1_1TriangleMeshCurviLine}\index{oomph\+::\+Triangle\+Mesh\+Curvi\+Line@{oomph\+::\+Triangle\+Mesh\+Curvi\+Line}}
+
+
+{\ttfamily \#include $<$unstructured\+\_\+two\+\_\+d\+\_\+mesh\+\_\+geometry\+\_\+base.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Triangle\+Mesh\+Curvi\+Line\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classoomph_1_1TriangleMeshCurviLine}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1TriangleMeshCurviLine_aa31bdc0d13e7d8851eced042a471ecdf}{Triangle\+Mesh\+Curvi\+Line} (\hyperlink{classoomph_1_1GeomObject}{Geom\+Object} $\ast$\hyperlink{classoomph_1_1TriangleMeshCurviLine_a037242aaee2ba082658f87db87f6ef69}{geom\+\_\+object\+\_\+pt}, const double \&\hyperlink{classoomph_1_1TriangleMeshCurviLine_a6c0067c06cce020c85e3fe9b1737ce57}{zeta\+\_\+start}, const double \&\hyperlink{classoomph_1_1TriangleMeshCurviLine_acecf95595d14b777bf6ac2ddd9327f8b}{zeta\+\_\+end}, const unsigned \&\hyperlink{classoomph_1_1TriangleMeshCurviLine_af5ee48a8cb78c2c2954a14241b5b1489}{nsegment}, const unsigned \&\hyperlink{classoomph_1_1TriangleMeshCurviLine_acb7ae5fdae67480a0e797da29d518aee}{boundary\+\_\+id}, const bool \&\hyperlink{classoomph_1_1TriangleMeshCurviLine_aeebdc2c7b0bfe0e577ba1b6c93b38895}{space\+\_\+vertices\+\_\+evenly\+\_\+in\+\_\+arclength}=true, const unsigned \&\hyperlink{classoomph_1_1TriangleMeshCurviLine_a42b8ef1fb0ad0078413d0fedc87af679}{boundary\+\_\+chunk}=0)
+\begin{DoxyCompactList}\small\item\em Constructor\+: Specify \hyperlink{classoomph_1_1GeomObject}{Geom\+Object}, the start and end coordinates of the relevant boundary in terms of the \hyperlink{classoomph_1_1GeomObject}{Geom\+Object}\textquotesingle{}s intrinsic coordinate, the number of (initially straight-\/line) segments that this \hyperlink{classoomph_1_1GeomObject}{Geom\+Object} is to be split up into, and the boundary ID. The final optional boolean argument specifies if vertices in polygonhal represenation are spaced (approximately) evenly in arclength along the \hyperlink{classoomph_1_1GeomObject}{Geom\+Object} \mbox{[}true, default\mbox{]} or in equal increments in zeta. This is the curvlinear equivalent of Poly\+Line. \end{DoxyCompactList}\item 
+virtual \hyperlink{classoomph_1_1TriangleMeshCurviLine_ab08a474ba9e5067b239aba84ab998710}{$\sim$\+Triangle\+Mesh\+Curvi\+Line} ()
+\begin{DoxyCompactList}\small\item\em Empty Destuctor. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1GeomObject}{Geom\+Object} $\ast$ \hyperlink{classoomph_1_1TriangleMeshCurviLine_a037242aaee2ba082658f87db87f6ef69}{geom\+\_\+object\+\_\+pt} ()
+\begin{DoxyCompactList}\small\item\em Pointer to \hyperlink{classoomph_1_1GeomObject}{Geom\+Object} that represents this part of the boundary. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1TriangleMeshCurviLine_a6c0067c06cce020c85e3fe9b1737ce57}{zeta\+\_\+start} ()
+\begin{DoxyCompactList}\small\item\em Start coordinate in terms of the \hyperlink{classoomph_1_1GeomObject}{Geom\+Object}\textquotesingle{}s intrinsic coordinate. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1TriangleMeshCurviLine_acecf95595d14b777bf6ac2ddd9327f8b}{zeta\+\_\+end} ()
+\begin{DoxyCompactList}\small\item\em End coordinate in terms of the \hyperlink{classoomph_1_1GeomObject}{Geom\+Object}\textquotesingle{}s intrinsic coordinate. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1TriangleMeshCurviLine_af5ee48a8cb78c2c2954a14241b5b1489}{nsegment} () const
+\begin{DoxyCompactList}\small\item\em Number of (initially straight-\/line) segments that this part of the boundary is to be represented by. \end{DoxyCompactList}\item 
+unsigned \& \hyperlink{classoomph_1_1TriangleMeshCurviLine_a2f5337ebf1926262541b708799a597fa}{nsegment} ()
+\begin{DoxyCompactList}\small\item\em Number of (initially straight-\/line) segments that this part of the boundary is to be represented by. This version allows the change of the number of segments. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1TriangleMeshCurviLine_acb7ae5fdae67480a0e797da29d518aee}{boundary\+\_\+id} () const
+\begin{DoxyCompactList}\small\item\em Boundary ID. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1TriangleMeshCurviLine_a42b8ef1fb0ad0078413d0fedc87af679}{boundary\+\_\+chunk} () const
+\item 
+void \hyperlink{classoomph_1_1TriangleMeshCurviLine_a4432e3848032cc78bc3282149c4d6cff}{output} (std\+::ostream \&outfile, const unsigned \&n\+\_\+sample=50)
+\begin{DoxyCompactList}\small\item\em Output curvilinear boundary at n\+\_\+sample (default\+: 50) points. \end{DoxyCompactList}\item 
+bool \hyperlink{classoomph_1_1TriangleMeshCurviLine_aeebdc2c7b0bfe0e577ba1b6c93b38895}{space\+\_\+vertices\+\_\+evenly\+\_\+in\+\_\+arclength} () const
+\begin{DoxyCompactList}\small\item\em Boolean to indicate if vertices in polygonal representation of the Curvline are spaced (approximately) evenly in arclength along the \hyperlink{classoomph_1_1GeomObject}{Geom\+Object} \mbox{[}true\mbox{]} or in equal increments in zeta \mbox{[}false\mbox{]}. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1TriangleMeshCurviLine_a4a60d6fadfae8165ed9fde9987ef4f0d}{nvertex} () const
+\begin{DoxyCompactList}\small\item\em Number of vertices. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1TriangleMeshCurviLine_a164a96e8cce279bce6cb3f01f5bf6170}{initial\+\_\+vertex\+\_\+coordinate} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&vertex)
+\begin{DoxyCompactList}\small\item\em Get first vertex coordinates. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1TriangleMeshCurviLine_a6a2437a4fb8c17ccc02a82311d477ca0}{final\+\_\+vertex\+\_\+coordinate} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&vertex)
+\begin{DoxyCompactList}\small\item\em Get last vertex coordinates. \end{DoxyCompactList}\item 
+bool \hyperlink{classoomph_1_1TriangleMeshCurviLine_a040f5978d5efa810b0b96fd17b9c0108}{are\+\_\+there\+\_\+connection\+\_\+points} ()
+\begin{DoxyCompactList}\small\item\em Does the vector for storing connections has elements? \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ $\ast$ \hyperlink{classoomph_1_1TriangleMeshCurviLine_aae5de91e63c33bf883a12bde571e1364}{connection\+\_\+points\+\_\+pt} ()
+\begin{DoxyCompactList}\small\item\em Returns the connection points vector. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1TriangleMeshCurviLine_a3605aa21fbdec5f73b1baf842fdb4611}{add\+\_\+connection\+\_\+point} (const double \&z\+\_\+value, const double \&tol=1.\+0e-\/12)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1GeomObject}{Geom\+Object} $\ast$ \hyperlink{classoomph_1_1TriangleMeshCurviLine_a8517e012895a1b48d6d664573650f2c6}{Geom\+\_\+object\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Pointer to \hyperlink{classoomph_1_1GeomObject}{Geom\+Object} that represents this part of the boundary. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1TriangleMeshCurviLine_aa89105fb5ab773ff8ee49fc32cf066d0}{Zeta\+\_\+start}
+\begin{DoxyCompactList}\small\item\em Start coordinate in terms of the \hyperlink{classoomph_1_1GeomObject}{Geom\+Object}\textquotesingle{}s intrinsic coordinate. \end{DoxyCompactList}\item 
+double \hyperlink{classoomph_1_1TriangleMeshCurviLine_a4e0eb74c99bee668bb97ac2e896b3ee0}{Zeta\+\_\+end}
+\begin{DoxyCompactList}\small\item\em End coordinate in terms of the \hyperlink{classoomph_1_1GeomObject}{Geom\+Object}\textquotesingle{}s intrinsic coordinate. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1TriangleMeshCurviLine_ad623f3774469ffacddb79862263ad70d}{Nsegment}
+\item 
+unsigned \hyperlink{classoomph_1_1TriangleMeshCurviLine_a142f76f360a6f18067e089f860bfb422}{Boundary\+\_\+id}
+\begin{DoxyCompactList}\small\item\em Boundary ID. \end{DoxyCompactList}\item 
+bool \hyperlink{classoomph_1_1TriangleMeshCurviLine_a36ad5bcb2bc7abac6f91084c1f715118}{Space\+\_\+vertices\+\_\+evenly\+\_\+in\+\_\+arclength}
+\begin{DoxyCompactList}\small\item\em Boolean to indicate if vertices in polygonal representation of the Curviline are spaced (approximately) evenly in arclength along the \hyperlink{classoomph_1_1GeomObject}{Geom\+Object} \mbox{[}true\mbox{]} or in equal increments in zeta \mbox{[}false\mbox{]}. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1TriangleMeshCurviLine_aa526197f2a3eb9d7cb024eeaf7262051}{Boundary\+\_\+chunk}
+\item 
+\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \hyperlink{classoomph_1_1TriangleMeshCurviLine_a33be954c8f4d0a0cd0243deac7ae10da}{Connection\+\_\+points\+\_\+pt}
+\begin{DoxyCompactList}\small\item\em Stores the information for connections received on the curviline. Used when converting to polyline. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Class definining a curvilinear triangle mesh boundary in terms of a \hyperlink{classoomph_1_1GeomObject}{Geom\+Object}. Curvlinear equivalent of Poly\+Line. 
+
+Definition at line 609 of file unstructured\+\_\+two\+\_\+d\+\_\+mesh\+\_\+geometry\+\_\+base.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1TriangleMeshCurviLine_aa31bdc0d13e7d8851eced042a471ecdf}\label{classoomph_1_1TriangleMeshCurviLine_aa31bdc0d13e7d8851eced042a471ecdf}} 
+\index{oomph\+::\+Triangle\+Mesh\+Curvi\+Line@{oomph\+::\+Triangle\+Mesh\+Curvi\+Line}!Triangle\+Mesh\+Curvi\+Line@{Triangle\+Mesh\+Curvi\+Line}}
+\index{Triangle\+Mesh\+Curvi\+Line@{Triangle\+Mesh\+Curvi\+Line}!oomph\+::\+Triangle\+Mesh\+Curvi\+Line@{oomph\+::\+Triangle\+Mesh\+Curvi\+Line}}
+\subsubsection{\texorpdfstring{Triangle\+Mesh\+Curvi\+Line()}{TriangleMeshCurviLine()}}
+{\footnotesize\ttfamily oomph\+::\+Triangle\+Mesh\+Curvi\+Line\+::\+Triangle\+Mesh\+Curvi\+Line (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1GeomObject}{Geom\+Object} $\ast$}]{geom\+\_\+object\+\_\+pt,  }\item[{const double \&}]{zeta\+\_\+start,  }\item[{const double \&}]{zeta\+\_\+end,  }\item[{const unsigned \&}]{nsegment,  }\item[{const unsigned \&}]{boundary\+\_\+id,  }\item[{const bool \&}]{space\+\_\+vertices\+\_\+evenly\+\_\+in\+\_\+arclength = {\ttfamily true},  }\item[{const unsigned \&}]{boundary\+\_\+chunk = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor\+: Specify \hyperlink{classoomph_1_1GeomObject}{Geom\+Object}, the start and end coordinates of the relevant boundary in terms of the \hyperlink{classoomph_1_1GeomObject}{Geom\+Object}\textquotesingle{}s intrinsic coordinate, the number of (initially straight-\/line) segments that this \hyperlink{classoomph_1_1GeomObject}{Geom\+Object} is to be split up into, and the boundary ID. The final optional boolean argument specifies if vertices in polygonhal represenation are spaced (approximately) evenly in arclength along the \hyperlink{classoomph_1_1GeomObject}{Geom\+Object} \mbox{[}true, default\mbox{]} or in equal increments in zeta. This is the curvlinear equivalent of Poly\+Line. 
+
+
+
+Definition at line 623 of file unstructured\+\_\+two\+\_\+d\+\_\+mesh\+\_\+geometry\+\_\+base.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1TriangleMeshCurviLine_ab08a474ba9e5067b239aba84ab998710}\label{classoomph_1_1TriangleMeshCurviLine_ab08a474ba9e5067b239aba84ab998710}} 
+\index{oomph\+::\+Triangle\+Mesh\+Curvi\+Line@{oomph\+::\+Triangle\+Mesh\+Curvi\+Line}!````~Triangle\+Mesh\+Curvi\+Line@{$\sim$\+Triangle\+Mesh\+Curvi\+Line}}
+\index{````~Triangle\+Mesh\+Curvi\+Line@{$\sim$\+Triangle\+Mesh\+Curvi\+Line}!oomph\+::\+Triangle\+Mesh\+Curvi\+Line@{oomph\+::\+Triangle\+Mesh\+Curvi\+Line}}
+\subsubsection{\texorpdfstring{$\sim$\+Triangle\+Mesh\+Curvi\+Line()}{~TriangleMeshCurviLine()}}
+{\footnotesize\ttfamily virtual oomph\+::\+Triangle\+Mesh\+Curvi\+Line\+::$\sim$\+Triangle\+Mesh\+Curvi\+Line (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Empty Destuctor. 
+
+
+
+Definition at line 644 of file unstructured\+\_\+two\+\_\+d\+\_\+mesh\+\_\+geometry\+\_\+base.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1TriangleMeshCurviLine_a3605aa21fbdec5f73b1baf842fdb4611}\label{classoomph_1_1TriangleMeshCurviLine_a3605aa21fbdec5f73b1baf842fdb4611}} 
+\index{oomph\+::\+Triangle\+Mesh\+Curvi\+Line@{oomph\+::\+Triangle\+Mesh\+Curvi\+Line}!add\+\_\+connection\+\_\+point@{add\+\_\+connection\+\_\+point}}
+\index{add\+\_\+connection\+\_\+point@{add\+\_\+connection\+\_\+point}!oomph\+::\+Triangle\+Mesh\+Curvi\+Line@{oomph\+::\+Triangle\+Mesh\+Curvi\+Line}}
+\subsubsection{\texorpdfstring{add\+\_\+connection\+\_\+point()}{add\_connection\_point()}}
+{\footnotesize\ttfamily void oomph\+::\+Triangle\+Mesh\+Curvi\+Line\+::add\+\_\+connection\+\_\+point (\begin{DoxyParamCaption}\item[{const double \&}]{z\+\_\+value,  }\item[{const double \&}]{tol = {\ttfamily 1.0e-\/12} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Add the connection point (z\+\_\+value) to the connection points that receive the curviline 
+
+Definition at line 722 of file unstructured\+\_\+two\+\_\+d\+\_\+mesh\+\_\+geometry\+\_\+base.\+h.
+
+
+
+References i.
+
+
+
+Referenced by oomph\+::\+Triangle\+Mesh\+Curve\+Section\+::connect\+\_\+final\+\_\+vertex\+\_\+to\+\_\+curviline(), and oomph\+::\+Triangle\+Mesh\+Curve\+Section\+::connect\+\_\+initial\+\_\+vertex\+\_\+to\+\_\+curviline().
+
+\mbox{\Hypertarget{classoomph_1_1TriangleMeshCurviLine_a040f5978d5efa810b0b96fd17b9c0108}\label{classoomph_1_1TriangleMeshCurviLine_a040f5978d5efa810b0b96fd17b9c0108}} 
+\index{oomph\+::\+Triangle\+Mesh\+Curvi\+Line@{oomph\+::\+Triangle\+Mesh\+Curvi\+Line}!are\+\_\+there\+\_\+connection\+\_\+points@{are\+\_\+there\+\_\+connection\+\_\+points}}
+\index{are\+\_\+there\+\_\+connection\+\_\+points@{are\+\_\+there\+\_\+connection\+\_\+points}!oomph\+::\+Triangle\+Mesh\+Curvi\+Line@{oomph\+::\+Triangle\+Mesh\+Curvi\+Line}}
+\subsubsection{\texorpdfstring{are\+\_\+there\+\_\+connection\+\_\+points()}{are\_there\_connection\_points()}}
+{\footnotesize\ttfamily bool oomph\+::\+Triangle\+Mesh\+Curvi\+Line\+::are\+\_\+there\+\_\+connection\+\_\+points (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Does the vector for storing connections has elements? 
+
+
+
+Definition at line 713 of file unstructured\+\_\+two\+\_\+d\+\_\+mesh\+\_\+geometry\+\_\+base.\+h.
+
+
+
+Referenced by oomph\+::\+Unstructured\+Two\+D\+Mesh\+Geometry\+Base\+::curviline\+\_\+to\+\_\+polyline().
+
+\mbox{\Hypertarget{classoomph_1_1TriangleMeshCurviLine_a42b8ef1fb0ad0078413d0fedc87af679}\label{classoomph_1_1TriangleMeshCurviLine_a42b8ef1fb0ad0078413d0fedc87af679}} 
+\index{oomph\+::\+Triangle\+Mesh\+Curvi\+Line@{oomph\+::\+Triangle\+Mesh\+Curvi\+Line}!boundary\+\_\+chunk@{boundary\+\_\+chunk}}
+\index{boundary\+\_\+chunk@{boundary\+\_\+chunk}!oomph\+::\+Triangle\+Mesh\+Curvi\+Line@{oomph\+::\+Triangle\+Mesh\+Curvi\+Line}}
+\subsubsection{\texorpdfstring{boundary\+\_\+chunk()}{boundary\_chunk()}}
+{\footnotesize\ttfamily unsigned oomph\+::\+Triangle\+Mesh\+Curvi\+Line\+::boundary\+\_\+chunk (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Boundary chunk (Used when a boundary is represented by more than one polyline 
+
+Implements \hyperlink{classoomph_1_1TriangleMeshCurveSection_a106d1f0e203e8e17c8296419be284c16}{oomph\+::\+Triangle\+Mesh\+Curve\+Section}.
+
+
+
+Definition at line 669 of file unstructured\+\_\+two\+\_\+d\+\_\+mesh\+\_\+geometry\+\_\+base.\+h.
+
+
+
+Referenced by oomph\+::\+Triangle\+Mesh\+Curve\+Section\+::connect\+\_\+final\+\_\+vertex\+\_\+to\+\_\+curviline(), and oomph\+::\+Triangle\+Mesh\+Curve\+Section\+::connect\+\_\+initial\+\_\+vertex\+\_\+to\+\_\+curviline().
+
+\mbox{\Hypertarget{classoomph_1_1TriangleMeshCurviLine_acb7ae5fdae67480a0e797da29d518aee}\label{classoomph_1_1TriangleMeshCurviLine_acb7ae5fdae67480a0e797da29d518aee}} 
+\index{oomph\+::\+Triangle\+Mesh\+Curvi\+Line@{oomph\+::\+Triangle\+Mesh\+Curvi\+Line}!boundary\+\_\+id@{boundary\+\_\+id}}
+\index{boundary\+\_\+id@{boundary\+\_\+id}!oomph\+::\+Triangle\+Mesh\+Curvi\+Line@{oomph\+::\+Triangle\+Mesh\+Curvi\+Line}}
+\subsubsection{\texorpdfstring{boundary\+\_\+id()}{boundary\_id()}}
+{\footnotesize\ttfamily unsigned oomph\+::\+Triangle\+Mesh\+Curvi\+Line\+::boundary\+\_\+id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Boundary ID. 
+
+
+
+Implements \hyperlink{classoomph_1_1TriangleMeshCurveSection_a2e6d22017ce7abe7e84e3f16360f5444}{oomph\+::\+Triangle\+Mesh\+Curve\+Section}.
+
+
+
+Definition at line 665 of file unstructured\+\_\+two\+\_\+d\+\_\+mesh\+\_\+geometry\+\_\+base.\+h.
+
+
+
+Referenced by oomph\+::\+Unstructured\+Two\+D\+Mesh\+Geometry\+Base\+::closed\+\_\+curve\+\_\+to\+\_\+polygon\+\_\+helper(), oomph\+::\+Triangle\+Mesh\+Curve\+Section\+::connect\+\_\+final\+\_\+vertex\+\_\+to\+\_\+curviline(), oomph\+::\+Triangle\+Mesh\+Curve\+Section\+::connect\+\_\+initial\+\_\+vertex\+\_\+to\+\_\+curviline(), oomph\+::\+Unstructured\+Two\+D\+Mesh\+Geometry\+Base\+::create\+\_\+open\+\_\+curve\+\_\+with\+\_\+polyline\+\_\+helper(), oomph\+::\+Unstructured\+Two\+D\+Mesh\+Geometry\+Base\+::create\+\_\+vertex\+\_\+coordinates\+\_\+for\+\_\+polyline\+\_\+connections(), oomph\+::\+Unstructured\+Two\+D\+Mesh\+Geometry\+Base\+::set\+\_\+geom\+\_\+objects\+\_\+and\+\_\+coordinate\+\_\+limits\+\_\+for\+\_\+close\+\_\+curve(), and oomph\+::\+Unstructured\+Two\+D\+Mesh\+Geometry\+Base\+::set\+\_\+geom\+\_\+objects\+\_\+and\+\_\+coordinate\+\_\+limits\+\_\+for\+\_\+open\+\_\+curve().
+
+\mbox{\Hypertarget{classoomph_1_1TriangleMeshCurviLine_aae5de91e63c33bf883a12bde571e1364}\label{classoomph_1_1TriangleMeshCurviLine_aae5de91e63c33bf883a12bde571e1364}} 
+\index{oomph\+::\+Triangle\+Mesh\+Curvi\+Line@{oomph\+::\+Triangle\+Mesh\+Curvi\+Line}!connection\+\_\+points\+\_\+pt@{connection\+\_\+points\+\_\+pt}}
+\index{connection\+\_\+points\+\_\+pt@{connection\+\_\+points\+\_\+pt}!oomph\+::\+Triangle\+Mesh\+Curvi\+Line@{oomph\+::\+Triangle\+Mesh\+Curvi\+Line}}
+\subsubsection{\texorpdfstring{connection\+\_\+points\+\_\+pt()}{connection\_points\_pt()}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1Vector}{Vector}$<$double$>$$\ast$ oomph\+::\+Triangle\+Mesh\+Curvi\+Line\+::connection\+\_\+points\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the connection points vector. 
+
+
+
+Definition at line 717 of file unstructured\+\_\+two\+\_\+d\+\_\+mesh\+\_\+geometry\+\_\+base.\+h.
+
+
+
+Referenced by oomph\+::\+Unstructured\+Two\+D\+Mesh\+Geometry\+Base\+::create\+\_\+vertex\+\_\+coordinates\+\_\+for\+\_\+polyline\+\_\+connections().
+
+\mbox{\Hypertarget{classoomph_1_1TriangleMeshCurviLine_a6a2437a4fb8c17ccc02a82311d477ca0}\label{classoomph_1_1TriangleMeshCurviLine_a6a2437a4fb8c17ccc02a82311d477ca0}} 
+\index{oomph\+::\+Triangle\+Mesh\+Curvi\+Line@{oomph\+::\+Triangle\+Mesh\+Curvi\+Line}!final\+\_\+vertex\+\_\+coordinate@{final\+\_\+vertex\+\_\+coordinate}}
+\index{final\+\_\+vertex\+\_\+coordinate@{final\+\_\+vertex\+\_\+coordinate}!oomph\+::\+Triangle\+Mesh\+Curvi\+Line@{oomph\+::\+Triangle\+Mesh\+Curvi\+Line}}
+\subsubsection{\texorpdfstring{final\+\_\+vertex\+\_\+coordinate()}{final\_vertex\_coordinate()}}
+{\footnotesize\ttfamily void oomph\+::\+Triangle\+Mesh\+Curvi\+Line\+::final\+\_\+vertex\+\_\+coordinate (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{vertex }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get last vertex coordinates. 
+
+
+
+Implements \hyperlink{classoomph_1_1TriangleMeshCurveSection_aa5bbea1d7c1157f25d3b93101ac4b80f}{oomph\+::\+Triangle\+Mesh\+Curve\+Section}.
+
+
+
+Definition at line 705 of file unstructured\+\_\+two\+\_\+d\+\_\+mesh\+\_\+geometry\+\_\+base.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1TriangleMeshCurviLine_a037242aaee2ba082658f87db87f6ef69}\label{classoomph_1_1TriangleMeshCurviLine_a037242aaee2ba082658f87db87f6ef69}} 
+\index{oomph\+::\+Triangle\+Mesh\+Curvi\+Line@{oomph\+::\+Triangle\+Mesh\+Curvi\+Line}!geom\+\_\+object\+\_\+pt@{geom\+\_\+object\+\_\+pt}}
+\index{geom\+\_\+object\+\_\+pt@{geom\+\_\+object\+\_\+pt}!oomph\+::\+Triangle\+Mesh\+Curvi\+Line@{oomph\+::\+Triangle\+Mesh\+Curvi\+Line}}
+\subsubsection{\texorpdfstring{geom\+\_\+object\+\_\+pt()}{geom\_object\_pt()}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1GeomObject}{Geom\+Object}$\ast$ oomph\+::\+Triangle\+Mesh\+Curvi\+Line\+::geom\+\_\+object\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Pointer to \hyperlink{classoomph_1_1GeomObject}{Geom\+Object} that represents this part of the boundary. 
+
+
+
+Definition at line 647 of file unstructured\+\_\+two\+\_\+d\+\_\+mesh\+\_\+geometry\+\_\+base.\+h.
+
+
+
+Referenced by oomph\+::\+Triangle\+Mesh\+Curve\+Section\+::connect\+\_\+final\+\_\+vertex\+\_\+to\+\_\+curviline(), oomph\+::\+Triangle\+Mesh\+Curve\+Section\+::connect\+\_\+initial\+\_\+vertex\+\_\+to\+\_\+curviline(), oomph\+::\+Unstructured\+Two\+D\+Mesh\+Geometry\+Base\+::create\+\_\+vertex\+\_\+coordinates\+\_\+for\+\_\+polyline\+\_\+connections(), oomph\+::\+Unstructured\+Two\+D\+Mesh\+Geometry\+Base\+::create\+\_\+vertex\+\_\+coordinates\+\_\+for\+\_\+polyline\+\_\+no\+\_\+connections(), oomph\+::\+Unstructured\+Two\+D\+Mesh\+Geometry\+Base\+::set\+\_\+geom\+\_\+objects\+\_\+and\+\_\+coordinate\+\_\+limits\+\_\+for\+\_\+close\+\_\+curve(), and oomph\+::\+Unstructured\+Two\+D\+Mesh\+Geometry\+Base\+::set\+\_\+geom\+\_\+objects\+\_\+and\+\_\+coordinate\+\_\+limits\+\_\+for\+\_\+open\+\_\+curve().
+
+\mbox{\Hypertarget{classoomph_1_1TriangleMeshCurviLine_a164a96e8cce279bce6cb3f01f5bf6170}\label{classoomph_1_1TriangleMeshCurviLine_a164a96e8cce279bce6cb3f01f5bf6170}} 
+\index{oomph\+::\+Triangle\+Mesh\+Curvi\+Line@{oomph\+::\+Triangle\+Mesh\+Curvi\+Line}!initial\+\_\+vertex\+\_\+coordinate@{initial\+\_\+vertex\+\_\+coordinate}}
+\index{initial\+\_\+vertex\+\_\+coordinate@{initial\+\_\+vertex\+\_\+coordinate}!oomph\+::\+Triangle\+Mesh\+Curvi\+Line@{oomph\+::\+Triangle\+Mesh\+Curvi\+Line}}
+\subsubsection{\texorpdfstring{initial\+\_\+vertex\+\_\+coordinate()}{initial\_vertex\_coordinate()}}
+{\footnotesize\ttfamily void oomph\+::\+Triangle\+Mesh\+Curvi\+Line\+::initial\+\_\+vertex\+\_\+coordinate (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{vertex }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get first vertex coordinates. 
+
+
+
+Implements \hyperlink{classoomph_1_1TriangleMeshCurveSection_a08c60883b595a52280c486badf8a4210}{oomph\+::\+Triangle\+Mesh\+Curve\+Section}.
+
+
+
+Definition at line 697 of file unstructured\+\_\+two\+\_\+d\+\_\+mesh\+\_\+geometry\+\_\+base.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1TriangleMeshCurviLine_af5ee48a8cb78c2c2954a14241b5b1489}\label{classoomph_1_1TriangleMeshCurviLine_af5ee48a8cb78c2c2954a14241b5b1489}} 
+\index{oomph\+::\+Triangle\+Mesh\+Curvi\+Line@{oomph\+::\+Triangle\+Mesh\+Curvi\+Line}!nsegment@{nsegment}}
+\index{nsegment@{nsegment}!oomph\+::\+Triangle\+Mesh\+Curvi\+Line@{oomph\+::\+Triangle\+Mesh\+Curvi\+Line}}
+\subsubsection{\texorpdfstring{nsegment()}{nsegment()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily unsigned oomph\+::\+Triangle\+Mesh\+Curvi\+Line\+::nsegment (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Number of (initially straight-\/line) segments that this part of the boundary is to be represented by. 
+
+
+
+Implements \hyperlink{classoomph_1_1TriangleMeshCurveSection_a52af59a9a4f1b6adb35e5645ab8feb45}{oomph\+::\+Triangle\+Mesh\+Curve\+Section}.
+
+
+
+Definition at line 657 of file unstructured\+\_\+two\+\_\+d\+\_\+mesh\+\_\+geometry\+\_\+base.\+h.
+
+
+
+Referenced by oomph\+::\+Unstructured\+Two\+D\+Mesh\+Geometry\+Base\+::create\+\_\+vertex\+\_\+coordinates\+\_\+for\+\_\+polyline\+\_\+connections(), and oomph\+::\+Unstructured\+Two\+D\+Mesh\+Geometry\+Base\+::create\+\_\+vertex\+\_\+coordinates\+\_\+for\+\_\+polyline\+\_\+no\+\_\+connections().
+
+\mbox{\Hypertarget{classoomph_1_1TriangleMeshCurviLine_a2f5337ebf1926262541b708799a597fa}\label{classoomph_1_1TriangleMeshCurviLine_a2f5337ebf1926262541b708799a597fa}} 
+\index{oomph\+::\+Triangle\+Mesh\+Curvi\+Line@{oomph\+::\+Triangle\+Mesh\+Curvi\+Line}!nsegment@{nsegment}}
+\index{nsegment@{nsegment}!oomph\+::\+Triangle\+Mesh\+Curvi\+Line@{oomph\+::\+Triangle\+Mesh\+Curvi\+Line}}
+\subsubsection{\texorpdfstring{nsegment()}{nsegment()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily unsigned\& oomph\+::\+Triangle\+Mesh\+Curvi\+Line\+::nsegment (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Number of (initially straight-\/line) segments that this part of the boundary is to be represented by. This version allows the change of the number of segments. 
+
+
+
+Definition at line 662 of file unstructured\+\_\+two\+\_\+d\+\_\+mesh\+\_\+geometry\+\_\+base.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1TriangleMeshCurviLine_a4a60d6fadfae8165ed9fde9987ef4f0d}\label{classoomph_1_1TriangleMeshCurviLine_a4a60d6fadfae8165ed9fde9987ef4f0d}} 
+\index{oomph\+::\+Triangle\+Mesh\+Curvi\+Line@{oomph\+::\+Triangle\+Mesh\+Curvi\+Line}!nvertex@{nvertex}}
+\index{nvertex@{nvertex}!oomph\+::\+Triangle\+Mesh\+Curvi\+Line@{oomph\+::\+Triangle\+Mesh\+Curvi\+Line}}
+\subsubsection{\texorpdfstring{nvertex()}{nvertex()}}
+{\footnotesize\ttfamily unsigned oomph\+::\+Triangle\+Mesh\+Curvi\+Line\+::nvertex (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Number of vertices. 
+
+
+
+Implements \hyperlink{classoomph_1_1TriangleMeshCurveSection_a491d849e8147152c10d55c8ca6c3d63d}{oomph\+::\+Triangle\+Mesh\+Curve\+Section}.
+
+
+
+Definition at line 694 of file unstructured\+\_\+two\+\_\+d\+\_\+mesh\+\_\+geometry\+\_\+base.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1TriangleMeshCurviLine_a4432e3848032cc78bc3282149c4d6cff}\label{classoomph_1_1TriangleMeshCurviLine_a4432e3848032cc78bc3282149c4d6cff}} 
+\index{oomph\+::\+Triangle\+Mesh\+Curvi\+Line@{oomph\+::\+Triangle\+Mesh\+Curvi\+Line}!output@{output}}
+\index{output@{output}!oomph\+::\+Triangle\+Mesh\+Curvi\+Line@{oomph\+::\+Triangle\+Mesh\+Curvi\+Line}}
+\subsubsection{\texorpdfstring{output()}{output()}}
+{\footnotesize\ttfamily void oomph\+::\+Triangle\+Mesh\+Curvi\+Line\+::output (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile,  }\item[{const unsigned \&}]{n\+\_\+sample = {\ttfamily 50} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Output curvilinear boundary at n\+\_\+sample (default\+: 50) points. 
+
+
+
+Implements \hyperlink{classoomph_1_1TriangleMeshCurveSection_a140b0bb85d7bf85cc025e19e996d5c53}{oomph\+::\+Triangle\+Mesh\+Curve\+Section}.
+
+
+
+Definition at line 672 of file unstructured\+\_\+two\+\_\+d\+\_\+mesh\+\_\+geometry\+\_\+base.\+h.
+
+
+
+References i.
+
+\mbox{\Hypertarget{classoomph_1_1TriangleMeshCurviLine_aeebdc2c7b0bfe0e577ba1b6c93b38895}\label{classoomph_1_1TriangleMeshCurviLine_aeebdc2c7b0bfe0e577ba1b6c93b38895}} 
+\index{oomph\+::\+Triangle\+Mesh\+Curvi\+Line@{oomph\+::\+Triangle\+Mesh\+Curvi\+Line}!space\+\_\+vertices\+\_\+evenly\+\_\+in\+\_\+arclength@{space\+\_\+vertices\+\_\+evenly\+\_\+in\+\_\+arclength}}
+\index{space\+\_\+vertices\+\_\+evenly\+\_\+in\+\_\+arclength@{space\+\_\+vertices\+\_\+evenly\+\_\+in\+\_\+arclength}!oomph\+::\+Triangle\+Mesh\+Curvi\+Line@{oomph\+::\+Triangle\+Mesh\+Curvi\+Line}}
+\subsubsection{\texorpdfstring{space\+\_\+vertices\+\_\+evenly\+\_\+in\+\_\+arclength()}{space\_vertices\_evenly\_in\_arclength()}}
+{\footnotesize\ttfamily bool oomph\+::\+Triangle\+Mesh\+Curvi\+Line\+::space\+\_\+vertices\+\_\+evenly\+\_\+in\+\_\+arclength (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Boolean to indicate if vertices in polygonal representation of the Curvline are spaced (approximately) evenly in arclength along the \hyperlink{classoomph_1_1GeomObject}{Geom\+Object} \mbox{[}true\mbox{]} or in equal increments in zeta \mbox{[}false\mbox{]}. 
+
+
+
+Definition at line 688 of file unstructured\+\_\+two\+\_\+d\+\_\+mesh\+\_\+geometry\+\_\+base.\+h.
+
+
+
+Referenced by oomph\+::\+Unstructured\+Two\+D\+Mesh\+Geometry\+Base\+::create\+\_\+vertex\+\_\+coordinates\+\_\+for\+\_\+polyline\+\_\+connections(), and oomph\+::\+Unstructured\+Two\+D\+Mesh\+Geometry\+Base\+::create\+\_\+vertex\+\_\+coordinates\+\_\+for\+\_\+polyline\+\_\+no\+\_\+connections().
+
+\mbox{\Hypertarget{classoomph_1_1TriangleMeshCurviLine_acecf95595d14b777bf6ac2ddd9327f8b}\label{classoomph_1_1TriangleMeshCurviLine_acecf95595d14b777bf6ac2ddd9327f8b}} 
+\index{oomph\+::\+Triangle\+Mesh\+Curvi\+Line@{oomph\+::\+Triangle\+Mesh\+Curvi\+Line}!zeta\+\_\+end@{zeta\+\_\+end}}
+\index{zeta\+\_\+end@{zeta\+\_\+end}!oomph\+::\+Triangle\+Mesh\+Curvi\+Line@{oomph\+::\+Triangle\+Mesh\+Curvi\+Line}}
+\subsubsection{\texorpdfstring{zeta\+\_\+end()}{zeta\_end()}}
+{\footnotesize\ttfamily double oomph\+::\+Triangle\+Mesh\+Curvi\+Line\+::zeta\+\_\+end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+End coordinate in terms of the \hyperlink{classoomph_1_1GeomObject}{Geom\+Object}\textquotesingle{}s intrinsic coordinate. 
+
+
+
+Definition at line 653 of file unstructured\+\_\+two\+\_\+d\+\_\+mesh\+\_\+geometry\+\_\+base.\+h.
+
+
+
+Referenced by oomph\+::\+Triangle\+Mesh\+Curve\+Section\+::connect\+\_\+final\+\_\+vertex\+\_\+to\+\_\+curviline(), oomph\+::\+Triangle\+Mesh\+Curve\+Section\+::connect\+\_\+initial\+\_\+vertex\+\_\+to\+\_\+curviline(), oomph\+::\+Unstructured\+Two\+D\+Mesh\+Geometry\+Base\+::create\+\_\+vertex\+\_\+coordinates\+\_\+for\+\_\+polyline\+\_\+connections(), oomph\+::\+Unstructured\+Two\+D\+Mesh\+Geometry\+Base\+::create\+\_\+vertex\+\_\+coordinates\+\_\+for\+\_\+polyline\+\_\+no\+\_\+connections(), oomph\+::\+Unstructured\+Two\+D\+Mesh\+Geometry\+Base\+::set\+\_\+geom\+\_\+objects\+\_\+and\+\_\+coordinate\+\_\+limits\+\_\+for\+\_\+close\+\_\+curve(), and oomph\+::\+Unstructured\+Two\+D\+Mesh\+Geometry\+Base\+::set\+\_\+geom\+\_\+objects\+\_\+and\+\_\+coordinate\+\_\+limits\+\_\+for\+\_\+open\+\_\+curve().
+
+\mbox{\Hypertarget{classoomph_1_1TriangleMeshCurviLine_a6c0067c06cce020c85e3fe9b1737ce57}\label{classoomph_1_1TriangleMeshCurviLine_a6c0067c06cce020c85e3fe9b1737ce57}} 
+\index{oomph\+::\+Triangle\+Mesh\+Curvi\+Line@{oomph\+::\+Triangle\+Mesh\+Curvi\+Line}!zeta\+\_\+start@{zeta\+\_\+start}}
+\index{zeta\+\_\+start@{zeta\+\_\+start}!oomph\+::\+Triangle\+Mesh\+Curvi\+Line@{oomph\+::\+Triangle\+Mesh\+Curvi\+Line}}
+\subsubsection{\texorpdfstring{zeta\+\_\+start()}{zeta\_start()}}
+{\footnotesize\ttfamily double oomph\+::\+Triangle\+Mesh\+Curvi\+Line\+::zeta\+\_\+start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Start coordinate in terms of the \hyperlink{classoomph_1_1GeomObject}{Geom\+Object}\textquotesingle{}s intrinsic coordinate. 
+
+
+
+Definition at line 650 of file unstructured\+\_\+two\+\_\+d\+\_\+mesh\+\_\+geometry\+\_\+base.\+h.
+
+
+
+Referenced by oomph\+::\+Triangle\+Mesh\+Curve\+Section\+::connect\+\_\+final\+\_\+vertex\+\_\+to\+\_\+curviline(), oomph\+::\+Triangle\+Mesh\+Curve\+Section\+::connect\+\_\+initial\+\_\+vertex\+\_\+to\+\_\+curviline(), oomph\+::\+Unstructured\+Two\+D\+Mesh\+Geometry\+Base\+::create\+\_\+vertex\+\_\+coordinates\+\_\+for\+\_\+polyline\+\_\+connections(), oomph\+::\+Unstructured\+Two\+D\+Mesh\+Geometry\+Base\+::create\+\_\+vertex\+\_\+coordinates\+\_\+for\+\_\+polyline\+\_\+no\+\_\+connections(), oomph\+::\+Unstructured\+Two\+D\+Mesh\+Geometry\+Base\+::set\+\_\+geom\+\_\+objects\+\_\+and\+\_\+coordinate\+\_\+limits\+\_\+for\+\_\+close\+\_\+curve(), and oomph\+::\+Unstructured\+Two\+D\+Mesh\+Geometry\+Base\+::set\+\_\+geom\+\_\+objects\+\_\+and\+\_\+coordinate\+\_\+limits\+\_\+for\+\_\+open\+\_\+curve().
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1TriangleMeshCurviLine_aa526197f2a3eb9d7cb024eeaf7262051}\label{classoomph_1_1TriangleMeshCurviLine_aa526197f2a3eb9d7cb024eeaf7262051}} 
+\index{oomph\+::\+Triangle\+Mesh\+Curvi\+Line@{oomph\+::\+Triangle\+Mesh\+Curvi\+Line}!Boundary\+\_\+chunk@{Boundary\+\_\+chunk}}
+\index{Boundary\+\_\+chunk@{Boundary\+\_\+chunk}!oomph\+::\+Triangle\+Mesh\+Curvi\+Line@{oomph\+::\+Triangle\+Mesh\+Curvi\+Line}}
+\subsubsection{\texorpdfstring{Boundary\+\_\+chunk}{Boundary\_chunk}}
+{\footnotesize\ttfamily unsigned oomph\+::\+Triangle\+Mesh\+Curvi\+Line\+::\+Boundary\+\_\+chunk\hspace{0.3cm}{\ttfamily [private]}}
+
+Boundary chunk (Used when a boundary is represented by more than one polyline 
+
+Definition at line 778 of file unstructured\+\_\+two\+\_\+d\+\_\+mesh\+\_\+geometry\+\_\+base.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1TriangleMeshCurviLine_a142f76f360a6f18067e089f860bfb422}\label{classoomph_1_1TriangleMeshCurviLine_a142f76f360a6f18067e089f860bfb422}} 
+\index{oomph\+::\+Triangle\+Mesh\+Curvi\+Line@{oomph\+::\+Triangle\+Mesh\+Curvi\+Line}!Boundary\+\_\+id@{Boundary\+\_\+id}}
+\index{Boundary\+\_\+id@{Boundary\+\_\+id}!oomph\+::\+Triangle\+Mesh\+Curvi\+Line@{oomph\+::\+Triangle\+Mesh\+Curvi\+Line}}
+\subsubsection{\texorpdfstring{Boundary\+\_\+id}{Boundary\_id}}
+{\footnotesize\ttfamily unsigned oomph\+::\+Triangle\+Mesh\+Curvi\+Line\+::\+Boundary\+\_\+id\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Boundary ID. 
+
+
+
+Definition at line 769 of file unstructured\+\_\+two\+\_\+d\+\_\+mesh\+\_\+geometry\+\_\+base.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1TriangleMeshCurviLine_a33be954c8f4d0a0cd0243deac7ae10da}\label{classoomph_1_1TriangleMeshCurviLine_a33be954c8f4d0a0cd0243deac7ae10da}} 
+\index{oomph\+::\+Triangle\+Mesh\+Curvi\+Line@{oomph\+::\+Triangle\+Mesh\+Curvi\+Line}!Connection\+\_\+points\+\_\+pt@{Connection\+\_\+points\+\_\+pt}}
+\index{Connection\+\_\+points\+\_\+pt@{Connection\+\_\+points\+\_\+pt}!oomph\+::\+Triangle\+Mesh\+Curvi\+Line@{oomph\+::\+Triangle\+Mesh\+Curvi\+Line}}
+\subsubsection{\texorpdfstring{Connection\+\_\+points\+\_\+pt}{Connection\_points\_pt}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1Vector}{Vector}$<$double$>$ oomph\+::\+Triangle\+Mesh\+Curvi\+Line\+::\+Connection\+\_\+points\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Stores the information for connections received on the curviline. Used when converting to polyline. 
+
+
+
+Definition at line 782 of file unstructured\+\_\+two\+\_\+d\+\_\+mesh\+\_\+geometry\+\_\+base.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1TriangleMeshCurviLine_a8517e012895a1b48d6d664573650f2c6}\label{classoomph_1_1TriangleMeshCurviLine_a8517e012895a1b48d6d664573650f2c6}} 
+\index{oomph\+::\+Triangle\+Mesh\+Curvi\+Line@{oomph\+::\+Triangle\+Mesh\+Curvi\+Line}!Geom\+\_\+object\+\_\+pt@{Geom\+\_\+object\+\_\+pt}}
+\index{Geom\+\_\+object\+\_\+pt@{Geom\+\_\+object\+\_\+pt}!oomph\+::\+Triangle\+Mesh\+Curvi\+Line@{oomph\+::\+Triangle\+Mesh\+Curvi\+Line}}
+\subsubsection{\texorpdfstring{Geom\+\_\+object\+\_\+pt}{Geom\_object\_pt}}
+{\footnotesize\ttfamily \hyperlink{classoomph_1_1GeomObject}{Geom\+Object}$\ast$ oomph\+::\+Triangle\+Mesh\+Curvi\+Line\+::\+Geom\+\_\+object\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pointer to \hyperlink{classoomph_1_1GeomObject}{Geom\+Object} that represents this part of the boundary. 
+
+
+
+Definition at line 756 of file unstructured\+\_\+two\+\_\+d\+\_\+mesh\+\_\+geometry\+\_\+base.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1TriangleMeshCurviLine_ad623f3774469ffacddb79862263ad70d}\label{classoomph_1_1TriangleMeshCurviLine_ad623f3774469ffacddb79862263ad70d}} 
+\index{oomph\+::\+Triangle\+Mesh\+Curvi\+Line@{oomph\+::\+Triangle\+Mesh\+Curvi\+Line}!Nsegment@{Nsegment}}
+\index{Nsegment@{Nsegment}!oomph\+::\+Triangle\+Mesh\+Curvi\+Line@{oomph\+::\+Triangle\+Mesh\+Curvi\+Line}}
+\subsubsection{\texorpdfstring{Nsegment}{Nsegment}}
+{\footnotesize\ttfamily unsigned oomph\+::\+Triangle\+Mesh\+Curvi\+Line\+::\+Nsegment\hspace{0.3cm}{\ttfamily [private]}}
+
+Number of (initially straight-\/line) segments that this part of the boundary is to be represented by 
+
+Definition at line 766 of file unstructured\+\_\+two\+\_\+d\+\_\+mesh\+\_\+geometry\+\_\+base.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1TriangleMeshCurviLine_a36ad5bcb2bc7abac6f91084c1f715118}\label{classoomph_1_1TriangleMeshCurviLine_a36ad5bcb2bc7abac6f91084c1f715118}} 
+\index{oomph\+::\+Triangle\+Mesh\+Curvi\+Line@{oomph\+::\+Triangle\+Mesh\+Curvi\+Line}!Space\+\_\+vertices\+\_\+evenly\+\_\+in\+\_\+arclength@{Space\+\_\+vertices\+\_\+evenly\+\_\+in\+\_\+arclength}}
+\index{Space\+\_\+vertices\+\_\+evenly\+\_\+in\+\_\+arclength@{Space\+\_\+vertices\+\_\+evenly\+\_\+in\+\_\+arclength}!oomph\+::\+Triangle\+Mesh\+Curvi\+Line@{oomph\+::\+Triangle\+Mesh\+Curvi\+Line}}
+\subsubsection{\texorpdfstring{Space\+\_\+vertices\+\_\+evenly\+\_\+in\+\_\+arclength}{Space\_vertices\_evenly\_in\_arclength}}
+{\footnotesize\ttfamily bool oomph\+::\+Triangle\+Mesh\+Curvi\+Line\+::\+Space\+\_\+vertices\+\_\+evenly\+\_\+in\+\_\+arclength\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Boolean to indicate if vertices in polygonal representation of the Curviline are spaced (approximately) evenly in arclength along the \hyperlink{classoomph_1_1GeomObject}{Geom\+Object} \mbox{[}true\mbox{]} or in equal increments in zeta \mbox{[}false\mbox{]}. 
+
+
+
+Definition at line 774 of file unstructured\+\_\+two\+\_\+d\+\_\+mesh\+\_\+geometry\+\_\+base.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1TriangleMeshCurviLine_a4e0eb74c99bee668bb97ac2e896b3ee0}\label{classoomph_1_1TriangleMeshCurviLine_a4e0eb74c99bee668bb97ac2e896b3ee0}} 
+\index{oomph\+::\+Triangle\+Mesh\+Curvi\+Line@{oomph\+::\+Triangle\+Mesh\+Curvi\+Line}!Zeta\+\_\+end@{Zeta\+\_\+end}}
+\index{Zeta\+\_\+end@{Zeta\+\_\+end}!oomph\+::\+Triangle\+Mesh\+Curvi\+Line@{oomph\+::\+Triangle\+Mesh\+Curvi\+Line}}
+\subsubsection{\texorpdfstring{Zeta\+\_\+end}{Zeta\_end}}
+{\footnotesize\ttfamily double oomph\+::\+Triangle\+Mesh\+Curvi\+Line\+::\+Zeta\+\_\+end\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+End coordinate in terms of the \hyperlink{classoomph_1_1GeomObject}{Geom\+Object}\textquotesingle{}s intrinsic coordinate. 
+
+
+
+Definition at line 762 of file unstructured\+\_\+two\+\_\+d\+\_\+mesh\+\_\+geometry\+\_\+base.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1TriangleMeshCurviLine_aa89105fb5ab773ff8ee49fc32cf066d0}\label{classoomph_1_1TriangleMeshCurviLine_aa89105fb5ab773ff8ee49fc32cf066d0}} 
+\index{oomph\+::\+Triangle\+Mesh\+Curvi\+Line@{oomph\+::\+Triangle\+Mesh\+Curvi\+Line}!Zeta\+\_\+start@{Zeta\+\_\+start}}
+\index{Zeta\+\_\+start@{Zeta\+\_\+start}!oomph\+::\+Triangle\+Mesh\+Curvi\+Line@{oomph\+::\+Triangle\+Mesh\+Curvi\+Line}}
+\subsubsection{\texorpdfstring{Zeta\+\_\+start}{Zeta\_start}}
+{\footnotesize\ttfamily double oomph\+::\+Triangle\+Mesh\+Curvi\+Line\+::\+Zeta\+\_\+start\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Start coordinate in terms of the \hyperlink{classoomph_1_1GeomObject}{Geom\+Object}\textquotesingle{}s intrinsic coordinate. 
+
+
+
+Definition at line 759 of file unstructured\+\_\+two\+\_\+d\+\_\+mesh\+\_\+geometry\+\_\+base.\+h.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{unstructured__two__d__mesh__geometry__base_8h}{unstructured\+\_\+two\+\_\+d\+\_\+mesh\+\_\+geometry\+\_\+base.\+h}\end{DoxyCompactItemize}

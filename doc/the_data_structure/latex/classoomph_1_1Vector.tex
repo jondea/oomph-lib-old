@@ -1,0 +1,262 @@
+\hypertarget{classoomph_1_1Vector}{}\section{oomph\+:\+:Vector$<$ \+\_\+\+Tp $>$ Class Template Reference}
+\label{classoomph_1_1Vector}\index{oomph\+::\+Vector$<$ \+\_\+\+Tp $>$@{oomph\+::\+Vector$<$ \+\_\+\+Tp $>$}}
+
+
+{\ttfamily \#include $<$Vector.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:Vector$<$ \+\_\+\+Tp $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classoomph_1_1Vector}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef \+\_\+\+Tp \hyperlink{classoomph_1_1Vector_a73b0fda236ce64119befbeb30111f0b2}{value\+\_\+type}
+\begin{DoxyCompactList}\small\item\em Typedef to make the constructors look a bit cleaner. \end{DoxyCompactList}\item 
+typedef \hyperlink{classoomph_1_1Vector_a73b0fda236ce64119befbeb30111f0b2}{value\+\_\+type} \& \hyperlink{classoomph_1_1Vector_a7bd8c89b884168f3ecc358acc501d356}{reference}
+\begin{DoxyCompactList}\small\item\em Typedef to make the constructors look a bit cleaner. \end{DoxyCompactList}\item 
+typedef const \hyperlink{classoomph_1_1Vector_a73b0fda236ce64119befbeb30111f0b2}{value\+\_\+type} \& \hyperlink{classoomph_1_1Vector_ad126afbb3b115ef9dce224cf33c71428}{const\+\_\+reference}
+\begin{DoxyCompactList}\small\item\em Typedef to make the constructors look a bit cleaner. \end{DoxyCompactList}\item 
+typedef size\+\_\+t \hyperlink{classoomph_1_1Vector_a8ad2a43bd51f6bf2a981dd4e4e4247f5}{size\+\_\+type}
+\begin{DoxyCompactList}\small\item\em Typedef to make the constructors look a bit cleaner. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1Vector_a3ee293d1b770f0926ba350250bea37c7}{Vector} ()
+\begin{DoxyCompactList}\small\item\em Construct an empty vector. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Vector_a996ae9557e2ee9491771eb586e032994}{Vector} (\hyperlink{classoomph_1_1Vector_a8ad2a43bd51f6bf2a981dd4e4e4247f5}{size\+\_\+type} \+\_\+\+\_\+n)
+\begin{DoxyCompactList}\small\item\em A constructor that creates a vector of size \+\_\+\+\_\+n. Note the use of explicit for \char`\"{}strong\char`\"{} type checking. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Vector_a408f09400832e1584c832aff24b00966}{Vector} (\hyperlink{classoomph_1_1Vector_a8ad2a43bd51f6bf2a981dd4e4e4247f5}{size\+\_\+type} \+\_\+\+\_\+n, const \+\_\+\+Tp \&\+\_\+\+\_\+value)
+\begin{DoxyCompactList}\small\item\em A constructor that creates a vector of size \+\_\+\+\_\+n and initialises every entry to \+\_\+\+\_\+value. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Vector_a6b3ef7c59dd463636129183dd64f7843}{Vector} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ \+\_\+\+Tp $>$ \&\+\_\+\+\_\+x)
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1Vector_ad526bb1acccf11b485ebe12c9cde44fd}{initialise} (const \+\_\+\+Tp \&\+\_\+\+\_\+value)
+\begin{DoxyCompactList}\small\item\em Iterate over all values and set to the desired value. \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1Vector_a7bd8c89b884168f3ecc358acc501d356}{reference} \hyperlink{classoomph_1_1Vector_a7299888ed7f38cc2e891e1b50d47870d}{operator\mbox{[}$\,$\mbox{]}} (\hyperlink{classoomph_1_1Vector_a8ad2a43bd51f6bf2a981dd4e4e4247f5}{size\+\_\+type} \+\_\+\+\_\+n)
+\item 
+\hyperlink{classoomph_1_1Vector_ad126afbb3b115ef9dce224cf33c71428}{const\+\_\+reference} \hyperlink{classoomph_1_1Vector_a94d7a51d16e5792dd770e5a0ad7e7f89}{operator\mbox{[}$\,$\mbox{]}} (\hyperlink{classoomph_1_1Vector_a8ad2a43bd51f6bf2a981dd4e4e4247f5}{size\+\_\+type} \+\_\+\+\_\+n) const
+\begin{DoxyCompactList}\small\item\em Overloaded, range-\/checking, bracket access operator (const version) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1Vector_a7bd8c89b884168f3ecc358acc501d356}{reference} \hyperlink{classoomph_1_1Vector_ac0b7cb9144acb726a6e1955532607883}{error\+\_\+checked\+\_\+access} (\hyperlink{classoomph_1_1Vector_a8ad2a43bd51f6bf2a981dd4e4e4247f5}{size\+\_\+type} \+\_\+\+\_\+n)
+\item 
+\hyperlink{classoomph_1_1Vector_ad126afbb3b115ef9dce224cf33c71428}{const\+\_\+reference} \hyperlink{classoomph_1_1Vector_a8c17ec5380c2056eacc506490fe386e9}{error\+\_\+checked\+\_\+access} (\hyperlink{classoomph_1_1Vector_a8ad2a43bd51f6bf2a981dd4e4e4247f5}{size\+\_\+type} \+\_\+\+\_\+n) const
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class \+\_\+\+Tp$>$\newline
+class oomph\+::\+Vector$<$ \+\_\+\+Tp $>$}
+
+A slight extension to the standard template vector class so that we can include \char`\"{}graceful\char`\"{} array range checks if the R\+A\+N\+G\+E\+\_\+\+C\+H\+E\+C\+K\+I\+NG flag is set. The generalisation to general allocators is N\+OT handled here, mainly because we never use it, but also because the intel and gnu compilers have different names for the internal classes, which makes writing code that works for both a pain! 
+
+Definition at line 63 of file Vector.\+h.
+
+
+
+\subsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classoomph_1_1Vector_ad126afbb3b115ef9dce224cf33c71428}\label{classoomph_1_1Vector_ad126afbb3b115ef9dce224cf33c71428}} 
+\index{oomph\+::\+Vector@{oomph\+::\+Vector}!const\+\_\+reference@{const\+\_\+reference}}
+\index{const\+\_\+reference@{const\+\_\+reference}!oomph\+::\+Vector@{oomph\+::\+Vector}}
+\subsubsection{\texorpdfstring{const\+\_\+reference}{const\_reference}}
+{\footnotesize\ttfamily template$<$class \+\_\+\+Tp$>$ \\
+typedef const \hyperlink{classoomph_1_1Vector_a73b0fda236ce64119befbeb30111f0b2}{value\+\_\+type}\& \hyperlink{classoomph_1_1Vector}{oomph\+::\+Vector}$<$ \+\_\+\+Tp $>$\+::\hyperlink{classoomph_1_1Vector_ad126afbb3b115ef9dce224cf33c71428}{const\+\_\+reference}}
+
+
+
+Typedef to make the constructors look a bit cleaner. 
+
+
+
+Definition at line 75 of file Vector.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1Vector_a7bd8c89b884168f3ecc358acc501d356}\label{classoomph_1_1Vector_a7bd8c89b884168f3ecc358acc501d356}} 
+\index{oomph\+::\+Vector@{oomph\+::\+Vector}!reference@{reference}}
+\index{reference@{reference}!oomph\+::\+Vector@{oomph\+::\+Vector}}
+\subsubsection{\texorpdfstring{reference}{reference}}
+{\footnotesize\ttfamily template$<$class \+\_\+\+Tp$>$ \\
+typedef \hyperlink{classoomph_1_1Vector_a73b0fda236ce64119befbeb30111f0b2}{value\+\_\+type}\& \hyperlink{classoomph_1_1Vector}{oomph\+::\+Vector}$<$ \+\_\+\+Tp $>$\+::\hyperlink{classoomph_1_1Vector_a7bd8c89b884168f3ecc358acc501d356}{reference}}
+
+
+
+Typedef to make the constructors look a bit cleaner. 
+
+
+
+Definition at line 72 of file Vector.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1Vector_a8ad2a43bd51f6bf2a981dd4e4e4247f5}\label{classoomph_1_1Vector_a8ad2a43bd51f6bf2a981dd4e4e4247f5}} 
+\index{oomph\+::\+Vector@{oomph\+::\+Vector}!size\+\_\+type@{size\+\_\+type}}
+\index{size\+\_\+type@{size\+\_\+type}!oomph\+::\+Vector@{oomph\+::\+Vector}}
+\subsubsection{\texorpdfstring{size\+\_\+type}{size\_type}}
+{\footnotesize\ttfamily template$<$class \+\_\+\+Tp$>$ \\
+typedef size\+\_\+t \hyperlink{classoomph_1_1Vector}{oomph\+::\+Vector}$<$ \+\_\+\+Tp $>$\+::\hyperlink{classoomph_1_1Vector_a8ad2a43bd51f6bf2a981dd4e4e4247f5}{size\+\_\+type}}
+
+
+
+Typedef to make the constructors look a bit cleaner. 
+
+
+
+Definition at line 78 of file Vector.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1Vector_a73b0fda236ce64119befbeb30111f0b2}\label{classoomph_1_1Vector_a73b0fda236ce64119befbeb30111f0b2}} 
+\index{oomph\+::\+Vector@{oomph\+::\+Vector}!value\+\_\+type@{value\+\_\+type}}
+\index{value\+\_\+type@{value\+\_\+type}!oomph\+::\+Vector@{oomph\+::\+Vector}}
+\subsubsection{\texorpdfstring{value\+\_\+type}{value\_type}}
+{\footnotesize\ttfamily template$<$class \+\_\+\+Tp$>$ \\
+typedef \+\_\+\+Tp \hyperlink{classoomph_1_1Vector}{oomph\+::\+Vector}$<$ \+\_\+\+Tp $>$\+::\hyperlink{classoomph_1_1Vector_a73b0fda236ce64119befbeb30111f0b2}{value\+\_\+type}}
+
+
+
+Typedef to make the constructors look a bit cleaner. 
+
+
+
+Definition at line 69 of file Vector.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1Vector_a3ee293d1b770f0926ba350250bea37c7}\label{classoomph_1_1Vector_a3ee293d1b770f0926ba350250bea37c7}} 
+\index{oomph\+::\+Vector@{oomph\+::\+Vector}!Vector@{Vector}}
+\index{Vector@{Vector}!oomph\+::\+Vector@{oomph\+::\+Vector}}
+\subsubsection{\texorpdfstring{Vector()}{Vector()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily template$<$class \+\_\+\+Tp$>$ \\
+\hyperlink{classoomph_1_1Vector}{oomph\+::\+Vector}$<$ \+\_\+\+Tp $>$\+::\hyperlink{classoomph_1_1Vector}{Vector} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct an empty vector. 
+
+
+
+Definition at line 153 of file Vector.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1Vector_a996ae9557e2ee9491771eb586e032994}\label{classoomph_1_1Vector_a996ae9557e2ee9491771eb586e032994}} 
+\index{oomph\+::\+Vector@{oomph\+::\+Vector}!Vector@{Vector}}
+\index{Vector@{Vector}!oomph\+::\+Vector@{oomph\+::\+Vector}}
+\subsubsection{\texorpdfstring{Vector()}{Vector()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily template$<$class \+\_\+\+Tp$>$ \\
+\hyperlink{classoomph_1_1Vector}{oomph\+::\+Vector}$<$ \+\_\+\+Tp $>$\+::\hyperlink{classoomph_1_1Vector}{Vector} (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector_a8ad2a43bd51f6bf2a981dd4e4e4247f5}{size\+\_\+type}}]{\+\_\+\+\_\+n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+A constructor that creates a vector of size \+\_\+\+\_\+n. Note the use of explicit for \char`\"{}strong\char`\"{} type checking. 
+
+
+
+Definition at line 157 of file Vector.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1Vector_a408f09400832e1584c832aff24b00966}\label{classoomph_1_1Vector_a408f09400832e1584c832aff24b00966}} 
+\index{oomph\+::\+Vector@{oomph\+::\+Vector}!Vector@{Vector}}
+\index{Vector@{Vector}!oomph\+::\+Vector@{oomph\+::\+Vector}}
+\subsubsection{\texorpdfstring{Vector()}{Vector()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily template$<$class \+\_\+\+Tp$>$ \\
+\hyperlink{classoomph_1_1Vector}{oomph\+::\+Vector}$<$ \+\_\+\+Tp $>$\+::\hyperlink{classoomph_1_1Vector}{Vector} (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector_a8ad2a43bd51f6bf2a981dd4e4e4247f5}{size\+\_\+type}}]{\+\_\+\+\_\+n,  }\item[{const \+\_\+\+Tp \&}]{\+\_\+\+\_\+value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+A constructor that creates a vector of size \+\_\+\+\_\+n and initialises every entry to \+\_\+\+\_\+value. 
+
+
+
+Definition at line 161 of file Vector.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1Vector_a6b3ef7c59dd463636129183dd64f7843}\label{classoomph_1_1Vector_a6b3ef7c59dd463636129183dd64f7843}} 
+\index{oomph\+::\+Vector@{oomph\+::\+Vector}!Vector@{Vector}}
+\index{Vector@{Vector}!oomph\+::\+Vector@{oomph\+::\+Vector}}
+\subsubsection{\texorpdfstring{Vector()}{Vector()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily template$<$class \+\_\+\+Tp$>$ \\
+\hyperlink{classoomph_1_1Vector}{oomph\+::\+Vector}$<$ \+\_\+\+Tp $>$\+::\hyperlink{classoomph_1_1Vector}{Vector} (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ \+\_\+\+Tp $>$ \&}]{\+\_\+\+\_\+x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Copy constructor. 
+
+
+
+Definition at line 164 of file Vector.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1Vector_ac0b7cb9144acb726a6e1955532607883}\label{classoomph_1_1Vector_ac0b7cb9144acb726a6e1955532607883}} 
+\index{oomph\+::\+Vector@{oomph\+::\+Vector}!error\+\_\+checked\+\_\+access@{error\+\_\+checked\+\_\+access}}
+\index{error\+\_\+checked\+\_\+access@{error\+\_\+checked\+\_\+access}!oomph\+::\+Vector@{oomph\+::\+Vector}}
+\subsubsection{\texorpdfstring{error\+\_\+checked\+\_\+access()}{error\_checked\_access()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class \+\_\+\+Tp$>$ \\
+\hyperlink{classoomph_1_1Vector_a7bd8c89b884168f3ecc358acc501d356}{reference} \hyperlink{classoomph_1_1Vector}{oomph\+::\+Vector}$<$ \+\_\+\+Tp $>$\+::error\+\_\+checked\+\_\+access (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector_a8ad2a43bd51f6bf2a981dd4e4e4247f5}{size\+\_\+type}}]{\+\_\+\+\_\+n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Definition at line 86 of file Vector.\+h.
+
+
+
+Referenced by oomph\+::\+Vector$<$ oomph\+::\+Vector$<$ unsigned $>$ $>$\+::operator\mbox{[}$\,$\mbox{]}().
+
+\mbox{\Hypertarget{classoomph_1_1Vector_a8c17ec5380c2056eacc506490fe386e9}\label{classoomph_1_1Vector_a8c17ec5380c2056eacc506490fe386e9}} 
+\index{oomph\+::\+Vector@{oomph\+::\+Vector}!error\+\_\+checked\+\_\+access@{error\+\_\+checked\+\_\+access}}
+\index{error\+\_\+checked\+\_\+access@{error\+\_\+checked\+\_\+access}!oomph\+::\+Vector@{oomph\+::\+Vector}}
+\subsubsection{\texorpdfstring{error\+\_\+checked\+\_\+access()}{error\_checked\_access()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class \+\_\+\+Tp$>$ \\
+\hyperlink{classoomph_1_1Vector_ad126afbb3b115ef9dce224cf33c71428}{const\+\_\+reference} \hyperlink{classoomph_1_1Vector}{oomph\+::\+Vector}$<$ \+\_\+\+Tp $>$\+::error\+\_\+checked\+\_\+access (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector_a8ad2a43bd51f6bf2a981dd4e4e4247f5}{size\+\_\+type}}]{\+\_\+\+\_\+n }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Definition at line 121 of file Vector.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1Vector_ad526bb1acccf11b485ebe12c9cde44fd}\label{classoomph_1_1Vector_ad526bb1acccf11b485ebe12c9cde44fd}} 
+\index{oomph\+::\+Vector@{oomph\+::\+Vector}!initialise@{initialise}}
+\index{initialise@{initialise}!oomph\+::\+Vector@{oomph\+::\+Vector}}
+\subsubsection{\texorpdfstring{initialise()}{initialise()}}
+{\footnotesize\ttfamily template$<$class \+\_\+\+Tp$>$ \\
+void \hyperlink{classoomph_1_1Vector}{oomph\+::\+Vector}$<$ \+\_\+\+Tp $>$\+::initialise (\begin{DoxyParamCaption}\item[{const \+\_\+\+Tp \&}]{\+\_\+\+\_\+value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Iterate over all values and set to the desired value. 
+
+
+
+Definition at line 171 of file Vector.\+h.
+
+
+
+Referenced by oomph\+::\+Periodic\+Orbit\+Temporal\+Mesh$<$ oomph\+::\+Spectral\+Periodic\+Orbit\+Element$<$ N\+N\+O\+D\+E\+\_\+1\+D $>$ $>$\+::assemble\+\_\+residuals(), oomph\+::\+Periodic\+Orbit\+Temporal\+Mesh$<$ oomph\+::\+Spectral\+Periodic\+Orbit\+Element$<$ N\+N\+O\+D\+E\+\_\+1\+D $>$ $>$\+::assemble\+\_\+residuals\+\_\+and\+\_\+jacobian(), oomph\+::\+Block\+Preconditioner$<$ C\+R\+Double\+Matrix $>$\+::block\+\_\+setup(), oomph\+::\+Complex\+G\+M\+R\+E\+S$<$ M\+A\+T\+R\+I\+X $>$\+::complex\+\_\+solve\+\_\+helper(), oomph\+::\+Generalised\+Element\+::get\+\_\+djacobian\+\_\+and\+\_\+dmass\+\_\+matrix\+\_\+dparameter(), oomph\+::\+Generalised\+Element\+::get\+\_\+djacobian\+\_\+dparameter(), oomph\+::\+Generalised\+Element\+::get\+\_\+dresiduals\+\_\+dparameter(), oomph\+::\+Problem\+::get\+\_\+hessian\+\_\+vector\+\_\+products(), oomph\+::\+Generalised\+Element\+::get\+\_\+inner\+\_\+products(), oomph\+::\+Generalised\+Element\+::get\+\_\+jacobian(), oomph\+::\+Generalised\+Element\+::get\+\_\+jacobian\+\_\+and\+\_\+mass\+\_\+matrix(), oomph\+::\+Generalised\+Element\+::get\+\_\+mass\+\_\+matrix(), oomph\+::\+Vorticity\+Smoother\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::get\+\_\+raw\+\_\+velocity\+\_\+deriv(), oomph\+::\+Vorticity\+Smoother\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::get\+\_\+raw\+\_\+vorticity\+\_\+deriv(), oomph\+::\+Vorticity\+Smoother\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::get\+\_\+raw\+\_\+vorticity\+\_\+second\+\_\+deriv(), oomph\+::\+Vorticity\+Smoother\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::get\+\_\+raw\+\_\+vorticity\+\_\+third\+\_\+deriv(), oomph\+::\+Generalised\+Element\+::get\+\_\+residuals(), oomph\+::\+Solid\+Finite\+Element\+::get\+\_\+residuals\+\_\+for\+\_\+solid\+\_\+ic(), oomph\+::\+Pseudo\+Buckling\+Ring\+Element\+::get\+\_\+residuals\+\_\+generic(), oomph\+::\+D\+G\+Euler\+Face\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::numerical\+\_\+flux(), oomph\+::\+Helmholtz\+M\+G\+Preconditioner$<$ D\+I\+M $>$\+::residual\+\_\+norm(), and oomph\+::\+Vorticity\+Smoother\+Element$<$ E\+L\+E\+M\+E\+N\+T $>$\+::vorticity\+\_\+error\+\_\+squared().
+
+\mbox{\Hypertarget{classoomph_1_1Vector_a7299888ed7f38cc2e891e1b50d47870d}\label{classoomph_1_1Vector_a7299888ed7f38cc2e891e1b50d47870d}} 
+\index{oomph\+::\+Vector@{oomph\+::\+Vector}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!oomph\+::\+Vector@{oomph\+::\+Vector}}
+\subsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class \+\_\+\+Tp$>$ \\
+\hyperlink{classoomph_1_1Vector_a7bd8c89b884168f3ecc358acc501d356}{reference} \hyperlink{classoomph_1_1Vector}{oomph\+::\+Vector}$<$ \+\_\+\+Tp $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector_a8ad2a43bd51f6bf2a981dd4e4e4247f5}{size\+\_\+type}}]{\+\_\+\+\_\+n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Overload the bracket access operator to include array-\/range checking if the R\+A\+N\+G\+E\+\_\+\+C\+H\+E\+C\+K\+I\+NG flag is set 
+
+Definition at line 183 of file Vector.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1Vector_a94d7a51d16e5792dd770e5a0ad7e7f89}\label{classoomph_1_1Vector_a94d7a51d16e5792dd770e5a0ad7e7f89}} 
+\index{oomph\+::\+Vector@{oomph\+::\+Vector}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!oomph\+::\+Vector@{oomph\+::\+Vector}}
+\subsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class \+\_\+\+Tp$>$ \\
+\hyperlink{classoomph_1_1Vector_ad126afbb3b115ef9dce224cf33c71428}{const\+\_\+reference} \hyperlink{classoomph_1_1Vector}{oomph\+::\+Vector}$<$ \+\_\+\+Tp $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector_a8ad2a43bd51f6bf2a981dd4e4e4247f5}{size\+\_\+type}}]{\+\_\+\+\_\+n }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Overloaded, range-\/checking, bracket access operator (const version) 
+
+
+
+Definition at line 189 of file Vector.\+h.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{Vector_8h}{Vector.\+h}\end{DoxyCompactItemize}

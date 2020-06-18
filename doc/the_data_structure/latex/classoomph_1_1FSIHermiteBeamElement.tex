@@ -1,0 +1,265 @@
+\hypertarget{classoomph_1_1FSIHermiteBeamElement}{}\section{oomph\+:\+:F\+S\+I\+Hermite\+Beam\+Element Class Reference}
+\label{classoomph_1_1FSIHermiteBeamElement}\index{oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element@{oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element}}
+
+
+{\ttfamily \#include $<$beam\+\_\+elements.\+h$>$}
+
+Inheritance diagram for oomph\+:\+:F\+S\+I\+Hermite\+Beam\+Element\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.183236cm]{classoomph_1_1FSIHermiteBeamElement}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classoomph_1_1FSIHermiteBeamElement_a40aec23a3e79d2bfcf3a54ab820a7d9b}{F\+S\+I\+Hermite\+Beam\+Element} ()
+\begin{DoxyCompactList}\small\item\em Constructor\+: Create beam element as \hyperlink{classoomph_1_1FSIWallElement}{F\+S\+I\+Wall\+Element} (and thus, by inheritance, a \hyperlink{classoomph_1_1GeomObject}{Geom\+Object}). By default, we assume that the normal vector computed by \hyperlink{classoomph_1_1KirchhoffLoveBeamEquations_a963a2ffb3c4008e3b9c175fc1d2d94cc}{Kirchhoff\+Love\+Beam\+Equations\+::get\+\_\+normal}(...) points into the fluid. If this is not the case, overwrite this with the access function \hyperlink{classoomph_1_1FSIHermiteBeamElement_ad509b18e5fd5aae35a86f5c4372d3478}{F\+S\+I\+Hermite\+Beam\+Element\+::set\+\_\+normal\+\_\+pointing\+\_\+out\+\_\+of\+\_\+fluid()} \end{DoxyCompactList}\item 
+\hyperlink{classoomph_1_1FSIHermiteBeamElement_a744c7830f87fadc434be57d6fc45bf03}{$\sim$\+F\+S\+I\+Hermite\+Beam\+Element} ()
+\begin{DoxyCompactList}\small\item\em Destructor\+: empty. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1FSIHermiteBeamElement_a6acb9e382d0cf3636848e7493c36a3a3}{set\+\_\+normal\+\_\+pointing\+\_\+into\+\_\+fluid} ()
+\begin{DoxyCompactList}\small\item\em Set the normal computed by \hyperlink{classoomph_1_1KirchhoffLoveBeamEquations_a963a2ffb3c4008e3b9c175fc1d2d94cc}{Kirchhoff\+Love\+Beam\+Equations\+::get\+\_\+normal}(...) to point into the fluid. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1FSIHermiteBeamElement_ad509b18e5fd5aae35a86f5c4372d3478}{set\+\_\+normal\+\_\+pointing\+\_\+out\+\_\+of\+\_\+fluid} ()
+\begin{DoxyCompactList}\small\item\em Set the normal computed by \hyperlink{classoomph_1_1KirchhoffLoveBeamEquations_a963a2ffb3c4008e3b9c175fc1d2d94cc}{Kirchhoff\+Love\+Beam\+Equations\+::get\+\_\+normal}(...) to point out of the fluid. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1FSIHermiteBeamElement_a29b2c933785e8b83eaed01608bf2463b}{dposition\+\_\+dlagrangian\+\_\+at\+\_\+local\+\_\+coordinate} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&drdxi) const
+\begin{DoxyCompactList}\small\item\em Derivative of position vector w.\+r.\+t. the \hyperlink{classoomph_1_1SolidFiniteElement}{Solid\+Finite\+Element}\textquotesingle{}s Lagrangian coordinates; evaluated at current time. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1FSIHermiteBeamElement_aee4b8fcdef1a2247389bab8807d5db8e}{load\+\_\+vector} (const unsigned \&intpt, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&xi, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&x, const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&N, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&load)
+\begin{DoxyCompactList}\small\item\em Get the load vector\+: Pass number of the integration point, Lagr. coordinate, Eulerian coordinate and normal vector and return the load vector. (Not all of the input arguments will be required for all specific load functions but the list should cover all cases). We first evaluate the load function defined via \hyperlink{classoomph_1_1KirchhoffLoveBeamEquations_a0710dd43c856aaa9c94d3112f8cba7ed}{Kirchhoff\+Love\+Beam\+Equations\+::load\+\_\+vector\+\_\+fct\+\_\+pt()} -- this represents the non-\/\+F\+SI load on the beam, e.\+g. an external pressure load. Then we add to this the F\+SI load due to the traction exerted by the adjacent F\+S\+I\+Fluid\+Elements, taking the sign of the normal into account. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classoomph_1_1FSIHermiteBeamElement_ab81052ae3c54d8387f0d8cd485cf156f}{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian} (\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&residuals, \hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&jacobian)
+\begin{DoxyCompactList}\small\item\em Get the Jacobian and residuals. Wrapper to generic F\+SI version; that catches the case when we replace the Jacobian by the mass matrix (for the consistent assignment of initial conditions). \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1FSIHermiteBeamElement_ae56f8245dbbb641c98d326780ff9400d}{locate\+\_\+zeta} (const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&zeta, \hyperlink{classoomph_1_1GeomObject}{Geom\+Object} $\ast$\&geom\+\_\+object\+\_\+pt, \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}, const bool \&use\+\_\+coordinate\+\_\+as\+\_\+initial\+\_\+guess=false)
+\begin{DoxyCompactList}\small\item\em Find the local coordinate s in this element that corresponds to the global \char`\"{}intrinsic\char`\"{} coordinate $ \zeta $ (here identical to the Lagrangian coordinate $ \xi $). If the coordinate is contained within this element, the geom\+\_\+object\+\_\+pt points to \char`\"{}this\char`\"{} element; if the zeta coordinate is not contained in this element geom\+\_\+object\+\_\+pt=N\+U\+LL. By default don\textquotesingle{}t use any value passed in to the local coordinate s as the initial guess in the Newton method. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classoomph_1_1FSIHermiteBeamElement_a61ce78842e8e4d60b9f015eee813e162}{ndof\+\_\+types} () const
+\begin{DoxyCompactList}\small\item\em The number of \char`\"{}\+D\+O\+F types\char`\"{} that degrees of freedom in this element are sub-\/divided into\+: Just the solid degrees of freedom themselves. \end{DoxyCompactList}\item 
+void \hyperlink{classoomph_1_1FSIHermiteBeamElement_aa8015d263121249c737f862f63044a1b}{get\+\_\+dof\+\_\+numbers\+\_\+for\+\_\+unknowns} (std\+::list$<$ std\+::pair$<$ unsigned long, unsigned $>$ $>$ \&dof\+\_\+lookup\+\_\+list) const
+\begin{DoxyCompactList}\small\item\em Create a list of pairs for all unknowns in this element, so that the first entry in each pair contains the global equation number of the unknown, while the second one contains the number of the \char`\"{}\+D\+O\+F type\char`\"{} that this unknown is associated with. (Function can obviously only be called if the equation numbering scheme has been set up.) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{classoomph_1_1FSIHermiteBeamElement_aee929633dfedcd059ed2f4236739be40}{Normal\+\_\+points\+\_\+into\+\_\+fluid}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Hermite Kirchhoff Love beam \char`\"{}upgraded\char`\"{} to a \hyperlink{classoomph_1_1FSIWallElement}{F\+S\+I\+Wall\+Element} (and thus, by inheritance, a \hyperlink{classoomph_1_1GeomObject}{Geom\+Object}), so it can be used in F\+SI. 
+
+Definition at line 352 of file beam\+\_\+elements.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1FSIHermiteBeamElement_a40aec23a3e79d2bfcf3a54ab820a7d9b}\label{classoomph_1_1FSIHermiteBeamElement_a40aec23a3e79d2bfcf3a54ab820a7d9b}} 
+\index{oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element@{oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element}!F\+S\+I\+Hermite\+Beam\+Element@{F\+S\+I\+Hermite\+Beam\+Element}}
+\index{F\+S\+I\+Hermite\+Beam\+Element@{F\+S\+I\+Hermite\+Beam\+Element}!oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element@{oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element}}
+\subsubsection{\texorpdfstring{F\+S\+I\+Hermite\+Beam\+Element()}{FSIHermiteBeamElement()}}
+{\footnotesize\ttfamily oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element\+::\+F\+S\+I\+Hermite\+Beam\+Element (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor\+: Create beam element as \hyperlink{classoomph_1_1FSIWallElement}{F\+S\+I\+Wall\+Element} (and thus, by inheritance, a \hyperlink{classoomph_1_1GeomObject}{Geom\+Object}). By default, we assume that the normal vector computed by \hyperlink{classoomph_1_1KirchhoffLoveBeamEquations_a963a2ffb3c4008e3b9c175fc1d2d94cc}{Kirchhoff\+Love\+Beam\+Equations\+::get\+\_\+normal}(...) points into the fluid. If this is not the case, overwrite this with the access function \hyperlink{classoomph_1_1FSIHermiteBeamElement_ad509b18e5fd5aae35a86f5c4372d3478}{F\+S\+I\+Hermite\+Beam\+Element\+::set\+\_\+normal\+\_\+pointing\+\_\+out\+\_\+of\+\_\+fluid()} 
+
+
+
+Definition at line 368 of file beam\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1FSIHermiteBeamElement_a744c7830f87fadc434be57d6fc45bf03}\label{classoomph_1_1FSIHermiteBeamElement_a744c7830f87fadc434be57d6fc45bf03}} 
+\index{oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element@{oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element}!````~F\+S\+I\+Hermite\+Beam\+Element@{$\sim$\+F\+S\+I\+Hermite\+Beam\+Element}}
+\index{````~F\+S\+I\+Hermite\+Beam\+Element@{$\sim$\+F\+S\+I\+Hermite\+Beam\+Element}!oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element@{oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element}}
+\subsubsection{\texorpdfstring{$\sim$\+F\+S\+I\+Hermite\+Beam\+Element()}{~FSIHermiteBeamElement()}}
+{\footnotesize\ttfamily oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element\+::$\sim$\+F\+S\+I\+Hermite\+Beam\+Element (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Destructor\+: empty. 
+
+
+
+Definition at line 377 of file beam\+\_\+elements.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1FSIHermiteBeamElement_a29b2c933785e8b83eaed01608bf2463b}\label{classoomph_1_1FSIHermiteBeamElement_a29b2c933785e8b83eaed01608bf2463b}} 
+\index{oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element@{oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element}!dposition\+\_\+dlagrangian\+\_\+at\+\_\+local\+\_\+coordinate@{dposition\+\_\+dlagrangian\+\_\+at\+\_\+local\+\_\+coordinate}}
+\index{dposition\+\_\+dlagrangian\+\_\+at\+\_\+local\+\_\+coordinate@{dposition\+\_\+dlagrangian\+\_\+at\+\_\+local\+\_\+coordinate}!oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element@{oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element}}
+\subsubsection{\texorpdfstring{dposition\+\_\+dlagrangian\+\_\+at\+\_\+local\+\_\+coordinate()}{dposition\_dlagrangian\_at\_local\_coordinate()}}
+{\footnotesize\ttfamily void oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element\+::dposition\+\_\+dlagrangian\+\_\+at\+\_\+local\+\_\+coordinate (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{drdxi }\end{DoxyParamCaption}) const}
+
+
+
+Derivative of position vector w.\+r.\+t. the \hyperlink{classoomph_1_1SolidFiniteElement}{Solid\+Finite\+Element}\textquotesingle{}s Lagrangian coordinates; evaluated at current time. 
+
+Define the dposition function. This is used to set no-\/slip boundary conditions in F\+SI problems. 
+
+Definition at line 1172 of file beam\+\_\+elements.\+cc.
+
+
+
+References oomph\+::\+Solid\+Finite\+Element\+::dshape\+\_\+lagrangian(), i, oomph\+::\+Dense\+Matrix$<$ T $>$\+::initialise(), oomph\+::\+Geom\+Object\+::ndim(), oomph\+::\+Geom\+Object\+::nlagrangian(), oomph\+::\+Finite\+Element\+::nnodal\+\_\+position\+\_\+type(), oomph\+::\+Finite\+Element\+::nnode(), oomph\+::\+Finite\+Element\+::nodal\+\_\+position\+\_\+gen(), and oomph\+::\+Kirchhoff\+Love\+Beam\+Equations\+::\+Undeformed\+\_\+beam\+\_\+pt.
+
+
+
+Referenced by locate\+\_\+zeta().
+
+\mbox{\Hypertarget{classoomph_1_1FSIHermiteBeamElement_ab81052ae3c54d8387f0d8cd485cf156f}\label{classoomph_1_1FSIHermiteBeamElement_ab81052ae3c54d8387f0d8cd485cf156f}} 
+\index{oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element@{oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element}!fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian}}
+\index{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian@{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian}!oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element@{oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element}}
+\subsubsection{\texorpdfstring{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian()}{fill\_in\_contribution\_to\_jacobian()}}
+{\footnotesize\ttfamily virtual void oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian (\begin{DoxyParamCaption}\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{residuals,  }\item[{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}$<$ double $>$ \&}]{jacobian }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get the Jacobian and residuals. Wrapper to generic F\+SI version; that catches the case when we replace the Jacobian by the mass matrix (for the consistent assignment of initial conditions). 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1KirchhoffLoveBeamEquations_af335ab12a9b5e870f25516a53b2a7b60}{oomph\+::\+Kirchhoff\+Love\+Beam\+Equations}.
+
+
+
+Definition at line 432 of file beam\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Kirchhoff\+Love\+Beam\+Equations\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian(), and oomph\+::\+Finite\+Element\+::locate\+\_\+zeta().
+
+\mbox{\Hypertarget{classoomph_1_1FSIHermiteBeamElement_aa8015d263121249c737f862f63044a1b}\label{classoomph_1_1FSIHermiteBeamElement_aa8015d263121249c737f862f63044a1b}} 
+\index{oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element@{oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element}!get\+\_\+dof\+\_\+numbers\+\_\+for\+\_\+unknowns@{get\+\_\+dof\+\_\+numbers\+\_\+for\+\_\+unknowns}}
+\index{get\+\_\+dof\+\_\+numbers\+\_\+for\+\_\+unknowns@{get\+\_\+dof\+\_\+numbers\+\_\+for\+\_\+unknowns}!oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element@{oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element}}
+\subsubsection{\texorpdfstring{get\+\_\+dof\+\_\+numbers\+\_\+for\+\_\+unknowns()}{get\_dof\_numbers\_for\_unknowns()}}
+{\footnotesize\ttfamily void oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element\+::get\+\_\+dof\+\_\+numbers\+\_\+for\+\_\+unknowns (\begin{DoxyParamCaption}\item[{std\+::list$<$ std\+::pair$<$ unsigned long, unsigned $>$ $>$ \&}]{dof\+\_\+lookup\+\_\+list }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Create a list of pairs for all unknowns in this element, so that the first entry in each pair contains the global equation number of the unknown, while the second one contains the number of the \char`\"{}\+D\+O\+F type\char`\"{} that this unknown is associated with. (Function can obviously only be called if the equation numbering scheme has been set up.) 
+
+Create a list of pairs for all unknowns in this element, so that the first entry in each pair contains the global equation number of the unknown, while the second one contains the number of the \char`\"{}\+D\+O\+F type\char`\"{} that this unknown is associated with. (Function can obviously only be called if the equation numbering scheme has been set up.) This element is only in charge of the solid dofs. 
+
+Reimplemented from \hyperlink{classoomph_1_1GeneralisedElement_a069f59bfc3e607a5bebba52c6314d777}{oomph\+::\+Generalised\+Element}.
+
+
+
+Definition at line 1235 of file beam\+\_\+elements.\+cc.
+
+
+
+References oomph\+::\+Clamped\+Sliding\+Hermite\+Beam\+Boundary\+Condition\+Element\+::\+Clamped\+Sliding\+Hermite\+Beam\+Boundary\+Condition\+Element(), oomph\+::\+Generalised\+Element\+::eqn\+\_\+number(), i, oomph\+::\+Finite\+Element\+::nnodal\+\_\+position\+\_\+type(), oomph\+::\+Finite\+Element\+::nnode(), oomph\+::\+Finite\+Element\+::nodal\+\_\+dimension(), and oomph\+::\+Solid\+Finite\+Element\+::position\+\_\+local\+\_\+eqn().
+
+\mbox{\Hypertarget{classoomph_1_1FSIHermiteBeamElement_aee4b8fcdef1a2247389bab8807d5db8e}\label{classoomph_1_1FSIHermiteBeamElement_aee4b8fcdef1a2247389bab8807d5db8e}} 
+\index{oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element@{oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element}!load\+\_\+vector@{load\+\_\+vector}}
+\index{load\+\_\+vector@{load\+\_\+vector}!oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element@{oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element}}
+\subsubsection{\texorpdfstring{load\+\_\+vector()}{load\_vector()}}
+{\footnotesize\ttfamily void oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element\+::load\+\_\+vector (\begin{DoxyParamCaption}\item[{const unsigned \&}]{intpt,  }\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{xi,  }\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{x,  }\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{N,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{load }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get the load vector\+: Pass number of the integration point, Lagr. coordinate, Eulerian coordinate and normal vector and return the load vector. (Not all of the input arguments will be required for all specific load functions but the list should cover all cases). We first evaluate the load function defined via \hyperlink{classoomph_1_1KirchhoffLoveBeamEquations_a0710dd43c856aaa9c94d3112f8cba7ed}{Kirchhoff\+Love\+Beam\+Equations\+::load\+\_\+vector\+\_\+fct\+\_\+pt()} -- this represents the non-\/\+F\+SI load on the beam, e.\+g. an external pressure load. Then we add to this the F\+SI load due to the traction exerted by the adjacent F\+S\+I\+Fluid\+Elements, taking the sign of the normal into account. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1KirchhoffLoveBeamEquations_aef8e5b3abb7669c7292103d7061f10c6}{oomph\+::\+Kirchhoff\+Love\+Beam\+Equations}.
+
+
+
+Definition at line 403 of file beam\+\_\+elements.\+h.
+
+
+
+References i, and oomph\+::\+Kirchhoff\+Love\+Beam\+Equations\+::\+Load\+\_\+vector\+\_\+fct\+\_\+pt.
+
+\mbox{\Hypertarget{classoomph_1_1FSIHermiteBeamElement_ae56f8245dbbb641c98d326780ff9400d}\label{classoomph_1_1FSIHermiteBeamElement_ae56f8245dbbb641c98d326780ff9400d}} 
+\index{oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element@{oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element}!locate\+\_\+zeta@{locate\+\_\+zeta}}
+\index{locate\+\_\+zeta@{locate\+\_\+zeta}!oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element@{oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element}}
+\subsubsection{\texorpdfstring{locate\+\_\+zeta()}{locate\_zeta()}}
+{\footnotesize\ttfamily void oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element\+::locate\+\_\+zeta (\begin{DoxyParamCaption}\item[{const \hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{zeta,  }\item[{\hyperlink{classoomph_1_1GeomObject}{Geom\+Object} $\ast$\&}]{geom\+\_\+object\+\_\+pt,  }\item[{\hyperlink{classoomph_1_1Vector}{Vector}$<$ double $>$ \&}]{s,  }\item[{const bool \&}]{use\+\_\+coordinate\+\_\+as\+\_\+initial\+\_\+guess = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Find the local coordinate s in this element that corresponds to the global \char`\"{}intrinsic\char`\"{} coordinate $ \zeta $ (here identical to the Lagrangian coordinate $ \xi $). If the coordinate is contained within this element, the geom\+\_\+object\+\_\+pt points to \char`\"{}this\char`\"{} element; if the zeta coordinate is not contained in this element geom\+\_\+object\+\_\+pt=N\+U\+LL. By default don\textquotesingle{}t use any value passed in to the local coordinate s as the initial guess in the Newton method. 
+
+Function used to find the local coordinate s that corresponds to the \char`\"{}global\char`\"{} intrinsic coordinate zeta (in the element\textquotesingle{}s incarnation as a \hyperlink{classoomph_1_1GeomObject}{Geom\+Object}). For this element, zeta is equal to the Lagrangian coordinate xi. If the required zeta is located within this element, geom\+\_\+object\+\_\+pt points to \char`\"{}this\char`\"{} element. If zeta is not located within the element it is set to N\+U\+LL. 
+
+Reimplemented from \hyperlink{classoomph_1_1GeomObject_a78ee9f98bcfd0c5e1f07a459777663d3}{oomph\+::\+Geom\+Object}.
+
+
+
+Definition at line 1098 of file beam\+\_\+elements.\+cc.
+
+
+
+References dposition\+\_\+dlagrangian\+\_\+at\+\_\+local\+\_\+coordinate(), oomph\+::\+Finite\+Element\+::interpolated\+\_\+zeta(), and oomph\+::\+Solid\+Finite\+Element\+::raw\+\_\+lagrangian\+\_\+position().
+
+\mbox{\Hypertarget{classoomph_1_1FSIHermiteBeamElement_a61ce78842e8e4d60b9f015eee813e162}\label{classoomph_1_1FSIHermiteBeamElement_a61ce78842e8e4d60b9f015eee813e162}} 
+\index{oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element@{oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element}!ndof\+\_\+types@{ndof\+\_\+types}}
+\index{ndof\+\_\+types@{ndof\+\_\+types}!oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element@{oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element}}
+\subsubsection{\texorpdfstring{ndof\+\_\+types()}{ndof\_types()}}
+{\footnotesize\ttfamily unsigned oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element\+::ndof\+\_\+types (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+The number of \char`\"{}\+D\+O\+F types\char`\"{} that degrees of freedom in this element are sub-\/divided into\+: Just the solid degrees of freedom themselves. 
+
+
+
+Reimplemented from \hyperlink{classoomph_1_1GeneralisedElement_a0c6037a870597b35dcf1c780710b9a56}{oomph\+::\+Generalised\+Element}.
+
+
+
+Definition at line 457 of file beam\+\_\+elements.\+h.
+
+
+
+References oomph\+::\+Generalised\+Element\+::get\+\_\+dof\+\_\+numbers\+\_\+for\+\_\+unknowns().
+
+\mbox{\Hypertarget{classoomph_1_1FSIHermiteBeamElement_a6acb9e382d0cf3636848e7493c36a3a3}\label{classoomph_1_1FSIHermiteBeamElement_a6acb9e382d0cf3636848e7493c36a3a3}} 
+\index{oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element@{oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element}!set\+\_\+normal\+\_\+pointing\+\_\+into\+\_\+fluid@{set\+\_\+normal\+\_\+pointing\+\_\+into\+\_\+fluid}}
+\index{set\+\_\+normal\+\_\+pointing\+\_\+into\+\_\+fluid@{set\+\_\+normal\+\_\+pointing\+\_\+into\+\_\+fluid}!oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element@{oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element}}
+\subsubsection{\texorpdfstring{set\+\_\+normal\+\_\+pointing\+\_\+into\+\_\+fluid()}{set\_normal\_pointing\_into\_fluid()}}
+{\footnotesize\ttfamily void oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element\+::set\+\_\+normal\+\_\+pointing\+\_\+into\+\_\+fluid (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the normal computed by \hyperlink{classoomph_1_1KirchhoffLoveBeamEquations_a963a2ffb3c4008e3b9c175fc1d2d94cc}{Kirchhoff\+Love\+Beam\+Equations\+::get\+\_\+normal}(...) to point into the fluid. 
+
+
+
+Definition at line 381 of file beam\+\_\+elements.\+h.
+
+\mbox{\Hypertarget{classoomph_1_1FSIHermiteBeamElement_ad509b18e5fd5aae35a86f5c4372d3478}\label{classoomph_1_1FSIHermiteBeamElement_ad509b18e5fd5aae35a86f5c4372d3478}} 
+\index{oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element@{oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element}!set\+\_\+normal\+\_\+pointing\+\_\+out\+\_\+of\+\_\+fluid@{set\+\_\+normal\+\_\+pointing\+\_\+out\+\_\+of\+\_\+fluid}}
+\index{set\+\_\+normal\+\_\+pointing\+\_\+out\+\_\+of\+\_\+fluid@{set\+\_\+normal\+\_\+pointing\+\_\+out\+\_\+of\+\_\+fluid}!oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element@{oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element}}
+\subsubsection{\texorpdfstring{set\+\_\+normal\+\_\+pointing\+\_\+out\+\_\+of\+\_\+fluid()}{set\_normal\_pointing\_out\_of\_fluid()}}
+{\footnotesize\ttfamily void oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element\+::set\+\_\+normal\+\_\+pointing\+\_\+out\+\_\+of\+\_\+fluid (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the normal computed by \hyperlink{classoomph_1_1KirchhoffLoveBeamEquations_a963a2ffb3c4008e3b9c175fc1d2d94cc}{Kirchhoff\+Love\+Beam\+Equations\+::get\+\_\+normal}(...) to point out of the fluid. 
+
+
+
+Definition at line 385 of file beam\+\_\+elements.\+h.
+
+
+
+References s.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1FSIHermiteBeamElement_aee929633dfedcd059ed2f4236739be40}\label{classoomph_1_1FSIHermiteBeamElement_aee929633dfedcd059ed2f4236739be40}} 
+\index{oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element@{oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element}!Normal\+\_\+points\+\_\+into\+\_\+fluid@{Normal\+\_\+points\+\_\+into\+\_\+fluid}}
+\index{Normal\+\_\+points\+\_\+into\+\_\+fluid@{Normal\+\_\+points\+\_\+into\+\_\+fluid}!oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element@{oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element}}
+\subsubsection{\texorpdfstring{Normal\+\_\+points\+\_\+into\+\_\+fluid}{Normal\_points\_into\_fluid}}
+{\footnotesize\ttfamily bool oomph\+::\+F\+S\+I\+Hermite\+Beam\+Element\+::\+Normal\+\_\+points\+\_\+into\+\_\+fluid\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 358 of file beam\+\_\+elements.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{beam__elements_8h}{beam\+\_\+elements.\+h}\item 
+\hyperlink{beam__elements_8cc}{beam\+\_\+elements.\+cc}\end{DoxyCompactItemize}

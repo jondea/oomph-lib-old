@@ -1,0 +1,855 @@
+In this document we discuss the finite-\/element-\/based solution of the the Helmholtz equation in cylindrical polar coordinates, using a Fourier-\/decomposition of the solution in the azimuthal direction and with perfectly matched layers.
+
+Compared to the Fourier-\/decomposed Helmholtz equation discussed in \href{../../../fourier_decomposed_helmholtz/sphere_scattering/html/index.html}{\tt another tutorial, } the formulation used here allows the imposition of the Sommerfeld radiation condition by means of so-\/called \char`\"{}perfectly matched layers\char`\"{} (P\+M\+Ls) as an alternative to classical absorbing/approximate boundary conditions or DtN maps.
+
+We start by reviewing the relevant theory and then present the solution of a simple model problem -\/ the outward propagation of waves from the surface of a unit sphere.
+
+\tabulinesep=1mm
+\begin{longtabu} spread 0pt [c]{*{1}{|X[-1]}|}
+\hline
+\begin{center} {\bfseries Acknowledgements}This tutorial and the associated driver codes were developed jointly with Matthew Walker (The University of Manchester), with financial support from Thales Underwater Ltd. \end{center} 
+
+\\\cline{1-1}
+\end{longtabu}
+
+
+
+
+\hypertarget{index_theory}{}\section{Theory\+: The azimuthally Fourier-\/decomposed Helmholtz equation}\label{index_theory}
+The Helmholtz equation governs time-\/harmonic solutions of problems governed by the linear wave equation \[ \nabla^2 U(x,y,z,t) = \frac{1}{c^2} \frac{\partial^2 U(x,y,z,t)}{\partial t^2}, \ \ \ \ \ \ \ \ \ \ \ \ (1) \] where $ c $ is the wavespeed. Assuming that $ U(x,y,z,t) $ is time-\/harmonic, with frequency $ \omega $, we write the real function $ U(x,y,z,t) $ as \[ U(x,y,z,t) = Re (u(x,y,z) \ e^{-i \omega t}) \ \ \ \ \ \ \ \ \ \ \ \ (2) \] where $ u(x,y,z) $ is complex-\/valued. This transforms (1) into the Helmholtz equation \[ \nabla^2 u(x,y,z) + k^2 u(x,y,z) = 0 \ , \ \ \ \ \ \ \ \ \ \ \ \ (3) \] where $ k = \omega/c $ is the wavenumber. Like other elliptic P\+D\+Es the Helmholtz equation admits Dirichlet, Neumann (flux) and Robin boundary conditions.
+
+If the equation is solved in an unbounded spatial domain (e.\+g. in scattering problems) the solution must also satisfy the so-\/called \href{http://en.wikipedia.org/wiki/Sommerfeld_radiation_condition}{\tt Sommerfeld radiation condition}, which in 3D has the form \[ \lim_{r\to \infty} r \left(\frac{\partial u}{\partial r} - iku \right) =0. \] Mathematically, this condition is required to ensure the uniqueness of the solution (and hence the well-\/posedness of the problem). In a physical context, such as a scattering problem, the condition ensures that scattering of an incoming wave only produces outgoing not incoming waves from infinity.
+
+These equations can be solved using {\ttfamily oomph-\/lib\textquotesingle{}s} cartesian Helmholtz elements, described in \href{../../../helmholtz/scattering/html/index.html}{\tt another tutorial.} Here we consider an alternative approach in which we solve the equations in cylindrical polar coordinates $ (r,\varphi,z) $, related to the cartesian coordinates $ (x,y,z) $ via \[ x = r \cos(\varphi), \] \[ y = r \sin(\varphi), \] \[ z = z. \] We then decompose the solution into its Fourier components by writing \[ u(r,\varphi,z) = \sum_{N=-\infty}^{\infty} u_N(r,z) \exp({\rm i} N \varphi). \] Since the governing equations are linear we can compute each Fourier component $ u_N(r,z) $ individually by solving \[ \nabla^2 {u_{N}}(r,z) + \left(k^2-\frac{N^2}{r^2}\right) u_N(r,z) = 0 \ \ \ \ \ \ \ \ \ \ \ \ (4) \] while specifying the Fourier wavenumber $ N $ as a parameter.
+
+
+
+\hypertarget{index_discr}{}\section{Discretisation by finite elements}\label{index_discr}
+The discretisation of the Fourier-\/decomposed Helmholtz equation itself only requires a trivial modification of its \href{../../../helmholtz/scattering/html/index.html}{\tt cartesian counterpart}. Since most practical applications of the Helmholtz equation involve complex-\/valued solutions, we provide separate storage for the real and imaginary parts of the solution -- each {\ttfamily Node} therefore stores two unknowns values. By default,the real and imaginary parts are stored as values 0 and 1, respectively;
+
+The application of Dirichlet and Neumann boundary conditions is straightforward and follows the pattern employed for the solution of the Poisson equation\+:
+\begin{DoxyItemize}
+\item Dirichlet conditions are imposed by pinning the relevant nodal values and setting them to the appropriate prescribed values.
+\item Neumann (flux) boundary conditions are imposed via {\ttfamily Face\+Elements} (here the {\ttfamily P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Flux\+Elements}). \href{../../../poisson/two_d_poisson_flux_bc/html/index.html}{\tt As usual} we attach these to the faces of the \char`\"{}bulk\char`\"{} elements that are subject to the Neumann boundary conditions.
+\end{DoxyItemize}The imposition of the Sommerfeld radiation condition for problems in infinite domains is slightly more complicated. In the next section we will discuss a method of representing the Sommerfeld radiation condition numerically by means of perfectly matched layers.
+
+
+
+\hypertarget{index_pml}{}\section{Perfectly matched layers}\label{index_pml}
+The idea behind perfectly matched layers is illustrated in the figure below. The actual physical/mathematical problem has to be solved in the infinite domain $ D $ (shown on the left), with the Sommerfeld radiation condition ensuring the suitable decay of the solution at large distances from the region of interest (the vicinity of the scatterer, say).
+
+If computations are performed in a finite computational domain, $ D_c $ , (shown in the middle), spurious wave reflections are likely to be generated at the artificial boundary $ \partial D_c $ of the computational domain.
+
+The idea behind P\+ML methods is to surround the actual computational domain $ D_c $ with a layer of \char`\"{}absorbing\char`\"{} material whose properties are chosen such that the outgoing waves are absorbed within it, without creating any artificial reflected waves at the interface between the P\+ML layer and the computational domain.
+
+Our implementation of the perfectly matched layers follows the development in \href{http://www.sciencedirect.com/science/article/pii/S0021999106004487}{\tt A. Bermudez, L. Hervella-\/\+Nieto, A. Prieto, and R. Rodriguez \char`\"{}\+An optimal perfectly matched layer with unbounded 
+absorbing function for time-\/harmonic acoustic scattering problems\char`\"{} Journal of Computational Physics {\bfseries 223} 469-\/488 (2007)} and we assume the boundaries of the computational domain to be aligned with the coordinate axes, as shown in the sketch below.
+
+The method requires a slight further generalisation of the equations, achieved by introducing the complex coordinate mapping \[ \frac{\partial}{\partial x_j} \to \frac{1}{s_j(x_j)} \frac{\partial}{\partial x_j} \ \ \ \ \mbox{where $j ="r","z"$} \ \ \ \ \ \ \ \ (5) \] within the perfectly matched layers. The choice of $ s_r(r) $ and $ s_z(z) $ depends on the orientation of the P\+ML layer. Since we are restricting ourselves to axis-\/aligned mesh boundaries we distinguish three different cases
+
+
+\begin{DoxyItemize}
+\item For layers that are aligned with the r axis (such as the top and bottom P\+ML layers) we set \[ s_z(z) = 1 +\frac{i}{k}\ \sigma_{z}(z) \ \ \ \ \ \ \ \mbox{ \ \ \ with \ \ \ } \sigma_{z}(z) = \frac{1}{|Z_{PML}-z|}, \ \ \ \ \ (6) \] where $ Z_{PML} $ is the z-\/coordinate of the outer boundary of the P\+ML layer, and \[ s_r(r) = 1. \]
+\item For the right layer that is aligned with the z axis we set \[ s_z(z) = 1, \] and \[ s_r(r) = 1+\frac{i}{k} \ \sigma_{r}(r) \ \ \ \ \ \ \ \mbox{ \ \ \ with \ \ \ } \sigma_{r}(r) = \frac{1}{|R_{PML}-r|}, \ \ \ \ \ (7) \] where $ R_{PML} $ is the r-\/coordinate of the outer boundary of the P\+ML layer.
+\item In corner regions that are bounded by two axis-\/aligned P\+ML layers (with outer coordinates $ R_{PML} $ and $ Z_{PML} $) we set \[ s_r(r) = 1 +\frac{i}{k}\ \sigma_{r}(r) \ \ \ \ \ \ \ \mbox{ \ \ \ with \ \ \ } \sigma_{r}(r) = \frac{1}{|R_{PML}-r|} \ \ \ \ \ (8) \] and \[ s_z(z) = 1+\frac{i}{k} \ \sigma_{z}(z) \ \ \ \ \ \ \ \mbox{ \ \ \ with \ \ \ } \sigma_{z}(z) = \frac{1}{|Z_{PML}-z|}. \ \ \ \ \ (9) \]
+\item Finally, in the actual computational domain (outside the P\+ML layers) we set \[ s_r(r) = s_z(z) = 1. \]
+\end{DoxyItemize}
+
+
+
+\hypertarget{index_impl}{}\section{Implementation within oomph-\/lib}\label{index_impl}
+The finite-\/element-\/discretised equations (modified by the P\+ML terms discussed above) are implemented in the {\ttfamily P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Equations} class. As usual, we provide fully functional elements by combining these with geometric finite elements (from the Q and T families -- corresponding (in 2D) to triangles and quad elements). By default, the P\+ML modifications are disabled, i.\+e. $ s_{r}(r) $ and $ s_{z}(z) $ are both set to 1.
+
+The generation of suitable 2D P\+ML meshes along the axis-\/aligned boundaries of a given bulk mesh is facilitated by helper functions which automatically erect layers of (quadrilateral) P\+ML elements. The layers are built from {\ttfamily Q\+P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Element$<$\+N\+N\+O\+D\+E\+\_\+1\+D$>$} elements and the parameter {\ttfamily N\+N\+O\+D\+E\+\_\+1D} is automatically chosen to match that of the elements in the bulk mesh. The bulk mesh can contain quads or triangles (as shown in the specific example presented below).
+
+
+
+\hypertarget{index_osc_sph}{}\section{A specific example\+: Outward propagation of waves from the surface of an oscillating sphere}\label{index_osc_sph}
+We will now demonstrate the methodology for a specific example\+: the propagation of waves from the surface of a unit sphere.
+
+The specific domain used in this case can be seen in the figure below. We create an unstructured mesh of six-\/noded {\ttfamily T\+P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Elements} to create the finite computational domain surrounding a sphere. This is surrounded by three axis-\/aligned P\+ML layers and two corner meshes (each made of nine-\/noded {\ttfamily Q\+P\+M\+L\+Fourier\+Decomposed\+Helmholtz\+Elements}).
+
+ 
+\begin{DoxyImage}
+\includegraphics[width=0.5\textwidth]{comp_domain}
+\doxyfigcaption{The computational domain used in the example problem. }
+\end{DoxyImage}
+
+
+We construct an exact solution to the problem by applying Neumann/flux boundary condition on the inner spherical boundary such that the imposed flux $ \partial u/\partial n $ is consistent with the exact solution $ u(\rho,\varphi,\theta) $ in spherical polar coordinates $ (\rho,\theta,\varphi) $, given by \[ u(\rho,\theta,\varphi)= \sum_{l=0}^{+\infty}\sum_{n=-l}^{l} \left( a_{ln} \ h_{l}^{(1)}(k\rho)+ b_{ln} \ h_{l}^{(2)}(k\rho) \right)P_{l}^{n} (\cos\theta)\exp({\rm i} n \varphi). \ \ \ \ \ \ \ (10) \] where the $a_{ln}, b_{ln} $ are arbitrary coefficients and the functions \[ h_{l}^{(1)}(x)=j_{l}(x)+{\rm i} y_{l}(x) \mbox{ \ \ \ \ and \ \ \ \ } h_{l}^{(2)}(x)=j_{l}(x)-{\rm i} y_{l}(x) \] are the spherical Hankel functions of first and second kind, respectively, expressed in terms the spherical Bessel functions \[ j_{l}(x)=\sqrt{\frac{\pi}{2x}}J_{l+1/2}(x) \mbox{ \ \ \ \ and \ \ \ \ } y_{l}(x)=\sqrt{\frac{\pi}{2x}}Y_{l+1/2}(x). \] The functions \[ P_{l}^{m}(x)=(-1)^{m}(1-x^2)^{m/2}\frac{d^m}{dx^m}P_{l}(x) \] are the associated Legendre functions, expressed in terms of the Legendre polynomials \[ P_{n}(x)=\frac{1}{2^{n} \, n!}\frac{d^n}{dx^n}[(x^2-1)^{n}]. \] This definition shows that $ P_{l}^{m}(x)=0 $ for $ m>l $ which explains the limited range of summation indices in the second sum in (10).
+
+The relation between the cylindrical polar coordinates $ (r,\varphi,z)$ and spherical polar coordinates $ (\rho,\theta,\varphi) $ is given by \[ \rho = \sqrt{r^2 + z^2}, \] \[ \theta = \arctan(r/z), \] \[ \varphi = \varphi, \] so $\varphi \in [0,2\pi] $ remains unchanged, and $\theta \in [0,\pi] $ sweeps from the north pole ( $ \theta = 0 $), via the equator ( $ \theta = \pi/2 $ ) to the south pole ( $ \theta = \pi $).
+
+
+
+\hypertarget{index_results}{}\section{Results}\label{index_results}
+The two figures below show a comparison between the computed and exact solutions for a Fourier wavenumber of $ N = 3 $, wavenumber squared $ k^2 = 10 $.
+
+ 
+\begin{DoxyImage}
+\includegraphics[width=0.75\textwidth]{soln3_real}
+\doxyfigcaption{Plot of the computed (red) and exact (green) real parts of the solution of the Fourier-\/decomposed Helmholtz equation. }
+\end{DoxyImage}
+
+
+ 
+\begin{DoxyImage}
+\includegraphics[width=0.75\textwidth]{soln3_imag}
+\doxyfigcaption{Plot of the computed (red) and exact (green) imaginary parts of the solution of the Fourier-\/decomposed Helmholtz equation. }
+\end{DoxyImage}
+
+
+
+
+\hypertarget{index_num_soln}{}\section{The numerical solution}\label{index_num_soln}
+\hypertarget{index_glb_name}{}\subsection{The global namespace}\label{index_glb_name}
+As usual, we define the problem parameters in a global namespace. The main parameters are the wavenumber squared $ k^2 $, the P\+ML thickness, the number of elements within the P\+ML layer, and the Fourier wavenumber $ N $.
+
+ 
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//===== start\_of\_namespace=============================================}
+\textcolor{comment}{/// Namespace for the Fourier decomposed Helmholtz problem parameters}
+\textcolor{comment}{}\textcolor{comment}{//=====================================================================}
+\textcolor{keyword}{namespace }\hyperlink{namespaceProblemParameters}{ProblemParameters}
+\{\textcolor{comment}{}
+\textcolor{comment}{ /// Output directory}
+\textcolor{comment}{} \textcolor{keywordtype}{string} Directory=\textcolor{stringliteral}{"RESLT"};
+\textcolor{comment}{}
+\textcolor{comment}{ /// Frequency}
+\textcolor{comment}{} \textcolor{keywordtype}{double} K\_squared = 10.0;
+\textcolor{comment}{}
+\textcolor{comment}{ /// Default physical PML thickness}
+\textcolor{comment}{} \textcolor{keywordtype}{double} PML\_thickness=4.0;
+\textcolor{comment}{}
+\textcolor{comment}{ /// Default number of elements within PMLs}
+\textcolor{comment}{} \textcolor{keywordtype}{unsigned} Nel\_pml=15;
+\textcolor{comment}{}
+\textcolor{comment}{ /// Target area for initial mesh}
+\textcolor{comment}{} \textcolor{keywordtype}{double} Element\_area = 0.1;
+\textcolor{comment}{}
+\textcolor{comment}{ /// The default Fourier wave number}
+\textcolor{comment}{} \textcolor{keywordtype}{int} N\_fourier=0;
+
+\end{DoxyCodeInclude}
+
+
+Next we define the coefficients
+
+ 
+\begin{DoxyCodeInclude}
+ \textcolor{comment}{/// Number of terms in the exact solution}
+ \textcolor{keywordtype}{unsigned} N\_terms=6;
+\textcolor{comment}{}
+\textcolor{comment}{ /// Coefficients in the exact solution}
+\textcolor{comment}{} Vector<double> \hyperlink{namespaceProblemParameters_a20cc9776e745842f6126f4cd17659d19}{Coeff}(N\_terms,1.0);
+
+\end{DoxyCodeInclude}
+
+
+required for the specification of the exact solution
+
+ 
+\begin{DoxyCodeInclude}
+ \textcolor{comment}{/// Exact solution as a Vector of size 2, containing real and imag parts}
+ \textcolor{keywordtype}{void} \hyperlink{namespaceProblemParameters_af750b29069b29bd38b5220ecf534e7f7}{get\_exact\_u}(\textcolor{keyword}{const} Vector<double>& x, Vector<double>& u)
+
+\end{DoxyCodeInclude}
+
+
+and its derivative
+
+ 
+\begin{DoxyCodeInclude}
+ \textcolor{comment}{/// \(\backslash\)short Get -du/dr (spherical r) for exact solution. Equal to prescribed}
+\textcolor{comment}{ /// flux on inner boundary.}
+\textcolor{comment}{} \textcolor{keywordtype}{void} \hyperlink{namespaceProblemParameters_aa544d1f3e384d3283f7113512931ea8f}{exact\_minus\_dudr}(\textcolor{keyword}{const} Vector<double>& x, std::complex<double>& flux)
+
+\end{DoxyCodeInclude}
+
+
+whose listings we omit here.
+
+
+
+\hypertarget{index_drv_cde}{}\subsection{The driver code}\label{index_drv_cde}
+The driver code is very straightforward. We create the problem object,
+
+ 
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//===== start\_of\_main=====================================================}
+\textcolor{comment}{/// Driver code for Pml Fourier decomposed Helmholtz problem}
+\textcolor{comment}{}\textcolor{comment}{//========================================================================}
+\textcolor{keywordtype}{int} \hyperlink{oscillating__sphere_8cc_a3c04138a5bfe5d72780bb7e82a18e627}{main}(\textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} **argv)
+\{
+ \textcolor{comment}{// Create the problem with 2D six-node elements from the}
+ \textcolor{comment}{// TPMLFourierDecomposedHelmholtzElement family.}
+ \hyperlink{classPMLFourierDecomposedHelmholtzProblem}{PMLFourierDecomposedHelmholtzProblem}
+  <TPMLFourierDecomposedHelmholtzElement<3,AxisAlignedPMLElement<2> > >
+  problem;
+
+\end{DoxyCodeInclude}
+
+
+and define the output directory.
+
+ 
+\begin{DoxyCodeInclude}
+ \textcolor{comment}{// Create label for output}
+ DocInfo doc\_info;
+
+ \textcolor{comment}{// Set output directory}
+ doc\_info.set\_directory(\hyperlink{namespaceProblemParameters_a9df0f1728e8e7e53dcca84385ae9a031}{ProblemParameters::Directory});
+
+\end{DoxyCodeInclude}
+
+
+Finally, we solve the problem and document the results.
+
+ 
+\begin{DoxyCodeInclude}
+\textcolor{comment}{// Solve the problem with Newton's method}
+problem.newton\_solve();
+
+\end{DoxyCodeInclude}
+
+
+
+\begin{DoxyCodeInclude}
+ \textcolor{comment}{//Output the solution}
+ problem.doc\_solution(doc\_info);
+
+
+\} \textcolor{comment}{//end of main}
+
+\end{DoxyCodeInclude}
+
+
+
+
+\hypertarget{index_prb_clss}{}\subsection{The problem class}\label{index_prb_clss}
+The problem class is very similar to that employed for the \href{../../../helmholtz/scattering/html/index.html}{\tt solution of the 2D Helmholtz equation with flux boundary conditions.} We provide helper functions to create the P\+ML meshes and to apply the boundary conditions (mainly because these tasks have to be performed repeatedly in the spatially adaptive version of this code which is not discussed explicitly here; but see the exercise on \hyperlink{index_adaptivity}{Spatial adaptivity}).
+
+ 
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//========= start\_of\_problem\_class=====================================}
+\textcolor{comment}{/// Problem class}
+\textcolor{comment}{}\textcolor{comment}{//=====================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>
+\textcolor{keyword}{class }\hyperlink{classPMLFourierDecomposedHelmholtzProblem}{PMLFourierDecomposedHelmholtzProblem} : \textcolor{keyword}{public} Problem
+\{
+
+\textcolor{keyword}{public}:
+\textcolor{comment}{}
+\textcolor{comment}{ /// Constructor}
+\textcolor{comment}{} \hyperlink{classPMLFourierDecomposedHelmholtzProblem_a5764db8312a28a3e1eaac2cc61813f83}{PMLFourierDecomposedHelmholtzProblem}();
+\textcolor{comment}{}
+\textcolor{comment}{ /// Destructor (empty)}
+\textcolor{comment}{} \hyperlink{classPMLFourierDecomposedHelmholtzProblem_abc35779657bcdd622d09464c225b079a}{~PMLFourierDecomposedHelmholtzProblem}()\{\}
+\textcolor{comment}{}
+\textcolor{comment}{ /// Update the problem specs before solve (empty)}
+\textcolor{comment}{} \textcolor{keywordtype}{void} \hyperlink{classPMLFourierDecomposedHelmholtzProblem_af87810cbe164981cc14ee779793a69fb}{actions\_before\_newton\_solve}()\{\}
+\textcolor{comment}{}
+\textcolor{comment}{ /// Update the problem after solve (empty)}
+\textcolor{comment}{} \textcolor{keywordtype}{void} \hyperlink{classPMLFourierDecomposedHelmholtzProblem_a013d95d489b85e326a71bb744af4a40f}{actions\_after\_newton\_solve}()\{\}
+\textcolor{comment}{}
+\textcolor{comment}{ /// \(\backslash\)short Doc the solution. DocInfo object stores flags/labels for where the}
+\textcolor{comment}{ /// output gets written to}
+\textcolor{comment}{} \textcolor{keywordtype}{void} \hyperlink{classPMLFourierDecomposedHelmholtzProblem_afcdfaf86efc75fbea14f6ade9eeb7f9c}{doc\_solution}(DocInfo& doc\_info);
+\textcolor{comment}{}
+\textcolor{comment}{ /// Create PML meshes}
+\textcolor{comment}{} \textcolor{keywordtype}{void} \hyperlink{classPMLFourierDecomposedHelmholtzProblem_ae562dddf5c60793371b594bff5047f91}{create\_pml\_meshes}();
+\textcolor{comment}{}
+\textcolor{comment}{ /// Create mesh of face elements that monitor the radiated power}
+\textcolor{comment}{} \textcolor{keywordtype}{void} \hyperlink{classPMLFourierDecomposedHelmholtzProblem_a83e0aa333ec3b25f1afccc3bc0a529ad}{create\_power\_monitor\_mesh}();
+
+\end{DoxyCodeInclude}
+
+
+The private member data includes pointers to the bulk mesh,
+
+ 
+\begin{DoxyCodeInclude}
+ \textcolor{comment}{/// Pointer to the "bulk" mesh}
+ TriangleMesh<ELEMENT>* Bulk\_mesh\_pt;
+
+\end{DoxyCodeInclude}
+
+
+a pointer to the mesh of Face\+Elements that apply the flux boundary condition on the surface of the sphere,
+
+ 
+\begin{DoxyCodeInclude}
+ \textcolor{comment}{/// Mesh of FaceElements that apply the flux bc on the inner boundary}
+ Mesh* Helmholtz\_inner\_boundary\_mesh\_pt;
+
+\end{DoxyCodeInclude}
+
+
+and the various P\+ML sub-\/meshes\+:
+
+ 
+\begin{DoxyCodeInclude}
+ \textcolor{comment}{/// Pointer to the right PML mesh}
+ Mesh* PML\_right\_mesh\_pt;
+\textcolor{comment}{}
+\textcolor{comment}{ /// Pointer to the top PML mesh}
+\textcolor{comment}{} Mesh* PML\_top\_mesh\_pt;
+\textcolor{comment}{}
+\textcolor{comment}{ /// Pointer to the bottom PML mesh}
+\textcolor{comment}{} Mesh* PML\_bottom\_mesh\_pt;
+\textcolor{comment}{}
+\textcolor{comment}{ /// Pointer to the top right corner PML mesh}
+\textcolor{comment}{} Mesh* PML\_top\_right\_mesh\_pt;
+\textcolor{comment}{}
+\textcolor{comment}{ /// Pointer to the bottom right corner PML mesh}
+\textcolor{comment}{} Mesh* PML\_bottom\_right\_mesh\_pt;
+\textcolor{comment}{}
+\textcolor{comment}{ /// Trace file}
+\textcolor{comment}{} ofstream Trace\_file;
+
+\}; \textcolor{comment}{// end of problem class}
+
+\end{DoxyCodeInclude}
+
+
+
+
+\hypertarget{index_prb_con}{}\subsection{The problem constructor}\label{index_prb_con}
+We open a trace file in which we record the radiated power and create the {\ttfamily Circle} object that defines the curvilinear inner boundary of the domain.
+
+ 
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//=======start\_of\_constructor=============================================}
+\textcolor{comment}{/// Constructor for Pml Fourier-decomposed Helmholtz problem}
+\textcolor{comment}{}\textcolor{comment}{//========================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>
+\hyperlink{classPMLFourierDecomposedHelmholtzProblem_a5764db8312a28a3e1eaac2cc61813f83}{PMLFourierDecomposedHelmholtzProblem<ELEMENT>::}
+\hyperlink{classPMLFourierDecomposedHelmholtzProblem_a5764db8312a28a3e1eaac2cc61813f83}{PMLFourierDecomposedHelmholtzProblem}()
+\{
+  \textcolor{keywordtype}{string} trace\_file\_location = \hyperlink{namespaceProblemParameters_a9df0f1728e8e7e53dcca84385ae9a031}{ProblemParameters::Directory} + \textcolor{stringliteral}{"/trace.dat"};
+
+ \textcolor{comment}{// Open trace file}
+ Trace\_file.open(trace\_file\_location.c\_str());
+\textcolor{comment}{}
+\textcolor{comment}{ /// Setup "bulk" mesh}
+\textcolor{comment}{}
+ \textcolor{comment}{// Create the circle that represents the inner boundary}
+ \textcolor{keywordtype}{double} x\_c=0.0;
+ \textcolor{keywordtype}{double} y\_c=0.0;
+ \textcolor{keywordtype}{double} r\_min=1.0;
+
+\end{DoxyCodeInclude}
+
+
+
+\begin{DoxyCodeInclude}
+ Circle* inner\_circle\_pt=\textcolor{keyword}{new} Circle(x\_c,y\_c,r\_min);
+
+\end{DoxyCodeInclude}
+
+
+Next we specify the the outer radius of computational domain  
+\begin{DoxyCodeInclude}
+ \textcolor{keywordtype}{double} r\_max=3.0;
+
+\end{DoxyCodeInclude}
+
+
+and define its polygonal outer boundary\+:
+
+ 
+\begin{DoxyCodeInclude}
+ \textcolor{comment}{// Edges/boundary segments making up outer boundary}
+ \textcolor{comment}{//-------------------------------------------------}
+ Vector<TriangleMeshCurveSection*> outer\_boundary\_line\_pt(6);
+
+ \textcolor{comment}{// All poly boundaries are defined by two vertices}
+ Vector<Vector<double> > boundary\_vertices(2);
+
+
+ \textcolor{comment}{// Bottom straight boundary on symmetry line}
+ \textcolor{comment}{//------------------------------------------}
+ boundary\_vertices[0].resize(2);
+ boundary\_vertices[0][0]=0.0;
+ boundary\_vertices[0][1]=-r\_min;
+ boundary\_vertices[1].resize(2);
+ boundary\_vertices[1][0]=0.0;
+ boundary\_vertices[1][1]=-r\_max;
+
+ \textcolor{keywordtype}{unsigned} boundary\_id=0;
+ outer\_boundary\_line\_pt[0]=
+  \textcolor{keyword}{new} TriangleMeshPolyLine(boundary\_vertices,boundary\_id);
+
+\end{DoxyCodeInclude}
+
+
+Next we define the curvilinear inner boundary in terms of a {\ttfamily Triangle\+Mesh\+Curvi\+Line} which defines the surface of the sphere,
+
+ 
+\begin{DoxyCodeInclude}
+ \textcolor{comment}{// Inner circular boundary:}
+ \textcolor{comment}{//-------------------------}
+
+ \textcolor{comment}{// Number of segments used for representing the curvilinear boundary}
+ \textcolor{keywordtype}{unsigned} n\_segments = 20;
+
+ \textcolor{comment}{// The intrinsic coordinates for the beginning and end of the curve}
+ \textcolor{keywordtype}{double} s\_start =  0.5*MathematicalConstants::Pi;
+ \textcolor{keywordtype}{double} s\_end   =  -0.5*MathematicalConstants::Pi;
+
+ boundary\_id = 5;
+ outer\_boundary\_line\_pt[5]=
+  \textcolor{keyword}{new} TriangleMeshCurviLine(inner\_circle\_pt,
+                            s\_start,
+                            s\_end,
+                            n\_segments,
+                            boundary\_id);
+
+\end{DoxyCodeInclude}
+
+
+and combine the various pieces of the boundary to the closed outer boundary\+:
+
+ 
+\begin{DoxyCodeInclude}
+ \textcolor{comment}{// Create closed curve that defines outer boundary}
+ \textcolor{comment}{//------------------------------------------------}
+ TriangleMeshClosedCurve *outer\_boundary\_pt =
+  \textcolor{keyword}{new} TriangleMeshClosedCurve(outer\_boundary\_line\_pt);
+
+\end{DoxyCodeInclude}
+
+
+Finally, we specify the mesh parameters,
+
+ 
+\begin{DoxyCodeInclude}
+ \textcolor{comment}{// Use the TriangleMeshParameters object for helping on the manage of the}
+ \textcolor{comment}{// TriangleMesh parameters. The only parameter that needs to take is the}
+ \textcolor{comment}{// outer boundary.}
+ TriangleMeshParameters triangle\_mesh\_parameters(outer\_boundary\_pt);
+
+
+ \textcolor{comment}{// Specify maximum element area}
+ \textcolor{keywordtype}{double} element\_area = \hyperlink{namespaceProblemParameters_aafe26abadfce87800a6a4676f0476956}{ProblemParameters::Element\_area};
+ triangle\_mesh\_parameters.element\_area() = element\_area;
+
+\end{DoxyCodeInclude}
+
+
+build the bulk mesh, and add it to the problem\+:
+
+ 
+\begin{DoxyCodeInclude}
+ \textcolor{comment}{// Create the bulk mesh}
+ Bulk\_mesh\_pt= \textcolor{keyword}{new} TriangleMesh<ELEMENT>(triangle\_mesh\_parameters);
+
+ \textcolor{comment}{// Add the bulk mesh to the problem}
+ add\_sub\_mesh(Bulk\_mesh\_pt);
+
+\end{DoxyCodeInclude}
+
+
+Next, we create the Face\+Elements that apply the flux boundary condition on the boundary of the sphere and add the corresponding mesh to the problem too\+:
+
+
+\begin{DoxyCodeInclude}
+  \textcolor{comment}{// Create flux elements on inner boundary}
+ Helmholtz\_inner\_boundary\_mesh\_pt=\textcolor{keyword}{new} Mesh;
+ create\_flux\_elements\_on\_inner\_boundary();
+
+ \textcolor{comment}{// ...and add the mesh to the problem}
+ add\_sub\_mesh(Helmholtz\_inner\_boundary\_mesh\_pt);
+
+\end{DoxyCodeInclude}
+
+
+We create another set of Face\+Elements that allow the computation of the radiated flux over the outer boundaries of the domain\+:
+
+
+\begin{DoxyCodeInclude}
+ \textcolor{comment}{// Attach the power monitor elements}
+ Power\_monitor\_mesh\_pt=\textcolor{keyword}{new} Mesh;
+ create\_power\_monitor\_mesh();
+
+\end{DoxyCodeInclude}
+
+
+(This mesh does not need to be added to the problem since its elements merely act as post-\/processing tools and do not provide any contributions to the problem\textquotesingle{}s residual vector.
+
+We build the P\+ML meshes and combine the various sub-\/meshes to the problem\textquotesingle{}s global mesh\+:
+
+ 
+\begin{DoxyCodeInclude}
+ \textcolor{comment}{// Create the pml meshes}
+ create\_pml\_meshes();
+
+ \textcolor{comment}{// Build the Problem's global mesh from its various sub-meshes}
+ build\_global\_mesh();
+
+\end{DoxyCodeInclude}
+
+
+We complete the problem setup by passing the problem parameters to the elements, using the helper function {\ttfamily complete\+\_\+problem\+\_\+setup()} (Remember that even the elements in the P\+ML layers need to be told about these parameters since they adjust the $ s_r(r) $ and $ s_z(z) $ functions in terms of these parameters).
+
+ 
+\begin{DoxyCodeInclude}
+ \textcolor{comment}{// Complete the build of all elements}
+ complete\_problem\_setup();
+
+\end{DoxyCodeInclude}
+
+
+Finally we assign the equation numbers,
+
+ 
+\begin{DoxyCodeInclude}
+ \textcolor{comment}{// Setup equation numbering scheme}
+ cout <<\textcolor{stringliteral}{"Number of equations: "} << assign\_eqn\_numbers() << std::endl;
+
+\end{DoxyCodeInclude}
+
+
+The problem can now be solved.
+
+
+
+\hypertarget{index_inner_flx}{}\subsection{Impose flux on inner boundary}\label{index_inner_flx}
+The function {\ttfamily create\+\_\+flux\+\_\+elements()} creates the Face\+Elements required to apply the flux/\+Neumann boundary conditions on the boundary of the sphere.
+
+ 
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//============start\_of\_create\_flux\_elements=================}
+\textcolor{comment}{/// Create flux elements on inner boundary}
+\textcolor{comment}{}\textcolor{comment}{//==========================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>
+\textcolor{keywordtype}{void}  \hyperlink{classPMLFourierDecomposedHelmholtzProblem_afd6e3401bdbd1d3deb3271553fbe1d3a}{PMLFourierDecomposedHelmholtzProblem<ELEMENT>::}
+\hyperlink{classPMLFourierDecomposedHelmholtzProblem_afd6e3401bdbd1d3deb3271553fbe1d3a}{create\_flux\_elements\_on\_inner\_boundary}()
+\{
+ \textcolor{comment}{// Apply flux bc on inner boundary (boundary 5)}
+ \textcolor{keywordtype}{unsigned} b=5;
+
+\textcolor{comment}{// Loop over the bulk elements adjacent to boundary b}
+ \textcolor{keywordtype}{unsigned} n\_element = Bulk\_mesh\_pt->nboundary\_element(b);
+ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} e=0;e<n\_element;e++)
+  \{
+   \textcolor{comment}{// Get pointer to the bulk element that is adjacent to boundary b}
+   ELEMENT* bulk\_elem\_pt = \textcolor{keyword}{dynamic\_cast<}ELEMENT*\textcolor{keyword}{>}(
+    Bulk\_mesh\_pt->boundary\_element\_pt(b,e));
+
+   \textcolor{comment}{//Find the index of the face of element e along boundary b}
+   \textcolor{keywordtype}{int} face\_index = Bulk\_mesh\_pt->face\_index\_at\_boundary(b,e);
+
+   \textcolor{comment}{// Build the corresponding prescribed incoming-flux element}
+   PMLFourierDecomposedHelmholtzFluxElement<ELEMENT>*
+    flux\_element\_pt = \textcolor{keyword}{new}
+    PMLFourierDecomposedHelmholtzFluxElement<ELEMENT>
+    (bulk\_elem\_pt,face\_index);
+
+   \textcolor{comment}{//Add the prescribed incoming-flux element to the surface mesh}
+   Helmholtz\_inner\_boundary\_mesh\_pt->add\_element\_pt(flux\_element\_pt);
+
+   \textcolor{comment}{// Set the pointer to the prescribed flux function}
+   flux\_element\_pt->flux\_fct\_pt() = &\hyperlink{namespaceProblemParameters_aa544d1f3e384d3283f7113512931ea8f}{ProblemParameters::exact\_minus\_dudr}
+      ;
+
+  \} \textcolor{comment}{//end of loop over bulk elements adjacent to boundary b}
+
+\} \textcolor{comment}{// end of create flux elements on inner boundary}
+
+\end{DoxyCodeInclude}
+
+
+
+
+\hypertarget{index_p_monitor}{}\subsection{Create power monitor mesh}\label{index_p_monitor}
+The function {\ttfamily create\+\_\+power\+\_\+monitor\+\_\+mesh} creates the Face\+Elements that allow the computation of the radiated power over the outer boundary of the computational domain.
+
+ 
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//===================start\_of\_create\_power\_monitor\_mesh===================}
+\textcolor{comment}{/// Create BC elements on outer boundary}
+\textcolor{comment}{}\textcolor{comment}{//========================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>
+\textcolor{keywordtype}{void} \hyperlink{classPMLFourierDecomposedHelmholtzProblem_a83e0aa333ec3b25f1afccc3bc0a529ad}{PMLFourierDecomposedHelmholtzProblem<ELEMENT>::}
+\hyperlink{classPMLFourierDecomposedHelmholtzProblem_a83e0aa333ec3b25f1afccc3bc0a529ad}{create\_power\_monitor\_mesh}()
+\{
+ \textcolor{comment}{// Loop over outer boundaries}
+ \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} b=1;b<4;b++)
+  \{
+   \textcolor{comment}{// Loop over the bulk elements adjacent to boundary b?}
+   \textcolor{keywordtype}{unsigned} n\_element = Bulk\_mesh\_pt->nboundary\_element(b);
+   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} e=0;e<n\_element;e++)
+    \{
+     \textcolor{comment}{// Get pointer to the bulk element that is adjacent to boundary b}
+     ELEMENT* bulk\_elem\_pt = \textcolor{keyword}{dynamic\_cast<}ELEMENT*\textcolor{keyword}{>}(
+      Bulk\_mesh\_pt->boundary\_element\_pt(b,e));
+
+     \textcolor{comment}{//Find the index of the face of element e along boundary b}
+     \textcolor{keywordtype}{int} face\_index = Bulk\_mesh\_pt->face\_index\_at\_boundary(b,e);
+
+     \textcolor{comment}{// Build the corresponding element}
+     PMLFourierDecomposedHelmholtzPowerMonitorElement<ELEMENT>*
+      flux\_element\_pt = \textcolor{keyword}{new}
+      PMLFourierDecomposedHelmholtzPowerMonitorElement<ELEMENT>
+      (bulk\_elem\_pt,face\_index);
+
+     \textcolor{comment}{//Add the flux boundary element}
+     Power\_monitor\_mesh\_pt->add\_element\_pt(flux\_element\_pt);
+    \}
+  \}
+\} \textcolor{comment}{// end of create\_power\_monitor\_mesh}
+
+\end{DoxyCodeInclude}
+
+
+
+
+\hypertarget{index_c_prob_setup}{}\subsection{Complete problem setup}\label{index_c_prob_setup}
+The helper function {\ttfamily complete\+\_\+problem\+\_\+setup()} completes the setup of the elements by passing pointers to the relevant problem parameters to them. We apply zero Dirichlet boundary conditions on the centreline if the Fourier wavenumber is odd.
+
+ 
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//=================start\_of\_complete\_problem\_setup==================}
+\textcolor{comment}{// Complete the build of all elements so that they are fully}
+\textcolor{comment}{// functional}
+\textcolor{comment}{//==================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>
+\textcolor{keywordtype}{void} \hyperlink{classPMLFourierDecomposedHelmholtzProblem_aca49343d9672607fdc3ab5f6ed4e9d24}{PMLFourierDecomposedHelmholtzProblem<ELEMENT>::}
+\hyperlink{classPMLFourierDecomposedHelmholtzProblem_aca49343d9672607fdc3ab5f6ed4e9d24}{complete\_problem\_setup}()
+\{
+ \textcolor{comment}{// Complete the build of all elements so they are fully functional}
+ \textcolor{keywordtype}{unsigned} n\_element = this->mesh\_pt()->nelement();
+ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} i=0;i<n\_element;i++)
+  \{
+   \textcolor{comment}{// Upcast from GeneralsedElement to the present element}
+   PMLFourierDecomposedHelmholtzEquationsBase *el\_pt
+    = \textcolor{keyword}{dynamic\_cast<}PMLFourierDecomposedHelmholtzEquationsBase*\textcolor{keyword}{>}(
+        mesh\_pt()->element\_pt(i));
+
+   \textcolor{keywordflow}{if} (!(el\_pt==0))
+    \{
+     \textcolor{comment}{//Set the frequency pointer}
+     el\_pt->k\_squared\_pt()=&\hyperlink{namespaceProblemParameters_aa5362de1af9e257fde4317c367158a93}{ProblemParameters::K\_squared};
+
+     \textcolor{comment}{// Set pointer to Fourier wave number}
+     el\_pt->pml\_fourier\_wavenumber\_pt()=&\hyperlink{namespaceProblemParameters_aaa674958a1ca6ee0b99de3377288c93f}{ProblemParameters::N\_fourier};
+    \}
+  \}
+
+ \textcolor{comment}{// If the Fourier wavenumber is odd, then apply zero dirichlet boundary}
+ \textcolor{comment}{// conditions on the two straight boundaries on the symmetry line.}
+ \textcolor{keywordflow}{if} (\hyperlink{namespaceProblemParameters_aaa674958a1ca6ee0b99de3377288c93f}{ProblemParameters::N\_fourier} % 2 == 1)
+  \{
+   cout
+    << \textcolor{stringliteral}{"Zero Dirichlet boundary condition has been applied on symmetry line\(\backslash\)n"};
+   cout << \textcolor{stringliteral}{"due to an odd Fourier wavenumber\(\backslash\)n"} << std::endl;
+   apply\_zero\_dirichlet\_boundary\_conditions();
+  \}
+
+\} \textcolor{comment}{// end of complete\_problem\_setup}
+
+\end{DoxyCodeInclude}
+
+
+
+
+\hypertarget{index_app_z_bc}{}\subsection{Apply zero Dirichlet boundary conditions}\label{index_app_z_bc}
+This final helper function pins both nodal values (representing the real and imaginary part of the solution) on the centreline and sets their values to zero.
+
+ 
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//=========start\_of\_apply\_zero\_dirichlet\_boundary\_conditions========}
+\textcolor{comment}{// Apply extra bounday conditions if given an odd Fourier wavenumber}
+\textcolor{comment}{//==================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>
+\textcolor{keywordtype}{void} \hyperlink{classPMLFourierDecomposedHelmholtzProblem_ad7680c25a32087cb6da96d4bcedf1b23}{PMLFourierDecomposedHelmholtzProblem<ELEMENT>::}
+\hyperlink{classPMLFourierDecomposedHelmholtzProblem_ad7680c25a32087cb6da96d4bcedf1b23}{apply\_zero\_dirichlet\_boundary\_conditions}()
+\{
+ \textcolor{comment}{// Apply zero dirichlet conditions on the bottom straight boundary}
+ \textcolor{comment}{// and the top straight boundary located on the symmetry line.}
+
+ \textcolor{comment}{// Bottom straight boundary on symmetry line:}
+ \{
+  \textcolor{comment}{//Boundary id}
+  \textcolor{keywordtype}{unsigned} b=0;
+
+  \textcolor{comment}{// How many nodes are there?}
+  \textcolor{keywordtype}{unsigned} n\_node=Bulk\_mesh\_pt->nboundary\_node(b);
+  \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} n=0;n<n\_node;n++)
+   \{
+    \textcolor{comment}{// Get the node}
+    Node* nod\_pt=Bulk\_mesh\_pt->boundary\_node\_pt(b,n);
+
+    \textcolor{comment}{// Pin the node}
+    nod\_pt->pin(0);
+    nod\_pt->pin(1);
+
+    \textcolor{comment}{// Set the node's value}
+    nod\_pt->set\_value(0, 0.0);
+    nod\_pt->set\_value(1, 0.0);
+   \}
+ \}
+
+\textcolor{comment}{// Top straight boundary on symmetry line:}
+ \{
+  \textcolor{comment}{//Boundary id}
+  \textcolor{keywordtype}{unsigned} b=4;
+
+  \textcolor{comment}{// How many nodes are there?}
+  \textcolor{keywordtype}{unsigned} n\_node=Bulk\_mesh\_pt->nboundary\_node(b);
+  \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} n=0;n<n\_node;n++)
+   \{
+    \textcolor{comment}{// Get the node}
+    Node* nod\_pt=Bulk\_mesh\_pt->boundary\_node\_pt(b,n);
+
+    \textcolor{comment}{// Pin the node}
+    nod\_pt->pin(0);
+    nod\_pt->pin(1);
+
+    \textcolor{comment}{// Set the node's value}
+    nod\_pt->set\_value(0, 0.0);
+    nod\_pt->set\_value(1, 0.0);
+   \}
+ \}
+
+
+\} \textcolor{comment}{// end of apply\_zero\_dirichlet\_boundary\_conditions}
+
+\end{DoxyCodeInclude}
+
+
+
+
+\hypertarget{index_p_process}{}\subsection{Post-\/processing}\label{index_p_process}
+The post-\/processing function {\ttfamily doc\+\_\+solution}(...) outputs the solution within the bulk, the solution within the P\+M\+Ls, the exact solution and the radiated power
+
+ 
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//===============start\_of\_doc=============================================}
+\textcolor{comment}{/// Doc the solution: doc\_info contains labels/output directory etc.}
+\textcolor{comment}{}\textcolor{comment}{//========================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>
+\textcolor{keywordtype}{void} \hyperlink{classPMLFourierDecomposedHelmholtzProblem_afcdfaf86efc75fbea14f6ade9eeb7f9c}{PMLFourierDecomposedHelmholtzProblem<ELEMENT>::}
+\hyperlink{classPMLFourierDecomposedHelmholtzProblem_afcdfaf86efc75fbea14f6ade9eeb7f9c}{doc\_solution}(DocInfo& doc\_info)
+\{
+
+ ofstream some\_file;
+ \textcolor{keywordtype}{char} filename[100];
+
+ \textcolor{comment}{// Number of plot points: npts x npts}
+ \textcolor{keywordtype}{unsigned} npts=5;
+
+\end{DoxyCodeInclude}
+
+
+
+\begin{DoxyCodeInclude}
+ \textcolor{comment}{// Output solution within the bulk mesh}
+ \textcolor{comment}{//-------------------------------------}
+ sprintf(filename,\textcolor{stringliteral}{"%s/soln%i.dat"},doc\_info.directory().c\_str(),
+         doc\_info.number());
+ some\_file.open(filename);
+ Bulk\_mesh\_pt->output(some\_file,npts);
+ some\_file.close();
+
+\end{DoxyCodeInclude}
+
+
+
+\begin{DoxyCodeInclude}
+ \textcolor{comment}{// Output solution within pml domains}
+ \textcolor{comment}{//-----------------------------------}
+ sprintf(filename,\textcolor{stringliteral}{"%s/pml\_soln%i.dat"},doc\_info.directory().c\_str(),
+         doc\_info.number());
+ some\_file.open(filename);
+ PML\_top\_mesh\_pt->output(some\_file,npts);
+ PML\_right\_mesh\_pt->output(some\_file,npts);
+ PML\_bottom\_mesh\_pt->output(some\_file,npts);
+ PML\_top\_right\_mesh\_pt->output(some\_file,npts);
+ PML\_bottom\_right\_mesh\_pt->output(some\_file,npts);
+ some\_file.close();
+
+\end{DoxyCodeInclude}
+
+
+
+\begin{DoxyCodeInclude}
+ \textcolor{comment}{// Output exact solution}
+ \textcolor{comment}{//----------------------}
+ sprintf(filename,\textcolor{stringliteral}{"%s/exact\_soln%i.dat"},doc\_info.directory().c\_str(),
+         doc\_info.number());
+ some\_file.open(filename);
+ Bulk\_mesh\_pt->output\_fct(some\_file,npts,\hyperlink{namespaceProblemParameters_af750b29069b29bd38b5220ecf534e7f7}{ProblemParameters::get\_exact\_u});
+ some\_file.close();
+
+\end{DoxyCodeInclude}
+
+
+ 
+\begin{DoxyCodeInclude}
+ \textcolor{comment}{// Total radiated power}
+ \textcolor{keywordtype}{double} power=0.0;
+
+ \textcolor{comment}{// Compute/output the radiated power}
+ \textcolor{comment}{//----------------------------------}
+ sprintf(filename,\textcolor{stringliteral}{"%s/power%i.dat"},doc\_info.directory().c\_str(),
+         doc\_info.number());
+ some\_file.open(filename);
+
+ \textcolor{comment}{// Accumulate contribution from elements}
+ \textcolor{keywordtype}{unsigned} nn\_element=Power\_monitor\_mesh\_pt->nelement();
+ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} e=0;e<nn\_element;e++)
+  \{
+   PMLFourierDecomposedHelmholtzPowerMonitorElement<ELEMENT> *el\_pt =
+    \textcolor{keyword}{dynamic\_cast<}PMLFourierDecomposedHelmholtzPowerMonitorElement
+    <ELEMENT\textcolor{keyword}{>}*>(Power\_monitor\_mesh\_pt->element\_pt(e));
+   power += el\_pt->global\_power\_contribution(some\_file);
+  \}
+ some\_file.close();
+ oomph\_info << \textcolor{stringliteral}{"Total radiated power: "} << power << std::endl;
+
+\end{DoxyCodeInclude}
+
+
+
+
+\hypertarget{index_comments}{}\section{Comments and Exercises}\label{index_comments}
+\hypertarget{index_unkns}{}\subsection{The enumeration of the unknowns}\label{index_unkns}
+As discussed in the introduction, most practically relevant solutions of the Helmholtz equation are complex valued. Since {\ttfamily oomph-\/lib\textquotesingle{}s} solvers only deal with real (double precision) unknowns, the equations are separated into their real and imaginary parts. In the implementation of the Helmholtz elements, we store the real and imaginary parts of the solution as two separate values at each node. By default, the real and imaginary parts are accessible via {\ttfamily Node\+::value(0)} and {\ttfamily Node\+::value(1)}. However, to facilitate the use of the elements in multi-\/physics problems we avoid accessing the unknowns directly in this manner but provide the virtual function 
+\begin{DoxyCode}
+std::complex<unsigned> PMLFourierDecomposedHelmholtzEquations::u\_index\_pml\_fourier\_decomposed\_helmholtz()
+\end{DoxyCode}
+ which returns a complex number made of the two unsigneds that indicate which nodal value represents the real and imaginary parts of the solution. This function may be overloaded in combined multi-\/physics elements in which a Helmholtz element is combined (by multiple inheritance) with another element, using the strategy described in \href{../../../multi_physics/b_convection/html/index.html}{\tt the Boussinesq convection tutorial}.\hypertarget{index_dmp_fcts}{}\subsection{P\+M\+L damping functions}\label{index_dmp_fcts}
+The choice for the absorbing functions in our implementation of the P\+M\+Ls is not unique. There are alternatives varying in both order and continuity properties. The current form is the result of several feasibility studies and comparisons found in both \href{http://www.sciencedirect.com/science/article/pii/S0021999106004487}{\tt Bermudez et al.} These damping functions produce an acceptable result in most practical situations without further modifications. For very specific applications, alternatives may need to be used and can easily be implemented by constructing a P\+ML Mapping class and passing a pointer to the elements.
+
+
+
+\hypertarget{index_exer}{}\subsection{Exercises}\label{index_exer}
+\hypertarget{index_Fwave}{}\subsubsection{Changing the Fourier wavenumber}\label{index_Fwave}
+The generalised Fourier-\/decomposed Helmholtz equation allows for various Fourier wavenumbers $ N $. Confirm that a zero Dirichlet boundary condition is applied to odd Fourier wavenumbers.\hypertarget{index_dtn}{}\subsubsection{Comparison of results}\label{index_dtn}
+Compare the results computed by the current driver code against those obtained when the Sommerfeld radiation condition is imposed by a DtN mapping, as discussed in \href{../../../fourier_decomposed_helmholtz/sphere_scattering/html/index.html}{\tt another tutorial.}\hypertarget{index_pmlsize}{}\subsubsection{Changing perfectly matched layer parameters}\label{index_pmlsize}
+Confirm that only a very small number of P\+ML elements (across the thickness of the P\+ML layer) is required to effectively damp the outgoing waves. Explore the effects of altering the number of elements layer while keeping the P\+ML thickness constant.
+
+A second parameter that can be adjusted is the geometrical thickness of the perfectly matched layers. Explore the effects of altering the thickness while maintaining the number of elements within the P\+ML layer.\hypertarget{index_large_k}{}\subsubsection{Large wavenumbers}\label{index_large_k}
+For Helmholtz problems in general, ill-\/conditioning appears as the wavenumber becomes very large. By altering $ k^2 $, explore the limitations of both the mesh and the solver in terms of this parameter. Try adjusting the target element size in order to alleviate resolution-\/related effects. Assess the effectiveness of the perfectly matched layers in high wavenumber problems.\hypertarget{index_adaptivity}{}\subsubsection{Spatial adaptivity}\label{index_adaptivity}
+The driver code discussed above already contains the straightforward modifications required to enable spatial adaptivity. Explore this (by recompiling the code with -\/\+D\+A\+D\+A\+P\+T\+I\+VE). You will note that the driver code for this case is modified slightly -- the system is no longer driven by flux boundary conditions on the boundary of the sphere, but by a point source inside the domain. This was done to demonstrate the advantage of spatial adaptivity for such problems. The benefits of spatial adaptation in problems without any singularities tends to be limited since Helmholtz (and most other wave-\/type problems) require fairly uniform meshes throughout the domain.\hypertarget{index_default}{}\subsubsection{Default values for problem parameters}\label{index_default}
+Following our usual convention, we provide default values for problem parameters where this is sensible. For instance, if the pointer to the P\+ML damping class is not set, it will default to the best known P\+ML mapping function proposed by Bermudez et al. Some parameters, such as the wavenumber squared $ k^2 $, do need to be set since there are no obvious defaults. If {\ttfamily oomph-\/lib} is compiled in {\ttfamily P\+A\+R\+A\+N\+O\+ID} mode, an error is thrown if the relevant pointers haven\textquotesingle{}t been set. Without paranoia, you get a segmentation fault...
+
+Confirm that this is the case by commenting out the relevant assignments.
+
+
+
+ 
+
+\hypertarget{index_sources}{}\section{Source files for this tutorial}\label{index_sources}
+
+\begin{DoxyItemize}
+\item The source files for this tutorial are located in the directory\+: \begin{center} \href{../../../../demo_drivers/pml_fourier_decomposed_helmholtz/oscillating_sphere}{\tt demo\+\_\+drivers/pml\+\_\+fourier\+\_\+decomposed\+\_\+helmholtz/oscillating\+\_\+sphere/ } \end{center} 
+\item The driver code is\+: \begin{center} \href{../../../../demo_drivers/pml_fourier_decomposed_helmholtz/oscillating_sphere/oscillating_sphere.cc}{\tt demo\+\_\+drivers/pml\+\_\+fourier\+\_\+decomposed\+\_\+helmholtz/oscillating\+\_\+sphere/oscillating\+\_\+sphere.\+cc } \end{center} 
+\end{DoxyItemize}
+
+ 
+
+ \hypertarget{index_pdf}{}\section{P\+D\+F file}\label{index_pdf}
+A \href{../latex/refman.pdf}{\tt pdf version} of this document is available. \end{document}

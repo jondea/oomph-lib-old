@@ -1,0 +1,466 @@
+In this example we discuss the adaptive solution of the 2D advection-\/diffusion problem
+
+\begin{center} \tabulinesep=1mm
+\begin{longtabu} spread 0pt [c]{*{1}{|X[-1]}|}
+\hline
+\begin{center} {\bfseries Two-\/dimensional advection-\/diffusion problem in a rectangular domain} \end{center}  Solve \[ \mbox{Pe}\ \sum_{i=1}^2 w_i \left(x_1,x_2\right) \frac{\partial u}{\partial x_i} = \sum_{i=1}^2 \frac{\partial^2u}{\partial x_i^2} + f(x_1,x_2), \ \ \ \ \ \ \ \ \ \ (1) \] in the rectangular domain $D =\left\{ (x_1,x_2) \in [0,1] \times [0,2]\right\}$, with Dirichlet boundary conditions \[ \left. u\right|_{\partial D}=u_0, \ \ \ \ \ \ \ \ \ \ (2) \]
+
+where the {\itshape Peclet} {\itshape number}, $ \mbox{Pe} $ the boundary values, $ u_0$, the source function $ f(x_1,x_2),$ and the components of the \char`\"{}wind\char`\"{} $ w_i(x_1,x_2) \ (i=1,2)$ are given.   \\\cline{1-1}
+\end{longtabu}
+\end{center} 
+
+We choose the forcing function and the boundary conditions such that \[ u_0(x_1,x_2) = \tanh(1-\alpha(x_1 \tan\Phi - x_2)), \ \ \ \ \ \ \ \ \ (3) \] is the exact solution of the problem. For large values of $ \alpha, $ the exact solution approaches a step, oriented at an angle $\Phi$ against the $x_1-$axis.
+
+In the computations we will impose the \char`\"{}wind\char`\"{} \[ \mathbf{w}\left(x_1,x_2 \right) = \left( \begin{array}{c} \sin(6x_2) \\ \cos(6x_1) \end{array} \right), \ \ \ \ \ \ \ \ \ (4) \] illustrated in this vector plot\+:
+
+ 
+\begin{DoxyImage}
+\includegraphics[width=0.75\textwidth]{wind}
+\doxyfigcaption{Plot of the wind. }
+\end{DoxyImage}
+
+
+The graph below shows a plot of the solution, computed at various levels of mesh adaptation, for $\Phi=45^\circ, \ \alpha=50 $ and a Peclet number of $ Pe = 200.$
+
+ 
+\begin{DoxyImage}
+\includegraphics[width=0.75\textwidth]{step_soln}
+\doxyfigcaption{Plot of the forced solution at different levels of mesh refinement. }
+\end{DoxyImage}
+
+
+More interesting is the following plot which shows the solution for the same parameter values and boundary conditions, but for a zero forcing function, $ f\equiv 0. $
+
+ 
+\begin{DoxyImage}
+\includegraphics[width=0.75\textwidth]{unforced_soln}
+\doxyfigcaption{Plot of the unforced solution at different levels of mesh refinement. }
+\end{DoxyImage}
+
+
+The plot nicely illustrates the physical effects represented by the (unforced) advection diffusion equation. If $ u(x_1,x_2) $ represents the concentration of a chemical that is advected by the velocity field $ {\bf w}$, while being dispersed by molecular diffusion, the advection-\/diffusion equation describes the steady-\/state concentration of this chemical. In this context the Peclet number is a measure of the relative importance of advective and diffusive effects. For very small Peclet number, the concentration is determined predominantly by diffusive effects -- as $ \mbox{Pe} \to 0$, the advection diffusion equation approaches the Poisson equation. Conversely, at large values of the Peclet number, the concentration is determined predominantly by advective effects. The chemical is \char`\"{}swept along\char`\"{} by the flow and diffusive effects are only important in thin \char`\"{}boundary\char`\"{} or \char`\"{}shear\char`\"{} layers in which the concentration varies over short lengthscales. These can be seen clearly in the most finely resolved solution above.
+
+
+
+ 
+
+\hypertarget{index_main}{}\section{The driver code}\label{index_main}
+Overall, the structure of the driver code is very similar to that in the \href{../../../poisson/two_d_poisson/html/index.html}{\tt corresponding Poisson example}. The only difference is that we have to specify function pointers to the source and the \char`\"{}wind\char`\"{} functions, which are passed to the problem constructor. We create the problem, perform a self-\/test, set the global parameters that affect the solution and solve the problem using {\ttfamily oomph-\/lib\textquotesingle{}s} \char`\"{}black-\/box\char`\"{} adaptive Newton solver.
+
+ 
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//===== start\_of\_main=====================================================}
+\textcolor{comment}{/// Driver code for 2D AdvectionDiffusion problem}
+\textcolor{comment}{}\textcolor{comment}{//========================================================================}
+\textcolor{keywordtype}{int} \hyperlink{two__d__adv__diff__adapt_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}()
+\{
+
+ \textcolor{comment}{//Set up the problem}
+ \textcolor{comment}{//------------------}
+
+ \textcolor{comment}{// Create the problem with 2D nine-node refineable elements from the}
+ \textcolor{comment}{// RefineableQuadAdvectionDiffusionElement family. Pass pointer to }
+ \textcolor{comment}{// source and wind function. }
+ \hyperlink{classRefineableAdvectionDiffusionProblem}{RefineableAdvectionDiffusionProblem}<
+      RefineableQAdvectionDiffusionElement<2,
+  3> > problem(&\hyperlink{namespaceTanhSolnForAdvectionDiffusion_aaa1aa95713b02b211812fdd18eeaa369}{TanhSolnForAdvectionDiffusion::source\_function}
+      ,
+               &\hyperlink{namespaceTanhSolnForAdvectionDiffusion_ab40e93031d34986762c69616c3c8b065}{TanhSolnForAdvectionDiffusion::wind\_function});
+ 
+ \textcolor{comment}{// Check if we're ready to go:}
+ \textcolor{comment}{//----------------------------}
+ cout << \textcolor{stringliteral}{"\(\backslash\)n\(\backslash\)n\(\backslash\)nProblem self-test "};
+ \textcolor{keywordflow}{if} (problem.self\_test()==0) 
+  \{
+   cout << \textcolor{stringliteral}{"passed: Problem can be solved."} << std::endl;
+  \}
+ \textcolor{keywordflow}{else} 
+  \{
+   \textcolor{keywordflow}{throw} OomphLibError(\textcolor{stringliteral}{"Self test failed"},
+                       OOMPH\_CURRENT\_FUNCTION,
+                       OOMPH\_EXCEPTION\_LOCATION);
+  \}
+
+ \textcolor{comment}{// Set the orientation of the "step" to 45 degrees}
+ \hyperlink{namespaceTanhSolnForAdvectionDiffusion_a236bf82c661189623706b7c9d9b0c52f}{TanhSolnForAdvectionDiffusion::TanPhi}=1.0;
+ 
+ \textcolor{comment}{// Choose a large value for the steepness of the "step"}
+ \hyperlink{namespaceTanhSolnForAdvectionDiffusion_a4d202e8ac48cc75f760ef40681402ec7}{TanhSolnForAdvectionDiffusion::Alpha}=50.0; 
+
+ \textcolor{comment}{// Solve the problem, performing up to 4 adptive refinements}
+ problem.newton\_solve(4);
+
+ \textcolor{comment}{//Output the solution}
+ problem.doc\_solution();
+ 
+\} \textcolor{comment}{// end of main}
+
+\end{DoxyCodeInclude}
+
+
+
+
+ 
+
+\hypertarget{index_global}{}\section{Global parameters and functions}\label{index_global}
+The specification of the source function and the exact solution in the namespace {\ttfamily \hyperlink{namespaceTanhSolnForAdvectionDiffusion}{Tanh\+Soln\+For\+Advection\+Diffusion}} is similar to that for the \href{../../../poisson/two_d_poisson/html/index.html#global}{\tt Poisson examples.} The only difference is the inclusion of the Peclet number and the \char`\"{}wind\char`\"{} function.
+
+ 
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//======start\_of\_namespace============================================}
+\textcolor{comment}{/// Namespace for exact solution for AdvectionDiffusion equation }
+\textcolor{comment}{}\textcolor{comment}{/// with "sharp" step }
+\textcolor{comment}{}\textcolor{comment}{//====================================================================}
+\textcolor{keyword}{namespace }\hyperlink{namespaceTanhSolnForAdvectionDiffusion}{TanhSolnForAdvectionDiffusion}
+\{
+\textcolor{comment}{}
+\textcolor{comment}{ /// Peclet number}
+\textcolor{comment}{} \textcolor{keywordtype}{double} Peclet=200.0;
+\textcolor{comment}{}
+\textcolor{comment}{ /// Parameter for steepness of step}
+\textcolor{comment}{} \textcolor{keywordtype}{double} \hyperlink{namespaceTanhSolnForAdvectionDiffusion_a4d202e8ac48cc75f760ef40681402ec7}{Alpha};
+\textcolor{comment}{}
+\textcolor{comment}{ /// Parameter for angle of step}
+\textcolor{comment}{} \textcolor{keywordtype}{double} \hyperlink{namespaceTanhSolnForAdvectionDiffusion_a236bf82c661189623706b7c9d9b0c52f}{TanPhi};
+\textcolor{comment}{}
+\textcolor{comment}{ /// Exact solution as a Vector}
+\textcolor{comment}{} \textcolor{keywordtype}{void} \hyperlink{namespaceTanhSolnForAdvectionDiffusion_ae4c9ed0a4f123ec8e634f0cc45bfcebc}{get\_exact\_u}(\textcolor{keyword}{const} Vector<double>& x, Vector<double>& u)
+ \{
+  u[0]=tanh(1.0-Alpha*(TanPhi*x[0]-x[1]));
+ \}
+\textcolor{comment}{}
+\textcolor{comment}{ /// Exact solution as a scalar}
+\textcolor{comment}{} \textcolor{keywordtype}{void} \hyperlink{namespaceTanhSolnForAdvectionDiffusion_ae4c9ed0a4f123ec8e634f0cc45bfcebc}{get\_exact\_u}(\textcolor{keyword}{const} Vector<double>& x, \textcolor{keywordtype}{double}& u)
+ \{
+  u=tanh(1.0-Alpha*(TanPhi*x[0]-x[1]));
+ \}
+\textcolor{comment}{}
+\textcolor{comment}{ /// Source function required to make the solution above an exact solution }
+\textcolor{comment}{} \textcolor{keywordtype}{void} \hyperlink{namespaceTanhSolnForAdvectionDiffusion_aaa1aa95713b02b211812fdd18eeaa369}{source\_function}(\textcolor{keyword}{const} Vector<double>& x\_vect, \textcolor{keywordtype}{double}& source)
+ \{
+  \textcolor{keywordtype}{double} x=x\_vect[0];
+  \textcolor{keywordtype}{double} y=x\_vect[1];
+  source = 
+2.0*tanh(-0.1E1+Alpha*(TanPhi*x-y))*(1.0-pow(tanh(-0.1E1+Alpha*(
+TanPhi*x-y)),2.0))*Alpha*Alpha*TanPhi*TanPhi+2.0*tanh(-0.1E1+Alpha*(TanPhi*x-y)
+)*(1.0-pow(tanh(-0.1E1+Alpha*(TanPhi*x-y)),2.0))*Alpha*Alpha-Peclet*(-sin(6.0*y
+)*(1.0-pow(tanh(-0.1E1+Alpha*(TanPhi*x-y)),2.0))*Alpha*TanPhi+cos(6.0*x)*(1.0-
+pow(tanh(-0.1E1+Alpha*(TanPhi*x-y)),2.0))*Alpha);
+ \}
+\textcolor{comment}{}
+\textcolor{comment}{ /// Wind}
+\textcolor{comment}{} \textcolor{keywordtype}{void} \hyperlink{namespaceTanhSolnForAdvectionDiffusion_ab40e93031d34986762c69616c3c8b065}{wind\_function}(\textcolor{keyword}{const} Vector<double>& x, Vector<double>& wind)
+ \{
+  wind[0]=sin(6.0*x[1]);
+  wind[1]=cos(6.0*x[0]);
+ \}
+ 
+\} \textcolor{comment}{// end of namespace}
+
+\end{DoxyCodeInclude}
+
+
+
+
+ 
+
+\hypertarget{index_problem}{}\section{The problem class}\label{index_problem}
+The problem class is very similar to those used in the corresponding \href{../../../poisson/two_d_poisson/html/index.html#problem}{\tt Poisson examples.} The only change is that we use the function {\ttfamily Problem\+::actions\+\_\+before\+\_\+adapt()} to document the progress of the automatic spatial adaptation. For this purpose, we store a {\ttfamily Doc\+Info} as private member data in the {\ttfamily Problem}. This allows us to increment the counter that labels the output files, accessible from {\ttfamily Doc\+Info\+::number()}, whenever a new solution has been documented.
+
+ 
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//====== start\_of\_problem\_class=======================================}
+\textcolor{comment}{/// 2D AdvectionDiffusion problem on rectangular domain, discretised }
+\textcolor{comment}{}\textcolor{comment}{/// with refineable 2D QAdvectionDiffusion elements. The specific type}
+\textcolor{comment}{}\textcolor{comment}{/// of element is specified via the template parameter.}
+\textcolor{comment}{}\textcolor{comment}{//====================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT> 
+\textcolor{keyword}{class }\hyperlink{classRefineableAdvectionDiffusionProblem}{RefineableAdvectionDiffusionProblem} : \textcolor{keyword}{public} Problem
+\{
+
+\textcolor{keyword}{public}:
+\textcolor{comment}{}
+\textcolor{comment}{ /// Constructor: Pass pointer to source and wind functions}
+\textcolor{comment}{} \hyperlink{classRefineableAdvectionDiffusionProblem_a515147bf0907ad339811955edb89817c}{RefineableAdvectionDiffusionProblem}(
+  AdvectionDiffusionEquations<2>::AdvectionDiffusionSourceFctPt source\_fct\_pt,
+  AdvectionDiffusionEquations<2>::AdvectionDiffusionWindFctPt wind\_fct\_pt);
+\textcolor{comment}{}
+\textcolor{comment}{ /// Destructor. Empty}
+\textcolor{comment}{} \hyperlink{classRefineableAdvectionDiffusionProblem_ae746646f6c255dca13e5abe9fcf85fe3}{~RefineableAdvectionDiffusionProblem}()\{\}
+\textcolor{comment}{}
+\textcolor{comment}{ /// \(\backslash\)short Update the problem specs before solve: Reset boundary conditions}
+\textcolor{comment}{ /// to the values from the tanh solution.}
+\textcolor{comment}{} \textcolor{keywordtype}{void} \hyperlink{classRefineableAdvectionDiffusionProblem_a7cbcaa45fd7e932f335cc07a83b4d3e2}{actions\_before\_newton\_solve}();
+\textcolor{comment}{}
+\textcolor{comment}{ /// Update the problem after solve (empty)}
+\textcolor{comment}{} \textcolor{keywordtype}{void} \hyperlink{classRefineableAdvectionDiffusionProblem_a949296e60bc661fbd523974055a93f8b}{actions\_after\_newton\_solve}()\{\}
+\textcolor{comment}{}
+\textcolor{comment}{ /// Actions before adapt: Document the solution}
+\textcolor{comment}{} \textcolor{keywordtype}{void} \hyperlink{classRefineableAdvectionDiffusionProblem_a3470a408c458e5500ac614b8f0e65634}{actions\_before\_adapt}()
+  \{
+   \textcolor{comment}{// Doc the solution}
+   \hyperlink{classRefineableAdvectionDiffusionProblem_a735d7fdd587d4730ffe1113b11ca3b56}{doc\_solution}();
+   
+   \textcolor{comment}{// Increment label for output files}
+   \hyperlink{classRefineableAdvectionDiffusionProblem_a42bd65f40095a70a103ee900e7614b19}{Doc\_info}.number()++;
+  \}
+\textcolor{comment}{}
+\textcolor{comment}{ /// \(\backslash\)short Doc the solution.}
+\textcolor{comment}{} \textcolor{keywordtype}{void} \hyperlink{classRefineableAdvectionDiffusionProblem_a735d7fdd587d4730ffe1113b11ca3b56}{doc\_solution}();
+\textcolor{comment}{}
+\textcolor{comment}{ /// \(\backslash\)short Overloaded version of the problem's access function to }
+\textcolor{comment}{ /// the mesh. Recasts the pointer to the base Mesh object to }
+\textcolor{comment}{ /// the actual mesh type.}
+\textcolor{comment}{} RefineableRectangularQuadMesh<ELEMENT>* \hyperlink{classRefineableAdvectionDiffusionProblem_abe616b5b3d3e4d3c0d3be777e3b3ac34}{mesh\_pt}() 
+  \{
+   \textcolor{keywordflow}{return} \textcolor{keyword}{dynamic\_cast<}RefineableRectangularQuadMesh<ELEMENT>*\textcolor{keyword}{>}(
+    Problem::mesh\_pt());
+  \}
+
+\textcolor{keyword}{private}:
+\textcolor{comment}{}
+\textcolor{comment}{ /// DocInfo object}
+\textcolor{comment}{} DocInfo \hyperlink{classRefineableAdvectionDiffusionProblem_a42bd65f40095a70a103ee900e7614b19}{Doc\_info};
+\textcolor{comment}{}
+\textcolor{comment}{ /// Pointer to source function}
+\textcolor{comment}{} AdvectionDiffusionEquations<2>::AdvectionDiffusionSourceFctPt \hyperlink{classRefineableAdvectionDiffusionProblem_a8fa313562d365965e24282c2e11a8ec6}{Source\_fct\_pt};
+\textcolor{comment}{}
+\textcolor{comment}{ /// Pointer to wind function}
+\textcolor{comment}{} AdvectionDiffusionEquations<2>::AdvectionDiffusionWindFctPt \hyperlink{classRefineableAdvectionDiffusionProblem_ab52483c93bacbb9521aaaf52680be996}{Wind\_fct\_pt};
+
+\}; \textcolor{comment}{// end of problem class}
+
+\end{DoxyCodeInclude}
+
+
+
+
+ 
+
+\hypertarget{index_constructor}{}\section{The Problem constructor}\label{index_constructor}
+The constructor is practically identical to the constructors used in the various \href{../../../poisson/two_d_poisson/html/index.html#constructor}{\tt Poisson examples.} We specify the output directory in the {\ttfamily Problem\textquotesingle{}s} {\ttfamily Doc\+Info} object, create the mesh and an error estimator, and apply the boundary conditions by pinning the nodal values on the Dirichlet boundaries.
+
+
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//=====start\_of\_constructor===============================================}
+\textcolor{comment}{/// \(\backslash\)short Constructor for AdvectionDiffusion problem: Pass pointer to }
+\textcolor{comment}{}\textcolor{comment}{/// source function.}
+\textcolor{comment}{}\textcolor{comment}{//========================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>
+
+      \hyperlink{classRefineableAdvectionDiffusionProblem_a515147bf0907ad339811955edb89817c}{RefineableAdvectionDiffusionProblem<ELEMENT>::RefineableAdvectionDiffusionProblem}
+      (
+ AdvectionDiffusionEquations<2>::AdvectionDiffusionSourceFctPt source\_fct\_pt,
+ AdvectionDiffusionEquations<2>::AdvectionDiffusionWindFctPt wind\_fct\_pt)
+       :  Source\_fct\_pt(source\_fct\_pt), Wind\_fct\_pt(wind\_fct\_pt)
+\{ 
+
+ \textcolor{comment}{// Set output directory}
+ Doc\_info.set\_directory(\textcolor{stringliteral}{"RESLT"});
+
+ \textcolor{comment}{// Setup mesh}
+
+ \textcolor{comment}{// # of elements in x-direction}
+ \textcolor{keywordtype}{unsigned} n\_x=4;
+
+ \textcolor{comment}{// # of elements in y-direction}
+ \textcolor{keywordtype}{unsigned} n\_y=4;
+
+ \textcolor{comment}{// Domain length in x-direction}
+ \textcolor{keywordtype}{double} l\_x=1.0;
+
+ \textcolor{comment}{// Domain length in y-direction}
+ \textcolor{keywordtype}{double} l\_y=2.0;
+
+ \textcolor{comment}{// Build and assign mesh}
+ Problem::mesh\_pt() = 
+  \textcolor{keyword}{new} RefineableRectangularQuadMesh<ELEMENT>(n\_x,n\_y,l\_x,l\_y);
+
+ \textcolor{comment}{// Create/set error estimator}
+ mesh\_pt()->spatial\_error\_estimator\_pt()=\textcolor{keyword}{new} Z2ErrorEstimator;
+  
+ \textcolor{comment}{// Set the boundary conditions for this problem: All nodes are}
+ \textcolor{comment}{// free by default -- only need to pin the ones that have Dirichlet }
+ \textcolor{comment}{// conditions here}
+ \textcolor{keywordtype}{unsigned} num\_bound = mesh\_pt()->nboundary();
+ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} ibound=0;ibound<num\_bound;ibound++)
+  \{
+   \textcolor{keywordtype}{unsigned} num\_nod= mesh\_pt()->nboundary\_node(ibound);
+   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} inod=0;inod<num\_nod;inod++)
+    \{
+     mesh\_pt()->boundary\_node\_pt(ibound,inod)->pin(0); 
+    \}
+  \} \textcolor{comment}{// end loop over boundaries}
+
+\end{DoxyCodeInclude}
+
+
+We complete the problem setup by passing the function pointers to the source and wind functions, and the pointer to the Peclet number to the elements. Finally, we set up the equation numbering scheme.
+
+
+\begin{DoxyCodeInclude}
+ \textcolor{comment}{// Complete the build of all elements so they are fully functional }
+
+ \textcolor{comment}{// Loop over the elements to set up element-specific }
+ \textcolor{comment}{// things that cannot be handled by the (argument-free!) ELEMENT }
+ \textcolor{comment}{// constructor: Pass pointer to source function}
+ \textcolor{keywordtype}{unsigned} n\_element = mesh\_pt()->nelement();
+ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} i=0;i<n\_element;i++)
+  \{
+   \textcolor{comment}{// Upcast from GeneralsedElement to the present element}
+   ELEMENT *el\_pt = \textcolor{keyword}{dynamic\_cast<}ELEMENT*\textcolor{keyword}{>}(mesh\_pt()->element\_pt(i));
+
+   \textcolor{comment}{//Set the source function pointer}
+   el\_pt->source\_fct\_pt() = Source\_fct\_pt;
+
+   \textcolor{comment}{//Set the wind function pointer}
+   el\_pt->wind\_fct\_pt() = Wind\_fct\_pt;
+
+   \textcolor{comment}{// Set the Peclet number}
+   el\_pt->pe\_pt() = &\hyperlink{namespaceTanhSolnForAdvectionDiffusion_aeba486af70e92ab7eec1da3ce44d51ee}{TanhSolnForAdvectionDiffusion::Peclet};
+  \}
+
+ \textcolor{comment}{// Setup equation numbering scheme}
+ cout <<\textcolor{stringliteral}{"Number of equations: "} << assign\_eqn\_numbers() << std::endl; 
+
+\} \textcolor{comment}{// end of constructor}
+
+\end{DoxyCodeInclude}
+
+
+
+
+ 
+
+\hypertarget{index_actions_before}{}\section{Actions before solve}\label{index_actions_before}
+As before, we use the {\ttfamily Problem\+::actions\+\_\+before\+\_\+newton\+\_\+solve()} function to set/update the boundary conditions.
+
+
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//========================================start\_of\_actions\_before\_newton\_solve===}
+\textcolor{comment}{/// Update the problem specs before solve: (Re-)set boundary conditions}
+\textcolor{comment}{}\textcolor{comment}{/// to the values from the tanh solution.}
+\textcolor{comment}{}\textcolor{comment}{//========================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>
+\textcolor{keywordtype}{void} \hyperlink{classRefineableAdvectionDiffusionProblem_a7cbcaa45fd7e932f335cc07a83b4d3e2}{RefineableAdvectionDiffusionProblem<ELEMENT>::actions\_before\_newton\_solve}
+      ()
+\{
+ \textcolor{comment}{// How many boundaries are there?}
+ \textcolor{keywordtype}{unsigned} num\_bound = mesh\_pt()->nboundary();
+ 
+ \textcolor{comment}{//Loop over the boundaries}
+ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} ibound=0;ibound<num\_bound;ibound++)
+  \{
+   \textcolor{comment}{// How many nodes are there on this boundary?}
+   \textcolor{keywordtype}{unsigned} num\_nod=mesh\_pt()->nboundary\_node(ibound);
+
+   \textcolor{comment}{// Loop over the nodes on boundary}
+   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} inod=0;inod<num\_nod;inod++)
+    \{
+     \textcolor{comment}{// Get pointer to node}
+     Node* nod\_pt=mesh\_pt()->boundary\_node\_pt(ibound,inod);
+
+     \textcolor{comment}{// Extract nodal coordinates from node:}
+     Vector<double> x(2);
+     x[0]=nod\_pt->x(0);
+     x[1]=nod\_pt->x(1);
+
+     \textcolor{comment}{// Compute the value of the exact solution at the nodal point}
+     Vector<double> u(1);
+     \hyperlink{namespaceTanhSolnForAdvectionDiffusion_ae4c9ed0a4f123ec8e634f0cc45bfcebc}{TanhSolnForAdvectionDiffusion::get\_exact\_u}(x,u);
+
+     \textcolor{comment}{// Assign the value to the one (and only) nodal value at this node}
+     nod\_pt->set\_value(0,u[0]);
+    \}
+  \} 
+\}  \textcolor{comment}{// end of actions before solve}
+
+\end{DoxyCodeInclude}
+
+
+
+
+ 
+
+\hypertarget{index_doc}{}\section{Post-\/processing}\label{index_doc}
+The function {\ttfamily doc\+\_\+solution}(...) is identical to that in the \href{../../../poisson/two_d_poisson/html/index.html#doc}{\tt Poisson example.} We output the solution, the exact solution and the error.
+
+
+\begin{DoxyCodeInclude}
+\textcolor{comment}{//===============start\_of\_doc=============================================}
+\textcolor{comment}{/// Doc the solution}
+\textcolor{comment}{}\textcolor{comment}{//========================================================================}
+\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>
+\textcolor{keywordtype}{void} \hyperlink{classRefineableAdvectionDiffusionProblem_a735d7fdd587d4730ffe1113b11ca3b56}{RefineableAdvectionDiffusionProblem<ELEMENT>::doc\_solution}
+      ()
+\{ 
+
+ ofstream some\_file;
+ \textcolor{keywordtype}{char} filename[100];
+
+ \textcolor{comment}{// Number of plot points: npts x npts}
+ \textcolor{keywordtype}{unsigned} npts=5;
+
+ \textcolor{comment}{// Output solution }
+ \textcolor{comment}{//-----------------}
+ sprintf(filename,\textcolor{stringliteral}{"%s/soln%i.dat"},Doc\_info.directory().c\_str(),
+         Doc\_info.number());
+ some\_file.open(filename);
+ mesh\_pt()->output(some\_file,npts);
+ some\_file.close();
+
+ \textcolor{comment}{// Output exact solution }
+ \textcolor{comment}{//----------------------}
+ sprintf(filename,\textcolor{stringliteral}{"%s/exact\_soln%i.dat"},Doc\_info.directory().c\_str(),
+         Doc\_info.number());
+ some\_file.open(filename);
+ mesh\_pt()->output\_fct(some\_file,npts,\hyperlink{namespaceTanhSolnForAdvectionDiffusion_ae4c9ed0a4f123ec8e634f0cc45bfcebc}{TanhSolnForAdvectionDiffusion::get\_exact\_u}
+      ); 
+ some\_file.close();
+
+ \textcolor{comment}{// Doc error and return of the square of the L2 error}
+ \textcolor{comment}{//---------------------------------------------------}
+ \textcolor{keywordtype}{double} error,norm;
+ sprintf(filename,\textcolor{stringliteral}{"%s/error%i.dat"},Doc\_info.directory().c\_str(),
+         Doc\_info.number());
+ some\_file.open(filename);
+ mesh\_pt()->compute\_error(some\_file,\hyperlink{namespaceTanhSolnForAdvectionDiffusion_ae4c9ed0a4f123ec8e634f0cc45bfcebc}{TanhSolnForAdvectionDiffusion::get\_exact\_u}
+      ,
+                          error,norm); 
+ some\_file.close();
+
+ \textcolor{comment}{// Doc L2 error and norm of solution}
+ cout << \textcolor{stringliteral}{"\(\backslash\)nNorm of error   : "} << sqrt(error) << std::endl; 
+ cout << \textcolor{stringliteral}{"Norm of solution: "} << sqrt(norm) << std::endl << std::endl;
+
+\} \textcolor{comment}{// end of doc}
+
+\end{DoxyCodeInclude}
+
+
+
+
+ 
+
+\hypertarget{index_com}{}\section{Comments and Exercises}\label{index_com}
+
+\begin{DoxyEnumerate}
+\item Explore the change in the character of the solution of the unforced problem when the Peclet number is slowly increased from 0 to 200, say. Note how at small Peclet number, strong diffusive effects smooth out the rapid spatial variations imposed by the boundary conditions. Conversely, at large values of the Peclet number, the behaviour is dominated by advective effects. As a result, in regions where the \char`\"{}wind\char`\"{} is directed into the domain, the value of $ u $ set by the Dirichlet boundary conditions is \char`\"{}swept\char`\"{} into the domain. In regions where the \char`\"{}wind\char`\"{} is directed out of the domain, the value of $ u $ \char`\"{}swept along\char`\"{} by the flow in the interior \char`\"{}clashes\char`\"{} with the value prescribed by the boundary conditions and the solution adjusts itself over a very short length scale, leading to the development of thin \char`\"{}boundary layers\char`\"{}.
+\item Explore the character of the solution on coarse meshes at large and small Peclet numbers. Note how at large Peclet numbers the solution on the coarse meshes displays strong \char`\"{}wiggles\char`\"{} throughout the domain. These only disappear once the mesh adaptation fully resolves the regions of rapid variation. We will explore this issue further in \href{../../two_d_adv_diff_SUPG/html/index.html}{\tt another example.}
+\end{DoxyEnumerate}
+
+
+
+ 
+
+\hypertarget{index_sources}{}\section{Source files for this tutorial}\label{index_sources}
+
+\begin{DoxyItemize}
+\item The source files for this tutorial are located in the directory\+: \begin{center} \href{../../../../demo_drivers/advection_diffusion/two_d_adv_diff_adapt/}{\tt demo\+\_\+drivers/advection\+\_\+diffusion/two\+\_\+d\+\_\+adv\+\_\+diff\+\_\+adapt/ } \end{center} 
+\item The driver code is\+: \begin{center} \href{../../../../demo_drivers/advection_diffusion/two_d_adv_diff_adapt/two_d_adv_diff_adapt.cc}{\tt demo\+\_\+drivers/advection\+\_\+diffusion/two\+\_\+d\+\_\+adv\+\_\+diff\+\_\+adapt/two\+\_\+d\+\_\+adv\+\_\+diff\+\_\+adapt.\+cc } \end{center} 
+\end{DoxyItemize}
+
+ 
+
+ \hypertarget{index_pdf}{}\section{P\+D\+F file}\label{index_pdf}
+A \href{../latex/refman.pdf}{\tt pdf version} of this document is available. \end{document}
