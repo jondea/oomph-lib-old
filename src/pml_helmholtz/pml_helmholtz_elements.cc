@@ -29,7 +29,7 @@
 //LIC//====================================================================
 //Non-inline functions for gen Helmholtz elements
 #include "pml_helmholtz_elements.h"
-
+#include "../generic/pml_elements.h"
 
 
 namespace oomph
@@ -41,6 +41,10 @@ namespace oomph
 //======================================================================
  template<unsigned DIM, unsigned NNODE_1D, class PML_ELEMENT>
  const unsigned QPMLHelmholtzElement<DIM,NNODE_1D,PML_ELEMENT>::Initial_Nvalue = 2;
+
+ // // I think we should be able to do this
+ // template <unsigned DIM>
+ // const unsigned PMLHelmholtzEquationsBase<DIM>::Initial_Nvalue = 2;
 
  /// PML Helmholtz equations static data, so that by default we can point to a 0
  template <unsigned DIM>
@@ -56,9 +60,10 @@ namespace oomph
 //======================================================================
 template <unsigned DIM, class PML_ELEMENT>
 void  PMLHelmholtzEquations<DIM,PML_ELEMENT>::
-fill_in_generic_residual_contribution_helmholtz(Vector<double> &residuals,
-                                                DenseMatrix<double> &jacobian,
-                                                const unsigned& flag)
+fill_in_generic_residual_contribution_helmholtz_diagonal_pml_jacobian(
+  Vector<double> &residuals,
+  DenseMatrix<double> &jacobian,
+  const unsigned& flag)
 {
  //Find out how many nodes there are
  const unsigned n_node = this->nnode();
@@ -295,6 +300,274 @@ fill_in_generic_residual_contribution_helmholtz(Vector<double> &residuals,
   } // End of loop over integration points
 }
 
+//======================================================================
+/// Compute element residual Vector and/or element Jacobian matrix
+///
+/// flag=1: compute both
+/// flag=0: compute only residual Vector
+///
+/// Pure version without hanging nodes
+//======================================================================
+template <unsigned DIM, class PML_ELEMENT>
+void  PMLHelmholtzEquations<DIM,PML_ELEMENT>::
+fill_in_generic_residual_contribution_helmholtz_dense_pml_jacobian(
+  Vector<double> &residuals,
+  DenseMatrix<double> &jacobian,
+  const unsigned& flag)
+{
+ //Find out how many nodes there are
+ const unsigned n_node = this->nnode();
+
+ //Set up memory for the shape and test functions
+ Shape psi(n_node), test(n_node);
+ DShape dpsidx(n_node,DIM), dtestdx(n_node,DIM);
+
+ //Set the value of n_intpt
+ const unsigned n_intpt = this->integral_pt()->nweight();
+
+ //Integers to store the local equation and unknown numbers
+ int local_eqn_real=0, local_unknown_real=0;
+ int local_eqn_imag=0, local_unknown_imag=0;
+
+ //Loop over the integration points
+ for(unsigned ipt=0;ipt<n_intpt;ipt++)
+  {
+   //Get the integral weight
+   double w = integral_pt()->weight(ipt);
+
+   //Call the derivatives of the shape and test functions
+   double J = this->dshape_and_dtest_eulerian_at_knot_helmholtz(ipt,psi,dpsidx,
+                                                                test,dtestdx);
+
+   //Premultiply the weights and the Jacobian
+   double W = w*J;
+
+   //Calculate local values of unknown
+   //Allocate and initialise to zero
+   std::complex<double> interpolated_u(0.0,0.0);
+   Vector<double> interpolated_x(DIM,0.0);
+   Vector< std::complex<double> > interpolated_dudx(DIM);
+
+   //Calculate function value and derivatives:
+   //-----------------------------------------
+   // Loop over nodes
+   for(unsigned l=0;l<n_node;l++)
+    {
+     // Loop over directions
+     for(unsigned j=0;j<DIM;j++)
+      {
+       interpolated_x[j] += this->raw_nodal_position(l,j)*psi(l);
+      }
+
+     //Get the nodal value of the helmholtz unknown
+     const std::complex<double>
+      u_value(this->raw_nodal_value(l,this->u_index_helmholtz().real()),
+              this->raw_nodal_value(l,this->u_index_helmholtz().imag()));
+
+     //Add to the interpolated value
+     interpolated_u += u_value*psi(l);
+
+     // Loop over directions
+     for(unsigned j=0;j<DIM;j++)
+      {
+       interpolated_dudx[j] += u_value*dpsidx(l,j);
+      }
+    }
+
+   //Get source function
+   //-------------------
+   std::complex<double> source(0.0,0.0);
+   this->get_source_helmholtz(ipt,interpolated_x,source);
+
+   // All the PML weights that participate in the assemby process
+   // are computed here. 
+   // The Jacobian and Laplace matrix (and therefore the det) default to the
+   // identity if the PML is disabled
+   Vector<double> s(DIM);
+   DenseComplexMatrix pml_jacobian(DIM,DIM);
+   this->pml_transformation_jacobian(ipt, s, interpolated_x, pml_jacobian);
+
+   // Declare a complex number for pml weights on the mass matrix bit
+   // We will set this equal to the determinant of the pml Jacobian
+   std::complex<double> pml_k_squared_factor = std::complex<double>(1.0,0.0);
+
+   // Declare a diagonal matrix for pml weights on the Laplace bit
+   DenseComplexMatrix laplace_matrix(DIM,DIM);
+
+   this->compute_laplace_matrix_and_det(pml_jacobian, laplace_matrix,
+                                        pml_k_squared_factor);
+
+   // Add in the k squared and Alpha adjusts the wavenumber. Note, we take the
+   // negative because of the particular formulation of the weak HH eqn.
+   // We also throw in the W because everything from now on as this.
+   pml_k_squared_factor *= - this->k_squared() 
+                           * std::complex<double>(1.0,this->alpha()) * W;
+   
+   // Vector holding the residual for the k^2 term, 
+   std::complex<double> k_squared_residual = std::complex<double>(0.0,0.0);
+   k_squared_residual = source*W + pml_k_squared_factor*interpolated_u;
+   
+   // Multiply itself by W so that it is ready to be used in the Jacobian
+   laplace_matrix.scale(W);
+   
+   // We prepare everything we can now, residual terms are just jacobian terms
+   // multiplied by the value of du/dx
+   Vector<std::complex<double> > laplace_residual_vector(DIM,std::complex<double>(0.0,0.0));
+   for(unsigned j=0;j<DIM;j++)
+   {
+     for(unsigned i=0;i<DIM;i++)
+     {
+       laplace_residual_vector[j] += interpolated_dudx[i]
+                                      * laplace_matrix(i,j);
+     }
+   }
+   
+   // Assemble residuals and Jacobian
+   //--------------------------------
+   // Loop over the test functions
+   for(unsigned l=0;l<n_node;l++)
+    {
+
+     // first, compute the real part contribution
+     //-------------------------------------------
+
+     //Get the local equation
+     local_eqn_real = this->nodal_local_eqn(l,this->u_index_helmholtz().real());
+     local_eqn_imag = this->nodal_local_eqn(l,this->u_index_helmholtz().imag());
+
+     /*IF it's not a boundary condition*/
+     if(local_eqn_real >= 0)
+      {
+       // Add body force/source term and Helmholtz bit
+       residuals[local_eqn_real] += k_squared_residual.real()*test(l);
+
+       // The Laplace bit
+       for(unsigned j=0;j<DIM;j++)
+        {
+         residuals[local_eqn_real] += laplace_residual_vector[j].real()
+                                        *dtestdx(l,j);
+        }
+
+       // Calculate the jacobian
+       //-----------------------
+       if(flag)
+        {
+         //Loop over the velocity shape functions again
+         for(unsigned l2=0;l2<n_node;l2++)
+          {
+           local_unknown_real = this->nodal_local_eqn(l2,this->u_index_helmholtz().real());
+           local_unknown_imag = this->nodal_local_eqn(l2,this->u_index_helmholtz().imag());
+
+           //If at a non-zero degree of freedom add in the entry
+           if(local_unknown_real >= 0)
+            {
+             //Add contribution to Elemental Matrix
+             for(unsigned i=0;i<DIM;i++)
+              {
+               for(unsigned j=0;j<DIM;j++)
+                {
+                 jacobian(local_eqn_real,local_unknown_real)
+                  += laplace_matrix(i,j).real()*dpsidx(l2,i)*dtestdx(l,j);
+                }
+              }
+             // Add the helmholtz contribution
+             jacobian(local_eqn_real,local_unknown_real)
+              += pml_k_squared_factor.real()*psi(l2)*test(l);
+            }
+           //If at a non-zero degree of freedom add in the entry
+           if(local_unknown_imag >= 0)
+            {
+             //Add contribution to Elemental Matrix
+             for(unsigned i=0;i<DIM;i++)
+              {
+               for(unsigned j=0;j<DIM;j++)
+                {
+                 jacobian(local_eqn_real,local_unknown_imag)
+                  += -laplace_matrix(i,j).imag()*dpsidx(l2,i)*dtestdx(l,j);
+                }
+              }
+             // Add the helmholtz contribution
+             jacobian(local_eqn_real,local_unknown_imag)
+              += -pml_k_squared_factor.imag()*psi(l2)*test(l);
+            }
+          }
+        }
+      }
+
+     // Second, compute the imaginary part contribution
+     //------------------------------------------------
+
+     /*IF it's not a boundary condition*/
+     if(local_eqn_imag >= 0)
+      {
+       // Add body force/source term and Helmholtz bit
+       residuals[local_eqn_imag] += k_squared_residual.imag()*test(l);
+
+       // The Laplace bit
+       for(unsigned j=0;j<DIM;j++)
+        {
+         residuals[local_eqn_imag] += laplace_residual_vector[j].imag()*dtestdx(l,j);
+        }
+
+       // Calculate the jacobian
+       //-----------------------
+       if(flag)
+        {
+         //Loop over the velocity shape functions again
+         for(unsigned l2=0;l2<n_node;l2++)
+          {
+           local_unknown_imag = this->nodal_local_eqn(l2,this->u_index_helmholtz().imag());
+           local_unknown_real = this->nodal_local_eqn(l2,this->u_index_helmholtz().real());
+
+           //If at a non-zero degree of freedom add in the entry
+           if(local_unknown_imag >= 0)
+            {
+             //Add contribution to Elemental Matrix
+             for(unsigned i=0;i<DIM;i++)
+              {
+               for(unsigned j=0;j<DIM;j++)
+                {
+                 jacobian(local_eqn_imag,local_unknown_imag)
+                  += laplace_matrix(i,j).real()*dpsidx(l2,i)*dtestdx(l,j);
+                }
+              }
+             // Add the helmholtz contribution
+             jacobian(local_eqn_imag,local_unknown_imag)
+              += pml_k_squared_factor.real()*psi(l2)*test(l);
+            }
+           if(local_unknown_real >= 0)
+            {
+             //Add contribution to Elemental Matrix
+             for(unsigned i=0;i<DIM;i++)
+              {
+               for(unsigned j=0;j<DIM;j++)
+                {
+                 jacobian(local_eqn_imag,local_unknown_real)
+                  += laplace_matrix(i,j).imag()*dpsidx(l2,i)*dtestdx(l,j);
+                }
+              }
+             // Add the helmholtz contribution
+             jacobian(local_eqn_imag,local_unknown_real)
+              += pml_k_squared_factor.imag() * psi(l2)*test(l);
+            }
+          }
+        }
+      }
+    }
+  } // End of loop over integration points
+}
+
+// Other formualtions produce dense PML Jacobians, make this the default
+template <unsigned DIM, class PML_ELEMENT>
+void  PMLHelmholtzEquations<DIM,PML_ELEMENT>::
+fill_in_generic_residual_contribution_helmholtz(
+  Vector<double> &residuals,
+  DenseMatrix<double> &jacobian,
+  const unsigned& flag)
+{
+  fill_in_generic_residual_contribution_helmholtz_dense_pml_jacobian(
+    residuals,jacobian, flag);
+}
 
 //======================================================================
 /// Self-test:  Return 0 for OK
@@ -859,6 +1132,45 @@ void PMLHelmholtzEquationsBase<DIM>::compute_norm(double& norm)
    }
  }
 
+ // Axis aligned PMLs produce diagonal PML Jacobians, and we have specialised
+ // residual calculations which is more efficient
+ template <>
+ void  PMLHelmholtzEquations<1,AxisAlignedPMLElement<1> >::
+ fill_in_generic_residual_contribution_helmholtz(
+   Vector<double> &residuals,
+   DenseMatrix<double> &jacobian,
+   const unsigned& flag)
+ {
+   fill_in_generic_residual_contribution_helmholtz_diagonal_pml_jacobian(
+     residuals,jacobian, flag);
+ }
+ 
+ // Axis aligned PMLs produce diagonal PML Jacobians, and we have specialised
+ // residual calculations which is more efficient
+ template <>
+ void  PMLHelmholtzEquations<2,AxisAlignedPMLElement<2> >::
+ fill_in_generic_residual_contribution_helmholtz(
+   Vector<double> &residuals,
+   DenseMatrix<double> &jacobian,
+   const unsigned& flag)
+ {
+   fill_in_generic_residual_contribution_helmholtz_diagonal_pml_jacobian(
+     residuals,jacobian, flag);
+ }
+ 
+ // Axis aligned PMLs produce diagonal PML Jacobians, and we have specialised
+ // residual calculations which is more efficient
+ template <>
+ void  PMLHelmholtzEquations<3,AxisAlignedPMLElement<3> >::
+ fill_in_generic_residual_contribution_helmholtz(
+   Vector<double> &residuals,
+   DenseMatrix<double> &jacobian,
+   const unsigned& flag)
+ {
+   fill_in_generic_residual_contribution_helmholtz_diagonal_pml_jacobian(
+     residuals,jacobian, flag);
+ }
+
 //====================================================================
 // Force build of templates
 //====================================================================
@@ -884,5 +1196,11 @@ template class QPMLHelmholtzElement<2,4,AxisAlignedPMLElement<2>>;
 template class QPMLHelmholtzElement<3,2,AxisAlignedPMLElement<3>>;
 template class QPMLHelmholtzElement<3,3,AxisAlignedPMLElement<3>>;
 template class QPMLHelmholtzElement<3,4,AxisAlignedPMLElement<3>>;
+
+template class QPMLHelmholtzElement<2,2,Conformal2DPMLElement>;
+template class QPMLHelmholtzElement<2,3,Conformal2DPMLElement>;
+template class QPMLHelmholtzElement<2,4,Conformal2DPMLElement>;
+
+
 
 }

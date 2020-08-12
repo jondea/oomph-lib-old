@@ -250,7 +250,7 @@ public:
     enable_pml(direction, pml_inner_boundary, pml_outer_boundary);
     Pml_mapping_pt = pml_mapping_pt;
   }
-  
+
   /// Return a pointer to the PML Mapping object
   UniaxialPMLMapping* &pml_mapping_pt() {return Pml_mapping_pt;}
 
@@ -390,6 +390,12 @@ public:
     Origin = origin;
     Pml_mapping_pt = pml_mapping_pt;
   }
+  
+  /// Return a pointer to the PML Mapping object
+  UniaxialPMLMapping* &pml_mapping_pt() {return Pml_mapping_pt;}
+
+  /// Return a pointer to the PML Mapping object (const version)
+  UniaxialPMLMapping* const &pml_mapping_pt() const {return Pml_mapping_pt;}
 
   double radius(const Vector<double>& s, const Vector<double>& x)
   {
@@ -496,6 +502,12 @@ public:
   {
     PMLElementBase<2>::enable_pml();
   }
+  
+  /// Return a pointer to the PML Mapping object
+  UniaxialPMLMapping* &pml_mapping_pt() {return Pml_mapping_pt;}
+
+  /// Return a pointer to the PML Mapping object (const version)
+  UniaxialPMLMapping* const &pml_mapping_pt() const {return Pml_mapping_pt;}
 
   virtual double s_min();
 
@@ -605,11 +617,28 @@ public:
     Vector<std::complex<double> >& transformed_x);
 
   /// Enable pml. Set the pointer to a PML mapping function
+  virtual void enable_pml(unsigned nu_s_index,
+                          const double& nu_at_s_min,
+                          const double& nu_at_s_max)
+  {
+    PMLElementBase::enable_pml();
+    Nu_s_index = nu_s_index;
+    Nu_at_s_min = nu_at_s_min;
+    Nu_at_s_max = nu_at_s_max;
+  }
+
+  /// Enable pml. Set the pointer to a PML mapping function
   virtual void enable_pml(UniaxialPMLMapping* pml_mapping_pt)
   {
     PMLElementBase::enable_pml();
     pml_mapping_pt = Pml_mapping_pt;
   }
+
+  /// Return a pointer to the PML Mapping object
+  UniaxialPMLMapping* &pml_mapping_pt() {return Pml_mapping_pt;}
+
+  /// Return a pointer to the PML Mapping object (const version)
+  UniaxialPMLMapping* const &pml_mapping_pt() const {return Pml_mapping_pt;}
 
   /// Coordinate which goes through the PML in terms of local coordinate
   double nu(const Vector<double>& s)

@@ -172,7 +172,7 @@ public:
                                       const double& k,
                                       const double& alpha_shift=0.0)
   {
-    return MathematicalConstants::I/k * log(1.0 - std::fabs(nu/delta));
+    return - MathematicalConstants::I/k * log(1.0 - std::fabs(nu/delta));
   }
 
 };

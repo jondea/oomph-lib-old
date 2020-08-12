@@ -659,12 +659,26 @@ namespace oomph
   /// \short Compute element residual Vector only (if flag=and/or element
   /// Jacobian matrix
   virtual void fill_in_generic_residual_contribution_helmholtz(
-   Vector<double> &residuals, DenseMatrix<double> &jacobian,
+   Vector<double> &residuals,
+   DenseMatrix<double> &jacobian,
    const unsigned& flag);
   
   /// Static so that the class doesn't need to instantiate a new default
   /// everytime it uses it
   static BermudezPMLMapping Default_pml_mapping;
+ 
+ private:
+  //
+  void fill_in_generic_residual_contribution_helmholtz_diagonal_pml_jacobian(
+   Vector<double> &residuals,
+   DenseMatrix<double> &jacobian,
+   const unsigned& flag);
+   
+  //
+  void fill_in_generic_residual_contribution_helmholtz_dense_pml_jacobian(
+   Vector<double> &residuals,
+   DenseMatrix<double> &jacobian,
+   const unsigned& flag);
  };
  
  
