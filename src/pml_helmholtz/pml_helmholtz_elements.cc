@@ -1201,6 +1201,8 @@ template class QPMLHelmholtzElement<2,2,Conformal2DPMLElement>;
 template class QPMLHelmholtzElement<2,3,Conformal2DPMLElement>;
 template class QPMLHelmholtzElement<2,4,Conformal2DPMLElement>;
 
-
+template class QPMLHelmholtzElement<2,2,AnnularFromCartesianPMLElement>;
+template class QPMLHelmholtzElement<2,3,AnnularFromCartesianPMLElement>;
+template class QPMLHelmholtzElement<2,4,AnnularFromCartesianPMLElement>;
 
 }

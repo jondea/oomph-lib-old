@@ -317,7 +317,7 @@ public:
     const unsigned& ipt,
     const Vector<double>& s,
     const Vector<double>& x,
-    DenseComplexMatrix& jacobian) = 0;
+    DenseComplexMatrix& jacobian);
 
   ///
   virtual void pml_transformation_jacobian(
@@ -325,7 +325,7 @@ public:
     const Vector<double>& s,
     const Vector<double>& x,
     DenseComplexMatrix& jacobian_matrix,
-    Vector<std::complex<double> >& transformed_x) = 0;
+    Vector<std::complex<double> >& transformed_x);
 
   //
   void radial_to_cartesian_jacobian(
@@ -391,6 +391,18 @@ public:
     Pml_mapping_pt = pml_mapping_pt;
   }
   
+  /// Enable pml. Specify the inner and outer radius of PML and the origin
+  virtual void enable_pml(
+    const double& inner_pml_radius, 
+    const double& outer_pml_radius,
+    const Vector<double>& origin = Vector<double>(2,0.0))
+  {
+    PMLElementBase<2>::enable_pml();
+    Pml_inner_radius = inner_pml_radius;
+    Pml_outer_radius = outer_pml_radius;
+    Origin = origin;
+  }
+  
   /// Return a pointer to the PML Mapping object
   UniaxialPMLMapping* &pml_mapping_pt() {return Pml_mapping_pt;}
 
@@ -423,6 +435,12 @@ public:
     return atan2(x[1]-Origin[1], x[0]-Origin[0]);
   }
 
+  /// Angle relative to origin
+  double theta(const Vector<double>& s, const Vector<double>& x) 
+  {
+    return theta(x);
+  }
+
   /// \short get the Jacobian of the mapping from transformed r to the radial
   /// through-the-pml coordinate. Also returns the transformed_r at this point too
   /// as it is required for the transformation to cartesian coordinates
@@ -430,7 +448,7 @@ public:
     const double& nu,
     const double& delta,
     std::complex<double>& transformed_r,
-    std::complex<double>& dtransformed_r_dr)
+    std::complex<double>& dtransformed_r_dr) const
   {
     const double k = this->wavenumber();
     transformed_r = Pml_inner_radius
@@ -538,7 +556,7 @@ public:
     const double& nu,
     const double& delta,
     std::complex<double>& transformed_r,
-    std::complex<double>& dtransformed_r_dr)
+    std::complex<double>& dtransformed_r_dr) const
   {
     const double k = this->wavenumber();
     transformed_r = Pml_inner_radius

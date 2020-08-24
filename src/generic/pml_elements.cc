@@ -424,10 +424,20 @@ void AnnularPMLElementBase::pml_transformation_jacobian(
   const Vector<double>& x,
   DenseComplexMatrix& cartesian_jacobian)
 {
+  // If we aren't in the PML, return the identity matrix
+  const double nu = this->nu(s, x);
+  if (!this->Pml_is_enabled || nu <= 0.0)
+  {
+    cartesian_jacobian(0,0) = 1.0;
+    cartesian_jacobian(0,1) = 0.0;
+    cartesian_jacobian(1,0) = 0.0;
+    cartesian_jacobian(1,1) = 1.0;
+    return;
+  }
+
   // Get position from 
   const double theta = this->theta(s, x);
   const double r = this->radius(s, x);
-  const double nu = this->nu(s, x);
   const double delta = this->delta();
 
   // Get the radial mapping jacobian and the transformed radial coordinate
@@ -448,10 +458,22 @@ void AnnularPMLElementBase::pml_transformation_jacobian(
   DenseComplexMatrix& cartesian_jacobian,
   Vector<std::complex<double> >& transformed_x)
 {
+  // If we aren't in the PML, return the identity matrix and tx=x
+  const double nu = this->nu(s, x);
+  if (!this->Pml_is_enabled || nu <= 0.0)
+  {
+    transformed_x[0] = x[0];
+    transformed_x[1] = x[1];
+    cartesian_jacobian(0,0) = 1.0;
+    cartesian_jacobian(0,1) = 0.0;
+    cartesian_jacobian(1,0) = 0.0;
+    cartesian_jacobian(1,1) = 1.0;
+    return;
+  }
+
   // Get position from 
   const double theta = this->theta(s, x);
   const double r = this->radius(s, x);
-  const double nu = this->nu(s, x);
   const double delta = this->delta();
 
   // Get the radial mapping jacobian and the transformed radial coordinate
