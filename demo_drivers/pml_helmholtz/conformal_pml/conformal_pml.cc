@@ -1060,7 +1060,7 @@ void PMLProblem<BULK_ELEMENT, PML_ELEMENT>::doc_solution()
     file << sqrt(error/norm) << std::endl;
     file.close();
     
-    Trace_file << sqrt(error/norm) << std::endl;
+    Trace_file << sqrt(norm) << ", "<< sqrt(error/norm) << std::endl;
   }
 
   if(GlobalParameters::Dump_restart_file)
