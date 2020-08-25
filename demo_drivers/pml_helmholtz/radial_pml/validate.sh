@@ -38,7 +38,7 @@ cat RESLT/trace.dat > pml_scattering_results.dat
 if test "$1" = "no_fpdiff"; then
   echo "dummy [OK] -- Can't run fpdiff.py because we don't have python or validata" >> validation.log
 else
-../../../../bin/fpdiff.py ../validata/pml_scattering_results.dat.gz   \
+../../../../bin/fpdiff.py ../validata/pml_scattering_results.dat   \
     pml_scattering_results.dat >> validation.log
 fi
 
