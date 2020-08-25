@@ -28,8 +28,8 @@
 //LIC//
 //LIC//====================================================================
 
-#ifndef OOMPH_ANNULAR_MESH_WITH_PML_TEMPLATE_CC
-#define OOMPH_ANNULAR_MESH_WITH_PML_TEMPLATE_CC
+#ifndef OOMPH_TWO_LAYER_ANNULAR_MESH_TEMPLATE_CC
+#define OOMPH_TWO_LAYER_ANNULAR_MESH_TEMPLATE_CC
 
 #include "two_layer_annular_mesh.template.h"
 

@@ -31,7 +31,7 @@
 #ifndef OOMPH_TWO_LAYER_ANNULAR_MESH_TEMPLATE_H
 #define OOMPH_TWO_LAYER_ANNULAR_MESH_TEMPLATE_H
 
-#include "rectangular_quadmesh.h"
+#include "rectangular_quadmesh.template.h"
 
 namespace oomph
 {
