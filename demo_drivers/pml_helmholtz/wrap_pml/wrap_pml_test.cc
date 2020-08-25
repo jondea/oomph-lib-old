@@ -233,6 +233,8 @@ PMLProblem<BULK_ELEMENT, PML_ELEMENT>::PMLProblem(): Outer_boundary_id(4)
   Vector<TriangleMeshCurveSection*> outer_boundary_line_pt(4);
   Vector<MyStraightLine*> outer_boundary_geom_line_pt(4);
 
+  const unsigned n_segements_outer_edge = 8;
+
   // Each polyline only has three vertices, provide storage for their
   // coordinates
   Vector<double> start_vertex(2);
@@ -251,8 +253,8 @@ PMLProblem<BULK_ELEMENT, PML_ELEMENT>::PMLProblem(): Outer_boundary_id(4)
   outer_boundary_geom_line_pt[0] = new MyStraightLine(start_vertex, end_vertex,
                                                       s_start, s_end);
   outer_boundary_line_pt[0]=
-    new TriangleMeshCurviLine(outer_boundary_geom_line_pt[0], s_start, s_end, 1,
-                              Outer_boundary_id[0]);
+    new TriangleMeshCurviLine(outer_boundary_geom_line_pt[0], s_start, s_end,
+                              n_segements_outer_edge, Outer_boundary_id[0]);
 
   // Second boundary polyline
   start_vertex[0]=2.0;
@@ -267,8 +269,8 @@ PMLProblem<BULK_ELEMENT, PML_ELEMENT>::PMLProblem(): Outer_boundary_id(4)
   outer_boundary_geom_line_pt[1] = new MyStraightLine(start_vertex, end_vertex,
                                                       s_start, s_end);
   outer_boundary_line_pt[1]=
-    new TriangleMeshCurviLine(outer_boundary_geom_line_pt[1], s_start, s_end, 1,
-                              Outer_boundary_id[1]);
+    new TriangleMeshCurviLine(outer_boundary_geom_line_pt[1], s_start, s_end,
+                              n_segements_outer_edge, Outer_boundary_id[1]);
 
   // Third boundary polyline
   start_vertex[0]=2.0;
@@ -283,8 +285,8 @@ PMLProblem<BULK_ELEMENT, PML_ELEMENT>::PMLProblem(): Outer_boundary_id(4)
   outer_boundary_geom_line_pt[2] = new MyStraightLine(start_vertex, end_vertex,
                                                       s_start, s_end);
   outer_boundary_line_pt[2]=
-    new TriangleMeshCurviLine(outer_boundary_geom_line_pt[2], s_start, s_end, 1,
-                              Outer_boundary_id[2]);
+    new TriangleMeshCurviLine(outer_boundary_geom_line_pt[2], s_start, s_end,
+                              n_segements_outer_edge, Outer_boundary_id[2]);
 
   // Fourth boundary polyline
   start_vertex[0]=-2.0;
@@ -299,8 +301,8 @@ PMLProblem<BULK_ELEMENT, PML_ELEMENT>::PMLProblem(): Outer_boundary_id(4)
   outer_boundary_geom_line_pt[3] = new MyStraightLine(start_vertex, end_vertex,
                                                       s_start, s_end);
   outer_boundary_line_pt[3]=
-    new TriangleMeshCurviLine(outer_boundary_geom_line_pt[3], s_start, s_end, 1,
-                              Outer_boundary_id[3]);
+    new TriangleMeshCurviLine(outer_boundary_geom_line_pt[3], s_start, s_end,
+                              n_segements_outer_edge, Outer_boundary_id[3]);
 
 
   // Create the triangle mesh closed curve for outer boundary
