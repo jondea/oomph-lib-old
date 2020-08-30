@@ -1,6 +1,9 @@
 image: ubuntu:18.04
 
-build:
+stages:
+- build-and-test
+
+build-and-test:
   stage: build-and-test
   before_script:
     - apt-get update && apt-get -y install make automake libtool libtool-bin autoconf doxygen gfortran g++
