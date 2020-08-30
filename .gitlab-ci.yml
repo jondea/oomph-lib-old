@@ -1,0 +1,18 @@
+image: ubuntu:18.04
+
+stages:
+- build-and-deploy-docs
+
+pages:
+  stage: build-and-deploy-docs
+  before_script:
+    - apt-get update && apt-get -y install make automake libtool libtool-bin autoconf doxygen gfortran g++ texlive texlive-latex-extra texlive-font-utils
+  script:
+    - cp config/configure_options/build_web_version config/configure_options/current
+    - ./non_interactive_autogen.sh -sn
+    - make -C bin
+    - make -C doc
+    - ./bin/website_install.sh public
+  artifacts:
+    paths:
+    - public

@@ -26,7 +26,7 @@ jobs:
     - name: Build doc
       run: make -C doc
     - name: Run website install script
-      run: ./bin/website_install.sh
+      run: ./bin/website_install.sh build/website
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@releases/v3
       with:
