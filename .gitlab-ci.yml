@@ -4,8 +4,7 @@ image: gcc
 build:
   stage: build
   before_script:
-    - apt update && apt -y install make automake libtool libtool-bin autoconf doxygen gfortran g++ 
-  script:
+    - sudo apt-get update && sudo apt-get install make automake libtool libtool-bin autoconf doxygen gfortran g++
     - ./non_interactive_autogen.sh -s
 
 test:
