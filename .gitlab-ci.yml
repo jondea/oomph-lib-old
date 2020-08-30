@@ -3,7 +3,7 @@ image: ubuntu:18.04
 build:
   stage: build
   before_script:
-    - sudo apt-get update && sudo apt-get install make automake libtool libtool-bin autoconf doxygen gfortran g++
+    - apt-get update && apt-get install make automake libtool libtool-bin autoconf doxygen gfortran g++
   script:
     - ./non_interactive_autogen.sh -s
 
