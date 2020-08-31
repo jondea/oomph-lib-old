@@ -1,6 +1,6 @@
 #!/usr/bin/env bash 
 
-build_dir="build/website"
+build_dir=$1
 
 # Ensure build directory exists
 mkdir -p $build_dir
