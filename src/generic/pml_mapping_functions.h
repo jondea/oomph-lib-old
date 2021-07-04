@@ -208,11 +208,10 @@ public:
 };
 
 //=======================================================================
-/// Class to hold the mapping function (gamma) for the PML which defines
-/// how the coordinates are transformed in the PML. This PML mapping
-/// aims to transform the solution into a straight line, and requires a 
-/// lot of information from the element. Returns a mapping Jacobian which
-/// I haven't quite worked out yet
+/// Class used to calculate the PML transformation and its Jacobian.
+/// This specific variant is defined in a conformal geometry, and the
+/// transformation can be discontinuous in the tangential direction
+/// (across the PML)
 //=======================================================================
 class TangentiallyDiscontinuousConformalPMLMapping :
 public TangentiallyVaryingConformalPMLMapping
